@@ -1,100 +1,114 @@
-# SymC Biomedical Systems
+# Symmetrical Convergence (SymC) — Bio Repository
 
-**SymC Biomedical Systems** applies control theory, dynamical systems, and stability physics to biological regulation, disease progression, and therapeutic intervention.
+## Overview
 
-Rather than treating disease as a collection of static symptoms, this work models biological function as **adaptive dynamical systems** operating near a **critical damping boundary** that maximizes stability, responsiveness, and information efficiency.
+This repository contains the **biological, neurological, and medical branch** of the Symmetrical Convergence (SymC) research program.
 
-Across neurology, pain, oncology, and chronic disease, loss of health corresponds to measurable departures from this adaptive window. Recovery is framed as a **stabilization problem**, not a suppression problem.
+SymC is a unifying physical framework built around a single governing principle: **adaptive systems achieve maximal stability and information efficiency at the critical damping boundary**. Across domains, failure, disease, and inefficiency arise when systems drift into underdamped (chaotic) or overdamped (rigid) regimes.
 
----
+Within biology and medicine, this manifests as:
 
-## Core Principle
+* Disease as **control instability**, not isolated pathology
+* Comorbidity as **phase-shifted expressions of a shared stability substrate**
+* Treatment as **boundary restoration**, not symptom suppression
 
-Healthy biological systems operate near a critical stability boundary defined by the dimensionless ratio:
-
-**χ = γ / (2|ω|)**
-
-where:
-- **ω** represents system drive or excitation  
-- **γ** represents inhibitory damping or control  
-
-Deviation from this boundary produces:
-- **Underdamped instability** (oscillation, sensitization, flare dynamics)
-- **Overdamped rigidity** (suppression, numbness, loss of adaptability)
-
-The therapeutic objective is **adaptive regulation**, not maximal suppression.
+This repository consolidates the SymC work that applies these principles to **viral dynamics, oncology, neurodegeneration, pain, addiction, psychiatric instability, and adaptive therapeutic control**.
 
 ---
 
-## Architecture
+## Scope of Work
 
-SymC biomedical models follow a standardized three-tier translation stack:
+Across the SymC bio program, we have:
 
-### 1. Signal → State
-Multimodal biosignals (EEG, LFP, HRV, ECAPs, behavioral markers) are fused using filtering and state estimation to extract a continuous stability index **χ(t)**.
-
-### 2. State → Pattern
-System trajectories are classified using the **Prodromal Critical Cascade (PCC)** to identify early instability, variance expansion, and boundary breach before irreversible pathology.
-
-### 3. Pattern → Action
-Interventions are implemented via layered control:
-- Model Predictive Control (MPC)
-- Reinforcement Learning (RL)
-- Robust and boundary-enforcing controllers (H∞, SMC)
-
-This enables **closed-loop, patient-specific stabilization**.
+* Reframed biological regulation as a **dynamical control problem**
+* Unified chronic disease, neurodegeneration, and mental illness under **shared stability mechanics**
+* Introduced **stability ratios and phase metrics** as actionable diagnostic tools
+* Demonstrated how adaptive intervention outperforms static treatment strategies
+* Linked molecular, cellular, neural, and behavioral dynamics within a single substrate model
 
 ---
 
-## Active Biomedical Domains
+## Canonical SymC Biology & Medicine Papers
 
-- **Pain and Nociception**  
-  Adaptive pain control via stability regulation rather than symptom suppression.
+### I. Core Biological Control Frameworks
 
-- **Neurodegenerative Disease**  
-  Parkinson’s, Alzheimer’s, and dementia modeled as progressive stability failure with identifiable prodromal stages.
+1. **SymC Viral Control: A Stability-Ratio Method for Adaptive Therapeutic Dynamics**
+   DOI: [https://doi.org/10.5281/zenodo.17651256](https://doi.org/10.5281/zenodo.17651256)
 
-- **Addiction and Neurocontrol Failure**  
-  Resonant instability and loss of inhibitory damping.
-
-- **Oncology**  
-  Optimal control of therapeutic dosing under biological uncertainty.
-
-- **Therapeutic Dynamics**  
-  Closed-loop neuromodulation, medication titration, and behavioral intervention.
+2. **Optimal Control Theory in Oncology (SymC Oncology Framework)**
+   DOI: [https://doi.org/10.5281/zenodo.17507544](https://doi.org/10.5281/zenodo.17507544)
 
 ---
 
-## Design Philosophy
+### II. Neurodegeneration and Progressive Instability
 
-- Biology is **not noisy randomness** — it is structured dynamics.
-- Failure emerges through **predictable instability sequences**.
-- Early intervention is possible when variance and cross-timescale divergence are monitored.
-- Control must be **adaptive, minimal, and stabilizing**, not brute-force.
+3. **Prodromal Critical Cascade in Parkinson's Disease: A SymC Framework for Early Detection, Phenotype Dynamics, and Precision Intervention**
+   DOI: [https://doi.org/10.5281/zenodo.17645851](https://doi.org/10.5281/zenodo.17645851)
 
----
-
-## Repositories
-
-This organization hosts:
-- Mathematical models and simulations  
-- Control architectures  
-- Biomedical stability frameworks  
-- Cross-domain validation studies  
-
-View all repositories:  
-👉 https://github.com/SymCUniverse
+4. **SymC Neurostability Principle: The Governing Physics of Alzheimer's and Dementia Instability Architectures**
+   DOI: [https://doi.org/10.5281/zenodo.17766309](https://doi.org/10.5281/zenodo.17766309)
 
 ---
 
-## Status
+### III. Pain, Addiction, and Neural Control Failure
 
-This is an **independent research program** focused on falsifiable models, clinical relevance, and translational clarity.
+5. **Neuroelastic Resonance Instability: A SymC Critical-Damping Principle of Addiction and Neural Control Failure**
+   DOI: [https://doi.org/10.5281/zenodo.17782917](https://doi.org/10.5281/zenodo.17782917)
 
-Not medical advice.  
-Not a product.  
-Not a black box.
+6. **The Nociceptive Stability Principle: SymC Substrate Architecture for Adaptive Pain Control**
+   DOI: [https://doi.org/10.5281/zenodo.17924428](https://doi.org/10.5281/zenodo.17924428)
 
-**Stability is measurable.  
-Instability is detectable early.  
-Control is possible.**
+---
+
+### IV. Psychiatric Stability and Comorbidity
+
+7. **SymC Boundary Dissolves Comorbidity Paradox: Redefining the Phase-Shifting Mechanical Lineage of Mental Illness as Neuro Stability Disorder**
+   DOI: [https://doi.org/10.5281/zenodo.17937287](https://doi.org/10.5281/zenodo.17937287)
+
+---
+
+## Related Cross-Domain SymC Works (Contextual)
+
+The following papers inform the biological models but are housed in other SymC repositories:
+
+* **Critical Chemical Equivalence (CCE): The SymC Principle Governing Catalysis and Reactivity**
+  DOI: [https://doi.org/10.5281/zenodo.17891563](https://doi.org/10.5281/zenodo.17891563)
+
+* **SymC Noughts: Understanding the Electromagnetic Vacuum as a Physical Substrate**
+  DOI: [https://doi.org/10.5281/zenodo.17633509](https://doi.org/10.5281/zenodo.17633509)
+
+* **SymC Adaptive Intelligence Framework (AIF): Critical Damping and Information Efficiency Across Classical–Quantum Systems**
+  DOI: [https://doi.org/10.5281/zenodo.17565787](https://doi.org/10.5281/zenodo.17565787)
+
+---
+
+## How to Use This Repository
+
+This repository is intended for:
+
+* Researchers exploring **systems biology and disease dynamics**
+* Clinicians interested in **adaptive, phase-aware intervention models**
+* Control theorists applying **feedback principles to living systems**
+* AI and computational biology teams developing **adaptive treatment algorithms**
+
+Each paper is designed to be read independently, but together they form a **single, closed theoretical system**.
+
+---
+
+## Citation and Usage
+
+All works are archived on Zenodo and may be cited individually via their DOIs.
+
+If referencing the SymC bio framework as a whole, please cite the relevant primary paper(s) alongside the foundational SymC boundary postulate.
+
+---
+
+## Program Status
+
+This repository represents a **mature, internally consistent branch** of the SymC research program. Future updates may include:
+
+* Clinical validation datasets
+* Computational simulation modules
+* Adaptive control implementations
+
+Core theory is considered stable.
