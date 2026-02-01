@@ -1,0 +1,270 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[top=0.5in, bottom=0.75in, left=0.75in, right=0.75in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{dcolumn}
+\usepackage{bm}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{booktabs}
+
+\begin{document}
+
+\title{Supplementary Materials: \\
+Genomic Regulatory Instability (GRI)}
+
+\author{}
+\date{01 Feburary 2026}
+
+\maketitle
+
+\tableofcontents
+
+\section{SM1: Detailed Mathematical Derivations}
+
+\subsection{SM1.1: Mapping Transcriptomics to Phase Space}
+
+The challenge in applying the Langevin equation to genomic data lies in extracting dynamical parameters $\gamma_i$ and $\omega_i$ from static ensemble measurements. Standard RNA sequencing provides population-averaged expression levels across thousands of tumor samples but captures no direct temporal information. However, by invoking the Ergodic Hypothesis \textit{locally and approximately}, analysis can treat spatial ensemble variance as a proxy for temporal dissipation. This assumption is standard in statistical physics when temporal trajectories are unavailable but ensemble statistics are measurable. The validity rests on the assumption that the tumor population samples diverse dynamical states: if tumors explore similar trajectories at different rates, ensemble variance approximates time-averaged variance. Ensemble averaging is not a limitation but a requirement for detecting phase transitions at scale. This approximation is sufficient for detecting bandwidth collapse and phase transitions, though not for reconstructing exact patient-specific trajectories. Sensitivity to this assumption could be assessed in future work by comparing ensemble-derived $\chi$ values to longitudinal single-cell tracking data, verifying that rank-ordered stability patterns persist across normalization methods (TPM, FPKM, DESeq2), and testing whether the three-stage sequence appears in independent cancer cohorts.
+
+This allows the transformation $\mathcal{T}: \mathbb{R}^N \to \mathbb{R}^2$ mapping the $N$-dimensional gene expression matrix to a two-dimensional phase space:
+
+\begin{align}
+\omega_i &\approx \mu_i \quad \text{(Mean expression as effective energy scale)} \\
+\gamma_i &\approx \sigma_i \quad \text{(Standard deviation as proxy for dissipation)}
+\end{align}
+
+In the genomic context, $\omega_i$ should be understood as an \textit{effective energy scale} rather than a literal oscillation frequency. The physical justification is that highly expressed genes represent high-energy processes requiring significant ATP investment per transcript, making mean expression a natural proxy for the characteristic energy scale of that regulatory mode. The ``frequency'' language used in the dynamical formalism refers to the rate parameters in the abstract Langevin model; in genomics, this maps to energy scale through the correspondence $\omega \sim E/\hbar$ in the semi-classical limit. For the dissipation mapping, invoking fluctuation-dissipation balance: in equilibrium, variance $\sigma^2$ is inversely related to effective damping strength. High variance indicates \textit{weak} regulatory control (low effective damping), as individual cells drift far from the population mean because corrective forces are insufficient. Conversely, low variance indicates \textit{strong} regulatory control (high effective damping). Thus, using $\sigma$ as a direct proxy for the amplitude of fluctuations that regulation must suppress, which maps to the dissipation rate $\gamma$ in the Langevin framework.
+
+Substituting yields the observable metric:
+
+\begin{equation}
+\chi_i = \frac{\sigma_i}{2\mu_i} = \frac{1}{2} \, \text{CV}_i
+\end{equation}
+
+where $\text{CV}_i = \sigma_i/\mu_i$ is the coefficient of variation. This remarkably simple result implies that for an optimally regulated gene operating at critical damping, the population noise must scale exactly as twice the mean signal strength.
+
+\subsection{SM1.2: Substrate-Regulator Coupling Dynamics}
+
+Modeling the interaction between a high-energy structural substrate ($S_{\text{sub}}$) and a low-energy regulator ($R$) as a system of coupled oscillators with coupling constant $\kappa$:
+
+\begin{align}
+\ddot{x}_S + \gamma_S \dot{x}_S + \omega_S^2 x_S &= \kappa (x_R - x_S) + \xi_S(t) \\
+\ddot{x}_R + \gamma_R \dot{x}_R + \omega_R^2 x_R &= \kappa (x_S - x_R) + \xi_R(t)
+\end{align}
+
+When the substrate is stable ($\chi_S \approx 1$), $x_S$ fluctuates around zero with small amplitude, and the regulator's dynamics are dominated by its intrinsic restoring force $\omega_R^2 x_R^2$. This is the adaptive regime: the regulator corrects deviations from homeostasis ($x_R \to 0$) by referencing the critical boundary, not the substrate position.
+
+When substrate stability fails and $\chi_S$ increases beyond unity (overdamping), the substrate begins to drift. The regulator now faces a bandwidth dilemma: maintaining reference to the critical boundary $\chi = 1$ requires fighting against large substrate deviations, which exhausts bandwidth. When correction cost exceeds $S$, the system settles into a lower-energy configuration where the regulator tracks the substrate's local trajectory rather than the critical attractor.
+
+In the limit where bandwidth is exhausted:
+
+\begin{equation}
+\lim_{S \to 0} x_R(t) \to x_S(t)
+\end{equation}
+
+This is \textbf{Substrate Capture}. The regulator loses its independent ground, its reference to the critical boundary, and instead uses the failing substrate as its new zero-point. Once captured, the regulator amplifies rather than corrects substrate error.
+
+\section{SM2: Diagnostic Protocol Details}
+
+\subsection{SM2.1: Two-Step Verification System}
+
+A critical operational principle emerges from the substrate-regulator coupling architecture: \textit{single-layer measurements are ambiguous; concordance across coupled layers confirms pathology}. Isolated regulator volatility could represent normal adaptive response to transient perturbations. Isolated substrate drift could reflect measurement artifacts or biological variability. However, when regulator irregularity coincides with substrate elevation, this concordance confirms active damage propagation through the coupled system.
+
+The diagnostic protocol operates as follows:
+
+\textbf{Step 1 - Screen Primary Layer.} Measure the accessible layer first. In cancer genomics, this is typically the regulatory layer via RNA-seq or single-cell profiling. Compute gene-wise stability indices $\chi_i$ and identify deviations from baseline (spikes, elevated variance, loss of periodicity). In infrastructure monitoring (grids, networks), this may be the substrate layer (voltage stability, structural integrity).
+
+\textbf{Step 2 - Verify Via Coupled Layer.} If the primary layer shows irregularity, measure the coupled layer:
+\begin{itemize}
+\item \textit{If regulator shows spikes or oscillatory instability} ($\chi < 0.8$, high-frequency oscillations): Check substrate for elevation above natural setpoint. Concordance (substrate elevated + regulator volatile) confirms underdamped failure mode requiring stabilization.
+\item \textit{If substrate shows drift upward} (baseline shift from empirical operating point $\chi \approx 0.80$ toward $\chi \approx 1.0$): Check regulator for compensation attempts (attempted corrections, failed recovery). Concordance (substrate drifting + regulator correcting) confirms precursor to rigidity requiring early mobilization.
+\item \textit{If both layers stable}: System is healthy. Continue monitoring.
+\item \textit{If discordance} (one layer irregular, other stable): Investigate measurement artifact, domain-specific confounds, or non-bandwidth failure modes.
+\end{itemize}
+
+This two-step verification system is \textit{domain-independent}. In power grids, measure generator frequency (regulator) and transmission line voltage (substrate). In financial markets, measure order flow volatility (regulator) and liquidity depth (substrate). In biological systems, measure gene expression variance (regulator) and chromatin accessibility (substrate). The principle holds: concordant irregularity across coupled layers confirms system-level instability, while isolated deviations require further investigation before intervention.
+
+\section{SM3: Single-Cell Resolution Analysis}
+
+\subsection{SM3.1: Extending GRI to Cellular Heterogeneity}
+
+The analysis presented in the main manuscript operates at population scale, averaging over thousands of tumor samples. This ensemble approach reveals the global architecture of regulatory failure but obscures potentially important heterogeneity within individual tumors.
+
+Single-cell RNA sequencing now enables measurement of transcriptional state in individual cells. The critical question is whether substrate capture operates uniformly across all cells in a tumor or whether different cellular subpopulations occupy different regions of phase space. If the latter, then intratumoral heterogeneity may not reflect genetic diversity (different clones with different mutations) but \textit{physical diversity} (different cells in different damping regimes despite identical genotypes).
+
+Single-cell stability analysis would compute the stability index $\chi_i^{(c)}$ for each gene $i$ in each cell $c$ using variance across local cellular neighborhoods rather than global population variance. This yields a \textit{stability tensor} $\chi_{ic}$ describing the damping landscape of every gene in every cell. Clustering in this phase space would reveal whether tumors consist of homogeneous capture (all cells locked into the same overdamped state), heterogeneous capture (distinct subpopulations in different damping regimes), or temporal capture dynamics (individual cells cycling through different regimes over time).
+
+Preliminary work suggests the heterogeneous capture model is most consistent with data. Tumors appear to contain at least three cellular subpopulations: a rigid core (overdamped structural genes), a proliferative rim (underdamped metabolic genes), and a transitional zone (critical damping). This spatial organization may explain the failure of single-agent therapies: treating the proliferative rim with suppressors leaves the rigid core untouched, and vice versa.
+
+\subsection{SM3.2: Computational Requirements}
+
+Single-cell GRI analysis requires:
+\begin{itemize}
+\item High-depth single-cell RNA-seq (>10,000 UMIs per cell)
+\item Spatial transcriptomics to preserve cellular organization
+\item Time-series sampling to distinguish static from dynamic heterogeneity
+\item Computational infrastructure for tensor operations on $\sim 10^4$ genes $\times$ $10^4$ cells
+\end{itemize}
+
+The computational cost scales as $O(N_g \times N_c^2)$ where $N_g$ is the number of genes and $N_c$ is the number of cells, due to neighborhood variance calculations. This is tractable for current datasets but requires optimization for atlas-scale analyses.
+
+\section{SM4: Extended Falsification Criteria}
+
+\subsection{SM4.1: Detailed Experimental Predictions}
+
+\textbf{Test 1 - Critical Boundary Convergence:}
+\begin{itemize}
+\item \textit{Hypothesis:} High-energy structural genes ($\omega > 1000$) converge toward $\chi \approx 1$ across cancer types
+\item \textit{Null condition:} No preference for $\chi \approx 1$; random distribution across damping states
+\item \textit{Threshold:} Mean $\chi < 0.5$ or $> 2.0$ in stable regime falsifies framework
+\item \textit{Method:} Analyze TCGA cohorts stratified by cancer type; test if $\chi$ distribution peaks at unity for high-$\omega$ genes
+\end{itemize}
+
+\textbf{Test 2 - Scale-Dependent Collapse:}
+\begin{itemize}
+\item \textit{Hypothesis:} Regulatory failure occurs preferentially at low energy scales; high-energy genes maintain stability
+\item \textit{Null condition:} No energy-dependent gradient in $\chi$ or dispersion; uniform failure across scales
+\item \textit{Threshold:} Flat $\chi(\omega)$ profile with no monotonic trend falsifies bandwidth collapse mechanism
+\item \textit{Method:} Plot $\chi$ versus $\omega$; test for significant negative correlation in healthy tissue, positive deviation in cancer
+\end{itemize}
+
+\textbf{Test 3 - Warning Signature Predictivity:}
+\begin{itemize}
+\item \textit{Hypothesis:} Warning signatures (fast-slow divergence, rising dispersion) predict subsequent collapse in longitudinal data
+\item \textit{Null condition:} Warning signatures are not predictive; collapse occurs randomly
+\item \textit{Threshold:} $<50\%$ positive predictive value for Warning $\to$ Collapse falsifies staging framework
+\item \textit{Method:} Longitudinal tumor sampling at diagnosis, 6 months, 12 months; track $\chi$ trajectories; test if early Warning predicts later Collapse
+\end{itemize}
+
+\textbf{Test 4 - Initiator-Executor Separation:}
+\begin{itemize}
+\item \textit{Hypothesis:} Structural/secretory genes exhibit higher dispersion and overdamping than oncogenes
+\item \textit{Null condition:} KRAS, TP53, MYC appear in top 15 instability drivers
+\item \textit{Threshold:} $>3$ canonical oncogenes in top 15 by dispersion falsifies executor identification
+\item \textit{Method:} Rank all genes by dispersion energy; check if top 15 are structural/secretory rather than oncogenic
+\end{itemize}
+
+\textbf{Test 5 - State-Dependent Therapeutic Response:}
+\begin{itemize}
+\item \textit{Hypothesis:} Overdamped tumors ($\chi > 1.2$) respond poorly to suppressive therapy; underdamped tumors ($\chi < 0.8$) require stabilization
+\item \textit{Null condition:} No correlation between $\chi$ and therapeutic response
+\item \textit{Threshold:} Absence of $\chi$-response correlation ($p > 0.05$) in randomized trial falsifies treatment framework
+\item \textit{Method:} Measure baseline $\chi$ distribution in patient cohort; randomize to standard vs. state-matched therapy; test response rates
+\end{itemize}
+
+\subsection{SM4.2: Chromatin Accessibility Predictions}
+
+If epigenetic substrate is primary driver of GRI:
+
+\textbf{Prediction 1:} Genes with $\chi > 1.5$ (overdamped) will show:
+\begin{itemize}
+\item Reduced ATAC-seq peaks at promoter regions ($<50\%$ of critical-damped genes)
+\item Increased DNA methylation at CpG islands ($>70\%$ methylated vs. $<30\%$ in $\chi \approx 1$ genes)
+\item Enrichment for repressive histone marks (H3K27me3, H3K9me3) over active marks (H3K27ac, H3K4me3)
+\end{itemize}
+
+\textbf{Prediction 2:} Genes with $\chi < 0.8$ (underdamped) will show:
+\begin{itemize}
+\item Increased ATAC-seq accessibility ($>150\%$ of critical-damped baseline)
+\item Global hypomethylation ($<20\%$ CpG methylation)
+\item Enrichment for active chromatin marks
+\end{itemize}
+
+\textbf{Prediction 3:} Chromatin state transitions will precede $\chi$ transitions:
+\begin{itemize}
+\item In longitudinal samples, ATAC-seq changes at month 0 should predict $\chi$ changes at month 3-6
+\item Temporal ordering: chromatin condensation $\to$ transcriptional variance increase $\to$ clinical symptoms
+\end{itemize}
+
+These predictions are testable with existing TCGA samples that have both RNA-seq and methylation array data.
+
+\section{SM5: Conceptual Framework Extensions}
+
+\subsection{SM5.1: Continuity with Control-Theoretic Approaches}
+
+This work extends earlier control-physics diagnostics downward into substrate physics while preserving the control-theoretic spine. Gene-wise substrate stability defines the landscape; patient-wise $x(t)$ trajectories describe motion upon it. The Control-Adaptive Therapy Optimizing Checkpoint Timing (CAT-OCT) framework remains the intervention layer, implemented via discrete guardrails that bound acceptable trajectories rather than continuous optimization. This preserves clinical interpretability: clinicians set bounds ($\chi_{\text{min}}$, $\chi_{\text{max}}$, $D_{\text{threshold}}$) rather than solving differential equations.
+
+The warning-confirmation-collapse diagnostic sequence operationalizes bandwidth collapse without requiring direct measurement of $S$, which is inferred through divergence, hysteresis, and loss of reversibility. This makes the framework deployable: staging can be performed on standard RNA-seq or ctDNA data without specialized equipment or invasive sampling.
+
+\subsection{SM5.2: The Biophysical Basis of Damping - Chromatin as $\chi$ Regulator}
+
+To translate the control-theoretic framework into molecular mechanisms, this analysis identifies the physical counterparts of the harmonic oscillator components. In the genomic context, the mass parameter $\omega$ represents transcriptional output (mRNA abundance), while the restoring force is mediated by regulatory feedback loops, specifically transcription factor binding kinetics and the resulting negative feedback that maintains homeostasis.
+
+Crucially, the damping ratio $\chi$ corresponds to the physical accessibility of the chromatin landscape. This is not merely a mathematical abstraction but a measurable biophysical property that determines whether regulatory machinery can access DNA to execute corrective responses.
+
+\textbf{The Underdamped State} ($\chi < 1$): Physiologically, this corresponds to euchromatin, the open and accessible DNA configuration with high structural plasticity. In the Warning phase of oncogenesis, loss of repressive methylation marks removes the friction on transcription, leading to high-frequency, noisy transcriptional bursting. This transcriptional noise manifests as oscillatory fluctuations observed in the Warning Zone (gene ranks 5000 to 8000). The regulatory feedback loop can still operate, but overshoots its target repeatedly because insufficient damping (open chromatin) allows rapid, uncontrolled transcriptional activation. This is the Spark: manic oscillation where the regulatory wire conducts too well.
+
+\textbf{The Overdamped State} ($\chi > 1$): This corresponds to heterochromatinization and epigenetic silencing through DNA methylation and histone modifications. As the system attempts to dampen the oscillatory signal by recruiting structural proteins (histones, DNA methyltransferases, heterochromatin protein 1), it physically compacts the DNA into tightly wound nucleosomal arrays. This creates the Substrate Capture effect: the regulatory machinery becomes locked in a high-friction, low-accessibility state where transcription factors cannot reach their binding sites. The regulatory wire has been encased in concrete. The system can no longer respond to corrective signals because the physical architecture precludes access.
+
+Therefore, the rigidity identified in the phase-space analysis is not a metaphor but a measurable physical phenomenon: the condensation of chromatin structure. The genes exhibiting extreme overdamping (CELA3A with $\chi = 16.8$, AMY2A with $\chi = 21.9$) would be predicted to show reduced chromatin accessibility and hypermethylation at promoter regions, rendering them inaccessible to regulatory machinery, a prediction testable via ATAC-seq and DNA methylation profiling (450K arrays, whole-genome bisulfite sequencing). Conversely, underdamped genes in the Warning Zone would be predicted to exhibit hypomethylation and open chromatin structure, allowing unrestrained transcriptional activity. These mechanistic predictions provide direct falsification criteria: if genes with extreme $\chi$ values do not show corresponding chromatin accessibility differences, the proposed physical mechanism is refuted.
+
+This biophysical interpretation validates the therapeutic framework: mobilization agents (HDAC inhibitors, demethylating agents, chromatin remodelers) directly target the damping mechanism by opening condensed chromatin, restoring $\chi$ toward unity. Stabilization agents (transcriptional repressors, epigenetic modifiers that increase methylation in hypomethylated regions) increase damping in underdamped genes. The framework thus provides the unified physical equation for the well-documented cancer epigenetic phenomena of global hypomethylation and promoter-specific hypermethylation (rigidity).
+
+\section{SM6: Cross-Domain Applications}
+
+\textit{Note: The following cross-domain extensions are speculative and presented to illustrate potential generality of the substrate-regulator coupling framework. These applications have not been rigorously validated and should be viewed as hypotheses for future interdisciplinary research rather than established conclusions.}
+
+\subsection{SM6.1: Cancer as Broken Criticality}
+
+The control-theoretic framework positions cancer within a broader class of \textit{criticality failure diseases}. Neurodegenerative diseases (Alzheimer's, Parkinson's) exhibit similar substrate capture dynamics, where protein aggregates form rigid scaffolds that trap regulatory elements, preventing adaptive clearance. Autoimmune diseases reflect loss of immune system criticality, with regulatory T cells failing to dampen hyperactive effector responses. Psychiatric disorders including depression and schizophrenia show altered criticality in neuronal network dynamics, with excitation-inhibition balance shifting away from $\chi \approx 1$.
+
+Across all these domains, the therapeutic logic is the same: \textit{restore criticality, then modulate}. Treating an overdamped system with further suppression exacerbates the problem. Treating an underdamped system with stimulation amplifies oscillatory instability. The goal is to first return the system to $\chi \approx 1$, where it regains adaptive capacity, and only then apply perturbations to guide it toward health.
+
+This perspective suggests that many "incurable" diseases may not require fundamentally new drug classes but correct application of existing tools in the proper sequence. Mobilize rigidity before applying suppressors. Increase damping in underdamped systems before applying stimulants. Restore the foundation before building the structure.
+
+\subsection{SM6.2: Domain-Independent Principles}
+
+The substrate-regulator coupling architecture appears across multiple domains:
+
+\textbf{Power Grids:} Generator frequency (regulator) coupled to transmission line voltage (substrate). When grid substrate becomes overdamped (voltage sag from infrastructure degradation), frequency regulation fails, leading to cascade blackouts.
+
+\textbf{Financial Markets:} Order flow volatility (regulator) coupled to liquidity depth (substrate). Market crashes occur when liquidity substrate captures price discovery, preventing regulatory mechanisms from stabilizing volatility.
+
+\textbf{Climate Systems:} Atmospheric circulation (regulator) coupled to ocean heat content (substrate). Climate tipping points represent substrate capture events where regulatory feedback loses effectiveness.
+
+\textbf{Neural Networks:} Synaptic plasticity (regulator) coupled to structural connectivity (substrate). Neurodegenerative diseases represent substrate rigidity preventing adaptive plasticity.
+
+The unifying principle: \textit{systems fail when their physical substrate becomes incompatible with regulatory adaptation}.
+
+\section{SM7: Zone-Gene Mapping}
+
+\subsection{SM7.1: Representative Genes by Control Zone}
+
+Supplementary Table S2 provides empirically-derived gene examples for each stability zone, determined from the complete PANCAN analysis of 20,531 genes. Zone assignments are based on $(\omega, \chi)$ coordinates and functional enrichment analysis.
+
+\begin{table}[h!]
+\centering
+\caption{\textbf{Supplementary Table S2: Representative Genes by Control Zone.} Derived from PANCAN analysis of $N=20,531$ genes across 11,069 patient samples.}
+\begin{tabular}{lp{3.5cm}p{2.5cm}p{4cm}p{3.5cm}}
+\toprule
+\textbf{Zone} & \textbf{Physics State} & \textbf{Thermo-dynamics} & \textbf{Representative Genes} & \textbf{Functional Class} \\
+\midrule
+Zone 1 & Structural Substrate & $\omega > 1000$, $\chi \approx 1.0$ & FN1, COL3A1, COL1A2, CLU, A2M & ECM Scaffold / Physical Anchor \\
+\midrule
+Zone 2 & Underdamped Chaos & $\omega > 10$, $\chi < 0.2$ & HNRNPK, TARDBP, SF1, RBM45 & Volatile Signaling / RNA Processing \\
+\midrule
+Zone 3 & Critical Regulation & $\omega > 100$, $\chi \approx 1.2-1.5$ & TP53, CDKN1A, MYC & Guardians / Stress Response \\
+\midrule
+Zone 4 & Rigidity Lock & $\omega > 500$, $\chi > 30.0$ & HTN3, PRH2, SMR3B, STATH & Secretory Executors / Hardening \\
+\midrule
+Zone 5 & Captured State & $\omega < 10$ & HIST1H4C, Non-coding RNAs & Silenced / Terminal Lock \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Zone Definitions:}
+\begin{itemize}
+\item \textbf{Zone 1 (Structural Substrate):} Extracellular matrix genes (FN1, COL3A1, COL1A2) exhibiting massive expression cost ($\omega > 1000$) while maintaining critical damping ($\chi \approx 1.0$). These genes form the physical substrate upon which regulation acts. Corresponds to blue region in Figure 2.
+
+\item \textbf{Zone 2 (Underdamped Chaos):} RNA processing and volatile signaling genes (HNRNPK, TARDBP) exhibiting extreme underdamping ($\chi < 0.2$). High-frequency oscillations characteristic of metabolic volatility. Corresponds to orange region in Figure 2.
+
+\item \textbf{Zone 3 (Critical Regulation):} Tumor suppressors and growth regulators (TP53, MYC, CDKN1A) operating with proximal overdamping ($\chi \approx 1.2-1.5$) to maintain tight adherence to the adaptive interface. These regulatory guardians prevent chaotic oscillation while retaining plasticity for stress response. Corresponds to green region in Figure 2.
+
+\item \textbf{Zone 4 (Rigidity Lock):} High-output secretory proteins (HTN3, PRH2, SMR3B, STATH) exhibiting extreme overdamping ($\chi > 30$). These executors drive the physical manifestation of malignant rigidity. Corresponds to red region in Figure 2.
+
+\item \textbf{Zone 5 (Captured State):} Low-energy genes including histone assembly (HIST1H4C) and non-coding RNAs representing terminal collapse into silencing. Maximum phase-space compression below critical boundary. Primed for collapse under perturbation. Corresponds to purple region in Figure 2.
+\end{itemize}
+
+\textbf{Data Availability:} Complete zone assignments for all 20,531 genes are available in the GitHub repository associated with this publication.
+
+\end{document}
