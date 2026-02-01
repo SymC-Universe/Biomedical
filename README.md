@@ -13,7 +13,7 @@ This repository contains the biomedical branch of the Symmetrical Convergence (S
 <br><br>
 <b>Genomic Regulatory Instability (GRI).</b><br>
 <i>Mapping the Mechanical Lineage of Regulatory Control Failure in Malignancy.</i><br>
-DOI: https://doi.org/10.5281/zenodo.XXXXX
+DOI: https://doi.org/10.5281/zenodo.18435475
 <br>
 The canonical oncology framework. Cancer is modeled as a phase transition driven by regulatory bandwidth exhaustion and irreversible substrate capture, empirically grounded in TCGA Pan-Cancer RNA-seq data.
 
