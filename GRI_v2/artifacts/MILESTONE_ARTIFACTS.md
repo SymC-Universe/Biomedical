@@ -2,11 +2,17 @@
 
 Full milestone suites are retained in ChatGPT when useful for clean handoff. GitHub stores their hashes and the reproducible source/config spine.
 
+## 2026-08-29 Cancer Stability Atlas v0.1.1 Stage A1 non-finite hotfix
+
+- File: `CANCER_STABILITY_ATLAS_v0_1_1_A1_NONFINITE_HOTFIX_20260829.zip`
+- SHA-256: `9cca6b8c818360ba8f50ac5135ec257f16e439dc4c9cddf5035edfb748bc1d66`
+- Role: pre-result Stage A1 execution repair after the exact PanCanAtlas source triggered the non-finite guard before any network statistic was computed. Freezes explicit missing-data handling and adds synthetic missingness regression tests. This supersedes v0.1 only for Stage A1 execution; it does not alter Stage A0 results or the predictive-tool objective.
+
 ## 2026-08-26 Cancer Stability Atlas v0.1 development suite
 
 - File: `CANCER_STABILITY_ATLAS_v0_1_DEV_20260826.zip`
 - SHA-256: `e9225b5a2cf0484af8ab13a688ecb3529dab40d406a2cadee8031f8f32ae79aa`
-- Role: first post-GRI scalar redirection package; contains Stage A0 outputs, Stage A1 launcher, configs, tests, archive notes, and epistemic firewall.
+- Role: first post-GRI scalar redirection package; contains Stage A0 outputs, initial Stage A1 launcher, configs, tests, archive notes, and epistemic firewall. Its Stage A1 launcher is superseded by v0.1.1 because it halted on source non-finite cells before an explicit missing-data policy existed.
 
 ## 2026-08-26 GRI v1.1.6 post-run audit
 
