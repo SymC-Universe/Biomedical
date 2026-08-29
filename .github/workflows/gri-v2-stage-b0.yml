@@ -31,15 +31,16 @@ jobs:
         run: python -m pytest -q tests/test_stage_b0_contract.py
       - name: Probe official PanCanAtlas sources
         run: |
-          mkdir -p development_outputs/stage_b0
+          mkdir -p development_outputs/stage_b0/source_cache
           python -m src.probe_stage_b0_sources \
             --plan config/stage_b0_source_plan.json \
             --download-dir "$RUNNER_TEMP/gri-v2-stage-b0" \
             --out development_outputs/stage_b0/STAGE_B0_SOURCE_INVENTORY.json
+          cp "$RUNNER_TEMP/gri-v2-stage-b0/"* development_outputs/stage_b0/source_cache/
           cat development_outputs/stage_b0/STAGE_B0_SOURCE_INVENTORY.json
-      - name: Upload B0 source inventory
+      - name: Upload B0 source probe artifact
         uses: actions/upload-artifact@v4
         with:
           name: gri-v2-stage-b0-source-inventory
-          path: GRI_v2/development_outputs/stage_b0/STAGE_B0_SOURCE_INVENTORY.json
+          path: GRI_v2/development_outputs/stage_b0
           if-no-files-found: error
