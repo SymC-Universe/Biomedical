@@ -2,6 +2,12 @@
 
 Full milestone suites are retained in ChatGPT when useful for clean handoff. GitHub stores hashes and the reproducible source/config spine.
 
+## 2026-08-29 Stage B1 composition/context adjustment handoff
+
+- File: `CSA_STAGE_B1_CONTEXT_ADJUSTMENT_20260829.zip`
+- SHA-256: `176b95b73836d3f946b8407456763eb7c501c1aa1b5094ff77ce58988d34e359`
+- Role: local execution handoff for the frozen Stage B1 paired composition/context test. Bundles the official PanCanAtlas ABSOLUTE purity and PanImmune methylation-derived leukocyte source files, frozen B1 plan, exact accelerated network implementation, shared-cache Windows executor, launcher, and contract tests. Requires only the existing Stage A1 `hallmark_profile_cache.npz` and `hallmark_membership_snapshot.gmt`; the 1.88 GB PanCanAtlas matrix is not reread. Uses 100 deterministic n=30 paired baseline/actual/permuted-null resamples with no chi, CV/2, composite stability score, or optimum claim.
+
 ## 2026-08-29 Stage A1.1 completed calibration outputs
 
 - `STAGE_A1_1_SUMMARY.json` SHA-256: `95f8b34fdb0e6aaf24897a318613a645ad3511303bdef95fc54e50f8249a7406`
