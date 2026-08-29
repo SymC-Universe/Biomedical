@@ -1,0 +1,16 @@
+{
+  "chi_present": false,
+  "historical_cv2_role": "comparator_only",
+  "map_primitives_present": [
+    "V_lowess_residual_global_existing_construction_adjustment",
+    "V_expression_matched_robust_z",
+    "L_between_cancer_variance_fraction",
+    "lineage_recurrence_of_expression_matched_V"
+  ],
+  "n_cancer_types": 32,
+  "n_lineage_rows": 638693,
+  "n_static_genes": 20309,
+  "not_present_without_matrix_reread": ["Cin", "Cout"],
+  "not_present_without_new_data": ["S_independent_multiomic", "R_dynamic_response", "chi"],
+  "status": "DEVELOPMENT_ONLY"
+}
