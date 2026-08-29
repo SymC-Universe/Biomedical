@@ -5,6 +5,14 @@
   "cv2_policy": "historical comparator only; excluded from module construction and all network definitions",
   "eigengene_sign_rule": "orient PC1 so its correlation with the per-sample mean standardized module expression is nonnegative",
   "minimum_cancer_samples": 30,
+  "missing_data_policy": {
+    "cin_pairwise": "exact Pearson using pairwise finite overlap; require >=80% of cancer samples and >=20 overlapping samples",
+    "cout": "correlate complete eigengene with each eligible outside gene using that gene's finite samples and the same overlap threshold",
+    "gene_eligibility": ">=95% finite within cancer and >=20 finite samples, with nonzero finite variance",
+    "pca_eigengene": "z-score finite cells within gene; impute remaining standardized missing cells to 0 (within-gene mean) only for SVD/eigengene",
+    "provenance": "frozen 2026-08-29 after Stage A1 halted at the nonfinite guard and before any network point estimate was produced",
+    "source_nonfinite": "preserve as missing; never convert to zero-expression"
+  },
   "module_policy": {
     "historical_gri_modules_allowed_in_primary": false,
     "minimum_mapped_genes_per_module": 15,
@@ -18,15 +26,22 @@
     "Cout": "median absolute Pearson correlation between the oriented module eigengene and eligible genes outside that module but inside the same externally frozen Hallmark gene-set universe within cancer type",
     "Cout_scope": "Hallmark-union background; not the full transcriptome and not claimed equivalent to canonical DNB PCCout"
   },
-  "not_claimed": ["dynamics", "criticality", "damping", "chi", "transition probability", "universal cancer organization optimum"],
+  "not_claimed": [
+    "dynamics",
+    "criticality",
+    "damping",
+    "chi",
+    "transition probability",
+    "universal cancer organization optimum"
+  ],
   "purpose": "map static transcriptomic organization without defining chi or a fixed organization optimum",
   "source_expression": "PanCanAtlas EB++ batch-adjusted RSEM matrix",
-  "status": "development_spec_fixed_before_network_results",
-  "transform_for_network": "log2(max(expression,0)+1)",
+  "status": "development_spec_repaired_before_any_network_results_after_nonfinite_precheck_failure",
+  "transform_for_network": "log2(max(expression,0)+1) for finite source cells; non-finite cells remain missing",
   "uncertainty": {
     "folds": 5,
     "method": "deterministic five-fold patient-hash leave-one-fold-out stability",
     "note": "development stability diagnostic only; no promotion p-value"
   },
-  "version": "0.1-pre-network-run"
+  "version": "0.1.1-pre-network-run-nonfinite-hotfix"
 }
