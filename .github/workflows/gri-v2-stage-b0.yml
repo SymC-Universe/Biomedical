@@ -10,6 +10,10 @@ on:
       - '.github/workflows/gri-v2-stage-b0.yml'
   workflow_dispatch:
 
+concurrency:
+  group: gri-v2-stage-b0
+  cancel-in-progress: true
+
 jobs:
   source-probe:
     runs-on: ubuntu-latest
