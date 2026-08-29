@@ -2,6 +2,14 @@
 
 Full milestone suites are retained in ChatGPT when useful for clean handoff. GitHub stores hashes and the reproducible source/config spine.
 
+## 2026-08-29 Stage A1.1 completed calibration outputs
+
+- `STAGE_A1_1_SUMMARY.json` SHA-256: `95f8b34fdb0e6aaf24897a318613a645ad3511303bdef95fc54e50f8249a7406`
+- `stage_a1_1_fixed_n_calibration.csv` SHA-256: `b4a260662f7f63bd0485b5e49182608efbd7d8fb897b7414f0a0e2576f108ac3`
+- `stage_a1_1_cancer_level_diagnostic.csv` SHA-256: `48bff6ca6e6dd557353db2bad51f4c6d2db7b0ec5ab355d90c75f21755bb52ee`
+- `stage_a1_1_resample_metrics.csv.gz` SHA-256: `b7aaefd1a0f961f053cceaa989acbc7311bbd452c6588f77d8bc7b13547fcb39`
+- Role: completed frozen n=30, 100-resample construction calibration. The compact summary and cancer-level diagnostic are retained under `development_outputs/stage_a1_1/`; the larger full resample table remains an external milestone artifact identified by SHA.
+
 ## 2026-08-29 Stage A1.1 Windows launcher hotfix
 
 - File: `CSA_A1_1_CALIBRATION_WINDOWS_HOTFIX_20260829.zip`
