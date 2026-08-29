@@ -16,44 +16,49 @@ Chi, if later earned from genuine dynamic measurements, is a dynamical regime-ba
 - Stage A1 missing-data policy was frozen before any network estimate and the completed run retained only sparse source missingness.
 - Stage A1 patient-fold stability audit completed.
 - Stage A1.1 fixed-n construction calibration completed: 32 cancers x 50 modules x 100 n=30 resamples = 160,000 complete resample measurements.
-- Raw cancer-level absolute-correlation coordinates showed finite-sample dependence, but after fixed-n calibration residual Spearman correlations with original cohort size are only -0.0317, -0.0880, and -0.0563 for pairwise Cin, PC1 fraction, and Cout respectively.
-- Original-to-calibrated module rank ordering is strongly preserved, with median within-cancer rho approximately 0.989, 0.990, and 0.920 for pairwise Cin, PC1 fraction, and Cout.
-- In the calibrated map, the two internal-coherence measures are largely redundant (median rho approximately 0.943), while internal coherence and external coupling are inversely related in all 32 cancers.
-
-## Stage A closure
-
-Static Stage A is closed as a development measurement layer.
-
-The retained static coordinates are independent observables, not a master stability score:
-
-- V: expression-adjusted variability/fluctuation structure;
-- L: lineage/context dependence;
-- Cin: internal Hallmark-module coherence;
-- Cout: coupling of Hallmark modules to the external Hallmark-union background.
-
-No direction of any coordinate is defined as optimal. No static coordinate is chi.
+- The raw finite-sample dependence is removed by fixed-n calibration while module topology is strongly preserved.
+- Static Stage A is closed with separate V, L, Cin, and Cout coordinates and no optimum or chi interpretation.
+- Stage B0 official-source probe completed successfully in GitHub Actions using the PanCanAtlas publication-era supplemental data family.
+- Primary B1 context sources are frozen as ABSOLUTE tumor purity and DNA-methylation-derived leukocyte fraction. RNA-derived CIBERSORT is secondary sensitivity only.
+- Exact Stage A matching is complete. Purity matches 8,750 Stage A samples and clears n>=30 in all 32 cancers. Leukocyte fraction matches 9,310 and clears n>=30 in 30 cancers; DLBC and THYM are absent from that assay. The joint independent set contains 8,541 samples across those 30 cancers.
+- Sample matching is overwhelmingly exact through the TCGA primary-sample vial: 8,748/8,750 purity matches and 9,309/9,310 leukocyte matches. Only three total unambiguous patient-level fallbacks are used.
+- Stage B1 paired context-adjustment experiment is frozen before any purity/leukocyte-network association result.
+- An exact accelerated network implementation has been regression-tested against the frozen Stage A implementation to numerical tolerance, without changing the metrics.
 
 ## Current step
 
-Stage B multiomic/context integration.
+Stage B1 composition/context adjustment.
 
-The immediate task is to freeze a source and harmonization plan for independently measured layers that can be matched to the PanCanAtlas sample/patient universe without using the Stage A network results to choose favorable features.
+For each eligible cancer and model, the same deterministic n=30 samples are used for:
 
-Priority candidate layers are broad-coverage TCGA measurements such as DNA methylation, protein abundance, copy-number/context, and independently sourced purity/composition measures. ATAC or other lower-coverage layers may be treated as secondary/validation strata rather than forced into the primary map.
+1. the unadjusted Stage A network baseline;
+2. expression residualized against the real context covariate(s);
+3. expression residualized against a deterministic within-resample permutation of the same context covariate(s).
 
-## User action
+The third arm is a construction-aware null for generic changes caused by fitting/residualization itself.
 
-None at this moment. Source selection, provenance review, and the Stage B acquisition/harmonization specification can be advanced in GitHub first. A local run will be requested only when a frozen Stage B data pull or computation actually benefits from the user's machine.
+Models:
 
-## Next scientific gate
+- PURITY: 32 cancers;
+- LEUKOCYTE: 30 cancers, excluding DLBC and THYM;
+- JOINT_INDEPENDENT: purity + leukocyte, same 30 cancers.
 
-Before any Stage B association is interpreted:
+Every model uses 100 deterministic n=30 resamples and unchanged Cin_pairwise, Cin_pc1, and Cout definitions. No chi, CV/2, composite stability score, causal claim, or optimum claim is permitted.
 
-1. freeze data sources and versions;
-2. freeze patient/sample matching rules;
-3. freeze missingness/coverage requirements;
-4. define each multiomic coordinate independently of Stage A outcomes;
-5. define redundancy and incremental-information tests;
-6. preserve static claim ceiling.
+## Execution status
 
-Dynamic benchmarking remains the next major branch after Stage B. Chi remains unavailable until genuine same-coordinate Gamma and Omega measurements satisfy the admission gates.
+GitHub now contains the frozen B1 plan, exact source hashes, source/coverage records, matching rules, accelerated implementation, and contract tests.
+
+The full B1 calculation requires the 126 MB Stage A Hallmark expression cache. That cache is intentionally not committed to repository history. The current ChatGPT execution environment cannot complete the full 100-resample B1 matrix within its per-command execution ceiling, so the unchanged frozen computation should run on the local Windows machine using the compact B1 handoff.
+
+## Exact user action
+
+Run the Stage B1 Windows handoff package when provided. Select the existing `hallmark_profile_cache.npz` and `hallmark_membership_snapshot.gmt`. The official ABSOLUTE and leukocyte source files are bundled and hash-verified; the 1.88 GB PanCanAtlas matrix is not required.
+
+Return the compact B1 summary/module/cancer outputs. The larger raw resample output can remain local unless audit requires it.
+
+## After B1
+
+Audit whether the Stage A topology survives independent composition adjustment beyond the permuted-residualization null. If it does, proceed to B2 orthogonal genomic/protein/methylation layers. If it materially changes, retain both unadjusted and context-adjusted coordinates and carry that dependence forward rather than labeling either direction as better.
+
+Dynamic benchmarking remains the next major branch after static context integration. Chi remains unavailable until genuine same-coordinate Gamma and Omega measurements satisfy the admission gates.
