@@ -1,0 +1,42 @@
+{
+  "cibersort_secondary": {
+    "cancers_ge_30": 32,
+    "total_stage_a_patients_matched": 9546
+  },
+  "coverage_gate": {
+    "minimum_cancers_with_30_or_more_matched_unique_primary_cases": 24
+  },
+  "joint_independent": {
+    "cancers_below_30": [
+      "DLBC",
+      "THYM"
+    ],
+    "cancers_ge_30": 30,
+    "total_matched": 8541
+  },
+  "leukocyte_fraction": {
+    "cancers_below_30": [
+      "DLBC",
+      "THYM"
+    ],
+    "cancers_ge_30": 30,
+    "exact_sample_root": 9309,
+    "fallback": 1,
+    "total_matched": 9310
+  },
+  "matching_rule": "filter source to primary tumor sample type 01 and finite/called values; exact TCGA sample-root match through vial (e.g. -01A) first; if absent, patient-level fallback only when exactly one eligible primary source measurement exists; duplicate leukocyte assay rows for an identical sample root summarized by median before matching",
+  "purity": {
+    "cancers_ge_30": 32,
+    "exact_sample_root": 8748,
+    "fallback": 2,
+    "total_matched": 8750
+  },
+  "source_hashes": {
+    "absolute_purity": "f430a975433d82e0098d7405619d4f12a0c765fcd97e7d63cc9b1de7f2d763cd",
+    "cibersort_secondary": "8bf3d2cb511d272eeb674d59fbe44c4cdaa1d6031b9dbe06559b6b0fe2a2b305",
+    "leukocyte_fraction": "5a8268caedbf8dc98a75be0528d583238d7355761d9fc746e42002f223a982d9",
+    "stage_a_cache": "e65f6788aa6037fef407169794f29d63322de2769343bb6e594fe469dfeb8e63"
+  },
+  "stage_a_samples": 9546,
+  "status": "STAGE_B0_COVERAGE_ONLY_NO_BIOLOGICAL_ASSOCIATION"
+}
