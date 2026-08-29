@@ -2,34 +2,15 @@
   "version": "0.1.1-post-A1-pre-calibration",
   "status": "design_frozen_after_stage_a1_audit_before_calibration_results",
   "purpose": "remove finite-sample-size distortion from cross-cancer comparison of Stage A1 static network coordinates without changing the Stage A1 definitions",
-  "trigger": "Stage A1 audit found modest negative association between cohort size and raw absolute-correlation coordinates; this is a construction effect that must be controlled before biological comparison across cancers",
-  "inputs": {
-    "profile_cache": "hallmark_profile_cache.npz from completed Stage A1",
-    "point_estimates": "module_network_point_estimates.csv",
-    "loo_stability": "module_network_loo_stability.csv",
-    "hallmark_membership": "hallmark_membership_snapshot.gmt"
-  },
-  "calibration": {
-    "fixed_n": 30,
-    "resamples_per_cancer": 100,
-    "sampling": "deterministic random subsamples without replacement within cancer",
-    "seed": 20260829,
-    "metrics_recomputed": [
-      "cin_pairwise_median_abs",
-      "cin_pc1_variance_fraction",
-      "cout_eigengene_median_abs"
-    ],
-    "summary": "for each cancer-module-metric report median and 5th/95th percentile across fixed-n resamples",
-    "interpretation": "fixed-n summaries are development calibration coordinates only; they are not p-values or evidence of criticality"
-  },
-  "topology_diagnostics": {
-    "within_cancer_module_ranks": "use Spearman relationships across the 50 modules because cohort n is constant within each cancer",
-    "primary_relationships": [
-      "Cin_pairwise vs Cin_PC1 redundancy",
-      "Cin_pairwise vs Cout separation",
-      "Stage A0 variability vs Stage A1 network coordinates"
-    ]
-  },
+  "fixed_n": 30,
+  "resamples_per_cancer": 100,
+  "global_seed": 20260829,
+  "seed_assignment": "sorted cancer types receive deterministic per-cancer seeds drawn once from NumPy default_rng(global_seed); scheduling order cannot change resamples",
+  "metrics_recomputed": [
+    "cin_pairwise_median_abs",
+    "cin_pc1_variance_fraction",
+    "cout_eigengene_median_abs"
+  ],
   "constraints": {
     "chi_allowed": false,
     "cv2_used": false,
