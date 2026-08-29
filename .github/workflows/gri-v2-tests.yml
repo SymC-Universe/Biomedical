@@ -1,0 +1,27 @@
+name: GRI v2 tests
+
+on:
+  push:
+    branches: [gri-v2]
+    paths:
+      - 'GRI_v2/**'
+      - '.github/workflows/gri-v2-tests.yml'
+  pull_request:
+    paths:
+      - 'GRI_v2/**'
+      - '.github/workflows/gri-v2-tests.yml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -r requirements.txt
+      - run: python -m pytest -q tests
