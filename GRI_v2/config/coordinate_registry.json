@@ -1,0 +1,30 @@
+{
+  "schema_version": "0.1",
+  "project": "Cancer Stability Atlas",
+  "coordinates": {
+    "chi": {
+      "status": "reserved_dynamic_coordinate",
+      "formula": "Gamma/(2*Omega)",
+      "available": false,
+      "required_roles": ["Gamma_relaxation_or_damping_rate", "Omega_intrinsic_response_rate"],
+      "hard_gate_document": "docs/CHI_ADMISSION_RULES.md",
+      "fixed_target": null,
+      "chi_equals_one_interpretation": "critical_damping_balance_boundary_only_when_model_is_valid"
+    },
+    "V": {"status": "development_primitive_family", "meaning": "variability_and_fluctuation_structure", "chi_component": false},
+    "Cin": {"status": "development_primitive_family", "meaning": "within_module_or_state_coupling", "chi_component": false},
+    "Cout": {"status": "development_primitive_family", "meaning": "module_to_background_coupling", "chi_component": false},
+    "L": {"status": "development_context_family", "meaning": "lineage_purity_and_composition_dependence", "chi_component": false},
+    "S": {"status": "development_orthogonal_family", "meaning": "independent_substrate_or_multiomic_state", "chi_component": false},
+    "R": {"status": "development_response_family", "meaning": "independently_measured_dynamic_or_phenotypic_response", "chi_component": false},
+    "CV/2": {
+      "status": "historical_comparator",
+      "meaning": "historical_scalar_equal_to_coefficient_of_variation_divided_by_two",
+      "chi_component": false,
+      "chi_eligible": false,
+      "privileged_in_feature_selection": false,
+      "fixed_target": null,
+      "archive": "archive/historical_cv2"
+    }
+  }
+}
