@@ -47,3 +47,11 @@ The old paper cannot define success criteria for the new tool. Historical agreem
 ## Rule 10 - Publication follows validation
 
 A replacement manuscript, refinement, or resubmission is a downstream reporting step after model selection and external validation. Publication goals may not determine coordinate definitions, thresholds, module selection, null models, or interpretation.
+
+## Rule 11 - Organization is independent of distance to chi = 1
+
+No sample, module, cancer type, or state may be called more organized, more stable, healthier, more optimal, or more coherent merely because its chi is closer to 1. If a valid chi is eventually measured, chi locates the system relative to a dynamical response-regime boundary. Organization and coherence must be measured by separate observables. Only after those observables are defined independently may their empirical relationship to chi be tested.
+
+If an independently measured organization or response quantity peaks near chi = 1, that is an empirical association to report, not a definition of chi = 1 as an optimum. Likewise, departures from chi = 1 are not automatically disorganization or pathology.
+
+The terms phase boundary or state boundary may be used only when the corresponding system has independently demonstrated a phase/state structure. Otherwise the defensible language is dynamical regime boundary or response-class boundary.
