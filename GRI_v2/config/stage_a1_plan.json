@@ -1,0 +1,32 @@
+{
+  "chi_allowed": false,
+  "cohort": "unique_patient_primary",
+  "composite_score_allowed": false,
+  "cv2_policy": "historical comparator only; excluded from module construction and all network definitions",
+  "eigengene_sign_rule": "orient PC1 so its correlation with the per-sample mean standardized module expression is nonnegative",
+  "minimum_cancer_samples": 30,
+  "module_policy": {
+    "historical_gri_modules_allowed_in_primary": false,
+    "minimum_mapped_genes_per_module": 15,
+    "n_expected_modules": 50,
+    "primary_development_library": "MSigDB Hallmark v2026.1.Hs",
+    "reason": "externally defined, compact, low-redundancy biological-state/process signatures unrelated to historical GRI gene selection"
+  },
+  "network_primitives": {
+    "Cin_pairwise": "median absolute Pearson correlation among mapped module genes within cancer type",
+    "Cin_pc1": "fraction of standardized module variance explained by first principal component",
+    "Cout": "median absolute Pearson correlation between the oriented module eigengene and eligible genes outside that module but inside the same externally frozen Hallmark gene-set universe within cancer type",
+    "Cout_scope": "Hallmark-union background; not the full transcriptome and not claimed equivalent to canonical DNB PCCout"
+  },
+  "not_claimed": ["dynamics", "criticality", "damping", "chi", "transition probability", "universal cancer organization optimum"],
+  "purpose": "map static transcriptomic organization without defining chi or a fixed organization optimum",
+  "source_expression": "PanCanAtlas EB++ batch-adjusted RSEM matrix",
+  "status": "development_spec_fixed_before_network_results",
+  "transform_for_network": "log2(max(expression,0)+1)",
+  "uncertainty": {
+    "folds": 5,
+    "method": "deterministic five-fold patient-hash leave-one-fold-out stability",
+    "note": "development stability diagnostic only; no promotion p-value"
+  },
+  "version": "0.1-pre-network-run"
+}
