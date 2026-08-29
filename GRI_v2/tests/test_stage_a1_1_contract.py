@@ -27,3 +27,12 @@ def test_module_metric_handles_sparse_missing_under_frozen_policy():
     )
     assert len(out) == 1
     assert out[0].cin_pairwise_median_abs > .9
+
+
+def test_windows_launcher_avoids_nested_for_f_command_quoting():
+    root = Path(__file__).resolve().parents[1]
+    text = (root / 'RUN_STAGE_A1_1_WINDOWS.bat').read_text()
+    assert 'for /f "usebackq' not in text.lower()
+    assert 'scripts_select_file.py' in text
+    assert 'set /p CACHE=<' in text
+    assert 'set /p GMT=<' in text
