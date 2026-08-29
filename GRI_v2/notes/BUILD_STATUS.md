@@ -13,28 +13,47 @@ Chi, if later earned from genuine dynamic measurements, is a dynamical regime-ba
 - GRI v1.1.6 scalar experiment audited and archived.
 - Stage A0 static variability/lineage primitives completed.
 - Stage A1 Hallmark network run completed on 9,546 unique-primary PanCanAtlas samples across 32 cancers and 50 Hallmark modules.
-- Stage A1 produced 1,600 cancer-module point estimates and a complete development audit.
-- A1 missing-data repair was frozen before any network estimate and the completed run shows only 0.3548% source non-finite Hallmark cells; retained point estimates have zero median PC1 imputation fraction.
-- Network coordinates are stable under patient-fold removal.
-- Within cancers, the two internal-coherence measures are largely redundant; external coupling is a distinct opposing axis; Stage A0 variability does not explain the network layer.
-- A finite-sample construction effect was detected in raw cross-cancer absolute-correlation magnitudes before biological interpretation.
+- Stage A1 missing-data policy was frozen before any network estimate and the completed run retained only sparse source missingness.
+- Stage A1 patient-fold stability audit completed.
+- Stage A1.1 fixed-n construction calibration completed: 32 cancers x 50 modules x 100 n=30 resamples = 160,000 complete resample measurements.
+- Raw cancer-level absolute-correlation coordinates showed finite-sample dependence, but after fixed-n calibration residual Spearman correlations with original cohort size are only -0.0317, -0.0880, and -0.0563 for pairwise Cin, PC1 fraction, and Cout respectively.
+- Original-to-calibrated module rank ordering is strongly preserved, with median within-cancer rho approximately 0.989, 0.990, and 0.920 for pairwise Cin, PC1 fraction, and Cout.
+- In the calibrated map, the two internal-coherence measures are largely redundant (median rho approximately 0.943), while internal coherence and external coupling are inversely related in all 32 cancers.
+
+## Stage A closure
+
+Static Stage A is closed as a development measurement layer.
+
+The retained static coordinates are independent observables, not a master stability score:
+
+- V: expression-adjusted variability/fluctuation structure;
+- L: lineage/context dependence;
+- Cin: internal Hallmark-module coherence;
+- Cout: coupling of Hallmark modules to the external Hallmark-union background.
+
+No direction of any coordinate is defined as optimal. No static coordinate is chi.
 
 ## Current step
 
-Stage A1.1 fixed-n calibration is frozen and ready. It uses the completed Stage A1 `hallmark_profile_cache.npz` and `hallmark_membership_snapshot.gmt`, not the 1.88 GB source matrix.
+Stage B multiomic/context integration.
 
-Every cancer is deterministically subsampled to `n=30` 100 times and the unchanged A1 metrics are recomputed. This closes the finite-sample floor before any cross-cancer comparison.
+The immediate task is to freeze a source and harmonization plan for independently measured layers that can be matched to the PanCanAtlas sample/patient universe without using the Stage A network results to choose favorable features.
+
+Priority candidate layers are broad-coverage TCGA measurements such as DNA methylation, protein abundance, copy-number/context, and independently sourced purity/composition measures. ATAC or other lower-coverage layers may be treated as secondary/validation strata rather than forced into the primary map.
 
 ## User action
 
-Run `RUN_STAGE_A1_1_WINDOWS.bat` from the Stage A1.1 calibration handoff package. Select the cache and Hallmark membership snapshot produced by the completed A1 run. Upload:
+None at this moment. Source selection, provenance review, and the Stage B acquisition/harmonization specification can be advanced in GitHub first. A local run will be requested only when a frozen Stage B data pull or computation actually benefits from the user's machine.
 
-- `STAGE_A1_1_SUMMARY.json`
-- `stage_a1_1_fixed_n_calibration.csv`
-- `stage_a1_1_cancer_level_diagnostic.csv`
+## Next scientific gate
 
-No PanCanAtlas matrix reread is required.
+Before any Stage B association is interpreted:
 
-## After A1.1
+1. freeze data sources and versions;
+2. freeze patient/sample matching rules;
+3. freeze missingness/coverage requirements;
+4. define each multiomic coordinate independently of Stage A outcomes;
+5. define redundancy and incremental-information tests;
+6. preserve static claim ceiling.
 
-If the fixed-n calibration closes the construction bias without revealing a new mechanical defect, static Stage A closes. The next branch is Stage B multiomic/context integration, followed by genuine ordered perturbation/time-course benchmarking. No chi or optimum claim is allowed from the static stages.
+Dynamic benchmarking remains the next major branch after Stage B. Chi remains unavailable until genuine same-coordinate Gamma and Omega measurements satisfy the admission gates.
