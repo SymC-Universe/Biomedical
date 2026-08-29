@@ -25,9 +25,20 @@ set PY=.venv\Scripts\python.exe
 "%PY%" -m pip install --disable-pip-version-check -q -r requirements.txt
 if errorlevel 1 goto :fail
 
-for /f "usebackq delims=" %%F in (`"%PY%" scripts_select_file.py "Select hallmark_profile_cache.npz from the completed Stage A1 output"`) do set "CACHE=%%F"
+set "PICK_CACHE=%TEMP%\csa_a11_cache_%RANDOM%_%RANDOM%.txt"
+"%PY%" scripts_select_file.py "Select hallmark_profile_cache.npz from the completed Stage A1 output" > "%PICK_CACHE%"
+if errorlevel 1 goto :fail
+set "CACHE="
+set /p CACHE=<"%PICK_CACHE%"
+del /q "%PICK_CACHE%" >nul 2>nul
 if not defined CACHE goto :cancel
-for /f "usebackq delims=" %%F in (`"%PY%" scripts_select_file.py "Select hallmark_membership_snapshot.gmt from the same Stage A1 output"`) do set "GMT=%%F"
+
+set "PICK_GMT=%TEMP%\csa_a11_gmt_%RANDOM%_%RANDOM%.txt"
+"%PY%" scripts_select_file.py "Select hallmark_membership_snapshot.gmt from the same Stage A1 output" > "%PICK_GMT%"
+if errorlevel 1 goto :fail
+set "GMT="
+set /p GMT=<"%PICK_GMT%"
+del /q "%PICK_GMT%" >nul 2>nul
 if not defined GMT goto :cancel
 
 echo.
