@@ -1,0 +1,98 @@
+{
+  "version": "0.1-pre-source-probe",
+  "status": "frozen_before_stage_b_context_results",
+  "primary_data_family": "NCI GDC PanCanAtlas 2018 publication supplemental freeze",
+  "vintage_rule": "Primary static integration uses the same PanCanAtlas publication-era data family as the Stage A RNA source. Current GDC re-harmonized pipelines are reserved for later robustness checks, not mixed into the primary development map.",
+  "purpose": "Acquire and inventory independent context layers before testing whether Stage A network topology is explained by bulk-sample composition.",
+  "sources": [
+    {
+      "id": "absolute_purity_ploidy",
+      "role": "PRIMARY_B1_CONTEXT",
+      "independence": "copy-number-derived context; independent of Stage A RNA expression",
+      "file_name": "TCGA_mastercalls.abs_tables_JSedit.fixed.txt",
+      "gdc_uuid": "4f277128-f793-4354-a13d-30cc7fe9f6b5",
+      "url": "https://api.gdc.cancer.gov/data/4f277128-f793-4354-a13d-30cc7fe9f6b5",
+      "circularity": "INDEPENDENT_OF_STAGE_A_RNA"
+    },
+    {
+      "id": "leukocyte_fraction",
+      "role": "PRIMARY_B1_CONTEXT",
+      "independence": "DNA-methylation-derived cellular fraction; independent assay from Stage A RNA expression",
+      "file_name": "TCGA_all_leuk_estimate.masked.20170107.tsv",
+      "gdc_uuid": "6f75c9d7-5134-4ed1-b8f3-72856c98a4e8",
+      "url": "https://api.gdc.cancer.gov/data/6f75c9d7-5134-4ed1-b8f3-72856c98a4e8",
+      "circularity": "INDEPENDENT_OF_STAGE_A_RNA"
+    },
+    {
+      "id": "cibersort_relative",
+      "role": "SECONDARY_B1_SENSITIVITY",
+      "independence": "RNA-expression-derived; not admissible as independent validation of the RNA network layer",
+      "file_name": "TCGA.Kallisto.fullIDs.cibersort.relative.tsv",
+      "gdc_uuid": "b3df502e-3594-46ef-9f94-d041a20a0b9a",
+      "url": "https://api.gdc.cancer.gov/data/b3df502e-3594-46ef-9f94-d041a20a0b9a",
+      "circularity": "RNA_DERIVED_SECONDARY_ONLY"
+    },
+    {
+      "id": "aneuploidy_loh",
+      "role": "RESERVED_B2_GENOMIC_CONTEXT",
+      "independence": "copy-number-derived genomic context",
+      "file_name": "ABSOLUTE_scores.tsv",
+      "gdc_uuid": "0e8831f4-dd7e-4673-8624-b4519c2e0d65",
+      "url": "https://api.gdc.cancer.gov/data/0e8831f4-dd7e-4673-8624-b4519c2e0d65",
+      "circularity": "INDEPENDENT_OF_STAGE_A_RNA"
+    },
+    {
+      "id": "cnv_burden",
+      "role": "RESERVED_B2_GENOMIC_CONTEXT",
+      "independence": "copy-number-derived genomic context",
+      "file_name": "seg_based_scores.tsv",
+      "gdc_uuid": "cbfe6a9d-c3be-4982-86c7-c476dc17ca10",
+      "url": "https://api.gdc.cancer.gov/data/cbfe6a9d-c3be-4982-86c7-c476dc17ca10",
+      "circularity": "INDEPENDENT_OF_STAGE_A_RNA"
+    },
+    {
+      "id": "rppa_final",
+      "role": "RESERVED_B2_ORTHOGONAL_ASSAY",
+      "independence": "protein-abundance assay",
+      "file_name": "TCGA-RPPA-pancan-clean.txt",
+      "gdc_uuid": "fcbb373e-28d4-4818-92f3-601ede3da5e1",
+      "url": "https://api.gdc.cancer.gov/data/fcbb373e-28d4-4818-92f3-601ede3da5e1",
+      "circularity": "INDEPENDENT_OF_STAGE_A_RNA"
+    },
+    {
+      "id": "methylation_merged_27k_450k",
+      "role": "RESERVED_B2_ORTHOGONAL_ASSAY",
+      "independence": "DNA methylation assay",
+      "file_name": "jhu-usc.edu_PANCAN_merged_HumanMethylation27_HumanMethylation450.betaValue_whitelisted.tsv",
+      "gdc_uuid": "d82e2c44-89eb-43d9-b6d3-712732bf6a53",
+      "url": "https://api.gdc.cancer.gov/data/d82e2c44-89eb-43d9-b6d3-712732bf6a53",
+      "circularity": "INDEPENDENT_OF_STAGE_A_RNA"
+    },
+    {
+      "id": "methylation_450k",
+      "role": "RESERVED_B2_ROBUSTNESS_ASSAY",
+      "independence": "DNA methylation assay; higher-density platform subset",
+      "file_name": "jhu-usc.edu_PANCAN_HumanMethylation450.betaValue_whitelisted.tsv",
+      "gdc_uuid": "99b0c493-9e94-4d99-af9f-151e46bab989",
+      "url": "https://api.gdc.cancer.gov/data/99b0c493-9e94-4d99-af9f-151e46bab989",
+      "circularity": "INDEPENDENT_OF_STAGE_A_RNA"
+    }
+  ],
+  "stage_b0_probe_roles": [
+    "PRIMARY_B1_CONTEXT",
+    "SECONDARY_B1_SENSITIVITY",
+    "RESERVED_B2_GENOMIC_CONTEXT",
+    "RESERVED_B2_ORTHOGONAL_ASSAY"
+  ],
+  "primary_layer_coverage_gate": {
+    "minimum_cancers_with_30_or_more_matched_unique_primary_cases": 24,
+    "note": "Coverage gate is evaluated after exact Stage A patient matching. Failure demotes a layer to secondary status; it does not trigger threshold retuning."
+  },
+  "constraints": {
+    "chi_allowed": false,
+    "cv2_used": false,
+    "composite_stability_score_allowed": false,
+    "stage_a_results_may_not_select_sources": true,
+    "no_biological_association_in_stage_b0": true
+  }
+}
