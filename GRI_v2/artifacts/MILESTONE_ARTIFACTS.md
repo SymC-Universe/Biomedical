@@ -2,11 +2,17 @@
 
 Full milestone suites are retained in ChatGPT when useful for clean handoff. GitHub stores hashes and the reproducible source/config spine.
 
+## 2026-08-29 Stage A1.1 Windows launcher hotfix
+
+- File: `CSA_A1_1_CALIBRATION_WINDOWS_HOTFIX_20260829.zip`
+- SHA-256: `56416dc9d8025ddb31da200dd3c75049b89c587b42ae79c51d9d6905c350690f`
+- Role: execution-only replacement for the original A1.1 handoff after Windows `cmd.exe` mangled the nested `for /f` file-picker quoting before either input file was selected. Calibration specification and scientific code are unchanged. The repaired launcher uses a temporary-file path handoff and adds a regression test forbidding the failed quoting pattern.
+
 ## 2026-08-29 Stage A1.1 fixed-n calibration runner
 
 - File: `CSA_A1_1_CALIBRATION_20260829.zip`
 - SHA-256: `7b27ced053d5cb83fc68b17005fa6075619be5ee9c22e520bc637f30c77145d0`
-- Role: compact post-A1/pre-calibration handoff. Uses only the completed A1 cache and membership snapshot; does not reread the 1.88 GB source matrix. Performs the frozen n=30, 100-resample construction calibration with no chi, CV/2, or composite stability score.
+- Role: original compact post-A1/pre-calibration handoff. Superseded for Windows execution by the launcher hotfix above. Uses only the completed A1 cache and membership snapshot; does not reread the 1.88 GB source matrix. Performs the frozen n=30, 100-resample construction calibration with no chi, CV/2, or composite stability score.
 
 ## 2026-08-29 Cancer Stability Atlas v0.1.1 Stage A1 non-finite hotfix
 
