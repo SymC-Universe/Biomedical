@@ -1,0 +1,8 @@
+{
+  "source_result_archive": "GRI_v1_1_results_20260826_182833.zip",
+  "source_result_archive_sha256": "8d1f16a7cc3dd5184995b7f26c30ee40cd286b47ad8b62a33935651d8a6a4172",
+  "expression_filename": "EBPlusPlusAdjustPANCAN_IlluminaHiSeq_RNASeqV2.geneExp.tsv",
+  "expression_size_bytes": 1882540959,
+  "expression_sha256": "674b19b7ed9ae4c5ef35ee2824936429aa5d46c0735a3d180f41552fcbbdb658",
+  "source_analysis_plan_sha256": "f13e362812d669971b06f329915debcc5b09ab628445c45abda68306aa5a509b"
+}
