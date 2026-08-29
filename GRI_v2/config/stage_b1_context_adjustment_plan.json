@@ -1,0 +1,97 @@
+{
+  "version": "0.1-pre-context-result",
+  "status": "frozen_after_stage_b0_coverage_before_any_context_network_association",
+  "purpose": "Test whether Stage A Hallmark network coordinates are materially attributable to bulk-sample tumor purity or leukocyte composition while preserving the Stage A metric definitions.",
+  "claim_ceiling": "composition-adjusted static network map only; no causality, dynamics, damping, chi, transition, phase, or optimum claim",
+  "inputs": {
+    "stage_a_profile_cache_sha256": "e65f6788aa6037fef407169794f29d63322de2769343bb6e594fe469dfeb8e63",
+    "absolute_purity_sha256": "f430a975433d82e0098d7405619d4f12a0c765fcd97e7d63cc9b1de7f2d763cd",
+    "leukocyte_fraction_sha256": "5a8268caedbf8dc98a75be0528d583238d7355761d9fc746e42002f223a982d9",
+    "hallmark_membership_sha256": "bc6a9a33d7421dc407d33a66859760ba25e47b2f398e1a43c9156f80c71b3900"
+  },
+  "matching": {
+    "source_filter": "primary tumor sample type 01 only; ABSOLUTE additionally requires call status=called and finite purity",
+    "primary_key": "TCGA sample root through vial, e.g. TCGA-XX-YYYY-01A",
+    "fallback": "patient-level match only when the source contains exactly one eligible primary measurement for that patient",
+    "duplicate_leukocyte_same_sample_root": "median of finite replicate assay values before matching",
+    "no_recurrent_tumor_substitution": true
+  },
+  "models": [
+    {
+      "id": "PURITY",
+      "covariates": ["absolute_purity"],
+      "eligible_cancers": "all cancers with >=30 matched Stage A samples; Stage B0 yielded 32/32"
+    },
+    {
+      "id": "LEUKOCYTE",
+      "covariates": ["methylation_derived_leukocyte_fraction"],
+      "eligible_cancers": "all cancers with >=30 matched Stage A samples; Stage B0 yielded 30/32, excluding DLBC and THYM"
+    },
+    {
+      "id": "JOINT_INDEPENDENT",
+      "covariates": ["absolute_purity", "methylation_derived_leukocyte_fraction"],
+      "eligible_cancers": "all cancers with >=30 jointly matched Stage A samples; Stage B0 yielded 30/32, excluding DLBC and THYM"
+    }
+  ],
+  "secondary_sensitivity": {
+    "cibersort_relative": "reserved for later secondary sensitivity only because it is RNA-derived and therefore not independent validation of an RNA network"
+  },
+  "fixed_n_design": {
+    "n": 30,
+    "resamples_per_cancer_model": 100,
+    "global_seed": 20260829,
+    "sampling": "deterministic without-replacement subsamples from the exact matched sample set for each cancer/model",
+    "paired_baseline": "for every resample, compute unadjusted Stage A metrics on the exact same 30 patients used for context adjustment",
+    "reason": "isolates context adjustment from cohort-size and coverage effects"
+  },
+  "residualization": {
+    "scope": "within cancer and within each n=30 resample",
+    "expression": "Stage A log2p1 Hallmark expression cache; source missing expression remains missing",
+    "covariates": "center and scale finite context covariates within the resample before OLS for numerical conditioning",
+    "single_covariate_model": "gene expression = intercept + context covariate + residual",
+    "joint_model": "gene expression = intercept + purity + leukocyte fraction + residual",
+    "per_gene_missingness": "fit only finite expression cells; missing expression remains missing in the residual matrix",
+    "rank_deficiency": "mark resample invalid rather than modify the model",
+    "network_metrics": "unchanged Stage A Cin_pairwise, Cin_pc1, and Cout using the frozen Stage A missingness rules"
+  },
+  "construction_null": {
+    "enabled": true,
+    "per_resample": "one deterministic within-resample permutation of the context rows",
+    "single_covariate": "permute the covariate across the same 30 patients",
+    "joint_model": "permute the two-column purity/leukocyte context matrix jointly by row, preserving their internal correlation while breaking association to expression",
+    "purpose": "measure the generic change produced by fitting/residualization itself so it is not mistaken for context-specific network attenuation"
+  },
+  "outputs": {
+    "module_level": [
+      "paired baseline median and 5th/95th percentiles",
+      "actual-adjusted median and 5th/95th percentiles",
+      "permuted-null-adjusted median and 5th/95th percentiles",
+      "actual minus baseline paired delta",
+      "permuted minus baseline paired delta",
+      "context-specific paired delta = actual-adjusted minus permuted-null-adjusted"
+    ],
+    "cancer_level": [
+      "baseline-vs-adjusted module rank preservation for each metric",
+      "median module context-specific delta for each metric",
+      "Cin-vs-Cout and PC1-vs-Cout module-rank relationships before and after adjustment",
+      "valid resample counts"
+    ],
+    "no_promotion_p_value": true
+  },
+  "interpretation_rules": {
+    "no_optimum_direction": true,
+    "higher_cin_not_inherently_better": true,
+    "lower_cout_not_inherently_better": true,
+    "cross_model_effect_sizes_are_not_compared_without_noting_different_matched_sample_sets": true,
+    "no_hard_robustness_threshold_is_selected_from_results": true,
+    "both_unadjusted_and_adjusted_coordinates_are_retained_if_context_materially_changes_topology": true
+  },
+  "constraints": {
+    "chi_allowed": false,
+    "cv2_used": false,
+    "composite_stability_score_allowed": false,
+    "historical_gri_recovery_test": false,
+    "stage_a_metric_redefinition_allowed": false,
+    "source_selection_from_stage_a_outcomes_allowed": false
+  }
+}
