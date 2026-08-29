@@ -7,6 +7,10 @@
 
 Do not push ordinary development directly to `main`. Merge or promote only scientifically stable milestones after audit.
 
+## Scientific steering rule
+
+The active project is tool discovery and validation, not defense of the historical GRI manuscript. The manuscript may supply provenance, candidate hypotheses, and lessons from failure, but it does not define the target architecture. See `docs/TOOL_OBJECTIVE.md`.
+
 ## What belongs in GitHub
 
 Keep the reproducible project spine here:
@@ -28,7 +32,7 @@ Create and deliver a full suite in chat when there is a substantial milestone, i
 - a new frozen scientific phase;
 - a substantial code/engine redesign;
 - completion of a major computation;
-- a manuscript-level revision;
+- a manuscript-level revision after the evidence supports one;
 - an adversarial audit/closure package;
 - anything needed for clean local execution that GitHub cannot conveniently carry.
 

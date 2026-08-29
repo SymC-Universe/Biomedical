@@ -1,8 +1,14 @@
 # GRI v2 / Cancer Stability Atlas
 
-Status: DEVELOPMENT ARCHITECTURE, NOT A VALIDATED CANCER TOOL
+Status: DEVELOPMENT PROGRAM, NOT A VALIDATED CANCER TOOL
 
-This branch begins after the frozen GRI v1.1.6 scalar experiment. It does not repair or rescue that result.
+## Objective
+
+The active objective is to build the most predictive, falsifiable cancer-stability tool supported by the data and by the updated Chemistry and Stability Arc methodology.
+
+The historical GRI manuscript is not the target model. It is provenance: a source of observations, failed claims, and candidate ideas. The new tool is not required to reproduce its variables, mechanisms, gene rankings, or conclusions.
+
+If the mathematics retains an old component, it must earn retention prospectively. If the mathematics rejects it, it remains archived.
 
 ## Active rules
 
@@ -11,12 +17,14 @@ This branch begins after the frozen GRI v1.1.6 scalar experiment. It does not re
 - Static RNA and multiomic observables remain independent map axes rather than being folded into chi.
 - `chi = 1`, if a valid chi is eventually measured, is a balance boundary of the applicable model and not a presumed cancer optimum.
 - No feature receives privileged status because it appeared in the historical manuscript.
+- Model selection is driven by predictive performance, calibration, stability, and external validation against explicit baselines.
+- Manuscript reconstruction or resubmission is downstream of a validated tool architecture and must not steer feature selection or interpretation.
 
 ## Current phase
 
 Stage A0 is complete from the saved v1.1.6 outputs. Stage A1 is the next executable phase: static Hallmark-network organization on the exact PanCanAtlas source matrix, with no chi and no CV/2 in the network definitions.
 
-See `WORKFLOW.md`, `docs/NEXT_PHASE.md`, and `notes/BUILD_STATUS.md`.
+See `docs/TOOL_OBJECTIVE.md`, `WORKFLOW.md`, and `notes/BUILD_STATUS.md`.
 
 ## Repository role
 
