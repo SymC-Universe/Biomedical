@@ -1,0 +1,41 @@
+name: GRI v2 Stage B0 source probe
+
+on:
+  push:
+    branches: [gri-v2]
+    paths:
+      - 'GRI_v2/config/stage_b0_source_plan.json'
+      - 'GRI_v2/src/probe_stage_b0_sources.py'
+      - 'GRI_v2/tests/test_stage_b0_contract.py'
+      - '.github/workflows/gri-v2-stage-b0.yml'
+  workflow_dispatch:
+
+jobs:
+  source-probe:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install test dependency
+        run: python -m pip install --disable-pip-version-check -q pytest
+      - name: Run B0 contract tests
+        run: python -m pytest -q tests/test_stage_b0_contract.py
+      - name: Probe official PanCanAtlas sources
+        run: |
+          mkdir -p development_outputs/stage_b0
+          python -m src.probe_stage_b0_sources \
+            --plan config/stage_b0_source_plan.json \
+            --download-dir "$RUNNER_TEMP/gri-v2-stage-b0" \
+            --out development_outputs/stage_b0/STAGE_B0_SOURCE_INVENTORY.json
+          cat development_outputs/stage_b0/STAGE_B0_SOURCE_INVENTORY.json
+      - name: Upload B0 source inventory
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-v2-stage-b0-source-inventory
+          path: GRI_v2/development_outputs/stage_b0/STAGE_B0_SOURCE_INVENTORY.json
+          if-no-files-found: error
