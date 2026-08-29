@@ -39,8 +39,9 @@ def scan_barcodes(path: Path) -> dict:
             line = line_b.decode("utf-8", errors="ignore")
             if first_nonempty is None and line.strip():
                 first_nonempty = line.rstrip("\r\n")[:500]
-            patients.update(PATIENT_RE.findall(line))
-            samples.update(SAMPLE_RE.findall(line))
+            normalized = line.replace(".", "-")
+            patients.update(PATIENT_RE.findall(normalized))
+            samples.update(SAMPLE_RE.findall(normalized))
     primary_samples = {s for s in samples if len(s) >= 15 and s[13:15] == "01"}
     return {
         "unique_tcga_patients_detected": len(patients),
