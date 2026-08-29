@@ -1,5 +1,5 @@
 {
-  "version": "0.1-pre-source-probe",
+  "version": "0.1.1-pre-source-probe",
   "status": "frozen_before_stage_b_context_results",
   "primary_data_family": "NCI GDC PanCanAtlas 2018 publication supplemental freeze",
   "vintage_rule": "Primary static integration uses the same PanCanAtlas publication-era data family as the Stage A RNA source. Current GDC re-harmonized pipelines are reserved for later robustness checks, not mixed into the primary development map.",
@@ -80,9 +80,7 @@
   ],
   "stage_b0_probe_roles": [
     "PRIMARY_B1_CONTEXT",
-    "SECONDARY_B1_SENSITIVITY",
-    "RESERVED_B2_GENOMIC_CONTEXT",
-    "RESERVED_B2_ORTHOGONAL_ASSAY"
+    "SECONDARY_B1_SENSITIVITY"
   ],
   "primary_layer_coverage_gate": {
     "minimum_cancers_with_30_or_more_matched_unique_primary_cases": 24,
@@ -94,5 +92,6 @@
     "composite_stability_score_allowed": false,
     "stage_a_results_may_not_select_sources": true,
     "no_biological_association_in_stage_b0": true
-  }
+  },
+  "scope_note": "Stage B0 probes only immediate B1 composition/context sources. Reserved B2 genomic, protein, and methylation files remain frozen in the registry but are not downloaded until their stage begins."
 }
