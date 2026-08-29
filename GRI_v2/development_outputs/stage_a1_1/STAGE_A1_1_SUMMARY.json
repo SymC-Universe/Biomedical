@@ -1,0 +1,22 @@
+{
+  "cache_sha256": "e65f6788aa6037fef407169794f29d63322de2769343bb6e594fe469dfeb8e63",
+  "calibration_rows": 1600,
+  "cancers": 32,
+  "chi_present": false,
+  "claim_ceiling": "sample-size-calibrated static network map only",
+  "composite_score_present": false,
+  "cv2_used": false,
+  "fixed_n": 30,
+  "global_seed": 20260829,
+  "hallmark_modules": 50,
+  "maximum_pc1_imputed_fraction_median": 0.0,
+  "membership_sha256": "bc6a9a33d7421dc407d33a66859760ba25e47b2f398e1a43c9156f80c71b3900",
+  "minimum_valid_resamples_per_cancer_module": 100,
+  "original_n_spearman_after_fixed_n": {
+    "cin_pairwise_median_abs_median": -0.03171402436423037,
+    "cin_pc1_variance_fraction_median": -0.08799266875624612,
+    "cout_eigengene_median_abs_median": -0.05627864439201574
+  },
+  "resamples_per_cancer": 100,
+  "status": "DEVELOPMENT_FIXED_N_CALIBRATION_ONLY"
+}
