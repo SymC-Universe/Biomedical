@@ -1,62 +1,103 @@
-<b>Symmetrical Convergence (SymC) — Biomedical Repository</b><br>
-<b>Branch:</b> Biology, Medicine, Neurobiology
+# Symmetrical Convergence (SymC) — Biomedical Repository
 
-<br><br>
-This repository contains the biomedical branch of the Symmetrical Convergence (SymC) research program. SymC is a physical control framework describing how adaptive systems maintain stability near a critical damping boundary and how failure emerges when regulatory bandwidth is lost. In biological systems, this manifests as disease driven by control failure rather than isolated pathology, comorbidity as phase-shifted expressions of shared instability, and progression as a mechanical lineage rather than stochastic degeneration.
+**Current research notice, 2026-08-29:** This repository contains both historical SymC biomedical work and active reconstruction/validation programs. Earlier publications are preserved as research history and provenance. They should not be assumed to represent the current evidential status of ongoing work.
 
-<br><br>
-<b>Scope.</b> Viral dynamics, oncology, neurodegeneration, pain, addiction, psychiatric instability, and adaptive therapeutic control. Across these domains, SymC reframes biological regulation as a dynamical control problem, introduces stability ratios and bandwidth constraints as diagnostic primitives, links molecular, cellular, neural, and behavioral dynamics via substrate inheritance, and demonstrates why state-aware intervention outperforms static treatment strategies.
+## Active oncology research: GRI v2 / Cancer Stability Atlas
 
-<br><br>
-<b>Canonical Biomedical Frameworks.</b>
+The current oncology program is being rebuilt on the [`gri-v2` branch](https://github.com/SymC-Universe/Biomedical/tree/gri-v2/GRI_v2) as **GRI v2 / Cancer Stability Atlas**.
 
-<br><br>
-<b>Genomic Regulatory Instability (GRI).</b><br>
-<i>Mapping the Mechanical Lineage of Regulatory Control Failure in Malignancy.</i><br>
+It is a development program, **not a validated cancer tool**. The goal is to discover and externally validate the most predictive cancer-stability architecture supported by the data, even if the final tool differs substantially from the historical GRI manuscript.
+
+Start here:
+
+- [Current build status](https://github.com/SymC-Universe/Biomedical/blob/gri-v2/GRI_v2/notes/BUILD_STATUS.md)
+- [GRI v2 research README](https://github.com/SymC-Universe/Biomedical/blob/gri-v2/GRI_v2/README.md)
+- [Predictive-tool objective](https://github.com/SymC-Universe/Biomedical/blob/gri-v2/GRI_v2/docs/TOOL_OBJECTIVE.md)
+- [Epistemic constitution and scientific guardrails](https://github.com/SymC-Universe/Biomedical/blob/gri-v2/GRI_v2/docs/EPISTEMIC_CONSTITUTION.md)
+- [Rules required before a biological chi coordinate may be used](https://github.com/SymC-Universe/Biomedical/blob/gri-v2/GRI_v2/docs/CHI_ADMISSION_RULES.md)
+- [Stage B1 composition/context audit](https://github.com/SymC-Universe/Biomedical/blob/gri-v2/GRI_v2/docs/STAGE_B1_AUDIT_20260829.md)
+
+## Current GRI v2 status
+
+The historical scalar oncology branch has been closed as a current mechanistic model. `CV/2` is retained only as a historical descriptive comparator and is **not** treated as a biological chi coordinate.
+
+Static Stage A is complete and retains separate measured observables rather than a master score:
+
+- **V**: expression-adjusted variability/fluctuation structure.
+- **L**: lineage/context dependence.
+- **C_in**: read “C sub in.” Internal Hallmark-module coherence.
+- **C_out**: read “C sub out.” Coupling of a Hallmark module to the external Hallmark-union background.
+
+No direction of these coordinates is defined as optimal, healthy, or pathological.
+
+Stage B1 is also complete. Independent tumor-purity and DNA-methylation-derived leukocyte measurements explain a real but concentrated portion of the RNA network geometry, especially in immune/inflammatory Hallmarks, while the broader internal-coherence/external-coupling topology remains strongly preserved after adjustment.
+
+**Stage B2 is now active.** It is integrating orthogonal genomic and protein context using pre-reserved PanCanAtlas-era sources, including aneuploidy/loss-of-heterozygosity measures, copy-number burden, reverse-phase protein array abundance, and a separately gated DNA-methylation layer.
+
+No valid biological chi coordinate has yet been established in the cancer program. If one is eventually admitted, `chi = 1` will mean a dynamical regime-balance boundary of the applicable model, not a presumed point of maximum organization, health, treatment response, or cancer stability.
+
+## Research posture
+
+The current program follows a stricter evidence ladder developed from the updated Stability Arc and Chemistry work:
+
+1. preserve historical observations and failed tests;
+2. separate independently measured coordinates instead of forcing them into one scalar;
+3. use construction-aware nulls and explicit provenance;
+4. distinguish static structure from genuine dynamics;
+5. benchmark against established alternatives;
+6. freeze predictive targets before validation;
+7. require held-out and external validation before promoting a tool or mechanism.
+
+A manuscript is downstream of that process. The data and mathematics determine the tool architecture, not the historical narrative.
+
+## Historical and archived biomedical works
+
+The following remain available as prior SymC research. Their presence here does not mean every earlier claim is carried into the active GRI v2 program.
+
+### Genomic Regulatory Instability (historical GRI)
+
+**Mapping the Mechanical Lineage of Regulatory Control Failure in Malignancy**  
 DOI: https://doi.org/10.5281/zenodo.18435475
-<br>
-The canonical oncology framework. Cancer is modeled as a phase transition driven by regulatory bandwidth exhaustion and irreversible substrate capture, empirically grounded in TCGA Pan-Cancer RNA-seq data.
 
-<br><br>
-<b>Optimal Control Theory in Oncology (SymC Oncology v1–v3).</b><br>
+This is the historical oncology framework that motivated the current adversarial reconstruction. It is retained for provenance and should not be treated as the current validated cancer model.
+
+### Earlier oncology control work
+
+**Optimal Control Theory in Oncology (SymC Oncology v1–v3)**  
 DOI: https://doi.org/10.5281/zenodo.17507544
-<br>
-Earlier control-theoretic oncology framework focused on adaptive therapeutic dynamics. Conceptually superseded by GRI and retained for historical and methodological context.
 
-<br><br>
-<b>SymC Viral Control.</b><br>
+### Viral control
+
 DOI: https://doi.org/10.5281/zenodo.17651256
-<br>
-Demonstrates rebound, rigidity, and adaptive control failure in viral systems.
 
-<br><br>
-<b>Neurodegeneration.</b><br>
-Prodromal Critical Cascade in Parkinson’s Disease — https://doi.org/10.5281/zenodo.17645851
-<br>
-Neurostability Principle (Alzheimer’s & Dementia) — https://doi.org/10.5281/zenodo.17766309
+### Neurodegeneration
 
-<br><br>
-<b>Pain, Addiction, and Neural Control Failure.</b><br>
-Neuroelastic Resonance Instability (Addiction) — https://doi.org/10.5281/zenodo.17782917
-<br>
-Nociceptive Stability Principle (Pain) — https://doi.org/10.5281/zenodo.17924428
+- Prodromal Critical Cascade in Parkinson’s Disease: https://doi.org/10.5281/zenodo.17645851
+- Neurostability Principle, Alzheimer’s & Dementia: https://doi.org/10.5281/zenodo.17766309
 
-<br><br>
-<b>Psychiatric Stability.</b><br>
-Neuro Stability Disorder (Comorbidity) — https://doi.org/10.5281/zenodo.17937287
+### Pain, addiction, and neural-control work
 
-<br><br>
-<b>Related Cross-Domain SymC Works.</b><br>
-Closing Gaps — https://doi.org/10.5281/zenodo.17624098
-<br>
-Critical Chemical Equivalence — https://doi.org/10.5281/zenodo.17891563
-<br>
-SymC Noughts — https://doi.org/10.5281/zenodo.17633509
-<br>
-Adaptive Intelligence Framework — https://doi.org/10.5281/zenodo.17565787
+- Neuroelastic Resonance Instability, Addiction: https://doi.org/10.5281/zenodo.17782917
+- Nociceptive Stability Principle, Pain: https://doi.org/10.5281/zenodo.17924428
 
-<br><br>
-<b>Intended Use.</b> Researchers, clinicians, and control theorists exploring disease as a dynamical stability problem. Each paper stands alone; together they define a coherent biomedical control framework.
+### Psychiatric stability
 
-<br><br>
-<b>Status.</b> This branch represents a mature and internally consistent stage of SymC biomedical theory. Future additions may include validation datasets, simulations, and adaptive control implementations. Core theory is stable.
+- Neuro Stability Disorder, Comorbidity: https://doi.org/10.5281/zenodo.17937287
+
+### Related cross-domain SymC works
+
+- Closing Gaps: https://doi.org/10.5281/zenodo.17624098
+- Critical Chemical Equivalence: https://doi.org/10.5281/zenodo.17891563
+- SymC Noughts: https://doi.org/10.5281/zenodo.17633509
+- Adaptive Intelligence Framework: https://doi.org/10.5281/zenodo.17565787
+
+## Repository organization
+
+- `main` is the public landing/history branch.
+- `gri-v2` is the active oncology development branch.
+- Large source datasets are generally not committed when their identity, hashes, and regeneration paths can be preserved instead.
+- Current scientific status should be taken from the active branch’s `GRI_v2/notes/BUILD_STATUS.md`, not inferred from older PDFs or archived releases.
+
+## Scope
+
+The repository covers biomedical investigations involving oncology, viral dynamics, neurodegeneration, pain, addiction, psychiatric instability, and related adaptive-control questions. Current work treats cross-domain stability ideas as hypotheses to be tested under domain-appropriate measurements rather than assuming that a shared mathematical form proves a shared biological mechanism.
