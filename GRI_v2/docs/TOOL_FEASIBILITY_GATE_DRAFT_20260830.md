@@ -1,8 +1,14 @@
-# Biomedical Tool Feasibility Gate — Draft
+# Biomedical Tool Feasibility Gate — Historical Draft
 
-**STATUS: DRAFT — DOES NOT ALTER THE FROZEN C1 v2 SCIENTIFIC CONTRACT**
+**STATUS: SUPERSEDED AS A DECISION RECORD BY `GRI_V2_TOOL_DISCOVERY_CHARTER_20260830.md` — DOES NOT ALTER THE FROZEN C1 v2 SCIENTIFIC CONTRACT**
 
-Date: 2026-08-30
+Date originally drafted: 2026-08-30
+
+This file is retained as provenance for the pre-lock feasibility discussion. The locked program objective, inherited GRI concepts, autonomy goal, recoverability boundary, and forward gate sequence are now canonical in:
+
+`docs/GRI_V2_TOOL_DISCOVERY_CHARTER_20260830.md`
+
+The remainder below records the original feasibility draft unchanged in substance.
 
 ## Purpose
 
