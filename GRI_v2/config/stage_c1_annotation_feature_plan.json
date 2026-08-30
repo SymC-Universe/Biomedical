@@ -1,0 +1,103 @@
+{
+  "version": "1.0-frozen-pre-association",
+  "status": "FROZEN_AFTER_USER_APPROVAL_BEFORE_ANY_C1_BETA_VALUE_ASSOCIATION",
+  "approved_date": "2026-08-30",
+  "purpose": "Freeze the Stage C1 methylation annotation, regulatory mapping, technical-mask provenance, and pre-biological source gate before any methylation relationship to RNA, RPPA, genomic coordinates, outcomes, treatment, historical GRI variables, or preferred SymC patterns is calculated.",
+  "frozen_upstream": {
+    "stage_c0_source_sha256": "5934c497882fbe8178d128a3a7f71e765480af6bbd460e0398de3428cd075b77",
+    "stage_a_profile_cache_sha256": "e65f6788aa6037fef407169794f29d63322de2769343bb6e594fe469dfeb8e63",
+    "stage_c0_1_status": "STAGE_C0_1_SAMPLE_IDENTITY_GATE_PASS",
+    "stage_c0_1_unique_one_to_one_samples": 9460,
+    "stage_c0_1_cancers_passing_n30": 32,
+    "duplicate_root_action": "EXCLUDE_FROM_PRIMARY_C1"
+  },
+  "primary_annotation_source": {
+    "package": "IlluminaHumanMethylation450kanno.ilmn12.hg19",
+    "bioconductor_release": "3.8",
+    "package_version": "0.6.0",
+    "source_filename": "IlluminaHumanMethylation450kanno.ilmn12.hg19_0.6.0.tar.gz",
+    "lineage": "Illumina HumanMethylation450 v1.2 / ilmn12 / hg19",
+    "underlying_manifest": "HumanMethylation450_15017482_v.1.2.csv",
+    "doi": "10.18129/B9.bioc.IlluminaHumanMethylation450kanno.ilmn12.hg19",
+    "download_policy": "try only the enumerated Bioconductor 3.8 mirrors; require package version 0.6.0 after installation; record resolved URL, byte size, MD5, and SHA-256",
+    "candidate_urls": [
+      "https://bioconductor.org/packages/3.8/data/annotation/src/contrib/IlluminaHumanMethylation450kanno.ilmn12.hg19_0.6.0.tar.gz",
+      "https://bioconductor.statistik.tu-dortmund.de/packages/3.8/data/annotation/src/contrib/IlluminaHumanMethylation450kanno.ilmn12.hg19_0.6.0.tar.gz",
+      "https://mirrors.dotsrc.org/bioconductor-releases/3.8/data/annotation/src/contrib/IlluminaHumanMethylation450kanno.ilmn12.hg19_0.6.0.tar.gz"
+    ],
+    "sha256": "PENDING_C1A_SOURCE_GATE"
+  },
+  "gene_mapping": {
+    "fields": [
+      "UCSC_RefGene_Name",
+      "UCSC_RefGene_Accession",
+      "UCSC_RefGene_Group"
+    ],
+    "rule": "split semicolon-delimited fields positionally while preserving empty tokens; trim whitespace; require equal tuple lengths; preserve every distinct nonblank probe-gene-accession-region tuple; collapse exact duplicate tuples only",
+    "on_tuple_length_mismatch": "exclude the affected probe from gene/Hallmark conglomeration and report it; retain the probe for modal analysis if otherwise admissible",
+    "first_gene_selection_allowed": false,
+    "result_driven_mapping_allowed": false
+  },
+  "regulatory_strata": {
+    "PROMOTER_CORE": ["TSS200"],
+    "PROMOTER_PROXIMAL": ["TSS1500"],
+    "PROMOTER_TRANSCRIBED_EDGE": ["5'UTR", "1stExon"],
+    "GENE_BODY": ["Body"],
+    "THREE_PRIME_UTR": ["3'UTR"],
+    "BROAD_PROMOTER_SECONDARY": ["TSS200", "TSS1500", "5'UTR", "1stExon"]
+  },
+  "unmapped_policy": {
+    "modal_probe_space": "retain if otherwise admissible",
+    "gene_hallmark_conglomeration": "exclude and report",
+    "silent_nearest_gene_assignment_allowed": false
+  },
+  "technical_mask_robustness": {
+    "role": "MANDATORY_ROBUSTNESS_ONLY_NOT_PRIMARY_SOURCE_REPLACEMENT",
+    "primary_track": "publication-faithful exact 22601-probe PanCanAtlas representation with no extra result-driven filtering",
+    "cross_reactive_component": {
+      "reference": "Chen et al. 2013, Epigenetics, DOI 10.4161/epi.23470",
+      "repository": "sirselim/illumina450k_filtering",
+      "commit": "eac47812dce5d4d1340caeafb92d80dd4d8273a5",
+      "path": "48639-non-specific-probes-Illumina450k.csv",
+      "github_blob_sha1": "f5bff6dee26f8d05ccd2d0bcfaf8ff1c0afb6e11",
+      "rule": "mask every probe ID in TargetID",
+      "sha256": "PENDING_C1A_SOURCE_GATE"
+    },
+    "common_snp_component": {
+      "source": "the pinned Bioconductor 3.8 annotation package above",
+      "object_selection": "choose the numerically highest SNPs.<build>CommonSingle object present in the pinned package; this choice is deterministic from the frozen source and cannot use C1 biological results",
+      "rule": "mask a probe when CpG_rs or SBE_rs is nonblank in the selected CommonSingle object; Probe_rs alone does not trigger this component",
+      "maf_rule": "no additional MAF threshold beyond membership in the package CommonSingle object; the source object itself is based on common single-nucleotide variants",
+      "minfi_equivalent": "dropLociWithSnps(snps=c('CpG','SBE'), maf=0) using the selected pinned CommonSingle annotation"
+    },
+    "union_rule": "technical-mask robustness excludes the union of cross-reactive-component probes and common-SNP-component probes",
+    "promotion_rule": "primary and masked tracks must both be reported; no claim may be promoted solely because one track is favorable"
+  },
+  "c1a_source_gate": {
+    "allowed": [
+      "download and hash the frozen annotation package and cross-reactive list",
+      "export annotation fields and the selected CommonSingle SNP fields to a portable probe table",
+      "inventory row uniqueness and schema",
+      "intersect annotation and technical-mask IDs with the exact 22601 PanCanAtlas probe IDs",
+      "report regulatory/gene mapping coverage and technical-mask overlap"
+    ],
+    "forbidden": [
+      "read methylation beta values for biological analysis",
+      "calculate methylation-RNA, methylation-RPPA, methylation-genomic, clinical, outcome, treatment, subtype, or preferred-pattern associations",
+      "select annotations or masks because of downstream biological results"
+    ]
+  },
+  "c1_analysis_constraints": {
+    "modal_scalar_conglomeration_complementarity": true,
+    "scalar_replaces_modal_allowed": false,
+    "scalar_replaces_conglomeration_allowed": false,
+    "chi_allowed": false,
+    "cv2_used": false,
+    "master_stability_score_allowed": false,
+    "substrate_inheritance_claim_allowed": false,
+    "dynamic_claim_allowed": false,
+    "ordered_temporal_evidence_required_for_inheritance": true,
+    "same_coordinate_gamma_omega_required_for_chi": true
+  },
+  "post_c1a_rule": "Only after the C1A source/schema/probe-overlap gate is audited may the exact C1 modal, scalar, conglomeration formulas, missing-data rules, fixed-n resampling, construction nulls, seeds, and cross-layer tests be frozen and implemented. No beta-value biological result may be inspected between C1A and that final analysis freeze."
+}

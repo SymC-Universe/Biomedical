@@ -1,0 +1,138 @@
+name: GRI v2 Stage C1A annotation source gate
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - gri-v2
+    paths:
+      - '.github/workflows/gri-v2-stage-c1a-annotation-source.yml'
+      - 'GRI_v2/config/stage_c1_annotation_feature_plan.json'
+      - 'GRI_v2/docs/STAGE_C1A_ANNOTATION_PREREGISTRATION_20260830.md'
+      - 'GRI_v2/src/fetch_stage_c1a_sources.py'
+      - 'GRI_v2/src/export_stage_c1a_annotation.R'
+      - 'GRI_v2/src/summarize_stage_c1a_sources.py'
+      - 'GRI_v2/src/run_stage_c1a_probe_inventory.py'
+      - 'GRI_v2/src/run_stage_c1a_windows.py'
+      - 'GRI_v2/tests/test_stage_c1_annotation_contract.py'
+      - 'GRI_v2/tests/test_stage_c1a_probe_inventory_contract.py'
+      - 'GRI_v2/RUN_STAGE_C1A_PROBE_INVENTORY_WINDOWS.bat'
+
+permissions:
+  contents: read
+
+jobs:
+  source-gate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: GRI_v2
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run full GRI v2 Python tests before source acquisition
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pytest -q tests
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: 'release'
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          working-directory: GRI_v2
+          packages: |
+            any::BiocManager
+            bioc::minfi
+
+      - name: Acquire and hash frozen annotation sources
+        run: |
+          rm -rf stage_c1a_source_gate
+          python src/fetch_stage_c1a_sources.py \
+            --config config/stage_c1_annotation_feature_plan.json \
+            --outdir stage_c1a_source_gate
+
+      - name: Export pinned v1.2 hg19 annotation and deterministic CommonSingle SNP layer
+        run: |
+          Rscript src/export_stage_c1a_annotation.R \
+            stage_c1a_source_gate/IlluminaHumanMethylation450kanno.ilmn12.hg19_0.6.0.tar.gz \
+            stage_c1a_source_gate/48639-non-specific-probes-Illumina450k.csv \
+            stage_c1a_source_gate
+          rm -rf stage_c1a_source_gate/_rlib
+
+      - name: Audit portable annotation artifact
+        run: |
+          python src/summarize_stage_c1a_sources.py --outdir stage_c1a_source_gate
+          sha256sum \
+            stage_c1a_source_gate/STAGE_C1A_SOURCE_ACQUISITION.json \
+            stage_c1a_source_gate/STAGE_C1A_ANNOTATION_SOURCE_SUMMARY.json \
+            stage_c1a_source_gate/stage_c1a_annotation_export.tsv.gz \
+            stage_c1a_source_gate/stage_c1a_chen_crossreactive_probe_ids.txt \
+            stage_c1a_source_gate/stage_c1a_annotation_object_inventory.txt \
+            stage_c1a_source_gate/IlluminaHumanMethylation450kanno.ilmn12.hg19_0.6.0.tar.gz \
+            stage_c1a_source_gate/48639-non-specific-probes-Illumina450k.csv \
+            > stage_c1a_source_gate/SHA256SUMS.txt
+
+      - name: Build Windows local exact-probe inventory handoff
+        run: |
+          rm -rf stage_c1a_windows_handoff
+          mkdir -p stage_c1a_windows_handoff/src
+          cp RUN_STAGE_C1A_PROBE_INVENTORY_WINDOWS.bat stage_c1a_windows_handoff/
+          cp src/run_stage_c1a_probe_inventory.py stage_c1a_windows_handoff/src/
+          cp src/run_stage_c1a_windows.py stage_c1a_windows_handoff/src/
+          touch stage_c1a_windows_handoff/src/__init__.py
+          cp stage_c1a_source_gate/STAGE_C1A_ANNOTATION_SOURCE_SUMMARY.json stage_c1a_windows_handoff/
+          cp stage_c1a_source_gate/stage_c1a_annotation_export.tsv.gz stage_c1a_windows_handoff/
+          cp stage_c1a_source_gate/stage_c1a_chen_crossreactive_probe_ids.txt stage_c1a_windows_handoff/
+          cat > stage_c1a_windows_handoff/README_HANDOFF.txt <<'EOF'
+          GRI v2 Stage C1A exact-probe annotation inventory
+
+          This package does NOT contain the 5.02 GB methylation matrix.
+          Reuse the already-audited local PanCanAtlas TSV from Stage C0.
+
+          Double-click RUN_STAGE_C1A_PROBE_INVENTORY_WINDOWS.bat.
+          The picker asks only for the existing methylation TSV. The compact
+          annotation export, Chen cross-reactive ID list, and frozen source
+          summary are already bundled and should be selected from this folder
+          when prompted.
+
+          The gate streams the TSV to verify SHA-256 and recover probe IDs only.
+          It never parses methylation beta values for biological analysis.
+
+          At completion return to ChatGPT:
+            stage_c1a_probe_inventory_outputs/STAGE_C1A_PROBE_INVENTORY_SUMMARY.json
+            stage_c1a_probe_inventory_outputs/stage_c1a_regulatory_stratum_counts.csv
+
+          Keep the generated .csv.gz mapping/flags files locally for Stage C1.
+          EOF
+          (cd stage_c1a_windows_handoff && sha256sum \
+            RUN_STAGE_C1A_PROBE_INVENTORY_WINDOWS.bat \
+            README_HANDOFF.txt \
+            STAGE_C1A_ANNOTATION_SOURCE_SUMMARY.json \
+            stage_c1a_annotation_export.tsv.gz \
+            stage_c1a_chen_crossreactive_probe_ids.txt \
+            src/__init__.py \
+            src/run_stage_c1a_probe_inventory.py \
+            src/run_stage_c1a_windows.py > SHA256SUMS.txt)
+
+      - name: Upload C1A source-gate evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-v2-stage-c1a-annotation-source-gate
+          path: GRI_v2/stage_c1a_source_gate/
+          if-no-files-found: error
+
+      - name: Upload tested C1A Windows handoff
+        uses: actions/upload-artifact@v4
+        with:
+          name: CSA_STAGE_C1A_PROBE_INVENTORY_WINDOWS_20260830
+          path: GRI_v2/stage_c1a_windows_handoff/
+          if-no-files-found: error
