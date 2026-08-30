@@ -1,57 +1,107 @@
-# Cancer Stability Atlas - Epistemic Constitution
+# GRI v2 Biomedical Epistemic Constitution
 
 ## Purpose
 
-Build a cancer stability map and predictive tool in which a legitimate chi coordinate may serve as a narrowly defined dynamical balance axis, while orthogonal biological observables determine what different regions of the map actually mean.
+Build and test reproducible biomedical tools from legitimate scalar, modal, and conglomeration measurements without forcing the historical GRI manuscript, a historical `CV/2` scalar, a universal damping interpretation, or any predetermined SymC claim onto the data.
 
-The map may be multidimensional. Chi may not be.
+The historical GRI manuscript is provenance and research ancestry, not a target model. No active analysis is required to preserve its variables, mechanisms, gene rankings, or conclusions.
 
-The historical GRI manuscript is provenance, not a target model. No active analysis is required to preserve its variables, mechanisms, gene rankings, or conclusions.
+The locked program-level interpretation of chi is:
 
-## Rule 1 - Chi has one admissible form
+`CHI_SCALAR_MODAL_CONGLOMERATION_FIREWALL_20260830.md`
 
-A candidate chi coordinate must instantiate `chi = Gamma / (2 Omega)`, where Gamma is a genuine dissipative/decay/recovery/relaxation rate and Omega is a genuine intrinsic restoring/response frequency or compatible rate for the same dynamical coordinate. Both must be independently meaningful, dimensionally compatible, and context matched.
+## Rule 1 - Chi is generator-specific, not synonymous with critical damping
 
-## Rule 2 - Chi is not an outcome score
+`chi` is a scalar coordinate symbol whose scientific meaning is determined by the governing generator and derivation that produce it.
 
-Chi does not include expression variability, network coherence, methylation, chromatin accessibility, purity, lineage, entropy, barrier/landscape depth, transition probability, survival, drug response, or other outcome/context variables. Those remain separate coordinates or response variables.
+For a second-order oscillator, `chi_dyn = Gamma / (2 |Omega|)` can carry the underdamped / critical / overdamped response interpretation because that generator licenses it. That interpretation is not automatically imported into other coordinates or biological systems.
 
-## Rule 3 - No arbitrary scaling to force unity
+No biological chi coordinate of any class is currently admitted in GRI v2.
 
-No multiplicative constant may be chosen because it places observations near 1.
+## Rule 2 - Scalar, modal, and conglomeration views are complementary and firewalled
 
-## Rule 4 - Same-coordinate projection is mandatory
+The minimum architecture preserves three distinct views:
 
-A relaxation rate from one process cannot be divided by a characteristic rate from an unrelated process.
+- **scalar** - compressed coordinates/invariants;
+- **modal/vector** - mode-resolved carrier structure;
+- **conglomeration** - integrated coupling, network, module, memory, environmental, and whole-system organization.
 
-## Rule 5 - Dynamics require dynamic evidence
+Scalar similarity does not establish modal similarity. Modal similarity does not establish scalar inheritance. Neither establishes whole-system organization by itself. Conglomeration-level correspondence does not establish a particular scalar mechanism.
 
-Cross-sectional RNA expression, CV, residual dispersion, coexpression, methylation, or static multiomic association cannot by themselves establish Gamma, Omega, chi, critical slowing down, hysteresis, recovery, damping class, or transition probability.
+The combined perspective means preserving relations among the views, not averaging them into a master score.
 
-## Rule 6 - Reference boundary is not optimum
+## Rule 3 - Scalar coordinates keep the interpretation earned by their construction
 
-If a legitimate chi is measured, `chi = 1` identifies the critical-damping balance boundary of the applicable model. It is not automatically a biological optimum, healthy state, cancer state, organization maximum, attractor boundary, treatment target, or universal transition point.
+A scalar may include spectral concentration, an eigenvalue, a rate ratio, a gap, or another compressed coordinate. It is not called chi merely because a scalar summary is useful.
 
-## Rule 7 - CV/2 is historical only
+Current `S_spec = 1 - H_norm` remains a spectral-concentration statistic. It is not biological chi.
+
+Regulatory autonomy, if retained after feasibility/baseline testing, remains a conditional-dependence or autonomy quantity unless a separate scalar construction and admission program earns a different label.
+
+## Rule 4 - Dynamical-response chi has a specific admission path
+
+`CHI_ADMISSION_RULES.md` applies specifically to a candidate biomedical `chi_dyn = Gamma / (2 |Omega|)` coordinate.
+
+Gamma and Omega must be genuine, same-coordinate, independently meaningful dynamical quantities with compatible units and actual temporal/perturbational support. The factor of 2 and any boundary interpretation must come from the governing model, not tuning.
+
+Those gates do not assert that every possible chi construction in every generator must take the Gamma/(2 Omega) form.
+
+## Rule 5 - No arbitrary scaling to force unity
+
+No multiplicative constant, normalization, transformation, or calibration may be chosen because it places observations near 1 or any historically preferred value.
+
+A boundary at `chi = 1` exists only if the specific generator and coordinate construction establish it.
+
+## Rule 6 - Same-coordinate projection is mandatory for dynamical ratios
+
+A relaxation rate from one process cannot be divided by a characteristic rate from an unrelated process and then interpreted as a dynamical response coordinate.
+
+## Rule 7 - Dynamics require dynamic evidence
+
+Cross-sectional RNA expression, CV, residual dispersion, coexpression, methylation, static multiomic association, eigenspectra, CKA, or module coupling cannot by themselves establish recovery rates, damping class, hysteresis, temporal transition, critical slowing down, or trajectory direction.
+
+Static architecture belongs to the landscape/state map. Dynamics belong to the trajectory map and require ordered evidence.
+
+## Rule 8 - No scalar value is a biological optimum by definition
+
+No sample, module, cancer type, or state may be called healthier, more optimal, more stable, or more organized merely because a scalar lies near a preferred value.
+
+If an independently defined biological outcome peaks near a scalar boundary, that is an empirical association to test and report, not part of the coordinate definition.
+
+## Rule 9 - CV/2 is historical only
 
 `CV/2` remains exactly `CV/2`. It is not renamed or promoted as chi and receives no privileged role in feature selection, model fitting, ridge detection, or validation.
 
-## Rule 8 - The theory must be able to lose
+## Rule 10 - Modal evidence cannot borrow scalar certainty
 
-No feature, module, context variable, or estimator may be admitted to chi or to a composite stability score because doing so improves agreement with a preferred pattern. Failed branches stay failed and are archived rather than retuned into success.
+Eigenvectors, eigenspaces, projectors, principal angles, mode contributions, or other modal quantities must be interpreted under their own uncertainty and identifiability conditions.
 
-## Rule 9 - The manuscript cannot steer the mathematics
+A clean scalar result cannot rescue an unidentified modal carrier. Conversely, a strong modal correspondence cannot manufacture a scalar mechanism.
 
-The old paper cannot define success criteria for the new tool. Historical agreement is descriptive only. Candidate features and models are retained or rejected by prospectively specified predictive performance, calibration, robustness, independent benchmarking, and external validation. A final tool may retain some, all, or none of the historical GRI architecture.
+## Rule 11 - Conglomeration evidence has its own claim ceiling
 
-## Rule 10 - Publication follows validation
+Hallmark/module organization, cross-layer coupling, conditional dependence, network structure, feedback, and other integrated measurements may establish system-level organization only to the extent directly tested.
 
-A replacement manuscript, refinement, or resubmission is a downstream reporting step after model selection and external validation. Publication goals may not determine coordinate definitions, thresholds, module selection, null models, or interpretation.
+They do not automatically imply causality, inheritance, damping, recovery, or a particular scalar coordinate.
 
-## Rule 11 - Organization is independent of distance to chi = 1
+## Rule 12 - The theory must be able to lose
 
-No sample, module, cancer type, or state may be called more organized, more stable, healthier, more optimal, or more coherent merely because its chi is closer to 1. If a valid chi is eventually measured, chi locates the system relative to a dynamical response-regime boundary. Organization and coherence must be measured by separate observables. Only after those observables are defined independently may their empirical relationship to chi be tested.
+No feature, module, context variable, estimator, scalar, mode, or conglomeration metric may be retained because doing so improves agreement with a preferred historical picture.
 
-If an independently measured organization or response quantity peaks near chi = 1, that is an empirical association to report, not a definition of chi = 1 as an optimum. Likewise, departures from chi = 1 are not automatically disorganization or pathology.
+Failed branches remain failed. Post-result alternatives become new versions with new prospective tests rather than retroactive repairs.
 
-The terms phase boundary or state boundary may be used only when the corresponding system has independently demonstrated a phase/state structure. Otherwise the defensible language is dynamical regime boundary or response-class boundary.
+## Rule 13 - The historical manuscript cannot steer the mathematics
+
+Historical agreement is descriptive only. Candidate features and models are retained or rejected by prospectively specified performance, calibration, robustness, independent benchmarking, and external validation.
+
+A final biomedical tool may retain some, all, or none of the historical GRI architecture and may contain no chi or stability terminology at all.
+
+## Rule 14 - Publication follows validation
+
+A replacement manuscript, refinement, or resubmission is downstream of model selection and external validation. Publication goals may not determine coordinate definitions, thresholds, module selection, null models, or interpretation.
+
+## Rule 15 - Disagreement among views is evidence, not noise to average away
+
+Scalar, modal, and conglomeration views are allowed to disagree.
+
+Such disagreement may reveal compression loss, non-normality, mixed mechanisms, partial sharing, confounding, context dependence, or model inadequacy. It must be preserved and investigated rather than collapsed into a single score for convenience.
