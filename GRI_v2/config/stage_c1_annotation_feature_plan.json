@@ -19,13 +19,17 @@
     "lineage": "Illumina HumanMethylation450 v1.2 / ilmn12 / hg19",
     "underlying_manifest": "HumanMethylation450_15017482_v.1.2.csv",
     "doi": "10.18129/B9.bioc.IlluminaHumanMethylation450kanno.ilmn12.hg19",
-    "download_policy": "try only the enumerated Bioconductor 3.8 mirrors; require package version 0.6.0 after installation; record resolved URL, byte size, MD5, and SHA-256",
+    "download_policy": "try only the enumerated Bioconductor 3.8 mirrors; validate the exact package name/version from DESCRIPTION in the acquired tarball; record resolved URL, byte size, MD5, and SHA-256; extract frozen DataFrame objects directly without installing the historical package",
     "candidate_urls": [
       "https://bioconductor.org/packages/3.8/data/annotation/src/contrib/IlluminaHumanMethylation450kanno.ilmn12.hg19_0.6.0.tar.gz",
       "https://bioconductor.statistik.tu-dortmund.de/packages/3.8/data/annotation/src/contrib/IlluminaHumanMethylation450kanno.ilmn12.hg19_0.6.0.tar.gz",
       "https://mirrors.dotsrc.org/bioconductor-releases/3.8/data/annotation/src/contrib/IlluminaHumanMethylation450kanno.ilmn12.hg19_0.6.0.tar.gz"
     ],
-    "sha256": "PENDING_C1A_SOURCE_GATE"
+    "resolved_url": "https://bioconductor.org/packages/3.8/data/annotation/src/contrib/IlluminaHumanMethylation450kanno.ilmn12.hg19_0.6.0.tar.gz",
+    "bytes": 57839020,
+    "md5": "2f569646ca8adc49863224b1cd076a79",
+    "sha256": "249b8fd62add3c95b5047b597cff0868d26a98862a47cebd656edcd175a73b15",
+    "extraction_mode": "direct_frozen_tarball_dataframes_no_package_install"
   },
   "gene_mapping": {
     "fields": [
@@ -61,11 +65,26 @@
       "path": "48639-non-specific-probes-Illumina450k.csv",
       "github_blob_sha1": "f5bff6dee26f8d05ccd2d0bcfaf8ff1c0afb6e11",
       "rule": "mask every probe ID in TargetID",
-      "sha256": "PENDING_C1A_SOURCE_GATE"
+      "resolved_url": "https://raw.githubusercontent.com/sirselim/illumina450k_filtering/eac47812dce5d4d1340caeafb92d80dd4d8273a5/48639-non-specific-probes-Illumina450k.csv",
+      "bytes": 569533,
+      "md5": "f2f8a7e69f53eb44ea9ecc7842cdc845",
+      "sha256": "4e962d36821f6f6fcd8b81cc0558090c028e54fbdb2c039a5712f9b471d9d89e"
     },
     "common_snp_component": {
       "source": "the pinned Bioconductor 3.8 annotation package above",
       "object_selection": "choose the numerically highest SNPs.<build>CommonSingle object present in the pinned package; this choice is deterministic from the frozen source and cannot use C1 biological results",
+      "selected_object": "SNPs.147CommonSingle",
+      "available_objects": [
+        "SNPs.132CommonSingle",
+        "SNPs.135CommonSingle",
+        "SNPs.137CommonSingle",
+        "SNPs.138CommonSingle",
+        "SNPs.141CommonSingle",
+        "SNPs.142CommonSingle",
+        "SNPs.144CommonSingle",
+        "SNPs.146CommonSingle",
+        "SNPs.147CommonSingle"
+      ],
       "rule": "mask a probe when CpG_rs or SBE_rs is nonblank in the selected CommonSingle object; Probe_rs alone does not trigger this component",
       "maf_rule": "no additional MAF threshold beyond membership in the package CommonSingle object; the source object itself is based on common single-nucleotide variants",
       "minfi_equivalent": "dropLociWithSnps(snps=c('CpG','SBE'), maf=0) using the selected pinned CommonSingle annotation"
@@ -74,6 +93,19 @@
     "promotion_rule": "primary and masked tracks must both be reported; no claim may be promoted solely because one track is favorable"
   },
   "c1a_source_gate": {
+    "status": "SOURCE_GATE_PASS_LOCAL_EXACT_PROBE_INTERSECTION_PENDING",
+    "source_gate_run": 33318029738,
+    "source_gate_commit": "f334b656df0fb9740cd320783dbd24e6f65fdd32",
+    "annotation_export_rows": 485512,
+    "annotation_export_unique_probe_ids": 485512,
+    "annotation_export_sha256": "a7f83233f97c3933752d74b8042e967de88df20eba2cf477a536136631a8da17",
+    "annotation_export_refgene_mapped_rows": 365860,
+    "annotation_export_common_snp_cpg_rows": 16592,
+    "annotation_export_common_snp_sbe_rows": 7769,
+    "annotation_export_common_snp_cpg_or_sbe_rows": 17120,
+    "cross_reactive_export_unique_probe_ids": 29233,
+    "cross_reactive_export_sha256": "078e95716af2b20c3515f59d09310d20c43deb5ed8ba8d1b70885810acde2179",
+    "object_inventory_sha256": "838aee6a51effd979280bfde4bc9aa57c4f629d901aef2b1c0c2700d3166664c",
     "allowed": [
       "download and hash the frozen annotation package and cross-reactive list",
       "export annotation fields and the selected CommonSingle SNP fields to a portable probe table",

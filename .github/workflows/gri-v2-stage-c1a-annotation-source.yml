@@ -9,6 +9,7 @@ on:
       - '.github/workflows/gri-v2-stage-c1a-annotation-source.yml'
       - 'GRI_v2/config/stage_c1_annotation_feature_plan.json'
       - 'GRI_v2/docs/STAGE_C1A_ANNOTATION_PREREGISTRATION_20260830.md'
+      - 'GRI_v2/docs/STAGE_C1A_ANNOTATION_SOURCE_AUDIT_20260830.md'
       - 'GRI_v2/src/fetch_stage_c1a_sources.py'
       - 'GRI_v2/src/export_stage_c1a_annotation.R'
       - 'GRI_v2/src/summarize_stage_c1a_sources.py'
@@ -17,6 +18,7 @@ on:
       - 'GRI_v2/tests/test_stage_c1_annotation_contract.py'
       - 'GRI_v2/tests/test_stage_c1a_probe_inventory_contract.py'
       - 'GRI_v2/tests/test_stage_c1a_source_gate_mechanics.py'
+      - 'GRI_v2/tests/test_stage_c1a_handoff_mechanics.py'
       - 'GRI_v2/RUN_STAGE_C1A_PROBE_INVENTORY_WINDOWS.bat'
 
 permissions:
@@ -70,15 +72,15 @@ jobs:
       - name: Audit portable annotation artifact
         run: |
           python src/summarize_stage_c1a_sources.py --outdir stage_c1a_source_gate
-          sha256sum \
-            stage_c1a_source_gate/STAGE_C1A_SOURCE_ACQUISITION.json \
-            stage_c1a_source_gate/STAGE_C1A_ANNOTATION_SOURCE_SUMMARY.json \
-            stage_c1a_source_gate/stage_c1a_annotation_export.tsv.gz \
-            stage_c1a_source_gate/stage_c1a_chen_crossreactive_probe_ids.txt \
-            stage_c1a_source_gate/stage_c1a_annotation_object_inventory.txt \
-            stage_c1a_source_gate/IlluminaHumanMethylation450kanno.ilmn12.hg19_0.6.0.tar.gz \
-            stage_c1a_source_gate/48639-non-specific-probes-Illumina450k.csv \
-            > stage_c1a_source_gate/SHA256SUMS.txt
+          (cd stage_c1a_source_gate && sha256sum \
+            STAGE_C1A_SOURCE_ACQUISITION.json \
+            STAGE_C1A_ANNOTATION_SOURCE_SUMMARY.json \
+            stage_c1a_annotation_export.tsv.gz \
+            stage_c1a_chen_crossreactive_probe_ids.txt \
+            stage_c1a_annotation_object_inventory.txt \
+            IlluminaHumanMethylation450kanno.ilmn12.hg19_0.6.0.tar.gz \
+            48639-non-specific-probes-Illumina450k.csv \
+            > SHA256SUMS.txt)
 
       - name: Build Windows local exact-probe inventory handoff
         run: |
@@ -98,8 +100,9 @@ jobs:
           Reuse the already-audited local PanCanAtlas TSV from Stage C0.
 
           Double-click RUN_STAGE_C1A_PROBE_INVENTORY_WINDOWS.bat.
-          The compact annotation export, Chen cross-reactive ID list, and frozen
-          source summary are bundled in this folder.
+          You will be asked to select only the existing 5.02 GB methylation TSV.
+          The frozen annotation export, Chen cross-reactive ID list, and source
+          summary are bundled and selected automatically by the runner.
 
           The gate streams the TSV to verify SHA-256 and recover probe IDs only.
           It never parses methylation beta values for biological analysis.

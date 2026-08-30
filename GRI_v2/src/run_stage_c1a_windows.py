@@ -21,24 +21,21 @@ def pick(title: str, patterns: list[tuple[str, str]]) -> str:
     return path
 
 
+def require_bundled(path: Path) -> str:
+    if not path.is_file():
+        raise SystemExit(f"BUNDLED C1A FILE MISSING: {path}")
+    return str(path)
+
+
 def main() -> None:
     here = Path(__file__).resolve().parents[1]
     methylation = pick(
         "Select the already-audited 5.02 GB PanCanAtlas methylation TSV",
         [("TSV files", "*.tsv"), ("All files", "*.*")],
     )
-    annotation = pick(
-        "Select stage_c1a_annotation_export.tsv.gz from the C1A source artifact",
-        [("Gzip TSV", "*.gz"), ("All files", "*.*")],
-    )
-    chen = pick(
-        "Select stage_c1a_chen_crossreactive_probe_ids.txt",
-        [("Text files", "*.txt"), ("All files", "*.*")],
-    )
-    summary = pick(
-        "Select STAGE_C1A_ANNOTATION_SOURCE_SUMMARY.json",
-        [("JSON files", "*.json"), ("All files", "*.*")],
-    )
+    annotation = require_bundled(here / "stage_c1a_annotation_export.tsv.gz")
+    chen = require_bundled(here / "stage_c1a_chen_crossreactive_probe_ids.txt")
+    summary = require_bundled(here / "STAGE_C1A_ANNOTATION_SOURCE_SUMMARY.json")
     outdir = here / "stage_c1a_probe_inventory_outputs"
     cmd = [
         sys.executable,
@@ -56,6 +53,7 @@ def main() -> None:
         str(outdir),
     ]
     print("Running frozen Stage C1A exact-probe inventory.")
+    print("Bundled frozen annotation and technical-mask sources verified locally before use.")
     print("The 5.02 GB TSV is streamed for SHA-256 and probe IDs only; beta values are not parsed.")
     proc = subprocess.run(cmd, cwd=here)
     if proc.returncode != 0:

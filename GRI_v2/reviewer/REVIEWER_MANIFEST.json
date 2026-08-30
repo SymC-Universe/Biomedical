@@ -1,15 +1,17 @@
 {
-  "schema": "gri-v2-reviewer-manifest-v0.6",
+  "schema": "gri-v2-reviewer-manifest-v0.7",
   "program": "GRI v2 / Cancer Stability Atlas",
   "repository": "SymC-Universe/Biomedical",
   "active_branch": "gri-v2",
   "program_status": "DEVELOPMENT_NOT_VALIDATED_CLINICAL_TOOL",
   "current_gate": {
-    "stage": "METHYLATION_ANNOTATION_FEATURE_FREEZE",
-    "status": "AWAITING_PROSPECTIVE_SCIENTIFIC_FREEZE",
+    "stage": "STAGE_C1A_EXACT_PROBE_ANNOTATION_INTERSECTION",
+    "status": "FROZEN_READY_FOR_LOCAL_PROBE_ID_EXECUTION",
     "stage_c0_source_gate_complete": true,
     "stage_c0_1_sample_identity_complete": true,
-    "methylation_biological_association_started": false,
+    "stage_c1a_annotation_contract_frozen": true,
+    "stage_c1a_external_source_gate_complete": true,
+    "stage_c1_beta_value_biological_association_started": false,
     "canonical_status_file": "GRI_v2/notes/BUILD_STATUS.md"
   },
   "scientific_guardrails": {
@@ -21,7 +23,10 @@
     "static_stage_b2_establishes_substrate_inheritance": false,
     "stage_c0_establishes_substrate_inheritance": false,
     "stage_c0_1_establishes_methylation_biology": false,
+    "stage_c1a_establishes_methylation_biology": false,
     "annotation_selected_from_favorable_association": false,
+    "technical_mask_selected_from_favorable_association": false,
+    "primary_and_robustness_tracks_both_required": true,
     "modal_scalar_conglomeration_are_complementary": true
   },
   "stage_c0": {
@@ -40,27 +45,47 @@
   "stage_c0_1": {
     "status": "CLOSED_PASS",
     "audit": "GRI_v2/docs/STAGE_C0_1_SAMPLE_IDENTITY_AUDIT_20260830.md",
-    "preregistration": "GRI_v2/docs/STAGE_C0_1_SAMPLE_IDENTITY_PREREGISTRATION_20260830.md",
     "config": "GRI_v2/config/stage_c0_1_sample_identity_plan.json",
-    "implementation": "GRI_v2/src/run_stage_c0_1_sample_identity.py",
-    "test": "GRI_v2/tests/test_stage_c0_1_sample_identity.py",
     "compact_output_dir": "GRI_v2/development_outputs/stage_c0_1_sample_identity",
-    "duplicate_primary_sample_roots": 41,
-    "duplicate_root_stage_a_samples_excluded": 34,
-    "no_source_match_stage_a_samples": 52,
-    "exact_unique_root_matches": 9459,
-    "unique_patient_fallback_matches": 1,
     "one_to_one_matched_stage_a_samples": 9460,
     "stage_a_samples": 9546,
     "cancers_passing_n30": 32,
     "duplicate_root_rule": "EXCLUDE_FROM_PRIMARY_C1",
     "beta_rows_read_for_biological_analysis": false,
-    "biological_association_performed": false,
-    "summary_sha256": "82d885ea8b1674f18bfda8317398b1f1658c383a351d626f4a793e303edb18a4",
-    "coverage_sha256": "1fd625b7d575995185bc6d6e9f8dfebdc82abbb89afe553dae121c2ce40e3fc3",
-    "duplicate_roots_sha256": "c8a3c0e08a8da5d5364e6b954e4e305406c6dcfcaa9e4038e52215625b4c9c9e",
-    "package_ci_run": 33314518877,
-    "handoff_sha256": "9d08b94c4452295522a851501acf7fd341f09b4fd79faca7f180f968f1bce423"
+    "biological_association_performed": false
+  },
+  "stage_c1a": {
+    "status": "FROZEN_EXTERNAL_SOURCE_GATE_PASS_LOCAL_EXACT_PROBE_GATE_ACTIVE",
+    "preregistration": "GRI_v2/docs/STAGE_C1A_ANNOTATION_PREREGISTRATION_20260830.md",
+    "config": "GRI_v2/config/stage_c1_annotation_feature_plan.json",
+    "source_audit": "GRI_v2/docs/STAGE_C1A_ANNOTATION_SOURCE_AUDIT_20260830.md",
+    "approved_before_beta_association": true,
+    "primary_annotation": {
+      "package": "IlluminaHumanMethylation450kanno.ilmn12.hg19",
+      "bioconductor_release": "3.8",
+      "version": "0.6.0",
+      "lineage": "Illumina HM450 v1.2 / hg19",
+      "sha256": "249b8fd62add3c95b5047b597cff0868d26a98862a47cebd656edcd175a73b15"
+    },
+    "cross_reactive_source": {
+      "reference": "Chen et al. 2013",
+      "commit": "eac47812dce5d4d1340caeafb92d80dd4d8273a5",
+      "git_blob_sha1": "f5bff6dee26f8d05ccd2d0bcfaf8ff1c0afb6e11",
+      "sha256": "4e962d36821f6f6fcd8b81cc0558090c028e54fbdb2c039a5712f9b471d9d89e"
+    },
+    "selected_common_snp_object": "SNPs.147CommonSingle",
+    "portable_annotation_rows": 485512,
+    "portable_annotation_unique_probe_ids": 485512,
+    "portable_annotation_sha256": "a7f83233f97c3933752d74b8042e967de88df20eba2cf477a536136631a8da17",
+    "cross_reactive_export_unique_probe_ids": 29233,
+    "cross_reactive_export_sha256": "078e95716af2b20c3515f59d09310d20c43deb5ed8ba8d1b70885810acde2179",
+    "source_gate_run": 33318029738,
+    "source_gate_commit": "f334b656df0fb9740cd320783dbd24e6f65fdd32",
+    "local_inventory_implementation": "GRI_v2/src/run_stage_c1a_probe_inventory.py",
+    "windows_driver": "GRI_v2/src/run_stage_c1a_windows.py",
+    "launcher": "GRI_v2/RUN_STAGE_C1A_PROBE_INVENTORY_WINDOWS.bat",
+    "local_gate_reads_beta_values_for_biological_analysis": false,
+    "claim_ceiling": "annotation/source/probe identity and technical-mask inventory only"
   },
   "closed_major_stages": [
     "HISTORICAL_SCALAR_CLOSED_NOT_PROMOTED",
@@ -74,9 +99,10 @@
     "C0_METHYLATION_SOURCE_GATE",
     "C0_1_SAMPLE_IDENTITY_GATE"
   ],
-  "prospective_stages": [
-    "METHYLATION_ANNOTATION_FEATURE_FREEZE",
-    "C1_METHYLATION_MODAL_SCALAR_CONGLOMERATION",
+  "active_or_prospective_stages": [
+    "C1A_EXACT_PROBE_ANNOTATION_INTERSECTION",
+    "C1_MODAL_SCALAR_CONGLOMERATION_FORMULA_FREEZE",
+    "C1_METHYLATION_BIOLOGICAL_TEST",
     "ORDERED_TEMPORAL_SUBSTRATE_TEST",
     "DYNAMIC_BIOLOGICAL_CHI"
   ],

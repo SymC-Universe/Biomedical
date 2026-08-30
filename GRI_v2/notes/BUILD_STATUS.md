@@ -6,7 +6,7 @@ Status date: 2026-08-30
 
 The Cancer Stability Atlas / substrate-architecture program remains a development program, not a validated clinical tool. `CV/2` remains historical only. No biological chi coordinate has been admitted, and `chi = 1` is not presumed to be a cancer optimum, healthy state, therapeutic target, or organization maximum.
 
-Stages A, A1.1, B1, B2 RPPA, B2 genomic, B2 static integration, Stage C0 methylation source identity, and Stage C0.1 one-to-one methylation sample identity are closed. **The next active gate is the prospective methylation annotation / feature-reduction specification.** No methylation biological association has been calculated.
+Stages A, A1.1, B1, B2 RPPA, B2 genomic, B2 static integration, Stage C0 methylation source identity, and Stage C0.1 one-to-one methylation sample identity are closed. **The Stage C1A annotation specification is now prospectively frozen, and its external source gate has passed. The active operation is the exact 22,601-probe local annotation/mask intersection.** No methylation beta-value biological association has been calculated.
 
 ## Stage C0 closure
 
@@ -22,7 +22,7 @@ The exact frozen PanCanAtlas merged HM27/HM450 source passed cryptographic ident
 - 9,494 / 9,546 Stage A tumors have source presence;
 - all 32 / 32 cancers pass n>=30.
 
-C0 also exposed 41 primary sample roots represented by more than one methylation source column. Because the frozen C0 plan required stopping on unexpected schema, those duplicates were resolved prospectively in C0.1 rather than silently collapsed.
+C0 exposed 41 primary sample roots represented by more than one methylation source column. Those duplicates were resolved prospectively in C0.1 rather than silently collapsed.
 
 ## Stage C0.1 closure
 
@@ -42,50 +42,107 @@ C0.1 result:
 - beta-value rows read for biological analysis: false;
 - biological association performed: false.
 
-Canonical compact outputs:
+## Stage C1A frozen annotation architecture
 
-- `development_outputs/stage_c0_1_sample_identity/STAGE_C0_1_SAMPLE_IDENTITY_SUMMARY.json`
-  - SHA-256 `82d885ea8b1674f18bfda8317398b1f1658c383a351d626f4a793e303edb18a4`
-- `development_outputs/stage_c0_1_sample_identity/stage_c0_1_unique_match_coverage.csv`
-  - SHA-256 `1fd625b7d575995185bc6d6e9f8dfebdc82abbb89afe553dae121c2ce40e3fc3`
-- `development_outputs/stage_c0_1_sample_identity/stage_c0_1_duplicate_primary_roots.csv`
-  - SHA-256 `c8a3c0e08a8da5d5364e6b954e4e305406c6dcfcaa9e4038e52215625b4c9c9e`
+Explicit approval was given before any C1 beta-value association. The frozen machine-readable contract is:
 
-C0.1 handoff provenance:
+`config/stage_c1_annotation_feature_plan.json`
 
-- GitHub Actions run `33314518877`;
-- package commit `35ca555d073142b7accd705b0fdc67051dd251a7`;
-- handoff SHA-256 `9d08b94c4452295522a851501acf7fd341f09b4fd79faca7f180f968f1bce423`.
+Formal preregistration:
 
-## Active scientific gate: methylation annotation / feature-reduction freeze
+`docs/STAGE_C1A_ANNOTATION_PREREGISTRATION_20260830.md`
 
-No cross-assay methylation result may be calculated yet.
+The approved architecture freezes:
 
-Before Stage C1 starts, the program must prospectively freeze:
+1. Illumina HumanMethylation450 v1.2 / `ilmn12.hg19` as the primary annotation lineage;
+2. Bioconductor release 3.8 package `IlluminaHumanMethylation450kanno.ilmn12.hg19` version 0.6.0 as the exact annotation source;
+3. positional preservation of all supported probe-gene-accession-region tuples rather than first-gene selection;
+4. distinct `TSS200`, `TSS1500`, `5'UTR/1stExon`, `Body`, and `3'UTR` regulatory strata, plus a secondary broad-promoter union;
+5. unmapped probes retained in modal probe space but excluded from invented gene/Hallmark assignment;
+6. the exact 22,601 PanCanAtlas probes retained as the publication-faithful primary track;
+7. a mandatory robustness mask formed from the union of a pinned Chen et al. cross-reactive list and the frozen annotation package's deterministic common-SNP layer;
+8. modal + scalar + conglomeration as complementary views, with no biological chi or master stability score admitted.
 
-1. exact methylation annotation source and immutable version/hash;
-2. genome build;
-3. probe-to-gene / transcript resolution;
-4. multi-gene and multi-transcript handling;
-5. promoter / regulatory-region definitions;
-6. gene-body and non-promoter handling;
-7. unmapped-probe handling;
-8. whether modal analysis operates in all-probe space, regulatory strata, or both;
-9. any scalar compression and its construction nulls, without calling it chi;
-10. conglomeration/module representation across the already closed static layers;
-11. missingness and per-cancer eligibility rules;
-12. all nulls and promotion criteria before inspecting methylation-RNA/RPPA/genomic relationships.
+## Stage C1A external source-gate result
 
-The required conceptual architecture remains complementary:
+Canonical audit:
 
-- **modal**: mode-resolved/eigenspectrum and participation structure;
-- **scalar**: compressed coordinates only where separately licensed;
-- **conglomeration**: module-to-module and whole-system organization across independently measured layers.
+`docs/STAGE_C1A_ANNOTATION_SOURCE_AUDIT_20260830.md`
 
-The scalar view may not replace modal or conglomeration structure. None of these static methylation quantities is biological chi. Static cross-assay association cannot establish substrate inheritance; ordered or temporal evidence remains required.
+Successful repaired source-gate run: `33318029738`
+
+Source-gate commit: `f334b656df0fb9740cd320783dbd24e6f65fdd32`
+
+Primary annotation source:
+
+- resolved Bioconductor 3.8 URL exactly matched the frozen source;
+- size `57,839,020` bytes;
+- MD5 `2f569646ca8adc49863224b1cd076a79`;
+- SHA-256 `249b8fd62add3c95b5047b597cff0868d26a98862a47cebd656edcd175a73b15`;
+- package/version validated directly from the tarball `DESCRIPTION`;
+- extraction mode: direct frozen tarball `DataFrame` objects, no historical package installation.
+
+The deterministic common-SNP rule selected `SNPs.147CommonSingle`, the numerically highest available `CommonSingle` object in the frozen package.
+
+Portable annotation export:
+
+- 485,512 rows;
+- 485,512 unique probe IDs;
+- 0 duplicate probe IDs;
+- 365,860 RefGene-mapped rows;
+- 17,120 rows with a common SNP at CpG or SBE;
+- SHA-256 `a7f83233f97c3933752d74b8042e967de88df20eba2cf477a536136631a8da17`.
+
+Pinned Chen cross-reactive source:
+
+- exact Git blob SHA-1 `f5bff6dee26f8d05ccd2d0bcfaf8ff1c0afb6e11`;
+- size `569,533` bytes;
+- MD5 `f2f8a7e69f53eb44ea9ecc7842cdc845`;
+- SHA-256 `4e962d36821f6f6fcd8b81cc0558090c028e54fbdb2c039a5712f9b471d9d89e`;
+- compact export: 29,233 unique TargetIDs;
+- compact export SHA-256 `078e95716af2b20c3515f59d09310d20c43deb5ed8ba8d1b70885810acde2179`.
+
+The original C1A source workflow encountered a mechanical current-R dependency cycle before frozen source use. The repaired implementation extracts only the required frozen `DataFrame` objects directly from the exact 0.6.0 tarball with a minimal `S4Vectors` runtime. Scientific settings and source bytes were unchanged. The repaired general CI and source-gate workflow passed.
+
+## Active gate: exact 22,601-probe local intersection
+
+The exact PanCanAtlas 22,601 probe IDs exist in the already-audited local 5.02 GB source. Re-downloading that matrix solely to recover row IDs is unnecessary.
+
+The final C1A local gate therefore:
+
+- reuses the existing source;
+- verifies its complete SHA-256 while streaming;
+- reads only the first tab-delimited field from each data row as the probe ID;
+- never parses beta values for biological analysis;
+- requires exactly 22,601 unique source probe IDs;
+- requires exact overlap with the frozen annotation export;
+- reports RefGene mapped/unmapped counts, positional tuple mismatches, regulatory strata, Chen overlap, common-SNP overlap, mask union, and robustness remaining-probe count.
+
+C1 biological beta-value analysis remains blocked until this exact-probe inventory passes and is audited.
+
+## What follows the local C1A gate
+
+If the 22,601-probe gate passes, the next operation is still **not** immediate biological analysis. First the exact C1 analysis specification must be frozen prospectively, including:
+
+- modal representation and normalization;
+- scalar compression formulas and construction behavior without calling them chi;
+- conglomeration representation using the frozen probe-gene-region mapping;
+- missingness and eligibility rules;
+- fixed-n resampling if retained;
+- deterministic seeds;
+- construction nulls;
+- cross-assay alignment nulls;
+- promotion criteria.
+
+Only after those rules are frozen and regression-tested may methylation beta values be used in C1 biological relationship testing.
 
 ## Exact user action
 
-No local computation is currently required. The next user decision is scientific rather than mechanical: approve or revise the proposed annotation/regulatory mapping specification after it is presented. Until that freeze is explicit, Stage C1 remains blocked by design.
+The active user action is to run the tested Stage C1A exact-probe inventory handoff once the final packaging verification is complete. It requires selecting only the already-audited local 5.02 GB methylation TSV; all compact frozen annotation inputs are bundled and selected automatically.
 
-Keep the 5.02 GB methylation source and existing B2 task caches local and unchanged.
+At completion return only:
+
+- `stage_c1a_probe_inventory_outputs/STAGE_C1A_PROBE_INVENTORY_SUMMARY.json`
+- `stage_c1a_probe_inventory_outputs/stage_c1a_regulatory_stratum_counts.csv`
+
+Keep the generated `.csv.gz` mapping and flags files local for Stage C1. Keep the 5.02 GB methylation source and existing B2 task caches unchanged.
