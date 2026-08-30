@@ -1,14 +1,14 @@
 # GRI v2 / Cancer Stability Atlas
 
 **Status:** DEVELOPMENT PROGRAM, NOT A VALIDATED CANCER TOOL  
-**Active phase:** Stage B2 static integration closure  
+**Active phase:** Prospective substrate-extension design  
 **Status date:** 2026-08-30
 
 > **Reviewer navigation:** start at `reviewer/README.md`. The moving `gri-v2` branch is a development branch, not an immutable submission record. Manuscript/data submissions should point reviewers to an exact tagged/released snapshot following `reviewer/SUBMISSION_RELEASE_CHECKLIST.md`.
 
 ## Objective
 
-The active objective is to build the most predictive, falsifiable cancer-stability tool supported by the data and by the updated Chemistry and Stability Arc methodology.
+The active objective is to build the most predictive, falsifiable cancer-stability and substrate-architecture tool supported by the data and by the updated Chemistry and Stability Arc methodology.
 
 The historical GRI manuscript is provenance, not the target model. The new tool is not required to reproduce its variables, mechanisms, gene rankings, or conclusions. A historical component survives only if it earns retention under the current evidence rules.
 
@@ -34,7 +34,7 @@ The historical GRI manuscript is provenance, not the target model. The new tool 
 - Model selection is driven by predictive performance, calibration, robustness, ablation, appropriate baselines, and external validation.
 - Failed and null branches are retained.
 - Manuscript reconstruction is downstream of a validated tool architecture and does not steer feature selection.
-- Modal structure, scalar coordinates, and conglomeration/system organization are complementary views. A scalar may compress an empirically licensed structure but may not replace the modal carrier or the integrated system architecture by assumption.
+- Modal structure, scalar coordinates, and conglomeration/system organization are complementary views. A scalar may compress an empirically licensed structure but may not replace the modal carrier or integrated system architecture by assumption.
 
 ## Completed development layers
 
@@ -130,39 +130,46 @@ The genomic branch therefore earns retention as a weak distributed static decomp
 
 See `docs/STAGE_B2_GENOMIC_AUDIT_20260830.md`.
 
-## Current phase: Stage B2 static integration closure
+### Stage B2 static multiomic integration
 
-Stage B2 computation is complete. The active task is to integrate the completed layers without collapsing them into one scalar:
+The closed component results have now been integrated without fitting a master score.
 
-- Stage A RNA map: `V`, `L`, `C_in`, `C_out`;
-- Stage B1 purity/leukocyte context decomposition;
-- Stage B2 five-coordinate genomic decomposition;
-- Stage B2 RPPA/protein cross-assay coupling;
-- genome-wide methylation as a separately gated extension.
+The supported static architecture contains:
 
-The combined result is presently architectural: multiple static measurement layers are partially related but retain distinct information and distinct construction nulls. Their effect scales are not directly interchangeable.
+- RNA variability/lineage and Hallmark organization;
+- composition/context decomposition;
+- separate genomic burden/decomposition axes;
+- orthogonal protein/phosphoprotein coupling;
+- genome-wide methylation only as a separately prospectively gated extension.
 
-The next analysis architecture will explicitly preserve:
+The current cross-layer conclusion is architectural rather than scalar: the Hallmark RNA organization is only partly explained by measured composition and the admitted genomic burden coordinates while carrying detectable patient-aligned information into an independently measured protein/phosphoprotein layer.
 
-1. **modal structure**: the mode-resolved/eigenstructure underlying organization;
+This remains cross-sectional and non-causal. It does not establish substrate inheritance.
+
+See `docs/STAGE_B2_STATIC_INTEGRATION_CLOSURE_20260830.md`.
+
+## Current phase: prospective substrate-extension design
+
+The next investigation must be specified before new association, predictive, or dynamic endpoints are inspected.
+
+The next architecture will explicitly preserve:
+
+1. **modal structure**: mode-resolved/eigenstructure and participation information;
 2. **scalar coordinates**: compressed summaries only where empirically licensed;
 3. **conglomeration**: module-to-module and whole-system organization across measurement layers.
 
 These three views are complementary rather than competing definitions of the state.
 
-## Deferred methylation layer
-
-The merged 27K/450K PanCanAtlas DNA-methylation matrix is approximately 5.02 GB. The 450K-only robustness matrix is approximately 41.54 GB.
-
-Neither is casually acquired. Genome-wide methylation remains behind an independent feature-reduction/platform-harmonization gate. Its admission or deferral is not determined by whether the genomic or RPPA results look favorable.
+Genome-wide methylation remains deferred rather than rejected. The merged PanCanAtlas 27K/450K source is approximately 5.02 GB and uses a preprocessed common-probe representation. A separate prospective feature-reduction/platform-handling specification must be frozen before that source is acquired for association testing.
 
 ## What comes next
 
-1. freeze the integrated static-architecture closure for Stage B2;
-2. explicitly close or prospectively admit the genome-wide methylation extension under its independent gate;
-3. freeze the next modal + scalar + conglomeration analysis architecture before testing any new endpoint;
-4. advance to genuine ordered perturbation/time-course benchmarking against established dynamic and predictive baselines;
-5. test a biological chi coordinate only if same-coordinate relaxation and intrinsic-response rates satisfy the admission rules.
+1. freeze the methylation extension specification or explicitly close the extension without inspecting methylation associations;
+2. freeze the next modal + scalar + conglomeration protocol before testing any new endpoint;
+3. build and test the corresponding execution machinery and construction nulls;
+4. only then acquire/run the next required dataset;
+5. advance to genuine ordered perturbation/time-course benchmarking against established dynamic and predictive baselines;
+6. test biological chi only if same-coordinate relaxation and intrinsic-response rates satisfy the admission rules.
 
 ## Where to look
 
@@ -180,6 +187,7 @@ Neither is casually acquired. Genome-wide methylation remains behind an independ
 - `docs/STAGE_B2_PREREGISTRATION_20260829.md` - B2 frozen integration design
 - `docs/STAGE_B2_RPPA_AUDIT_20260829.md` - completed RPPA audit
 - `docs/STAGE_B2_GENOMIC_AUDIT_20260830.md` - completed genomic audit
+- `docs/STAGE_B2_STATIC_INTEGRATION_CLOSURE_20260830.md` - closed B2 multiomic architecture
 - `artifacts/MILESTONE_ARTIFACTS.md` - artifact hashes and provenance
 
 ## Repository role
