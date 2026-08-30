@@ -2,7 +2,7 @@
 
 **Repository state:** active development, not a validated clinical tool  
 **Active branch:** `gri-v2`  
-**Current scientific gate:** Stage B2 static integration closure; genomic and RPPA computations are complete and audited
+**Current scientific gate:** prospective substrate-extension design; Stage B2 static computation and integration are closed
 
 This directory is the reviewer-facing navigation layer for the GRI v2 / Cancer Stability Atlas program. It does not replace the scientific source files. It points to the exact configs, code, audits, outputs, and provenance records that support each stage.
 
@@ -39,8 +39,9 @@ Canonical live status:
 | Stage B2 preregistration | Frozen before target association results | Genomic/protein coordinate rules, nulls, and integration rules | `../docs/STAGE_B2_PREREGISTRATION_20260829.md` |
 | Stage B2 RPPA | Closed | Orthogonal static RNA/protein coupling layer under a block-permutation construction null | `../docs/STAGE_B2_RPPA_AUDIT_20260829.md` |
 | Stage B2 genomic | Closed | Five separate genomic coordinates produce small distributed static decomposition effects while preserving Hallmark topology, including beyond B1 composition | `../docs/STAGE_B2_GENOMIC_AUDIT_20260830.md` |
-| Stage B2 static integration | Active closure step | Integrates RNA, composition, genomic, and protein layers without a master score | `../README.md` and `../notes/BUILD_STATUS.md` |
-| Genome-wide methylation extension | Deferred behind independent gate | No result claim yet | current status in `../README.md` and `../notes/BUILD_STATUS.md` |
+| Stage B2 static integration | Closed | Integrates RNA, composition, genomic, and protein evidence as a layered static architecture without a master score | `../docs/STAGE_B2_STATIC_INTEGRATION_CLOSURE_20260830.md` |
+| Genome-wide methylation extension | Prospective gate, no result | Reserved exact source; feature/platform/null specification must precede association testing | `../notes/BUILD_STATUS.md` |
+| Modal + scalar + conglomeration | Prospective design | Next protocol must preserve mode-resolved, scalar, and whole-system views together | `../docs/STAGE_B2_STATIC_INTEGRATION_CLOSURE_20260830.md` |
 | Dynamic biological chi | Not admitted | Requires genuine same-coordinate dynamic rates and admission tests | `../docs/CHI_ADMISSION_RULES.md` |
 
 ## Three reviewer routes
@@ -54,7 +55,7 @@ Read in this order:
 3. `../docs/EPISTEMIC_CONSTITUTION.md`
 4. `CLAIM_EVIDENCE_MAP.md`
 
-This route answers what is being claimed, what is explicitly not being claimed, and which stages are closed versus pending.
+This route answers what is being claimed, what is explicitly not being claimed, and which stages are closed versus prospective.
 
 ### 2. Result audit, approximately 30 minutes
 
@@ -66,7 +67,9 @@ For any stage cited in a manuscript:
 4. verify larger external artifacts and hashes in `../artifacts/MILESTONE_ARTIFACTS.md`;
 5. inspect the stage implementation under `../src/` and its contract/regression tests under `../tests/`.
 
-For the completed genomic branch, start with `../docs/STAGE_B2_GENOMIC_AUDIT_20260830.md`. The compact canonical summary is at `../development_outputs/stage_b2_genomic/STAGE_B2_GENOMIC_SUMMARY.json`; the full completion package and the per-task cache policy are registered in `../artifacts/MILESTONE_ARTIFACTS.md`.
+For the completed genomic branch, start with `../docs/STAGE_B2_GENOMIC_AUDIT_20260830.md`. The compact canonical summary is at `../development_outputs/stage_b2_genomic/STAGE_B2_GENOMIC_SUMMARY.json`; the full completion package and per-task cache policy are registered in `../artifacts/MILESTONE_ARTIFACTS.md`.
+
+For the cross-layer interpretation, read `../docs/STAGE_B2_STATIC_INTEGRATION_CLOSURE_20260830.md` after the component audits rather than in place of them.
 
 ### 3. Reproduction / forensic review
 
@@ -115,4 +118,4 @@ See `SUBMISSION_RELEASE_CHECKLIST.md`.
 
 ## Current boundary
 
-Stage B2 computation is complete, but this is still a development program. The next architecture must be frozen before new predictive or dynamic endpoints are examined. In particular, no static multiomic pattern in Stage B2 is promoted to damping, criticality, an optimum, treatment response, or biological chi.
+Stage B2 static computation and integration are complete, but this remains a development program. The next methylation and modal/scalar/conglomeration specifications must be frozen before new association, predictive, or dynamic endpoints are inspected. No static multiomic pattern is promoted to damping, criticality, an optimum, treatment response, substrate inheritance, or biological chi.
