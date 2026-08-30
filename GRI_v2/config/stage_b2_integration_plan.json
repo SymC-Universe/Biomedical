@@ -1,0 +1,156 @@
+{
+  "version": "0.2-pre-b2-association",
+  "status": "frozen_after_b2_source_coverage_audit_before_any_stage_a_b1_b2_association_result",
+  "purpose": "Test whether pre-reserved genomic and protein measurements explain or extend the Stage A static RNA map without redefining Stage A metrics or selecting favorable variables from observed agreement.",
+  "claim_ceiling": "orthogonal static multiomic integration only; no causality, dynamics, damping, transition, phase, optimum, treatment-state, or chi claim",
+  "inputs": {
+    "stage_a_profile_cache_sha256": "e65f6788aa6037fef407169794f29d63322de2769343bb6e594fe469dfeb8e63",
+    "hallmark_membership_sha256": "bc6a9a33d7421dc407d33a66859760ba25e47b2f398e1a43c9156f80c71b3900",
+    "stage_b1_context_matched_sha256": "fe9221bdf7bfe94f3a53bbd9f01154142365e4328231d0c84f14406c432451dd",
+    "stage_a_module_eigengenes_sha256": "c305246d83732931060ff60049b67ce38751101e15b21798b973fcae8bb94433",
+    "absolute_scores_sha256": "4e115fd7408a06b002f34678fa46df0b05aa20ac71db57acf535238f37aa64c8",
+    "seg_based_scores_sha256": "4b63eefb164866a3c49c50c04ee423d3ad1c25540f7cf39e08d997b454a189d0",
+    "rppa_sha256": "06246573836865589134bd9424189f81b0d9fb436fcbf5e72024225442c400de"
+  },
+  "matching": {
+    "stage_a_universe": "9,546 unique-patient primary samples from the frozen Stage A cache",
+    "primary_key": "TCGA sample root through vial, e.g. TCGA-XX-YYYY-01A",
+    "fallback": "patient-level match only when the external source contains exactly one eligible primary measurement for that patient",
+    "sample_type": "01 primary tumor only",
+    "no_metastatic_or_recurrent_substitution": true,
+    "minimum_cancer_n": 30
+  },
+  "genomic_coordinates": [
+    {
+      "id": "ANEUPLOIDY_AS",
+      "source_file": "ABSOLUTE_scores.tsv",
+      "source_column": "AS",
+      "meaning": "total number of chromosome arms with arm-level copy-number gains or losses",
+      "type": "count",
+      "primary": true
+    },
+    {
+      "id": "LOH_SEGMENT_COUNT",
+      "source_file": "ABSOLUTE_scores.tsv",
+      "source_column": "LOH_n_seg",
+      "meaning": "number of genomic segments with loss of heterozygosity",
+      "type": "count",
+      "primary": true
+    },
+    {
+      "id": "LOH_GENOME_FRACTION",
+      "source_file": "ABSOLUTE_scores.tsv",
+      "source_column": "LOH_frac_altered",
+      "meaning": "fraction of the genome containing loss-of-heterozygosity events",
+      "type": "fraction",
+      "primary": true
+    },
+    {
+      "id": "SCNA_SEGMENT_COUNT",
+      "source_file": "seg_based_scores.tsv",
+      "source_column": "n_segs",
+      "meaning": "number of copy-number segments in the sample copy-number profile",
+      "type": "count",
+      "primary": true
+    },
+    {
+      "id": "SCNA_ALTERED_FRACTION",
+      "source_file": "seg_based_scores.tsv",
+      "source_column": "frac_altered",
+      "meaning": "fraction of profiled base pairs lying in segments with absolute log2 copy-number fold-change greater than 0.1 from baseline ploidy",
+      "type": "fraction",
+      "primary": true
+    }
+  ],
+  "genomic_columns_not_primary": {
+    "ASprime": "present in source but not admitted because a sufficiently explicit primary-source definition was not verified before association testing",
+    "n_extrema": "present in source but not admitted because a sufficiently explicit primary-source definition was not verified before association testing"
+  },
+  "genomic_redundancy_rule": {
+    "no_composite": true,
+    "no_variable_selection_from_stage_a_b1_agreement": true,
+    "source_internal_correlations_may_be_reported": true,
+    "primary_analysis": "retain all five documented coordinates separately even when correlated",
+    "count_transform": "no transform for rank diagnostics; OLS residualization uses within-resample centered and scaled values so units do not control leverage",
+    "fraction_transform": "no transform for primary analysis; values remain on their source-defined fraction scale before within-resample centering and scaling"
+  },
+  "genomic_primary_decomposition": {
+    "fixed_n": 30,
+    "resamples_per_cancer_coordinate": 100,
+    "global_seed": 20260829,
+    "sampling": "deterministic without-replacement subsamples within each eligible cancer-coordinate set",
+    "paired_baseline": "baseline, actual adjustment, and construction-null adjustment use the identical 30 patients",
+    "actual_model": "gene expression = intercept + one frozen genomic coordinate + residual",
+    "construction_null": "within each resample permute the genomic coordinate across the same 30 patients before residualization",
+    "network_metrics": [
+      "cin_pairwise_median_abs",
+      "cin_pc1_variance_fraction",
+      "cout_eigengene_median_abs"
+    ],
+    "network_metric_definitions_unchanged": true,
+    "primary_effect": "actual-adjusted network metric minus permuted-null-adjusted network metric, summarized per cancer and Hallmark module",
+    "rank_diagnostic": "Spearman rank agreement of the 50 modules between baseline and genomic-adjusted maps"
+  },
+  "genomic_increment_beyond_b1": {
+    "scope": "secondary prespecified analysis restricted to cancers with at least 30 samples carrying purity, methylation-derived leukocyte fraction, and the genomic coordinate",
+    "composition_baseline": "gene expression residualized on purity plus leukocyte fraction",
+    "full_model": "gene expression residualized on purity plus leukocyte fraction plus one genomic coordinate",
+    "construction_null": "purity and leukocyte values remain fixed while the genomic coordinate alone is permuted across the same 30 patients",
+    "incremental_effect": "full-model network metric minus null-full-model network metric; composition-only map retained as reference",
+    "purpose": "test whether a genomic coordinate contributes static map information beyond the already-audited B1 composition variables"
+  },
+  "rppa": {
+    "source_role": "orthogonal protein/phosphoprotein assay",
+    "source_features_total": 198,
+    "common_panel_rule": "retain source measurement columns with at least 95 percent finite values across all Stage-A-matched primary RPPA samples and nonzero finite variance",
+    "common_panel_frozen_count": 189,
+    "common_panel_note": "the admitted 189 features are complete across the 6,887 matched samples; nine incompletely available columns are excluded from the primary panel",
+    "fixed_n": 30,
+    "resamples_per_cancer": 100,
+    "global_seed": 20260829,
+    "protein_only_coordinates": {
+      "RPPA_PAIRWISE_MEDIAN_ABS": "median absolute pairwise Pearson correlation among the fixed 189-feature panel within an n=30 resample",
+      "RPPA_PC1_VARIANCE_FRACTION": "first principal-component variance fraction after within-resample feature standardization of the fixed 189-feature panel"
+    },
+    "rna_protein_bridge": {
+      "id": "RNA_RPPA_GLOBAL_COUPLING",
+      "definition": "for each Hallmark RNA eigengene, median absolute Pearson correlation across the fixed 189 RPPA features in the same n=30 matched patients",
+      "construction_null": "permute RPPA patient rows as a block relative to RNA eigengenes, preserving the RPPA covariance structure while breaking cross-assay sample alignment",
+      "primary_effect": "actual coupling minus permuted-alignment coupling",
+      "module_specific_protein_pathway_claim_allowed": false,
+      "reason": "the primary bridge uses the complete panel and does not infer pathway-specific protein membership from antibody names"
+    },
+    "composition_sensitivity": {
+      "prespecified": true,
+      "scope": "where at least 30 matched samples also carry purity and leukocyte fraction",
+      "method": "residualize RNA eigengenes and each RPPA feature on purity plus leukocyte fraction within the same resample before recomputing cross-assay coupling",
+      "interpretation": "sensitivity analysis only; neither raw nor adjusted coupling is defined as better"
+    }
+  },
+  "methylation": {
+    "merged_27k_450k_status": "deferred",
+    "merged_27k_450k_size_bytes": 5022150019,
+    "450k_only_status": "deferred_robustness_only",
+    "450k_only_size_bytes": 41541692788,
+    "acquisition_gate": "no genome-wide methylation download until probe-to-feature reduction and platform-harmonization rules are frozen independently of Stage A/B1/B2 association results",
+    "no_result_based_acquisition": true
+  },
+  "interpretation_rules": {
+    "no_optimum_direction": true,
+    "higher_or_lower_genomic_burden_not_defined_as_better_or_worse_by_this_program": true,
+    "higher_rppa_coherence_not_defined_as_better_or_worse": true,
+    "association_does_not_establish_causality": true,
+    "static_multiomic_relationships_do_not_establish_dynamics_or_transition_boundaries": true,
+    "raw_and_context_adjusted_results_are_both_retained": true,
+    "failed_and_null_results_are_retained": true
+  },
+  "constraints": {
+    "chi_allowed": false,
+    "cv2_used": false,
+    "composite_stability_score_allowed": false,
+    "historical_gri_recovery_test": false,
+    "stage_a_metric_redefinition_allowed": false,
+    "source_or_variable_selection_from_stage_a_b1_outcomes_allowed": false,
+    "post_result_threshold_tuning_allowed": false
+  }
+}
