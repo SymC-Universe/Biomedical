@@ -21,7 +21,8 @@ Keep the reproducible project spine here:
 4. epistemic rules and scientific specifications;
 5. compact result summaries and provenance hashes;
 6. current build status and exact next step;
-7. change records when a scientific assumption or test definition changes.
+7. change records when a scientific assumption or test definition changes;
+8. reviewer navigation and immutable submission-snapshot records.
 
 Avoid filling the repository with repeated full ZIP snapshots or multi-gigabyte source data when the same state can be reconstructed from source + config + hashes.
 
@@ -53,6 +54,23 @@ Scientific-rule changes are different: document the change, why it is necessary,
 - current blocker, if any;
 - exact next computational/scientific step;
 - exact user action only when one is genuinely required.
+
+## Reviewer and submission protocol
+
+`reviewer/README.md` is the reviewer-facing entry point for the active GRI v2 program. It should provide a short evidence ladder and direct routes to the scientific definitions, code, tests, compact outputs, audits, and artifact registry.
+
+A moving development branch is never the sole record cited for a submitted manuscript or data release. At submission time:
+
+- create a new immutable tag/release for the exact submitted state;
+- record the exact commit SHA;
+- map manuscript claims to configs, code, tests, outputs, hashes, audits, figures, and tables;
+- preserve a figure/table provenance map;
+- preserve source-data identity and verification information;
+- record the relevant test/CI state;
+- include failed, null, deferred, exploratory, and explicit non-claims relevant to the submission;
+- never move or rewrite an existing submission tag when revising a paper; create a new versioned snapshot instead.
+
+The standing packaging checklist is `reviewer/SUBMISSION_RELEASE_CHECKLIST.md`. The current machine-readable stage/navigation record is `reviewer/REVIEWER_MANIFEST.json`.
 
 ## Data policy
 
