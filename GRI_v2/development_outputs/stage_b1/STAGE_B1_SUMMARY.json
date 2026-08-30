@@ -1,0 +1,24 @@
+{
+  "cancer_model_tasks": 92,
+  "cancer_summary_rows": 92,
+  "chi_present": false,
+  "claim_ceiling": "composition-adjusted static network map only; no causality, dynamics, damping, chi, transition, phase, or optimum claim",
+  "composite_score_present": false,
+  "cv2_used": false,
+  "fixed_n": 30,
+  "minimum_valid_resamples": 100,
+  "models": ["JOINT_INDEPENDENT", "LEUKOCYTE", "PURITY"],
+  "module_summary_rows": 4600,
+  "raw_resample_rows": 460000,
+  "raw_resample_sha256": "86c7659f47d8f0af52ed6f63b0ef604590b5ed79b77cb2098ffe227b96742042",
+  "recovery_status": "SUMMARIZED_FROM_COMPLETED_RAW_B1_WITHOUT_RECOMPUTATION",
+  "resamples_per_cancer_model": 100,
+  "source_sha256": {
+    "absolute_purity_sha256": "f430a975433d82e0098d7405619d4f12a0c765fcd97e7d63cc9b1de7f2d763cd",
+    "hallmark_membership_sha256": "bc6a9a33d7421dc407d33a66859760ba25e47b2f398e1a43c9156f80c71b3900",
+    "leukocyte_fraction_sha256": "5a8268caedbf8dc98a75be0528d583238d7355761d9fc746e42002f223a982d9",
+    "stage_a_profile_cache_sha256": "e65f6788aa6037fef407169794f29d63322de2769343bb6e594fe469dfeb8e63"
+  },
+  "status": "DEVELOPMENT_COMPOSITION_ADJUSTED_STATIC_MAP_ONLY",
+  "tasks_by_model": {"JOINT_INDEPENDENT": 30, "LEUKOCYTE": 30, "PURITY": 32}
+}
