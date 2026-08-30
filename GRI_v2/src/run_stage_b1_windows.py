@@ -6,7 +6,8 @@ from pathlib import Path
 import pandas as pd
 import numpy as np
 
-from src.run_stage_b1 import G, _init_worker, _task, _model_covariates, sha256_file, summarize
+from src.run_stage_b1 import G, _init_worker, _task, _model_covariates, sha256_file
+from src.summarize_stage_b1 import summarize
 
 
 def work(item):
