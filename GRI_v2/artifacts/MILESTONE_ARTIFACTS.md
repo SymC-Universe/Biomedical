@@ -2,6 +2,24 @@
 
 Full milestone suites are retained in ChatGPT when useful for clean handoff. GitHub stores hashes and the reproducible source/config spine.
 
+## 2026-08-29 Stage B2 genomic resumable execution handoff
+
+- File: `CSA_STAGE_B2_GENOMIC_RESUMABLE_20260829.zip`
+- SHA-256: `a153f54ac0d0ac5d48cb8951a5aff8e8914e0652ce73f9e1c6183e63eaf09b2a`
+- Role: clean-room-verified Windows execution package for the frozen Stage B2 genomic decomposition. Contains the pre-reserved small genomic/RPPA sources, frozen integration plan, B1 context input, Hallmark membership/eigengene inputs, Stage B2 engines/tests, restart-safe Windows launcher, SHA manifest, and completed RPPA reference outputs. The 126 MB Stage A `hallmark_profile_cache.npz` is intentionally not duplicated; the launcher asks the user to select the existing frozen cache.
+- Verification: package SHA manifest PASS; clean-room test suite 10/10 PASS; one-task execution + second-pass checkpoint reuse PASS.
+- Restart semantics: each completed 100-resample genomic task is written atomically and registered with SHA-256 hashes for raw, module-summary, and diagnostic outputs. Valid tasks are reused after interruption.
+
+## 2026-08-29 Stage B2 completed RPPA outputs
+
+- `STAGE_B2_RPPA_SUMMARY.json` SHA-256: `7e981badc16dc3da7b56defd14af7d043047fa75a0664f7c9d3fd858fb4b1af5`
+- `stage_b2_rppa_cancer_diagnostic.csv` SHA-256: `21c9cb8ddd780d65a1f0004de46661b8640afbc2f521a166e01883f93f297fde`
+- `stage_b2_rppa_common_panel.txt` SHA-256: `e923c7200e2b4485daafffc1d84f3a6b2f603fca30700227e14a757c1088bb7e`
+- `stage_b2_rppa_module_effects.csv` SHA-256: `cb619ae9a58e83e801674ae637d75de225fb26d6950b6299758b4e2865311b8f`
+- `stage_b2_rppa_resample_metrics.csv.gz` SHA-256: `1109a15f9f542aae21584c14d78e76ab347960641ec7ff2d17109a7f970c5d30`
+- `stage_b2_rppa_task_status.csv` SHA-256: `e7a2163b084d2f5da5d030a17e65aab99e0042e077f6494c5020f72d7301485b`
+- Role: completed frozen Stage B2 orthogonal protein/cross-assay branch. 60 tasks x 100 resamples x 50 Hallmark modules = 300,000 module-resample rows. Scientific interpretation is frozen in `docs/STAGE_B2_RPPA_AUDIT_20260829.md`; compact summary and frozen 189-feature common panel are retained under `development_outputs/stage_b2_rppa/`.
+
 ## 2026-08-29 Stage B2 completed source probe
 
 - GitHub Actions run: `33285344182` (`GRI v2 Stage B2 source probe`, successful repaired run)
