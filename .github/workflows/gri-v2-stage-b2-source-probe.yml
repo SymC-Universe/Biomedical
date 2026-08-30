@@ -1,0 +1,46 @@
+name: GRI v2 Stage B2 source probe
+
+on:
+  push:
+    branches: [gri-v2]
+    paths:
+      - 'GRI_v2/config/stage_b2_source_plan.json'
+      - 'GRI_v2/src/probe_stage_b2_sources.py'
+      - 'GRI_v2/tests/test_stage_b2_contract.py'
+      - '.github/workflows/gri-v2-stage-b2-source-probe.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: gri-v2-stage-b2-source-probe
+  cancel-in-progress: true
+
+jobs:
+  source-probe:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run B2 source-contract tests
+        run: python -m pytest -q tests/test_stage_b2_contract.py
+      - name: Probe reserved B2 sources
+        run: |
+          mkdir -p development_outputs/stage_b2
+          mkdir -p "$RUNNER_TEMP/gri-v2-stage-b2"
+          python -m src.probe_stage_b2_sources \
+            --plan config/stage_b2_source_plan.json \
+            --download-dir "$RUNNER_TEMP/gri-v2-stage-b2" \
+            --out development_outputs/stage_b2/STAGE_B2_SOURCE_INVENTORY.json
+          cat development_outputs/stage_b2/STAGE_B2_SOURCE_INVENTORY.json
+      - name: Upload B2 source inventory and downloaded small sources
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-v2-stage-b2-source-probe
+          path: |
+            GRI_v2/development_outputs/stage_b2/STAGE_B2_SOURCE_INVENTORY.json
+            ${{ runner.temp }}/gri-v2-stage-b2/*
+          if-no-files-found: error
