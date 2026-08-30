@@ -24,11 +24,11 @@ No Stage C1 methylation beta-value biological association has been calculated or
 
 The active operation is now:
 
-**PRE-C1 TOOL FEASIBILITY + REGULATORY-AUTONOMY KERNEL**
+**F2 SYNTHETIC GROUND-TRUTH TOOL CHALLENGE**
 
-Full C1 biological execution is intentionally paused behind this gate. The purpose is to determine whether the general mathematics can plausibly become a useful research instrument before substantial compute is invested around the unrevealed TCGA result.
+The preceding F1 general mathematical-kernel checkpoint passed repository regression testing. Full C1 biological execution remains intentionally paused behind the tool-feasibility sequence.
 
-This gate **does not modify C1 v2**.
+This sequence **does not modify C1 v2**.
 
 The current candidate is a cross-omic architecture / integration-readiness auditor organized around four questions inherited from the useful core of historical GRI:
 
@@ -121,20 +121,33 @@ C1 remains prospectively valid and sealed. Feasibility work may test only genera
 
 ### F1 — General mathematical kernel
 
-Build assay-agnostic functions for:
+**INITIAL REGRESSION PASS.** Canonical audit:
 
-- within-layer modal organization versus marginal-preserving nulls;
+`docs/TOOL_FEASIBILITY_F1_KERNEL_AUDIT_20260830.md`
+
+Implemented assay-agnostic functions for:
+
+- within-layer modal organization and marginal-preserving nulls;
 - eigenspectrum/effective-rank/participation diagnostics;
 - mode-to-feature traceability;
 - cross-layer CKA and principal angles;
-- patient-alignment and semantic-label nulls;
+- patient-row and semantic-label permutations;
 - covariate projection;
-- candidate regulatory-autonomy / conditional-dependence estimators;
-- explicit refusal outputs.
+- same-module coupling;
+- cross-validated modal predictability;
+- provisional regulatory-autonomy scoring calibrated to a patient-permutation null.
+
+GitHub Actions run `33324684019` passed the full repository suite: **60 passed, 7 existing warnings**. The new synthetic regression tests correctly separate shared structure, independence, common-confounder artifacts, semantic label mismatch, and provisional high-versus-low autonomy under deterministic strong-signal cases.
+
+This is not yet the complete F2 challenge or a tool-validity result.
 
 ### F2 — Synthetic ground-truth challenge
 
-The kernel must distinguish independent layers, genuine shared modes, layer-specific modes, pure confounding, scrambled semantic labels, module-specific sharing, technical false concordance, missingness/feature imbalance, nonlinear cases outside the linear method's scope, and true-versus-confounded loss of regulatory autonomy.
+**ACTIVE.** Frozen plan:
+
+`config/tool_feasibility_plan_v0_1.json`
+
+The kernel must now quantify performance across the complete prespecified scenario family: independent layers, genuine shared modes, layer-specific modes, pure confounding, scrambled semantic labels, module-specific sharing, technical false concordance, feature imbalance/missingness, nonlinear out-of-scope sharing, and true-versus-confounded loss of regulatory autonomy.
 
 ### F3 — Baseline competition
 
@@ -160,6 +173,6 @@ Recoverability, transition risk, bandwidth descendants, or substrate-inheritance
 
 **None right now.**
 
-ChatGPT can advance F1-F3 mechanically using repository code, synthetic ground-truth systems, regression tests, and benchmark planning without opening the C1 beta-value biological result or changing frozen science.
+ChatGPT can advance F2-F3 mechanically using repository code, synthetic ground-truth systems, regression tests, and benchmark planning without opening the C1 beta-value biological result or changing frozen science.
 
 The next user action will be required only if a choice would alter the locked tool objective/frozen C1 science, or when a local dataset/run is genuinely required after the feasibility decision.
