@@ -11,6 +11,7 @@ on:
       - 'GRI_v2/src/export_tool_feasibility_f3_established_inputs.py'
       - 'GRI_v2/src/run_tool_feasibility_f3_established_python.py'
       - 'GRI_v2/src/run_tool_feasibility_f3_divas.R'
+      - 'GRI_v2/src/f3_established_runtime_compat.py'
 
 permissions:
   contents: read
@@ -87,7 +88,7 @@ jobs:
       - name: Run AJIVE and MOFA2 frozen comparison
         working-directory: GRI_v2
         run: |
-          python -m src.run_tool_feasibility_f3_established_python \
+          python -m src.f3_established_runtime_compat run-python \
             --inputs tool_feasibility_f3_established_inputs \
             --out tool_feasibility_f3_established_python_outputs
 
@@ -134,11 +135,21 @@ jobs:
           R CMD INSTALL DIVAS_upstream/pkg
           Rscript -e 'library(DIVAS); stopifnot(as.character(packageVersion("DIVAS")) == "0.1.1"); cat("DIVAS_0.1.1_READY\n")'
 
-      - name: Run DIVAS frozen comparison
+      - name: Run DIVAS frozen comparison and preserve raw exit status
         run: |
+          set +e
           Rscript GRI_v2/src/run_tool_feasibility_f3_divas.R \
             GRI_v2/tool_feasibility_f3_established_inputs \
             GRI_v2/tool_feasibility_f3_divas_outputs
+          code=$?
+          echo "$code" > GRI_v2/tool_feasibility_f3_divas_outputs/divas_exit_code.txt
+          exit 0
+
+      - name: Classify DIVAS published-implementation evaluability
+        working-directory: GRI_v2
+        run: |
+          python3 -m src.f3_established_runtime_compat classify-divas \
+            --out tool_feasibility_f3_divas_outputs
 
       - name: Upload DIVAS outputs
         if: always()
