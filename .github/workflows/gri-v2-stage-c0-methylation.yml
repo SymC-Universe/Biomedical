@@ -1,0 +1,41 @@
+name: GRI v2 Stage C0 methylation source gate
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - gri-v2
+      - gri-v2-stage-c0-methylation
+    paths:
+      - 'GRI_v2/config/stage_c0_methylation_source_plan.json'
+      - 'GRI_v2/src/probe_stage_c0_methylation.py'
+      - 'GRI_v2/tests/test_stage_c0_methylation_contract.py'
+      - '.github/workflows/gri-v2-stage-c0-methylation.yml'
+
+jobs:
+  metadata-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install test/runtime dependencies
+        working-directory: GRI_v2
+        run: python -m pip install -r requirements.txt
+      - name: Run full GRI v2 tests
+        working-directory: GRI_v2
+        run: python -m pytest -q
+      - name: Probe frozen methylation endpoint without downloading source
+        working-directory: GRI_v2
+        run: |
+          python -m src.probe_stage_c0_methylation \
+            --plan config/stage_c0_methylation_source_plan.json \
+            --out stage_c0_metadata
+      - name: Upload metadata-only gate artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-v2-stage-c0-methylation-metadata-gate
+          path: GRI_v2/stage_c0_metadata/STAGE_C0_METHYLATION_SOURCE_SUMMARY.json
+          if-no-files-found: error
