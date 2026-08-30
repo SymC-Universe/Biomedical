@@ -7,7 +7,7 @@ This repository contains biomedical research branches within the broader SymC pr
 The `gri-v2` branch contains the active **GRI v2 / Cancer Stability Atlas** rebuild.
 
 **Current status:** development program, not a validated cancer tool.  
-**Current gate:** Stage B2 genomic decomposition.  
+**Current gate:** Stage B2 static integration closure; genomic and RPPA computations are complete and audited.  
 **Reviewer entry point:** `GRI_v2/reviewer/README.md`.
 
 The active GRI v2 program is deliberately separated from stronger historical oncology interpretations. The historical GRI manuscript and earlier SymC oncology work remain provenance and hypothesis history; they do not define the evidentiary status of the current rebuild.
@@ -17,9 +17,11 @@ In particular, the active program currently holds that:
 - historical `CV/2` is a descriptive comparator and is **not** biological chi;
 - no valid biological chi coordinate has yet been admitted;
 - static RNA, genomic, protein, and composition observables remain distinct unless later model competition justifies a reduction;
+- the completed genomic branch shows weak distributed static decomposition effects with strong preservation of the Hallmark topology, not a genomic master organizer;
+- the completed RPPA branch shows reproducible patient-aligned RNA/protein coupling above its construction-null floor, but remains static and non-causal;
 - `chi = 1` is not presumed to be a cancer optimum, healthy state, therapeutic target, or maximum-organization state;
-- failed, null, deferred, and non-identifiable branches remain part of the record;
-- partial Stage B2 genomic checkpoints are execution state, not biological evidence.
+- modal structure, scalar summaries, and conglomeration/system organization are complementary views; a scalar is not allowed to replace the richer structure by assumption;
+- failed, null, deferred, and non-identifiable branches remain part of the record.
 
 For the current scientific state, use the files under `GRI_v2/`, especially:
 
@@ -27,6 +29,7 @@ For the current scientific state, use the files under `GRI_v2/`, especially:
 - `GRI_v2/reviewer/README.md` - reviewer navigation;
 - `GRI_v2/reviewer/CLAIM_EVIDENCE_MAP.md` - claim-to-evidence mapping;
 - `GRI_v2/notes/BUILD_STATUS.md` - canonical current handoff;
+- `GRI_v2/docs/STAGE_B2_GENOMIC_AUDIT_20260830.md` - completed genomic audit;
 - `GRI_v2/docs/EPISTEMIC_CONSTITUTION.md` - evidentiary guardrails;
 - `GRI_v2/docs/CHI_ADMISSION_RULES.md` - requirements before any biological chi claim;
 - `GRI_v2/artifacts/MILESTONE_ARTIFACTS.md` - artifact hashes and provenance.
