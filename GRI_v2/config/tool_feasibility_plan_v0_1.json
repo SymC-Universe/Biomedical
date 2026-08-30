@@ -1,0 +1,102 @@
+{
+  "version": "0.1-pre-synthetic-result",
+  "status": "frozen_after_tool_discovery_charter_before_synthetic_results",
+  "purpose": "Test whether the proposed cross-omic architecture auditor and regulatory-autonomy concept can distinguish known synthetic regimes before Stage C1 biological execution.",
+  "c1_relationship": {
+    "stage_c1_v2_remains_frozen": true,
+    "stage_c1_beta_value_biology_may_be_read": false,
+    "feasibility_results_may_retune_c1": false,
+    "c1_preregistration": "GRI_v2/docs/STAGE_C1_ANALYSIS_PREREGISTRATION_20260830.md"
+  },
+  "seed_namespace": "GRI_V2_TOOL_FEASIBILITY_20260830",
+  "primary_candidate": "cross_omic_architecture_integration_readiness_auditor",
+  "candidate_autonomy_definition_status": "comparison-stage candidate, not admitted biological coordinate",
+  "required_kernel_capabilities": [
+    "column_centered_sample_space_eigenspectrum",
+    "normalized_spectral_entropy_effective_rank_participation_ratio",
+    "mode_to_feature_contributions",
+    "linear_cka",
+    "top_k_principal_angles",
+    "independent_within_feature_marginal_permutation",
+    "cross_layer_patient_row_permutation",
+    "covariate_residual_projection",
+    "same_module_semantic_coupling_and_label_permutation",
+    "cross_validated_modal_predictability_candidate",
+    "predictability_permutation_calibration"
+  ],
+  "synthetic_scenarios": [
+    {
+      "id": "S0_INDEPENDENT",
+      "truth": "two organized or noisy layers with no shared latent source",
+      "required_behavior": "no robust shared-structure or loss-of-autonomy conclusion"
+    },
+    {
+      "id": "S1_ONE_SHARED_MODE",
+      "truth": "one genuine shared latent mode plus independent noise",
+      "required_behavior": "shared geometry and cross-validated dependence exceed independent baseline"
+    },
+    {
+      "id": "S2_SHARED_PLUS_PRIVATE",
+      "truth": "multiple shared modes plus layer-specific modes",
+      "required_behavior": "shared structure detected while private structure remains visible in modal decomposition"
+    },
+    {
+      "id": "S3_CONFOUNDER_ONLY",
+      "truth": "apparent sharing generated only by measured common confounder",
+      "required_behavior": "raw sharing may appear but must collapse toward null after correct covariate projection"
+    },
+    {
+      "id": "S4_GLOBAL_SHARED_LABEL_SCRAMBLED",
+      "truth": "global sample geometry shared but biological module labels deliberately mismatched",
+      "required_behavior": "global alignment persists while semantic same-module advantage is lost"
+    },
+    {
+      "id": "S5_MODULE_SPECIFIC_WEAK_GLOBAL",
+      "truth": "specific matched modules share structure while total global alignment is weak",
+      "required_behavior": "semantic module layer can add information not reducible to global CKA"
+    },
+    {
+      "id": "S6_TECHNICAL_FALSE_CONCORDANCE",
+      "truth": "small technical feature subset manufactures apparent cross-layer sharing",
+      "required_behavior": "technical robustness track exposes sensitivity rather than promoting robust sharing"
+    },
+    {
+      "id": "S7_FEATURE_IMBALANCE_MISSINGNESS",
+      "truth": "unequal feature counts and controlled missingness without changed shared truth",
+      "required_behavior": "qualitative decision remains stable when completeness rules are satisfied"
+    },
+    {
+      "id": "S8_NONLINEAR_ONLY",
+      "truth": "cross-layer relationship is nonlinear and outside initial linear audit scope",
+      "required_behavior": "linear method under-detects or refuses rather than inventing linear shared structure"
+    },
+    {
+      "id": "S9_HIGH_COUPLING_HIGH_AUTONOMY",
+      "truth": "one shared component plus a strong independent regulatory component",
+      "required_behavior": "detect sharing without classifying the regulatory layer as fully substrate-predictable"
+    },
+    {
+      "id": "S10_HIGH_COUPLING_LOW_AUTONOMY",
+      "truth": "regulatory dominant modes are largely predictable from substrate modes",
+      "required_behavior": "candidate autonomy measure is lower than in S9 under otherwise comparable signal strength"
+    },
+    {
+      "id": "S11_CONFOUNDED_FALSE_AUTONOMY_LOSS",
+      "truth": "common measured confounder creates apparent substrate predictability",
+      "required_behavior": "apparent autonomy loss is substantially removed after correct covariate projection"
+    }
+  ],
+  "decision_policy": {
+    "go": "kernel separates the prespecified regimes, null/refusal behavior is calibrated, autonomy adds a distinct interpretable capability, and baseline comparison identifies nonredundant utility",
+    "narrow": "only a subset of organization/coupling/semantic/autonomy capabilities adds value",
+    "stop": "confounding or null cases are routinely misclassified, autonomy collapses to a redundant quantity, or established simpler methods provide the same decision more reliably"
+  },
+  "constraints": {
+    "historical_cv2_used": false,
+    "biological_chi_allowed": false,
+    "historical_gri_zone_thresholds_allowed": false,
+    "gene_rank_as_time_allowed": false,
+    "clinical_claim_allowed": false,
+    "stage_c1_result_peeking_allowed": false
+  }
+}
