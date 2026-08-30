@@ -132,7 +132,28 @@ If novelty is eventually claimed, the preferred claim is at the level actually d
 
 Novelty must never be inferred merely from using a new name for an existing statistic.
 
-## 10. F4 meaning after this amendment
+## 10. Novelty as a diagnostic lens
+
+Novelty will still be checked continuously at the component level, but as a **diagnostic and lead-generation process rather than a development objective**.
+
+For each mathematical object, estimator, decomposition, null, decision rule, and predictive layer, ask two separate questions:
+
+1. **Prior-art / equivalence question:** is the component already known, mathematically equivalent to an established quantity, or functionally supplied by an existing method?
+2. **Difference / lead question:** if a real difference remains, does it reveal a limitation of the established method, a limitation of the candidate, a new falsification test, a useful scientific interpretation, or a prospectively testable predictive advantage?
+
+Possible outcomes include:
+
+- **REDUNDANT:** established method supplies the same information adequately; simplify or reuse the established method;
+- **COMPLEMENTARY:** the component is not novel by itself but contributes useful information when combined with other evidence;
+- **LIMITATION_FOUND:** comparison exposes a failure mode that should become a guardrail or refusal condition;
+- **LEAD_FOUND:** a nontrivial difference suggests a new prospectively testable capability;
+- **NOVEL_CANDIDATE:** a potentially new object or behavior appears, but receives no promotion until its utility and prior art are independently established.
+
+This novelty scan must not alter already frozen test thresholds or rescue failed prospective results.
+
+A novelty lead is therefore treated as a **new question to test**, not as evidence that the tool is valuable.
+
+## 11. F4 meaning after this amendment
 
 F4 remains GO / NARROW / STOP, but it is an **engineering investment decision**, not a declaration of methodological novelty.
 
@@ -142,7 +163,7 @@ F4 remains GO / NARROW / STOP, but it is an **engineering investment decision**,
 
 A GO at F4 does not validate the tool. Tool promotion requires the predictive and external-validation sequence above.
 
-## 11. Stage C1 relationship
+## 12. Stage C1 relationship
 
 Stage C1 v2 remains sealed and unchanged.
 
@@ -150,7 +171,7 @@ C1 may serve as the first prospectively frozen biological architecture case stud
 
 Separate prediction/holdout protocols must be frozen before any data used for those predictive targets are examined. They may reuse eligible samples and fixed biological definitions but may not retroactively alter C1's preregistered inferential tests.
 
-## 12. Success criterion
+## 13. Success criterion
 
 Program success is a reproducible tool that prospectively helps researchers predict, decide, or refuse more reliably than appropriate alternatives.
 
