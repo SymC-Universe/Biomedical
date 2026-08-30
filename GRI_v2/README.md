@@ -1,8 +1,8 @@
 # GRI v2 / Cancer Stability Atlas
 
 **Status:** DEVELOPMENT PROGRAM, NOT A VALIDATED CANCER TOOL  
-**Active phase:** Stage B2 genomic closure  
-**Status date:** 2026-08-29
+**Active phase:** Stage B2 static integration closure  
+**Status date:** 2026-08-30
 
 > **Reviewer navigation:** start at `reviewer/README.md`. The moving `gri-v2` branch is a development branch, not an immutable submission record. Manuscript/data submissions should point reviewers to an exact tagged/released snapshot following `reviewer/SUBMISSION_RELEASE_CHECKLIST.md`.
 
@@ -34,6 +34,7 @@ The historical GRI manuscript is provenance, not the target model. The new tool 
 - Model selection is driven by predictive performance, calibration, robustness, ablation, appropriate baselines, and external validation.
 - Failed and null branches are retained.
 - Manuscript reconstruction is downstream of a validated tool architecture and does not steer feature selection.
+- Modal structure, scalar coordinates, and conglomeration/system organization are complementary views. A scalar may compress an empirically licensed structure but may not replace the modal carrier or the integrated system architecture by assumption.
 
 ## Completed development layers
 
@@ -106,24 +107,48 @@ This earns retention of a static orthogonal protein layer and a global RNA/prote
 
 See `docs/STAGE_B2_RPPA_AUDIT_20260829.md`.
 
-## Current phase: Stage B2 genomic closure
+### Stage B2 genomic decomposition
 
-The remaining B2 computation tests the five genomic coordinates against the frozen RNA network map.
+The genomic branch is computationally closed and audited.
 
-For each eligible cancer-coordinate combination the run uses fixed `n = 30`, 100 deterministic resamples, unchanged Stage A network metrics, a same-patient permuted genomic construction null, and a separate `INCREMENT_B1` branch that asks whether the genomic coordinate contributes map information after purity and leukocyte composition are already accounted for.
+Completed run:
 
-The full frozen design contains 306 eligible cancer-coordinate-analysis tasks. Partial results are not interpreted.
+- 306/306 frozen cancer-coordinate-analysis tasks;
+- 158 `PRIMARY` tasks and 148 `INCREMENT_B1` tasks;
+- fixed `n = 30`;
+- 100/100 valid resamples per task;
+- 15,300 cancer-module summary rows;
+- 1,530,000 raw module-resample rows.
 
-The execution engine is restart-safe: every 100-resample task is written atomically, hash-registered, and validated before reuse. An interrupted Windows run resumes only unfinished tasks.
+The five genomic coordinates remained separate. The frozen construction null permuted only the tested genomic coordinate within the same 30 patients before residualization.
 
-Current execution handoff:
+Across primary tasks, the cancer-level specific shifts are small: median approximately `-0.000481` for pairwise `C_in`, `+0.000688` for `C_in` PC1 variance fraction, and `+0.000948` for `C_out`. Comparable small shifts remain in the prespecified increment-beyond-B1 analysis.
 
-- `CSA_STAGE_B2_GENOMIC_RESUMABLE_20260829.zip`
-- SHA-256 `a153f54ac0d0ac5d48cb8951a5aff8e8914e0652ce73f9e1c6183e63eaf09b2a`
-- clean-room manifest PASS;
-- clean-room test suite 10/10 PASS.
+The stronger architectural result is preservation. Across genomic coordinates, median reference-versus-adjusted 50-module rank agreement is approximately 0.993-0.997 for the two `C_in` metrics and approximately 0.984-0.988 for `C_out`. The overwhelming majority of module-level empirical 5th-to-95th resample intervals for the genomic-specific effect cross zero.
 
-The latest GitHub GRI v2 test workflow also passes after the Stage B2 execution code was added.
+The genomic branch therefore earns retention as a weak distributed static decomposition layer. It does not support treating genomic burden as a master organizer, a master score, or a biological chi coordinate.
+
+See `docs/STAGE_B2_GENOMIC_AUDIT_20260830.md`.
+
+## Current phase: Stage B2 static integration closure
+
+Stage B2 computation is complete. The active task is to integrate the completed layers without collapsing them into one scalar:
+
+- Stage A RNA map: `V`, `L`, `C_in`, `C_out`;
+- Stage B1 purity/leukocyte context decomposition;
+- Stage B2 five-coordinate genomic decomposition;
+- Stage B2 RPPA/protein cross-assay coupling;
+- genome-wide methylation as a separately gated extension.
+
+The combined result is presently architectural: multiple static measurement layers are partially related but retain distinct information and distinct construction nulls. Their effect scales are not directly interchangeable.
+
+The next analysis architecture will explicitly preserve:
+
+1. **modal structure**: the mode-resolved/eigenstructure underlying organization;
+2. **scalar coordinates**: compressed summaries only where empirically licensed;
+3. **conglomeration**: module-to-module and whole-system organization across measurement layers.
+
+These three views are complementary rather than competing definitions of the state.
 
 ## Deferred methylation layer
 
@@ -131,11 +156,13 @@ The merged 27K/450K PanCanAtlas DNA-methylation matrix is approximately 5.02 GB.
 
 Neither is casually acquired. Genome-wide methylation remains behind an independent feature-reduction/platform-harmonization gate. Its admission or deferral is not determined by whether the genomic or RPPA results look favorable.
 
-## What comes after Stage B2
+## What comes next
 
-After the complete genomic run is audited, the B2 genomic and protein layers will be integrated without constructing a master stability score. The methylation extension will then be explicitly closed or carried as a separately justified static extension.
-
-The next major branch is genuine ordered perturbation/time-course benchmarking against established dynamic and predictive baselines. Only after same-coordinate relaxation and intrinsic-response rates satisfy the admission gates may a biological chi coordinate be tested.
+1. freeze the integrated static-architecture closure for Stage B2;
+2. explicitly close or prospectively admit the genome-wide methylation extension under its independent gate;
+3. freeze the next modal + scalar + conglomeration analysis architecture before testing any new endpoint;
+4. advance to genuine ordered perturbation/time-course benchmarking against established dynamic and predictive baselines;
+5. test a biological chi coordinate only if same-coordinate relaxation and intrinsic-response rates satisfy the admission rules.
 
 ## Where to look
 
@@ -152,6 +179,7 @@ The next major branch is genuine ordered perturbation/time-course benchmarking a
 - `docs/STAGE_B2_SOURCE_AUDIT_20260829.md` - B2 source/coverage audit
 - `docs/STAGE_B2_PREREGISTRATION_20260829.md` - B2 frozen integration design
 - `docs/STAGE_B2_RPPA_AUDIT_20260829.md` - completed RPPA audit
+- `docs/STAGE_B2_GENOMIC_AUDIT_20260830.md` - completed genomic audit
 - `artifacts/MILESTONE_ARTIFACTS.md` - artifact hashes and provenance
 
 ## Repository role
