@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import sys
 from pathlib import Path
 
 EXPECTED_CACHE_SHA256 = "e65f6788aa6037fef407169794f29d63322de2769343bb6e594fe469dfeb8e63"
@@ -35,7 +36,11 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("cache", type=Path)
     args = ap.parse_args()
-    actual = validate_cache(args.cache)
+    try:
+        actual = validate_cache(args.cache)
+    except (FileNotFoundError, OSError, ValueError) as exc:
+        print(f"STAGE_A_CACHE_INVALID: {exc}", file=sys.stderr, flush=True)
+        raise SystemExit(2)
     print(f"STAGE_A_CACHE_VALID {actual}", flush=True)
 
 
