@@ -1,62 +1,42 @@
-<b>Symmetrical Convergence (SymC) — Biomedical Repository</b><br>
-<b>Branch:</b> Biology, Medicine, Neurobiology
+# SymC Biomedical Repository
 
-<br><br>
-This repository contains the biomedical branch of the Symmetrical Convergence (SymC) research program. SymC is a physical control framework describing how adaptive systems maintain stability near a critical damping boundary and how failure emerges when regulatory bandwidth is lost. In biological systems, this manifests as disease driven by control failure rather than isolated pathology, comorbidity as phase-shifted expressions of shared instability, and progression as a mechanical lineage rather than stochastic degeneration.
+This repository contains biomedical research branches within the broader SymC program.
 
-<br><br>
-<b>Scope.</b> Viral dynamics, oncology, neurodegeneration, pain, addiction, psychiatric instability, and adaptive therapeutic control. Across these domains, SymC reframes biological regulation as a dynamical control problem, introduces stability ratios and bandwidth constraints as diagnostic primitives, links molecular, cellular, neural, and behavioral dynamics via substrate inheritance, and demonstrates why state-aware intervention outperforms static treatment strategies.
+## Active oncology development on this branch
 
-<br><br>
-<b>Canonical Biomedical Frameworks.</b>
+The `gri-v2` branch contains the active **GRI v2 / Cancer Stability Atlas** rebuild.
 
-<br><br>
-<b>Genomic Regulatory Instability (GRI).</b><br>
-<i>Mapping the Mechanical Lineage of Regulatory Control Failure in Malignancy.</i><br>
-DOI: https://doi.org/10.5281/zenodo.18435475
-<br>
-The canonical oncology framework. Cancer is modeled as a phase transition driven by regulatory bandwidth exhaustion and irreversible substrate capture, empirically grounded in TCGA Pan-Cancer RNA-seq data.
+**Current status:** development program, not a validated cancer tool.  
+**Current gate:** Stage B2 genomic decomposition.  
+**Reviewer entry point:** `GRI_v2/reviewer/README.md`.
 
-<br><br>
-<b>Optimal Control Theory in Oncology (SymC Oncology v1–v3).</b><br>
-DOI: https://doi.org/10.5281/zenodo.17507544
-<br>
-Earlier control-theoretic oncology framework focused on adaptive therapeutic dynamics. Conceptually superseded by GRI and retained for historical and methodological context.
+The active GRI v2 program is deliberately separated from stronger historical oncology interpretations. The historical GRI manuscript and earlier SymC oncology work remain provenance and hypothesis history; they do not define the evidentiary status of the current rebuild.
 
-<br><br>
-<b>SymC Viral Control.</b><br>
-DOI: https://doi.org/10.5281/zenodo.17651256
-<br>
-Demonstrates rebound, rigidity, and adaptive control failure in viral systems.
+In particular, the active program currently holds that:
 
-<br><br>
-<b>Neurodegeneration.</b><br>
-Prodromal Critical Cascade in Parkinson’s Disease — https://doi.org/10.5281/zenodo.17645851
-<br>
-Neurostability Principle (Alzheimer’s & Dementia) — https://doi.org/10.5281/zenodo.17766309
+- historical `CV/2` is a descriptive comparator and is **not** biological chi;
+- no valid biological chi coordinate has yet been admitted;
+- static RNA, genomic, protein, and composition observables remain distinct unless later model competition justifies a reduction;
+- `chi = 1` is not presumed to be a cancer optimum, healthy state, therapeutic target, or maximum-organization state;
+- failed, null, deferred, and non-identifiable branches remain part of the record;
+- partial Stage B2 genomic checkpoints are execution state, not biological evidence.
 
-<br><br>
-<b>Pain, Addiction, and Neural Control Failure.</b><br>
-Neuroelastic Resonance Instability (Addiction) — https://doi.org/10.5281/zenodo.17782917
-<br>
-Nociceptive Stability Principle (Pain) — https://doi.org/10.5281/zenodo.17924428
+For the current scientific state, use the files under `GRI_v2/`, especially:
 
-<br><br>
-<b>Psychiatric Stability.</b><br>
-Neuro Stability Disorder (Comorbidity) — https://doi.org/10.5281/zenodo.17937287
+- `GRI_v2/README.md` - active scientific overview;
+- `GRI_v2/reviewer/README.md` - reviewer navigation;
+- `GRI_v2/reviewer/CLAIM_EVIDENCE_MAP.md` - claim-to-evidence mapping;
+- `GRI_v2/notes/BUILD_STATUS.md` - canonical current handoff;
+- `GRI_v2/docs/EPISTEMIC_CONSTITUTION.md` - evidentiary guardrails;
+- `GRI_v2/docs/CHI_ADMISSION_RULES.md` - requirements before any biological chi claim;
+- `GRI_v2/artifacts/MILESTONE_ARTIFACTS.md` - artifact hashes and provenance.
 
-<br><br>
-<b>Related Cross-Domain SymC Works.</b><br>
-Closing Gaps — https://doi.org/10.5281/zenodo.17624098
-<br>
-Critical Chemical Equivalence — https://doi.org/10.5281/zenodo.17891563
-<br>
-SymC Noughts — https://doi.org/10.5281/zenodo.17633509
-<br>
-Adaptive Intelligence Framework — https://doi.org/10.5281/zenodo.17565787
+## Other biomedical work
 
-<br><br>
-<b>Intended Use.</b> Researchers, clinicians, and control theorists exploring disease as a dynamical stability problem. Each paper stands alone; together they define a coherent biomedical control framework.
+The repository also preserves earlier and parallel work in oncology, viral dynamics, neurodegeneration, pain, addiction, psychiatric stability, and related biomedical control questions. Those materials should be read according to their own version, status, and evidence records rather than treated as automatic support for GRI v2.
 
-<br><br>
-<b>Status.</b> This branch represents a mature and internally consistent stage of SymC biomedical theory. Future additions may include validation datasets, simulations, and adaptive control implementations. Core theory is stable.
+## Submission and review policy
+
+The moving development branch is not intended to serve as the immutable record for a manuscript or data submission. Each future submission should point to an exact tagged/released snapshot with its own claim-to-evidence map, result hashes, figure/table provenance, source-data record, test/CI state, and null/failure/non-claim ledger.
+
+See `GRI_v2/reviewer/SUBMISSION_RELEASE_CHECKLIST.md`.
