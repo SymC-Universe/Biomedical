@@ -1,14 +1,15 @@
 {
-  "schema": "gri-v2-reviewer-manifest-v0.2",
+  "schema": "gri-v2-reviewer-manifest-v0.3",
   "program": "GRI v2 / Cancer Stability Atlas",
   "repository": "SymC-Universe/Biomedical",
   "active_branch": "gri-v2",
   "program_status": "DEVELOPMENT_NOT_VALIDATED_CLINICAL_TOOL",
   "current_gate": {
-    "stage": "B2_STATIC_INTEGRATION",
-    "status": "ACTIVE_CLOSURE",
+    "stage": "PROSPECTIVE_SUBSTRATE_EXTENSION_DESIGN",
+    "status": "ACTIVE",
     "b2_genomic_complete": true,
     "b2_rppa_complete": true,
+    "b2_static_integration_complete": true,
     "new_endpoint_testing_started": false,
     "canonical_status_file": "GRI_v2/notes/BUILD_STATUS.md"
   },
@@ -19,6 +20,7 @@
     "master_stability_score_admitted": false,
     "failed_and_null_branches_retained": true,
     "genomic_master_organizer_claim_admitted": false,
+    "static_stage_b2_establishes_substrate_inheritance": false,
     "modal_scalar_conglomeration_are_complementary": true
   },
   "canonical_entry_points": {
@@ -29,6 +31,7 @@
     "tool_objective": "GRI_v2/docs/TOOL_OBJECTIVE.md",
     "epistemic_constitution": "GRI_v2/docs/EPISTEMIC_CONSTITUTION.md",
     "chi_admission_rules": "GRI_v2/docs/CHI_ADMISSION_RULES.md",
+    "stage_b2_static_integration": "GRI_v2/docs/STAGE_B2_STATIC_INTEGRATION_CLOSURE_20260830.md",
     "repository_workflow": "GRI_v2/WORKFLOW.md",
     "milestone_artifacts": "GRI_v2/artifacts/MILESTONE_ARTIFACTS.md"
   },
@@ -67,7 +70,7 @@
     },
     {
       "stage": "B2_PREREGISTRATION",
-      "status": "FROZEN",
+      "status": "FROZEN_HISTORICAL_CONTRACT",
       "audit_or_record": "GRI_v2/docs/STAGE_B2_PREREGISTRATION_20260829.md",
       "config": "GRI_v2/config/stage_b2_integration_plan.json"
     },
@@ -95,13 +98,20 @@
     },
     {
       "stage": "B2_STATIC_INTEGRATION",
-      "status": "ACTIVE_CLOSURE",
-      "master_score_allowed": false,
-      "new_endpoint_testing_started": false
+      "status": "CLOSED",
+      "audit_or_record": "GRI_v2/docs/STAGE_B2_STATIC_INTEGRATION_CLOSURE_20260830.md",
+      "master_score_created": false,
+      "substrate_inheritance_claim": false
     },
     {
       "stage": "GENOME_WIDE_METHYLATION",
-      "status": "DEFERRED_INDEPENDENT_GATE"
+      "status": "PROSPECTIVE_SPECIFICATION_REQUIRED_BEFORE_ASSOCIATION",
+      "source_reserved": true,
+      "association_results_inspected": false
+    },
+    {
+      "stage": "MODAL_SCALAR_CONGLOMERATION_NEXT_PROTOCOL",
+      "status": "PROSPECTIVE_DESIGN_REQUIRED_BEFORE_NEW_ENDPOINTS"
     },
     {
       "stage": "DYNAMIC_BIOLOGICAL_CHI",
@@ -110,7 +120,7 @@
     }
   ],
   "repository_roles": {
-    "docs": "scientific audits, objectives, and epistemic rules",
+    "docs": "scientific audits, objectives, closures, and epistemic rules",
     "config": "frozen or preregistered analysis contracts",
     "src": "analysis implementations",
     "tests": "contract and regression tests",
