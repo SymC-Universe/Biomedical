@@ -1,0 +1,20 @@
+{
+  "version": "0.1-pre-b2-source-result",
+  "status": "frozen_after_stage_b1_before_b2_source_results",
+  "primary_data_family": "NCI GDC PanCanAtlas/PanImmune publication-era supplemental freeze",
+  "purpose": "Inventory pre-reserved orthogonal genomic and protein layers without using Stage B1 outcomes to choose favorable sources.",
+  "sources": [
+    {"id":"aneuploidy_loh","role":"PRIMARY_B2_GENOMIC_CONTEXT","file_name":"ABSOLUTE_scores.tsv","gdc_uuid":"0e8831f4-dd7e-4673-8624-b4519c2e0d65","download_now":true,"independence":"copy-number-derived genomic context"},
+    {"id":"cnv_burden","role":"PRIMARY_B2_GENOMIC_CONTEXT","file_name":"seg_based_scores.tsv","gdc_uuid":"cbfe6a9d-c3be-4982-86c7-c476dc17ca10","download_now":true,"independence":"copy-number-derived genomic context"},
+    {"id":"rppa_final","role":"PRIMARY_B2_ORTHOGONAL_ASSAY","file_name":"TCGA-RPPA-pancan-clean.txt","gdc_uuid":"fcbb373e-28d4-4818-92f3-601ede3da5e1","download_now":true,"independence":"reverse-phase protein array abundance assay"},
+    {"id":"methylation_merged_27k_450k","role":"RESERVED_B2_SUBSTRATE_ASSAY","file_name":"jhu-usc.edu_PANCAN_merged_HumanMethylation27_HumanMethylation450.betaValue_whitelisted.tsv","gdc_uuid":"d82e2c44-89eb-43d9-b6d3-712732bf6a53","download_now":false,"independence":"DNA methylation assay"},
+    {"id":"methylation_450k","role":"RESERVED_B2_ROBUSTNESS_ASSAY","file_name":"jhu-usc.edu_PANCAN_HumanMethylation450.betaValue_whitelisted.tsv","gdc_uuid":"99b0c493-9e94-4d99-af9f-151e46bab989","download_now":false,"independence":"DNA methylation assay; higher-density platform subset"}
+  ],
+  "constraints": {
+    "chi_allowed": false,
+    "cv2_used": false,
+    "composite_stability_score_allowed": false,
+    "source_selection_from_stage_a_or_b1_outcomes_allowed": false,
+    "no_biological_association_in_source_probe": true
+  }
+}
