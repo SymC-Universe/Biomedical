@@ -29,17 +29,30 @@ jobs:
         run: |
           python -m pip install git+https://github.com/idc9/ya_pca.git
           python -m pip install git+https://github.com/idc9/mvdr.git
-      - name: Smoke mvdr imports
+      - name: Smoke mvdr imports and AJIVE fit
         run: |
           python - <<'PY'
+          import inspect
+          if not hasattr(inspect, 'getargspec'):
+              inspect.getargspec = inspect.getfullargspec
+          import numpy as np
           from mvdr.mcca.mcca import MCCA
+          from mvdr.ajive.AJIVE import AJIVE
           print('MVDR_MCCA_IMPORT_OK', MCCA)
-          try:
-              from mvdr.ajive.AJIVE import AJIVE
-              print('MVDR_AJIVE_IMPORT_OK', AJIVE)
-          except Exception as exc:
-              print('MVDR_AJIVE_IMPORT_FAILED', type(exc).__name__, str(exc))
-              raise
+          print('MVDR_AJIVE_IMPORT_OK', AJIVE)
+          rng = np.random.default_rng(17)
+          z = rng.normal(size=(40, 1))
+          x = z @ rng.normal(size=(1, 20)) + 0.2 * rng.normal(size=(40, 20))
+          y = z @ rng.normal(size=(1, 25)) + 0.2 * rng.normal(size=(40, 25))
+          model = AJIVE(
+              init_signal_ranks=[2, 2],
+              usr_joint_rank=1,
+              check_joint_identif=False,
+              n_wedin_samples=10,
+              n_rand_samples=10,
+              n_jobs=1,
+          ).fit([x, y])
+          print('MVDR_AJIVE_FIT_OK', model.get_ranks())
           PY
 
   divas-baseline:
