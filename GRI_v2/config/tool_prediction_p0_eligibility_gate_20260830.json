@@ -1,0 +1,26 @@
+{
+  "schema": "gri-v2-p0-eligibility-gate-v0.1",
+  "date": "2026-08-30",
+  "status": "FROZEN_MECHANICAL_CONCRETIZATION_OF_P0",
+  "p0_split_manifest_sha256": "12b85d67d06e57c6d1be914444c65aa526f2b821e117725dd036142cc6b0a825",
+  "p0_split_records": 9460,
+  "p0_split_cancers": 32,
+  "split_namespace": "GRI_V2_PREDICTION_P0_20260830",
+  "methylation_source_size_bytes": 5022150019,
+  "methylation_source_sha256_locked_from_c0": "5934c497882fbe8178d128a3a7f71e765480af6bbd460e0398de3428cd075b77",
+  "methylation_header_columns": 12040,
+  "methylation_sample_columns": 12039,
+  "primary_probe_count": 22601,
+  "sample_primary_finite_fraction_min": 0.95,
+  "minimum_eligible_per_partition_per_cancer": 30,
+  "pan_cancer_promotion_min_cancers": 24,
+  "expected_preeligibility_partition_counts": {
+    "DISCOVERY": 5643,
+    "REPLICATION": 1888,
+    "FINAL_HOLDOUT": 1929
+  },
+  "partition_reassignment_allowed": false,
+  "predictive_target_values_allowed": false,
+  "biological_association_allowed": false,
+  "stage_c1_science_modified": false
+}
