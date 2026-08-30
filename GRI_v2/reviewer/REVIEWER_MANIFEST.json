@@ -1,11 +1,11 @@
 {
-  "schema": "gri-v2-reviewer-manifest-v0.9",
+  "schema": "gri-v2-reviewer-manifest-v1.0",
   "program": "GRI v2 biomedical tool-discovery program",
   "repository": "SymC-Universe/Biomedical",
   "active_branch": "gri-v2",
   "program_status": "DEVELOPMENT_NOT_VALIDATED_CLINICAL_TOOL",
   "current_gate": {
-    "stage": "PRE_C1_TOOL_FEASIBILITY_REGULATORY_AUTONOMY",
+    "stage": "F2_SYNTHETIC_GROUND_TRUTH_TOOL_CHALLENGE",
     "status": "ACTIVE_C1_BIOLOGY_SEALED",
     "tool_discovery_charter_locked": true,
     "stage_c0_source_gate_complete": true,
@@ -14,6 +14,7 @@
     "stage_c1a_external_source_gate_complete": true,
     "stage_c1a_exact_probe_inventory_complete": true,
     "stage_c1_v2_scientific_contract_frozen": true,
+    "f1_general_kernel_initial_pass": true,
     "stage_c1_beta_value_biological_association_started": false,
     "canonical_status_file": "GRI_v2/notes/BUILD_STATUS.md"
   },
@@ -102,13 +103,17 @@
     "claim_ceiling": "static methylation organization and specific composition-tested methylation/RNA architecture only under frozen promotion ladder"
   },
   "tool_feasibility": {
-    "status": "ACTIVE",
+    "status": "F1_INITIAL_PASS_F2_ACTIVE",
     "locked_charter": "GRI_v2/docs/GRI_V2_TOOL_DISCOVERY_CHARTER_20260830.md",
+    "frozen_plan": "GRI_v2/config/tool_feasibility_plan_v0_1.json",
     "historical_draft": "GRI_v2/docs/TOOL_FEASIBILITY_GATE_DRAFT_20260830.md",
+    "f1_audit": "GRI_v2/docs/TOOL_FEASIBILITY_F1_KERNEL_AUDIT_20260830.md",
+    "f1_ci_run": 33324684019,
+    "f1_ci_result": "60 passed, 7 pre-existing warnings",
     "candidate_tool": "cross_omic_architecture_integration_readiness_auditor",
     "active_novel_component_question": "regulatory_autonomy_or_substrate_conditioned_dependence",
+    "candidate_autonomy_admitted": false,
     "sequence": [
-      "F1_GENERAL_MATHEMATICAL_KERNEL",
       "F2_SYNTHETIC_GROUND_TRUTH_CHALLENGE",
       "F3_BASELINE_COMPETITION",
       "F4_GO_NARROW_STOP_DECISION",
@@ -129,10 +134,10 @@
     "C0_1_SAMPLE_IDENTITY_GATE",
     "C1A_ANNOTATION_AND_EXACT_PROBE_GATE",
     "C1_V2_SCIENTIFIC_FREEZE",
-    "F0_TOOL_DISCOVERY_OBJECTIVE_LOCK"
+    "F0_TOOL_DISCOVERY_OBJECTIVE_LOCK",
+    "F1_GENERAL_MATHEMATICAL_KERNEL_INITIAL_REGRESSION"
   ],
   "active_or_prospective_stages": [
-    "F1_GENERAL_MATHEMATICAL_KERNEL",
     "F2_SYNTHETIC_GROUND_TRUTH_CHALLENGE",
     "F3_BASELINE_COMPETITION",
     "F4_GO_NARROW_STOP_DECISION",
@@ -147,6 +152,8 @@
     "build_status": "GRI_v2/notes/BUILD_STATUS.md",
     "tool_objective": "GRI_v2/docs/TOOL_OBJECTIVE.md",
     "tool_discovery_charter": "GRI_v2/docs/GRI_V2_TOOL_DISCOVERY_CHARTER_20260830.md",
+    "tool_feasibility_plan": "GRI_v2/config/tool_feasibility_plan_v0_1.json",
+    "tool_feasibility_f1_audit": "GRI_v2/docs/TOOL_FEASIBILITY_F1_KERNEL_AUDIT_20260830.md",
     "c1_preregistration": "GRI_v2/docs/STAGE_C1_ANALYSIS_PREREGISTRATION_20260830.md",
     "epistemic_constitution": "GRI_v2/docs/EPISTEMIC_CONSTITUTION.md",
     "chi_admission_rules": "GRI_v2/docs/CHI_ADMISSION_RULES.md",
