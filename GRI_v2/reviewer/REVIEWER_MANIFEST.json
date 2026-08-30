@@ -1,25 +1,48 @@
 {
-  "schema": "gri-v2-reviewer-manifest-v0.8",
-  "program": "GRI v2 / Cancer Stability Atlas",
+  "schema": "gri-v2-reviewer-manifest-v0.9",
+  "program": "GRI v2 biomedical tool-discovery program",
   "repository": "SymC-Universe/Biomedical",
   "active_branch": "gri-v2",
   "program_status": "DEVELOPMENT_NOT_VALIDATED_CLINICAL_TOOL",
   "current_gate": {
-    "stage": "STAGE_C1_MODAL_SCALAR_CONGLOMERATION_FORMULA_FREEZE",
-    "status": "AWAITING_EXPLICIT_SCIENTIFIC_APPROVAL_BEFORE_BETA_VALUE_ANALYSIS",
+    "stage": "PRE_C1_TOOL_FEASIBILITY_REGULATORY_AUTONOMY",
+    "status": "ACTIVE_C1_BIOLOGY_SEALED",
+    "tool_discovery_charter_locked": true,
     "stage_c0_source_gate_complete": true,
     "stage_c0_1_sample_identity_complete": true,
     "stage_c1a_annotation_contract_frozen": true,
     "stage_c1a_external_source_gate_complete": true,
     "stage_c1a_exact_probe_inventory_complete": true,
+    "stage_c1_v2_scientific_contract_frozen": true,
     "stage_c1_beta_value_biological_association_started": false,
     "canonical_status_file": "GRI_v2/notes/BUILD_STATUS.md"
+  },
+  "program_objective": {
+    "canonical_charter": "GRI_v2/docs/GRI_V2_TOOL_DISCOVERY_CHARTER_20260830.md",
+    "historical_gri_role": "RESEARCH_ANCESTRY_NOT_DOCTRINE",
+    "historical_claim_recovery_required": false,
+    "biological_chi_required": false,
+    "stability_label_required_in_final_tool": false,
+    "primary_success_definition": "reproducible biomedical method with utility beyond appropriate baselines",
+    "inherited_research_questions": [
+      "state_beyond_mutation_alone",
+      "independent_cross_layer_verification",
+      "regulatory_autonomy_or_substrate_conditioned_dependence",
+      "future_dynamic_recoverability_or_adaptive_reserve"
+    ]
   },
   "scientific_guardrails": {
     "historical_cv_over_2_is_chi": false,
     "biological_chi_admitted": false,
     "chi_equals_one_assumed_cancer_optimum": false,
     "master_stability_score_admitted": false,
+    "historical_gri_zones_assumed_valid": false,
+    "gene_rank_is_time": false,
+    "chromatin_is_damping": false,
+    "historical_substrate_capture_established": false,
+    "static_control_bandwidth_measured": false,
+    "regulatory_autonomy_estimator_admitted": false,
+    "recoverability_claim_from_static_data_allowed": false,
     "failed_and_null_branches_retained": true,
     "static_stage_b2_establishes_substrate_inheritance": false,
     "stage_c0_establishes_substrate_inheritance": false,
@@ -55,46 +78,43 @@
     "config": "GRI_v2/config/stage_c1_annotation_feature_plan.json",
     "source_audit": "GRI_v2/docs/STAGE_C1A_ANNOTATION_SOURCE_AUDIT_20260830.md",
     "probe_inventory_audit": "GRI_v2/docs/STAGE_C1A_PROBE_INVENTORY_AUDIT_20260830.md",
-    "compact_output_dir": "GRI_v2/development_outputs/stage_c1a_probe_inventory",
     "approved_before_beta_association": true,
     "source_probe_rows": 22601,
-    "source_unique_probe_ids": 22601,
     "annotation_overlap": 22601,
     "missing_annotation_count": 0,
     "refgene_mapped_probe_count": 22469,
     "refgene_unmapped_probe_count": 132,
     "gene_region_tuple_rows": 46287,
-    "tuple_length_mismatch_probe_count": 0,
-    "unstratified_refgene_probe_count": 0,
-    "primary_annotation": {
-      "package": "IlluminaHumanMethylation450kanno.ilmn12.hg19",
-      "bioconductor_release": "3.8",
-      "version": "0.6.0",
-      "lineage": "Illumina HM450 v1.2 / hg19",
-      "sha256": "249b8fd62add3c95b5047b597cff0868d26a98862a47cebd656edcd175a73b15"
-    },
-    "selected_common_snp_object": "SNPs.147CommonSingle",
-    "technical_mask": {
-      "chen_cross_reactive_overlap": 524,
-      "common_snp_cpg_or_sbe_overlap": 59,
-      "union_overlap": 579,
-      "robustness_remaining_probe_count": 22022
-    },
-    "regulatory_strata_unique_probe_counts": {
-      "PROMOTER_CORE": 3999,
-      "PROMOTER_PROXIMAL": 8157,
-      "PROMOTER_TRANSCRIBED_EDGE": 9455,
-      "GENE_BODY": 4983,
-      "THREE_PRIME_UTR": 152,
-      "BROAD_PROMOTER_SECONDARY": 19362
-    },
-    "compact_summary_sha256": "04632061a28570f5eefcd41bd4abca230cd42e63538e02a9ab941b3cecf88168",
-    "regulatory_stratum_counts_sha256": "603b96ac879c4c58517479bc5dbee10bf89a0f47c374abd653c492d928de1cbc",
+    "technical_mask_union": 579,
+    "robustness_remaining_probe_count": 22022,
     "probe_gene_region_map_sha256": "78f38d420a486427d67d88f67f5da83d1811003bf578b3c673f1dcbee5912296",
     "probe_flags_sha256": "5777ff7331c4bae750ed1c87bb6eb93136c56ade6dbf8522829db1f5659ac455",
-    "beta_values_parsed_for_biological_analysis": false,
-    "biological_association_performed": false,
-    "claim_ceiling": "exact probe annotation/mask inventory only; no methylation biological association"
+    "biological_association_performed": false
+  },
+  "stage_c1": {
+    "status": "SCIENTIFIC_CONTRACT_FROZEN_EXECUTION_DEFERRED_BEHIND_TOOL_FEASIBILITY",
+    "preregistration": "GRI_v2/docs/STAGE_C1_ANALYSIS_PREREGISTRATION_20260830.md",
+    "approved_source_document": "GRI_v2/docs/STAGE_C1_ANALYSIS_CONTRACT_DRAFT_V2_20260830.md",
+    "approved_source_blob_sha1": "a39414c5990c234dc513569bd405b0237117d434",
+    "freeze_commit": "793131ff7886d959772fdcdb0e67fdd7d2dfe691",
+    "beta_value_biological_association_started": false,
+    "feasibility_work_may_retune_c1": false,
+    "claim_ceiling": "static methylation organization and specific composition-tested methylation/RNA architecture only under frozen promotion ladder"
+  },
+  "tool_feasibility": {
+    "status": "ACTIVE",
+    "locked_charter": "GRI_v2/docs/GRI_V2_TOOL_DISCOVERY_CHARTER_20260830.md",
+    "historical_draft": "GRI_v2/docs/TOOL_FEASIBILITY_GATE_DRAFT_20260830.md",
+    "candidate_tool": "cross_omic_architecture_integration_readiness_auditor",
+    "active_novel_component_question": "regulatory_autonomy_or_substrate_conditioned_dependence",
+    "sequence": [
+      "F1_GENERAL_MATHEMATICAL_KERNEL",
+      "F2_SYNTHETIC_GROUND_TRUTH_CHALLENGE",
+      "F3_BASELINE_COMPETITION",
+      "F4_GO_NARROW_STOP_DECISION",
+      "C1_FIRST_PROSPECTIVE_BIOLOGICAL_CASE_STUDY_IF_JUSTIFIED"
+    ],
+    "recoverability_reserved_for_ordered_data": true
   },
   "closed_major_stages": [
     "HISTORICAL_SCALAR_CLOSED_NOT_PROMOTED",
@@ -107,13 +127,18 @@
     "B2_STATIC_INTEGRATION",
     "C0_METHYLATION_SOURCE_GATE",
     "C0_1_SAMPLE_IDENTITY_GATE",
-    "C1A_ANNOTATION_AND_EXACT_PROBE_GATE"
+    "C1A_ANNOTATION_AND_EXACT_PROBE_GATE",
+    "C1_V2_SCIENTIFIC_FREEZE",
+    "F0_TOOL_DISCOVERY_OBJECTIVE_LOCK"
   ],
   "active_or_prospective_stages": [
-    "C1_MODAL_SCALAR_CONGLOMERATION_FORMULA_FREEZE",
+    "F1_GENERAL_MATHEMATICAL_KERNEL",
+    "F2_SYNTHETIC_GROUND_TRUTH_CHALLENGE",
+    "F3_BASELINE_COMPETITION",
+    "F4_GO_NARROW_STOP_DECISION",
     "C1_METHYLATION_BIOLOGICAL_TEST",
-    "ORDERED_TEMPORAL_SUBSTRATE_TEST",
-    "DYNAMIC_BIOLOGICAL_CHI"
+    "DYNAMIC_RECOVERABILITY_TEST",
+    "OPTIONAL_DYNAMIC_BIOLOGICAL_CHI"
   ],
   "canonical_entry_points": {
     "project_readme": "GRI_v2/README.md",
@@ -121,6 +146,8 @@
     "claim_evidence_map": "GRI_v2/reviewer/CLAIM_EVIDENCE_MAP.md",
     "build_status": "GRI_v2/notes/BUILD_STATUS.md",
     "tool_objective": "GRI_v2/docs/TOOL_OBJECTIVE.md",
+    "tool_discovery_charter": "GRI_v2/docs/GRI_V2_TOOL_DISCOVERY_CHARTER_20260830.md",
+    "c1_preregistration": "GRI_v2/docs/STAGE_C1_ANALYSIS_PREREGISTRATION_20260830.md",
     "epistemic_constitution": "GRI_v2/docs/EPISTEMIC_CONSTITUTION.md",
     "chi_admission_rules": "GRI_v2/docs/CHI_ADMISSION_RULES.md",
     "milestone_artifacts": "GRI_v2/artifacts/MILESTONE_ARTIFACTS.md"
