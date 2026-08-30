@@ -1,0 +1,156 @@
+{
+  "schema": "gri-v2-prediction-p0-holdout-freeze-v0.1",
+  "date": "2026-08-30",
+  "status": "FROZEN_BEFORE_P0_TARGET_VALUES",
+  "f4_anchor": "b1fbf9f5b61ae9e94daff7042b6575b789111434",
+  "stage_c1_science_modified": false,
+  "c1_beta_value_biology_read": false,
+  "biological_chi_used": false,
+  "seed_namespace": "GRI_V2_PREDICTION_P0_20260830",
+  "sources": {
+    "matched_universe_samples": 9460,
+    "matched_universe_cancers": 32,
+    "methylation_sha256": "5934c497882fbe8178d128a3a7f71e765480af6bbd460e0398de3428cd075b77",
+    "primary_probe_count": 22601,
+    "masked_nominal_probe_count": 22022,
+    "technical_mask_count": 579,
+    "probe_gene_region_map_sha256": "78f38d420a486427d67d88f67f5da83d1811003bf578b3c673f1dcbee5912296",
+    "probe_flags_sha256": "5777ff7331c4bae750ed1c87bb6eb93136c56ade6dbf8522829db1f5659ac455",
+    "hallmark_membership_sha256": "bc6a9a33d7421dc407d33a66859760ba25e47b2f398e1a43c9156f80c71b3900",
+    "rna_cache_sha256": "e65f6788aa6037fef407169794f29d63322de2769343bb6e594fe469dfeb8e63",
+    "absolute_purity_sha256": "f430a975433d82e0098d7405619d4f12a0c765fcd97e7d63cc9b1de7f2d763cd",
+    "leukocyte_fraction_sha256": "5a8268caedbf8dc98a75be0528d583238d7355761d9fc746e42002f223a982d9"
+  },
+  "partition": {
+    "unit": "participant_root",
+    "token": "GRI_V2_PREDICTION_P0_20260830|<cancer>|<participant_root>",
+    "hash": "sha256_first_8_bytes_unsigned_big_endian_mod_10",
+    "discovery_buckets": [0, 1, 2, 3, 4, 5],
+    "replication_buckets": [6, 7],
+    "final_holdout_buckets": [8, 9],
+    "reassignment_allowed": false,
+    "minimum_eligible_per_partition_per_cancer": 30,
+    "pan_cancer_promotion_min_cancers": 24
+  },
+  "eligibility": {
+    "sample_primary_finite_fraction_min": 0.95,
+    "discovery_probe_finite_fraction_min": 0.95,
+    "imputation": "discovery_finite_median",
+    "masked_track": "discovery_primary_eligible_intersection_frozen_mask_retained",
+    "holdout_feature_reselection": false
+  },
+  "hallmark_source_target": {
+    "primary_regulatory_stratum": "TSS200",
+    "minimum_mapped_genes": 10,
+    "minimum_contributing_methylation_probes": 10,
+    "minimum_common_hallmarks_for_full_semantic_branch": 25,
+    "methylation_gene_score": "median_unique_eligible_TSS200_probes",
+    "methylation_hallmark_score": "discovery_fit_PC1_projected_to_holdouts",
+    "rna_hallmark_target": "discovery_fit_PC1_on_frozen_Hallmark_gene_universe_projected_to_holdouts",
+    "pc1_orientation": "nonnegative_discovery_correlation_with_unweighted_module_mean_else_largest_absolute_loading_positive",
+    "holdout_dimensionality_fit": false
+  },
+  "nulls_and_detection": {
+    "null_replicates": 39,
+    "within_layer": {
+      "construction": "independent_within_probe_patient_permutation",
+      "statistic": "S_spec=1-normalized_spectral_entropy",
+      "empirical_p_max": 0.05,
+      "delta_requirement": "Delta_S_spec>0"
+    },
+    "global": {
+      "statistic": "linear_CKA",
+      "null": "patient_row_permutation",
+      "empirical_p_max": 0.05,
+      "delta_CKA_min": 0.05,
+      "threshold_source": "F2_frozen_synthetic_calibration"
+    },
+    "semantic": {
+      "statistic": "median_absolute_same_Hallmark_Spearman",
+      "patient_null": "methylation_patient_permutation",
+      "label_null": "methylation_Hallmark_label_permutation",
+      "label_empirical_p_max": 0.05,
+      "label_delta_min": 0.10,
+      "label_threshold_source": "F2_frozen_synthetic_calibration",
+      "patient_empirical_p_max": 0.05,
+      "patient_delta_requirement": "Delta_A_patient>0"
+    }
+  },
+  "attacks": {
+    "composition": {
+      "covariates": ["ABSOLUTE_purity", "methylation_derived_leukocyte_fraction"],
+      "fit_partition": "DISCOVERY",
+      "missing_covariate_result": "NOT_EVALUABLE_FOR_STRONGEST_ACCEPT"
+    },
+    "technical": {
+      "tracks": ["PRIMARY_PUBLICATION", "MASKED_TECHNICAL"],
+      "same_participants": true,
+      "strong_accept_requires_agreement": true
+    }
+  },
+  "states": {
+    "NO_SHARED_STRUCTURE": "global_not_detected_and_neither_layer_within_layer_detected",
+    "WITHIN_LAYER_ONLY": "global_not_detected_and_at_least_one_layer_within_layer_detected",
+    "GLOBAL_SHARED_ONLY": "global_detected_but_raw_semantic_patient_and_label_criteria_not_both_met",
+    "SEMANTIC_SHARED_CONFOUNDED": "raw_semantic_supported_on_both_technical_tracks_but_composition_adjusted_semantic_fails_or_not_evaluable",
+    "SEMANTIC_SHARED_ROBUST": "global_and_semantic_supported_raw_and_composition_adjusted_with_primary_masked_agreement",
+    "decision_classes": {
+      "ACCEPT": ["SEMANTIC_SHARED_ROBUST"],
+      "CAUTION": ["GLOBAL_SHARED_ONLY", "SEMANTIC_SHARED_CONFOUNDED", "TECHNICALLY_UNSTABLE_OTHERWISE_FAVORABLE"],
+      "REFUSE": ["NO_SHARED_STRUCTURE", "WITHIN_LAYER_ONLY"]
+    },
+    "fit_partition": "DISCOVERY_ONLY"
+  },
+  "p1": {
+    "task": "predict_RNA_Hallmark_PC1_vector_from_methylation_Hallmark_PC1_vector_plus_allowed_B1_covariates",
+    "model": "multioutput_ridge",
+    "standardization_fit": "DISCOVERY_ONLY",
+    "ridge_alpha_grid": [0.0001, 0.001, 0.01, 0.1, 1.0, 10.0, 100.0, 1000.0],
+    "cv_folds": 5,
+    "cv_token": "GRI_V2_PREDICTION_P0_20260830|CV|<cancer>|<participant_root>",
+    "cv_assignment": "sha256_first_8_bytes_unsigned_big_endian_mod_5",
+    "baselines": ["MEAN_ONLY", "COVARIATE_ONLY", "SAME_HALLMARK_ONLY", "ALL_METHYLATION_RIDGE"],
+    "metrics": ["heldout_R2_vs_discovery_mean", "normalized_MSE_using_discovery_target_variance"],
+    "cancer_aggregation": "median_across_eligible_Hallmarks",
+    "pan_cancer_test": "exact_paired_one_sided_sign_test_vs_COVARIATE_ONLY",
+    "effect_size_promotion_threshold": null
+  },
+  "p2": {
+    "discovery_state_is_prediction": true,
+    "replication_refit_discovery_transformations": false,
+    "outputs": ["five_state_exact_agreement", "accept_confusion_matrix", "precision", "recall", "specificity", "balanced_accuracy", "MCC", "per_cancer_Hallmark_positive_effect_preservation"],
+    "undefined_metric_rule": "NOT_EVALUABLE",
+    "comparators": ["GLOBAL_ONLY", "NAIVE_SEMANTIC", "FULL_NARROWED_AUDIT"],
+    "architecture_tuning_from_replication": false
+  },
+  "p3": {
+    "prediction_model": "unchanged_DISCOVERY_trained_ALL_METHYLATION_RIDGE",
+    "evaluation_partition": "FINAL_HOLDOUT",
+    "risk": "final_holdout_MSE_divided_by_discovery_target_variance",
+    "coverage_views": ["ACCEPT_ONLY", "ACCEPT_PLUS_CAUTION", "ALL"],
+    "primary_comparison": "cancer_median_REFUSE_risk_gt_cancer_median_ACCEPT_risk",
+    "pan_cancer_test": "exact_one_sided_sign_test",
+    "comparators": ["ALWAYS_PREDICT", "GLOBAL_ONLY", "NAIVE_SEMANTIC", "FULL_AUDIT"],
+    "holdout_threshold_tuning": false
+  },
+  "component_ablations": [
+    "GLOBAL_ONLY",
+    "NO_LABEL_NULL",
+    "NO_COMPOSITION_ATTACK",
+    "NO_TECHNICAL_TRACK",
+    "FULL_NARROWED_AUDIT"
+  ],
+  "excluded_components": {
+    "regulatory_autonomy_scalar": "AUTONOMY_REDUNDANT_NARROW",
+    "nonlinear_only_claim": "S8_FAILED_EXCLUDED_FROM_V0_1"
+  },
+  "final_holdout_prerequisites": [
+    "protocol_and_config_committed",
+    "split_manifest_implemented_and_hash_verified",
+    "discovery_only_preprocessing_and_model_tests_pass",
+    "audit_state_regression_tests_pass",
+    "P1_P2_P3_scoring_fixed",
+    "record_that_replication_did_not_change_P0_architecture"
+  ],
+  "claim_ceiling": "prospective cross-layer prediction, replication forecasting, selective prediction/refusal, and component utility within frozen matched PanCanAtlas only; no clinical, causal, dynamic, inheritance, recovery, damping, EP, optimum, biological chi, or external-generalization claim"
+}
