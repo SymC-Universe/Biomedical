@@ -85,6 +85,13 @@ jobs:
           python -m pip install 'git+https://github.com/idc9/ya_pca.git@77f633643e9b9e092fe6f62266e21129393d08f7'
           python -m pip install 'git+https://github.com/idc9/mvdr.git@ab04895a04a8f4e1b40e332591c736ba18bf8fd7'
 
+      - name: Qualify pinned AJIVE runtime on one frozen pair
+        working-directory: GRI_v2
+        run: |
+          python -m src.f3_established_runtime_compat preflight-python \
+            --inputs tool_feasibility_f3_established_inputs \
+            --out tool_feasibility_f3_established_python_outputs
+
       - name: Run AJIVE and MOFA2 frozen comparison
         working-directory: GRI_v2
         run: |

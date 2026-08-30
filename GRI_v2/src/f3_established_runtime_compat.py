@@ -10,6 +10,13 @@ MVDR_COMMIT = "ab04895a04a8f4e1b40e332591c736ba18bf8fd7"
 DIVAS_COMMIT = "294986fac88bdeea1071902aa360b19e820c85de"
 DIVAS_VERSION = "0.1.1"
 
+PY311_INSPECT_REPAIR = {
+    "location": "Python 3.11 inspect module before pinned mvdr import",
+    "pinned_upstream_mismatch": "pinned mvdr imports inspect.getargspec, removed in Python 3.11",
+    "action": "alias inspect.getargspec to inspect.getfullargspec before importing mvdr",
+    "scientific_effect": "none: import/runtime compatibility only; no data, seeds, ranks, thresholds, or mathematics change",
+}
+
 AJIVE_RUNTIME_REPAIR = {
     "location": "mvdr.ajive.random_direction.sample_randdir -> module-global draw_samples",
     "pinned_upstream_mismatch": (
@@ -43,8 +50,19 @@ def _write_json(path: Path, payload: dict[str, object]) -> None:
     path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
+def _patch_python311_inspect_compat() -> dict[str, object]:
+    """Install the already-authorized Python 3.11 import shim before mvdr is imported."""
+    if hasattr(inspect, "getargspec"):
+        return {"applied": False, "already_present": True, **PY311_INSPECT_REPAIR}
+    inspect.getargspec = inspect.getfullargspec  # type: ignore[attr-defined]
+    return {"applied": True, "already_present": False, **PY311_INSPECT_REPAIR}
+
+
 def _patch_mvdr_draw_samples_compat() -> dict[str, object]:
     """Repair the second pinned mvdr keyword mismatch without changing AJIVE semantics."""
+    inspect_repair = _patch_python311_inspect_compat()
+
+    # This import must occur only after the Python 3.11 inspect shim above.
     import mvdr.ajive.random_direction as random_direction
 
     native_draw_samples = random_direction.draw_samples
@@ -55,6 +73,7 @@ def _patch_mvdr_draw_samples_compat() -> dict[str, object]:
         return {
             "applied": False,
             "already_present": True,
+            "inspect_compat": inspect_repair,
             "draw_samples_signature": str(draw_sig),
             "sample_randdir_signature": str(sample_sig),
             **AJIVE_RUNTIME_REPAIR,
@@ -64,6 +83,7 @@ def _patch_mvdr_draw_samples_compat() -> dict[str, object]:
         return {
             "applied": False,
             "already_present": False,
+            "inspect_compat": inspect_repair,
             "draw_samples_signature": str(draw_sig),
             "sample_randdir_signature": str(sample_sig),
             **AJIVE_RUNTIME_REPAIR,
@@ -102,10 +122,57 @@ def _patch_mvdr_draw_samples_compat() -> dict[str, object]:
     return {
         "applied": True,
         "already_present": False,
+        "inspect_compat": inspect_repair,
         "draw_samples_signature_before": str(draw_sig),
         "sample_randdir_signature": str(sample_sig),
         **AJIVE_RUNTIME_REPAIR,
     }
+
+
+def preflight_python(inputs: Path, out: Path) -> None:
+    """Qualify the pinned AJIVE runtime on one exact frozen pair before the 104-case run."""
+    out.mkdir(parents=True, exist_ok=True)
+    manifest = json.loads((inputs / "manifest.json").read_text(encoding="utf-8"))
+    if manifest.get("c1_beta_value_biology_read") is not False or manifest.get("biological_chi_used") is not False:
+        raise RuntimeError("frozen input manifest violated no-biology-read guard")
+    records = list(manifest.get("records", []))
+    if len(records) != 104:
+        raise RuntimeError(f"unexpected frozen F3 record count: {len(records)}")
+
+    repair = _patch_mvdr_draw_samples_compat()
+    from src import run_tool_feasibility_f3_established_python as runner
+
+    rec = records[0]
+    x = runner._load_matrix(inputs / str(rec["source_file"]))
+    y = runner._load_matrix(inputs / str(rec["target_file"]))
+    result = runner.run_ajive(x, y)
+    required = {
+        "ajive_status",
+        "ajive_joint_rank",
+        "ajive_source_indiv_rank",
+        "ajive_target_indiv_rank",
+        "ajive_source_joint_energy_fraction",
+        "ajive_target_joint_energy_fraction",
+    }
+    missing = sorted(required.difference(result))
+    if result.get("ajive_status") != "OK" or missing:
+        raise RuntimeError(f"AJIVE preflight did not produce the required frozen output schema; missing={missing}")
+
+    payload = {
+        "status": "F3_AJIVE_RUNTIME_PREFLIGHT_PASS",
+        "purpose": "execution qualification only; this one-case fit is not an F3 evidentiary result",
+        "scenario": str(rec["scenario"]),
+        "representation": str(rec["representation"]),
+        "replicate": int(rec["replicate"]),
+        "mvdr_commit": MVDR_COMMIT,
+        "repair": repair,
+        "frozen_record_count_verified": len(records),
+        "claim_ceiling": "runtime qualification only",
+        "c1_beta_value_biology_read": False,
+        "biological_chi_used": False,
+    }
+    _write_json(out / "F3_AJIVE_RUNTIME_PREFLIGHT.json", payload)
+    print(json.dumps(payload, indent=2, sort_keys=True), flush=True)
 
 
 def run_python_comparators(inputs: Path, out: Path) -> None:
@@ -228,6 +295,10 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="command", required=True)
 
+    preflight = sub.add_parser("preflight-python")
+    preflight.add_argument("--inputs", type=Path, required=True)
+    preflight.add_argument("--out", type=Path, required=True)
+
     py = sub.add_parser("run-python")
     py.add_argument("--inputs", type=Path, required=True)
     py.add_argument("--out", type=Path, required=True)
@@ -236,7 +307,9 @@ def main() -> None:
     divas.add_argument("--out", type=Path, required=True)
 
     args = ap.parse_args()
-    if args.command == "run-python":
+    if args.command == "preflight-python":
+        preflight_python(args.inputs, args.out)
+    elif args.command == "run-python":
         run_python_comparators(args.inputs, args.out)
     elif args.command == "classify-divas":
         classify_divas(args.out)
