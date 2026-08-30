@@ -10,7 +10,9 @@ on:
       - 'GRI_v2/config/stage_c0_methylation_source_plan.json'
       - 'GRI_v2/docs/STAGE_C0_METHYLATION_PREREGISTRATION_20260830.md'
       - 'GRI_v2/src/probe_stage_c0_methylation.py'
+      - 'GRI_v2/src/validate_stage_c0_cache.py'
       - 'GRI_v2/tests/test_stage_c0_methylation_contract.py'
+      - 'GRI_v2/tests/test_stage_c0_cache_validator.py'
       - 'GRI_v2/RUN_STAGE_C0_METHYLATION_WINDOWS.bat'
       - '.github/workflows/gri-v2-stage-c0-methylation.yml'
 
@@ -52,20 +54,23 @@ jobs:
           cp GRI_v2/config/stage_c0_methylation_source_plan.json "$H/config/"
           cp GRI_v2/docs/STAGE_C0_METHYLATION_PREREGISTRATION_20260830.md "$H/docs/"
           cp GRI_v2/src/probe_stage_c0_methylation.py "$H/src/"
+          cp GRI_v2/src/validate_stage_c0_cache.py "$H/src/"
           cp GRI_v2/tests/test_stage_c0_methylation_contract.py "$H/tests/"
+          cp GRI_v2/tests/test_stage_c0_cache_validator.py "$H/tests/"
           cat > "$H/README_HANDOFF.txt" <<'EOF'
           Cancer Stability Atlas - Stage C0 methylation source gate
 
           Purpose: acquire and source-audit the frozen PanCanAtlas merged HM27/HM450 methylation matrix without biological association testing.
 
           1. Extract this archive to a normal local folder.
-          2. Double-click RUN_STAGE_C0_METHYLATION_WINDOWS.bat.
-          3. When prompted, select the existing completed Stage A hallmark_profile_cache.npz.
-          4. Leave the window running. The 5.02 GB source download is resumable through a .part file.
-          5. At completion, return only:
+          2. If a previous Stage C0 folder already contains large_sources, copy or move that entire folder into this handoff so valid acquired data are reused.
+          3. Double-click RUN_STAGE_C0_METHYLATION_WINDOWS.bat.
+          4. When prompted, select the actual existing completed Stage A hallmark_profile_cache.npz. Filenames containing parentheses are supported.
+          5. The launcher validates the exact frozen Stage A SHA-256 before any methylation acquisition/audit.
+          6. At completion, return only:
              stage_c0_methylation_outputs/STAGE_C0_METHYLATION_SOURCE_SUMMARY.json
              stage_c0_methylation_outputs/stage_c0_methylation_cancer_coverage.csv
-          6. Keep the downloaded 5.02 GB matrix locally. Do not upload it to ChatGPT or commit it to GitHub.
+          7. Keep the downloaded 5.02 GB matrix locally. Do not upload it to ChatGPT or commit it to GitHub.
 
           This stage computes no chi, no CV/2, no composite stability score, and no methylation biological association.
           EOF
