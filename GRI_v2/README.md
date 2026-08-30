@@ -66,14 +66,24 @@ See `docs/STAGE_B1_AUDIT_20260829.md`.
 
 Stage B2 tests orthogonal static biological layers that were reserved before seeing the B1 result.
 
-Current source families:
+Terminology used in this phase:
 
-1. aneuploidy / loss-of-heterozygosity genomic context;
-2. copy-number burden;
-3. reverse-phase protein array protein abundance;
-4. DNA methylation as a deeper substrate/state layer, subject to source-size and coverage review before full acquisition.
+- **LOH** means loss of heterozygosity, a genomic state in which a region loses the distinction between the two inherited chromosome copies.
+- **RPPA** means reverse-phase protein array, a protein-abundance assay.
 
-The first B2 source probe successfully downloaded and hashed the small genomic and protein sources. A legacy GDC metadata-route issue was identified separately and is being repaired for deferred methylation size/provenance inspection. No B2 biological association has yet been interpreted.
+The repaired Stage B2 source probe is complete. It verified and hashed the pre-reserved small genomic/protein sources and established exact acquisition sizes for the deferred methylation sources without downloading them.
+
+Current source coverage against the 9,546-sample Stage A universe:
+
+1. aneuploidy / LOH genomic context: 9,167 matches; at least 30 matched cases in 32/32 cancers;
+2. copy-number burden: 9,308 matches; at least 30 in 31/32 cancers; SKCM has no eligible primary-tumor row under the frozen matching rule and will not be rescued with metastatic substitution;
+3. RPPA protein abundance: 6,887 matches; at least 30 in 31/32 cancers; UVM has 12 and is excluded from the primary RPPA cross-cancer layer;
+4. merged 27K/450K DNA methylation: approximately 5.02 GB and deferred until a feature-reduction/harmonization plan is frozen;
+5. 450K-only methylation robustness matrix: approximately 41.54 GB and remains deferred unless a specific preregistered robustness need justifies acquisition.
+
+No B2 biological association has yet been interpreted. The next gate is to define genomic and protein coordinates from source meaning, freeze redundancy/missingness rules, and preregister incremental-information tests before looking at agreement with the Stage A network map.
+
+See `docs/STAGE_B2_SOURCE_AUDIT_20260829.md`.
 
 ## What comes after the static program
 
@@ -89,6 +99,7 @@ Only after a same-coordinate relaxation rate and intrinsic response rate satisfy
 - `docs/CHI_ADMISSION_RULES.md` — conditions required before chi may be used
 - `docs/STAGE_A1_AUDIT_20260829.md` — Stage A1 audit
 - `docs/STAGE_B1_AUDIT_20260829.md` — Stage B1 composition/context audit
+- `docs/STAGE_B2_SOURCE_AUDIT_20260829.md` — Stage B2 source and coverage audit
 - `artifacts/MILESTONE_ARTIFACTS.md` — artifact hashes and provenance
 
 ## Repository role
