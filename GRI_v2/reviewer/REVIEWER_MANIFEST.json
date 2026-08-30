@@ -1,0 +1,122 @@
+{
+  "schema": "gri-v2-reviewer-manifest-v0.1",
+  "program": "GRI v2 / Cancer Stability Atlas",
+  "repository": "SymC-Universe/Biomedical",
+  "active_branch": "gri-v2",
+  "program_status": "DEVELOPMENT_NOT_VALIDATED_CLINICAL_TOOL",
+  "current_gate": {
+    "stage": "B2_GENOMIC",
+    "status": "IN_PROGRESS",
+    "frozen_task_count": 306,
+    "partial_results_interpretable": false,
+    "canonical_status_file": "GRI_v2/notes/BUILD_STATUS.md"
+  },
+  "scientific_guardrails": {
+    "historical_cv_over_2_is_chi": false,
+    "biological_chi_admitted": false,
+    "chi_equals_one_assumed_cancer_optimum": false,
+    "master_stability_score_admitted": false,
+    "failed_and_null_branches_retained": true,
+    "partial_b2_genomic_results_promotable": false
+  },
+  "canonical_entry_points": {
+    "project_readme": "GRI_v2/README.md",
+    "reviewer_readme": "GRI_v2/reviewer/README.md",
+    "claim_evidence_map": "GRI_v2/reviewer/CLAIM_EVIDENCE_MAP.md",
+    "build_status": "GRI_v2/notes/BUILD_STATUS.md",
+    "tool_objective": "GRI_v2/docs/TOOL_OBJECTIVE.md",
+    "epistemic_constitution": "GRI_v2/docs/EPISTEMIC_CONSTITUTION.md",
+    "chi_admission_rules": "GRI_v2/docs/CHI_ADMISSION_RULES.md",
+    "repository_workflow": "GRI_v2/WORKFLOW.md",
+    "milestone_artifacts": "GRI_v2/artifacts/MILESTONE_ARTIFACTS.md"
+  },
+  "stage_registry": [
+    {
+      "stage": "HISTORICAL_SCALAR",
+      "status": "CLOSED_NOT_PROMOTED",
+      "audit_or_record": "GRI_v2/artifacts/MILESTONE_ARTIFACTS.md"
+    },
+    {
+      "stage": "A1",
+      "status": "CLOSED_DEVELOPMENT_LAYER",
+      "audit_or_record": "GRI_v2/docs/STAGE_A1_AUDIT_20260829.md",
+      "config": "GRI_v2/config/stage_a1_plan.json"
+    },
+    {
+      "stage": "A1_1",
+      "status": "CLOSED_CALIBRATION",
+      "audit_or_record": "GRI_v2/docs/STAGE_A1_1_AUDIT_20260829.md",
+      "config": "GRI_v2/config/stage_a1_1_calibration_plan.json",
+      "compact_output_dir": "GRI_v2/development_outputs/stage_a1_1"
+    },
+    {
+      "stage": "B1",
+      "status": "CLOSED",
+      "audit_or_record": "GRI_v2/docs/STAGE_B1_AUDIT_20260829.md",
+      "config": "GRI_v2/config/stage_b1_context_adjustment_plan.json",
+      "compact_output_dir": "GRI_v2/development_outputs/stage_b1"
+    },
+    {
+      "stage": "B2_SOURCE",
+      "status": "CLOSED",
+      "audit_or_record": "GRI_v2/docs/STAGE_B2_SOURCE_AUDIT_20260829.md",
+      "config": "GRI_v2/config/stage_b2_source_plan.json",
+      "compact_output_dir": "GRI_v2/development_outputs/stage_b2"
+    },
+    {
+      "stage": "B2_PREREGISTRATION",
+      "status": "FROZEN",
+      "audit_or_record": "GRI_v2/docs/STAGE_B2_PREREGISTRATION_20260829.md",
+      "config": "GRI_v2/config/stage_b2_integration_plan.json"
+    },
+    {
+      "stage": "B2_RPPA",
+      "status": "CLOSED",
+      "audit_or_record": "GRI_v2/docs/STAGE_B2_RPPA_AUDIT_20260829.md",
+      "implementation": "GRI_v2/src/run_stage_b2_rppa.py",
+      "test": "GRI_v2/tests/test_stage_b2_rppa.py",
+      "compact_output_dir": "GRI_v2/development_outputs/stage_b2_rppa"
+    },
+    {
+      "stage": "B2_GENOMIC",
+      "status": "IN_PROGRESS_NO_RESULT_CLAIM",
+      "config": "GRI_v2/config/stage_b2_integration_plan.json",
+      "implementation": "GRI_v2/src/run_stage_b2_genomic.py",
+      "resume_implementation": "GRI_v2/src/run_stage_b2_genomic_resume.py",
+      "tests": [
+        "GRI_v2/tests/test_stage_b2_genomic.py",
+        "GRI_v2/tests/test_stage_b2_genomic_resume.py"
+      ]
+    },
+    {
+      "stage": "GENOME_WIDE_METHYLATION",
+      "status": "DEFERRED_INDEPENDENT_GATE"
+    },
+    {
+      "stage": "DYNAMIC_BIOLOGICAL_CHI",
+      "status": "NOT_ADMITTED",
+      "audit_or_record": "GRI_v2/docs/CHI_ADMISSION_RULES.md"
+    }
+  ],
+  "repository_roles": {
+    "docs": "scientific audits, objectives, and epistemic rules",
+    "config": "frozen or preregistered analysis contracts",
+    "src": "analysis implementations",
+    "tests": "contract and regression tests",
+    "development_outputs": "compact committed result summaries",
+    "artifacts": "hashes and provenance for larger milestone artifacts",
+    "inputs": "compact source identity and provenance records",
+    "notes": "current handoff and operational status",
+    "reviewer": "reviewer navigation and submission-snapshot rules"
+  },
+  "submission_policy": {
+    "moving_branch_is_submission_record": false,
+    "immutable_tag_or_release_required": true,
+    "submission_specific_claim_evidence_map_required": true,
+    "figure_table_source_map_required": true,
+    "result_hash_manifest_required": true,
+    "test_ci_record_required": true,
+    "null_failure_deferred_nonclaim_ledger_required": true,
+    "checklist": "GRI_v2/reviewer/SUBMISSION_RELEASE_CHECKLIST.md"
+  }
+}
