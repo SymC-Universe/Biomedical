@@ -1,0 +1,72 @@
+name: GRI v2 Stage C0.1 sample identity gate
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - gri-v2
+    paths:
+      - 'GRI_v2/config/stage_c0_1_sample_identity_plan.json'
+      - 'GRI_v2/docs/STAGE_C0_1_SAMPLE_IDENTITY_PREREGISTRATION_20260830.md'
+      - 'GRI_v2/docs/STAGE_C0_METHYLATION_AUDIT_20260830.md'
+      - 'GRI_v2/src/run_stage_c0_1_sample_identity.py'
+      - 'GRI_v2/src/run_stage_c0_1_windows.py'
+      - 'GRI_v2/tests/test_stage_c0_1_sample_identity.py'
+      - 'GRI_v2/RUN_STAGE_C0_1_SAMPLE_IDENTITY_WINDOWS.bat'
+      - '.github/workflows/gri-v2-stage-c0-1-sample-identity.yml'
+
+jobs:
+  test-and-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        working-directory: GRI_v2
+        run: python -m pip install -r requirements.txt
+      - name: Run full GRI v2 tests
+        working-directory: GRI_v2
+        run: python -m pytest -q tests
+      - name: Build exact Windows handoff payload
+        run: |
+          set -euo pipefail
+          H=CSA_STAGE_C0_1_SAMPLE_IDENTITY_WINDOWS_20260830
+          mkdir -p "$H/config" "$H/docs" "$H/src" "$H/tests"
+          cp GRI_v2/RUN_STAGE_C0_1_SAMPLE_IDENTITY_WINDOWS.bat "$H/"
+          cp GRI_v2/requirements.txt "$H/"
+          cp GRI_v2/config/stage_c0_1_sample_identity_plan.json "$H/config/"
+          cp GRI_v2/docs/STAGE_C0_1_SAMPLE_IDENTITY_PREREGISTRATION_20260830.md "$H/docs/"
+          cp GRI_v2/docs/STAGE_C0_METHYLATION_AUDIT_20260830.md "$H/docs/"
+          cp GRI_v2/src/run_stage_c0_1_sample_identity.py "$H/src/"
+          cp GRI_v2/src/run_stage_c0_1_windows.py "$H/src/"
+          cp GRI_v2/tests/test_stage_c0_1_sample_identity.py "$H/tests/"
+          cat > "$H/README_HANDOFF.txt" <<'EOF'
+          Cancer Stability Atlas - Stage C0.1 unique sample identity gate
+
+          Purpose: resolve the 41 duplicate primary sample roots found by C0 using header/schema information only, before any methylation biological association.
+
+          1. Extract this archive to a normal local folder.
+          2. Double-click RUN_STAGE_C0_1_SAMPLE_IDENTITY_WINDOWS.bat.
+          3. The Python file pickers will ask for:
+             a. the completed Stage A hallmark_profile_cache.npz
+             b. the C0-audited 5.02 GB methylation TSV
+             c. STAGE_C0_METHYLATION_SOURCE_SUMMARY.json from the completed C0 run
+          4. The program reads only the methylation header for this gate. It does not scan beta-value rows for biological analysis.
+          5. At completion, return:
+             stage_c0_1_sample_identity_outputs/STAGE_C0_1_SAMPLE_IDENTITY_SUMMARY.json
+             stage_c0_1_sample_identity_outputs/stage_c0_1_unique_match_coverage.csv
+             stage_c0_1_sample_identity_outputs/stage_c0_1_duplicate_primary_roots.csv
+
+          Frozen primary rule: exact sample roots are admitted only when exactly one eligible primary methylation column maps to the root. Duplicate-root samples are excluded from primary C1. No averaging or value-based replicate choice is allowed.
+          EOF
+          (cd "$H" && find . -type f ! -name SHA256SUMS.txt -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS.txt)
+      - name: Upload tested Windows handoff
+        uses: actions/upload-artifact@v4
+        with:
+          name: CSA_STAGE_C0_1_SAMPLE_IDENTITY_WINDOWS_20260830
+          path: CSA_STAGE_C0_1_SAMPLE_IDENTITY_WINDOWS_20260830/
+          if-no-files-found: error
+          retention-days: 90
