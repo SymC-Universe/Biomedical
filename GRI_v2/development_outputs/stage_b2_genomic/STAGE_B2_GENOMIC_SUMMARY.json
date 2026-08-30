@@ -1,0 +1,49 @@
+{
+  "analysis_modes": [
+    "INCREMENT_B1",
+    "PRIMARY"
+  ],
+  "cancer_summary_rows": 306,
+  "chi_present": false,
+  "claim_ceiling": "orthogonal static multiomic integration only; no causality, dynamics, damping, transition, phase, optimum, treatment-state, or chi claim",
+  "composite_score_present": false,
+  "coordinates": [
+    "ANEUPLOIDY_AS",
+    "LOH_SEGMENT_COUNT",
+    "LOH_GENOME_FRACTION",
+    "SCNA_SEGMENT_COUNT",
+    "SCNA_ALTERED_FRACTION"
+  ],
+  "cv2_used": false,
+  "fixed_n": 30,
+  "minimum_valid_resamples": 100,
+  "module_summary_rows": 15300,
+  "raw_rows": 1530000,
+  "raw_storage": "atomic per-task gzip files retained under _task_cache for restartability and audit",
+  "resamples_per_task": 100,
+  "source_sha256": {
+    "absolute_scores_sha256": "4e115fd7408a06b002f34678fa46df0b05aa20ac71db57acf535238f37aa64c8",
+    "hallmark_membership_sha256": "bc6a9a33d7421dc407d33a66859760ba25e47b2f398e1a43c9156f80c71b3900",
+    "seg_based_scores_sha256": "4b63eefb164866a3c49c50c04ee423d3ad1c25540f7cf39e08d997b454a189d0",
+    "stage_a_profile_cache_sha256": "e65f6788aa6037fef407169794f29d63322de2769343bb6e594fe469dfeb8e63",
+    "stage_b1_context_matched_sha256": "fe9221bdf7bfe94f3a53bbd9f01154142365e4328231d0c84f14406c432451dd"
+  },
+  "status": "DEVELOPMENT_ORTHOGONAL_STATIC_GENOMIC_INTEGRATION_ONLY",
+  "tasks": 306,
+  "tasks_by_coordinate": {
+    "INCREMENT_B1::ANEUPLOIDY_AS": 30,
+    "INCREMENT_B1::LOH_GENOME_FRACTION": 30,
+    "INCREMENT_B1::LOH_SEGMENT_COUNT": 30,
+    "INCREMENT_B1::SCNA_ALTERED_FRACTION": 29,
+    "INCREMENT_B1::SCNA_SEGMENT_COUNT": 29,
+    "PRIMARY::ANEUPLOIDY_AS": 32,
+    "PRIMARY::LOH_GENOME_FRACTION": 32,
+    "PRIMARY::LOH_SEGMENT_COUNT": 32,
+    "PRIMARY::SCNA_ALTERED_FRACTION": 31,
+    "PRIMARY::SCNA_SEGMENT_COUNT": 31
+  },
+  "tasks_by_mode": {
+    "INCREMENT_B1": 148,
+    "PRIMARY": 158
+  }
+}
