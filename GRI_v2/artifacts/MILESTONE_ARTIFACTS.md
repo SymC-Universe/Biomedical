@@ -2,6 +2,17 @@
 
 Full milestone suites are retained in ChatGPT when useful for clean handoff. GitHub stores hashes and the reproducible source/config spine.
 
+## 2026-08-30 Stage B2 completed genomic outputs
+
+- File: `CSA_STAGE_B2_GENOMIC_COMPLETED_20260830.zip`
+- SHA-256: `cfa534417b4d3da028812503da49fb475b6b6427c2d563400095fc9d7fc9c9f5`
+- `STAGE_B2_GENOMIC_SUMMARY.json` SHA-256: `b564f06ba77940ba9c92e6ed2a31c91d7f10965dfea0be48ea894a8ecdaf3064`
+- `stage_b2_genomic_cancer_diagnostic.csv` SHA-256: `c95407fd9019af846ef9c7708d89200ebc42af8391d18815841515b62fcbb9d0`
+- `stage_b2_genomic_module_effects.csv` SHA-256: `4d63690e0a1b1da4cd566bc49006cd9c6c41f1e1a118de2e473d2a298c6aa8bf`
+- `stage_b2_genomic_task_status.csv` SHA-256: `c90c0ab56484d1fe97d3e6eac2de47f2957bf3101dd292fe286e70f31becf614`
+- Role: completed frozen Stage B2 genomic decomposition. All 306 preregistered cancer-coordinate-analysis tasks completed 100/100 resamples, yielding 1,530,000 raw module-resample rows and 15,300 module-summary rows. The compact summary is retained under `development_outputs/stage_b2_genomic/`; scientific interpretation is frozen in `docs/STAGE_B2_GENOMIC_AUDIT_20260830.md`.
+- Raw cache policy: the 306 atomic per-task gzip files remain local for restartability and forensic re-audit. `stage_b2_genomic_task_status.csv` records the unique raw/module/diagnostic SHA-256 values for each task. They are not duplicated into Git history.
+
 ## 2026-08-29 Stage B2 genomic resumable execution handoff
 
 - File: `CSA_STAGE_B2_GENOMIC_RESUMABLE_20260829.zip`
