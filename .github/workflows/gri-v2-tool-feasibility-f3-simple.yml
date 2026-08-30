@@ -1,0 +1,36 @@
+name: GRI v2 tool feasibility F3 simple baselines
+
+on:
+  push:
+    branches: [gri-v2]
+    paths:
+      - 'GRI_v2/src/run_tool_feasibility_f3_simple.py'
+      - '.github/workflows/gri-v2-tool-feasibility-f3-simple.yml'
+  workflow_dispatch:
+
+jobs:
+  simple-baselines:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -r requirements.txt
+      - name: Run repository tests
+        run: python -m pytest -q tests
+      - name: Run F3 simple baselines
+        run: python -m src.run_tool_feasibility_f3_simple --out tool_feasibility_f3_simple_outputs
+      - name: Show F3 simple summary
+        run: cat tool_feasibility_f3_simple_outputs/F3_SIMPLE_SUMMARY.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: GRI_V2_TOOL_FEASIBILITY_F3_SIMPLE_20260830
+          path: GRI_v2/tool_feasibility_f3_simple_outputs/
+          if-no-files-found: error
+          retention-days: 90
