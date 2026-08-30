@@ -1,5 +1,5 @@
 @echo off
-setlocal
+setlocal DisableDelayedExpansion
 cd /d "%~dp0"
 set OPENBLAS_NUM_THREADS=1
 set OMP_NUM_THREADS=1
@@ -29,26 +29,21 @@ set /p CACHE=<"%PICK1%"
 del /q "%PICK1%" >nul 2>nul
 if not defined CACHE goto :cancel
 
-if not exist "%CACHE%" (
-  echo.
-  echo SELECTED CACHE PATH DOES NOT EXIST:
-  echo   %CACHE%
-  echo Please select the actual existing completed Stage A hallmark_profile_cache.npz.
-  echo.
-  goto :select_cache
-)
-
 echo.
 echo Verifying selected Stage A cache BEFORE methylation acquisition...
 "%PY%" -m src.validate_stage_c0_cache "%CACHE%"
-if errorlevel 1 (
-  echo.
-  echo The selected file is missing or is not the frozen completed Stage A cache.
-  echo Please choose the correct hallmark_profile_cache.npz.
-  echo.
-  goto :select_cache
-)
+if errorlevel 1 goto :cache_invalid
+goto :cache_valid
 
+:cache_invalid
+echo.
+echo The selected file is missing or is not the frozen completed Stage A cache.
+echo Please choose the actual existing hallmark_profile_cache.npz.
+echo Paths containing parentheses such as hallmark_profile_cache(1).npz are supported.
+echo.
+goto :select_cache
+
+:cache_valid
 if not exist "large_sources" mkdir "large_sources"
 if not exist "stage_c0_methylation_outputs" mkdir "stage_c0_methylation_outputs"
 
