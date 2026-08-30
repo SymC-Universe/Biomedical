@@ -1,0 +1,76 @@
+{
+  "version": "0.1-pre-methylation-acquisition",
+  "status": "frozen_after_stage_b2_static_closure_before_methylation_download_or_association",
+  "purpose": "Acquire and audit the pre-reserved PanCanAtlas merged HM27/HM450 DNA-methylation source without inspecting any methylation association with RNA, protein, genomic, clinical, treatment, or dynamical outcomes.",
+  "primary_source": {
+    "id": "METHYLATION_MERGED_27K_450K",
+    "role": "PRIMARY_STATIC_SUBSTRATE_REGULATORY_ASSAY",
+    "file_name": "jhu-usc.edu_PANCAN_merged_HumanMethylation27_HumanMethylation450.betaValue_whitelisted.tsv",
+    "gdc_uuid": "d82e2c44-89eb-43d9-b6d3-712732bf6a53",
+    "expected_content_length_bytes": 5022150019,
+    "expected_md5": "5cec086f0b002d17befef76a3241e73b",
+    "expected_shared_probe_count": 22601,
+    "publication_reference": "Hoadley et al., Cell 2018, doi:10.1016/j.cell.2018.03.022",
+    "publication_processing": "HM27 and HM450 Level-3 beta values merged on shared probes; HM27 values probe-by-probe proportionally rescaled against HM450 technical replicates; probes with residual platform difference >=0.1 in at least six tumor types were excluded.",
+    "representation": "publication-era PanCanAtlas beta values on a 0-to-1 scale"
+  },
+  "robustness_source": {
+    "id": "METHYLATION_450K_ONLY",
+    "role": "ROBUSTNESS_ONLY_HIGH_DENSITY_ASSAY",
+    "file_name": "jhu-usc.edu_PANCAN_HumanMethylation450.betaValue_whitelisted.tsv",
+    "gdc_uuid": "99b0c493-9e94-4d99-af9f-151e46bab989",
+    "expected_content_length_bytes": 41541692788,
+    "expected_md5": "a92f50490cf4eca98b0d19e10927de9d",
+    "status": "DEFERRED_UNTIL_SEPARATE_PROSPECTIVE_ROBUSTNESS_JUSTIFICATION"
+  },
+  "frozen_inputs": {
+    "stage_a_profile_cache_sha256": "e65f6788aa6037fef407169794f29d63322de2769343bb6e594fe469dfeb8e63",
+    "stage_a_universe": "9546 unique-patient primary tumors across 32 cancers"
+  },
+  "matching": {
+    "primary_key": "TCGA sample root through vial, e.g. TCGA-XX-YYYY-01A",
+    "fallback": "patient-level match only when the methylation source contains exactly one eligible primary measurement for that patient",
+    "sample_type": "01 primary tumor only",
+    "no_metastatic_or_recurrent_substitution": true,
+    "minimum_cancer_n": 30
+  },
+  "platform_rule": {
+    "primary_representation": "use the publication-era merged HM27/HM450 matrix as supplied",
+    "renormalize_primary_matrix_before_source_gate": false,
+    "mix_current_gdc_sesame_reharmonized_values_into_primary_analysis": false,
+    "reason": "preserve provenance and cohort-era comparability with the publication-freeze RNA, genomic, purity/leukocyte, and RPPA layers already used in Stages A-B2"
+  },
+  "source_gate": {
+    "verify_exact_file_name": true,
+    "verify_expected_content_length": true,
+    "verify_exact_probe_row_count": true,
+    "reject_duplicate_probe_ids": true,
+    "require_parseable_tcga_sample_header": true,
+    "require_primary_sample_coverage_report": true,
+    "no_biological_association": true,
+    "no_outcome_selected_filtering": true,
+    "stop_on_unexpected_schema": true
+  },
+  "annotation_gate": {
+    "probe_to_gene_or_hallmark_mapping_admitted_at_c0": false,
+    "association_before_annotation_freeze": false,
+    "annotation_source_must_be_fixed_without_using_stage_a_b1_b2_or_methylation_association_results": true,
+    "feature_reduction_must_be_frozen_after_source_schema_audit_and_before_cross_assay_testing": true
+  },
+  "stage_c1_required_architecture": {
+    "modal": "mode-resolved methylation structure and participation/eigenspectrum quantities",
+    "scalar": "compressed coordinates only where separately justified and never labeled chi unless CHI_ADMISSION_RULES are satisfied",
+    "conglomeration": "module-to-module and whole-system organization across independently defined layers",
+    "complementarity_rule": "scalar summaries may not replace modal or conglomeration structure"
+  },
+  "constraints": {
+    "chi_allowed": false,
+    "cv2_used": false,
+    "composite_stability_score_allowed": false,
+    "historical_gri_recovery_test": false,
+    "source_selection_from_prior_outcomes_allowed": false,
+    "post_result_threshold_tuning_allowed": false,
+    "substrate_inheritance_claim_allowed": false,
+    "dynamic_claim_allowed": false
+  }
+}
