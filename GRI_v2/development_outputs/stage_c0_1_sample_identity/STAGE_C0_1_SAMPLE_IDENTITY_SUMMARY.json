@@ -1,0 +1,33 @@
+{
+  "beta_value_rows_read_for_biological_analysis": false,
+  "biological_association_performed": false,
+  "c0_summary_sha256": "b89e5987e50ddec4ec432a511eeb80052c1ce607dafae8c743eae204354c6bcd",
+  "chi_present": false,
+  "claim_ceiling": "one-to-one sample identity and coverage only",
+  "composite_score_present": false,
+  "coverage": {
+    "cancers": 32,
+    "cancers_passing_n30": 32,
+    "duplicate_root_stage_a_samples_excluded": 34,
+    "exact_unique_root_matches": 9459,
+    "no_source_match_stage_a_samples": 52,
+    "stage_a_samples": 9546,
+    "unique_one_to_one_matched_stage_a_samples": 9460,
+    "unique_patient_fallback_matches": 1
+  },
+  "duplicate_root_action": "EXCLUDE_FROM_PRIMARY_C1",
+  "header_schema": {
+    "duplicate_primary_sample_roots": 41,
+    "header_columns": 12040,
+    "methylation_sample_columns": 12039,
+    "primary_sample_columns": 10317,
+    "tcga_sample_roots_parsed": 12039,
+    "unique_primary_patients": 10268,
+    "unique_primary_sample_roots": 10271
+  },
+  "methylation_source_sha256_locked_from_c0": "5934c497882fbe8178d128a3a7f71e765480af6bbd460e0398de3428cd075b77",
+  "plan_version": "0.1-post-c0-pre-association",
+  "stage_a_profile_cache_sha256": "e65f6788aa6037fef407169794f29d63322de2769343bb6e594fe469dfeb8e63",
+  "status": "STAGE_C0_1_SAMPLE_IDENTITY_GATE_PASS",
+  "substrate_inheritance_claim": false
+}

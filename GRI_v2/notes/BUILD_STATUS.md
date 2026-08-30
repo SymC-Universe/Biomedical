@@ -6,95 +6,86 @@ Status date: 2026-08-30
 
 The Cancer Stability Atlas / substrate-architecture program remains a development program, not a validated clinical tool. `CV/2` remains historical only. No biological chi coordinate has been admitted, and `chi = 1` is not presumed to be a cancer optimum, healthy state, therapeutic target, or organization maximum.
 
-Stages A, A1.1, B1, B2 RPPA, B2 genomic, and B2 static integration are closed. **Stage C0 DNA-methylation source acquisition/audit is now closed as a source-gate PASS. Stage C0.1 sample identity is the active gate.** No methylation biological association has been calculated.
+Stages A, A1.1, B1, B2 RPPA, B2 genomic, B2 static integration, Stage C0 methylation source identity, and Stage C0.1 one-to-one methylation sample identity are closed. **The next active gate is the prospective methylation annotation / feature-reduction specification.** No methylation biological association has been calculated.
 
 ## Stage C0 closure
 
 Canonical audit: `docs/STAGE_C0_METHYLATION_AUDIT_20260830.md`.
 
-The exact frozen PanCanAtlas merged HM27/HM450 source passed the preregistered identity/integrity gates:
+The exact frozen PanCanAtlas merged HM27/HM450 source passed cryptographic identity and schema gates:
 
-- GDC UUID `d82e2c44-89eb-43d9-b6d3-712732bf6a53`;
+- source SHA-256 `5934c497882fbe8178d128a3a7f71e765480af6bbd460e0398de3428cd075b77`;
+- exact GDC MD5 `5cec086f0b002d17befef76a3241e73b`;
 - exact size `5,022,150,019` bytes;
-- exact MD5 `5cec086f0b002d17befef76a3241e73b`;
-- local source SHA-256 `5934c497882fbe8178d128a3a7f71e765480af6bbd460e0398de3428cd075b77`;
-- exactly `22,601` probe rows;
-- `0` blank probe IDs;
-- `0` duplicate probe IDs;
-- all `12,039 / 12,039` methylation sample columns have parseable TCGA sample roots;
-- frozen Stage A cache SHA-256 matched exactly.
+- exactly 22,601 unique nonblank probe rows;
+- all 12,039 methylation sample columns parse as TCGA sample roots;
+- 9,494 / 9,546 Stage A tumors have source presence;
+- all 32 / 32 cancers pass n>=30.
 
-Stage A source-presence coverage is `9,494 / 9,546` tumors (`99.4553%`), and all `32 / 32` cancers pass the existing `n >= 30` gate.
+C0 also exposed 41 primary sample roots represented by more than one methylation source column. Because the frozen C0 plan required stopping on unexpected schema, those duplicates were resolved prospectively in C0.1 rather than silently collapsed.
+
+## Stage C0.1 closure
+
+Canonical audit: `docs/STAGE_C0_1_SAMPLE_IDENTITY_AUDIT_20260830.md`.
+
+Frozen duplicate-root rule: **exclude from primary C1**. No beta averaging, first/last selection, platform preference, or value-based replicate choice is allowed.
+
+C0.1 result:
+
+- exact unique-root matches: 9,459;
+- unique patient fallback matches: 1;
+- strict one-to-one matched Stage A tumors: **9,460 / 9,546 (99.0991%)**;
+- duplicate-root Stage A samples excluded: 34;
+- no-source Stage A samples: 52;
+- all **32 / 32 cancers** remain above the frozen n>=30 gate;
+- lowest retained fraction: GBM 125 / 154 (81.17%), still above n>=30;
+- beta-value rows read for biological analysis: false;
+- biological association performed: false.
 
 Canonical compact outputs:
 
-- `development_outputs/stage_c0_methylation/STAGE_C0_METHYLATION_SOURCE_SUMMARY.json`
-  - SHA-256 `b89e5987e50ddec4ec432a511eeb80052c1ce607dafae8c743eae204354c6bcd`
-- `development_outputs/stage_c0_methylation/stage_c0_methylation_cancer_coverage.csv`
-  - SHA-256 `5af5209b46a31115aaed3c6681cd442a921d3eb17981843080441cc0a8fe649c`
+- `development_outputs/stage_c0_1_sample_identity/STAGE_C0_1_SAMPLE_IDENTITY_SUMMARY.json`
+  - SHA-256 `82d885ea8b1674f18bfda8317398b1f1658c383a351d626f4a793e303edb18a4`
+- `development_outputs/stage_c0_1_sample_identity/stage_c0_1_unique_match_coverage.csv`
+  - SHA-256 `1fd625b7d575995185bc6d6e9f8dfebdc82abbb89afe553dae121c2ce40e3fc3`
+- `development_outputs/stage_c0_1_sample_identity/stage_c0_1_duplicate_primary_roots.csv`
+  - SHA-256 `c8a3c0e08a8da5d5364e6b954e4e305406c6dcfcaa9e4038e52215625b4c9c9e`
 
-## Why C1 is not starting yet
+C0.1 handoff provenance:
 
-The C0 header inventory found `41` primary TCGA sample roots represented by more than one methylation source column. This is a source-schema issue, not a biological result.
+- GitHub Actions run `33314518877`;
+- package commit `35ca555d073142b7accd705b0fdc67051dd251a7`;
+- handoff SHA-256 `9d08b94c4452295522a851501acf7fd341f09b4fd79faca7f180f968f1bce423`.
 
-Because the frozen C0 contract included `stop_on_unexpected_schema`, the program does not silently average, choose, or deduplicate those columns after seeing the source. Instead Stage C0.1 prospectively freezes a one-to-one sample-identity rule before any methylation beta values are used scientifically.
+## Active scientific gate: methylation annotation / feature-reduction freeze
 
-## Active gate: Stage C0.1 sample identity
+No cross-assay methylation result may be calculated yet.
 
-Frozen records:
+Before Stage C1 starts, the program must prospectively freeze:
 
-- `config/stage_c0_1_sample_identity_plan.json`
-- `docs/STAGE_C0_1_SAMPLE_IDENTITY_PREREGISTRATION_20260830.md`
-- `src/run_stage_c0_1_sample_identity.py`
-- `src/run_stage_c0_1_windows.py`
-- `tests/test_stage_c0_1_sample_identity.py`
-- `RUN_STAGE_C0_1_SAMPLE_IDENTITY_WINDOWS.bat`
+1. exact methylation annotation source and immutable version/hash;
+2. genome build;
+3. probe-to-gene / transcript resolution;
+4. multi-gene and multi-transcript handling;
+5. promoter / regulatory-region definitions;
+6. gene-body and non-promoter handling;
+7. unmapped-probe handling;
+8. whether modal analysis operates in all-probe space, regulatory strata, or both;
+9. any scalar compression and its construction nulls, without calling it chi;
+10. conglomeration/module representation across the already closed static layers;
+11. missingness and per-cancer eligibility rules;
+12. all nulls and promotion criteria before inspecting methylation-RNA/RPPA/genomic relationships.
 
-Primary rule:
-
-1. sample type `01` only;
-2. exact Stage A sample root is admitted only if exactly one eligible methylation source column maps to that root;
-3. duplicated exact roots are excluded from primary C1;
-4. no beta averaging, first/last selection, platform preference, or value-based replicate selection;
-5. patient fallback remains allowed only when exactly one eligible primary methylation measurement exists for that patient;
-6. the existing `n >= 30` cancer gate is not relaxed.
-
-C0.1 reads only the methylation header for this gate. It does not inspect beta-value rows for biological association.
-
-## Verification
-
-The C0/C0.1 repository state at commit `043caecfeb2d3756dabb29b9d0f5b6346b7fbe03` passed the full GRI v2 suite: `36/36` tests.
-
-The exact C0.1 Windows handoff was then built by GitHub Actions run `33314518877` from commit `35ca555d073142b7accd705b0fdc67051dd251a7` and passed the same full test suite before packaging.
-
-Handoff:
-
-- `CSA_STAGE_C0_1_SAMPLE_IDENTITY_WINDOWS_20260830.zip`
-- SHA-256 `9d08b94c4452295522a851501acf7fd341f09b4fd79faca7f180f968f1bce423`
-
-## What follows C0.1
-
-If all intended cancers remain above `n=30`, the next operation is to freeze the methylation annotation and feature-reduction protocol before any cross-assay association. That protocol must specify the exact annotation source/genome build, probe-to-gene/regulatory mapping, transcript and multi-mapping rules, promoter/regulatory-region definitions, unmapped-probe handling, modal representation, any licensed scalar compression, conglomeration/system-level representation, and construction nulls.
-
-The required reporting architecture remains:
+The required conceptual architecture remains complementary:
 
 - **modal**: mode-resolved/eigenspectrum and participation structure;
-- **scalar**: compressed coordinates only where empirically licensed;
+- **scalar**: compressed coordinates only where separately licensed;
 - **conglomeration**: module-to-module and whole-system organization across independently measured layers.
 
-The scalar view may not replace the modal or conglomeration views. None of these static methylation quantities is biological chi. Substrate inheritance still requires ordered or temporal evidence.
+The scalar view may not replace modal or conglomeration structure. None of these static methylation quantities is biological chi. Static cross-assay association cannot establish substrate inheritance; ordered or temporal evidence remains required.
 
 ## Exact user action
 
-1. Download and extract `CSA_STAGE_C0_1_SAMPLE_IDENTITY_WINDOWS_20260830.zip`.
-2. Double-click `RUN_STAGE_C0_1_SAMPLE_IDENTITY_WINDOWS.bat`.
-3. The Python file pickers will ask for:
-   - the completed Stage A `hallmark_profile_cache.npz`;
-   - the already-audited 5.02 GB methylation TSV from the completed C0 run;
-   - `STAGE_C0_METHYLATION_SOURCE_SUMMARY.json` from C0.
-4. At completion, return:
-   - `STAGE_C0_1_SAMPLE_IDENTITY_SUMMARY.json`;
-   - `stage_c0_1_unique_match_coverage.csv`;
-   - `stage_c0_1_duplicate_primary_roots.csv`.
+No local computation is currently required. The next user decision is scientific rather than mechanical: approve or revise the proposed annotation/regulatory mapping specification after it is presented. Until that freeze is explicit, Stage C1 remains blocked by design.
 
-Keep the 5.02 GB methylation source and the B2 task cache local and unchanged.
+Keep the 5.02 GB methylation source and existing B2 task caches local and unchanged.
