@@ -1,17 +1,14 @@
 {
-  "schema": "gri-v2-reviewer-manifest-v0.4",
+  "schema": "gri-v2-reviewer-manifest-v0.5",
   "program": "GRI v2 / Cancer Stability Atlas",
   "repository": "SymC-Universe/Biomedical",
   "active_branch": "gri-v2",
   "program_status": "DEVELOPMENT_NOT_VALIDATED_CLINICAL_TOOL",
   "current_gate": {
-    "stage": "STAGE_C0_METHYLATION_SOURCE_GATE",
-    "status": "FROZEN_READY_FOR_LOCAL_SOURCE_AUDIT",
-    "b2_genomic_complete": true,
-    "b2_rppa_complete": true,
-    "b2_static_integration_complete": true,
-    "c0_preregistered_before_methylation_acquisition": true,
-    "c0_metadata_ci_pass": true,
+    "stage": "STAGE_C0_1_SAMPLE_IDENTITY_GATE",
+    "status": "FROZEN_READY_FOR_LOCAL_HEADER_ONLY_EXECUTION",
+    "stage_c0_source_gate_complete": true,
+    "stage_c0_source_gate_verdict": "PASS_WITH_PRE_C1_SCHEMA_RESOLUTION_REQUIRED",
     "methylation_biological_association_started": false,
     "canonical_status_file": "GRI_v2/notes/BUILD_STATUS.md"
   },
@@ -21,11 +18,62 @@
     "chi_equals_one_assumed_cancer_optimum": false,
     "master_stability_score_admitted": false,
     "failed_and_null_branches_retained": true,
-    "genomic_master_organizer_claim_admitted": false,
     "static_stage_b2_establishes_substrate_inheritance": false,
     "stage_c0_establishes_substrate_inheritance": false,
+    "stage_c0_1_establishes_methylation_biology": false,
     "modal_scalar_conglomeration_are_complementary": true
   },
+  "stage_c0": {
+    "status": "CLOSED_SOURCE_GATE_PASS",
+    "audit": "GRI_v2/docs/STAGE_C0_METHYLATION_AUDIT_20260830.md",
+    "config": "GRI_v2/config/stage_c0_methylation_source_plan.json",
+    "compact_output_dir": "GRI_v2/development_outputs/stage_c0_methylation",
+    "source_sha256": "5934c497882fbe8178d128a3a7f71e765480af6bbd460e0398de3428cd075b77",
+    "source_md5": "5cec086f0b002d17befef76a3241e73b",
+    "probe_rows": 22601,
+    "blank_probe_ids": 0,
+    "duplicate_probe_ids": 0,
+    "stage_a_presence_matches": 9494,
+    "stage_a_samples": 9546,
+    "cancers_passing_n30": 32,
+    "duplicate_primary_sample_roots": 41,
+    "biological_association_performed": false
+  },
+  "stage_c0_1": {
+    "status": "FROZEN_ACTIVE_GATE",
+    "preregistration": "GRI_v2/docs/STAGE_C0_1_SAMPLE_IDENTITY_PREREGISTRATION_20260830.md",
+    "config": "GRI_v2/config/stage_c0_1_sample_identity_plan.json",
+    "implementation": "GRI_v2/src/run_stage_c0_1_sample_identity.py",
+    "windows_driver": "GRI_v2/src/run_stage_c0_1_windows.py",
+    "test": "GRI_v2/tests/test_stage_c0_1_sample_identity.py",
+    "launcher": "GRI_v2/RUN_STAGE_C0_1_SAMPLE_IDENTITY_WINDOWS.bat",
+    "duplicate_root_rule": "EXCLUDE_FROM_PRIMARY_C1",
+    "duplicate_beta_averaging_allowed": false,
+    "value_based_duplicate_selection_allowed": false,
+    "reads_beta_rows_for_biological_analysis": false,
+    "handoff_file": "CSA_STAGE_C0_1_SAMPLE_IDENTITY_WINDOWS_20260830.zip",
+    "handoff_sha256": "9d08b94c4452295522a851501acf7fd341f09b4fd79faca7f180f968f1bce423",
+    "package_ci_run": 33314518877,
+    "package_commit": "35ca555d073142b7accd705b0fdc67051dd251a7"
+  },
+  "closed_major_stages": [
+    "HISTORICAL_SCALAR_CLOSED_NOT_PROMOTED",
+    "A1",
+    "A1_1",
+    "B1",
+    "B2_SOURCE",
+    "B2_RPPA",
+    "B2_GENOMIC",
+    "B2_STATIC_INTEGRATION",
+    "C0_METHYLATION_SOURCE_GATE"
+  ],
+  "prospective_stages": [
+    "C0_1_SAMPLE_IDENTITY_GATE",
+    "METHYLATION_ANNOTATION_FEATURE_FREEZE",
+    "C1_METHYLATION_MODAL_SCALAR_CONGLOMERATION",
+    "ORDERED_TEMPORAL_SUBSTRATE_TEST",
+    "DYNAMIC_BIOLOGICAL_CHI"
+  ],
   "canonical_entry_points": {
     "project_readme": "GRI_v2/README.md",
     "reviewer_readme": "GRI_v2/reviewer/README.md",
@@ -34,120 +82,7 @@
     "tool_objective": "GRI_v2/docs/TOOL_OBJECTIVE.md",
     "epistemic_constitution": "GRI_v2/docs/EPISTEMIC_CONSTITUTION.md",
     "chi_admission_rules": "GRI_v2/docs/CHI_ADMISSION_RULES.md",
-    "stage_b2_static_integration": "GRI_v2/docs/STAGE_B2_STATIC_INTEGRATION_CLOSURE_20260830.md",
-    "stage_c0_methylation_preregistration": "GRI_v2/docs/STAGE_C0_METHYLATION_PREREGISTRATION_20260830.md",
-    "stage_c0_methylation_config": "GRI_v2/config/stage_c0_methylation_source_plan.json",
-    "repository_workflow": "GRI_v2/WORKFLOW.md",
     "milestone_artifacts": "GRI_v2/artifacts/MILESTONE_ARTIFACTS.md"
-  },
-  "stage_registry": [
-    {
-      "stage": "HISTORICAL_SCALAR",
-      "status": "CLOSED_NOT_PROMOTED",
-      "audit_or_record": "GRI_v2/artifacts/MILESTONE_ARTIFACTS.md"
-    },
-    {
-      "stage": "A1",
-      "status": "CLOSED_DEVELOPMENT_LAYER",
-      "audit_or_record": "GRI_v2/docs/STAGE_A1_AUDIT_20260829.md",
-      "config": "GRI_v2/config/stage_a1_plan.json"
-    },
-    {
-      "stage": "A1_1",
-      "status": "CLOSED_CALIBRATION",
-      "audit_or_record": "GRI_v2/docs/STAGE_A1_1_AUDIT_20260829.md",
-      "config": "GRI_v2/config/stage_a1_1_calibration_plan.json",
-      "compact_output_dir": "GRI_v2/development_outputs/stage_a1_1"
-    },
-    {
-      "stage": "B1",
-      "status": "CLOSED",
-      "audit_or_record": "GRI_v2/docs/STAGE_B1_AUDIT_20260829.md",
-      "config": "GRI_v2/config/stage_b1_context_adjustment_plan.json",
-      "compact_output_dir": "GRI_v2/development_outputs/stage_b1"
-    },
-    {
-      "stage": "B2_SOURCE",
-      "status": "CLOSED",
-      "audit_or_record": "GRI_v2/docs/STAGE_B2_SOURCE_AUDIT_20260829.md",
-      "config": "GRI_v2/config/stage_b2_source_plan.json",
-      "compact_output_dir": "GRI_v2/development_outputs/stage_b2"
-    },
-    {
-      "stage": "B2_PREREGISTRATION",
-      "status": "FROZEN_HISTORICAL_CONTRACT",
-      "audit_or_record": "GRI_v2/docs/STAGE_B2_PREREGISTRATION_20260829.md",
-      "config": "GRI_v2/config/stage_b2_integration_plan.json"
-    },
-    {
-      "stage": "B2_RPPA",
-      "status": "CLOSED",
-      "audit_or_record": "GRI_v2/docs/STAGE_B2_RPPA_AUDIT_20260829.md",
-      "implementation": "GRI_v2/src/run_stage_b2_rppa.py",
-      "test": "GRI_v2/tests/test_stage_b2_rppa.py",
-      "compact_output_dir": "GRI_v2/development_outputs/stage_b2_rppa"
-    },
-    {
-      "stage": "B2_GENOMIC",
-      "status": "CLOSED",
-      "audit_or_record": "GRI_v2/docs/STAGE_B2_GENOMIC_AUDIT_20260830.md",
-      "config": "GRI_v2/config/stage_b2_integration_plan.json",
-      "implementation": "GRI_v2/src/run_stage_b2_genomic.py",
-      "resume_implementation": "GRI_v2/src/run_stage_b2_genomic_resume.py",
-      "tests": [
-        "GRI_v2/tests/test_stage_b2_genomic.py",
-        "GRI_v2/tests/test_stage_b2_genomic_resume.py"
-      ],
-      "compact_output_dir": "GRI_v2/development_outputs/stage_b2_genomic",
-      "completion_bundle_sha256": "cfa534417b4d3da028812503da49fb475b6b6427c2d563400095fc9d7fc9c9f5"
-    },
-    {
-      "stage": "B2_STATIC_INTEGRATION",
-      "status": "CLOSED",
-      "audit_or_record": "GRI_v2/docs/STAGE_B2_STATIC_INTEGRATION_CLOSURE_20260830.md",
-      "master_score_created": false,
-      "substrate_inheritance_claim": false
-    },
-    {
-      "stage": "C0_METHYLATION_SOURCE_GATE",
-      "status": "FROZEN_READY_FOR_LOCAL_SOURCE_AUDIT",
-      "preregistration": "GRI_v2/docs/STAGE_C0_METHYLATION_PREREGISTRATION_20260830.md",
-      "config": "GRI_v2/config/stage_c0_methylation_source_plan.json",
-      "implementation": "GRI_v2/src/probe_stage_c0_methylation.py",
-      "test": "GRI_v2/tests/test_stage_c0_methylation_contract.py",
-      "launcher": "GRI_v2/RUN_STAGE_C0_METHYLATION_WINDOWS.bat",
-      "metadata_ci_run": 33292691811,
-      "metadata_ci_commit": "009245507d8fc22740bc24f57f878a1fd73d5eb4",
-      "full_test_count": 29,
-      "handoff_file": "CSA_STAGE_C0_METHYLATION_WINDOWS_20260830.zip",
-      "handoff_sha256": "69dcaa00e96c9668c97b1b20047d121db3f61533f6e6f5bb55e41f22a11916eb",
-      "association_results_inspected": false,
-      "claim_ceiling": "source identity, schema, probe inventory, and sample coverage only"
-    },
-    {
-      "stage": "C1_METHYLATION_MODAL_SCALAR_CONGLOMERATION",
-      "status": "NOT_STARTED_REQUIRES_POST_C0_PROSPECTIVE_ANNOTATION_AND_ANALYSIS_FREEZE"
-    },
-    {
-      "stage": "ORDERED_TEMPORAL_SUBSTRATE_TEST",
-      "status": "NOT_STARTED_REQUIRED_BEFORE_SUBSTRATE_INHERITANCE_PROMOTION"
-    },
-    {
-      "stage": "DYNAMIC_BIOLOGICAL_CHI",
-      "status": "NOT_ADMITTED",
-      "audit_or_record": "GRI_v2/docs/CHI_ADMISSION_RULES.md"
-    }
-  ],
-  "repository_roles": {
-    "docs": "scientific audits, preregistrations, objectives, closures, and epistemic rules",
-    "config": "frozen or preregistered analysis contracts",
-    "src": "analysis implementations",
-    "tests": "contract and regression tests",
-    "development_outputs": "compact committed result summaries",
-    "artifacts": "hashes and provenance for larger milestone artifacts",
-    "inputs": "compact source identity and provenance records",
-    "notes": "current handoff and operational status",
-    "reviewer": "reviewer navigation and submission-snapshot rules"
   },
   "submission_policy": {
     "moving_branch_is_submission_record": false,
