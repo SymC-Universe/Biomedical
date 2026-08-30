@@ -2,7 +2,7 @@
 
 **Repository state:** active development, not a validated clinical tool  
 **Active branch:** `gri-v2`  
-**Current computational gate:** Stage B2 genomic decomposition, 306 frozen tasks; partial results are not interpreted
+**Current scientific gate:** Stage B2 static integration closure; genomic and RPPA computations are complete and audited
 
 This directory is the reviewer-facing navigation layer for the GRI v2 / Cancer Stability Atlas program. It does not replace the scientific source files. It points to the exact configs, code, audits, outputs, and provenance records that support each stage.
 
@@ -14,7 +14,8 @@ The historical GRI scalar construction is retained as provenance, not as the tar
 - no valid biological chi coordinate has been admitted;
 - static RNA, genomic, protein, composition, and future methylation measurements remain separate coordinates unless later model competition justifies a reduction;
 - no value of `chi = 1` is presumed to be a cancer optimum, healthy state, therapeutic target, or maximum-organization point;
-- null and failed branches are retained rather than rewritten as support.
+- null and failed branches are retained rather than rewritten as support;
+- modal structure, scalar summaries, and conglomeration/system organization are treated as complementary views rather than interchangeable replacements.
 
 Canonical scientific guardrails:
 
@@ -37,7 +38,8 @@ Canonical live status:
 | Stage B2 source audit | Closed | Pre-association source coverage and provenance | `../docs/STAGE_B2_SOURCE_AUDIT_20260829.md` |
 | Stage B2 preregistration | Frozen before target association results | Genomic/protein coordinate rules, nulls, and integration rules | `../docs/STAGE_B2_PREREGISTRATION_20260829.md` |
 | Stage B2 RPPA | Closed | Orthogonal static RNA/protein coupling layer under a block-permutation construction null | `../docs/STAGE_B2_RPPA_AUDIT_20260829.md` |
-| Stage B2 genomic | In progress | Five genomic coordinates tested against the frozen RNA map, including incremental information beyond B1 context | `../config/stage_b2_integration_plan.json` plus current code/tests; final audit pending |
+| Stage B2 genomic | Closed | Five separate genomic coordinates produce small distributed static decomposition effects while preserving Hallmark topology, including beyond B1 composition | `../docs/STAGE_B2_GENOMIC_AUDIT_20260830.md` |
+| Stage B2 static integration | Active closure step | Integrates RNA, composition, genomic, and protein layers without a master score | `../README.md` and `../notes/BUILD_STATUS.md` |
 | Genome-wide methylation extension | Deferred behind independent gate | No result claim yet | current status in `../README.md` and `../notes/BUILD_STATUS.md` |
 | Dynamic biological chi | Not admitted | Requires genuine same-coordinate dynamic rates and admission tests | `../docs/CHI_ADMISSION_RULES.md` |
 
@@ -64,6 +66,8 @@ For any stage cited in a manuscript:
 4. verify larger external artifacts and hashes in `../artifacts/MILESTONE_ARTIFACTS.md`;
 5. inspect the stage implementation under `../src/` and its contract/regression tests under `../tests/`.
 
+For the completed genomic branch, start with `../docs/STAGE_B2_GENOMIC_AUDIT_20260830.md`. The compact canonical summary is at `../development_outputs/stage_b2_genomic/STAGE_B2_GENOMIC_SUMMARY.json`; the full completion package and the per-task cache policy are registered in `../artifacts/MILESTONE_ARTIFACTS.md`.
+
 ### 3. Reproduction / forensic review
 
 Start with:
@@ -76,6 +80,8 @@ Start with:
 - `REVIEWER_MANIFEST.json`
 
 Large source datasets are intentionally not duplicated into Git history when that would be impractical. Their identity, role, and hashes are recorded in source/provenance files and the milestone registry.
+
+The Stage B2 genomic executor additionally retains 306 atomic raw task-cache gzip files locally. Their identities are recorded individually in `stage_b2_genomic_task_status.csv`. Those cache fragments are forensic/restart artifacts, not files a reviewer must browse during ordinary review.
 
 ## Repository layout
 
@@ -107,6 +113,6 @@ A manuscript or data submission should never ask a reviewer to rely on the movin
 
 See `SUBMISSION_RELEASE_CHECKLIST.md`.
 
-## Important status warning
+## Current boundary
 
-The current Stage B2 genomic computation contains 306 frozen tasks. Until all 306 tasks and their expected resamples are complete and independently audited, no partial genomic pattern is a project result and no reviewer-facing claim should be built from an interim checkpoint.
+Stage B2 computation is complete, but this is still a development program. The next architecture must be frozen before new predictive or dynamic endpoints are examined. In particular, no static multiomic pattern in Stage B2 is promoted to damping, criticality, an optimum, treatment response, or biological chi.
