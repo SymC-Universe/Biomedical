@@ -1,14 +1,15 @@
 {
-  "schema": "gri-v2-reviewer-manifest-v0.1",
+  "schema": "gri-v2-reviewer-manifest-v0.2",
   "program": "GRI v2 / Cancer Stability Atlas",
   "repository": "SymC-Universe/Biomedical",
   "active_branch": "gri-v2",
   "program_status": "DEVELOPMENT_NOT_VALIDATED_CLINICAL_TOOL",
   "current_gate": {
-    "stage": "B2_GENOMIC",
-    "status": "IN_PROGRESS",
-    "frozen_task_count": 306,
-    "partial_results_interpretable": false,
+    "stage": "B2_STATIC_INTEGRATION",
+    "status": "ACTIVE_CLOSURE",
+    "b2_genomic_complete": true,
+    "b2_rppa_complete": true,
+    "new_endpoint_testing_started": false,
     "canonical_status_file": "GRI_v2/notes/BUILD_STATUS.md"
   },
   "scientific_guardrails": {
@@ -17,7 +18,8 @@
     "chi_equals_one_assumed_cancer_optimum": false,
     "master_stability_score_admitted": false,
     "failed_and_null_branches_retained": true,
-    "partial_b2_genomic_results_promotable": false
+    "genomic_master_organizer_claim_admitted": false,
+    "modal_scalar_conglomeration_are_complementary": true
   },
   "canonical_entry_points": {
     "project_readme": "GRI_v2/README.md",
@@ -79,14 +81,23 @@
     },
     {
       "stage": "B2_GENOMIC",
-      "status": "IN_PROGRESS_NO_RESULT_CLAIM",
+      "status": "CLOSED",
+      "audit_or_record": "GRI_v2/docs/STAGE_B2_GENOMIC_AUDIT_20260830.md",
       "config": "GRI_v2/config/stage_b2_integration_plan.json",
       "implementation": "GRI_v2/src/run_stage_b2_genomic.py",
       "resume_implementation": "GRI_v2/src/run_stage_b2_genomic_resume.py",
       "tests": [
         "GRI_v2/tests/test_stage_b2_genomic.py",
         "GRI_v2/tests/test_stage_b2_genomic_resume.py"
-      ]
+      ],
+      "compact_output_dir": "GRI_v2/development_outputs/stage_b2_genomic",
+      "completion_bundle_sha256": "cfa534417b4d3da028812503da49fb475b6b6427c2d563400095fc9d7fc9c9f5"
+    },
+    {
+      "stage": "B2_STATIC_INTEGRATION",
+      "status": "ACTIVE_CLOSURE",
+      "master_score_allowed": false,
+      "new_endpoint_testing_started": false
     },
     {
       "stage": "GENOME_WIDE_METHYLATION",
