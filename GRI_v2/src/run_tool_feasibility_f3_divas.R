@@ -13,6 +13,10 @@ suppressPackageStartupMessages(library(jsonlite))
 NSIM <- 50L
 DIVAS_COMMIT <- "294986fac88bdeea1071902aa360b19e820c85de"
 DIVAS_VERSION <- as.character(packageVersion("DIVAS"))
+DIVAS_DIAGNOSTIC_REPAIR <- paste(
+  "failure instrumentation only: captures condition call, active call stack, and input dimensions",
+  "without changing DIVAS inputs, orientation, nsim, centering, seed, ReturnDetail, or mathematics"
+)
 
 stable_seed <- function(scenario, representation, replicate) {
   token <- paste("F3_DIVAS", scenario, representation, replicate, sep = "|")
@@ -28,6 +32,11 @@ load_matrix <- function(path) {
 rank_from_cols <- function(scores, pattern) {
   if (is.null(scores) || is.null(colnames(scores)) || ncol(scores) == 0) return(0L)
   as.integer(sum(grepl(pattern, colnames(scores), fixed = TRUE)))
+}
+
+collapse_call <- function(cl) {
+  if (is.null(cl)) return("")
+  paste(deparse(cl, width.cutoff = 500L), collapse = " ")
 }
 
 manifest <- fromJSON(file.path(inputs_dir, "manifest.json"), simplifyDataFrame = TRUE)
@@ -53,33 +62,63 @@ for (i in seq_len(nrow(records))) {
     divas_source_signal_rank = NA_integer_,
     divas_target_signal_rank = NA_integer_,
     divas_error = "",
+    divas_error_call = "",
+    divas_error_trace = "",
+    source_input_nrow = nrow(source),
+    source_input_ncol = ncol(source),
+    target_input_nrow = nrow(target),
+    target_input_ncol = ncol(target),
     stringsAsFactors = FALSE
   )
 
-  result <- tryCatch({
-    datablock <- list(SOURCE = t(source), TARGET = t(target))
-    colnames(datablock$SOURCE) <- paste0("S", seq_len(ncol(datablock$SOURCE)))
-    colnames(datablock$TARGET) <- colnames(datablock$SOURCE)
-    DIVASmain(
-      datablock = datablock,
-      nsim = NSIM,
-      iprint = FALSE,
-      colCent = FALSE,
-      rowCent = TRUE,
-      seed = stable_seed(scenario, representation, replicate),
-      ReturnDetail = TRUE
-    )
-  }, error = function(e) e)
+  captured_call <- ""
+  captured_calls <- character(0)
+  result <- tryCatch(
+    withCallingHandlers({
+      datablock <- list(SOURCE = t(source), TARGET = t(target))
+      if (ncol(datablock$SOURCE) != ncol(datablock$TARGET)) {
+        stop(sprintf(
+          "frozen-input sample mismatch before DIVAS: SOURCE ncol=%d TARGET ncol=%d",
+          ncol(datablock$SOURCE), ncol(datablock$TARGET)
+        ))
+      }
+      colnames(datablock$SOURCE) <- paste0("S", seq_len(ncol(datablock$SOURCE)))
+      colnames(datablock$TARGET) <- colnames(datablock$SOURCE)
+      DIVASmain(
+        datablock = datablock,
+        nsim = NSIM,
+        iprint = FALSE,
+        colCent = FALSE,
+        rowCent = TRUE,
+        seed = stable_seed(scenario, representation, replicate),
+        ReturnDetail = TRUE
+      )
+    }, error = function(e) {
+      captured_call <<- collapse_call(conditionCall(e))
+      captured_calls <<- vapply(sys.calls(), collapse_call, character(1))
+    }),
+    error = function(e) e
+  )
 
   if (inherits(result, "error")) {
     row$divas_status <- "ERROR"
     row$divas_error <- conditionMessage(result)
+    row$divas_error_call <- captured_call
+    row$divas_error_trace <- paste(captured_calls, collapse = " <- ")
     failures[[length(failures) + 1L]] <- list(
       method = "DIVAS",
       scenario = scenario,
       representation = representation,
       replicate = replicate,
-      error = conditionMessage(result)
+      error = conditionMessage(result),
+      error_call = captured_call,
+      error_trace = captured_calls,
+      input_dimensions = list(
+        source = c(nrow(source), ncol(source)),
+        target = c(nrow(target), ncol(target)),
+        divas_source = c(ncol(source), nrow(source)),
+        divas_target = c(ncol(target), nrow(target))
+      )
     )
   } else {
     scores <- result$sampleScoreMatrix
@@ -95,6 +134,10 @@ for (i in seq_len(nrow(records))) {
 
   rows[[i]] <- row
   cat(sprintf("%s %s rep=%d DIVAS=%s\n", scenario, representation, replicate, row$divas_status))
+  if (row$divas_status == "ERROR") {
+    cat(sprintf("DIVAS_ERROR_CALL %s\n", row$divas_error_call))
+    cat(sprintf("DIVAS_ERROR_TRACE %s\n", row$divas_error_trace))
+  }
   flush.console()
 }
 
@@ -143,7 +186,15 @@ payload <- list(
   status = if (length(failures) == 0) "F3_DIVAS_COMPLETE" else "F3_DIVAS_MECHANICAL_FAILURE",
   records = nrow(replicates),
   failures = failures,
-  divas = list(version = DIVAS_VERSION, commit = DIVAS_COMMIT, nsim = NSIM, rowCent = TRUE, colCent = FALSE, ReturnDetail = TRUE),
+  divas = list(
+    version = DIVAS_VERSION,
+    commit = DIVAS_COMMIT,
+    nsim = NSIM,
+    rowCent = TRUE,
+    colCent = FALSE,
+    ReturnDetail = TRUE,
+    diagnostic_repair = DIVAS_DIAGNOSTIC_REPAIR
+  ),
   claim_ceiling = "synthetic established-method comparison only",
   c1_beta_value_biology_read = FALSE,
   biological_chi_used = FALSE

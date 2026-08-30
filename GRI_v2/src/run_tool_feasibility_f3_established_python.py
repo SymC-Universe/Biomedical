@@ -17,6 +17,13 @@ AJIVE_WEDIN_SAMPLES = 100
 AJIVE_RAND_SAMPLES = 100
 MOFA_FACTORS = 5
 MOFA_ITERATIONS = 300
+MVDR_COMMIT = "ab04895a04a8f4e1b40e332591c736ba18bf8fd7"
+YA_PCA_COMMIT = "77f633643e9b9e092fe6f62266e21129393d08f7"
+AJIVE_COMPATIBILITY_REPAIR = (
+    "mvdr pinned commit internally calls sample_randdir(..., n_draws=...) while "
+    "random_direction.sample_randdir accepts n_samples; wrapper aliases n_draws to "
+    "n_samples without changing frozen draw count or AJIVE mathematics"
+)
 
 
 def _load_matrix(path: Path) -> np.ndarray:
@@ -30,10 +37,53 @@ def _energy_fraction(part: np.ndarray | None, total_energy: float) -> float:
     return float(np.sum(np.asarray(part, dtype=float) ** 2) / total_energy)
 
 
+def _patch_mvdr_random_direction_compat() -> None:
+    """Repair a pinned upstream keyword mismatch without changing AJIVE semantics."""
+    import mvdr.ajive.ajive_fun as ajive_fun
+    from mvdr.ajive.random_direction import sample_randdir as native_sample_randdir
+
+    sig = inspect.signature(native_sample_randdir)
+    if "n_draws" in sig.parameters:
+        return
+    if "n_samples" not in sig.parameters:
+        raise RuntimeError(f"unexpected mvdr sample_randdir signature: {sig}")
+
+    # Avoid repeatedly wrapping the same module-global function across the 104 fits.
+    if getattr(ajive_fun.sample_randdir, "_gri_f3_n_draws_compat", False):
+        return
+
+    def sample_randdir_compat(
+        n,
+        dims,
+        n_draws=None,
+        n_samples=None,
+        random_state=None,
+        n_jobs=None,
+        backend=None,
+    ):
+        if n_samples is None:
+            n_samples = 1000 if n_draws is None else n_draws
+        elif n_draws is not None and int(n_samples) != int(n_draws):
+            raise ValueError("conflicting n_draws and n_samples values")
+        return native_sample_randdir(
+            n=n,
+            dims=dims,
+            n_samples=n_samples,
+            random_state=random_state,
+            n_jobs=n_jobs,
+            backend=backend,
+        )
+
+    sample_randdir_compat._gri_f3_n_draws_compat = True  # type: ignore[attr-defined]
+    ajive_fun.sample_randdir = sample_randdir_compat
+
+
 def run_ajive(x: np.ndarray, y: np.ndarray) -> dict[str, float | int | str]:
     if not hasattr(inspect, "getargspec"):
         inspect.getargspec = inspect.getfullargspec  # type: ignore[attr-defined]
     from mvdr.ajive.AJIVE import AJIVE
+
+    _patch_mvdr_random_direction_compat()
 
     model = AJIVE(
         init_signal_ranks=AJIVE_INIT_RANKS,
@@ -199,11 +249,12 @@ def run(inputs: Path, out: Path) -> None:
         "records": len(rows),
         "failures": failures,
         "ajive": {
-            "mvdr_commit": "ab04895a04a8f4e1b40e332591c736ba18bf8fd7",
-            "ya_pca_commit": "77f633643e9b9e092fe6f62266e21129393d08f7",
+            "mvdr_commit": MVDR_COMMIT,
+            "ya_pca_commit": YA_PCA_COMMIT,
             "init_signal_ranks": AJIVE_INIT_RANKS,
             "n_wedin_samples": AJIVE_WEDIN_SAMPLES,
             "n_rand_samples": AJIVE_RAND_SAMPLES,
+            "compatibility_repair": AJIVE_COMPATIBILITY_REPAIR,
         },
         "mofa2": {"version": "0.7.5", "factors": MOFA_FACTORS, "iterations": MOFA_ITERATIONS},
         "claim_ceiling": "synthetic established-method comparison only",
