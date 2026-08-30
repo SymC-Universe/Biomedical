@@ -1,0 +1,70 @@
+{
+  "schema": "gri-v2-tool-feasibility-f4-decision-v0.1",
+  "date": "2026-08-30",
+  "status": "F4_NARROW",
+  "stage_c1_science_modified": false,
+  "c1_beta_value_biology_read": false,
+  "biological_chi_used": false,
+  "claim_ceiling": "engineering investment decision only; reduced architecture proceeds to prospectively frozen predictive testing",
+  "evidence": {
+    "f2": {
+      "run_id": 33325429587,
+      "head_sha": "2eadfed2b05842e5a0dc5564fe817e7744331930",
+      "artifact_id": 9736091098,
+      "artifact_digest": "sha256:a9a1a9bf762e96454422b26141f056b8efc91f3381c0a170664892ac03dffc1f",
+      "status": "F2_GO_CANDIDATE",
+      "behaviors_passed": 10,
+      "behaviors_scored": 11,
+      "mandatory_safety_pass": true,
+      "retained_failure": "S8 nonlinear-only scope"
+    },
+    "f3_simple": {
+      "run_id": 33325711655,
+      "head_sha": "d0d0736c2fd8b46d7a08ef4319897cf3d8ad4788",
+      "artifact_id": 9736160710,
+      "artifact_digest": "sha256:5463023ac89c560784131f86d649965a46a57d1e7740bb49d577deda23fb8f69",
+      "status": "F3_SIMPLE_BASELINES_COMPLETE",
+      "replicates": 24,
+      "s10_predictive_r2_gt_s9": {
+        "median_margin": 0.9174889980372976,
+        "win_rate": 1.0,
+        "n": 24
+      },
+      "naive_semantic_s5_gt_s4": {
+        "median_margin": 0.82893225503985,
+        "win_rate": 1.0,
+        "n": 24
+      }
+    },
+    "f3_established": {
+      "run_id": 33340405304,
+      "head_sha": "3301a20ce47fc2ff72cd6440ea5d7b7796fed478",
+      "python_artifact_id": 9740415552,
+      "python_artifact_digest": "sha256:e863b151d2ef5d3cad4f068c1b43ebe1b7954cd1e17db7e560233468bf52067a",
+      "divas_artifact_id": 9740382168,
+      "divas_artifact_digest": "sha256:461352c21689352e0a924d933c1dca9e3d6577a773e7643a81e4e4a8a805ec93",
+      "frozen_inputs_artifact_id": 9740358278,
+      "frozen_inputs_artifact_digest": "sha256:8c5b4a2c000688e2e90ee227d0154dd652dd34d5fcf7653187ee8d6653007377",
+      "python_status": "F3_ESTABLISHED_PYTHON_COMPLETE",
+      "python_records": 104,
+      "python_failures": 0,
+      "divas_status": "F3_DIVAS_NOT_EVALUABLE_PUBLISHED_IMPLEMENTATION",
+      "divas_records": 104,
+      "divas_unexpected_failures": 0
+    }
+  },
+  "component_decisions": {
+    "global_geometry": "RETAIN_ESTABLISHED_PRIMITIVE_NO_NOVELTY_CLAIM",
+    "confounder_attack_track": "RETAIN_COMPLEMENTARY_GUARDRAIL",
+    "technical_attack_track": "RETAIN_COMPLEMENTARY_GUARDRAIL",
+    "semantic_specificity": "RETAIN_COMPLEMENTARY_FOR_PROSPECTIVE_ABLATION",
+    "regulatory_autonomy_scalar": "AUTONOMY_REDUNDANT_NARROW",
+    "modal_shared_private_decomposition": "RETAIN_ESTABLISHED_FOR_TRACEABILITY_NO_NOVELTY_CLAIM",
+    "nonlinear_only_scope": "FAILED_EXCLUDE_FROM_V0_1_CLAIMS",
+    "integrated_refusal_architecture": "RETAIN_FOR_PROSPECTIVE_TESTING"
+  },
+  "next_gate": {
+    "status": "REQUIRES_PREOUTPUT_FREEZE",
+    "action": "freeze predictive holdout, replication, and selective-prediction protocol before biological target values are inspected"
+  }
+}
