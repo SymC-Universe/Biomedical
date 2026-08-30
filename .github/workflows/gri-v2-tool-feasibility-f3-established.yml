@@ -1,0 +1,150 @@
+name: GRI v2 F3 established comparators
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - gri-v2
+    paths:
+      - '.github/workflows/gri-v2-tool-feasibility-f3-established.yml'
+      - 'GRI_v2/docs/TOOL_FEASIBILITY_F3_ESTABLISHED_EXECUTION_FREEZE_20260830.md'
+      - 'GRI_v2/src/export_tool_feasibility_f3_established_inputs.py'
+      - 'GRI_v2/src/run_tool_feasibility_f3_established_python.py'
+      - 'GRI_v2/src/run_tool_feasibility_f3_divas.R'
+
+permissions:
+  contents: read
+
+jobs:
+  prepare-inputs:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install input-export dependencies
+        run: python -m pip install 'numpy>=2.0,<3'
+
+      - name: Export exact frozen synthetic matrices
+        working-directory: GRI_v2
+        run: |
+          python -m src.export_tool_feasibility_f3_established_inputs \
+            --out tool_feasibility_f3_established_inputs
+
+      - name: Verify input manifest shape
+        working-directory: GRI_v2
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('tool_feasibility_f3_established_inputs/manifest.json')
+          d = json.loads(p.read_text())
+          assert d['status'] == 'F3_ESTABLISHED_INPUTS_EXPORTED'
+          assert d['replicates'] == 8
+          assert len(d['records']) == 104
+          assert d['c1_beta_value_biology_read'] is False
+          assert d['biological_chi_used'] is False
+          print('F3_ESTABLISHED_INPUT_MANIFEST_OK', len(d['records']))
+          PY
+
+      - name: Upload frozen comparator inputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: f3-established-frozen-inputs
+          path: GRI_v2/tool_feasibility_f3_established_inputs/
+          if-no-files-found: error
+          retention-days: 30
+
+  python-baselines:
+    needs: prepare-inputs
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Download exact frozen inputs
+        uses: actions/download-artifact@v4
+        with:
+          name: f3-established-frozen-inputs
+          path: GRI_v2/tool_feasibility_f3_established_inputs
+
+      - name: Install MOFA2
+        run: python -m pip install 'mofapy2==0.7.5'
+
+      - name: Install pinned AJIVE implementation lineage
+        run: |
+          python -m pip install 'git+https://github.com/idc9/ya_pca.git@77f633643e9b9e092fe6f62266e21129393d08f7'
+          python -m pip install 'git+https://github.com/idc9/mvdr.git@ab04895a04a8f4e1b40e332591c736ba18bf8fd7'
+
+      - name: Run AJIVE and MOFA2 frozen comparison
+        working-directory: GRI_v2
+        run: |
+          python -m src.run_tool_feasibility_f3_established_python \
+            --inputs tool_feasibility_f3_established_inputs \
+            --out tool_feasibility_f3_established_python_outputs
+
+      - name: Upload AJIVE and MOFA2 outputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: f3-established-python-results
+          path: GRI_v2/tool_feasibility_f3_established_python_outputs/
+          if-no-files-found: warn
+          retention-days: 30
+
+  divas-baseline:
+    needs: prepare-inputs
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: release
+          use-public-rspm: true
+
+      - name: Download exact frozen inputs
+        uses: actions/download-artifact@v4
+        with:
+          name: f3-established-frozen-inputs
+          path: GRI_v2/tool_feasibility_f3_established_inputs
+
+      - name: Install R bootstrap packages
+        run: Rscript -e 'install.packages(c("remotes","jsonlite"), repos="https://cloud.r-project.org")'
+
+      - name: Clone exact DIVAS source
+        run: |
+          git clone https://github.com/ByronSyun/DIVAS.git DIVAS_upstream
+          git -C DIVAS_upstream checkout 294986fac88bdeea1071902aa360b19e820c85de
+          test "$(git -C DIVAS_upstream rev-parse HEAD)" = "294986fac88bdeea1071902aa360b19e820c85de"
+          test -f DIVAS_upstream/pkg/DESCRIPTION
+
+      - name: Install DIVAS dependencies and package
+        run: |
+          Rscript -e 'remotes::install_deps("DIVAS_upstream/pkg", dependencies=NA, upgrade="never")'
+          R CMD INSTALL DIVAS_upstream/pkg
+          Rscript -e 'library(DIVAS); stopifnot(as.character(packageVersion("DIVAS")) == "0.1.1"); cat("DIVAS_0.1.1_READY\n")'
+
+      - name: Run DIVAS frozen comparison
+        run: |
+          Rscript GRI_v2/src/run_tool_feasibility_f3_divas.R \
+            GRI_v2/tool_feasibility_f3_established_inputs \
+            GRI_v2/tool_feasibility_f3_divas_outputs
+
+      - name: Upload DIVAS outputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: f3-established-divas-results
+          path: GRI_v2/tool_feasibility_f3_divas_outputs/
+          if-no-files-found: warn
+          retention-days: 30
