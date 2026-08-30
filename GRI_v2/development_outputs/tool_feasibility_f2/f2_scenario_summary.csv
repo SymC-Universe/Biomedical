@@ -1,0 +1,12 @@
+adjusted_nondetection_rate,adjusted_predictability_nonsignificant_rate,behavior,complete_detection_rate,global_detection_rate,global_nondetection_rate,imputed_detection_rate,linear_global_detection_rate,masked_nondetection_rate,median_abs_delta_cka_change,median_autonomy,median_autonomy_gain_after_adjustment,median_delta_cka,median_delta_cka_drop,median_delta_semantic,median_paired_autonomy_difference,median_predictability_r2,median_target_effective_rank,paired_autonomy_win_rate,pass,raw_detection_rate,raw_predictability_exceeds_null_rate,s0_median_predictability_r2,s10_global_detection_rate,s10_median_autonomy,s9_global_detection_rate,s9_median_autonomy,semantic_detection_rate,semantic_nondetection_rate
+,,S0,,,1.0,,,,,1.0,,,,,,,,,True,,,,,,,,,
+,,S1,,1.0,,,,,,,,0.9517497798599581,,,,0.8174919197891444,,,True,,,-0.06761960265755951,,,,,,
+,,S2,,1.0,,,,,,0.630817960654446,,,,,,,6.4732636434616655,,True,,,,,0.0,,,,
+1.0,,S3,,,,,,,,,,,0.9175701491969483,,,,,,True,1.0,,,,,,,,
+,,S4,,1.0,,,,,,,,,,-0.003398968588842012,,,,,True,,,,,,,,,,1.0
+,,S5,,0.0,,,,,,,,,,0.8237810595405533,,,,,True,,,,,,,,1.0,
+,,S6,,,,,,1.0,,,,,0.9852979761551086,,,,,,True,1.0,,,,,,,,
+,,S7,1.0,,,1.0,,,0.006560043390298753,,,,,,,,,,True,,,,,,,,,
+,,S8,,,,,0.375,,,,,0.033543490698240044,,,,,,,False,,,,,,,,,
+,,S9_S10,,,,,,,,,,,,,0.8723850847352574,,,1.0,True,,,,1.0,0.0,1.0,0.8723850847352574,,
+,1.0,S11,,,,,,,,,0.7956171429106634,,,,,,,,True,,1.0,,,,,,,,
