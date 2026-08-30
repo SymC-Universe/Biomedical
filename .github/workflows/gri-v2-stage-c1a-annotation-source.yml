@@ -16,6 +16,7 @@ on:
       - 'GRI_v2/src/run_stage_c1a_windows.py'
       - 'GRI_v2/tests/test_stage_c1_annotation_contract.py'
       - 'GRI_v2/tests/test_stage_c1a_probe_inventory_contract.py'
+      - 'GRI_v2/tests/test_stage_c1a_source_gate_mechanics.py'
       - 'GRI_v2/RUN_STAGE_C1A_PROBE_INVENTORY_WINDOWS.bat'
 
 permissions:
@@ -46,12 +47,10 @@ jobs:
           r-version: 'release'
           use-public-rspm: true
 
-      - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          working-directory: GRI_v2
-          packages: |
-            any::BiocManager
-            bioc::minfi
+      - name: Install minimal DataFrame runtime only
+        run: |
+          Rscript -e 'install.packages("BiocManager", repos="https://cloud.r-project.org")'
+          Rscript -e 'BiocManager::install("S4Vectors", ask=FALSE, update=FALSE)'
 
       - name: Acquire and hash frozen annotation sources
         run: |
@@ -66,7 +65,7 @@ jobs:
             stage_c1a_source_gate/IlluminaHumanMethylation450kanno.ilmn12.hg19_0.6.0.tar.gz \
             stage_c1a_source_gate/48639-non-specific-probes-Illumina450k.csv \
             stage_c1a_source_gate
-          rm -rf stage_c1a_source_gate/_rlib
+          rm -rf stage_c1a_source_gate/_ann_extract
 
       - name: Audit portable annotation artifact
         run: |
@@ -99,10 +98,8 @@ jobs:
           Reuse the already-audited local PanCanAtlas TSV from Stage C0.
 
           Double-click RUN_STAGE_C1A_PROBE_INVENTORY_WINDOWS.bat.
-          The picker asks only for the existing methylation TSV. The compact
-          annotation export, Chen cross-reactive ID list, and frozen source
-          summary are already bundled and should be selected from this folder
-          when prompted.
+          The compact annotation export, Chen cross-reactive ID list, and frozen
+          source summary are bundled in this folder.
 
           The gate streams the TSV to verify SHA-256 and recover probe IDs only.
           It never parses methylation beta values for biological analysis.
