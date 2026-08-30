@@ -2,6 +2,12 @@
 
 Full milestone suites are retained in ChatGPT when useful for clean handoff. GitHub stores hashes and the reproducible source/config spine.
 
+## 2026-08-29 Stage B1 post-compute summary recovery
+
+- File: `CSA_STAGE_B1_SUMMARY_RECOVERY_20260829.zip`
+- SHA-256: `7be3514b034d51a2a8bfa960886886209239b9b3feb8885b42c0936078087453`
+- Role: recovery-only handoff after all 92 frozen B1 cancer-model tasks completed 100/100 resamples and the Windows runner crashed during compact summary generation because pandas `DataFrame.resample` shadowed the raw column named `resample`. The combined raw B1 resample file had already been written before the exception. This recovery validates the expected 92 tasks, 100 resamples per task, 50 modules per resample, and 460,000 raw rows, then produces the compact summaries without recomputing any network metric or changing the frozen B1 design.
+
 ## 2026-08-29 Stage B1 composition/context adjustment handoff
 
 - File: `CSA_STAGE_B1_CONTEXT_ADJUSTMENT_20260829.zip`
