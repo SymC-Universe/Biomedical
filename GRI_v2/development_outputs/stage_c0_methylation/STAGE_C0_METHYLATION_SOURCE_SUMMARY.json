@@ -1,0 +1,48 @@
+{
+  "biological_association_performed": false,
+  "chi_present": false,
+  "claim_ceiling": "source identity, schema, sample coverage, and probe inventory only",
+  "composite_score_present": false,
+  "coverage": {
+    "cancers": 32,
+    "cancers_passing_n30": 32,
+    "exact_sample_root_matches": 9493,
+    "matched_stage_a_samples": 9494,
+    "stage_a_samples": 9546,
+    "unique_patient_fallback_matches": 1
+  },
+  "cv2_used": false,
+  "expected_content_length_bytes": 5022150019,
+  "expected_md5": "5cec086f0b002d17befef76a3241e73b",
+  "expected_shared_probe_count": 22601,
+  "gdc_uuid": "d82e2c44-89eb-43d9-b6d3-712732bf6a53",
+  "matrix": {
+    "blank_probe_ids": 0,
+    "duplicate_primary_sample_roots": 41,
+    "duplicate_probe_ids": 0,
+    "header_columns": 12040,
+    "methylation_sample_columns": 12039,
+    "primary_sample_columns": 10317,
+    "probe_rows": 22601,
+    "tcga_sample_roots_parsed": 12039,
+    "unique_primary_patients": 10268,
+    "unique_primary_sample_roots": 10271
+  },
+  "plan_version": "0.1-pre-methylation-acquisition",
+  "remote_metadata": {
+    "accept_ranges": "bytes",
+    "content_disposition": null,
+    "content_length": 5022150019,
+    "content_range": "0-0/5022150019",
+    "content_type": "application/octet-stream",
+    "head_error": "HTTPError: HTTP Error 400: BAD REQUEST",
+    "http_status": 206,
+    "status": "OK_RANGE"
+  },
+  "source_file": "jhu-usc.edu_PANCAN_merged_HumanMethylation27_HumanMethylation450.betaValue_whitelisted.tsv",
+  "source_md5": "5cec086f0b002d17befef76a3241e73b",
+  "source_sha256": "5934c497882fbe8178d128a3a7f71e765480af6bbd460e0398de3428cd075b77",
+  "stage_a_profile_cache_sha256": "e65f6788aa6037fef407169794f29d63322de2769343bb6e594fe469dfeb8e63",
+  "status": "STAGE_C0_METHYLATION_SOURCE_GATE",
+  "substrate_inheritance_claim": false
+}

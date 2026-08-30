@@ -1,0 +1,56 @@
+{
+  "version": "0.1-post-c0-pre-association",
+  "status": "frozen_after_c0_schema_inventory_before_any_methylation_biological_association",
+  "purpose": "Resolve Stage C0 sample-identity ambiguity using header/schema information only, before any methylation beta values are used in biological association testing.",
+  "frozen_inputs": {
+    "stage_a_profile_cache_sha256": "e65f6788aa6037fef407169794f29d63322de2769343bb6e594fe469dfeb8e63",
+    "methylation_source_sha256": "5934c497882fbe8178d128a3a7f71e765480af6bbd460e0398de3428cd075b77",
+    "methylation_source_md5": "5cec086f0b002d17befef76a3241e73b",
+    "methylation_source_size_bytes": 5022150019,
+    "c0_summary_sha256": "b89e5987e50ddec4ec432a511eeb80052c1ce607dafae8c743eae204354c6bcd"
+  },
+  "observed_c0_schema_facts": {
+    "methylation_sample_columns": 12039,
+    "primary_sample_columns": 10317,
+    "unique_primary_sample_roots": 10271,
+    "duplicate_primary_sample_roots": 41,
+    "stage_a_presence_matches": 9494,
+    "cancers_passing_n30_presence_gate": 32
+  },
+  "primary_sample_identity_rule": {
+    "sample_type": "01 primary tumor only",
+    "exact_root_key": "TCGA sample root through vial, e.g. TCGA-XX-YYYY-01A",
+    "exact_root_admitted_only_if_source_column_count_equals": 1,
+    "duplicate_exact_root_action": "EXCLUDE_FROM_PRIMARY_C1",
+    "duplicate_exact_root_beta_averaging_allowed": false,
+    "duplicate_exact_root_select_first_or_last_allowed": false,
+    "duplicate_exact_root_platform_selection_allowed": false,
+    "duplicate_exact_root_value_based_selection_allowed": false,
+    "patient_fallback": "admit only if there is no unique exact-root match and the source contains exactly one eligible primary measurement for that patient",
+    "no_metastatic_or_recurrent_substitution": true,
+    "minimum_cancer_n": 30
+  },
+  "allowed_operations": {
+    "read_matrix_header_only": true,
+    "read_beta_value_rows": false,
+    "inventory_duplicate_primary_roots": true,
+    "calculate_unique_one_to_one_stage_a_coverage": true,
+    "write_duplicate_root_schema_report": true,
+    "biological_association": false,
+    "feature_selection": false,
+    "outcome_selection": false
+  },
+  "outputs": [
+    "STAGE_C0_1_SAMPLE_IDENTITY_SUMMARY.json",
+    "stage_c0_1_unique_match_coverage.csv",
+    "stage_c0_1_duplicate_primary_roots.csv"
+  ],
+  "constraints": {
+    "chi_allowed": false,
+    "cv2_used": false,
+    "composite_stability_score_allowed": false,
+    "substrate_inheritance_claim_allowed": false,
+    "dynamic_claim_allowed": false,
+    "methylation_biological_association_allowed": false
+  }
+}
