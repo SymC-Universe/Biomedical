@@ -118,9 +118,9 @@ The genomic branch earns retention of the five documented genomic coordinates as
 
 A bounded statement supported by this branch is:
 
-> Across the frozen PanCanAtlas Stage B2 design, five independently documented genomic burden coordinates produce small but directionally non-random distributed changes in Hallmark RNA coherence/coupling relative to same-patient permutation residualization, including after purity/leukocyte adjustment, while preserving the overwhelming majority of the Stage A module ordering.
+> Across the frozen PanCanAtlas Stage B2 design, five independently documented genomic burden coordinates produce small, directionally recurrent distributed changes in Hallmark RNA coherence/coupling relative to same-patient permutation residualization, including after purity/leukocyte adjustment, while preserving the overwhelming majority of the Stage A module ordering.
 
-The phrase `directionally non-random` here refers descriptively to repeated cancer-level effect directions under the frozen construction-null comparison. No post-result p-value or significance threshold is introduced as a promotion criterion.
+`Directionally recurrent` refers only to the repeated sign pattern of cancer-level medians under the frozen construction-null comparison. It is not a newly introduced inferential test, p-value, or promotion threshold.
 
 The result does not establish:
 
