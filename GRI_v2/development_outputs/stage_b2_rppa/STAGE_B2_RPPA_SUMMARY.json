@@ -1,0 +1,27 @@
+{
+  "cancer_summary_rows": 60,
+  "chi_present": false,
+  "claim_ceiling": "orthogonal static multiomic integration only; no causality, dynamics, damping, transition, phase, optimum, treatment-state, or chi claim",
+  "common_panel_features": 189,
+  "composite_score_present": false,
+  "cv2_used": false,
+  "fixed_n": 30,
+  "matched_stage_a_samples": 6887,
+  "minimum_valid_resamples": 100,
+  "module_summary_rows": 3000,
+  "modules": 50,
+  "raw_rows": 300000,
+  "resamples_per_task": 100,
+  "source_sha256": {
+    "rppa_sha256": "06246573836865589134bd9424189f81b0d9fb436fcbf5e72024225442c400de",
+    "stage_a_module_eigengenes_sha256": "c305246d83732931060ff60049b67ce38751101e15b21798b973fcae8bb94433",
+    "stage_a_profile_cache_sha256": "e65f6788aa6037fef407169794f29d63322de2769343bb6e594fe469dfeb8e63",
+    "stage_b1_context_matched_sha256": "fe9221bdf7bfe94f3a53bbd9f01154142365e4328231d0c84f14406c432451dd"
+  },
+  "status": "DEVELOPMENT_ORTHOGONAL_STATIC_RPPA_INTEGRATION_ONLY",
+  "tasks": 60,
+  "tasks_by_mode": {
+    "CONTEXT_SENSITIVITY": 29,
+    "PRIMARY": 31
+  }
+}
