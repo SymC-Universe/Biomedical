@@ -53,7 +53,16 @@ jobs:
           use-public-rspm: true
       - name: Install remotes
         run: Rscript -e 'install.packages("remotes", repos="https://cloud.r-project.org")'
-      - name: Install DIVAS from published repository
-        run: Rscript -e 'remotes::install_github("ByronSyun/DIVAS", upgrade="never")'
+      - name: Clone published DIVAS repository
+        run: git clone --depth 1 https://github.com/ByronSyun/DIVAS.git DIVAS_upstream
+      - name: Verify DIVAS package subdirectory
+        run: |
+          test -f DIVAS_upstream/pkg/DESCRIPTION
+          grep '^Package: DIVAS$' DIVAS_upstream/pkg/DESCRIPTION
+          grep '^Version:' DIVAS_upstream/pkg/DESCRIPTION
+      - name: Install DIVAS package dependencies
+        run: Rscript -e 'remotes::install_deps("DIVAS_upstream/pkg", dependencies=NA, upgrade="never")'
+      - name: Install DIVAS package from monorepo subdirectory
+        run: R CMD INSTALL DIVAS_upstream/pkg
       - name: Smoke DIVAS import
-        run: Rscript -e 'library(DIVAS); cat("DIVAS_IMPORT_OK\n")'
+        run: Rscript -e 'library(DIVAS); cat("DIVAS_IMPORT_OK\n"); cat(as.character(packageVersion("DIVAS")), "\n")'
