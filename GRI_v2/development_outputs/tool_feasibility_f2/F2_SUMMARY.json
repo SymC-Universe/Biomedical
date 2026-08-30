@@ -1,0 +1,39 @@
+{
+  "autonomy_nulls_per_calibration": 19,
+  "behavior_pass": {
+    "S0": true,
+    "S1": true,
+    "S11": true,
+    "S2": true,
+    "S3": true,
+    "S4": true,
+    "S5": true,
+    "S6": true,
+    "S7": true,
+    "S8": false,
+    "S9_S10": true
+  },
+  "behaviors_passed": 10,
+  "biological_chi_used": false,
+  "c1_beta_value_biology_read": false,
+  "claim_ceiling": "synthetic engineering feasibility only; no biomedical association, mechanism, clinical, or C1 result claim",
+  "evaluation_freeze": "TOOL_FEASIBILITY_F2_EVALUATION_FREEZE_20260830.md",
+  "global_nulls_per_replicate": 39,
+  "historical_cv2_used": false,
+  "mandatory_safety": {
+    "S0": true,
+    "S11": true,
+    "S3": true,
+    "S6": true
+  },
+  "plan": "tool_feasibility_plan_v0_1.json",
+  "preresult_repairs": [
+    "TOOL_FEASIBILITY_F2_PRERESULT_PROTOCOL_REPAIR_20260830.md",
+    "TOOL_FEASIBILITY_F2_PRERESULT_BEHAVIOR_COUNT_REPAIR_20260830.md"
+  ],
+  "replicates_per_scenario": 24,
+  "scored_behaviors": 11,
+  "seed_namespace": "GRI_V2_TOOL_FEASIBILITY_20260830_F2",
+  "semantic_nulls_per_replicate": 39,
+  "status": "F2_GO_CANDIDATE"
+}
