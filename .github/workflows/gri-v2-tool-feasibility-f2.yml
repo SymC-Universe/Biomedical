@@ -1,0 +1,42 @@
+name: GRI v2 tool feasibility F2
+
+on:
+  push:
+    branches: [gri-v2]
+    paths:
+      - 'GRI_v2/src/tool_feasibility_kernel.py'
+      - 'GRI_v2/src/run_tool_feasibility_f2.py'
+      - 'GRI_v2/config/tool_feasibility_plan_v0_1.json'
+      - 'GRI_v2/docs/TOOL_FEASIBILITY_F2_*.md'
+      - '.github/workflows/gri-v2-tool-feasibility-f2.yml'
+  workflow_dispatch:
+
+jobs:
+  f2-synthetic-challenge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -r requirements.txt
+      - name: Run repository tests
+        run: python -m pytest -q tests
+      - name: Run frozen replicated F2 sweep
+        run: python -m src.run_tool_feasibility_f2 --out tool_feasibility_f2_outputs
+      - name: Show F2 summary
+        run: cat tool_feasibility_f2_outputs/F2_SUMMARY.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: GRI_V2_TOOL_FEASIBILITY_F2_20260830
+          path: |
+            GRI_v2/tool_feasibility_f2_outputs/F2_SUMMARY.json
+            GRI_v2/tool_feasibility_f2_outputs/f2_scenario_summary.csv
+            GRI_v2/tool_feasibility_f2_outputs/f2_replicate_metrics.csv
+          if-no-files-found: error
+          retention-days: 90
