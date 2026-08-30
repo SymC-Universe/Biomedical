@@ -4,11 +4,40 @@ Status date: 2026-08-30
 
 ## Scientific status
 
-The Cancer Stability Atlas / substrate-architecture program remains a development program, not a validated clinical tool. `CV/2` remains historical only. No biological chi coordinate has been admitted, and `chi = 1` is not presumed to be a cancer optimum, healthy state, therapeutic target, or organization maximum.
+The GRI v2 biomedical program is a **tool-discovery research program**, not a validated clinical tool and not a project to defend the historical GRI manuscript.
 
-Stages A, A1.1, B1, B2 RPPA, B2 genomic, B2 static integration, Stage C0 methylation source identity, Stage C0.1 one-to-one sample identity, and **Stage C1A annotation/exact-probe inventory are closed**. No Stage C1 methylation beta-value biological association has been calculated.
+The locked program charter is:
 
-The active gate is now the **prospective Stage C1 modal + scalar + conglomeration formula/null/promotion freeze**. Beta-value biology remains blocked until that scientific contract is explicitly approved and regression-tested.
+`docs/GRI_V2_TOOL_DISCOVERY_CHARTER_20260830.md`
+
+Historical `CV/2` remains provenance only. No biological chi coordinate has been admitted, `chi = 1` is not presumed to be a cancer optimum or treatment target, and the final useful method is free to contain no chi or stability terminology at all.
+
+Stages A, A1.1, B1, B2 RPPA, B2 genomic, B2 static integration, C0 methylation source identity, C0.1 one-to-one sample identity, and **C1A annotation/exact-probe inventory are closed**.
+
+The **Stage C1 v2 biological contract is also scientifically frozen and approved** before any C1 beta-value biological result:
+
+`docs/STAGE_C1_ANALYSIS_PREREGISTRATION_20260830.md`
+
+No Stage C1 methylation beta-value biological association has been calculated or inspected.
+
+## Active gate
+
+The active operation is now:
+
+**PRE-C1 TOOL FEASIBILITY + REGULATORY-AUTONOMY KERNEL**
+
+Full C1 biological execution is intentionally paused behind this gate. The purpose is to determine whether the general mathematics can plausibly become a useful research instrument before substantial compute is invested around the unrevealed TCGA result.
+
+This gate **does not modify C1 v2**.
+
+The current candidate is a cross-omic architecture / integration-readiness auditor organized around four questions inherited from the useful core of historical GRI:
+
+1. **state / organization** — what multivariate organization exists beyond construction-aware nulls?
+2. **independent cross-layer verification** — does a second measured layer confirm specific shared organization?
+3. **regulatory autonomy** — how much regulatory organization remains independent after conditioning on substrate/context and known confounders?
+4. **recoverability / adaptive reserve** — reserved for later ordered perturbational or longitudinal data; not inferred from static TCGA.
+
+The modal + scalar + conglomeration rule remains active: scalar summaries are optional compressed coordinates, modal structure is the underlying carrier, and conglomeration is the system/module organization. No scalar is allowed to replace the other views by assumption.
 
 ## Closed upstream state
 
@@ -30,17 +59,15 @@ Canonical audit: `docs/STAGE_C0_1_SAMPLE_IDENTITY_AUDIT_20260830.md`.
 
 Frozen duplicate-root rule: **exclude from primary C1**.
 
-- exact unique-root matches: 9,459
-- unique patient fallback matches: 1
 - strict one-to-one matched Stage A tumors: 9,460 / 9,546
 - duplicate-root Stage A samples excluded: 34
 - no-source Stage A samples: 52
 - cancers remaining above n>=30: 32 / 32
 - beta-value biological analysis performed: false
 
-## Stage C1A annotation freeze
+### Stage C1A
 
-Machine-readable contract: `config/stage_c1_annotation_feature_plan.json`
+Machine-readable annotation contract: `config/stage_c1_annotation_feature_plan.json`
 
 Preregistration: `docs/STAGE_C1A_ANNOTATION_PREREGISTRATION_20260830.md`
 
@@ -48,87 +75,91 @@ External-source audit: `docs/STAGE_C1A_ANNOTATION_SOURCE_AUDIT_20260830.md`
 
 Exact-probe audit: `docs/STAGE_C1A_PROBE_INVENTORY_AUDIT_20260830.md`
 
-The frozen annotation architecture uses:
-
-- Illumina HumanMethylation450 v1.2 / `ilmn12.hg19`;
-- Bioconductor 3.8 package `IlluminaHumanMethylation450kanno.ilmn12.hg19` version 0.6.0;
-- all distinct supported probe-gene-accession-region tuples rather than first-gene selection;
-- distinct `TSS200`, `TSS1500`, `5'UTR/1stExon`, `Body`, and `3'UTR` strata plus a secondary broad-promoter union;
-- unmapped probes retained only where an all-probe modal calculation does not require invented gene assignment;
-- all 22,601 PanCanAtlas probes as the publication-faithful primary track;
-- a mandatory robustness mask equal to the union of the pinned Chen cross-reactive list and the frozen common-SNP-at-CpG/SBE layer;
-- modal + scalar + conglomeration as complementary views, with no biological chi or master score admitted.
-
-### C1A external source result
-
-- annotation package SHA-256: `249b8fd62add3c95b5047b597cff0868d26a98862a47cebd656edcd175a73b15`
-- deterministic common-SNP object: `SNPs.147CommonSingle`
-- portable annotation rows / unique probe IDs: 485,512 / 485,512
-- portable annotation SHA-256: `a7f83233f97c3933752d74b8042e967de88df20eba2cf477a536136631a8da17`
-- pinned Chen source SHA-256: `4e962d36821f6f6fcd8b81cc0558090c028e54fbdb2c039a5712f9b471d9d89e`
-- compact Chen-ID export: 29,233 unique IDs
-- compact Chen-ID SHA-256: `078e95716af2b20c3515f59d09310d20c43deb5ed8ba8d1b70885810acde2179`
-
-### C1A exact local probe-inventory result
-
-Canonical compact outputs:
-
-- `development_outputs/stage_c1a_probe_inventory/STAGE_C1A_PROBE_INVENTORY_SUMMARY.json`
-  - SHA-256 `04632061a28570f5eefcd41bd4abca230cd42e63538e02a9ab941b3cecf88168`
-- `development_outputs/stage_c1a_probe_inventory/stage_c1a_regulatory_stratum_counts.csv`
-  - SHA-256 `603b96ac879c4c58517479bc5dbee10bf89a0f47c374abd653c492d928de1cbc`
-
 Gate result: **STAGE_C1A_PROBE_INVENTORY_PASS**.
 
-- source probe rows: 22,601
-- unique source probe IDs: 22,601
+- source probe rows / unique IDs: 22,601 / 22,601
 - exact annotation overlap: **22,601 / 22,601**
 - missing annotation probes: 0
 - RefGene-mapped probes: 22,469
 - RefGene-unmapped probes: 132
 - preserved probe-gene-accession-region tuples: 46,287
 - tuple-length mismatch probes: 0
-- mapped probes lacking a frozen regulatory stratum: 0
+- `PROMOTER_CORE`: 3,999 probes
+- technical-mask union: 579 probes
+- mandatory masked robustness track: 22,022 probes
+- beta values parsed for biological analysis: false
 
-Regulatory-stratum unique-probe counts:
+## Frozen Stage C1 v2
 
-- `PROMOTER_CORE`: 3,999
-- `PROMOTER_PROXIMAL`: 8,157
-- `PROMOTER_TRANSCRIBED_EDGE`: 9,455
-- `GENE_BODY`: 4,983
-- `THREE_PRIME_UTR`: 152
-- `BROAD_PROMOTER_SECONDARY`: 19,362
+Canonical preregistration:
 
-The strata overlap and are not a partition.
+`docs/STAGE_C1_ANALYSIS_PREREGISTRATION_20260830.md`
 
-Technical-mask overlap:
+The exact approved source blob is frozen by hash and includes:
 
-- Chen cross-reactive: 524
-- common SNP at CpG or SBE: 59
-- union mask: 579
-- mandatory masked robustness track: **22,022 probes**
+- shared PRIMARY-derived sample eligibility;
+- raw beta scale and fixed missingness rules;
+- fixed n=30 and 100 deterministic resamples;
+- all-probe sample-space modal eigenspectrum;
+- `S_spec = 1 - H_norm` primary scalar, explicitly not chi;
+- probe-marginal construction null;
+- CKA plus patient-alignment null;
+- TSS200/PROMOTER_CORE conglomeration primary;
+- same-Hallmark coupling with patient and label nulls;
+- mandatory B1 purity/leukocyte composition robustness;
+- separate raw and adjusted multiplicity families;
+- both publication-faithful and technical-mask tracks;
+- fixed claim ceilings and failure retention.
 
-The local C1A engine reverified the complete 5.02 GB source SHA-256 and extracted probe IDs only. `methylation_beta_values_parsed_for_biological_analysis=false` and `biological_association_performed=false`.
+C1 remains prospectively valid and sealed. Feasibility work may test only general mathematics on synthetic or separate benchmark inputs and may not retune these C1 rules.
 
-## Active scientific gate: Stage C1 analysis freeze
+## Pre-C1 tool-feasibility sequence
 
-The next contract must be approved before opening beta values for biological analysis. It will prospectively freeze:
+### F0 — Program objective
 
-1. the exact all-probe modal representation and normalization;
-2. scalar compression derived from and traceable to the modal spectrum, without calling it chi;
-3. probe-to-gene and Hallmark conglomeration rules using the frozen C1A map;
-4. the primary regulatory stratum versus prespecified secondary strata;
-5. missingness and sample/probe eligibility;
-6. fixed-n resampling and deterministic seed construction;
-7. a probe-marginal-preserving construction null;
-8. patient-alignment and Hallmark-label cross-assay nulls;
-9. primary inferential families, multiple-testing control, and promotion rules;
-10. the exact claim ceiling.
+**PASS.** Locked in `docs/GRI_V2_TOOL_DISCOVERY_CHARTER_20260830.md`.
 
-The first biological C1 question is intentionally static: whether methylation has reproducible organization beyond probe-marginal construction and whether that organization aligns specifically with the independently frozen RNA Hallmark architecture. Even a positive result would not establish causality, temporal inheritance, damping, a phase boundary, or biological chi.
+### F1 — General mathematical kernel
+
+Build assay-agnostic functions for:
+
+- within-layer modal organization versus marginal-preserving nulls;
+- eigenspectrum/effective-rank/participation diagnostics;
+- mode-to-feature traceability;
+- cross-layer CKA and principal angles;
+- patient-alignment and semantic-label nulls;
+- covariate projection;
+- candidate regulatory-autonomy / conditional-dependence estimators;
+- explicit refusal outputs.
+
+### F2 — Synthetic ground-truth challenge
+
+The kernel must distinguish independent layers, genuine shared modes, layer-specific modes, pure confounding, scrambled semantic labels, module-specific sharing, technical false concordance, missingness/feature imbalance, nonlinear cases outside the linear method's scope, and true-versus-confounded loss of regulatory autonomy.
+
+### F3 — Baseline competition
+
+Compare the relevant capability with strong simple and established alternatives. The proposed tool need not beat every integrator at fusion or prediction; it must earn a useful audit, refusal, decomposition, calibration, or interpretability role not already supplied adequately.
+
+### F4 — Decision
+
+Required outcome: **GO / NARROW / STOP** before full C1 investment.
+
+- GO: tool architecture and autonomy concept add defensible utility.
+- NARROW: retain only components that add value.
+- STOP: close the standalone tool branch and do not force it around C1.
+
+### C1 — First prospective biological case study
+
+Only after F1-F4 justify continuation do we invest in the complete frozen TCGA C1 execution path.
+
+### Dynamic extension
+
+Recoverability, transition risk, bandwidth descendants, or substrate-inheritance questions require genuinely ordered perturbational or longitudinal data and remain downstream.
 
 ## Exact user action
 
-Review and explicitly approve or revise the proposed Stage C1 scientific contract. No local computation is required until that approval is recorded.
+**None right now.**
 
-Keep the 5.02 GB methylation source, the C1A generated mapping/flags `.csv.gz` files, the Stage A cache, and existing B2 task caches unchanged.
+ChatGPT can advance F1-F3 mechanically using repository code, synthetic ground-truth systems, regression tests, and benchmark planning without opening the C1 beta-value biological result or changing frozen science.
+
+The next user action will be required only if a choice would alter the locked tool objective/frozen C1 science, or when a local dataset/run is genuinely required after the feasibility decision.
