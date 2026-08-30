@@ -9,6 +9,7 @@ from pathlib import Path
 
 PATIENT_RE = re.compile(r"TCGA[-.][A-Z0-9]{2}[-.][A-Z0-9]{4}")
 SAMPLE_RE = re.compile(r"TCGA[-.][A-Z0-9]{2}[-.][A-Z0-9]{4}[-.][0-9]{2}[A-Z]?")
+USER_AGENT = "Cancer-Stability-Atlas/Stage-B2"
 
 
 def sha256_file(path: Path) -> str:
@@ -19,14 +20,73 @@ def sha256_file(path: Path) -> str:
     return h.hexdigest()
 
 
-def request_json(url: str) -> dict:
-    req = urllib.request.Request(url, headers={"User-Agent": "Cancer-Stability-Atlas/Stage-B2"})
-    with urllib.request.urlopen(req, timeout=180) as r:
-        return json.load(r)
+def _header_dict(response) -> dict:
+    return {str(k).lower(): str(v) for k, v in response.headers.items()}
+
+
+def probe_data_endpoint(url: str) -> dict:
+    """Inspect the legacy PanCanAtlas data endpoint without downloading the file.
+
+    The publication-supplement UUIDs remain downloadable through /data/{uuid}
+    even when the current /files/{uuid} metadata route does not index them.
+    Prefer HEAD; fall back to a one-byte Range request if HEAD is unsupported.
+    """
+    head_error = None
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT}, method="HEAD")
+        with urllib.request.urlopen(req, timeout=180) as r:
+            headers = _header_dict(r)
+            length = headers.get("content-length")
+            return {
+                "metadata_status": "OK_DATA_ENDPOINT_HEAD",
+                "http_status": getattr(r, "status", None),
+                "content_length": int(length) if length and length.isdigit() else None,
+                "content_type": headers.get("content-type"),
+                "content_disposition": headers.get("content-disposition"),
+                "accept_ranges": headers.get("accept-ranges"),
+            }
+    except Exception as exc:
+        head_error = f"{type(exc).__name__}: {exc}"
+
+    try:
+        req = urllib.request.Request(
+            url,
+            headers={"User-Agent": USER_AGENT, "Range": "bytes=0-0"},
+        )
+        with urllib.request.urlopen(req, timeout=180) as r:
+            headers = _header_dict(r)
+            # Read a single byte only. Closing the response prevents accidental
+            # acquisition of a deferred large assay if Range is ignored.
+            r.read(1)
+            content_range = headers.get("content-range")
+            total = None
+            if content_range and "/" in content_range:
+                tail = content_range.rsplit("/", 1)[-1]
+                if tail.isdigit():
+                    total = int(tail)
+            if total is None:
+                length = headers.get("content-length")
+                if length and length.isdigit() and getattr(r, "status", None) == 200:
+                    total = int(length)
+            return {
+                "metadata_status": "OK_DATA_ENDPOINT_RANGE",
+                "http_status": getattr(r, "status", None),
+                "content_length": total,
+                "content_type": headers.get("content-type"),
+                "content_disposition": headers.get("content-disposition"),
+                "accept_ranges": headers.get("accept-ranges"),
+                "content_range": content_range,
+                "head_error": head_error,
+            }
+    except Exception as exc:
+        return {
+            "metadata_status": "ERROR",
+            "metadata_error": f"HEAD={head_error}; RANGE={type(exc).__name__}: {exc}",
+        }
 
 
 def download(url: str, path: Path) -> None:
-    req = urllib.request.Request(url, headers={"User-Agent": "Cancer-Stability-Atlas/Stage-B2"})
+    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     with urllib.request.urlopen(req, timeout=180) as r, path.open("wb") as out:
         while True:
             chunk = r.read(1024 * 1024)
@@ -67,21 +127,13 @@ def main() -> None:
 
     for src in plan["sources"]:
         rec = {k: src[k] for k in ["id", "role", "file_name", "gdc_uuid", "download_now", "independence"]}
-        meta_url = (
-            f"https://api.gdc.cancer.gov/files/{src['gdc_uuid']}?"
-            "fields=file_id,file_name,file_size,md5sum,access,data_category,data_type,experimental_strategy"
-        )
-        try:
-            rec["gdc_metadata"] = request_json(meta_url).get("data", {})
-            rec["metadata_status"] = "OK"
-        except Exception as exc:
-            rec["metadata_status"] = "ERROR"
-            rec["metadata_error"] = f"{type(exc).__name__}: {exc}"
+        data_url = f"https://api.gdc.cancer.gov/data/{src['gdc_uuid']}"
+        rec.update(probe_data_endpoint(data_url))
 
         if src["download_now"]:
             path = dl_dir / src["file_name"]
             try:
-                download(f"https://api.gdc.cancer.gov/data/{src['gdc_uuid']}", path)
+                download(data_url, path)
                 rec.update({
                     "download_status": "OK",
                     "downloaded_bytes": path.stat().st_size,
