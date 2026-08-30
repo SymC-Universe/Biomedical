@@ -4,6 +4,8 @@
 **Active phase:** Stage B2 genomic closure  
 **Status date:** 2026-08-29
 
+> **Reviewer navigation:** start at `reviewer/README.md`. The moving `gri-v2` branch is a development branch, not an immutable submission record. Manuscript/data submissions should point reviewers to an exact tagged/released snapshot following `reviewer/SUBMISSION_RELEASE_CHECKLIST.md`.
+
 ## Objective
 
 The active objective is to build the most predictive, falsifiable cancer-stability tool supported by the data and by the updated Chemistry and Stability Arc methodology.
@@ -137,6 +139,10 @@ The next major branch is genuine ordered perturbation/time-course benchmarking a
 
 ## Where to look
 
+- `reviewer/README.md` - reviewer-facing navigation and evidence ladder
+- `reviewer/CLAIM_EVIDENCE_MAP.md` - conservative claim-to-evidence map
+- `reviewer/REVIEWER_MANIFEST.json` - machine-readable repository/stage map
+- `reviewer/SUBMISSION_RELEASE_CHECKLIST.md` - immutable submission/review packaging rules
 - `notes/BUILD_STATUS.md` - canonical current handoff and exact next action
 - `docs/TOOL_OBJECTIVE.md` - predictive-tool objective
 - `docs/EPISTEMIC_CONSTITUTION.md` - scientific guardrails
@@ -150,4 +156,4 @@ The next major branch is genuine ordered perturbation/time-course benchmarking a
 
 ## Repository role
 
-GitHub is the durable reproducible spine: code, configs, tests, scientific specifications, compact summaries, audits, and milestone hashes. Large raw datasets and bulky derived tables are not duplicated in repository history when they are reproducible from recorded source artifacts.
+GitHub is the durable reproducible spine: code, configs, tests, scientific specifications, compact summaries, audits, milestone hashes, and reviewer navigation. Large raw datasets and bulky derived tables are not duplicated in repository history when they are reproducible from recorded source artifacts.
