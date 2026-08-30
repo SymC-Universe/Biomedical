@@ -2,6 +2,14 @@
 
 Full milestone suites are retained in ChatGPT when useful for clean handoff. GitHub stores hashes and the reproducible source/config spine.
 
+## 2026-08-29 Stage B1 completed outputs
+
+- `STAGE_B1_SUMMARY.json` SHA-256: `bbf7ce5eaaaea6f24d4d31d1a4a3618502d03098eea97873752bef89fd4e2517`
+- `stage_b1_cancer_level_diagnostic.csv` SHA-256: `944e156dd23297b2d5fef5d175d7fbb602bef6fd1b069d59fdeb158e6a2481a9`
+- `stage_b1_module_context_effects.csv` SHA-256: `e6cb3d34a4a5bb334da4ee2a68e13ca32f80252d67ed60ca7471516246c152fd`
+- `stage_b1_resample_metrics.csv.gz` SHA-256: `86c7659f47d8f0af52ed6f63b0ef604590b5ed79b77cb2098ffe227b96742042`
+- Role: completed frozen Stage B1 composition/context experiment and recovery summaries. All 92 cancer-model tasks completed 100/100 resamples before the original postprocessing exception. The compact JSON summary is retained under `development_outputs/stage_b1/`; the larger diagnostic/module/raw tables remain external milestone artifacts identified by SHA. Scientific interpretation is frozen in `docs/STAGE_B1_AUDIT_20260829.md`.
+
 ## 2026-08-29 Stage B1 post-compute summary recovery
 
 - File: `CSA_STAGE_B1_SUMMARY_RECOVERY_20260829.zip`
