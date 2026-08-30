@@ -2,6 +2,16 @@
 
 Full milestone suites are retained in ChatGPT when useful for clean handoff. GitHub stores hashes and the reproducible source/config spine.
 
+## 2026-08-29 Stage B2 completed source probe
+
+- GitHub Actions run: `33285344182` (`GRI v2 Stage B2 source probe`, successful repaired run)
+- Workflow artifact digest: SHA-256 `481ba7fc9e2546591668abbf2021390aaecac54d11c5313959e87be9ab14920a`
+- `STAGE_B2_SOURCE_INVENTORY.json` SHA-256: `7d648f5712f25253fd38a63eb677ecfe7bf083654ea15208426b5d012fd91656`
+- `ABSOLUTE_scores.tsv` SHA-256: `4e115fd7408a06b002f34678fa46df0b05aa20ac71db57acf535238f37aa64c8`
+- `seg_based_scores.tsv` SHA-256: `4b63eefb164866a3c49c50c04ee423d3ad1c25540f7cf39e08d997b454a189d0`
+- `TCGA-RPPA-pancan-clean.txt` SHA-256: `06246573836865589134bd9424189f81b0d9fb436fcbf5e72024225442c400de`
+- Role: pre-biological-association source/provenance milestone. The repaired probe downloads and hashes the pre-reserved small genomic/protein sources and uses a one-byte range request against legacy GDC `/data/{uuid}` endpoints to determine the size of deferred methylation sources without downloading them. Exact Stage A matching and coverage are documented in `docs/STAGE_B2_SOURCE_AUDIT_20260829.md`.
+
 ## 2026-08-29 Stage B1 completed outputs
 
 - `STAGE_B1_SUMMARY.json` SHA-256: `bbf7ce5eaaaea6f24d4d31d1a4a3618502d03098eea97873752bef89fd4e2517`
