@@ -1,0 +1,112 @@
+name: GRI v2 P0 split manifest handoff
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - gri-v2
+    paths:
+      - 'GRI_v2/config/tool_prediction_p0_holdout_freeze_20260830.json'
+      - 'GRI_v2/docs/TOOL_PREDICTION_P0_HOLDOUT_FREEZE_20260830.md'
+      - 'GRI_v2/docs/TOOL_PREDICTION_P0_PRERESULT_STATE_RULE_CONCRETIZATION_20260830.md'
+      - 'GRI_v2/src/build_tool_prediction_p0_split_manifest.py'
+      - 'GRI_v2/src/run_tool_prediction_p0_split_windows.py'
+      - 'GRI_v2/tests/test_tool_prediction_p0_split_manifest.py'
+      - 'GRI_v2/RUN_TOOL_PREDICTION_P0_SPLIT_WINDOWS.bat'
+      - '.github/workflows/gri-v2-tool-prediction-p0-split-manifest.yml'
+
+jobs:
+  test-and-package:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        working-directory: GRI_v2
+        run: python -m pip install -r requirements.txt
+
+      - name: Run full GRI v2 regression suite
+        working-directory: GRI_v2
+        run: python -m pytest -q tests
+
+      - name: Verify P0 freeze guards
+        working-directory: GRI_v2
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('config/tool_prediction_p0_holdout_freeze_20260830.json')
+          d = json.loads(p.read_text())
+          assert d['status'] == 'FROZEN_BEFORE_P0_TARGET_VALUES'
+          assert d['stage_c1_science_modified'] is False
+          assert d['c1_beta_value_biology_read'] is False
+          assert d['biological_chi_used'] is False
+          assert d['partition']['unit'] == 'participant_root'
+          assert d['partition']['reassignment_allowed'] is False
+          assert d['partition']['discovery_buckets'] == [0,1,2,3,4,5]
+          assert d['partition']['replication_buckets'] == [6,7]
+          assert d['partition']['final_holdout_buckets'] == [8,9]
+          print('P0_SPLIT_FREEZE_GUARDS_OK')
+          PY
+
+      - name: Build exact Windows handoff payload
+        run: |
+          set -euo pipefail
+          H=GRI_V2_P0_SPLIT_MANIFEST_WINDOWS_20260830
+          mkdir -p "$H/config" "$H/docs" "$H/src" "$H/tests"
+          cp GRI_v2/RUN_TOOL_PREDICTION_P0_SPLIT_WINDOWS.bat "$H/"
+          cp GRI_v2/requirements.txt "$H/"
+          cp GRI_v2/config/tool_prediction_p0_holdout_freeze_20260830.json "$H/config/"
+          cp GRI_v2/config/stage_c0_1_sample_identity_plan.json "$H/config/"
+          cp GRI_v2/docs/TOOL_PREDICTION_P0_HOLDOUT_FREEZE_20260830.md "$H/docs/"
+          cp GRI_v2/docs/TOOL_PREDICTION_P0_PRERESULT_STATE_RULE_CONCRETIZATION_20260830.md "$H/docs/"
+          cp GRI_v2/src/build_tool_prediction_p0_split_manifest.py "$H/src/"
+          cp GRI_v2/src/run_tool_prediction_p0_split_windows.py "$H/src/"
+          cp GRI_v2/src/run_stage_c0_1_sample_identity.py "$H/src/"
+          cp GRI_v2/tests/test_tool_prediction_p0_split_manifest.py "$H/tests/"
+          cat > "$H/README_HANDOFF.txt" <<'EOF'
+          GRI v2 P0 frozen participant split manifest
+
+          Purpose:
+          Bind the exact already-audited C0.1 matched identity universe to the prospectively frozen
+          DISCOVERY / REPLICATION / FINAL_HOLDOUT partitions before any P0 target values are inspected.
+
+          This stage reads only the methylation TSV header. It does not scan methylation beta-value rows,
+          calculate biological associations, fit predictive targets, or inspect Stage C1 results.
+
+          1. Extract this archive to a normal local folder.
+          2. Double-click RUN_TOOL_PREDICTION_P0_SPLIT_WINDOWS.bat.
+          3. The file pickers will ask for:
+             a. the completed Stage A hallmark_profile_cache.npz
+             b. the C0-audited 5.02 GB methylation TSV
+             c. STAGE_C0_METHYLATION_SOURCE_SUMMARY.json from the completed C0 run
+          4. The program verifies the frozen Stage A cache and C0 source identities, reconstructs the exact
+             C0.1 one-to-one matched participants using header identity only, and applies the frozen SHA-256
+             split namespace.
+          5. Return these three compact files from tool_prediction_p0_split_outputs:
+             P0_SPLIT_MANIFEST_SUMMARY.json
+             p0_preeligibility_split_manifest.csv
+             p0_preeligibility_partition_counts.csv
+
+          Fail-closed rules:
+          - expected matched records = 9460
+          - expected cancers = 32
+          - participant roots must be unique
+          - split reassignment is forbidden
+          - bucket 0..5 = DISCOVERY, 6..7 = REPLICATION, 8..9 = FINAL_HOLDOUT
+          - no beta-value row or predictive target may be used to choose a split
+          EOF
+          (cd "$H" && find . -type f ! -name SHA256SUMS.txt -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS.txt)
+
+      - name: Upload tested Windows handoff
+        uses: actions/upload-artifact@v4
+        with:
+          name: GRI_V2_P0_SPLIT_MANIFEST_WINDOWS_20260830
+          path: GRI_V2_P0_SPLIT_MANIFEST_WINDOWS_20260830/
+          if-no-files-found: error
+          retention-days: 90
