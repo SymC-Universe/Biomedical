@@ -1,12 +1,14 @@
 # GRI v2 build status
 
-Status date: 2026-08-29
+Status date: 2026-08-30
 
 ## Scientific status
 
 The active project is the Cancer Stability Atlas predictive-tool development program. The historical scalar branch remains closed. `CV/2` is historical only and no valid biological chi coordinate has been identified.
 
 Chi, if later earned from genuine same-coordinate dynamic measurements, is a dynamical regime-balance coordinate. Distance to `chi = 1` does not define organization, coherence, health, optimality, pathology, or treatment response.
+
+Stage B2 computation is now closed. The current task is to integrate the completed static RNA, composition, genomic, and protein layers without collapsing them into a master score, then freeze the next modal + scalar + conglomeration architecture before any new predictive or dynamic endpoint is tested.
 
 ## Closed milestones
 
@@ -18,123 +20,99 @@ Chi, if later earned from genuine same-coordinate dynamic measurements, is a dyn
 - Stage B2 reserved-source probe completed and audited.
 - Stage B2 coordinate/integration design frozen before any Stage A/B1/B2 association result.
 - Stage B2 RPPA orthogonal-assay branch completed and audited.
+- Stage B2 genomic decomposition completed and audited: 306/306 tasks, 100/100 resamples per task, 1,530,000 raw module-resample rows.
 
 ## Stage B1 closure
 
-Independent tumor purity and methylation-derived leukocyte fraction explain a real but concentrated portion of the Stage A network geometry, especially immune/inflammatory Hallmarks. The broader internal-coherence/external-coupling topology remains strongly preserved after adjustment.
+Independent tumor purity and methylation-derived leukocyte fraction explain a real but concentrated portion of the Stage A network geometry, especially immune/inflammatory Hallmarks. They do not erase the broader internal-coherence/external-coupling topology.
 
 Both raw and adjusted maps are retained. Composition-sensitive modules are context/decomposition information, not failed modules and not evidence that an adjusted state is better.
 
 Full audit: `docs/STAGE_B1_AUDIT_20260829.md`.
 
-## Stage B2 source and preregistration closure
-
-The B2 sources were reserved before B1 results. The frozen B2 integration plan is `config/stage_b2_integration_plan.json`; scientific rationale is `docs/STAGE_B2_PREREGISTRATION_20260829.md`.
-
-Five documented genomic coordinates are retained separately:
-
-1. `ANEUPLOIDY_AS` - arm-level aneuploidy count;
-2. `LOH_SEGMENT_COUNT` - number of loss-of-heterozygosity segments;
-3. `LOH_GENOME_FRACTION` - fraction of the genome with LOH;
-4. `SCNA_SEGMENT_COUNT` - copy-number segment count;
-5. `SCNA_ALTERED_FRACTION` - fraction of profiled base pairs in altered copy-number segments.
-
-No genomic master score is created. `ASprime` and `n_extrema` remain non-primary because sufficiently explicit primary-source definitions were not verified before association testing.
-
-The RPPA primary panel contains 189 common protein/phosphoprotein measurements selected only by the frozen source-completeness/variance rule.
-
-Full source audit: `docs/STAGE_B2_SOURCE_AUDIT_20260829.md`.
-
 ## Stage B2 RPPA closure
 
-The RPPA branch is computationally complete:
+The RPPA branch shows a reproducible patient-aligned static RNA/protein relationship above its block-permutation construction floor:
 
-- 31 primary cancer tasks;
-- 29 purity/leukocyte context-sensitivity tasks;
-- 60 total tasks;
-- 100/100 valid resamples per task;
-- 50 Hallmark modules per task;
-- 300,000 module-resample rows.
+- primary median aligned-minus-null coupling approximately `+0.04768`;
+- all 31/31 primary cancer-level medians positive;
+- composition-adjusted median aligned-minus-null coupling approximately `+0.03989`;
+- all 29/29 eligible adjusted cancer-level medians positive.
 
-Primary fixed-n RNA/protein coupling:
-
-- median patient-aligned coupling approximately `0.17664`;
-- median row-permutation construction null approximately `0.12794`;
-- median aligned-minus-null approximately `+0.04768`;
-- all 31/31 cancer-level median specific-coupling values are positive.
-
-After B1 purity/leukocyte adjustment:
-
-- median adjusted coupling approximately `0.16820`;
-- median adjusted null approximately `0.12736`;
-- median adjusted aligned-minus-null approximately `+0.03989`;
-- all 29/29 eligible cancer-level median specific-coupling values are positive.
-
-This earns retention of a static orthogonal protein layer and global RNA/protein cross-assay coupling coordinate for later predictive model competition. It does not establish causality, pathway-specific protein control, an optimum, dynamics, or chi.
+This earns retention of an orthogonal protein layer and a global RNA/protein cross-assay coupling coordinate for later model competition. It does not establish causality, pathway-specific protein control, an optimum, dynamics, or chi.
 
 Full audit: `docs/STAGE_B2_RPPA_AUDIT_20260829.md`.
 
-## Current step: Stage B2a genomic execution
+## Stage B2 genomic closure
 
-The remaining B2 closure computation is the preregistered genomic decomposition.
+The frozen genomic branch is complete:
 
-For each eligible cancer and each of the five genomic coordinates the frozen run uses:
+- 306/306 cancer-coordinate-analysis tasks;
+- 158 `PRIMARY` tasks;
+- 148 `INCREMENT_B1` tasks;
+- fixed `n = 30`;
+- 100/100 valid resamples per task;
+- 50 Hallmark modules per task;
+- 15,300 module-summary rows;
+- 1,530,000 raw module-resample rows.
 
-- fixed `n = 30` patients;
-- 100 deterministic without-replacement resamples;
-- unchanged Stage A `C_in` pairwise, `C_in` PC1, and `C_out` metrics;
-- an actual genomic residualization;
-- a same-patient construction null with the genomic coordinate permuted;
-- a secondary `INCREMENT_B1` branch testing the genomic coordinate after purity + leukocyte composition is already accounted for.
+All five documented genomic coordinates remained separate. No genomic composite was created.
 
-The full design contains 306 eligible cancer-coordinate-analysis tasks. Partial checkpoints are not biologically interpreted.
+Across primary tasks, cancer-level specific shifts relative to the same-patient permuted-genomic construction null were small:
 
-## Execution status
+- `C_in` pairwise coherence median approximately `-0.000481`;
+- `C_in` PC1 variance fraction median approximately `+0.000688`;
+- `C_out` coupling median approximately `+0.000948`.
 
-The Stage B2 genomic runner is implemented in `src/run_stage_b2_genomic.py` and the restart-safe executor in `src/run_stage_b2_genomic_resume.py`.
+The same bounded pattern persists beyond Stage B1 composition, with similarly small median shifts. Module ordering remains extremely stable after genomic adjustment: coordinate-level median reference-versus-adjusted Spearman agreement is approximately 0.993-0.997 for the two internal-coherence metrics and approximately 0.984-0.988 for `C_out`.
 
-The restart-safe executor:
+The genomic result therefore earns retention as a weak distributed static decomposition layer. It does not support treating genomic burden as a master organizer or as a biological chi coordinate.
 
-- writes every completed 100-resample task atomically;
-- records SHA-256 hashes for each task's raw, module-summary, and diagnostic checkpoint;
-- validates those hashes before reusing a checkpoint;
-- resumes only unfinished tasks after interruption;
-- keeps raw task files separate so final summarization does not require loading the entire 1.53-million-row run into memory at once.
+Full audit: `docs/STAGE_B2_GENOMIC_AUDIT_20260830.md`.
 
-The B2 implementation suite passes locally and the latest GitHub `GRI v2 tests` workflow passes on commit `f28bcf1cb8c1823363b7a1b9ff7ab69c2f71e71e`.
+Canonical compact output:
 
-Local execution handoff:
+- `development_outputs/stage_b2_genomic/STAGE_B2_GENOMIC_SUMMARY.json`
 
-- `CSA_STAGE_B2_GENOMIC_RESUMABLE_20260829.zip`
-- SHA-256 `a153f54ac0d0ac5d48cb8951a5aff8e8914e0652ce73f9e1c6183e63eaf09b2a`
-- clean-room manifest verification PASS;
-- clean-room test suite 10/10 PASS;
-- includes the completed Stage B2 RPPA outputs as reference artifacts.
+Completion artifact:
 
-## Exact user action
+- `CSA_STAGE_B2_GENOMIC_COMPLETED_20260830.zip`
+- SHA-256 `cfa534417b4d3da028812503da49fb475b6b6427c2d563400095fc9d7fc9c9f5`
 
-Run `RUN_STAGE_B2_GENOMIC_WINDOWS.bat` from the Stage B2 handoff package and select the existing Stage A `hallmark_profile_cache.npz` when asked.
+The 306 raw task-cache gzip files remain local for forensic re-audit and are identified individually by SHA-256 in `stage_b2_genomic_task_status.csv`. They are not required for ordinary next-stage analysis and should not be uploaded one by one.
 
-If the process is interrupted, launch the same BAT again and select the same cache. Valid completed tasks are reused automatically.
+## Current step: Stage B2 static integration closure
 
-When `STAGE B2A GENOMIC COMPLETE` appears, return these four files from `stage_b2_genomic_outputs`:
+The next scientific product is an integrated static architecture that keeps distinct measurement roles visible:
 
-- `STAGE_B2_GENOMIC_SUMMARY.json`
-- `stage_b2_genomic_module_effects.csv`
-- `stage_b2_genomic_cancer_diagnostic.csv`
-- `stage_b2_genomic_task_status.csv`
+1. Stage A RNA map: `V`, `L`, `C_in`, `C_out`;
+2. Stage B1 composition/context decomposition;
+3. Stage B2 genomic decomposition using five separate documented coordinates;
+4. Stage B2 orthogonal RPPA/protein coupling;
+5. deferred methylation as a separately gated extension.
 
-Keep `_task_cache` locally unless a forensic re-audit specifically requests it.
+No master stability score will be constructed at this stage.
+
+The integration will explicitly preserve three complementary views for the next investigation:
+
+- **modal**: mode-resolved/eigenstructure and participation information;
+- **scalar**: compressed coordinates only where empirically licensed, without treating a scalar as the whole system;
+- **conglomeration**: module-to-module and whole-system organization across measurement layers.
+
+The three views are complementary. A later scalar coordinate may summarize structure but cannot replace the modal or conglomeration evidence that gives it meaning.
 
 ## Next scientific gate
 
-After the complete genomic output is returned:
-
-1. verify all 306 frozen tasks and 100/100 resamples;
-2. audit each genomic coordinate against its construction null;
-3. distinguish primary genomic decomposition from incremental information beyond B1 composition;
-4. integrate the genomic and RPPA B2 results without collapsing them into a master stability score;
-5. close or explicitly defer the genome-wide methylation extension under its independent acquisition/harmonization gate;
-6. then advance to ordered perturbation/time-course benchmarking.
+1. write and freeze the Stage B2 integrated static-architecture closure;
+2. explicitly close or prospectively admit the genome-wide methylation extension under an independent feature-reduction/platform-harmonization rule;
+3. preregister the next modal + scalar + conglomeration analysis before testing any new endpoint;
+4. advance to ordered perturbation/time-course benchmarking against established dynamic and predictive baselines;
+5. admit a biological chi coordinate only if genuine same-coordinate relaxation and intrinsic-response rates satisfy `docs/CHI_ADMISSION_RULES.md`.
 
 No dynamic or chi claim is available from Stage B2.
+
+## Exact user action
+
+No new computation or upload is required right now.
+
+Keep the local `_task_cache` directory intact and unchanged. It is only needed if a forensic re-audit requests raw reconstruction of a specific task.
