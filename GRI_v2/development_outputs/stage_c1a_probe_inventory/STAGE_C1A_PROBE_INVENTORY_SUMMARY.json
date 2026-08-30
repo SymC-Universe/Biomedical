@@ -1,0 +1,38 @@
+{
+  "annotation_export_sha256": "a7f83233f97c3933752d74b8042e967de88df20eba2cf477a536136631a8da17",
+  "annotation_overlap": 22601,
+  "biological_association_performed": false,
+  "chen_id_export_sha256": "078e95716af2b20c3515f59d09310d20c43deb5ed8ba8d1b70885810acde2179",
+  "claim_ceiling": "exact probe annotation/mask inventory only; no methylation biological association",
+  "gene_region_tuple_rows": 46287,
+  "methylation_beta_values_parsed_for_biological_analysis": false,
+  "methylation_header_columns": 12040,
+  "methylation_source_sha256": "5934c497882fbe8178d128a3a7f71e765480af6bbd460e0398de3428cd075b77",
+  "missing_annotation_count": 0,
+  "missing_annotation_probe_ids": [],
+  "portable_source_summary_sha256": "b19297c4855ec12bc1fe4dd473742a72bef23db0b1b446258aa6a51b3679205b",
+  "probe_flags_sha256": "5777ff7331c4bae750ed1c87bb6eb93136c56ade6dbf8522829db1f5659ac455",
+  "probe_gene_region_map_sha256": "78f38d420a486427d67d88f67f5da83d1811003bf578b3c673f1dcbee5912296",
+  "refgene_mapped_probe_count": 22469,
+  "refgene_unmapped_probe_count": 132,
+  "regulatory_strata_unique_probe_counts": {
+    "BROAD_PROMOTER_SECONDARY": 19362,
+    "GENE_BODY": 4983,
+    "PROMOTER_CORE": 3999,
+    "PROMOTER_PROXIMAL": 8157,
+    "PROMOTER_TRANSCRIBED_EDGE": 9455,
+    "THREE_PRIME_UTR": 152
+  },
+  "regulatory_stratum_counts_sha256": "603b96ac879c4c58517479bc5dbee10bf89a0f47c374abd653c492d928de1cbc",
+  "source_probe_rows": 22601,
+  "source_unique_probe_ids": 22601,
+  "status": "STAGE_C1A_PROBE_INVENTORY_PASS",
+  "technical_mask": {
+    "chen_cross_reactive_overlap": 524,
+    "common_snp_cpg_or_sbe_overlap": 59,
+    "robustness_remaining_probe_count": 22022,
+    "union_overlap": 579
+  },
+  "tuple_length_mismatch_probe_count": 0,
+  "unstratified_refgene_probe_count": 0
+}
