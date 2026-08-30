@@ -16,6 +16,9 @@ Start here:
 - [Epistemic constitution and scientific guardrails](https://github.com/SymC-Universe/Biomedical/blob/gri-v2/GRI_v2/docs/EPISTEMIC_CONSTITUTION.md)
 - [Rules required before a biological chi coordinate may be used](https://github.com/SymC-Universe/Biomedical/blob/gri-v2/GRI_v2/docs/CHI_ADMISSION_RULES.md)
 - [Stage B1 composition/context audit](https://github.com/SymC-Universe/Biomedical/blob/gri-v2/GRI_v2/docs/STAGE_B1_AUDIT_20260829.md)
+- [Stage B2 source audit](https://github.com/SymC-Universe/Biomedical/blob/gri-v2/GRI_v2/docs/STAGE_B2_SOURCE_AUDIT_20260829.md)
+- [Stage B2 frozen integration design](https://github.com/SymC-Universe/Biomedical/blob/gri-v2/GRI_v2/docs/STAGE_B2_PREREGISTRATION_20260829.md)
+- [Stage B2 RPPA audit](https://github.com/SymC-Universe/Biomedical/blob/gri-v2/GRI_v2/docs/STAGE_B2_RPPA_AUDIT_20260829.md)
 
 ## Current GRI v2 status
 
@@ -25,14 +28,18 @@ Static Stage A is complete and retains separate measured observables rather than
 
 - **V**: expression-adjusted variability/fluctuation structure.
 - **L**: lineage/context dependence.
-- **C_in**: read “C sub in.” Internal Hallmark-module coherence.
-- **C_out**: read “C sub out.” Coupling of a Hallmark module to the external Hallmark-union background.
+- **C_in**: read “C sub in.” Internal Hallmark-module RNA coherence.
+- **C_out**: read “C sub out.” Coupling of a Hallmark RNA module to the external Hallmark-union background.
 
 No direction of these coordinates is defined as optimal, healthy, or pathological.
 
-Stage B1 is also complete. Independent tumor-purity and DNA-methylation-derived leukocyte measurements explain a real but concentrated portion of the RNA network geometry, especially in immune/inflammatory Hallmarks, while the broader internal-coherence/external-coupling topology remains strongly preserved after adjustment.
+Stage B1 is complete. Independent tumor-purity and DNA-methylation-derived leukocyte measurements explain a real but concentrated portion of the RNA network geometry, especially in immune/inflammatory Hallmarks, while the broader internal-coherence/external-coupling topology remains strongly preserved after adjustment.
 
-**Stage B2 is now active.** It is integrating orthogonal genomic and protein context using pre-reserved PanCanAtlas-era sources, including aneuploidy/loss-of-heterozygosity measures, copy-number burden, reverse-phase protein array abundance, and a separately gated DNA-methylation layer.
+Stage B2 is now partially closed. Its source and analysis contracts were frozen before biological association testing. The independent RPPA protein/phosphoprotein branch has completed 60 fixed-n tasks with 100/100 resamples each. Patient-aligned Hallmark-RNA/protein coupling lies above the row-permutation construction floor in every cancer at the cancer-median level and remains positive after the prespecified purity/leukocyte adjustment. This earns retention of a static cross-assay protein layer for later predictive model competition, not a causal or dynamical claim.
+
+**The active computation is the preregistered Stage B2 genomic decomposition** using five separately retained aneuploidy, loss-of-heterozygosity, and copy-number coordinates. The complete frozen run contains 306 cancer-coordinate-analysis tasks. Partial genomic checkpoints are not interpreted.
+
+Genome-wide DNA methylation remains separately gated behind a prospectively defined feature-reduction and platform-harmonization decision. It is not admitted or rejected based on whether the current B2 results look favorable.
 
 No valid biological chi coordinate has yet been established in the cancer program. If one is eventually admitted, `chi = 1` will mean a dynamical regime-balance boundary of the applicable model, not a presumed point of maximum organization, health, treatment response, or cancer stability.
 
