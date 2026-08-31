@@ -1,0 +1,112 @@
+{
+  "schema": "gri-v2-p0-d1-discovery-source-freeze-v0.1",
+  "status": "FROZEN_AFTER_P0_ELIGIBILITY_BEFORE_D1_SOURCE_VALUES",
+  "date": "2026-08-30",
+  "scope": "DISCOVERY-only methylation source preprocessing for the 19 already-frozen fully evaluable P0 cancers",
+  "methylation_source": {
+    "sha256": "5934c497882fbe8178d128a3a7f71e765480af6bbd460e0398de3428cd075b77",
+    "size_bytes": 5022150019,
+    "header_columns": 12040,
+    "probe_rows": 22601
+  },
+  "p0_eligibility": {
+    "summary_sha256": "31e096f18bdf1cc4af72a95685daf248c40daa86c3af836478a89d4b0ebd7ff0",
+    "sample_eligibility_sha256": "4a906d2d80ab36af0cc1dc8f9d8dcb834cfc717021a355c78c089f5cc665e3c2",
+    "partition_counts_sha256": "78e859cb5a74ee71e4eb8318c1995dcbcc780a5cfeb996d9cf4c53cf23886640",
+    "eligible_records": 9457,
+    "records": 9460,
+    "fully_evaluable_cancers": [
+      "BLCA",
+      "BRCA",
+      "CESC",
+      "COAD",
+      "HNSC",
+      "KIRC",
+      "KIRP",
+      "LGG",
+      "LIHC",
+      "LUAD",
+      "LUSC",
+      "OV",
+      "PAAD",
+      "PCPG",
+      "PRAD",
+      "SARC",
+      "STAD",
+      "THCA",
+      "UCEC"
+    ],
+    "eligible_discovery_counts": {
+      "BLCA": 235,
+      "BRCA": 631,
+      "CESC": 187,
+      "COAD": 247,
+      "HNSC": 324,
+      "KIRC": 299,
+      "KIRP": 179,
+      "LGG": 290,
+      "LIHC": 219,
+      "LUAD": 304,
+      "LUSC": 280,
+      "OV": 176,
+      "PAAD": 90,
+      "PCPG": 106,
+      "PRAD": 300,
+      "SARC": 148,
+      "STAD": 241,
+      "THCA": 298,
+      "UCEC": 309
+    },
+    "eligible_discovery_total": 4863
+  },
+  "c1a_assets": {
+    "annotation_export_sha256": "a7f83233f97c3933752d74b8042e967de88df20eba2cf477a536136631a8da17",
+    "chen_ids_sha256": "078e95716af2b20c3515f59d09310d20c43deb5ed8ba8d1b70885810acde2179",
+    "source_annotation_overlap": 22601,
+    "source_tss200_probe_count": 3999,
+    "source_chen_overlap": 524,
+    "source_common_snp_overlap": 59,
+    "source_technical_mask_union": 579,
+    "source_masked_remaining": 22022
+  },
+  "hallmark_membership": {
+    "sha256": "bc6a9a33d7421dc407d33a66859760ba25e47b2f398e1a43c9156f80c71b3900",
+    "modules": 50
+  },
+  "discovery_probe_rule": {
+    "finite_fraction_min": 0.95,
+    "imputation": "DISCOVERY finite-sample median per cancer and retained probe",
+    "holdout_feature_reselection": false
+  },
+  "source_representation": {
+    "regulatory_stratum": "PROMOTER_CORE",
+    "refgene_group": "TSS200",
+    "gene_score": "sample-wise median over unique retained TSS200 probes mapped to the gene",
+    "minimum_mapped_genes_per_hallmark": 10,
+    "minimum_contributing_probes_per_hallmark": 10,
+    "minimum_common_hallmarks_for_later_full_semantic_branch": 25,
+    "pc1_fit_partition": "DISCOVERY_ONLY",
+    "pc1_centering": "DISCOVERY gene means",
+    "pc1_orientation": "nonnegative correlation with discovery sample-wise unweighted Hallmark gene mean; if zero or undefined, largest-absolute loading positive",
+    "undefined_pc1_behavior": "NOT_EVALUABLE; do not invent a replacement coordinate"
+  },
+  "technical_tracks": [
+    "PRIMARY_PUBLICATION",
+    "MASKED_TECHNICAL"
+  ],
+  "value_access": {
+    "methylation_partitions_allowed": [
+      "DISCOVERY"
+    ],
+    "replication_methylation_values_allowed": false,
+    "final_holdout_methylation_values_allowed": false,
+    "rna_expression_values_allowed": false,
+    "predictive_target_values_allowed": false,
+    "biological_association_allowed": false,
+    "biological_chi_allowed": false
+  },
+  "pan_cancer_promotion_min_cancers": 24,
+  "pan_cancer_promotion_possible_under_p0": false,
+  "stage_c1_science_modified": false,
+  "claim_ceiling": "DISCOVERY-only methylation preprocessing and source-feature construction; no cross-layer result, prediction result, biological chi, clinical, causal, temporal, or pan-cancer promotion claim"
+}
