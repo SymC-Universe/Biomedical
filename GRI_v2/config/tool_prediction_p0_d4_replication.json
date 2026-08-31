@@ -1,0 +1,82 @@
+{
+  "schema": "gri-v2-p0-d4-replication-config-v0.1",
+  "status": "FROZEN_BEFORE_REPLICATION_TARGET_SCORES",
+  "split_namespace": "GRI_V2_PREDICTION_P0_20260830",
+  "d3_seed_namespace": "GRI_V2_PREDICTION_P0_20260830|D3",
+  "d4_seed_namespace": "GRI_V2_PREDICTION_P0_20260830|D4|REPLICATION",
+  "seed_algorithm": "F2_stable_seed_sha256_first8_big_endian_mod_2pow32",
+  "methylation_source_sha256": "5934c497882fbe8178d128a3a7f71e765480af6bbd460e0398de3428cd075b77",
+  "methylation_source_size_bytes": 5022150019,
+  "methylation_probe_rows": 22601,
+  "stage_a_profile_cache_sha256": "e65f6788aa6037fef407169794f29d63322de2769343bb6e594fe469dfeb8e63",
+  "replication_participants": 1625,
+  "replication_model_complete_participants": 1478,
+  "fully_evaluable_cancers": [
+    "BLCA", "BRCA", "CESC", "COAD", "HNSC", "KIRC", "KIRP", "LGG", "LIHC",
+    "LUAD", "LUSC", "OV", "PAAD", "PCPG", "PRAD", "SARC", "STAD", "THCA", "UCEC"
+  ],
+  "expected_replication_n_by_cancer": {
+    "BLCA": 83, "BRCA": 205, "CESC": 58, "COAD": 90, "HNSC": 91, "KIRC": 110,
+    "KIRP": 44, "LGG": 94, "LIHC": 69, "LUAD": 101, "LUSC": 103, "OV": 66,
+    "PAAD": 36, "PCPG": 34, "PRAD": 101, "SARC": 51, "STAD": 73, "THCA": 109, "UCEC": 107
+  },
+  "expected_model_complete_n_by_cancer": {
+    "BLCA": 82, "BRCA": 195, "CESC": 55, "COAD": 78, "HNSC": 83, "KIRC": 72,
+    "KIRP": 42, "LGG": 89, "LIHC": 66, "LUAD": 95, "LUSC": 99, "OV": 49,
+    "PAAD": 35, "PCPG": 30, "PRAD": 95, "SARC": 49, "STAD": 68, "THCA": 97, "UCEC": 99
+  },
+  "input_sha256": {
+    "Patient_Split.csv": "12b85d67d06e57c6d1be914444c65aa526f2b821e117725dd036142cc6b0a825",
+    "Sample_Eligibility.csv": "4a906d2d80ab36af0cc1dc8f9d8dcb834cfc717021a355c78c089f5cc665e3c2",
+    "Methylation_Probe_Rules.csv.gz": "150d4dcfea6a7ad6696fea3ddae548511bcf4c6337d93cef2467cd4d93034666",
+    "Methylation_PC1_Transforms.csv.gz": "b85010e31f4506abdf3a77b4a7090d7ea1709808f45040435c26a0edce4236d8",
+    "TSS200_Probe_Gene_Map.csv.gz": "5d42e66a205bdb8579b5edacc465c9dc74a86d6d185d28b9287fc232226a58b6",
+    "RNA_PC1_Transforms.csv.gz": "f06ad6b9a10b5cb19c1eaf6a4ae411aa38f869e9e08d033e9b063c1f32e78a5d",
+    "RNA_Target_Eligibility.csv": "95cdb15cfe9a212ef265184fffd32cca3933ee90503d561a949e1ea9eded96a4",
+    "Common_Hallmarks.csv": "c7c4ee59447dd1b29c6ccf329560abfbf61b9285978ca98cea73c625c2474a64",
+    "ABSOLUTE_Purity.txt": "f430a975433d82e0098d7405619d4f12a0c765fcd97e7d63cc9b1de7f2d763cd",
+    "Leukocyte_Fraction.tsv": "5a8268caedbf8dc98a75be0528d583238d7355761d9fc746e42002f223a982d9",
+    "Discovery_Audit.csv": "f0b875f2a651606b09ae96dbc8a5f620f295ebe61498bb06ba9953c5fa6137de",
+    "Discovery_Audit_Metrics.csv": "da74070507b6dee9a7c826d1af62b0b971ef80fed35af949da6ff8905d473c96",
+    "Composition_Parameters.csv.gz": "ff3e26f7b847a8d1b464a0ec503608af04f214f9541bb11395687ce9801186fa",
+    "Target_Reference.csv": "e473d2c65463db77611004d4c2e3691792fe1861f98e9fa7665e67f0076c8e8e",
+    "Model_Parameters.csv.gz": "bdf302067404378f5c24b9e7eb8e74ebcc1d262876b0b5faca0f247f22b53d13",
+    "Model_Summary.csv": "cb6aa7e9147ce80732cbe8820754ae0b3c76125bbab00d3fd1e3d90a57a50e85",
+    "Methylation_Discovery_Scores.csv.gz": "593d565085b797e8abfcf22c56b406c96edbdba59eac48fb57db62c90ffabed3",
+    "RNA_Discovery_Scores.csv.gz": "b37a6b14fb588185496d7d7ca205b782eb22378c0dc77f577e78e711fe39888a"
+  },
+  "technical_tracks": ["PRIMARY_PUBLICATION", "MASKED_TECHNICAL"],
+  "primary_model_track": "PRIMARY_PUBLICATION",
+  "expected_source_hallmarks_per_track": 45,
+  "expected_rna_hallmarks": 50,
+  "expected_common_hallmarks": 45,
+  "minimum_common_hallmarks_for_semantic_branch": 25,
+  "minimum_model_complete_case_n": 30,
+  "null_permutations": 39,
+  "global": {"p_max": 0.05, "delta_cka_min": 0.05},
+  "semantic": {
+    "patient_p_max": 0.05,
+    "patient_delta_min_exclusive": 0.0,
+    "label_p_max": 0.05,
+    "label_delta_min": 0.10
+  },
+  "within_layer": {"p_max": 0.05, "delta_s_spec_min_exclusive": 0.0},
+  "p1_primary_pairing_metric": "cancer_median_normalized_mse",
+  "p1_pairing_alternative": "ALL_METHYLATION_RIDGE_lower_than_COVARIATE_ONLY",
+  "p2_comparators": [
+    "GLOBAL_ONLY", "NAIVE_SEMANTIC", "NO_LABEL_NULL", "NO_COMPOSITION_ATTACK",
+    "NO_TECHNICAL_TRACK", "FULL_NARROWED_AUDIT"
+  ],
+  "final_holdout_methylation_values_allowed": false,
+  "final_holdout_target_scores_allowed": false,
+  "model_refit_allowed": false,
+  "transform_refit_allowed": false,
+  "composition_refit_allowed": false,
+  "partition_reassignment_allowed": false,
+  "covariate_imputation_allowed": false,
+  "biological_chi_allowed": false,
+  "stage_c1_modification_allowed": false,
+  "pan_cancer_promotion_min_cancers": 24,
+  "pan_cancer_promotion_possible_under_p0": false,
+  "claim_ceiling": "untouched REPLICATION predictive and audit-state evaluation only; FINAL_HOLDOUT remains sealed"
+}
