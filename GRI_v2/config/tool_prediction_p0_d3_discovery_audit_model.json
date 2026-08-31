@@ -1,0 +1,84 @@
+{
+  "schema": "gri-v2-p0-d3-discovery-audit-model-config-v0.1",
+  "status": "FROZEN_BEFORE_D3_CROSS_LAYER_DISCOVERY_RESULTS",
+  "split_namespace": "GRI_V2_PREDICTION_P0_20260830",
+  "d3_seed_namespace": "GRI_V2_PREDICTION_P0_20260830|D3",
+  "discovery_participants": 4863,
+  "fully_evaluable_cancers": [
+    "BLCA", "BRCA", "CESC", "COAD", "HNSC", "KIRC", "KIRP", "LGG", "LIHC",
+    "LUAD", "LUSC", "OV", "PAAD", "PCPG", "PRAD", "SARC", "STAD", "THCA", "UCEC"
+  ],
+  "expected_discovery_n_by_cancer": {
+    "BLCA": 235,
+    "BRCA": 631,
+    "CESC": 187,
+    "COAD": 247,
+    "HNSC": 324,
+    "KIRC": 299,
+    "KIRP": 179,
+    "LGG": 290,
+    "LIHC": 219,
+    "LUAD": 304,
+    "LUSC": 280,
+    "OV": 176,
+    "PAAD": 90,
+    "PCPG": 106,
+    "PRAD": 300,
+    "SARC": 148,
+    "STAD": 241,
+    "THCA": 298,
+    "UCEC": 309
+  },
+  "input_sha256": {
+    "Methylation_Discovery_Scores.csv.gz": "593d565085b797e8abfcf22c56b406c96edbdba59eac48fb57db62c90ffabed3",
+    "Methylation_Hallmark_Eligibility.csv": "3a50c347f5713ca1415c18573736f6ba75a7ae6f347aa62709ae04be8682ab69",
+    "RNA_Discovery_Scores.csv.gz": "b37a6b14fb588185496d7d7ca205b782eb22378c0dc77f577e78e711fe39888a",
+    "RNA_Target_Eligibility.csv": "95cdb15cfe9a212ef265184fffd32cca3933ee90503d561a949e1ea9eded96a4",
+    "Common_Hallmarks.csv": "c7c4ee59447dd1b29c6ccf329560abfbf61b9285978ca98cea73c625c2474a64",
+    "ABSOLUTE_Purity.txt": "f430a975433d82e0098d7405619d4f12a0c765fcd97e7d63cc9b1de7f2d763cd",
+    "Leukocyte_Fraction.tsv": "5a8268caedbf8dc98a75be0528d583238d7355761d9fc746e42002f223a982d9"
+  },
+  "technical_tracks": ["PRIMARY_PUBLICATION", "MASKED_TECHNICAL"],
+  "primary_model_track": "PRIMARY_PUBLICATION",
+  "expected_source_hallmarks_per_track": 45,
+  "expected_rna_hallmarks": 50,
+  "expected_common_hallmarks": 45,
+  "minimum_common_hallmarks_for_semantic_branch": 25,
+  "minimum_composition_complete_case_n": 30,
+  "minimum_model_complete_case_n": 30,
+  "null_permutations": 39,
+  "global": {
+    "p_max": 0.05,
+    "delta_cka_min": 0.05
+  },
+  "semantic": {
+    "patient_p_max": 0.05,
+    "patient_delta_min_exclusive": 0.0,
+    "label_p_max": 0.05,
+    "label_delta_min": 0.10
+  },
+  "within_layer": {
+    "p_max": 0.05,
+    "delta_s_spec_min_exclusive": 0.0,
+    "construction_null": "independent_feature_column_permutation"
+  },
+  "ridge": {
+    "alpha_grid": [0.0001, 0.001, 0.01, 0.1, 1.0, 10.0, 100.0, 1000.0],
+    "cv_folds": 5,
+    "cv_tie_rule": "smallest_alpha",
+    "target_scaling": "none",
+    "predictor_scaling": "fold_train_mean_sd_for_cv_full_discovery_mean_sd_for_final",
+    "cv_objective": "mean_targetwise_normalized_mse_using_full_discovery_target_variance"
+  },
+  "heldout_values_allowed": false,
+  "replication_values_allowed": false,
+  "final_holdout_values_allowed": false,
+  "partition_reassignment_allowed": false,
+  "covariate_imputation_allowed": false,
+  "biological_chi_allowed": false,
+  "autonomy_scalar_allowed": false,
+  "stage_c1_modification_allowed": false,
+  "pan_cancer_promotion_min_cancers": 24,
+  "pan_cancer_promotion_possible_under_p0": false,
+  "claim_ceiling": "DISCOVERY-only audit states and trained model parameters; no held-out predictive result"
+}
