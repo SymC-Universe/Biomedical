@@ -1,8 +1,9 @@
 {
-  "schema": "gri-v2-p0-d3-discovery-audit-model-config-v0.1",
+  "schema": "gri-v2-p0-d3-discovery-audit-model-config-v0.1.1",
   "status": "FROZEN_BEFORE_D3_CROSS_LAYER_DISCOVERY_RESULTS",
   "split_namespace": "GRI_V2_PREDICTION_P0_20260830",
   "d3_seed_namespace": "GRI_V2_PREDICTION_P0_20260830|D3",
+  "d3_seed_algorithm": "F2_stable_seed_sha256_first8_big_endian_mod_2pow32",
   "discovery_participants": 4863,
   "fully_evaluable_cancers": [
     "BLCA", "BRCA", "CESC", "COAD", "HNSC", "KIRC", "KIRP", "LGG", "LIHC",
@@ -30,6 +31,8 @@
     "UCEC": 309
   },
   "input_sha256": {
+    "Patient_Split.csv": "12b85d67d06e57c6d1be914444c65aa526f2b821e117725dd036142cc6b0a825",
+    "Sample_Eligibility.csv": "4a906d2d80ab36af0cc1dc8f9d8dcb834cfc717021a355c78c089f5cc665e3c2",
     "Methylation_Discovery_Scores.csv.gz": "593d565085b797e8abfcf22c56b406c96edbdba59eac48fb57db62c90ffabed3",
     "Methylation_Hallmark_Eligibility.csv": "3a50c347f5713ca1415c18573736f6ba75a7ae6f347aa62709ae04be8682ab69",
     "RNA_Discovery_Scores.csv.gz": "b37a6b14fb588185496d7d7ca205b782eb22378c0dc77f577e78e711fe39888a",
