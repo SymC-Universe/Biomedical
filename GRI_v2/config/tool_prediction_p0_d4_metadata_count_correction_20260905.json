@@ -1,0 +1,23 @@
+{
+  "schema": "gri-v2-p0-d4-metadata-count-correction-v1",
+  "date": "2026-09-05",
+  "classification": "mechanical_metadata_assertion_correction",
+  "original_frozen_config_sha256": "b1c8cfa8e326f409932fd84fa208be3a34a32888c06393b1b3a7afa12a7e0afa",
+  "original_expected_replication_model_complete_participants": 1478,
+  "corrected_rule_derived_replication_model_complete_participants": 1479,
+  "original_expected_brca_complete_n": 195,
+  "corrected_rule_derived_brca_complete_n": 196,
+  "all_other_cancer_counts_changed": false,
+  "frozen_absolute_purity_sha256": "f430a975433d82e0098d7405619d4f12a0c765fcd97e7d63cc9b1de7f2d763cd",
+  "frozen_leukocyte_fraction_sha256": "5a8268caedbf8dc98a75be0528d583238d7355761d9fc746e42002f223a982d9",
+  "frozen_patient_split_sha256": "12b85d67d06e57c6d1be914444c65aa526f2b821e117725dd036142cc6b0a825",
+  "frozen_sample_eligibility_sha256": "4a906d2d80ab36af0cc1dc8f9d8dcb834cfc717021a355c78c089f5cc665e3c2",
+  "basis": "Independent reconstruction of the already-frozen B1 attachment rule from the exact frozen metadata/covariate files yields 196 BRCA and 1479 total complete cases. No replication audit statistic, prediction error, state, or outcome was used to choose the correction.",
+  "rule_changed": false,
+  "participant_reassignment_performed": false,
+  "covariate_imputation_performed": false,
+  "arbitrary_participant_exclusion_performed": false,
+  "scientific_threshold_changed": false,
+  "model_or_transform_changed": false,
+  "final_holdout_accessed": false
+}
