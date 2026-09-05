@@ -1,0 +1,64 @@
+{
+  "schema": "gri-v2-p3-v2-post-d4-final-holdout-v1",
+  "status": "FROZEN_BEFORE_FINAL_HOLDOUT_MOLECULAR_VALUES",
+  "date": "2026-09-05",
+  "provenance_class": "post_D4_development_informed_pre_FINAL_freeze",
+  "p3_v1_status": "NOT_EVALUABLE_CATEGORICAL_SELECTIVE_TEST",
+  "final_holdout_opened_at_freeze": false,
+  "primary_unit": "cancer",
+  "minimum_final_composition_complete_n": 30,
+  "prevalue_primary_evaluable_cancers": 18,
+  "prevalue_excluded_cancers": {"PAAD": "composition_complete_n_26_below_30"},
+  "prediction_model": "UNCHANGED_DISCOVERY_TRAINED_ALL_METHYLATION_RIDGE",
+  "primary_risk": "cancer_median_final_normalized_MSE_across_evaluable_RNA_Hallmarks",
+  "primary_selector": {
+    "name": "GLOBAL_GEOMETRY_CONFIDENCE",
+    "definition": "min(discovery RAW PRIMARY_PUBLICATION delta_CKA, discovery RAW MASKED_TECHNICAL delta_CKA)",
+    "favorable_direction": "higher_selector_lower_final_risk",
+    "threshold_fitted": false
+  },
+  "comparators": [
+    {
+      "name": "D4_REPLICATION_RISK",
+      "definition": "D4 ALL_METHYLATION_RIDGE cancer_median_normalized_MSE",
+      "favorable_direction": "lower_selector_lower_final_risk"
+    },
+    {
+      "name": "DISCOVERY_N",
+      "definition": "frozen discovery cancer sample count",
+      "favorable_direction": "higher_selector_lower_final_risk"
+    }
+  ],
+  "association": {
+    "statistic": "Spearman_rho",
+    "test": "deterministic_one_sided_permutation",
+    "permutations": 99999,
+    "global_seed_namespace": "GRI_V2_PREDICTION_P0_20260830|P3V2|SPEARMAN"
+  },
+  "coverage_risk": {
+    "ordering": "descending_GLOBAL_GEOMETRY_CONFIDENCE",
+    "risk_at_coverage": "mean_cancer_risk_in_prefix",
+    "fixed_reported_coverages": [0.5, 0.75, 1.0],
+    "aurc": "arithmetic_mean_of_prefix_mean_risks_k_1_through_N",
+    "permutations": 99999,
+    "seed_namespace": "GRI_V2_PREDICTION_P0_20260830|P3V2|AURC|GLOBAL_GEOMETRY_CONFIDENCE"
+  },
+  "final_p1": {
+    "comparison": "COVARIATE_ONLY_median_normalized_MSE_minus_ALL_METHYLATION_RIDGE_median_normalized_MSE",
+    "favorable_direction": "positive",
+    "test": "exact_one_sided_sign_test",
+    "ties": "exclude"
+  },
+  "forbidden_after_final_open": [
+    "participant_reassignment",
+    "covariate_imputation",
+    "model_refit",
+    "transform_refit",
+    "selector_redefinition",
+    "threshold_fitting",
+    "risk_metric_change",
+    "permutation_rule_change",
+    "claim_ceiling_change"
+  ],
+  "claim_ceiling": "D4-informed continuous risk stratification and unchanged P1 prediction in untouched internal TCGA final holdout only; not original preregistered categorical P3; no external or clinical promotion"
+}
