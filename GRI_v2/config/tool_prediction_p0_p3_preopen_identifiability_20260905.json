@@ -1,0 +1,89 @@
+{
+  "schema": "gri-v2-p0-p3-preopen-identifiability-audit-v1",
+  "date": "2026-09-05",
+  "status": "SCIENTIFIC_HOLD_P3_SELECTIVE_PRIMARY_NON_IDENTIFIABLE_BEFORE_FINAL_HOLDOUT",
+  "final_holdout_values_opened": false,
+  "final_holdout_methylation_numeric_values_parsed": false,
+  "final_holdout_rna_target_scores_generated": false,
+  "d4_result_zip_sha256": "b8ed27a43c1d7ee356f465d3ad90d1fda5e8269ee4038a449b9ba70342fc6be6",
+  "d4_config_sha256": "b1c8cfa8e326f409932fd84fa208be3a34a32888c06393b1b3a7afa12a7e0afa",
+  "patient_split_sha256": "12b85d67d06e57c6d1be914444c65aa526f2b821e117725dd036142cc6b0a825",
+  "sample_eligibility_sha256": "4a906d2d80ab36af0cc1dc8f9d8dcb834cfc717021a355c78c089f5cc665e3c2",
+  "discovery_audit_sha256": "f0b875f2a651606b09ae96dbc8a5f620f295ebe61498bb06ba9953c5fa6137de",
+  "discovery_audit_metrics_sha256": "da74070507b6dee9a7c826d1af62b0b971ef80fed35af949da6ff8905d473c96",
+  "final_holdout_eligible_participants": 1686,
+  "final_holdout_eligible_n_by_cancer": {
+    "BLCA": 84,
+    "BRCA": 228,
+    "CESC": 56,
+    "COAD": 93,
+    "HNSC": 99,
+    "KIRC": 100,
+    "KIRP": 62,
+    "LGG": 130,
+    "LIHC": 80,
+    "LUAD": 94,
+    "LUSC": 100,
+    "OV": 57,
+    "PAAD": 30,
+    "PCPG": 38,
+    "PRAD": 92,
+    "SARC": 55,
+    "STAD": 87,
+    "THCA": 93,
+    "UCEC": 108
+  },
+  "final_holdout_composition_complete_participants": 1534,
+  "final_holdout_composition_complete_n_by_cancer": {
+    "BLCA": 83,
+    "BRCA": 215,
+    "CESC": 54,
+    "COAD": 80,
+    "HNSC": 95,
+    "KIRC": 60,
+    "KIRP": 58,
+    "LGG": 126,
+    "LIHC": 77,
+    "LUAD": 89,
+    "LUSC": 95,
+    "OV": 36,
+    "PAAD": 26,
+    "PCPG": 32,
+    "PRAD": 87,
+    "SARC": 53,
+    "STAD": 84,
+    "THCA": 84,
+    "UCEC": 100
+  },
+  "minimum_model_complete_case_n_inherited": 30,
+  "below_minimum_model_complete_case_cancers": {
+    "PAAD": 26
+  },
+  "discovery_state_counts": {
+    "GLOBAL_SHARED_ONLY": 19
+  },
+  "discovery_decision_counts": {
+    "CAUTION": 19
+  },
+  "discovery_selector_favorable_counts": {
+    "GLOBAL_ONLY": 19,
+    "NAIVE_SEMANTIC": 19,
+    "NO_LABEL_NULL": 19,
+    "NO_COMPOSITION_ATTACK": 0,
+    "NO_TECHNICAL_TRACK": 0,
+    "FULL_NARROWED_AUDIT": 0
+  },
+  "p3_primary_within_cancer_accept_refuse_sign_test_identifiable": false,
+  "p3_full_audit_selective_coverage_identifiable": false,
+  "allowed_without_scientific_change": [
+    "execute unchanged discovery-trained predictors on FINAL_HOLDOUT for the separately frozen final P1 direct-prediction evaluation",
+    "report P3 FULL_AUDIT selective prediction as NOT_EVALUABLE",
+    "carry selective/refusal validation to a new prospectively frozen external or future-data version"
+  ],
+  "forbidden_rescue": [
+    "create Hallmark-level ACCEPT_CAUTION_REFUSE labels from D4 or FINAL_HOLDOUT behavior",
+    "tune acceptance thresholds from PCPG_PRAD_COAD_or_final_errors",
+    "use REPLICATION states as discovery selectors for FINAL_HOLDOUT",
+    "reinterpret CAUTION as ACCEPT after observing final prediction performance"
+  ]
+}
