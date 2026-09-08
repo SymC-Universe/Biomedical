@@ -1,0 +1,34 @@
+{
+  "schema": "nsd-phase0c-frozen-rules-v0.1",
+  "source": "Phase 0B development/calibration only",
+  "frozen_utc_date": "2026-09-08",
+  "selector": {
+    "candidate_order_rule": "smallest order q with S_q/S_(q+1) >= threshold",
+    "singular_gap_threshold": 10.0,
+    "refuse_if_no_order": true,
+    "refuse_if_selected_order_is_grid_max": true,
+    "refuse_if_any_selected_pole_unstable": true,
+    "complex_split_median_normalized_distance_max": 0.03,
+    "complex_cross_order_median_normalized_distance_max": 0.02,
+    "individual_split_mode_shape_MAC_min": 0.95,
+    "crowding_ratio_definition": "abs(omega_i-omega_j)/(alpha_i+alpha_j), lambda=-alpha+i*omega",
+    "subspace_only_if_crowding_ratio_le": 1.0,
+    "split_subspace_similarity_min": 0.99,
+    "individual_real_pole_scalar_policy": "REFUSE_REAL_POLE_SCALAR",
+    "selection_forbidden_inputs": ["truth", "chi", "diagnosis", "phenotype", "treatment", "historical desired ordering"]
+  },
+  "holdout_admission_targets": {
+    "mechanical_failures_max": 0,
+    "strong_stationary_model_admission_rate_min": 0.90,
+    "strong_stationary_correct_effective_order_rate_min": 0.90,
+    "off_model_or_nonstationary_refusal_rate_min": 0.90,
+    "strong_observable_true_complex_mode_coverage_min": 0.90,
+    "spurious_admitted_complex_mode_rate_max": 0.05,
+    "admitted_complex_pole_error_p90_max": 0.02,
+    "admitted_complex_frequency_error_hz_p90_max": 0.10,
+    "admitted_complex_relative_decay_error_p90_max": 0.30,
+    "noncrowded_truth_MAC_p10_min": 0.95,
+    "crowded_truth_subspace_similarity_p10_min": 0.99
+  },
+  "claim_ceiling": "Synthetic structural admission only. No EEG, diagnosis, treatment, whole-system scalar, or preferred chi value."
+}
