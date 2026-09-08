@@ -1,0 +1,38 @@
+{
+  "schema": "nsd-phase0c-frozen-rules-v0.1",
+  "frozen_from": "Phase 0B development/calibration",
+  "singular_gap_threshold": 10.0,
+  "complex_frequency_min_hz": 0.25,
+  "complex_split_median_distance_max": 0.03,
+  "complex_cross_order_median_distance_max": 0.02,
+  "individual_split_MAC_min": 0.95,
+  "crowding_ratio_subspace_only_le": 1.0,
+  "split_subspace_similarity_min": 0.99,
+  "strong_observability_ratio_min": 0.2,
+  "spurious_truth_match_distance_gt": 0.05,
+  "refuse_selected_order_at_grid_max": true,
+  "refuse_any_unstable_selected_pole": true,
+  "real_pole_policy": "REFUSE_REAL_POLE_SCALAR",
+  "admission_targets": {
+    "mechanical_failures_max": 0,
+    "strong_stationary_model_admission_rate_min": 0.9,
+    "strong_stationary_correct_effective_order_rate_min": 0.9,
+    "off_model_refusal_rate_min": 0.9,
+    "strong_complex_mode_coverage_min": 0.9,
+    "spurious_admitted_complex_mode_rate_max": 0.05,
+    "admitted_complex_pole_error_p90_max": 0.02,
+    "admitted_complex_frequency_error_hz_p90_max": 0.1,
+    "admitted_complex_relative_decay_error_p90_max": 0.3,
+    "individual_truth_MAC_p10_min": 0.95,
+    "subspace_truth_similarity_p10_min": 0.99
+  },
+  "forbidden_selector_inputs": [
+    "truth",
+    "chi",
+    "diagnosis",
+    "phenotype",
+    "treatment",
+    "historical desired ordering"
+  ],
+  "claim_ceiling": "Synthetic structural admission only; no EEG, diagnosis, treatment, whole-system scalar, or preferred chi value."
+}
