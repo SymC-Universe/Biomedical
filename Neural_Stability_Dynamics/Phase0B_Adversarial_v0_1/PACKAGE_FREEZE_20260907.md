@@ -1,0 +1,31 @@
+# NSD Phase 0B Local Package Freeze — 2026-09-07
+
+This record was committed before the local Phase 0B run.
+
+Authoritative user-run package:
+`Neural_Stability_Dynamics_Phase0B_Adversarial_v0_1.zip`
+
+Package SHA-256:
+`53850de505fe6a50f2149534f22a3da454e3645d2609b2f5dd901fb5ce280253`
+
+Embedded code-manifest SHA-256:
+`72f1f0543f02a4b6a5d9bda91f6187e778a0b6254c1a8caab647283b0169a160`
+
+Embedded manifest entries:
+
+```text
+2edc5dda225fac98bc731187f65de14b2c2490bd4ec737dbc43bcf78b0df6aeb  .gitignore
+eca83d1fcfb7a0baaadb0b6fe724e90e82b2da39529c2db8c705e43934890507  PREREGISTRATION.md
+15813ce8070f4c101453a14df3aafed40401092d512a4bd8f2b5dfaf192209b2  README_FIRST.md
+d9358f456563ef18fe7bea45d5cd1e2de62e0bc724b4c7a4cf5c3394ef991fb6  configs/phase0b_design.json
+823031bd98a8eb137853c89e89a97fe795509bbb57e035db845d5306f5177e10  local_runner.py
+2c5b4be78e26c235c078f4cf43d8ab3c46c813958923dc1362a013882b3d7fc8  run_phase0b.py
+cdb42508e286634214a92ec0a22c680d4b67b458457d5742539708e65c6d6ca1  scripts/make_manifest.py
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  src/__init__.py
+3a63264de61accf8e71b592b517b07a3ae7fc93f77eabe6e0287f5856e8a368f  src/metrics.py
+dec6b122574783d883cb9e647408d22c1da8654ff42acc7424af407bd6f175d9  src/ssi_cov.py
+2c31e79374aa3aa3dd4713b438640d5d3cd4d3e37924f08c5b31ab4ffcf34047  src/synthetic_systems.py
+1196039e6a3d27543a1dbc39049f11568e692483e733dc182e18126e078d32f5  tests/test_phase0b.py
+```
+
+The package is Phase 0B development/calibration only. It contains no TDBRAIN data or labels and defines no final synthetic admission threshold. Phase 0C remains the untouched validation layer after selector/refusal rules are frozen from Phase 0B findings.
