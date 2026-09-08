@@ -1,0 +1,9 @@
+{
+  "status": "PHASE0C_FROZEN_NOT_EXECUTED",
+  "note": "Unit/engineering tests only were executed before packaging. The Phase 0C scientific holdout has not been run or inspected.",
+  "tests": "11 passed",
+  "phase0b_source_config_sha256": "d9358f456563ef18fe7bea45d5cd1e2de62e0bc724b4c7a4cf5c3394ef991fb6",
+  "phase0b_audit_github_commit": "92c3a685048a696268e779148d9d8b778cb5679c",
+  "phase0c_config_sha256": "9f2f6251e6b637a4e72576dc64b4d9afd2ce75ae86bf9bc4485bd1eff5cbefce",
+  "phase0c_rules_sha256": "1b413780ba54c7c332425b0185c1819a7d6f08132396647decfa0c274bf5748c"
+}
