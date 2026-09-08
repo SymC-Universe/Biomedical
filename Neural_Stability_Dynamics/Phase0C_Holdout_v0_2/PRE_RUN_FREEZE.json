@@ -1,0 +1,11 @@
+{
+  "status": "PHASE0C_V02_THREE_LAYER_FROZEN_NOT_EXECUTED",
+  "note": "Only unit/engineering tests were executed before packaging. The Phase 0C v0.2 scientific holdout has not been run or inspected.",
+  "tests": "13 passed",
+  "phase0c_v01_status": "SUPERSEDED_BEFORE_EXECUTION",
+  "phase0c_v01_superseded_github_commit": "d082beff755da02ff23929764a4ed64b94a05188",
+  "phase0b_source_config_sha256": "d9358f456563ef18fe7bea45d5cd1e2de62e0bc724b4c7a4cf5c3394ef991fb6",
+  "phase0c_v02_config_sha256": "31db0aa636e884f9a811545a286e3d97a93be35d419b7195213a81d1925163b4",
+  "phase0c_v02_rules_sha256": "d81e947bfb2050a62a0b43534a7445fe7411f318f6f07db03eddad79472ecab1",
+  "perspective_revision": "scalar-spectrum, modal/subspace, and whole-system organizational evidence are prospectively separable; GRI C1 is methodological context only and supplies no neural threshold or mechanism"
+}
