@@ -1,0 +1,40 @@
+{
+  "schema": "nsd-phase0d-local-order-pre-run-freeze-v0.1",
+  "status": "FROZEN_NOT_EXECUTED",
+  "date": "2026-09-08",
+  "lineage": {
+    "phase0c_v02_official_result": "FAIL_SCALAR_FAIL_MODAL_FAIL_SYSTEM_PRESERVED",
+    "phase0c_v02_audit_commit": "5fa84934c13e65b09ef6a94b022d10887277283d",
+    "phase0d_branch": "neural-stability-dynamics-phase0d-local-order-v0.1",
+    "development_policy": "Phase 0C may be used only as already-seen calibration/postmortem evidence. Phase 0D admission depends only on the new untouched Phase 0D holdout."
+  },
+  "holdout": {
+    "seed": 202609081703,
+    "config_sha256": "d025847e78badc62d21cebc9a46319fb0d6d3eaef837c75f2c3d612d746e2e76",
+    "rules_sha256": "159a8034e9784871cbca1ca48764cfcd1282704a482990c234c8b4fa8f0ba2de",
+    "scientific_holdout_executed": false
+  },
+  "core_source_sha256": {
+    "src/selector.py": "cfcdec8553062c9fb20f366e6587406fae2edfb7a671a03b83e73eef373d6f2c",
+    "src/ssi_cov.py": "dec6b122574783d883cb9e647408d22c1da8654ff42acc7424af407bd6f175d9",
+    "src/synthetic_systems.py": "00465857b2372bea13e1bb64c4675d2e59607df264b90d3312e3c54dac5c0016",
+    "run_phase0d.py": "fc48abbd0ae6a6f86945ce460d7281eecc18a203c794e9068a1eca59e04b9035",
+    "local_runner.py": "3cb798e07f5a6a83e05c37d883e5400ed742e1b8cb14b08f59ce296663b70cdc",
+    "tests/test_phase0d.py": "d274c2ffa257c6391124d526b5e38c80e3a7affebfb249b959aeda66668d2cb7"
+  },
+  "engineering_gate": {
+    "tests": "16 passed",
+    "phase0d_scientific_holdout_executed_during_development": false
+  },
+  "calibration_only": {
+    "phase0c_global_timescale_expected_behavior": "9/9 scalar; 9/9 modal; 9/9 system",
+    "phase0c_observation_switch_expected_behavior": "9/9 scalar; 9/9 modal; 9/9 system",
+    "phase0c_structural_switch_expected_behavior": "9/9 scalar; 9/9 modal; 9/9 system",
+    "phase0c_null_expected_behavior": "27/27 scalar; 27/27 modal; 27/27 system",
+    "phase0c_stationary_scalar_admission": 0.9861111111111112,
+    "phase0c_stationary_modal_admission": 0.9861111111111112,
+    "phase0c_stationary_system_admission": 0.9259259259259259,
+    "promotion_value": "NONE. Already-seen calibration only."
+  },
+  "claim_ceiling": "Prospective synthetic admission of separable scalar-spectrum, modal/subspace, and crowding-aware whole-system organizational observables only. No EEG, diagnosis, treatment, causality, whole-system scalar, preferred chi value, or cross-domain mechanism claim."
+}
