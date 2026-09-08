@@ -29,6 +29,6 @@ The runner first executes engineering tests, writes the code/config/rules manife
 
 When complete, preserve and send the entire:
 
-`results\\phase0d_v01`
+`results\phase0d_v01`
 
 Do not change thresholds after seeing the result.
