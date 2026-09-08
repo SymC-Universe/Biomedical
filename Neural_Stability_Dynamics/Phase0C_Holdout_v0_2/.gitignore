@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+results/phase0c_v02/*.csv
+results/phase0c_v02/*.json
+results/phase0c_v02/RUN_LOG.txt
