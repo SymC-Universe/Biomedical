@@ -1,0 +1,19 @@
+{
+  "status": "PACKAGE_PREFLIGHT_ONLY_NOT_USER_RESULT",
+  "note": "Generated in ChatGPT sandbox only to verify that the package executes. Your local run must regenerate all result files before any scientific review.",
+  "sandbox_summary": {
+    "schema": "nsd-phase0-structure-result-v0.1",
+    "config_sha256": "894eef49973735325772a58d47c9e96a114e6cf261f47772ae0ab1d88364f9bc",
+    "engineering_status": "DIAGNOSTIC_ONLY_NO_ADMISSION_GATE",
+    "trials_expected": 96,
+    "modal_rows": 384,
+    "failed_trials": 0,
+    "median_normalized_pole_error": 0.0016440689979641617,
+    "p90_normalized_pole_error": 0.003728869423215157,
+    "median_mode_shape_MAC": 0.9997777633966144,
+    "p10_mode_shape_MAC": 0.9987984985271174,
+    "median_abs_frequency_error_hz": 0.009267671681623568,
+    "median_abs_decay_error_per_s": 0.057363722673665074,
+    "claim_ceiling": "Engineering comparison of known synthetic latent structure to an output-only SSI-COV candidate. No EEG, diagnosis, treatment, clinical admission threshold, model-order selection, or whole-system scalar."
+  }
+}

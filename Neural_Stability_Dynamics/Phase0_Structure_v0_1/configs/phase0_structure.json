@@ -1,0 +1,59 @@
+{
+  "schema": "nsd-phase0-structure-v0.1",
+  "seed": 20260907,
+  "dt_seconds": 0.01,
+  "n_samples": [
+    12000,
+    30000
+  ],
+  "block_rows": 20,
+  "latent_order": 4,
+  "n_channels": 6,
+  "replicates": 8,
+  "systems": [
+    {
+      "name": "two_mode_separated",
+      "modes": [
+        {
+          "decay_per_s": 0.8,
+          "frequency_hz": 7.0
+        },
+        {
+          "decay_per_s": 1.8,
+          "frequency_hz": 14.0
+        }
+      ]
+    },
+    {
+      "name": "two_mode_crowded",
+      "modes": [
+        {
+          "decay_per_s": 0.7,
+          "frequency_hz": 9.0
+        },
+        {
+          "decay_per_s": 1.0,
+          "frequency_hz": 10.2
+        }
+      ]
+    }
+  ],
+  "noise_conditions": [
+    {
+      "name": "low",
+      "process_scale": 0.12,
+      "observation_scale": 0.01
+    },
+    {
+      "name": "medium",
+      "process_scale": 0.12,
+      "observation_scale": 0.05
+    },
+    {
+      "name": "high",
+      "process_scale": 0.12,
+      "observation_scale": 0.12
+    }
+  ],
+  "note": "Engineering grid only. No scientific admission threshold is defined in v0.1."
+}

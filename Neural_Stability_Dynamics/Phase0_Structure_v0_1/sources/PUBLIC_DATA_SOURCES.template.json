@@ -1,0 +1,17 @@
+{
+  "schema": "nsd-public-source-manifest-template-v0.1",
+  "purpose": "Atlas-style manifest for future free/public comparison or replication datasets. Record access/license, exact identity/hash, cohort role, and label-access rule.",
+  "sources": [
+    {
+      "source_id": "EXAMPLE_ONLY_DO_NOT_USE",
+      "dataset_name": null,
+      "canonical_url": null,
+      "license_or_access_terms": null,
+      "retrieved_utc": null,
+      "sha256_or_provider_identity": null,
+      "role": "discovery|development|external_validation",
+      "label_access_rule": null,
+      "notes": null
+    }
+  ]
+}
