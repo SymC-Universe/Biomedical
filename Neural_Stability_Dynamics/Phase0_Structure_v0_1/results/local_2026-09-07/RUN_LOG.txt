@@ -1,0 +1,7 @@
+NSD Phase 0 structure-recovery local runner v0.1
+Scientific contract: structure first; no EEG labels; no clinical tuning.
+[A] Running engineering/unit tests before synthetic execution...
+    tests PASS
+[B] Writing code/config SHA-256 manifest...
+WORKER ATTEMPT 1/3
+RUN COMPLETE. Review summary.json and trial_results.csv before changing any configuration.
