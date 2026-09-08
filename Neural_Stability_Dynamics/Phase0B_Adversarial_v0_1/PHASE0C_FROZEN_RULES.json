@@ -5,6 +5,9 @@
   "selector": {
     "candidate_order_rule": "smallest order q with S_q/S_(q+1) >= threshold",
     "singular_gap_threshold": 10.0,
+    "complex_frequency_min_hz": 0.25,
+    "strong_observability_ratio_min_for_holdout_scoring_only": 0.20,
+    "spurious_truth_match_distance_gt_for_holdout_scoring_only": 0.05,
     "refuse_if_no_order": true,
     "refuse_if_selected_order_is_grid_max": true,
     "refuse_if_any_selected_pole_unstable": true,
