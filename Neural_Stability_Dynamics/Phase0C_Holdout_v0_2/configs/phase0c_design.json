@@ -2,31 +2,359 @@
   "schema": "nsd-phase0c-three-layer-untouched-holdout-v0.2",
   "seed": 2026090807,
   "dt_seconds": 0.01,
-  "durations_samples": [10000, 20000, 28000],
+  "durations_samples": [
+    10000,
+    20000,
+    28000
+  ],
   "block_rows": 30,
-  "candidate_orders": [2, 4, 6, 8, 10, 12],
+  "candidate_orders": [
+    2,
+    4,
+    6,
+    8,
+    10,
+    12
+  ],
   "n_channels": 8,
   "replicates": 3,
   "process_scale": 0.12,
   "strong_observability_ratio_min": 0.2,
   "noise_profiles": [
-    {"name": "low_white", "fraction_channel_sd": 0.03, "type": "white", "rho": 0.0},
-    {"name": "high_white", "fraction_channel_sd": 0.18, "type": "white", "rho": 0.0},
-    {"name": "high_colored", "fraction_channel_sd": 0.18, "type": "ar1", "rho": 0.85}
+    {
+      "name": "low_white",
+      "fraction_channel_sd": 0.03,
+      "type": "white",
+      "rho": 0.0
+    },
+    {
+      "name": "high_white",
+      "fraction_channel_sd": 0.18,
+      "type": "white",
+      "rho": 0.0
+    },
+    {
+      "name": "high_colored",
+      "fraction_channel_sd": 0.18,
+      "type": "ar1",
+      "rho": 0.85
+    }
   ],
   "systems": [
-    {"name": "v02_three_mode", "kind": "linear", "role": "stationary_truth", "expected_scalar": "ADMIT", "expected_modal": "ADMIT", "expected_system": "ADMIT", "similarity": "orthogonal", "modes": [{"type": "complex", "decay": 0.55, "frequency_hz": 5.2}, {"type": "complex", "decay": 1.05, "frequency_hz": 10.7}, {"type": "complex", "decay": 2.1, "frequency_hz": 16.9}]},
-    {"name": "v02_four_mode", "kind": "linear", "role": "stationary_truth", "expected_scalar": "ADMIT", "expected_modal": "ADMIT", "expected_system": "ADMIT", "similarity": "orthogonal", "modes": [{"type": "complex", "decay": 0.5, "frequency_hz": 4.6}, {"type": "complex", "decay": 0.85, "frequency_hz": 8.8}, {"type": "complex", "decay": 1.3, "frequency_hz": 13.4}, {"type": "complex", "decay": 2.0, "frequency_hz": 18.1}]},
-    {"name": "v02_resolved_close", "kind": "linear", "role": "stationary_truth", "expected_scalar": "ADMIT", "expected_modal": "ADMIT", "expected_system": "ADMIT", "similarity": "orthogonal", "modes": [{"type": "complex", "decay": 0.85, "frequency_hz": 7.8}, {"type": "complex", "decay": 1.15, "frequency_hz": 9.0}]},
-    {"name": "v02_near_degenerate", "kind": "linear", "role": "stationary_truth", "expected_scalar": "ADMIT", "expected_modal": "ADMIT", "expected_system": "ADMIT", "similarity": "orthogonal", "modes": [{"type": "complex", "decay": 0.6, "frequency_hz": 11.8}, {"type": "complex", "decay": 0.72, "frequency_hz": 11.93}]},
-    {"name": "v02_nonnormal_cond70", "kind": "linear", "role": "stationary_truth", "expected_scalar": "ADMIT", "expected_modal": "ADMIT", "expected_system": "ADMIT", "similarity": "cond", "condition_number": 70.0, "modes": [{"type": "complex", "decay": 0.75, "frequency_hz": 6.4}, {"type": "complex", "decay": 1.5, "frequency_hz": 15.8}]},
-    {"name": "v02_weak_third", "kind": "linear", "role": "stationary_truth", "expected_scalar": "ADMIT", "expected_modal": "ADMIT", "expected_system": "ADMIT", "similarity": "orthogonal", "weak_block": 2, "weak_scale": 0.04, "modes": [{"type": "complex", "decay": 0.65, "frequency_hz": 5.9}, {"type": "complex", "decay": 1.0, "frequency_hz": 12.7}, {"type": "complex", "decay": 1.45, "frequency_hz": 18.3}]},
-    {"name": "v02_moderate_third", "kind": "linear", "role": "stationary_truth", "expected_scalar": "ADMIT", "expected_modal": "ADMIT", "expected_system": "ADMIT", "similarity": "orthogonal", "weak_block": 2, "weak_scale": 0.28, "modes": [{"type": "complex", "decay": 0.65, "frequency_hz": 5.9}, {"type": "complex", "decay": 1.0, "frequency_hz": 12.7}, {"type": "complex", "decay": 1.45, "frequency_hz": 18.3}]},
-    {"name": "v02_mixed_real", "kind": "linear", "role": "stationary_truth", "expected_scalar": "ADMIT", "expected_modal": "ADMIT", "expected_system": "UNSCORED", "similarity": "orthogonal", "modes": [{"type": "complex", "decay": 0.95, "frequency_hz": 7.4}, {"type": "real", "pole": -0.45}, {"type": "real", "pole": -2.4}]},
-    {"name": "v02_global_timescale_switch", "kind": "switch_shared_basis", "role": "layer_challenge", "challenge": "global_timescale_switch", "expected_scalar": "REFUSE", "expected_modal": "ADMIT", "expected_system": "ADMIT", "switch_sample": 14000, "similarity": "orthogonal", "modes_first": [{"type": "complex", "decay": 0.8, "frequency_hz": 6.5}, {"type": "complex", "decay": 1.6, "frequency_hz": 13.5}], "modes_second": [{"type": "complex", "decay": 1.0, "frequency_hz": 8.125}, {"type": "complex", "decay": 2.0, "frequency_hz": 16.875}], "score_only_n_samples": [28000]},
-    {"name": "v02_observation_switch", "kind": "observation_switch", "role": "layer_challenge", "challenge": "observation_switch", "expected_scalar": "ADMIT", "expected_modal": "REFUSE", "expected_system": "REFUSE", "switch_sample": 14000, "similarity": "orthogonal", "output_rotation_strength": 1.0, "modes": [{"type": "complex", "decay": 0.7, "frequency_hz": 7.2}, {"type": "complex", "decay": 1.3, "frequency_hz": 14.1}], "score_only_n_samples": [28000]},
-    {"name": "v02_structural_switch", "kind": "switch_shared_basis", "role": "layer_challenge", "challenge": "structural_switch", "expected_scalar": "REFUSE", "expected_modal": "ADMIT", "expected_system": "REFUSE", "switch_sample": 14000, "similarity": "orthogonal", "modes_first": [{"type": "complex", "decay": 0.8, "frequency_hz": 6.5}, {"type": "complex", "decay": 1.6, "frequency_hz": 13.5}], "modes_second": [{"type": "complex", "decay": 0.8, "frequency_hz": 6.5}, {"type": "complex", "decay": 1.0, "frequency_hz": 11.4}], "score_only_n_samples": [28000]},
-    {"name": "v02_null_1f", "kind": "null_1f", "role": "null", "challenge": "null_1f", "expected_scalar": "REFUSE", "expected_modal": "REFUSE", "expected_system": "REFUSE", "beta": 1.1}
+    {
+      "name": "v02_three_mode",
+      "kind": "linear",
+      "role": "stationary_truth",
+      "expected_scalar": "ADMIT",
+      "expected_modal": "ADMIT",
+      "expected_system": "ADMIT",
+      "similarity": "orthogonal",
+      "modes": [
+        {
+          "type": "complex",
+          "decay": 0.55,
+          "frequency_hz": 5.2
+        },
+        {
+          "type": "complex",
+          "decay": 1.05,
+          "frequency_hz": 10.7
+        },
+        {
+          "type": "complex",
+          "decay": 2.1,
+          "frequency_hz": 16.9
+        }
+      ]
+    },
+    {
+      "name": "v02_four_mode",
+      "kind": "linear",
+      "role": "stationary_truth",
+      "expected_scalar": "ADMIT",
+      "expected_modal": "ADMIT",
+      "expected_system": "ADMIT",
+      "similarity": "orthogonal",
+      "modes": [
+        {
+          "type": "complex",
+          "decay": 0.5,
+          "frequency_hz": 4.6
+        },
+        {
+          "type": "complex",
+          "decay": 0.85,
+          "frequency_hz": 8.8
+        },
+        {
+          "type": "complex",
+          "decay": 1.3,
+          "frequency_hz": 13.4
+        },
+        {
+          "type": "complex",
+          "decay": 2.0,
+          "frequency_hz": 18.1
+        }
+      ]
+    },
+    {
+      "name": "v02_resolved_close",
+      "kind": "linear",
+      "role": "stationary_truth",
+      "expected_scalar": "ADMIT",
+      "expected_modal": "ADMIT",
+      "expected_system": "ADMIT",
+      "similarity": "orthogonal",
+      "modes": [
+        {
+          "type": "complex",
+          "decay": 0.85,
+          "frequency_hz": 7.8
+        },
+        {
+          "type": "complex",
+          "decay": 1.15,
+          "frequency_hz": 9.0
+        }
+      ]
+    },
+    {
+      "name": "v02_near_degenerate",
+      "kind": "linear",
+      "role": "stationary_truth",
+      "expected_scalar": "ADMIT",
+      "expected_modal": "ADMIT",
+      "expected_system": "ADMIT",
+      "similarity": "orthogonal",
+      "modes": [
+        {
+          "type": "complex",
+          "decay": 0.6,
+          "frequency_hz": 11.8
+        },
+        {
+          "type": "complex",
+          "decay": 0.72,
+          "frequency_hz": 11.93
+        }
+      ]
+    },
+    {
+      "name": "v02_nonnormal_cond70",
+      "kind": "linear",
+      "role": "stationary_truth",
+      "expected_scalar": "ADMIT",
+      "expected_modal": "ADMIT",
+      "expected_system": "ADMIT",
+      "similarity": "cond",
+      "condition_number": 70.0,
+      "modes": [
+        {
+          "type": "complex",
+          "decay": 0.75,
+          "frequency_hz": 6.4
+        },
+        {
+          "type": "complex",
+          "decay": 1.5,
+          "frequency_hz": 15.8
+        }
+      ]
+    },
+    {
+      "name": "v02_weak_third",
+      "kind": "linear",
+      "role": "stationary_truth",
+      "expected_scalar": "ADMIT",
+      "expected_modal": "ADMIT",
+      "expected_system": "ADMIT",
+      "similarity": "orthogonal",
+      "weak_block": 2,
+      "weak_scale": 0.04,
+      "modes": [
+        {
+          "type": "complex",
+          "decay": 0.65,
+          "frequency_hz": 5.9
+        },
+        {
+          "type": "complex",
+          "decay": 1.0,
+          "frequency_hz": 12.7
+        },
+        {
+          "type": "complex",
+          "decay": 1.45,
+          "frequency_hz": 18.3
+        }
+      ]
+    },
+    {
+      "name": "v02_moderate_third",
+      "kind": "linear",
+      "role": "stationary_truth",
+      "expected_scalar": "ADMIT",
+      "expected_modal": "ADMIT",
+      "expected_system": "ADMIT",
+      "similarity": "orthogonal",
+      "weak_block": 2,
+      "weak_scale": 0.28,
+      "modes": [
+        {
+          "type": "complex",
+          "decay": 0.65,
+          "frequency_hz": 5.9
+        },
+        {
+          "type": "complex",
+          "decay": 1.0,
+          "frequency_hz": 12.7
+        },
+        {
+          "type": "complex",
+          "decay": 1.45,
+          "frequency_hz": 18.3
+        }
+      ]
+    },
+    {
+      "name": "v02_mixed_real",
+      "kind": "linear",
+      "role": "stationary_truth",
+      "expected_scalar": "ADMIT",
+      "expected_modal": "ADMIT",
+      "expected_system": "UNSCORED",
+      "similarity": "orthogonal",
+      "modes": [
+        {
+          "type": "complex",
+          "decay": 0.95,
+          "frequency_hz": 7.4
+        },
+        {
+          "type": "real",
+          "pole": -0.45
+        },
+        {
+          "type": "real",
+          "pole": -2.4
+        }
+      ]
+    },
+    {
+      "name": "v02_global_timescale_switch",
+      "kind": "switch_shared_basis",
+      "role": "layer_challenge",
+      "challenge": "global_timescale_switch",
+      "expected_scalar": "REFUSE",
+      "expected_modal": "ADMIT",
+      "expected_system": "ADMIT",
+      "switch_sample": 14000,
+      "similarity": "orthogonal",
+      "modes_first": [
+        {
+          "type": "complex",
+          "decay": 0.8,
+          "frequency_hz": 6.5
+        },
+        {
+          "type": "complex",
+          "decay": 1.6,
+          "frequency_hz": 13.5
+        }
+      ],
+      "modes_second": [
+        {
+          "type": "complex",
+          "decay": 1.0,
+          "frequency_hz": 8.125
+        },
+        {
+          "type": "complex",
+          "decay": 2.0,
+          "frequency_hz": 16.875
+        }
+      ],
+      "score_only_n_samples": [
+        28000
+      ]
+    },
+    {
+      "name": "v02_observation_switch",
+      "kind": "observation_switch",
+      "role": "layer_challenge",
+      "challenge": "observation_switch",
+      "expected_scalar": "ADMIT",
+      "expected_modal": "REFUSE",
+      "expected_system": "REFUSE",
+      "switch_sample": 14000,
+      "similarity": "orthogonal",
+      "output_rotation_strength": 1.0,
+      "modes": [
+        {
+          "type": "complex",
+          "decay": 0.7,
+          "frequency_hz": 7.2
+        },
+        {
+          "type": "complex",
+          "decay": 1.3,
+          "frequency_hz": 14.1
+        }
+      ],
+      "score_only_n_samples": [
+        28000
+      ]
+    },
+    {
+      "name": "v02_structural_switch",
+      "kind": "switch_shared_basis",
+      "role": "layer_challenge",
+      "challenge": "structural_switch",
+      "expected_scalar": "REFUSE",
+      "expected_modal": "ADMIT",
+      "expected_system": "REFUSE",
+      "switch_sample": 14000,
+      "similarity": "orthogonal",
+      "modes_first": [
+        {
+          "type": "complex",
+          "decay": 0.8,
+          "frequency_hz": 6.5
+        },
+        {
+          "type": "complex",
+          "decay": 1.6,
+          "frequency_hz": 13.5
+        }
+      ],
+      "modes_second": [
+        {
+          "type": "complex",
+          "decay": 0.8,
+          "frequency_hz": 6.5
+        },
+        {
+          "type": "complex",
+          "decay": 1.0,
+          "frequency_hz": 11.4
+        }
+      ],
+      "score_only_n_samples": [
+        28000
+      ]
+    },
+    {
+      "name": "v02_null_1f",
+      "kind": "null_1f",
+      "role": "null",
+      "challenge": "null_1f",
+      "expected_scalar": "REFUSE",
+      "expected_modal": "REFUSE",
+      "expected_system": "REFUSE",
+      "beta": 1.1
+    }
   ],
   "epistemic_status": "UNTOUCHED_THREE_LAYER_SYNTHETIC_HOLDOUT_DO_NOT_RETUNE"
 }
