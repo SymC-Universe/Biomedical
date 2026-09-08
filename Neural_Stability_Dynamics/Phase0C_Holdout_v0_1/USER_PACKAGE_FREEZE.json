@@ -1,0 +1,12 @@
+{
+  "status": "PHASE0C_USER_PACKAGE_FROZEN_BEFORE_EXECUTION",
+  "frozen_utc_date": "2026-09-08",
+  "zip_name": "Neural_Stability_Dynamics_Phase0C_Holdout_v0_1.zip",
+  "zip_sha256": "2110cdadc0513d4c5d45c2f2f01b6c3d1fb50b9c190f26ecf26cf00c437a5503",
+  "internal_code_manifest_sha256": "c926e0fd3e1100d86bfefb7ddf74a43d5458b57abe6fd19ad7dec1fde57c657d",
+  "phase0c_config_sha256": "9f2f6251e6b637a4e72576dc64b4d9afd2ce75ae86bf9bc4485bd1eff5cbefce",
+  "phase0c_rules_sha256": "1b413780ba54c7c332425b0185c1819a7d6f08132396647decfa0c274bf5748c",
+  "pre_run_tests": "11 passed",
+  "scientific_holdout_executed_before_freeze": false,
+  "authority": "The ZIP SHA-256 identifies the exact package the user should execute locally. No Phase 0C result existed when this freeze record was created."
+}
