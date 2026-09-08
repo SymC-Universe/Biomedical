@@ -1,0 +1,27 @@
+{
+  "schema": "nsd-phase0b-adversarial-v0.1",
+  "seed": 20260908,
+  "dt_seconds": 0.01,
+  "durations_samples": [6000, 12000, 30000],
+  "block_rows": 24,
+  "candidate_orders": [2, 4, 6, 8],
+  "n_channels": 8,
+  "replicates": 4,
+  "process_scale": 0.12,
+  "noise_profiles": [
+    {"name": "low_white", "fraction_channel_sd": 0.01, "type": "white", "rho": 0.0},
+    {"name": "high_white", "fraction_channel_sd": 0.15, "type": "white", "rho": 0.0},
+    {"name": "high_colored", "fraction_channel_sd": 0.15, "type": "ar1", "rho": 0.8}
+  ],
+  "systems": [
+    {"name": "separated_normal", "kind": "linear", "similarity": "orthogonal", "modes": [{"type": "complex", "decay": 0.8, "frequency_hz": 7.0}, {"type": "complex", "decay": 1.8, "frequency_hz": 14.0}]},
+    {"name": "crowded_normal", "kind": "linear", "similarity": "orthogonal", "modes": [{"type": "complex", "decay": 0.7, "frequency_hz": 9.0}, {"type": "complex", "decay": 1.0, "frequency_hz": 10.2}]},
+    {"name": "near_degenerate", "kind": "linear", "similarity": "orthogonal", "modes": [{"type": "complex", "decay": 0.70, "frequency_hz": 9.0}, {"type": "complex", "decay": 0.75, "frequency_hz": 9.15}]},
+    {"name": "nonnormal_cond30", "kind": "linear", "similarity": "cond", "condition_number": 30.0, "modes": [{"type": "complex", "decay": 0.8, "frequency_hz": 7.0}, {"type": "complex", "decay": 1.8, "frequency_hz": 14.0}]},
+    {"name": "weak_observable", "kind": "linear", "similarity": "orthogonal", "weak_block": 1, "weak_scale": 0.05, "modes": [{"type": "complex", "decay": 0.8, "frequency_hz": 7.0}, {"type": "complex", "decay": 1.8, "frequency_hz": 14.0}]},
+    {"name": "mixed_complex_real", "kind": "linear", "similarity": "orthogonal", "modes": [{"type": "complex", "decay": 1.0, "frequency_hz": 8.0}, {"type": "real", "pole": -0.3}, {"type": "real", "pole": -3.0}]},
+    {"name": "null_1f", "kind": "null_1f", "beta": 1.0},
+    {"name": "nonstationary_switch", "kind": "switch", "similarity": "orthogonal", "modes_first": [{"type": "complex", "decay": 0.8, "frequency_hz": 7.0}, {"type": "complex", "decay": 1.8, "frequency_hz": 14.0}], "modes_second": [{"type": "complex", "decay": 1.3, "frequency_hz": 8.2}, {"type": "complex", "decay": 1.2, "frequency_hz": 12.5}]}
+  ],
+  "epistemic_status": "DEVELOPMENT_CALIBRATION_ONLY_NO_ADMISSION_THRESHOLD"
+}
