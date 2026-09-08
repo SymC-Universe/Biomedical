@@ -1,0 +1,29 @@
+{
+  "schema": "nsd-phase0c-untouched-holdout-v0.1",
+  "seed": 2026090803,
+  "dt_seconds": 0.01,
+  "durations_samples": [9000, 18000, 24000],
+  "block_rows": 28,
+  "candidate_orders": [2, 4, 6, 8, 10],
+  "n_channels": 8,
+  "replicates": 3,
+  "process_scale": 0.12,
+  "strong_observability_ratio_min": 0.2,
+  "noise_profiles": [
+    {"name": "low_white", "fraction_channel_sd": 0.02, "type": "white", "rho": 0.0},
+    {"name": "high_white", "fraction_channel_sd": 0.2, "type": "white", "rho": 0.0},
+    {"name": "high_colored", "fraction_channel_sd": 0.2, "type": "ar1", "rho": 0.9}
+  ],
+  "systems": [
+    {"name": "holdout_three_mode", "kind": "linear", "role": "stationary_truth", "similarity": "orthogonal", "modes": [{"type": "complex", "decay": 0.6, "frequency_hz": 5.5}, {"type": "complex", "decay": 1.1, "frequency_hz": 11.3}, {"type": "complex", "decay": 2.0, "frequency_hz": 17.2}]},
+    {"name": "holdout_resolved_close", "kind": "linear", "role": "stationary_truth", "similarity": "orthogonal", "modes": [{"type": "complex", "decay": 0.9, "frequency_hz": 8.0}, {"type": "complex", "decay": 1.2, "frequency_hz": 9.1}]},
+    {"name": "holdout_near_degenerate", "kind": "linear", "role": "stationary_truth", "similarity": "orthogonal", "modes": [{"type": "complex", "decay": 0.65, "frequency_hz": 12.0}, {"type": "complex", "decay": 0.75, "frequency_hz": 12.12}]},
+    {"name": "holdout_nonnormal_cond50", "kind": "linear", "role": "stationary_truth", "similarity": "cond", "condition_number": 50.0, "modes": [{"type": "complex", "decay": 0.7, "frequency_hz": 6.2}, {"type": "complex", "decay": 1.4, "frequency_hz": 15.5}]},
+    {"name": "holdout_weak_third", "kind": "linear", "role": "stationary_truth", "similarity": "orthogonal", "weak_block": 2, "weak_scale": 0.04, "modes": [{"type": "complex", "decay": 0.7, "frequency_hz": 6.0}, {"type": "complex", "decay": 1.0, "frequency_hz": 13.0}, {"type": "complex", "decay": 1.4, "frequency_hz": 18.0}]},
+    {"name": "holdout_moderate_third", "kind": "linear", "role": "stationary_truth", "similarity": "orthogonal", "weak_block": 2, "weak_scale": 0.3, "modes": [{"type": "complex", "decay": 0.7, "frequency_hz": 6.0}, {"type": "complex", "decay": 1.0, "frequency_hz": 13.0}, {"type": "complex", "decay": 1.4, "frequency_hz": 18.0}]},
+    {"name": "holdout_mixed_real", "kind": "linear", "role": "stationary_truth", "similarity": "orthogonal", "modes": [{"type": "complex", "decay": 0.9, "frequency_hz": 7.5}, {"type": "real", "pole": -0.5}, {"type": "real", "pole": -2.2}]},
+    {"name": "holdout_null_1f", "kind": "null_1f", "role": "off_model", "beta": 1.2},
+    {"name": "holdout_switch_fixed", "kind": "switch_fixed", "role": "off_model", "similarity": "orthogonal", "switch_sample": 4500, "modes_first": [{"type": "complex", "decay": 0.75, "frequency_hz": 6.5}, {"type": "complex", "decay": 1.6, "frequency_hz": 13.5}], "modes_second": [{"type": "complex", "decay": 1.25, "frequency_hz": 7.7}, {"type": "complex", "decay": 1.1, "frequency_hz": 11.8}]}
+  ],
+  "epistemic_status": "UNTOUCHED_SYNTHETIC_HOLDOUT_DO_NOT_RETUNE"
+}
