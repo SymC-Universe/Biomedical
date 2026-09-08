@@ -1,0 +1,26 @@
+{
+  "schema": "nsd-phase0d-user-package-freeze-v0.1",
+  "status": "FROZEN_NOT_EXECUTED",
+  "date": "2026-09-08",
+  "source_commit": "fe85c200a69e0870e9676d689e7618032f414d29",
+  "branch": "neural-stability-dynamics-phase0d-local-order-v0.1",
+  "package": {
+    "filename": "Neural_Stability_Dynamics_Phase0D_LocalOrder_v0_1.zip",
+    "sha256": "3851611b85eaaea3b078478f8b87ad666d8e6ea4124626e07bf24ea89b1bf0d1",
+    "size_bytes": 33142,
+    "code_manifest_sha256": "08807128928b79f7fc9f3fb84dcceddd8dc9fa6be50df4bb4f6e43f749b04131",
+    "config_sha256": "d025847e78badc62d21cebc9a46319fb0d6d3eaef837c75f2c3d612d746e2e76",
+    "rules_sha256": "159a8034e9784871cbca1ca48764cfcd1282704a482990c234c8b4fa8f0ba2de"
+  },
+  "engineering_gate": {
+    "tests": "16 passed",
+    "scientific_holdout_executed": false,
+    "results_directory_before_execution_contains_only": ["CODE_MANIFEST.sha256"]
+  },
+  "lineage": {
+    "phase0c_v02_official_status": "FAIL_SCALAR_FAIL_MODAL_FAIL_SYSTEM_PRESERVED",
+    "phase0c_v02_audit_commit": "5fa84934c13e65b09ef6a94b022d10887277283d",
+    "phase0d_policy": "New estimator version and new untouched holdout. Phase 0C is calibration/postmortem evidence only and is not rescored."
+  },
+  "claim_ceiling": "Prospective synthetic admission of separable scalar-spectrum, modal/subspace, and crowding-aware whole-system organizational observables only. No EEG, diagnosis, treatment, causality, whole-system scalar, preferred chi value, or cross-domain mechanism claim."
+}
