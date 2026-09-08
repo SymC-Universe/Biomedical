@@ -1,0 +1,7 @@
+{
+  "status": "COMPLETE",
+  "config_sha256": "894eef49973735325772a58d47c9e96a114e6cf261f47772ae0ab1d88364f9bc",
+  "trials_expected": 96,
+  "failed_trials": 0,
+  "next_gate": "review engineering recovery; then freeze prospective synthetic acceptance criteria or reject candidate"
+}
