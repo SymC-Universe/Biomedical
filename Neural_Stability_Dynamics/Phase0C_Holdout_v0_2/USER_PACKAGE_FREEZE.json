@@ -1,0 +1,14 @@
+{
+  "status": "FROZEN_NOT_EXECUTED",
+  "package_filename": "Neural_Stability_Dynamics_Phase0C_v0_2_ThreeLayer_Holdout.zip",
+  "package_sha256": "36d25f52520b86cc243c9443abf52f79d50dae5abd06f512c17ddb87be13d3a5",
+  "package_size_bytes": 28290,
+  "code_manifest_sha256": "96ef544a618651777c0f982e99f719ed56d00a694f1227dce56021114140fd49",
+  "config_sha256": "31db0aa636e884f9a811545a286e3d97a93be35d419b7195213a81d1925163b4",
+  "rules_sha256": "d81e947bfb2050a62a0b43534a7445fe7411f318f6f07db03eddad79472ecab1",
+  "engineering_tests": "13 passed",
+  "scientific_holdout_executed": false,
+  "phase0c_v01_status": "SUPERSEDED_BEFORE_EXECUTION",
+  "phase0c_v01_superseded_commit": "d082beff755da02ff23929764a4ed64b94a05188",
+  "claim_ceiling": "Prospective synthetic admission only for separable scalar-spectrum, modal/subspace, and whole-system organizational layers. No EEG, diagnosis, treatment, causality, whole-system scalar, preferred chi, or cross-domain mechanism."
+}
