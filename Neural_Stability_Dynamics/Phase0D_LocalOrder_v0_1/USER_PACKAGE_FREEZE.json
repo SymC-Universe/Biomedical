@@ -2,7 +2,7 @@
   "schema": "nsd-phase0d-user-package-freeze-v0.1",
   "status": "FROZEN_NOT_EXECUTED",
   "date": "2026-09-08",
-  "source_commit": "fe85c200a69e0870e9676d689e7618032f414d29",
+  "source_commit": "2f66a2586df63a31814b2e91b16f385353ce19b6",
   "branch": "neural-stability-dynamics-phase0d-local-order-v0.1",
   "package": {
     "filename": "Neural_Stability_Dynamics_Phase0D_LocalOrder_v0_1.zip",
