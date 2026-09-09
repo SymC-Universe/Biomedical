@@ -1,0 +1,42 @@
+{
+  "schema": "gri-stage-d-provenance-v0.1",
+  "status": "TEMPLATE",
+  "stage_id": "",
+  "dataset_accession": "",
+  "source_repository": "SymC-Universe/Biomedical",
+  "source_branch": "gri-stage-d-perturbation-recovery",
+  "source_commit": "",
+  "acquisition": {
+    "authoritative_source": "",
+    "date_acquired_utc": "",
+    "files": [
+      {
+        "filename": "",
+        "url": "",
+        "byte_size": 0,
+        "sha256": "",
+        "raw_or_processed": "",
+        "assay_type": "",
+        "platform_annotation": ""
+      }
+    ]
+  },
+  "sample_manifest": {
+    "raw_manifest_sha256": "",
+    "normalized_manifest_sha256": "",
+    "unresolved_samples": []
+  },
+  "software": {
+    "python": "",
+    "platform": "",
+    "environment_lock_sha256": "",
+    "runner_backend": "GITHUB_OR_KAGGLE_OR_POWERCELL"
+  },
+  "science_firewall": {
+    "biological_outcome_inspected_before_final_analysis_freeze": false,
+    "post_outcome_feature_selection": false,
+    "post_outcome_threshold_selection": false,
+    "stage_c1_modified": false,
+    "p0_final_holdout_modified": false
+  }
+}
