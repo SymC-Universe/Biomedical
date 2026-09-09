@@ -1,0 +1,1 @@
+GitHub Actions metadata-only preflight should trigger on this branch push under `.github/workflows/gri-stage-d-preflight.yml`.
