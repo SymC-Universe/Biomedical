@@ -1,0 +1,27 @@
+{
+  "schema": "gri-stage-d-execution-state-machine-v0.1",
+  "states": [
+    "D0_METADATA_PREFLIGHT",
+    "D0_DESIGN_AUDIT",
+    "D0_3_FINAL_ANALYSIS_FREEZE",
+    "D1_PRIMARY_RECOVERY",
+    "D2_TEMPORAL_REPLICATION",
+    "D2_5_SIGNATURE_FREEZE",
+    "D3_TRANSFORMATION_CHALLENGE",
+    "D4_RESISTANCE_CONTRAST",
+    "D5_SPECIFICITY_ROBUSTNESS",
+    "D6_MANUSCRIPT_INTEGRATION",
+    "FINAL_ADVERSARIAL_AUDIT"
+  ],
+  "current_state": "D0_METADATA_PREFLIGHT",
+  "biological_outcome_access_allowed_states": [
+    "D1_PRIMARY_RECOVERY",
+    "D2_TEMPORAL_REPLICATION",
+    "D3_TRANSFORMATION_CHALLENGE",
+    "D4_RESISTANCE_CONTRAST",
+    "D5_SPECIFICITY_ROBUSTNESS",
+    "D6_MANUSCRIPT_INTEGRATION",
+    "FINAL_ADVERSARIAL_AUDIT"
+  ],
+  "transition_guard": "D0_3_FINAL_ANALYSIS_FREEZE must be committed before transition to D1_PRIMARY_RECOVERY. D2_5_SIGNATURE_FREEZE must be committed before D3/D4 outcome interpretation."
+}
