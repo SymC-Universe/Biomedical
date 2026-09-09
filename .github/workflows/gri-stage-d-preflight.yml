@@ -1,0 +1,66 @@
+name: GRI Stage D preflight
+
+on:
+  push:
+    branches:
+      - gri-stage-d-perturbation-recovery
+    paths:
+      - 'GRI_v2/protocol/STAGE_D_*'
+      - 'GRI_v2/config/stage_d_*'
+      - 'GRI_v2/src/stage_d_*'
+      - 'GRI_v2/tests/test_stage_d_*'
+      - '.github/workflows/gri-stage-d-preflight.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  unit-and-metadata-preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install test dependency
+        run: python -m pip install --disable-pip-version-check pytest
+
+      - name: Compile Stage D source
+        run: python -m py_compile GRI_v2/src/stage_d_acquisition_inventory.py
+
+      - name: Run Stage D unit tests
+        run: python -m pytest -q GRI_v2/tests/test_stage_d_acquisition_inventory.py
+
+      - name: Run metadata-only GEO inventory
+        run: >-
+          python GRI_v2/src/stage_d_acquisition_inventory.py
+          --registry GRI_v2/config/stage_d_dataset_registry_v0.1.json
+          --out GRI_v2/artifacts/stage_d/d0_metadata_inventory
+
+      - name: Verify no numeric biological matrices were opened
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('GRI_v2/artifacts/stage_d/d0_metadata_inventory/D0_METADATA_AUDIT.json')
+          d = json.loads(p.read_text())
+          assert d['scientific_outputs_opened'] is False
+          assert d['numeric_biological_matrices_opened'] is False
+          assert d['status'] == 'PASS_METADATA_ONLY'
+          print('Stage D metadata-only firewall PASS')
+          PY
+
+      - name: Upload metadata-only preflight artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-stage-d-d0-metadata-preflight
+          path: GRI_v2/artifacts/stage_d/d0_metadata_inventory
+          if-no-files-found: warn
+          retention-days: 30
