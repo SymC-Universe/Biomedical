@@ -1,0 +1,63 @@
+{
+  "name": "GRI Stage D promotion contract",
+  "version": "0.1",
+  "status": "FROZEN_BEFORE_STAGE_D_BIOLOGICAL_OUTCOME_INSPECTION",
+  "promotion_is_score_based": false,
+  "master_stability_score_allowed": false,
+  "gates": [
+    {
+      "id": "D-P1",
+      "name": "PARENT_PERTURBATION",
+      "requirement": "The independently defined parent layer changes relative to matched control/noise under the frozen representation.",
+      "failure_label": "NO_DETECTABLE_PARENT_PERTURBATION"
+    },
+    {
+      "id": "D-P2",
+      "name": "CHILD_PREDICTION",
+      "requirement": "The parent perturbation representation predicts later independently measured child state above generic, scrambled, and capacity-matched controls under the frozen detector family.",
+      "failure_label": "NO_PREDICTIVE_TRANSPORT_SUPPORT"
+    },
+    {
+      "id": "D-P3",
+      "name": "TECHNICAL_CONTEXT_ATTACK",
+      "requirement": "D-P2 survives prespecified technical/context/composition attacks where evaluable or is explicitly narrowed to a context-sensitive state.",
+      "failure_label": "CONTEXT_OR_TECHNICAL_SENSITIVE"
+    },
+    {
+      "id": "D-P4",
+      "name": "RECOVERY_PERSISTENCE",
+      "requirement": "Perturbation withdrawal produces measurable return/persistence structure and the parent representation predicts persistence or return under the frozen endpoint/model rules.",
+      "failure_label": "NO_RECOVERY_PREDICTION_SUPPORT"
+    },
+    {
+      "id": "D-P5",
+      "name": "INDEPENDENT_TRANSFORMATION_GENERALIZATION",
+      "requirement": "A recovery-associated signature frozen from D1/D2 before D3/D4 outcome inspection generalizes to at least one independent experimentally ordered transformation/resistance challenge in the prespecified direction.",
+      "failure_label": "NO_TRANSFORMATION_GENERALIZATION"
+    },
+    {
+      "id": "D-P6",
+      "name": "INTERVENTION_SPECIFICITY",
+      "requirement": "The observed parent-child response cannot be reproduced equally well by generic shared-state, shuffled-carrier, capacity-matched, or prespecified alternative controls.",
+      "failure_label": "INFLUENCE_ONLY_OR_NONSPECIFIC"
+    }
+  ],
+  "allowed_states": [
+    "NO_DETECTABLE_INFLUENCE_UNDER_SUPPORTED_DETECTORS",
+    "SUBSTRATE_INFLUENCE",
+    "CONDITIONAL_INHERITANCE_SUPPORT",
+    "PERTURBATION_PREDICTION_SUPPORT",
+    "RECOVERY_ASSOCIATION_SUPPORT",
+    "TRANSFORMATION_GENERALIZATION_SUPPORT",
+    "NONLINEAR_ONLY_SUPPORT",
+    "COMPOSITION_SENSITIVE",
+    "ASSAY_SENSITIVE",
+    "CONTEXT_DEPTH_SENSITIVE",
+    "NONIDENTIFIABLE",
+    "OUT_OF_DOMAIN",
+    "REFUSE"
+  ],
+  "nonlinear_negative_rule": "A negative result under the linear detector family is not promoted to NO_RELATIONSHIP because prior synthetic validation retained a nonlinear-only failure.",
+  "higher_gate_failure_rule": "Failure at a higher gate narrows the Stage-D extension but cannot erase a lower gate that was independently satisfied.",
+  "claim_ceiling": "No Stage-D result may establish clinical utility, a universal substrate-inheritance law, a causal malignant-transition mechanism, or biological chi without a separately frozen future protocol specifically testing that claim."
+}
