@@ -1,1 +1,0 @@
-Use branch HEAD after this commit as the setup snapshot for workflow inspection.
