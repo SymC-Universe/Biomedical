@@ -1,0 +1,1 @@
+At this commit, user action is not required while GitHub metadata-only preflight executes. Kaggle fallback only if live metadata access fails.
