@@ -1,0 +1,11 @@
+{
+  "status": "D0_METADATA_PREFLIGHT_ACTIVE",
+  "date": "2026-09-08",
+  "branch": "gri-stage-d-perturbation-recovery",
+  "user_action_required_now": false,
+  "reason": "GitHub metadata-only preflight is configured to run automatically on branch changes. Kaggle fallback is required only if the live NCBI metadata inventory fails for network/service reasons.",
+  "next_if_pass": "Review D0 metadata artifact and build D0.2 assay-overlap/design audit.",
+  "next_if_fail_mechanical": "Repair preflight without changing Stage-D science.",
+  "next_if_fail_network": "User runs the three-cell Kaggle Phase-A metadata procedure and returns STAGE_D_D0_METADATA_RETURN.zip.",
+  "biological_matrix_access_allowed": false
+}
