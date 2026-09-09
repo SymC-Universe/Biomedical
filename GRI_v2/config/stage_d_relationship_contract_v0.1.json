@@ -1,0 +1,50 @@
+{
+  "name": "GRI Stage D scalar-modal-conglomeration relationship contract",
+  "version": "0.1",
+  "status": "FROZEN_BEFORE_STAGE_D_BIOLOGICAL_OUTCOME_INSPECTION",
+  "required_views": ["SCALAR", "MODAL", "CONGLOMERATION"],
+  "master_score_computed": false,
+  "relationship_layer_R": {
+    "purpose": "Report agreement and disagreement among the three required views without forcing them to a common scalar.",
+    "allowed_states": [
+      "CROSS_VIEW_COHERENCE",
+      "SCALAR_ONLY",
+      "MODAL_ONLY",
+      "CONGLOMERATION_ONLY",
+      "SCALAR_MODAL_WITHOUT_CONGLOMERATION",
+      "SCALAR_CONGLOMERATION_WITHOUT_MODAL",
+      "MODAL_CONGLOMERATION_WITHOUT_SCALAR",
+      "NO_VIEW_SUPPORT",
+      "RELATIONSHIP_UNRESOLVED"
+    ]
+  },
+  "uncertainty_layer_U": {
+    "required_status_per_view": true,
+    "allowed_statuses": ["BOUNDED", "UNRESOLVED", "NOT_AVAILABLE"],
+    "rule": "Precision in one view cannot erase uncertainty or nonidentifiability in another required view."
+  },
+  "lineage_diagnostics": {
+    "allowed": true,
+    "promotion_semantics": false,
+    "track": [
+      "persistence",
+      "splitting",
+      "mixing",
+      "reconvergence",
+      "extinction"
+    ],
+    "relative_flow_is_probability": false,
+    "relative_flow_is_causal_fraction": false,
+    "relative_flow_is_inheritance_percentage": false
+  },
+  "multi_parent_attribution": {
+    "allowed_when_inputs_exist": true,
+    "methods": [
+      "leave_one_source_out",
+      "subset_inclusion_exclusion",
+      "pair_interactions",
+      "higher_order_residual"
+    ],
+    "normalize_effects_to_unit_sum": false
+  }
+}
