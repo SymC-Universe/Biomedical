@@ -1,5 +1,13 @@
 import csv
-from src.stage_d_design_inventory import run
+import importlib.util
+from pathlib import Path
+
+_spec = importlib.util.spec_from_file_location(
+    "stage_d_design_inventory", Path(__file__).resolve().parents[1] / "src" / "stage_d_design_inventory.py"
+)
+_module = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(_module)
+run = _module.run
 
 
 def test_preserves_repeated_accessions_without_inventing_biological_n(tmp_path):
