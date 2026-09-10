@@ -49,6 +49,12 @@ jobs:
           --registry GRI_v2/config/stage_d_dataset_registry_v0.1.json
           --out GRI_v2/artifacts/stage_d/d0_metadata_inventory
 
+      - name: Build row-preserving design inventory
+        run: >-
+          python GRI_v2/src/stage_d_design_inventory.py
+          --source GRI_v2/artifacts/stage_d/d0_metadata_inventory
+          --out GRI_v2/artifacts/stage_d/d0_metadata_inventory/design_inventory
+
       - name: Verify no numeric biological matrices were opened
         run: |
           python - <<'PY'
