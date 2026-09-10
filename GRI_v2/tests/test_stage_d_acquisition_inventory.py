@@ -19,6 +19,22 @@ def test_geo_bucket_mapping():
     assert m._series_bucket("GSE91071") == "GSE91nnn"
 
 
+def test_geo_metadata_url_is_brief_only():
+    m = _load_module()
+    series_url = m._geo_metadata_url("GSE216989", "self")
+    samples_url = m._geo_metadata_url("GSE216989", "gsm")
+    assert "view=brief" in series_url
+    assert "view=brief" in samples_url
+    assert "form=text" in series_url
+    assert "form=text" in samples_url
+    assert "targ=self" in series_url
+    assert "targ=gsm" in samples_url
+    for url in (series_url, samples_url):
+        assert "view=full" not in url
+        assert "view=data" not in url
+        assert "view=quick" not in url
+
+
 def test_soft_parser_minimal(tmp_path):
     m = _load_module()
     text = """^SERIES = GSE1\n!Series_title = Demo\n^SAMPLE = GSM1\n!Sample_title = Control\n!Sample_characteristics_ch1 = treatment: vehicle\n!Sample_characteristics_ch1 = time: day 0\n!Sample_platform_id = GPL1\n^DATABASE = GeoMiame\n"""
