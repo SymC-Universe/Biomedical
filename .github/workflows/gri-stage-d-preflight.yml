@@ -15,10 +15,16 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: gri-stage-d-preflight-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   unit-and-metadata-preflight:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    # FREE-USAGE GUARD: standard GitHub-hosted Linux runner only.
+    # Do not replace with larger-runner, GPU, or paid runner-group labels.
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,7 +35,7 @@ jobs:
           python-version: '3.12'
 
       - name: Install test dependency
-        run: python -m pip install --disable-pip-version-check pytest
+        run: python -m pip install --disable-pip-version-check -q pytest
 
       - name: Compile Stage D source
         run: python -m py_compile GRI_v2/src/stage_d_acquisition_inventory.py
@@ -52,15 +58,18 @@ jobs:
           d = json.loads(p.read_text())
           assert d['scientific_outputs_opened'] is False
           assert d['numeric_biological_matrices_opened'] is False
+          assert d['full_geo_family_soft_downloaded'] is False
+          assert d['series_matrix_downloaded'] is False
+          assert d['supplementary_numeric_files_downloaded'] is False
           assert d['status'] == 'PASS_METADATA_ONLY'
           print('Stage D metadata-only firewall PASS')
           PY
 
-      - name: Upload metadata-only preflight artifact
-        if: always()
+      - name: Upload compact metadata-only preflight artifact
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: gri-stage-d-d0-metadata-preflight
           path: GRI_v2/artifacts/stage_d/d0_metadata_inventory
-          if-no-files-found: warn
-          retention-days: 30
+          if-no-files-found: error
+          retention-days: 1
