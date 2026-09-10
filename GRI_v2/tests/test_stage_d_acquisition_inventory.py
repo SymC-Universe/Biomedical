@@ -47,3 +47,33 @@ def test_soft_parser_minimal(tmp_path):
     assert samples[0]["geo_accession"] == "GSM1"
     assert samples[0]["Sample_title"] == "Control"
     assert samples[0]["Sample_characteristics_ch1"] == ["treatment: vehicle", "time: day 0"]
+
+
+def test_export_preserves_channels_and_repeated_records(tmp_path):
+    import csv
+    m = _load_module()
+    row = {"geo_accession": "GSM1", "Sample_source_name_ch2": "treated", "Sample_characteristics_ch2": ["dose: 10", "time: 7"]}
+    path = tmp_path / "samples.csv"
+    m.write_sample_csv([row, row.copy()], path)
+    with path.open() as f:
+        saved = list(csv.DictReader(f))
+    assert len(saved) == 2
+    assert saved[0]["Sample_source_name_ch2"] == "treated"
+    assert saved[1]["Sample_characteristics_ch2"] == '["dose: 10", "time: 7"]'
+
+
+def test_parser_retains_sample_before_next_series():
+    m = _load_module()
+    _, samples = m.parse_soft_text("^SAMPLE = GSM1\n!Sample_title = retained\n^SERIES = GSE2\n")
+    assert samples == [{"geo_accession": "GSM1", "Sample_title": "retained"}]
+
+
+def test_inventory_rejects_wrong_series(tmp_path, monkeypatch):
+    import json
+    import pytest
+    m = _load_module()
+    registry = tmp_path / "registry.json"
+    registry.write_text(json.dumps({"status": "FROZEN_BEFORE_STAGE_D_BIOLOGICAL_OUTCOME_INSPECTION", "datasets": [{"stage_id": "D1", "primary_accession": "GSE1"}]}))
+    monkeypatch.setattr(m, "_fetch_text", lambda url: "^SERIES = GSE2\n" if "targ=self" in url else "^SAMPLE = GSM1\n")
+    with pytest.raises(RuntimeError, match="identity mismatch"):
+        m.run(registry, tmp_path / "out")

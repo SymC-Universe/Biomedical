@@ -13,7 +13,7 @@
     "D6_MANUSCRIPT_INTEGRATION",
     "FINAL_ADVERSARIAL_AUDIT"
   ],
-  "current_state": "D0_METADATA_PREFLIGHT",
+  "current_state": "D0_DESIGN_AUDIT",
   "biological_outcome_access_allowed_states": [
     "D1_PRIMARY_RECOVERY",
     "D2_TEMPORAL_REPLICATION",

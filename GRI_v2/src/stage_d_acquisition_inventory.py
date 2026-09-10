@@ -84,6 +84,8 @@ def parse_soft_text(text: str) -> Tuple[dict, List[dict]]:
         line = raw.rstrip("\n")
         if line.startswith("^SERIES = "):
             series["geo_accession"] = [line.split("=", 1)[1].strip()]
+            if current is not None:
+                samples.append(current)
             current = None
         elif line.startswith("^SAMPLE = "):
             if current is not None:
@@ -163,6 +165,8 @@ def write_sample_csv(rows: Iterable[dict], path: Path) -> None:
         "Sample_supplementary_file",
         "Sample_relation",
     ]
+    # Preserve every source field, including second-channel assay metadata.
+    keys += sorted({key for row in rows for key in row} - set(keys))
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=keys, extrasaction="ignore")
@@ -193,6 +197,13 @@ def run(registry_path: Path, out_dir: Path) -> dict:
             samples_text = _fetch_text(samples_url)
             series, _ = parse_soft_text(series_text)
             _, samples = parse_soft_text(samples_text)
+            if series.get("geo_accession") != accession:
+                raise RuntimeError(f"Series identity mismatch for {accession}")
+            if not samples or any(not re.fullmatch(r"GSM\d+", str(s.get("geo_accession", ""))) for s in samples):
+                raise RuntimeError(f"Missing or invalid sample metadata for {accession}")
+            # Preserve source text as retrieved, before adding inventory fields.
+            (out_dir / f"{accession}_series_brief.soft").write_text(series_text, encoding="utf-8")
+            (out_dir / f"{accession}_samples_brief.soft").write_text(samples_text, encoding="utf-8")
 
             for s in samples:
                 s["stage_id"] = stage_id
