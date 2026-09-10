@@ -1,0 +1,90 @@
+{
+  "name": "GRI Stage D dataset registry",
+  "version": "0.1",
+  "status": "FROZEN_BEFORE_STAGE_D_BIOLOGICAL_OUTCOME_INSPECTION",
+  "date_frozen": "2026-09-08",
+  "branch": "gri-stage-d-perturbation-recovery",
+  "science_firewall": {
+    "stage_c1_immutable": true,
+    "p0_final_holdout_closed": true,
+    "static_coordinate_may_be_called_resilience": false,
+    "tumor_stage_is_transformation_pseudotime": false,
+    "resampling_variance_is_temporal_fluctuation": false,
+    "master_stability_score_allowed": false,
+    "biological_chi_allowed": false,
+    "clinical_diagnostic_claim_allowed": false
+  },
+  "datasets": [
+    {
+      "stage_id": "D1",
+      "primary_accession": "GSE216989",
+      "associated_accessions": ["GSE216986"],
+      "role": "PRIMARY_PERTURBATION_WITHDRAWAL_RECOVERY",
+      "perturbation": "decitabine",
+      "required_layers": ["DNA_METHYLATION", "RNA"],
+      "optional_layers": ["PROMOTER_CAPTURE_HIC"],
+      "primary_question": "Does acute methylation perturbation predict later RNA and/or chromatin persistence after perturbation withdrawal?",
+      "drop_if_unfavorable": false
+    },
+    {
+      "stage_id": "D2",
+      "primary_accession": "GSE20945",
+      "associated_accessions": [],
+      "role": "TEMPORAL_RECOVERY_REPLICATION",
+      "perturbation": "decitabine",
+      "required_layers": ["DNA_METHYLATION", "RNA"],
+      "optional_layers": [],
+      "primary_question": "Is a recovery trajectory identifiable over multiple post-treatment time points and do frozen Stage-D coordinates predict that trajectory?",
+      "drop_if_unfavorable": false
+    },
+    {
+      "stage_id": "D3",
+      "primary_accession": "GSE231780",
+      "associated_accessions": ["GSE231778"],
+      "role": "EXPERIMENTALLY_ORDERED_TRANSFORMATION_CHALLENGE",
+      "perturbation": "serial transformation",
+      "required_layers": ["DNA_METHYLATION", "RNA"],
+      "optional_layers": [],
+      "primary_question": "Do D1/D2-frozen recovery-associated signatures generalize to an independently ordered malignant-transformation sequence?",
+      "drop_if_unfavorable": false
+    },
+    {
+      "stage_id": "D4",
+      "primary_accession": "GSE91071",
+      "associated_accessions": ["GSE91069"],
+      "role": "TRANSFORMATION_RESISTANCE_CONTRAST",
+      "perturbation": "senescence/immortalization/oncogene exposure",
+      "required_layers": ["DNA_METHYLATION", "RNA"],
+      "optional_layers": [],
+      "primary_question": "Do D1/D2-frozen recovery-associated signatures distinguish transformable from refractory/resistant states under supported detectors?",
+      "drop_if_unfavorable": false
+    }
+  ],
+  "required_provenance_fields": [
+    "accession",
+    "filename",
+    "authoritative_source",
+    "byte_size",
+    "sha256",
+    "assay_type",
+    "sample_manifest_sha256",
+    "platform_annotation",
+    "date_acquired",
+    "raw_or_processed",
+    "transformation_steps",
+    "software_environment"
+  ],
+  "execution_order": [
+    "POST_C1_V2_1_CONTINUES_INDEPENDENTLY",
+    "D0_ACQUISITION_AND_SAMPLE_MANIFESTS",
+    "D0_FEATURE_AND_MODEL_FREEZE",
+    "D1_PRIMARY_RECOVERY",
+    "D2_TEMPORAL_REPLICATION",
+    "FREEZE_D1_D2_RECOVERY_SIGNATURES",
+    "D3_TRANSFORMATION_CHALLENGE",
+    "D4_RESISTANCE_CONTRAST",
+    "FROZEN_NULLS_AND_TECHNICAL_ATTACKS",
+    "MANUSCRIPT_INTEGRATION",
+    "EXTERNAL_ADVERSARIAL_REVIEW"
+  ]
+}

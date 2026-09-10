@@ -1,0 +1,81 @@
+name: GRI Stage D preflight
+
+on:
+  push:
+    branches:
+      - gri-stage-d-perturbation-recovery
+    paths:
+      - 'GRI_v2/protocol/STAGE_D_*'
+      - 'GRI_v2/config/stage_d_*'
+      - 'GRI_v2/src/stage_d_*'
+      - 'GRI_v2/tests/test_stage_d_*'
+      - '.github/workflows/gri-stage-d-preflight.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gri-stage-d-preflight-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unit-and-metadata-preflight:
+    # FREE-USAGE GUARD: standard GitHub-hosted Linux runner only.
+    # Do not replace with larger-runner, GPU, or paid runner-group labels.
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install test dependency
+        run: python -m pip install --disable-pip-version-check -q pytest
+
+      - name: Compile Stage D source
+        run: python -m py_compile GRI_v2/src/stage_d_acquisition_inventory.py
+
+      - name: Run Stage D unit and free-usage policy tests
+        run: python -m pytest -q GRI_v2/tests/test_stage_d_*.py
+
+      - name: Run metadata-only GEO inventory
+        run: >-
+          python GRI_v2/src/stage_d_acquisition_inventory.py
+          --registry GRI_v2/config/stage_d_dataset_registry_v0.1.json
+          --out GRI_v2/artifacts/stage_d/d0_metadata_inventory
+
+      - name: Build row-preserving design inventory
+        run: >-
+          python GRI_v2/src/stage_d_design_inventory.py
+          --source GRI_v2/artifacts/stage_d/d0_metadata_inventory
+          --out GRI_v2/artifacts/stage_d/d0_metadata_inventory/design_inventory
+
+      - name: Verify no numeric biological matrices were opened
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('GRI_v2/artifacts/stage_d/d0_metadata_inventory/D0_METADATA_AUDIT.json')
+          d = json.loads(p.read_text())
+          assert d['scientific_outputs_opened'] is False
+          assert d['numeric_biological_matrices_opened'] is False
+          assert d['full_geo_family_soft_downloaded'] is False
+          assert d['series_matrix_downloaded'] is False
+          assert d['supplementary_numeric_files_downloaded'] is False
+          assert d['status'] == 'PASS_METADATA_ONLY'
+          print('Stage D metadata-only firewall PASS')
+          PY
+
+      - name: Upload compact metadata-only preflight artifact
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-stage-d-d0-metadata-preflight
+          path: GRI_v2/artifacts/stage_d/d0_metadata_inventory
+          if-no-files-found: error
+          retention-days: 1

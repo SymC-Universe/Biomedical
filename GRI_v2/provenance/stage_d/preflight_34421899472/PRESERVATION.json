@@ -1,0 +1,12 @@
+{
+  "run_id": 34421899472,
+  "artifact_id": 10131198025,
+  "source_commit": "88d6b8f4d94c6ac86f0ba4b781a78034b178522a",
+  "files_sha256": {
+    "SUPPLEMENTARY_FILE_LIST.csv": "e19010a74773da0406efa82251efb47782f380432f8c35241b23f94498331c03",
+    "D0_METADATA_AUDIT.json": "43a9241e5155930428ddb3ad21f574e1b79985c6277400dbf3ed01c775188b6a",
+    "SAMPLE_MANIFEST_RAW.csv": "def8076eb9bce5fd6efd07765cc53fb3da6d5cd87035aae386f9a0e4343803cd"
+  },
+  "source_rows_removed": 0,
+  "note": "Original CSV lacks unexported fields; preserve as historical evidence, not a complete design manifest."
+}

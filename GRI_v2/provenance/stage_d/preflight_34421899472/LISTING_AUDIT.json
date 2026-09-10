@@ -1,0 +1,39 @@
+{
+  "counts_are_not_independent_biological_sample_sizes": true,
+  "stages": {
+    "D1": {
+      "source_rows": 32,
+      "distinct_gsm_accessions": 24,
+      "platform_listing_counts": {
+        "GPL21145": 16,
+        "GPL24676": 16
+      }
+    },
+    "D2": {
+      "source_rows": 55,
+      "distinct_gsm_accessions": 55,
+      "platform_listing_counts": {
+        "GPL4133": 13,
+        "GPL8490": 22,
+        "GPL13534": 9,
+        "GPL6480": 11
+      }
+    },
+    "D3": {
+      "source_rows": 22,
+      "distinct_gsm_accessions": 16,
+      "platform_listing_counts": {
+        "GPL24676": 10,
+        "GPL20795": 12
+      }
+    },
+    "D4": {
+      "source_rows": 70,
+      "distinct_gsm_accessions": 39,
+      "platform_listing_counts": {
+        "GPL13534": 62,
+        "GPL10332": 8
+      }
+    }
+  }
+}

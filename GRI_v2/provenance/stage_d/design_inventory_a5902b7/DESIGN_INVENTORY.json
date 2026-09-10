@@ -1,0 +1,72 @@
+{
+  "status": "PASS_ROW_PRESERVATION_DESIGN_UNRESOLVED",
+  "source_rows": 179,
+  "output_rows": 179,
+  "source_rows_removed": 0,
+  "stages": {
+    "D1": {
+      "source_rows": 32,
+      "distinct_gsm_accessions": 24,
+      "rows_with_second_channel": 0,
+      "platform_listing_counts": {
+        "GPL21145": 16,
+        "GPL24676": 16
+      },
+      "independent_biological_n": null
+    },
+    "D2": {
+      "source_rows": 55,
+      "distinct_gsm_accessions": 55,
+      "rows_with_second_channel": 24,
+      "platform_listing_counts": {
+        "GPL4133": 13,
+        "GPL8490": 22,
+        "GPL13534": 9,
+        "GPL6480": 11
+      },
+      "independent_biological_n": null
+    },
+    "D3": {
+      "source_rows": 22,
+      "distinct_gsm_accessions": 16,
+      "rows_with_second_channel": 0,
+      "platform_listing_counts": {
+        "GPL24676": 10,
+        "GPL20795": 12
+      },
+      "independent_biological_n": null
+    },
+    "D4": {
+      "source_rows": 70,
+      "distinct_gsm_accessions": 39,
+      "rows_with_second_channel": 8,
+      "platform_listing_counts": {
+        "GPL13534": 62,
+        "GPL10332": 8
+      },
+      "independent_biological_n": null
+    }
+  },
+  "biological_matrix_access": false,
+  "scientific_eligibility_assigned": false,
+  "source_sha256": {
+    "D0_METADATA_AUDIT.json": "43a9241e5155930428ddb3ad21f574e1b79985c6277400dbf3ed01c775188b6a",
+    "GSE20945_samples_brief.soft": "1778ff8cf2a84c2efc1115350d5bbebda822609b62e8d3f7f783618802dea777",
+    "GSE20945_series_brief.soft": "b3a4d510ebf8f3edd6a3e6ca41234980e1cb679b4ac640e2cf5731b38fb23825",
+    "GSE216986_samples_brief.soft": "06f31135f60c685040dc2bac8c72adcb339bf1850ccebfc6e8533beeddaa1573",
+    "GSE216986_series_brief.soft": "8ad22f73da09cf107a1195ac3d6bab289d9757a0779d0e0545fe9e0ea0b2a970",
+    "GSE216989_samples_brief.soft": "5d6abd2d75884b3d4801c394466d765572f806f316b6de2e17fa0d2b0ebf7ded",
+    "GSE216989_series_brief.soft": "107a696dcc9408ab47783b5659fd9c757b84a5f6b342bdd42724113f67ffaa3f",
+    "GSE231778_samples_brief.soft": "eaf6f5552b13b5857c238ba43c6ccf97da7bf16727a78bed38136d9856d35bc7",
+    "GSE231778_series_brief.soft": "681abc4e92772c4223ac1ee9aa7605e6b15ad5fffca331809568c5ade76ced71",
+    "GSE231780_samples_brief.soft": "61d8d1e500e338baf491d15a4332769424645d071ba7b056d2b2033275891ed9",
+    "GSE231780_series_brief.soft": "b7de4fb882e30ef78809af6bceb5094694e3bdcabafb6e3e14bb776ce0063184",
+    "GSE91069_samples_brief.soft": "d26836fae97e75050a8831e4ecd13a01d487bd25e147de2258dffc081d7db200",
+    "GSE91069_series_brief.soft": "07098c8007d9e1a00c1cb4b089a572066d7e5b01e33a9042a546912d7b12336f",
+    "GSE91071_samples_brief.soft": "9d31cf677bc667b51a626c5e59f4ca36c268d3f8d283c84a7f1cc2c7aa31e0ca",
+    "GSE91071_series_brief.soft": "9582f214fbd2363ff7895b56090134dcde8ae067197c5f7386b5dde36403c162",
+    "SAMPLE_MANIFEST_RAW.csv": "bafee6e831006cc949b37a8b76171e92442880c16b53c943a2299d235eea36e5",
+    "SUPPLEMENTARY_FILE_LIST.csv": "e19010a74773da0406efa82251efb47782f380432f8c35241b23f94498331c03"
+  },
+  "index_sha256": "589d93878e14ab18a4d99ccd54101abe338334a1f6741e0f9f97545853d338b9"
+}

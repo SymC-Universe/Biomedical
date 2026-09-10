@@ -1,0 +1,15 @@
+{
+  "status": "D0_DESIGN_AUDIT_SCIENTIFIC_RECONCILIATION_REQUIRED",
+  "date": "2026-09-10",
+  "branch": "gri-stage-d-perturbation-recovery",
+  "user_action_required_now": true,
+  "reason": "Metadata export repairs and framework audit; source timing and biological independence unresolved.",
+  "completed_run_id": 34421899472,
+  "completed_artifact_id": 10131198025,
+  "completed_artifact_size_bytes": 13148,
+  "completed_artifact_retention_days": 1,
+  "next_if_pass": "Approve a consolidated scientific amendment after reviewing STAGE_D_FRAMEWORK_AUDIT_20260910.md; D0.3 remains template.",
+  "next_if_fail_mechanical": "Repair execution mechanics without changing Stage-D science.",
+  "biological_matrix_access_allowed": false,
+  "audit_report": "GRI_v2/protocol/STAGE_D_FRAMEWORK_AUDIT_20260910.md"
+}
