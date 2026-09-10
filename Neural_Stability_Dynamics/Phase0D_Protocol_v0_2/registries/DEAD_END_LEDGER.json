@@ -1,0 +1,8 @@
+{
+  "schema": "nsd-dead-end-ledger-v0.2",
+  "items": [
+    {"id":"NSD-DEAD-001","object":"legacy output-only/ARX damping estimator as general NSD solution","status":"DEAD_END","reason":"poor/noisy output-only recovery and stable-looking incorrect estimates; unknown input and observation noise made the formulation misspecified for the intended general use","consequence":"do not revive as the organizing NSD engine without a new independent derivation and qualification"},
+    {"id":"NSD-DEAD-002","object":"broadband chi = spectral exponent / 2 construction","status":"DEAD_END","reason":"no licensed dynamical equivalence","consequence":"do not use as physical chi"},
+    {"id":"NSD-DEAD-003","object":"whole-head topology-destroying PSD average as structural representation","status":"DEAD_END","reason":"destroys spatial/modal information required by current System Model","consequence":"do not use as primary NSD structural input"}
+  ]
+}

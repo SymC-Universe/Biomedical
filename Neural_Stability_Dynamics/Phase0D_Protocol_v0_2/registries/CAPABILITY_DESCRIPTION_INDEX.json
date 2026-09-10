@@ -1,0 +1,17 @@
+{
+  "schema": "nsd-capability-description-index-v0.2",
+  "capabilities": {
+    "System Model scope": ["SYSTEM_MODEL.md","SCIENTIFIC_CONTRACT.md","README_FIRST.md"],
+    "selector input firewall": ["src/contracts.py","src/engine_interface.py","SCIENTIFIC_CONTRACT.md","README_FIRST.md","tests/test_protocol_compliance.py"],
+    "layer-separable structure": ["src/selector.py","SCIENTIFIC_CONTRACT.md","SYSTEM_MODEL.md","tests/test_protocol_compliance.py"],
+    "Layer C partial unresolved geometry": ["src/selector.py","configs/development_rules.json","SCIENTIFIC_CONTRACT.md","README_FIRST.md","tests/test_protocol_compliance.py"],
+    "confirmatory execution hold": ["local_runner.py","configs/P1_DESIGN_HOLD.json","PROJECT_STATE.md","README_FIRST.md"],
+    "byte integrity": ["src/integrity.py","scripts/make_candidate_manifest.py","scripts/verify_frozen_manifest.py","README_FIRST.md","tests/test_protocol_compliance.py"],
+    "semantic validation": ["src/semantic_validation.py","scripts/semantic_validate_results.py","README_FIRST.md","tests/test_protocol_compliance.py"],
+    "uncertainty hold": ["UNCERTAINTY_HOLD.md","configs/development_rules.json","registries/MFR14_DRAFT.json"],
+    "model adequacy hold": ["MODEL_ADEQUACY_HOLD.md","configs/development_rules.json","registries/MFR14_DRAFT.json"],
+    "known-bad qualification": ["KNOWN_BAD_QUALIFICATION.md","tests/test_known_bad_production_gates.py","tests/test_protocol_compliance.py","src/engine_interface.py"],
+    "environment capture": ["scripts/capture_environment.py","README_FIRST.md","registries/REPRODUCIBILITY_STATUS.json"],
+    "unequal local-order open channel": ["src/selector.py","configs/development_rules.json","SCIENTIFIC_CONTRACT.md","registries/OPEN_CHANNEL_REGISTRY.json","tests/test_protocol_compliance.py"]
+  }
+}

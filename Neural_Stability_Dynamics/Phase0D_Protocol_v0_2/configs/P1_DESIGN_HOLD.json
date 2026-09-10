@@ -1,0 +1,9 @@
+{
+  "schema": "nsd-phase0d-v0.2-p1-design-hold",
+  "status": "HOLD_NOT_FROZEN",
+  "protocol": "General Cross-Project Research Protocol v0.7.1 FINAL",
+  "reason": "A new untouched holdout may not be generated/frozen until MFR-05 comparator route, MFR-09 uncertainty/indeterminate rule, model-adequacy role, and unresolved-order-transition handling are settled.",
+  "scientific_holdout_seed": null,
+  "scientific_holdout_systems": null,
+  "scientific_holdout_executed": false
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "nsd-promotion-debt-v0.2",
+  "items": [
+    {"id":"NSD-DEBT-001","selection_status":"POST_RESULT_DISCOVERY","reason_selected":"Phase 0C v0.2 full-record order inflation contaminated local comparisons","observed_trigger":"q_full exceeded q_first/q_second on switch challenges","native_explanation_to_investigate":"mixture realization order versus local observable order","alternatives":["estimator artifact","finite-sample effect","general nonstationarity"],"required_followup":["P0 calibration","new untouched synthetic P1 holdout"],"current_status":"UNPAID"},
+    {"id":"NSD-DEBT-002","selection_status":"POST_RESULT_DISCOVERY","reason_selected":"Phase 0C system geometry failed inside near-degenerate crowded modes despite stable subspace","observed_trigger":"raw pairwise geometry unstable while invariant subspace remained stable","native_explanation_to_investigate":"non-identifiability of individual poles within crowded cluster","required_followup":["crowding-aware P0 calibration","new untouched synthetic P1 holdout"],"current_status":"UNPAID"},
+    {"id":"NSD-DEBT-003","selection_status":"POST_RESULT_DISCOVERY","reason_selected":"exact latent/strong-state count exceeded practical observable rank in repeatable realizations","observed_trigger":"lower selected order persisted across duration/noise","native_explanation_to_investigate":"effective observability and conditioning","required_followup":["known-truth recall/precision qualification","new untouched synthetic P1 holdout"],"current_status":"UNPAID"}
+  ]
+}

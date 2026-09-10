@@ -1,0 +1,18 @@
+{
+  "schema": "nsd-mfr14-draft-v0.2-p0",
+  "status": "INCOMPLETE_P0_NOT_FROZEN",
+  "MFR-01": {"status":"DRAFT","claim_id":"NSD-P0D02-METHOD-SCOPE","claim_text":"Candidate method-scope claim: the NSD Structural Engine can recover and separately adjudicate scalar spectral, modal/carrier and selected system-organization structure on known-truth multichannel stochastic systems within a declared validity regime.","scope":"synthetic method qualification only","scientific_question":"PENDING FINAL FREEZE","value_axis":"identifiability / structural recovery, not empirical added value","version":"v0.2"},
+  "MFR-02": {"status":"RECORDED","origins":["FRAMEWORK_DERIVED","DATA_DERIVED"],"note":"Three-layer architecture is framework-derived; local-order and crowding-aware corrections were developed after Phase 0C v0.2 results and therefore carry DATA_DERIVED promotion debt."},
+  "MFR-03": {"status":"DRAFT","target":"known synthetic poles, observable mode/subspace structure, participation and resolved relational geometry; production refusal behavior"},
+  "MFR-04": {"status":"INCOMPLETE","representation":"multichannel output-only SSI-COV local stochastic linear state-space estimator","validity_regime":"synthetic stationary/local-piecewise systems currently; real EEG not licensed","missing":["model-adequacy admission role","uncertainty-validity conditions"]},
+  "MFR-05": {"status":"BLOCKED","comparator_status":"PENDING_COMPARATOR_SEARCH","selection_route":"COMPARATOR_SELECTION_PLAN.md; source-of-record review required before freeze"},
+  "MFR-06": {"status":"PARTIAL","nulls":["1/f structured stochastic nulls","observation-map perturbation","timescale perturbation","structural/crowding perturbations"],"missing":["native comparator/alternative model after search"]},
+  "MFR-07": {"status":"PARTIAL","expected_response":"layer-separable synthetic behavior retained as candidate development semantics; final challenge set not frozen"},
+  "MFR-08": {"status":"PARTIAL","decision_rule":"legacy v0.1 thresholds retained for P0 regression only; final adjudication not frozen"},
+  "MFR-09": {"status":"BLOCKED","reason":"uncertainty and INDETERMINATE rule not yet justified","record":"UNCERTAINTY_HOLD.md"},
+  "MFR-10": {"status":"PARTIAL","known_dependence":"Phase 0C v0.2 is development/calibration evidence only for v0.2 architecture","future":"new untouched synthetic evidence required; real-data and atlas dependence map required"},
+  "MFR-11": {"status":"PARTIAL","record":"registries/MULTIPLICITY_REGISTER.json","note":"P1 family not frozen because decisive design does not yet exist"},
+  "MFR-12": {"status":"BLOCKED","freeze_identity":null,"engine_version":"v0.2 P0 development","atlas_version":"NOT_APPLICABLE_FOR_SYNTHETIC_METHOD_SCOPE","confirmatory_evidence":null},
+  "MFR-13": {"status":"DRAFT","falsifier":"failure of any layer-specific frozen recovery/refusal/adjudication criterion on the future untouched synthetic holdout; exact criteria pending final P1 freeze"},
+  "MFR-14": {"status":"DRAFT","failure_consequence":"failed layer/version is not qualified; preserve result; no retuning on same holdout; any revision requires new version and new untouched evidence"}
+}

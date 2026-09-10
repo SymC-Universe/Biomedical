@@ -1,0 +1,6 @@
+{
+  "schema": "nsd-multiplicity-register-v0.2-p0",
+  "status": "P0_NOT_FROZEN",
+  "current_search_space": {"estimator_family":["SSI-COV"],"candidate_orders_from_legacy_calibration":[2,4,6,8,10,12,14,16],"representation_layers":["scalar_spectrum","modal_carrier","system_organization"],"legacy_threshold_families":["order gap","pole split/cross-order","MAC","subspace similarity","participation TV","crowding ratio","relational geometry"],"development_challenge_families":["timescale","observation map","relative spectrum","crowding","1/f null"]},
+  "p1_rule": "Before a new holdout is generated, freeze every endpoint, window/duration, model order grid, threshold, system family, noise profile, subgroup/stratum and hierarchical decision/correction rule capable of affecting the claim."
+}

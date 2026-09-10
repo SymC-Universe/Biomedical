@@ -1,0 +1,39 @@
+{
+  "schema": "nsd-phase0d-v0.2-protocol-reconciliation-p0-milestone-v1",
+  "date": "2026-09-10",
+  "protocol_baseline": "General Cross-Project Research Protocol v0.7.1 FINAL",
+  "process_tier": "P0_EXPLORATORY_METHOD_DEVELOPMENT",
+  "status": "P0_PROTOCOL_RECONCILIATION_IMPLEMENTED_P1_BLOCKED",
+  "phase0c_v02_status": "OFFICIAL_PROSPECTIVE_FAIL_FAIL_FAIL_PRESERVED",
+  "phase0d_v01_status": "SUPERSEDED_BEFORE_EXECUTION_PROTOCOL_V0.7.1",
+  "phase0d_v02_p1_design_present": false,
+  "phase0d_v02_confirmatory_holdout_executed": false,
+  "engineering": {
+    "tests_passed": 36,
+    "python_compileall": "PASS",
+    "json_parse": "PASS",
+    "p0_development_runner": "PASS",
+    "confirmatory_guard_without_p1_ready": "PASS_BLOCKED_BEFORE_SCIENTIFIC_GENERATION",
+    "confirmatory_guard_exit_code": 3
+  },
+  "implemented": [
+    "closed production selector input contract",
+    "known-bad production gate qualification",
+    "candidate manifest separated from frozen-manifest verification",
+    "fail-closed P1 execution readiness gate",
+    "environment capture",
+    "independent core semantic summary validation",
+    "Layer C partial status when relational geometry is unresolved",
+    "unequal local order preserved as open-channel status",
+    "protocol registries and capability-description index"
+  ],
+  "active_scientific_holds": [
+    "native comparator selection",
+    "model adequacy/open-channel diagnostics",
+    "uncertainty and INDETERMINATE rule",
+    "unequal-order shared-mode identifiability",
+    "Neurostability Atlas qualification",
+    "scalar chi and empirical regime-boundary licensing"
+  ],
+  "next_gate": "domain-native evidence and derivation gate before any new P1 synthetic holdout freeze"
+}

@@ -1,0 +1,5 @@
+DO NOT RUN AS A P1 CONFIRMATORY HOLDOUT.
+
+Phase 0D v0.1 was superseded before scientific execution when General Cross-Project Research Protocol v0.7.1 became authoritative on 2026-09-10.
+
+Preserve the original frozen package and untouched status. Continue development in Phase 0D v0.2 under protocol v0.7.1.

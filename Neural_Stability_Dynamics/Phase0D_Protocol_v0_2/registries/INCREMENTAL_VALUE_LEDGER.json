@@ -1,0 +1,4 @@
+{
+  "schema": "nsd-incremental-value-ledger-v0.2",
+  "rows": [{"domain":"NSD","scientific_question":"PENDING FREEZE","comparator_status":"PENDING_COMPARATOR_SEARCH","metric":"PENDING","outcome":"NOT_TESTED","note":"No ADDS/EQUIVALENT/SUBTRACTS claim is authorized."}]
+}

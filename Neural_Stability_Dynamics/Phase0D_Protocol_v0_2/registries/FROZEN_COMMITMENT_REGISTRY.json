@@ -1,0 +1,7 @@
+{
+  "schema": "nsd-frozen-commitment-registry-v0.2",
+  "active_p1_commitments": [],
+  "historical": [{"version":"Phase0D v0.1","status":"SUPERSEDED_BEFORE_EXECUTION_PROTOCOL_V0.7.1","original_freeze_commit":"33232396377319952362ff9ff79174bf9246cf8e","scientific_holdout_executed":false}],
+  "working_p0_assumptions": ["segment-local observable-order principle","carrier/subspace treatment under crowding","Layer C structured/non-scalar representation","legacy thresholds retained only for regression"],
+  "note": "Working P0 assumptions may change with logging. No v0.2 scientific commitment is frozen until a complete MFR-14 and freeze artifact exist."
+}

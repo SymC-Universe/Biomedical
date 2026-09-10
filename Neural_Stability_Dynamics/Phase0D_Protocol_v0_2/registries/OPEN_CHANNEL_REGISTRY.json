@@ -1,0 +1,11 @@
+{
+  "schema": "nsd-open-channel-registry-v0.2",
+  "items": [
+    {"id":"NSD-OC-001","object":"model adequacy / residual structure","disposition":"PROMOTION_TRACK","status":"HOLD_UNQUALIFIED","next_test":"select and validate native model-adequacy diagnostics before P1 freeze"},
+    {"id":"NSD-OC-002","object":"estimator uncertainty / decision-boundary ambiguity","disposition":"PROMOTION_TRACK","status":"HOLD_UNQUALIFIED","next_test":"select uncertainty method and define INDETERMINATE rule before P1 freeze"},
+    {"id":"NSD-OC-003","object":"unequal local observable order","disposition":"UNRESOLVED","status":"OPEN","next_test":"derive/test shared-mode persistence plus added/lost-mode representation; current engine refuses cross-state claim"},
+    {"id":"NSD-OC-004","object":"native comparator for structural-regime task","disposition":"PROMOTION_TRACK","status":"PENDING_SEARCH","next_test":"frozen good-faith literature/benchmark search"},
+    {"id":"NSD-OC-005","object":"Neurostability Atlas","disposition":"DEFERRED_RESOURCE_LIMIT","status":"NOT_QUALIFIED","next_test":"begin only after structural engine P1 gate and real-data adequacy plan"},
+    {"id":"NSD-OC-006","object":"whole-system chi","disposition":"UNRESOLVED","status":"WITHHELD","next_test":"none unless a specific derivation and validation route emerges; do not manufacture"}
+  ]
+}

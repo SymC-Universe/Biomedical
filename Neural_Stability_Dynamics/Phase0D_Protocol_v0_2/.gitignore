@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+results/dev_validation/environment.json
+CANDIDATE_MANIFEST.sha256
+FREEZE_MANIFEST.sha256
+P1_READY.json
+results/phase0d_v02/

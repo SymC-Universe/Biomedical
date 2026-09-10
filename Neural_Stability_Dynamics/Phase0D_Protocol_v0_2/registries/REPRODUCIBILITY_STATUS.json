@@ -1,0 +1,8 @@
+{
+  "schema": "nsd-reproducibility-status-v0.2",
+  "R1_release_reproduction": "NOT_QUALIFIED_P0",
+  "R2_calculation_reproduction": "NOT_QUALIFIED_P0",
+  "R3_evidence_reconstruction": "NOT_APPLICABLE_TO_SYNTHETIC_ONLY_CURRENT_MILESTONE; required for future literature/atlas claims",
+  "current_integrity_features": ["candidate manifest generation","future frozen-manifest verification","environment capture","core semantic summary reconstruction"],
+  "missing_for_P2": ["clean-room release","dependency closure/pins","full semantic regeneration","benchmark datasets","validated atlas","external tests"]
+}
