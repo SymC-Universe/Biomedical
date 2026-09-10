@@ -1,0 +1,37 @@
+name: NSD Phase0D v0.2 P0 validation
+
+on:
+  push:
+    branches:
+      - neural-stability-dynamics-phase0d-v0.2-protocol-v0.7.1
+  workflow_dispatch:
+
+jobs:
+  p0-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install pinned P0 validation dependencies
+        run: python -m pip install numpy==2.3.5 scipy==1.17.0 pytest==9.0.2
+      - name: Run protocol and regression tests
+        working-directory: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2
+        run: python -m pytest -q
+      - name: Run P0 development guard
+        working-directory: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2
+        run: python dev_runner.py
+      - name: Prove P1 confirmatory execution remains blocked
+        working-directory: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2
+        shell: bash
+        run: |
+          set +e
+          python local_runner.py
+          rc=$?
+          set -e
+          if [ "$rc" -ne 3 ]; then
+            echo "Expected fail-closed exit 3, got $rc"
+            exit 1
+          fi
+          echo "P1 guard blocked execution as required."
