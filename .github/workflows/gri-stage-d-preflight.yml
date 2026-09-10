@@ -40,8 +40,8 @@ jobs:
       - name: Compile Stage D source
         run: python -m py_compile GRI_v2/src/stage_d_acquisition_inventory.py
 
-      - name: Run Stage D unit tests
-        run: python -m pytest -q GRI_v2/tests/test_stage_d_acquisition_inventory.py
+      - name: Run Stage D unit and free-usage policy tests
+        run: python -m pytest -q GRI_v2/tests/test_stage_d_*.py
 
       - name: Run metadata-only GEO inventory
         run: >-
