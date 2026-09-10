@@ -1,11 +1,14 @@
 {
-  "status": "D0_METADATA_PREFLIGHT_ACTIVE",
-  "date": "2026-09-08",
+  "status": "D0_METADATA_PREFLIGHT_PASS_D0_2_DESIGN_AUDIT_ACTIVE",
+  "date": "2026-09-09",
   "branch": "gri-stage-d-perturbation-recovery",
   "user_action_required_now": false,
-  "reason": "GitHub metadata-only preflight is configured to run automatically on branch changes. Kaggle fallback is required only if the live NCBI metadata inventory fails for network/service reasons.",
-  "next_if_pass": "Review D0 metadata artifact and build D0.2 assay-overlap/design audit.",
-  "next_if_fail_mechanical": "Repair preflight without changing Stage-D science.",
-  "next_if_fail_network": "User runs the three-cell Kaggle Phase-A metadata procedure and returns STAGE_D_D0_METADATA_RETURN.zip.",
+  "reason": "The repaired metadata-only GitHub preflight passed on a standard public-repository Ubuntu runner. Free-usage policy checks passed, the metadata-only firewall passed, and the compact artifact was generated successfully.",
+  "completed_run_id": 34421899472,
+  "completed_artifact_id": 10131198025,
+  "completed_artifact_size_bytes": 13148,
+  "completed_artifact_retention_days": 1,
+  "next_if_pass": "Build D0.2 assay-overlap/design audit from metadata only, then freeze D0.3 exact analysis choices before opening numeric biological matrices.",
+  "next_if_fail_mechanical": "Repair execution mechanics without changing Stage-D science.",
   "biological_matrix_access_allowed": false
 }
