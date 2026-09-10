@@ -1,0 +1,62 @@
+{
+  "name": "GRI Stage D compute routing",
+  "version": "0.2",
+  "status": "MECHANICAL_EXECUTION_AMENDMENT_NO_SCIENCE_CHANGE",
+  "supersedes": "stage_d_compute_routing_v0.1.json",
+  "authoritative_implementation": {
+    "repository": "SymC-Universe/Biomedical",
+    "branch": "gri-stage-d-perturbation-recovery",
+    "rule": "One canonical scientific implementation. Backend launchers may change paths/resources only."
+  },
+  "github": {
+    "repository_visibility_required_for_free_hosted_minutes": "public",
+    "allowed_runner_labels": ["ubuntu-latest", "ubuntu-24.04"],
+    "forbidden_runner_classes": [
+      "larger_runner",
+      "gpu_runner",
+      "paid_runner_group",
+      "custom_image_runner"
+    ],
+    "roles": [
+      "protocol_and_config_freeze",
+      "unit_and_synthetic_tests",
+      "metadata_only_preflight",
+      "compact_result_validation",
+      "provenance_and_hashes",
+      "figure_and_table_regeneration"
+    ],
+    "artifact_policy": {
+      "stage_d_preflight_retention_days": 1,
+      "large_raw_or_processed_biological_artifacts_forbidden": true,
+      "compact_metadata_and_validation_artifacts_only": true
+    },
+    "forbidden": [
+      "multi_gigabyte_third_party_data_commit",
+      "multi_gigabyte_actions_artifact",
+      "alternative_scientific_implementation"
+    ]
+  },
+  "kaggle": {
+    "roles": [
+      "large_public_data_download_and_cache",
+      "memory_heavy_EPIC_WGBS_RNA_contact_preprocessing",
+      "large_eigendecomposition",
+      "repeated_null_workloads",
+      "checkpointed_heavy_stage_d_runs"
+    ],
+    "working_state": "/kaggle/working/WORKING_STATE",
+    "return_dir": "/kaggle/working/RETURN_TO_CHAT",
+    "launcher_only": true
+  },
+  "powercell": {
+    "roles": [
+      "long_restart_sensitive_runs",
+      "independent_reruns",
+      "cross_backend_verification",
+      "jobs_inconvenient_for_kaggle_session_lifetime"
+    ],
+    "preserve_working_state": true,
+    "separate_from_c1_working_state": true
+  },
+  "science_change": false
+}
