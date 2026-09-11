@@ -1,11 +1,52 @@
 {
-  "schema": "nsd-open-channel-registry-v0.2",
+  "schema": "nsd-open-channel-registry-v1.0-system-model-lock",
+  "system_model_version": "1.0",
+  "protocol": "General Cross-Project Research Protocol v0.7.1 FINAL + authoritative v0.7.1A Addendum",
   "items": [
-    {"id":"NSD-OC-001","object":"model adequacy / residual structure","disposition":"PROMOTION_TRACK","status":"HOLD_UNQUALIFIED","next_test":"select and validate native model-adequacy diagnostics before P1 freeze"},
-    {"id":"NSD-OC-002","object":"estimator uncertainty / decision-boundary ambiguity","disposition":"PROMOTION_TRACK","status":"HOLD_UNQUALIFIED","next_test":"select uncertainty method and define INDETERMINATE rule before P1 freeze"},
-    {"id":"NSD-OC-003","object":"unequal local observable order","disposition":"UNRESOLVED","status":"OPEN","next_test":"derive/test shared-mode persistence plus added/lost-mode representation; current engine refuses cross-state claim"},
-    {"id":"NSD-OC-004","object":"native comparator for structural-regime task","disposition":"PROMOTION_TRACK","status":"PENDING_SEARCH","next_test":"frozen good-faith literature/benchmark search"},
-    {"id":"NSD-OC-005","object":"Neurostability Atlas","disposition":"DEFERRED_RESOURCE_LIMIT","status":"NOT_QUALIFIED","next_test":"begin only after structural engine P1 gate and real-data adequacy plan"},
-    {"id":"NSD-OC-006","object":"whole-system chi","disposition":"UNRESOLVED","status":"WITHHELD","next_test":"none unless a specific derivation and validation route emerges; do not manufacture"}
+    {
+      "id":"NSD-OC-001",
+      "object":"model adequacy / residual structure",
+      "disposition":"PROMOTION_TRACK",
+      "status":"P0D_ARCHITECTURE_SUPPORTED_P0Q_ADJUDICATION_UNFROZEN",
+      "evidence":"P0D4_MODEL_ADEQUACY_RESULT_20260911.md",
+      "next_test":"define claim-specific non-aggregated adequacy adjudication and qualify it on new independent P0-Q evidence"
+    },
+    {
+      "id":"NSD-OC-002",
+      "object":"estimator uncertainty / decision-boundary ambiguity",
+      "disposition":"PROMOTION_TRACK",
+      "status":"P0D_NATIVE_HANKEL_FOUNDATION_PROMISING_SCALE_BIAS_UNRESOLVED",
+      "evidence":"P0-D5 native-Hankel calibration: log-variance correlation about 0.967-0.975 with duration/batch-dependent variance-scale bias",
+      "next_test":"map batch-count/duration scaling without selecting a rule on the same evidence; then independently qualify any correction before pole/modal propagation"
+    },
+    {
+      "id":"NSD-OC-003",
+      "object":"unequal local observable order",
+      "disposition":"UNRESOLVED",
+      "status":"OPEN_SYSTEM_MODEL_OBJECT_FROZEN_IMPLEMENTATION_UNQUALIFIED",
+      "next_test":"derive/test shared-mode persistence plus added/lost-mode representation; do not force equal-order comparison"
+    },
+    {
+      "id":"NSD-OC-004",
+      "object":"native comparator for structural-regime task",
+      "disposition":"PROMOTION_TRACK",
+      "status":"SUBSPACE_DMD_P0Q1_FAILED_AND_NUMERICAL_REPLAY_DISCREPANCY_OPEN",
+      "evidence":"Frozen P0Q1: 2/5 real-pole false admissions, zero exceptions. Current unchanged-code replay: 1/5 false admission plus one method exception. Core DMD/rank files unchanged and dependencies pinned identically.",
+      "next_test":"forensic environment/backend reproducibility matrix at the frozen P0Q1 commit; comparator issue does not alter System Model v1.0"
+    },
+    {
+      "id":"NSD-OC-005",
+      "object":"Neurostability Atlas",
+      "disposition":"NEXT_QUEUED_OBJECT",
+      "status":"COORDINATE_MAP_V0_1_OPEN_AFTER_SYSTEM_MODEL_V1_LOCK",
+      "next_test":"freeze Atlas coordinate schema, provenance/independence fields, coordinate eligibility rules, and source-intake map before populating values"
+    },
+    {
+      "id":"NSD-OC-006",
+      "object":"whole-system chi",
+      "disposition":"UNRESOLVED",
+      "status":"WITHHELD_BY_SYSTEM_MODEL_V1",
+      "next_test":"none unless a specific native second-order derivation and validation route emerges; do not manufacture"
+    }
   ]
 }
