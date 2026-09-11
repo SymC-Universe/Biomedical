@@ -1,0 +1,40 @@
+{
+  "schema": "nsd-neurostability-atlas-source-ledger-v0.1",
+  "protocol": "General Cross-Project Research Protocol v0.7.1 FINAL + authoritative v0.7.1A Addendum",
+  "system_model": "NSD System Model v1.0 ARCHITECTURE_LOCKED",
+  "status": "ACTIVE_EMPTY_LEDGER_READY_FOR_SOURCE_INVENTORY",
+  "entry_requirements": [
+    "source_id",
+    "source_type",
+    "citation_or_dataset_identity",
+    "source_version_or_access_date",
+    "coordinate_family",
+    "coordinate_name",
+    "native_or_derived",
+    "value_or_object",
+    "units",
+    "estimator_method",
+    "population_system_context",
+    "recording_task_state_context",
+    "sampling_preprocessing_window_context",
+    "evidence_tier",
+    "research_role",
+    "function_limit_state",
+    "uncertainty_identifiability_status",
+    "derivation_record_if_any",
+    "independence_pathways",
+    "scope_ceiling",
+    "limitations_nonclaims"
+  ],
+  "independence_pathways_required": [
+    "data",
+    "cohort_system",
+    "outcome_label",
+    "parameter_tuning",
+    "method_estimator",
+    "atlas",
+    "source_literature",
+    "temporal_decisive_evidence"
+  ],
+  "entries": []
+}
