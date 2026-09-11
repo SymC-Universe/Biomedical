@@ -73,9 +73,11 @@ Known-bad tests exist for these controls, and the machine-readable schema is now
 
 Without selecting a decisive P1 cohort or examining GRI performance on external candidates, source-of-record discovery has identified:
 
+- `GSE262522 + GSE262524 + GSE237995`: prostate study with 68 HumanMethylation450 arrays + 53 MethylationEPIC arrays = 121 methylation arrays total, plus 121 RNA-seq samples. Published methods combine the two methylation platforms on 449,636 shared probes. Individual identifiers occur across methylation and RNA records, while exact 121-to-121 cross-modality bijection remains to be mechanically enumerated. This is now a very-high-priority static external and platform-transport candidate;
 - `GSE66836 + GSE66863`: lung adenocarcinoma 450K methylation plus Agilent expression, with 121 source-declared matched tumor sample numbers;
-- `GSE262522 + GSE237995`: prostate 450K methylation plus RNA-seq study family, with 68 methylation samples and 121 RNA samples; exact paired intersection still to be enumerated;
-- `CGGA CCell_4083`: 35-sample multi-omics source family listing EPIC methylation, RNA-seq, scRNA-seq, proteomics, and phosphoproteomics, exact modality overlap pending source manifest inspection;
+- `CGGA CCell_4083`: 35-sample multi-omics source family listing EPIC methylation, RNA-seq, scRNA-seq, proteomics, and phosphoproteomics; exact per-modality overlap pending source-manifest inspection;
+- `GSE58999 + GSE57968 / GSE59000`: breast primary-to-regional-metastasis source family with 44 matched methylation pairs and 36 matched expression pairs; exact cross-modality patient intersection pending;
+- `GSE65186` family: melanoma baseline-to-acquired-MAPKi-resistance source family containing methylation, expression array, RNA-seq, and temporal patient-linked biopsy states; exact cross-modality/timepoint intersection pending;
 - CGGA legacy methylation/expression cohorts, pairing unresolved;
 - `GSE213402`: 10-patient paired primary-colorectal/liver-metastasis RRBS + RNA-seq P0-D state-change candidate;
 - `GSE139388` family: parental/acquired-resistance cell-model perturbation candidate;
@@ -83,13 +85,15 @@ Without selecting a decisive P1 cohort or examining GRI performance on external 
 
 No **external candidate** has been selected or admitted as a P1 `RARE_NATURAL_TESTBED`. PCPG's separate P0-D rare-testbed status does not make it an untouched external validation case.
 
+The current safe source-discovery priority is identity/overlap reconstruction, not GRI outcome evaluation: exact prostate cross-modality bijection, breast paired cross-modality intersection, melanoma patient/timepoint/modality map, and CCell_4083 manifest-level overlap.
+
 ## ACTIVE EXECUTION / CI
 
 Draft PR #3 remains open and intentionally draft against `gri-v2`.
 
 PR CI runs the existing full `GRI v2 tests` workflow on integration-branch updates touching `GRI_v2/**`.
 
-The latest completed schema-sync guard commit is green. Subsequent current-status synchronization commits continue to trigger the same full PR suite automatically.
+The latest completed source-inventory upgrade commit is green. Subsequent synchronization/source-audit commits continue to trigger the same full PR suite automatically.
 
 The PR must remain unmerged until the pending sensitivity and scientific comparator/scope decisions are dispositioned.
 
@@ -103,11 +107,11 @@ Needed before finalizing supported System Model/production Engine scope and curr
 
 ### S2. Equal-dimensional/capacity-matched comparator
 
-The historical record says a post-FINAL control was frozen separately, but the exact runnable freeze identity has not been recovered. If it remains unrecoverable, choosing a new non-Hallmark representation, capacity rule, model/tuning, metric, null, and decision rule is a scientific design choice requiring review.
+The historical record says a post-FINAL control was frozen separately, but the exact runnable freeze identity has not been recovered. A fresh repository/File-Library recovery search on 2026-09-11 again found the protocol intent but no exact executable freeze or result. If it remains unrecoverable, choosing a new non-Hallmark representation, capacity rule, model/tuning, metric, null, and decision rule is a scientific design choice requiring review.
 
 ### S3. External P1 cohort/task/comparator freeze
 
-Candidate data-source discovery may continue in P0-D, but selecting the decisive external task/cohort and comparator commits the scientific question and MFR-14 path. That requires review before opening decisive outcome evidence.
+Candidate data-source discovery and identity reconstruction may continue in P0-D, but selecting the decisive external task/cohort and comparator commits the scientific question and MFR-14 path. That requires review before opening decisive outcome evidence.
 
 ### S4. Final System Model / production Engine scientific freeze
 
@@ -143,6 +147,8 @@ Function and Limit outputs remain separate. Partial support is allowed. A suppor
 
 PCPG now demonstrates the other side of the addendum: a legitimately rare natural system may be valuable as a high-information P0-D limit probe while remaining explicitly nonrepresentative and nonconfirmatory because the GRI-specific reason for selecting it was post-result.
 
+The external-source inventory now also makes the Function/Limit balance more concrete: static cohorts can map `NOMINAL_FUNCTION`, while paired primary/metastatic and treatment-resistance series can map genuinely ordered or perturbed contexts without being mislabeled as confirmation.
+
 ## USER ACTION
 
 For repository-side migration: **NONE**.
@@ -162,6 +168,8 @@ A scientific sensitivity failure narrows the Function Map / supported System Mod
 An unresolved historical comparator freeze remains a provenance gap rather than being invented.
 
 A future failure inside PCPG remains a rare-limit observation only at its earned P0-D/P0-Q status unless a new independent P1 rule has been frozen beforehand.
+
+An external candidate that fails identity, overlap, access, platform, or source-provenance qualification remains in the source ledger as a failed/deferred candidate rather than being silently replaced.
 
 ## NEXT GATE
 
