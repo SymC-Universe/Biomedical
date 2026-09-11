@@ -52,6 +52,7 @@
   "reconstruction": {
     "method": "CSD_SVD_OBSERVATIONAL",
     "method_spec": "A2_SRM_CSD_SVD_METHOD.md",
+    "method_spec_git_blob_sha": "d60138744b7b37b7f23c21307ade4a5694600de8",
     "epoch_mean_removal": true,
     "window": "HANN",
     "spectral_matrix": "mean outer product of complex channel FFT vector at each frozen frequency bin",
