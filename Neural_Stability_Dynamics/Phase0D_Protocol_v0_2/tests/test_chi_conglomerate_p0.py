@@ -2,6 +2,7 @@ import numpy as np
 
 from src.chi_conglomerate import (
     analytic_same_conglomerate_example,
+    chi_from_2x2_block,
     chi_from_pole_pair,
     conglomerate_chi,
     second_order_generator,
@@ -11,10 +12,35 @@ from src.chi_conglomerate import (
 def test_pair_invariant_recovers_constructed_chi_on_all_branches():
     omega_n = 2.0 * np.pi * 3.0
     for chi in [0.2, 0.8, 0.99, 1.0, 1.01, 1.2, 2.0]:
-        vals = np.linalg.eigvals(second_order_generator(chi, omega_n))
+        A = second_order_generator(chi, omega_n)
+        vals = np.linalg.eigvals(A)
         out = chi_from_pole_pair(vals)
+        block = chi_from_2x2_block(A)
         assert np.isclose(out["chi"], chi, rtol=1e-10, atol=1e-10)
         assert np.isclose(out["omega_n"], omega_n, rtol=1e-10, atol=1e-10)
+        assert np.isclose(block["chi"], chi, rtol=1e-10, atol=1e-10)
+        assert np.isclose(block["normalized_discriminant"], chi * chi - 1.0)
+
+
+def test_block_chi_is_similarity_invariant_and_tracks_branch():
+    rng = np.random.default_rng(20260911)
+    for chi, branch in [
+        (0.7, "COMPLEX_PAIR"),
+        (1.0, "REPEATED_ROOT_BOUNDARY"),
+        (1.4, "REAL_SPLIT"),
+    ]:
+        A = second_order_generator(chi, 9.0)
+        while True:
+            T = rng.normal(size=(2, 2))
+            if abs(np.linalg.det(T)) > 0.2:
+                break
+        B = T @ A @ np.linalg.inv(T)
+        a = chi_from_2x2_block(A)
+        b = chi_from_2x2_block(B)
+        assert np.isclose(a["chi"], b["chi"], rtol=1e-10, atol=1e-10)
+        assert np.isclose(a["trace"], b["trace"], rtol=1e-10, atol=1e-10)
+        assert np.isclose(a["determinant"], b["determinant"], rtol=1e-10, atol=1e-10)
+        assert b["branch"] == branch
 
 
 def test_conglomerate_reduces_to_single_component_and_common_chi():
