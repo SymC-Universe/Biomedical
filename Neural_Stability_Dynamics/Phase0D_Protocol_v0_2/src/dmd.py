@@ -35,23 +35,13 @@ def _reduced_dmd_from_pair(X, Xp, dt, rank):
 
 
 def fit_dmd(Y, dt, rank):
-    """Exact DMD diagnostic baseline for samples x channels data.
-
-    Standard/exact DMD is retained because it is transparent, but published
-    work shows sensor-noise bias. It must not be used as the sole strongest
-    fair noisy stochastic comparator merely because it is convenient.
-    """
+    """Exact DMD diagnostic baseline for samples x channels data."""
     X, Xp, dt, r = _snapshot_pair(Y, dt, rank)
     return _reduced_dmd_from_pair(X, Xp, dt, r)
 
 
 def fit_tls_dmd(Y, dt, rank):
-    """Total-least-squares DMD candidate for additive snapshot noise.
-
-    The augmented snapshot matrix [X; X'] is rank-r projected before solving
-    the reduced DMD problem. This is a P0 diagnostic comparator candidate, not
-    a frozen neural-noise model or P1 comparator.
-    """
+    """Total-least-squares DMD candidate for additive snapshot noise."""
     X, Xp, dt, r = _snapshot_pair(Y, dt, rank)
     augmented = np.vstack([X, Xp])
     _, s_aug, Vh_aug = np.linalg.svd(augmented, full_matrices=False)
@@ -61,35 +51,22 @@ def fit_tls_dmd(Y, dt, rank):
     tol = np.finfo(float).eps * max(augmented.shape) * max(float(sr_aug[0]), 1.0)
     if np.any(sr_aug <= tol):
         raise ValueError("requested TLS-DMD rank is numerically singular")
-
     Vr = Vh_aug.conj().T[:, :r]
     X_projected = X @ Vr
     Xp_projected = Xp @ Vr
     return _reduced_dmd_from_pair(X_projected, Xp_projected, dt, r)
 
 
-def fit_subspace_dmd(Y, dt, rank):
-    """Subspace DMD for random dynamics with observation noise.
+def _subspace_projection(Y):
+    """Return the projected-future SVD used by Subspace DMD.
 
-    Python translation of the authors' corrected Subspace DMD implementation
-    (Takeishi, Kawahara & Yairi, Phys. Rev. E 96, 033310, 2017). Four shifted
-    snapshot blocks are formed, future snapshots are projected onto the row
-    space of past snapshots, and the reduced stochastic Koopman approximation
-    is eigendecomposed.
-
-    P0 comparator plumbing only. No P1 rank rule or superiority claim lives
-    here.
+    This helper exposes the method-native singular spectrum for P0 rank-sweep
+    diagnostics. It does not choose a rank.
     """
     Y = np.asarray(Y, float)
     if Y.ndim != 2 or Y.shape[0] < 5:
         raise ValueError("Y must be samples x channels with at least 5 samples")
-    if dt <= 0:
-        raise ValueError("dt must be positive")
     n = Y.shape[1]
-    r = int(rank)
-    if r <= 0 or r > n:
-        raise ValueError("Subspace DMD rank must be between 1 and channel count")
-
     Yt = Y.T
     Y0 = Yt[:, :-3]
     Y1 = Yt[:, 1:-2]
@@ -107,17 +84,38 @@ def fit_subspace_dmd(Y, dt, rank):
         raise ValueError("past snapshot matrix is numerically rank zero")
     Vp = Vhp.conj().T[:, :rp]
     O = (Yf @ Vp) @ Vp.conj().T
-
     Uq, sq, _ = np.linalg.svd(O, full_matrices=False)
+    return Uq, sq, n
+
+
+def subspace_dmd_projected_singular_values(Y):
+    """Expose, but do not threshold, the Subspace-DMD projected spectrum."""
+    _, sq, _ = _subspace_projection(Y)
+    return sq.copy()
+
+
+def fit_subspace_dmd(Y, dt, rank):
+    """Subspace DMD for random dynamics with observation noise.
+
+    Python translation of the authors' corrected Subspace DMD implementation
+    (Takeishi, Kawahara & Yairi, Phys. Rev. E 96, 033310, 2017). P0 comparator
+    plumbing only. No P1 rank rule or superiority claim lives here.
+    """
+    if dt <= 0:
+        raise ValueError("dt must be positive")
+    Uq, sq, n = _subspace_projection(Y)
+    r = int(rank)
+    if r <= 0 or r > n:
+        raise ValueError("Subspace DMD rank must be between 1 and channel count")
     if r > len(sq):
         raise ValueError("requested Subspace DMD rank exceeds projected future rank")
-    tol_q = np.finfo(float).eps * max(O.shape) * max(float(sq[0]), 1.0)
+    tol_q = np.finfo(float).eps * max(Uq.shape) * max(float(sq[0]), 1.0)
     if np.any(sq[:r] <= tol_q):
         raise ValueError("requested Subspace DMD rank is numerically singular")
-    Uq = Uq[:, :r]
-    Uq1 = Uq[:n, :]
-    Uq2 = Uq[n:, :]
 
+    Uqr = Uq[:, :r]
+    Uq1 = Uqr[:n, :]
+    Uq2 = Uqr[n:, :]
     U, s, Vh = np.linalg.svd(Uq1, full_matrices=False)
     if r > len(s):
         raise ValueError("requested Subspace DMD rank exceeds Uq1 rank")

@@ -31,6 +31,9 @@ jobs:
       - name: Run P0 Subspace-DMD stress addendum
         working-directory: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2
         run: python scripts/run_p0_subspace_dmd_stress.py
+      - name: Run truth-blind P0 order/rank sweep
+        working-directory: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2
+        run: python scripts/run_p0_order_rank_sweep.py
       - name: Run P0 development guard
         working-directory: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2
         run: python dev_runner.py
