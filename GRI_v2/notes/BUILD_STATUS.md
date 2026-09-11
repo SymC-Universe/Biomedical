@@ -1,9 +1,10 @@
 # GRI v2 build status
 
-**Status date:** 2026-09-10  
+**Status date:** 2026-09-11  
 **Protocol authority:** General Cross-Project Research Protocol v0.7.1 FINAL + v0.7.1A Functional Mapping and Natural Limit-Testbed Addendum  
 **Integration control:** `docs/GRI_V071_INTEGRATION_CONTROL_20260910.md`  
-**v0.7.1A audit:** `docs/GRI_V071A_PROTOCOL_AUDIT_20260910.md`
+**v0.7.1A audit:** `docs/GRI_V071A_PROTOCOL_AUDIT_20260910.md`  
+**Current verification delta:** `docs/GRI_V071A_FULL_AUDIT_20260911.md`
 
 ## Current scientific status
 
@@ -89,7 +90,7 @@ No result from this package is assumed in advance. Favorable and unfavorable out
 
 ## Active parallel repository/audit work
 
-The following are now proceeding or prepared while the sensitivity gate is unresolved:
+The following are now implemented or prepared while the sensitivity gate is unresolved:
 
 1. v0.7.1/v0.7.1A GRI System Model / Engine migration;
 2. formal Function Map reconstruction;
@@ -102,7 +103,9 @@ The following are now proceeding or prepared while the sensitivity gate is unres
 9. production-Engine P2 gap audit;
 10. P2 negative/mutation-test specification;
 11. MFR-14 scaffolding for future external predictions without result-dependent thresholds;
-12. capability-description index for future semantic synchronization.
+12. capability-description index for future semantic synchronization;
+13. protocol-control validator and known-bad tests;
+14. CI guard that fails if the machine-readable protocol schema and executable validator drift apart.
 
 The integration work is isolated on branch:
 
@@ -120,11 +123,24 @@ Current evidence is weaker in:
 
 - genuine biological `PERTURBED_FUNCTION` based on ordered perturbation/time-course evidence;
 - biological `BOUNDARY_OR_TRANSITION` evidence rather than method boundaries;
-- independently qualified `RARE_NATURAL_LIMIT` evidence.
+- **prospectively selected** `RARE_NATURAL_LIMIT` confirmation.
 
 The next P0-D program should therefore map the functioning interior with the same seriousness used to map limits while future data-source work seeks independently sourced ordered/perturbational and qualified extreme contexts.
 
-PCPG remains a recurrent GRI stress/boundary candidate. It is **not** classified as `RARE_NATURAL_TESTBED` merely because it surprises the current Engine; rarity would require independent oncology-native evidence.
+### PCPG rare-natural-limit status
+
+A later source-of-record audit independently established pheochromocytoma/paraganglioma as a rare oncology context using domain-native evidence. Therefore PCPG is admitted as a **post-result P0-D `RARE_NATURAL_TESTBED` for limit mapping only**.
+
+Required present-tense interpretation:
+
+- rarity basis: independent oncology-native evidence;
+- GRI selection status: post-result recurrent stress case;
+- representative status: nonrepresentative limit probe;
+- confirmatory weight: none;
+- promotion debt: open;
+- causal interpretation of rarity -> GRI stress: not established.
+
+PCPG may therefore inform P0-D limit discovery and later P0-Q stress qualification, but it cannot confirm a PCPG-specific rule derived from the same observations and cannot establish rare-cancer generalization.
 
 ## Comparator status
 
@@ -165,7 +181,7 @@ A working Limit Map now preserves:
 - semantic-specificity weakness;
 - CKA null-floor reduction limits;
 - mapping refusals;
-- PCPG stress behavior;
+- PCPG rare-context stress behavior with post-result selection preserved;
 - limited composition adjustment;
 - platform generalization risk;
 - absent biological chi admission;
@@ -173,6 +189,22 @@ A working Limit Map now preserves:
 - P2 Engine/Atlas qualification gaps.
 
 Method-scope limits remain separate from empirical/system-behavior claims.
+
+## Protocol-control status
+
+The executable protocol envelope currently guards against, among other defects:
+
+- biological chi being populated or silently admitted;
+- P0-D/P0-Q results being labeled as confirmatory empirical outcomes;
+- P1 use without complete MFR-14, a freeze identity, and decisive evidence unopened at freeze;
+- non-independent Atlas evidence being represented as independent Engine validation;
+- Engine-output-based rare-natural-testbed selection;
+- rare cases being silently treated as representative without separate evidence;
+- admitted rare cases omitting a base-rate-context disposition;
+- omission of any of the eight pathway-specific independence dimensions;
+- semantic drift between the JSON protocol-output schema and the executable validator.
+
+Known-bad tests exist for these controls and CI is configured to run them on the protocol integration PR.
 
 ## Current claim ceiling
 
@@ -185,7 +217,8 @@ Allowed internally:
 - internal held-out methylation predictive information beyond purity/leukocyte covariates;
 - internal candidate global-geometry confidence ranking of prediction risk;
 - explicit failure/refusal boundaries;
-- P0-D Function and Limit mapping of already-viewed evidence.
+- P0-D Function and Limit mapping of already-viewed evidence;
+- PCPG as a source-qualified rare oncology context for **post-result P0-D limit mapping only**.
 
 Not established:
 
@@ -198,7 +231,8 @@ Not established:
 - biological chi;
 - chi=1 as a cancer optimum or therapeutic target;
 - capacity-matched Hallmark predictive superiority;
-- any qualified rare-natural-limit result.
+- prospectively selected rare-natural-limit confirmation;
+- PCPG-specific causal mechanism or rare-cancer generalization.
 
 ## Current paper exit gate
 
@@ -226,4 +260,4 @@ Not established:
 
 Priority user-side heavy computation: run/continue the post-C1 adversarial sensitivity v2.2 package locally against the completed C1 state.
 
-Repository-side migration, provenance, Function/Limit mapping, Atlas architecture, comparator recovery, MFR scaffolding, and P2 qualification preparation can continue without further user action until a scientific freeze/design choice is reached.
+Repository-side migration, provenance, Function/Limit mapping, Atlas architecture, comparator recovery, MFR scaffolding, P2 qualification preparation, protocol-control hardening, and semantic-drift prevention can continue without further user action until a scientific freeze/design choice is reached.
