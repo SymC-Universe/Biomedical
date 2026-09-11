@@ -1,0 +1,27 @@
+{
+  "schema": "neurostability-atlas-a1-source-lock-v0.1",
+  "date": "2026-09-11",
+  "status": "A1_SOURCE_SELECTION_FROZEN_BEFORE_A2_COORDINATE_RECONSTRUCTION",
+  "system_model": "NSD System Model v1.0",
+  "protocol": "General Cross-Project Research Protocol v0.7.1 FINAL + authoritative v0.7.1A Addendum",
+  "locked_files": {
+    "SOURCE_INTAKE_PROTOCOL.md": "72a540429f3734f6cc6a9d16ea7a3b74a66694b1",
+    "registries/SOURCE_INTAKE_QUEUE.json": "5a028468c1e562de95472fc5c59e3613f0fa5c2c"
+  },
+  "initial_source_ids": [
+    "ATLAS-SRC-001-LEMON",
+    "ATLAS-SRC-002-SRM",
+    "ATLAS-SRC-003-DORTMUND-COGNITIVE-LOAD",
+    "ATLAS-SRC-004-SLEEP-DEPRIVATION",
+    "ATLAS-SRC-005-SLEEP-WAKE",
+    "ATLAS-SRC-006-CHBMIT"
+  ],
+  "coverage_roles_present": [
+    "NOMINAL_FUNCTION",
+    "PERTURBED_FUNCTION",
+    "BOUNDARY_OR_TRANSITION"
+  ],
+  "rare_natural_limit": "INTENTIONALLY_EMPTY_UNTIL_QUALIFIED",
+  "selection_targeting": "NO_SOURCE_SELECTED_BY_CHI_VALUE_ENGINE_AGREEMENT_OR_DESIRED_EFFECT_DIRECTION",
+  "p1_authorized": false
+}
