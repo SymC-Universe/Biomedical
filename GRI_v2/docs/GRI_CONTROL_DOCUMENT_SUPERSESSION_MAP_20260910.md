@@ -1,6 +1,7 @@
 # GRI control-document supersession and synchronization map
 
 **Date:** 2026-09-10  
+**Last synchronized:** 2026-09-11  
 **Status:** CURRENT PROSPECTIVE CONTROL MAP  
 **Authority:** General Cross-Project Research Protocol v0.7.1 FINAL + v0.7.1A Addendum
 
@@ -16,9 +17,12 @@ For prospective GRI decisions:
 
 1. `General_Cross_Project_Research_Protocol_v0.7.1_FINAL_plus_v0.7.1A_Addendum.pdf`
 2. `docs/CURRENT_PROTOCOL_AUTHORITY.md`
-3. current v0.7.1/v0.7.1A GRI integration/audit records on this branch
-4. older GRI control documents, only where consistent with 1-3
-5. historical manuscript/provenance records, as historical evidence rather than current governance
+3. `docs/GRI_V071A_PROTOCOL_AUDIT_20260910.md` as the canonical detailed migration audit
+4. `docs/GRI_V071A_FUNCTION_LIMIT_INTEGRATION_20260910.md` as the canonical Function/Limit operational integration
+5. `docs/GRI_V071A_FULL_AUDIT_20260911.md` for current verification/delta findings only
+6. current status files on this branch
+7. older GRI control documents, only where consistent with 1-6
+8. historical manuscript/provenance records, as historical evidence rather than current governance
 
 ## Synchronization table
 
@@ -28,7 +32,10 @@ For prospective GRI decisions:
 | `docs/CHI_ADMISSION_RULES.md` | Preserve historical admission record unless explicitly versioned later | G2 allows a `compatible local rate`, broader than the current licensed second-order `omega_0` convention for canonical chi | Future canonical dynamical chi admission follows v0.7.1 Sections 2.2/4.2. A noncanonical domain-specific ratio requires its own derivation/calibration and epistemic class rather than inheriting the second-order critical boundary |
 | `docs/EPISTEMIC_CONSTITUTION.md` | Preserve as program ancestry/current principles where consistent | Rule 3 says regulatory autonomy may be retained; Rule 14 says publication follows validation in language broad enough to imply all manuscripts require external tool validation | F4 retired autonomy as an independent coordinate. v0.7.1A claim-specific gates allow a narrower static-architecture paper to report supported internal organization without claiming a validated predictive Tool; predictive/tool claims still require their appropriate P1/P2 path |
 | `docs/TOOL_OBJECTIVE.md` | Preserve objective ancestry | Development ladder A-H predates P0-D/P0-Q and still frames C1 as the current forward question | Current operational path is P0-D discovery/Function mapping + P0-Q qualification, then P1 frozen confirmation and P2 release qualification. C1 is historically closed; post-C1 sensitivity is current P0-Q |
-| `notes/BUILD_STATUS.md` | Current and updated on integration branch | Older base-branch version was dated 2026-08-30 | Integration-branch version dated 2026-09-10 is current operational status |
+| `notes/BUILD_STATUS.md` | Current-facing mutable status | Base/history copies and the earlier integration text predate the PCPG source qualification and September 11 protocol-control hardening | Integration-branch content refreshed 2026-09-11 is the current build/scientific status; PCPG is a post-result P0-D rare-natural limit probe with zero confirmatory weight |
+| `notes/CURRENT_STATUS_20260910_V071A.md` | Current-facing mutable status despite dated filename | Filename records original creation date; content has since been refreshed | Read content date/status fields; current content was refreshed 2026-09-11 and carries latest protocol-control/CI state |
+| `docs/GRI_V071A_FULL_AUDIT_20260911.md` | Current verification delta only | Must not become a second canonical procedure set alongside the September 10 detailed audit | Use it to record current verification findings, corrections, and unresolved gates; canonical detailed procedure remains `GRI_V071A_PROTOCOL_AUDIT_20260910.md` |
+| `config/gri_v071a_tool_output_schema_draft.json` + `src/protocol_contracts.py` | Current draft control-plane pair | Prior versions drifted in required top-level fields and rare-testbed field vocabulary | CI now tests these artifacts against one another; neither is a scientific Engine freeze |
 | Historical Stage C1 preregistration/amendments | Immutable evidence lineage | Predate v0.7.1 remediation taxonomy | Preserve exactly. Do not retroactively relabel as pristine v0.7.1 P1. Future untouched confirmation uses now-explicit rules unchanged if adopted/frozen prospectively |
 | Legacy predictive `P0` records | Immutable evidence lineage | Name `P0` predates/may collide with v0.7.1A P0-D/P0-Q terminology | Refer to it as the `legacy predictive P0 branch` in new control prose; do not rename frozen artifacts |
 
@@ -53,6 +60,14 @@ The current static-architecture paper may close at its smaller defensible eviden
 ### Function/Limit balance
 
 All future development/qualification work adds the v0.7.1A Function Map and Limit Map obligations. Historical results retain their original status and are mapped descriptively without promotion.
+
+### Rare-natural limits
+
+A rare-natural case must be rare by independent domain-native evidence, not because the Engine finds it surprising. PCPG satisfies the rarity criterion for P0-D use but was selected for GRI follow-up post-result; it is therefore nonrepresentative by default, carries open promotion debt, and has no confirmatory weight.
+
+### Pathway-specific independence
+
+Independence is not one binary label. Current outputs must expose the required dimensions explicitly, allowing `UNRESOLVED` or `NOT_APPLICABLE` where appropriate rather than silently omitting a pathway.
 
 ## Rule for future stale descriptions
 
