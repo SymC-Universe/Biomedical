@@ -1,0 +1,59 @@
+{
+  "atlas_entry_id": "TEMPLATE-NOT-DATA",
+  "source_id": "TEMPLATE",
+  "research_role": "NOMINAL_FUNCTION",
+  "evidence_tier": "B_FULL_METHOD_PARTIAL_NUMERIC",
+  "native_model": {
+    "name": "SOURCE_NATIVE_MODEL_REQUIRED",
+    "source_symbols_preserved": true,
+    "equations_or_reference": null,
+    "assumptions": []
+  },
+  "context": {
+    "modality": "EEG",
+    "species_population": null,
+    "recording_state_task": null,
+    "perturbation_intervention": null,
+    "sampling_rate_hz": null,
+    "duration_s": null,
+    "channel_sensor_count": null,
+    "montage": null,
+    "preprocessing": null
+  },
+  "coordinates": [
+    {
+      "coordinate_id": "frequency_hz",
+      "eligibility_status": "WITHHELD_INSUFFICIENT_INFORMATION",
+      "value": null,
+      "unit": "Hz",
+      "uncertainty": null,
+      "derivation": null,
+      "provenance": {
+        "source_location": null,
+        "extraction_method": null,
+        "code_version": null
+      }
+    }
+  ],
+  "chi": {
+    "status": "CHI_WITHHELD_NO_SECOND_ORDER_LICENSE",
+    "value": null,
+    "derivation": null,
+    "frequency_semantics": null,
+    "uncertainty": null
+  },
+  "independence": {
+    "data": {"grade": "UNRESOLVED", "reason": "template"},
+    "cohort_system": {"grade": "UNRESOLVED", "reason": "template"},
+    "outcome_label": {"grade": "UNRESOLVED", "reason": "template"},
+    "parameter_tuning": {"grade": "UNRESOLVED", "reason": "template"},
+    "method_estimator": {"grade": "UNRESOLVED", "reason": "template"},
+    "atlas_engine": {"grade": "UNRESOLVED", "reason": "template"},
+    "source_literature": {"grade": "UNRESOLVED", "reason": "template"},
+    "temporal_decisive_evidence": {"grade": "UNRESOLVED", "reason": "template"}
+  },
+  "scope": "UNRESOLVED_BEYOND_TESTED_RANGE",
+  "engine_selector_eligible": false,
+  "function_limit_state": "NOT_YET_ASSIGNED",
+  "notes": "Template only. Copy to a new source-specific entry; never replace nulls by assumption."
+}
