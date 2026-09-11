@@ -63,7 +63,35 @@ MULTIOME_RNA_ATAC_TUMORS = 48_OF_75
 MATCHED_LONGITUDINAL_MULTIOME_PAIRS = 22
 ```
 
-`GSE327580` publicly exposes exactly 48 ATAC sample records with patient/timepoint labels, including several third timepoints. This independently confirms the 48-sample Multiome ATAC branch at the deposit level.
+### Exact `GSE327580` patient/timepoint gate
+
+The complete GEO sample list for `GSE327580` exposes 48 ATAC records with explicit `Patient <id>, Timepoint <n>` titles.
+
+Those 48 records resolve to **22 unique patient IDs**, and every one has both Timepoint 1 and Timepoint 2:
+
+```text
+57, 59, 60, 61, 71, 73, 79, 80, 81, 85, 91,
+100, 101, 103, 104, 105, 106, 107, 108, 109, 110, 111
+```
+
+Four of the 22 patients also have Timepoint 3:
+
+```text
+59, 100, 105, 111
+```
+
+Thus the deposit-level arithmetic is exact:
+
+```text
+22 patients x T1/T2 = 44 samples
++ 4 T3 samples = 48 samples
+```
+
+This independently reproduces the paper's **22 matched longitudinal Multiome pairs** at the deposited-sample identity level and preserves the four third timepoints rather than discarding them.
+
+Current gate:
+
+`MULTIOME_PATIENT_TIMEPOINT_IDENTITY_GATE = PASS`
 
 The public `GSE326221` processed snRNA series represents the 75-sample cohort.
 
@@ -175,7 +203,7 @@ The two 2026 IDH-glioma sources answer different P0-D needs.
 - larger longitudinal clinical cohort;
 - 35 patients, 75 tumors;
 - full snRNA architecture;
-- 48-tumor RNA+ATAC subset with 22 matched longitudinal pairs;
+- 48-tumor RNA+ATAC subset with an exact deposited 22-patient T1/T2 longitudinal crosswalk plus four T3 samples;
 - treatment and genetic context richer;
 - bulk DNA methylation present but exact public sample/accession route unresolved in the current audit.
 
@@ -210,6 +238,8 @@ TIMEPOINTS = 2_OR_3_PER_PATIENT
 MAIN_LONGITUDINAL_PAIRS = 35
 MULTIOME_RNA_ATAC_TUMORS = 48
 MULTIOME_MATCHED_LONGITUDINAL_PAIRS = 22
+MULTIOME_PATIENT_TIMEPOINT_IDENTITY_GATE = PASS
+MULTIOME_T3_PATIENTS = 59,100,105,111
 SMARTSEQ2_TUMORS = 16
 BULK_DNA_METHYLATION_PRESENT = YES
 BULK_DNA_METHYLATION_EXACT_COUNT = UNRESOLVED
@@ -220,10 +250,9 @@ P1_STATUS = NOT_SELECTED_NOT_FROZEN
 
 ## Next source-only gates
 
-1. reconstruct the 75-sample patient/timepoint table from public GEO/Synapse metadata;
-2. verify exact 75/75 snRNA sample identity and the 48 Multiome sample subset;
-3. reconstruct the 22 matched Multiome longitudinal pairs from GEO titles;
-4. locate or explicitly close as unavailable the bulk DNA-methylation sample/accession source;
-5. reconstruct treatment-between-timepoint and diagnosis-versus-later-surgery status from Supplementary Table 1 without reading GRI outcomes;
-6. preserve third timepoints rather than discarding them, even if the first frozen P0-D analysis focuses on T1/T2;
-7. keep this candidate P0-D until a future claim/comparator/MFR-14 is deliberately frozen.
+1. reconstruct the full 75-sample snRNA patient/timepoint table from public GEO metadata;
+2. use the closed 48-sample Multiome identity gate as the source crosswalk for later P0-D RNA+ATAC mapping;
+3. locate or explicitly close as unavailable the bulk DNA-methylation sample/accession source;
+4. reconstruct treatment-between-timepoint and diagnosis-versus-later-surgery status from Supplementary Table 1 without reading GRI outcomes;
+5. preserve third timepoints rather than discarding them, even if a later frozen analysis focuses on T1/T2;
+6. keep this candidate P0-D until a future claim/comparator/MFR-14 is deliberately frozen.
