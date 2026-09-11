@@ -28,7 +28,15 @@
     "provenance"
   ],
   "function_map_output": {
+    "required_scope_fields": [
+      "scope_id",
+      "component_or_claim",
+      "research_role"
+    ],
     "fields": [
+      "scope_id",
+      "component_or_claim",
+      "research_role",
       "operating_regime",
       "occupancy_status",
       "response_surface_or_trajectory",
@@ -39,10 +47,19 @@
       "uncertainty",
       "evidence_class"
     ],
-    "allowed_summary_states": ["WORKS_HERE", "NOT_KNOWN_HERE"]
+    "allowed_summary_states": ["WORKS_HERE", "NOT_KNOWN_HERE"],
+    "semantic_rule": "The summary state applies only to the named scope/component/claim and may not be promoted to a broader system-level statement by omission."
   },
   "limit_map_output": {
+    "required_scope_fields": [
+      "scope_id",
+      "component_or_claim",
+      "research_role"
+    ],
     "fields": [
+      "scope_id",
+      "component_or_claim",
+      "research_role",
       "limit_type",
       "boundary_or_transition_status",
       "first_failing_component_if_identified",
@@ -53,7 +70,8 @@
       "independence_class",
       "evidence_class"
     ],
-    "allowed_summary_states": ["STOPS_WORKING_HERE", "NOT_KNOWN_HERE"]
+    "allowed_summary_states": ["STOPS_WORKING_HERE", "NOT_KNOWN_HERE"],
+    "semantic_rule": "The summary state applies only to the named scope/component/claim. A limit in one layer cannot silently invalidate an unrelated supported layer."
   },
   "coverage_roles": [
     "NOMINAL_FUNCTION",
@@ -100,9 +118,19 @@
     "no_exceptional_point_claim",
     "no_universal_scope_claim"
   ],
+  "current_GRI_rare_limit_context": {
+    "PCPG": {
+      "status": "ADMITTED_FOR_P0_D_LIMIT_MAPPING_ONLY",
+      "rarity_basis": "independent oncology-native epidemiology",
+      "selection_status": "POST_RESULT_GRI_STRESS_CASE",
+      "confirmatory_weight": "NONE",
+      "promotion_debt": "OPEN"
+    }
+  },
   "notes": [
-    "PCPG is a recurrent stress/boundary candidate and is not a RARE_NATURAL_TESTBED unless independent oncology-native rarity evidence is established.",
+    "PCPG rarity is independently source-qualified, but its GRI-specific selection is post-result; it is therefore a P0-D rare-natural limit testbed with no confirmatory weight.",
     "Function and Limit maps are coequal research targets and neither overrides the other.",
+    "WORKS_HERE, STOPS_WORKING_HERE, and NOT_KNOWN_HERE must always carry an explicit scope/component referent.",
     "A favorable region discovered on viewed data remains P0-D until separately frozen and tested on untouched evidence.",
     "Method-scope qualification does not count as empirical confirmation about nature."
   ]
