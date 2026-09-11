@@ -1,0 +1,41 @@
+name: NSD Phase0D P0-D1 Function Limit Map
+
+on:
+  push:
+    branches:
+      - neural-stability-dynamics-phase0d-v0.2-protocol-v0.7.1
+    paths:
+      - '.github/workflows/nsd-phase0d-p0d1-function-limit-map.yml'
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/scripts/run_p0d_function_limit_map.py'
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/src/landscape.py'
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/src/rank_sweep.py'
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/src/dmd.py'
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/src/ssi_cov.py'
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/src/synthetic_systems.py'
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/scripts/run_p0_comparator_stress_matrix.py'
+  workflow_dispatch:
+
+jobs:
+  p0d-function-limit-map:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install pinned P0 mapping dependencies
+        run: python -m pip install numpy==2.3.5 scipy==1.17.0
+      - name: Generate P0-D Function and Limit map
+        working-directory: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2
+        run: python scripts/run_p0d_function_limit_map.py --output results/p0d_mapping/function_limit_map_v1.json
+      - name: Capture environment
+        working-directory: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2
+        run: python scripts/capture_environment.py results/p0d_mapping/environment.json
+      - name: Upload P0-D mapping artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-phase0d-p0d1-function-limit-map
+          path: |
+            Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/results/p0d_mapping/function_limit_map_v1.json
+            Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/results/p0d_mapping/environment.json
+          if-no-files-found: error
