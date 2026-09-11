@@ -8,17 +8,17 @@
 
 ## 1. Scientific state preserved
 
-Existing GRI results retain their historical epistemic status. v0.7.1A applies prospectively and does not retroactively promote, demote, rescue, or redefine prior results.
+Existing GRI results retain their historical epistemic status. v0.7.1A is prospective and does not retroactively promote, demote, rescue, or redefine prior evidence.
 
-Closed internal evidence:
+Closed internal state:
 
 - F4 = `NARROW`;
 - legacy predictive P0 FINAL_HOLDOUT = closed internal test;
 - Stage C1 = computationally complete at historical `C1-3` under its preserved preregistered-plus-amended lineage;
 - biological chi = `NOT_ADMITTED`;
-- temporal inheritance/causality/recovery/EP dynamics = not established by static TCGA.
+- static TCGA does not establish temporal inheritance, causality, recovery, treatment response, EP dynamics, clinical utility, or a chi=1 cancer optimum.
 
-PCPG is independently source-qualified as a rare oncology context but was selected for GRI follow-up post-result. Current role:
+PCPG remains a source-qualified rare oncology context selected for GRI follow-up post-result:
 
 ```text
 research_role = RARE_NATURAL_LIMIT
@@ -30,157 +30,181 @@ promotion_debt = OPEN
 
 ## 2. Current heavy computational gate
 
-The next unresolved heavy-compute gate remains the already-frozen **post-C1 adversarial sensitivity v2.2** package.
+The next unresolved heavy local compute gate is the already-frozen **post-C1 adversarial sensitivity v2.2** package.
 
-Under v0.7.1A this is P0-Q qualification of already-viewed/internal evidence. It cannot become P1 confirmation of the same evidence.
+It is P0-Q qualification of already-viewed/internal evidence. It cannot become P1 confirmation of the same evidence. If running locally, it remains the priority heavy job. This repository status does not claim a local process is active unless separately observed.
 
-No claim is made here that a local process is currently executing. If it is running, it remains the priority heavy local job. If not, launching the frozen package against the completed C1 state is the priority user-side compute action.
+## 3. Protocol/control architecture now implemented on the integration branch
 
-## 3. Protocol migration / control architecture now present
+The branch contains:
 
-The integration branch contains:
-
-- v0.7.1/v0.7.1A audit and D1-D8 migration;
-- P0-D/P0-Q separation;
+- v0.7.1/v0.7.1A D1-D8 migration audit;
+- explicit P0-D/P0-Q separation;
 - working Function Map and Limit Map;
 - open-channel disposition ledger;
 - pathway-specific independence ledger;
 - four-role coverage registry;
 - Regulatory Substrate Atlas v0.1 schema;
-- external source candidate inventory;
-- native-comparator survey;
-- comparator-provenance recovery audit;
-- P2 Engine gap and code-path inventory;
-- negative/mutation/refusal test specification;
-- clean-room R1/R2/R3 plan;
+- comparator provenance audit and native-comparator survey;
+- P2 Engine gap/code-path/negative/mutation/clean-room plans;
 - MFR-14 template;
 - capability-description index and supersession map;
-- draft machine-readable Tool-output schema;
+- machine-readable Tool-output schema;
 - executable protocol contract and known-bad tests;
 - schema↔validator synchronization tests;
-- machine-readable external source-gate ledger plus CI firewalls;
-- PR CI.
+- machine-readable external source-gate ledger;
+- external representation-compatibility firewall;
+- CI tests that prevent source discovery from silently becoming P1 or a representation adapter from masquerading as confirmation.
 
-Protocol-control tests explicitly guard biological-chi prohibition, P0/P1 status separation, MFR-14 P1 requirements, Atlas independence, rare-natural selection/representativeness/base-rate rules, all eight independence dimensions, and source-discovery non-promotion.
+## 4. External P0-D source program
 
-## 4. Current external P0-D source gates
-
-Machine-readable source of record:
-
-`config/gri_external_source_gate_ledger_20260911.json`
-
-Detailed candidate inventory:
+Canonical source inventory:
 
 `docs/GRI_EXTERNAL_ATLAS_DATASET_CANDIDATES_P0D_20260910.md`
 
-No external candidate has been evaluated for GRI scientific performance, selected as P1, or frozen as a decisive confirmation cohort.
+Machine ledger:
 
-### Prostate `GSE262522 + GSE262524 + GSE237995`
+`config/gri_external_source_gate_ledger_20260911.json`
 
-Source identity gate closed:
+Representation firewall:
+
+`config/gri_external_representation_compatibility_20260911.json`
+
+All candidate scientific GRI outcomes remain unopened and no P1 cohort has been selected.
+
+### Static / near-current bulk representation
+
+**Prostate `GSE262522 + GSE262524 + GSE237995`**
 
 ```text
 450K = 68
 EPIC = 53
 methylation union = 121
 RNA-seq = 121
+methylation↔RNA exact title bijection = 121/121 PASS
 450K∩EPIC titles = 0
-methylation∩RNA titles = 121
-methylation-only = 0
-RNA-only = 0
-EXACT_CROSS_MODALITY_TITLE_BIJECTION = PASS
+published shared-probe set = 449,636
 ```
 
-Published methods retain 449,636 probes shared across 450K/EPIC after harmonization.
+Current role: strongest source-qualified static/platform-transport candidate. Remaining gate: source files/hashes and independent shared-probe reconstruction.
 
-Dedicated audit:
+**LUAD `GSE66836 + GSE66863`**
 
-`artifacts/GRI_PROSTATE_EXTERNAL_IDENTITY_AUDIT_P0D_20260911.md`
+121 source-declared matched tumor expression/methylation sample numbers. Remaining gate: exact sample table plus RNA-microarray representation reconstruction.
 
-Current use: very-high-priority P0-D static external / platform-transport candidate, not P1.
-
-### Breast primary -> regional metastasis `GSE58999 + GSE57968 / GSE59000`
-
-Source declares 44 methylation-profiled matched patient pairs and RNA for 36 of those pairs.
-
-```text
-methylation samples = 88
-expression samples = 72
-raw title intersection = 66/72
-terminal-b diagnostic title crosswalk = 72/72
-```
-
-The six raw discrepancies are a narrowly documented terminal-`b` naming asymmetry. Multiple cases were verified directly at patient/state level. The diagnostic normalization is **not yet a production identity rule**; full 72-row GSM/patient/state crosswalk remains the final mechanical identity gate.
-
-Dedicated audit:
-
-`artifacts/GRI_BREAST_PAIRED_EXTERNAL_IDENTITY_AUDIT_P0D_20260911.md`
-
-Current use: high-priority paired `PERTURBED_FUNCTION` / `BOUNDARY_OR_TRANSITION` P0-D candidate.
-
-### Melanoma acquired MAPKi resistance `GSE65186`
-
-Source structure:
-
-```text
-methylation arrays = 144
-expression-array samples = 4
-RNA-seq samples = 70
-unique human methylation states = 63
-unique human transcriptome states = 64
-shared human patient-states = 61
-shared human patient IDs = 19
-strict shared baseline+post patients = 18
-shared cell-model states = 8/8
-```
-
-Explicit asymmetries are preserved. Pt21 has resistant-state overlap but no shared baseline and is refused from a strict baseline→post paired analysis unless a different rule is prospectively justified.
-
-Dedicated audit:
-
-`artifacts/GRI_MELANOMA_MAPKI_EXTERNAL_IDENTITY_AUDIT_P0D_20260911.md`
-
-Current use: strongest source-qualified ordered `PERTURBED_FUNCTION` candidate found so far, ranked by source architecture only.
-
-### CGGA `CCell_4083`
-
-The public portal's `35 samples` does **not** represent 35 complete cases across all listed modalities.
-
-Verified source-deposit counts:
+**CGGA `CCell_4083`**
 
 ```text
 proteomics = 35
 phosphoproteomics = 35
 methylation = 29
-bulk RNA-seq = 19
+bulk RNA = 19
 scRNA = 18 by accession title / 19 samples containing 21 tumors by source description
 ```
 
-Therefore `ALL_FIVE_MODALITIES_COMPLETE_ON_35 = FALSE`.
+`ALL_FIVE_MODALITIES_COMPLETE_ON_35 = FALSE`. Pairwise intersections remain unresolved and the scRNA count discrepancy stays open.
 
-The scRNA count discrepancy remains open. Public analysis code confirms `Cohort_ID` crosswalks were used between protein-defined metadata and methylation/scRNA layers, but exact pairwise modality intersections require processed/controlled manifests.
+### Ordered / paired bulk perturbation
+
+**Melanoma `GSE65186`**
+
+```text
+shared human patient-states = 61
+shared human patient IDs = 19
+strict baseline + post-resistance patients = 18
+shared cell-model states = 8/8
+```
+
+Pt21 is refused from a strict baseline→post paired analysis because no shared baseline exists. Current role: strongest source-qualified bulk ordered perturbation candidate.
+
+**Breast `GSE59000` family**
+
+```text
+methylation = 44 matched patient pairs
+expression = 36 matched patient pairs
+raw title match = 66/72
+diagnostic terminal-b crosswalk = 72/72
+```
+
+The diagnostic suffix rule is not yet a production identity rule. Full GSM/patient/state export remains the mechanical gate.
+
+**CRC `GSE213402`**
+
+10 paired primary/liver-metastasis patients with RRBS + RNA-seq. Valuable P0-D state-change source but small-N and representation-changing relative to array methylation.
+
+### 2026 longitudinal IDH-glioma sources
+
+Two independent source families now materially improve the v0.7.1A biological perturbation/transition coverage.
+
+**Nomura et al. Nature Genetics 2026 dual-capture cohort**
+
+```text
+total tumors = 36
+total patients = 19
+longitudinally matched tumors = 32
+longitudinally matched patients = 15
+joint XRBS + Smart-seq2 matched nuclei = 2,117
+GSE292025 tumor records = 36
+paper 10x retained tumors = 32
+GSE292130 current sample records = 31
+```
+
+The core strength is direct same-nucleus DNA methylation + RNA capture. The paper/GEO 10x 32-versus-31 discrepancy remains open. This source is representation-changing relative to bulk TCGA and requires a P0-D/P0-Q single-nucleus representation or explicit aggregation model before any GRI outcome is evaluated.
 
 Dedicated audit:
 
-`artifacts/GRI_CGGA_CCELL4083_MODALITY_AUDIT_P0D_20260911.md`
+`artifacts/GRI_IDH_GLIOMA_DUAL_CAPTURE_LONGITUDINAL_SOURCE_AUDIT_P0D_20260911.md`
 
-Current use: high-value external multi-layer Atlas/Function candidate with unresolved exact pairwise intersections.
+**CARE Nature 2026 longitudinal IDH-mutant cohort**
 
-### Other candidates retained
+```text
+total tumors = 75
+total patients = 35
+timepoints = 2 or 3 per patient
+main longitudinal pairs = 35
+initial at primary diagnosis = 17/35
+initial at later surgery = 18/35
+treated between main pair = 26/35
+no reported adjuvant treatment between main pair = 9/35
+Multiome RNA+ATAC tumors = 48
+matched Multiome T1/T2 patients = 22
+Smart-seq2 tumors = 16
+```
 
-- LUAD `GSE66836 + GSE66863`: 121 source-declared matched tumor cross-omic subset;
-- CRC `GSE213402`: 10 paired primary/liver-metastasis patients, RRBS + RNA-seq;
-- ALK resistance `GSE139388` family: cell-model perturbation candidate;
-- CGGA legacy methylation/expression families: overlap unresolved;
-- ICGC ARGO: exact paired methylation/expression program not yet source-qualified.
+The complete `GSE327580` title list independently closes the 22-patient Multiome identity gate: all 22 have T1 and T2, and patients 59, 100, 105, and 111 also have T3, giving `44 + 4 = 48` deposited records.
 
-Failures/access gaps remain in the ledger rather than being silently replaced.
+Bulk DNA methylation is present in the study and in public analysis-code availability categories, but its exact sample count, public accession, and pairwise RNA overlap remain unresolved. No count/accession is inferred.
 
-## 5. Comparator status
+Dedicated audit:
 
-Structural comparator work is meaningful and already narrows novelty: AJIVE/MOFA2/simple baselines constrain structural claims; CKA/modal decomposition remain established primitives.
+`artifacts/GRI_CARE_IDH_LONGITUDINAL_MULTIOMIC_SOURCE_AUDIT_P0D_20260911.md`
 
-Historical post-FINAL equal-dimensional predictive control:
+### Why the two IDH cohorts are not collapsed
+
+- **Nomura:** cleaner direct methylation↔RNA coupling at the same-nucleus level and 15 longitudinal patients.
+- **CARE:** larger 35-patient longitudinal cohort, richer treatment/genetic context, and exact 22-patient RNA+ATAC longitudinal subset, but the bulk-methylation source path is unresolved.
+
+Both are high-value P0-D `PERTURBED_FUNCTION` / `BOUNDARY_OR_TRANSITION` sources. Neither is P1.
+
+## 5. Representation firewall
+
+External source qualification no longer implies current-Engine compatibility.
+
+Current source classes include:
+
+- closest bulk match: prostate;
+- bulk but RNA-platform-changing: LUAD/breast;
+- bulk ordered complex hierarchy: melanoma;
+- RRBS methylation-changing: CRC;
+- same-nucleus representation-changing: Nomura;
+- multi-layer representation-changing with unresolved methylation path: CARE;
+- static multi-layer incomplete-overlap: CCell_4083.
+
+Any new adapter developed on an external candidate is P0-D/P0-Q and cannot confirm itself on the same evidence.
+
+## 6. Comparator state
+
+Historical post-FINAL equal-dimensional comparator:
 
 ```text
 PROTOCOL_INTENT_REFERENCED = YES
@@ -189,63 +213,56 @@ RESULT_RECOVERED = NO
 HISTORICAL_COMPARATOR_FREEZE_PROVENANCE = UNRESOLVED
 ```
 
-A fresh repository/File-Library recovery search did not locate an exact runnable freeze. No filename, hash, design, or result is invented.
+Repeated repository/File-Library recovery has not located an exact runnable freeze. No filename, hash, design, or result is invented. If unrecoverable, a replacement design is new science-adjacent P0-Q work and requires review before freeze.
 
-If unrecoverable, a replacement capacity-matched comparator is a new science-adjacent P0-Q design and requires review before freezing.
+## 7. v0.7.1A coverage after source discovery
 
-## 6. Current protocol coverage balance
-
-| Role | Current state |
+| Research role | Current state |
 |---|---|
-| `NOMINAL_FUNCTION` | strong internal static coverage; external source qualification advancing |
-| `PERTURBED_FUNCTION` | now materially improved by melanoma/breast paired/ordered source qualification |
-| `BOUNDARY_OR_TRANSITION` | strong method/representation limits; biological state-change candidates now source-qualified but not yet analyzed |
-| `RARE_NATURAL_LIMIT` | PCPG source-qualified for post-result P0-D only; no prospectively selected P1 rare-limit test |
+| `NOMINAL_FUNCTION` | strong internal static coverage; external bulk source qualification now strong |
+| `PERTURBED_FUNCTION` | materially improved: melanoma, breast, CRC, Nomura, CARE source families |
+| `BOUNDARY_OR_TRANSITION` | strong method limits plus genuine ordered biological-state source families, not yet GRI-analyzed |
+| `RARE_NATURAL_LIMIT` | PCPG post-result P0-D only; no prospectively selected rare-limit P1 test |
 
-The new protocol therefore changed the program from failure-only pressure testing into paired:
+The largest previous source-architecture gap, genuine biological ordering/perturbation, is no longer a candidate-discovery vacuum. It is now a **representation and freeze problem**, which is a much better position scientifically.
 
-`P0-D FUNCTION/SOURCE MAPPING + P0-Q QUALIFICATION`
+## 8. Current scientific stop boundaries
 
-without weakening the adversarial safeguards.
+Autonomous work still stops where a new result or science/science-adjacent choice is required:
 
-## 7. Current scientific stop boundaries
+1. post-C1 sensitivity outcome before final supported System Model / Engine scope freeze;
+2. new capacity-matched comparator design if the historical freeze remains unrecovered;
+3. decisive external P1 task/cohort/comparator selection and MFR-14 freeze;
+4. final scientific System Model capability freeze after sensitivity/comparator disposition;
+5. authoritative manuscript claim edits after returned evidence and user-authorized scope;
+6. biological chi admission, which remains unsupported.
 
-Autonomous work stops only where a new result or science/science-adjacent decision is required:
+Source-only identity/access/manifest reconstruction, representation triage, protocol-control hardening, provenance recovery, and CI repair remain safe P0-D/P0-Q work.
 
-1. **post-C1 sensitivity result** before final supported System Model / production Engine capability freeze;
-2. **new capacity-matched comparator design** if the historical freeze remains unrecovered;
-3. **decisive external P1 task/cohort/comparator selection** and completed MFR-14;
-4. **final System Model scientific scope freeze** after sensitivity/comparator disposition;
-5. **authoritative manuscript claim edits** after returned evidence and user-authorized scope;
-6. **biological chi admission**, which remains unsupported.
+## 9. Immediate safe next work
 
-Source-only identity/access/manifest reconstruction remains safe P0-D work and continues independently of those stops.
+- reconstruct the Nomura 36-tumor longitudinal identity/order table and joint-nucleus pairing schema;
+- reconstruct CARE's full 75-sample patient/timepoint table and continue the bulk-methylation source search;
+- finish breast GSM/patient/state crosswalk;
+- build melanoma patient/state/modality/replicate manifest;
+- obtain CCell processed manifests for exact modality intersections;
+- verify prostate source files/hashes/shared-probe gate;
+- reconstruct LUAD exact 121-sample identity table;
+- keep current control/status/PR text synchronized and CI green.
 
-## 8. Immediate safe next work
+## 10. User action
 
-Repository-side:
+**Repository/source side:** none required right now.
 
-- keep CI green and repair mechanical failures;
-- finish breast GSM/patient/state crosswalk if source metadata permits;
-- reconstruct full melanoma patient/state/modality/replicate manifest;
-- obtain/inspect CCell_4083 processed manifests for a `Cohort_ID x modality` matrix;
-- verify prostate downloadable file identities/hashes and shared-probe reconstruction route;
-- continue archive recovery for the historical comparator without redesigning it;
-- keep source-gate ledger, Function Map, Limit Map, and current status synchronized.
+**Heavy local compute:** post-C1 sensitivity v2.2 remains the needed result. If already running, do not start competing heavy local analyses against the same frozen state.
 
-## 9. User action
-
-**Repository-side:** none.
-
-**Heavy local compute:** post-C1 sensitivity v2.2 remains the needed result. Do not start competing heavy local analyses against the same frozen state while it is running.
-
-## 10. Next gate
+## 11. Next scientific gate
 
 When post-C1 sensitivity returns:
 
-1. validate returned state/provenance before biology;
-2. disposition every sensitivity branch without retuning;
+1. verify returned state/provenance before biology;
+2. disposition every frozen sensitivity branch without retuning;
 3. update Function and Limit Maps;
 4. establish the current-paper claim ceiling;
 5. resolve comparator/scientific-freeze decisions;
-6. then freeze supported System Model scope and proceed into production Engine consolidation, independent Atlas freeze, MFR-14 external confirmation, and P2 qualification.
+6. then freeze supported System Model scope and proceed toward production Engine consolidation, independent Atlas freeze, MFR-14 external confirmation, and P2 qualification.
