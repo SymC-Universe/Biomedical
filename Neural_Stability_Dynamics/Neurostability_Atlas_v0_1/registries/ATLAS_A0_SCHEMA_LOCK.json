@@ -1,0 +1,16 @@
+{
+  "schema": "neurostability-atlas-a0-schema-lock-v0.1",
+  "date": "2026-09-11",
+  "status": "A0_CONTENT_FROZEN_BEFORE_NUMERICAL_COORDINATE_POPULATION",
+  "system_model": "NSD System Model v1.0",
+  "protocol": "General Cross-Project Research Protocol v0.7.1 FINAL + authoritative v0.7.1A Addendum",
+  "locked_files": {
+    "COORDINATE_MAP_SPEC.md": "f76b4131fcc8852f3488d9ebb4a430f65102c07b",
+    "registries/COORDINATE_DEFINITIONS.json": "83a6fc80199e0bab40a0270bcfe82e4741d12e9b",
+    "schemas/atlas_entry.schema.json": "dfbddc3db19aca5d45edd461a3a197052428759b"
+  },
+  "meaning": "Coordinate ontology, eligibility states, chi-withholding policy, evidence tiers, independence fields and entry structure are fixed before A2 numerical reconstruction. Any semantic change requires an explicit Atlas schema version/amendment and may not silently reinterpret existing entries.",
+  "chi_policy": "WITHHELD_UNLESS_EXPLICITLY_LICENSED_SECOND_ORDER",
+  "engine_targeting": "PROHIBITED",
+  "p1_authorized": false
+}
