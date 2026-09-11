@@ -34,7 +34,7 @@ The methylation GEO record describes:
 
 The expression companion `GSE66863` contains 121 lung adenocarcinoma tumor samples measured on the Agilent 60K mRNA expression array. GEO explicitly states that the expression sample numbers are matched between `GSE66836` and `GSE66863`.
 
-Therefore the currently source-verified paired cross-omic tumor subset is **121**, not all 164 methylation tumors. The additional methylation tumors and 19 matched normal lung samples remain useful methylation/reference context but are not assumed to possess matched expression.
+Therefore the source-declared paired cross-omic tumor subset is **121**, not all 164 methylation tumors. The additional methylation tumors and 19 matched normal lung samples remain useful methylation/reference context but are not assumed to possess matched expression.
 
 ### Potential role
 
@@ -51,7 +51,7 @@ Potentially independent from TCGA at data/cohort/source level. It is particularl
 
 `CANDIDATE_HIGH_PRIORITY_STATIC_EXTERNAL`
 
-`PAIRED_CROSS_OMIC_TUMORS_SOURCE_VERIFIED = 121`
+`PAIRED_CROSS_OMIC_TUMORS_SOURCE_DECLARED = 121`
 
 No outcome values have been used here to select favorable GRI performance.
 
@@ -200,7 +200,7 @@ Very small biological-system count and cell-line context. It is not a representa
 
 ---
 
-## Candidate F: prostate tumor / adjacent-tissue paired study family
+## Candidate F: prostate tumor / adjacent-tissue multi-omic study family
 
 ### Sources of record
 
@@ -223,19 +223,22 @@ NCBI RNA BioProject:
 
 Both GEO series carry the same study title: `Race-specific coregulatory and transcriptomic profiles associated with DNA methylation and androgen receptor in prostate cancer`, with `GSE262522` identified as the m450K methylation series and `GSE237995` as the RNA-seq series.
 
-The RNA BioProject states an overall design of:
+`GSE237995` contains **121 RNA-seq samples** under the overall study design:
 
 - 58 African American samples: 31 tumors + 27 adjacent tissue;
-- 63 European American samples: 31 tumors + 32 adjacent tissue;
-- total 121 RNA BioSamples / 121 SRA experiments.
+- 63 European American samples: 31 tumors + 32 adjacent tissue.
 
-The methylation series provides 450K IDAT/raw and processed functional-normalization matrices. Individual methylation and RNA GEO samples use the same participant-style naming convention, for example `PT-..._T_AA` / adjacent-tissue forms, but exact one-to-one overlap across all 121 samples has **not yet been computed** in this audit and is therefore not assumed.
+`GSE262522` contains **68 methylation samples**, not 121. Its GEO record lists Illumina HumanMethylation450 data with raw IDAT and processed functional-normalization matrices.
+
+Exact cross-series matching is demonstrably present for individual participants. For example, `PT-00188738_T_AA` appears in both the methylation and RNA series, and `PT-00227158_T_AA` appears in both. However, the complete 68-sample methylation-to-RNA overlap has **not yet been enumerated**, so this audit does not assume that all 68 methylation samples have RNA counterparts.
+
+Maximum possible paired sample count from the currently verified series sizes is therefore 68, pending exact title/identifier intersection.
 
 ### Potential role
 
 - high-priority external `NOMINAL_FUNCTION` cross-omic prostate architecture candidate;
 - tumor-versus-adjacent context;
-- population/context robustness research across the prespecified study groups;
+- population/context robustness research across the study groups;
 - cross-platform transfer relative to TCGA processing.
 
 ### Current state
@@ -245,6 +248,10 @@ The methylation series provides 450K IDAT/raw and processed functional-normaliza
 `EXPRESSION_COMPANION = GSE237995_VERIFIED`
 
 `RNA_SAMPLE_COUNT = 121_SOURCE_VERIFIED`
+
+`METHYLATION_SAMPLE_COUNT = 68_SOURCE_VERIFIED`
+
+`EXACT_PAIRED_COUNT = TO_BE_ENUMERATED`
 
 ---
 
@@ -282,7 +289,7 @@ This ranking is by **data architecture and research role**, not by agreement wit
 ### Static external cross-layer validation candidates
 
 1. `GSE66836 + GSE66863` lung adenocarcinoma: 121 source-declared matched tumor expression/methylation sample numbers; 450K methylation plus Agilent expression; larger methylation-only context also available.
-2. `GSE262522 + GSE237995` prostate study family: 450K methylation plus RNA-seq, 121 RNA samples under a common study design; exact one-to-one cross-modality ID overlap still requires verification.
+2. `GSE262522 + GSE237995` prostate study family: 68 methylation samples within a 121-sample RNA study; exact paired overlap pending enumeration.
 3. `CGGA CCell_4083`: 35-sample multi-omics dataset with EPIC methylation + RNA-seq + proteomics/phosphoproteomics + scRNA-seq listed; exact modality overlap still requires verification.
 4. CGGA legacy methylation/expression families: large enough individually, but exact paired overlap unresolved.
 
@@ -302,8 +309,8 @@ No candidate above is promoted to `RARE_NATURAL_TESTBED` without a domain-native
 
 Safe P0-D actions:
 
-1. retain the source-verified 121 matched lung tumor subset as a high-priority candidate without evaluating GRI outcomes;
-2. compute/verify exact ID overlap for `GSE262522/GSE237995` before calling it a paired 121-sample cohort;
+1. retain the source-declared 121 matched lung tumor subset as a high-priority candidate without evaluating GRI outcomes;
+2. enumerate exact title/identifier overlap for the 68 `GSE262522` methylation samples against the 121 `GSE237995` RNA samples before assigning the prostate paired count;
 3. inspect `CCell_4083` downloadable manifests for exact modality overlap and raw/processed availability;
 4. determine paired overlap between CGGA `methyl_159` and each expression cohort;
 5. inventory whether selected ARGO programs actually provide paired methylation + expression;
