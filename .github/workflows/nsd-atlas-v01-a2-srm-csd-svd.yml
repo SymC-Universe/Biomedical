@@ -11,6 +11,7 @@ on:
       - 'Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/registries/A2_SRM_REPLICATION_RESERVOIR_FREEZE.json'
       - 'Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/scripts/fetch_a2_srm_pilot.py'
       - 'Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/scripts/run_a2_srm_csd_svd.py'
+      - 'Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/scripts/build_a2_srm_entries.py'
       - 'Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/scripts/capture_atlas_environment.py'
       - 'Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/src/csd_svd.py'
       - 'Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/src/validate_atlas.py'
@@ -57,13 +58,19 @@ jobs:
         working-directory: Neural_Stability_Dynamics/Neurostability_Atlas_v0_1
         run: python scripts/run_a2_srm_csd_svd.py --input-root input/srm_a2 --manifest results/a2_srm/input_manifest.json --output results/a2_srm/csd_svd_result.json --arrays results/a2_srm/csd_svd_arrays.npz
 
+      - name: Build and validate sparse Atlas entries
+        working-directory: Neural_Stability_Dynamics/Neurostability_Atlas_v0_1
+        run: python scripts/build_a2_srm_entries.py --result results/a2_srm/csd_svd_result.json --output-dir results/a2_srm/atlas_entries
+
       - name: Capture Atlas environment
         working-directory: Neural_Stability_Dynamics/Neurostability_Atlas_v0_1
         run: python scripts/capture_atlas_environment.py --output results/a2_srm/environment.json
 
       - name: Hash reconstruction outputs
         working-directory: Neural_Stability_Dynamics/Neurostability_Atlas_v0_1
-        run: sha256sum results/a2_srm/input_manifest.json results/a2_srm/csd_svd_result.json results/a2_srm/csd_svd_arrays.npz results/a2_srm/environment.json > results/a2_srm/SHA256SUMS.txt
+        run: |
+          sha256sum results/a2_srm/input_manifest.json results/a2_srm/csd_svd_result.json results/a2_srm/csd_svd_arrays.npz results/a2_srm/environment.json > results/a2_srm/SHA256SUMS.txt
+          find results/a2_srm/atlas_entries -type f -name '*.json' -print0 | sort -z | xargs -0 sha256sum >> results/a2_srm/SHA256SUMS.txt
 
       - name: Upload coordinate reconstruction artifact only
         uses: actions/upload-artifact@v4
@@ -73,6 +80,15 @@ jobs:
             Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/results/a2_srm/input_manifest.json
             Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/results/a2_srm/csd_svd_result.json
             Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/results/a2_srm/csd_svd_arrays.npz
+            Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/results/a2_srm/atlas_entries/*.json
             Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/results/a2_srm/environment.json
             Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/results/a2_srm/SHA256SUMS.txt
           if-no-files-found: error
+
+      - name: Upload transport diagnostic if retrieval fails or falls back
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-atlas-v01-a2-srm-transport-diagnostic
+          path: Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/results/a2_srm/transport_failure.json
+          if-no-files-found: ignore
