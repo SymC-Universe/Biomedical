@@ -4,13 +4,23 @@ from scipy.optimize import linear_sum_assignment
 from .selector import mac, pole_distance
 
 
-def _alternative_min(values, excluded_index):
-    values = np.asarray(values, float)
-    if values.size <= 1:
+def _global_assignment_margin(cost, chosen_row, chosen_col, base_total):
+    """Cost increase when one chosen pair is forbidden and assignment re-solved."""
+    alt = np.asarray(cost, float).copy()
+    alt[int(chosen_row), int(chosen_col)] = np.inf
+    try:
+        rr, cc = linear_sum_assignment(alt)
+    except ValueError:
         return np.inf
-    keep = np.ones(values.size, dtype=bool)
-    keep[int(excluded_index)] = False
-    return float(np.min(values[keep]))
+    chosen_costs = alt[rr, cc]
+    if np.any(~np.isfinite(chosen_costs)):
+        return np.inf
+    alt_total = float(np.sum(chosen_costs))
+    delta = alt_total - float(base_total)
+    tol = 1e-12 * max(abs(float(base_total)), abs(alt_total), 1.0)
+    if delta < -tol:
+        raise RuntimeError("alternative assignment improved on reported global optimum")
+    return float(max(delta, 0.0))
 
 
 def track_modes(vals_a, shapes_a, vals_b, shapes_b, min_hz=0.0):
@@ -18,8 +28,9 @@ def track_modes(vals_a, shapes_a, vals_b, shapes_b, min_hz=0.0):
 
     A Hungarian assignment is bookkeeping, not evidence that a mode is truly
     shared, lost, or added. Unmatched modes are therefore reported as
-    cardinality-unmatched candidates, and assignment margins are exposed so
-    ambiguous pairings remain visible for later uncertainty-aware adjudication.
+    cardinality-unmatched candidates. `assignment_margin` is the nonnegative
+    increase in the globally re-optimized assignment cost when that chosen pair
+    is forbidden. Zero means an equally good global alternative exists.
     """
     va = np.asarray(vals_a, complex)
     vb = np.asarray(vals_b, complex)
@@ -36,6 +47,7 @@ def track_modes(vals_a, shapes_a, vals_b, shapes_b, min_hz=0.0):
     if len(ia) == 0 or len(ib) == 0:
         return {
             "status": "P0_ASSIGNMENT_NOT_ADJUDICATED",
+            "assignment_total_cost": 0.0,
             "candidate_pairs": [],
             "unmatched_a": [int(i) for i in ia],
             "unmatched_b": [int(j) for j in ib],
@@ -54,16 +66,14 @@ def track_modes(vals_a, shapes_a, vals_b, shapes_b, min_hz=0.0):
             meta[(r, c)] = (d, m, combined)
 
     rr, cc = linear_sum_assignment(cost)
+    base_total = float(np.sum(cost[rr, cc]))
     candidate_pairs = []
     used_a = set()
     used_b = set()
     for r, c in zip(rr, cc):
         i, j = int(ia[r]), int(ib[c])
         d, m, combined = meta[(r, c)]
-        row_alt = _alternative_min(cost[r, :], c)
-        col_alt = _alternative_min(cost[:, c], r)
-        best_alt = min(row_alt, col_alt)
-        margin = np.inf if not np.isfinite(best_alt) else float(best_alt - combined)
+        margin = _global_assignment_margin(cost, r, c, base_total)
         candidate_pairs.append(
             {
                 "a_index": i,
@@ -82,6 +92,7 @@ def track_modes(vals_a, shapes_a, vals_b, shapes_b, min_hz=0.0):
     unmatched_b = [int(j) for j in ib if int(j) not in used_b]
     return {
         "status": "P0_ASSIGNMENT_NOT_ADJUDICATED",
+        "assignment_total_cost": base_total,
         "candidate_pairs": candidate_pairs,
         "unmatched_a": unmatched_a,
         "unmatched_b": unmatched_b,
