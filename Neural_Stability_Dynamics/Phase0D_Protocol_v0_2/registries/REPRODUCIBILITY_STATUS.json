@@ -2,7 +2,40 @@
   "schema": "nsd-reproducibility-status-v0.2",
   "R1_release_reproduction": "NOT_QUALIFIED_P0",
   "R2_calculation_reproduction": "NOT_QUALIFIED_P0",
-  "R3_evidence_reconstruction": "NOT_APPLICABLE_TO_SYNTHETIC_ONLY_CURRENT_MILESTONE; required for future literature/atlas claims",
-  "current_integrity_features": ["candidate manifest generation","future frozen-manifest verification","environment capture","core semantic summary reconstruction"],
-  "missing_for_P2": ["clean-room release","dependency closure/pins","full semantic regeneration","benchmark datasets","validated atlas","external tests"]
+  "R3_evidence_reconstruction": "PARTIAL_P0_SOURCE_OF_RECORD_LOG_EXISTS; full evidence reconstruction required for future atlas/empirical claims",
+  "current_integrity_features": [
+    "pinned GitHub Actions P0 environment",
+    "Python compile gate",
+    "47-test protocol/regression/known-bad suite at verified P0 milestone",
+    "machine-readable four-hold qualification record",
+    "qualification artifact with SHA-256 digest",
+    "candidate manifest generation",
+    "future frozen-manifest verification",
+    "environment capture",
+    "core semantic summary reconstruction",
+    "confirmatory runner fail-closed before P1 readiness"
+  ],
+  "verified_P0_milestone": {
+    "commit": "2e2242d5ad32172a87597d979aa4755dad5b9f17",
+    "github_actions_run": 34561975591,
+    "tests_passed": 47,
+    "artifact": "nsd-phase0d-v02-p0-qualification",
+    "artifact_sha256": "4c948abdb10c55424efd006ec7cb6b2ff40d189aee34bd446a3258047a3cc725",
+    "p1_guard": "PASS_FAIL_CLOSED"
+  },
+  "missing_for_P1": [
+    "frozen complete MFR-14",
+    "frozen comparator/challenge/scoring route",
+    "validated and frozen estimator-uncertainty procedure",
+    "frozen model-adequacy adjudication/search-space rule",
+    "frozen unequal-order scientific adjudication rule",
+    "new untouched P1 evidence and frozen manifest"
+  ],
+  "missing_for_P2": [
+    "clean-room release",
+    "full semantic regeneration",
+    "benchmark datasets",
+    "validated atlas",
+    "external tests"
+  ]
 }

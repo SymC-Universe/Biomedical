@@ -8,8 +8,11 @@ def run(args):
 
 if __name__ == "__main__":
     print("NSD Phase 0D v0.2 P0 protocol-reconciliation development runner")
-    print("PURPOSE = DEBUGGING | protocol compliance, integrity, refusal, and semantic-guard development")
+    print("PURPOSE = DEBUGGING | protocol compliance, integrity, refusal, semantic guards, and four-hold P0 qualification")
     rc = run([sys.executable, "-m", "pytest", "-q"])
+    if rc:
+        raise SystemExit(rc)
+    rc = run([sys.executable, "scripts/run_p0_four_hold_qualification.py"])
     if rc:
         raise SystemExit(rc)
     rc = run([sys.executable, "scripts/capture_environment.py"])
@@ -18,4 +21,4 @@ if __name__ == "__main__":
     rc = run([sys.executable, "scripts/make_candidate_manifest.py"])
     if rc:
         raise SystemExit(rc)
-    print("P0 DEVELOPMENT CHECKS COMPLETE. This does not authorize or execute a scientific holdout.")
+    print("P0 DEVELOPMENT AND FOUR-HOLD QUALIFICATION CHECKS COMPLETE. This does not authorize or execute a scientific holdout.")

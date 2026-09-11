@@ -1,6 +1,6 @@
 # NSD Project State
 
-STATUS | P0 protocol reconciliation complete; source-of-record evidence gate has advanced the four scientific holds to evidence-based P0 proposals. Phase 0D v0.1 remains preserved and superseded before execution.
-PURPOSE | METHOD DEVELOPMENT: implement and qualify comparator, model-adequacy, uncertainty and unequal-order tracking machinery without opening P1 or inventing thresholds.
-NEXT ACTION | Implement DMD comparator plumbing, first-class model-adequacy outputs, uncertainty objects, and shared/added/lost/ambiguous mode tracking on P0 development systems; add known-bad tests; then perform a milestone audit before any P1 freeze.
+STATUS | P0 protocol reconciliation and first four-hold implementation qualification complete. GitHub Actions run 34561975591 on commit 2e2242d5ad32172a87597d979aa4755dad5b9f17 passed 47 tests, generated the four-hold P0 qualification record, and preserved the fail-closed P1 guard. Phase 0D v0.1 remains preserved and superseded before execution.
+PURPOSE | METHOD DEVELOPMENT: stress the comparator, model-adequacy, uncertainty and unequal-order machinery across broader P0 known-truth/known-bad challenge families without opening P1 or inventing thresholds.
+NEXT ACTION | Build and run a deeper P0 stress matrix: compare DMD and SSI-COV descriptively on the same noisy/weak-observability/crowding constructions; exercise covariance adequacy under local nonstationarity/model mismatch; test unequal-order candidate matching under added/lost/crowded/ambiguous constructions; then resolve or preserve the analytical SSI-uncertainty hold and perform a v0.7.1 milestone audit before any P1 freeze.
 USER ACTION | NONE for P0 implementation/testing that does not freeze science-adjacent thresholds or adjudication rules. User review is required before freezing the P1 comparator identity, thresholds, uncertainty confidence rule, challenge matrix, P1 seed/system list, or complete MFR-14.
