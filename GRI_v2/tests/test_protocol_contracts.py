@@ -65,8 +65,43 @@ def _valid_record():
     }
 
 
+def _admitted_rare_record(mode="P0_D"):
+    record = _valid_record()
+    record["research_mode"] = mode
+    record["classification"] = {
+        "biological_chi_status": "NOT_ADMITTED",
+        "rare_natural_testbed_status": "ADMITTED",
+        "rare_natural_testbed": {
+            "domain_native_rarity_evidence": ["independent prevalence evidence"],
+            "authenticity_and_confounding_gate_passed": True,
+            "selection_basis": "DOMAIN_NATIVE_RARITY_PLUS_POST_RESULT_STRESS",
+            "selection_independent_of_engine_result": mode != "P1",
+            "base_rate_context_status": "KNOWN_AND_RECORDED",
+            "representative_status": "NONREPRESENTATIVE_LIMIT_PROBE",
+        },
+    }
+    if mode == "P1":
+        record["classification"]["rare_natural_testbed"][
+            "selection_independent_of_engine_result"
+        ] = True
+        record["prediction"].update(
+            {
+                "prediction_class": "S",
+                "outcome_namespace": "EMPIRICAL",
+                "mfr14_complete": True,
+                "freeze_id": "example-freeze",
+                "decisive_evidence_unopened_at_freeze": True,
+            }
+        )
+    return record
+
+
 def test_valid_p0q_record_passes_contract():
     validate_v071a_output(_valid_record())
+
+
+def test_valid_rare_p0d_record_passes_contract():
+    validate_v071a_output(_admitted_rare_record())
 
 
 def test_missing_required_group_is_known_bad_and_fails():
@@ -105,43 +140,40 @@ def test_silent_biological_chi_admission_is_known_bad_and_fails():
 
 
 def test_engine_selected_rare_case_is_known_bad_and_fails():
-    record = _valid_record()
-    record["classification"] = {
-        "biological_chi_status": "NOT_ADMITTED",
-        "rare_natural_testbed_status": "ADMITTED",
-        "rare_natural_testbed": {
-            "domain_native_rarity_evidence": ["independent prevalence tail"],
-            "authenticity_and_confounding_gate_passed": True,
-            "selection_basis": "ENGINE_OUTPUT_ONLY",
-            "selection_independent_of_engine_result": False,
-        },
-    }
+    record = _admitted_rare_record()
+    record["classification"]["rare_natural_testbed"]["selection_basis"] = "ENGINE_OUTPUT_ONLY"
     with pytest.raises(ProtocolContractError, match="cannot be selected from Engine"):
         validate_v071a_output(record)
 
 
+def test_rare_case_without_base_rate_disposition_is_known_bad_and_fails():
+    record = _admitted_rare_record()
+    del record["classification"]["rare_natural_testbed"]["base_rate_context_status"]
+    with pytest.raises(ProtocolContractError, match="base-rate-context disposition"):
+        validate_v071a_output(record)
+
+
+def test_rare_case_cannot_be_called_representative_without_separate_evidence():
+    record = _admitted_rare_record()
+    record["classification"]["rare_natural_testbed"][
+        "representative_status"
+    ] = "REPRESENTATIVE_BY_SEPARATE_EVIDENCE"
+    with pytest.raises(ProtocolContractError, match="requires separate evidence"):
+        validate_v071a_output(record)
+
+
+def test_bare_representative_label_is_known_bad_and_fails():
+    record = _admitted_rare_record()
+    record["classification"]["rare_natural_testbed"]["representative_status"] = "REPRESENTATIVE"
+    with pytest.raises(ProtocolContractError, match="preserve nonrepresentative"):
+        validate_v071a_output(record)
+
+
 def test_p1_rare_case_requires_engine_independent_selection():
-    record = _valid_record()
-    record["research_mode"] = "P1"
-    record["prediction"].update(
-        {
-            "prediction_class": "S",
-            "outcome_namespace": "EMPIRICAL",
-            "mfr14_complete": True,
-            "freeze_id": "example-freeze",
-            "decisive_evidence_unopened_at_freeze": True,
-        }
-    )
-    record["classification"] = {
-        "biological_chi_status": "NOT_ADMITTED",
-        "rare_natural_testbed_status": "ADMITTED",
-        "rare_natural_testbed": {
-            "domain_native_rarity_evidence": ["independent prevalence tail"],
-            "authenticity_and_confounding_gate_passed": True,
-            "selection_basis": "DOMAIN_NATIVE_SEVERITY",
-            "selection_independent_of_engine_result": False,
-        },
-    }
+    record = _admitted_rare_record(mode="P1")
+    record["classification"]["rare_natural_testbed"][
+        "selection_independent_of_engine_result"
+    ] = False
     with pytest.raises(ProtocolContractError, match="must be independent of Engine result"):
         validate_v071a_output(record)
 
@@ -154,6 +186,13 @@ def test_nonindependent_atlas_cannot_claim_independent_engine_validation():
         "used_as_independent_engine_validation": True,
     }
     with pytest.raises(ProtocolContractError, match="cannot validate the Engine independently"):
+        validate_v071a_output(record)
+
+
+def test_missing_pathway_independence_dimension_is_known_bad_and_fails():
+    record = _valid_record()
+    del record["independence"]["temporal_independence"]
+    with pytest.raises(ProtocolContractError, match="missing pathway-specific independence"):
         validate_v071a_output(record)
 
 
