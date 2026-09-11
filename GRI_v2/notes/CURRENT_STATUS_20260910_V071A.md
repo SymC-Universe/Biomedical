@@ -16,7 +16,9 @@ Recovered closed state:
 - biological chi: not admitted;
 - temporal/causal inheritance: not established from static TCGA.
 
-The safe repository-side v0.7.1/v0.7.1A migration has now been pushed to its current scientific stop boundaries on branch `gri-v071-protocol-integration-20260910` and draft PR #3.
+A later v0.7.1A source-of-record audit independently established pheochromocytoma/paraganglioma as a rare tumor family. PCPG is therefore admitted as a **post-result P0-D `RARE_NATURAL_TESTBED` for limit mapping only**, with open promotion debt and zero confirmatory weight. Its rarity comes from oncology-native epidemiology; its selection for GRI follow-up remains post-result because it was noticed through recurrent GRI stress behavior.
+
+The safe repository-side v0.7.1/v0.7.1A migration has been pushed to its current scientific stop boundaries on branch `gri-v071-protocol-integration-20260910` and draft PR #3.
 
 ## CURRENT GATE
 
@@ -48,7 +50,9 @@ The integration branch now contains:
 18. historical-control supersession map preserving frozen bytes;
 19. draft Tool output schema with Function/Limit and pathway-independence fields;
 20. executable protocol-control validator and known-bad tests;
-21. PR-based CI for all integration changes.
+21. PR-based CI for all integration changes;
+22. task-specific native-comparator candidate survey;
+23. PCPG rare-natural-testbed P0-D qualification record.
 
 The protocol-control validator now prevents, among other defects:
 
@@ -73,21 +77,21 @@ Without selecting a decisive P1 cohort or examining GRI performance on external 
 - `GSE139388` family: parental/acquired-resistance cell-model perturbation candidate;
 - ICGC ARGO: external source-family lead pending exact paired-modality/access audit.
 
-No candidate is admitted as `RARE_NATURAL_TESTBED` merely because it is unusual or interesting to GRI.
+No **external candidate** has been selected or admitted as a P1 `RARE_NATURAL_TESTBED`. PCPG's separate P0-D rare-testbed status does not make it an untouched external validation case.
 
 ## ACTIVE EXECUTION / CI
 
-Draft PR #3 remains open, mergeable, and intentionally draft against `gri-v2`.
+Draft PR #3 remains open and intentionally draft against `gri-v2`.
 
-PR CI runs the existing full `GRI v2 tests` workflow on every integration-branch update touching `GRI_v2/**`.
+PR CI runs the existing full `GRI v2 tests` workflow on integration-branch updates touching `GRI_v2/**`.
 
-The latest completed run for the new P0-D/P0-Q confirmatory-label firewall is green.
+The latest completed full workflow before the PCPG synchronization commits was green. New synchronization commits continue to trigger the same PR suite automatically.
 
 The PR must remain unmerged until the pending sensitivity and scientific comparator/scope decisions are dispositioned.
 
 ## CURRENT SCIENTIFIC STOP BOUNDARIES
 
-The safe autonomous push is now blocked only where proceeding would require new evidence or a scientific/science-adjacent choice:
+The safe autonomous push is blocked only where proceeding would require new evidence or a scientific/science-adjacent choice:
 
 ### S1. Post-C1 sensitivity result
 
@@ -133,15 +137,17 @@ then, after scientific freeze:
 
 Function and Limit outputs remain separate. Partial support is allowed. A supported static architecture result does not require a biological chi, mechanism, dynamic transition, or full predictive Tool claim.
 
+PCPG now demonstrates the other side of the addendum: a legitimately rare natural system may be valuable as a high-information P0-D limit probe while remaining explicitly nonrepresentative and nonconfirmatory because the GRI-specific reason for selecting it was post-result.
+
 ## USER ACTION
 
 For repository-side migration: **NONE**.
 
-For the heavy computational lane: the post-C1 sensitivity v2.2 remains the next local result needed. If it is already running, no additional local action should compete with it. If it is not yet running, launching that already-frozen package against the completed C1 state remains the priority user-side action.
+For the heavy computational lane: the post-C1 sensitivity v2.2 remains the next local result needed. If it is already running, no additional heavy local action should compete with it. If it is not yet running, launching that already-frozen package against the completed C1 state remains the priority user-side action.
 
 ## SUCCESS CONDITION
 
-The present parallel migration stage is considered complete when the current PR remains internally green and no safe non-science-changing work remains unperformed. That condition is now met subject to the final CI result for the most recent guard update.
+The present parallel migration stage is complete when the current PR remains internally green and no safe non-science-changing work remains unperformed.
 
 ## FAILURE BRANCH
 
@@ -150,6 +156,8 @@ Mechanical/CI faults are repaired autonomously while frozen science is unchanged
 A scientific sensitivity failure narrows the Function Map / supported System Model and expands the Limit Map. It is not retuned away.
 
 An unresolved historical comparator freeze remains a provenance gap rather than being invented.
+
+A future failure inside PCPG remains a rare-limit observation only at its earned P0-D/P0-Q status unless a new independent P1 rule has been frozen beforehand.
 
 ## NEXT GATE
 
