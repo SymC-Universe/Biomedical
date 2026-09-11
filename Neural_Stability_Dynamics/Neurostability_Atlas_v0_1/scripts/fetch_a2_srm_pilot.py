@@ -87,7 +87,7 @@ def _prepare_annex_checkout(cfg: dict, checkout: Path) -> dict:
     url = f"https://github.com/{repo}.git"
 
     if checkout.exists():
-        shutil.rmtree(checkout)
+        shutil.rmtree(checkout, ignore_errors=True)
     checkout.parent.mkdir(parents=True, exist_ok=True)
 
     _run(["git", "clone", "--no-checkout", url, str(checkout)])
@@ -282,10 +282,18 @@ def fetch(output_root: Path) -> dict:
     if set(requested_annex_paths) != allowed or len(requested_annex_paths) != len(allowed):
         raise RuntimeError("annex retrieval path set drifted from frozen 8-subject x 2-session pilot")
 
-    shutil.rmtree(checkout)
+    # The source checkout is ephemeral and is never uploaded. git-annex stores
+    # content in read-only object directories, so cleanup is best-effort only
+    # after every frozen object has already passed source size+MD5 verification
+    # and been copied to the isolated pilot input tree.
+    cleanup_warning = None
+    try:
+        shutil.rmtree(checkout)
+    except Exception as exc:
+        cleanup_warning = f"{type(exc).__name__}: {exc}"
+        shutil.rmtree(checkout, ignore_errors=True)
+
     if DIAGNOSTIC.exists():
-        # A prior preferred-remote warning is not a failure after every frozen
-        # object passes source identity verification. Preserve it in the manifest.
         diagnostic_sha256 = _hash(DIAGNOSTIC, "sha256")
     else:
         diagnostic_sha256 = None
@@ -301,6 +309,7 @@ def fetch(output_root: Path) -> dict:
         "reservoir_annex_paths_requested": 0,
         "transport_events": transport_events,
         "transport_diagnostic_sha256_if_present": diagnostic_sha256,
+        "ephemeral_checkout_cleanup_warning": cleanup_warning,
         "records": records,
     }
 
@@ -318,6 +327,8 @@ def main() -> None:
     print(manifest_path)
     print(f"verified sessions: {len(manifest['records'])}")
     print(f"reservoir annex paths requested: {manifest['reservoir_annex_paths_requested']}")
+    if manifest["ephemeral_checkout_cleanup_warning"]:
+        print(f"non-blocking cleanup warning: {manifest['ephemeral_checkout_cleanup_warning']}")
     print("A2 SRM INPUT FETCH PASS")
 
 
