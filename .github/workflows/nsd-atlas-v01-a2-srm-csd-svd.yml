@@ -1,0 +1,72 @@
+name: NSD Atlas v0.1 A2 SRM CSD-SVD Pilot
+
+on:
+  push:
+    branches:
+      - neural-stability-dynamics-phase0d-v0.2-protocol-v0.7.1
+    paths:
+      - '.github/workflows/nsd-atlas-v01-a2-srm-csd-svd.yml'
+      - 'Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/A2_SRM_CSD_SVD_METHOD.md'
+      - 'Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/registries/A2_SRM_CSD_SVD_PILOT_FREEZE.json'
+      - 'Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/registries/A2_SRM_REPLICATION_RESERVOIR_FREEZE.json'
+      - 'Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/scripts/fetch_a2_srm_pilot.py'
+      - 'Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/scripts/run_a2_srm_csd_svd.py'
+      - 'Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/scripts/capture_atlas_environment.py'
+      - 'Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/src/csd_svd.py'
+      - 'Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/src/validate_atlas.py'
+      - 'Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/tests/**'
+      - 'Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/registries/ATLAS_A0_SCHEMA_LOCK.json'
+      - 'Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/registries/ATLAS_A1_SOURCE_LOCK.json'
+  workflow_dispatch:
+
+jobs:
+  a2-srm-pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install pinned reconstruction environment
+        run: python -m pip install numpy==2.3.5 scipy==1.17.0 pytest==9.0.2 mne==1.13.0
+
+      - name: Compile Atlas code
+        working-directory: Neural_Stability_Dynamics/Neurostability_Atlas_v0_1
+        run: python -m compileall -q src scripts tests
+
+      - name: Verify Atlas locks and mathematical tests before EEG access
+        working-directory: Neural_Stability_Dynamics/Neurostability_Atlas_v0_1
+        run: |
+          python src/validate_atlas.py
+          python -m pytest -q tests
+
+      - name: Retrieve only the frozen eight-subject SRM pilot and verify source annex identity
+        working-directory: Neural_Stability_Dynamics/Neurostability_Atlas_v0_1
+        run: python scripts/fetch_a2_srm_pilot.py --output-root input/srm_a2 --manifest results/a2_srm/input_manifest.json
+
+      - name: Reconstruct observational CSD-SVD Atlas coordinates
+        working-directory: Neural_Stability_Dynamics/Neurostability_Atlas_v0_1
+        run: python scripts/run_a2_srm_csd_svd.py --input-root input/srm_a2 --manifest results/a2_srm/input_manifest.json --output results/a2_srm/csd_svd_result.json --arrays results/a2_srm/csd_svd_arrays.npz
+
+      - name: Capture Atlas environment
+        working-directory: Neural_Stability_Dynamics/Neurostability_Atlas_v0_1
+        run: python scripts/capture_atlas_environment.py --output results/a2_srm/environment.json
+
+      - name: Hash reconstruction outputs
+        working-directory: Neural_Stability_Dynamics/Neurostability_Atlas_v0_1
+        run: sha256sum results/a2_srm/input_manifest.json results/a2_srm/csd_svd_result.json results/a2_srm/csd_svd_arrays.npz results/a2_srm/environment.json > results/a2_srm/SHA256SUMS.txt
+
+      - name: Upload coordinate reconstruction artifact only
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-atlas-v01-a2-srm-csd-svd-pilot
+          path: |
+            Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/results/a2_srm/input_manifest.json
+            Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/results/a2_srm/csd_svd_result.json
+            Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/results/a2_srm/csd_svd_arrays.npz
+            Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/results/a2_srm/environment.json
+            Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/results/a2_srm/SHA256SUMS.txt
+          if-no-files-found: error
