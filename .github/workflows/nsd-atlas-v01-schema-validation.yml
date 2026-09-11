@@ -20,14 +20,14 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
-      - name: Install test dependency
-        run: python -m pip install pytest==9.0.2
+      - name: Install pinned Atlas test dependencies
+        run: python -m pip install numpy==2.3.5 scipy==1.17.0 pytest==9.0.2
       - name: Verify locked System Model identity
         working-directory: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2
         run: python -m pytest -q tests/test_system_model_lock.py
       - name: Validate Atlas ontology and source queue
         working-directory: Neural_Stability_Dynamics/Neurostability_Atlas_v0_1
         run: python src/validate_atlas.py
-      - name: Run Atlas contract tests
+      - name: Run Atlas contract and mathematical tests
         working-directory: Neural_Stability_Dynamics/Neurostability_Atlas_v0_1
         run: python -m pytest -q tests
