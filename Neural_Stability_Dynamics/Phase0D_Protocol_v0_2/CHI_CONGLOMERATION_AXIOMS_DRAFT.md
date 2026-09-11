@@ -143,6 +143,20 @@ No coupling pathway, subsystem boundary, scalar reduction, gray zone or target r
 
 If no coherent supported coupled reduction exists, or if a scalar chi is not licensed, the correct output is an explicit unresolved/non-scalar state rather than a forced number.
 
+## P0-D16 direct mechanism support
+
+P0-D16 held the two local subsystem coordinates fixed at `chi = 0.55` and `chi = 0.85` while changing only directed coupling architecture and reciprocal coupling magnitude.
+
+The one-way control is block triangular, so its autonomous eigenvalue union remains the fixed local union even though one subsystem can drive another.
+
+When the reciprocal return pathway is added and strengthened, the global lineages reorganize. Under the tested synthetic construction, the first global lineage moved from `chi=0.55` at zero coupling to about `0.972` at coupling rate `g=13`, crossed to a real-split branch at `chi≈1.036` for `g=14`, and reached about `chi=2.301` at `g=22`. The second global lineage simultaneously moved from `0.85` toward about `0.590`.
+
+The local chi values never changed.
+
+This is direct P0-D support for C3-C7: closed-loop interaction can generate emergent global stability coordinates that cannot be recovered by averaging the static local coordinates. It also demonstrates the distinction between one-way contribution and feedback-driven reorganization.
+
+The result is synthetic mechanism evidence only. No neural coupling law, pathway threshold or `chi_system` rule is licensed.
+
 ## Historical developmental RMS aggregate: retained but rejected as conglomeration
 
 P0-D11/P0-D12 used
