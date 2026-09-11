@@ -1,0 +1,26 @@
+{
+  "schema": "neurostability-atlas-a2-srm-replication-reservoir-freeze-v0.1",
+  "date": "2026-09-11",
+  "status": "UNOPENED_P0_Q_RESERVOIR_FROZEN_BEFORE_A2_PILOT_EEG",
+  "system_model": "NSD System Model v1.0",
+  "source_id": "ATLAS-SRC-002-SRM",
+  "source_snapshot": "OpenNeuro ds003775 v1.2.1 / Git tag 1.2.1 / commit cb354b249827d17fa0575b2b42521ba25982c16b",
+  "complete_repeat_roster_count": 42,
+  "development_pilot_subjects": [
+    "sub-002","sub-003","sub-005","sub-007","sub-011","sub-020","sub-021","sub-026"
+  ],
+  "unopened_p0q_reservoir_subjects": [
+    "sub-027","sub-028","sub-030","sub-032","sub-038","sub-042","sub-043","sub-046","sub-047","sub-048","sub-051","sub-058","sub-060","sub-064","sub-068","sub-069","sub-070","sub-071","sub-074","sub-075","sub-076","sub-077","sub-082","sub-084","sub-085","sub-087","sub-091","sub-094","sub-097","sub-101","sub-104","sub-105","sub-106","sub-110"
+  ],
+  "unopened_p0q_reservoir_count": 34,
+  "selection_rule": "The complete 42-subject repeat-session roster was established from source metadata only. Lexicographically first 8 are P0-D pilot; remaining 34 are reserved without EEG inspection for prospective P0-Q repeatability qualification after the Atlas reconstruction method/version and any claim-specific scoring rule are frozen.",
+  "access_rule": "Pilot workflows may retrieve only the 8 development subjects. Reservoir EEG may not be downloaded, parsed, summarized, visualized, or used for tuning until an explicit P0-Q qualification freeze references the reconstruction version and scoring/adjudication rule.",
+  "allowed_before_unblinding": [
+    "metadata/file-existence verification",
+    "source version and annex-identity verification without downloading EEG content",
+    "method derivation and software testing on synthetic/non-reservoir data",
+    "pilot analysis limited to the eight development subjects"
+  ],
+  "failure_consequence": "If the pilot motivates a method/rule change, create a new version and freeze it before any reservoir EEG is opened. If reservoir evidence is accidentally accessed early, mark the affected records non-independent and do not use them as prospective P0-Q evidence.",
+  "p1_authorized": false
+}
