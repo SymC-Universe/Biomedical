@@ -8,7 +8,7 @@ def run(args):
 
 if __name__ == "__main__":
     print("NSD Phase 0D v0.2 confirmatory runner guard")
-    print("Protocol baseline: General Cross-Project Research Protocol v0.7.1 FINAL")
+    print("Protocol baseline: General Cross-Project Research Protocol v0.7.1 FINAL + authoritative v0.7.1A Addendum")
     rc = run([sys.executable, "scripts/verify_p1_readiness.py"])
     if rc:
         print("CONFIRMATORY EXECUTION BLOCKED BEFORE SCIENTIFIC DATA GENERATION.")
