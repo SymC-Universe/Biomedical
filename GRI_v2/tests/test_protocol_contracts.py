@@ -23,10 +23,14 @@ def _valid_record():
         "conglomerate_output": {},
         "cross_component_output": {},
         "function_map_output": {
+            "scope_id": "test-global-geometry",
+            "component_or_claim": "global_cross_layer_geometry",
             "summary_state": "WORKS_HERE",
             "research_role": "NOMINAL_FUNCTION",
         },
         "limit_map_output": {
+            "scope_id": "test-semantic-specificity",
+            "component_or_claim": "hallmark_semantic_specificity",
             "summary_state": "NOT_KNOWN_HERE",
             "research_role": "NOMINAL_FUNCTION",
         },
@@ -69,6 +73,20 @@ def test_missing_required_group_is_known_bad_and_fails():
     record = _valid_record()
     del record["limit_map_output"]
     with pytest.raises(ProtocolContractError, match="missing required top-level"):
+        validate_v071a_output(record)
+
+
+def test_unscoped_function_state_is_known_bad_and_fails():
+    record = _valid_record()
+    del record["function_map_output"]["scope_id"]
+    with pytest.raises(ProtocolContractError, match="function_map_output missing required scope"):
+        validate_v071a_output(record)
+
+
+def test_unscoped_limit_state_is_known_bad_and_fails():
+    record = _valid_record()
+    record["limit_map_output"]["component_or_claim"] = ""
+    with pytest.raises(ProtocolContractError, match="limit_map_output missing required scope"):
         validate_v071a_output(record)
 
 
@@ -215,6 +233,13 @@ def test_invalid_function_state_is_known_bad_and_fails():
     record = _valid_record()
     record["function_map_output"]["summary_state"] = "EVERYTHING_WORKS"
     with pytest.raises(ProtocolContractError, match="invalid function-map"):
+        validate_v071a_output(record)
+
+
+def test_invalid_map_research_role_is_known_bad_and_fails():
+    record = _valid_record()
+    record["limit_map_output"]["research_role"] = "MAGIC_BOUNDARY"
+    with pytest.raises(ProtocolContractError, match="invalid research role"):
         validate_v071a_output(record)
 
 
