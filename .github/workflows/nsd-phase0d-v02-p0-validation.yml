@@ -25,6 +25,9 @@ jobs:
       - name: Run four-hold P0 qualification record
         working-directory: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2
         run: python scripts/run_p0_four_hold_qualification.py
+      - name: Run P0 comparator and adequacy stress matrix
+        working-directory: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2
+        run: python scripts/run_p0_comparator_stress_matrix.py
       - name: Run P0 development guard
         working-directory: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2
         run: python dev_runner.py
@@ -41,9 +44,9 @@ jobs:
             exit 1
           fi
           echo "P1 guard blocked execution as required."
-      - name: Upload P0 qualification record
+      - name: Upload P0 qualification records
         uses: actions/upload-artifact@v4
         with:
           name: nsd-phase0d-v02-p0-qualification
-          path: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/results/p0_qualification/four_hold_summary.json
+          path: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/results/p0_qualification/*.json
           if-no-files-found: error
