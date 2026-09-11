@@ -1,0 +1,50 @@
+{
+  "schema": "nsd-coverage-architecture-v0.7.1A-p0",
+  "protocol": "General Cross-Project Research Protocol v0.7.1 FINAL + v0.7.1A Addendum",
+  "status": "ACTIVE_P0_NOT_P1_FROZEN",
+  "roles": {
+    "NOMINAL_FUNCTION": {
+      "status": "ACTIVE",
+      "current_evidence": [
+        "known-truth stationary oscillatory synthetic systems",
+        "fixed-rank conditional SSI-COV and Subspace-DMD recovery work",
+        "P0Q1 oscillatory families where admission survived the frozen rank-signal gate"
+      ],
+      "next_mapping": "map recovery, identifiability, adequacy and cross-rank behavior across supported interior"
+    },
+    "PERTURBED_FUNCTION": {
+      "status": "ACTIVE",
+      "current_evidence": [
+        "white and colored measurement-noise perturbations",
+        "duration and observability variation",
+        "conditioning and crowding challenges"
+      ],
+      "next_mapping": "map trajectories and sensitivity as perturbations intensify before support is lost"
+    },
+    "BOUNDARY_OR_TRANSITION": {
+      "status": "ACTIVE",
+      "current_evidence": [
+        "P0Q1 Subspace-DMD real-pole false-admission failure",
+        "weak-observability and crowding transitions",
+        "rank ambiguity, instability and refusal cases"
+      ],
+      "next_mapping": "map which object fails first and distinguish physical/synthetic-system structure from estimator/inferential limits"
+    },
+    "RARE_NATURAL_LIMIT": {
+      "status": "NOT_APPLICABLE_CURRENT_SYNTHETIC_STAGE",
+      "current_evidence": [],
+      "future_gate": "before real EEG use, require domain-native rarity, authenticity/confounding checks, base-rate context and outcome-independent selection for P1"
+    }
+  },
+  "balance": {
+    "current_assessment": "FAILURE_LIMIT_DOMINATED",
+    "required_next_emphasis": "FUNCTION_MECHANISM_MAPPING_WHILE_EXISTING_LIMIT_AND_UNCERTAINTY_WORK_CONTINUES",
+    "equal_allocation_required": false
+  },
+  "historical_status_firewall": {
+    "phase0c_v0_2": "FAIL_FAIL_FAIL_UNCHANGED",
+    "phase0d_v0_1": "UNEXECUTED_SUPERSEDED_UNCHANGED",
+    "p0q1_ssi_cov": "SURVIVES_P0Q1_UNCHANGED",
+    "p0q1_subspace_dmd": "FAILS_P0Q1_UNCHANGED"
+  }
+}
