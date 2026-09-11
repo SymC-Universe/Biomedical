@@ -53,6 +53,56 @@ def chi_from_pole_pair(poles, reality_tol: float = 1e-7):
     }
 
 
+def chi_from_2x2_block(block, reality_tol: float = 1e-10):
+    """Recover chi from trace/determinant of one licensed real 2D lineage block.
+
+    Trace and determinant are similarity invariants, so this coordinate does not
+    depend on the chosen basis inside the two-dimensional state subspace. This
+    helper does not decide whether a 2D subspace is a valid second-order lineage.
+    """
+    B = np.asarray(block)
+    if B.shape != (2, 2):
+        raise ValueError("block must be 2x2")
+    if np.iscomplexobj(B):
+        scale = max(1.0, float(np.max(np.abs(B))))
+        if float(np.max(np.abs(B.imag))) > reality_tol * scale:
+            raise ValueError("block must be real to tolerance")
+        B = B.real
+    B = np.asarray(B, dtype=float)
+    if not np.all(np.isfinite(B)):
+        raise ValueError("block must be finite")
+
+    trace = float(np.trace(B))
+    determinant = float(np.linalg.det(B))
+    gamma = -trace
+    if gamma <= 0.0:
+        raise ValueError("block is not stably damped under this convention")
+    if determinant <= 0.0:
+        raise ValueError("block has nonpositive determinant")
+
+    omega_n = float(np.sqrt(determinant))
+    chi = gamma / (2.0 * omega_n)
+    discriminant = trace * trace - 4.0 * determinant
+    scale = max(1.0, trace * trace, 4.0 * determinant)
+    if discriminant > reality_tol * scale:
+        branch = "REAL_SPLIT"
+    elif discriminant < -reality_tol * scale:
+        branch = "COMPLEX_PAIR"
+    else:
+        branch = "REPEATED_ROOT_BOUNDARY"
+    return {
+        "chi": float(chi),
+        "gamma": float(gamma),
+        "omega_n": float(omega_n),
+        "omega_n_sq": float(determinant),
+        "trace": trace,
+        "determinant": determinant,
+        "discriminant": float(discriminant),
+        "normalized_discriminant": float(discriminant / (4.0 * determinant)),
+        "branch": branch,
+    }
+
+
 def conglomerate_chi(component_chi, omega_n, weights=None):
     """Developmental RMS damping/natural-scale conglomerate chi candidate."""
     chi = np.asarray(component_chi, dtype=float).reshape(-1)
