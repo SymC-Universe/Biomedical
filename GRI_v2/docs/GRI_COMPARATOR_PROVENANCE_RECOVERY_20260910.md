@@ -1,6 +1,7 @@
 # GRI comparator provenance recovery audit
 
 **Date:** 2026-09-10  
+**Last recovery search:** 2026-09-11  
 **Status:** PROVENANCE AUDIT, OPEN GAP  
 **Protocol mode:** P0-Q / reproducibility and comparator preparation  
 **Authority:** General Cross-Project Research Protocol v0.7.1 + v0.7.1A
@@ -13,27 +14,45 @@ Can the exact previously referenced post-FINAL equal-dimensional / capacity-matc
 
 The current September 8 main manuscript states that the primary predictive comparison has a capacity ceiling because `ALL_METHYLATION_RIDGE` uses 45 methylation Hallmark scores plus two composition covariates while `COVARIATE_ONLY` uses two predictors. It says a dimensionality-matched post-FINAL capacity-control analysis was frozen separately as an adversarial extension.
 
-The September 8 supplement states the same limitation and says a post-FINAL equal-dimensional control can test Hallmark-structured features against a capacity-matched non-Hallmark methylation representation. It correctly states that, because FINAL_HOLDOUT was already opened, this analysis must remain post-FINAL and cannot upgrade the original holdout's prospective status.
+The September 8 supplement states the same limitation. In Section 6.2 it records that the held-out comparison tests whether the frozen methylation representation adds predictive information beyond the two measured covariates, **not** whether an equal-capacity Hallmark architecture outperforms an equal-capacity non-Hallmark representation. It then says a post-FINAL dimensionality-matched capacity-control protocol is retained separately as adversarial follow-up.
 
-Reviewer/disposition records also refer to the control as frozen separately and not yet performed.
+In the supplement's residual predictive-capacity limitation section, the same distinction is preserved: a post-FINAL equal-dimensional control can test Hallmark-structured features against a capacity-matched non-Hallmark methylation representation, but because FINAL_HOLDOUT has already been opened that analysis must remain post-FINAL and cannot upgrade the original holdout's prospective status.
+
+Reviewer/disposition records also refer to the control as frozen separately and not yet performed. Those reviewer-derived records are supporting lineage only; they do not substitute for an exact source-of-record freeze artifact.
 
 ## Search performed
 
-Recovery searches were conducted across:
+Recovery searches have been conducted across:
 
 - the `SymC-Universe/Biomedical` GRI repository tree;
 - GRI documentation/config/artifact filenames;
-- File Library/current-conversation files using `equal-dimensional`, `capacity-matched`, `post-FINAL`, `non-Hallmark`, `methylation ridge`, and related terms.
+- File Library/current-conversation files using `equal-dimensional`, `capacity-matched`, `post-FINAL`, `non-Hallmark`, `methylation ridge`, `same-capacity`, `methylation PCA control`, and related terms.
 
-The searches recovered repeated **references to the intended control**, but no exact runnable package/config/script with a verified freeze identity.
+### 2026-09-11 re-search
+
+A fresh File Library search again recovered:
+
+- the September 8 supplement describing the intended post-FINAL dimensionality-matched capacity control;
+- pasted reviewer/adversarial-review records discussing the same intended control;
+- no exact comparator config, script, BAT, archive, manifest, hash ledger, or frozen protocol package attributable to that control.
+
+The search also returned unrelated uses of the phrase `equal-dimensional` from other SymC projects. Those are not GRI comparator evidence and are excluded from this provenance path.
 
 ## Current disposition
 
 `HISTORICAL_COMPARATOR_FREEZE_PROVENANCE = UNRESOLVED`
 
-No filename, hash, timestamped commit, archive identity, or executable protocol is being invented.
+More specifically:
 
-The statements in the manuscript that the control was "frozen separately" are therefore **not yet independently reconstructable from the recovered artifacts**.
+`PROTOCOL_INTENT_REFERENCED = YES`
+
+`EXACT_EXECUTABLE_FREEZE_RECOVERED = NO`
+
+`RESULT_RECOVERED = NO`
+
+No filename, hash, timestamped commit, archive identity, executable protocol, model design, or result is being invented.
+
+The statements in the manuscript that the control was "frozen separately" or "retained separately" are therefore **not yet independently reconstructable as an executable freeze from recovered artifacts**.
 
 ## Why this matters under v0.7.1
 
@@ -95,6 +114,10 @@ These are not to be filled from convenience or from whichever design produces th
 
 ## Current action
 
-Continue archival recovery while the post-C1 sensitivity runs. Do not block Function/Limit mapping, Atlas architecture, independence auditing, or P2 engineering preparation on this search.
+Repository and File Library recovery have now been pushed to the point where no exact historical runnable comparator freeze is visible in the available project records.
+
+Do not convert absence of recovery into proof that no local artifact ever existed. A local archive could still contain it. Until such an artifact is produced, however, the project treats the exact historical freeze as unresolved rather than operative.
+
+This gap does not block Function/Limit mapping, Atlas architecture, independence auditing, post-C1 sensitivity, or P2 protocol-neutral engineering preparation.
 
 **Current comparator status:** structural comparator program PARTIAL/PRESENT; predictive capacity-matched comparator historical freeze UNRESOLVED; future P1 native comparator route NOT YET FROZEN.
