@@ -1,0 +1,109 @@
+{
+  "status": "DRAFT_NOT_FROZEN",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.1_FINAL_plus_v0.7.1A_Addendum.pdf",
+  "purpose": "Prospective machine-readable design for future GRI Engine/Tool outputs under v0.7.1A. This file changes no frozen scientific rule or historical result.",
+  "research_mode": {
+    "allowed": ["P0_D", "P0_Q", "P1", "P2"],
+    "current_default_for_existing_viewed_GRI_evidence": "P0_D_OR_P0_Q_AS_APPLICABLE"
+  },
+  "required_top_level_groups": [
+    "measurement_status",
+    "system_model",
+    "engine",
+    "atlas",
+    "scalar_output",
+    "modal_output",
+    "conglomerate_output",
+    "cross_component_output",
+    "function_map_output",
+    "limit_map_output",
+    "reduction_adequacy",
+    "classification",
+    "refusal",
+    "prediction",
+    "independence",
+    "uncertainty",
+    "epistemic_status",
+    "claim_ceiling",
+    "provenance"
+  ],
+  "function_map_output": {
+    "fields": [
+      "operating_regime",
+      "occupancy_status",
+      "response_surface_or_trajectory",
+      "supported_relationships",
+      "compensation_or_redistribution",
+      "identifiability",
+      "reduction_information_loss",
+      "uncertainty",
+      "evidence_class"
+    ],
+    "allowed_summary_states": ["WORKS_HERE", "NOT_KNOWN_HERE"]
+  },
+  "limit_map_output": {
+    "fields": [
+      "limit_type",
+      "boundary_or_transition_status",
+      "first_failing_component_if_identified",
+      "refusal_or_partial_admission",
+      "rare_natural_testbed_status",
+      "limit_interpretation",
+      "uncertainty",
+      "independence_class",
+      "evidence_class"
+    ],
+    "allowed_summary_states": ["STOPS_WORKING_HERE", "NOT_KNOWN_HERE"]
+  },
+  "coverage_roles": [
+    "NOMINAL_FUNCTION",
+    "PERTURBED_FUNCTION",
+    "BOUNDARY_OR_TRANSITION",
+    "RARE_NATURAL_LIMIT",
+    "NOT_AVAILABLE",
+    "NOT_APPLICABLE",
+    "UNRESOLVED"
+  ],
+  "rare_natural_testbed": {
+    "default_status": "NOT_ADMITTED",
+    "required_before_admission": [
+      "domain_native_rarity_evidence",
+      "authenticity_and_confounding_gate",
+      "selection_independent_of_engine_result_for_P1_use",
+      "base_rate_context_where_knowable"
+    ],
+    "prohibited_selection_bases": [
+      "closeness_to_predicted_chi",
+      "favorable_or_unfavorable_engine_residual_alone",
+      "agreement_with_proposed_architecture",
+      "visual_similarity_to_expected_result"
+    ]
+  },
+  "independence": {
+    "dimensions": [
+      "data_independence",
+      "cohort_or_system_independence",
+      "outcome_independence",
+      "parameter_or_tuning_independence",
+      "method_independence",
+      "atlas_independence",
+      "source_or_literature_independence",
+      "temporal_independence"
+    ],
+    "controlling_question": "Could shared information on this pathway force the agreement being presented as evidence?"
+  },
+  "current_GRI_nonclaims": [
+    "biological_chi_not_admitted",
+    "no_temporal_inheritance_from_static_TCGA",
+    "no_causal_methylation_to_RNA_claim",
+    "no_clinical_utility_claim",
+    "no_exceptional_point_claim",
+    "no_universal_scope_claim"
+  ],
+  "notes": [
+    "PCPG is a recurrent stress/boundary candidate and is not a RARE_NATURAL_TESTBED unless independent oncology-native rarity evidence is established.",
+    "Function and Limit maps are coequal research targets and neither overrides the other.",
+    "A favorable region discovered on viewed data remains P0-D until separately frozen and tested on untouched evidence.",
+    "Method-scope qualification does not count as empirical confirmation about nature."
+  ]
+}
