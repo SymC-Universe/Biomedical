@@ -99,6 +99,63 @@
       "next_source_gate": "BUILD_FULL_PATIENT_STATE_MODALITY_REPLICATE_MANIFEST"
     },
     {
+      "candidate_id": "IDH_GLIOMA_NOMURA_2026_DUAL_CAPTURE",
+      "research_mode": "P0_D",
+      "primary_roles": ["PERTURBED_FUNCTION", "BOUNDARY_OR_TRANSITION"],
+      "source_architecture": "longitudinal_joint_single_nucleus_DNA_methylation_and_RNA",
+      "modality_counts": {
+        "tumors": 36,
+        "patients": 19,
+        "matched_longitudinal_tumors": 32,
+        "matched_longitudinal_patients": 15,
+        "joint_xrbs_ss2_matched_nuclei": 2117,
+        "GSE292025_tumor_records": 36,
+        "paper_10x_tumors": 32,
+        "GSE292130_current_records": 31
+      },
+      "identity_gate": "JOINT_CAPTURE_SOURCE_QUALIFIED_TUMOR_PAIR_TABLE_PENDING",
+      "identity_result": {
+        "joint_methylation_RNA_same_nucleus": true,
+        "matched_longitudinal_patient_count": 15,
+        "tenx_paper_vs_GEO_count_discrepancy": "OPEN"
+      },
+      "dedicated_audit": "artifacts/GRI_IDH_GLIOMA_DUAL_CAPTURE_LONGITUDINAL_SOURCE_AUDIT_P0D_20260911.md",
+      "gri_outcome_status": "UNOPENED",
+      "p1_status": "NOT_SELECTED_NOT_FROZEN",
+      "selection_basis": "SOURCE_ARCHITECTURE_NOT_GRI_AGREEMENT",
+      "next_source_gate": "RECONSTRUCT_36_TUMOR_ORDER_TABLE_AND_2117_NUCLEUS_PAIRING_SCHEMA"
+    },
+    {
+      "candidate_id": "CARE_IDH_MUT_2026",
+      "research_mode": "P0_D",
+      "primary_roles": ["PERTURBED_FUNCTION", "BOUNDARY_OR_TRANSITION"],
+      "source_architecture": "75_tumor_35_patient_longitudinal_snRNA_DNA_RNA_ATAC_family",
+      "modality_counts": {
+        "tumors": 75,
+        "patients": 35,
+        "main_longitudinal_pairs": 35,
+        "multiome_RNA_ATAC_tumors": 48,
+        "multiome_matched_longitudinal_pairs": 22,
+        "smartseq2_tumors": 16,
+        "bulk_DNA_methylation_exact_count": null
+      },
+      "identity_gate": "LONGITUDINAL_SOURCE_QUALIFIED_METHYLATION_ACCESS_UNRESOLVED",
+      "identity_result": {
+        "timepoints_per_patient": "2_OR_3",
+        "initial_at_primary_diagnosis_pairs": 17,
+        "initial_at_later_surgery_pairs": 18,
+        "treated_between_main_pair": 26,
+        "no_reported_adjuvant_treatment_between_pair": 9,
+        "bulk_DNA_methylation_present_in_study": true,
+        "bulk_DNA_methylation_public_accession": "UNRESOLVED"
+      },
+      "dedicated_audit": "artifacts/GRI_CARE_IDH_LONGITUDINAL_MULTIOMIC_SOURCE_AUDIT_P0D_20260911.md",
+      "gri_outcome_status": "UNOPENED",
+      "p1_status": "NOT_SELECTED_NOT_FROZEN",
+      "selection_basis": "SOURCE_ARCHITECTURE_NOT_GRI_AGREEMENT",
+      "next_source_gate": "RECONSTRUCT_75_SAMPLE_MODALITY_TABLE_AND_RESOLVE_BULK_METHYLATION_ACCESS"
+    },
+    {
       "candidate_id": "CGGA_CCELL_4083",
       "research_mode": "P0_D",
       "primary_roles": ["NOMINAL_FUNCTION"],
