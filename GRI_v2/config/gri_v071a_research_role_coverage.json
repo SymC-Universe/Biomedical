@@ -52,22 +52,26 @@
       ]
     },
     "RARE_NATURAL_LIMIT": {
-      "status": "NOT_YET_ADMITTED",
-      "current_evidence": [],
-      "claim_ceiling": "NONE",
-      "gaps": [
-        "domain-native rarity criterion",
-        "authenticity/confounding gate",
-        "base-rate context",
-        "selection independent of Engine output for P1",
-        "untouched/future rare case for confirmation"
+      "status": "PCPG_ADMITTED_FOR_P0_D_POST_RESULT_LIMIT_MAPPING",
+      "current_evidence": [
+        "NCI independently classifies pheochromocytoma/paraganglioma as rare, approximately 2 to 8 diagnoses per million people per year",
+        "TCGA molecular characterization independently identifies PCC/PGL as a rare tumor type and documents multi-platform molecular heterogeneity",
+        "PCPG was selected for GRI follow-up only after recurrent representation/prediction stress was observed"
       ],
-      "explicit_nonclassification": "PCPG is not a RARE_NATURAL_TESTBED solely because it is a recurrent GRI stress case."
+      "claim_ceiling": "POST_RESULT_P0_D_RARE_NATURAL_TESTBED_NO_CONFIRMATORY_WEIGHT",
+      "gaps": [
+        "prospectively frozen rare-limit hypothesis",
+        "selection independent of Engine output for future P1",
+        "untouched/future rare case or cohort for confirmation",
+        "mechanistic explanation of the current PCPG stress behavior"
+      ],
+      "selection_firewall": "Rarity is established independently by oncology-native epidemiology, but the choice to use PCPG as a GRI limit probe is post-result and carries promotion debt.",
+      "record": "artifacts/GRI_PCPG_RARE_NATURAL_TESTBED_P0D_20260910.md"
     }
   },
   "balance_check": {
-    "current_assessment": "STATIC_NOMINAL_AND_METHOD_LIMIT_COVERAGE_STRONGER_THAN_GENUINE_BIOLOGICAL_PERTURBATION_OR_RARE_LIMIT_COVERAGE",
-    "next_P0_D_priority": "Map functioning interior across supported contexts while P0-Q closes sensitivity and Engine qualification.",
-    "next_data_discovery_priority": "Seek independently sourced ordered/perturbational and qualified extreme contexts without selecting on GRI agreement."
+    "current_assessment": "STATIC_NOMINAL_AND_METHOD_LIMIT_COVERAGE_REMAINS_STRONGEST;_ONE_P0_D_RARE_NATURAL_LIMIT_CONTEXT_IS_NOW_SOURCE_QUALIFIED_BUT_GENUINE_BIOLOGICAL_PERTURBATION_AND_PROSPECTIVE_RARE_LIMIT_CONFIRMATION_REMAIN_OPEN",
+    "next_P0_D_priority": "Map functioning interior across supported contexts while using PCPG only as a post-result rare-limit probe and while P0-Q closes sensitivity and Engine qualification.",
+    "next_data_discovery_priority": "Seek independently sourced ordered/perturbational and future rare-limit contexts without selecting on GRI agreement."
   }
 }
