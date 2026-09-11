@@ -62,6 +62,7 @@
             "enum": [
               "NATIVE_REPORTED",
               "NATIVE_RECONSTRUCTED_FROM_RAW_DATA",
+              "NATIVE_RECONSTRUCTED_FROM_PINNED_DERIVATIVE",
               "DERIVED_EXACT",
               "DERIVED_MODEL_CONDITIONAL",
               "WITHHELD_INSUFFICIENT_INFORMATION",
