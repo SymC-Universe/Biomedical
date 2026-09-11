@@ -1,7 +1,8 @@
 # pyOMA2 SSI-Uncertainty External Reference Plan
 
 Date: 2026-09-10/11
-Status: **P0 EXTERNAL CROSS-CHECK. NOT AN ENGINE DEPENDENCY AND NOT A P1 UNCERTAINTY FREEZE.**
+Protocol: **General Cross-Project Research Protocol v0.7.1 FINAL + authoritative v0.7.1A Addendum**
+Status: **P0-Q EXTERNAL CROSS-CHECK. NOT AN ENGINE DEPENDENCY AND NOT A P1 UNCERTAINTY FREEZE.**
 
 ## Why this reference is useful
 
@@ -16,6 +17,12 @@ The NSD uncertainty hold cannot be closed by attaching an arbitrary bootstrap in
 
 This makes it useful as an **independent executable reference**, not merely as literature prose.
 
+## v0.7.1A research role
+
+This is `P0-Q`, not P0-D. It qualifies whether an external SSI uncertainty implementation can serve as a reference for a future NSD uncertainty derivation on known-truth synthetic systems. The current stationary two-mode construction is `NOMINAL_FUNCTION`; future perturbation/transition uncertainty checks, if justified, will be labeled separately.
+
+No Function-Map success here can promote itself to P1. No Limit-Map discrepancy is repaired on the same decisive record.
+
 ## Firewall
 
 The external reference runs in a separate GitHub Actions job and separate dependency environment. `pyOMA_2` is not imported by the NSD Engine, main P0 validation suite, or future production selector.
@@ -29,7 +36,7 @@ It does not mean:
 - NSD has implemented analytical SSI uncertainty;
 - pyOMA2 assumptions are licensed for EEG;
 - its block count, order, confidence convention or hard criteria become NSD defaults;
-- its point estimator is byte-for-byte identical to the current NSD SSI-COV estimator.
+- its point estimator is byte-for-byte or estimator-covariance identical to the current NSD SSI-COV estimator.
 
 ## Initial reference construction
 
@@ -58,7 +65,9 @@ The `1.96` coverage calculation is a familiar descriptive reference only. It is 
 Three outcomes are acceptable:
 
 1. **Reference executes and uncertainty is directionally calibrated.** We may then reproduce the required mathematics locally, with independent tests against the reference, before considering any P1 uncertainty rule.
-2. **Reference executes but calibration is poor or convention-sensitive.** Preserve that result and investigate assumptions/blocking/order effects.
+2. **Reference executes but calibration is poor or convention-sensitive.** Preserve that result and investigate assumptions/blocking/order effects in P0-D/P0-Q as appropriate.
 3. **Reference cannot be made consistent with the present NSD estimator conventions.** Preserve the incompatibility and keep MFR-09 open rather than forcing transfer.
+
+Any estimator-convention discrepancy is pathway-specific method dependence and must remain visible. Similar point estimates cannot erase a covariance-estimator mismatch.
 
 No result from this external job can independently authorize P1.
