@@ -1,0 +1,71 @@
+{
+  "schema": "nsd-system-model-lock-v1.0",
+  "date": "2026-09-11",
+  "protocol": "General Cross-Project Research Protocol v0.7.1 FINAL + authoritative v0.7.1A Addendum",
+  "status": "ARCHITECTURE_FROZEN_P0",
+  "system_model_version": "1.0",
+  "canonical_definition": "SYSTEM_MODEL.md",
+  "frozen_objects": {
+    "views": [
+      "SCALAR_SPECTRAL",
+      "MODAL_CARRIER",
+      "CONGLOMERATE_SYSTEM",
+      "OPEN_CHANNEL"
+    ],
+    "distinctions": [
+      "LATENT_DIMENSION_VS_OBSERVABLE_DIMENSION",
+      "INDIVIDUAL_CARRIER_VS_CROWDED_SUBSPACE",
+      "STRUCTURAL_RECOVERY_VS_MODEL_ADEQUACY",
+      "POINT_ESTIMATE_VS_ESTIMATOR_NATIVE_UNCERTAINTY",
+      "FUNCTION_MAP_VS_LIMIT_MAP",
+      "ENGINE_VS_ATLAS"
+    ],
+    "epistemic_states": [
+      "ADMIT",
+      "PARTIAL",
+      "REFUSE",
+      "UNRESOLVED",
+      "INDETERMINATE",
+      "NOT_APPLICABLE"
+    ],
+    "coverage_roles": [
+      "NOMINAL_FUNCTION",
+      "PERTURBED_FUNCTION",
+      "BOUNDARY_OR_TRANSITION",
+      "RARE_NATURAL_LIMIT"
+    ],
+    "scope_policy": "BOUNDED_SCOPE_EARNED_NOT_UNIVERSAL",
+    "chi_policy": "WITHHELD_UNLESS_EXPLICIT_SECOND_ORDER_DERIVATION_AND_VALIDATION",
+    "atlas_policy": "EXTERNAL_READ_ONLY_WITH_RESPECT_TO_CONFIRMATORY_ENGINE_RULE_CONSTRUCTION",
+    "aggregation_policy": "NO_SINGLE_COMPENSATING_SCORE_ACROSS_CONTRADICTORY_CLAIM_LAYERS"
+  },
+  "mutable_without_system_model_version_change": [
+    "estimator_implementation",
+    "comparator_implementation",
+    "rank_or_order_selection_rule",
+    "numeric_thresholds",
+    "crowding_adjudication_threshold",
+    "model_adequacy_thresholds_and_lag_window_policy",
+    "uncertainty_propagation_method_and_confidence_convention",
+    "P1_design_and_seeds",
+    "atlas_coordinate_values_and_population_ranges",
+    "clinical_or_phenotypic_interpretation",
+    "future_second_order_chi_derivation_if_added_as_versioned_derived_coordinate"
+  ],
+  "requires_system_model_version_increment": [
+    "removing_or_merging_a_frozen_view",
+    "changing_the_latent_vs_observable_distinction",
+    "forcing_individual_identity_when_only_subspace_identity_is_supported",
+    "allowing_one_layer_to_silently_override_unrelated_claim_specific_results",
+    "removing_model_adequacy_as_an_epistemic_requirement",
+    "removing_estimator_native_uncertainty_requirement",
+    "making_atlas_targets_selector_inputs",
+    "making_chi_mandatory_or_manufactured_from_generic_poles",
+    "targeting_universality_as_a_default_scope"
+  ],
+  "current_implementation_status": {
+    "Structural_Engine": "P0_D_P0_Q_ACTIVE_NOT_P1_QUALIFIED",
+    "Neurostability_Atlas": "QUEUED_COORDINATE_MAP_V0_1",
+    "P1": "CLOSED"
+  }
+}
