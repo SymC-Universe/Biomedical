@@ -12,15 +12,21 @@ The Atlas is not used to choose formulas, weights, thresholds, target values or 
 
 ## Single-component construction
 
-Use the dimensionless first-order realization of a second-order system
+Start from the second-order equation
 
-`d/dt [q, v]^T = A_chi [q, v]^T`
+`q'' + 2 chi omega_n q' + omega_n^2 q = 0`.
+
+Using the dimensionless state `x = [q, u]^T` with `u = q'/omega_n` gives
+
+`dx/dt = A_chi x`
 
 with
 
 `A_chi = omega_n * [[0, 1], [-1, -2 chi]]`.
 
-Its characteristic polynomial is
+This scaling keeps the two synthetic state coordinates dimensionally compatible for the isotropic process-noise stress used here. It does not claim literal neural displacement or velocity variables.
+
+The characteristic polynomial is
 
 `s^2 + 2 chi omega_n s + omega_n^2 = 0`.
 
