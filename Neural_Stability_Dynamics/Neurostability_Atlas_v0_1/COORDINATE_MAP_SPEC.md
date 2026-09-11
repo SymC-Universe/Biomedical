@@ -1,6 +1,6 @@
 # Neurostability Atlas v0.1 Coordinate Map Specification
 
-Status: **P0 ATLAS SCHEMA CANDIDATE. VALUES NOT YET POPULATED.**
+Status: **A0 SCHEMA READY FOR CONTENT LOCK. VALUES NOT YET POPULATED.**
 System Model: NSD v1.0
 Protocol: General v0.7.1 FINAL + v0.7.1A
 
@@ -173,7 +173,8 @@ These context fields are not automatically Engine selector inputs.
 Every coordinate request returns an eligibility status even when it returns no number.
 
 - `NATIVE_REPORTED`: numerical/object value is explicitly reported by the source;
-- `NATIVE_RECONSTRUCTED_FROM_RAW_DATA`: independently recomputed using a frozen Atlas reconstruction method;
+- `NATIVE_RECONSTRUCTED_FROM_RAW_DATA`: independently recomputed from a pinned raw-data version using a frozen Atlas reconstruction method;
+- `NATIVE_RECONSTRUCTED_FROM_PINNED_DERIVATIVE`: independently recomputed from a source-provided, version-pinned derivative whose preprocessing is itself recorded and auditable;
 - `DERIVED_EXACT`: algebraic/unit conversion with no new model assumption;
 - `DERIVED_MODEL_CONDITIONAL`: derivation requires a stated model assumption independently supported by the source;
 - `WITHHELD_INSUFFICIENT_INFORMATION`;
@@ -181,13 +182,15 @@ Every coordinate request returns an eligibility status even when it returns no n
 - `NOT_APPLICABLE`;
 - `UNRESOLVED`.
 
+A pinned derivative is never mislabeled raw. Any coordinate reconstructed from it inherits the derivative's preprocessing assumptions and limitations.
+
 ## 11. Evidence tier
 
 Atlas evidence tier is separate from coordinate eligibility.
 
 Initial tiers:
 
-- `A_FULL_NUMERIC_PROVENANCE`: full source/raw data plus exact numerical location or reconstruction path;
+- `A_FULL_NUMERIC_PROVENANCE`: full source raw data or pinned derivative plus an exact numerical reconstruction path, or exact full-text/table numeric provenance;
 - `B_FULL_METHOD_PARTIAL_NUMERIC`: full method provenance but incomplete numerical reconstruction;
 - `C_ABSTRACT_OR_SNIPPET_ONLY`: insufficient for decisive coordinate population;
 - `D_SOURCE_EXISTS_BLOCKED`: candidate retained but not populated;
@@ -226,7 +229,7 @@ Sources are selected by domain-native criteria such as:
 
 - relevance to a predeclared coordinate family;
 - adequate acquisition/method provenance;
-- numerical extractability or open raw data;
+- numerical extractability or open raw/pinned-derivative data;
 - coverage-role need;
 - independence pathway;
 - reproducibility/accessibility.
@@ -235,13 +238,14 @@ Sources are **not** selected because their reported values lie near a desired Sy
 
 Previously inspected sources can populate P0-D Atlas discovery but cannot independently confirm a rule chosen from them.
 
-## 15. First coordinate-map deliverables
+## 15. A0 deliverables
 
-A0 deliverables:
+A0 consists of:
 
 1. `registries/COORDINATE_DEFINITIONS.json`;
 2. `schemas/atlas_entry.schema.json`;
-3. `registries/SOURCE_INTAKE_QUEUE.json`;
-4. Atlas validator and regression tests;
-5. source-search/extraction protocol;
-6. first source candidate set spanning function and limit roles without outcome targeting.
+3. Atlas validator and contract tests;
+4. this coordinate-map specification;
+5. an explicit content-identity lock before numerical coordinate population.
+
+A1 source-selection rules and the source queue are frozen separately before A2 coordinate reconstruction begins.
