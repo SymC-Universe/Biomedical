@@ -26,29 +26,32 @@ Retrieval date for sources below: 2026-09-10.
 
 ### Verified source facts
 
-The GEO records describe one lung adenocarcinoma study with:
+The methylation GEO record describes:
 
 - 164 lung adenocarcinoma tumors;
 - 19 matched normal lung samples;
-- Illumina Infinium HumanMethylation450 methylation;
-- Agilent 60K mRNA expression;
-- methylation/expression correlation in the study design.
+- Illumina Infinium HumanMethylation450 methylation.
+
+The expression companion `GSE66863` contains 121 lung adenocarcinoma tumor samples measured on the Agilent 60K mRNA expression array. GEO explicitly states that the expression sample numbers are matched between `GSE66836` and `GSE66863`.
+
+Therefore the currently source-verified paired cross-omic tumor subset is **121**, not all 164 methylation tumors. The additional methylation tumors and 19 matched normal lung samples remain useful methylation/reference context but are not assumed to possess matched expression.
 
 ### Potential role
 
-- `NOMINAL_FUNCTION`: strong candidate external single-cancer static architecture cohort;
+- `NOMINAL_FUNCTION`: high-priority external single-cancer static cross-omic architecture cohort;
 - `PERTURBED_FUNCTION`: possible smoking/mutation-defined context comparisons, subject to independent prespecification;
-- external platform transfer because expression is array-based rather than the TCGA RNA-seq representation.
+- external expression-platform transfer because expression is microarray-based rather than TCGA RNA-seq;
+- normal-tissue methylation context from the 19 matched-normal samples, without assuming paired expression for those normals.
 
 ### Independence notes
 
-Potentially independent from TCGA data at cohort/source level. Exact patient/sample overlap between the two GEO series must be verified before admission. Any use of the same Hallmark definitions/transformations is method overlap, not automatically data dependence.
+Potentially independent from TCGA at data/cohort/source level. It is particularly useful because the original study used TCGA as an independent validation cohort for its own prognostic signature, not as the source of these 121 paired tumor measurements. Any use of the same Hallmark definitions/transformations is method overlap, not automatically data dependence.
 
 ### Current state
 
 `CANDIDATE_HIGH_PRIORITY_STATIC_EXTERNAL`
 
-`PAIRED_SAMPLE_OVERLAP = TO_BE_VERIFIED_FROM_SAMPLE_IDS`
+`PAIRED_CROSS_OMIC_TUMORS_SOURCE_VERIFIED = 121`
 
 No outcome values have been used here to select favorable GRI performance.
 
@@ -73,19 +76,17 @@ The current CGGA portal lists dataset `CCell_4083` as:
 - 10X scRNA-seq;
 - phosphoproteomics;
 - proteomics;
-- matched clinical data available from the dataset page.
-
-The portal associates the dataset with a 2025 Cancer Cell study and the general CGGA resource publication.
+- matched clinical-data download is listed on the same dataset block.
 
 ### Potential role
 
 - `NOMINAL_FUNCTION`: independent glioma multi-omic architecture;
-- cross-modality Atlas test because methylation, RNA, protein/phosphoprotein, and single-cell layers are available in one named dataset;
+- cross-modality Atlas test because methylation, RNA, protein/phosphoprotein, and single-cell layers are listed for one named multi-omics dataset;
 - candidate test of whether current System Model output transfers outside TCGA and across platform.
 
 ### Independence notes
 
-CGGA is an external Chinese glioma resource distinct from TCGA. Exact overlap across the listed omic modalities must be verified from downloaded sample identifiers rather than inferred from the portal's total `35 samples` label.
+CGGA is an external Chinese glioma resource distinct from TCGA. Exact per-sample overlap across the listed modalities must still be verified from downloaded manifests/sample identifiers rather than inferred solely from the portal's overall `35 samples` label.
 
 ### Current state
 
@@ -149,7 +150,7 @@ The GEO record states:
 
 ### Potential role
 
-This is too small for simply importing the current n=30 per-cancer C1 design, but is scientifically valuable as a P0-D **ordered paired-state / perturbation-like natural progression context**.
+This is too small for simply importing the current n=30 per-cancer C1 design, but is scientifically valuable as a P0-D **paired-state / perturbation-like natural progression context**.
 
 Potential roles:
 
@@ -187,11 +188,11 @@ The GEO records describe an H3122 ALK-positive lung cancer cell model with paren
 
 - `PERTURBED_FUNCTION` P0-D mechanism/response mapping;
 - controlled acquired-resistance reorganization;
-- possible future synthetic/empirical qualification of whether the Engine distinguishes ordinary shared structure from treatment-driven restructuring.
+- possible future qualification of whether the Engine distinguishes ordinary shared structure from treatment-driven restructuring.
 
 ### Limit
 
-Very small biological system count and cell-line context. It is not a representative patient cohort and does not satisfy a broad external cancer-validation task.
+Very small biological-system count and cell-line context. It is not a representative patient cohort and does not satisfy a broad external cancer-validation task.
 
 ### Current state
 
@@ -199,32 +200,51 @@ Very small biological system count and cell-line context. It is not a representa
 
 ---
 
-## Candidate F: prostate tumor / adjacent-tissue multi-omic series
+## Candidate F: prostate tumor / adjacent-tissue paired study family
 
-### Source of record
+### Sources of record
 
-NCBI GEO:
+NCBI GEO methylation series:
 
 - `GSE262522`
 - https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE262522
 
+NCBI GEO RNA-seq companion:
+
+- `GSE237995`
+- https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE237995
+
+NCBI RNA BioProject:
+
+- `PRJNA997353`
+- https://www.ncbi.nlm.nih.gov/bioproject/PRJNA997353
+
 ### Verified source facts
 
-The series describes a multi-omics prostate cancer study integrating DNA methylation with gene-expression changes across tumor and adjacent non-tumor tissue, stratified in part by ancestry/race groups. The methylation series provides 450K raw/processed matrices.
+Both GEO series carry the same study title: `Race-specific coregulatory and transcriptomic profiles associated with DNA methylation and androgen receptor in prostate cancer`, with `GSE262522` identified as the m450K methylation series and `GSE237995` as the RNA-seq series.
 
-### Current gap
+The RNA BioProject states an overall design of:
 
-The specific expression companion accession and exact cross-modality sample overlap have not yet been source-verified in this audit.
+- 58 African American samples: 31 tumors + 27 adjacent tissue;
+- 63 European American samples: 31 tumors + 32 adjacent tissue;
+- total 121 RNA BioSamples / 121 SRA experiments.
+
+The methylation series provides 450K IDAT/raw and processed functional-normalization matrices. Individual methylation and RNA GEO samples use the same participant-style naming convention, for example `PT-..._T_AA` / adjacent-tissue forms, but exact one-to-one overlap across all 121 samples has **not yet been computed** in this audit and is therefore not assumed.
 
 ### Potential role
 
-- external `NOMINAL_FUNCTION` tumor architecture;
+- high-priority external `NOMINAL_FUNCTION` cross-omic prostate architecture candidate;
 - tumor-versus-adjacent context;
-- candidate population/context robustness research.
+- population/context robustness research across the prespecified study groups;
+- cross-platform transfer relative to TCGA processing.
 
 ### Current state
 
-`CANDIDATE_PENDING_EXPRESSION_COMPANION_AND_OVERLAP_VERIFICATION`
+`CANDIDATE_HIGH_PRIORITY_STATIC_EXTERNAL_PENDING_EXACT_ID_OVERLAP`
+
+`EXPRESSION_COMPANION = GSE237995_VERIFIED`
+
+`RNA_SAMPLE_COUNT = 121_SOURCE_VERIFIED`
 
 ---
 
@@ -237,7 +257,7 @@ The specific expression companion accession and exact cross-modality sample over
 
 ### Verified source facts
 
-The ICGC ARGO platform currently provides controlled clinical/molecular data across multiple international cancer programs and reports current 2026 releases. Access to controlled molecular data requires approval.
+The ICGC ARGO platform currently provides controlled clinical/molecular data across multiple international cancer programs. Access to controlled molecular data requires approval.
 
 ### Potential role
 
@@ -261,14 +281,14 @@ This ranking is by **data architecture and research role**, not by agreement wit
 
 ### Static external cross-layer validation candidates
 
-1. `GSE66836 + GSE66863` lung adenocarcinoma: n=164 tumors plus normal context; methylation+expression stated by source; exact paired IDs still need verification.
-2. `CGGA CCell_4083`: n=35 multi-omics with methylation EPIC + RNA-seq + protein/phosphoprotein/single-cell listed; exact modality overlap still needs verification.
-3. CGGA legacy methylation/expression families: large enough individually, but exact paired overlap unresolved.
-4. `GSE262522`: promising prostate multi-omic source, expression companion/overlap still unresolved.
+1. `GSE66836 + GSE66863` lung adenocarcinoma: 121 source-declared matched tumor expression/methylation sample numbers; 450K methylation plus Agilent expression; larger methylation-only context also available.
+2. `GSE262522 + GSE237995` prostate study family: 450K methylation plus RNA-seq, 121 RNA samples under a common study design; exact one-to-one cross-modality ID overlap still requires verification.
+3. `CGGA CCell_4083`: 35-sample multi-omics dataset with EPIC methylation + RNA-seq + proteomics/phosphoproteomics + scRNA-seq listed; exact modality overlap still requires verification.
+4. CGGA legacy methylation/expression families: large enough individually, but exact paired overlap unresolved.
 
 ### Function/perturbation mapping candidates
 
-1. `GSE213402`: paired primary/metastatic colorectal samples, excellent architecture for P0-D state-change mapping but n=20 total.
+1. `GSE213402`: paired primary/metastatic colorectal samples, useful architecture for P0-D state-change mapping but n=20 total.
 2. `GSE139388` family: acquired drug-resistance cell-line perturbation, mechanistically useful but not population validation.
 3. CGGA primary/recurrent categories: potentially useful if pairing/temporal relationship is source-verified.
 
@@ -282,10 +302,10 @@ No candidate above is promoted to `RARE_NATURAL_TESTBED` without a domain-native
 
 Safe P0-D actions:
 
-1. verify sample-ID overlap for `GSE66836/GSE66863`;
-2. inspect `CCell_4083` downloadable manifests for exact modality overlap and raw/processed availability;
-3. determine paired overlap between CGGA `methyl_159` and each expression cohort;
-4. identify the expression companion accession for `GSE262522`;
+1. retain the source-verified 121 matched lung tumor subset as a high-priority candidate without evaluating GRI outcomes;
+2. compute/verify exact ID overlap for `GSE262522/GSE237995` before calling it a paired 121-sample cohort;
+3. inspect `CCell_4083` downloadable manifests for exact modality overlap and raw/processed availability;
+4. determine paired overlap between CGGA `methyl_159` and each expression cohort;
 5. inventory whether selected ARGO programs actually provide paired methylation + expression;
 6. search for larger paired longitudinal/perturbational patient cohorts;
 7. preserve candidates that fail overlap/access criteria rather than replacing them silently.
