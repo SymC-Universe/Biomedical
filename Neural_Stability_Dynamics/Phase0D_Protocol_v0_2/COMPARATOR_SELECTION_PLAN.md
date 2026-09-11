@@ -1,32 +1,46 @@
 # NSD Native Comparator Selection Plan
 
-Status: **DIRECT STRUCTURAL COMPARATOR IDENTIFIED AS P0 PROPOSAL; P1 COMPARATOR NOT YET FROZEN.**
+Status: **P0 EVIDENCE ROUTE NARROWED; P1 COMPARATOR NOT FROZEN.**
 
 The scientific comparison question must be frozen before decisive comparator performance is inspected.
 
-Candidate P1 method-scope comparison question for review:
+## Comparator question is now split into two non-interchangeable levels
 
-> On known-truth multichannel stochastic systems within a declared local-linear/output-only validity regime, does the NSD SSI-COV Structural Engine recover poles, modal/carrier structure and admissible system organization at least as reliably as the strongest fair independent structural/modal baseline addressing the same target objects, while preserving valid refusals and uncertainty?
+### A. Estimator-at-declared-order question
 
-## Current leading structural comparator
+> On known-truth multichannel stochastic systems within a declared local-linear/output-only scope, how accurately do SSI-COV and the strongest fair independent structural comparator recover pole and carrier structure when the same correct state order/rank is supplied?
 
-**Dynamic Mode Decomposition (DMD)** is the leading primary comparator candidate because it:
+P0 evidence now identifies **Subspace DMD** as the leading independent candidate for this question. It was selected through source-of-record review because it explicitly targets random dynamical systems with observation noise and it survived the same already-fixed P0 stress matrix without the stochastic-process mismatch seen in TLS-DMD.
 
-- estimates reduced-order spatiotemporal eigenmodes;
-- has peer-reviewed neural-recording applications;
-- has been directly adapted to EEG and compared with output-only modal analysis;
-- targets a structural/modal object closer to NSD's P1 method-scope question than spectral-only or connectivity-only baselines;
-- is sufficiently distinct from SSI-COV to provide an informative independent comparison.
+This question isolates estimator behavior. It does **not** test operational order/rank selection.
 
-This status is **proposed, not frozen**. P0 development may implement DMD using the same synthetic inputs and known-truth scoring objects, but no decisive P1 comparison may be inspected until the full MFR-14 and challenge matrix are frozen.
+### B. Operational structural-recovery question
 
-## Later real-EEG baseline panel
+> When truth is unavailable, can the NSD Structural Engine recover or refuse structure more reliably than a fair Subspace-DMD pipeline using a predeclared method-appropriate rank-selection route?
 
-The real-data tool will still require multiple domain-native baselines because no single comparator spans every NSD layer:
+This question remains **BLOCKED ON ORDER/RANK FAIRNESS**.
 
-- periodic/aperiodic spectral parameterization for spectral state;
-- PLI/wPLI-class measures or another independently justified established connectivity baseline for multichannel organization;
-- DMD or another directly comparable state-space/modal method for structural dynamics;
-- simple-feature baseline(s) for downstream classification/prediction.
+A comparator is not fair merely because it is given a convenient fixed rank, nor may the NSD selector be allowed to use development-derived information unavailable to the comparator. Conversely, forcing identical selection mathematics onto method families with different native identification structures can itself create an unfair comparator.
 
-A weak baseline will not be manufactured merely to create an ADDS result. See `LITERATURE_GATE_CANDIDATES_20260910.md` and `FOUR_HOLD_DECISION_PACKET_20260910.md`.
+## Current comparator hierarchy
+
+- **Subspace DMD:** leading direct independent stochastic structural comparator candidate; P0 stress-supported, not frozen.
+- **TLS-DMD:** snapshot/sensor-noise diagnostic control; preserved mismatch on process-driven stochastic families.
+- **Exact DMD:** transparent baseline; known observation-noise bias.
+- **OMA/SSI family:** domain precedent and internal lineage comparator, not sufficiently independent to serve as the sole external structural baseline.
+- **specparam/FOOOF:** later spectral-state comparator; different target object.
+- **PLI/wPLI/connectivity architecture:** later system/connectivity baseline; different target object.
+- **optimized/robust DMD variants:** remain in the good-faith search space if the final P1 noise/outlier model requires them.
+
+## Next P0 comparator work
+
+Before MFR-05 can be frozen:
+
+1. sweep SSI-COV order and Subspace-DMD rank on the same development records without using truth for selection;
+2. preserve all candidate modes, stability/assignment information, singular spectra and refusals;
+3. investigate method-native order/rank selection routes, including multi-order stabilization for SSI and established DMD truncation/rank criteria;
+4. qualify candidate selection rules on known-truth systems and known-bad weak-observability/noise cases;
+5. predeclare whether P1 tests estimator-at-declared-order, operational selection, or both as separate claim families;
+6. only then freeze comparator identity, rank/order rule, metric and consequence of failure.
+
+Possible final outcome remains `COMPARATOR_IDENTIFIED` or `NO_NATIVE_COMPARATOR` for a precisely frozen task. A weak or assumption-mismatched baseline will not be manufactured merely to create an ADDS result.
