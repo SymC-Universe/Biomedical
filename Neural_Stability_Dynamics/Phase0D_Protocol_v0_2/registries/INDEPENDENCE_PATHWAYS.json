@@ -1,0 +1,36 @@
+{
+  "schema": "nsd-independence-pathways-v0.7.1A-p0",
+  "status": "TEMPLATE_ACTIVE_NOT_CONFIRMATORY_FREEZE",
+  "protocol_rule": "Independence is evaluated against the pathway by which shared information could force the agreement being presented as evidence.",
+  "allowed_grades": [
+    "INDEPENDENT",
+    "PARTIALLY_INDEPENDENT",
+    "NON_INDEPENDENT_FOR_ENGINE_VALIDATION",
+    "NOT_APPLICABLE",
+    "UNRESOLVED"
+  ],
+  "pathways": {
+    "data": {"grade": "UNRESOLVED", "reason": null},
+    "cohort_system": {"grade": "UNRESOLVED", "reason": null},
+    "outcome_label": {"grade": "UNRESOLVED", "reason": null},
+    "parameter_tuning": {"grade": "UNRESOLVED", "reason": null},
+    "method_estimator": {"grade": "UNRESOLVED", "reason": null},
+    "atlas": {"grade": "UNRESOLVED", "reason": null},
+    "source_literature": {"grade": "UNRESOLVED", "reason": null},
+    "temporal_decisive_evidence": {"grade": "UNRESOLVED", "reason": null}
+  },
+  "current_p0_examples": {
+    "P0Q1_revised_rule_development": {
+      "data": "NON_INDEPENDENT_FOR_ENGINE_VALIDATION",
+      "reason": "P0Q1 records may be used for post-result P0-D diagnosis but cannot confirm a revision developed from them."
+    },
+    "future_P0Q2_if_used": {
+      "temporal_decisive_evidence": "MUST_BE_INDEPENDENT",
+      "reason": "A revised qualification rule requires a new untouched qualification family if prospective P0-Q survival is claimed."
+    },
+    "future_EEG_atlas": {
+      "atlas": "MUST_BE_PATHWAY_GRADED",
+      "reason": "Data used to teach or tune Engine rules cannot be presented as independent Atlas validation on the same forcing pathway."
+    }
+  }
+}
