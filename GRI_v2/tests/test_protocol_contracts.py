@@ -184,6 +184,33 @@ def test_method_prediction_cannot_use_empirical_outcome_namespace():
         validate_v071a_output(record)
 
 
+def test_p0q_cannot_masquerade_as_confirmatory_empirical_survival():
+    record = _valid_record()
+    record["prediction"].update(
+        {
+            "prediction_class": "S",
+            "outcome_namespace": "EMPIRICAL",
+            "outcome": "EMPIRICAL_CLAIM_SURVIVES_FROZEN_TEST",
+        }
+    )
+    with pytest.raises(ProtocolContractError, match="P0-D/P0-Q output cannot carry"):
+        validate_v071a_output(record)
+
+
+def test_p0d_cannot_masquerade_as_confirmatory_empirical_falsification():
+    record = _valid_record()
+    record["research_mode"] = "P0_D"
+    record["prediction"].update(
+        {
+            "prediction_class": "S",
+            "outcome_namespace": "EMPIRICAL",
+            "outcome": "EMPIRICAL_CLAIM_FALSIFIED",
+        }
+    )
+    with pytest.raises(ProtocolContractError, match="P0-D/P0-Q output cannot carry"):
+        validate_v071a_output(record)
+
+
 def test_invalid_function_state_is_known_bad_and_fails():
     record = _valid_record()
     record["function_map_output"]["summary_state"] = "EVERYTHING_WORKS"
