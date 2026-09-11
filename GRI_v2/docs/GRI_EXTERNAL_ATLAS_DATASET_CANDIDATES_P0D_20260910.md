@@ -43,17 +43,11 @@ Therefore the source-declared paired cross-omic tumor subset is **121**, not all
 - external expression-platform transfer because expression is microarray-based rather than TCGA RNA-seq;
 - normal-tissue methylation context from the 19 matched-normal samples, without assuming paired expression for those normals.
 
-### Independence notes
-
-Potentially independent from TCGA at data/cohort/source level. It is particularly useful because the original study used TCGA as an independent validation cohort for its own prognostic signature, not as the source of these 121 paired tumor measurements. Any use of the same Hallmark definitions/transformations is method overlap, not automatically data dependence.
-
 ### Current state
 
 `CANDIDATE_HIGH_PRIORITY_STATIC_EXTERNAL`
 
 `PAIRED_CROSS_OMIC_TUMORS_SOURCE_DECLARED = 121`
-
-No outcome values have been used here to select favorable GRI performance.
 
 ---
 
@@ -61,32 +55,17 @@ No outcome values have been used here to select favorable GRI performance.
 
 ### Source of record
 
-CGGA download portal:
-
-- https://www.cgga.org.cn/download.jsp
+- CGGA download portal: https://www.cgga.org.cn/download.jsp
 
 ### Verified source facts
 
-The current CGGA portal lists dataset `CCell_4083` as:
-
-- data type: Multi-omics;
-- 35 samples;
-- Methylation_EPIC;
-- RNA-seq;
-- 10X scRNA-seq;
-- phosphoproteomics;
-- proteomics;
-- matched clinical-data download is listed on the same dataset block.
+The portal lists `CCell_4083` as a 35-sample multi-omics dataset with Methylation_EPIC, RNA-seq, 10X scRNA-seq, phosphoproteomics, proteomics, and associated clinical data.
 
 ### Potential role
 
 - `NOMINAL_FUNCTION`: independent glioma multi-omic architecture;
-- cross-modality Atlas test because methylation, RNA, protein/phosphoprotein, and single-cell layers are listed for one named multi-omics dataset;
-- candidate test of whether current System Model output transfers outside TCGA and across platform.
-
-### Independence notes
-
-CGGA is an external Chinese glioma resource distinct from TCGA. Exact per-sample overlap across the listed modalities must still be verified from downloaded manifests/sample identifiers rather than inferred solely from the portal's overall `35 samples` label.
+- cross-modality Atlas test;
+- external platform transfer.
 
 ### Current state
 
@@ -100,8 +79,6 @@ CGGA is an external Chinese glioma resource distinct from TCGA. Exact per-sample
 
 ### Source of record
 
-CGGA portal:
-
 - https://www.cgga.org.cn/
 - https://www.cgga.org.cn/download.jsp
 
@@ -112,17 +89,11 @@ The portal separately lists:
 - `methyl_159`: 159 samples, Illumina HumanMethylation27;
 - `mRNA-array_301`: 301 samples, Agilent whole-human-genome array;
 - RNA-seq cohorts of 325 and 693 samples;
-- primary/recurrent LGG and GBM categories in the CGGA resource.
-
-### Potential role
-
-- external static Atlas context;
-- possible `PERTURBED_FUNCTION` / `BOUNDARY_OR_TRANSITION` research role through primary-versus-recurrent status if exact matched/appropriate independence can be established;
-- platform robustness because methylation 27K differs from current merged TCGA 27K/450K handling.
+- primary/recurrent LGG and GBM categories.
 
 ### Critical gap
 
-The public portal summary does **not** establish how many patients have both methylation and the specific expression modality needed for cross-layer GRI analysis. That overlap must be computed from source identifiers before this can be treated as a paired validation cohort.
+The public portal summary does not establish the exact patient overlap between methylation and a specific expression cohort.
 
 ### Current state
 
@@ -134,14 +105,10 @@ The public portal summary does **not** establish how many patients have both met
 
 ### Source of record
 
-NCBI GEO:
-
-- `GSE213402`
+- GEO `GSE213402`
 - https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE213402
 
 ### Verified source facts
-
-The GEO record states:
 
 - 20 samples;
 - paired primary cancer and liver metastases from 10 colorectal cancer patients;
@@ -150,49 +117,33 @@ The GEO record states:
 
 ### Potential role
 
-This is too small for simply importing the current n=30 per-cancer C1 design, but is scientifically valuable as a P0-D **paired-state / perturbation-like natural progression context**.
+- `PERTURBED_FUNCTION` P0-D state-change mapping;
+- candidate architecture reorganization from primary to metastatic state.
 
-Potential roles:
-
-- `PERTURBED_FUNCTION`;
-- candidate architecture reorganization mapping from primary to metastatic state;
-- hypothesis generation for future system-level preservation/reorganization tests.
+Too small to import the current n=30 C1 design unchanged.
 
 ### Current state
 
 `P0_D_PERTURBED_FUNCTION_CANDIDATE_SMALL_N`
 
-It cannot independently confirm a rule developed from itself.
-
 ---
 
-## Candidate E: acquired ALK-inhibitor resistance multi-omic cell-line series
+## Candidate E: acquired ALK-inhibitor resistance cell-model series
 
 ### Sources of record
-
-NCBI GEO SuperSeries / subseries:
 
 - `GSE139388`
 - `GSE139387`
 - `GSE179326`
 
-Representative SuperSeries:
-
-- https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE139388
-
 ### Verified source facts
 
-The GEO records describe an H3122 ALK-positive lung cancer cell model with parental versus acquired ceritinib-resistant states, including 450K DNA methylation and RNA expression/single-cell RNA-related subseries.
+The GEO family describes an H3122 ALK-positive lung-cancer model with parental versus acquired ceritinib-resistant states and methylation/RNA-related measurements.
 
 ### Potential role
 
-- `PERTURBED_FUNCTION` P0-D mechanism/response mapping;
-- controlled acquired-resistance reorganization;
-- possible future qualification of whether the Engine distinguishes ordinary shared structure from treatment-driven restructuring.
-
-### Limit
-
-Very small biological-system count and cell-line context. It is not a representative patient cohort and does not satisfy a broad external cancer-validation task.
+- controlled `PERTURBED_FUNCTION` P0-D mechanism/response mapping;
+- Engine qualification of restructuring versus ordinary shared structure.
 
 ### Current state
 
@@ -204,48 +155,28 @@ Very small biological-system count and cell-line context. It is not a representa
 
 ### Sources of record
 
-NCBI GEO methylation series:
-
-- `GSE262522`
-- https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE262522
-
-NCBI GEO RNA-seq companion:
-
-- `GSE237995`
-- https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE237995
-
-NCBI RNA BioProject:
-
-- `PRJNA997353`
-- https://www.ncbi.nlm.nih.gov/bioproject/PRJNA997353
+- methylation `GSE262522`: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE262522
+- RNA-seq `GSE237995`: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE237995
+- BioProject `PRJNA997353`: https://www.ncbi.nlm.nih.gov/bioproject/PRJNA997353
 
 ### Verified source facts
 
-Both GEO series carry the same study title: `Race-specific coregulatory and transcriptomic profiles associated with DNA methylation and androgen receptor in prostate cancer`, with `GSE262522` identified as the m450K methylation series and `GSE237995` as the RNA-seq series.
+Both GEO series carry the same study title.
 
-`GSE237995` contains **121 RNA-seq samples** under the overall study design:
-
-- 58 African American samples: 31 tumors + 27 adjacent tissue;
-- 63 European American samples: 31 tumors + 32 adjacent tissue.
-
-`GSE262522` contains **68 methylation samples**, not 121. Its GEO record lists Illumina HumanMethylation450 data with raw IDAT and processed functional-normalization matrices.
-
-Exact cross-series matching is demonstrably present for individual participants. For example, `PT-00188738_T_AA` appears in both the methylation and RNA series, and `PT-00227158_T_AA` appears in both. However, the complete 68-sample methylation-to-RNA overlap has **not yet been enumerated**, so this audit does not assume that all 68 methylation samples have RNA counterparts.
-
-Maximum possible paired sample count from the currently verified series sizes is therefore 68, pending exact title/identifier intersection.
+- `GSE237995`: 121 RNA-seq samples under the study's 58 African American + 63 European American design;
+- `GSE262522`: 68 HumanMethylation450 samples;
+- individual participant-style identifiers demonstrably occur in both series;
+- complete cross-series overlap has not yet been enumerated.
 
 ### Potential role
 
-- high-priority external `NOMINAL_FUNCTION` cross-omic prostate architecture candidate;
+- external `NOMINAL_FUNCTION` cross-omic prostate architecture;
 - tumor-versus-adjacent context;
-- population/context robustness research across the study groups;
-- cross-platform transfer relative to TCGA processing.
+- population/context robustness.
 
 ### Current state
 
 `CANDIDATE_HIGH_PRIORITY_STATIC_EXTERNAL_PENDING_EXACT_ID_OVERLAP`
-
-`EXPRESSION_COMPANION = GSE237995_VERIFIED`
 
 `RNA_SAMPLE_COUNT = 121_SOURCE_VERIFIED`
 
@@ -259,26 +190,108 @@ Maximum possible paired sample count from the currently verified series sizes is
 
 ### Sources of record
 
-- ARGO platform: https://platform.icgc-argo.org/
-- retired ICGC 25K portal notice: https://dcc.icgc.org/
-
-### Verified source facts
-
-The ICGC ARGO platform currently provides controlled clinical/molecular data across multiple international cancer programs. Access to controlled molecular data requires approval.
+- https://platform.icgc-argo.org/
+- https://dcc.icgc.org/
 
 ### Potential role
 
-- source family for materially external cohort/system validation;
-- multi-cancer transfer/generalization if required modalities are available;
-- possible prospective/longitudinal clinical context depending on program.
+- materially external cohort/system validation;
+- multi-cancer transfer/generalization where required modalities exist;
+- possible longitudinal clinical context depending on program.
 
 ### Current gap
 
-This audit has **not** established that a selected ARGO program contains the exact paired methylation+RNA modalities required for the current GRI Engine task. It is a source-family lead, not an admitted dataset.
+No selected ARGO program has yet been source-verified as containing the exact paired methylation + expression modalities required for the current GRI task.
 
 ### Current state
 
 `SOURCE_FAMILY_LEAD_ACCESS_AND_MODALITY_AUDIT_REQUIRED`
+
+---
+
+## Candidate H: paired primary breast tumor -> regional metastasis methylation + expression
+
+### Sources of record
+
+- DNA methylation: `GSE58999`
+  - https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE58999
+- expression: `GSE57968`
+  - https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE57968
+- SuperSeries: `GSE59000`
+  - https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE59000
+- expression BioProject: `PRJNA248618`
+
+### Verified source facts
+
+The source describes a matched primary-breast-tumor/regional-metastasis study from MSKCC:
+
+- DNA methylome profiled for **44 matched primary tumors and metastases** using HumanMethylation450;
+- transcriptome profiled for **36 matched primary tumors and metastases** using Affymetrix U133A 2.0;
+- the SuperSeries combines the methylation and expression subseries;
+- samples were pathologist-reviewed and microdissected to >70% tumor content according to the GEO description.
+
+The wording indicates paired primary/metastasis architecture for both omics, but exact cross-modality patient intersection still should be enumerated before a future paired multi-omic analysis.
+
+### Potential role
+
+This is a particularly useful v0.7.1A source because it provides a **natural paired state change** rather than only static between-patient variation.
+
+Potential roles:
+
+- `PERTURBED_FUNCTION`: primary -> regional-metastatic reorganization;
+- candidate `BOUNDARY_OR_TRANSITION` P0-D architecture study, without claiming a dynamical transition from two sampled states alone;
+- test of whether scalar/modal/conglomerate relationships are preserved, redistributed, or reorganized across a clinically meaningful state change;
+- possible future external confirmation after an independent prediction is frozen.
+
+### Current state
+
+`CANDIDATE_HIGH_PRIORITY_PAIRED_PERTURBED_FUNCTION`
+
+`METHYLATION_PAIRED_CASES_SOURCE_DECLARED = 44`
+
+`EXPRESSION_PAIRED_CASES_SOURCE_DECLARED = 36`
+
+`EXACT_CROSS_MODALITY_PATIENT_INTERSECTION = TO_BE_ENUMERATED`
+
+---
+
+## Candidate I: melanoma baseline -> acquired MAPKi resistance multi-omic SuperSeries
+
+### Sources of record
+
+- SuperSeries `GSE65186`
+  - https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE65186
+- methylation `GSE65183`
+- expression array `GSE65184`
+- RNA-seq `GSE65185`
+- BioProject `PRJNA273358`
+
+### Verified source facts
+
+GEO describes `GSE65186` as `Non-genomic and Immune Evolution in Melanoma with Acquired MAPKi Resistance` and combines:
+
+- HumanMethylation450 methylation;
+- Affymetrix Human Gene 2.1 ST expression;
+- Illumina HiSeq 2000 RNA-seq.
+
+The sample records contain repeated patient-linked states such as baseline/pre-MAPKi and post-BRAFi or BRAFi+MEKi resistance. For example, patient 20 has source records for a baseline methylation biopsy and a baseline RNA-seq biopsy, while later methylation/RNA records identify resistant states. This establishes that the SuperSeries contains genuinely ordered treatment-state information, although the exact cross-modality/timepoint intersection must be reconstructed before analysis.
+
+### Potential role
+
+- `PERTURBED_FUNCTION`: response/reorganization from pretreatment to acquired resistance;
+- possible `BOUNDARY_OR_TRANSITION` mapping of representation changes under therapy-driven state change;
+- P0-D test of whether global geometry, modal concentration, and module organization are preserved or reorganized;
+- candidate future S2/S4-style prediction family source only after a separate prospective rule/freeze.
+
+### Critical caution
+
+Repeated biopsies, replicates, treatment differences, and patient-specific timelines mean `sample != patient != timepoint`. No simple row-level independence assumption is allowed. A future analysis must reconstruct patient/timepoint/treatment metadata first.
+
+### Current state
+
+`CANDIDATE_HIGH_PRIORITY_ORDERED_PERTURBED_FUNCTION`
+
+`EXACT_CROSS_MODALITY_TIMEPOINT_INTERSECTION = TO_BE_RECONSTRUCTED`
 
 ---
 
@@ -288,33 +301,36 @@ This ranking is by **data architecture and research role**, not by agreement wit
 
 ### Static external cross-layer validation candidates
 
-1. `GSE66836 + GSE66863` lung adenocarcinoma: 121 source-declared matched tumor expression/methylation sample numbers; 450K methylation plus Agilent expression; larger methylation-only context also available.
-2. `GSE262522 + GSE237995` prostate study family: 68 methylation samples within a 121-sample RNA study; exact paired overlap pending enumeration.
-3. `CGGA CCell_4083`: 35-sample multi-omics dataset with EPIC methylation + RNA-seq + proteomics/phosphoproteomics + scRNA-seq listed; exact modality overlap still requires verification.
-4. CGGA legacy methylation/expression families: large enough individually, but exact paired overlap unresolved.
+1. `GSE66836 + GSE66863` lung adenocarcinoma: 121 source-declared matched tumor expression/methylation sample numbers.
+2. `GSE262522 + GSE237995` prostate study family: 68 methylation samples within a 121-sample RNA study; exact paired overlap pending.
+3. `CGGA CCell_4083`: 35-sample multi-omics dataset with EPIC methylation, RNA-seq, proteomics/phosphoproteomics, and scRNA-seq listed; exact overlap pending.
+4. CGGA legacy methylation/expression families: larger individual cohorts, exact pairing unresolved.
 
 ### Function/perturbation mapping candidates
 
-1. `GSE213402`: paired primary/metastatic colorectal samples, useful architecture for P0-D state-change mapping but n=20 total.
-2. `GSE139388` family: acquired drug-resistance cell-line perturbation, mechanistically useful but not population validation.
-3. CGGA primary/recurrent categories: potentially useful if pairing/temporal relationship is source-verified.
+1. `GSE58999 + GSE57968 / GSE59000`: 44 matched primary/metastatic methylation pairs and 36 matched primary/metastatic expression pairs, high-value natural paired-state architecture.
+2. `GSE65186`: baseline -> acquired MAPKi-resistance melanoma with methylation + expression array + RNA-seq and repeated patient-linked states.
+3. `GSE213402`: paired primary/metastatic colorectal RRBS + RNA-seq, scientifically clean pairing but only 10 patients.
+4. `GSE139388` family: acquired drug-resistance cell-model perturbation, useful mechanism testbed but not population validation.
+5. CGGA primary/recurrent categories: potentially useful after exact pairing/temporal relationship verification.
 
 ### Rare-natural-limit candidates
 
-**NONE ADMITTED.**
+Among the **external source candidates in this file**, none is admitted as a P1 rare-natural testbed merely because it is unusual or expected to stress GRI.
 
-No candidate above is promoted to `RARE_NATURAL_TESTBED` without a domain-native rarity criterion, authenticity/confounding gate, base-rate context, and outcome-independent selection route.
+Separately, the existing TCGA PCPG stress case is now source-qualified as a **post-result P0-D rare-natural testbed** in `artifacts/GRI_PCPG_RARE_NATURAL_TESTBED_P0D_20260910.md`. It carries no confirmatory weight and is not an external validation cohort.
 
 # Next source-discovery actions
 
 Safe P0-D actions:
 
-1. retain the source-declared 121 matched lung tumor subset as a high-priority candidate without evaluating GRI outcomes;
-2. enumerate exact title/identifier overlap for the 68 `GSE262522` methylation samples against the 121 `GSE237995` RNA samples before assigning the prostate paired count;
-3. inspect `CCell_4083` downloadable manifests for exact modality overlap and raw/processed availability;
-4. determine paired overlap between CGGA `methyl_159` and each expression cohort;
-5. inventory whether selected ARGO programs actually provide paired methylation + expression;
-6. search for larger paired longitudinal/perturbational patient cohorts;
-7. preserve candidates that fail overlap/access criteria rather than replacing them silently.
+1. retain the source-declared 121 matched lung tumor subset as a high-priority static external candidate without evaluating GRI outcomes;
+2. enumerate exact title/identifier overlap for the 68 prostate methylation samples against the 121 RNA samples;
+3. reconstruct exact patient/timepoint/modality overlap for `GSE59000` breast primary/metastasis data;
+4. reconstruct exact patient/timepoint/treatment/modality overlap for `GSE65186` melanoma data;
+5. inspect `CCell_4083` downloadable manifests for exact modality overlap and raw/processed availability;
+6. determine paired overlap between CGGA `methyl_159` and each expression cohort;
+7. inventory whether selected ARGO programs actually provide paired methylation + expression;
+8. preserve candidates that fail overlap/access criteria rather than replacing them silently.
 
 **No external P1 dataset has been chosen or opened for decisive GRI evaluation by this discovery record.**
