@@ -1,0 +1,107 @@
+{
+  "schema": "neurostability-atlas-a2-srm-csd-svd-pilot-freeze-v0.1",
+  "date": "2026-09-11",
+  "status": "FROZEN_BEFORE_EEG_VALUE_INSPECTION",
+  "system_model": "NSD System Model v1.0",
+  "atlas_schema_lock": "registries/ATLAS_A0_SCHEMA_LOCK.json",
+  "source_lock": "registries/ATLAS_A1_SOURCE_LOCK.json",
+  "source_id": "ATLAS-SRC-002-SRM",
+  "research_role": "NOMINAL_FUNCTION",
+  "source_snapshot": {
+    "OpenNeuro_accession": "ds003775",
+    "OpenNeuro_version": "1.2.1",
+    "OpenNeuro_DOI": "10.18112/openneuro.ds003775.v1.2.1",
+    "GitHub_mirror": "OpenNeuroDatasets/ds003775",
+    "Git_tag": "1.2.1",
+    "Git_commit": "cb354b249827d17fa0575b2b42521ba25982c16b",
+    "S3_source": "s3://openneuro.org/ds003775",
+    "S3_note": "OpenNeuro S3 serves the latest public snapshot; at freeze time the public Git mirror master and tag 1.2.1 resolve to the same commit. Workflow must preserve downloaded-file hashes."
+  },
+  "repeat_session_roster_source": "presence of source BIDS ses-t2 scans.tsv records at snapshot 1.2.1; EEG values unopened for selection",
+  "repeat_session_subjects_lexicographic": [
+    "sub-002","sub-003","sub-005","sub-007","sub-011","sub-020","sub-021","sub-026","sub-027","sub-028","sub-030","sub-032","sub-038","sub-042","sub-043","sub-046","sub-047","sub-048","sub-051","sub-058","sub-060","sub-064","sub-068","sub-069","sub-070","sub-071","sub-074","sub-075","sub-076","sub-077","sub-082","sub-084","sub-085","sub-087","sub-091","sub-094","sub-097","sub-101","sub-104","sub-105","sub-106","sub-110"
+  ],
+  "repeat_session_count": 42,
+  "pilot_selection_rule": "sort all subjects with both source-defined t1 and t2 sessions lexicographically by BIDS participant_id; take the first 8; do not inspect EEG or participant phenotype/cognitive values before selection",
+  "pilot_subjects": [
+    "sub-002","sub-003","sub-005","sub-007","sub-011","sub-020","sub-021","sub-026"
+  ],
+  "sessions": ["ses-t1","ses-t2"],
+  "input_layer": {
+    "kind": "SOURCE_PROVIDED_PINNED_DERIVATIVE",
+    "root": "derivatives/cleaned_epochs",
+    "file_pattern": "{subject}/{session}/eeg/{subject}_{session}_task-resteyesc_desc-epochs_eeg.set",
+    "channel_sidecar_pattern": "{subject}/{session}/eeg/{subject}_{session}_task-resteyesc_desc-epochs_channels.tsv",
+    "eeg_sidecar_pattern": "{subject}/{session}/eeg/{subject}_{session}_task-resteyesc_desc-epochs_eeg.json",
+    "declared_sampling_frequency_hz": 1024,
+    "declared_epoch_length_s": 4,
+    "declared_filter_hz": [1,45],
+    "declared_reference": "average",
+    "declared_channels": 64,
+    "additional_atlas_filtering": "NONE",
+    "additional_atlas_rereference": "NONE",
+    "additional_atlas_channel_rejection": "NONE"
+  },
+  "frequency_grid": {
+    "min_hz": 1.0,
+    "max_hz": 45.0,
+    "spacing_hz": 0.25,
+    "origin": "exact 4-second FFT bins at source sampling rate",
+    "peak_picking": false
+  },
+  "reconstruction": {
+    "method": "CSD_SVD_OBSERVATIONAL",
+    "method_spec": "A2_SRM_CSD_SVD_METHOD.md",
+    "epoch_mean_removal": true,
+    "window": "HANN",
+    "spectral_matrix": "mean outer product of complex channel FFT vector at each frozen frequency bin",
+    "session_objects": [
+      "first_four_singular_values",
+      "first_four_trace_normalized_singular_value_shares",
+      "leading_spectral_carrier_vector",
+      "leading_two_dimensional_spectral_subspace",
+      "leading_carrier_participation_vector",
+      "cross_spectral_trace",
+      "PSD_Hermitian_diagnostics"
+    ],
+    "within_session_split": "odd source-provided epochs versus even source-provided epochs",
+    "paired_metrics": [
+      "leading_carrier_MAC_per_frequency",
+      "two_dimensional_subspace_similarity_per_frequency",
+      "leading_carrier_participation_total_variation_per_frequency",
+      "leading_singular_share_curve_correlation",
+      "log_total_cross_spectral_power_curve_correlation"
+    ],
+    "pass_thresholds": null
+  },
+  "coordinate_policy": {
+    "chi": "CHI_WITHHELD_NO_SECOND_ORDER_LICENSE",
+    "pole_real_per_s": "WITHHELD_ASSUMPTION_NOT_LICENSED",
+    "decay_rate_per_s": "WITHHELD_ASSUMPTION_NOT_LICENSED",
+    "decay_time_s": "WITHHELD_ASSUMPTION_NOT_LICENSED",
+    "frequency_hz": "DERIVED_EXACT",
+    "observable_strength_descriptor": "NATIVE_RECONSTRUCTED_FROM_PINNED_DERIVATIVE",
+    "carrier_representation_type": "NATIVE_RECONSTRUCTED_FROM_PINNED_DERIVATIVE",
+    "carrier_vector_or_reference": "NATIVE_RECONSTRUCTED_FROM_PINNED_DERIVATIVE",
+    "channel_participation_vector": "NATIVE_RECONSTRUCTED_FROM_PINNED_DERIVATIVE",
+    "MAC": "DERIVED_EXACT_FROM_RECONSTRUCTED_CARRIERS",
+    "subspace_similarity": "DERIVED_EXACT_FROM_RECONSTRUCTED_SUBSPACES",
+    "participation_distance": "DERIVED_EXACT_FROM_RECONSTRUCTED_PARTICIPATION",
+    "uncertainty_status": "PARTIAL_SPLIT_HALF_AND_REPEATABILITY_NO_CALIBRATED_INTERVAL"
+  },
+  "elapsed_time_policy": {
+    "use_as_scientific_axis": false,
+    "reason": "primary publication describes t2 as 2-3 months after t1, but at least one BIDS scans.tsv pair (sub-002) is inconsistent with that interval while another checked pair (sub-003) is consistent; session identity may be used, exact elapsed time is withheld pending reconciliation"
+  },
+  "forbidden_inputs": [
+    "age",
+    "sex",
+    "neuropsychological_scores",
+    "desired_frequency_or_carrier_pattern",
+    "NSD_Engine_output",
+    "desired_chi_value",
+    "post_result_subject_removal"
+  ],
+  "failure_consequence": "preserve the failed/unresolved session or participant; do not replace pilot subjects or retune the frozen reconstruction on the same pilot",
+  "p1_authorized": false
+}
