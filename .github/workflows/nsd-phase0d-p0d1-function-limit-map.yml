@@ -7,6 +7,7 @@ on:
     paths:
       - '.github/workflows/nsd-phase0d-p0d1-function-limit-map.yml'
       - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/scripts/run_p0d_function_limit_map.py'
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/scripts/capture_environment.py'
       - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/src/landscape.py'
       - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/src/rank_sweep.py'
       - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/src/dmd.py'
