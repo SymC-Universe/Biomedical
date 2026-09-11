@@ -1,0 +1,221 @@
+{
+  "schema": "neurostability-atlas-source-intake-v0.1",
+  "date": "2026-09-11",
+  "status": "A1_SOURCE_QUEUE_FROZEN_BEFORE_COORDINATE_POPULATION",
+  "system_model": "NSD System Model v1.0",
+  "protocol": "General Cross-Project Research Protocol v0.7.1 FINAL + authoritative v0.7.1A Addendum",
+  "selection_protocol": "SOURCE_INTAKE_PROTOCOL.md",
+  "rare_natural_limit_status": "NOT_YET_QUALIFIED_DO_NOT_MANUFACTURE",
+  "sources": [
+    {
+      "source_id": "ATLAS-SRC-001-LEMON",
+      "name": "MPI Leipzig Mind-Brain-Body / LEMON resting-state EEG",
+      "stable_identifiers": {
+        "primary_publication": "Babayan et al., Scientific Data 2019",
+        "primary_publication_doi": "10.1038/sdata.2018.308",
+        "dataset_name": "LEMON / MPI Leipzig Mind-Brain-Body EEG"
+      },
+      "research_roles": ["NOMINAL_FUNCTION"],
+      "source_status": "VERIFIED_OPEN_SOURCE_COORDINATES_NOT_YET_POPULATED",
+      "raw_or_reconstructable": true,
+      "known_context": {
+        "population": "healthy young and older adults",
+        "total_primary_cohort": 227,
+        "primary_groups": {"young": 153, "older": 74},
+        "EEG": "62-channel resting EEG; alternating approximately one-minute eyes-closed and eyes-open blocks over approximately 16 minutes; high original sampling rate",
+        "cohort_count_warning": "Do not use one universal EEG N. Primary cohort is 227; secondary EEG analyses report smaller analyzed subsets (for example 216 or 191). Atlas must reconcile release/file count and coordinate-specific usable N before numerical population."
+      },
+      "priority_coordinate_families": [
+        "SPECTRAL_NATIVE",
+        "MODAL_CARRIER",
+        "CONGLOMERATE_SYSTEM",
+        "IDENTIFIABILITY",
+        "MODEL_ADEQUACY",
+        "UNCERTAINTY"
+      ],
+      "chi_initial_status": "CHI_WITHHELD_NO_SECOND_ORDER_LICENSE",
+      "intake_evidence_ceiling": "A_FULL_NUMERIC_PROVENANCE",
+      "independence_precheck": {
+        "data": "UNRESOLVED_PENDING_BYTE_LEVEL_SOURCE_FREEZE",
+        "cohort_system": "UNRESOLVED_PENDING_CROSS_SOURCE_MAP",
+        "outcome_label": "INDEPENDENT_FOR_UNSUPERVISED_STRUCTURAL_COORDINATES_IF_AGE_AND_OTHER_LABELS_ARE_NOT_SELECTOR_INPUTS",
+        "parameter_tuning": "MUST_BE_INDEPENDENT_FOR_CONFIRMATORY_USE",
+        "method_estimator": "UNRESOLVED_PENDING_RECONSTRUCTION_METHOD",
+        "atlas_engine": "MUST_REMAIN_INDEPENDENT_ENGINE_TARGETS_PROHIBITED",
+        "source_literature": "UNRESOLVED_PENDING_EXTRACTION_LEDGER",
+        "temporal_decisive_evidence": "UNRESOLVED_P0_ATLAS_DISCOVERY"
+      },
+      "next_action": "pin source version/files, reconcile EEG participant/file counts, define first native reconstruction without using age or desired state ordering"
+    },
+    {
+      "source_id": "ATLAS-SRC-002-SRM",
+      "name": "SRM Resting-state EEG",
+      "stable_identifiers": {
+        "NEMAR": "on003775 v1.0.0",
+        "NEMAR_DOI": "10.82901/nemar.on003775",
+        "OpenNeuro": "ds003775 v1.2.1",
+        "OpenNeuro_DOI": "10.18112/openneuro.ds003775.v1.2.1"
+      },
+      "research_roles": ["NOMINAL_FUNCTION"],
+      "source_status": "VERIFIED_OPEN_SOURCE_COORDINATES_NOT_YET_POPULATED",
+      "raw_or_reconstructable": true,
+      "known_context": {
+        "participants": 111,
+        "population": "healthy controls",
+        "EEG": "64-electrode BioSemi ActiveTwo, approximately four minutes eyes-closed resting EEG",
+        "repeatability": "some subjects have a later repeat recording",
+        "license": "CC0"
+      },
+      "priority_coordinate_families": [
+        "SPECTRAL_NATIVE",
+        "MODAL_CARRIER",
+        "CONGLOMERATE_SYSTEM",
+        "IDENTIFIABILITY",
+        "MODEL_ADEQUACY",
+        "UNCERTAINTY"
+      ],
+      "chi_initial_status": "CHI_WITHHELD_NO_SECOND_ORDER_LICENSE",
+      "intake_evidence_ceiling": "A_FULL_NUMERIC_PROVENANCE",
+      "special_value": "repeat recordings permit stability/reproducibility mapping without requiring a disease or outcome contrast",
+      "next_action": "inventory repeat-session availability and pin raw versus cleaned derivative provenance"
+    },
+    {
+      "source_id": "ATLAS-SRC-003-DORTMUND-COGNITIVE-LOAD",
+      "name": "Resting-state EEG before and after cognitive activity across the adult lifespan and approximately 5-year follow-up",
+      "stable_identifiers": {
+        "NEMAR": "on005385 v1.0.0",
+        "NEMAR_DOI": "10.82901/nemar.on005385",
+        "OpenNeuro": "ds005385 v1.0.3",
+        "OpenNeuro_DOI": "10.18112/openneuro.ds005385.v1.0.3"
+      },
+      "research_roles": ["NOMINAL_FUNCTION", "PERTURBED_FUNCTION"],
+      "source_status": "VERIFIED_OPEN_SOURCE_COORDINATES_NOT_YET_POPULATED",
+      "raw_or_reconstructable": true,
+      "known_context": {
+        "participants": 608,
+        "population": "healthy adults aged approximately 20-70 years",
+        "EEG": "64-channel resting-state EEG before and after a two-hour cognitive task battery",
+        "longitudinal_subset": "approximately 208 participants with a roughly five-year follow-up according to current repository summary"
+      },
+      "priority_coordinate_families": [
+        "SPECTRAL_NATIVE",
+        "MODAL_CARRIER",
+        "CONGLOMERATE_SYSTEM",
+        "IDENTIFIABILITY",
+        "MODEL_ADEQUACY",
+        "UNCERTAINTY"
+      ],
+      "chi_initial_status": "CHI_WITHHELD_NO_SECOND_ORDER_LICENSE",
+      "intake_evidence_ceiling": "A_FULL_NUMERIC_PROVENANCE",
+      "special_value": "large paired pre/post perturbation source plus age and longitudinal axes that can remain metadata rather than selector inputs",
+      "next_action": "pin task/session labels and predeclare paired coordinate reconstruction before inspecting effect directions"
+    },
+    {
+      "source_id": "ATLAS-SRC-004-SLEEP-DEPRIVATION",
+      "name": "A Resting-state EEG Dataset for Sleep Deprivation",
+      "stable_identifiers": {
+        "NEMAR": "on004902 v1.0.0",
+        "NEMAR_DOI": "10.82901/nemar.on004902",
+        "OpenNeuro": "ds004902 v1.0.8",
+        "OpenNeuro_DOI": "10.18112/openneuro.ds004902.v1.0.8"
+      },
+      "research_roles": ["NOMINAL_FUNCTION", "PERTURBED_FUNCTION"],
+      "source_status": "VERIFIED_OPEN_SOURCE_COORDINATES_NOT_YET_POPULATED",
+      "raw_or_reconstructable": true,
+      "known_context": {
+        "participants": 71,
+        "design": "normal-sleep and sleep-deprivation sessions with counterbalanced session order",
+        "tasks": ["eyesopen", "eyesclosed", "pvt"],
+        "license": "CC0"
+      },
+      "priority_coordinate_families": [
+        "SPECTRAL_NATIVE",
+        "MODAL_CARRIER",
+        "CONGLOMERATE_SYSTEM",
+        "IDENTIFIABILITY",
+        "MODEL_ADEQUACY",
+        "UNCERTAINTY"
+      ],
+      "chi_initial_status": "CHI_WITHHELD_NO_SECOND_ORDER_LICENSE",
+      "intake_evidence_ceiling": "A_FULL_NUMERIC_PROVENANCE",
+      "special_value": "counterbalanced within-participant physiological perturbation without requiring pathology",
+      "next_action": "freeze normal-sleep versus deprivation session mapping and isolate resting-state coordinate extraction from behavioral labels"
+    },
+    {
+      "source_id": "ATLAS-SRC-005-SLEEP-WAKE",
+      "name": "Simultaneous EEG and fMRI signals during sleep from humans",
+      "stable_identifiers": {
+        "NEMAR": "on003768 v1.0.0",
+        "NEMAR_DOI": "10.82901/nemar.on003768",
+        "OpenNeuro": "ds003768 v1.0.0",
+        "OpenNeuro_DOI": "10.18112/openneuro.ds003768.v1.0.0"
+      },
+      "research_roles": ["NOMINAL_FUNCTION", "BOUNDARY_OR_TRANSITION"],
+      "source_status": "VERIFIED_OPEN_SOURCE_COORDINATES_NOT_YET_POPULATED",
+      "raw_or_reconstructable": true,
+      "known_context": {
+        "participants": 33,
+        "population": "healthy human participants",
+        "EEG": "32-channel MR-compatible EEG synchronized with fMRI",
+        "states": "wakefulness and sleep with sleep-stage annotations"
+      },
+      "priority_coordinate_families": [
+        "SPECTRAL_NATIVE",
+        "MODAL_CARRIER",
+        "CONGLOMERATE_SYSTEM",
+        "IDENTIFIABILITY",
+        "MODEL_ADEQUACY",
+        "UNCERTAINTY"
+      ],
+      "chi_initial_status": "CHI_WITHHELD_NO_SECOND_ORDER_LICENSE",
+      "intake_evidence_ceiling": "A_FULL_NUMERIC_PROVENANCE",
+      "independence_warning": "sleep-stage annotations may define Atlas context but any Engine validation whose decisive windows are chosen using those labels has outcome_label independence reduced accordingly",
+      "next_action": "separate label-defined Atlas transition mapping from any future label-blind transition-detection qualification"
+    },
+    {
+      "source_id": "ATLAS-SRC-006-CHBMIT",
+      "name": "CHB-MIT Scalp EEG Database v1.0.0",
+      "stable_identifiers": {
+        "PhysioNet_version": "1.0.0",
+        "DOI": "10.13026/C2K01R"
+      },
+      "research_roles": ["BOUNDARY_OR_TRANSITION"],
+      "source_status": "VERIFIED_OPEN_SOURCE_COORDINATES_NOT_YET_POPULATED",
+      "raw_or_reconstructable": true,
+      "known_context": {
+        "population": "pediatric subjects with intractable seizures monitored during anti-seizure medication withdrawal",
+        "records": 664,
+        "records_with_seizures": 129,
+        "annotated_seizures": 198,
+        "sampling_rate_hz": 256,
+        "typical_signal_count": 23,
+        "montage": "International 10-20 system; some records include additional/non-EEG channels",
+        "license": "Open Data Commons Attribution License v1.0"
+      },
+      "priority_coordinate_families": [
+        "SPECTRAL_NATIVE",
+        "MODAL_CARRIER",
+        "CONGLOMERATE_SYSTEM",
+        "IDENTIFIABILITY",
+        "MODEL_ADEQUACY",
+        "UNCERTAINTY"
+      ],
+      "chi_initial_status": "CHI_WITHHELD_NO_SECOND_ORDER_LICENSE",
+      "intake_evidence_ceiling": "A_FULL_NUMERIC_PROVENANCE",
+      "independence_warning": "seizure onset/end annotations are valuable transition context but are NON_INDEPENDENT_FOR_ENGINE_VALIDATION on the outcome-label pathway if they select the decisive windows for an Engine seizure-transition claim",
+      "next_action": "build an annotation-aware Atlas context map while keeping any future label-blind transition detector on a separate prospective pathway"
+    }
+  ],
+  "coverage_balance": {
+    "NOMINAL_FUNCTION": ["ATLAS-SRC-001-LEMON", "ATLAS-SRC-002-SRM", "ATLAS-SRC-003-DORTMUND-COGNITIVE-LOAD", "ATLAS-SRC-004-SLEEP-DEPRIVATION", "ATLAS-SRC-005-SLEEP-WAKE"],
+    "PERTURBED_FUNCTION": ["ATLAS-SRC-003-DORTMUND-COGNITIVE-LOAD", "ATLAS-SRC-004-SLEEP-DEPRIVATION"],
+    "BOUNDARY_OR_TRANSITION": ["ATLAS-SRC-005-SLEEP-WAKE", "ATLAS-SRC-006-CHBMIT"],
+    "RARE_NATURAL_LIMIT": []
+  },
+  "selection_nonclaims": [
+    "No source was selected because of a reported or expected chi value.",
+    "No source is yet a qualified Atlas coordinate entry merely because it is in this queue.",
+    "No clinical or state label may become a Structural-Engine selector input through Atlas membership.",
+    "Rare-natural coverage is intentionally empty until an independently qualified rare natural testbed is identified."
+  ]
+}
