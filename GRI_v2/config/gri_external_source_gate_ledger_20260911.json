@@ -1,0 +1,188 @@
+{
+  "status": "P0_D_SOURCE_DISCOVERY_ACTIVE",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.1_FINAL_plus_v0.7.1A_Addendum.pdf",
+  "created": "2026-09-11",
+  "scientific_outcomes_opened": false,
+  "p1_dataset_selected": false,
+  "selection_firewall": "Candidates are ranked by source architecture, identity quality, modality coverage, perturbation/ordering value, access, and protocol role only. No candidate is ranked by agreement with GRI outcomes.",
+  "candidates": [
+    {
+      "candidate_id": "PROSTATE_GSE262522_GSE262524_GSE237995",
+      "research_mode": "P0_D",
+      "primary_roles": ["NOMINAL_FUNCTION", "PERTURBED_FUNCTION"],
+      "source_architecture": "tumor_and_adjacent_cross_omic_dual_methylation_platform",
+      "modality_counts": {
+        "methylation_450k": 68,
+        "methylation_epic": 53,
+        "methylation_union": 121,
+        "rna_seq": 121
+      },
+      "identity_gate": "PASS",
+      "identity_result": "EXACT_121_OF_121_GEO_TITLE_BIJECTION",
+      "platform_result": "450K_AND_EPIC_DISJOINT_BY_TITLE",
+      "published_shared_probe_count": 449636,
+      "dedicated_audit": "artifacts/GRI_PROSTATE_EXTERNAL_IDENTITY_AUDIT_P0D_20260911.md",
+      "gri_outcome_status": "UNOPENED",
+      "p1_status": "NOT_SELECTED_NOT_FROZEN",
+      "selection_basis": "SOURCE_ARCHITECTURE_NOT_GRI_AGREEMENT",
+      "next_source_gate": "VERIFY_DOWNLOAD_FILE_IDENTITIES_HASHES_AND_RECONSTRUCT_SHARED_PROBE_GATE"
+    },
+    {
+      "candidate_id": "LUAD_GSE66836_GSE66863",
+      "research_mode": "P0_D",
+      "primary_roles": ["NOMINAL_FUNCTION"],
+      "source_architecture": "static_cross_omic_single_cancer_external",
+      "modality_counts": {
+        "methylation_tumor": 164,
+        "methylation_matched_normal": 19,
+        "expression_tumor": 121,
+        "source_declared_matched_tumor_subset": 121
+      },
+      "identity_gate": "SOURCE_DECLARED_MATCHED_SUBSET",
+      "identity_result": "121_MATCHED_TUMOR_SAMPLE_NUMBERS_SOURCE_DECLARED",
+      "dedicated_audit": null,
+      "gri_outcome_status": "UNOPENED",
+      "p1_status": "NOT_SELECTED_NOT_FROZEN",
+      "selection_basis": "SOURCE_ARCHITECTURE_NOT_GRI_AGREEMENT",
+      "next_source_gate": "MECHANICALLY_RECONSTRUCT_121_SAMPLE_IDENTITY_TABLE_AND_SOURCE_FILE_HASHES"
+    },
+    {
+      "candidate_id": "BREAST_GSE58999_GSE57968_GSE59000",
+      "research_mode": "P0_D",
+      "primary_roles": ["PERTURBED_FUNCTION", "BOUNDARY_OR_TRANSITION"],
+      "source_architecture": "paired_primary_to_regional_metastasis_cross_omic",
+      "modality_counts": {
+        "methylation_pairs": 44,
+        "methylation_samples": 88,
+        "expression_pairs": 36,
+        "expression_samples": 72
+      },
+      "identity_gate": "PARTIAL_SOURCE_QUALIFIED_PENDING_FULL_GSM_CROSSWALK",
+      "identity_result": {
+        "raw_title_match": "66_OF_72",
+        "terminal_b_diagnostic_crosswalk": "72_OF_72",
+        "source_declared_expression_subset": "36_OF_44_PATIENT_PAIRS",
+        "production_identity_rule": "NOT_YET_ADMITTED"
+      },
+      "dedicated_audit": "artifacts/GRI_BREAST_PAIRED_EXTERNAL_IDENTITY_AUDIT_P0D_20260911.md",
+      "gri_outcome_status": "UNOPENED",
+      "p1_status": "NOT_SELECTED_NOT_FROZEN",
+      "selection_basis": "SOURCE_ARCHITECTURE_NOT_GRI_AGREEMENT",
+      "next_source_gate": "EXPORT_72_ROW_GSM_PATIENT_STATE_CROSSWALK"
+    },
+    {
+      "candidate_id": "MELANOMA_GSE65186",
+      "research_mode": "P0_D",
+      "primary_roles": ["PERTURBED_FUNCTION", "BOUNDARY_OR_TRANSITION"],
+      "source_architecture": "ordered_baseline_to_acquired_MAPKi_resistance_multiomic",
+      "modality_counts": {
+        "methylation_arrays": 144,
+        "expression_array_samples": 4,
+        "rna_seq_samples": 70,
+        "unique_human_methylation_states": 63,
+        "unique_human_transcriptome_states": 64,
+        "shared_human_patient_states": 61,
+        "shared_human_patient_ids": 19,
+        "strict_shared_baseline_plus_post_patients": 18,
+        "shared_cell_model_states": 8
+      },
+      "identity_gate": "SOURCE_QUALIFIED_WITH_EXPLICIT_ASYMMETRIES",
+      "identity_result": {
+        "methylation_only_states": ["Pt14-baseline", "Pt14-DP1"],
+        "transcriptome_only_states": ["Pt19-DDP2", "Pt24-baseline", "Pt24-DDP1"],
+        "strict_pair_refusal_patient": "Pt21"
+      },
+      "dedicated_audit": "artifacts/GRI_MELANOMA_MAPKI_EXTERNAL_IDENTITY_AUDIT_P0D_20260911.md",
+      "gri_outcome_status": "UNOPENED",
+      "p1_status": "NOT_SELECTED_NOT_FROZEN",
+      "selection_basis": "SOURCE_ARCHITECTURE_NOT_GRI_AGREEMENT",
+      "next_source_gate": "BUILD_FULL_PATIENT_STATE_MODALITY_REPLICATE_MANIFEST"
+    },
+    {
+      "candidate_id": "CGGA_CCELL_4083",
+      "research_mode": "P0_D",
+      "primary_roles": ["NOMINAL_FUNCTION"],
+      "source_architecture": "multiomic_IDH_mutant_astrocytoma_study_family",
+      "modality_counts": {
+        "cgga_portal_total": 35,
+        "proteomics": 35,
+        "phosphoproteomics": 35,
+        "methylation": 29,
+        "bulk_rna": 19,
+        "scrna_title_count": 18,
+        "scrna_description_sample_count": 19,
+        "scrna_description_tumor_count": 21
+      },
+      "identity_gate": "MODALITY_COUNT_GATE_PASS_PAIRWISE_OVERLAP_UNRESOLVED",
+      "identity_result": {
+        "all_five_modalities_complete_on_35": false,
+        "exact_pairwise_overlap": "UNRESOLVED",
+        "scrna_source_count_discrepancy": "OPEN",
+        "public_code_confirms_Cohort_ID_crosswalks_exist": true
+      },
+      "dedicated_audit": "artifacts/GRI_CGGA_CCELL4083_MODALITY_AUDIT_P0D_20260911.md",
+      "gri_outcome_status": "UNOPENED",
+      "p1_status": "NOT_SELECTED_NOT_FROZEN",
+      "selection_basis": "SOURCE_ARCHITECTURE_NOT_GRI_AGREEMENT",
+      "next_source_gate": "BUILD_COHORT_ID_BY_MODALITY_PRESENCE_MATRIX_FROM_PROCESSED_OR_CONTROLLED_MANIFESTS"
+    },
+    {
+      "candidate_id": "CRC_GSE213402",
+      "research_mode": "P0_D",
+      "primary_roles": ["PERTURBED_FUNCTION", "BOUNDARY_OR_TRANSITION"],
+      "source_architecture": "paired_primary_colorectal_to_liver_metastasis_RRBS_RNAseq",
+      "modality_counts": {
+        "patients": 10,
+        "samples": 20
+      },
+      "identity_gate": "SOURCE_DECLARED_PAIRED_DESIGN",
+      "dedicated_audit": null,
+      "gri_outcome_status": "UNOPENED",
+      "p1_status": "NOT_SELECTED_NOT_FROZEN",
+      "selection_basis": "SOURCE_ARCHITECTURE_NOT_GRI_AGREEMENT",
+      "next_source_gate": "RECONSTRUCT_EXACT_SAMPLE_PAIR_AND_FILE_MANIFEST"
+    },
+    {
+      "candidate_id": "ALK_RESISTANCE_GSE139388_FAMILY",
+      "research_mode": "P0_D",
+      "primary_roles": ["PERTURBED_FUNCTION"],
+      "source_architecture": "parental_to_acquired_ceritinib_resistance_cell_model",
+      "identity_gate": "SOURCE_FAMILY_ONLY",
+      "dedicated_audit": null,
+      "gri_outcome_status": "UNOPENED",
+      "p1_status": "NOT_SELECTED_NOT_FROZEN",
+      "selection_basis": "SOURCE_ARCHITECTURE_NOT_GRI_AGREEMENT",
+      "next_source_gate": "RECONSTRUCT_EXACT_CONDITION_MODALITY_REPLICATE_MANIFEST"
+    },
+    {
+      "candidate_id": "CGGA_LEGACY_METHYL159_EXPRESSION",
+      "research_mode": "P0_D",
+      "primary_roles": ["NOMINAL_FUNCTION"],
+      "source_architecture": "legacy_CGGA_methylation_expression_family",
+      "modality_counts": {
+        "methylation_27k": 159,
+        "mRNA_array": 301,
+        "rna_seq_cohort_1": 325,
+        "rna_seq_cohort_2": 693
+      },
+      "identity_gate": "UNRESOLVED",
+      "dedicated_audit": null,
+      "gri_outcome_status": "UNOPENED",
+      "p1_status": "NOT_SELECTED_NOT_FROZEN",
+      "selection_basis": "SOURCE_ARCHITECTURE_NOT_GRI_AGREEMENT",
+      "next_source_gate": "ENUMERATE_PATIENT_OVERLAP_ACROSS_METHYLATION_AND_EXPRESSION_COHORTS"
+    },
+    {
+      "candidate_id": "ICGC_ARGO_FAMILY",
+      "research_mode": "P0_D",
+      "primary_roles": ["NOMINAL_FUNCTION"],
+      "source_architecture": "external_multi_cancer_program_family",
+      "identity_gate": "MODALITY_AVAILABILITY_UNRESOLVED",
+      "dedicated_audit": null,
+      "gri_outcome_status": "UNOPENED",
+      "p1_status": "NOT_SELECTED_NOT_FROZEN",
+      "selection_basis": "SOURCE_ARCHITECTURE_NOT_GRI_AGREEMENT",
+      "next_source_gate": "IDENTIFY_PROGRAM_WITH_PAIRED_METHYLATION_AND_EXPRESSION_BEFORE_ANY_SELECTION"
+    }
+  ]
+}
