@@ -63,9 +63,7 @@ def _paths(cfg: dict, subject: str, session: str) -> tuple[str, str, str]:
 
 
 def _prepare_annex_checkout(cfg: dict, checkout: Path) -> dict:
-    if shutil.which("git-annex") is None and shutil.which("git") is not None:
-        # git-annex normally exposes itself as `git annex`, but the standalone
-        # binary is the clearest availability check on hosted runners.
+    if shutil.which("git-annex") is None:
         raise RuntimeError("git-annex is required for OpenNeuro annex content retrieval")
     repo = cfg["source_snapshot"]["GitHub_mirror"]
     tag = cfg["source_snapshot"]["Git_tag"]
@@ -84,9 +82,16 @@ def _prepare_annex_checkout(cfg: dict, checkout: Path) -> dict:
     if observed != expected:
         raise RuntimeError(f"checkout drift: expected {expected}, observed {observed}")
 
+    # git-annex records local repository state on its own local metadata branch.
+    # Hosted CI clones have no author identity by default, so give this
+    # disposable checkout an explicitly non-personal local identity. This does
+    # not alter the source repository or Biomedical repository history.
+    _run(["git", "config", "user.name", "NSD Atlas CI"], cwd=checkout)
+    _run(["git", "config", "user.email", "nsd-atlas-ci@invalid.local"], cwd=checkout)
+
     # Ensure annex metadata/special remotes are initialized from the cloned
     # repository. No annex content is fetched by init.
-    _run(["git", "annex", "init"], cwd=checkout)
+    _run(["git", "annex", "init", "NSD-Atlas-A2-ephemeral"], cwd=checkout)
     remotes = _run(["git", "annex", "info", "--json"], cwd=checkout, capture=True).stdout
     return {
         "repository": repo,
@@ -94,6 +99,10 @@ def _prepare_annex_checkout(cfg: dict, checkout: Path) -> dict:
         "commit": observed,
         "git_annex_version": _run(["git", "annex", "version"], cwd=checkout, capture=True).stdout.splitlines()[0].strip(),
         "annex_info_json_lines_sha256": hashlib.sha256(remotes.encode("utf-8")).hexdigest(),
+        "ephemeral_git_identity": {
+            "name": "NSD Atlas CI",
+            "email": "nsd-atlas-ci@invalid.local"
+        }
     }
 
 
