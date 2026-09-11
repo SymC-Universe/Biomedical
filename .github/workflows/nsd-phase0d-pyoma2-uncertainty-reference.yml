@@ -1,0 +1,43 @@
+name: NSD Phase0D pyOMA2 uncertainty reference
+
+on:
+  push:
+    branches:
+      - neural-stability-dynamics-phase0d-v0.2-protocol-v0.7.1
+    paths:
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/scripts/run_p0_pyoma2_uncertainty_reference.py'
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/PYOMA2_UNCERTAINTY_REFERENCE_PLAN.md'
+      - '.github/workflows/nsd-phase0d-pyoma2-uncertainty-reference.yml'
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/src/synthetic_systems.py'
+  workflow_dispatch:
+
+jobs:
+  external-reference:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install pinned external reference
+        run: python -m pip install pyOMA_2==1.4.2
+      - name: Record exact reference package identity
+        run: |
+          python - <<'PY'
+          import importlib.metadata
+          print('pyOMA_2', importlib.metadata.version('pyOMA_2'))
+          print('numpy', importlib.metadata.version('numpy'))
+          print('scipy', importlib.metadata.version('scipy'))
+          PY
+      - name: Compile reference driver
+        working-directory: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2
+        run: python -m py_compile scripts/run_p0_pyoma2_uncertainty_reference.py
+      - name: Run pyOMA2 SSI uncertainty reference
+        working-directory: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2
+        run: python scripts/run_p0_pyoma2_uncertainty_reference.py
+      - name: Upload external reference record
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-phase0d-pyoma2-uncertainty-reference
+          path: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/results/p0_external_reference/pyoma2_uncertainty_reference.json
+          if-no-files-found: error

@@ -10,10 +10,11 @@ if str(ROOT) not in sys.path:
 
 import numpy as np
 
-from src.rank_sweep import sweep_ssi_cov, sweep_subspace_dmd
+from src.rank_sweep import adjacent_rank_stability, sweep_ssi_cov, sweep_subspace_dmd
 from src.synthetic_systems import generate_1f, make_noise_bases
 from scripts.run_p0_comparator_stress_matrix import (
     DT,
+    MIN_HZ,
     N_CHANNELS,
     N_SAMPLES,
     REPLICATES,
@@ -34,6 +35,36 @@ def _finite_gap_by_rank(sweep):
     return out
 
 
+def _fit_content(fit):
+    if fit.get("status") != "OK":
+        return {
+            "status": fit.get("status"),
+            "exception_type": fit.get("exception_type"),
+            "exception_message": fit.get("exception_message"),
+        }
+    vals = np.asarray(fit["vals"], complex)
+    pos = vals[np.where(vals.imag / (2 * np.pi) >= MIN_HZ)[0]]
+    stable_pos = pos[pos.real < 0.0]
+    return {
+        "status": "OK",
+        "estimated_poles": int(len(vals)),
+        "unstable_fraction_all_poles": float(np.mean(vals.real >= 0.0)) if len(vals) else None,
+        "positive_complex_modes": int(len(pos)),
+        "stable_positive_complex_modes": int(len(stable_pos)),
+        "positive_complex_frequencies_hz": [float(z.imag / (2 * np.pi)) for z in pos],
+        "positive_complex_decay_rates": [float(-z.real) for z in pos],
+    }
+
+
+def _local_stability_context(sweep, rank):
+    rows = adjacent_rank_stability(sweep, min_hz=MIN_HZ)
+    keep = []
+    for row in rows:
+        if row["rank_a"] in {rank - 1, rank} or row["rank_b"] in {rank, rank + 1}:
+            keep.append(row)
+    return keep
+
+
 def _max_gap_record(sweep):
     by_rank = _finite_gap_by_rank(sweep)
     finite = [(rank, gap) for rank, gap in by_rank.items() if gap is not None]
@@ -43,24 +74,27 @@ def _max_gap_record(sweep):
             "max_gap": None,
             "argmax_rank": None,
             "gap_by_rank": {str(k): v for k, v in by_rank.items()},
+            "argmax_fit_content": None,
+            "argmax_adjacent_stability": [],
         }
     rank, gap = max(finite, key=lambda x: x[1])
     return {
         "status": "P0_DIAGNOSTIC_NOT_SELECTED",
         "max_gap": float(gap),
         "argmax_rank": int(rank),
+        "argmax_at_grid_edge": bool(rank == max(CANDIDATE_RANKS)),
         "gap_by_rank": {str(k): v for k, v in by_rank.items()},
+        "argmax_fit_content": _fit_content(sweep["fits"][rank]),
+        "argmax_adjacent_stability": _local_stability_context(sweep, rank),
     }
 
 
 def _evaluate_record(Y):
+    ssi = sweep_ssi_cov(Y, DT, BLOCK_ROWS, CANDIDATE_RANKS)
+    sub = sweep_subspace_dmd(Y, DT, CANDIDATE_RANKS)
     return {
-        "SSI_COV": _max_gap_record(
-            sweep_ssi_cov(Y, DT, BLOCK_ROWS, CANDIDATE_RANKS)
-        ),
-        "SUBSPACE_DMD": _max_gap_record(
-            sweep_subspace_dmd(Y, DT, CANDIDATE_RANKS)
-        ),
+        "SSI_COV": _max_gap_record(ssi),
+        "SUBSPACE_DMD": _max_gap_record(sub),
     }
 
 
@@ -76,9 +110,7 @@ def _null_record(kind, replicate):
         Y -= Y.mean(0, keepdims=True)
         Y /= np.maximum(Y.std(0, keepdims=True), 1e-12)
     elif kind == "ar1_rho0p8":
-        _, colored = make_noise_bases(
-            N_SAMPLES, N_CHANNELS, 0.8, rng
-        )
+        _, colored = make_noise_bases(N_SAMPLES, N_CHANNELS, 0.8, rng)
         M = rng.normal(size=(N_CHANNELS, N_CHANNELS))
         Y = colored @ M.T
         Y -= Y.mean(0, keepdims=True)
@@ -130,11 +162,17 @@ def _null_records():
 def _summary(rows, method):
     gaps = []
     ranks = []
+    edges = []
+    stable_complex = []
     for row in rows:
         rec = row["methods"][method]
         if rec["max_gap"] is not None:
             gaps.append(float(rec["max_gap"]))
             ranks.append(int(rec["argmax_rank"]))
+            edges.append(bool(rec.get("argmax_at_grid_edge", False)))
+            content = rec.get("argmax_fit_content") or {}
+            if content.get("status") == "OK":
+                stable_complex.append(int(content.get("stable_positive_complex_modes", 0)))
     if not gaps:
         return {"n": 0}
     unique, counts = np.unique(np.asarray(ranks, int), return_counts=True)
@@ -148,6 +186,10 @@ def _summary(rows, method):
         "argmax_rank_counts": {
             str(int(k)): int(v) for k, v in zip(unique, counts)
         },
+        "argmax_grid_edge_fraction": float(np.mean(edges)),
+        "argmax_stable_positive_complex_modes_median": (
+            float(np.median(stable_complex)) if stable_complex else None
+        ),
     }
 
 
@@ -170,7 +212,7 @@ def build_record():
     structured = _attach_summaries(_structured_records(), "condition")
     nulls = _attach_summaries(_null_records(), "null_family")
     return {
-        "schema": "nsd-phase0d-v0.2-p0-rank-signal-null-stress-v1",
+        "schema": "nsd-phase0d-v0.2-p0-rank-signal-null-stress-v2",
         "status": "P0_DIAGNOSTIC_STRESS_NOT_CONFIRMATORY",
         "protocol": "General Cross-Project Research Protocol v0.7.1 FINAL",
         "p1_authorized": False,
@@ -178,16 +220,18 @@ def build_record():
         "structured_replicates_per_condition": REPLICATES,
         "null_replicates_per_family": NULL_REPLICATES,
         "purpose": (
-            "Measure whether method-native singular-gap strength and its argmax rank "
-            "carry any truth-blind evidence that separates structured stochastic systems "
-            "from null/no-discrete-mode processes. No threshold or selector is created."
+            "Measure whether method-native singular-gap strength, gap location, stable "
+            "oscillatory content, and adjacent-rank assignment stability carry any truth-blind "
+            "evidence that separates structured stochastic systems from null/no-discrete-mode "
+            "processes. No threshold or selector is created."
         ),
         "structured": structured,
         "nulls": nulls,
         "nonclaims": [
             "The maximum gap is not an accepted rank selector.",
-            "No null-calibrated refusal threshold is selected from these development records.",
-            "Any threshold suggested after inspection is DATA_DERIVED and incurs promotion debt.",
+            "Gap location, oscillatory content, and cross-rank persistence are descriptive P0 evidence only.",
+            "No null-calibrated refusal threshold or conjunction is selected from these development records.",
+            "Any rule suggested after inspection is DATA_DERIVED and incurs promotion debt.",
             "The null families are method stressors, not an exhaustive model of resting EEG background activity.",
             "No EEG, phenotype, chi, regime boundary, or mechanism is tested."
         ],
