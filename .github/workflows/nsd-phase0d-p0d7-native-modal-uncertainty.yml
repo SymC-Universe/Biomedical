@@ -1,0 +1,46 @@
+name: NSD P0-D7 Native Modal Uncertainty
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - neural-stability-dynamics-phase0d-v0.2-protocol-v0.7.1
+    paths:
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/src/modal_uncertainty.py'
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/src/hankel_uncertainty.py'
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/scripts/run_p0d7_native_modal_uncertainty.py'
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/tests/test_modal_uncertainty_p0.py'
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/P0D7_NATIVE_MODAL_UNCERTAINTY_PLAN.md'
+      - '.github/workflows/nsd-phase0d-p0d7-native-modal-uncertainty.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  p0d7-native-modal-uncertainty:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install pinned P0 dependencies
+        run: python -m pip install numpy==2.3.5 scipy==1.17.0 pytest
+      - name: Run native modal uncertainty unit tests
+        run: python -m pytest -q tests/test_modal_uncertainty_p0.py
+      - name: Run P0-D7 calibration
+        run: python scripts/run_p0d7_native_modal_uncertainty.py --output results/p0d_mapping/native_modal_uncertainty_v1.json
+      - name: Capture environment
+        run: python scripts/capture_environment.py results/p0d_mapping/native_modal_uncertainty_environment.json
+      - name: Upload P0-D7 artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-phase0d-p0d7-native-modal-uncertainty
+          path: |
+            Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/results/p0d_mapping/native_modal_uncertainty_v1.json
+            Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/results/p0d_mapping/native_modal_uncertainty_environment.json
+          if-no-files-found: error
