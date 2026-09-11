@@ -1,0 +1,103 @@
+{
+  "status": "P0_D_REPRESENTATION_TRIAGE",
+  "created": "2026-09-11",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.1_FINAL_plus_v0.7.1A_Addendum.pdf",
+  "purpose": "Prevent external source qualification from silently changing the measurement model or treating a new modality as direct confirmation of a bulk-TCGA representation.",
+  "rules": {
+    "DIRECT_COMPATIBLE_DOES_NOT_MEAN_VALIDATED": true,
+    "ADAPTER_REQUIRED_IS_P0_D_OR_P0_Q_NOT_P1_CONFIRMATION_OF_ITSELF": true,
+    "NO_BIOLOGICAL_CHI_IN_ANY_EXTERNAL_ADAPTER": true,
+    "PATIENT_TIMEPOINT_HIERARCHY_MUST_BE_PRESERVED": true,
+    "NO_OUTCOME_DEPENDENT_SOURCE_OR_REPRESENTATION_SELECTION": true
+  },
+  "sources": [
+    {
+      "candidate_id": "PROSTATE_GSE262522_GSE262524_GSE237995",
+      "measurement_match": "CLOSE_TO_CURRENT_BULK_GRI",
+      "methylation_match": "ARRAY_BULK_450K_EPIC",
+      "rna_match": "BULK_RNASEQ",
+      "ordering": "TUMOR_ADJACENT_NOT_LONGITUDINAL_BY_DEFAULT",
+      "required_adapter_class": "PLATFORM_AND_PREPROCESSING_RECONSTRUCTION_ONLY_BEFORE_SCOPE_REVIEW",
+      "direct_p1_ready": false,
+      "reason_not_direct_p1_ready": "Engine/System Model/comparator/MFR14 not frozen and 450K_EPIC platform harmonization must be reconstructed independently.",
+      "safe_p0d_use": ["NOMINAL_FUNCTION", "PLATFORM_TRANSPORT", "TUMOR_ADJACENT_CONTEXT"]
+    },
+    {
+      "candidate_id": "LUAD_GSE66836_GSE66863",
+      "measurement_match": "PARTIAL_BULK_MATCH",
+      "methylation_match": "ARRAY_BULK_450K",
+      "rna_match": "BULK_EXPRESSION_MICROARRAY_NOT_RNASEQ",
+      "ordering": "CROSS_SECTIONAL",
+      "required_adapter_class": "RNA_PLATFORM_REPRESENTATION_RECONSTRUCTION",
+      "direct_p1_ready": false,
+      "reason_not_direct_p1_ready": "Expression platform differs from current RNA-seq lineage and exact source reconstruction remains open.",
+      "safe_p0d_use": ["NOMINAL_FUNCTION", "RNA_PLATFORM_TRANSPORT"]
+    },
+    {
+      "candidate_id": "BREAST_GSE58999_GSE57968_GSE59000",
+      "measurement_match": "PARTIAL_BULK_MATCH_WITH_ORDERED_STATE_STRUCTURE",
+      "methylation_match": "ARRAY_BULK_450K",
+      "rna_match": "BULK_EXPRESSION_MICROARRAY",
+      "ordering": "PAIRED_PRIMARY_TO_REGIONAL_METASTASIS",
+      "required_adapter_class": "RNA_PLATFORM_PLUS_PATIENT_STATE_HIERARCHY",
+      "direct_p1_ready": false,
+      "reason_not_direct_p1_ready": "Full production-style per-sample identity crosswalk and platform representation remain open.",
+      "safe_p0d_use": ["PERTURBED_FUNCTION", "BOUNDARY_OR_TRANSITION", "RNA_PLATFORM_TRANSPORT"]
+    },
+    {
+      "candidate_id": "MELANOMA_GSE65186",
+      "measurement_match": "BULK_CROSS_OMIC_WITH_COMPLEX_ORDERED_HIERARCHY",
+      "methylation_match": "ARRAY_BULK_450K",
+      "rna_match": "RNASEQ_PLUS_SMALL_EXPRESSION_ARRAY_BRANCH",
+      "ordering": "BASELINE_TO_ACQUIRED_MAPKI_RESISTANCE_WITH_REPEATED_BIOPSIES",
+      "required_adapter_class": "PATIENT_TIMEPOINT_REPLICATE_AND_TRANSCRIPTOME_PLATFORM_HIERARCHY",
+      "direct_p1_ready": false,
+      "reason_not_direct_p1_ready": "Repeated biopsies, modality asymmetries, and Pt21 strict-pair refusal must be encoded before any scientific evaluation.",
+      "safe_p0d_use": ["PERTURBED_FUNCTION", "BOUNDARY_OR_TRANSITION", "REPEATED_STATE_MAPPING"]
+    },
+    {
+      "candidate_id": "IDH_GLIOMA_NOMURA_2026_DUAL_CAPTURE",
+      "measurement_match": "REPRESENTATION_CHANGING",
+      "methylation_match": "SINGLE_NUCLEUS_XRBS",
+      "rna_match": "MATCHED_SINGLE_NUCLEUS_SMARTSEQ2_PLUS_10X",
+      "ordering": "LONGITUDINAL_WITHIN_PATIENT",
+      "required_adapter_class": "NEW_SINGLE_NUCLEUS_GRI_REPRESENTATION_OR_EXPLICIT_AGGREGATION_MODEL",
+      "direct_p1_ready": false,
+      "reason_not_direct_p1_ready": "Current GRI development representation is bulk array/RNA based; same-nucleus methylation/RNA data require a separately qualified representation rather than silent coercion.",
+      "safe_p0d_use": ["PERTURBED_FUNCTION", "BOUNDARY_OR_TRANSITION", "REDUCTION_ADEQUACY", "BULK_VS_SINGLE_NUCLEUS_MAPPING"]
+    },
+    {
+      "candidate_id": "CARE_IDH_MUT_2026",
+      "measurement_match": "MULTI_LAYER_REPRESENTATION_CHANGING",
+      "methylation_match": "BULK_DNA_METHYLATION_PRESENT_BUT_SOURCE_COUNT_ACCESS_UNRESOLVED",
+      "rna_match": "SNRNA_PLUS_BULK_RNA_PLUS_SMARTSEQ2",
+      "ordering": "LONGITUDINAL_WITHIN_PATIENT_2_OR_3_TIMEPOINTS",
+      "required_adapter_class": "MODALITY_SPECIFIC_WITH_PATIENT_TIMEPOINT_HIERARCHY",
+      "direct_p1_ready": false,
+      "reason_not_direct_p1_ready": "Bulk methylation source path is unresolved and multiple transcriptome/chromatin representations cannot be collapsed into one current-Engine input by assumption.",
+      "safe_p0d_use": ["PERTURBED_FUNCTION", "BOUNDARY_OR_TRANSITION", "RNA_ATAC_FUNCTION_MAPPING", "TREATMENT_CONTEXT_MAPPING"]
+    },
+    {
+      "candidate_id": "CGGA_CCELL_4083",
+      "measurement_match": "MULTI_LAYER_STATIC_REPRESENTATION",
+      "methylation_match": "EPIC_ARRAY",
+      "rna_match": "BULK_RNASEQ_PLUS_SCRNA",
+      "ordering": "STATIC_FOR_CURRENT_CCELL_SUBSET",
+      "required_adapter_class": "PAIRWISE_MODALITY_PRESENCE_GATE_THEN_LAYER_SPECIFIC_REPRESENTATION",
+      "direct_p1_ready": false,
+      "reason_not_direct_p1_ready": "Exact modality intersection is unresolved and 35 is not a complete five-modality cohort.",
+      "safe_p0d_use": ["NOMINAL_FUNCTION", "CROSS_LAYER_ATLAS_CONTEXT", "BULK_VS_CELLULAR_CONTEXT"]
+    },
+    {
+      "candidate_id": "CRC_GSE213402",
+      "measurement_match": "BULK_CROSS_OMIC_BUT_METHYLATION_TECHNOLOGY_CHANGING",
+      "methylation_match": "RRBS_NOT_ARRAY",
+      "rna_match": "BULK_RNASEQ",
+      "ordering": "PAIRED_PRIMARY_TO_LIVER_METASTASIS",
+      "required_adapter_class": "RRBS_TO_GRI_METHYLATION_REPRESENTATION_PLUS_PAIRED_HIERARCHY",
+      "direct_p1_ready": false,
+      "reason_not_direct_p1_ready": "RRBS feature support differs from array-based GRI and cohort is only 10 patients.",
+      "safe_p0d_use": ["PERTURBED_FUNCTION", "BOUNDARY_OR_TRANSITION", "METHYLATION_PLATFORM_LIMIT_MAPPING"]
+    }
+  ]
+}
