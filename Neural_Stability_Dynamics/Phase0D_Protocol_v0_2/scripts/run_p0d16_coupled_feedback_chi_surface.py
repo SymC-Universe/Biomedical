@@ -165,6 +165,7 @@ def main():
             "when only directed feedback closure is varied?"
         ),
         "design": {
+            "developmental_design_version": "P0-D16-v1",
             "local_subsystem_0": {"chi": 0.55, "frequency_hz": 3.0},
             "local_subsystem_1": {"chi": 0.85, "frequency_hz": 5.0},
             "coupling_matrix_template": M.tolist(),
