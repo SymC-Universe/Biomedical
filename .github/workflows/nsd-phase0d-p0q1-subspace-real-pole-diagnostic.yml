@@ -1,0 +1,39 @@
+name: NSD P0Q1 Subspace real-pole retrospective
+
+on:
+  push:
+    branches:
+      - neural-stability-dynamics-phase0d-v0.2-protocol-v0.7.1
+    paths:
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/scripts/run_p0q1_subspace_real_pole_diagnostic.py'
+      - '.github/workflows/nsd-phase0d-p0q1-subspace-real-pole-diagnostic.yml'
+  workflow_dispatch:
+
+jobs:
+  retrospective-diagnostic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install pinned P0 diagnostic dependencies
+        run: python -m pip install numpy==2.3.5 scipy==1.17.0
+      - name: Preserve P0Q1 result identity
+        run: |
+          echo 'P0Q1 result being diagnosed, not rescored:'
+          echo 'commit=a1432f006c9191e742240d50c341730e3cd4b440'
+          echo 'workflow_run=34563668927'
+          echo 'artifact_sha256=1bfdb57ce0a9aceec1df8aa7a4968a1ae18bfa7297b557c2a2b0cad8444a00b7'
+      - name: Compile retrospective driver
+        working-directory: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2
+        run: python -m py_compile scripts/run_p0q1_subspace_real_pole_diagnostic.py
+      - name: Run retrospective diagnostic
+        working-directory: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2
+        run: python scripts/run_p0q1_subspace_real_pole_diagnostic.py
+      - name: Upload retrospective diagnostic
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-p0q1-subspace-real-pole-diagnostic
+          path: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/results/p0_diagnostics/p0q1_subspace_real_pole.json
+          if-no-files-found: error
