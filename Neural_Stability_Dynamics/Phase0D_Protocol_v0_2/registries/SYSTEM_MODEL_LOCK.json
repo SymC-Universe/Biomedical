@@ -5,6 +5,7 @@
   "status": "ARCHITECTURE_FROZEN_P0",
   "system_model_version": "1.0",
   "canonical_definition": "SYSTEM_MODEL.md",
+  "canonical_definition_git_blob_sha": "0af758c77584a90f86a3c1e0c983948c31672390",
   "frozen_objects": {
     "views": [
       "SCALAR_SPECTRAL",
@@ -65,7 +66,7 @@
   ],
   "current_implementation_status": {
     "Structural_Engine": "P0_D_P0_Q_ACTIVE_NOT_P1_QUALIFIED",
-    "Neurostability_Atlas": "QUEUED_COORDINATE_MAP_V0_1",
+    "Neurostability_Atlas": "A0_SCHEMA_ACTIVE_A1_SOURCE_INTAKE_NEXT",
     "P1": "CLOSED"
   }
 }
