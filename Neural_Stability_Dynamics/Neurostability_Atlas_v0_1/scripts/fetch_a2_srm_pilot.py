@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 FREEZE = ROOT / "registries" / "A2_SRM_CSD_SVD_PILOT_FREEZE.json"
 ANNEX_RE = re.compile(r"MD5E-s(?P<size>\d+)--(?P<md5>[0-9a-fA-F]{32})\.set$")
 PUBLIC_REMOTE = "s3-PUBLIC"
+DIAGNOSTIC = ROOT / "results" / "a2_srm" / "transport_failure.json"
 
 
 def _hash(path: Path, algorithm: str) -> str:
@@ -36,6 +37,21 @@ def _run(args, cwd=None, capture=False):
         text=True,
         capture_output=capture,
     )
+
+
+def _run_capture(args, cwd=None):
+    return subprocess.run(
+        args,
+        cwd=cwd,
+        check=False,
+        text=True,
+        capture_output=True,
+    )
+
+
+def _write_diagnostic(payload: dict) -> None:
+    DIAGNOSTIC.parent.mkdir(parents=True, exist_ok=True)
+    DIAGNOSTIC.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
 def _verify_git_tag(cfg: dict) -> None:
@@ -74,26 +90,16 @@ def _prepare_annex_checkout(cfg: dict, checkout: Path) -> dict:
         shutil.rmtree(checkout)
     checkout.parent.mkdir(parents=True, exist_ok=True)
 
-    # Clone Git metadata only. Annexed EEG content remains absent until the
-    # explicit pilot-only `git annex get` calls below.
     _run(["git", "clone", "--no-checkout", url, str(checkout)])
     _run(["git", "checkout", "--detach", expected], cwd=checkout)
     observed = _run(["git", "rev-parse", "HEAD"], cwd=checkout, capture=True).stdout.strip()
     if observed != expected:
         raise RuntimeError(f"checkout drift: expected {expected}, observed {observed}")
 
-    # git-annex records local repository state on its own local metadata branch.
-    # Hosted CI clones have no author identity by default, so give this
-    # disposable checkout an explicitly non-personal local identity. This does
-    # not alter the source repository or Biomedical repository history.
     _run(["git", "config", "user.name", "NSD Atlas CI"], cwd=checkout)
     _run(["git", "config", "user.email", "nsd-atlas-ci@invalid.local"], cwd=checkout)
-
-    # Ensure annex metadata/special remotes are initialized from the cloned
-    # repository. No annex content is fetched by init. OpenNeuro's public
-    # special remote auto-enables in this snapshot as `s3-PUBLIC`.
     _run(["git", "annex", "init", "NSD-Atlas-A2-ephemeral"], cwd=checkout)
-    remotes = _run(["git", "annex", "info", "--json"], cwd=checkout, capture=True).stdout
+    annex_info = _run(["git", "annex", "info", "--json"], cwd=checkout, capture=True).stdout
     available_remotes = _run(["git", "remote"], cwd=checkout, capture=True).stdout.split()
     if PUBLIC_REMOTE not in available_remotes:
         raise RuntimeError(
@@ -105,13 +111,75 @@ def _prepare_annex_checkout(cfg: dict, checkout: Path) -> dict:
         "tag": tag,
         "commit": observed,
         "git_annex_version": _run(["git", "annex", "version"], cwd=checkout, capture=True).stdout.splitlines()[0].strip(),
-        "annex_info_json_lines_sha256": hashlib.sha256(remotes.encode("utf-8")).hexdigest(),
-        "annex_remote_used": PUBLIC_REMOTE,
+        "annex_info_json_lines_sha256": hashlib.sha256(annex_info.encode("utf-8")).hexdigest(),
+        "available_git_remotes": available_remotes,
+        "annex_remote_preferred": PUBLIC_REMOTE,
         "ephemeral_git_identity": {
             "name": "NSD Atlas CI",
             "email": "nsd-atlas-ci@invalid.local"
         }
     }
+
+
+def _annex_get(checkout: Path, rel: str, expected_size: int, expected_md5: str, events: list[dict]) -> str:
+    preferred_cmd = ["git", "annex", "get", "--from", PUBLIC_REMOTE, "--", rel]
+    preferred = _run_capture(preferred_cmd, cwd=checkout)
+    if preferred.returncode == 0:
+        events.append({
+            "path": rel,
+            "preferred_remote_returncode": 0,
+            "retrieval_route": f"explicit:{PUBLIC_REMOTE}",
+        })
+        return f"explicit:{PUBLIC_REMOTE}"
+
+    whereis = _run_capture(["git", "annex", "whereis", "--json", "--", rel], cwd=checkout)
+    remote_info = _run_capture(["git", "remote", "-v"], cwd=checkout)
+    diagnostic = {
+        "schema": "neurostability-atlas-a2-srm-transport-diagnostic-v0.1",
+        "status": "PREFERRED_ANNEX_REMOTE_FAILED_ATTEMPTING_KEY_VERIFIED_AUTOMATIC_FALLBACK",
+        "frozen_path": rel,
+        "expected_source_annex_identity": {
+            "backend": "MD5E",
+            "bytes": expected_size,
+            "md5": expected_md5,
+        },
+        "preferred_command": preferred_cmd,
+        "preferred_returncode": preferred.returncode,
+        "preferred_stdout": preferred.stdout[-12000:],
+        "preferred_stderr": preferred.stderr[-12000:],
+        "whereis_returncode": whereis.returncode,
+        "whereis_stdout": whereis.stdout[-20000:],
+        "whereis_stderr": whereis.stderr[-12000:],
+        "git_remote_v": remote_info.stdout[-12000:],
+        "fallback_policy": "allow git-annex to choose another advertised source for this exact frozen path; accept content only after frozen MD5E size+MD5 verification and additional Atlas SHA-256",
+        "reservoir_access": false,
+    }
+    _write_diagnostic(diagnostic)
+
+    fallback_cmd = ["git", "annex", "get", "--", rel]
+    fallback = _run_capture(fallback_cmd, cwd=checkout)
+    diagnostic["fallback_command"] = fallback_cmd
+    diagnostic["fallback_returncode"] = fallback.returncode
+    diagnostic["fallback_stdout"] = fallback.stdout[-12000:]
+    diagnostic["fallback_stderr"] = fallback.stderr[-12000:]
+    if fallback.returncode != 0:
+        diagnostic["status"] = "ANNEX_RETRIEVAL_FAILED_BEFORE_EEG_RECONSTRUCTION"
+        _write_diagnostic(diagnostic)
+        raise RuntimeError(
+            f"annex retrieval failed for frozen pilot path {rel}; "
+            f"preferred rc={preferred.returncode}, fallback rc={fallback.returncode}; "
+            f"see {DIAGNOSTIC.relative_to(ROOT)}"
+        )
+
+    diagnostic["status"] = "PREFERRED_REMOTE_FAILED_AUTOMATIC_FALLBACK_RETRIEVED_PENDING_BYTE_VERIFICATION"
+    _write_diagnostic(diagnostic)
+    events.append({
+        "path": rel,
+        "preferred_remote_returncode": preferred.returncode,
+        "retrieval_route": "git-annex:auto-fallback",
+        "preferred_stderr_tail": preferred.stderr[-2000:],
+    })
+    return "git-annex:auto-fallback"
 
 
 def _copy_regular_snapshot_file(checkout: Path, rel: str, out: Path) -> dict:
@@ -141,13 +209,11 @@ def fetch(output_root: Path) -> dict:
     checkout_meta = _prepare_annex_checkout(cfg, checkout)
 
     records = []
+    transport_events = []
     requested_annex_paths = []
     for subject in cfg["pilot_subjects"]:
         for session in cfg["sessions"]:
             set_rel, channels_rel, eeg_json_rel = _paths(cfg, subject, session)
-
-            # Read the annex symlink identity from the frozen Git tag before
-            # asking git-annex for content.
             annex_target = _url_text(f"{raw_git}/{set_rel}")
             match = ANNEX_RE.search(annex_target)
             if not match:
@@ -156,7 +222,9 @@ def fetch(output_root: Path) -> dict:
             expected_md5 = match.group("md5").lower()
 
             requested_annex_paths.append(set_rel)
-            _run(["git", "annex", "get", "--from", PUBLIC_REMOTE, "--", set_rel], cwd=checkout)
+            retrieval_route = _annex_get(
+                checkout, set_rel, expected_size, expected_md5, transport_events
+            )
             src = checkout / set_rel
             if not src.exists():
                 raise RuntimeError(f"git-annex did not materialize requested pilot file: {set_rel}")
@@ -168,6 +236,18 @@ def fetch(output_root: Path) -> dict:
             actual_md5 = _hash(set_out, "md5")
             actual_sha256 = _hash(set_out, "sha256")
             if actual_size != expected_size or actual_md5 != expected_md5:
+                _write_diagnostic({
+                    "schema": "neurostability-atlas-a2-srm-transport-diagnostic-v0.1",
+                    "status": "SOURCE_ANNEX_IDENTITY_MISMATCH_REFUSED",
+                    "frozen_path": set_rel,
+                    "retrieval_route": retrieval_route,
+                    "expected_bytes": expected_size,
+                    "observed_bytes": actual_size,
+                    "expected_md5": expected_md5,
+                    "observed_md5": actual_md5,
+                    "observed_sha256": actual_sha256,
+                    "reservoir_access": false,
+                })
                 raise RuntimeError(
                     f"annex verification failed for {set_rel}: "
                     f"expected size/md5 {expected_size}/{expected_md5}, "
@@ -178,14 +258,13 @@ def fetch(output_root: Path) -> dict:
                 _copy_regular_snapshot_file(checkout, channels_rel, output_root / channels_rel),
                 _copy_regular_snapshot_file(checkout, eeg_json_rel, output_root / eeg_json_rel),
             ]
-
             records.append({
                 "subject": subject,
                 "session": session,
                 "set_path": set_rel,
                 "annex_target": annex_target,
                 "annex_backend": "MD5E",
-                "annex_remote": PUBLIC_REMOTE,
+                "retrieval_route": retrieval_route,
                 "expected_bytes": expected_size,
                 "expected_md5": expected_md5,
                 "actual_bytes": actual_size,
@@ -203,9 +282,13 @@ def fetch(output_root: Path) -> dict:
     if set(requested_annex_paths) != allowed or len(requested_annex_paths) != len(allowed):
         raise RuntimeError("annex retrieval path set drifted from frozen 8-subject x 2-session pilot")
 
-    # Remove the source checkout after copying the 16 verified pilot files so
-    # workflow artifacts cannot accidentally include Git metadata or annex data.
     shutil.rmtree(checkout)
+    if DIAGNOSTIC.exists():
+        # A prior preferred-remote warning is not a failure after every frozen
+        # object passes source identity verification. Preserve it in the manifest.
+        diagnostic_sha256 = _hash(DIAGNOSTIC, "sha256")
+    else:
+        diagnostic_sha256 = None
 
     return {
         "schema": "neurostability-atlas-a2-srm-input-manifest-v0.1",
@@ -216,6 +299,8 @@ def fetch(output_root: Path) -> dict:
         "sessions": cfg["sessions"],
         "requested_annex_path_count": len(requested_annex_paths),
         "reservoir_annex_paths_requested": 0,
+        "transport_events": transport_events,
+        "transport_diagnostic_sha256_if_present": diagnostic_sha256,
         "records": records,
     }
 
