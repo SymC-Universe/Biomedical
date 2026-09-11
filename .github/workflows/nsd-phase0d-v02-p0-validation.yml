@@ -34,6 +34,9 @@ jobs:
       - name: Run truth-blind P0 order/rank sweep
         working-directory: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2
         run: python scripts/run_p0_order_rank_sweep.py
+      - name: Run P0 rank-signal versus null stress
+        working-directory: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2
+        run: python scripts/run_p0_rank_signal_null_stress.py
       - name: Run P0 development guard
         working-directory: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2
         run: python dev_runner.py

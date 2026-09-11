@@ -8,13 +8,14 @@ def run(args):
 
 if __name__ == "__main__":
     print("NSD Phase 0D v0.2 P0 protocol-reconciliation development runner")
-    print("PURPOSE = DEBUGGING | protocol compliance, integrity, refusal, semantic guards, four-hold qualification, comparator stress, stochastic comparator qualification, and truth-blind order/rank sweep")
+    print("PURPOSE = DEBUGGING | protocol compliance, integrity, refusal, semantic guards, four-hold qualification, comparator stress, stochastic comparator qualification, truth-blind order/rank sweep, and rank-signal null stress")
     for args in [
         [sys.executable, "-m", "pytest", "-q"],
         [sys.executable, "scripts/run_p0_four_hold_qualification.py"],
         [sys.executable, "scripts/run_p0_comparator_stress_matrix.py"],
         [sys.executable, "scripts/run_p0_subspace_dmd_stress.py"],
         [sys.executable, "scripts/run_p0_order_rank_sweep.py"],
+        [sys.executable, "scripts/run_p0_rank_signal_null_stress.py"],
         [sys.executable, "scripts/capture_environment.py"],
         [sys.executable, "scripts/make_candidate_manifest.py"],
     ]:
