@@ -1,0 +1,131 @@
+{
+  "schema": "nsd-neurostability-atlas-coordinate-registry-v0.1",
+  "protocol": "General Cross-Project Research Protocol v0.7.1 FINAL + authoritative v0.7.1A Addendum",
+  "system_model": "NSD System Model v1.0 ARCHITECTURE_LOCKED",
+  "status": "ACTIVE_P0D_COORDINATE_ONTOLOGY_NOT_EMPIRICAL_ZONE_FREEZE",
+  "coordinate_families": {
+    "SPECTRAL_POLE": {
+      "priority": 1,
+      "coordinates": [
+        {"name":"sigma","units":"1/s","status":"NATIVE_WHERE_CONTINUOUS_POLE_SUPPORTED"},
+        {"name":"omega","units":"rad/s","status":"NATIVE_WHERE_COMPLEX_POLE_SUPPORTED"},
+        {"name":"frequency_hz","units":"Hz","status":"DERIVED_ALGEBRAIC_FROM_OMEGA","formula":"omega/(2*pi)"},
+        {"name":"discrete_eigenvalue","units":"dimensionless","status":"NATIVE_WHERE_SOURCE_USES_DISCRETE_MODEL"},
+        {"name":"decay_time_tau","units":"s","status":"DERIVED_LICENSED_FOR_STABLE_SIGMA","formula":"-1/sigma"},
+        {"name":"stability_class","units":null,"status":"NATIVE_OR_DIRECT_CLASSIFICATION"},
+        {"name":"pole_persistence","units":null,"status":"SOURCE_OR_REPRODUCIBILITY_DEPENDENT"},
+        {"name":"pole_uncertainty","units":"coordinate-dependent","status":"REQUIRES_ESTIMATOR_NATIVE_UNCERTAINTY"}
+      ]
+    },
+    "MODAL_CARRIER": {
+      "priority": 1,
+      "coordinates": [
+        {"name":"carrier_vector","units":"source-normalized","status":"NATIVE_OR_REPRODUCED"},
+        {"name":"carrier_similarity","units":"dimensionless","status":"DERIVED_LICENSED"},
+        {"name":"assignment_margin","units":"method-dependent","status":"METHOD_NATIVE_OR_DERIVED"},
+        {"name":"subspace_similarity","units":"dimensionless","status":"DERIVED_LICENSED"},
+        {"name":"cluster_membership","units":null,"status":"IDENTIFIABILITY_DEPENDENT"},
+        {"name":"channel_participation","units":"method-dependent","status":"NATIVE_OR_DERIVED"},
+        {"name":"carrier_identifiability_state","units":null,"status":"CLAIM_SPECIFIC"}
+      ]
+    },
+    "SYSTEM_ORGANIZATION": {
+      "priority": 1,
+      "coordinates": [
+        {"name":"observable_order_rank","units":"count","status":"METHOD_DEPENDENT_NATIVE_OR_REPRODUCED"},
+        {"name":"supported_subspace_dimension","units":"count","status":"METHOD_DEPENDENT"},
+        {"name":"individually_resolvable_mode_count","units":"count","status":"IDENTIFIABILITY_DEPENDENT"},
+        {"name":"crowded_cluster_count","units":"count","status":"IDENTIFIABILITY_DEPENDENT"},
+        {"name":"added_lost_shared_structure","units":null,"status":"RELATIONAL_ACROSS_CONDITIONS"},
+        {"name":"participation_distribution","units":"method-dependent","status":"STRUCTURED_OBJECT"},
+        {"name":"relational_spectral_geometry","units":"coordinate-dependent","status":"RESOLVABLE_OBJECTS_ONLY"},
+        {"name":"estimator_agreement_pattern","units":null,"status":"OPEN_CHANNEL_RELATIONAL"},
+        {"name":"system_epistemic_state","units":null,"status":"CLAIM_SPECIFIC_NONAGGREGATING"}
+      ]
+    },
+    "CROWDING_IDENTIFIABILITY": {
+      "priority": 2,
+      "coordinates": [
+        {"name":"frequency_separation","units":"Hz_or_rad_per_s","status":"NATIVE_OR_DIRECT_DERIVATION"},
+        {"name":"normalized_crowding_descriptor","units":"dimensionless","status":"DERIVED_LICENSED_NO_UNIVERSAL_THRESHOLD","formula":"abs(omega_i-omega_j)/(alpha_i+alpha_j)"},
+        {"name":"individual_assignment_margin","units":"method-dependent","status":"METHOD_DEPENDENT"},
+        {"name":"individual_carrier_similarity","units":"dimensionless","status":"DERIVED_LICENSED"},
+        {"name":"joint_subspace_similarity","units":"dimensionless","status":"DERIVED_LICENSED"},
+        {"name":"rank_stability","units":"method-dependent","status":"METHOD_DEPENDENT"},
+        {"name":"identifiability_class","units":null,"status":"INDIVIDUAL_SUBSPACE_ONLY_OR_UNRESOLVED"}
+      ]
+    },
+    "MODEL_ADEQUACY": {
+      "priority": 2,
+      "non_aggregating": true,
+      "coordinates": [
+        {"name":"residual_temporal_structure","units":"method-dependent","status":"KEEP_METHOD_IDENTITY"},
+        {"name":"out_of_sample_covariance_reconstruction_error","units":"dimensionless_or_source-native","status":"METHOD_DEPENDENT"},
+        {"name":"out_of_sample_prediction_error","units":"dimensionless_or_source-native","status":"METHOD_DEPENDENT"},
+        {"name":"fitted_stability_admissibility","units":null,"status":"METHOD_DEPENDENT"},
+        {"name":"order_sensitivity","units":null,"status":"STRUCTURED_OBJECT"},
+        {"name":"window_sensitivity","units":null,"status":"STRUCTURED_OBJECT"},
+        {"name":"method_exception_refusal","units":null,"status":"OPEN_CHANNEL"},
+        {"name":"adequacy_interpretation_state","units":null,"status":"CLAIM_SPECIFIC"}
+      ]
+    },
+    "UNCERTAINTY_IDENTIFIABILITY": {
+      "priority": 2,
+      "coordinates": [
+        {"name":"pole_frequency_decay_uncertainty","units":"coordinate-dependent","status":"ESTIMATOR_NATIVE_REQUIRED"},
+        {"name":"carrier_subspace_uncertainty","units":"method-dependent","status":"ESTIMATOR_NATIVE_REQUIRED"},
+        {"name":"order_rank_ambiguity","units":null,"status":"STRUCTURED_OBJECT"},
+        {"name":"assignment_ambiguity","units":null,"status":"STRUCTURED_OBJECT"},
+        {"name":"crowding_induced_ambiguity","units":null,"status":"STRUCTURED_OBJECT"},
+        {"name":"calibration_provenance","units":null,"status":"REQUIRED"},
+        {"name":"indeterminate_reason","units":null,"status":"CLAIM_SPECIFIC"}
+      ]
+    },
+    "FUNCTIONAL_CONTEXT": {
+      "priority": 1,
+      "coordinates": [
+        {"name":"recording_state_task_condition","units":null,"status":"CONTEXT_REQUIRED_WHERE_AVAILABLE"},
+        {"name":"perturbation_intervention_exposure","units":null,"status":"CONTEXT"},
+        {"name":"temporal_relation","units":null,"status":"PRE_DURING_POST_OR_SOURCE_NATIVE"},
+        {"name":"anatomical_channel_context","units":null,"status":"CONTEXT"},
+        {"name":"sampling_rate","units":"Hz","status":"REQUIRED_WHERE_MATERIAL"},
+        {"name":"preprocessing","units":null,"status":"REQUIRED_WHERE_MATERIAL"},
+        {"name":"recording_duration_window_policy","units":"s_or_source-native","status":"REQUIRED_WHERE_MATERIAL"},
+        {"name":"system_population_class","units":null,"status":"CONTEXT"},
+        {"name":"research_role","units":null,"allowed":["NOMINAL_FUNCTION","PERTURBED_FUNCTION","BOUNDARY_OR_TRANSITION","RARE_NATURAL_LIMIT"]},
+        {"name":"function_limit_state","units":null,"allowed":["WORKS_HERE","STOPS_WORKING_HERE","NOT_KNOWN_HERE"]}
+      ]
+    }
+  },
+  "chi_firewall": {
+    "base_coordinate": false,
+    "default_status": "WITHHELD",
+    "required_before_admission": [
+      "source/native model supports required second-order factorization or equivalent justified parameterization",
+      "transformation explicitly derived",
+      "units and sign conventions preserved",
+      "derivation epistemic status recorded",
+      "not constructed to force agreement with historical SymC values",
+      "underlying native coordinates retained"
+    ],
+    "generic_complex_pole_alone_is_sufficient": false
+  },
+  "evidence_tiers": [
+    "DIRECT_NUMERIC_NATIVE",
+    "REPRODUCED_FROM_SOURCE_DATA",
+    "DERIVED_LICENSED",
+    "SNIPPET_OR_PARTIAL",
+    "BLOCKED_SOURCE",
+    "INELIGIBLE"
+  ],
+  "scope_labels": [
+    "SUPPORTED_IN_TESTED_REGIME",
+    "CROSS_REGIME",
+    "CROSS_SYSTEM",
+    "ROBUST_ACROSS_TESTED_LIMITS",
+    "REGIME_LIMITED",
+    "DOMAIN_LIMITED",
+    "UNRESOLVED_BEYOND_TESTED_RANGE",
+    "NOT_YET_ASSIGNED"
+  ]
+}
