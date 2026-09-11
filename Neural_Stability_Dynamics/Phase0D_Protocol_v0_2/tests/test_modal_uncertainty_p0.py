@@ -1,7 +1,14 @@
 import numpy as np
 
 from src.hankel_uncertainty import nsd_covariance_hankel, batch_hankel_covariance_root
-from src.modal_uncertainty import fit_poles_from_hankel, match_poles, propagate_hankel_root_to_poles
+from src.modal_uncertainty import (
+    carrier_subspace_basis,
+    fit_poles_from_hankel,
+    match_poles,
+    principal_angles_from_bases,
+    propagate_hankel_root_to_carrier_subspace,
+    propagate_hankel_root_to_poles,
+)
 from src.ssi_cov import decompose, fit_from_decomposition
 from src.synthetic_systems import make_linear_system, simulate_linear
 
@@ -58,3 +65,26 @@ def test_native_batch_root_produces_finite_nonnegative_pole_variance():
     assert np.all(out["variance_frequency_hz"] >= 0.0)
     assert np.any(out["variance_decay"] > 0.0)
     assert np.any(out["variance_frequency_hz"] > 0.0)
+
+
+def test_carrier_subspace_is_invariant_to_basis_mixing():
+    X = np.array(
+        [[1 + 0j, 0.2j], [0.3 + 0.1j, 1 + 0j], [0.2, 0.4j], [0.1j, 0.5]],
+        complex,
+    )
+    M = np.array([[1.0, 0.7], [-0.2, 1.1]], complex)
+    Qa = carrier_subspace_basis(X)
+    Qb = carrier_subspace_basis(X @ M)
+    angles = principal_angles_from_bases(Qa, Qb)
+    assert np.max(angles) < 1e-7
+
+
+def test_native_batch_root_produces_finite_subspace_variance():
+    Y = _record(7200)
+    H = nsd_covariance_hankel(Y, 12)
+    T, _ = batch_hankel_covariance_root(Y, 12, 12)
+    out = propagate_hankel_root_to_carrier_subspace(H, T, 4, 4, 0.02, epsilon=0.5)
+    assert out["subspace_rank"] == 2
+    assert np.isfinite(out["projector_variance_trace"])
+    assert out["projector_variance_trace"] > 0.0
+    assert np.all(np.isfinite(out["max_principal_angle_by_direction_rad"]))
