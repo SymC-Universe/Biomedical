@@ -1,8 +1,9 @@
 # GRI v2 build status
 
 **Status date:** 2026-09-10  
-**Protocol authority:** General Cross-Project Research Protocol v0.7.1 FINAL  
-**Integration control:** `docs/GRI_V071_INTEGRATION_CONTROL_20260910.md`
+**Protocol authority:** General Cross-Project Research Protocol v0.7.1 FINAL + v0.7.1A Functional Mapping and Natural Limit-Testbed Addendum  
+**Integration control:** `docs/GRI_V071_INTEGRATION_CONTROL_20260910.md`  
+**v0.7.1A audit:** `docs/GRI_V071A_PROTOCOL_AUDIT_20260910.md`
 
 ## Current scientific status
 
@@ -10,13 +11,23 @@ GRI remains a **development-stage cross-omic architecture / audit-refusal progra
 
 Historical `CV/2` remains retired as biological chi. No biological chi coordinate is admitted. Static TCGA evidence does not establish damping, exceptional-point behavior, temporal inheritance, causality, treatment response, clinical utility, or a chi=1 optimum.
 
-Under v0.7.1 the working architecture is:
+Under the current protocol the working architecture is:
 
 `GRI System Model -> implemented by GRI Engine`
 
 `GRI System Model + Independent Regulatory Substrate Atlas -> GRI Tool`
 
 `Validated GRI System Model + Independent Regulatory Substrate Atlas + Prospective Validation -> Predictive GRI Tool`
+
+v0.7.1A adds a prospective operational balance requirement:
+
+`P0-D discovery/function mapping -> P0-Q qualification -> P1 frozen confirmation -> P2 release/tool qualification`
+
+and requires paired:
+
+`Function Map + Limit Map`
+
+Neither map may erase the other.
 
 ## Closed layers
 
@@ -29,7 +40,7 @@ The following are closed in the current internal lineage:
 - Stage C0 methylation source gate;
 - Stage C0.1 sample identity gate;
 - Stage C1A annotation/probe inventory;
-- P0 DISCOVERY / REPLICATION / FINAL_HOLDOUT internal predictive program;
+- legacy predictive P0 DISCOVERY / REPLICATION / FINAL_HOLDOUT internal program;
 - Stage C1 frozen-v2 execution with approved v2.1/v2.2 amendments.
 
 Returned Stage C1 machine status:
@@ -47,9 +58,9 @@ Returned Stage C1 machine status:
 - biological chi not used;
 - historical GRI not used.
 
-Stage C1 is computationally closed and is not to be rerun or retuned absent a reproducible contradiction in the frozen record.
+Stage C1 is computationally closed and is not to be rerun or retuned absent a reproducible contradiction in the frozen record. v0.7.1A applies prospectively and does not retroactively change this lineage.
 
-## P0 FINAL_HOLDOUT state
+## Legacy predictive P0 FINAL_HOLDOUT state
 
 P0 P3-v2 FINAL_HOLDOUT is closed.
 
@@ -68,26 +79,52 @@ This is internal TCGA evidence. The 47-predictor versus two-covariate comparison
 
 ## Active computational gate
 
-The only current heavy local gate is the already-frozen **post-C1 adversarial sensitivity v2.2** package.
+The priority heavy local gate is the already-frozen **post-C1 adversarial sensitivity v2.2** package.
 
 Its first gate reconstructs all 6,400 cancer/track/resample keys to tolerance `1e-10`. If state equivalence passes, it proceeds into the frozen missingness, mode-ablation, CKA-floor, repeated-null, TSS200, composition-complete, and conditioning attacks.
+
+Under v0.7.1A this is classified as **P0-Q qualification** of already-observed/internal evidence. It cannot retroactively become P1 confirmation.
 
 No result from this package is assumed in advance. Favorable and unfavorable outcomes are equally retained.
 
 ## Active parallel repository/audit work
 
-The following may proceed while the sensitivity runs:
+The following are now proceeding or prepared while the sensitivity gate is unresolved:
 
-1. v0.7.1 GRI System Model / Engine migration;
-2. formal reduction/failure/refusal map;
-3. Regulatory Substrate Atlas schema and independence ledger;
-4. comparator provenance recovery;
-5. production-Engine P2 gap audit;
-6. MFR-14 scaffolding for future external predictions, without result-dependent thresholds.
+1. v0.7.1/v0.7.1A GRI System Model / Engine migration;
+2. formal Function Map reconstruction;
+3. formal Limit Map reconstruction;
+4. open-channel disposition ledger;
+5. pathway-specific independence ledger;
+6. research-role coverage registry;
+7. Regulatory Substrate Atlas v0.1 schema and independence architecture;
+8. comparator provenance recovery;
+9. production-Engine P2 gap audit;
+10. P2 negative/mutation-test specification;
+11. MFR-14 scaffolding for future external predictions without result-dependent thresholds;
+12. capability-description index for future semantic synchronization.
 
 The integration work is isolated on branch:
 
 `gri-v071-protocol-integration-20260910`
+
+## v0.7.1A balance status
+
+Current evidence is strongest in:
+
+- internal static `NOMINAL_FUNCTION` coverage;
+- method/representation limit mapping;
+- adversarial/qualification controls.
+
+Current evidence is weaker in:
+
+- genuine biological `PERTURBED_FUNCTION` based on ordered perturbation/time-course evidence;
+- biological `BOUNDARY_OR_TRANSITION` evidence rather than method boundaries;
+- independently qualified `RARE_NATURAL_LIMIT` evidence.
+
+The next P0-D program should therefore map the functioning interior with the same seriousness used to map limits while future data-source work seeks independently sourced ordered/perturbational and qualified extreme contexts.
+
+PCPG remains a recurrent GRI stress/boundary candidate. It is **not** classified as `RARE_NATURAL_TESTBED` merely because it surprises the current Engine; rarity would require independent oncology-native evidence.
 
 ## Comparator status
 
@@ -102,7 +139,40 @@ The exact previously referenced **post-FINAL equal-dimensional predictive capaci
 
 Therefore no such result is assumed and no freeze identity is invented.
 
-If the exact historical package is recovered, verify its timestamp/hash/design and execute it as the previously intended post-FINAL adversarial extension. If it cannot be recovered, any newly designed capacity-matched analysis must be explicitly labeled new post-FINAL adversarial work and cannot be represented as the earlier freeze or as pristine prospective evidence.
+If the exact historical package is recovered, verify its timestamp/hash/design and execute it as the previously intended post-FINAL adversarial extension. If it cannot be recovered, any newly designed capacity-matched analysis must be explicitly labeled new post-FINAL P0-Q adversarial work and cannot be represented as the earlier freeze or as pristine prospective evidence.
+
+## Function Map status
+
+A working internal Function Map now separates:
+
+- RNA/methylation within-layer organization;
+- global methylation/RNA patient geometry;
+- leading-modal alignment;
+- patient-specific Hallmark coupling;
+- context-sensitive versus context-robust architecture;
+- internal predictive information and confidence/risk ranking;
+- reduction information loss inside otherwise functioning regions.
+
+These are internal empirical/qualification descriptions. They are not external operating guarantees or mechanistic biology.
+
+## Limit Map status
+
+A working Limit Map now preserves:
+
+- retired historical chi interpretation;
+- static-versus-dynamic evidence boundary;
+- nonlinear-only scope failure;
+- semantic-specificity weakness;
+- CKA null-floor reduction limits;
+- mapping refusals;
+- PCPG stress behavior;
+- limited composition adjustment;
+- platform generalization risk;
+- absent biological chi admission;
+- predictive capacity-comparator gap;
+- P2 Engine/Atlas qualification gaps.
+
+Method-scope limits remain separate from empirical/system-behavior claims.
 
 ## Current claim ceiling
 
@@ -114,7 +184,8 @@ Allowed internally:
 - patient-specific Hallmark coupling with the existing H3b limitations;
 - internal held-out methylation predictive information beyond purity/leukocyte covariates;
 - internal candidate global-geometry confidence ranking of prediction risk;
-- explicit failure/refusal boundaries.
+- explicit failure/refusal boundaries;
+- P0-D Function and Limit mapping of already-viewed evidence.
 
 Not established:
 
@@ -125,7 +196,9 @@ Not established:
 - treatment response;
 - mechanistic cancer damping or exceptional-point behavior;
 - biological chi;
-- chi=1 as a cancer optimum or therapeutic target.
+- chi=1 as a cancer optimum or therapeutic target;
+- capacity-matched Hallmark predictive superiority;
+- any qualified rare-natural-limit result.
 
 ## Current paper exit gate
 
@@ -134,22 +207,23 @@ Not established:
 3. integrate authorized manuscript changes;
 4. regenerate affected figures/tables;
 5. run final cold manuscript/supplement/reproducibility/code audit;
-6. close the immutable submission package only if claims, figures, code, manifests, and failure ledger agree.
+6. close the immutable submission package only if claims, figures, code, manifests, Function/Limit implications, and failure ledger agree.
 
 ## Predictive GRI Tool exit gate
 
-1. freeze a versioned GRI System Model and production Engine after present internal sensitivity/comparator disposition;
-2. qualify negative/refusal/boundary behavior in the actual Engine;
-3. build and version an independently constructed Regulatory Substrate Atlas with independence grades;
-4. freeze the scientific external prediction task and strongest fair native comparator before decisive external evaluation;
-5. complete MFR-14;
-6. freeze System Model / Engine / Atlas / decision rules / comparator / falsifier;
-7. execute untouched external cohort(s) without science-adjacent remediation;
-8. report confirmatory pass/failure with explicit epistemic status;
-9. only then describe the result as a **Predictive GRI Tool**.
+1. disposition present P0-Q sensitivity/comparator work;
+2. freeze a versioned supported GRI System Model and production Engine;
+3. qualify negative/refusal/boundary behavior in the actual Engine;
+4. build and version an independently constructed Regulatory Substrate Atlas with pathway-specific independence grades;
+5. freeze the scientific external prediction task and strongest fair native comparator before decisive external evaluation;
+6. complete MFR-14;
+7. freeze System Model / Engine / Atlas / decision rules / comparator / falsifier;
+8. execute untouched external cohort(s) without science-adjacent remediation;
+9. report confirmatory pass/failure with explicit epistemic status and separate Function/Limit outputs;
+10. only then describe the result as a **Predictive GRI Tool**.
 
 ## Exact user action
 
-Run the post-C1 adversarial sensitivity v2.2 package locally as the priority heavy job. No Stage C1 rerun is needed.
+Priority user-side heavy computation: run/continue the post-C1 adversarial sensitivity v2.2 package locally against the completed C1 state.
 
-While that runs, repository/audit work continues on the integration branch without changing frozen science.
+Repository-side migration, provenance, Function/Limit mapping, Atlas architecture, comparator recovery, MFR scaffolding, and P2 qualification preparation can continue without further user action until a scientific freeze/design choice is reached.
