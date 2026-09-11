@@ -1,46 +1,53 @@
 # NSD Native Comparator Selection Plan
 
-Status: **P0 EVIDENCE ROUTE NARROWED; P1 COMPARATOR NOT FROZEN.**
+Status: **P0Q1 SPLIT RESULT RECORDED; P1 COMPARATOR NOT FROZEN.**
 
-The scientific comparison question must be frozen before decisive comparator performance is inspected.
+## Two comparison levels remain separate
 
-## Comparator question is now split into two non-interchangeable levels
+### A. Estimator-at-declared-order/rank
 
-### A. Estimator-at-declared-order question
+Subspace DMD remains the leading independent stochastic structural comparator candidate when the same declared/correct rank is supplied. Its earlier P0 stress performance was strong across random dynamics, observation noise, crowding and weak observability.
 
-> On known-truth multichannel stochastic systems within a declared local-linear/output-only scope, how accurately do SSI-COV and the strongest fair independent structural comparator recover pole and carrier structure when the same correct state order/rank is supplied?
+### B. Operational truth-blind structural recovery
 
-P0 evidence now identifies **Subspace DMD** as the leading independent candidate for this question. It was selected through source-of-record review because it explicitly targets random dynamical systems with observation noise and it survived the same already-fixed P0 stress matrix without the stochastic-process mismatch seen in TLS-DMD.
+The first frozen candidate for a common simple rank-signal gate has now been tested prospectively at P0Q1.
 
-This question isolates estimator behavior. It does **not** test operational order/rank selection.
+Frozen candidate rule v1:
 
-### B. Operational structural-recovery question
+- candidate rank = largest finite method-native adjacent singular gap;
+- require gap >= 3.0;
+- refuse the grid maximum;
+- refuse any unstable selected pole;
+- require at least one stable positive-frequency complex mode.
 
-> When truth is unavailable, can the NSD Structural Engine recover or refuse structure more reliably than a fair Subspace-DMD pipeline using a predeclared method-appropriate rank-selection route?
+Prospective P0Q1 result:
 
-This question remains **BLOCKED ON ORDER/RANK FAIRNESS**.
+- **SSI-COV: SURVIVES_P0Q1**, admitting 35/35 oscillatory records and false-admitting 0/40 refusal records with zero mechanical exceptions.
+- **Subspace DMD: FAILS_P0Q1**, admitting 35/35 oscillatory records but false-admitting 2/5 real-pole-only controls. Every stochastic/noise null family remained fully refused and there were zero mechanical exceptions.
 
-A comparator is not fair merely because it is given a convenient fixed rank, nor may the NSD selector be allowed to use development-derived information unavailable to the comparator. Conversely, forcing identical selection mathematics onto method families with different native identification structures can itself create an unfair comparator.
+Therefore the same simple operational gate is **not qualified across the two method families**.
+
+## Consequence
+
+The Subspace-DMD failure cannot be repaired by retuning v1 on P0Q1 records. The next step is a retrospective method diagnostic, not a new threshold.
+
+The key diagnostic question is why the projected-future singular spectrum selected rank 4 for every two-real-mode stochastic control and sometimes generated stable complex eigenpairs at that rank. The investigation must inspect:
+
+- projected singular values across all retained ranks;
+- the rank-2 and rank-4 eigenvalues;
+- finite-sample versus persistent behavior;
+- adjacent-rank mode assignments;
+- the authors' retained-mode/rank convention;
+- whether stochastic innovation dimension can masquerade as persistent generator dimension in the projected-future object.
+
+Only after that diagnosis may a new method-native Subspace-DMD operational hypothesis be formulated. Such a hypothesis will be explicitly post-P0Q1, separately versioned, and tested on new untouched P0Q2 evidence.
 
 ## Current comparator hierarchy
 
-- **Subspace DMD:** leading direct independent stochastic structural comparator candidate; P0 stress-supported, not frozen.
-- **TLS-DMD:** snapshot/sensor-noise diagnostic control; preserved mismatch on process-driven stochastic families.
-- **Exact DMD:** transparent baseline; known observation-noise bias.
-- **OMA/SSI family:** domain precedent and internal lineage comparator, not sufficiently independent to serve as the sole external structural baseline.
-- **specparam/FOOOF:** later spectral-state comparator; different target object.
-- **PLI/wPLI/connectivity architecture:** later system/connectivity baseline; different target object.
-- **optimized/robust DMD variants:** remain in the good-faith search space if the final P1 noise/outlier model requires them.
+- **Subspace DMD:** leading independent comparator for conditional estimator-at-rank recovery; operational rank selection remains unqualified after P0Q1 failure.
+- **SSI-COV:** candidate NSD estimator; the simple rank-signal gate survived one frozen P0Q1 challenge but remains P0 and requires additional untouched qualification before P1.
+- **TLS-DMD:** snapshot/sensor-noise assumption control; preserved stochastic mismatch.
+- **Exact DMD:** transparent baseline with known observation-noise bias.
+- **specparam/FOOOF and PLI/wPLI:** later spectral/connectivity baselines for different target objects.
 
-## Next P0 comparator work
-
-Before MFR-05 can be frozen:
-
-1. sweep SSI-COV order and Subspace-DMD rank on the same development records without using truth for selection;
-2. preserve all candidate modes, stability/assignment information, singular spectra and refusals;
-3. investigate method-native order/rank selection routes, including multi-order stabilization for SSI and established DMD truncation/rank criteria;
-4. qualify candidate selection rules on known-truth systems and known-bad weak-observability/noise cases;
-5. predeclare whether P1 tests estimator-at-declared-order, operational selection, or both as separate claim families;
-6. only then freeze comparator identity, rank/order rule, metric and consequence of failure.
-
-Possible final outcome remains `COMPARATOR_IDENTIFIED` or `NO_NATIVE_COMPARATOR` for a precisely frozen task. A weak or assumption-mismatched baseline will not be manufactured merely to create an ADDS result.
+P1 remains closed. A weak, retuned or assumption-mismatched comparator will not be manufactured to create an added-value result.
