@@ -3,7 +3,7 @@ from __future__ import annotations
 """Protocol-neutral validation helpers for the GRI v0.7.1/v0.7.1A migration.
 
 This module does not implement the scientific GRI Engine and does not alter any
-frozen Stage C1 or legacy predictive P0 calculation.  It validates control-plane
+frozen Stage C1 or legacy predictive P0 calculation. It validates control-plane
 output semantics that are required regardless of the final supported scientific
 scope.
 """
@@ -75,6 +75,13 @@ _PROHIBITED_RARE_SELECTION_BASES = frozenset(
     }
 )
 
+_CONFIRMATORY_EMPIRICAL_OUTCOMES = frozenset(
+    {
+        "EMPIRICAL_CLAIM_SURVIVES_FROZEN_TEST",
+        "EMPIRICAL_CLAIM_FALSIFIED",
+    }
+)
+
 
 def _mapping(value: Any, name: str) -> Mapping[str, Any]:
     if not isinstance(value, Mapping):
@@ -96,9 +103,9 @@ def _nonempty(value: Any) -> bool:
 def validate_v071a_output(record: Mapping[str, Any]) -> None:
     """Validate protocol semantics for a draft GRI Engine/Tool output.
 
-    The validator is intentionally conservative.  It guards only requirements
+    The validator is intentionally conservative. It guards only requirements
     already fixed by the active cross-project protocol and current GRI claim
-    ceiling.  Scientific thresholds and future System Model capability are not
+    ceiling. Scientific thresholds and future System Model capability are not
     defined here.
     """
 
@@ -133,7 +140,7 @@ def validate_v071a_output(record: Mapping[str, Any]) -> None:
     if role is not None and role not in RESEARCH_ROLES:
         raise ProtocolContractError(f"invalid research role: {role!r}")
 
-    # Current GRI has not admitted a biological chi.  A future version may only
+    # Current GRI has not admitted a biological chi. A future version may only
     # change this by changing the scientifically frozen System Model, not by
     # silently populating an output field.
     classification = _mapping(record["classification"], "classification")
@@ -213,9 +220,21 @@ def validate_v071a_output(record: Mapping[str, Any]) -> None:
         raise ProtocolContractError(
             "method-validity prediction cannot use the empirical outcome namespace"
         )
-    if outcome_namespace == "METHOD_SCOPE" and isinstance(outcome, str) and outcome.startswith("EMPIRICAL_"):
+    if (
+        outcome_namespace == "METHOD_SCOPE"
+        and isinstance(outcome, str)
+        and outcome.startswith("EMPIRICAL_")
+    ):
         raise ProtocolContractError(
             "method-scope outcome cannot be encoded as an empirical confirmation"
+        )
+
+    # P0-D and P0-Q may discover or qualify real empirical structure, but their
+    # own result cannot be labeled as a frozen confirmatory survival/falsification
+    # outcome. Such promotion requires a separately frozen P1 test.
+    if mode in {"P0_D", "P0_Q"} and outcome in _CONFIRMATORY_EMPIRICAL_OUTCOMES:
+        raise ProtocolContractError(
+            "P0-D/P0-Q output cannot carry a confirmatory empirical outcome label"
         )
 
     # P1 status is only licensed after a complete, verifiably frozen MFR-14 with
