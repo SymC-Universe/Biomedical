@@ -12,6 +12,7 @@ import urllib.request
 ROOT = Path(__file__).resolve().parents[1]
 FREEZE = ROOT / "registries" / "A2_SRM_CSD_SVD_PILOT_FREEZE.json"
 ANNEX_RE = re.compile(r"MD5E-s(?P<size>\d+)--(?P<md5>[0-9a-fA-F]{32})\.set$")
+PUBLIC_REMOTE = "s3-PUBLIC-unversioned"
 
 
 def _hash(path: Path, algorithm: str) -> str:
@@ -27,14 +28,14 @@ def _url_text(url: str) -> str:
         return response.read().decode("utf-8").strip()
 
 
-def _download(url: str, out: Path) -> None:
-    out.parent.mkdir(parents=True, exist_ok=True)
-    tmp = out.with_suffix(out.suffix + ".part")
-    if tmp.exists():
-        tmp.unlink()
-    with urllib.request.urlopen(url, timeout=300) as response, tmp.open("wb") as f:
-        shutil.copyfileobj(response, f, length=1024 * 1024)
-    tmp.replace(out)
+def _run(args, cwd=None, capture=False):
+    return subprocess.run(
+        args,
+        cwd=cwd,
+        check=True,
+        text=True,
+        capture_output=capture,
+    )
 
 
 def _verify_git_tag(cfg: dict) -> None:
@@ -42,11 +43,9 @@ def _verify_git_tag(cfg: dict) -> None:
     tag = cfg["source_snapshot"]["Git_tag"]
     expected = cfg["source_snapshot"]["Git_commit"]
     url = f"https://github.com/{repo}.git"
-    proc = subprocess.run(
+    proc = _run(
         ["git", "ls-remote", "--tags", url, f"refs/tags/{tag}"],
-        check=True,
-        capture_output=True,
-        text=True,
+        capture=True,
     )
     observed = proc.stdout.strip().split()[0]
     if observed != expected:
@@ -63,6 +62,55 @@ def _paths(cfg: dict, subject: str, session: str) -> tuple[str, str, str]:
     )
 
 
+def _prepare_annex_checkout(cfg: dict, checkout: Path) -> dict:
+    if shutil.which("git-annex") is None and shutil.which("git") is not None:
+        # git-annex normally exposes itself as `git annex`, but the standalone
+        # binary is the clearest availability check on hosted runners.
+        raise RuntimeError("git-annex is required for OpenNeuro annex content retrieval")
+    repo = cfg["source_snapshot"]["GitHub_mirror"]
+    tag = cfg["source_snapshot"]["Git_tag"]
+    expected = cfg["source_snapshot"]["Git_commit"]
+    url = f"https://github.com/{repo}.git"
+
+    if checkout.exists():
+        shutil.rmtree(checkout)
+    checkout.parent.mkdir(parents=True, exist_ok=True)
+
+    # Clone Git metadata only. Annexed EEG content remains absent until the
+    # explicit pilot-only `git annex get` calls below.
+    _run(["git", "clone", "--no-checkout", url, str(checkout)])
+    _run(["git", "checkout", "--detach", expected], cwd=checkout)
+    observed = _run(["git", "rev-parse", "HEAD"], cwd=checkout, capture=True).stdout.strip()
+    if observed != expected:
+        raise RuntimeError(f"checkout drift: expected {expected}, observed {observed}")
+
+    # Ensure annex metadata/special remotes are initialized from the cloned
+    # repository. No annex content is fetched by init.
+    _run(["git", "annex", "init"], cwd=checkout)
+    remotes = _run(["git", "annex", "info", "--json"], cwd=checkout, capture=True).stdout
+    return {
+        "repository": repo,
+        "tag": tag,
+        "commit": observed,
+        "git_annex_version": _run(["git", "annex", "version"], cwd=checkout, capture=True).stdout.splitlines()[0].strip(),
+        "annex_info_json_lines_sha256": hashlib.sha256(remotes.encode("utf-8")).hexdigest(),
+    }
+
+
+def _copy_regular_snapshot_file(checkout: Path, rel: str, out: Path) -> dict:
+    src = checkout / rel
+    if not src.exists():
+        raise RuntimeError(f"missing source sidecar at frozen checkout: {rel}")
+    out.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(src, out)
+    return {
+        "path": rel,
+        "bytes": out.stat().st_size,
+        "sha256": _hash(out, "sha256"),
+        "source": "frozen Git checkout",
+    }
+
+
 def fetch(output_root: Path) -> dict:
     cfg = json.loads(FREEZE.read_text(encoding="utf-8"))
     if cfg["status"] != "FROZEN_BEFORE_EEG_VALUE_INSPECTION":
@@ -71,14 +119,18 @@ def fetch(output_root: Path) -> dict:
 
     repo = cfg["source_snapshot"]["GitHub_mirror"]
     tag = cfg["source_snapshot"]["Git_tag"]
-    s3_http = "https://s3.amazonaws.com/openneuro.org/ds003775"
     raw_git = f"https://raw.githubusercontent.com/{repo}/{tag}"
+    checkout = output_root.parent / "srm_a2_source_checkout"
+    checkout_meta = _prepare_annex_checkout(cfg, checkout)
 
     records = []
+    requested_annex_paths = []
     for subject in cfg["pilot_subjects"]:
         for session in cfg["sessions"]:
             set_rel, channels_rel, eeg_json_rel = _paths(cfg, subject, session)
 
+            # Read the annex symlink identity from the frozen Git tag before
+            # asking git-annex for content.
             annex_target = _url_text(f"{raw_git}/{set_rel}")
             match = ANNEX_RE.search(annex_target)
             if not match:
@@ -86,8 +138,15 @@ def fetch(output_root: Path) -> dict:
             expected_size = int(match.group("size"))
             expected_md5 = match.group("md5").lower()
 
+            requested_annex_paths.append(set_rel)
+            _run(["git", "annex", "get", "--from", PUBLIC_REMOTE, "--", set_rel], cwd=checkout)
+            src = checkout / set_rel
+            if not src.exists():
+                raise RuntimeError(f"git-annex did not materialize requested pilot file: {set_rel}")
+
             set_out = output_root / set_rel
-            _download(f"{s3_http}/{set_rel}", set_out)
+            set_out.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(src, set_out)
             actual_size = set_out.stat().st_size
             actual_md5 = _hash(set_out, "md5")
             actual_sha256 = _hash(set_out, "sha256")
@@ -98,16 +157,10 @@ def fetch(output_root: Path) -> dict:
                     f"observed {actual_size}/{actual_md5}"
                 )
 
-            sidecars = []
-            for rel in (channels_rel, eeg_json_rel):
-                out = output_root / rel
-                _download(f"{raw_git}/{rel}", out)
-                sidecars.append({
-                    "path": rel,
-                    "bytes": out.stat().st_size,
-                    "sha256": _hash(out, "sha256"),
-                    "source": f"Git tag {tag}",
-                })
+            sidecars = [
+                _copy_regular_snapshot_file(checkout, channels_rel, output_root / channels_rel),
+                _copy_regular_snapshot_file(checkout, eeg_json_rel, output_root / eeg_json_rel),
+            ]
 
             records.append({
                 "subject": subject,
@@ -115,6 +168,7 @@ def fetch(output_root: Path) -> dict:
                 "set_path": set_rel,
                 "annex_target": annex_target,
                 "annex_backend": "MD5E",
+                "annex_remote": PUBLIC_REMOTE,
                 "expected_bytes": expected_size,
                 "expected_md5": expected_md5,
                 "actual_bytes": actual_size,
@@ -124,12 +178,27 @@ def fetch(output_root: Path) -> dict:
                 "sidecars": sidecars,
             })
 
+    allowed = {
+        _paths(cfg, subject, session)[0]
+        for subject in cfg["pilot_subjects"]
+        for session in cfg["sessions"]
+    }
+    if set(requested_annex_paths) != allowed or len(requested_annex_paths) != len(allowed):
+        raise RuntimeError("annex retrieval path set drifted from frozen 8-subject x 2-session pilot")
+
+    # Remove the source checkout after copying the 16 verified pilot files so
+    # workflow artifacts cannot accidentally include Git metadata or annex data.
+    shutil.rmtree(checkout)
+
     return {
         "schema": "neurostability-atlas-a2-srm-input-manifest-v0.1",
         "status": "ALL_FROZEN_INPUTS_RETRIEVED_AND_BYTE_VERIFIED",
         "source_snapshot": cfg["source_snapshot"],
+        "annex_checkout": checkout_meta,
         "pilot_subjects": cfg["pilot_subjects"],
         "sessions": cfg["sessions"],
+        "requested_annex_path_count": len(requested_annex_paths),
+        "reservoir_annex_paths_requested": 0,
         "records": records,
     }
 
@@ -146,6 +215,7 @@ def main() -> None:
     manifest_path.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(manifest_path)
     print(f"verified sessions: {len(manifest['records'])}")
+    print(f"reservoir annex paths requested: {manifest['reservoir_annex_paths_requested']}")
     print("A2 SRM INPUT FETCH PASS")
 
 
