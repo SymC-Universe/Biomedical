@@ -1,6 +1,6 @@
 # GRI current status under protocol v0.7.1 + v0.7.1A
 
-**Date:** 2026-09-10  
+**Date:** 2026-09-11  
 **Status class:** P0-D / P0-Q PROGRAM MIGRATION AND QUALIFICATION PREPARATION  
 **Protocol authority:** `General_Cross_Project_Research_Protocol_v0.7.1_FINAL_plus_v0.7.1A_Addendum.pdf`
 
@@ -52,18 +52,22 @@ The integration branch now contains:
 20. executable protocol-control validator and known-bad tests;
 21. PR-based CI for all integration changes;
 22. task-specific native-comparator candidate survey;
-23. PCPG rare-natural-testbed P0-D qualification record.
+23. PCPG rare-natural-testbed P0-D qualification record;
+24. executable schema-sync tests preventing drift between the JSON output contract and `protocol_contracts.py`.
 
 The protocol-control validator now prevents, among other defects:
 
 - biological chi from being silently emitted/admitted in the current GRI model;
 - a rare-natural-testbed from being selected solely by Engine output/agreement;
+- a rare-natural-testbed from being represented as ordinary/representative behavior without separate evidence;
+- an admitted rare-natural case from omitting a base-rate-context disposition;
+- omission of any required pathway-specific independence dimension;
 - a non-independent Atlas family from being represented as independent Engine validation;
 - P1 status without complete MFR-14, a freeze ID, and untouched decisive evidence at freeze;
 - method-validity predictions from using the empirical outcome namespace;
 - P0-D/P0-Q work from carrying confirmatory empirical survival/falsification labels.
 
-Each new guard has a stored known-bad test designed to prove the check can fail.
+Known-bad tests exist for these controls, and the machine-readable schema is now tested directly against the executable contract so semantic drift fails CI rather than relying on manual inspection.
 
 ## EXTERNAL P0-D SOURCE DISCOVERY COMPLETED SO FAR
 
@@ -85,7 +89,7 @@ Draft PR #3 remains open and intentionally draft against `gri-v2`.
 
 PR CI runs the existing full `GRI v2 tests` workflow on integration-branch updates touching `GRI_v2/**`.
 
-The latest completed full workflow before the PCPG synchronization commits was green. New synchronization commits continue to trigger the same PR suite automatically.
+The latest completed schema-sync guard commit is green. Subsequent current-status synchronization commits continue to trigger the same full PR suite automatically.
 
 The PR must remain unmerged until the pending sensitivity and scientific comparator/scope decisions are dispositioned.
 
