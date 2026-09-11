@@ -8,7 +8,7 @@ def run(args):
 
 if __name__ == "__main__":
     print("NSD Phase 0D v0.2 P0 protocol-reconciliation development runner")
-    print("PURPOSE = DEBUGGING | protocol compliance, integrity, refusal, semantic guards, four-hold qualification, and comparator stress")
+    print("PURPOSE = DEBUGGING | protocol compliance, integrity, refusal, semantic guards, four-hold qualification, comparator stress, and stochastic comparator qualification")
     rc = run([sys.executable, "-m", "pytest", "-q"])
     if rc:
         raise SystemExit(rc)
@@ -16,6 +16,9 @@ if __name__ == "__main__":
     if rc:
         raise SystemExit(rc)
     rc = run([sys.executable, "scripts/run_p0_comparator_stress_matrix.py"])
+    if rc:
+        raise SystemExit(rc)
+    rc = run([sys.executable, "scripts/run_p0_subspace_dmd_stress.py"])
     if rc:
         raise SystemExit(rc)
     rc = run([sys.executable, "scripts/capture_environment.py"])
