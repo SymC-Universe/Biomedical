@@ -24,7 +24,7 @@ A limit is not automatically a biological transition. Limits are classified as p
 | L05 | H3b label-null interpretation | Small, non-universal, support-sensitive; many uncertainty intervals cross zero | ESTIMATOR / IDENTIFIABILITY LIMIT | `PARTIAL_FUNCTION` / `NOT_KNOWN_HERE` per cancer | Stronger independent data/support with frozen rule |
 | L06 | Raw cross-cancer `Delta_CKA` bridge | Spectrum-dependent permutation floor explains substantial between-cancer structure | REDUCTION / COMPARISON LIMIT | `STOPS_WORKING_HERE` as clean cross-cancer scalar bridge | Floor-aware or headroom-normalized hypothesis frozen on new evidence |
 | L07 | Promoter-core Hallmark mapping | Five Hallmarks lack required source mapping support | DATA-SUPPORT / STRUCTURAL REFUSAL | `REFUSED_INSUFFICIENT_MAPPING` | New source/platform with prospectively valid mapping support |
-| L08 | PCPG global transport | Recurrent global all-methylation weakness relative to covariate-only; same-Hallmark performs better internally | REPRESENTATION STRESS CASE, CAUSE UNRESOLVED | `BOUNDARY_CANDIDATE` | Independent routing/subtype-conditioned test on new data |
+| L08 | PCPG global transport | Recurrent global all-methylation weakness relative to covariate-only; same-Hallmark performs better internally | REPRESENTATION STRESS CASE IN A DOMAIN-NATIVE RARE TUMOR TYPE, CAUSE UNRESOLVED | `BOUNDARY_CANDIDATE` + `P0_D_RARE_NATURAL_TESTBED` | Independent routing/subtype-conditioned test on new data; future P1 rare-limit selection must be independent of Engine result |
 | L09 | Purity/leukocyte projection | Only two measured context covariates; not comprehensive cell composition | CONFOUNDING-CONTROL LIMIT | `NOT_KNOWN_HERE` for composition-independent biology | Independent richer composition/deconvolution controls |
 | L10 | HM27/HM450 merged lineage | Platform mixture can affect transfer/generalization | PLATFORM / EXTERNAL-VALIDITY LIMIT | `UNRESOLVED_BEYOND_TESTED_RANGE` | Independent harmonized/platform-specific external validation |
 | L11 | Biological chi | No admitted same-coordinate dynamical Gamma/Omega or alternative licensed biological chi construction | MODEL-ADMISSION LIMIT | `CHI_NOT_ADMITTED` | Full prospective admission path with dynamic evidence |
@@ -71,13 +71,20 @@ Any future claim that one of these corresponds to a biological state transition 
 
 PCPG is retained because it repeatedly stresses the global transport/prediction representation. It is useful precisely because it refuses a clean all-cancers narrative.
 
+A later source-of-record rarity audit established independently of GRI that pheochromocytoma/paraganglioma is a genuinely rare tumor family. NCI reports roughly 2 to 8 diagnoses per million people per year, and the TCGA molecular characterization independently describes PCC/PGL as a rare, molecularly heterogeneous tumor type.
+
 Current classification:
 
 - `BOUNDARY_OR_TRANSITION` research role: **candidate method/representation boundary**, not proven biological transition;
-- `RARE_NATURAL_LIMIT`: **NOT_ADMITTED**;
-- reason: rarity has not been established independently of the GRI result;
-- selection status: framework-observed stress case, therefore post-result for any new explanatory hypothesis;
-- next legitimate use: P0-D diagnosis or P0-Q stress testing; P1 requires an independently frozen rule and untouched evidence.
+- `RARE_NATURAL_LIMIT`: **ADMITTED FOR P0-D LIMIT MAPPING ONLY**;
+- rarity basis: independent oncology-native epidemiology, not GRI output;
+- selection status: framework-observed stress case, therefore **post-result**;
+- promotion debt: OPEN;
+- current confirmatory weight: NONE;
+- next legitimate use: P0-D diagnosis or P0-Q stress testing;
+- future P1 use requires a separately frozen hypothesis and eligibility/selection independent of the future Engine result on untouched evidence.
+
+The dedicated provenance record is `GRI_PCPG_RARE_NATURAL_TESTBED_P0D_20260910.md`.
 
 ## 5. Missingness and post-C1 sensitivity dependency
 
@@ -121,6 +128,7 @@ and should attach:
 Safe to investigate on existing evidence:
 
 - Is PCPG's recurrent behavior tied to observable architecture characteristics that can be defined without outcome labels?
+- Within the rare PCPG testbed, does molecular subtype/driver structure suggest a reason the global representation is stressed, without using such post-result structure as confirmation?
 - Which cancers approach the weakest global-geometry/prediction region without fully refusing?
 - Does leading-mode ablation identify a smooth degradation surface or abrupt representation collapse?
 - Which missingness burdens alter identifiability before effect estimates change?
@@ -130,4 +138,4 @@ Safe to investigate on existing evidence:
 
 Any new boundary found here remains exploratory/qualification evidence until prospectively tested.
 
-**Current Limit Map status:** multiple real internal limits are known and preserved; physical/biological transition boundaries are not established.
+**Current Limit Map status:** multiple real internal limits are known and preserved; PCPG is a source-qualified post-result P0-D rare-natural limit testbed; physical/biological transition boundaries are not established.
