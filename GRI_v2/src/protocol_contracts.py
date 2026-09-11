@@ -64,6 +64,8 @@ REQUIRED_TOP_LEVEL_GROUPS = (
     "provenance",
 )
 
+_REQUIRED_MAP_SCOPE_FIELDS = ("scope_id", "component_or_claim", "research_role")
+
 _PROHIBITED_RARE_SELECTION_BASES = frozenset(
     {
         "CLOSENESS_TO_PREDICTED_CHI",
@@ -100,6 +102,17 @@ def _nonempty(value: Any) -> bool:
         return bool(value)
 
 
+def _validate_map_scope(value: Mapping[str, Any], name: str) -> None:
+    missing = [key for key in _REQUIRED_MAP_SCOPE_FIELDS if not _nonempty(value.get(key))]
+    if missing:
+        raise ProtocolContractError(
+            f"{name} missing required scope field(s): " + ", ".join(missing)
+        )
+    role = value["research_role"]
+    if role not in RESEARCH_ROLES:
+        raise ProtocolContractError(f"invalid research role in {name}: {role!r}")
+
+
 def validate_v071a_output(record: Mapping[str, Any]) -> None:
     """Validate protocol semantics for a draft GRI Engine/Tool output.
 
@@ -123,6 +136,7 @@ def validate_v071a_output(record: Mapping[str, Any]) -> None:
         raise ProtocolContractError(f"unsupported research_mode: {mode!r}")
 
     function_map = _mapping(record["function_map_output"], "function_map_output")
+    _validate_map_scope(function_map, "function_map_output")
     function_state = function_map.get("summary_state")
     if function_state not in FUNCTION_STATES:
         raise ProtocolContractError(
@@ -130,15 +144,12 @@ def validate_v071a_output(record: Mapping[str, Any]) -> None:
         )
 
     limit_map = _mapping(record["limit_map_output"], "limit_map_output")
+    _validate_map_scope(limit_map, "limit_map_output")
     limit_state = limit_map.get("summary_state")
     if limit_state not in LIMIT_STATES:
         raise ProtocolContractError(
             f"invalid limit-map summary_state: {limit_state!r}"
         )
-
-    role = function_map.get("research_role", limit_map.get("research_role"))
-    if role is not None and role not in RESEARCH_ROLES:
-        raise ProtocolContractError(f"invalid research role: {role!r}")
 
     # Current GRI has not admitted a biological chi. A future version may only
     # change this by changing the scientifically frozen System Model, not by
@@ -253,4 +264,4 @@ def validate_v071a_output(record: Mapping[str, Any]) -> None:
 def protocol_contract_version() -> str:
     """Return the protocol-control contract implemented by this helper."""
 
-    return "GRI-v0.7.1+v0.7.1A-control-draft-20260910"
+    return "GRI-v0.7.1+v0.7.1A-control-draft-20260910.2"
