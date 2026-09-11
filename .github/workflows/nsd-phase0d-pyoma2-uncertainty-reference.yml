@@ -6,8 +6,11 @@ on:
       - neural-stability-dynamics-phase0d-v0.2-protocol-v0.7.1
     paths:
       - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/scripts/run_p0_pyoma2_uncertainty_reference.py'
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/scripts/run_p0_pyoma2_point_compatibility.py'
       - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/PYOMA2_UNCERTAINTY_REFERENCE_PLAN.md'
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/PYOMA2_POINT_COMPATIBILITY_AUDIT.md'
       - '.github/workflows/nsd-phase0d-pyoma2-uncertainty-reference.yml'
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/src/ssi_cov.py'
       - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/src/synthetic_systems.py'
   workflow_dispatch:
 
@@ -29,15 +32,18 @@ jobs:
           print('numpy', importlib.metadata.version('numpy'))
           print('scipy', importlib.metadata.version('scipy'))
           PY
-      - name: Compile reference driver
+      - name: Compile external-reference drivers
         working-directory: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2
-        run: python -m py_compile scripts/run_p0_pyoma2_uncertainty_reference.py
+        run: python -m py_compile scripts/run_p0_pyoma2_uncertainty_reference.py scripts/run_p0_pyoma2_point_compatibility.py
       - name: Run pyOMA2 SSI uncertainty reference
         working-directory: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2
         run: python scripts/run_p0_pyoma2_uncertainty_reference.py
-      - name: Upload external reference record
+      - name: Run pyOMA2 point-estimator compatibility audit
+        working-directory: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2
+        run: python scripts/run_p0_pyoma2_point_compatibility.py
+      - name: Upload external reference records
         uses: actions/upload-artifact@v4
         with:
           name: nsd-phase0d-pyoma2-uncertainty-reference
-          path: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/results/p0_external_reference/pyoma2_uncertainty_reference.json
+          path: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/results/p0_external_reference/*.json
           if-no-files-found: error
