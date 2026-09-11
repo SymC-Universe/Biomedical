@@ -12,7 +12,7 @@ import urllib.request
 ROOT = Path(__file__).resolve().parents[1]
 FREEZE = ROOT / "registries" / "A2_SRM_CSD_SVD_PILOT_FREEZE.json"
 ANNEX_RE = re.compile(r"MD5E-s(?P<size>\d+)--(?P<md5>[0-9a-fA-F]{32})\.set$")
-PUBLIC_REMOTE = "s3-PUBLIC-unversioned"
+PUBLIC_REMOTE = "s3-PUBLIC"
 
 
 def _hash(path: Path, algorithm: str) -> str:
@@ -90,15 +90,23 @@ def _prepare_annex_checkout(cfg: dict, checkout: Path) -> dict:
     _run(["git", "config", "user.email", "nsd-atlas-ci@invalid.local"], cwd=checkout)
 
     # Ensure annex metadata/special remotes are initialized from the cloned
-    # repository. No annex content is fetched by init.
+    # repository. No annex content is fetched by init. OpenNeuro's public
+    # special remote auto-enables in this snapshot as `s3-PUBLIC`.
     _run(["git", "annex", "init", "NSD-Atlas-A2-ephemeral"], cwd=checkout)
     remotes = _run(["git", "annex", "info", "--json"], cwd=checkout, capture=True).stdout
+    available_remotes = _run(["git", "remote"], cwd=checkout, capture=True).stdout.split()
+    if PUBLIC_REMOTE not in available_remotes:
+        raise RuntimeError(
+            f"expected auto-enabled OpenNeuro annex remote {PUBLIC_REMOTE!r} not available; "
+            f"observed remotes {available_remotes}"
+        )
     return {
         "repository": repo,
         "tag": tag,
         "commit": observed,
         "git_annex_version": _run(["git", "annex", "version"], cwd=checkout, capture=True).stdout.splitlines()[0].strip(),
         "annex_info_json_lines_sha256": hashlib.sha256(remotes.encode("utf-8")).hexdigest(),
+        "annex_remote_used": PUBLIC_REMOTE,
         "ephemeral_git_identity": {
             "name": "NSD Atlas CI",
             "email": "nsd-atlas-ci@invalid.local"
