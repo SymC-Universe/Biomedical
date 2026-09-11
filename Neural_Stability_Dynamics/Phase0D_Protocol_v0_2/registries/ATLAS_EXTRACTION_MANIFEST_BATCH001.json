@@ -1,0 +1,136 @@
+{
+  "schema": "nsd-neurostability-atlas-extraction-manifest-batch001-v0.1",
+  "protocol": "General Cross-Project Research Protocol v0.7.1 FINAL + authoritative v0.7.1A Addendum",
+  "system_model": "NSD System Model v1.0 ARCHITECTURE_LOCKED",
+  "status": "P0D_EXTRACTION_MANIFEST_DEFINED_NOT_EMPIRICAL_ZONE_FREEZE",
+  "shared_rules": {
+    "structural_estimation_is_label_blind": true,
+    "clinical_or_task_labels_may_only_enter_downstream_context": true,
+    "chi_default": "WITHHELD",
+    "native_coordinates_before_derived": true,
+    "preserve_all_claim_specific_failures_and_unresolved_states": true,
+    "preserve_method_preprocessing_sampling_window_context": true,
+    "function_and_limit_maps_are_coequal": true,
+    "no_population_zone_freeze_from_batch001": true
+  },
+  "sources": [
+    {
+      "source_id": "A001_EEGMMIDB",
+      "source_identity": "PhysioNet EEG Motor Movement/Imagery Dataset v1.0.0; DOI 10.13026/C28G6P",
+      "source_status": "PRIORITY_1_FIRST_WAVE",
+      "primary_roles": ["NOMINAL_FUNCTION", "PERTURBED_FUNCTION"],
+      "recording_structure": {
+        "channels": 64,
+        "baseline_runs": ["eyes_open", "eyes_closed"],
+        "task_classes": ["motor_execution", "motor_imagery"],
+        "source_file_format": "EDF"
+      },
+      "first_coordinates": [
+        "sigma",
+        "omega",
+        "frequency_hz",
+        "stability_class",
+        "observable_order_rank",
+        "supported_subspace_dimension",
+        "carrier_vector",
+        "subspace_similarity",
+        "channel_participation",
+        "added_lost_shared_structure",
+        "model_adequacy_components"
+      ],
+      "first_contrasts": [
+        "eyes_open_vs_eyes_closed",
+        "baseline_vs_motor_execution",
+        "baseline_vs_motor_imagery"
+      ],
+      "forbidden_first_wave_uses": [
+        "derive chi from generic poles",
+        "fit thresholds to task labels",
+        "declare healthy population zones",
+        "select subjects because coordinates look favorable"
+      ]
+    },
+    {
+      "source_id": "A002_SLEEP_EDF_EXPANDED",
+      "source_identity": "PhysioNet Sleep-EDF Database Expanded v1.0.0",
+      "source_status": "PRIORITY_1_STATE_TRANSITION",
+      "primary_roles": ["NOMINAL_FUNCTION", "PERTURBED_FUNCTION", "BOUNDARY_OR_TRANSITION"],
+      "recording_structure": {
+        "whole_night_records": 197,
+        "primary_eeg_derivations": ["Fpz-Cz", "Pz-Oz"],
+        "external_context": "expert sleep-stage hypnograms"
+      },
+      "first_coordinates": [
+        "sigma",
+        "omega",
+        "frequency_hz",
+        "stability_class",
+        "observable_order_rank",
+        "supported_subspace_dimension",
+        "added_lost_shared_structure",
+        "model_adequacy_components"
+      ],
+      "first_contrasts": [
+        "within_stage_stable_segments",
+        "pre_transition_vs_post_transition"
+      ],
+      "limitations": [
+        "low EEG channel dimensionality limits high-dimensional carrier/participation claims",
+        "sleep-stage labels are downstream context only and cannot force structural estimation"
+      ]
+    },
+    {
+      "source_id": "A003_CHB_MIT",
+      "source_identity": "PhysioNet CHB-MIT Scalp EEG Database v1.0.0; DOI 10.13026/C2K01R",
+      "source_status": "PRIORITY_1_RARE_LIMIT_WITH_CONFOUND_FIREWALL",
+      "primary_roles": ["BOUNDARY_OR_TRANSITION", "RARE_NATURAL_LIMIT"],
+      "recording_structure": {
+        "subjects": 22,
+        "cases": 23,
+        "annotated_seizures": 182,
+        "population": "pediatric intractable epilepsy",
+        "material_context": "anti-seizure medication withdrawal during monitoring"
+      },
+      "eligibility_rule": "seizure/transition eligibility comes from source-native annotation and recording context, never from NSD coordinate extremeness",
+      "first_coordinates": [
+        "sigma",
+        "omega",
+        "frequency_hz",
+        "stability_class",
+        "observable_order_rank",
+        "supported_subspace_dimension",
+        "carrier_subspace_change",
+        "added_lost_shared_structure",
+        "model_adequacy_components",
+        "uncertainty_identifiability_state"
+      ],
+      "first_contrasts": [
+        "preictal_or_interictal_context_vs_annotated_seizure_transition_where_source_timing_supports_it",
+        "within_subject recovery_or_reorganization_after_annotated event where available"
+      ],
+      "forbidden_uses": [
+        "treat seizure coordinates as representative nominal neural values",
+        "ignore medication-withdrawal confounding",
+        "select events using NSD output",
+        "infer universal seizure mechanism"
+      ]
+    },
+    {
+      "source_id": "A004_TDBRAIN",
+      "source_identity": "van Dijk et al. Scientific Data 9:333 (2022); DOI 10.1038/s41597-022-01409-z; repository DOI 10.70303/syn25671079",
+      "source_status": "DEFERRED_AS_INITIAL_CALIBRATION_ANCHOR_HIGH_VALUE_LATER",
+      "reason_deferred": "large heterogeneous archive is entangled with psychiatric indication/diagnosis/treatment/outcome metadata; coordinate rules should be independently stabilized before using it for large-scale cross-system/lifespan population mapping",
+      "allowed_early_uses": [
+        "label-blind method feasibility",
+        "eyes-open_vs_eyes-closed source/context mapping",
+        "later lifespan and cross-system coverage after coordinate rules stabilize"
+      ],
+      "forbidden_early_uses": [
+        "phenotype-driven Engine tuning",
+        "diagnosis-defined Atlas coordinate construction",
+        "treatment-response-defined structural thresholds"
+      ]
+    }
+  ],
+  "promotion_rule": "Any empirical boundary, favorable range, threshold, or derived coordinate discovered from Batch001 remains P0-D and requires independently generated/held evidence before qualification or zone freeze."
+}
