@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://symc-universe.invalid/neurostability-atlas-v0.1/atlas_entry.schema.json",
+  "title": "Neurostability Atlas v0.1 entry",
+  "type": "object",
+  "required": [
+    "atlas_entry_id",
+    "source_id",
+    "research_role",
+    "evidence_tier",
+    "native_model",
+    "context",
+    "coordinates",
+    "independence",
+    "scope",
+    "engine_selector_eligible"
+  ],
+  "properties": {
+    "atlas_entry_id": {"type": "string", "minLength": 1},
+    "source_id": {"type": "string", "minLength": 1},
+    "research_role": {
+      "enum": ["NOMINAL_FUNCTION", "PERTURBED_FUNCTION", "BOUNDARY_OR_TRANSITION", "RARE_NATURAL_LIMIT"]
+    },
+    "evidence_tier": {
+      "enum": ["A_FULL_NUMERIC_PROVENANCE", "B_FULL_METHOD_PARTIAL_NUMERIC", "C_ABSTRACT_OR_SNIPPET_ONLY", "D_SOURCE_EXISTS_BLOCKED", "E_REJECTED_FOR_ATLAS"]
+    },
+    "native_model": {
+      "type": "object",
+      "required": ["name", "source_symbols_preserved"],
+      "properties": {
+        "name": {"type": "string"},
+        "source_symbols_preserved": {"type": "boolean"},
+        "equations_or_reference": {},
+        "assumptions": {"type": "array"}
+      },
+      "additionalProperties": true
+    },
+    "context": {
+      "type": "object",
+      "required": ["modality"],
+      "properties": {
+        "modality": {"type": "string"},
+        "species_population": {},
+        "recording_state_task": {},
+        "perturbation_intervention": {},
+        "sampling_rate_hz": {},
+        "duration_s": {},
+        "channel_sensor_count": {},
+        "montage": {},
+        "preprocessing": {}
+      },
+      "additionalProperties": true
+    },
+    "coordinates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["coordinate_id", "eligibility_status", "value", "unit", "provenance"],
+        "properties": {
+          "coordinate_id": {"type": "string"},
+          "eligibility_status": {
+            "enum": [
+              "NATIVE_REPORTED",
+              "NATIVE_RECONSTRUCTED_FROM_RAW_DATA",
+              "DERIVED_EXACT",
+              "DERIVED_MODEL_CONDITIONAL",
+              "WITHHELD_INSUFFICIENT_INFORMATION",
+              "WITHHELD_ASSUMPTION_NOT_LICENSED",
+              "NOT_APPLICABLE",
+              "UNRESOLVED"
+            ]
+          },
+          "value": {},
+          "unit": {},
+          "uncertainty": {},
+          "derivation": {},
+          "provenance": {
+            "type": "object",
+            "required": ["source_location"],
+            "properties": {
+              "source_location": {},
+              "extraction_method": {},
+              "code_version": {}
+            },
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "chi": {
+      "type": "object",
+      "required": ["status", "value"],
+      "properties": {
+        "status": {
+          "enum": [
+            "CHI_NATIVE_REPORTED",
+            "CHI_DERIVED_LICENSED_SECOND_ORDER",
+            "CHI_WITHHELD_NO_SECOND_ORDER_LICENSE",
+            "CHI_WITHHELD_INSUFFICIENT_NATIVE_PARAMETERS",
+            "CHI_NOT_APPLICABLE"
+          ]
+        },
+        "value": {},
+        "derivation": {},
+        "frequency_semantics": {},
+        "uncertainty": {}
+      },
+      "additionalProperties": true
+    },
+    "independence": {
+      "type": "object",
+      "required": ["data", "cohort_system", "outcome_label", "parameter_tuning", "method_estimator", "atlas_engine", "source_literature", "temporal_decisive_evidence"],
+      "additionalProperties": false,
+      "properties": {
+        "data": {"$ref": "#/$defs/independenceGrade"},
+        "cohort_system": {"$ref": "#/$defs/independenceGrade"},
+        "outcome_label": {"$ref": "#/$defs/independenceGrade"},
+        "parameter_tuning": {"$ref": "#/$defs/independenceGrade"},
+        "method_estimator": {"$ref": "#/$defs/independenceGrade"},
+        "atlas_engine": {"$ref": "#/$defs/independenceGrade"},
+        "source_literature": {"$ref": "#/$defs/independenceGrade"},
+        "temporal_decisive_evidence": {"$ref": "#/$defs/independenceGrade"}
+      }
+    },
+    "scope": {"type": "string", "not": {"const": "UNIVERSAL"}},
+    "engine_selector_eligible": {"const": false},
+    "function_limit_state": {"enum": ["WORKS_HERE", "STOPS_WORKING_HERE", "NOT_KNOWN_HERE", "NOT_YET_ASSIGNED"]},
+    "notes": {}
+  },
+  "$defs": {
+    "independenceGrade": {
+      "type": "object",
+      "required": ["grade", "reason"],
+      "properties": {
+        "grade": {"enum": ["INDEPENDENT", "PARTIALLY_INDEPENDENT", "NON_INDEPENDENT_FOR_ENGINE_VALIDATION", "NOT_APPLICABLE", "UNRESOLVED"]},
+        "reason": {}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": true
+}
