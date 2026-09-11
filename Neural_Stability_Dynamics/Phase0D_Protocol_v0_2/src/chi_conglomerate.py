@@ -104,7 +104,14 @@ def chi_from_2x2_block(block, reality_tol: float = 1e-10):
 
 
 def conglomerate_chi(component_chi, omega_n, weights=None):
-    """Developmental RMS damping/natural-scale conglomerate chi candidate."""
+    """Historical P0-D11/P0-D12 RMS aggregate retained for reproducibility.
+
+    IMPORTANT: this function is NOT the governing definition of conglomeration
+    and MUST NOT be reported as ``chi_system``. It remains only so the completed
+    P0-D11/P0-D12 developmental experiments can be reproduced byte-for-behavior.
+    The governing architecture defines conglomeration through directed coupling,
+    feedback closure, and the emergent dynamics of the coupled system.
+    """
     chi = np.asarray(component_chi, dtype=float).reshape(-1)
     wn = np.asarray(omega_n, dtype=float).reshape(-1)
     if len(chi) == 0 or len(chi) != len(wn):
@@ -142,15 +149,16 @@ def conglomerate_chi(component_chi, omega_n, weights=None):
         "weighted_rms_identity": float(
             np.sqrt(np.sum(natural_energy_weights * chi * chi))
         ),
+        "status": "HISTORICAL_DEVELOPMENTAL_AGGREGATE_NOT_CONGLOMERATION",
     }
 
 
 def analytic_same_conglomerate_example(target: float = 0.8, first: float = 0.4):
-    """Construct two equal-frequency component sets with the same chi_C.
+    """Historical example showing arithmetic aggregate non-identifiability.
 
-    Set A is [target, target]. Set B is [first, second], where second is
-    chosen so their equal-frequency RMS equals target. This demonstrates that
-    chi_C cannot replace the retained modal composition.
+    The function name is retained for completed-test compatibility. Its result
+    demonstrates why an RMS aggregate cannot represent the full coupled-system
+    architecture: distinct component organizations can share the same scalar.
     """
     target = float(target)
     first = float(first)
@@ -168,4 +176,5 @@ def analytic_same_conglomerate_example(target: float = 0.8, first: float = 0.4):
         "set_B": [first, second],
         "chi_C_A": float(a["chi_C"]),
         "chi_C_B": float(b["chi_C"]),
+        "status": "HISTORICAL_DEVELOPMENTAL_AGGREGATE_NOT_CONGLOMERATION",
     }
