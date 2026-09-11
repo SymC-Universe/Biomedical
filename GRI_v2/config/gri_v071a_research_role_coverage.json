@@ -1,0 +1,73 @@
+{
+  "status": "WORKING_NOT_FROZEN_AS_SCIENTIFIC_CLAIM",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.1_FINAL_plus_v0.7.1A_Addendum.pdf",
+  "purpose": "Track v0.7.1A coverage roles without treating them as universal physical phases.",
+  "roles": {
+    "NOMINAL_FUNCTION": {
+      "status": "SUBSTANTIAL_INTERNAL_COVERAGE",
+      "current_evidence": [
+        "Stage A/A1.1 static RNA architecture across cancers",
+        "Stage B1 context-adjusted static architecture",
+        "Stage B2 RPPA/genomic context",
+        "Stage C1 static methylation/RNA architecture",
+        "legacy predictive P0 internal holdout prediction"
+      ],
+      "claim_ceiling": "SUPPORTED_IN_TESTED_INTERNAL_TCGA_REGIME",
+      "gaps": [
+        "external cohort generalization",
+        "external platform generalization",
+        "clinical operating regime"
+      ]
+    },
+    "PERTURBED_FUNCTION": {
+      "status": "PARTIAL_MOSTLY_METHOD_OR_CONTEXT_QUALIFICATION",
+      "current_evidence": [
+        "purity/leukocyte projection",
+        "technical-mask comparison",
+        "missingness and planned post-C1 sensitivity attacks",
+        "synthetic confounder/technical perturbations"
+      ],
+      "claim_ceiling": "METHOD_OR_CONTEXT_ROBUSTNESS_ONLY",
+      "gaps": [
+        "genuine ordered biological perturbation",
+        "recovery trajectories",
+        "treatment perturbation",
+        "longitudinal state reorganization"
+      ]
+    },
+    "BOUNDARY_OR_TRANSITION": {
+      "status": "PARTIAL_METHOD_BOUNDARIES_INTERNAL",
+      "current_evidence": [
+        "PCPG recurrent representation stress case",
+        "nonlinear-only scope refusal",
+        "promoter-core mapping refusals",
+        "semantic-specificity weakness",
+        "raw Delta_CKA null-floor reduction limit"
+      ],
+      "claim_ceiling": "METHOD_REPRESENTATION_BOUNDARIES_NOT_BIOLOGICAL_TEMPORAL_TRANSITIONS",
+      "gaps": [
+        "prospective boundary variable",
+        "independent external boundary test",
+        "temporal transition evidence"
+      ]
+    },
+    "RARE_NATURAL_LIMIT": {
+      "status": "NOT_YET_ADMITTED",
+      "current_evidence": [],
+      "claim_ceiling": "NONE",
+      "gaps": [
+        "domain-native rarity criterion",
+        "authenticity/confounding gate",
+        "base-rate context",
+        "selection independent of Engine output for P1",
+        "untouched/future rare case for confirmation"
+      ],
+      "explicit_nonclassification": "PCPG is not a RARE_NATURAL_TESTBED solely because it is a recurrent GRI stress case."
+    }
+  },
+  "balance_check": {
+    "current_assessment": "STATIC_NOMINAL_AND_METHOD_LIMIT_COVERAGE_STRONGER_THAN_GENUINE_BIOLOGICAL_PERTURBATION_OR_RARE_LIMIT_COVERAGE",
+    "next_P0_D_priority": "Map functioning interior across supported contexts while P0-Q closes sensitivity and Engine qualification.",
+    "next_data_discovery_priority": "Seek independently sourced ordered/perturbational and qualified extreme contexts without selecting on GRI agreement."
+  }
+}
