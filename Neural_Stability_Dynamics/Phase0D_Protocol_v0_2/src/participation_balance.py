@@ -43,6 +43,25 @@ def block_participation_units(blocks, C, dt):
     return {"latent_trace_units": latent, "output_trace_units": output, "unit_covariances": covs}
 
 
+def participation_from_scales(blocks, C, dt, scales):
+    """Evaluate stationary latent/output participation for supplied block scales."""
+    units = block_participation_units(blocks, C, dt)
+    s = np.asarray(scales, dtype=float).reshape(-1)
+    if len(s) != len(blocks) or np.any(~np.isfinite(s)) or np.any(s <= 0.0):
+        raise ValueError("scales must be finite positive values matching block count")
+    latent_contrib = s * s * units["latent_trace_units"]
+    output_contrib = s * s * units["output_trace_units"]
+    return {
+        "scales": s,
+        "latent_contributions": latent_contrib,
+        "latent_fractions": latent_contrib / np.sum(latent_contrib),
+        "output_contributions": output_contrib,
+        "output_fractions": output_contrib / np.sum(output_contrib),
+        "latent_total": float(np.sum(latent_contrib)),
+        "output_total": float(np.sum(output_contrib)),
+    }
+
+
 def balanced_block_process_scales(blocks, C, dt, base_scale, mode):
     """Choose block noise stds that preserve total E0 trace while equalizing one trace.
 
@@ -68,20 +87,15 @@ def balanced_block_process_scales(blocks, C, dt, base_scale, mode):
     else:
         raise ValueError("unknown balance mode")
 
-    latent_contrib = scales * scales * units["latent_trace_units"]
-    output_contrib = scales * scales * units["output_trace_units"]
-    return {
-        "mode": mode,
-        "scales": scales,
-        "latent_contributions": latent_contrib,
-        "latent_fractions": latent_contrib / np.sum(latent_contrib),
-        "output_contributions": output_contrib,
-        "output_fractions": output_contrib / np.sum(output_contrib),
-        "latent_total": float(np.sum(latent_contrib)),
-        "output_total": float(np.sum(output_contrib)),
-        "incumbent_latent_total": float(base * base * np.sum(units["latent_trace_units"])),
-        "incumbent_output_total": float(base * base * np.sum(units["output_trace_units"])),
-    }
+    out = participation_from_scales(blocks, C, dt, scales)
+    out.update(
+        {
+            "mode": mode,
+            "incumbent_latent_total": float(base * base * np.sum(units["latent_trace_units"])),
+            "incumbent_output_total": float(base * base * np.sum(units["output_trace_units"])),
+        }
+    )
+    return out
 
 
 def simulate_block_process(A, C, dt, n_samples, block_scales, rng, burn=None):
