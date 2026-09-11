@@ -1,74 +1,111 @@
-# Neural Stability Dynamics Phase 0D v0.2 Protocol Reconciliation
+# Neural Stability Dynamics Phase 0D v0.2
 
-Status: **P0-D DISCOVERY/MAPPING + P0-Q QUALIFICATION. NOT A P1 HOLDOUT.**
+Status: **SYSTEM MODEL v1.0 ARCHITECTURE LOCKED / STRUCTURAL ENGINE P0-D + P0-Q ACTIVE / NEUROSTABILITY ATLAS v0.1 ACTIVE / P1 CLOSED.**
 
-This version originated because General Cross-Project Research Protocol v0.7.1 became authoritative on 2026-09-10 before Phase 0D v0.1 was scientifically executed. It is now governed prospectively by **v0.7.1 FINAL plus the authoritative v0.7.1A Functional Mapping and Natural Limit-Testbed Addendum**. Phase 0D v0.1 is preserved as an untouched, superseded candidate and must not be run as a confirmatory holdout.
+This branch is governed prospectively by **General Cross-Project Research Protocol v0.7.1 FINAL plus the authoritative v0.7.1A Functional Mapping and Natural Limit-Testbed Addendum**.
 
-The v0.7.1A addendum does not rewrite prior results. Phase 0C remains official FAIL / FAIL / FAIL. The frozen P0Q1 rank-signal result remains SSI-COV `SURVIVES_P0Q1` and Subspace DMD `FAILS_P0Q1`; P0Q1 is not retuned.
+The addendum does not rewrite prior results. Phase 0C remains official FAIL / FAIL / FAIL. Phase 0D v0.1 remains unexecuted/superseded. The frozen P0Q1 result remains SSI-COV `SURVIVES_P0Q1` and Subspace DMD `FAILS_P0Q1`; P0Q1 is not retuned.
 
-## Current program object
+## Current program objects
 
-- System Model: NSD System Model, still under construction.
-- Engine: NSD Structural Engine candidate, currently qualified only for P0 synthetic structural-method development/qualification.
-- Atlas: Neurostability Atlas not yet qualified.
-- Tool: NSD Tool not yet qualified.
-- Predictive Tool: not qualified.
+- **System Model:** NSD System Model v1.0, architecture frozen in `SYSTEM_MODEL.md` and `registries/SYSTEM_MODEL_LOCK.json`.
+- **Structural Engine:** P0-D/P0-Q implementation and claim-specific qualification remain active. Numerical thresholds, uncertainty propagation, comparator mechanics and P1 rules are not part of the System Model architecture lock.
+- **Neurostability Atlas:** v0.1 A0 coordinate ontology and A1 source-selection architecture are frozen. A2 independent coordinate reconstruction is active in `../Neurostability_Atlas_v0_1/`.
+- **NSD Tool:** not yet qualified. It requires a qualified Engine plus qualified independent Atlas.
+- **Predictive NSD Tool:** not qualified and requires prospective empirical validation beyond the current stage.
+
+## Locked System Model v1.0 architecture
+
+The frozen scientific object hierarchy is:
+
+`scalar/spectral + modal/carrier + conglomerate/system organization + open-channel state`
+
+with the following distinctions preserved:
+
+- latent dimension is not automatically observable dimension;
+- individual carrier identity is not automatically invariant-subspace identity;
+- structural recovery is not model adequacy;
+- point estimates are not estimator-native uncertainty;
+- Function Map and Limit Map are coequal scientific targets;
+- Engine and Atlas are separate evidence objects.
+
+`chi` is withheld by default. Generic complex poles do not automatically license a second-order chi coordinate, and no whole-system chi is part of the frozen model unless separately derived and validated.
 
 ## Current P0 modes
 
-### P0-D - discovery and mechanism mapping
+### P0-D: discovery and mechanism mapping
 
 Current uses include:
 
-- retrospective diagnosis of the already-seen P0Q1 Subspace-DMD real-pole false admissions;
-- Function Map and Limit Map construction on known-truth synthetic systems;
-- response surfaces, rank landscapes, recovery curves, estimator disagreements, uncertainty surfaces and open-channel structure;
-- candidate mechanism/method hypotheses that remain exploratory until separately qualified.
+- Function/Limit mapping on known-truth synthetic systems;
+- weak-observability and crowding response surfaces;
+- model-adequacy mapping;
+- NSD-native Hankel sampling-covariance calibration;
+- retrospective diagnosis of the preserved P0Q1 Subspace-DMD real-pole failure;
+- Atlas coordinate reconstruction and provenance mapping before any claim-specific qualification rule is frozen.
 
-### P0-Q - qualification and controlled iteration
+### P0-Q: qualification and controlled iteration
 
 Current uses include:
 
 - known-truth and known-bad estimator qualification;
-- controlled sensitivity and identifiability tests;
-- pyOMA2 / SSI-COV point-estimator and uncertainty-reference compatibility;
-- future independently generated qualification families after rules are versioned.
+- preserved P0Q1 prospective rank-signal qualification;
+- pyOMA2 external SSI uncertainty-reference qualification;
+- future independently generated Engine qualification families;
+- future Atlas qualification on unopened evidence reservoirs after reconstruction/scoring rules are frozen.
 
 Canonical path:
 
 `P0-D -> P0-Q -> P1 frozen confirmation -> P2 release/tool qualification`
 
-## v0.7.1A mapping architecture
+## v0.7.1A Function/Limit architecture
 
-NSD now treats the following as coequal scientific targets where applicable:
+NSD treats:
 
 `FUNCTION MAP + LIMIT MAP`
 
-and seeks explicit research-role coverage across:
+as coequal targets and seeks coverage across:
 
 - `NOMINAL_FUNCTION`;
 - `PERTURBED_FUNCTION`;
 - `BOUNDARY_OR_TRANSITION`;
-- `RARE_NATURAL_LIMIT`.
+- `RARE_NATURAL_LIMIT` where a genuinely qualified natural case exists.
 
-At the current synthetic stage, `RARE_NATURAL_LIMIT` is not applicable. It will not be manufactured for symmetry.
+The Atlas intentionally leaves its rare-natural slot empty rather than manufacturing one for symmetry.
 
-P0 mapping may use the descriptive location states `WORKS_HERE`, `STOPS_WORKING_HERE`, and `NOT_KNOWN_HERE`; these are mapping statuses, not P1 confirmation.
+## Current mapped findings and open implementation debt
 
-## Existing integrity safeguards retained
+P0-D mapping has established, within its tested synthetic scope, that:
 
-1. confirmatory execution is fail-closed until a complete P1 readiness record exists;
-2. byte-integrity verification is separated from manifest generation;
+- weak observability can reduce effective observable rank while dominant observable structure remains recoverable;
+- crowding can degrade individual carrier identity while preserving a joint carrier subspace;
+- model-adequacy diagnostics fail in complementary directions and should remain non-aggregated;
+- pyOMA2 supplies a viable external covariance-SSI uncertainty lineage but cannot be copied directly into NSD because the finite-sample Hankel estimator differs;
+- the NSD-native batch-Hankel uncertainty candidate tracks the shape of empirical sampling variance strongly but retains duration/batch-dependent scale bias.
+
+Subspace DMD remains a comparator/reproducibility debt after its preserved P0Q1 failure. A current replay differs at the per-record level from the frozen prospective artifact, so historical P0Q1 remains the source of record.
+
+## Atlas handoff
+
+The active Atlas lane is an Engine-independent observational CSD-SVD reconstruction on a frozen SRM repeatability pilot. It uses a predeclared 1–45 Hz grid, no peak picking, source-pinned cleaned derivatives, exact byte verification, and no age/sex/cognitive/diagnostic target inputs. Thirty-four additional SRM repeat participants are sealed as a prospective P0-Q reservoir.
+
+No Atlas value is Structural-Engine selector eligible.
+
+## Existing integrity safeguards
+
+1. confirmatory execution is fail-closed until complete P1 readiness exists;
+2. byte-integrity verification is separated from manifest/freeze generation;
 3. environment capture is explicit;
-4. selector inputs pass through a closed production interface that rejects truth, chi, labels, diagnosis, phenotype, treatment and outcomes;
-5. semantic result validation is implemented independently for core summary fields;
-6. Layer C reports carrier, participation and relational-geometry status separately, and unresolved geometry produces a PARTIAL rather than full ADMIT result;
-7. local-order change remains visible as an open-channel event rather than being silently discarded;
-8. MFR-14, promotion debt, multiplicity, Atlas independence, open-channel state and reproducibility status are explicit records.
+4. selector inputs reject truth, desired chi, labels, diagnosis, phenotype, treatment and outcomes;
+5. layer-specific and partial/unresolved results remain visible;
+6. local observable-order change is preserved as open-channel structure;
+7. MFR-14, promotion debt, multiplicity, pathway-specific independence, open-channel state and reproducibility status are explicit records;
+8. the System Model content identity is regression-tested;
+9. Atlas A0/A1 content locks and A2 method/reservoir freezes are regression-tested separately.
 
 ## Deliberate scientific holds
 
-No P1 scientific holdout design or seed is authorized. P1 remains blocked until the comparator-selection route, uncertainty/INDETERMINATE rule, model-adequacy role, unequal-order shared-mode treatment, evidence-independence map and complete MFR-14 are scientifically justified and frozen.
+P1 remains blocked until the claim-specific comparator route, estimator-native uncertainty/INDETERMINATE rule, model-adequacy adjudication, unequal-order/crowding treatment required by the proposed P1 scope, evidence-independence map, multiplicity plan and complete MFR-14 are scientifically justified and frozen.
 
 ## Development command
 
@@ -76,4 +113,4 @@ No P1 scientific holdout design or seed is authorized. P1 remains blocked until 
 
 This runs P0 engineering/compliance tests and environment capture. It does not execute a P1 scientific holdout.
 
-`python local_runner.py` is intentionally blocked until P1 requirements are satisfied and frozen.
+`python local_runner.py` remains intentionally fail-closed until P1 requirements are satisfied and frozen.
