@@ -75,6 +75,39 @@ def test_melanoma_pair_structure_preserves_refusal_and_asymmetries():
     ]
 
 
+def test_nomura_joint_capture_source_keeps_10x_discrepancy_open():
+    row = _by_id()["IDH_GLIOMA_NOMURA_2026_DUAL_CAPTURE"]
+    counts = row["modality_counts"]
+    result = row["identity_result"]
+    assert counts["tumors"] == 36
+    assert counts["patients"] == 19
+    assert counts["matched_longitudinal_tumors"] == 32
+    assert counts["matched_longitudinal_patients"] == 15
+    assert counts["joint_xrbs_ss2_matched_nuclei"] == 2117
+    assert counts["GSE292025_tumor_records"] == 36
+    assert counts["paper_10x_tumors"] == 32
+    assert counts["GSE292130_current_records"] == 31
+    assert result["joint_methylation_RNA_same_nucleus"] is True
+    assert result["tenx_paper_vs_GEO_count_discrepancy"] == "OPEN"
+
+
+def test_care_longitudinal_source_does_not_invent_methylation_count_or_accession():
+    row = _by_id()["CARE_IDH_MUT_2026"]
+    counts = row["modality_counts"]
+    result = row["identity_result"]
+    assert counts["tumors"] == 75
+    assert counts["patients"] == 35
+    assert counts["main_longitudinal_pairs"] == 35
+    assert counts["multiome_RNA_ATAC_tumors"] == 48
+    assert counts["multiome_matched_longitudinal_pairs"] == 22
+    assert counts["smartseq2_tumors"] == 16
+    assert counts["bulk_DNA_methylation_exact_count"] is None
+    assert result["bulk_DNA_methylation_present_in_study"] is True
+    assert result["bulk_DNA_methylation_public_accession"] == "UNRESOLVED"
+    assert result["initial_at_primary_diagnosis_pairs"] == 17
+    assert result["initial_at_later_surgery_pairs"] == 18
+
+
 def test_ccell_35_is_not_silently_treated_as_complete_five_modality_intersection():
     row = _by_id()["CGGA_CCELL_4083"]
     counts = row["modality_counts"]
@@ -96,6 +129,8 @@ def test_dedicated_audit_references_exist_for_advanced_identity_gates():
         "PROSTATE_GSE262522_GSE262524_GSE237995",
         "BREAST_GSE58999_GSE57968_GSE59000",
         "MELANOMA_GSE65186",
+        "IDH_GLIOMA_NOMURA_2026_DUAL_CAPTURE",
+        "CARE_IDH_MUT_2026",
         "CGGA_CCELL_4083",
     ):
         relative = _by_id()[candidate_id]["dedicated_audit"]
