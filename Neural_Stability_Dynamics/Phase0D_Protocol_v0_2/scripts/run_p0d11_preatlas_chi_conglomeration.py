@@ -56,7 +56,9 @@ def _add_measurement_noise(Y, seed):
         return Y
     rng = np.random.default_rng(seed)
     sd = np.maximum(Y.std(axis=0, keepdims=True), 1e-12)
-    return Y + MEASUREMENT_NOISE_FRACTION * sd * rng.normal(size=Y.shape)
+    out = Y + MEASUREMENT_NOISE_FRACTION * sd * rng.normal(size=Y.shape)
+    out -= out.mean(axis=0, keepdims=True)
+    return out
 
 
 def _fit(Y, order):
