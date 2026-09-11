@@ -29,7 +29,7 @@ A `CLOSED_ARTIFACT_OR_NOISE` status requires demonstrated evidence, not a plausi
 | OC05 | Strong per-cancer Hallmark semantic sharing | `DEAD_END` as general promoted claim in current version | Strong promotion rule failed; H3b remains smaller/support-sensitive | New semantic hypothesis requires new freeze/untouched evidence |
 | OC06 | H3b non-positive / weak cancers and wide IQR support | `UNRESOLVED` at per-cancer mechanism level | Current evidence supports weak/non-universal specificity, not cancer-specific explanations | Preserve; future stratified/subtype tests must be prospectively frozen |
 | OC07 | Raw cross-cancer `Delta_Sspec` to `Delta_CKA` bridge | `DEAD_END` for current raw bridge | Relation collapses after null-floor/headroom control | New floor-aware bridge is a new hypothesis with promotion debt |
-| OC08 | PCPG recurrent global transport/prediction stress | `PROMOTION_TRACK` as post-result boundary/representation hypothesis | Recurrent D4/FINAL pattern; same-Hallmark model behaves differently | P0-D diagnose; if a measurable routing/subtype rule emerges, freeze on untouched external evidence |
+| OC08 | PCPG recurrent global transport/prediction stress | `PROMOTION_TRACK`; source-qualified post-result P0-D `RARE_NATURAL_TESTBED` for limit mapping | Recurrent D4/FINAL stress selected PCPG for follow-up; independent NCI/TCGA sources establish PCC/PGL rarity, but current data do not explain the stress mechanism | P0-D rare-limit diagnosis and P0-Q stress qualification; any future P1 rule requires independent selection/untouched evidence |
 | OC09 | Five promoter-core Hallmarks structurally unsupported | `UNRESOLVED` for current source, with deterministic refusal | Required methylation mapping support absent | External/platform-specific mapping may reopen; no substitution in current C1 |
 | OC10 | Purity/leukocyte composition-sensitive sector | `PROMOTION_TRACK` as broader composition-control question | B1 shows context sensitivity but only two prespecified covariates are modeled | Seek richer independent cell-composition/deconvolution evidence |
 | OC11 | HM27/HM450 platform generalization | `UNRESOLVED` | Current technical mask and exact-probe controls are not cross-platform replication | External harmonized/platform-aware validation |
@@ -49,7 +49,7 @@ The artifact/noise closure is narrow: it closes the **identified sample-size con
 
 ### OC08 PCPG
 
-PCPG is not closed as noise and is not explained away. It remains a post-result scientific lead. The current data do not establish why it behaves differently.
+PCPG is not closed as noise and is not explained away. It remains a post-result scientific lead. Independent epidemiology now qualifies the tumor family as rare, so PCPG may be used as a high-information P0-D rare-natural limit probe. That designation does not make the GRI-specific stress behavior confirmatory, representative of ordinary cancers, or caused by rarity. Promotion debt remains open.
 
 ### OC09 mapping refusals
 
@@ -63,4 +63,4 @@ No disposition will be upgraded until the frozen package returns. A failed sensi
 
 This ledger is a Limit/Open-Channel asset. It must not become the entire research agenda. The paired Function Map separately records what the current representation does well and how functioning varies across its supported internal regime.
 
-**Current status:** no material anomaly in this ledger is silently discarded; unresolved items remain visible.
+**Current status:** no material anomaly in this ledger is silently discarded; PCPG rarity is source-qualified without erasing its post-result selection; unresolved items remain visible.
