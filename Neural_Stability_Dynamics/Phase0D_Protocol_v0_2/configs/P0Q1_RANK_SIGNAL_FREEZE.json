@@ -1,0 +1,90 @@
+{
+  "schema": "nsd-phase0d-v0.2-p0q1-rank-signal-freeze-v1",
+  "status": "FROZEN_P0_PROSPECTIVE_QUALIFICATION_NOT_P1",
+  "protocol": "General Cross-Project Research Protocol v0.7.1 FINAL",
+  "hypothesis_provenance": "DATA_DERIVED_POST_RESULT_FROM_P0_RANK_NULL_STRESS",
+  "promotion_debt_id": "NSD-DEBT-004",
+  "seed_base": 2026091104,
+  "dt": 0.02,
+  "n_samples": 2600,
+  "n_channels": 8,
+  "block_rows": 18,
+  "process_scale": 0.35,
+  "replicates_per_family": 5,
+  "candidate_grid": [1,2,3,4,5,6,7,8],
+  "methods": ["SSI_COV","SUBSPACE_DMD"],
+  "rank_signal_rule": {
+    "candidate_rank": "rank with largest finite adjacent singular-value ratio over the frozen candidate grid",
+    "gap_ratio_min": 3.0,
+    "refuse_grid_max": true,
+    "refuse_any_unstable_selected_pole": true,
+    "stable_positive_complex_modes_min": 1,
+    "complex_frequency_min_hz": 0.25,
+    "note": "This simple conjunction is deliberately frozen before the new P0Q1 records are generated. It is a candidate rank-signal gate, not a neural threshold or P1 selector."
+  },
+  "oscillatory_families_expected_rank_signal": [
+    {
+      "name":"single_mode_white12pct",
+      "modes":[{"type":"complex","decay":0.55,"frequency_hz":4.4}],
+      "noise":{"type":"white","fraction_channel_sd":0.12}
+    },
+    {
+      "name":"two_mode_white15pct",
+      "modes":[{"type":"complex","decay":0.45,"frequency_hz":2.4},{"type":"complex","decay":1.15,"frequency_hz":9.3}],
+      "noise":{"type":"white","fraction_channel_sd":0.15}
+    },
+    {
+      "name":"two_mode_colored15pct_rho0p9",
+      "modes":[{"type":"complex","decay":0.7,"frequency_hz":3.6},{"type":"complex","decay":1.0,"frequency_hz":10.8}],
+      "noise":{"type":"colored","fraction_channel_sd":0.15,"rho":0.9}
+    },
+    {
+      "name":"weak_second_mode_3pct_white7pct",
+      "modes":[{"type":"complex","decay":0.5,"frequency_hz":5.2},{"type":"complex","decay":0.9,"frequency_hz":12.1}],
+      "weak_block":1,
+      "weak_scale":0.03,
+      "noise":{"type":"white","fraction_channel_sd":0.07},
+      "observable_rank_note":"rank 2 is acceptable; exact latent order 4 is not required"
+    },
+    {
+      "name":"crowded_modes_white8pct",
+      "modes":[{"type":"complex","decay":0.85,"frequency_hz":6.4},{"type":"complex","decay":0.85,"frequency_hz":6.58}],
+      "noise":{"type":"white","fraction_channel_sd":0.08}
+    },
+    {
+      "name":"ill_conditioned50_white8pct",
+      "modes":[{"type":"complex","decay":0.6,"frequency_hz":3.1},{"type":"complex","decay":1.25,"frequency_hz":11.4}],
+      "similarity":"cond",
+      "condition_number":50.0,
+      "noise":{"type":"white","fraction_channel_sd":0.08}
+    },
+    {
+      "name":"three_mode_white10pct",
+      "modes":[{"type":"complex","decay":0.45,"frequency_hz":2.0},{"type":"complex","decay":0.8,"frequency_hz":7.2},{"type":"complex","decay":1.3,"frequency_hz":14.0}],
+      "noise":{"type":"white","fraction_channel_sd":0.10}
+    }
+  ],
+  "refusal_families": [
+    "iid_white",
+    "spatially_mixed_white",
+    "ar1_rho0p6",
+    "ar1_rho0p95",
+    "one_over_f_beta0p7",
+    "one_over_f_beta1p4",
+    "one_over_f_beta2p3",
+    "real_pole_only_linear_system"
+  ],
+  "prospective_survival_rule": {
+    "mechanical_exceptions_max": 0,
+    "oscillatory_family_min_admit_fraction": 0.8,
+    "each_refusal_family_false_admits_max": 0,
+    "weak_observability_exact_latent_rank_is_not_required": true,
+    "failure_consequence": "Preserve P0Q1 failure. Do not retune the rule on these records. Any revision becomes a new version and requires new untouched P0 qualification evidence."
+  },
+  "nonclaims": [
+    "This is not a P1 freeze or confirmatory holdout.",
+    "The gap ratio 3.0 is data-derived development evidence and carries promotion debt.",
+    "Survival of P0Q1 would not make the rule valid for EEG.",
+    "No comparator superiority, chi coordinate, neural regime boundary, phenotype, mechanism, or clinical claim is tested."
+  ]
+}

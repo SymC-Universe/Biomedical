@@ -1,0 +1,41 @@
+name: NSD Phase0D P0Q1 rank-signal prospective qualification
+
+on:
+  push:
+    branches:
+      - neural-stability-dynamics-phase0d-v0.2-protocol-v0.7.1
+    paths:
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/configs/P0Q1_RANK_SIGNAL_FREEZE.json'
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/src/rank_gate.py'
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/scripts/run_p0q1_rank_signal_holdout.py'
+      - '.github/workflows/nsd-phase0d-p0q1-rank-signal.yml'
+  workflow_dispatch:
+
+jobs:
+  p0q1-rank-signal:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install pinned P0Q1 dependencies
+        run: python -m pip install numpy==2.3.5 scipy==1.17.0
+      - name: Freeze identity
+        run: |
+          echo "P0Q1_COMMIT=${GITHUB_SHA}"
+          sha256sum Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/configs/P0Q1_RANK_SIGNAL_FREEZE.json
+          sha256sum Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/src/rank_gate.py
+          sha256sum Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/scripts/run_p0q1_rank_signal_holdout.py
+      - name: Compile frozen P0Q1 code
+        working-directory: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2
+        run: python -m py_compile src/rank_gate.py scripts/run_p0q1_rank_signal_holdout.py
+      - name: Execute frozen prospective P0Q1 challenge once
+        working-directory: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2
+        run: python scripts/run_p0q1_rank_signal_holdout.py
+      - name: Upload P0Q1 result
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-phase0d-p0q1-rank-signal-result
+          path: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/results/p0q1/rank_signal_result.json
+          if-no-files-found: error
