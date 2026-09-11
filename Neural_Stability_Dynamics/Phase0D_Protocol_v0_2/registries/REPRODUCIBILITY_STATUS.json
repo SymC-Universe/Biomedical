@@ -1,41 +1,88 @@
 {
-  "schema": "nsd-reproducibility-status-v0.2",
+  "schema": "nsd-reproducibility-status-v0.2-v0.7.1A",
+  "protocol": "General Cross-Project Research Protocol v0.7.1 FINAL + authoritative v0.7.1A Addendum",
   "R1_release_reproduction": "NOT_QUALIFIED_P0",
-  "R2_calculation_reproduction": "NOT_QUALIFIED_P0",
-  "R3_evidence_reconstruction": "PARTIAL_P0_SOURCE_OF_RECORD_LOG_EXISTS; full evidence reconstruction required for future atlas/empirical claims",
+  "R2_calculation_reproduction": "PARTIAL_P0_WORKFLOW_REPRODUCTION_ONLY_NOT_P1_QUALIFIED",
+  "R3_evidence_reconstruction": "PARTIAL_P0_SOURCE_OF_RECORD_AND_EXTERNAL_REFERENCE_LOG_EXISTS; full evidence reconstruction required for future Atlas/empirical claims",
   "current_integrity_features": [
-    "pinned GitHub Actions P0 environment",
+    "pinned GitHub Actions core P0 environment",
     "Python compile gate",
-    "47-test protocol/regression/known-bad suite at verified P0 milestone",
+    "72-test protocol/regression/known-bad suite at latest inspected computational milestone",
+    "v0.7.1A P0-D/P0-Q compliance tests",
     "machine-readable four-hold qualification record",
-    "qualification artifact with SHA-256 digest",
-    "candidate manifest generation",
-    "future frozen-manifest verification",
-    "environment capture",
+    "qualification artifacts with SHA-256 digests",
+    "candidate manifest generation separated from future freeze verification",
+    "environment capture including dedicated P0-D mapping sidecars",
     "core semantic summary reconstruction",
-    "confirmatory runner fail-closed before P1 readiness"
+    "confirmatory runner fail-closed before P1 readiness",
+    "Function Map / Limit Map artifacts separated from confirmatory qualification",
+    "pathway-specific independence registry",
+    "promotion-debt preservation for post-result P0-D findings",
+    "external pyOMA2 uncertainty reference isolated from the production Engine"
   ],
-  "verified_P0_milestone": {
-    "commit": "2e2242d5ad32172a87597d979aa4755dad5b9f17",
-    "github_actions_run": 34561975591,
-    "tests_passed": 47,
+  "latest_inspected_core_validation": {
+    "commit": "4014f3f8dbb821ec5c6743b53a3d0a018594308b",
+    "github_actions_run": 34566038014,
+    "tests_passed": 72,
     "artifact": "nsd-phase0d-v02-p0-qualification",
-    "artifact_sha256": "4c948abdb10c55424efd006ec7cb6b2ff40d189aee34bd446a3258047a3cc725",
+    "artifact_id": 10186053331,
+    "artifact_sha256": "9443a8c1cd61ffcea3d09e2726a0b56b4a4aaa9b02b8a83ae6e62d1b7b7a287c",
     "p1_guard": "PASS_FAIL_CLOSED"
+  },
+  "p0_mapping_and_reference_artifacts": [
+    {
+      "id": "P0D1_FUNCTION_LIMIT_MAP_REPAIR_VERIFICATION",
+      "workflow_run": 34564942516,
+      "status": "SUCCESS_SCIENCE_SUMMARIES_IDENTICAL_TO_FIRST_RUN_ENVIRONMENT_SIDECAR_REPAIRED"
+    },
+    {
+      "id": "P0D2_WEAK_OBSERVABILITY_SURFACE",
+      "workflow_run": 34565054637,
+      "artifact_id": 10185711989,
+      "artifact_sha256": "a7c7903ca0aa50ad3ca6b587a6fac455cb9d0f20816877dd466761c2ad3c786b",
+      "status": "P0_D_POST_RESULT_NOT_CONFIRMATORY"
+    },
+    {
+      "id": "P0D3_CROWDING_SURFACE",
+      "workflow_run": 34565360206,
+      "artifact_id": 10185803487,
+      "artifact_sha256": "cfeec47296071ca7a345952f8729533a9a65ee3e52b3d2030ddb896512b30b55",
+      "status": "P0_D_POST_RESULT_NOT_CONFIRMATORY"
+    },
+    {
+      "id": "PYOMA2_UNCERTAINTY_REFERENCE",
+      "workflow_run": 34565920493,
+      "artifact_id": 10186000704,
+      "artifact_sha256": "5421575706d9f0325341305501842d077dd0a0f9dbe12f84320ffea845fa9257",
+      "status": "P0_Q_EXTERNAL_REFERENCE_DIRECT_TRANSFER_REFUSED"
+    },
+    {
+      "id": "P0D4_MODEL_ADEQUACY_SURFACE",
+      "workflow_run": 34566038058,
+      "artifact_id": 10186037566,
+      "artifact_sha256": "7dc11f95fce6a2c836b4cb94db5aa7df413dd46f2d996da8b9e503a5f1a0e64e",
+      "status": "P0_D_POST_RESULT_NOT_CONFIRMATORY"
+    }
+  ],
+  "historical_result_firewall": {
+    "Phase0C_v0_2": "FAIL_FAIL_FAIL_UNCHANGED",
+    "Phase0D_v0_1": "UNEXECUTED_SUPERSEDED_UNCHANGED",
+    "P0Q1_SSI_COV": "SURVIVES_P0Q1_UNCHANGED",
+    "P0Q1_SUBSPACE_DMD": "FAILS_P0Q1_UNCHANGED"
   },
   "missing_for_P1": [
     "frozen complete MFR-14",
-    "frozen comparator/challenge/scoring route",
-    "validated and frozen estimator-uncertainty procedure",
-    "frozen model-adequacy adjudication/search-space rule",
-    "frozen unequal-order scientific adjudication rule",
+    "final frozen comparator/challenge/scoring route",
+    "NSD-native validated and frozen estimator-uncertainty procedure",
+    "prospectively qualified and frozen model-adequacy adjudication/search-space rule",
+    "frozen unequal-order / crowding scientific adjudication rule",
     "new untouched P1 evidence and frozen manifest"
   ],
   "missing_for_P2": [
     "clean-room release",
     "full semantic regeneration",
     "benchmark datasets",
-    "validated atlas",
+    "validated Atlas",
     "external tests"
   ]
 }
