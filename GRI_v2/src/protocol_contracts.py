@@ -65,6 +65,16 @@ REQUIRED_TOP_LEVEL_GROUPS = (
 )
 
 _REQUIRED_MAP_SCOPE_FIELDS = ("scope_id", "component_or_claim", "research_role")
+_REQUIRED_INDEPENDENCE_FIELDS = (
+    "data_independence",
+    "cohort_or_system_independence",
+    "outcome_independence",
+    "parameter_or_tuning_independence",
+    "method_independence",
+    "atlas_independence",
+    "source_or_literature_independence",
+    "temporal_independence",
+)
 
 _PROHIBITED_RARE_SELECTION_BASES = frozenset(
     {
@@ -167,7 +177,8 @@ def validate_v071a_output(record: Mapping[str, Any]) -> None:
         )
 
     # v0.7.1A rare-natural-testbed admission must be based on domain-native
-    # rarity, not on the model output that is being challenged.
+    # rarity, not on the model output that is being challenged. Rare cases are
+    # limit probes by default, not representatives of ordinary behavior.
     rare_status = classification.get("rare_natural_testbed_status", "NOT_ADMITTED")
     if rare_status not in {"NOT_ADMITTED", "ADMITTED"}:
         raise ProtocolContractError(
@@ -191,6 +202,27 @@ def validate_v071a_output(record: Mapping[str, Any]) -> None:
             raise ProtocolContractError(
                 "RARE_NATURAL_TESTBED cannot be selected from Engine agreement/output"
             )
+        if not _nonempty(rare.get("base_rate_context_status")):
+            raise ProtocolContractError(
+                "RARE_NATURAL_TESTBED requires a base-rate-context disposition"
+            )
+        representative_status = str(
+            rare.get("representative_status", "NONREPRESENTATIVE_LIMIT_PROBE")
+        ).strip().upper()
+        if representative_status not in {
+            "NONREPRESENTATIVE_LIMIT_PROBE",
+            "REPRESENTATIVE_BY_SEPARATE_EVIDENCE",
+        }:
+            raise ProtocolContractError(
+                "rare-natural representative_status must preserve nonrepresentative limit-probe semantics"
+            )
+        if (
+            representative_status == "REPRESENTATIVE_BY_SEPARATE_EVIDENCE"
+            and not _nonempty(rare.get("representative_basis"))
+        ):
+            raise ProtocolContractError(
+                "rare natural case requires separate evidence before representative use"
+            )
         if mode == "P1" and rare.get("selection_independent_of_engine_result") is not True:
             raise ProtocolContractError(
                 "P1 rare-natural-testbed selection must be independent of Engine result"
@@ -210,9 +242,22 @@ def validate_v071a_output(record: Mapping[str, Any]) -> None:
             "non-independent Atlas evidence cannot validate the Engine independently"
         )
 
+    # v0.7.1A treats independence as pathway-specific. Omitting a dimension can
+    # conceal the exact shared path capable of forcing apparent agreement, so a
+    # mature draft output must carry all eight dimensions explicitly. A
+    # dimension may be NOT_APPLICABLE or UNRESOLVED, but it may not disappear.
     independence = _mapping(record["independence"], "independence")
-    for key, value in independence.items():
-        if key.endswith("_independence") and value not in INDEPENDENCE_GRADES:
+    missing_independence = [
+        key for key in _REQUIRED_INDEPENDENCE_FIELDS if key not in independence
+    ]
+    if missing_independence:
+        raise ProtocolContractError(
+            "missing pathway-specific independence field(s): "
+            + ", ".join(missing_independence)
+        )
+    for key in _REQUIRED_INDEPENDENCE_FIELDS:
+        value = independence[key]
+        if value not in INDEPENDENCE_GRADES:
             raise ProtocolContractError(
                 f"invalid pathway-specific independence grade for {key}: {value!r}"
             )
@@ -264,4 +309,4 @@ def validate_v071a_output(record: Mapping[str, Any]) -> None:
 def protocol_contract_version() -> str:
     """Return the protocol-control contract implemented by this helper."""
 
-    return "GRI-v0.7.1+v0.7.1A-control-draft-20260910.2"
+    return "GRI-v0.7.1+v0.7.1A-control-draft-20260911.1"
