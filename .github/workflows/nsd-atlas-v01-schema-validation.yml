@@ -1,0 +1,33 @@
+name: NSD Neurostability Atlas v0.1 Schema Validation
+
+on:
+  push:
+    branches:
+      - neural-stability-dynamics-phase0d-v0.2-protocol-v0.7.1
+    paths:
+      - '.github/workflows/nsd-atlas-v01-schema-validation.yml'
+      - 'Neural_Stability_Dynamics/Neurostability_Atlas_v0_1/**'
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/SYSTEM_MODEL.md'
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/registries/SYSTEM_MODEL_LOCK.json'
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/tests/test_system_model_lock.py'
+  workflow_dispatch:
+
+jobs:
+  atlas-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install test dependency
+        run: python -m pip install pytest==9.0.2
+      - name: Verify locked System Model identity
+        working-directory: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2
+        run: python -m pytest -q tests/test_system_model_lock.py
+      - name: Validate Atlas ontology and source queue
+        working-directory: Neural_Stability_Dynamics/Neurostability_Atlas_v0_1
+        run: python src/validate_atlas.py
+      - name: Run Atlas contract tests
+        working-directory: Neural_Stability_Dynamics/Neurostability_Atlas_v0_1
+        run: python -m pytest -q tests
