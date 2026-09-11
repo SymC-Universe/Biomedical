@@ -1,7 +1,14 @@
+import hashlib
 import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def _git_blob_sha(path: Path) -> str:
+    content = path.read_bytes()
+    header = f"blob {len(content)}\0".encode("ascii")
+    return hashlib.sha1(header + content).hexdigest()
 
 
 def test_system_model_lock_is_architecture_frozen_and_p1_closed():
@@ -9,6 +16,11 @@ def test_system_model_lock_is_architecture_frozen_and_p1_closed():
     assert data["status"] == "ARCHITECTURE_FROZEN_P0"
     assert data["system_model_version"] == "1.0"
     assert data["current_implementation_status"]["P1"] == "CLOSED"
+
+
+def test_locked_system_model_content_matches_canonical_blob_identity():
+    data = json.loads((ROOT / "registries" / "SYSTEM_MODEL_LOCK.json").read_text(encoding="utf-8"))
+    assert _git_blob_sha(ROOT / data["canonical_definition"]) == data["canonical_definition_git_blob_sha"]
 
 
 def test_system_model_has_all_four_frozen_views():
