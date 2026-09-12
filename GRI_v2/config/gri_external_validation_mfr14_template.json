@@ -1,0 +1,132 @@
+{
+  "status": "TEMPLATE_NOT_FROZEN_AS_CLAIM",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.1_FINAL_plus_v0.7.1A_Addendum.pdf",
+  "purpose": "Complete one copy before opening decisive external evidence for any future P1 GRI claim. Blank/TBD fields do not constitute a freeze.",
+  "MFR_01_frozen_claim": {
+    "claim_id": "TBD",
+    "exact_claim_text": "TBD",
+    "claim_scope": "TBD",
+    "frozen_scientific_question_or_task": "TBD",
+    "intended_value_axis_if_incremental": "TBD_OR_NOT_APPLICABLE",
+    "version": "TBD"
+  },
+  "MFR_02_hypothesis_provenance": {
+    "allowed_classes": [
+      "DOMAIN_THEORY",
+      "EXTERNAL_THEORY",
+      "FRAMEWORK_DERIVED",
+      "DATA_DERIVED",
+      "CROSS_DOMAIN_TRANSFER"
+    ],
+    "selected_class_or_classes": ["TBD"],
+    "provenance_detail": "TBD"
+  },
+  "MFR_03_target_object_native_observable": {
+    "native_object": "TBD",
+    "measurement": "TBD",
+    "units_or_conventions": "TBD",
+    "why_it_can_contradict_the_claim": "TBD"
+  },
+  "MFR_04_representation_and_validity_regime": {
+    "native_model_or_statistical_structure": "TBD",
+    "representation_or_reduction": "TBD",
+    "validity_conditions": "TBD",
+    "inclusion_exclusion_conditions": "TBD",
+    "units_conventions": "TBD",
+    "representation_not_licensed_when": "TBD"
+  },
+  "MFR_05_strongest_native_comparator": {
+    "comparator_status": "TBD_COMPARATOR_IDENTIFIED_OR_NO_NATIVE_COMPARATOR",
+    "comparator_name_version": "TBD",
+    "frozen_comparator_selection_route": "TBD",
+    "basis": "TBD",
+    "freeze_date_version": "TBD",
+    "same_decisive_evidence_split": "TBD",
+    "capacity_fairness_rationale": "TBD"
+  },
+  "MFR_06_null_or_competing_explanation": {
+    "primary_null_or_alternative": "TBD",
+    "nuisance_structure_preserved": "TBD",
+    "additional_competing_explanations": ["TBD"]
+  },
+  "MFR_07_expected_response": {
+    "response_type": "TBD_DIRECTION_CLASS_ORDERING_TRAJECTORY_INVARIANCE_TRANSITION_OTHER",
+    "expected_response": "TBD"
+  },
+  "MFR_08_decision_rule": {
+    "rule_type": "TBD_NUMERICAL_INTERVAL_CATEGORICAL_ORDINAL_BLINDED_RUBRIC_DETERMINISTIC_CLASSIFIER",
+    "rule": "TBD",
+    "justification": "TBD"
+  },
+  "MFR_09_uncertainty_tolerance_indeterminate": {
+    "measurement_uncertainty": "TBD",
+    "numerical_tolerance": "TBD",
+    "model_uncertainty": "TBD",
+    "indeterminate_zone": "TBD"
+  },
+  "MFR_10_evidence_independence_leakage_map": {
+    "data_independence": "TBD",
+    "cohort_or_system_independence": "TBD",
+    "outcome_independence": "TBD",
+    "parameter_or_tuning_independence": "TBD",
+    "method_independence": "TBD",
+    "atlas_independence": "TBD",
+    "source_or_literature_independence": "TBD",
+    "temporal_independence": "TBD_OR_NOT_APPLICABLE",
+    "shared_data_labels_outcomes_parameters_tables_simulations_thresholds": "TBD",
+    "could_shared_information_force_agreement": "TBD"
+  },
+  "MFR_11_multiplicity_search_space": {
+    "endpoints": "TBD",
+    "windows": "TBD_OR_NOT_APPLICABLE",
+    "models": "TBD",
+    "thresholds": "TBD",
+    "subgroups": "TBD",
+    "features": "TBD",
+    "hypotheses": "TBD",
+    "correction_or_hierarchy": "TBD"
+  },
+  "MFR_12_freeze_identity_untouched_test": {
+    "verifiable_freeze_identifier": "TBD",
+    "freeze_timestamp": "TBD",
+    "system_model_version": "TBD",
+    "engine_version": "TBD",
+    "atlas_version": "TBD_OR_NOT_USED",
+    "confirmatory_dataset_system_experiment": "TBD",
+    "decisive_evidence_unopened_at_freeze": "TBD"
+  },
+  "MFR_13_explicit_falsifier": {
+    "result_that_counts_against_claim": "TBD"
+  },
+  "MFR_14_precommitted_failure_consequence": {
+    "failure_consequence": "TBD_CLAIM_FALSIFIED_CLAIM_NARROWED_REPRESENTATION_RETIRED_NO_ADDED_SYMC_VALUE_DOMAIN_LIMITED_TOOL_NOT_QUALIFIED_OR_OTHER",
+    "detail": "TBD"
+  },
+  "prediction_extension": {
+    "prediction_id": "TBD",
+    "prediction_class": "TBD_S_OR_M",
+    "scientific_layer": "TBD_SCALAR_MODAL_VECTOR_CONGLOMERATE_SYSTEM_INHERITANCE_EMERGENCE_FAILURE_REFUSAL",
+    "perturbation_exposure_or_changed_condition": "TBD",
+    "validity_regime": "TBD",
+    "known_confounders": "TBD",
+    "standard_toolkit_prediction": "TBD_OR_NO_NATIVE_COMPARATOR",
+    "confirmatory_test_family": "TBD",
+    "result": "UNOPENED",
+    "epistemic_status": "PROSPECTIVE_PREDICTION_ONLY_AFTER_COMPLETE_FREEZE"
+  },
+  "v071A_function_limit_extension": {
+    "research_role": "TBD_NOMINAL_FUNCTION_PERTURBED_FUNCTION_BOUNDARY_OR_TRANSITION_RARE_NATURAL_LIMIT",
+    "function_map_question": "TBD_OR_NOT_APPLICABLE",
+    "limit_map_question": "TBD_OR_NOT_APPLICABLE",
+    "rare_natural_testbed_status": "NOT_ADMITTED_UNLESS_SEPARATELY_QUALIFIED",
+    "rarity_basis_if_used": "TBD_OR_NOT_APPLICABLE",
+    "selection_independent_of_engine_result_if_rare_P1": "TBD_OR_NOT_APPLICABLE"
+  },
+  "completion_guard": {
+    "complete_MFR14_required_before_P1": true,
+    "blank_or_TBD_fields_mean_not_frozen": true,
+    "data_derived_hypothesis_requires_promotion_debt": true,
+    "method_scope_outcome_cannot_be_counted_as_empirical_confirmation": true,
+    "failure_cannot_be_rewritten_as_success": true
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "status": "DRAFT_NOT_FROZEN",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.1_FINAL_plus_v0.7.1A_Addendum.pdf",
+  "protocol_contract_version": "GRI-v0.7.1+v0.7.1A-control-draft-20260911.1",
+  "purpose": "Prospective machine-readable design for future GRI Engine/Tool outputs under v0.7.1A. This file changes no frozen scientific rule or historical result.",
+  "research_mode": {
+    "allowed": ["P0_D", "P0_Q", "P1", "P2"],
+    "current_default_for_existing_viewed_GRI_evidence": "P0_D_OR_P0_Q_AS_APPLICABLE"
+  },
+  "required_top_level_groups": [
+    "research_mode",
+    "measurement_status",
+    "system_model",
+    "engine",
+    "atlas",
+    "scalar_output",
+    "modal_output",
+    "conglomerate_output",
+    "cross_component_output",
+    "function_map_output",
+    "limit_map_output",
+    "reduction_adequacy",
+    "classification",
+    "refusal",
+    "prediction",
+    "independence",
+    "uncertainty",
+    "epistemic_status",
+    "claim_ceiling",
+    "provenance"
+  ],
+  "function_map_output": {
+    "required_scope_fields": [
+      "scope_id",
+      "component_or_claim",
+      "research_role"
+    ],
+    "fields": [
+      "scope_id",
+      "component_or_claim",
+      "research_role",
+      "summary_state",
+      "operating_regime",
+      "occupancy_status",
+      "response_surface_or_trajectory",
+      "supported_relationships",
+      "compensation_or_redistribution",
+      "identifiability",
+      "reduction_information_loss",
+      "uncertainty",
+      "evidence_class"
+    ],
+    "allowed_summary_states": ["WORKS_HERE", "NOT_KNOWN_HERE"],
+    "semantic_rule": "The summary state applies only to the named scope/component/claim and may not be promoted to a broader system-level statement by omission."
+  },
+  "limit_map_output": {
+    "required_scope_fields": [
+      "scope_id",
+      "component_or_claim",
+      "research_role"
+    ],
+    "fields": [
+      "scope_id",
+      "component_or_claim",
+      "research_role",
+      "summary_state",
+      "limit_type",
+      "boundary_or_transition_status",
+      "first_failing_component_if_identified",
+      "refusal_or_partial_admission",
+      "rare_natural_testbed_status",
+      "limit_interpretation",
+      "uncertainty",
+      "independence_class",
+      "evidence_class"
+    ],
+    "allowed_summary_states": ["STOPS_WORKING_HERE", "NOT_KNOWN_HERE"],
+    "semantic_rule": "The summary state applies only to the named scope/component/claim. A limit in one layer cannot silently invalidate an unrelated supported layer."
+  },
+  "coverage_roles": [
+    "NOMINAL_FUNCTION",
+    "PERTURBED_FUNCTION",
+    "BOUNDARY_OR_TRANSITION",
+    "RARE_NATURAL_LIMIT",
+    "NOT_AVAILABLE",
+    "NOT_APPLICABLE",
+    "UNRESOLVED"
+  ],
+  "rare_natural_testbed": {
+    "default_status": "NOT_ADMITTED",
+    "required_before_admission": [
+      "domain_native_rarity_evidence",
+      "authenticity_and_confounding_gate_passed",
+      "selection_basis",
+      "base_rate_context_status",
+      "representative_status"
+    ],
+    "p1_additional_requirement": "selection_independent_of_engine_result = true",
+    "base_rate_context_rule": "Record KNOWN_AND_RECORDED when scientifically knowable; otherwise record an explicit unknown/not-available disposition rather than omitting the field.",
+    "representative_status_allowed": [
+      "NONREPRESENTATIVE_LIMIT_PROBE",
+      "REPRESENTATIVE_BY_SEPARATE_EVIDENCE"
+    ],
+    "representative_rule": "Rare-natural status alone never establishes representativeness. REPRESENTATIVE_BY_SEPARATE_EVIDENCE additionally requires representative_basis.",
+    "prohibited_selection_bases": [
+      "CLOSENESS_TO_PREDICTED_CHI",
+      "FAVORABLE_ENGINE_RESIDUAL",
+      "UNFAVORABLE_ENGINE_RESIDUAL_ALONE",
+      "AGREEMENT_WITH_PROPOSED_ARCHITECTURE",
+      "VISUAL_SIMILARITY_TO_EXPECTED_RESULT",
+      "ENGINE_OUTPUT_ONLY"
+    ]
+  },
+  "independence": {
+    "required_dimensions": [
+      "data_independence",
+      "cohort_or_system_independence",
+      "outcome_independence",
+      "parameter_or_tuning_independence",
+      "method_independence",
+      "atlas_independence",
+      "source_or_literature_independence",
+      "temporal_independence"
+    ],
+    "allowed_states": [
+      "INDEPENDENT",
+      "PARTIALLY_INDEPENDENT",
+      "NON_INDEPENDENT",
+      "NON_INDEPENDENT_FOR_ENGINE_VALIDATION",
+      "NOT_APPLICABLE",
+      "UNRESOLVED"
+    ],
+    "controlling_question": "Could shared information on this pathway force the agreement being presented as evidence?"
+  },
+  "current_GRI_nonclaims": [
+    "biological_chi_not_admitted",
+    "no_temporal_inheritance_from_static_TCGA",
+    "no_causal_methylation_to_RNA_claim",
+    "no_clinical_utility_claim",
+    "no_exceptional_point_claim",
+    "no_universal_scope_claim"
+  ],
+  "current_GRI_rare_limit_context": {
+    "PCPG": {
+      "status": "ADMITTED_FOR_P0_D_LIMIT_MAPPING_ONLY",
+      "rarity_basis": "independent oncology-native epidemiology",
+      "selection_status": "POST_RESULT_GRI_STRESS_CASE",
+      "base_rate_context_status": "KNOWN_AND_RECORDED",
+      "representative_status": "NONREPRESENTATIVE_LIMIT_PROBE",
+      "confirmatory_weight": "NONE",
+      "promotion_debt": "OPEN"
+    }
+  },
+  "notes": [
+    "PCPG rarity is independently source-qualified, but its GRI-specific selection is post-result; it is therefore a P0-D rare-natural limit testbed with no confirmatory weight.",
+    "Function and Limit maps are coequal research targets and neither overrides the other.",
+    "WORKS_HERE, STOPS_WORKING_HERE, and NOT_KNOWN_HERE must always carry an explicit scope/component referent.",
+    "A favorable region discovered on viewed data remains P0-D until separately frozen and tested on untouched evidence.",
+    "Method-scope qualification does not count as empirical confirmation about nature.",
+    "All eight pathway-specific independence dimensions are explicit; NOT_APPLICABLE or UNRESOLVED is preferable to omission."
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "status": "P0_D_EXPLORATORY_PLAN_NOT_CONFIRMATORY",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.1_FINAL_plus_v0.7.1A_Addendum.pdf",
+  "purpose": "Map the functioning interior of the already-viewed/internal GRI architecture without creating prospective confirmation or changing frozen C1/P0 results.",
+  "allowed_evidence": [
+    "already-viewed Stage A/A1.1 outputs",
+    "already-viewed Stage B1/B2 outputs",
+    "closed Stage C1 outputs after exact state verification",
+    "closed legacy predictive P0 DISCOVERY/REPLICATION/FINAL_HOLDOUT outputs",
+    "returned post-C1 sensitivity outputs only after their frozen P0-Q execution completes"
+  ],
+  "forbidden_promotions": [
+    "causal mechanism",
+    "temporal inheritance",
+    "clinical utility",
+    "external generalization",
+    "biological chi",
+    "capacity-matched Hallmark superiority unless separately tested",
+    "rare-natural-testbed status based on Engine output"
+  ],
+  "questions": [
+    {
+      "id": "FM01",
+      "question": "How does leading-mode concentration vary across cancers and technical tracks?",
+      "operation": "Summarize per-cancer modal concentration/effective-rank/leading-mode contributions from preserved outputs; when post-C1 S4 returns, map top-1/top-3 ablation response alongside baseline structure.",
+      "expected_information": "Whether shared organization is diffuse or concentrated and whether concentration varies continuously across the occupied internal regime.",
+      "decision_enabled": "Function-map description and candidate reduction-adequacy regions; no confirmatory threshold."
+    },
+    {
+      "id": "FM02",
+      "question": "Can similar global cross-layer geometry arise from different Hallmark-semantic organizations?",
+      "operation": "Jointly map global CKA/principal-angle summaries against H3a/H3b module coupling without outcome-based subgroup selection.",
+      "expected_information": "Whether system-level shared geometry and semantic module correspondence vary semi-independently across cancers.",
+      "decision_enabled": "Clarify whether multiple internal organizations occupy similar global-geometry regions."
+    },
+    {
+      "id": "FM03",
+      "question": "How does limited composition projection move cancers through the internal architecture landscape?",
+      "operation": "Compare raw versus purity/leukocyte-projected scalar/modal/cross-component coordinates using the already-prespecified paired outputs.",
+      "expected_information": "Context-sensitive versus context-robust regions and modules.",
+      "decision_enabled": "Function-map context labels; identify richer composition-control hypotheses."
+    },
+    {
+      "id": "FM04",
+      "question": "Do different internal architecture states produce similar internal predictive risk?",
+      "operation": "Map preserved DISCOVERY/REPLICATION architecture descriptors against FINAL_HOLDOUT cancer-level risk without tuning a new selector or threshold.",
+      "expected_information": "Whether prediction performance is many-to-one with respect to internal organization rather than governed by one geometry coordinate.",
+      "decision_enabled": "Generate future routing/heterogeneity hypotheses; cannot modify P3-v2."
+    },
+    {
+      "id": "FM05",
+      "question": "Where does scalar compression preserve ordering while modal detail changes?",
+      "operation": "Compare S_spec ordering with effective-rank, principal-angle, and mode-contribution summaries across cancers/tracks.",
+      "expected_information": "Information lost by scalar compression inside otherwise functioning regimes.",
+      "decision_enabled": "Reduction-adequacy annotations and candidate M1 future tests."
+    },
+    {
+      "id": "FM06",
+      "question": "Which modules are consistently context-sensitive or context-robust?",
+      "operation": "Map B1/C1 paired raw-adjusted module-level changes with uncertainty, retaining all tested modules rather than selecting favorable examples.",
+      "expected_information": "Occupied context-response patterns and candidate composition-sensitive sectors.",
+      "decision_enabled": "Atlas/function-map annotations and future independent composition hypotheses."
+    },
+    {
+      "id": "FM07",
+      "question": "Does the technical-mask track change only magnitude or also reorganize modal orientation?",
+      "operation": "Compare paired PRIMARY_PUBLICATION and MASKED_TECHNICAL modal/global geometry summaries and, where available, principal-angle changes.",
+      "expected_information": "Whether technical masking acts as magnitude attenuation versus structural reorganization.",
+      "decision_enabled": "Technical robustness/function-map characterization."
+    },
+    {
+      "id": "FM08",
+      "question": "Can cancers be grouped by architecture without using downstream outcomes?",
+      "operation": "Exploratory unsupervised visualization/clustering on predeclared architecture descriptors only, with stability diagnostics and no clinical labels used to choose clusters.",
+      "expected_information": "Candidate occupied architecture families independent of downstream outcome labels.",
+      "decision_enabled": "P0-D hypotheses only; any biological/clinical interpretation requires independent follow-up."
+    },
+    {
+      "id": "FM09",
+      "question": "Which current WORKS_HERE regions survive the already-frozen post-C1 sensitivity attacks?",
+      "operation": "After sensitivity return, overlay S1-S7/S11/S12 robustness status on the preexisting Function Map without changing sensitivity rules.",
+      "expected_information": "Robust, narrowed, failed, and unknown interior regions.",
+      "decision_enabled": "Update Function/Limit maps and supported production scope before Engine freeze."
+    }
+  ],
+  "reporting": {
+    "required_states": [
+      "WORKS_HERE_INTERNAL",
+      "WORKS_HERE_WITH_CONTEXT_SENSITIVITY",
+      "PARTIAL_FUNCTION",
+      "STOPS_WORKING_HERE",
+      "NOT_KNOWN_HERE",
+      "NOT_APPLICABLE"
+    ],
+    "preserve_all_tested_cancers_and_modules": true,
+    "preserve_null_or_discordant_regions": true,
+    "no_posthoc_confirmatory_language": true,
+    "no_universal_target": true
+  }
+}
