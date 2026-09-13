@@ -20,6 +20,19 @@
     "biological_regime_label_allowed": false,
     "claim_ceiling": "CANDIDATE_DERIVATION_IDENTIFIABILITY_AND_INTERNAL_QUALIFICATION_ONLY"
   },
+  "scientifically_selected_candidate_family": {
+    "freeze_id": "GRI_CHI_BIO_G1_S1_L3_CANDIDATE_FAMILY_FREEZE_20260912",
+    "authorization": "USER_APPROVED_RECOMMENDED_PLAN_20260912",
+    "primary_generator_family": "G1_NORMALIZED_REGULATORY_INTERACTION",
+    "state_semantics": "S1_TRANSCRIPTOMIC_REGULATORY_STATE",
+    "substrate_context": "METHYLATION_EXTERNAL_TO_STATE_AS_SUBSTRATE_CONTEXT",
+    "system_scope": "L3_PAIRED_LOCAL_AND_EMBEDDED",
+    "temporal_comparator": "G2_DISCRETE_TRANSITION_OPERATOR",
+    "stochastic_alternative": "G4_ATTRACTION_DIFFUSION",
+    "candidate_lock_status": "NOT_YET_EARNED",
+    "exact_unity_subvariant_status": "CONDITIONAL_ON_RESTORATION_AND_OPERATOR_STRUCTURE",
+    "empirical_state_reduction_status": "NOT_FROZEN"
+  },
   "required_views": [
     "scalar",
     "modal_vector",
@@ -91,7 +104,8 @@
     "ATLAS_REGION_USED_TO_DEFINE_COORDINATE",
     "DOWNSTREAM_OUTCOME_USED_TO_DEFINE_AND_VALIDATE_COORDINATE",
     "SUPPRESS_DISAGREEING_CANCERS_OR_MODES",
-    "BORROW_CERTAINTY_ACROSS_SCALAR_MODAL_CONGLOMERATE_VIEWS"
+    "BORROW_CERTAINTY_ACROSS_SCALAR_MODAL_CONGLOMERATE_VIEWS",
+    "NAIVE_ALPHA_RINV_K_UNITY_RULE_FOR_GENERAL_HETEROGENEOUS_DIRECTED_TRANSCRIPTOMIC_SYSTEM"
   ],
   "required_refusal_states": [
     "NO_COHERENT_CHI_BIO",
@@ -130,12 +144,14 @@
   },
   "current_missing_or_unresolved": [
     "full_machine_readable_per_cancer_C1_and_postC1_bundle_in_repository",
-    "candidate_generator_selected_and_derived",
-    "candidate_identifiability_demonstrated",
-    "candidate_specific_synthetic_known_truth_harness",
-    "pre_Atlas_candidate_freeze",
+    "exact_G1_unity_subvariant_for_general_transcriptomic_transfer",
+    "empirical_transcriptomic_state_reduction_freeze",
+    "candidate_identifiability_against_G2_G4_and_material_alternatives",
+    "candidate_uncertainty_qualification",
+    "candidate_specific_synthetic_known_truth_harness_CI_result",
+    "pre_Atlas_candidate_lock",
     "untouched_external_P1_test",
-    "domain_native_unity_boundary_evidence"
+    "domain_native_biological_unity_boundary_evidence"
   ],
   "pre_atlas_rule": "Chi_bio construction must be frozen independently of decisive Atlas placement or favored unity crossing.",
   "unity_rule": "Chi_bio=1 has no biological boundary meaning unless CB14 is satisfied.",
