@@ -1,0 +1,35 @@
+{
+  "status": "FROZEN_P0Q_SYNTHETIC_CANDIDATE_QUALIFICATION_NOT_P1",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.4_FINAL",
+  "freeze_id": "GRI_CHI_BIO_G1_CANDIDATE_MFR14_20260912_V0_1",
+  "MFR_01_frozen_claim": "G1A common-restoration and G1B symmetric-generalized subclasses have exact unity stability boundaries; naive alpha(R^-1 K) must be refused for a general heterogeneous directed transcriptomic system.",
+  "MFR_02_hypothesis_provenance": ["EXTERNAL_THEORY", "FRAMEWORK_DERIVED_TRANSFER_HARDENING"],
+  "MFR_03_target_object_native_observable": "K=dP/dx, restoration R, and direct local Jacobian J=K-R.",
+  "MFR_04_representation_and_validity_regime": "Local linearization. G1A requires R=beta I, beta>0. G1B requires symmetric K and SPD R. General directed heterogeneous systems are refusal tests.",
+  "MFR_05_strongest_native_comparator": "Direct alpha(J): local linear asymptotic stability requires alpha(J)<0.",
+  "MFR_06_null_or_competing_explanation": "Unity is an artifact of an unjustified homogeneous-restoration or normalization assumption; G2/G4/no-coherent-scalar remain alternatives.",
+  "MFR_07_expected_response": "Exact G1A/G1B cases recover stable/boundary/unstable truth; heterogeneous counterexamples reject naive unity; degeneracy and nonnormal warnings remain visible.",
+  "MFR_08_decision_rule": "All frozen exact cases and known-failure cases must pass their predeclared deterministic checks. Any failure stops promotion.",
+  "MFR_09_uncertainty_tolerance_indeterminate": {
+    "exact_atol": 1e-10,
+    "boundary_atol": 1e-8,
+    "near_degenerate_gap": 1e-6,
+    "indeterminate_rule": "uncertainty interval spanning 1 => UNCERTAINTY_SPANS_BOUNDARY"
+  },
+  "MFR_10_evidence_independence_leakage_map": "No TCGA Chi_bio, Atlas placement, clinical outcome, or favored cancer ordering was used to choose matrices, seed, tolerances, or rules.",
+  "MFR_11_multiplicity_search_space": "Conjunctive exact-case gate; no p-value search. Frozen G1A, G1B, directed-failure, degeneracy, nonnormal and noise-pilot families.",
+  "MFR_12_freeze_identity_untouched_test": {
+    "known_truth_freeze": "GRI_CHI_BIO_G1_KNOWN_TRUTH_HARNESS_20260912_V0_1",
+    "decisive_synthetic_evidence_unopened_at_freeze": true,
+    "real_data_used": false,
+    "atlas_used": false
+  },
+  "MFR_13_explicit_falsifier": "Any exact G1A/G1B algebraic case fails; any frozen heterogeneous counterexample is accepted as an exact unity route; or required degeneracy/nonnormal warning is suppressed.",
+  "MFR_14_precommitted_failure_consequence": "Repair mechanical defects only. Scientific failure narrows/retires the affected G1 route. Do not retune to rescue unity; if no defensible G1 route remains, elevate G2 for separate review.",
+  "completion_guard": {
+    "complete_for_synthetic_stage": true,
+    "candidate_lock_earned": false,
+    "p1_freeze": false,
+    "real_Chi_bio_values_allowed": false
+  }
+}
