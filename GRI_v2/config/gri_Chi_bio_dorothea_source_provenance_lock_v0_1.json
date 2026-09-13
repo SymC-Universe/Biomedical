@@ -1,0 +1,68 @@
+{
+  "schema_version": "0.1",
+  "status": "PASS_UPSTREAM_SOURCE_IDENTITY_CANONICAL_EXPORT_BLOCKED_PENDING_LICENSE_CONFIDENCE_AND_OBJECT_FREEZE",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.5_FINAL",
+  "candidate_family": "G1_S1_L3",
+  "architecture_bundle": "A3_B3_C3",
+  "b3_role": "INDEPENDENT_REPRESENTATION_SENSITIVITY_NOT_SELECTED",
+  "upstream_repository": {
+    "repo": "saezlab/dorothea",
+    "commit": "1461fb75e23e110c2281860526d4333920925282",
+    "human_general_object_path": "data/dorothea_hs.rda",
+    "human_general_object_git_blob_sha1": "75c9c0b6f9e9cfc6c34f86e2e0bf0b055ce1d9d9",
+    "human_general_object_size_bytes": 894668,
+    "human_pancancer_object_path": "data/dorothea_hs_pancancer.rda",
+    "human_pancancer_object_git_blob_sha1": "f0289d0126281d7d64e04889149d3dc674cabc7e",
+    "human_pancancer_object_size_bytes": 469992,
+    "entire_database_path": "data/entire_database.rda",
+    "entire_database_git_blob_sha1": "ea3eeec1f2fdd490cee4db7cd554fb48034ed0d7",
+    "entire_database_size_bytes": 2787988,
+    "readme_git_blob_sha1": "8efec5d1eb0587b7c80593d879e89c261faf447f",
+    "data_documentation_git_blob_sha1": "58588019d183a51e7f42920e968604c715047c68"
+  },
+  "documented_semantics": {
+    "dorothea_hs": "Signed human TF-target interactions with empirical confidence classes. Repository documentation reports 1395 TFs, 20244 target genes and 486676 unique interactions, with confidence ranging A through E.",
+    "dorothea_hs_pancancer": "Cancer-oriented human object whose inferred-network component used TCGA expression instead of GTEx. It is not selected here because that construction history can compromise independence for a TCGA-based GRI representation sensitivity.",
+    "license_warning": "Repository README states the standard DoRothEA resource is intended only for academic use because some source-resource licenses do not permit commercial use; a separate non-academic branch removes those resources.",
+    "decoupler_wrapper": "decoupler 2.2.0 op.dorothea dynamically filters by license and confidence levels and applies confidence-dependent weights before final source-target deduplication."
+  },
+  "decoupler_reference": {
+    "version_semantics": "2.2.0",
+    "tag_commit": "7e8e957cbbb2230079cdd3c13a0ac114a67b9655",
+    "dorothea_wrapper_blob": "ef39ea2c2387261bdadf14af2a6ff9908bec8392",
+    "download_helper_blob": "0c8a880186d014aea228a2440636a9b5efa239ed",
+    "wrapper_default_if_called_without_explicit_freeze": {
+      "organism": "human",
+      "levels": ["A", "B", "C"],
+      "license": "academic",
+      "confidence_weights": {"A": 1, "B": 2, "C": 3}
+    },
+    "default_use_authorized_by_this_record": false
+  },
+  "unfrozen_science_or_use_fields": {
+    "selected_repository_object": null,
+    "license_route": null,
+    "confidence_levels": null,
+    "confidence_weighting_rule": null,
+    "canonical_export_sha256": null,
+    "selected_tf_panel": null,
+    "selected_activity_method": null,
+    "selected_dimension_rule": null
+  },
+  "firewall_attestations": {
+    "real_SCC25_expression_opened": false,
+    "real_TCGA_expression_opened_for_selection": false,
+    "tf_activity_scored": false,
+    "state_dimension_selected": false,
+    "regulon_panel_selected": false,
+    "operator_fit": false,
+    "g1_computed": false,
+    "g2_computed": false,
+    "chi_bio_computed": false,
+    "promotion_effect": "NONE"
+  },
+  "independence_guard": "Do not select dorothea_hs_pancancer merely because the project concerns cancer. Its documented inferred-network component used TCGA expression, creating a potential cohort-independence problem for a TCGA-based GRI sensitivity analysis. Any later use requires an explicit independence adjudication before empirical outcomes are opened.",
+  "canonical_export_block_reason": "The exact returned network changes with license route, selected confidence classes, confidence weighting and source object. Those choices are not neutral provenance mechanics and are therefore not frozen by this record.",
+  "next_allowed_action": "Resolve license eligibility, source-object independence and confidence-tier/weighting rules prospectively. Only then acquire and hash the exact canonical DoRothEA export without inspecting SCC25/TCGA Chi behavior.",
+  "scientific_effect": "Locks upstream source identities and exposes the independence/licensing decision boundary. Does not select a DoRothEA empirical representation and does not alter Chi_bio status."
+}
