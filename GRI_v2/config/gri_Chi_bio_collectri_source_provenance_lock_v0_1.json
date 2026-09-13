@@ -1,0 +1,67 @@
+{
+  "schema_version": "0.1",
+  "status": "PASS_COLLECTRI_SOURCE_PROVENANCE_ONLY_NOT_STATE_SELECTION",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.5_FINAL",
+  "candidate_family": "G1_S1_L3",
+  "architecture_bundle": "A3_B3_C3",
+  "b3_role": "LEADING_FIXED_SIGNED_REGULON_SOURCE_FOR_QUALIFICATION_NOT_SELECTED_STATE",
+  "source_record": "Zenodo 8192729 / CollecTRI_regulons.csv",
+  "software_semantics": {
+    "decoupler_version": "2.2.0",
+    "decoupler_tag_commit": "7e8e957cbbb2230079cdd3c13a0ac114a67b9655",
+    "decoupler_collectri_source_blob": "48bfd3388c34e58312e60c772190218658289b78",
+    "transformation_semantics": "decoupler 2.2.0 human collectri, remove_complexes=False"
+  },
+  "workflow_provenance": {
+    "workflow_run_id": 34752508888,
+    "successful_retry_job_id": 103715087599,
+    "source_probe_head_sha": "b62cce3ffad6b152854940464f12264e05594f05",
+    "workflow_artifact_id": 10315888850,
+    "workflow_artifact_name": "gri-chi-bio-collectri-human-export-provenance",
+    "workflow_artifact_digest": "sha256:d8d807c4e90c545e30f840498215e7ac705f73dbb7dc59a61e25a5d3fc9676f5"
+  },
+  "byte_identities": {
+    "raw_source_bytes": 4345649,
+    "raw_source_sha256": "4473c9189dd53dacc80297709ad1452dda1086a1cc2185f9a56146c261668701",
+    "canonical_export_sha256": "f0bb980ad26a033fd39b370108d6d45e038127c635c7fd9b5df557e2703ef540"
+  },
+  "canonical_inventory": {
+    "rows": 42990,
+    "unique_sources_tf": 1185,
+    "unique_targets": 6675,
+    "positive_edges": 37168,
+    "negative_edges": 5822,
+    "zero_weight_edges": 0,
+    "exact_duplicate_rows_after_provider_semantics": 0,
+    "rows_in_duplicated_source_target_pairs_after_provider_semantics": 0,
+    "source_target_pairs_with_multiple_signs_after_provider_semantics": 0,
+    "columns": ["source", "target", "weight", "resources", "references", "sign_decision"]
+  },
+  "download_history": [
+    {
+      "bounded_initial_job_disposition": "EXTERNAL_PROVIDER_504_NO_SOURCE_BYTES_ACQUIRED",
+      "successful_retry_attempt": 1,
+      "successful_retry_status_code": 200,
+      "successful_retry_bytes_received": 4345649
+    }
+  ],
+  "firewall_attestations": {
+    "real_expression_files_opened": false,
+    "tf_activity_scored": false,
+    "regulon_panel_selected": false,
+    "state_dimension_selected": false,
+    "operator_fit": false,
+    "g1_computed": false,
+    "g2_computed": false,
+    "chi_bio_computed": false,
+    "promotion_effect": "NONE"
+  },
+  "scientific_effect": "Closes exact CollecTRI source-byte and canonical-export provenance for the approved B3 qualification path only. It does not select the empirical state, TF panel, scoring method, dimensionality rule, operator model, or Chi_bio.",
+  "remaining_b3_freeze_items": [
+    "exact_tf_panel_or_outcome_blind_subset_rule",
+    "state_scoring_rule",
+    "dimension_rule",
+    "organism_identifier_transport_checks_against_empirical_sources",
+    "DoRothEA_exact_export_provenance_for_representation_sensitivity"
+  ]
+}
