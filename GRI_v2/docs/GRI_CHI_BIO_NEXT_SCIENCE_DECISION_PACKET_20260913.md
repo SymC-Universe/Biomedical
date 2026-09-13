@@ -3,169 +3,223 @@
 **Date:** 2026-09-13  
 **Protocol authority:** General Cross-Project Research Protocol Final v0.7.4  
 **Approved family:** G1-S1-L3  
+**Approved architecture bundle:** A3 + B3 + C3  
 **Temporal comparator:** G2  
 **Stochastic alternative:** G4  
 **Chi_bio:** `NOT_ADMITTED`
 
-## 1. What is no longer open
+## 1. What is now frozen by explicit approval
 
-The following scientific choices are now frozen by explicit approval:
+The following scientific architecture is prospectively frozen:
 
 - primary family: G1 normalized regulatory-interaction architecture;
 - state semantics: transcriptomic regulatory state;
 - methylation/substrate: external/contextual modifier rather than naive concatenated state;
 - system scope: paired local + embedded analysis;
 - temporal comparator: G2 transition operator;
-- materially different alternative: G4 attraction/diffusion.
+- materially different alternative: G4 attraction/diffusion;
+- **A3:** `r=2` and `r=3` are co-equal robustness representations; neither may be selected after outcomes; material disagreement returns `REPRESENTATION_DEPENDENT_NO_TRANSFER`;
+- **B3:** G1 representation will use an externally sourced signed-regulon universe plus an outcome-blind low-dimensional rule; CollecTRI leads source qualification and DoRothEA is retained as a representation sensitivity;
+- **C3:** normalized empirical G1 is withheld until restoration is independently resolved rather than supplied by an assumed common beta.
 
-The family-level MFR-14 and known-truth/known-failure machinery are in place. Exact common-restoration and symmetric-generalized unity subclasses remain mathematically valid; naive heterogeneous directed normalization is not licensed.
+Architecture freeze:
 
-## 2. What safe work has now resolved
+`config/gri_Chi_bio_ABC_architecture_freeze_20260913_v0_1.json`
 
-### G1 restoration burden
+This is an architecture freeze, not a complete empirical execution freeze.
 
-Two targeted source passes found gene-specific SCC25 mRNA-stability experiments but no transcriptome-wide SCC25 turnover source adequate to identify a general restoration operator. Therefore a full-transcriptome common-beta G1 normalization is not currently licensed.
+## 2. What safe work resolved after A3/B3/C3 approval
 
-### G1 representation direction
+### A3 execution guard
 
-A fixed, biologically interpretable regulatory-module/regulon state is the leading empirical class. CollecTRI is currently the leading fixed signed-regulon source for further qualification; DoRothEA remains an important source-sensitivity comparator. This is a ranking for review, not a basis freeze.
-
-### G2 representation direction
-
-For the first SCC25 temporal feasibility test, a PBS-control-only unsupervised transcriptomic basis remains the cleanest operational representation because the treated trajectory and phenotype remain untouched during basis construction.
-
-### Algebraic dimension pressure
-
-The short-term SCC25 source has only six ordered PBS states, so a centered control basis has rank at most five. The clean conservative pilot range already identified prospectively is `r in {2,3}`.
-
-## 3. Science choice A: first G2 empirical rank design
-
-The exact first temporal test cannot be outcome-bearing until one design is prospectively frozen.
-
-### A1
+The empirical freeze contract now supports an A3 design only when:
 
 ```text
-primary r = 2
-sensitivity r = 3
+primary_rank = null
+sensitivity_ranks = []
+robustness_ranks = [2,3]
 ```
 
-**Benefit:** smallest adequate pilot, strongest run-economy posture, greatest degrees-of-freedom margin.
+and a material-conclusion schema is frozen before real candidate values. The code cannot silently promote either rank.
 
-**Risk:** may discard a third coherent dynamical direction.
+### B3 provenance guard
 
-### A2
+CollecTRI and DoRothEA candidate repository identities are pinned for provenance, but repository commits are not treated as byte-identical data exports. A read-only export preflight hashes the exact future interaction table and inventories schema/row count while being prohibited from scoring TF activity, selecting dimension, fitting an operator or computing Chi.
+
+The exact regulon export, exact panel and scoring rule remain unfrozen.
+
+### C3 enforcement
+
+The architecture contract explicitly forbids normalized empirical G1 execution and forbids smuggling in a restoration normalization while C3 is active. Effective-Jacobian/local-stability work may continue without calling it normalized G1.
+
+## 3. New G2 operator-model issue discovered before real data
+
+The earlier controlled model
 
 ```text
-primary r = 3
-sensitivity r = 2
+x_(k+1) = T x_k + B u_k + c
 ```
 
-**Benefit:** slightly richer temporal state while still below the daily algebraic ceiling.
+has one shared `T`. Treatment may shift forcing/equilibrium through `B u`, but treatment cannot change `rho(T)` in that model because the operator is shared by construction.
 
-**Risk:** higher variance/conditioning burden in an extremely small time series.
+That makes it a useful restricted/null model, but it cannot directly answer whether cetuximab reorganizes the transition operator.
 
-### A3
+A minimal treatment-dependent alternative is:
 
 ```text
-no primary winner
-require material conclusions to agree across r = 2 and r = 3
-otherwise return REPRESENTATION_DEPENDENT_NO_TRANSFER
+x_(k+1) = T0 x_k + u_k DeltaT x_k + B u_k + c
+
+PBS: T_PBS = T0
+CTX: T_CTX = T0 + DeltaT
 ```
 
-**Benefit:** strongest protection against a rank-specific story and avoids choosing the prettier trajectory after inspection.
+This treatment-interaction formulation has been implemented and tested only on known-truth synthetic data. No SCC25 molecular matrix has been opened by this work.
 
-**Risk:** defines a stricter robustness criterion and can refuse a genuinely useful representation if one rank is simply too coarse.
+Detailed attack:
 
-### A4
+`docs/GRI_CHI_BIO_G2_OPERATOR_MODEL_ATTACK_P0D_20260913.md`
 
-Another prospectively justified rule, provided it does not inspect treated trajectories, Chi_bio values, unity distance, phenotype, ATAC, scRNA, or Atlas placement.
+## 4. Next science choice D: first G2 operator model
 
-**Current recommendation for approval:** `A3` if the priority is epistemic conservatism; `A1` if the priority is the strict smallest-adequate pilot. No option is silently selected by this packet.
-
-## 4. Science choice B: first G1 empirical regulatory-state basis
-
-The G1 state basis must be fixed independently of cancer-specific G1 values.
-
-### B1: fixed signed regulon / TF-activity state
-
-Leading source family for review: CollecTRI, with exact version, evidence rule, TF subset and activity-scoring method prospectively frozen.
-
-**Strength:** direct regulatory semantics and signed prior knowledge.
-
-**Burden:** the full TF space is still too large. A small fixed subset or another dimensional rule is required, and inferred TF activity is not itself a dynamical operator.
-
-### B2: predeclared biological module-expression state
-
-Use fixed modules with scores derived directly from transcript expression.
-
-**Strength:** simple, transparent and potentially easier to connect to independently measured relaxation.
-
-**Burden:** weaker mechanistic specificity; generic Hallmark membership is not sufficient by itself because current GRI H3b semantic specificity is weak/support-sensitive.
-
-### B3: R2/R4 hybrid
-
-Use a fixed externally sourced signed-regulon universe, then define a small regulatory state by a rule based only on source evidence/provenance and algebraic identifiability, never on SCC25 or TCGA candidate values.
-
-**Strength:** retains mechanistic semantics while enforcing a low-dimensional state prospectively.
-
-**Burden:** the subset rule itself becomes part of the hypothesis and must be frozen and stress-tested.
-
-**Current recommendation for further review:** B3, with CollecTRI as the leading prior source and DoRothEA as an external representation sensitivity. No exact panel is selected here.
-
-## 5. Science choice C: G1 restoration strategy for the reduced state
-
-Even after a low-dimensional state is fixed, a numerical normalized G1 value requires a restoration strategy.
-
-### C1: effective common restoration
-
-Assume/estimate `R = beta I` only after an independent reduced-state relaxation experiment or source supports a common effective timescale.
-
-### C2: state-specific diagonal restoration
-
-Use independently measured component-level restoration rates. This no longer inherits the simple common-restoration unity formula automatically; the exact mathematical normalization must be separately licensed.
-
-### C3: no normalized G1 value yet
-
-Estimate effective Jacobian/local stability and retain G1 as a theoretical candidate until restoration is independently resolved. Use G2 as the empirical temporal comparator in the meantime.
-
-**Current evidence favors C3 as the present honest state.** This is not abandonment of G1. It is refusal to invent the missing decomposition.
-
-## 6. What can be implemented before choices A/B/C
-
-Safe implementation can continue through:
-
-- contracts and validation for the decision records;
-- synthetic matched-rank recovery fixtures;
-- design-matrix/rank/conditioning diagnostics;
-- refusal-state tests;
-- clean output schemas that contain no biological labels based on unity;
-- read-only source/identity preflights;
-- templates for A/B/C freeze records.
-
-Safe implementation must stop before:
-
-- computing a real SCC25 G2 trajectory under an unfrozen rank design;
-- selecting a regulon/module panel using SCC25 or TCGA candidate behavior;
-- assigning a numerical G1 using an assumed restoration constant;
-- interpreting unity as a biological boundary.
-
-## 7. Recommended decision sequence
-
-The least entangled order is:
+### D1: shared operator + additive treatment input
 
 ```text
-A: freeze first G2 R1 rank design
--> run first temporal comparator feasibility test
-
-B: freeze exact G1 low-dimensional regulatory-state basis
--> synthetic/matched-geometry identifiability qualification
-
-C: freeze/measure restoration strategy only if independently supportable
--> then and only then compute a normalized empirical G1
+x_(k+1) = T x_k + B u_k + c
 ```
 
-This order allows G2 to test whether a coherent low-order temporal operator exists without pretending that it solves the G1 restoration decomposition.
+Role: restricted/null model asking whether treatment acts as forcing while one common local operator remains adequate.
 
-## 8. Claim ceiling
+Limitation: cannot establish treatment-associated operator reorganization.
 
-No choice in this packet has been silently made. Current evidence supports an approved G1-S1-L3 candidate family and a well-constrained path to falsification. It does not support an admitted biological Chi, a cancer ranking, or a biological unity boundary.
+### D2: treatment-interaction operator
+
+```text
+x_(k+1) = T0 x_k + u_k DeltaT x_k + B u_k + c
+```
+
+Role: explicit treatment-associated operator reorganization in one frozen representation.
+
+Short-term SCC25 formal design count, if PBS day 0 is prospectively licensed as the shared pretreatment state:
+
+```text
+10 transitions total
+r=2 -> 2r+2 = 6 predictor columns
+r=3 -> 2r+2 = 8 predictor columns
+```
+
+Both A3 ranks are algebraically possible, but `r=3` has very little residual information and therefore requires especially strong conditioning/adequacy checks.
+
+### D3: separate-arm operators
+
+Fit independent `T_PBS` and `T_CTX` in the same frozen state basis.
+
+Role: flexible stress sensitivity.
+
+Limitation: loses parameter sharing and is vulnerable to tiny-sample instability.
+
+**Current pre-outcome recommendation:** D2 primary, D1 restricted/null comparator, D3 stress sensitivity only if conditioning remains adequate. This recommendation is based on identifiability, not SCC25 outcomes, and is **not yet frozen**.
+
+## 5. Remaining full G2 empirical-freeze decisions
+
+Even after A3, the first real G2 execution still requires prospective freezing of all of the following:
+
+### E. RNA count transformation / normalization
+
+The short-term processed source is a gene-level count matrix. Raw counts must not be fed directly into PCA merely because they are available.
+
+The exact transformation must be frozen before the treated trajectory is used. Candidate classes include a prospectively fixed variance-stabilizing/count-normalizing transformation or an explicitly defined library-size normalization plus log transform. The choice must preserve a clean transport story into the chronic source.
+
+### F. Feature universe
+
+The source exposes tens of thousands of genes while only 6 PBS control states define the R1 basis. A feature rule is therefore part of the hypothesis, not invisible preprocessing.
+
+A defensible rule must be outcome-blind and cannot select genes because they respond to cetuximab, improve a unity crossing or match proliferation.
+
+### G. Day-0 initialization
+
+Short-term SCC25 has PBS day 0 and treated days 1-5. The clean candidate convention is to license the PBS day-0 molecular state as the common pre-treatment initial state for both branches. This is biologically natural but still must be prospectively recorded because it changes the transition count from 9 to 10.
+
+### H. Conditioning refusal
+
+Full column rank is necessary but not sufficient. A frozen condition-number / perturbation-stability rule is needed so an algebraically solvable but numerically explosive operator is refused rather than interpreted.
+
+### I. Model adequacy refusal
+
+The first analysis needs a rule for when a low-order linear transition model is simply not adequate. Candidate diagnostics include residual scale, leave-one-transition-out sensitivity, coefficient/spectral perturbation stability and restricted-versus-interaction predictive comparison.
+
+### J. Uncertainty
+
+Weeks/days are serial descendants, not iid biological replicates. Ordinary iid bootstrap over time points is not licensed. Any uncertainty procedure must preserve that limitation and distinguish model-conditional perturbation uncertainty from biological replication uncertainty.
+
+### K. Cross-timescale transport
+
+Daily GSE114446 and weekly GSE98812 cannot be compared numerically as though their raw transition radii have the same interval. A transport rule is required. Any conversion such as `rho_ref = rho_Delta^(Delta_ref/Delta)` requires a separately justified time-invariant semigroup interpretation.
+
+### L. A3 material-conclusion schema
+
+A3 needs the exact statements that must agree under `r=2` and `r=3` before outcomes. Otherwise "material agreement" could be redefined after the fact.
+
+Examples of candidate material conclusions for later freeze include:
+
+- whether the chosen operator model is identifiable and passes adequacy checks;
+- whether treatment-associated operator reorganization is supported under the chosen model;
+- whether the side of the mathematical unit-circle boundary is the same under both ranks, while explicitly withholding biological boundary interpretation;
+- whether non-normal transient warnings materially alter the asymptotic spectral statement.
+
+## 6. Synthetic calibration now authorized and running as P0-D
+
+A deterministic synthetic calibration harness now exercises the proposed treatment-interaction design at both A3 ranks under known-truth stable, near-unit-circle, above-unit-circle and non-normal systems across a fixed synthetic noise grid.
+
+It reports:
+
+- full-rank fit fraction;
+- design condition-number distribution;
+- control and treated spectral-radius recovery error;
+- treatment-operator recovery error;
+- mathematical unit-circle side recovery;
+- non-normal warning recovery.
+
+It explicitly does **not**:
+
+- estimate SCC25 measurement noise;
+- select an empirical condition-number cutoff;
+- choose a rank winner;
+- compute real G2;
+- admit Chi_bio.
+
+Runner:
+
+`src/run_chi_bio_g2_interaction_calibration.py`
+
+The CI workflow executes 500 replicates per synthetic cell and uploads the JSON as a development artifact.
+
+## 7. B3 work that can continue independently
+
+Safe B3 work can continue through:
+
+- exact CollecTRI / DoRothEA export acquisition and byte hashing;
+- schema/evidence/sign provenance;
+- organism and identifier mapping checks;
+- duplicate/contradictory edge accounting;
+- gene-universe overlap with SCC25 and frozen TCGA RNA identifiers;
+- synthetic low-dimensional identifiability tests using fixed candidate rules.
+
+It must still stop before choosing the exact panel by inspecting SCC25/TCGA candidate behavior.
+
+## 8. Computational posture
+
+Nothing in the immediate SCC25 G2/B3 qualification requires HPC or GPU compute. The limiting problem is **identifiability**, not floating-point throughput.
+
+The short-term matrix has about 56k genes but only 11 SCC25 states; after transformation, PCA to `r=2/3` and fitting 2x2/3x3 operators is laptop-scale. The chronic 22-state series is likewise small.
+
+The heavier stage is later TCGA transport. The frozen C1 RNA state is approximately `9457 x 22601` float64, about 213.7 million values or 1.71 GB in decimal bytes before copies/intermediates. That later stage should be designed around memory mapping/chunking and compact regulon/module scores rather than repeated dense transcriptome copies.
+
+## 9. Current hard stop
+
+Safe preparation can continue through synthetic calibration, provenance qualification, contracts, source hashing and non-outcome normalization/feature-method comparison.
+
+Real SCC25 G2 remains blocked until D through L are frozen. Normalized empirical G1 remains blocked by C3 until independent restoration information exists.
+
+## 10. Claim ceiling
+
+The A3+B3+C3 architecture is approved and frozen. It supports a disciplined path to a temporal comparator and a mechanistically grounded future G1 state. It does not support an admitted biological Chi, a numerical G1, a cancer ranking or a biological unity boundary.
