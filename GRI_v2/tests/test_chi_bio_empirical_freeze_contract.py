@@ -24,6 +24,7 @@ def base_record():
         "chi_bio_outcomes_opened_before_freeze": False,
         "frozen_before_real_candidate_values": True,
         "primary_reduction_id": "R1_CONTROL_ONLY_UNSUPERVISED",
+        "rank_design": "PRIMARY_PLUS_SENSITIVITY",
         "primary_rank": 2,
         "sensitivity_ranks": [3],
         "basis_scope": "PBS_CONTROL_ONLY_PER_SOURCE",
@@ -45,8 +46,26 @@ def base_record():
     }
 
 
+def a3_record():
+    r = base_record()
+    r["rank_design"] = "A3_ROBUSTNESS_REQUIRED_R2_R3"
+    r["primary_rank"] = None
+    r["sensitivity_ranks"] = []
+    r["robustness_ranks"] = [2, 3]
+    r["rank_robustness_rule"] = (
+        "Evaluate all frozen material conclusions under r=2 and r=3; disagreement returns "
+        "REPRESENTATION_DEPENDENT_NO_TRANSFER."
+    )
+    r["material_conclusion_schema"] = "frozen outcome-independent conclusion schema placeholder"
+    return r
+
+
 def test_complete_prospective_empirical_freeze_record_passes():
     validate_empirical_freeze(base_record())
+
+
+def test_complete_a3_empirical_freeze_record_passes():
+    validate_empirical_freeze(a3_record())
 
 
 def test_missing_science_approval_fails():
@@ -67,6 +86,27 @@ def test_primary_rank_cannot_double_as_sensitivity_rank():
     r = base_record()
     r["sensitivity_ranks"] = [2, 3]
     with pytest.raises(EmpiricalFreezeContractError, match="also be listed"):
+        validate_empirical_freeze(r)
+
+
+def test_a3_cannot_privilege_primary_rank():
+    r = a3_record()
+    r["primary_rank"] = 2
+    with pytest.raises(EmpiricalFreezeContractError, match="may not designate"):
+        validate_empirical_freeze(r)
+
+
+def test_a3_requires_both_ranks_in_fixed_order():
+    r = a3_record()
+    r["robustness_ranks"] = [3, 2]
+    with pytest.raises(EmpiricalFreezeContractError, match="robustness_ranks"):
+        validate_empirical_freeze(r)
+
+
+def test_a3_requires_material_conclusion_schema():
+    r = a3_record()
+    r["material_conclusion_schema"] = ""
+    with pytest.raises(EmpiricalFreezeContractError, match="material_conclusion_schema"):
         validate_empirical_freeze(r)
 
 
