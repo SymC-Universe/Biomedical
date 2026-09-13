@@ -4,8 +4,8 @@ from __future__ import annotations
 
 This module is deliberately representation-agnostic and is not authorized to
 choose an empirical state dimension. It provides deterministic mechanics for a
-*pre-frozen* control-only PCA basis and unregularized transition fit, plus
-refusal diagnostics. No public cancer source is read by this module.
+pre-frozen control-only PCA basis and transition fits, plus refusal diagnostics.
+No public cancer source is read by this module.
 """
 
 from dataclasses import dataclass
@@ -29,6 +29,22 @@ class ControlPCABasis:
 @dataclass(frozen=True)
 class TransitionFit:
     transition: np.ndarray
+    input_matrix: np.ndarray | None
+    intercept: np.ndarray | None
+    design_rank: int
+    design_columns: int
+    n_transitions: int
+    residual_frobenius: float
+    relative_residual_frobenius: float
+    condition_number: float
+    status: str
+
+
+@dataclass(frozen=True)
+class TreatmentInteractionFit:
+    control_transition: np.ndarray
+    treatment_delta_transition: np.ndarray
+    treated_transition: np.ndarray
     input_matrix: np.ndarray | None
     intercept: np.ndarray | None
     design_rank: int
@@ -65,7 +81,7 @@ def fit_control_pca(control_features: np.ndarray, *, state_dimension: int) -> Co
     if d <= 0:
         raise ValueError("state_dimension must be positive")
     centered = x - np.mean(x, axis=0, keepdims=True)
-    u, s, vt = np.linalg.svd(centered, full_matrices=False)
+    _, s, vt = np.linalg.svd(centered, full_matrices=False)
     numerical_rank = int(np.linalg.matrix_rank(centered))
     if d > numerical_rank:
         raise ValueError(
@@ -135,7 +151,12 @@ def fit_shared_transition(
     include_intercept: bool = True,
     rank_tolerance: float | None = None,
 ) -> TransitionFit:
-    """Fit x_next = T x_now + B u + c by least squares or refuse rank failure."""
+    """Fit x_next = T x_now + B u + c by least squares or refuse rank failure.
+
+    Important: an additive treatment input changes forcing/equilibrium but leaves
+    the fitted T shared across arms. It therefore cannot, by itself, establish a
+    treatment-induced change in the transition operator's spectral radius.
+    """
 
     x0 = _finite_2d(x_now, "x_now")
     x1 = _finite_2d(x_next, "x_next")
@@ -190,6 +211,95 @@ def fit_shared_transition(
 
     return TransitionFit(
         transition=t,
+        input_matrix=b,
+        intercept=c,
+        design_rank=rank,
+        design_columns=columns,
+        n_transitions=x0.shape[0],
+        residual_frobenius=residual,
+        relative_residual_frobenius=rel,
+        condition_number=cond,
+        status="FIT_IDENTIFIABLE_AT_DECLARED_LINEAR_DESIGN",
+    )
+
+
+def fit_treatment_interaction_transition(
+    x_now: np.ndarray,
+    x_next: np.ndarray,
+    *,
+    treatment_indicator: np.ndarray,
+    include_additive_input: bool = True,
+    include_intercept: bool = True,
+    rank_tolerance: float | None = None,
+) -> TreatmentInteractionFit:
+    """Fit a treatment-dependent operator without selecting outcomes.
+
+    Model:
+        x_next = T0 x_now + u * DeltaT x_now + B u + c
+
+    where u must be a single binary column. The implied operators are
+    T_control=T0 and T_treated=T0+DeltaT. This is the minimal shared-design
+    formulation that can test operator reorganization rather than only an
+    additive shift in forcing.
+    """
+
+    x0 = _finite_2d(x_now, "x_now")
+    x1 = _finite_2d(x_next, "x_next")
+    if x0.shape != x1.shape:
+        raise ValueError("x_now and x_next must have identical shape")
+    u = _finite_2d(treatment_indicator, "treatment_indicator")
+    if u.shape != (x0.shape[0], 1):
+        raise ValueError("treatment_indicator must be one column with one row per transition")
+    if not np.all(np.isin(u, [0.0, 1.0])):
+        raise ValueError("treatment_indicator must be binary 0/1")
+
+    interaction = x0 * u
+    pieces = [x0, interaction]
+    if include_additive_input:
+        pieces.append(u)
+    if include_intercept:
+        pieces.append(np.ones((x0.shape[0], 1)))
+    design = np.hstack(pieces)
+    rank = int(np.linalg.matrix_rank(design, tol=rank_tolerance))
+    columns = design.shape[1]
+    d = x0.shape[1]
+
+    if rank < columns:
+        return TreatmentInteractionFit(
+            control_transition=np.full((d, d), np.nan),
+            treatment_delta_transition=np.full((d, d), np.nan),
+            treated_transition=np.full((d, d), np.nan),
+            input_matrix=np.full((d, 1), np.nan) if include_additive_input else None,
+            intercept=np.full(d, np.nan) if include_intercept else None,
+            design_rank=rank,
+            design_columns=columns,
+            n_transitions=x0.shape[0],
+            residual_frobenius=float("nan"),
+            relative_residual_frobenius=float("nan"),
+            condition_number=float("inf"),
+            status="REFUSE_RANK_DEFICIENT_DESIGN",
+        )
+
+    coef, *_ = np.linalg.lstsq(design, x1, rcond=None)
+    fitted = design @ coef
+    residual = float(np.linalg.norm(x1 - fitted, ord="fro"))
+    denom = float(np.linalg.norm(x1, ord="fro"))
+    rel = residual / denom if denom > 0 else residual
+    cond = float(np.linalg.cond(design))
+
+    t0 = coef[:d, :].T
+    dt = coef[d : 2 * d, :].T
+    offset = 2 * d
+    b = None
+    if include_additive_input:
+        b = coef[offset : offset + 1, :].T
+        offset += 1
+    c = coef[offset, :].copy() if include_intercept else None
+
+    return TreatmentInteractionFit(
+        control_transition=t0,
+        treatment_delta_transition=dt,
+        treated_transition=t0 + dt,
         input_matrix=b,
         intercept=c,
         design_rank=rank,
