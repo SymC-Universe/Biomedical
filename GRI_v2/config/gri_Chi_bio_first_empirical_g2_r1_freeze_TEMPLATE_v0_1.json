@@ -1,0 +1,63 @@
+{
+  "schema_version": "0.1",
+  "status": "TEMPLATE_INCOMPLETE_DO_NOT_EXECUTE_REAL_DATA",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.4_FINAL",
+  "freeze_id": "",
+  "scientific_approval_reference": "",
+  "freeze_timestamp": "",
+  "chi_bio_outcomes_opened_before_freeze": false,
+  "frozen_before_real_candidate_values": false,
+  "primary_reduction_id": "R1_CONTROL_ONLY_UNSUPERVISED",
+  "primary_rank": null,
+  "sensitivity_ranks": [],
+  "basis_scope": "PBS_CONTROL_ONLY_PER_SOURCE",
+  "basis_fit_uses_treated_states": false,
+  "primary_transition_model": "SHARED_T_PLUS_TREATMENT_INPUT_PLUS_INTERCEPT",
+  "normalization_rule": "",
+  "feature_universe_rule": "",
+  "day0_initialization_rule": "",
+  "conditioning_refusal_rule": "",
+  "model_adequacy_refusal_rule": "",
+  "uncertainty_rule": "",
+  "transport_rule": "",
+  "selection_inputs": [
+    "PBS_CONTROL_RNA_ONLY"
+  ],
+  "supported_refusals": [
+    "REFUSE_RANK_DEFICIENT_DESIGN",
+    "REFUSE_ILL_CONDITIONED_DESIGN",
+    "REFUSE_UNSTABLE_OR_NONTRANSPORTABLE_BASIS",
+    "REFUSE_SOURCE_IDENTITY_MISMATCH",
+    "REFUSE_UNCERTAINTY_SPANS_BOUNDARY",
+    "REFUSE_REPRESENTATION_DEPENDENT_NO_TRANSFER"
+  ],
+  "proliferation_reserved_for_postconstruction_test": true,
+  "atac_reserved_for_postconstruction_relational_test": true,
+  "scrna_reserved_for_postconstruction_carrier_test": true,
+  "biological_unity_boundary_admitted": false,
+  "template_instructions": {
+    "science_fields_that_require_explicit_freeze": [
+      "primary_rank",
+      "sensitivity_ranks",
+      "normalization_rule",
+      "feature_universe_rule",
+      "day0_initialization_rule",
+      "conditioning_refusal_rule",
+      "model_adequacy_refusal_rule",
+      "uncertainty_rule",
+      "transport_rule"
+    ],
+    "do_not_fill_by_inspecting": [
+      "candidate_Chi_bio_values",
+      "distance_to_unity",
+      "unity_crossing_week",
+      "proliferation_response",
+      "ATAC_agreement",
+      "scRNA_carrier_agreement",
+      "resistant_clone_labels",
+      "Atlas_placement",
+      "clinical_outcomes"
+    ],
+    "activation_rule": "Copy this template to a new immutable freeze file only after explicit scientific review. The new file must pass src.chi_bio_empirical_freeze_contract.validate_empirical_freeze before any real molecular matrix is loaded."
+  }
+}
