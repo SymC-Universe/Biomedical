@@ -4,7 +4,9 @@ on:
   pull_request:
     paths:
       - 'GRI_v2/src/probe_chi_bio_geo_sources.py'
+      - 'GRI_v2/src/validate_chi_bio_geo_source_probe.py'
       - 'GRI_v2/config/gri_hnscc_shortterm_cetuximab_manifest_p0d_v0_1.json'
+      - 'GRI_v2/config/gri_hnscc_shortterm_bulk_rna_column_map_p0d_v0_1.json'
       - 'GRI_v2/config/gri_hnscc_day5_atac_manifest_p0d_v0_1.json'
       - '.github/workflows/gri-v2-chi-bio-geo-source-probe.yml'
   workflow_dispatch:
@@ -23,9 +25,13 @@ jobs:
           python-version: '3.12'
       - name: Probe frozen public GEO supplementary sources
         run: python -m src.probe_chi_bio_geo_sources
-      - name: Upload provenance report only
+      - name: Validate cross-file source identities
+        run: python -m src.validate_chi_bio_geo_source_probe
+      - name: Upload provenance and identity reports only
         uses: actions/upload-artifact@v4
         with:
           name: gri-chi-bio-geo-source-probe
-          path: GRI_v2/development_outputs/chi_bio_geo_source_probe/GRI_CHI_BIO_GEO_SOURCE_PROBE.json
+          path: |
+            GRI_v2/development_outputs/chi_bio_geo_source_probe/GRI_CHI_BIO_GEO_SOURCE_PROBE.json
+            GRI_v2/development_outputs/chi_bio_geo_source_probe/GRI_CHI_BIO_GEO_SOURCE_IDENTITY_VALIDATION.json
           if-no-files-found: error
