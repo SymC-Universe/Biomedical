@@ -22,6 +22,24 @@ VALUE_ALLOWED_STATES = frozenset({
     "EXTERNALLY_ADMITTED_P1",
     "UNITY_BOUNDARY_ADMITTED",
 })
+GENERATOR_CLASSES = frozenset({
+    "UNSELECTED",
+    "LINEARIZED_REGULATORY_STATE_SPACE_JACOBIAN",
+    "NORMALIZED_REGULATORY_INTERACTION_MATRIX",
+    "COUPLED_MODE_OR_GENERALIZED_EIGENVALUE",
+    "DISCRETE_TRANSITION_OPERATOR",
+    "SECOND_ORDER_RESPONSE_IF_NATIVELY_LICENSED",
+    "DELAY_MEMORY_FEEDBACK",
+    "ATTRACTOR_FOKKER_PLANCK",
+    "LANDSCAPE_BARRIER_NOISE",
+    "ROBUST_FEEDBACK_GAIN",
+    "TRANSITION_OPERATOR_OR_CELL_STATE_FLOW",
+    "PERTURBATION_RESPONSE_RECOVERY_OPERATOR",
+    "OTHER_NATIVE_ONCOLOGY_REGULATORY_GENERATOR",
+})
+VIEW_STATES = frozenset({
+    "AVAILABLE", "PARTIAL", "UNRESOLVED", "NOT_APPLICABLE", "REFUSED"
+})
 PROHIBITED_DIRECT_ALIASES = frozenset({
     "CV/2", "CV2", "CV_OVER_2", "S_SPEC", "H2", "H3A", "H3B", "GLOBAL_CKA"
 })
@@ -64,6 +82,12 @@ def validate_chi_bio_record(record: Mapping[str, Any]) -> None:
     if state not in PROMOTION_STATES:
         raise ChiBioContractError(f"invalid promotion_state: {state!r}")
 
+    generator_class = record.get("generator_class", "UNSELECTED")
+    if generator_class not in GENERATOR_CLASSES:
+        raise ChiBioContractError(f"invalid generator_class: {generator_class!r}")
+    if state != "NOT_ADMITTED" and generator_class == "UNSELECTED":
+        raise ChiBioContractError("locked/admitted Chi_bio requires a selected generator_class")
+
     passed = frozenset(str(x) for x in record.get("passed_gates", []))
     unknown = passed - GATE_SET
     if unknown:
@@ -90,6 +114,10 @@ def validate_chi_bio_record(record: Mapping[str, Any]) -> None:
         view = _mapping(record.get(key), key)
         if "status" not in view or "inputs" not in view:
             raise ChiBioContractError(f"{key} requires status and inputs")
+        if view["status"] not in VIEW_STATES:
+            raise ChiBioContractError(f"invalid {key}.status: {view['status']!r}")
+        if not isinstance(view["inputs"], (list, tuple)):
+            raise ChiBioContractError(f"{key}.inputs must be a list/tuple")
 
     refusal = _mapping(record.get("refusal"), "refusal")
     supported = frozenset(str(x) for x in refusal.get("supported_states", []))
@@ -106,7 +134,10 @@ def validate_chi_bio_record(record: Mapping[str, Any]) -> None:
         raise ChiBioContractError("Chi_bio_value is not allowed in this promotion state")
 
     unity_status = record.get("unity_boundary_status")
-    allowed_unity = {"NOT_TESTED", "CANDIDATE_REFERENCE_ONLY", "UNRESOLVED", "REJECTED_OR_DIFFERENT_BOUNDARY", "ADMITTED"}
+    allowed_unity = {
+        "NOT_TESTED", "CANDIDATE_REFERENCE_ONLY", "UNRESOLVED",
+        "REJECTED_OR_DIFFERENT_BOUNDARY", "ADMITTED"
+    }
     if unity_status not in allowed_unity:
         raise ChiBioContractError("invalid unity_boundary_status")
 
