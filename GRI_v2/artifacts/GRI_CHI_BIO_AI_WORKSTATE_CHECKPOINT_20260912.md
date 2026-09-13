@@ -33,9 +33,11 @@
 12. Defined static-to-dynamic estimator bridge required before mapping TCGA to an operator-derived Chi.
 13. Defined read-only internal numeric export schema; no C1 rerun required.
 14. Defined generator-neutral known-truth/known-failure synthetic harness.
-15. Created science decision packet comparing generator, state-vector, and local/embedded choices.
-16. Updated draft PR #4 to the complete current scope and exact science stop.
-17. Verified GitHub Actions `GRI v2 tests` run #481 PASS on commit `013cafb75c1b456a39e2af68b69202adcaf065e8` after the decision packet/checkpoint additions.
+15. Added generator-neutral executable mathematical probes for G1/G2.
+16. Added known-truth regression tests covering G1 below/at/above-unity cases, the source-model Jacobian shift, G2 below/at/above-unit-circle cases, sampling-interval dependence, and a non-normal spectrally stable but amplifying case.
+17. Created science decision packet comparing generator, state-vector, and local/embedded choices.
+18. Updated draft PR #4 to the complete current scope and exact science stop.
+19. Verified GitHub Actions `GRI v2 tests` run #484 PASS on code/test commit `a2587d1e22bb58ee43cd2b49218d01b2bd76467d`.
 
 ## VERIFIED_OUTPUTS
 
@@ -45,6 +47,8 @@ Current branch artifacts include:
 - `config/gri_Chi_bio_candidate_program_v0_1.json`
 - `src/chi_bio_contract.py`
 - `tests/test_chi_bio_contract.py`
+- `src/chi_bio_candidate_math.py`
+- `tests/test_chi_bio_candidate_math.py`
 - `config/coordinate_registry.json`
 - `docs/GRI_REGULATORY_SUBSTRATE_ATLAS_V0_2_CHI_BIO_EXTENSION_20260912.md`
 - `docs/GRI_CHI_BIO_EXPERIMENTAL_OPPORTUNITY_PRESEARCH_20260912.md`
@@ -83,7 +87,7 @@ No recomputation is authorized or needed. The completed return archives should b
 
 - no decisive external P1 source selected/frozen;
 - no MFR-14 Chi_bio candidate freeze;
-- no generator-specific synthetic harness run;
+- no generator-specific production harness freeze;
 - no Chi_bio static estimator calibrated;
 - no cancer-specific Chi_bio values computed;
 - no biological `Chi_bio = 1` boundary admitted.
@@ -102,4 +106,4 @@ Resume from `GRI_CHI_BIO_SCIENCE_DECISION_PACKET_20260912.md`. Do not infer that
 
 ## CLAIM CEILING
 
-Current evidence supports a well-specified **candidate Chi_bio research program and concrete native generator possibilities**. It does not support the existence of an admitted biological Chi, a 32-cancer Chi ranking, a stability-regime classification, or a biological unity boundary.
+Current evidence supports a well-specified **candidate Chi_bio research program, concrete native generator possibilities, and mechanically verified known-truth mathematical probes**. It does not support the existence of an admitted biological Chi, a 32-cancer Chi ranking, a stability-regime classification, or a biological unity boundary.
