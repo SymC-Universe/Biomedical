@@ -1,0 +1,77 @@
+{
+  "schema_version": "0.1",
+  "status": "FROZEN_PREOUTCOME_GATE_SPEC",
+  "freeze_id": "GRI_CHI_BIO_G1_IDENTIFIABILITY_GATE_20260913",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.4_FINAL",
+  "candidate_family": "G1_S1_L3",
+  "real_cancer_Chi_bio_values_may_select_gate": false,
+  "atlas_or_unity_placement_may_select_gate": false,
+  "purpose": "Determine whether a proposed empirical transcriptomic representation and operator estimator are identifiable enough to proceed to internal Chi_bio mapping, while preserving G2/G4 as material competitors.",
+  "stages": [
+    {
+      "id": "IG1_REPRESENTATION_IDENTITY",
+      "question": "Is the transcriptomic state basis frozen, reproducible, and transportable without cancer-outcome or unity tuning?",
+      "required_evidence": ["basis_provenance", "membership_or_loading_freeze", "dimension_rule", "transport_rule"],
+      "failure": "REPRESENTATION_DEPENDENT_NO_TRANSFER"
+    },
+    {
+      "id": "IG2_PARAMETER_COUNT_AND_RANK",
+      "question": "Is the effective operator parameterization supportable by the available sample/time structure?",
+      "required_evidence": ["state_dimension", "effective_parameter_count", "design_rank", "regularization_degrees_of_freedom_or_bound"],
+      "failure": "NOT_IDENTIFIABLE"
+    },
+    {
+      "id": "IG3_SYNTHETIC_RECOVERY_MATCHED_GEOMETRY",
+      "question": "Can the frozen estimator recover known G1 operators at the proposed dimension/sample/noise geometry?",
+      "required_evidence": ["known_truth_recovery_error", "regime_error", "modal_subspace_error", "refusal_accuracy"],
+      "failure": "CANDIDATE_NOT_LOCKED"
+    },
+    {
+      "id": "IG4_RESAMPLING_STABILITY",
+      "question": "Are scalar and modal outputs stable to frozen resampling/perturbation without post-hoc tuning?",
+      "required_evidence": ["scalar_interval", "leading_subspace_stability", "regularization_sensitivity", "condition_diagnostics"],
+      "failure": "NOT_IDENTIFIABLE_OR_UNCERTAINTY_SPANS_BOUNDARY"
+    },
+    {
+      "id": "IG5_NONNORMALITY_AND_COMPRESSION_LOSS",
+      "question": "Does scalar G1 omit material transient/modal behavior that changes scientific interpretation?",
+      "required_evidence": ["spectral_abscissa", "numerical_abscissa_or_transient_gain", "dominant_mode_gap", "compression_loss_statement"],
+      "failure": "NO_COHERENT_CHI_BIO_OR_SCALAR_WITH_MODAL_WARNING_ONLY"
+    },
+    {
+      "id": "IG6_LOCAL_EMBEDDED_SEPARATION",
+      "question": "Can local/intrinsic and embedded/realized objects be kept distinct, and is any inheritance claim explicitly tested?",
+      "required_evidence": ["local_definition", "embedded_definition", "shared_inputs", "closure_or_nonclosure_test"],
+      "failure": "OUT_OF_VALIDITY_REGIME_FOR_SYSTEM_LEVEL_INHERITANCE"
+    },
+    {
+      "id": "IG7_G2_COMPETITOR",
+      "question": "On temporal/perturbational data, does a G2 transition representation explain measurable dynamics at least as coherently as G1?",
+      "required_evidence": ["sampling_interval", "G2_identifiability", "predictive_or_reconstruction_comparison", "non_normality_check"],
+      "failure": "NARROW_G1_OR_ELEVATE_G2"
+    },
+    {
+      "id": "IG8_G4_STOCHASTIC_ALTERNATIVE",
+      "question": "Is deterministic/local operator structure sufficient, or is attraction/diffusion/noise essential to the observed regime behavior?",
+      "required_evidence": ["residual_noise_structure", "escape_or_diffusion_relevance", "deterministic_model_misspecification_check"],
+      "failure": "NO_SINGLE_DETERMINISTIC_CHI_OR_ELEVATE_G4"
+    },
+    {
+      "id": "IG9_BOUNDARY_UNCERTAINTY",
+      "question": "If a future empirical value is near unity, is the uncertainty narrow enough to classify a regime?",
+      "required_evidence": ["frozen_interval_method", "boundary_tolerance", "representation_uncertainty"],
+      "failure": "UNCERTAINTY_SPANS_BOUNDARY"
+    }
+  ],
+  "minimum_pilot_order": [
+    "IG1_REPRESENTATION_IDENTITY",
+    "IG2_PARAMETER_COUNT_AND_RANK",
+    "IG3_SYNTHETIC_RECOVERY_MATCHED_GEOMETRY",
+    "IG4_RESAMPLING_STABILITY",
+    "IG5_NONNORMALITY_AND_COMPRESSION_LOSS",
+    "IG6_LOCAL_EMBEDDED_SEPARATION"
+  ],
+  "competitor_order_after_primary_pilot": ["IG7_G2_COMPETITOR", "IG8_G4_STOCHASTIC_ALTERNATIVE"],
+  "promotion_rule": "Passing the gate can qualify an empirical estimator for frozen internal mapping only after the exact state basis and estimator are prospectively frozen. It does not admit biological Chi_bio or unity as a biological boundary.",
+  "failure_rule": "A failed gate narrows or refuses the representation. Do not tune state dimension, regularization, basis, or normalization using cancer-specific unity placement to rescue it."
+}
