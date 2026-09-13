@@ -11,7 +11,6 @@ import gzip
 import hashlib
 import json
 from pathlib import Path
-import re
 
 import pandas as pd
 
@@ -34,6 +33,9 @@ def run_probe() -> dict:
     ensembl = genes.str.fullmatch(r"ENSG\d+(?:\.\d+)?")
     symbolish = genes.str.fullmatch(r"[A-Za-z0-9_.-]+")
     right_numeric = right.fillna("").str.fullmatch(r"\d+")
+    duplicate_mask = left.duplicated(keep=False)
+    duplicate_tokens = sorted(left[duplicate_mask].unique().tolist())
+    named_duplicate_tokens = [x for x in duplicate_tokens if x != "?"]
 
     result = {
         "status": "PASS_GSE98812_GENE_NAMESPACE_DIAGNOSTIC",
@@ -50,6 +52,10 @@ def run_probe() -> dict:
         "pipe_right_numeric_count": int(right_numeric[pipe].sum()),
         "pipe_left_duplicate_count": int(left[pipe].duplicated().sum()),
         "pipe_left_blank_count": int(left[pipe].eq("").sum()),
+        "question_mark_symbol_row_count": int(left.eq("?").sum()),
+        "duplicate_left_tokens": duplicate_tokens,
+        "named_duplicate_left_tokens": named_duplicate_tokens,
+        "named_duplicate_left_token_count": len(named_duplicate_tokens),
         "pipe_left_examples_first_20": left[pipe].head(20).tolist(),
         "pipe_right_examples_first_20": right[pipe].head(20).tolist(),
         "download_attempt_history": history,
