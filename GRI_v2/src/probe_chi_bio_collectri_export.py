@@ -54,6 +54,8 @@ def _download_exact_source(
 ) -> tuple[bytes, list[dict]]:
     if attempts <= 0:
         raise ValueError("attempts must be positive")
+    if not backoff_seconds and attempts > 1:
+        raise ValueError("backoff_seconds must be nonempty when multiple attempts are allowed")
     history: list[dict] = []
     last_error: Exception | None = None
     session = requests.Session()
@@ -112,15 +114,18 @@ def _apply_decoupler_220_human_semantics(raw: pd.DataFrame) -> pd.DataFrame:
         raise RuntimeError(f"raw CollecTRI source missing required columns: {sorted(missing)}")
 
     out = raw.copy()
-    resources: list[str] = []
+    resources: list[object] = []
     for value in out["resources"]:
+        if pd.isna(value):
+            resources.append(value)
+            continue
         text = str(value)
         parts = text.replace("CollecTRI", "").split(";")
         resources.append(
             ";".join(sorted([part.replace("_", "") for part in parts if part != ""]))
         )
     out["resources"] = resources
-    out["references"] = out["references"].astype(str).str.replace("CollecTRI:", "", regex=False)
+    out["references"] = out["references"].str.replace("CollecTRI:", "", regex=False)
     out = out.dropna()
     out["weight"] = pd.to_numeric(out["weight"], errors="raise")
     out = out.drop_duplicates(["source", "target"]).reset_index(drop=True)
