@@ -6,6 +6,7 @@ on:
       - 'GRI_v2/src/probe_chi_bio_chronic_processed_sources.py'
       - 'GRI_v2/src/probe_chi_bio_chronic_rna_anatomy.py'
       - 'GRI_v2/config/gri_scc25_paired_timecourse_manifest_p0d_v0_1.json'
+      - 'GRI_v2/config/gri_scc25_chronic_source_provenance_lock_v0_2.json'
       - '.github/workflows/gri-v2-chi-bio-chronic-source-probe.yml'
   workflow_dispatch:
 
