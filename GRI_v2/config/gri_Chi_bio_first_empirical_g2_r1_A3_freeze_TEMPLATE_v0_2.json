@@ -17,7 +17,7 @@
   "material_conclusion_schema": "",
   "basis_scope": "PBS_CONTROL_ONLY_PER_SOURCE",
   "basis_fit_uses_treated_states": false,
-  "primary_transition_model": "SHARED_T_PLUS_TREATMENT_INPUT_PLUS_INTERCEPT",
+  "primary_transition_model": "",
   "normalization_rule": "",
   "feature_universe_rule": "",
   "day0_initialization_rule": "",
@@ -51,6 +51,7 @@
       "no_rank_winner_rule"
     ],
     "science_fields_still_requiring_explicit_freeze": [
+      "primary_transition_model",
       "material_conclusion_schema",
       "normalization_rule",
       "feature_universe_rule",
@@ -60,6 +61,7 @@
       "uncertainty_rule",
       "transport_rule"
     ],
+    "operator_model_note": "The additive-input shared-T model cannot by itself establish treatment-induced operator reorganization because T is shared. A treatment-interaction model T_control plus u*DeltaT or a separately frozen arm-specific alternative is required if operator change is the target.",
     "do_not_fill_by_inspecting": [
       "candidate_Chi_bio_values",
       "distance_to_unity",
