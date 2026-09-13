@@ -18,17 +18,10 @@ The user explicitly approved the recommended plan on 2026-09-13:
 - temporal comparator: G2 discrete transition operator;
 - stochastic alternative: G4 attraction/diffusion.
 
-Freeze record:
-
-`docs/GRI_CHI_BIO_G1_S1_L3_CANDIDATE_FREEZE_20260913.md`
-
-Candidate MFR-14:
-
-`config/gri_Chi_bio_G1_S1_L3_mfr14_candidate_v0_1.json`
+Freeze record: `docs/GRI_CHI_BIO_G1_S1_L3_CANDIDATE_FREEZE_20260913.md`  
+Candidate MFR-14: `config/gri_Chi_bio_G1_S1_L3_mfr14_candidate_v0_1.json`
 
 ## HARDENED MATHEMATICAL DISPOSITION
-
-The approved G1 family does not license every normalization that happens to cross one.
 
 - common scalar restoration `R = beta I`: exact unity route retained;
 - symmetric production Jacobian with SPD restoration: generalized exact route retained;
@@ -39,20 +32,21 @@ Therefore an empirical transcriptomic G1 requires independently justified restor
 ## WORK PUSHED AFTER APPROVAL
 
 1. Froze the G1-S1-L3 candidate family without admitting Chi_bio.
-2. Added a complete candidate-level MFR-14 with precommitted retirement/narrowing on failure.
-3. Preserved and CI-executed the frozen generator-specific known-truth/known-failure harness.
+2. Added a candidate-level MFR-14 with precommitted retirement/narrowing on failure.
+3. Preserved and CI-executed the frozen G1 known-truth/known-failure harness.
 4. Synchronized the candidate-program registry to the approved family and exact-unity narrowing.
-5. Added a pre-outcome G1 identifiability gate covering representation, rank, synthetic recovery, resampling, non-normality, local/embedded separation, G2, G4 and boundary uncertainty.
-6. Added CI guard tests for the identifiability gate.
-7. Audited empirical transcriptomic reduction classes without opening real Chi outcomes.
+5. Added a pre-outcome G1 identifiability gate covering representation, rank, matched synthetic recovery, resampling, non-normality, local/embedded separation, G2, G4 and boundary uncertainty.
+6. Added CI guard tests for that gate.
+7. Audited transcriptomic reduction classes without opening real Chi outcomes.
 8. Ranked fixed biological/regulon states as the leading G1 representation class and outcome-blind latent state as a representation sensitivity.
-9. Surveyed regulatory-state source families. CollecTRI is the current leading fixed signed-regulon source for further qualification; DoRothEA remains an important comparator. No basis is frozen.
-10. Re-read the existing SCC25 state-reduction and rank decision packets to avoid duplicate or conflicting design.
-11. Extended the SCC25 RNA-turnover literature collision across 4sU, SLAM-seq, TimeLapse-seq, TUC-seq and BRIC-seq search families. No transcriptome-wide SCC25 restoration source was located in two targeted passes.
-12. Consolidated the next science choices into `docs/GRI_CHI_BIO_NEXT_SCIENCE_DECISION_PACKET_20260913.md`.
-13. Added a decision-template JSON that cannot authorize execution while A/B/C choices remain unset, plus a regression test enforcing that state.
+9. Surveyed regulatory-state source families. CollecTRI currently leads for review; DoRothEA remains an important representation comparator. No basis is frozen.
+10. Re-read the existing SCC25 reduction/rank packets and G1/G2 identifiability attack to avoid duplicate design.
+11. Extended the SCC25 RNA-turnover collision across 4sU, SLAM-seq, TimeLapse-seq, TUC-seq and BRIC-seq. No transcriptome-wide SCC25 restoration source was located in two targeted passes.
+12. Consolidated remaining science decisions in `docs/GRI_CHI_BIO_NEXT_SCIENCE_DECISION_PACKET_20260913.md`.
+13. Added a decision-template JSON that authorizes nothing while A/B/C choices remain unset, with regression guard.
+14. Removed an accidental no-op boundary file created during mechanical checkpointing; no science or durable artifact was lost.
 
-## LATEST VERIFIED CI BEFORE FINAL CHECKPOINT COMMITS
+## VERIFIED CI
 
 On commit `b64e752948dda0285bf75ecaa7de9c96a810fcab`:
 
@@ -60,17 +54,15 @@ On commit `b64e752948dda0285bf75ecaa7de9c96a810fcab`:
 - `GRI Chi_bio chronic source probe` run #28: SUCCESS;
 - `GRI Chi_bio GEO source probe` run #46: SUCCESS.
 
-Commits after that point added only gate tests, literature-collision documentation, the decision packet/template, and this checkpoint. Their current-head CI must be verified before treating the checkpoint head as green.
+Current-head CI after the later guard/documentation commits must be checked before claiming the newest head green.
 
 ## PR CONTROL STATE
 
-PR #4 remains **draft and unmerged**. A metadata check after the new candidate-family work reported `mergeable=false`. No merge, rebase, or forced conflict resolution is authorized merely to clear that flag. The branch/base relationship should be inspected mechanically after current CI; any reconciliation must preserve the approved Chi_bio science and all independent base-branch changes.
+PR #4 remains draft and unmerged. A metadata check after the expanded candidate-family work reported `mergeable=false`. No merge, rebase or forced conflict resolution is authorized merely to clear that flag. The branch/base relationship should be inspected mechanically; reconciliation must preserve both the approved Chi_bio science and independent base-branch changes.
 
 ## CURRENT SCIENTIFIC BLOCKERS
 
 ### A. First G2 temporal rank design
-
-The clean SCC25 R1 design still requires one prospective choice:
 
 - A1: primary `r=2`, sensitivity `r=3`;
 - A2: primary `r=3`, sensitivity `r=2`;
@@ -81,34 +73,28 @@ No real G2 trajectory should be computed until this is frozen.
 
 ### B. First G1 low-dimensional regulatory state
 
-The exact basis remains open. Current leading route is an externally sourced fixed signed-regulon state, with CollecTRI leading for review and DoRothEA retained as representation sensitivity. The exact version, subset/dimension rule and state-scoring semantics remain scientific choices.
+Current leading route is an externally sourced fixed signed-regulon state, with CollecTRI leading for review and DoRothEA retained as representation sensitivity. Exact version, subset/dimension rule and state-scoring semantics remain scientific choices.
 
 ### C. G1 restoration strategy
 
-Two targeted source passes did not locate transcriptome-wide SCC25 turnover sufficient to identify general restoration. Current evidence therefore favors withholding a normalized empirical G1 value until reduced-state restoration is independently resolved rather than inventing a common beta.
+Two targeted source passes did not locate transcriptome-wide SCC25 turnover sufficient to identify general restoration. Current evidence favors withholding a normalized empirical G1 value until reduced-state restoration is independently resolved rather than inventing a common beta.
 
 ## FILE DEPENDENCIES
 
-The completed machine-readable archives remain needed read-only for later internal mapping/identifiability work:
+Later internal mapping still needs the existing completed archives read-only:
 
 - `Stage_C1_Result.zip`
 - `Post_C1_Adversarial_Sensitivity_v2_2_Result.zip`
 
-Do not rerun C1 or the post-C1 sensitivity.
+Do not rerun C1 or post-C1 sensitivity.
 
-## SAFE_RESUME POINT
+## SAFE RESUME POINT
 
 Safe autonomous work has reached the boundary where executing an outcome-bearing temporal test or freezing the empirical G1 representation would change the scientific object.
 
-Resume from:
+Resume from `docs/GRI_CHI_BIO_NEXT_SCIENCE_DECISION_PACKET_20260913.md`.
 
-`docs/GRI_CHI_BIO_NEXT_SCIENCE_DECISION_PACKET_20260913.md`
-
-After A/B/C scientific selections are explicitly approved, fill and freeze:
-
-`config/gri_Chi_bio_next_science_decisions_TEMPLATE_v0_1.json`
-
-then resume autonomous implementation/preflight/pilot work.
+After A/B/C selections are explicitly approved, fill and freeze `config/gri_Chi_bio_next_science_decisions_TEMPLATE_v0_1.json`, then resume autonomous implementation/preflight/pilot work.
 
 ## CLAIM CEILING
 
