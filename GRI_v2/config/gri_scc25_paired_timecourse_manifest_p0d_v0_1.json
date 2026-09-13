@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1",
-  "status": "P0_D_SOURCE_IDENTITY_MANIFEST_NO_CHI_OUTCOMES",
+  "status": "P0_D_SOURCE_IDENTITY_AND_PROCESSED_SOURCE_BINDING_NO_CHI_OUTCOMES",
   "freeze_date": "2026-09-12",
   "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.4_FINAL",
   "study": {
@@ -22,7 +22,54 @@
     "p1_status": "NOT_SELECTED_NOT_FROZEN",
     "main_timecourse_only": true,
     "baseline_samples_excluded_from_main_22_state_manifest": true,
-    "stable_resistant_clones_excluded_from_main_22_state_manifest": true
+    "stable_resistant_clones_excluded_from_main_22_state_manifest": true,
+    "feature_selection_performed_in_source_probe": false,
+    "state_reduction_fitted_in_source_probe": false
+  },
+  "processed_source_bindings": {
+    "rna_sample_metadata": {
+      "filename": "GSE98812_series_matrix.txt.gz",
+      "sha256": "36fe26fb75134f05cabbf63fb3e18859204748e166963a7f34a27576fff304f0",
+      "compressed_size_bytes": 5495,
+      "sample_title_count": 22,
+      "sample_geo_accession_count": 22,
+      "value_table_status": "NO_VALUE_TABLE_HEADER_FOUND",
+      "role": "EXACT_WEEK_ARM_SAMPLE_IDENTITY_AND_ORDER_METADATA"
+    },
+    "rna_processed_molecular_source": {
+      "filename": "GSE98812_GEOExprsData.txt.gz",
+      "sha256": "8b69cab4612f4787bedbc9ce9414ba321fc1c4bcba7ac63d50687e42d8a1b474",
+      "compressed_size_bytes": 2430267,
+      "shallow_header_field_count": 20532,
+      "shallow_first_data_field_count": 23,
+      "role": "PROCESSED_RNA_MOLECULAR_SOURCE",
+      "anatomy_status": "OPEN_DO_NOT_ASSUME_GENE_BY_SAMPLE_ORIENTATION"
+    },
+    "methylation_processed_matrix": {
+      "filename": "GSE98813_series_matrix.txt.gz",
+      "sha256": "2bc72da999dfcd4601909979ce0559948f445915484b6b3a35c386ca71c1e885",
+      "compressed_size_bytes": 143991614,
+      "sample_title_count": 23,
+      "sample_geo_accession_count": 23,
+      "table_header_field_count": 24,
+      "value_table_status": "VALUE_TABLE_HEADER_FOUND",
+      "baseline_gsm": "GSM2612501",
+      "main_trajectory_gsm_range": "GSM2612502_GSM2612523",
+      "role": "PROCESSED_METHYLATION_VALUE_MATRIX_PLUS_SAMPLE_METADATA"
+    },
+    "methylation_raw_file_index": {
+      "filename": "filelist.txt",
+      "sha256": "efd1f17880389cf1eda6fde3b85f0c174ef8e79700a8b2f404271b36d06e0fca",
+      "size_bytes": 6234,
+      "line_count": 45,
+      "role": "RAW_IDAT_PROVENANCE_INDEX"
+    },
+    "methylation_raw_tar": {
+      "filename": "GSE98813_RAW.tar",
+      "preflight_size_bytes": 499036160,
+      "downloaded": false,
+      "reason": "NOT_NEEDED_FOR_CURRENT_SOURCE_IDENTITY_AND_PROCESSED_SOURCE_GATE"
+    }
   },
   "main_timecourse": [
     {"week":1,"arm":"PBS","rna_gsm":"GSM2612466","methylation_gsm":"GSM2612502"},
@@ -58,6 +105,9 @@
     "GEO SuperSeries GSE98815 exposes the paired weekly RNA and methylation accession order.",
     "The methylation platform is GEO GPL13534 HumanMethylation450, although individual sample metadata labels the protocol as Infinium Human MethylationEPIC; preserve this metadata discrepancy rather than silently normalizing it.",
     "Weekly molecular states are serial pooled states, not independent biological replicates.",
-    "Stable resistant clones are a separate source role and may not be silently mixed into the main 22-state trajectory."
+    "Stable resistant clones are a separate source role and may not be silently mixed into the main 22-state trajectory.",
+    "GSE98812_series_matrix.txt.gz is metadata-only in the acquired public source; it is not the RNA value matrix.",
+    "GSE98812_GEOExprsData.txt.gz is hash-bound but its table anatomy must be verified before state extraction.",
+    "GSE98813_series_matrix.txt.gz includes the baseline plus 22 main weekly methylation states and contains a value table."
   ]
 }
