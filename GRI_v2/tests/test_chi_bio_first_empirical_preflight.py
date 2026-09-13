@@ -19,6 +19,7 @@ def _valid_freeze(tmp_path: Path) -> Path:
             "scientific_approval_reference": "unit-test fixture only",
             "freeze_timestamp": "2099-01-01T00:00:00Z",
             "frozen_before_real_candidate_values": True,
+            "primary_transition_model": "TREATMENT_INTERACTION_T_PLUS_DELTA_T_PLUS_INPUT_PLUS_INTERCEPT",
             "material_conclusion_schema": "unit-test frozen schema",
             "normalization_rule": "test fixture",
             "feature_universe_rule": "test fixture",
