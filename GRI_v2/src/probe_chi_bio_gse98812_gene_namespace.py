@@ -36,6 +36,9 @@ def run_probe() -> dict:
     duplicate_mask = left.duplicated(keep=False)
     duplicate_tokens = sorted(left[duplicate_mask].unique().tolist())
     named_duplicate_tokens = [x for x in duplicate_tokens if x != "?"]
+    duplicate_raw_gene_identifiers = {
+        token: sorted(genes[left.eq(token)].tolist()) for token in duplicate_tokens
+    }
 
     result = {
         "status": "PASS_GSE98812_GENE_NAMESPACE_DIAGNOSTIC",
@@ -56,6 +59,7 @@ def run_probe() -> dict:
         "duplicate_left_tokens": duplicate_tokens,
         "named_duplicate_left_tokens": named_duplicate_tokens,
         "named_duplicate_left_token_count": len(named_duplicate_tokens),
+        "duplicate_raw_gene_identifiers": duplicate_raw_gene_identifiers,
         "pipe_left_examples_first_20": left[pipe].head(20).tolist(),
         "pipe_right_examples_first_20": right[pipe].head(20).tolist(),
         "download_attempt_history": history,
