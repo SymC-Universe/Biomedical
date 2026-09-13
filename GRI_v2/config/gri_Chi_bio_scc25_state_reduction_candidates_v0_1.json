@@ -1,0 +1,69 @@
+{
+  "schema_version": "0.1",
+  "freeze_date": "2026-09-12",
+  "status": "PRE_OUTCOME_CANDIDATE_REGISTRY_NO_EMPIRICAL_REDUCTION_SELECTED",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.4_FINAL",
+  "chi_bio_outcomes_opened": false,
+  "selected_reduction_id": null,
+  "candidates": [
+    {
+      "id": "R1_CONTROL_ONLY_UNSUPERVISED",
+      "method_class": "CONTROL_ONLY_UNSUPERVISED_BASIS",
+      "basis_fit_source_role": "PBS_CONTROL_ONLY",
+      "preferred_role": "G2_TEMPORAL_FEASIBILITY",
+      "independence_strength": "HIGH_WITH_RESPECT_TO_TREATED_TRAJECTORY",
+      "mechanistic_strength": "LOW_TO_MODERATE",
+      "principal_limit": "ONLY_11_CONTROL_STATES_AND_VARIANCE_DIRECTIONS_NEED_NOT_BE_REGULATORY"
+    },
+    {
+      "id": "R2_PREDECLARED_MODULES",
+      "method_class": "PREDECLARED_BIOLOGICAL_MODULES",
+      "basis_fit_source_role": "NO_SCC25_DATA_FIT",
+      "preferred_role": "G1_MECHANISTIC_CANDIDATE",
+      "independence_strength": "HIGH_IF_MODULES_FIXED_EXTERNALLY",
+      "mechanistic_strength": "MODERATE",
+      "principal_limit": "MODULE_PANEL_AND_DIMENSION_SELECTION_REQUIRE_SEPARATE_FREEZE"
+    },
+    {
+      "id": "R3_EXTERNAL_FIXED_BASIS",
+      "method_class": "EXTERNAL_FIXED_BASIS",
+      "basis_fit_source_role": "EXTERNAL_REFERENCE",
+      "preferred_role": "TRANSPORT_STRESS_TEST",
+      "independence_strength": "VERY_HIGH_WITH_RESPECT_TO_SCC25",
+      "mechanistic_strength": "LOW_TO_MODERATE",
+      "principal_limit": "BULK_TUMOR_TO_CELL_LINE_REPRESENTATION_MISMATCH"
+    },
+    {
+      "id": "R4_MECHANISTIC_REGULON_STATE",
+      "method_class": "MECHANISTIC_FIXED_BASIS",
+      "basis_fit_source_role": "EXTERNAL_REGULATORY_PRIOR",
+      "preferred_role": "G1_REGULATORY_STATE",
+      "independence_strength": "HIGH_IF_REGULONS_AND_PANEL_FIXED_EXTERNALLY",
+      "mechanistic_strength": "HIGHER_THAN_PURE_VARIANCE_BASIS",
+      "principal_limit": "PANEL_SELECTION_AND_RESTORATION_IDENTIFICATION_REMAIN_OPEN"
+    },
+    {
+      "id": "R5_BOTH_ARM_UNSUPERVISED",
+      "method_class": "OUTCOME_BLIND_UNSUPERVISED_BASIS",
+      "basis_fit_source_role": "PBS_AND_CTX_WEEKLY_RNA",
+      "preferred_role": "EXPLORATORY_SENSITIVITY_ONLY",
+      "independence_strength": "LOWER_FOR_FIRST_TREATED_TRAJECTORY_TEST",
+      "mechanistic_strength": "LOW_TO_MODERATE",
+      "principal_limit": "TREATMENT_TRAJECTORY_HELPS_DEFINE_THE_BASIS_LATER_EVALUATED"
+    },
+    {
+      "id": "R6_PUBLISHED_COGAPS",
+      "method_class": "PUBLISHED_SOURCE_DERIVED_BASIS",
+      "basis_fit_source_role": "SAME_SCC25_TIMECOURSE",
+      "preferred_role": "NATIVE_DESCRIPTIVE_COMPARATOR_ONLY",
+      "independence_strength": "INSUFFICIENT_FOR_PRIMARY_CHI_VALIDATION",
+      "mechanistic_strength": "SOURCE_SPECIFIC_DESCRIPTIVE",
+      "principal_limit": "TIMECOURSE_AND_FEATURE_FILTERING_ALREADY_INFORMED_THE_PUBLISHED_BASIS"
+    }
+  ],
+  "review_order": {
+    "G2": ["R1_CONTROL_ONLY_UNSUPERVISED", "R3_EXTERNAL_FIXED_BASIS", "R5_BOTH_ARM_UNSUPERVISED"],
+    "G1": ["R4_MECHANISTIC_REGULON_STATE", "R2_PREDECLARED_MODULES", "R1_CONTROL_ONLY_UNSUPERVISED"]
+  },
+  "selection_rule": "No candidate becomes selected because code exists, because it produces a convenient unity crossing, or because it tracks proliferation. Exact reduction class, dimension rule, fitting role, and transport/refusal rule require a prospective scientific freeze before real Chi_bio computation."
+}
