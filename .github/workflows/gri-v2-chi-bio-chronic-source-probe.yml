@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - 'GRI_v2/src/probe_chi_bio_chronic_processed_sources.py'
+      - 'GRI_v2/src/probe_chi_bio_chronic_rna_anatomy.py'
+      - 'GRI_v2/config/gri_scc25_paired_timecourse_manifest_p0d_v0_1.json'
       - '.github/workflows/gri-v2-chi-bio-chronic-source-probe.yml'
   workflow_dispatch:
 
@@ -21,9 +23,13 @@ jobs:
           python-version: '3.12'
       - name: Acquire and hash selected chronic processed GEO sources
         run: python -m src.probe_chi_bio_chronic_processed_sources
-      - name: Upload chronic provenance report only
+      - name: Probe chronic RNA processed-table anatomy
+        run: python -m src.probe_chi_bio_chronic_rna_anatomy
+      - name: Upload chronic provenance and anatomy reports only
         uses: actions/upload-artifact@v4
         with:
           name: gri-chi-bio-chronic-source-probe
-          path: GRI_v2/development_outputs/chi_bio_chronic_source_probe/GRI_CHI_BIO_CHRONIC_PROCESSED_SOURCE_PROBE.json
+          path: |
+            GRI_v2/development_outputs/chi_bio_chronic_source_probe/GRI_CHI_BIO_CHRONIC_PROCESSED_SOURCE_PROBE.json
+            GRI_v2/development_outputs/chi_bio_chronic_source_probe/GRI_CHI_BIO_GSE98812_RNA_TABLE_ANATOMY.json
           if-no-files-found: error
