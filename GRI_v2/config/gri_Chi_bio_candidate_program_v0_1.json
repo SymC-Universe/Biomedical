@@ -4,14 +4,7 @@
   "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.4_FINAL",
   "notation": {
     "system_level_coordinate": "Chi_bio",
-    "distinct_from": [
-      "chi_dyn",
-      "CV/2",
-      "S_spec",
-      "H2",
-      "H3a",
-      "H3b"
-    ]
+    "distinct_from": ["chi_dyn", "CV/2", "S_spec", "H2", "H3a", "H3b"]
   },
   "current_state": {
     "promotion_state": "NOT_ADMITTED",
@@ -21,8 +14,8 @@
     "claim_ceiling": "CANDIDATE_DERIVATION_IDENTIFIABILITY_AND_INTERNAL_QUALIFICATION_ONLY"
   },
   "scientifically_selected_candidate_family": {
-    "freeze_id": "GRI_CHI_BIO_G1_S1_L3_CANDIDATE_FAMILY_FREEZE_20260912",
-    "authorization": "USER_APPROVED_RECOMMENDED_PLAN_20260912",
+    "freeze_id": "GRI_CHI_BIO_G1_S1_L3_CANDIDATE_FAMILY_FREEZE_20260913",
+    "authorization": "USER_APPROVED_RECOMMENDED_PLAN_20260913",
     "primary_generator_family": "G1_NORMALIZED_REGULATORY_INTERACTION",
     "state_semantics": "S1_TRANSCRIPTOMIC_REGULATORY_STATE",
     "substrate_context": "METHYLATION_EXTERNAL_TO_STATE_AS_SUBSTRATE_CONTEXT",
@@ -30,14 +23,10 @@
     "temporal_comparator": "G2_DISCRETE_TRANSITION_OPERATOR",
     "stochastic_alternative": "G4_ATTRACTION_DIFFUSION",
     "candidate_lock_status": "NOT_YET_EARNED",
-    "exact_unity_subvariant_status": "CONDITIONAL_ON_RESTORATION_AND_OPERATOR_STRUCTURE",
+    "exact_unity_subvariant_status": "COMMON_RESTORATION_EXACT_AND_SYMMETRIC_GENERALIZED_EXACT_SUBCLASSES_SUPPORTED; GENERAL_DIRECTED_HETEROGENEOUS_NORMALIZATION_NOT_LICENSED",
     "empirical_state_reduction_status": "NOT_FROZEN"
   },
-  "required_views": [
-    "scalar",
-    "modal_vector",
-    "conglomerate_system"
-  ],
+  "required_views": ["scalar", "modal_vector", "conglomerate_system"],
   "candidate_generator_classes": [
     "LINEARIZED_REGULATORY_STATE_SPACE_JACOBIAN",
     "COUPLED_MODE_OR_GENERALIZED_EIGENVALUE",
@@ -64,33 +53,11 @@
     "CB14": "unity_generated_by_derivation_and_independently_tested_against_domain_native_regime_change"
   },
   "promotion_states": {
-    "NOT_ADMITTED": {
-      "required_gates": [],
-      "Chi_bio_value_allowed": false,
-      "unity_boundary_claim_allowed": false
-    },
-    "CANDIDATE_LOCKED": {
-      "required_gates": ["CB1", "CB2", "CB3", "CB4", "CB5", "CB6", "CB7", "CB8", "CB9"],
-      "Chi_bio_value_allowed": false,
-      "unity_boundary_claim_allowed": false
-    },
-    "INTERNALLY_QUALIFIED_P0Q": {
-      "required_gates": ["CB1", "CB2", "CB3", "CB4", "CB5", "CB6", "CB7", "CB8", "CB9", "CB10", "CB11"],
-      "Chi_bio_value_allowed": true,
-      "value_scope": "INTERNAL_TCGA_TESTED_REPRESENTATION_ONLY",
-      "unity_boundary_claim_allowed": false
-    },
-    "EXTERNALLY_ADMITTED_P1": {
-      "required_gates": ["CB1", "CB2", "CB3", "CB4", "CB5", "CB6", "CB7", "CB8", "CB9", "CB10", "CB11", "CB12", "CB13"],
-      "Chi_bio_value_allowed": true,
-      "value_scope": "EXTERNALLY_TESTED_VALIDITY_REGIME_ONLY",
-      "unity_boundary_claim_allowed": false
-    },
-    "UNITY_BOUNDARY_ADMITTED": {
-      "required_gates": ["CB1", "CB2", "CB3", "CB4", "CB5", "CB6", "CB7", "CB8", "CB9", "CB10", "CB11", "CB12", "CB13", "CB14"],
-      "Chi_bio_value_allowed": true,
-      "unity_boundary_claim_allowed": true
-    }
+    "NOT_ADMITTED": {"required_gates": [], "Chi_bio_value_allowed": false, "unity_boundary_claim_allowed": false},
+    "CANDIDATE_LOCKED": {"required_gates": ["CB1", "CB2", "CB3", "CB4", "CB5", "CB6", "CB7", "CB8", "CB9"], "Chi_bio_value_allowed": false, "unity_boundary_claim_allowed": false},
+    "INTERNALLY_QUALIFIED_P0Q": {"required_gates": ["CB1", "CB2", "CB3", "CB4", "CB5", "CB6", "CB7", "CB8", "CB9", "CB10", "CB11"], "Chi_bio_value_allowed": true, "value_scope": "INTERNAL_TCGA_TESTED_REPRESENTATION_ONLY", "unity_boundary_claim_allowed": false},
+    "EXTERNALLY_ADMITTED_P1": {"required_gates": ["CB1", "CB2", "CB3", "CB4", "CB5", "CB6", "CB7", "CB8", "CB9", "CB10", "CB11", "CB12", "CB13"], "Chi_bio_value_allowed": true, "value_scope": "EXTERNALLY_TESTED_VALIDITY_REGIME_ONLY", "unity_boundary_claim_allowed": false},
+    "UNITY_BOUNDARY_ADMITTED": {"required_gates": ["CB1", "CB2", "CB3", "CB4", "CB5", "CB6", "CB7", "CB8", "CB9", "CB10", "CB11", "CB12", "CB13", "CB14"], "Chi_bio_value_allowed": true, "unity_boundary_claim_allowed": true}
   },
   "hard_prohibitions": [
     "DIRECT_ALIAS_OF_CV_OVER_2",
@@ -116,39 +83,15 @@
     "INSUFFICIENT_TEMPORAL_INFORMATION_FOR_DYNAMIC_INTERPRETATION"
   ],
   "current_internal_evidence": {
-    "scalar": [
-      "RNA_module_organization",
-      "S_spec_not_Chi",
-      "H2_global_geometry",
-      "H3a_patient_coupling",
-      "H3b_small_support_sensitive_semantic_specificity",
-      "composition_context_sensitivity",
-      "internal_predictive_summaries"
-    ],
-    "modal_vector": [
-      "eigenspectra_eigenspaces",
-      "principal_angles",
-      "leading_mode_concentration",
-      "top1_top3_ablation",
-      "residual_geometry_after_ablation"
-    ],
-    "conglomerate_system": [
-      "methylation_RNA_cross_layer_organization",
-      "Hallmark_module_architecture",
-      "purity_leukocyte_embedding_and_projection",
-      "RPPA_context",
-      "genomic_context",
-      "Function_Map",
-      "Limit_Map"
-    ]
+    "scalar": ["RNA_module_organization", "S_spec_not_Chi", "H2_global_geometry", "H3a_patient_coupling", "H3b_small_support_sensitive_semantic_specificity", "composition_context_sensitivity", "internal_predictive_summaries"],
+    "modal_vector": ["eigenspectra_eigenspaces", "principal_angles", "leading_mode_concentration", "top1_top3_ablation", "residual_geometry_after_ablation"],
+    "conglomerate_system": ["methylation_RNA_cross_layer_organization", "Hallmark_module_architecture", "purity_leukocyte_embedding_and_projection", "RPPA_context", "genomic_context", "Function_Map", "Limit_Map"]
   },
   "current_missing_or_unresolved": [
     "full_machine_readable_per_cancer_C1_and_postC1_bundle_in_repository",
-    "exact_G1_unity_subvariant_for_general_transcriptomic_transfer",
     "empirical_transcriptomic_state_reduction_freeze",
     "candidate_identifiability_against_G2_G4_and_material_alternatives",
-    "candidate_uncertainty_qualification",
-    "candidate_specific_synthetic_known_truth_harness_CI_result",
+    "candidate_uncertainty_qualification_beyond_synthetic_pilot",
     "pre_Atlas_candidate_lock",
     "untouched_external_P1_test",
     "domain_native_biological_unity_boundary_evidence"
