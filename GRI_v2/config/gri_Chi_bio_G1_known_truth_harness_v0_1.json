@@ -1,0 +1,138 @@
+{
+  "schema_version": "0.1",
+  "status": "FROZEN_BEFORE_REAL_CHI_BIO_VALUES",
+  "freeze_id": "GRI_CHI_BIO_G1_KNOWN_TRUTH_FREEZE_20260913",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.4_FINAL",
+  "candidate_freeze_id": "GRI_CHI_BIO_G1_S1_L3_CANDIDATE_FAMILY_FREEZE_20260913",
+  "primary_generator": "G1_NORMALIZED_REGULATORY_INTERACTION",
+  "source_model": "dx/dt = beta0*(Phi(x;s,c)-x), beta0>0, M=D_xPhi",
+  "candidate_scalar": "max Re eig(M)",
+  "native_boundary": 1.0,
+  "exact_numerical_tolerance": 1e-10,
+  "real_outcome_tuning_forbidden": true,
+  "cases": [
+    {
+      "id": "G1_KT_STABLE_DIAGONAL",
+      "matrix_M": [[0.2, 0.0], [0.0, 0.8]],
+      "beta0": 2.0,
+      "expected_g1": 0.8,
+      "expected_regime": "BELOW_UNITY",
+      "expected_max_real_jacobian": -0.4,
+      "required": "PASS"
+    },
+    {
+      "id": "G1_KT_AT_BOUNDARY",
+      "matrix_M": [[1.0, 0.0], [0.0, 0.25]],
+      "beta0": 3.0,
+      "expected_g1": 1.0,
+      "expected_regime": "AT_UNITY_WITHIN_TOLERANCE",
+      "expected_max_real_jacobian": 0.0,
+      "required": "PASS"
+    },
+    {
+      "id": "G1_KT_UNSTABLE",
+      "matrix_M": [[1.15, 0.0], [0.0, 0.4]],
+      "beta0": 0.5,
+      "expected_g1": 1.15,
+      "expected_regime": "ABOVE_UNITY",
+      "expected_max_real_jacobian": 0.075,
+      "required": "PASS"
+    },
+    {
+      "id": "G1_KT_COMPLEX_STABLE_PAIR",
+      "matrix_M": [[0.7, -0.4], [0.4, 0.7]],
+      "beta0": 1.0,
+      "expected_g1": 0.7,
+      "expected_regime": "BELOW_UNITY",
+      "expected_max_real_jacobian": -0.3,
+      "required": "PASS"
+    },
+    {
+      "id": "G1_KT_DEGENERATE_LEADING_SUBSPACE",
+      "matrix_M": [[0.9, 0.0, 0.0], [0.0, 0.9, 0.0], [0.0, 0.0, 0.1]],
+      "beta0": 1.0,
+      "expected_g1": 0.9,
+      "expected_regime": "BELOW_UNITY",
+      "expected_max_real_jacobian": -0.1,
+      "required_companion_flag": "LEADING_EIGENSPACE_DEGENERATE_OR_NEAR_DEGENERATE"
+    },
+    {
+      "id": "G1_KT_NONNORMAL_TRANSIENT",
+      "matrix_M": [[0.8, 5.0], [0.0, 0.8]],
+      "beta0": 1.0,
+      "expected_g1": 0.8,
+      "expected_regime": "BELOW_UNITY",
+      "expected_max_real_jacobian": -0.2,
+      "required_companion_property": "largest_singular_value_M_gt_1",
+      "interpretation": "spectral scalar remains below unity while transient/non-normal amplification warning must remain visible"
+    },
+    {
+      "id": "G1_KT_SAME_SCALAR_DIFFERENT_ORGANIZATION_A",
+      "matrix_M": [[0.85, 0.0], [0.0, 0.3]],
+      "beta0": 1.0,
+      "expected_g1": 0.85,
+      "expected_regime": "BELOW_UNITY",
+      "organization_pair": "PAIR_1"
+    },
+    {
+      "id": "G1_KT_SAME_SCALAR_DIFFERENT_ORGANIZATION_B",
+      "matrix_M": [[0.85, 2.0], [0.0, 0.2]],
+      "beta0": 1.0,
+      "expected_g1": 0.85,
+      "expected_regime": "BELOW_UNITY",
+      "organization_pair": "PAIR_1",
+      "required_companion_property": "modal_system_structure_differs_from_pair_partner"
+    }
+  ],
+  "known_failure_cases": [
+    {
+      "id": "G1_KF_NONSQUARE_OPERATOR",
+      "matrix_M": [[0.1, 0.2, 0.3], [0.4, 0.5, 0.6]],
+      "expected_behavior": "REJECT_INPUT"
+    },
+    {
+      "id": "G1_KF_NONFINITE_OPERATOR",
+      "construction": "inject_nonfinite_value",
+      "expected_behavior": "REJECT_INPUT"
+    },
+    {
+      "id": "G1_KF_INVALID_BETA0",
+      "matrix_M": [[0.2]],
+      "beta0": 0.0,
+      "expected_behavior": "REJECT_INPUT"
+    },
+    {
+      "id": "G1_KF_STATIC_ASSOCIATION_NOT_OPERATOR",
+      "construction": "covariance_or_CKA_without_generator_derivation",
+      "expected_behavior": "OUT_OF_VALIDITY_REGIME_OR_NOT_IDENTIFIABLE",
+      "execution_note": "semantic refusal test belongs to empirical estimator layer; mathematical runner must not relabel association matrices as M_GRI"
+    },
+    {
+      "id": "G1_KF_UNCERTAINTY_SPANS_BOUNDARY",
+      "construction": "future_empirical_interval_crosses_1",
+      "expected_behavior": "UNCERTAINTY_SPANS_BOUNDARY"
+    }
+  ],
+  "g2_comparator_truth_checks": [
+    {
+      "id": "G2_KT_STABLE",
+      "matrix_T": [[0.8, 0.0], [0.0, 0.4]],
+      "expected_g2": 0.8,
+      "expected_regime": "BELOW_UNITY"
+    },
+    {
+      "id": "G2_KT_BOUNDARY",
+      "matrix_T": [[1.0, 0.0], [0.0, 0.5]],
+      "expected_g2": 1.0,
+      "expected_regime": "AT_UNITY_WITHIN_TOLERANCE"
+    },
+    {
+      "id": "G2_KT_UNSTABLE",
+      "matrix_T": [[1.05, 0.0], [0.0, 0.5]],
+      "expected_g2": 1.05,
+      "expected_regime": "ABOVE_UNITY"
+    }
+  ],
+  "promotion_rule": "Passing this harness validates only implementation/model-class mathematics. It cannot by itself promote Chi_bio or establish an empirical operator.",
+  "failure_rule": "Unchanged deterministic mathematical failure must not be retried or retuned. Demonstrated implementation defects may be mechanically repaired without altering the frozen matrices, truth values, boundary, or tolerances."
+}
