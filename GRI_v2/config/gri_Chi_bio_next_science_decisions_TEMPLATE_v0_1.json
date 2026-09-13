@@ -1,0 +1,37 @@
+{
+  "schema_version": "0.1",
+  "status": "TEMPLATE_NOT_A_FREEZE",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.4_FINAL",
+  "candidate_family_freeze_id": "GRI_CHI_BIO_G1_S1_L3_CANDIDATE_FAMILY_FREEZE_20260913",
+  "scientific_approval_reference": null,
+  "freeze_timestamp": null,
+  "chi_bio_outcomes_opened_before_freeze": false,
+  "decision_A_first_G2_rank_design": {
+    "selected_option": null,
+    "allowed_options": ["A1_PRIMARY_R2_SENSITIVITY_R3", "A2_PRIMARY_R3_SENSITIVITY_R2", "A3_ROBUSTNESS_REQUIRED_R2_R3", "A4_OTHER_PROSPECTIVELY_JUSTIFIED"],
+    "primary_rank": null,
+    "sensitivity_rank": null,
+    "robustness_rule": null,
+    "treated_states_used_to_select": false,
+    "proliferation_used_to_select": false,
+    "distance_to_unity_used_to_select": false
+  },
+  "decision_B_first_G1_state_basis": {
+    "selected_option": null,
+    "allowed_options": ["B1_FIXED_SIGNED_REGULON_TF_ACTIVITY", "B2_FIXED_MODULE_EXPRESSION", "B3_EXTERNALLY_SOURCED_REGULON_LOW_DIMENSION_HYBRID", "B4_OTHER_PROSPECTIVELY_JUSTIFIED"],
+    "source_identity_and_version": null,
+    "state_coordinate_semantics": null,
+    "subset_or_dimension_rule": null,
+    "transport_rule": null,
+    "representation_sensitivity_source": null,
+    "scc25_or_tcga_candidate_values_used_to_select": false
+  },
+  "decision_C_G1_restoration_strategy": {
+    "selected_option": null,
+    "allowed_options": ["C1_EFFECTIVE_COMMON_RESTORATION_WITH_INDEPENDENT_SUPPORT", "C2_STATE_SPECIFIC_RESTORATION_WITH_SEPARATE_EXACT_NORMALIZATION", "C3_WITHHOLD_NORMALIZED_G1_UNTIL_RESTORATION_RESOLVED", "C4_OTHER_PROSPECTIVELY_JUSTIFIED"],
+    "independent_restoration_source_or_experiment": null,
+    "normalization_derivation_id": null,
+    "restoration_not_tuned_to_unity": true
+  },
+  "hard_guard": "This template authorizes no real Chi_bio computation until the scientifically material selected_option fields and their required details are explicitly approved and frozen."
+}
