@@ -62,6 +62,10 @@ On commit `b64e752948dda0285bf75ecaa7de9c96a810fcab`:
 
 Commits after that point added only gate tests, literature-collision documentation, the decision packet/template, and this checkpoint. Their current-head CI must be verified before treating the checkpoint head as green.
 
+## PR CONTROL STATE
+
+PR #4 remains **draft and unmerged**. A metadata check after the new candidate-family work reported `mergeable=false`. No merge, rebase, or forced conflict resolution is authorized merely to clear that flag. The branch/base relationship should be inspected mechanically after current CI; any reconciliation must preserve the approved Chi_bio science and all independent base-branch changes.
+
 ## CURRENT SCIENTIFIC BLOCKERS
 
 ### A. First G2 temporal rank design
