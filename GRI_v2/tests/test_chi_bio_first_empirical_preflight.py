@@ -40,12 +40,14 @@ def test_incomplete_template_refuses_before_source_open():
         run_preflight(TEMPLATE, source_root=Path("THIS_PATH_MUST_NEVER_BE_TOUCHED"))
 
 
-def test_frozen_source_manifests_pass_without_opening_real_matrices():
+def test_frozen_source_manifests_pass_against_repeated_machine_provenance():
     result = validate_source_manifests()
-    assert result["status"] == "PASS_FROZEN_SOURCE_MANIFESTS"
+    assert result["status"] == "PASS_FROZEN_SOURCE_MANIFESTS_AND_PROVENANCE_LOCK"
     assert result["real_molecular_files_opened"] is False
     assert result["short_term_scc25_states"] == 11
-    assert result["chronic_scc25_states"] == 22
+    assert result["chronic_main_scc25_states"] == 22
+    assert result["chronic_source_container_samples"] == 36
+    assert result["chronic_source_projection_sha256"] == "fa8772da77054785ff2fb384d336ff6821ed32e65172708a92a975ba1321e70b"
 
 
 def test_valid_freeze_can_pass_manifest_only_preflight_without_analysis(tmp_path):
