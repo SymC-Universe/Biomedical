@@ -1,0 +1,103 @@
+{
+  "schema_version": "0.1",
+  "freeze_id": "GRI_CHI_BIO_G1_S1_L3_CANDIDATE_FAMILY_FREEZE_20260912",
+  "freeze_date": "2026-09-12",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.4_FINAL",
+  "scientific_authorization": "USER_APPROVED_RECOMMENDED_PLAN_20260912",
+  "freeze_status": "FAMILY_STATE_SCOPE_FROZEN_PRE_CANDIDATE_LOCK",
+  "promotion_state": "NOT_ADMITTED",
+  "Chi_bio_value_allowed": false,
+  "unity_boundary_claim_allowed": false,
+  "candidate": {
+    "candidate_id": "G1_S1_L3_v0_1",
+    "primary_generator_family": "G1_NORMALIZED_REGULATORY_INTERACTION",
+    "state_semantics": "TRANSCRIPTOMIC_REGULATORY_STATE",
+    "substrate_context_semantics": "METHYLATION_AS_EXTERNAL_SUBSTRATE_CONTEXT_NOT_NAIVE_STATE_CONCATENATION",
+    "system_scope": "PAIRED_LOCAL_AND_EMBEDDED",
+    "temporal_comparator": "G2_DISCRETE_TRANSITION_OPERATOR",
+    "qualitatively_distinct_alternative": "G4_ATTRACTION_DIFFUSION"
+  },
+  "state_representation": {
+    "semantic_state_frozen": true,
+    "empirical_resolution_frozen": false,
+    "allowed_resolution_candidates_before_outcome_inspection": [
+      "GENE_LEVEL_IF_IDENTIFIABLE",
+      "PREDECLARED_MODULE_LEVEL",
+      "OUTCOME_BLIND_LATENT_REDUCTION"
+    ],
+    "forbidden_selection_inputs": [
+      "CANCER_SPECIFIC_CHI_VALUES",
+      "CLOSENESS_TO_UNITY",
+      "ATLAS_PLACEMENT",
+      "DOWNSTREAM_OUTCOME",
+      "FAVORED_CANCER_ORDERING"
+    ]
+  },
+  "system_semantics": {
+    "regulatory_map": "Phi(x; s, e)",
+    "local_state": "x",
+    "substrate_context": "s",
+    "embedding_context": "e",
+    "local_production_or_update_derivative": "K = dPhi/dx",
+    "restoring_or_turnover_operator": "R",
+    "general_local_jacobian": "J = K - R"
+  },
+  "scalar_modal_conglomerate": {
+    "conglomerate": "COUPLED_REGULATORY_GENERATOR_OPERATOR",
+    "modal_vector": "EIGENVALUES_INVARIANT_SUBSPACES_LEFT_RIGHT_CARRIERS_TRANSIENT_STRUCTURE",
+    "scalar": "MODEL_NATIVE_STABILITY_COORDINATE_ONLY_WHEN_DERIVATION_LICENSES_COMPRESSION",
+    "arithmetic_omnibus_score_prohibited": true
+  },
+  "unity_hardening": {
+    "source_model_exact_relation": "J = beta0 (M - I)",
+    "naive_general_transfer": "M = R^-1 K",
+    "naive_general_transfer_is_exact": false,
+    "reason": "For heterogeneous R and directed/non-normal K, alpha(K-R)<0 is not equivalent to alpha(R^-1 K)<1.",
+    "exact_subcases": {
+      "G1A_COMMON_RESTORATION": {
+        "conditions": "R = beta I, beta > 0",
+        "coordinate": "alpha(K/beta)",
+        "exact_boundary": 1.0
+      },
+      "G1B_SYMMETRIC_GENERALIZED": {
+        "conditions": "K symmetric; R symmetric positive definite",
+        "coordinate": "lambda_max(R^-1/2 K R^-1/2)",
+        "exact_boundary": 1.0
+      }
+    },
+    "general_directed_heterogeneous_case": {
+      "truth_operator": "J = K - R",
+      "truth_boundary": "alpha(J) = 0",
+      "unity_coordinate_status": "NOT_DERIVED",
+      "forced_rescaling_prohibited": true
+    }
+  },
+  "current_gate_status": {
+    "CB1": "PASS_FAMILY_STATE_SCOPE",
+    "CB2": "PASS_SOURCE_FAMILY_TRANSFER_CONDITIONAL",
+    "CB3": "PASS_G1A_G1B_OPEN_GENERAL_DIRECTED",
+    "CB4": "PARTIAL_MEASUREMENT_MAPPING_OPEN",
+    "CB5": "PASS_STRUCTURAL",
+    "CB6": "PASS_BY_FREEZE_DESIGN",
+    "CB7": "OPEN",
+    "CB8": "OPEN",
+    "CB9": "ACTIVE"
+  },
+  "hard_prohibitions": [
+    "COVARIANCE_IS_REGULATORY_JACOBIAN",
+    "CKA_IS_REGULATORY_JACOBIAN",
+    "H2_IS_CHI_BIO",
+    "S_SPEC_IS_CHI_BIO",
+    "NAIVE_METHYLATION_RNA_CONCATENATION",
+    "ALPHA_RINV_K_EQUALS_UNITY_BOUNDARY_WITHOUT_MODEL_PROOF",
+    "POSTHOC_UNITY_RESCALING",
+    "ATLAS_DEFINED_COORDINATE"
+  ],
+  "next_required_actions": [
+    "RUN_G1_GENERATOR_SPECIFIC_KNOWN_TRUTH_AND_FAILURE_HARNESS",
+    "ADD_UNCERTAINTY_AND_MODE_DEGENERACY_REFUSAL_LOGIC",
+    "AUDIT_IDENTIFIABILITY_AGAINST_G2_AND_G4",
+    "FREEZE_EMPIRICAL_STATE_REDUCTION_BEFORE_REAL_CHI_VALUES",
+    "INGEST_COMPLETED_C1_POSTC1_ARCHIVES_READ_ONLY_WHEN_AVAILABLE"
+  ]
+}
