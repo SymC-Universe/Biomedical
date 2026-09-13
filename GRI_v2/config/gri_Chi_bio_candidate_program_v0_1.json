@@ -1,0 +1,143 @@
+{
+  "schema_version": "0.1",
+  "program": "GRI_Chi_bio_admission_or_falsification",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.4_FINAL",
+  "notation": {
+    "system_level_coordinate": "Chi_bio",
+    "distinct_from": [
+      "chi_dyn",
+      "CV/2",
+      "S_spec",
+      "H2",
+      "H3a",
+      "H3b"
+    ]
+  },
+  "current_state": {
+    "promotion_state": "NOT_ADMITTED",
+    "Chi_bio_value_allowed": false,
+    "unity_boundary_claim_allowed": false,
+    "biological_regime_label_allowed": false,
+    "claim_ceiling": "CANDIDATE_DERIVATION_IDENTIFIABILITY_AND_INTERNAL_QUALIFICATION_ONLY"
+  },
+  "required_views": [
+    "scalar",
+    "modal_vector",
+    "conglomerate_system"
+  ],
+  "candidate_generator_classes": [
+    "LINEARIZED_REGULATORY_STATE_SPACE_JACOBIAN",
+    "COUPLED_MODE_OR_GENERALIZED_EIGENVALUE",
+    "SECOND_ORDER_RESPONSE_IF_NATIVELY_LICENSED",
+    "DELAY_MEMORY_FEEDBACK",
+    "TRANSITION_OPERATOR_OR_CELL_STATE_FLOW",
+    "PERTURBATION_RESPONSE_RECOVERY_OPERATOR",
+    "OTHER_NATIVE_ONCOLOGY_REGULATORY_GENERATOR"
+  ],
+  "gates": {
+    "CB1": "semantic_definition_frozen",
+    "CB2": "native_generator_and_derivation_stated",
+    "CB3": "dimensionless_or_prospectively_justified_normalization",
+    "CB4": "independently_meaningful_input_observables",
+    "CB5": "scalar_modal_conglomerate_relationship_and_compression_loss_explicit",
+    "CB6": "outcome_and_atlas_independent_construction",
+    "CB7": "identifiability_against_material_competing_generators",
+    "CB8": "uncertainty_and_tolerance_propagated",
+    "CB9": "construction_aware_nulls_and_known_truth_recovery",
+    "CB10": "frozen_candidate_survives_internal_P0Q_or_scope_narrows_without_retuning",
+    "CB11": "refusal_and_validity_regime_defined",
+    "CB12": "pre_atlas_formula_code_normalization_uncertainty_and_refusal_freeze",
+    "CB13": "untouched_external_P1_transport_or_validation",
+    "CB14": "unity_generated_by_derivation_and_independently_tested_against_domain_native_regime_change"
+  },
+  "promotion_states": {
+    "NOT_ADMITTED": {
+      "required_gates": [],
+      "Chi_bio_value_allowed": false,
+      "unity_boundary_claim_allowed": false
+    },
+    "CANDIDATE_LOCKED": {
+      "required_gates": ["CB1", "CB2", "CB3", "CB4", "CB5", "CB6", "CB7", "CB8", "CB9"],
+      "Chi_bio_value_allowed": false,
+      "unity_boundary_claim_allowed": false
+    },
+    "INTERNALLY_QUALIFIED_P0Q": {
+      "required_gates": ["CB1", "CB2", "CB3", "CB4", "CB5", "CB6", "CB7", "CB8", "CB9", "CB10", "CB11"],
+      "Chi_bio_value_allowed": true,
+      "value_scope": "INTERNAL_TCGA_TESTED_REPRESENTATION_ONLY",
+      "unity_boundary_claim_allowed": false
+    },
+    "EXTERNALLY_ADMITTED_P1": {
+      "required_gates": ["CB1", "CB2", "CB3", "CB4", "CB5", "CB6", "CB7", "CB8", "CB9", "CB10", "CB11", "CB12", "CB13"],
+      "Chi_bio_value_allowed": true,
+      "value_scope": "EXTERNALLY_TESTED_VALIDITY_REGIME_ONLY",
+      "unity_boundary_claim_allowed": false
+    },
+    "UNITY_BOUNDARY_ADMITTED": {
+      "required_gates": ["CB1", "CB2", "CB3", "CB4", "CB5", "CB6", "CB7", "CB8", "CB9", "CB10", "CB11", "CB12", "CB13", "CB14"],
+      "Chi_bio_value_allowed": true,
+      "unity_boundary_claim_allowed": true
+    }
+  },
+  "hard_prohibitions": [
+    "DIRECT_ALIAS_OF_CV_OVER_2",
+    "DIRECT_ALIAS_OF_S_SPEC",
+    "DIRECT_ALIAS_OF_H2",
+    "DIRECT_ALIAS_OF_H3A",
+    "DIRECT_ALIAS_OF_H3B",
+    "ARBITRARY_WEIGHTED_AVERAGE_FOR_CONVENIENCE",
+    "FORMULA_SELECTED_BY_CLOSENESS_TO_ONE",
+    "POSTHOC_MEDIAN_CENTERING_TO_CREATE_UNITY",
+    "ATLAS_REGION_USED_TO_DEFINE_COORDINATE",
+    "DOWNSTREAM_OUTCOME_USED_TO_DEFINE_AND_VALIDATE_COORDINATE",
+    "SUPPRESS_DISAGREEING_CANCERS_OR_MODES",
+    "BORROW_CERTAINTY_ACROSS_SCALAR_MODAL_CONGLOMERATE_VIEWS"
+  ],
+  "required_refusal_states": [
+    "NO_COHERENT_CHI_BIO",
+    "NOT_IDENTIFIABLE",
+    "OUT_OF_VALIDITY_REGIME",
+    "UNCERTAINTY_SPANS_BOUNDARY",
+    "REPRESENTATION_DEPENDENT_NO_TRANSFER",
+    "INSUFFICIENT_TEMPORAL_INFORMATION_FOR_DYNAMIC_INTERPRETATION"
+  ],
+  "current_internal_evidence": {
+    "scalar": [
+      "RNA_module_organization",
+      "S_spec_not_Chi",
+      "H2_global_geometry",
+      "H3a_patient_coupling",
+      "H3b_small_support_sensitive_semantic_specificity",
+      "composition_context_sensitivity",
+      "internal_predictive_summaries"
+    ],
+    "modal_vector": [
+      "eigenspectra_eigenspaces",
+      "principal_angles",
+      "leading_mode_concentration",
+      "top1_top3_ablation",
+      "residual_geometry_after_ablation"
+    ],
+    "conglomerate_system": [
+      "methylation_RNA_cross_layer_organization",
+      "Hallmark_module_architecture",
+      "purity_leukocyte_embedding_and_projection",
+      "RPPA_context",
+      "genomic_context",
+      "Function_Map",
+      "Limit_Map"
+    ]
+  },
+  "current_missing_or_unresolved": [
+    "full_machine_readable_per_cancer_C1_and_postC1_bundle_in_repository",
+    "candidate_generator_selected_and_derived",
+    "candidate_identifiability_demonstrated",
+    "candidate_specific_synthetic_known_truth_harness",
+    "pre_Atlas_candidate_freeze",
+    "untouched_external_P1_test",
+    "domain_native_unity_boundary_evidence"
+  ],
+  "pre_atlas_rule": "Chi_bio construction must be frozen independently of decisive Atlas placement or favored unity crossing.",
+  "unity_rule": "Chi_bio=1 has no biological boundary meaning unless CB14 is satisfied.",
+  "historical_result_rule": "This program does not retroactively alter Stage C1 or post-C1 P0-Q results."
+}
