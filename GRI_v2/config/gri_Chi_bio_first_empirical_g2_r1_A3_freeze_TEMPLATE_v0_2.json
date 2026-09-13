@@ -1,0 +1,76 @@
+{
+  "schema_version": "0.2",
+  "status": "TEMPLATE_INCOMPLETE_DO_NOT_EXECUTE_REAL_DATA",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.4_FINAL",
+  "architecture_freeze_id": "GRI_CHI_BIO_ABC_ARCHITECTURE_FREEZE_20260913_V0_1",
+  "freeze_id": "",
+  "scientific_approval_reference": "",
+  "freeze_timestamp": "",
+  "chi_bio_outcomes_opened_before_freeze": false,
+  "frozen_before_real_candidate_values": false,
+  "primary_reduction_id": "R1_CONTROL_ONLY_UNSUPERVISED",
+  "rank_design": "A3_ROBUSTNESS_REQUIRED_R2_R3",
+  "primary_rank": null,
+  "sensitivity_ranks": [],
+  "robustness_ranks": [2, 3],
+  "rank_robustness_rule": "Evaluate every predeclared material conclusion under both r=2 and r=3. If the material conclusion schema does not agree under both ranks, return REPRESENTATION_DEPENDENT_NO_TRANSFER and do not select a rank winner.",
+  "material_conclusion_schema": "",
+  "basis_scope": "PBS_CONTROL_ONLY_PER_SOURCE",
+  "basis_fit_uses_treated_states": false,
+  "primary_transition_model": "SHARED_T_PLUS_TREATMENT_INPUT_PLUS_INTERCEPT",
+  "normalization_rule": "",
+  "feature_universe_rule": "",
+  "day0_initialization_rule": "",
+  "conditioning_refusal_rule": "",
+  "model_adequacy_refusal_rule": "",
+  "uncertainty_rule": "",
+  "transport_rule": "",
+  "selection_inputs": [
+    "PBS_CONTROL_RNA_ONLY",
+    "FROZEN_SOURCE_PROVENANCE",
+    "ALGEBRAIC_IDENTIFIABILITY",
+    "SYNTHETIC_KNOWN_TRUTH"
+  ],
+  "supported_refusals": [
+    "REFUSE_RANK_DEFICIENT_DESIGN",
+    "REFUSE_ILL_CONDITIONED_DESIGN",
+    "REFUSE_UNSTABLE_OR_NONTRANSPORTABLE_BASIS",
+    "REFUSE_SOURCE_IDENTITY_MISMATCH",
+    "REFUSE_UNCERTAINTY_SPANS_BOUNDARY",
+    "REFUSE_REPRESENTATION_DEPENDENT_NO_TRANSFER"
+  ],
+  "proliferation_reserved_for_postconstruction_test": true,
+  "atac_reserved_for_postconstruction_relational_test": true,
+  "scrna_reserved_for_postconstruction_carrier_test": true,
+  "biological_unity_boundary_admitted": false,
+  "template_instructions": {
+    "already_frozen_by_A3": [
+      "rank_design",
+      "robustness_ranks",
+      "rank_robustness_rule",
+      "no_rank_winner_rule"
+    ],
+    "science_fields_still_requiring_explicit_freeze": [
+      "material_conclusion_schema",
+      "normalization_rule",
+      "feature_universe_rule",
+      "day0_initialization_rule",
+      "conditioning_refusal_rule",
+      "model_adequacy_refusal_rule",
+      "uncertainty_rule",
+      "transport_rule"
+    ],
+    "do_not_fill_by_inspecting": [
+      "candidate_Chi_bio_values",
+      "distance_to_unity",
+      "unity_crossing_week",
+      "proliferation_response",
+      "ATAC_agreement",
+      "scRNA_carrier_agreement",
+      "resistant_clone_labels",
+      "Atlas_placement",
+      "clinical_outcomes"
+    ],
+    "activation_rule": "Copy this template to a new immutable freeze file only after the remaining empirical rules are explicitly reviewed and frozen. The new record must pass src.chi_bio_empirical_freeze_contract.validate_empirical_freeze before any real molecular matrix is loaded."
+  }
+}
