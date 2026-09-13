@@ -19,13 +19,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install pinned CollecTRI client
+      - name: Install provenance probe dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install 'decoupler==2.2.0' pandas
-      - name: Probe and fingerprint human CollecTRI export
+          python -m pip install 'pandas==3.0.5' 'requests==2.34.2'
+      - name: Probe and fingerprint frozen human CollecTRI source
         run: python -m src.probe_chi_bio_collectri_export
-      - name: Upload provenance-only export
+      - name: Upload provenance-only source and canonical export
         uses: actions/upload-artifact@v4
         with:
           name: gri-chi-bio-collectri-human-export-provenance
