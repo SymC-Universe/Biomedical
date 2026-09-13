@@ -10,7 +10,7 @@ from typing import Any
 
 from src.chi_bio_empirical_freeze_contract import EmpiricalFreezeContractError, validate_empirical_freeze
 
-DEFAULT_FREEZE = Path("config/gri_Chi_bio_first_empirical_g2_r1_freeze_TEMPLATE_v0_1.json")
+DEFAULT_FREEZE = Path("config/gri_Chi_bio_first_empirical_g2_r1_A3_freeze_TEMPLATE_v0_2.json")
 SHORT_MANIFEST = Path("config/gri_hnscc_shortterm_cetuximab_manifest_p0d_v0_1.json")
 SHORT_COLUMN_MAP = Path("config/gri_hnscc_shortterm_bulk_rna_column_map_p0d_v0_1.json")
 CHRONIC_MANIFEST = Path("config/gri_scc25_paired_timecourse_manifest_p0d_v0_1.json")
@@ -131,6 +131,8 @@ def run_preflight(freeze_path: Path, source_root: Path | None = None) -> dict[st
         "status": "PASS_EMPIRICAL_EXECUTION_PREFLIGHT_NO_ANALYSIS_RUN",
         "freeze_id": freeze["freeze_id"],
         "freeze_path": str(freeze_path),
+        "rank_design": freeze.get("rank_design", "PRIMARY_PLUS_SENSITIVITY"),
+        "robustness_ranks": freeze.get("robustness_ranks"),
         "source_manifest_validation": source_manifest,
         "local_source_validation": local,
         "state_reduction_run": False,
