@@ -27,9 +27,17 @@ jobs:
       - run: python -m pytest -q tests
       - name: Run frozen G1 known-truth harness
         run: python -m src.run_chi_bio_g1_known_truth
+      - name: Run frozen G2 comparator harness
+        run: python -m src.run_chi_bio_g2_known_truth
       - name: Upload G1 known-truth result
         uses: actions/upload-artifact@v4
         with:
           name: gri-chi-bio-g1-known-truth
           path: GRI_v2/development_outputs/chi_bio_g1/GRI_CHI_BIO_G1_KNOWN_TRUTH_RESULT.json
+          if-no-files-found: error
+      - name: Upload G2 known-truth result
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-chi-bio-g2-known-truth
+          path: GRI_v2/development_outputs/chi_bio_g2/GRI_CHI_BIO_G2_KNOWN_TRUTH_RESULT.json
           if-no-files-found: error
