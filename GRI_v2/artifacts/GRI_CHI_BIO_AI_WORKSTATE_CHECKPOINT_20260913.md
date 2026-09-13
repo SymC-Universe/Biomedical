@@ -45,20 +45,19 @@ Therefore an empirical transcriptomic G1 requires independently justified restor
 12. Consolidated remaining science decisions in `docs/GRI_CHI_BIO_NEXT_SCIENCE_DECISION_PACKET_20260913.md`.
 13. Added a decision-template JSON that authorizes nothing while A/B/C choices remain unset, with regression guard.
 14. Removed an accidental no-op boundary file created during mechanical checkpointing; no science or durable artifact was lost.
+15. Updated draft PR #4 to reflect the approved family and the exact empirical stop boundary.
 
 ## VERIFIED CI
 
-On commit `b64e752948dda0285bf75ecaa7de9c96a810fcab`:
+On head `6ee04820c4d9ea1993eff0b0572059538fd42630`:
 
-- `GRI v2 tests` run #574: SUCCESS;
-- `GRI Chi_bio chronic source probe` run #28: SUCCESS;
-- `GRI Chi_bio GEO source probe` run #46: SUCCESS.
-
-Current-head CI after the later guard/documentation commits must be checked before claiming the newest head green.
+- `GRI v2 tests` run #584: SUCCESS, including the full pytest suite, frozen G1 known-truth harness, and frozen G2 comparator harness;
+- `GRI Chi_bio chronic source probe` run #38: SUCCESS;
+- the GEO source probe completed all substantive probe/identity/upload steps successfully and was still completing post-job cleanup at the time of this checkpoint update.
 
 ## PR CONTROL STATE
 
-PR #4 remains draft and unmerged. A metadata check after the expanded candidate-family work reported `mergeable=false`. No merge, rebase or forced conflict resolution is authorized merely to clear that flag. The branch/base relationship should be inspected mechanically; reconciliation must preserve both the approved Chi_bio science and independent base-branch changes.
+PR #4 remains **draft and unmerged**. The latest metadata check reports it is **mergeable**. It is intentionally not being merged because the empirical science choices below remain unfrozen.
 
 ## CURRENT SCIENTIFIC BLOCKERS
 
