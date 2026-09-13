@@ -2,7 +2,9 @@
   "schema_version": "0.1",
   "status": "P0_D_SOURCE_IDENTITY_AND_PROCESSED_SOURCE_BINDING_NO_CHI_OUTCOMES",
   "freeze_date": "2026-09-12",
+  "provenance_reconciled_date": "2026-09-13",
   "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.4_FINAL",
+  "provenance_lock": "config/gri_scc25_chronic_source_provenance_lock_v0_2.json",
   "study": {
     "citation": "Stein-O'Brien et al., Genome Medicine 10, 37 (2018)",
     "doi": "10.1186/s13073-018-0545-2",
@@ -29,39 +31,44 @@
   "processed_source_bindings": {
     "rna_sample_metadata": {
       "filename": "GSE98812_series_matrix.txt.gz",
-      "sha256": "36fe26fb75134f05cabbf63fb3e18859204748e166963a7f34a27576fff304f0",
+      "sha256": "f8d826be56083ac6edebcaf5d62d046e58908cbef38fdc29d16105fbef0a5441",
       "compressed_size_bytes": 5495,
-      "sample_title_count": 22,
-      "sample_geo_accession_count": 22,
-      "value_table_status": "NO_VALUE_TABLE_HEADER_FOUND",
-      "role": "EXACT_WEEK_ARM_SAMPLE_IDENTITY_AND_ORDER_METADATA"
+      "sample_title_count": 36,
+      "sample_geo_accession_count": 36,
+      "value_table_status": "VALUE_TABLE_HEADER_FOUND",
+      "table_header_field_count": 37,
+      "role": "RNA_SAMPLE_METADATA_PLUS_GEO_VALUE_TABLE",
+      "main_trajectory_role": "EXACT_WEEK_ARM_SAMPLE_IDENTITY_AND_ORDER_WITHIN_36_SAMPLE_CONTAINER"
     },
     "rna_processed_molecular_source": {
       "filename": "GSE98812_GEOExprsData.txt.gz",
-      "sha256": "8b69cab4612f4787bedbc9ce9414ba321fc1c4bcba7ac63d50687e42d8a1b474",
+      "sha256": "1ce13bae71bd38f619261ec0ca5dcef5dd70b967083cee059e94758aaaf6abb5",
       "compressed_size_bytes": 2430267,
-      "shallow_header_field_count": 20532,
-      "shallow_first_data_field_count": 23,
+      "header_field_count": 37,
+      "first_data_field_count": 37,
+      "data_rows": 20531,
+      "decompressed_size_bytes": 5576986,
+      "decompressed_sha256": "1f718bc27a93d6520cc2966bb8dbe1a87e9e3a29db2021ade6242cad230696f5",
       "role": "PROCESSED_RNA_MOLECULAR_SOURCE",
-      "anatomy_status": "OPEN_DO_NOT_ASSUME_GENE_BY_SAMPLE_ORIENTATION"
+      "anatomy_status": "GENE_BY_SAMPLE_TABLE_ANATOMY_MACHINE_VERIFIED_NO_FEATURE_SELECTION"
     },
     "methylation_processed_matrix": {
       "filename": "GSE98813_series_matrix.txt.gz",
-      "sha256": "2bc72da999dfcd4601909979ce0559948f445915484b6b3a35c386ca71c1e885",
+      "sha256": "c5ee581ee6dbb258bb352e86fd1a7aa5ed6f9979550352accaeca8b0d093292e",
       "compressed_size_bytes": 143991614,
-      "sample_title_count": 23,
-      "sample_geo_accession_count": 23,
-      "table_header_field_count": 24,
+      "sample_title_count": 36,
+      "sample_geo_accession_count": 36,
+      "table_header_field_count": 37,
       "value_table_status": "VALUE_TABLE_HEADER_FOUND",
       "baseline_gsm": "GSM2612501",
       "main_trajectory_gsm_range": "GSM2612502_GSM2612523",
       "role": "PROCESSED_METHYLATION_VALUE_MATRIX_PLUS_SAMPLE_METADATA"
     },
     "methylation_raw_file_index": {
-      "filename": "filelist.txt",
-      "sha256": "efd1f17880389cf1eda6fde3b85f0c174ef8e79700a8b2f404271b36d06e0fca",
+      "filename": "GSE98813_filelist.txt",
+      "sha256": "0128c39ced68ee3a2136faa7d2354415eb18af95a2d589a5065a2b4adae49ca9",
       "size_bytes": 6234,
-      "line_count": 45,
+      "line_count": 78,
       "role": "RAW_IDAT_PROVENANCE_INDEX"
     },
     "methylation_raw_tar": {
@@ -106,8 +113,8 @@
     "The methylation platform is GEO GPL13534 HumanMethylation450, although individual sample metadata labels the protocol as Infinium Human MethylationEPIC; preserve this metadata discrepancy rather than silently normalizing it.",
     "Weekly molecular states are serial pooled states, not independent biological replicates.",
     "Stable resistant clones are a separate source role and may not be silently mixed into the main 22-state trajectory.",
-    "GSE98812_series_matrix.txt.gz is metadata-only in the acquired public source; it is not the RNA value matrix.",
-    "GSE98812_GEOExprsData.txt.gz is hash-bound but its table anatomy must be verified before state extraction.",
-    "GSE98813_series_matrix.txt.gz includes the baseline plus 22 main weekly methylation states and contains a value table."
+    "Repeated GitHub Actions acquisition artifacts on runs 3 and 13 produced identical source projections and supersede earlier incorrect narrative/hash bindings.",
+    "The public GEO series matrices currently expose all 36 source samples, while the frozen main trajectory remains the prospectively declared 22 weekly PBS/CTX states.",
+    "GSE98812_GEOExprsData.txt.gz is a machine-verified 20531-row gene-by-36-sample processed table; this anatomy verification does not authorize feature selection or state reduction."
   ]
 }
