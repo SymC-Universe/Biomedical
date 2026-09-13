@@ -1,0 +1,134 @@
+{
+  "status": "FROZEN_P0Q_CANDIDATE_DEVELOPMENT_CLAIM",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.4_FINAL",
+  "freeze_id": "GRI_CHI_BIO_G1_S1_L3_MFR14_P0Q_20260913",
+  "freeze_date": "2026-09-13",
+  "scientific_authorization": "USER_APPROVED_RECOMMENDED_PLAN_20260913",
+  "promotion_effect": "NONE_CHI_BIO_REMAINS_NOT_ADMITTED",
+  "MFR_01_frozen_claim": {
+    "claim_id": "GRI_CHI_BIO_G1_MODEL_CLASS_BOUNDARY_P0Q",
+    "exact_claim_text": "Within the frozen G1 model class dx/dt = beta0*(Phi(x;s,c)-x), beta0>0, with M = D_x Phi at a fixed point, G1 = max Re eig(M) is a model-native scalar whose local linear stability boundary occurs at G1=1 because J = beta0*(M-I). This is a candidate mathematical construction only and is not yet an admitted biological Chi_bio.",
+    "claim_scope": "MODEL_CLASS_MATHEMATICAL_AND_PREOUTCOME_CANDIDATE_DEVELOPMENT_ONLY",
+    "frozen_scientific_question_or_task": "Can the approved G1-S1-L3 architecture support a mathematically native unity boundary, survive known-truth and known-failure tests, and remain identifiable enough to justify a later empirical estimator without using cancer outcomes or Atlas placement to define it?",
+    "intended_value_axis_if_incremental": "local_regulatory_stability_margin_relative_to_model_native_unity_boundary",
+    "version": "0.1"
+  },
+  "MFR_02_hypothesis_provenance": {
+    "selected_class_or_classes": ["DOMAIN_THEORY", "FRAMEWORK_DERIVED"],
+    "provenance_detail": "G1 derives from a native normalized regulatory production/update form with an explicit restoring identity term; the use as a system-level Chi_bio candidate is framework-derived and remains under falsification."
+  },
+  "MFR_03_target_object_native_observable": {
+    "native_object": "normalized regulatory-interaction operator M_GRI = D_x Phi(x*;s,c) for transcriptomic regulatory state",
+    "measurement": "eigen-spectrum/eigenspaces of an identifiable prospectively frozen estimator of M_GRI, with substrate/context tracked separately",
+    "units_or_conventions": "dimensionless normalized interaction operator; beta0 carries inverse-time scale in the source-model Jacobian",
+    "why_it_can_contradict_the_claim": "If the empirical system cannot identify a representation-stable operator of this class, if the model-class mapping is invalid, or if known-truth recovery fails, the candidate cannot be promoted."
+  },
+  "MFR_04_representation_and_validity_regime": {
+    "native_model_or_statistical_structure": "dx/dt = beta0*(Phi(x;s,c)-x), beta0>0; local fixed-point linearization J=beta0*(D_xPhi-I)",
+    "representation_or_reduction": "S1 transcriptomic regulatory state; exact empirical dimensional reduction NOT YET FROZEN and must be chosen outcome-blind before real Chi_bio values",
+    "validity_conditions": "local differentiability around modeled state; beta0>0; state representation adequate for the modeled regulatory dynamics; operator estimable with uncertainty; local and embedded scopes kept distinct unless closure is demonstrated",
+    "inclusion_exclusion_conditions": "exclude cases where the operator is not identifiable, representation dependence dominates, uncertainty spans incompatible regimes, or a scalar hides material non-normal/transient behavior without explicit modal disclosure",
+    "units_conventions": "G1 is dimensionless within the normalized operator class; local growth/decay rates are beta0*(G1-1)",
+    "representation_not_licensed_when": "covariance, CKA, H2/H3, or other static association objects are substituted directly for the regulatory operator without a separate derivation"
+  },
+  "MFR_05_strongest_native_comparator": {
+    "comparator_status": "COMPARATOR_IDENTIFIED",
+    "comparator_name_version": "G2 discrete transition operator rho(T), candidate comparator v0.1",
+    "frozen_comparator_selection_route": "selected prospectively from generator survey before cancer-specific Chi_bio values",
+    "basis": "G2 has a native unit-circle stability boundary and direct temporal interpretation but differs in sampling-interval dependence and operator semantics",
+    "freeze_date_version": "2026-09-13 / comparator role frozen with G1-S1-L3 plan",
+    "same_decisive_evidence_split": "no cancer outcome evidence may choose between G1 and G2 before estimator freeze; synthetic truth and identifiability tests are permitted",
+    "capacity_fairness_rationale": "both candidates must receive model-native known-truth tests and explicit non-normality/identifiability checks"
+  },
+  "MFR_06_null_or_competing_explanation": {
+    "primary_null_or_alternative": "No coherent scalar Chi_bio is identifiable for the chosen biological representation.",
+    "nuisance_structure_preserved": "representation dimension, noise level, substrate/context structure, sampling geometry, and non-normality where applicable",
+    "additional_competing_explanations": [
+      "G2 transition-operator dynamics describe the measurable process better than G1",
+      "G4 attraction/diffusion balance is required and no single operator spectral scalar is adequate",
+      "apparent stability structure is representation-dependent",
+      "bulk embedding changes the ordering or regime relative to the local operator",
+      "static TCGA geometry does not identify the dynamic generator"
+    ]
+  },
+  "MFR_07_expected_response": {
+    "response_type": "CLASS_AND_BOUNDARY_RECOVERY",
+    "expected_response": "Analytically known G1 systems must recover below/at/above-unity classification and the Jacobian sign relation; known-bad or non-identifiable systems must trigger refusal or limitation rather than forced scalar interpretation."
+  },
+  "MFR_08_decision_rule": {
+    "rule_type": "DETERMINISTIC_CLASSIFIER_PLUS_PROSPECTIVE_TOLERANCE",
+    "rule": "Synthetic exact-matrix cases must agree with analytic eigenvalue/Jacobian truth to numerical tolerance. Promotion toward an empirical estimator requires representation-stable recovery, declared uncertainty, and no material contradiction from G2/G4 identifiability probes. Cancer-specific values remain prohibited until estimator/reduction freeze.",
+    "justification": "Separates mathematical validity from empirical identifiability and prevents outcome-driven definition."
+  },
+  "MFR_09_uncertainty_tolerance_indeterminate": {
+    "measurement_uncertainty": "not applicable to exact synthetic matrices; empirical uncertainty model remains to be frozen with the estimator",
+    "numerical_tolerance": "1e-10 for exact synthetic unity/eigenvalue checks unless a test explicitly documents a stricter or condition-number-aware tolerance",
+    "model_uncertainty": "must include state-reduction dependence, local-versus-embedded mismatch, non-normality, operator-estimation uncertainty, and substrate/context specification",
+    "indeterminate_zone": "empirical regime classification must be withheld when uncertainty overlaps the unity boundary or materially competing representations disagree"
+  },
+  "MFR_10_evidence_independence_leakage_map": {
+    "data_independence": "candidate construction frozen before real Chi_bio values",
+    "cohort_or_system_independence": "synthetic known-truth qualification precedes cohort mapping",
+    "outcome_independence": "no downstream cancer outcome or favored cancer ordering may define the formula/reduction",
+    "parameter_or_tuning_independence": "future regularization/dimensionality rules must be frozen without unity/cancer outcome tuning",
+    "method_independence": "G2 and G4 remain materially distinct competitors",
+    "atlas_independence": "Atlas placement cannot define or tune the candidate",
+    "source_or_literature_independence": "literature establishes model-class provenance, not empirical success of GRI Chi_bio",
+    "temporal_independence": "temporal sources may qualify dynamics only after estimator freeze; they may not retroactively redefine the candidate",
+    "shared_data_labels_outcomes_parameters_tables_simulations_thresholds": "current C1/post-C1 results can inform identifiability constraints but may not be used to choose closeness to unity",
+    "could_shared_information_force_agreement": "yes if outcomes or Atlas placement are used to select representation; therefore explicitly prohibited"
+  },
+  "MFR_11_multiplicity_search_space": {
+    "endpoints": "known-truth recovery; known-failure refusal; G1/G2/G4 identifiability comparison",
+    "windows": "not applicable until temporal estimator stage",
+    "models": "G1 primary; G2 comparator; G4 stochastic alternative; empirical submodels not yet frozen",
+    "thresholds": "unity is model-native for exact G1 source model; empirical tolerance not yet frozen",
+    "subgroups": "none for candidate construction",
+    "features": "exact empirical transcriptomic state basis not yet frozen",
+    "hypotheses": "candidate mathematical validity and future empirical identifiability",
+    "correction_or_hierarchy": "no fishing across model variants for best cancer outcome; surviving empirical variants must be prospectively enumerated and compared before mapping"
+  },
+  "MFR_12_freeze_identity_untouched_test": {
+    "verifiable_freeze_identifier": "GRI_CHI_BIO_G1_S1_L3_MFR14_P0Q_20260913",
+    "freeze_timestamp": "2026-09-13T04:31:00-05:00_APPROX_CONVERSATION_AUTHORIZATION_WINDOW",
+    "system_model_version": "G1-S1-L3 candidate family v0.1",
+    "engine_version": "pre-empirical-estimator",
+    "atlas_version": "not used for candidate definition",
+    "confirmatory_dataset_system_experiment": "exact analytic synthetic known-truth and known-failure harness; no biological P1 claim",
+    "decisive_evidence_unopened_at_freeze": true
+  },
+  "MFR_13_explicit_falsifier": {
+    "result_that_counts_against_claim": "Failure to recover analytic G1 boundary/Jacobian truth, inability to identify a representation-stable G1 operator under adequate data, systematic disagreement showing G1 is not the measurable generator class, or evidence that scalar G1 compression obscures material dynamics without a valid modal/system account."
+  },
+  "MFR_14_precommitted_failure_consequence": {
+    "failure_consequence": "REPRESENTATION_RETIRED_OR_CLAIM_NARROWED",
+    "detail": "Do not retune toward unity. If mathematical known-truth fails, repair only a demonstrated implementation defect or retire the implementation. If empirical identifiability fails, retain G1 as a theoretical model-class result but refuse Chi_bio for that representation and test the predeclared G2/G4 alternatives without rebranding failure as success."
+  },
+  "prediction_extension": {
+    "prediction_id": "G1_LOCAL_EMBEDDED_RELATION_PRED_001",
+    "prediction_class": "M",
+    "scientific_layer": "CONGLOMERATE_SYSTEM_INHERITANCE_FAILURE_REFUSAL",
+    "perturbation_exposure_or_changed_condition": "substrate/context or treatment perturbation",
+    "validity_regime": "only after local and embedded operators are separately identifiable",
+    "known_confounders": "composition, sampling interval, state reduction, measurement noise, treatment exposure, microenvironment",
+    "standard_toolkit_prediction": "G2 transition-operator response will be compared where temporal data permit",
+    "confirmatory_test_family": "paired longitudinal/perturbational multiomic source after estimator freeze",
+    "result": "UNOPENED",
+    "epistemic_status": "PROSPECTIVE_PREDICTION_ONLY_AFTER_COMPLETE_EMPIRICAL_FREEZE"
+  },
+  "v074_relational_extension": {
+    "research_role": "PERTURBED_FUNCTION_AND_BOUNDARY_OR_TRANSITION",
+    "local_object": "G1 regulatory-interaction operator conditional on substrate/context",
+    "embedded_object": "realized bulk/system behavior with composition/environment/treatment represented separately",
+    "hierarchical_closure_requirement": "no local-to-system inheritance claim without explicit preservation/closure test",
+    "function_map_question": "Does the selected regulatory operator preserve interpretable organization under nominal and perturbed conditions?",
+    "limit_map_question": "Where does operator identifiability, scalar adequacy, local-to-embedded preservation, or recovery fail?"
+  },
+  "completion_guard": {
+    "complete_for_this_P0Q_candidate_mathematical_claim": true,
+    "complete_MFR14_still_required_before_any_future_P1_biological_claim": true,
+    "cancer_specific_Chi_bio_values_allowed": false,
+    "unity_biological_boundary_claim_allowed": false,
+    "failure_cannot_be_rewritten_as_success": true
+  }
+}
