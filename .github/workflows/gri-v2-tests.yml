@@ -33,6 +33,8 @@ jobs:
         run: python -m src.run_chi_bio_g2_interaction_calibration --replicates 500
       - name: Run pre-outcome G2 D1-versus-D2 predictive calibration
         run: python -m src.run_chi_bio_g2_model_comparison_calibration --replicates 250
+      - name: Run pre-outcome G2 short-versus-chronic scaling calibration
+        run: python -m src.run_chi_bio_g2_architecture_scaling_calibration --replicates 250
       - name: Upload G1 known-truth result
         uses: actions/upload-artifact@v4
         with:
@@ -56,4 +58,10 @@ jobs:
         with:
           name: gri-chi-bio-g2-model-comparison-calibration
           path: GRI_v2/development_outputs/chi_bio_g2/GRI_CHI_BIO_G2_D1_D2_MODEL_COMPARISON_CALIBRATION.json
+          if-no-files-found: error
+      - name: Upload G2 short-versus-chronic scaling calibration
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-chi-bio-g2-architecture-scaling-calibration
+          path: GRI_v2/development_outputs/chi_bio_g2/GRI_CHI_BIO_G2_ARCHITECTURE_SCALING_CALIBRATION.json
           if-no-files-found: error
