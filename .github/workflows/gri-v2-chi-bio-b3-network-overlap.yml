@@ -1,0 +1,47 @@
+name: GRI Chi_bio B3 network overlap probe
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - gri-v071-protocol-integration-20260910-chi-bio
+    paths:
+      - 'GRI_v2/src/probe_chi_bio_b3_network_gene_overlap.py'
+      - 'GRI_v2/tests/test_chi_bio_b3_network_gene_overlap.py'
+      - '.github/workflows/gri-v2-chi-bio-b3-network-overlap.yml'
+  pull_request:
+    paths:
+      - 'GRI_v2/src/probe_chi_bio_b3_network_gene_overlap.py'
+      - 'GRI_v2/tests/test_chi_bio_b3_network_gene_overlap.py'
+      - '.github/workflows/gri-v2-chi-bio-b3-network-overlap.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned provenance dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install 'pandas==3.0.5' 'pyreadr==0.5.6' 'pytest==8.4.2'
+      - name: Run B3 overlap guards
+        run: python -m pytest -q tests/test_chi_bio_b3_network_gene_overlap.py
+      - name: Probe exact regulon-to-GSE98812 identifier support
+        run: python -m src.probe_chi_bio_b3_network_gene_overlap
+      - name: Upload outcome-free B3 overlap record
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-chi-bio-b3-network-gse98812-overlap
+          path: GRI_v2/development_outputs/chi_bio_regulon_source/b3_overlap_20260913/GRI_CHI_BIO_B3_NETWORK_GSE98812_OVERLAP.json
+          retention-days: 90
+          if-no-files-found: error
