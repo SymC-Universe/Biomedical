@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.1",
+  "freeze_id": "GRI_CHI_BIO_G2_KNOWN_TRUTH_HARNESS_20260912_V0_1",
+  "freeze_date": "2026-09-12",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.4_FINAL",
+  "status": "FROZEN_TEMPORAL_COMPARATOR_HARNESS_NO_REAL_CHI_VALUES",
+  "candidate_role": "APPROVED_G2_TEMPORAL_COMPARATOR",
+  "real_data_used_to_select_cases": false,
+  "chi_bio_outcomes_opened": false,
+  "tolerances": {
+    "boundary": 1e-8,
+    "semigroup_consistency": 1e-8,
+    "exact_transition_residual": 1e-10
+  },
+  "unit_circle_cases": [
+    {"label":"STABLE","diag":[0.4,0.9],"expected_rho":0.9},
+    {"label":"BOUNDARY","diag":[0.4,1.0],"expected_rho":1.0},
+    {"label":"UNSTABLE","diag":[0.4,1.1],"expected_rho":1.1}
+  ],
+  "semigroup_cases": [
+    {"alpha_J":-0.2,"intervals":[0.5,1.0,2.0],"reference_interval":1.0},
+    {"alpha_J":0.1,"intervals":[0.5,1.0,2.0],"reference_interval":1.0}
+  ],
+  "inconsistent_interval_case": {
+    "radii":[0.9,0.9],
+    "intervals":[1.0,2.0],
+    "required":"REFUSE_SINGLE_SEMIGROUP_RATE"
+  },
+  "nonnormal_case": {
+    "T":[[0.8,4.0],[0.0,0.8]],
+    "required":"RHO_BELOW_ONE_BUT_LARGEST_SINGULAR_VALUE_ABOVE_ONE"
+  },
+  "shared_operator_cases": {
+    "x_now":[[1.0,0.0],[0.0,1.0],[1.0,1.0]],
+    "consistent_x_next":[[0.8,0.0],[0.0,0.9],[0.8,0.9]],
+    "inconsistent_x_next":[[0.8,0.0],[0.0,0.9],[1.4,0.2]]
+  },
+  "noise_pilot": {
+    "truth_diag":[0.5,0.8,0.98],
+    "sigma_grid":[0.001,0.005,0.02,0.05],
+    "replicates":200,
+    "seed":20260912
+  },
+  "failure_consequence": "G2 temporal comparator is narrowed/refused for the failed assumption; thresholds are not retuned after failure."
+}
