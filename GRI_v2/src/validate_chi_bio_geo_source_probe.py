@@ -85,17 +85,71 @@ def _assert_same_set(actual: Iterable[str], expected: Iterable[str], label: str)
         )
 
 
+def _gene_identity_status(expression_genes: list[str], feature_genes: list[str]) -> dict:
+    """Preserve source spelling while allowing capitalization-only symbol differences.
+
+    The two GEO files can encode legacy ORF-style symbols with different case.
+    We do not rewrite either source. Passing requires exact row-wise identity
+    after casefolding; any difference beyond capitalization is a hard failure.
+    """
+
+    if len(expression_genes) != len(feature_genes):
+        raise RuntimeError(
+            "GSE137524 expression/feature gene row counts differ: "
+            f"{len(expression_genes)} vs {len(feature_genes)}"
+        )
+    if expression_genes == feature_genes:
+        return {"status": "EXACT_ORDER_MATCH", "case_only_differences": 0}
+
+    expr_fold = [x.casefold() for x in expression_genes]
+    feat_fold = [x.casefold() for x in feature_genes]
+    if expr_fold != feat_fold:
+        mismatch = [
+            i for i, (a, b) in enumerate(zip(expr_fold, feat_fold)) if a != b
+        ]
+        preview = [
+            {
+                "row_index": i,
+                "expression": expression_genes[i],
+                "feature": feature_genes[i],
+            }
+            for i in mismatch[:10]
+        ]
+        raise RuntimeError(
+            "GSE137524 expression/feature gene identities differ beyond capitalization; "
+            f"mismatch_count={len(mismatch)}, preview={preview}"
+        )
+
+    positions = [
+        i
+        for i, (a, b) in enumerate(zip(expression_genes, feature_genes))
+        if a != b
+    ]
+    return {
+        "status": "CASE_ONLY_ORDER_MATCH",
+        "case_only_differences": len(positions),
+        "case_only_preview": [
+            {
+                "row_index": i,
+                "expression": expression_genes[i],
+                "feature": feature_genes[i],
+            }
+            for i in positions[:10]
+        ],
+    }
+
+
 def validate() -> dict:
     report: dict = {
-        "validation_version": "0.1",
+        "validation_version": "0.2",
         "purpose": "SOURCE_IDENTITY_AND_CROSS_FILE_PROVENANCE_ONLY",
         "chi_bio_outcomes_computed": False,
         "feature_selection_performed": False,
+        "source_strings_rewritten": False,
         "checks": {},
         "status": "RUNNING",
     }
 
-    # GSE114446 processed matrix -> frozen GEO column map.
     bulk_path = ROOT / "GSE114446_STCCountsCG.txt.gz"
     bulk_map = json.loads(
         (CONFIG / "gri_hnscc_shortterm_bulk_rna_column_map_p0d_v0_1.json").read_text(
@@ -118,7 +172,6 @@ def validate() -> dict:
         "header_order_preserved_separately": bulk_columns,
     }
 
-    # GSE135604 processed ATAC header -> nominal manifest minus explicit QC failure.
     atac_path = ROOT / "GSE135604_ATACpeakset.csv.gz"
     atac_manifest = json.loads(
         (CONFIG / "gri_hnscc_day5_atac_manifest_p0d_v0_1.json").read_text(encoding="utf-8")
@@ -148,7 +201,6 @@ def validate() -> dict:
         "processed_columns": processed_atac,
     }
 
-    # GSE137524 SCC25 expression <-> pheno <-> feature identity.
     expr_path = ROOT / "GSE137524_exprsSCC25Matrix.csv.gz"
     pheno_path = ROOT / "GSE137524_phenoDataSCC25.csv.gz"
     feature_path = ROOT / "GSE137524_featureData.csv.gz"
@@ -166,11 +218,7 @@ def validate() -> dict:
 
     expr_genes = _first_column(expr_path, ",")
     feature_genes = _feature_gene_short_names(feature_path)
-    if expr_genes != feature_genes:
-        _assert_same_set(expr_genes, feature_genes, "GSE137524 expression/feature gene IDs")
-        gene_order_status = "SET_MATCH_ORDER_DIFFERS"
-    else:
-        gene_order_status = "EXACT_ORDER_MATCH"
+    gene_identity = _gene_identity_status(expr_genes, feature_genes)
 
     report["checks"]["GSE137524_SCC25_MATRIX_IDENTITY"] = {
         "status": "PASS",
@@ -179,7 +227,7 @@ def validate() -> dict:
         "cell_identity_order_status": order_status,
         "expression_gene_rows": len(expr_genes),
         "feature_rows": len(feature_genes),
-        "gene_identity_order_status": gene_order_status,
+        "gene_identity": gene_identity,
         "pheno_counts_by_treatment_replicate": {
             f"{treatment}_{replicate}": count
             for (treatment, replicate), count in sorted(pheno_counts.items())
