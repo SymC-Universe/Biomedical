@@ -1,0 +1,29 @@
+name: GRI Chi_bio chronic source probe
+
+on:
+  pull_request:
+    paths:
+      - 'GRI_v2/src/probe_chi_bio_chronic_processed_sources.py'
+      - '.github/workflows/gri-v2-chi-bio-chronic-source-probe.yml'
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Acquire and hash selected chronic processed GEO sources
+        run: python -m src.probe_chi_bio_chronic_processed_sources
+      - name: Upload chronic provenance report only
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-chi-bio-chronic-source-probe
+          path: GRI_v2/development_outputs/chi_bio_chronic_source_probe/GRI_CHI_BIO_CHRONIC_PROCESSED_SOURCE_PROBE.json
+          if-no-files-found: error
