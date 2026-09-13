@@ -84,5 +84,5 @@ def test_invalid_restoration_fails_loudly():
         naive_left_normalized_interaction(k, singular_r)
     with pytest.raises(ValueError, match="positive definite"):
         symmetric_generalized_g1_value(k, singular_r)
-    with pytest.raises(ValueError, match="restoration = beta\*I"):
+    with pytest.raises(ValueError, match=r"restoration = beta\*I"):
         scalar_restoration_g1_value(k, np.diag([1.0, 2.0]))
