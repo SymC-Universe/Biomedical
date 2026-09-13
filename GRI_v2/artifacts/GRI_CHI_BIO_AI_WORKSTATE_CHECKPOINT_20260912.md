@@ -34,7 +34,8 @@
 13. Defined read-only internal numeric export schema; no C1 rerun required.
 14. Defined generator-neutral known-truth/known-failure synthetic harness.
 15. Created science decision packet comparing generator, state-vector, and local/embedded choices.
-16. Verified GitHub CI success on commit `2dad7c35914c717ac44127a5cf7019098ec696c4` before the final decision-packet documentation commit.
+16. Updated draft PR #4 to the complete current scope and exact science stop.
+17. Verified GitHub Actions `GRI v2 tests` run #481 PASS on commit `013cafb75c1b456a39e2af68b69202adcaf065e8` after the decision packet/checkpoint additions.
 
 ## VERIFIED_OUTPUTS
 
@@ -57,6 +58,7 @@ Current branch artifacts include:
 - `docs/GRI_CHI_BIO_G1_NORMALIZED_INTERACTION_DERIVATION_P0D_20260912.md`
 - `docs/GRI_CHI_BIO_G2_TRANSITION_OPERATOR_DERIVATION_P0D_20260912.md`
 - `docs/GRI_CHI_BIO_SCIENCE_DECISION_PACKET_20260912.md`
+- `artifacts/GRI_CHI_BIO_AI_WORKSTATE_CHECKPOINT_20260912.md`
 
 ## OPEN_ISSUES
 
@@ -73,7 +75,7 @@ Before an outcome-bearing Chi_bio calculation, explicit review must select/freez
 
 ### Numeric packaging dependency
 
-The full machine-readable `Stage_C1_Result.zip` and `Post_C1_Adversarial_Sensitivity_v2_2_Result.zip` are not presently available in the repository/file-access layer. Existing audit summaries are insufficient for the resample-level identifiability analysis specified by the export schema.
+The complete machine-readable `Stage_C1_Result.zip` and `Post_C1_Adversarial_Sensitivity_v2_2_Result.zip` are not presently available in the repository/file-access layer. Existing audit summaries are insufficient for the resample-level identifiability analysis specified by the export schema.
 
 No recomputation is authorized or needed. The completed return archives should be ingested read-only when available.
 
@@ -88,15 +90,15 @@ No recomputation is authorized or needed. The completed return archives should b
 
 ## NEXT_EXACT_ACTION
 
-1. Verify CI on this checkpoint/decision-packet head and repair only mechanical failures if any.
-2. Keep PR #4 draft and update its description to include G1/G2 derivations, static-to-dynamic bridge, export schema, known-truth harness, and exact science stop.
-3. Present the science decision packet for explicit review.
-4. After generator/state/scope selection, create the candidate MFR-14 and generator-specific known-truth freeze **before** computing real Chi_bio values.
-5. Ingest the already completed C1/post-C1 return ZIPs read-only when supplied; do not rerun C1.
+1. Present/review `GRI_CHI_BIO_SCIENCE_DECISION_PACKET_20260912.md`.
+2. Obtain explicit generator + state-vector + local/embedded scope selection before any outcome-bearing Chi_bio calculation.
+3. Ingest the already completed C1/post-C1 return ZIPs read-only when supplied; do not rerun C1.
+4. After the scientific selection, create the candidate MFR-14 and generator-specific known-truth freeze **before** computing real Chi_bio values.
+5. Resume autonomous mechanical/computational execution immediately after that freeze.
 
 ## SAFE_RESUME_POINT
 
-Resume from `GRI_CHI_BIO_SCIENCE_DECISION_PACKET_20260912.md`. Do not infer that silence or branch existence constitutes approval of a generator/state/scope.
+Resume from `GRI_CHI_BIO_SCIENCE_DECISION_PACKET_20260912.md`. Do not infer that silence, PR existence, or a passing CI run constitutes approval of a generator/state/scope.
 
 ## CLAIM CEILING
 
