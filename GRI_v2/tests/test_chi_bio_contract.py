@@ -18,6 +18,7 @@ def base_record():
         "notation": "Chi_bio",
         "candidate_id": "control",
         "promotion_state": "NOT_ADMITTED",
+        "generator_class": "UNSELECTED",
         "passed_gates": [],
         "formula_or_mapping": None,
         "direct_alias_of": None,
@@ -66,18 +67,43 @@ def test_value_before_qualification_fails():
         validate_chi_bio_record(r)
 
 
+def test_invalid_generator_class_fails():
+    r = base_record()
+    r["generator_class"] = "MAKE_IT_CROSS_ONE"
+    with pytest.raises(ChiBioContractError, match="generator_class"):
+        validate_chi_bio_record(r)
+
+
+def test_invalid_view_status_fails():
+    r = base_record()
+    r["modal_vector_view"]["status"] = "CERTAIN_BECAUSE_SCALAR_LOOKS_GOOD"
+    with pytest.raises(ChiBioContractError, match="modal_vector_view"):
+        validate_chi_bio_record(r)
+
+
 def test_candidate_lock_requires_all_nine_gates():
     r = base_record()
     r["promotion_state"] = "CANDIDATE_LOCKED"
+    r["generator_class"] = "NORMALIZED_REGULATORY_INTERACTION_MATRIX"
     r["formula_or_mapping"] = "frozen mapping"
     r["passed_gates"] = [f"CB{i}" for i in range(1, 9)]
     with pytest.raises(ChiBioContractError):
         validate_chi_bio_record(r)
 
 
+def test_candidate_lock_requires_selected_generator():
+    r = base_record()
+    r["promotion_state"] = "CANDIDATE_LOCKED"
+    r["formula_or_mapping"] = "frozen mapping"
+    r["passed_gates"] = [f"CB{i}" for i in range(1, 10)]
+    with pytest.raises(ChiBioContractError, match="selected generator_class"):
+        validate_chi_bio_record(r)
+
+
 def test_candidate_lock_passes_with_cb1_through_cb9():
     r = base_record()
     r["promotion_state"] = "CANDIDATE_LOCKED"
+    r["generator_class"] = "NORMALIZED_REGULATORY_INTERACTION_MATRIX"
     r["formula_or_mapping"] = "frozen mapping"
     r["passed_gates"] = [f"CB{i}" for i in range(1, 10)]
     validate_chi_bio_record(r)
@@ -86,6 +112,7 @@ def test_candidate_lock_passes_with_cb1_through_cb9():
 def test_unity_admission_requires_final_state():
     r = base_record()
     r["promotion_state"] = "INTERNALLY_QUALIFIED_P0Q"
+    r["generator_class"] = "NORMALIZED_REGULATORY_INTERACTION_MATRIX"
     r["formula_or_mapping"] = "frozen mapping"
     r["passed_gates"] = [f"CB{i}" for i in range(1, 12)]
     r["unity_boundary_status"] = "ADMITTED"
