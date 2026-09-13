@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.1",
+  "status": "P0D_SOURCE_CANDIDATE_PROVENANCE_NOT_A_STATE_FREEZE",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.4_FINAL",
+  "candidate_family": "G1_S1_L3",
+  "selected_state_source": null,
+  "selected_tf_panel": null,
+  "selected_activity_method": null,
+  "selected_dimension_rule": null,
+  "real_Chi_bio_values_used": false,
+  "sources": [
+    {
+      "id": "COLLECTRI_CANDIDATE",
+      "role": "LEADING_FIXED_SIGNED_REGULON_SOURCE_FOR_QUALIFICATION_NOT_SELECTED",
+      "publication": {"year": 2023, "journal": "Nucleic Acids Research", "doi": "10.1093/nar/gkad841"},
+      "upstream_repository": {
+        "repo": "saezlab/CollecTRI",
+        "branch_observed": "main",
+        "commit_observed_2026_09_13": "86760ed852231c944396044c6fea4ecc38cc8bd1",
+        "commit_is_data_snapshot": false,
+        "note": "Repository commit pins inspected source/code provenance only. Exact regulon rows served by an API/package require their own immutable export hash before state freeze."
+      },
+      "official_access_routes_observed": ["OmniPath collectri dataset", "decoupler dc.op.collectri human", "decoupleR get_collectri human"],
+      "documented_semantics": ["signed TF-target interactions", "literature/prior-knowledge meta-resource", "perturbed-TF activity benchmark"],
+      "provenance_discrepancy_to_preserve": "The CollecTRI repository README describes 12 source resources while current OmniPathR documentation describes 14 resources plus original literature curation. Do not reconcile silently; freeze exact exported rows/resources.",
+      "freeze_requirements_before_use": ["exact_export_timestamp", "software_and_version", "query_parameters", "row_export_sha256", "columns_and_sign_semantics", "complex_splitting_rule", "organism_rule", "duplicate_edge_resolution_rule", "TF_subset_or_dimension_rule", "state_scoring_rule"]
+    },
+    {
+      "id": "DOROTHEA_CANDIDATE",
+      "role": "INDEPENDENT_REPRESENTATION_SENSITIVITY_NOT_SELECTED",
+      "publication": {"year": 2019, "journal": "Genome Research", "doi": "10.1101/gr.240663.118"},
+      "upstream_repository": {
+        "repo": "saezlab/dorothea",
+        "branch_observed": "master",
+        "commit_observed_2026_09_13": "1461fb75e23e110c2281860526d4333920925282",
+        "commit_is_data_snapshot": false,
+        "note": "Repository commit pins inspected package/source provenance only. Exact regulon object/export requires its own immutable hash."
+      },
+      "documented_semantics": ["signed TF-target interactions", "confidence-tiered regulatory interactions", "TF activity inference resource"],
+      "freeze_requirements_before_use": ["exact_export_timestamp", "package_or_API_version", "confidence_tiers", "row_export_sha256", "organism_rule", "duplicate_edge_resolution_rule", "TF_subset_or_dimension_rule", "state_scoring_rule"]
+    }
+  ],
+  "hard_firewalls": ["SOURCE_PROVENANCE_SNAPSHOT_DOES_NOT_SELECT_EMPIRICAL_STATE", "NO_TF_PANEL_SELECTION_FROM_SCC25_OR_TCGA_CHI_BEHAVIOR", "NO_RESOURCE_SELECTION_BY_DISTANCE_TO_UNITY", "NO_ACTIVITY_METHOD_SELECTION_BY_PROLIFERATION_OR_ATLAS_AGREEMENT", "REPOSITORY_COMMIT_IS_NOT_A_SUBSTITUTE_FOR_HASHING_EXACT_EXPORTED_INTERACTIONS"],
+  "next_mechanical_action": "Build a source-export preflight that records exact export bytes/hash and schema without calculating TF activities, state coordinates, transition operators, G1, G2, or Chi_bio."
+}
