@@ -5,9 +5,11 @@ on:
     paths:
       - 'GRI_v2/src/probe_chi_bio_geo_sources.py'
       - 'GRI_v2/src/validate_chi_bio_geo_source_probe.py'
+      - 'GRI_v2/src/probe_chi_bio_geo_chronic_listings.py'
       - 'GRI_v2/config/gri_hnscc_shortterm_cetuximab_manifest_p0d_v0_1.json'
       - 'GRI_v2/config/gri_hnscc_shortterm_bulk_rna_column_map_p0d_v0_1.json'
       - 'GRI_v2/config/gri_hnscc_day5_atac_manifest_p0d_v0_1.json'
+      - 'GRI_v2/config/gri_hnscc_day5_scrna_scc25_manifest_p0d_v0_1.json'
       - '.github/workflows/gri-v2-chi-bio-geo-source-probe.yml'
   workflow_dispatch:
 
@@ -27,6 +29,8 @@ jobs:
         run: python -m src.probe_chi_bio_geo_sources
       - name: Validate cross-file source identities
         run: python -m src.validate_chi_bio_geo_source_probe
+      - name: Discover chronic SCC25 GEO public file listings
+        run: python -m src.probe_chi_bio_geo_chronic_listings
       - name: Upload provenance and identity reports only
         uses: actions/upload-artifact@v4
         with:
@@ -34,4 +38,5 @@ jobs:
           path: |
             GRI_v2/development_outputs/chi_bio_geo_source_probe/GRI_CHI_BIO_GEO_SOURCE_PROBE.json
             GRI_v2/development_outputs/chi_bio_geo_source_probe/GRI_CHI_BIO_GEO_SOURCE_IDENTITY_VALIDATION.json
+            GRI_v2/development_outputs/chi_bio_geo_source_probe/GRI_CHI_BIO_CHRONIC_GEO_LISTINGS.json
           if-no-files-found: error
