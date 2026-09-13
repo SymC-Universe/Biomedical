@@ -3,8 +3,10 @@ from __future__ import annotations
 """Hard gate for the first outcome-bearing G2/R1 empirical execution.
 
 No real temporal source runner should proceed unless a scientific freeze record
-passes this contract. The contract exists now so implementation can be prepared
-without silently making the remaining state/rank/normalization decisions.
+passes this contract. The contract supports the earlier primary+sensitivity
+rank design and the explicitly approved A3 design in which r=2 and r=3 are
+co-equal robustness representations and neither may be promoted after seeing
+outcomes.
 """
 
 from collections.abc import Mapping
@@ -17,6 +19,10 @@ class EmpiricalFreezeContractError(ValueError):
 
 ALLOWED_PRIMARY_REDUCTIONS = frozenset({"R1_CONTROL_ONLY_UNSUPERVISED"})
 ALLOWED_PRIMARY_RANKS = frozenset({2, 3})
+ALLOWED_RANK_DESIGNS = frozenset({
+    "PRIMARY_PLUS_SENSITIVITY",
+    "A3_ROBUSTNESS_REQUIRED_R2_R3",
+})
 ALLOWED_TRANSITION_MODELS = frozenset({
     "SHARED_T_PLUS_TREATMENT_INPUT_PLUS_INTERCEPT",
     "SEPARATE_ARM_T_PLUS_INTERCEPT",
@@ -71,17 +77,38 @@ def validate_empirical_freeze(record: Mapping[str, Any]) -> None:
     if reduction not in ALLOWED_PRIMARY_REDUCTIONS:
         raise EmpiricalFreezeContractError(f"unsupported primary_reduction_id: {reduction!r}")
 
-    rank = record.get("primary_rank")
-    if not isinstance(rank, int) or isinstance(rank, bool) or rank not in ALLOWED_PRIMARY_RANKS:
-        raise EmpiricalFreezeContractError("primary_rank must be prospectively frozen as 2 or 3")
+    rank_design = record.get("rank_design", "PRIMARY_PLUS_SENSITIVITY")
+    if rank_design not in ALLOWED_RANK_DESIGNS:
+        raise EmpiricalFreezeContractError(f"unsupported rank_design: {rank_design!r}")
 
+    rank = record.get("primary_rank")
     sensitivity = record.get("sensitivity_ranks", [])
     if not isinstance(sensitivity, list):
         raise EmpiricalFreezeContractError("sensitivity_ranks must be a list")
-    if any((not isinstance(x, int) or isinstance(x, bool) or x not in ALLOWED_PRIMARY_RANKS) for x in sensitivity):
-        raise EmpiricalFreezeContractError("sensitivity_ranks may only contain 2 or 3")
-    if rank in sensitivity:
-        raise EmpiricalFreezeContractError("primary_rank may not also be listed as sensitivity")
+
+    if rank_design == "PRIMARY_PLUS_SENSITIVITY":
+        if not isinstance(rank, int) or isinstance(rank, bool) or rank not in ALLOWED_PRIMARY_RANKS:
+            raise EmpiricalFreezeContractError("primary_rank must be prospectively frozen as 2 or 3")
+        if any((not isinstance(x, int) or isinstance(x, bool) or x not in ALLOWED_PRIMARY_RANKS) for x in sensitivity):
+            raise EmpiricalFreezeContractError("sensitivity_ranks may only contain 2 or 3")
+        if rank in sensitivity:
+            raise EmpiricalFreezeContractError("primary_rank may not also be listed as sensitivity")
+    else:
+        if rank is not None:
+            raise EmpiricalFreezeContractError("A3 rank design may not designate a primary_rank")
+        if sensitivity:
+            raise EmpiricalFreezeContractError("A3 rank design may not designate sensitivity_ranks")
+        if record.get("robustness_ranks") != [2, 3]:
+            raise EmpiricalFreezeContractError("A3 rank design requires robustness_ranks [2, 3]")
+        rule = record.get("rank_robustness_rule")
+        if not _nonempty(rule) or "REPRESENTATION_DEPENDENT_NO_TRANSFER" not in rule:
+            raise EmpiricalFreezeContractError(
+                "A3 rank design requires a frozen representation-dependent refusal rule"
+            )
+        if not _nonempty(record.get("material_conclusion_schema")):
+            raise EmpiricalFreezeContractError(
+                "A3 rank design requires a frozen material_conclusion_schema before execution"
+            )
 
     basis_scope = record.get("basis_scope")
     if basis_scope not in ALLOWED_BASIS_SCOPE:
