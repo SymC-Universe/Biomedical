@@ -19,9 +19,10 @@ import hashlib
 import json
 from pathlib import Path
 import time
+from urllib.error import HTTPError, URLError
+from urllib.request import Request, urlopen
 
 import pandas as pd
-import requests
 
 
 SOURCE_URL = "https://zenodo.org/records/8192729/files/CollecTRI_regulons.csv?download=1"
@@ -58,39 +59,48 @@ def _download_exact_source(
         raise ValueError("backoff_seconds must be nonempty when multiple attempts are allowed")
     history: list[dict] = []
     last_error: Exception | None = None
-    session = requests.Session()
-    session.headers.update({"User-Agent": "GRI-Chi-bio-provenance-probe/0.2"})
 
     for attempt in range(1, attempts + 1):
+        request = Request(url, headers={"User-Agent": "GRI-Chi-bio-provenance-probe/0.3"})
         try:
-            response = session.get(url, timeout=timeout_seconds)
+            with urlopen(request, timeout=timeout_seconds) as response:
+                status = int(getattr(response, "status", response.getcode()))
+                payload = response.read()
             history.append(
                 {
                     "attempt": attempt,
-                    "status_code": int(response.status_code),
-                    "bytes_received": int(len(response.content)),
+                    "status_code": status,
+                    "bytes_received": int(len(payload)),
                 }
             )
-            if response.status_code == 200:
-                if not response.content:
+            if status == 200:
+                if not payload:
                     raise RuntimeError("Zenodo returned HTTP 200 with an empty CollecTRI payload")
-                return response.content, history
-            if response.status_code not in TRANSIENT_HTTP_STATUS:
-                response.raise_for_status()
-            last_error = requests.HTTPError(
-                f"transient HTTP {response.status_code} from frozen CollecTRI source"
+                return payload, history
+            last_error = RuntimeError(f"unexpected HTTP {status} from frozen CollecTRI source")
+        except HTTPError as exc:
+            status = int(exc.code)
+            history.append(
+                {
+                    "attempt": attempt,
+                    "status_code": status,
+                    "bytes_received": 0,
+                    "error": f"HTTPError: {exc}",
+                }
             )
-        except requests.RequestException as exc:
+            if status not in TRANSIENT_HTTP_STATUS:
+                raise
             last_error = exc
-            if not history or history[-1].get("attempt") != attempt:
-                history.append(
-                    {
-                        "attempt": attempt,
-                        "status_code": None,
-                        "bytes_received": 0,
-                        "error": f"{type(exc).__name__}: {exc}",
-                    }
-                )
+        except URLError as exc:
+            history.append(
+                {
+                    "attempt": attempt,
+                    "status_code": None,
+                    "bytes_received": 0,
+                    "error": f"URLError: {exc}",
+                }
+            )
+            last_error = exc
 
         if attempt < attempts:
             delay = backoff_seconds[min(attempt - 1, len(backoff_seconds) - 1)]
