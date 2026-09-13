@@ -2,13 +2,15 @@ from __future__ import annotations
 
 """Read-only discovery probe for chronic SCC25 GEO file listings.
 
-The script records public FTP/HTTP directory listings only. It does not download
-large chronic molecular matrices, select features, or compute Chi_bio.
+The script records public FTP/HTTP directory listings and file metadata via HEAD
+requests. It does not download chronic molecular matrices, select features, or
+compute Chi_bio.
 """
 
 import hashlib
 import html.parser
 import json
+import urllib.parse
 import urllib.request
 from pathlib import Path
 
@@ -35,28 +37,70 @@ class LinkParser(html.parser.HTMLParser):
 
 
 def _fetch(url: str, timeout: int = 60) -> tuple[bytes, dict[str, str]]:
-    request = urllib.request.Request(url, headers={"User-Agent": "SymC-GRI-source-probe/0.1"})
+    request = urllib.request.Request(url, headers={"User-Agent": "SymC-GRI-source-probe/0.2"})
     with urllib.request.urlopen(request, timeout=timeout) as response:
         return response.read(), {str(k): str(v) for k, v in response.headers.items()}
 
 
+def _head(url: str, timeout: int = 60) -> dict[str, str | int | None]:
+    request = urllib.request.Request(
+        url,
+        method="HEAD",
+        headers={"User-Agent": "SymC-GRI-source-probe/0.2"},
+    )
+    with urllib.request.urlopen(request, timeout=timeout) as response:
+        headers = {str(k): str(v) for k, v in response.headers.items()}
+    length = headers.get("Content-Length")
+    return {
+        "content_length_bytes": int(length) if length is not None else None,
+        "last_modified": headers.get("Last-Modified"),
+        "etag": headers.get("ETag"),
+        "content_type": headers.get("Content-Type"),
+    }
+
+
+def _is_geo_file_link(base_url: str, href: str) -> bool:
+    target = urllib.parse.urljoin(base_url, href)
+    parsed = urllib.parse.urlparse(target)
+    return parsed.hostname == "ftp.ncbi.nlm.nih.gov" and not target.endswith("/")
+
+
 def probe() -> dict:
     report: dict = {
-        "probe_version": "0.1",
-        "purpose": "CHRONIC_GEO_FILE_DISCOVERY_NO_MOLECULAR_ANALYSIS",
+        "probe_version": "0.2",
+        "purpose": "CHRONIC_GEO_FILE_DISCOVERY_AND_SIZE_PREFLIGHT_NO_MOLECULAR_ANALYSIS",
         "chi_bio_outcomes_computed": False,
         "feature_selection_performed": False,
+        "chronic_molecular_files_downloaded": False,
         "listings": {},
         "status": "RUNNING",
     }
     passes = 0
     for name, url in LISTINGS.items():
-        entry = {"url": url}
+        entry: dict = {"url": url}
         try:
             body, headers = _fetch(url)
             parser = LinkParser()
             parser.feed(body.decode("utf-8", errors="replace"))
             links = [x for x in parser.links if x not in {"../", "/"}]
+            files = []
+            for href in links:
+                if not _is_geo_file_link(url, href):
+                    continue
+                file_url = urllib.parse.urljoin(url, href)
+                file_entry = {"href": href, "url": file_url}
+                try:
+                    file_entry.update(_head(file_url))
+                    file_entry["head_status"] = "PASS"
+                except Exception as exc:
+                    file_entry.update(
+                        {
+                            "head_status": "FAIL",
+                            "error_type": type(exc).__name__,
+                            "error": str(exc),
+                        }
+                    )
+                files.append(file_entry)
             entry.update(
                 {
                     "status": "PASS",
@@ -64,6 +108,7 @@ def probe() -> dict:
                     "body_size_bytes": len(body),
                     "last_modified": headers.get("Last-Modified"),
                     "links": links,
+                    "geo_file_metadata": files,
                 }
             )
             passes += 1
