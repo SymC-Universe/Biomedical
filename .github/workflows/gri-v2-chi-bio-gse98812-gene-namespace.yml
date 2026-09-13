@@ -1,0 +1,42 @@
+name: GRI Chi_bio GSE98812 gene namespace probe
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - gri-v071-protocol-integration-20260910-chi-bio
+    paths:
+      - 'GRI_v2/src/probe_chi_bio_gse98812_gene_namespace.py'
+      - 'GRI_v2/tests/test_chi_bio_gse98812_gene_namespace.py'
+      - '.github/workflows/gri-v2-chi-bio-gse98812-gene-namespace.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned identifier-probe dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install 'pandas==3.0.5' 'pyreadr==0.5.6' 'pytest==8.4.2'
+      - name: Run namespace guard
+        run: python -m pytest -q tests/test_chi_bio_gse98812_gene_namespace.py
+      - name: Diagnose GSE98812 identifier namespace only
+        run: python -m src.probe_chi_bio_gse98812_gene_namespace
+      - name: Upload identifier-only report
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-chi-bio-gse98812-gene-namespace
+          path: GRI_v2/development_outputs/chi_bio_regulon_source/gse98812_namespace_20260913/GRI_CHI_BIO_GSE98812_GENE_NAMESPACE.json
+          retention-days: 90
+          if-no-files-found: error
