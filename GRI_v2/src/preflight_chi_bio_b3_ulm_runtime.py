@@ -8,6 +8,7 @@ as expected in the execution environment. It does not qualify the biological
 representation, choose a dimension, or open real SCC25/TCGA expression.
 """
 
+from importlib.metadata import version as package_version
 import json
 from pathlib import Path
 
@@ -25,7 +26,7 @@ OUTPUT = Path(
 
 
 def run_preflight() -> dict:
-    observed_version = str(getattr(dc, "__version__", ""))
+    observed_version = package_version("decoupler")
     if observed_version != EXPECTED_DECOUPLER_VERSION:
         raise RuntimeError(
             f"decoupler version drift: {observed_version!r} != {EXPECTED_DECOUPLER_VERSION!r}"
