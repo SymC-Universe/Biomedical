@@ -3,7 +3,7 @@
 1. Phase 0C v0.2 remains the official prospective FAIL / FAIL / FAIL result.
 2. Phase 0D v0.1 remains unexecuted and is superseded before execution under protocol v0.7.1.
 3. This v0.2 package is P0 development. It contains no authorized confirmatory holdout.
-4. General Protocol v0.7.1 FINAL and the additive authoritative v0.7.1A Functional Mapping and Natural Limit-Testbed Addendum govern prospectively. The addendum does not rewrite any prior result or weaken P1 safeguards.
+4. General Cross-Project Research Protocol **v0.8.0, dated 14 September 2026, status `Definitive Active Baseline`**, governs prospectively. Earlier GP versions remain historical lineage and do not rewrite, promote, demote, or rescore prior NSD results. Project-specific measurement, inference, Atlas, and implementation safeguards remain local under the v0.8.0 internal-use transfer principle, including `NSD_MEASUREMENT_AND_INFERENCE_SAFEGUARDS.md`.
 5. P0 work is explicitly separated into `P0-D` discovery/mechanism mapping and `P0-Q` qualification/controlled iteration. A P0-D discovery cannot confirm itself, and P0-Q evidence used to revise a version cannot become confirmatory evidence for that revised version.
 6. The NSD System Model is not assumed to be mechanistic or predictive. The Structural Engine is its current executable candidate only.
 7. No Atlas labels, clinical labels, diagnosis, phenotype, treatment, outcome, GRI result, chi value or desired ordering may enter structural selector decisions.
@@ -19,7 +19,7 @@
 17. Independence is pathway-specific. Data, cohort/system, outcome/label, parameter/tuning, method, Atlas, source/literature and temporal independence are recorded separately when material.
 18. Scope is earned. Preferred claims remain bounded to tested systems/regimes/limits. `UNIVERSAL` is not a target designation.
 19. P0 mapping may use `WORKS_HERE`, `STOPS_WORKING_HERE`, and `NOT_KNOWN_HERE` as descriptive location states. These do not constitute empirical confirmation.
-20. P1 may begin only after complete MFR-14, comparator route, uncertainty handling, multiplicity accounting, evidence-independence map, known-bad qualification, frozen-manifest verification and the other inherited v0.7.1 requirements are in place.
+20. P1 may begin only after complete MFR-14, comparator route, uncertainty handling, multiplicity accounting, evidence-independence map, known-bad qualification, frozen-manifest verification and the other inherited current-GP requirements are in place.
 21. Method-scope outcomes use the METHOD_SCOPE namespace and may not be advertised as empirical confirmations about nature.
 22. Scientific failure, refusal, partial admission, indeterminate, unresolved and not-applicable status are valid outcomes and are preserved.
 23. At every major P0 milestone, the project checks both success-seeking and failure-seeking imbalance. If the work has become failure-dominated, Function/mechanism mapping is prioritized; if success-dominated, adversarial/transition/refusal/limit testing is prioritized.
