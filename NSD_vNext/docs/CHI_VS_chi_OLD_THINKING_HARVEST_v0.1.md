@@ -12,48 +12,72 @@ This note does not rehabilitate historical numerical claims. It asks a different
 
 The historical papers are used here as hypothesis lineage and design material. Exact old thresholds, disorder coordinates, treatment mappings, and universal-health claims are not imported.
 
-A second purpose is to open an explicit **Chi versus chi** investigation for NSD, informed by the GOM and the oncology `Chi_bio` program.
+A second purpose is to open an explicit **Capital-Chi versus local-chi investigation** without inventing a project-branded parameter.
 
-## 2. Working Chi versus chi distinction
+## 2. Naming correction: no project-named system parameter
 
-This is a project-local working distinction, not yet a program-wide notation rule.
+There will be **no `Chi_NSD`, no `chi_NSD`, and no whole-system parameter named after the research program or disease framework**.
 
-### 2.1 Lowercase `chi`
+The current GOM already points in the right direction: scalar, vector/modal, and conglomerate/system views are starting representations from which a fuller stability architecture may be reconstructed; modal and system objects must be named for the mathematics they actually instantiate.
 
-Lowercase `chi_i` denotes a **local or mode-specific scalar stability coordinate** only where a native model licenses it.
+Accordingly, the scientific writing will use established systems terminology.
 
-For a licensed second-order mode this may be the ordinary damping ratio or an exactly derived equivalent. Other empirical coordinates remain named for what they are and are not renamed `chi` merely because they relate to stability.
+### 2.1 Local scalar quantity
 
-Lowercase `chi` is therefore a possible consequence/readout of a qualified local dynamical model. It is not the definition of the full neural Stability Architecture.
+For a licensed second-order mode, the native quantity is the **modal damping ratio**, conventionally written `zeta_i` in control and vibration theory.
 
-### 2.2 Capital `Chi_NSD`
+Within SymC cross-domain bookkeeping, the same licensed quantity may be cross-referenced as local `chi_i`, but the native term leads:
 
-`Chi_NSD` is a **candidate higher-order system-level stability object** describing embedded realized behavior after local modes, coupling, topology, context, feedback, and system organization are considered together.
+`modal damping ratio zeta_i <-> local chi_i only where the equivalence is exact or operationally validated`.
 
-Current status:
+Other empirical coordinates remain named for what they are and are not renamed `chi` merely because they relate to stability.
 
-`Chi_NSD = NOT_ADMITTED`
+### 2.2 System-level object
 
-Critically, `Chi_NSD` is **not assumed to be scalar**. It may ultimately be:
+At the coupled-system level, the umbrella term is **embedded system stability** or **system-level stability structure**.
 
-- a system operator;
-- an invariant derived from that operator;
-- a structured tuple/state;
-- a geometric object;
-- a scalar with a natural boundary;
-- or not identifiable as a coherent single object at all.
+This is not a new parameter. It is the behavior of the coupled system after local dynamics, coupling, topology, feedback, spatial participation, input structure, and timescale are considered together.
 
-Capitalization is used here as a bookkeeping firewall against silently replacing system architecture with a local damping ratio.
+The native mathematical object should be named directly when identified, for example:
 
-### 2.3 Relationship
+- state-space **system matrix** `A`;
+- local-linear **Jacobian** `J`;
+- **transition / evolution operator**;
+- DMD/Koopman-type operator where justified;
+- neural-mass transfer operator or Jacobian where justified.
+
+The corresponding established stability descriptors may include, where appropriate:
+
+- **eigenspectrum**;
+- **spectral abscissa** `alpha(A) = max Re(lambda_i(A))` for continuous-time asymptotic stability;
+- **stability margin / stability radius** under the relevant definition;
+- **modal damping ratios** for identified oscillatory modes;
+- **non-normality**;
+- **numerical abscissa / reactivity** for initial transient growth;
+- **maximum transient gain** `G_max = sup_t ||exp(At)||`;
+- **pseudospectrum / resolvent sensitivity**;
+- **mode shapes / participation factors**;
+- network/topological quantities when the question is explicitly topological.
+
+No single one is presumed to be the complete system descriptor.
+
+### 2.3 What “Capital Chi” means in this investigation
+
+**Capital Chi is not a parameter name.** It is an internal research shorthand for the unresolved question:
+
+> Is the fuller stability architecture that the GOM calls “progressively reconstructed chi” adequately represented by established system-level dynamical objects, and how does that architecture relate to local modal damping ratios?
+
+In manuscripts, methods, code outputs, and tools, the established quantity name should be used instead of a branded Capital-Chi variable.
+
+### 2.4 Relationship
 
 The working hierarchy is:
 
-`native observables -> local/mode models -> {chi_i where licensed} -> coupled/modal/spatial organization -> embedded system object -> candidate Chi_NSD`
+`native observables -> local/modal models -> modal damping ratios where licensed -> coupled/modal/spatial organization -> system matrix/operator or other native system representation -> embedded system stability descriptors`
 
 and **not**:
 
-`Chi_NSD = weighted average of chi_i`.
+`whole-system stability = weighted average of local chi_i`.
 
 A weighted average, weakest-link rule, or other aggregation may be retained as a baseline/comparator, but cannot become the definition merely because it produces a convenient number.
 
@@ -79,14 +103,14 @@ The older reward-control "phase divergence" idea treated disagreement between su
 
 **Forward value:** test whether mismatch among locally qualified modes predicts or produces different embedded behavior. Do not retain historical numerical divergence thresholds.
 
-Candidate objects include:
+Candidate native quantities include:
 
-- pairwise mode mismatch;
-- relative decay/frequency geometry;
+- relative modal frequency/decay geometry;
 - coupling residuals;
-- cross-region participation mismatch;
-- state-space distance after uncertainty normalization;
-- loss of phase/temporal coordination where the native model supports it.
+- mode-shape or participation mismatch;
+- phase-locking / coherence quantities where the signal model supports them;
+- state-space distance under a stated metric;
+- operator perturbation sensitivity.
 
 ### H3 — Failure architecture can differ without requiring different scalar positions
 
@@ -106,26 +130,26 @@ The current Engine should be challenged with systems where failure arises from:
 
 The old FTD framing emphasized a particularly valuable possibility: local spectral power may appear comparatively preserved while long-range organization fails.
 
-**Forward value:** this becomes a direct falsifier of scalar-only NSD.
+**Forward value:** this becomes a direct falsifier of scalar-only reasoning.
 
-A candidate `Chi_NSD` architecture must be able to represent the case:
+The system-level representation must be able to distinguish:
 
-`local chi_i approximately unchanged + local spectra approximately unchanged + coupling/topology altered -> embedded behavior materially altered`.
+`local modal damping approximately unchanged + local spectra approximately unchanged + coupling/topology altered -> embedded behavior materially altered`.
 
-If a proposed system scalar cannot distinguish this from the intact system, it is insufficient for that question.
+If a proposed whole-system scalar cannot distinguish this from the intact system, that scalar is insufficient for the question.
 
 ### H5 — Multi-timescale disagreement is potentially independent information
 
 The older pain/NSD work repeatedly used short-versus-long timescale divergence, variance changes, residence/breach duration, and return behavior.
 
-**Forward value:** retain the quantities as candidate temporal descriptors, while discarding old universal thresholds.
+**Forward value:** retain these as candidate temporal descriptors while discarding old universal thresholds.
 
 Candidate temporal layer:
 
 - mean state;
 - variance;
 - derivative/drift;
-- curvature/acceleration;
+- curvature/acceleration where justified;
 - perturbation recovery time;
 - residence distribution;
 - cross-timescale disagreement;
@@ -141,12 +165,13 @@ The old papers often distinguished crossing a preferred region from remaining th
 
 This suggests a future distinction between:
 
-- position/state;
+- state/location;
+- asymptotic stability;
 - resilience/recovery;
 - transient amplification;
-- structural organization.
+- structural/network organization.
 
-A system can share the same instantaneous local `chi_i` values and still differ in all three of the latter properties.
+A system can share the same instantaneous local modal damping ratios and still differ in all of the latter properties.
 
 ### H7 — The old "translation layer" intuition survives, but not as forced numerical equivalence
 
@@ -156,9 +181,7 @@ The Alzheimer work tried to place control-theory, viscoelastic, electrophysiolog
 
 The question becomes:
 
-> Which native quantities describe the same system property, which describe different properties, and what transformations/couplings connect them?
-
-That is a Capital-Chi question.
+> Which native quantities describe the same dynamical property, which describe different properties, and what transformations or coupling relations connect them?
 
 ### H8 — Sense -> infer -> map -> act remains a useful tool architecture
 
@@ -170,19 +193,15 @@ The older pain/PD control diagrams separated sensing, computation/state estimati
 
 The action layer remains downstream and unearned at the current evidence stage.
 
-## 4. Oncology lesson transferred to NSD
+## 4. Lesson transferred from the oncology Chi-vs-chi investigation
 
-The `Chi_bio` oncology investigation created an important template:
+The oncology investigation supplied a useful general rule:
 
-Do not construct a system scalar by averaging scalar/modal/conglomerate features. Search for a **native system object** from which those views arise together.
-
-In oncology, the candidate route became operator-first:
-
-`coupled regulatory operator -> eigenspectrum/eigenvectors -> candidate boundary scalar`.
+Do not construct a system scalar by averaging scalar/modal/conglomerate features. Search first for a **native system object** from which those views may arise together.
 
 The analogous NSD question is:
 
-> Can a coupled neural System Model provide an operator whose modal structure, local dynamical scalars, spatial participation, and system-level stability are different projections of the same underlying object?
+> Can a coupled neural System Model provide a native operator whose modal structure, local damping ratios, spatial participation, and system-level stability behavior are different projections of the same underlying dynamics?
 
 Candidate operator families already allowed by current NSD architecture include:
 
@@ -193,47 +212,48 @@ Candidate operator families already allowed by current NSD architecture include:
 
 No operator is privileged yet.
 
-## 5. Important consequence from native neural dynamics
+## 5. Established neural-dynamics terminology changes the test
 
-An operator-first route creates a useful complication: **eigenvalues alone need not capture system behavior**.
+An operator-first route creates an important complication: **eigenvalues alone need not capture system behavior**.
 
-Non-normal recurrent neural systems can be asymptotically stable while still producing large transient amplification. Therefore a Capital-Chi construction based only on a dominant eigenvalue or spectral radius could miss clinically or functionally important embedded behavior.
+In established dynamical-systems and theoretical-neuroscience terminology, a stable non-normal recurrent system can have negative spectral abscissa and still exhibit substantial **transient amplification**. The eigenspectrum describes asymptotic stability, while non-normality, numerical abscissa/reactivity, propagator singular values, and pseudospectral structure describe complementary aspects of transient behavior and perturbation sensitivity.
 
-This creates three live possibilities:
+Therefore the system-level program must not search for one replacement scalar by default.
 
-1. `Chi_NSD` is a scalar boundary coordinate and transient amplification is an independent component;
-2. `Chi_NSD` requires both asymptotic and transient terms;
-3. the correct system object is non-scalar, and forcing a scalar destroys necessary information.
+Live possibilities are:
 
-All three remain open.
+1. asymptotic stability and transient amplification are separate necessary descriptors;
+2. a known native stability margin or robust-stability quantity becomes sufficient for a specific frozen question;
+3. multiple system-level coordinates are required;
+4. a non-scalar operator/spectrum/geometry is the least-lossy representation.
 
 ## 6. Chi-versus-chi known-truth program
 
-Add the following adversarial families before clinical interpretation.
+The title remains “Chi versus chi” because it refers to the GOM research question, not to a new variable. The actual test outputs use native terminology.
 
-### CVX-01 — Same local chi vector, different coupling
+### CVX-01 — Same local damping-ratio vector, different coupling
 
-Construct two coupled systems with identical local second-order factors and identical `{chi_i}` but different coupling matrices.
+Construct two coupled systems with identical local second-order factors and identical modal damping ratios but different coupling matrices.
 
-Question: can the system architecture distinguish different embedded behavior?
+Question: do spectral abscissa, transient gain, mode shapes, or other native system descriptors distinguish the embedded behavior?
 
-### CVX-02 — Different local chi vectors, compensated embedded behavior
+### CVX-02 — Different local damping-ratio vectors, compensated embedded behavior
 
 Construct different local factors whose coupling/feedback produces similar system-level response.
 
-Question: does a proposed Capital-Chi construction avoid falsely treating local difference as whole-system difference?
+Question: does local difference necessarily imply system-level difference?
 
 ### CVX-03 — Locally stable, globally unstable
 
 Each isolated subsystem is stable; coupling produces an unstable global mode.
 
-This directly tests the GOM local-versus-embedded firewall.
+Primary descriptors: full-system eigenspectrum and spectral abscissa.
 
 ### CVX-04 — Locally unstable, globally stabilized
 
 At least one isolated component is unstable or poorly damped; feedback/coupling stabilizes the embedded system.
 
-Question: what local properties survive embedding, and what does not?
+Question: which local properties survive embedding, and which are altered by closed-loop organization?
 
 ### CVX-05 — Topology failure with preserved local spectra
 
@@ -243,21 +263,21 @@ Question: can system-level organization fail without a material local scalar shi
 
 ### CVX-06 — Non-normal transient amplification
 
-Use stable eigenspectra with increasing non-normality/transient gain.
+Use asymptotically stable systems with increasing non-normality/reactivity and transient gain.
 
-Question: does the architecture detect meaningful transient instability missed by asymptotic eigenvalue criteria?
+Question: how much important behavior is missed by eigenvalues or modal damping ratios alone?
 
 ### CVX-07 — Cross-timescale divergence
 
 Construct identical long-term mean behavior with different short-timescale variance/recovery structure.
 
-Question: is timescale disagreement independent information after controlling for mean/local chi?
+Question: is timescale disagreement independent information after controlling for local modal parameters?
 
 ### CVX-08 — Recovery mismatch
 
-Construct states with the same instantaneous coordinates but different perturbation return times and overshoot.
+Construct states with the same instantaneous local descriptors but different perturbation return times and overshoot/transient gain.
 
-Question: does recovery require a separate architecture component?
+Question: which established recovery/resilience descriptors are required?
 
 ### CVX-09 — Representation disagreement
 
@@ -271,41 +291,41 @@ Construct/identify cases where local scalar admission repeatedly fails while oth
 
 Question: is refusal merely technical, or can stable refusal patterns become an independently reproducible phenotype after quality controls?
 
-## 7. Promotion path for Capital Chi
+## 7. Promotion path for any whole-system scalar
 
-`Chi_NSD` may not be promoted because the architecture is aesthetically coherent.
+No whole-system scalar receives a project-specific name.
+
+If one becomes useful, it must retain the established name of the mathematical quantity it actually is, or receive a neutral descriptive name only after the derivation establishes that it is genuinely new.
 
 Required sequence:
 
-1. semantic freeze;
-2. candidate system-object inventory;
+1. semantic freeze of the scientific question;
+2. native system-object inventory;
 3. dependency/independence map;
 4. identifiability analysis;
 5. known-truth CVX program;
 6. label-blind real-data qualification;
 7. comparison against vector/modal/system baselines;
 8. external/untouched test;
-9. only then, if a scalar emerges, test whether any natural boundary such as unity has independent meaning.
+9. only then assess whether one existing scalar, several coordinates, or a non-scalar representation is sufficient.
 
-Possible outcomes are explicitly:
+Possible outcomes:
 
-- `SCALAR_CAPITAL_CHI_ADMITTED`;
-- `NONSCALAR_CAPITAL_CHI_ARCHITECTURE`;
-- `MULTIPLE_SYSTEM_COORDINATES_REQUIRED`;
-- `CAPITAL_CHI_NOT_IDENTIFIABLE`;
-- `CAPITAL_CHI_SUBTRACTS_INFORMATION`.
+- `EXISTING_NATIVE_SCALAR_SUFFICIENT`;
+- `MULTIPLE_NATIVE_STABILITY_DESCRIPTORS_REQUIRED`;
+- `NONSCALAR_SYSTEM_REPRESENTATION_REQUIRED`;
+- `SYSTEM_LEVEL_REDUCTION_NOT_IDENTIFIABLE`;
+- `PROPOSED_REDUCTION_SUBTRACTS_INFORMATION`.
 
-The program is not required to produce a scalar.
+## 8. Immediate consequence for the manuscript and Engine
 
-## 8. Immediate consequence for the NSD manuscript and Engine
-
-The forward paper should treat lowercase local `chi` as one possible **model-conditional consequence** of the neural Stability Architecture, not as its starting definition.
+The forward paper should treat local damping ratio as one possible **model-conditional consequence** of the neural Stability Architecture, not as its starting definition.
 
 The forefront becomes:
 
-`native signal -> qualified local modes -> relational/coupled organization -> embedded stability architecture -> Chi_NSD question`.
+`native signal -> qualified local modes -> coupling / topology / spatial participation -> native system representation -> established system-level stability descriptors`.
 
-Damped-oscillator `chi` remains scientifically important where it is licensed, but it is downstream of the broader reconstruction rather than the universal lens through which every neural feature is forced.
+The GOM’s broader “progressively reconstructed chi” remains the research architecture. It does **not** require us to introduce a new Capital-Chi parameter.
 
 ## 9. Why the old papers still matter
 
@@ -321,4 +341,4 @@ Their useful continuity is not the old numerical answers. It is that, before the
 - multimodal structure;
 - and systems-within-systems.
 
-Those ideas now re-enter the program only as explicit, independently testable architecture. The old work therefore remains valuable as a hypothesis generator even where its original confidence exceeded its evidence.
+Those ideas now re-enter the program only as explicit, independently testable architecture using established terminology wherever possible. The old work remains valuable as a hypothesis generator even where its original confidence exceeded its evidence.
