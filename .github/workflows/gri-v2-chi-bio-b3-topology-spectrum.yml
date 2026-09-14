@@ -8,6 +8,10 @@ on:
     paths:
       - 'GRI_v2/src/audit_chi_bio_b3_regulon_topology_spectrum.py'
       - '.github/workflows/gri-v2-chi-bio-b3-topology-spectrum.yml'
+  pull_request:
+    paths:
+      - 'GRI_v2/src/audit_chi_bio_b3_regulon_topology_spectrum.py'
+      - '.github/workflows/gri-v2-chi-bio-b3-topology-spectrum.yml'
 
 permissions:
   contents: read
