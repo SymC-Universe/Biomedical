@@ -1,0 +1,83 @@
+{
+  "schema_version": "0.1",
+  "status": "FROZEN_NONPROMOTABLE_MATCHED_NETWORK_PILOT",
+  "freeze_id": "GRI_CHI_BIO_B3_MATCHED_NETWORK_PILOT_20260913_V0_1",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.5_FINAL",
+  "parent_scoring_freeze": "GRI_CHI_BIO_B3_REGULATORY_STATE_SCORING_20260913_V0_1",
+  "purpose": "Measure scoring-layer crosstalk, latent-subspace recovery, and downstream transition recoverability under the exact primary and sensitivity regulon geometries before freezing any promotable B3 dimension rule.",
+  "promotion_effect": "NONE_PILOT_CANNOT_SELECT_OR_PROMOTE_DIMENSION",
+  "real_expression_opened": false,
+  "real_tf_activity_scored": false,
+  "candidate_dimensions": [2, 5],
+  "noise_fraction_of_global_signal_sd": [0.0, 0.15],
+  "network_representations": ["COLLECTRI_PRIMARY", "DOROTHEA_ABC_SENSITIVITY"],
+  "seed": 20260913,
+  "source_geometry": {
+    "control_states": 11,
+    "treated_states": 11,
+    "control_transitions": 10,
+    "treated_transitions": 10,
+    "shared_measured_day0": false,
+    "treatment_input": "u=0 control, u=1 treated"
+  },
+  "latent_truth_generation": {
+    "transition_family": "stable coupled real-spectrum operator",
+    "eigenvalue_rule": "For dimension d, use d real eigenvalues linearly spaced from 0.55 through 0.90, conjugated by a seed-fixed random orthogonal matrix.",
+    "initial_state_rule": "Seed-fixed N(0,1) vector normalized to Euclidean norm 1.",
+    "treatment_forcing_rule": "Independent seed-fixed N(0,1) vector normalized to Euclidean norm 0.35 and applied on every treated transition only.",
+    "control_rule": "z_next = T z",
+    "treated_rule": "z_next = T z + b",
+    "regulator_loading_rule": "For every eligible regulator independently draw d seed-fixed N(0,1) loadings and normalize that regulator loading row to unit Euclidean norm. No expression outcome may alter loadings."
+  },
+  "synthetic_expression_generation": {
+    "network_matrix": "Eligible regulator-by-measured-target matrix using the frozen signed scoring weights.",
+    "generation_normalization": "Normalize each regulator row of the network matrix to unit L2 norm for synthetic signal generation only, preventing target-count magnitude from defining known-truth activity amplitude. ULM scoring still uses the original frozen network weights.",
+    "signal": "X_signal = true_regulator_activity @ row_normalized_network_matrix",
+    "noise": "Independent Gaussian feature noise with sigma = declared noise_fraction * global SD(X_signal).",
+    "unmeasured_or_nonnetwork_features": "Retain the complete frozen mapped GSE98812 symbol universe; features with no eligible-network edge receive noise only.",
+    "count_model_used": false,
+    "synthetic_values_semantics": "continuous normalized feature statistics suitable for ULM; no claim of raw-count realism"
+  },
+  "scoring": {
+    "library": "decoupler==2.2.0",
+    "method": "decoupler.mt.ulm",
+    "tmin": 5,
+    "tval": true,
+    "network_and_identifier_rules": "inherit parent B3 scoring freeze without modification"
+  },
+  "pilot_metrics": {
+    "regulator_activity": [
+      "per-regulator Pearson correlation between known activity and recovered ULM t-value when both have nonzero variance",
+      "median correlation",
+      "10th-percentile correlation",
+      "fraction correlation > 0.5"
+    ],
+    "latent_subspace": [
+      "principal-angle cosines between centered known latent state and the first d recovered ULM score components",
+      "minimum canonical cosine",
+      "maximum principal angle in degrees"
+    ],
+    "control_only_state_projection": [
+      "fit d-dimensional PCA basis on recovered control ULM scores only",
+      "project all 22 synthetic states through that control-only basis"
+    ],
+    "transition_recovery": [
+      "fit the already-qualified D1 shared-transition-plus-treatment-input model to the recovered control-only PCA state",
+      "report recovered spectral radius",
+      "report truth spectral radius",
+      "report relative spectral-radius error",
+      "report design rank and scaled condition number",
+      "report leave-one-transition-out predictive NRMSE"
+    ]
+  },
+  "pass_thresholds": null,
+  "dimension_selection_rule": null,
+  "reason_thresholds_absent": "This is explicitly a representative run-economy pilot. It may expose scaling, crosstalk, numerical pathologies, and effect sizes used to design a separately frozen holdout validation gate, but it cannot promote a dimension or representation.",
+  "hard_guards": [
+    "Do not use pilot results to open real SCC25 or TCGA activity scoring.",
+    "Do not select the more favorable network representation as primary; CollecTRI remains primary and DoRothEA ABC remains sensitivity.",
+    "Do not compute normalized G1 because restoration remains unresolved.",
+    "Do not tune synthetic truth toward unity.",
+    "Do not redefine ULM, target eligibility, identifier mapping, or network weights after pilot inspection."
+  ]
+}
