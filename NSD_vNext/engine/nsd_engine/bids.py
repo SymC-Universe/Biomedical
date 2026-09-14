@@ -17,6 +17,7 @@ from typing import Any, Iterable
 
 
 _ENTITY_RE = re.compile(r"(?:^|_)(sub|ses|task|acq|run|recording|proc)-([^_/]+)")
+_MISSING_TOKENS = {"", "n/a", "na", "nan", "none", "null"}
 
 
 def parse_bids_entities(path: str | Path) -> dict[str, str]:
@@ -51,6 +52,10 @@ def _duplicates(values: Iterable[str]) -> tuple[str, ...]:
     return tuple(sorted(dup))
 
 
+def _present(value: str | None) -> bool:
+    return value is not None and value.strip().lower() not in _MISSING_TOKENS
+
+
 @dataclass(frozen=True)
 class BidsHierarchyAudit:
     dataset_name: str | None
@@ -73,6 +78,11 @@ class BidsHierarchyAudit:
     events_tsv_count: int
     channels_tsv_count: int
     eeg_json_count: int
+    scans_tsv_count: int
+    scans_row_count: int
+    scans_rows_with_session: int
+    scans_rows_without_session: int
+    scan_session_labels: tuple[str, ...]
     sessions_tsv_count: int
     sessions_table_issues: tuple[str, ...]
 
@@ -88,6 +98,17 @@ class BidsHierarchyAudit:
     @property
     def hierarchy_structurally_consistent(self) -> bool:
         return self.subject_identity_verified and not self.sessions_table_issues
+
+    @property
+    def scan_session_metadata_complete(self) -> bool | None:
+        """Whether all scan rows carry non-missing session labels.
+
+        None means the dataset has no scans.tsv rows, so no inference about scan
+        session completeness is possible from this field.
+        """
+        if self.scans_row_count == 0:
+            return None
+        return self.scans_rows_without_session == 0
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -113,6 +134,12 @@ class BidsHierarchyAudit:
             "events_tsv_count": self.events_tsv_count,
             "channels_tsv_count": self.channels_tsv_count,
             "eeg_json_count": self.eeg_json_count,
+            "scans_tsv_count": self.scans_tsv_count,
+            "scans_row_count": self.scans_row_count,
+            "scans_rows_with_session": self.scans_rows_with_session,
+            "scans_rows_without_session": self.scans_rows_without_session,
+            "scan_session_labels": list(self.scan_session_labels),
+            "scan_session_metadata_complete": self.scan_session_metadata_complete,
             "sessions_tsv_count": self.sessions_tsv_count,
             "sessions_table_issues": list(self.sessions_table_issues),
             "subject_identity_verified": self.subject_identity_verified,
@@ -183,6 +210,26 @@ def audit_bids_tree(root: str | Path) -> BidsHierarchyAudit:
             if lower.endswith("_eeg.json"):
                 eeg_json_count += 1
 
+    # BIDS scans tables can preserve acquisition/session information even when
+    # directory entities are incomplete. Audit them separately rather than
+    # inferring that run labels are sessions.
+    scans_tsv_paths = sorted(root_path.rglob("*_scans.tsv"))
+    scans_row_count = 0
+    scans_rows_with_session = 0
+    scans_rows_without_session = 0
+    scan_session_labels: set[str] = set()
+    for scans_path in scans_tsv_paths:
+        rows = _read_tsv(scans_path)
+        scans_row_count += len(rows)
+        for row in rows:
+            session_value = row.get("session")
+            if _present(session_value):
+                value = session_value.strip()
+                scans_rows_with_session += 1
+                scan_session_labels.add(value)
+            else:
+                scans_rows_without_session += 1
+
     sessions_tsv_paths = sorted(root_path.rglob("*_sessions.tsv"))
     sessions_table_issues: list[str] = []
     for sessions_path in sessions_tsv_paths:
@@ -235,6 +282,11 @@ def audit_bids_tree(root: str | Path) -> BidsHierarchyAudit:
         events_tsv_count=events_tsv_count,
         channels_tsv_count=channels_tsv_count,
         eeg_json_count=eeg_json_count,
+        scans_tsv_count=len(scans_tsv_paths),
+        scans_row_count=scans_row_count,
+        scans_rows_with_session=scans_rows_with_session,
+        scans_rows_without_session=scans_rows_without_session,
+        scan_session_labels=tuple(sorted(scan_session_labels)),
         sessions_tsv_count=len(sessions_tsv_paths),
         sessions_table_issues=tuple(sessions_table_issues),
     )
