@@ -25,6 +25,7 @@ from .provenance import (
     audit_join,
 )
 from .serialization import to_canonical_json
+from .known_truth import DHOTruth, impulse_response, transfer_power
 
 __all__ = [
     "CandidateMode",
@@ -44,4 +45,7 @@ __all__ = [
     "audit_duplicate_hierarchy",
     "audit_join",
     "to_canonical_json",
+    "DHOTruth",
+    "impulse_response",
+    "transfer_power",
 ]
