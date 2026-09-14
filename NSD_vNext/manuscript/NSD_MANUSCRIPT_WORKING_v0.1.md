@@ -17,7 +17,9 @@ Title status: provisional. The final title must match the evidence ceiling actua
 
 Psychiatric and neurodevelopmental disorders frequently overlap in symptoms, diagnoses, and physiological features, yet overlap does not by itself imply a single mechanism. We develop a neurophysiological Stability Architecture designed to test whether distinct clinical phenotypes can be represented within a shared but non-identical dynamical state space. The framework begins with native signal structure, separates periodic and aperiodic spectral components, resolves modal and spatial organization before scalar compression, and preserves categorical states when no defensible scalar exists. A candidate scalar chi is admitted only when a licensed dynamical model or validated operational estimator supports its interpretation. The resulting architecture combines scalar, vector/modal, and conglomerate/system views while retaining residuals, absent-feature states, and model refusals in an explicit open channel. An independent Neurostability Atlas provides healthy and disease-reference distributions without tuning the Structural Engine.
 
-**PENDING_REAUDIT / PENDING_COMPUTATION:** Final quantitative findings, disorder-specific comparisons, predictive results, and any cross-disorder generalization will be inserted only after historical NSD evidence and current computational outputs are reconciled under the v0.8.0 standard.
+Historical source reconstruction changes the evidentiary interpretation of the 2025 NSD manuscript. Its figures and numerical disorder maps are retained as architecture-first, hypothesis-generating demonstrations rather than empirical validation because the available source package does not contain the data/code lineage required to treat them as measured results. This correction motivates the present separation between visualization, native observables, licensed estimators, audited datasets, and confirmatory claims.
+
+**PENDING_REAUDIT / PENDING_COMPUTATION:** Final quantitative disorder-specific findings, predictive results, and cross-disorder generalization will be inserted only after current empirical outputs are reconciled under the v0.8.0 standard.
 
 ## 1. Introduction
 
@@ -31,11 +33,25 @@ This distinction is important because several quantities that are easy to confla
 
 The project therefore separates four evidence layers: spectral state, scalar stability coordinates where licensed, vector/modal organization, and conglomerate/system organization, while preserving an open channel for residuals, rejected modes, absent peaks, poor fits, and unclassified records. These layers form a starting architecture rather than a complete ontology of neural stability.
 
+### 1.1 Historical origin and evidentiary correction
+
+The 2025 NSD manuscript was an architecture-first document. It proposed a boundary/timescale/substrate representation, candidate failure types, regional divergence, longitudinal trajectories, treatment mappings, and cross-domain analogies, and it rendered these ideas in figures that looked like population, patient, and longitudinal results.
+
+Reconstruction of the available manuscript and supplementary source files shows that the package does not contain the empirical provenance needed to interpret those visualizations as validated results. There is no recoverable participant table for the displayed `N=100` spectrum, no source-to-coordinate chain for the disorder clusters, no reproducible transformation behind the historical “Live Neural Ticker,” and no code/data package for the plotted values. The lifespan lineage is explicitly described as a simulation. The substrate-inheritance comparison is a conceptual visual argument rather than a derivation.
+
+The present manuscript treats that history as a useful failure analysis rather than hiding it. The historical work demonstrated that the architecture could be drawn. The forward program asks whether any part of that architecture can be **recovered from data under a frozen, falsifiable measurement system**.
+
+The resulting evidentiary sequence is:
+
+`visualizable architecture -> native observable -> qualified model/estimator -> audited data hierarchy -> uncertainty -> frozen comparison -> claim`.
+
 ## 2. Conceptual architecture
 
 ### 2.1 Spectral state
 
 The spectral layer describes what is directly supported by the signal model: aperiodic offset and exponent, periodic peaks, peak frequencies, bandwidths, powers, quality factors where appropriate, peak counts, and complete peak lists. Periodic and aperiodic structure are retained separately because broadband changes can otherwise masquerade as oscillatory changes and vice versa.
+
+The aperiodic exponent is retained as an empirical spectral coordinate. It is not treated as a direct damping coefficient or direct dynamical chi. Existing literature supports physiological relevance and, in some settings, an association with excitation/inhibition-related changes, but pharmacological and methodological evidence does not support a universal one-to-one mechanistic mapping.
 
 ### 2.2 Scalar stability coordinates
 
@@ -46,6 +62,8 @@ No whole-brain scalar is assumed. The system may require multiple mode-specific 
 ### 2.3 Vector/modal state
 
 The modal layer resolves multidimensional structure hidden by scalar compression. Candidate objects include poles, frequencies, decay rates, mode shapes, subspaces, participation vectors, and output-only state-space structure. The exact object used in each analysis must be named rather than grouped under a generic label.
+
+There is real prior art for model-conditional neural damping. Human MEG alpha has been modeled with second-order stochastic damped-oscillator dynamics, macaque visual gamma has been reproduced by a noise-driven damped harmonic oscillator, intracranial rhythmic responses have been fit with explicit damping-ratio/eigenfrequency models, and neural-mass transfer functions use complex poles whose real and imaginary parts encode decay/growth and oscillatory frequency around an operating point. These results justify testing a dynamical route. They do not justify assigning damping to every spectral peak.
 
 ### 2.4 Conglomerate/system organization
 
@@ -66,7 +84,7 @@ The forward NSD program uses the GOM maturity ladder:
 - P1 for frozen confirmatory tests under MFR-14;
 - P2 for qualified reproducible tool release.
 
-Historical analyses are reclassified under this ladder before their results are reused.
+The 2025 architecture manuscript is classified as P0-D. Historical empirical analyses are reclassified separately before their results are reused.
 
 ### 3.2 Dataset and metadata architecture
 
@@ -74,7 +92,7 @@ Every dataset is tracked at the subject, session, trial/epoch, channel, and reco
 
 Repeated observations are analyzed with subject-aware aggregation, hierarchical modeling, mixed effects, clustered uncertainty, or another method appropriate to the frozen question. Epoch or session multiplicity does not inflate independent subject count.
 
-**PENDING_REAUDIT:** Insert exact current dataset inventory, subject counts, session counts, sites, acquisition systems, diagnostic labels, covariates, exclusion rules, and licensing/provenance after historical source reconciliation.
+**PENDING_REAUDIT:** Insert exact current dataset inventory, subject counts, session counts, sites, acquisition systems, diagnostic labels, covariates, exclusion rules, and licensing/provenance after current empirical source reconciliation.
 
 ### 3.3 Preprocessing and information-preservation audit
 
@@ -86,6 +104,8 @@ Whole-head averaging may be retained as a descriptive comparator but does not re
 
 The spectral representation separates aperiodic background from periodic peaks using a domain-standard parameterization suitable to the data. Complete peak lists and zero-peak states are retained. Model fit quality and rejected fits remain available in the open channel.
 
+A Gaussian periodic peak width remains a descriptive width. It is not treated as a decay constant simply because a resonance with similar visual shape could possess a linewidth-damping relationship under another model.
+
 ### 3.5 Dynamical-scalar admission
 
 A candidate chi is classified as one of:
@@ -95,11 +115,15 @@ A candidate chi is classified as one of:
 - chi-like proxy;
 - empirical stability coordinate.
 
-The manuscript will state exactly which frequency and decay/width convention is used. Peak center frequency is not substituted for omega_0 without a justified conversion. Peak width is not interpreted as damping unless the underlying lineshape and broadening assumptions license that step.
+The manuscript will state exactly which frequency and decay/width convention is used. Peak center frequency is not substituted for omega_0 without a justified conversion. Peak width is not interpreted as damping unless the underlying model and broadening assumptions license that step.
+
+Candidate routes include direct stochastic damped-oscillator fitting, neural-mass generative inversion, or qualified output-only state-space modal estimation. These routes must be evaluated against descriptive spectral parameterization rather than assumed equivalent.
 
 ### 3.6 Structural Engine qualification
 
 Basic signal structure is qualified before clinical labels are used for evaluation. The preferred sequence is known-truth/synthetic recovery, adversarial testing, frozen holdout, label-blind adequacy on real neurophysiology, then clinical comparison. Negative controls test whether the Engine refuses signals that do not contain admissible structure.
+
+The pre-compute qualification matrix includes single and multiple oscillators, unresolved neighboring modes, frequency drift, finite bursts, aperiodic-only signals, colored-noise drive, nonlinear/limit-cycle dynamics, source mixing, reference changes, finite-window broadening, and estimator disagreement.
 
 ### 3.7 Neurostability Atlas
 
@@ -119,7 +143,7 @@ Multiple endpoints, frequency windows, feature sets, thresholds, and disorder co
 
 ### 3.10 Comparator architecture
 
-Every claim of added value is compared with the strongest fair native baseline for the same frozen task. Depending on the question this may include simple spectral features, aperiodic parameters, band power, conventional clinical covariates, established EEG markers, or standard machine-learning models.
+Every claim of added value is compared with the strongest fair native baseline for the same frozen task. Depending on the question this may include simple spectral features, periodic/aperiodic parameters, band power, conventional clinical covariates, established EEG markers, or standard machine-learning models.
 
 The outcome is classified as ADDS, EQUIVALENT, SUBTRACTS, INDETERMINATE, or NOT_TESTED.
 
@@ -127,7 +151,22 @@ The outcome is classified as ADDS, EQUIVALENT, SUBTRACTS, INDETERMINATE, or NOT_
 
 ### 4.1 Historical NSD evidence reconciliation
 
-**PENDING_REAUDIT.** The historical NSD manuscript, source archive, supplementary materials, datasets, and code will be reconstructed into an evidence ledger before any numerical result is treated as current. This section will explicitly identify which prior conclusions survive, narrow, become proxy-only, or are retired.
+**SOURCE-LEVEL RECONCILIATION COMPLETE FOR AVAILABLE MANUSCRIPT MATERIAL.**
+
+The recovered main and supplementary TeX/PDF package was audited as provenance. The source package contains the full historical prose and figure references but does not contain an auditable data/code chain for the plotted disorder coordinates, numerical thresholds, or cross-domain values. The recovered TeX also contains a bibliography without inline citation commands, so individual historical mechanistic and numerical statements cannot be assumed to be supported by a specific reference merely because that reference appears at the end of the manuscript.
+
+The historical evidentiary status is therefore:
+
+- architecture and experiment design: retained as P0-D;
+- historical plotted coordinates: not current results;
+- exact disorder thresholds and universal adaptive windows: not earned;
+- direct aperiodic-exponent-to-chi mapping: retired;
+- direct Gaussian-bandwidth-to-damping mapping: not licensed;
+- historical cross-domain validation claims: not transferred;
+- longitudinal lineage: simulation/hypothesis, not observed trajectory;
+- substrate-inheritance visual comparison: conceptual, not mechanistic proof.
+
+This source audit is itself a completed result of the reconstruction process, but it does not substitute for empirical neurophysiological results.
 
 ### 4.2 Healthy reference architecture
 
@@ -143,7 +182,7 @@ The outcome is classified as ADDS, EQUIVALENT, SUBTRACTS, INDETERMINATE, or NOT_
 
 ### 4.5 Comorbidity structure
 
-**PENDING_DESIGN.** The analysis will distinguish categorical diagnosis overlap from symptom-dimensional and neurophysiological overlap. A comorbidity explanation must outperform simpler explanations such as shared demographics, acquisition effects, medication, common spectral shifts, or diagnostic measurement overlap.
+**PENDING_DESIGN / LITERATURE-BOUNDED.** The analysis will distinguish categorical diagnosis overlap from symptom-dimensional and neurophysiological overlap. A comorbidity explanation must outperform simpler explanations such as shared demographics, acquisition effects, medication, common spectral shifts, or diagnostic measurement overlap. Because transdiagnostic EEG overlap is already well established, novelty cannot rest on overlap alone.
 
 ### 4.6 Classification versus prediction
 
@@ -163,30 +202,46 @@ The strongest scientifically useful NSD formulation is not that distinct disorde
 
 Damped-oscillator mathematics is one tractable entry point, not the complete neural model. Spectral, modal, relational, network, and categorical information may carry structure that no single damping ratio can preserve. The purpose of the scalar is compression where licensed, not replacement of the system.
 
+The literature collision materially refines this point. Damped oscillators and pole-based neural models have already been used successfully in restricted MEG, LFP, sEEG, and neural-mass settings. The open question is therefore not whether neural damping can ever be modeled. It is whether the target NSD datasets contain identifiable modes for which such a model survives known-truth, nuisance, and real-data qualification, and whether those quantities add information beyond descriptive spectral features.
+
 ### 5.3 Chi = 1 is not a presumed healthy optimum
 
-Where a true second-order reduction supports a critical boundary, chi = 1 may serve as a reference. It is not assumed to represent health, maximum cognition, ideal psychiatric function, or a universal neural optimum. Any attraction, avoidance, or transition near that boundary must be established independently.
+Where a true second-order reduction supports a critical boundary, chi = 1 may serve as a mathematical reference. It is not assumed to represent health, maximum cognition, ideal psychiatric function, or a universal neural optimum. Any attraction, avoidance, or transition near that boundary must be established independently.
 
-### 5.4 Clinical interpretation ceiling
+### 5.4 Historical architecture without historical validation
+
+The 2025 manuscript is retained as an explicit part of the project lineage because it contains useful scientific questions and a useful warning. It showed that a coherent architecture can become visually persuasive before the measurement chain has earned the labels placed on it.
+
+The rebuild treats that as a methodological asset: every attractive picture now has to answer what raw data produced it, which estimator transformed those data, what assumptions were required, what uncertainty remains, what null or adversary could produce the same appearance, and what result would make the interpretation fail.
+
+### 5.5 Clinical interpretation ceiling
 
 Group-level physiology does not by itself establish a diagnostic test, treatment target, or therapeutic recommendation. Clinical utility requires external validation, calibrated individual-level performance, appropriate comparators, prospective endpoints where relevant, and evidence that the tool adds useful information beyond established practice.
 
-### 5.5 Limitations
+Historical treatment protocols and exact treatment-to-chi mappings are not transferred into the forward evidence base.
+
+### 5.6 Limitations
 
 The final limitation section will include acquisition heterogeneity, site transfer, medication and state effects, age/development, sample-size imbalance, diagnostic-label limitations, repeated-session dependence, spectral-model assumptions, missing spatial information, estimator non-equivalence, absent-feature states, and the possibility that no single cross-disorder stability architecture generalizes.
 
+An additional limitation is fundamental: the architecture may prove visually coherent but empirically low-dimensional in ways already captured by standard spectral analysis. The comparator program is designed to allow that outcome to be reported as EQUIVALENT or SUBTRACTS rather than forcing novelty.
+
 ## 6. Experimental and observational opportunities
 
-The project will design falsifiable experiments or data-collection protocols before searching the literature for prior answers. Candidate classes include within-subject perturbations, repeated-session recovery measurements, sleep/wake or task-state transitions, longitudinal symptom tracking, medication-independent replication where feasible, and multimodal EEG/MEG or EEG-imaging comparisons.
+The project designs falsifiable experiments or data-collection protocols before searching the literature for prior answers. Candidate classes include within-subject perturbations, repeated-session recovery measurements, sleep/wake or task-state transitions, longitudinal symptom tracking, medication-independent replication where feasible, and multimodal EEG/MEG or EEG-imaging comparisons.
 
 Each candidate experiment must identify the native observable, predicted response, competing explanation, decision rule, and the result that would count against the hypothesis.
 
-**PENDING_LITERATURE_COLLISION:** These candidate classes require systematic prior-art searches before being called novel experiments.
+The first literature collision has already narrowed several candidate experiments: ordinary SpecParam reliability, generic transdiagnostic EEG overlap, basic ASD band-power differences, generic EEG-based prediction, and generic use of damped-oscillator/Q language are not themselves novel. Residual experiments must test multilevel architecture, model qualification, incremental information, transfer, recovery, and preserved disorder-specific organization.
 
 ## 7. Reproducibility and data availability
 
 The final release will distinguish R1 release integrity, R2 recomputation, and R3 primary evidence/provenance reconstruction. Dataset licenses and privacy constraints will determine which raw data can be redistributed, but identities, hashes where permitted, acquisition metadata, preprocessing configuration, split definitions, and regeneration instructions will be preserved.
 
+Historical source files currently available for the 2025 paper are hash-recorded in the reconstruction audit. They are provenance, not a reproducible empirical data package.
+
 ## 8. Conclusion
 
-NSD is being rebuilt as a falsifiable multiscale neurophysiological framework rather than a universal scalar diagnosis. The architecture permits shared structure across disorders but requires disorder-specific differences, failures, and non-admissible reductions to remain visible. The final scientific conclusion will be written only after historical results, current computation, Atlas construction, native comparators, and prospective tests have been reconciled under the current evidence standard.
+NSD is being rebuilt as a falsifiable multiscale neurophysiological framework rather than a universal scalar diagnosis. The historical paper demonstrated the architecture visually but did not establish its numerical coordinates empirically. The forward program therefore separates what can be drawn from what can be measured.
+
+The architecture permits shared structure across disorders but requires disorder-specific differences, failures, and non-admissible reductions to remain visible. Neural damping remains a legitimate model-conditional target where an explicit generative or modal model earns it; it is not assigned by visual resemblance, aperiodic slope, or generic peak width. The final scientific conclusion will be written only after current data reconstruction, Engine qualification, Atlas construction, native comparators, and prospective tests have been reconciled under the current evidence standard.
