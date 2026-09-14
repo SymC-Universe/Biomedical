@@ -1,0 +1,41 @@
+{
+  "schema": "gri-chi-bio-g1-restoration-r0-embedding-preflight-v0.1",
+  "date_frozen": "2026-09-14",
+  "status": "FROZEN_BEFORE_R0_EXECUTION",
+  "protocol_authority": "SymC General Operations Manual v0.8.0 plus GRI project-local guardrails",
+  "purpose": "Materialize the already-frozen chronic SCC25 G2 D1 point operators and audit discrete-to-continuous embedding readiness without assigning a restoration operator or computing normalized G1.",
+  "frozen_input": {
+    "workflow_run_id": 34769901215,
+    "artifact_id": 10321342847,
+    "artifact_name": "gri-chi-bio-chronic-g2-empirical-v1",
+    "artifact_digest": "sha256:4ad76198657cbb4f5a5839b5ad4068625ccb0801fe050d16b83006d2ef8a5687",
+    "source_commit": "64147f8f086515030724ccc9b386eecc853e8a4d",
+    "g2_freeze_id": "GRI_CHI_BIO_CHRONIC_G2_R1_A3_20260913_V1",
+    "result_filename": "GRI_CHI_BIO_CHRONIC_G2_EMPIRICAL_RESULT.json",
+    "ranks": [2, 3],
+    "transition_interval": "1 week"
+  },
+  "allowed_operations": [
+    "validate the immutable G2 artifact identity and frozen result contract",
+    "re-materialize only the D1 point-fit transition matrix T from the same hash-bound source and frozen construction",
+    "verify the re-materialized T reproduces the frozen point rho and sigma_max diagnostics to strict numerical tolerance",
+    "compute eigenvalues and a principal-branch matrix-log candidate where numerically possible",
+    "report reconstruction error, eigenvector conditioning, real/imaginary matrix-log components, and branch non-uniqueness",
+    "write a diagnostic artifact that cannot supersede the frozen G2 result"
+  ],
+  "forbidden_operations": [
+    "change preprocessing, feature selection, rank, transition geometry, model family, or G2 thresholds",
+    "replace, rescore, or reinterpret the frozen G2 result",
+    "assign common or gene-specific restoration or degradation rates",
+    "select a matrix-log branch because it improves a downstream biological result",
+    "compute normalized empirical G1",
+    "compute, admit, tune, or classify Chi_bio",
+    "use distance to unity for model, branch, normalization, gate, or stopping selection",
+    "claim that a weekly discrete-time mathematical boundary is a biological unity boundary"
+  ],
+  "expected_epistemic_output": "R0_EMBEDDING_DIAGNOSTIC_ONLY",
+  "chi_bio_status": "NOT_ADMITTED",
+  "biological_unity_boundary_admitted": false,
+  "normalized_g1_authorized": false,
+  "restoration_operator_authorized": false
+}
