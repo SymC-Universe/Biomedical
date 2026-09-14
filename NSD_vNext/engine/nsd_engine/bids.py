@@ -156,7 +156,10 @@ def audit_bids_tree(root: str | Path) -> BidsHierarchyAudit:
             sessions[subject].add(session_dir.name)
 
         for path in subject_path.rglob("*"):
-            if not path.is_file():
+            # OpenNeuro mirrors can contain git-annex/LFS-style symlinks whose
+            # targets are intentionally absent in metadata-only checkouts. The
+            # path still represents a BIDS data file and must be counted.
+            if not path.is_file() and not path.is_symlink():
                 continue
             relative = path.relative_to(root_path)
             entities = parse_bids_entities(relative)
@@ -167,8 +170,7 @@ def audit_bids_tree(root: str | Path) -> BidsHierarchyAudit:
             if "run" in entities:
                 runs.add(entities["run"])
 
-            name = path.name
-            lower = name.lower()
+            lower = path.name.lower()
             if any(
                 lower.endswith(suffix)
                 for suffix in ("_eeg.set", "_eeg.edf", "_eeg.bdf", "_eeg.vhdr", "_eeg.eeg", "_eeg.fif")
