@@ -17,9 +17,41 @@ The B3 source/provenance program now establishes the following without opening e
 - the raw direct-match zero-overlap result is retained only as a namespace negative control;
 - no TF activity, state coordinate, operator, G1, G2 or Chi_bio value was used to obtain these facts.
 
-The dedicated outcome-free network-dependence audit is the next quantitative representation check and must not itself select a panel.
+## 2. Outcome-free network-dependence result
 
-## 2. Hard algebraic constraint from the frozen chronic geometry
+The dedicated external-network audit completed successfully without opening expression values or selecting a regulator panel.
+
+For the same 249-regulator intersection:
+
+```text
+CollecTRI unsigned target-membership matrix
+  measured targets:                     5,515
+  unique regulator-target pairs:       27,161
+  matrix rank:                         249 / 249
+  exact duplicate target sets:           0
+  median pairwise target Jaccard:        0.01925
+  95th percentile target Jaccard:        0.07424
+  maximum target Jaccard:                0.56956
+  regulator pairs with Jaccard >=0.80:   0
+  nonzero-singular condition ratio:     38.63
+
+DoRothEA A/B/C unsigned target-membership matrix
+  measured targets:                     4,730
+  unique regulator-target pairs:       11,694
+  matrix rank:                         249 / 249
+  exact duplicate target sets:           0
+  median pairwise target Jaccard:        0
+  95th percentile target Jaccard:        0.03704
+  maximum target Jaccard:                0.68182
+  regulator pairs with Jaccard >=0.80:   0
+  nonzero-singular condition ratio:     16.12
+```
+
+Therefore the externally qualified 249-regulator universe is **not structurally rank-collapsed by target-set duplication** in either resource. This does not mean that 249 empirical TF-activity coordinates will be statistically independent after scoring expression data; it only removes one pre-outcome structural failure mode.
+
+Across the two resources, 4,843 measured regulator-target pairs are shared. Of those, 4,639 have the same unambiguous sign and 204 have the opposite sign; no shared pair in this A/B/C restriction required a multi-sign DoRothEA collapse. This sign disagreement is material representation sensitivity and must remain visible rather than being averaged away before a scoring rule is frozen.
+
+## 3. Hard algebraic constraint from the frozen chronic geometry
 
 The chronic SCC25 temporal comparator has 20 transitions. Every leave-one-transition-out refit therefore has 19 rows.
 
@@ -41,7 +73,7 @@ The D2 ceiling of eight is **not** a recommended dimension. It is only a necessa
 
 This also means that a direct 249-coordinate unregularized temporal operator is impossible in the frozen chronic geometry. Any B3 temporal use therefore requires an independently justified low-dimensional construction or a separately justified regularized estimator.
 
-## 3. The unresolved B3 scientific choice
+## 4. The unresolved B3 scientific choice
 
 The next state freeze must answer two coupled questions before any outcome-bearing B3 execution:
 
@@ -56,7 +88,7 @@ The next state freeze must answer two coupled questions before any outcome-beari
 
 These choices alter the operator semantics. They therefore cannot be chosen from treatment separation, prediction error, cancer ranking, closeness to unity, Atlas appearance or downstream Chi behavior.
 
-## 4. Admissible candidate routes for explicit freeze
+## 5. Admissible candidate routes for explicit freeze
 
 ### B3-A: externally fixed small regulator panel
 
@@ -70,8 +102,8 @@ Use an external evidence rule to choose a small panel before any SCC25/TCGA expr
 
 Use the frozen eligible external network universe, calculate prospectively defined regulatory coordinates, then reduce them under a rule that cannot see treatment/outcome/Chi placement.
 
-**Strengths:** preserves broad external regulatory coverage before compression and avoids hand-picking a favorable small panel.  
-**Risks:** state scoring and the later reduction each become scientific objects; a data-derived basis can rotate across datasets unless transport is explicitly frozen.  
+**Strengths:** preserves broad external regulatory coverage before compression and avoids hand-picking a favorable small panel. The network audit shows that the 249-regulator starting universe is not already collapsed by identical target membership.  
+**Risks:** state scoring and the later reduction each become scientific objects; a data-derived basis can rotate across datasets unless transport is explicitly frozen. The 204 shared cross-resource sign disagreements must be preserved as sensitivity rather than silently reconciled.  
 **Required safeguard:** scoring semantics, fitting population, centering/scaling, dimension rule and transport/alignment rule must all be frozen before outcomes.
 
 ### B3-C: regularized higher-dimensional operator
@@ -82,26 +114,28 @@ Retain a larger regulatory state and introduce an independently justified sparse
 **Risks:** the regularizer can dominate the inferred spectrum, creates additional hyperparameters and substantially raises identifiability burden.  
 **Required safeguard:** regularization family and tuning rule must pass matched synthetic known-truth recovery before real data.
 
-## 5. Current recommendation, not a freeze
+## 6. Current recommendation, not a freeze
 
-The least outcome-sensitive next route is **B3-B**, because it keeps the externally qualified regulatory universe intact before compression rather than choosing a small panel from the cancer system itself.
+The least outcome-sensitive next route remains **B3-B**, because it keeps the externally qualified regulatory universe intact before compression rather than choosing a small panel from the cancer system itself.
 
-However, B3-B is not yet executable. A separate freeze is still required for:
+The new dependence result strengthens that recommendation only at the representation-provenance level: the broad starting universe is not invalidated by duplicate target sets or unsigned membership rank collapse. It does **not** establish that the downstream scored state is identifiable.
+
+B3-B is not yet executable. A separate freeze is still required for:
 
 - TF-activity versus module-expression semantics;
 - exact scoring algorithm and signed-weight treatment;
-- handling of duplicate/ambiguous DoRothEA pairs in the sensitivity route;
+- explicit handling of the 204 shared cross-resource sign disagreements as a sensitivity rather than a post-hoc reconciliation;
 - fitting population for any data-derived reduction;
 - centering/scaling rule;
 - whether the already approved A3 `r=2/r=3` pair is reused as the B3 temporal reduction or whether B3 requires a distinct prospectively justified dimension rule;
 - transport/alignment across SCC25 and later TCGA cancers;
 - compression-loss and modal-preservation diagnostics.
 
-## 6. Falsification / refusal requirements
+## 7. Falsification / refusal requirements
 
 The B3 state must refuse promotion if any of the following occurs:
 
-- network target sets are so dependent that the proposed coordinates are effectively rank-deficient;
+- scored coordinates become effectively rank-deficient even though the external membership matrices are full row rank;
 - the chosen scoring rule is not reproducible from frozen source bytes;
 - matched synthetic recovery fails at the chosen dimension/sample geometry;
 - material scalar/modal conclusions change under the predeclared CollecTRI versus DoRothEA representation sensitivity;
@@ -110,9 +144,9 @@ The B3 state must refuse promotion if any of the following occurs:
 - uncertainty spans the candidate unity boundary;
 - the only way to obtain a coherent result is to tune the panel, scoring or dimension after seeing outcomes.
 
-## 7. Current stop boundary
+## 8. Current stop boundary
 
-Mechanical/provenance work may continue through the network-dependence audit, source-identity guards and generic synthetic machinery.
+The source identity, namespace, raw-negative-control semantics, external-network dependence, algebraic capacity and generic guard machinery have now been pushed without opening outcome-bearing B3 state values.
 
 The following are science-changing and remain prohibited without an explicit prospective freeze:
 
