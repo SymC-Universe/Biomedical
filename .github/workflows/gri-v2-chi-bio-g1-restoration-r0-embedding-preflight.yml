@@ -1,0 +1,96 @@
+name: GRI Chi_bio G1 restoration R0 embedding preflight
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - gri-v071-protocol-integration-20260910-chi-bio
+    paths:
+      - 'GRI_v2/config/gri_Chi_bio_G1_restoration_r0_embedding_preflight_v0_1.json'
+      - 'GRI_v2/src/run_chi_bio_g1_restoration_r0_embedding_preflight.py'
+      - 'GRI_v2/tests/test_chi_bio_g1_restoration_r0_embedding_preflight.py'
+      - '.github/workflows/gri-v2-chi-bio-g1-restoration-r0-embedding-preflight.yml'
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  qualify-r0-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install repository dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+      - name: Run full GRI test suite before frozen-artifact consumption
+        run: python -m pytest -q tests
+      - name: Validate R0 contract and frozen G2 lineage files
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from src.run_chi_bio_g1_restoration_r0_embedding_preflight import (
+              _validate_lineage_files,
+              _validate_r0_contract,
+          )
+          contract = json.loads(Path('config/gri_Chi_bio_G1_restoration_r0_embedding_preflight_v0_1.json').read_text(encoding='utf-8'))
+          _validate_r0_contract(contract)
+          lineage = _validate_lineage_files()
+          print(json.dumps(lineage, sort_keys=True))
+          print('G1_RESTORATION_R0_CONTRACT_QUALIFIED')
+          PY
+
+  run-r0-embedding-preflight:
+    needs: qualify-r0-contract
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install repository dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+      - name: Verify immutable chronic G2 artifact metadata
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_DIGEST: sha256:4ad76198657cbb4f5a5839b5ad4068625ccb0801fe050d16b83006d2ef8a5687
+        run: |
+          observed="$(gh api "repos/${GITHUB_REPOSITORY}/actions/artifacts/10321342847" --jq '.digest')"
+          echo "Observed digest: ${observed}"
+          test "${observed}" = "${EXPECTED_DIGEST}"
+      - name: Download immutable chronic G2 result artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: gri-chi-bio-chronic-g2-empirical-v1
+          path: GRI_v2/development_inputs/frozen_chronic_g2_34769901215
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: 34769901215
+      - name: Execute R0 operator materialization and embedding diagnostic
+        run: |
+          python -m src.run_chi_bio_g1_restoration_r0_embedding_preflight \
+            --frozen-result development_inputs/frozen_chronic_g2_34769901215/GRI_CHI_BIO_CHRONIC_G2_EMPIRICAL_RESULT.json \
+            --output-dir development_outputs/chi_bio_g1_restoration_r0
+      - name: Upload R0 diagnostic artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-chi-bio-g1-restoration-r0-embedding-preflight-v1
+          path: GRI_v2/development_outputs/chi_bio_g1_restoration_r0/GRI_CHI_BIO_G1_RESTORATION_R0_EMBEDDING_PREFLIGHT_RESULT.json
+          retention-days: 90
+          if-no-files-found: error
