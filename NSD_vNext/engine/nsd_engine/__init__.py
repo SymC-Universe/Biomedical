@@ -33,6 +33,7 @@ from .admission import (
     ScalarProposal,
     decide_scalar_admission,
 )
+from .metadata import MetadataRole, MetadataRoleManifest, conservative_role_guess
 
 __all__ = [
     "CandidateMode",
@@ -61,4 +62,7 @@ __all__ = [
     "AdmissionEvidence",
     "ScalarProposal",
     "decide_scalar_admission",
+    "MetadataRole",
+    "MetadataRoleManifest",
+    "conservative_role_guess",
 ]
