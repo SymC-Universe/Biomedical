@@ -47,6 +47,12 @@ def main() -> int:
     print(f"events_tsv_count={payload['events_tsv_count']}")
     print(f"channels_tsv_count={payload['channels_tsv_count']}")
     print(f"eeg_json_count={payload['eeg_json_count']}")
+    print(f"scans_tsv_count={payload['scans_tsv_count']}")
+    print(f"scans_row_count={payload['scans_row_count']}")
+    print(f"scans_rows_with_session={payload['scans_rows_with_session']}")
+    print(f"scans_rows_without_session={payload['scans_rows_without_session']}")
+    print("scan_session_labels=" + ",".join(payload["scan_session_labels"]))
+    print(f"scan_session_metadata_complete={payload['scan_session_metadata_complete']}")
     print(f"sessions_tsv_count={payload['sessions_tsv_count']}")
     print(f"sessions_table_issues={len(payload['sessions_table_issues'])}")
     for issue in payload["sessions_table_issues"]:
