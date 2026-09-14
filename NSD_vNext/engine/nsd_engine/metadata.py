@@ -10,7 +10,10 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import Enum
-from typing import Mapping
+from typing import Mapping, Sequence
+
+
+_MISSING_TOKENS = {"", "n/a", "na", "nan", "none", "null"}
 
 
 class MetadataRole(str, Enum):
@@ -28,6 +31,15 @@ _ENGINE_VISIBLE_ROLES = {
     MetadataRole.ACQUISITION,
     MetadataRole.RECORDING_STATE,
 }
+
+
+def _normalized_value(value: object) -> str | None:
+    if value is None:
+        return None
+    text = str(value).strip()
+    if text.lower() in _MISSING_TOKENS:
+        return None
+    return text
 
 
 @dataclass(frozen=True)
@@ -71,6 +83,83 @@ class MetadataRoleManifest:
         if prohibited:
             detail = {column: self.roles[column].value for column in prohibited}
             raise ValueError(f"downstream-only metadata cannot enter Structural Engine: {detail}")
+
+
+@dataclass(frozen=True)
+class DuplicateFieldAudit:
+    base_column: str
+    duplicate_column: str
+    row_count: int
+    equal_nonmissing: int
+    both_missing: int
+    base_only: int
+    duplicate_only: int
+    conflicts: int
+    conflict_row_ids: tuple[str, ...]
+
+    @property
+    def safely_equivalent(self) -> bool:
+        return self.conflicts == 0 and self.base_only == 0 and self.duplicate_only == 0
+
+
+def audit_duplicate_field_pair(
+    rows: Sequence[Mapping[str, object]],
+    base_column: str,
+    duplicate_column: str,
+    *,
+    row_id_column: str = "participant_id",
+) -> DuplicateFieldAudit:
+    """Compare duplicated metadata columns without choosing an authoritative copy.
+
+    Values are compared as stripped strings after standard missing tokens are
+    normalized to None. The output records one-sided missingness and true
+    conflicts separately so a dataset-specific provenance decision can be made
+    later rather than silently selecting whichever column appears first.
+    """
+    if not base_column.strip() or not duplicate_column.strip():
+        raise ValueError("column names must be non-empty")
+
+    equal_nonmissing = 0
+    both_missing = 0
+    base_only = 0
+    duplicate_only = 0
+    conflicts = 0
+    conflict_row_ids: list[str] = []
+
+    for index, row in enumerate(rows):
+        if base_column not in row or duplicate_column not in row:
+            missing = [
+                name for name in (base_column, duplicate_column) if name not in row
+            ]
+            raise KeyError(f"row {index} missing duplicate-audit columns: {missing}")
+
+        base = _normalized_value(row.get(base_column))
+        duplicate = _normalized_value(row.get(duplicate_column))
+
+        if base is None and duplicate is None:
+            both_missing += 1
+        elif base is not None and duplicate is None:
+            base_only += 1
+        elif base is None and duplicate is not None:
+            duplicate_only += 1
+        elif base == duplicate:
+            equal_nonmissing += 1
+        else:
+            conflicts += 1
+            row_id = _normalized_value(row.get(row_id_column))
+            conflict_row_ids.append(row_id or f"row-{index}")
+
+    return DuplicateFieldAudit(
+        base_column=base_column,
+        duplicate_column=duplicate_column,
+        row_count=len(rows),
+        equal_nonmissing=equal_nonmissing,
+        both_missing=both_missing,
+        base_only=base_only,
+        duplicate_only=duplicate_only,
+        conflicts=conflicts,
+        conflict_row_ids=tuple(conflict_row_ids),
+    )
 
 
 def conservative_role_guess(column: str) -> MetadataRole:
