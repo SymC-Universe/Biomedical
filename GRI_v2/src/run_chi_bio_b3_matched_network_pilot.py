@@ -268,6 +268,7 @@ def _transition_summary(state: np.ndarray, truth_transition: np.ndarray) -> dict
         return {
             "status": fit["status"],
             "design_rank": fit.get("design_rank"),
+            "design_columns": fit.get("design_columns"),
             "scaled_condition_number": fit.get("scaled_condition_number"),
             "loto": loto,
         }
@@ -282,7 +283,7 @@ def _transition_summary(state: np.ndarray, truth_transition: np.ndarray) -> dict
         "relative_rho_error": float(relative_error),
         "recovered_sigma_max": float(recovered_diag["sigma_max"]),
         "design_rank": int(fit["design_rank"]),
-        "expected_rank": int(fit["expected_rank"]),
+        "design_columns": int(fit["design_columns"]),
         "scaled_condition_number": float(fit["scaled_condition_number"]),
         "relative_residual_frobenius": float(fit["relative_residual_frobenius"]),
         "loto_aggregate_nrmse": loto["aggregate_nrmse"],
@@ -294,12 +295,18 @@ def _truth_transition_geometry(control: np.ndarray, treated: np.ndarray, transit
     x0, x1, u, _ = _make_transitions(control, treated)
     fit = _fit(x0, x1, u, "D1")
     if fit["status"] != "PASS":
-        return {"status": fit["status"]}
+        return {
+            "status": fit["status"],
+            "design_rank": fit.get("design_rank"),
+            "design_columns": fit.get("design_columns"),
+        }
     diag = _diag(fit["T"])
     return {
         "status": "PASS",
         "truth_declared_rho": float(np.max(np.abs(np.linalg.eigvals(transition)))),
         "truth_geometry_fitted_rho": float(diag["rho"]),
+        "truth_geometry_design_rank": int(fit["design_rank"]),
+        "truth_geometry_design_columns": int(fit["design_columns"]),
         "truth_geometry_scaled_condition_number": float(fit["scaled_condition_number"]),
         "truth_geometry_relative_residual_frobenius": float(fit["relative_residual_frobenius"]),
     }
