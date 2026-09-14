@@ -13,8 +13,8 @@ These are the workstreams that can proceed without waiting for currently unavail
 | 2 | estimator and notation audit | `DESIGN COMPLETE / LITERATURE-CONSTRAINED` | computation needed for target-data model qualification |
 | 3 | dataset provenance and hierarchy audit | `AUDIT SCHEMA COMPLETE / POPULATION BLOCKED` | exact empirical dataset/source manifests |
 | 4 | healthy baseline design | `SPECIFICATION COMPLETE` | audited healthy datasets + analysis |
-| 5 | Structural Engine specification | `SPECIFICATION COMPLETE` | implementation + qualification computation |
-| 6 | known-truth/adversarial qualification design | `DESIGN COMPLETE` | computation |
+| 5 | Structural Engine specification | `SPECIFICATION COMPLETE / IMPLEMENTATION SCAFFOLD ACTIVE` | estimator implementation + qualification computation |
+| 6 | known-truth/adversarial qualification design | `DESIGN COMPLETE / HARNESS SCAFFOLD ACTIVE` | execution |
 | 7 | Function Map design | `DESIGN COMPLETE / EMPIRICAL OCCUPANCY PENDING` | data + Engine results |
 | 8 | Limit Map design | `DESIGN COMPLETE / EMPIRICAL BOUNDARIES PENDING` | known-truth + real-data results |
 | 9 | native comparator program | `DESIGN COMPLETE` | task-specific frozen analyses |
@@ -23,8 +23,8 @@ These are the workstreams that can proceed without waiting for currently unavail
 | 12 | manuscript development | `ACTIVE / METHODS AND HISTORICAL RECONCILIATION ADVANCED` | result sections remain gated |
 | 13 | figure/table architecture | `DESIGN PASS COMPLETE` | empirical figures blocked by evidence |
 | 14 | reproducibility planning | `STRUCTURE COMPLETE / IMPLEMENTATION CONTINUES WITH CODE` | production pipeline |
-| 15 | experimental-opportunity program | `INITIAL DESIGN + COLLISION COMPLETE` | targeted residual prior-art searches and, later, experiments/data |
-| 16 | publication/novelty audit | `MAJOR INITIAL PASS COMPLETE` | targeted residual-novelty search before final novelty wording |
+| 15 | experimental-opportunity program | `INITIAL DESIGN + MULTI-PASS COLLISION COMPLETE` | only targeted estimator/dataset searches remain |
+| 16 | publication/novelty audit | `MAJOR PASS COMPLETE / RESIDUAL NOVELTY NARROWED` | empirical incremental-value test |
 
 ## 1. Historical evidence reconstruction
 
@@ -102,22 +102,27 @@ Audited healthy data and Engine outputs.
 ## 5. Structural Engine specification
 
 Completed production-facing design:
-- E0 provenance gate;
-- E1 signal integrity;
-- E2 spectral state;
-- E3 candidate modal extraction;
-- E4 scalar admission;
-- E5 spatial/conglomerate construction;
-- E6 ordinary-state/reliability mapping;
-- E7 clinical overlay only after structural qualification;
+- provenance gate;
+- signal integrity;
+- spectral state;
+- candidate modal extraction;
+- scalar admission;
+- spatial/conglomerate construction;
+- ordinary-state/reliability mapping;
+- clinical overlay only after structural qualification;
 - machine-readable refusal codes;
 - no-label construction firewall;
 - versioning rules.
 
-Canonical output: `STRUCTURAL_ENGINE_SPEC_v0.1.md`.
+Implementation scaffold now contains provenance, BIDS/metadata handling, schema/contracts, spectral/modal/admission components, known-truth support, and serialization foundations under `NSD_vNext/engine/nsd_engine/`.
+
+Canonical outputs:
+- `STRUCTURAL_ENGINE_SPEC_v0.1.md`
+- `ENGINE_IMPLEMENTATION_PLAN_v0.1.md`
+- `engine/`
 
 Next dependency:
-Implementation and computation.
+Scientific estimator qualification and execution, not another conceptual rewrite.
 
 ## 6. Known-truth and adversarial qualification design
 
@@ -142,6 +147,8 @@ Completed design includes:
 - conflicting estimators.
 
 Canonical output: `KNOWN_TRUTH_ADVERSARIAL_TEST_MATRIX_v0.1.md`.
+
+Reference/montage sensitivity has now been reinforced by the targeted literature collision as a first-class Limit-Map adversary.
 
 Next dependency:
 Execution.
@@ -177,6 +184,7 @@ Design includes:
 - site/acquisition transfer failure;
 - insufficient spatial coverage;
 - out-of-domain state;
+- reference/montage sensitivity;
 - native baseline matching or beating NSD;
 - failure of shared-architecture transfer.
 
@@ -196,6 +204,8 @@ Completed design:
 - C5 clinical;
 - nested NSD additions;
 - task-specific ADDS/EQUIVALENT/SUBTRACTS/INDETERMINATE/NOT_TESTED decisions.
+
+Targeted collision strengthened C4: state-space oscillator fitting and DMD/modal disease applications already exist and must be treated as serious native comparators.
 
 Canonical output: `NATIVE_COMPARATOR_PROGRAM_v0.1.md`.
 
@@ -290,7 +300,7 @@ Implementation must emit these artifacts automatically rather than relying on ma
 
 ## 15. Experimental-opportunity program
 
-Initial experiment design and collision are now integrated.
+Initial experiment design and multiple literature-collision passes are now integrated.
 
 Highest-value remaining experiment families:
 1. explicit dynamical-model qualification versus broadening adversaries;
@@ -301,14 +311,25 @@ Highest-value remaining experiment families:
 6. shared-versus-specific transdiagnostic architecture;
 7. incremental longitudinal prediction only after earlier layers qualify.
 
+Targeted collision now establishes that:
+- explicit neural damping models exist in invasive and noninvasive settings;
+- scalp state-space oscillator modeling exists;
+- DMD/modal + spatial + disease applications exist;
+- generic abstention/refusal exists;
+- multimodal EEG/fMRI integration exists;
+- identifiability and reference dependence are native concerns.
+
+Therefore the residual experimental question is not whether those components exist, but whether the governed NSD conjunction produces reliable incremental information.
+
 Canonical outputs:
 - `EXPERIMENTAL_OPPORTUNITY_PLAN_v0.1.md`
 - `LITERATURE_COLLISION_PASS_v0.1.md`
 - `LITERATURE_COLLISION_ADDENDUM_v0.1.md`
+- `LITERATURE_COLLISION_ADDENDUM_v0.2.md`
 
 ## 16. Publication/novelty audit
 
-Major initial collision completed against:
+Major collision completed against:
 - RDoC;
 - HiTOP;
 - p-factor / general psychopathology;
@@ -317,7 +338,13 @@ Major initial collision completed against:
 - periodic/aperiodic EEG;
 - transdiagnostic EEG;
 - oscillator/Q/pole neural models;
-- generic EEG classification/prediction.
+- scalp state-space oscillator models;
+- DMD/OMA neural modal analysis;
+- modal + spatial + disease EEG;
+- generic EEG classification/prediction;
+- generic abstention/refusal;
+- multimodal EEG/fMRI integration;
+- identifiability controls.
 
 Current result:
 Many broad 2025 claims are established prior-art families and cannot carry the paper's novelty.
@@ -326,13 +353,13 @@ Candidate residual contribution is narrower:
 - dynamically licensed/refused local scalars;
 - integrated spectral/modal/spatial/conglomerate/open-channel architecture;
 - independent label-blind Engine + Atlas governance;
-- scalar-admission/refusal as retained information;
+- structural non-admission/refusal as retained information rather than generic classifier abstention;
 - known-truth qualification before clinical geometry;
-- shared-instability test requiring preserved disorder-specific organization.
+- Function/Limit Maps as coequal outputs;
+- shared-instability test requiring preserved disorder-specific organization;
+- empirical incremental value over serious native modal and spectral comparators.
 
-Canonical output: `NOVELTY_ATTRIBUTION_AUDIT_v0.1.md`.
-
-Status: candidate residual novelty only. Targeted searches remain necessary before using “novel,” “first,” or equivalent language.
+Status: candidate residual novelty only. “Novel,” “first,” and equivalent language remain prohibited until a final targeted collision and empirical comparison are complete.
 
 ## Updated operating order
 
@@ -342,24 +369,25 @@ The immediately executable non-compute sequence has now been substantially exhau
 -> `estimator licensing [done as design]`
 -> `dataset audit schema [done]`
 -> `Atlas design [done]`
--> `Engine specification [done]`
+-> `Engine specification + scaffold [done/active]`
 -> `known-truth/adversarial design [done]`
 -> `Function/Limit design [done]`
 -> `native comparators [done]`
 -> `cross-disorder/comorbidity design [done]`
 -> `manuscript/figure/reproducibility architecture [advanced]`
--> `initial experimental/literature/novelty collision [done]`.
+-> `experimental/literature/novelty collision [major + targeted passes done]`.
 
-## What remains possible without computation
+## What remains possible without waiting for empirical computation
 
-Non-compute work is not literally exhausted, but the remaining useful work is narrower:
-- deeper targeted prior-art search for refusal/non-identifiability as phenotype;
-- targeted prior-art search for integrated multimodal/modal stability architectures;
-- exact dataset/source recovery if legacy empirical files are found;
-- prose/citation polishing of method sections;
-- preregistration-style task specifications once the first forward dataset is fixed;
-- implementation planning down to file schemas and tests.
+Useful work remains, but it is now implementation-facing rather than conceptual:
+- finish provenance/QC/spectral/modal code modules and tests;
+- lock machine-readable result/refusal schemas;
+- make configuration hashing and deterministic manifests mandatory;
+- build the known-truth generators and scorecards;
+- write preregistration-style task manifests once the first forward dataset is fixed;
+- perform targeted literature checks only when a specific estimator or nuisance requires them;
+- keep polishing the living manuscript without filling blocked Results with imagined outcomes.
 
-The next large increase in scientific evidence requires **data/code execution**, not more confident prose.
+The next large increase in scientific evidence requires **code execution on known truth and audited real data**.
 
 No result section will be pre-written positive while those computations remain undone.
