@@ -2,28 +2,35 @@
 
 **Status:** Active project-local protocol index  
 **Effective date:** 2026-09-14  
-**Program authority:** General Cross-Project Research Protocol v0.8.0
+**Program authority:** SymC General Operations Manual v0.8.0
 
 ## Purpose
 
-This file implements the v0.8.0 General Protocol transfer principle for the GRI program.
+This file implements the v0.8.0 General Operations Manual transfer principle for the GRI program.
 
-It is intentionally an authority map rather than a second copy of every rule. The General Protocol defines transferable program-wide safeguards. The files below remain the GRI-local source of record for project-specific scientific definitions, admission rules, atlas architecture, data conventions, comparator work, freezes, and candidate state.
+It is intentionally an authority map rather than a second copy of every rule. The GOM defines transferable program-wide safeguards. The files below remain the GRI-local source of record for project-specific scientific definitions, admission rules, atlas architecture, data conventions, comparator work, freezes, and candidate state.
 
-If two active GRI-local documents appear to conflict, resolve the conflict through the explicit supersession/freeze record before changing science. Historical freeze/result artifacts are not rewritten merely because this index or the General Protocol is newer.
+If two active GRI-local documents appear to conflict, resolve the conflict through the explicit supersession/freeze record before changing science. Historical freeze/result artifacts are not rewritten merely because this index or the GOM is newer.
 
 ## Authority order
 
-1. `CURRENT_PROTOCOL_AUTHORITY.md` — identifies the active General Protocol baseline and non-retroactivity rule.
-2. `EPISTEMIC_CONSTITUTION.md` — project-level scientific constitution and claim firewalls.
-3. Frozen claim/config/state-definition artifacts — govern the exact scientific object for the run to which they apply.
-4. Project-specific technical rules and schemas listed below.
-5. Executable production code and tests implementing those frozen rules.
-6. Result, audit, refusal, and dead-end artifacts recording what actually happened.
+1. `CURRENT_PROTOCOL_AUTHORITY.md` — identifies the active GOM baseline, verified identities, and non-retroactivity rule.
+2. `GRI_Project_Guardrails.md` — preserves GRI-specific claim ceilings intentionally removed from the program-wide manual during consolidation.
+3. `EPISTEMIC_CONSTITUTION.md` — project-level scientific constitution and claim firewalls.
+4. Frozen claim/config/state-definition artifacts — govern the exact scientific object for the run to which they apply.
+5. Project-specific technical rules and schemas listed below.
+6. Executable production code and tests implementing those frozen rules.
+7. Result, audit, refusal, and dead-end artifacts recording what actually happened.
 
 A later document cannot silently rescue or reinterpret an earlier frozen failure.
 
 ## Canonical GRI-local sources
+
+### GRI consolidation guardrails
+
+- `GRI_Project_Guardrails.md`
+
+This file is the local source of record for the GRI-specific safeguards intentionally moved out of the program-wide GOM during consolidation. In particular it controls the claim ceiling for `chi_RNA = sigma/(2 mu) = CV/2`, native RNA-seq count-statistical challenges, cross-sectional-versus-temporal inference, and manuscript-language reconciliation for any stronger EP2/damping interpretation.
 
 ### Chi architecture and epistemic status
 
@@ -44,7 +51,7 @@ Current and historical candidate/freeze/refusal artifacts under `docs/chi_admiss
 - `GRI_REGULATORY_SUBSTRATE_ATLAS_V0_1_SCHEMA_20260910.md`
 - subsequent Atlas extension, closure, and evidence-state records in `docs/`
 
-These govern GRI-specific atlas modalities, schema, evidence state, and provenance. The Atlas remains independent of coordinate construction under the General Protocol.
+These govern GRI-specific atlas modalities, schema, evidence state, and provenance. The Atlas remains independent of coordinate construction under the GOM.
 
 ### Native comparator and simple baselines
 
@@ -63,11 +70,11 @@ Comparator choice must answer the same frozen scientific question and may not be
 - `GRI_V080_DELTA_AUDIT_20260914.md`
 - `GRI_CONTROL_DOCUMENT_SUPERSESSION_MAP_20260910.md`
 
-Historical integration audits remain historical records. New prospective authority comes from the current GP plus this project protocol and the applicable frozen local artifacts.
+Historical integration audits remain historical records. New prospective authority comes from the definitive current GOM plus this project protocol, `GRI_Project_Guardrails.md`, and the applicable frozen local artifacts.
 
-## GRI-specific scientific rules delegated from the General Protocol
+## GRI-specific scientific rules delegated from the GOM
 
-The following belong locally even when a generalized version also appears in the GP:
+The following belong locally even when a generalized version also appears in the GOM:
 
 - exact GRI proxy/coordinate definitions and their epistemic classes;
 - assay-specific statistical models and mean-variance/normalization controls;
@@ -84,9 +91,12 @@ The following belong locally even when a generalized version also appears in the
 
 At this protocol index version:
 
+- `chi_RNA = sigma/(2 mu) = CV/2` is an operational proxy unless and until a validated mechanistic derivation earns a stronger classification;
 - no numerical biological `Chi_bio` coordinate is admitted;
 - no biological `Chi_bio = 1` boundary is licensed;
-- CV/2 remains historical comparator/proxy lineage rather than admitted dynamical chi;
+- algebraic resemblance to a damping-ratio form does not license EP2, critical-damping, or exceptional-point interpretation;
+- native count-statistical structure and relevant RNA-seq nuisance structure remain mandatory challenges for any use of the proxy;
+- cross-sectional TCGA ordering cannot by itself support temporal progression, warning lead time, recovery, irreversibility, treatment response, or causal direction;
 - the short-term G2 lane remains closed at its earned prospective refusal;
 - the chronic SCC25 G2 lane and bounded feature-gate robustness audit remain completed evidence;
 - the B3 lane has progressed to a prospective state-definition/representation choice that changes the scientific object and therefore requires an explicit science decision/freeze before outcome-bearing execution;
@@ -122,6 +132,6 @@ Do not autonomously choose or alter:
 
 ## v0.8.0 migration rule
 
-v0.8.0 changes where project-specific rules live; it does not by itself change the scientific result of an existing GRI calculation.
+The definitive GOM v0.8.0 changes where project-specific rules live; it does not by itself change the scientific result of an existing GRI calculation.
 
-No already-running calculation is restarted, retuned, or reinterpreted solely because of this protocol migration. New prospective decisions use v0.8.0 and this project-local authority stack.
+No already-running calculation is restarted, retuned, or reinterpreted solely because of this governance promotion. New prospective decisions use the definitive GOM v0.8.0, this project-local authority stack, and the applicable frozen scientific artifacts.
