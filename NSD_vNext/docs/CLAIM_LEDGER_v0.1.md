@@ -39,6 +39,11 @@ Date: 14 September 2026
 | NSD-C032 | A stability-oriented integration of native spectral, modal, spatial, normative, refusal, and clinical layers adds reproducible information beyond native approaches. | CENTRAL OPEN HYPOTHESIS | Frozen Engine + Atlas + native comparators + held-out/external evaluation |
 | NSD-C033 | Refusal/non-admission patterns themselves carry reproducible clinical or biological information after technical causes are controlled. | EXPLORATORY HYPOTHESIS | Repeated-session reliability + acquisition/SNR controls + held-out clinical comparison |
 | NSD-C034 | The current Engine contract scaffold prevents unsupported whole-system chi and preserves mode/refusal lineage mechanically. | LOCALLY VERIFIED IMPLEMENTATION CLAIM | Current contract tests pass; requires CI and future regression coverage for production status |
+| NSD-C035 | Lowercase `chi_i` should be treated as a local or mode-specific model-conditional coordinate rather than the definition of the whole neural Stability Architecture. | SUPPORTED PROJECT-LOCAL METHOD DISTINCTION | GOM local-versus-embedded rule + estimator licensing + current project notation |
+| NSD-C036 | A higher-order `Chi_NSD` object exists that captures embedded neural stability beyond the set of local `chi_i`. | CENTRAL P0-D HYPOTHESIS / NOT ADMITTED | Candidate system-object inventory + identifiability + Chi-vs-chi known-truth tests + label-blind real-data qualification + external evidence |
+| NSD-C037 | Two systems can share the same local `{chi_i}` while differing materially in embedded behavior because coupling, topology, feedback, or non-normality differs. | TESTABLE SYSTEMS HYPOTHESIS | Known-truth coupled systems + native operator analysis; then real-data analogs if qualified |
+| NSD-C038 | If a scalar `Chi_NSD` is eventually admitted, it must be derived from a native coupled System Model or independently validated system-level construction rather than an arbitrary weighted average or weakest-link reduction of local `chi_i`. | SUPPORTED DESIGN SAFEGUARD / SCALAR EXISTENCE OPEN | GOM whole-system-scalar rule + project Chi-vs-chi program; any scalar candidate still requires derivation and validation |
+| NSD-C039 | A dominant eigenvalue or spectral radius alone is sufficient to characterize embedded neural stability. | OPEN / EXPECTED TO FAIL IN NON-NORMAL REGIMES | Known-truth non-normal transient-amplification tests + native comparator literature + target-data qualification |
 
 ## Historical source correction
 
@@ -49,6 +54,8 @@ The recovered `.tex` sources contain a bibliography but no inline citation comma
 The residual NSD opportunity is no longer framed as invention of dimensional psychiatry, normative modeling, spectral decomposition, neural damping, no-peak handling, or modal decomposition. Those component lineages already exist.
 
 The central scientific question is now whether the **stability-oriented conjunction** of legitimately measured components adds reproducible information and constrains interpretation better than the strongest native alternatives.
+
+The Chi-vs-chi investigation adds a narrower system-identification question: whether the full embedded architecture admits a higher-order `Chi_NSD` object distinct from local `chi_i`, and whether that object is scalar, non-scalar, multiple-coordinate, or not identifiable.
 
 ## Promotion discipline
 
