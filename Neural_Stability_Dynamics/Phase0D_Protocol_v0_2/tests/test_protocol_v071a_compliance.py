@@ -9,9 +9,14 @@ from src.landscape import make_mapping_record, split_function_limit
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def test_protocol_baseline_names_additive_v071a():
+def test_protocol_baseline_tracks_current_authority_and_history():
     text = (ROOT / "PROTOCOL_BASELINE.md").read_text(encoding="utf-8")
-    assert "v0.7.1 FINAL + General Cross-Project Research Protocol v0.7.1A" in text
+    assert "General Cross-Project Research Protocol v0.8.0" in text
+    assert "Definitive Active Baseline" in text
+    assert "supersedes the v0.7.7 pointer" in text
+    assert "Historical branch names, runs, artifacts, freezes, failures, survival statuses, and evidence tiers are preserved" in text
+    assert "absence of a v0.7.8 artifact" in text
+    assert "lineage-documentation gap" in text
     assert "P0-D" in text and "P0-Q" in text
     assert "P1 is closed" in text
 
