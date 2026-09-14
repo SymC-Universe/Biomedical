@@ -1,8 +1,6 @@
 import json
 from pathlib import Path
 
-import pytest
-
 from nsd_engine.bids import audit_bids_tree, parse_bids_entities
 
 
@@ -46,6 +44,7 @@ def test_single_session_dataset_without_ses_directories_is_valid(tmp_path):
     assert audit.subjects_with_multiple_sessions == ()
     assert audit.task_labels == ("rest",)
     assert audit.eeg_file_count == 1
+    assert audit.scan_session_metadata_complete is None
 
 
 def test_repeat_sessions_are_counted_and_joined_to_one_subject(tmp_path):
@@ -107,3 +106,43 @@ def test_duplicate_participant_rows_are_detected(tmp_path):
     audit = audit_bids_tree(tmp_path)
     assert audit.duplicate_participant_ids == ("sub-01",)
     assert not audit.subject_identity_verified
+
+
+def test_scans_table_reports_complete_session_labels(tmp_path):
+    make_description(tmp_path)
+    write_text(tmp_path / "participants.tsv", "participant_id\nsub-01\n")
+    write_text(tmp_path / "sub-01/eeg/sub-01_task-rest_run-01_eeg.set", "pointer")
+    write_text(
+        tmp_path / "sub-01/sub-01_scans.tsv",
+        "filename\tsession\n"
+        "eeg/sub-01_task-rest_run-01_eeg.set\tday1\n",
+    )
+
+    audit = audit_bids_tree(tmp_path)
+    assert audit.scans_tsv_count == 1
+    assert audit.scans_row_count == 1
+    assert audit.scans_rows_with_session == 1
+    assert audit.scans_rows_without_session == 0
+    assert audit.scan_session_labels == ("day1",)
+    assert audit.scan_session_metadata_complete is True
+
+
+def test_scans_table_preserves_unresolved_session_rows(tmp_path):
+    make_description(tmp_path)
+    write_text(tmp_path / "participants.tsv", "participant_id\nsub-01\n")
+    write_text(tmp_path / "sub-01/eeg/sub-01_task-rest_run-01_eeg.set", "pointer")
+    write_text(tmp_path / "sub-01/eeg/sub-01_task-rest_run-02_eeg.set", "pointer")
+    write_text(
+        tmp_path / "sub-01/sub-01_scans.tsv",
+        "filename\tsession\n"
+        "eeg/sub-01_task-rest_run-01_eeg.set\tn/a\n"
+        "eeg/sub-01_task-rest_run-02_eeg.set\t\n",
+    )
+
+    audit = audit_bids_tree(tmp_path)
+    assert audit.scans_tsv_count == 1
+    assert audit.scans_row_count == 2
+    assert audit.scans_rows_with_session == 0
+    assert audit.scans_rows_without_session == 2
+    assert audit.scan_session_labels == ()
+    assert audit.scan_session_metadata_complete is False
