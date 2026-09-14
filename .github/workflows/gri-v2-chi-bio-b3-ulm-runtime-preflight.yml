@@ -1,0 +1,41 @@
+name: GRI Chi_bio B3 ULM runtime preflight
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - gri-v071-protocol-integration-20260910-chi-bio
+    paths:
+      - 'GRI_v2/config/gri_Chi_bio_B3_regulatory_state_scoring_freeze_20260913_v0_1.json'
+      - 'GRI_v2/src/preflight_chi_bio_b3_ulm_runtime.py'
+      - '.github/workflows/gri-v2-chi-bio-b3-ulm-runtime-preflight.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install frozen B3 runtime
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install 'decoupler==2.2.0'
+      - name: Execute known-synthetic ULM runtime preflight
+        run: python -m src.preflight_chi_bio_b3_ulm_runtime
+      - name: Upload runtime preflight record
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-chi-bio-b3-ulm-runtime-preflight-v1
+          path: GRI_v2/development_outputs/chi_bio_regulon_source/b3_ulm_runtime_20260913/GRI_CHI_BIO_B3_ULM_RUNTIME_PREFLIGHT.json
+          retention-days: 90
+          if-no-files-found: error
