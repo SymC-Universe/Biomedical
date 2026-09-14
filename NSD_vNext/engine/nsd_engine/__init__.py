@@ -34,6 +34,11 @@ from .admission import (
     decide_scalar_admission,
 )
 from .metadata import MetadataRole, MetadataRoleManifest, conservative_role_guess
+from .spectral import (
+    DescriptiveSpectralEstimate,
+    DescriptiveSpectralEstimator,
+    SpectralConfig,
+)
 
 __all__ = [
     "CandidateMode",
@@ -65,4 +70,7 @@ __all__ = [
     "MetadataRole",
     "MetadataRoleManifest",
     "conservative_role_guess",
+    "DescriptiveSpectralEstimate",
+    "DescriptiveSpectralEstimator",
+    "SpectralConfig",
 ]
