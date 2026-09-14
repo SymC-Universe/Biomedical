@@ -18,7 +18,7 @@ Date: 14 September 2026
 | NSD-C011 | chi = 1 marks a healthy or optimal neural state. | PROHIBITED ASSUMPTION | Could only be supported by independent empirical evidence; not inherited from oscillator math |
 | NSD-C012 | Cross-sectional NSD features predict future clinical outcomes. | NOT TESTED | Longitudinal/prospective P1 evidence |
 | NSD-C013 | NSD adds predictive or classificatory value over the strongest native toolkit. | NOT TESTED | Frozen task + comparator + untouched evidence + incremental metric |
-| NSD-C014 | Absent peaks/modes are meaningful categorical phenotypes in at least one disorder. | EXPLORATORY HYPOTHESIS | Prespecified missing-feature analysis + artifact controls + replication |
+| NSD-C014 | Absent peaks/modes are meaningful categorical phenotypes in at least one disorder. | EXPLORATORY HYPOTHESIS | Prespecified missing-feature analysis + artifact controls + replication; peak absence itself is established prior art |
 | NSD-C015 | Spatial organization contributes information beyond whole-head averages. | TESTABLE HYPOTHESIS | Subject-level comparison of spatial vs global representations on frozen task |
 | NSD-C016 | Healthy Neurostability Atlas can be locked and reused across disorder comparisons without disorder-specific retuning. | DESIGN TARGET | Baseline audit + version lock + transfer tests |
 | NSD-C017 | The 2025 NSD figures constitute empirical validation of the proposed disorder architecture. | RETIRED | Available source package lacks the data/code/provenance chain required for this claim |
@@ -31,17 +31,31 @@ Date: 14 September 2026
 | NSD-C024 | Model-conditional neural damping parameters are recoverable in at least some neural preparations. | SUPPORTED PRIOR-ART CLAIM | Existing MEG/LFP/sEEG/neural-mass literature; target NSD datasets still require independent qualification |
 | NSD-C025 | A Gaussian periodic-peak bandwidth can be converted directly to damping/chi without further qualification. | PROHIBITED ASSUMPTION | Would require a valid generative bridge and exclusion/modeling of non-damping broadening |
 | NSD-C026 | The historical 2025 NSD manuscript is scientifically useful as P0-D architecture discovery even though it is not empirical validation. | SUPPORTED PROVENANCE CLAIM | Historical source audit + current maturity classification |
+| NSD-C027 | Dimensional/transdiagnostic psychopathology or comorbidity-as-shared-structure is itself an NSD novelty. | REJECTED NOVELTY CLAIM | RDoC, HiTOP, p-factor, and related lineages predate NSD |
+| NSD-C028 | Healthy-reference / normative EEG deviation modeling is itself an NSD novelty. | REJECTED NOVELTY CLAIM | Established normative-modeling literature, including EEG applications |
+| NSD-C029 | Keeping no-peak states as categorical rather than fabricating a peak is itself novel. | REJECTED NOVELTY CLAIM | SpecParam and earlier alpha-peak literature explicitly retain no-peak states |
+| NSD-C030 | Spatiotemporal neural modal decomposition with frequency plus spatial participation and decay/growth is itself novel. | REJECTED NOVELTY CLAIM | DMD, OMA, state-space oscillator, and related neural system-identification literature already establish this family |
+| NSD-C031 | Neural dynamical parameter non-identifiability is a new NSD insight. | REJECTED NOVELTY CLAIM | Identifiability is established in neural population/state-space modeling |
+| NSD-C032 | A stability-oriented integration of native spectral, modal, spatial, normative, refusal, and clinical layers adds reproducible information beyond native approaches. | CENTRAL OPEN HYPOTHESIS | Frozen Engine + Atlas + native comparators + held-out/external evaluation |
+| NSD-C033 | Refusal/non-admission patterns themselves carry reproducible clinical or biological information after technical causes are controlled. | EXPLORATORY HYPOTHESIS | Repeated-session reliability + acquisition/SNR controls + held-out clinical comparison |
+| NSD-C034 | The current Engine contract scaffold prevents unsupported whole-system chi and preserves mode/refusal lineage mechanically. | LOCALLY VERIFIED IMPLEMENTATION CLAIM | Current contract tests pass; requires CI and future regression coverage for production status |
 
 ## Historical source correction
 
-The recovered `.tex` sources contain a bibliography but no inline citation commands. Therefore the bibliography is not sufficient to bind individual historical numerical/mechanistic claims to evidence. Claim-level sourcing is being rebuilt from scratch rather than retrofitted.
+The recovered `.tex` sources contain a bibliography but no inline citation commands. Therefore the bibliography is not sufficient to bind individual historical numerical/mechanistic claims to evidence. Claim-level sourcing is being rebuilt from scratch in `CURRENT_REFERENCE_LEDGER_v0.1.md` rather than retrofitted.
+
+## Novelty correction
+
+The residual NSD opportunity is no longer framed as invention of dimensional psychiatry, normative modeling, spectral decomposition, neural damping, no-peak handling, or modal decomposition. Those component lineages already exist.
+
+The central scientific question is now whether the **stability-oriented conjunction** of legitimately measured components adds reproducible information and constrains interpretation better than the strongest native alternatives.
 
 ## Promotion discipline
 
-No historical or newly observed result is promoted merely because it is numerically clean, near chi = 1, visually separated, consistent with prior SymC expectations, or aesthetically coherent in a state-space figure.
+No historical or newly observed result is promoted merely because it is numerically clean, near chi = 1, visually separated, consistent with prior SymC expectations, aesthetically coherent in a state-space figure, or assembled from individually legitimate methods.
 
 The required path is:
 
-`architecture -> native observable -> licensed estimator -> audited data hierarchy -> uncertainty -> known-truth qualification -> frozen test -> claim`.
+`architecture -> native observable -> licensed estimator -> audited data hierarchy -> uncertainty -> known-truth qualification -> frozen native comparator -> held-out/external test -> claim`.
 
 Promotion follows the GOM maturity ladder and MFR-14 when confirmatory status is claimed.
