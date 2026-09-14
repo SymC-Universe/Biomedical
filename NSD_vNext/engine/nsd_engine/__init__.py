@@ -16,6 +16,15 @@ from .schema import (
     SpectralState,
     canonical_config_hash,
 )
+from .provenance import (
+    DuplicateAudit,
+    HierarchyKey,
+    JoinAudit,
+    assert_subject_disjoint,
+    audit_duplicate_hierarchy,
+    audit_join,
+)
+from .serialization import to_canonical_json
 
 __all__ = [
     "CandidateMode",
@@ -28,4 +37,11 @@ __all__ = [
     "SpectralPeak",
     "SpectralState",
     "canonical_config_hash",
+    "DuplicateAudit",
+    "HierarchyKey",
+    "JoinAudit",
+    "assert_subject_disjoint",
+    "audit_duplicate_hierarchy",
+    "audit_join",
+    "to_canonical_json",
 ]
