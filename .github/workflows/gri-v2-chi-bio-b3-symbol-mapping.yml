@@ -1,0 +1,42 @@
+name: GRI Chi_bio B3 symbol-mapped overlap probe
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - gri-v071-protocol-integration-20260910-chi-bio
+    paths:
+      - 'GRI_v2/src/probe_chi_bio_b3_network_symbol_mapping.py'
+      - 'GRI_v2/tests/test_chi_bio_b3_network_symbol_mapping.py'
+      - '.github/workflows/gri-v2-chi-bio-b3-symbol-mapping.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned provenance dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install 'pandas==3.0.5' 'pyreadr==0.5.6' 'pytest==8.4.2'
+      - name: Run deterministic namespace-mapping guard
+        run: python -m pytest -q tests/test_chi_bio_b3_network_symbol_mapping.py
+      - name: Probe symbol-mapped regulon support without expression values
+        run: python -m src.probe_chi_bio_b3_network_symbol_mapping
+      - name: Upload mapped B3 overlap record
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-chi-bio-b3-symbol-mapped-overlap
+          path: GRI_v2/development_outputs/chi_bio_regulon_source/b3_symbol_mapping_20260913/GRI_CHI_BIO_B3_SYMBOL_MAPPED_OVERLAP.json
+          retention-days: 90
+          if-no-files-found: error

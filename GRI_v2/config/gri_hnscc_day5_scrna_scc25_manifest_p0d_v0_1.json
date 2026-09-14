@@ -1,0 +1,50 @@
+{
+  "schema_version": "0.1",
+  "status": "P0_D_PROCESSED_SOURCE_IDENTITY_VERIFIED_NO_CHI_OUTCOMES",
+  "freeze_date": "2026-09-12",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.4_FINAL",
+  "series": "GSE137524",
+  "cell_line": "SCC25",
+  "role": "DAY5_HETEROGENEITY_AND_CARRIER_ENDPOINT_NOT_LONGITUDINAL_SAME_CELL_TRAJECTORY",
+  "files": {
+    "expression": {
+      "filename": "GSE137524_exprsSCC25Matrix.csv.gz",
+      "sha256": "58a4f9eb2289eb14f4d33974a62c3e3a762631b28c3fad6bbd4bdb192e8f4057",
+      "gene_rows": 33538,
+      "cell_columns": 8920,
+      "compressed_size_bytes": 44654039,
+      "uncompressed_size_bytes": 605731285
+    },
+    "pheno": {
+      "filename": "GSE137524_phenoDataSCC25.csv.gz",
+      "sha256": "9162650519a9e4c22d7bf7fe208e041a40c7608e3b994fee5843af18aaace943",
+      "rows": 8920,
+      "counts": {
+        "CTX_R1": 1999,
+        "CTX_R2": 2027,
+        "PBS_R1": 2318,
+        "PBS_R2": 2576
+      }
+    },
+    "feature": {
+      "filename": "GSE137524_featureData.csv.gz",
+      "sha256": "4b7fb2e96fe11b0c1bc856fdec87dcb10eb264ee2aa18d2802813731e861ac41",
+      "rows": 33538
+    }
+  },
+  "cross_file_identity": {
+    "expression_cell_ids_vs_pheno_ids": "EXACT_ORDER_MATCH",
+    "expression_gene_symbols_vs_feature_gene_short_name": "CASE_ONLY_ORDER_MATCH",
+    "case_only_gene_symbol_differences": 404,
+    "source_strings_rewritten": false,
+    "identity_rule": "Gene rows must match in exact order after casefolding; any difference beyond capitalization is a hard failure."
+  },
+  "selection_firewall": {
+    "chi_bio_outcomes_opened": false,
+    "feature_selection_performed_in_source_probe": false,
+    "bulk_state_dimension_selected_using_scrna": false,
+    "unity_used_for_scrna_selection": false,
+    "p1_status": "NOT_EXTERNAL_P1"
+  },
+  "future_use_rule": "A bulk-defined representation may be projected/tested in this endpoint only after the bulk basis and scRNA projection/carrier rule are prospectively frozen."
+}

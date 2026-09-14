@@ -1,0 +1,57 @@
+name: GRI Chi_bio chronic source probe
+
+on:
+  push:
+    branches:
+      - gri-v071-protocol-integration-20260910-chi-bio
+    paths:
+      - 'GRI_v2/src/probe_chi_bio_chronic_processed_sources.py'
+      - 'GRI_v2/src/probe_chi_bio_chronic_rna_anatomy.py'
+      - 'GRI_v2/src/probe_chi_bio_chronic_rna_numeric_scale.py'
+      - 'GRI_v2/src/probe_chi_bio_chronic_r1_design_inputs.py'
+      - 'GRI_v2/config/gri_scc25_paired_timecourse_manifest_p0d_v0_1.json'
+      - 'GRI_v2/config/gri_scc25_chronic_source_provenance_lock_v0_2.json'
+      - '.github/workflows/gri-v2-chi-bio-chronic-source-probe.yml'
+  pull_request:
+    paths:
+      - 'GRI_v2/src/probe_chi_bio_chronic_processed_sources.py'
+      - 'GRI_v2/src/probe_chi_bio_chronic_rna_anatomy.py'
+      - 'GRI_v2/src/probe_chi_bio_chronic_rna_numeric_scale.py'
+      - 'GRI_v2/src/probe_chi_bio_chronic_r1_design_inputs.py'
+      - 'GRI_v2/config/gri_scc25_paired_timecourse_manifest_p0d_v0_1.json'
+      - 'GRI_v2/config/gri_scc25_chronic_source_provenance_lock_v0_2.json'
+      - '.github/workflows/gri-v2-chi-bio-chronic-source-probe.yml'
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numeric probe dependencies
+        run: python -m pip install 'numpy==2.4.3'
+      - name: Acquire and hash selected chronic processed GEO sources
+        run: python -m src.probe_chi_bio_chronic_processed_sources
+      - name: Probe chronic RNA processed-table anatomy
+        run: python -m src.probe_chi_bio_chronic_rna_anatomy
+      - name: Probe chronic RNA numeric scale without biological comparison
+        run: python -m src.probe_chi_bio_chronic_rna_numeric_scale
+      - name: Qualify chronic PBS-only R1 design inputs without CTX outcomes
+        run: python -m src.probe_chi_bio_chronic_r1_design_inputs
+      - name: Upload chronic provenance and pre-outcome design-input reports only
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-chi-bio-chronic-source-probe
+          path: |
+            GRI_v2/development_outputs/chi_bio_chronic_source_probe/GRI_CHI_BIO_CHRONIC_PROCESSED_SOURCE_PROBE.json
+            GRI_v2/development_outputs/chi_bio_chronic_source_probe/GRI_CHI_BIO_GSE98812_RNA_TABLE_ANATOMY.json
+            GRI_v2/development_outputs/chi_bio_chronic_source_probe/GRI_CHI_BIO_GSE98812_RNA_NUMERIC_SCALE.json
+            GRI_v2/development_outputs/chi_bio_chronic_source_probe/GRI_CHI_BIO_GSE98812_R1_DESIGN_INPUTS.json
+          if-no-files-found: error

@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.1",
+  "status": "GENERATOR_NEUTRAL_TEST_SPEC_NO_CANDIDATE_FROZEN",
+  "purpose": "Define known-truth and known-failure tests any future Chi_bio candidate must pass before real-data internal qualification.",
+  "candidate_outcomes_may_select_harness": false,
+  "required_case_families": {
+    "KT_STABLE_WELL_SEPARATED": {
+      "truth": "candidate scalar exists and is safely inside stable regime",
+      "required_behavior": "recover value/direction within prespecified tolerance"
+    },
+    "KT_NEAR_BOUNDARY": {
+      "truth": "candidate scalar exists close to model-native boundary",
+      "required_behavior": "uncertainty widens appropriately and no false certainty is allowed"
+    },
+    "KT_UNSTABLE": {
+      "truth": "candidate scalar exists beyond model-native stability boundary",
+      "required_behavior": "recover correct regime after candidate-specific freeze"
+    },
+    "KT_DEGENERATE_MODES": {
+      "truth": "leading mode/eigenspace is degenerate or nearly degenerate",
+      "required_behavior": "subspace-aware uncertainty or refusal; no arbitrary eigenvector certainty"
+    },
+    "KT_NONNORMAL_TRANSIENT": {
+      "truth": "asymptotically stable spectrum with strong transient amplification",
+      "required_behavior": "scalar may remain stable but companion modal/system warning must remain visible"
+    },
+    "KT_MULTIPLE_INTERNAL_ORGANIZATIONS": {
+      "truth": "distinct modal/conglomerate organizations share similar scalar value",
+      "required_behavior": "do not claim scalar equivalence implies full-system equivalence"
+    },
+    "KF_NO_COHERENT_SCALAR": {
+      "truth": "no scientifically coherent system-level scalar compression exists",
+      "required_behavior": "NO_COHERENT_CHI_BIO refusal"
+    },
+    "KF_NONIDENTIFIABLE": {
+      "truth": "multiple materially different generators fit observables equally",
+      "required_behavior": "NOT_IDENTIFIABLE refusal"
+    },
+    "KF_OUT_OF_REGIME": {
+      "truth": "data violate candidate model assumptions",
+      "required_behavior": "OUT_OF_VALIDITY_REGIME refusal"
+    },
+    "KF_REPRESENTATION_MISMATCH": {
+      "truth": "source representation cannot support frozen candidate mapping",
+      "required_behavior": "REPRESENTATION_DEPENDENT_NO_TRANSFER refusal"
+    },
+    "KF_STATIC_ONLY_DYNAMIC_CLAIM": {
+      "truth": "only cross-sectional data are supplied to a dynamically interpreted candidate",
+      "required_behavior": "INSUFFICIENT_TEMPORAL_INFORMATION_FOR_DYNAMIC_INTERPRETATION refusal"
+    },
+    "KF_POSTHOC_UNITY": {
+      "truth": "unity is created solely by after-the-fact rescaling",
+      "required_behavior": "hard contract rejection before scientific evaluation"
+    }
+  },
+  "required_metrics_after_candidate_freeze": [
+    "value_bias_or_recovery_error",
+    "uncertainty_coverage",
+    "false_admission_rate",
+    "false_refusal_rate",
+    "boundary_classification_error_if_boundary_is_model_native",
+    "refusal_accuracy",
+    "sensitivity_to_noise",
+    "sensitivity_to_missingness",
+    "sensitivity_to_state_dimension",
+    "sensitivity_to_sample_or_timepoint_count",
+    "sensitivity_to_mode_degeneracy",
+    "sensitivity_to_non_normality"
+  ],
+  "pre_scale_rules": [
+    "Run smallest analytically checkable cases first.",
+    "Every pass criterion must be shown to fail on at least one known-bad case.",
+    "Do not tune tolerances after inspecting real cancer Chi_bio placement.",
+    "Pilot one representative production-equivalent synthetic case before broad parameter sweeps.",
+    "Checkpoint broad sweeps by case family and parameter cell.",
+    "Unchanged deterministic failures are not retried."
+  ],
+  "generator_specific_extension_required": true,
+  "extension_rule": "Once a candidate generator is scientifically selected, freeze its equations, truth parameters, parameter grid, noise model, estimators, tolerances, and refusal expectations before running outcome-bearing real data.",
+  "current_execution_status": "SPECIFIED_NOT_RUN_BECAUSE_NO_GENERATOR_IS_FROZEN"
+}

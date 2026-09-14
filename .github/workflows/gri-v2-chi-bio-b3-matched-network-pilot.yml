@@ -1,0 +1,58 @@
+name: GRI Chi_bio B3 matched-network pilot
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - gri-v071-protocol-integration-20260910-chi-bio
+    paths:
+      - 'GRI_v2/config/gri_Chi_bio_B3_regulatory_state_scoring_freeze_20260913_v0_1.json'
+      - 'GRI_v2/config/gri_Chi_bio_B3_matched_network_pilot_20260913_v0_1.json'
+      - 'GRI_v2/src/run_chi_bio_b3_matched_network_pilot.py'
+      - '.github/workflows/gri-v2-chi-bio-b3-matched-network-pilot.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  qualify-and-run-pilot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install repository and frozen B3 dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install 'decoupler==2.2.0'
+      - name: Validate pilot remains nonpromotable and real-data closed
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          scoring = json.loads(Path('config/gri_Chi_bio_B3_regulatory_state_scoring_freeze_20260913_v0_1.json').read_text())
+          pilot = json.loads(Path('config/gri_Chi_bio_B3_matched_network_pilot_20260913_v0_1.json').read_text())
+          assert scoring['real_scc25_tf_activity_scoring_authorized'] is False
+          assert scoring['real_tcga_tf_activity_scoring_authorized'] is False
+          assert scoring['normalized_empirical_g1_authorized'] is False
+          assert pilot['promotion_effect'] == 'NONE_PILOT_CANNOT_SELECT_OR_PROMOTE_DIMENSION'
+          assert pilot['pass_thresholds'] is None
+          assert pilot['dimension_selection_rule'] is None
+          print('B3_MATCHED_NETWORK_PILOT_FIREWALL_QUALIFIED')
+          PY
+      - name: Execute exact-network known-truth pilot
+        run: python -m src.run_chi_bio_b3_matched_network_pilot
+      - name: Upload nonpromotable pilot record
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-chi-bio-b3-matched-network-pilot-v1
+          path: GRI_v2/development_outputs/chi_bio_regulon_source/b3_matched_network_pilot_20260913/GRI_CHI_BIO_B3_MATCHED_NETWORK_PILOT.json
+          retention-days: 90
+          if-no-files-found: error

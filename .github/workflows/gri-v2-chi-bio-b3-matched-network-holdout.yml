@@ -1,0 +1,77 @@
+name: GRI Chi_bio B3 matched-network holdout
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - gri-v071-protocol-integration-20260910-chi-bio
+    paths:
+      - 'GRI_v2/config/gri_Chi_bio_B3_matched_network_holdout_20260913_v0_1.json'
+      - 'GRI_v2/src/run_chi_bio_b3_matched_network_holdout.py'
+      - 'GRI_v2/tests/test_chi_bio_b3_matched_network_holdout.py'
+      - '.github/workflows/gri-v2-chi-bio-b3-matched-network-holdout.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  qualify-holdout:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install repository and frozen B3 dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install 'decoupler==2.2.0'
+      - name: Run B3 holdout contract guards
+        run: python -m pytest -q tests/test_chi_bio_b3_matched_network_holdout.py
+      - name: Validate frozen holdout firewall
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from src.run_chi_bio_b3_matched_network_holdout import _validate_config
+          cfg = json.loads(Path('config/gri_Chi_bio_B3_matched_network_holdout_20260913_v0_1.json').read_text())
+          _validate_config(cfg)
+          assert cfg['pilot_seed_reused'] is False
+          assert cfg['real_expression_opened_before_holdout'] is False
+          assert cfg['real_tf_activity_scored_before_holdout'] is False
+          assert cfg['normalized_g1_authorized'] is False
+          print('B3_MATCHED_NETWORK_HOLDOUT_QUALIFIED')
+          PY
+
+  run-holdout:
+    needs: qualify-holdout
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install repository and frozen B3 dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install 'decoupler==2.2.0'
+      - name: Execute frozen unseen-seed B3 holdout
+        run: python -m src.run_chi_bio_b3_matched_network_holdout
+      - name: Upload immutable B3 holdout result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-chi-bio-b3-matched-network-holdout-v1
+          path: GRI_v2/development_outputs/chi_bio_regulon_source/b3_matched_network_holdout_20260913/GRI_CHI_BIO_B3_MATCHED_NETWORK_HOLDOUT.json
+          retention-days: 90
+          if-no-files-found: error

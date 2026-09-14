@@ -1,0 +1,47 @@
+name: GRI Chi_bio DoRothEA source probe
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - gri-v071-protocol-integration-20260910-chi-bio
+    paths:
+      - 'GRI_v2/src/probe_chi_bio_dorothea_export.py'
+      - 'GRI_v2/tests/test_chi_bio_dorothea_export_probe.py'
+      - '.github/workflows/gri-v2-chi-bio-dorothea-probe.yml'
+  pull_request:
+    paths:
+      - 'GRI_v2/src/probe_chi_bio_dorothea_export.py'
+      - 'GRI_v2/tests/test_chi_bio_dorothea_export_probe.py'
+      - '.github/workflows/gri-v2-chi-bio-dorothea-probe.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned provenance dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install 'pandas==3.0.5' 'pyreadr==0.5.6' 'pytest==8.4.2'
+      - name: Run DoRothEA provenance guards
+        run: python -m pytest -q tests/test_chi_bio_dorothea_export_probe.py
+      - name: Probe and fingerprint frozen human DoRothEA source
+        run: python -m src.probe_chi_bio_dorothea_export
+      - name: Upload exact source, canonical export, and provenance report
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-chi-bio-dorothea-human-export-provenance
+          path: GRI_v2/development_outputs/chi_bio_regulon_source/dorothea_20260913/
+          retention-days: 90
+          if-no-files-found: error

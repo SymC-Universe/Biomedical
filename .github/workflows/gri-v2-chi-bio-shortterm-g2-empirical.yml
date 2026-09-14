@@ -1,0 +1,75 @@
+name: GRI Chi_bio short-term G2 empirical pilot
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - gri-v071-protocol-integration-20260910-chi-bio
+    paths:
+      - 'GRI_v2/config/gri_Chi_bio_shortterm_g2_r1_A3_empirical_freeze_20260913_v1.json'
+      - 'GRI_v2/src/run_chi_bio_shortterm_g2_empirical.py'
+      - 'GRI_v2/src/preflight_chi_bio_first_empirical_g2.py'
+      - 'GRI_v2/tests/test_chi_bio_shortterm_empirical_freeze.py'
+      - 'GRI_v2/tests/test_chi_bio_shortterm_g2_empirical_runner.py'
+      - '.github/workflows/gri-v2-chi-bio-shortterm-g2-empirical.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  qualify-frozen-execution:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install frozen repository dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+      - name: Run full GRI tests before empirical source opening
+        run: python -m pytest -q tests
+      - name: Run no-analysis empirical preflight against active freeze
+        run: python -m src.preflight_chi_bio_first_empirical_g2
+      - name: Upload preflight record
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-chi-bio-shortterm-g2-preflight-v1
+          path: GRI_v2/development_outputs/chi_bio_empirical_preflight/GRI_CHI_BIO_FIRST_EMPIRICAL_PREFLIGHT.json
+          retention-days: 90
+          if-no-files-found: error
+
+  run-frozen-shortterm-pilot:
+    needs: qualify-frozen-execution
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install frozen repository dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+      - name: Execute frozen SCC25 short-term G2 pilot
+        run: |
+          python -m src.run_chi_bio_shortterm_g2_empirical \
+            --output-dir development_outputs/chi_bio_shortterm_g2_empirical
+      - name: Upload immutable empirical result record
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-chi-bio-shortterm-g2-empirical-v1
+          path: GRI_v2/development_outputs/chi_bio_shortterm_g2_empirical/GRI_CHI_BIO_SHORTTERM_G2_EMPIRICAL_RESULT.json
+          retention-days: 90
+          if-no-files-found: error

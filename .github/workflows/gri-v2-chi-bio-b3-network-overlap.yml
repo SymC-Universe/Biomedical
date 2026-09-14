@@ -1,0 +1,47 @@
+name: GRI Chi_bio B3 raw namespace diagnostic
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - gri-v071-protocol-integration-20260910-chi-bio
+    paths:
+      - 'GRI_v2/src/probe_chi_bio_b3_network_gene_overlap.py'
+      - 'GRI_v2/tests/test_chi_bio_b3_network_gene_overlap.py'
+      - '.github/workflows/gri-v2-chi-bio-b3-network-overlap.yml'
+  pull_request:
+    paths:
+      - 'GRI_v2/src/probe_chi_bio_b3_network_gene_overlap.py'
+      - 'GRI_v2/tests/test_chi_bio_b3_network_gene_overlap.py'
+      - '.github/workflows/gri-v2-chi-bio-b3-network-overlap.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned provenance dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install 'pandas==3.0.5' 'pyreadr==0.5.6' 'pytest==8.4.2'
+      - name: Run raw-namespace diagnostic guards
+        run: python -m pytest -q tests/test_chi_bio_b3_network_gene_overlap.py
+      - name: Verify expected raw SYMBOL-ENTREZID namespace mismatch
+        run: python -m src.probe_chi_bio_b3_network_gene_overlap
+      - name: Upload diagnostic-only raw namespace record
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-chi-bio-b3-raw-namespace-diagnostic
+          path: GRI_v2/development_outputs/chi_bio_regulon_source/b3_raw_namespace_diagnostic_20260913/GRI_CHI_BIO_B3_RAW_NAMESPACE_DIAGNOSTIC.json
+          retention-days: 90
+          if-no-files-found: error

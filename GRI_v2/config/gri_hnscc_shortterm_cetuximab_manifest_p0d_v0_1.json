@@ -1,0 +1,96 @@
+{
+  "schema_version": "0.1",
+  "status": "P0_D_SOURCE_IDENTITY_MANIFEST_NO_CHI_OUTCOMES",
+  "freeze_date": "2026-09-12",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.4_FINAL",
+  "study": {
+    "publication_doi": "10.1038/s41416-020-0851-5",
+    "bulk_series": "GSE114446",
+    "single_cell_series": "GSE137524",
+    "bulk_platform": "GPL16791",
+    "processed_bulk_counts_file": "GSE114446_STCCountsCG.txt.gz",
+    "treatment": "100nM cetuximab",
+    "control": "PBS",
+    "bulk_sampling": "daily through day 5"
+  },
+  "selection_firewall": {
+    "chi_bio_outcomes_opened": false,
+    "selected_by_candidate_agreement": false,
+    "proliferation_used_for_state_selection": false,
+    "p1_status": "NOT_EXTERNAL_P1"
+  },
+  "bulk_daily": {
+    "SCC25": {
+      "status": "COMPLETE_DAILY_0_TO_5_WITH_SHARED_PRETREATMENT_BASELINE",
+      "PBS": {
+        "0": "GSM3141829",
+        "1": "GSM3141832",
+        "2": "GSM3141830",
+        "3": "GSM3141831",
+        "4": "GSM3141836",
+        "5": "GSM3141833"
+      },
+      "CTX": {
+        "1": "GSM3141834",
+        "2": "GSM3141835",
+        "3": "GSM3141838",
+        "4": "GSM3141837",
+        "5": "GSM3141840"
+      },
+      "day0_role": "PBS_DAY0_CAN_ONLY_SERVE_AS_SHARED_PRETREATMENT_STATE_IF_PROSPECTIVELY_FROZEN"
+    },
+    "SCC1": {
+      "status": "COMPLETE_DAILY_0_TO_5_WITH_SHARED_PRETREATMENT_BASELINE",
+      "PBS": {
+        "0": "GSM3141839",
+        "1": "GSM3141841",
+        "2": "GSM3141842",
+        "3": "GSM3141843",
+        "4": "GSM3141844",
+        "5": "GSM3141846"
+      },
+      "CTX": {
+        "1": "GSM3141845",
+        "2": "GSM3141848",
+        "3": "GSM3141847",
+        "4": "GSM3141850",
+        "5": "GSM3141852"
+      },
+      "day0_role": "PBS_DAY0_CAN_ONLY_SERVE_AS_SHARED_PRETREATMENT_STATE_IF_PROSPECTIVELY_FROZEN"
+    },
+    "SCC6": {
+      "status": "METADATA_AMBIGUOUS_FOR_ORDERED_DAILY_TRAJECTORY",
+      "PBS": {
+        "0": "GSM3141851",
+        "1": "GSM3141849",
+        "2": "GSM3141854",
+        "3": "GSM3141853",
+        "4": "GSM3141856",
+        "5": "GSM3141855"
+      },
+      "CTX_GEO_LABELS": [
+        {"day":2,"gsm":"GSM3141857"},
+        {"day":3,"gsm":"GSM3141858"},
+        {"day":2,"gsm":"GSM3141859"},
+        {"day":5,"gsm":"GSM3141860"},
+        {"day":4,"gsm":"GSM3141861"}
+      ],
+      "ambiguity": "GEO accession listing has duplicate CTX day 2 and no CTX day 1; no correction inferred."
+    }
+  },
+  "single_cell_day5": {
+    "SCC25": {
+      "CTX": ["GSM4080894", "GSM4080895"],
+      "PBS": ["GSM4080900", "GSM4080901"],
+      "role": "DAY5_HETEROGENEITY_CARRIER_ENDPOINT_NOT_LONGITUDINAL_SAME_CELL_TRAJECTORY"
+    }
+  },
+  "cross_source_relations": {
+    "chronic_scc25_super_series": "GSE98815",
+    "same_named_cell_line": true,
+    "same_nominal_cetuximab_concentration": true,
+    "same_experiment": false,
+    "independent_laboratory": false,
+    "eligible_future_question": "CROSS_TIMESCALE_TRANSFER_AFTER_REPRESENTATION_AND_INTERVAL_RULE_FREEZE"
+  }
+}

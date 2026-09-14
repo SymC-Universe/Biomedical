@@ -1,0 +1,104 @@
+{
+  "schema_version": "0.2",
+  "status": "P0_D_MACHINE_PROVENANCE_LOCK_NO_CHI_OUTCOMES",
+  "freeze_date": "2026-09-13",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.4_FINAL",
+  "purpose": "Bind chronic SCC25 processed-source identity to repeated GitHub Actions acquisition artifacts before any molecular state reduction or Chi_bio computation.",
+  "selection_firewall": {
+    "chi_bio_outcomes_opened": false,
+    "feature_selection_performed": false,
+    "normalization_performed": false,
+    "state_reduction_fitted": false,
+    "transition_model_fit": false,
+    "candidate_chi_bio_computed": false
+  },
+  "machine_evidence": {
+    "probe_module": "GRI_v2/src/probe_chi_bio_chronic_processed_sources.py",
+    "probe_module_blob_sha": "bb734adec6ee774b2096fb0c951f3af1828ff08b",
+    "source_projection_sha256": "fa8772da77054785ff2fb384d336ff6821ed32e65172708a92a975ba1321e70b",
+    "source_projection_identical_across_runs": true,
+    "runs": [
+      {
+        "workflow": "GRI Chi_bio chronic source probe",
+        "run_number": 3,
+        "run_id": 34738887992,
+        "head_sha": "ce74100e2d3a289e1fc7a2655fe2f0bca8cdbc9e",
+        "artifact_id": 10312266395,
+        "artifact_digest": "sha256:3ae642670a16ff215359161409a4b94a46008462cca804fe2aef105b66b5c8f8"
+      },
+      {
+        "workflow": "GRI Chi_bio chronic source probe",
+        "run_number": 13,
+        "run_id": 34739241355,
+        "head_sha": "76497d7489fd1a5de8e5def47b13b7b7166df7be",
+        "artifact_id": 10312187126,
+        "artifact_digest": "sha256:b4b85492c0df84163be36513ca58ce3860ba34bf1f201164e32c9513dec22db9"
+      }
+    ]
+  },
+  "source_locks": {
+    "rna_processed_molecular_source": {
+      "source_id": "GSE98812_RNA_PROCESSED",
+      "filename": "GSE98812_GEOExprsData.txt.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE98nnn/GSE98812/suppl/GSE98812_GEOExprsData.txt.gz",
+      "compressed_size_bytes": 2430267,
+      "sha256": "1ce13bae71bd38f619261ec0ca5dcef5dd70b967083cee059e94758aaaf6abb5",
+      "http_last_modified": "Thu, 11 May 2017 14:59:07 GMT",
+      "header_field_count": 37,
+      "first_data_field_count": 37,
+      "header_first_field": "GENE",
+      "data_rows": 20531,
+      "decompressed_size_bytes": 5576986,
+      "decompressed_sha256": "1f718bc27a93d6520cc2966bb8dbe1a87e9e3a29db2021ade6242cad230696f5",
+      "role": "PROCESSED_RNA_MOLECULAR_SOURCE"
+    },
+    "rna_series_matrix": {
+      "source_id": "GSE98812_RNA_SERIES_MATRIX",
+      "filename": "GSE98812_series_matrix.txt.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE98nnn/GSE98812/matrix/GSE98812_series_matrix.txt.gz",
+      "compressed_size_bytes": 5495,
+      "sha256": "f8d826be56083ac6edebcaf5d62d046e58908cbef38fdc29d16105fbef0a5441",
+      "http_last_modified": "Sat, 08 Aug 2026 05:52:09 GMT",
+      "sample_title_count": 36,
+      "sample_geo_accession_count": 36,
+      "value_table_status": "VALUE_TABLE_HEADER_FOUND",
+      "table_header_field_count": 37,
+      "role": "RNA_SAMPLE_METADATA_PLUS_GEO_VALUE_TABLE"
+    },
+    "methylation_series_matrix": {
+      "source_id": "GSE98813_METHYLATION_SERIES_MATRIX",
+      "filename": "GSE98813_series_matrix.txt.gz",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE98nnn/GSE98813/matrix/GSE98813_series_matrix.txt.gz",
+      "compressed_size_bytes": 143991614,
+      "sha256": "c5ee581ee6dbb258bb352e86fd1a7aa5ed6f9979550352accaeca8b0d093292e",
+      "http_last_modified": "Mon, 27 Jul 2026 08:56:56 GMT",
+      "sample_title_count": 36,
+      "sample_geo_accession_count": 36,
+      "value_table_status": "VALUE_TABLE_HEADER_FOUND",
+      "table_header_field_count": 37,
+      "role": "PROCESSED_METHYLATION_VALUE_MATRIX_PLUS_SAMPLE_METADATA"
+    },
+    "methylation_raw_file_index": {
+      "source_id": "GSE98813_METHYLATION_FILELIST",
+      "filename": "GSE98813_filelist.txt",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE98nnn/GSE98813/suppl/filelist.txt",
+      "size_bytes": 6234,
+      "sha256": "0128c39ced68ee3a2136faa7d2354415eb18af95a2d589a5065a2b4adae49ca9",
+      "http_last_modified": "Wed, 25 Apr 2018 14:30:09 GMT",
+      "line_count": 78,
+      "role": "RAW_IDAT_PROVENANCE_INDEX"
+    }
+  },
+  "raw_methylation_tar": {
+    "filename": "GSE98813_RAW.tar",
+    "preflight_size_bytes": 499036160,
+    "downloaded": false,
+    "reason": "NOT_NEEDED_FOR_CURRENT_SOURCE_IDENTITY_AND_PROCESSED_SOURCE_GATE"
+  },
+  "interpretive_notes": [
+    "The repeated machine probe, not narrative prose, is authoritative for source byte identity.",
+    "The 36-sample GEO containers include main weekly states plus baseline and resistant-clone source roles; the frozen main trajectory remains the 22 prospectively declared weekly PBS/CTX states.",
+    "Source-value identity does not authorize feature selection, state reduction, operator fitting, or Chi_bio computation.",
+    "Any future source-byte drift must trigger refusal and a new provenance reconciliation rather than silent hash replacement."
+  ]
+}

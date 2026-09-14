@@ -1,0 +1,53 @@
+{
+  "schema_version": "0.1",
+  "status": "FROZEN_ABC_ARCHITECTURE_NOT_FULL_EMPIRICAL_FREEZE",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.4_FINAL",
+  "candidate_family_freeze_id": "GRI_CHI_BIO_G1_S1_L3_CANDIDATE_FAMILY_FREEZE_20260913",
+  "scientific_approval_reference": "Explicit user approval on 2026-09-13: proceed with the recommended A3+B3+C3 bundle.",
+  "freeze_timestamp": "2026-09-13T10:14:01Z",
+  "chi_bio_outcomes_opened_before_freeze": false,
+  "decision_A_first_G2_rank_design": {
+    "selected_option": "A3_ROBUSTNESS_REQUIRED_R2_R3",
+    "rank_set": [2, 3],
+    "primary_rank": null,
+    "sensitivity_rank": null,
+    "robustness_rule": "No rank is privileged. Every material conclusion declared in the later empirical freeze must be evaluated under both r=2 and r=3. If the predeclared material conclusions do not agree under both ranks, the result is REPRESENTATION_DEPENDENT_NO_TRANSFER rather than selecting the more favorable rank.",
+    "material_conclusion_schema_frozen": false,
+    "treated_states_used_to_select": false,
+    "proliferation_used_to_select": false,
+    "distance_to_unity_used_to_select": false
+  },
+  "decision_B_first_G1_state_basis": {
+    "selected_option": "B3_EXTERNALLY_SOURCED_REGULON_LOW_DIMENSION_HYBRID",
+    "leading_source_repository": "saezlab/CollecTRI",
+    "leading_source_commit": "86760ed852231c944396044c6fea4ecc38cc8bd1",
+    "representation_sensitivity_repository": "saezlab/dorothea",
+    "representation_sensitivity_commit": "1461fb75e23e110c2281860526d4333920925282",
+    "state_coordinate_semantics": "Externally grounded signed-regulon regulatory coordinates derived from transcriptomic state, with no SCC25 or TCGA candidate values used to select the basis.",
+    "subset_or_dimension_rule": "PENDING_SEPARATE_PRE_OUTCOME_FREEZE_AFTER_EXACT_EXPORT_PROVENANCE_AND_SYNTHETIC_IDENTIFIABILITY_QUALIFICATION",
+    "transport_rule": "Exact regulon export bytes, schema, organism, signed-edge semantics and downstream state-scoring rule must be frozen before use; the same frozen rule must be transported without outcome-driven refitting.",
+    "exact_export_hash_frozen": false,
+    "exact_panel_frozen": false,
+    "g1_empirical_state_execution_authorized": false,
+    "scc25_or_tcga_candidate_values_used_to_select": false
+  },
+  "decision_C_G1_restoration_strategy": {
+    "selected_option": "C3_WITHHOLD_NORMALIZED_G1_UNTIL_RESTORATION_RESOLVED",
+    "independent_restoration_source_or_experiment": null,
+    "normalization_derivation_id": null,
+    "restoration_not_tuned_to_unity": true,
+    "normalized_empirical_g1_authorized": false,
+    "effective_jacobian_or_local_stability_work_may_continue": true
+  },
+  "authorization": {
+    "mechanical_and_provenance_work": true,
+    "rank_neutral_synthetic_and_preflight_work": true,
+    "exact_regulon_export_provenance_qualification": true,
+    "real_G2_outcome_bearing_execution": false,
+    "reason_real_G2_not_yet_authorized": "The A3 rank architecture is frozen, but normalization, feature universe, day-0 convention, adequacy/conditioning refusals, uncertainty, transport, and the material-conclusion agreement schema still require a separate full empirical freeze.",
+    "real_normalized_G1_execution": false,
+    "biological_unity_boundary_admitted": false,
+    "chi_bio_admitted": false
+  },
+  "hard_guard": "This architecture freeze records the approved A3+B3+C3 scientific bundle. It does not authorize a real normalized G1 value or a real G2 trajectory until the remaining empirical execution rules are separately frozen."
+}

@@ -1,0 +1,76 @@
+name: GRI Chi_bio chronic G2 empirical test
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - gri-v071-protocol-integration-20260910-chi-bio
+    paths:
+      - 'GRI_v2/config/gri_Chi_bio_chronic_g2_r1_A3_empirical_freeze_20260913_v1.json'
+      - 'GRI_v2/src/run_chi_bio_chronic_g2_empirical.py'
+      - 'GRI_v2/tests/test_chi_bio_chronic_g2_empirical_runner.py'
+      - '.github/workflows/gri-v2-chi-bio-chronic-g2-empirical.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  qualify-frozen-chronic-execution:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install frozen repository dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+      - name: Run full GRI tests before chronic CTX source opening
+        run: python -m pytest -q tests
+      - name: Validate frozen chronic runner import and contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from src.run_chi_bio_chronic_g2_empirical import _validate_freeze
+          path = Path('config/gri_Chi_bio_chronic_g2_r1_A3_empirical_freeze_20260913_v1.json')
+          freeze = json.loads(path.read_text(encoding='utf-8'))
+          _validate_freeze(freeze)
+          assert freeze['chronic_ctx_columns_read_by_design_input_probe'] is False
+          assert freeze['chi_bio_status'] == 'NOT_ADMITTED'
+          print('CHRONIC_G2_FROZEN_EXECUTION_QUALIFIED')
+          PY
+
+  run-frozen-chronic-test:
+    needs: qualify-frozen-chronic-execution
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install frozen repository dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+      - name: Execute frozen SCC25 chronic G2 test
+        run: |
+          python -m src.run_chi_bio_chronic_g2_empirical \
+            --output-dir development_outputs/chi_bio_chronic_g2_empirical
+      - name: Upload immutable chronic empirical result record
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-chi-bio-chronic-g2-empirical-v1
+          path: GRI_v2/development_outputs/chi_bio_chronic_g2_empirical/GRI_CHI_BIO_CHRONIC_G2_EMPIRICAL_RESULT.json
+          retention-days: 90
+          if-no-files-found: error

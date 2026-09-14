@@ -1,0 +1,109 @@
+{
+  "schema_version": "0.1",
+  "freeze_id": "GRI_CHI_BIO_G1_KNOWN_TRUTH_HARNESS_20260912_V0_1",
+  "freeze_date": "2026-09-12",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.4_FINAL",
+  "status": "FROZEN_BEFORE_REAL_CHI_BIO_VALUES",
+  "candidate_family": "G1_S1_L3_v0_1",
+  "real_cancer_values_inspected_for_harness_selection": false,
+  "atlas_or_unity_placement_inspected_for_harness_selection": false,
+  "purpose": "Falsify or qualify exact G1 unity subcases before any empirical Chi_bio estimator is frozen.",
+  "global_tolerances": {
+    "exact_matrix_value_atol": 1e-10,
+    "boundary_value_atol": 1e-8,
+    "scalar_identity_atol": 1e-10,
+    "symmetry_atol": 1e-10,
+    "near_degenerate_eigenvalue_gap": 1e-6,
+    "uncertainty_boundary_rule": "IF_FROZEN_INTERVAL_INCLUDES_1_RETURN_UNCERTAINTY_SPANS_BOUNDARY"
+  },
+  "case_families": {
+    "G1A_COMMON_RESTORATION": {
+      "truth_relation": "J = beta(M-I)",
+      "beta_grid": [0.25, 1.0, 4.0],
+      "stable_diagonal_M": [[0.2, 0.7, 0.95], [0.4, 0.8, 0.99]],
+      "boundary_diagonal_M": [[0.2, 0.7, 1.0]],
+      "unstable_diagonal_M": [[0.2, 0.7, 1.01], [0.4, 0.8, 1.2]],
+      "required_behavior": [
+        "alpha_J_equals_beta_times_alpha_M_minus_1",
+        "stable_below_unity",
+        "boundary_at_unity",
+        "unstable_above_unity"
+      ]
+    },
+    "G1B_SYMMETRIC_GENERALIZED": {
+      "truth_relation": "J=K-R symmetric; lambda_max(R^-1/2 K R^-1/2)=1 iff boundary",
+      "cases": [
+        {"R_diag": [2.0, 0.5], "K_diag": [1.8, 0.4], "truth": "STABLE", "value": 0.9},
+        {"R_diag": [2.0, 0.5], "K_diag": [2.0, 0.4], "truth": "BOUNDARY", "value": 1.0},
+        {"R_diag": [2.0, 0.5], "K_diag": [2.2, 0.4], "truth": "UNSTABLE", "value": 1.1}
+      ],
+      "required_behavior": [
+        "recover_generalized_value",
+        "reject_nonsymmetric_K",
+        "reject_non_SPD_R"
+      ]
+    },
+    "G1C_DIRECTED_HETEROGENEOUS_COUNTEREXAMPLES": {
+      "required_outcome": "NAIVE_ALPHA_RINV_K_UNITY_RULE_REJECTED",
+      "false_safe": {
+        "R": [[2.0, 0.0], [0.0, 0.5]],
+        "K": [[3.0, -4.0], [1.0, 0.0]],
+        "alpha_RinvK": 0.75,
+        "alpha_J": 0.25
+      },
+      "false_unsafe": {
+        "R": [[2.0, 0.0], [0.0, 0.5]],
+        "K": [[-4.0, -4.0], [4.0, 3.0]],
+        "alpha_RinvK": 2.0,
+        "alpha_J_sign": "NEGATIVE"
+      }
+    },
+    "G1_MODE_DEGENERACY": {
+      "matrices": [
+        [[0.95, 0.0], [0.0, 0.95]],
+        [[0.95, 0.0], [0.0, 0.95000001]]
+      ],
+      "required_behavior": "REPORT_DOMINANT_SUBSPACE_OR_NEAR_DEGENERATE_WARNING_NOT_ARBITRARY_SINGLE_MODE"
+    },
+    "G1_NONNORMAL_TRANSIENT": {
+      "M": [[0.8, 4.0], [0.0, 0.8]],
+      "beta": 1.0,
+      "truth": "ASYMPTOTICALLY_STABLE_WITH_POSITIVE_INSTANTANEOUS_EUCLIDEAN_GROWTH_DIRECTION",
+      "required_behavior": "KEEP_TRANSIENT_WARNING_VISIBLE_WITH_STABLE_SCALAR"
+    },
+    "G1_NO_COHERENT_UNITY_ROUTE": {
+      "truth": "directed heterogeneous K,R with no independently licensed exact normalization",
+      "required_behavior": "NO_EXACT_UNITY_ROUTE_FROM_NAIVE_NORMALIZATION_AND_NO_POSTHOC_RESCALING"
+    }
+  },
+  "noise_and_uncertainty_pilot": {
+    "purpose": "Test interval/refusal behavior before any broad sweep.",
+    "operator_dimension": 3,
+    "truth_M_diag": [0.4, 0.8, 0.98],
+    "beta": 1.0,
+    "entrywise_gaussian_sigma_grid": [0.001, 0.005, 0.02, 0.05],
+    "replicates_per_cell": 200,
+    "seed": 20260912,
+    "interval": "EMPIRICAL_2.5_AND_97.5_PERCENTILES",
+    "pass_requirements": [
+      "median_error_reported",
+      "95pct_interval_coverage_reported",
+      "boundary_spanning_fraction_reported",
+      "no_tolerance_retuning_after_real_data"
+    ]
+  },
+  "pre_scale_order": [
+    "DETERMINISTIC_EXACT_CASES",
+    "COUNTEREXAMPLES",
+    "DEGENERACY_AND_NONNORMAL_CASES",
+    "ONE_NOISE_PILOT_CELL",
+    "ONLY_THEN_FULL_NOISE_GRID"
+  ],
+  "failure_consequences": {
+    "G1A_exact_relation_failure": "IMPLEMENTATION_FAILURE_REPAIR_BEFORE_SCIENCE",
+    "G1B_exact_relation_failure": "IMPLEMENTATION_OR_DERIVATION_FAILURE_REVIEW",
+    "counterexample_not_rejected": "G1_NAIVE_GENERALIZATION_RETIRED",
+    "uncertainty_false_certainty": "CANDIDATE_NOT_LOCKED",
+    "no_exact_transcriptomic_unity_route": "NARROW_G1_TO_LICENSED_SUBCLASS_OR_ELEVATE_G2"
+  }
+}

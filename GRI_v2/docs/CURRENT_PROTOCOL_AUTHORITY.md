@@ -1,46 +1,81 @@
 # Current GRI protocol authority
 
-**Effective date:** 2026-09-12  
-**Last GRI verification:** 2026-09-12
+**Effective date:** 2026-09-14  
+**Last GRI verification:** 2026-09-14
 
-The current governing cross-project protocol package for prospective GRI work is:
+The current governing program-level manual for prospective GRI work is:
 
-`General_Cross_Project_Research_Protocol_v0.7.4_FINAL.pdf`
+`SymC_General_Operations_Manual_v0.8.0.md`  
+`SymC_General_Operations_Manual_v0.8.0.pdf`
 
-Final v0.7.4 canonically integrates the prior v0.7.1/v0.7.1A architecture together with the v0.7.2 functional-mapping integration, v0.7.3 run-economy/AI-continuity controls, and v0.7.4 relational-stability, experimental-opportunity, attribution/novelty, and balance hardening.
+Its companion lineage record is:
 
-This protocol supersedes the prior `General_Cross_Project_Research_Protocol_v0.7.1_FINAL_plus_v0.7.1A_Addendum.pdf` as the prospective control authority. It does not retroactively promote, erase, or reinterpret already generated GRI evidence.
+`SymC_General_Operations_Manual_History_through_v0.8.0.md`
 
-Current prospective GRI controls therefore include, in addition to the earlier P0-D/P0-Q, Function Map/Limit Map, rare-natural-testbed, pathway-independence, Atlas, MFR-14, and tool-output controls:
+The active GRI-specific consolidation safeguard is:
 
-- local dynamical identity versus embedded realized behavior;
-- pre-Atlas coordinate independence;
-- separate participation, observability, identifiability, coordinate-estimation, regime-placement, and uncertainty records where applicable;
-- a hierarchical-closure gate before lower-scale systems are treated as effective higher-scale components;
-- recovery/resilience and cross-scale preservation as distinct possible prediction targets where native biology and temporal evidence license them;
-- substantial-compute preflight, representative pilot, bounded retry, checkpoint/resume, and stale-execution safeguards;
-- AI execution-continuity through durable external work-state rather than presumed hidden-state persistence;
-- experimental-opportunity ideation before targeted prior-experiment collision searches for substantial questions where direct empirical testing is plausible;
-- nearest-prior-art and residual-novelty accounting;
-- rare/extreme evidence prominence proportional to the frozen scientific question;
-- governance-burden review so controls that no longer materially prevent error, preserve information, improve reproducibility, clarify claims, or enable decisions are simplified or retired.
+`GRI_Project_Guardrails.md`
 
-Earlier migration records remain useful as historical and implementation-specific controls:
+Verified SHA-256 identities from the user-promoted definitive package:
 
-- `docs/GRI_V071A_PROTOCOL_AUDIT_20260910.md` — detailed v0.7.1A migration baseline;
-- `docs/GRI_V071A_FUNCTION_LIMIT_INTEGRATION_20260910.md` — Function/Limit operational integration baseline;
-- `docs/GRI_V071A_FULL_AUDIT_20260911.md` — prior verification/delta audit;
-- `notes/CURRENT_STATUS_20260910_V071A.md` — operational project state inherited from the earlier integration phase;
-- `notes/BUILD_STATUS.md` — current build/scientific status;
-- `docs/GRI_CONTROL_DOCUMENT_SUPERSESSION_MAP_20260910.md` — precedence and historical-control interpretation.
+- GOM Markdown: `ee3d9955e19f280ad385488180800d1cdb2d5054823cfa2fa6a697ab3f51d396`
+- GOM PDF: `97d2af3720acb1d22536c23ead70d9f09082484eab4beec0ff7295caca66688c`
+- GOM history: `05d9f501f68b00562f81df0f655704f192f07ebcadfbf558211cef8a14f1b514`
+- GRI guardrails: `d893f78cf43140660dcb12a935d404ea05a0356722745b6fb00e53dfeb28db69`
 
-Where those files name v0.7.1 or v0.7.1A as current authority, read that wording as historical. Final v0.7.4 governs all new prospective GRI decisions from 2026-09-12 onward.
+The checksum manifest supplied with the definitive package records the same four identities.
 
-## Current implementation note
+The program-level repository bootstrap pointer remains:
 
-Machine-readable protocol-facing output semantics are represented by:
+`SymC-Universe/Infrastructure/governance/RESEARCH_SESSION_BOOTSTRAP.md`
 
-- `config/gri_v071a_tool_output_schema_draft.json`;
-- `src/protocol_contracts.py`.
+SymC General Operations Manual v0.8.0 is the definitive active program baseline until the user explicitly promotes a later major update or development. Review builds or generated candidates do not supersede it merely by existing.
 
-Their filenames are historical and do not imply that v0.7.1A remains the governing protocol. They are draft control-plane artifacts, not a frozen scientific Engine. A v0.7.4 delta audit is required before final System Model/Engine scope freeze, especially for relational-stability/hierarchical-closure outputs, recovery/resilience prediction roles, experimental-opportunity records, attribution/novelty records, and run-economy/AI-continuity controls.
+Historical GRI records remain governed by the scientific commitments, freezes, and protocol authority active when those records were created. A later GOM revision does not retroactively promote, erase, reopen, or reinterpret a frozen result merely because program governance has advanced.
+
+## v0.8.0 transfer principle for GRI
+
+The GOM retains program-wide transferable rules while project-specific equations, dataset conventions, atlas targets, implementation details, comparator candidates, and domain-specific examples remain local to the GRI project unless they are required to execute a general rule safely.
+
+For GRI, `GRI_Project_Guardrails.md` is the explicit local safeguard for project-specific claim ceilings intentionally removed from the program-wide manual during consolidation. It supplements, but does not weaken, the GOM.
+
+Project-local controls remain the source of record for, among other things:
+
+- the exact GRI proxy/coordinate definitions and their epistemic classes;
+- RNA-seq and other assay-specific statistical safeguards;
+- TCGA and other dataset-specific inference limits;
+- GRI System Model and Engine implementation details;
+- Regulatory Substrate Atlas targets, schemas, and evidence state;
+- domain-specific comparator candidates and baseline definitions;
+- Chi_bio candidate definitions, freezes, refusals, and closure records.
+
+Project-local rules may be stricter than the GOM. They may not weaken MFR-14 or the other program-wide scientific safeguards.
+
+## Controls material to current GRI work
+
+The v0.8.0 control architecture retains, among its other requirements:
+
+- MFR-14 as the non-reducible confirmatory prediction floor;
+- explicit P0-D, P0-Q, P1 and P2 maturity structure;
+- paired Function Map and Limit Map targets;
+- System Model -> Engine terminology with a read-only Independent Atlas architecture;
+- scalar, vector/modal and conglomerate/system objects as starting representation components rather than a complete decomposition of chi;
+- relational local-versus-embedded stability and pre-Atlas coordinate independence;
+- hierarchical closure before lower-scale results are inherited upward;
+- recovery/resilience and cross-scale preservation only where native evidence licenses them;
+- foundational-dependency robustness challenges;
+- statistical-proxy and cross-sectional-inference firewalls;
+- measurement-structure, nested-identity, baseline-locking, and simple-baseline safeguards;
+- substantial-compute preflight, pilot, bounded retry, checkpoint/resume and run-economy controls;
+- AI execution continuity, active-run monitoring, recovery circuit breaking, and monitor-coverage audits;
+- experimental-opportunity design followed by literature-collision audit for substantial experimental questions;
+- attribution and residual-novelty accounting;
+- reader-first communication and new-chat protocol bootstrap.
+
+## Current GRI proxy and Chi_bio implication
+
+`chi_RNA = sigma/(2 mu) = CV/2` remains an operational fluctuation-to-signal or stability proxy unless a validated mechanistic derivation establishes the required dynamical mapping. Algebraic resemblance does not by itself license EP2, critical-damping, or exceptional-point interpretation. Native RNA-seq count-statistical structure and relevant nuisance structure must be challenged, and cross-sectional TCGA order cannot establish time, recovery, warning lead, treatment response, or causality without separate temporal evidence or validation.
+
+The completed `Chi_bio` v0.1 admission lineage remains closed at `NOT_ADMITTED`. The definitive v0.8.0 governance promotion does not reopen that lineage, change its historical failures or refusals, or license a biological `Chi_bio`, unity boundary, P1 admission, or P2 predictive claim. Any future attempt to pursue the unresolved biology requires a new candidate/version/freeze under the then-current project and program controls.
+
+This authority file controls new prospective GRI decisions from this date forward. Historical filenames do not determine present authority.

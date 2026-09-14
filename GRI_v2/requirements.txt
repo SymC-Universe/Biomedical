@@ -2,3 +2,5 @@ numpy>=2.0,<3
 pandas>=2.2,<3
 statsmodels>=0.14,<0.15
 pytest>=8,<10
+pyreadr>=0.5.6,<0.6
+decoupler==2.2.0

@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.0",
+  "record_id": "GRI_CHI_BIO_ADMISSION_CYCLE_CLOSURE_20260913_V1",
+  "effective_date": "2026-09-13",
+  "program_id": "GRI_CHI_BIO_ADMISSION_PROGRAM_20260912",
+  "branch": "gri-v071-protocol-integration-20260910-chi-bio",
+  "input_head_sha": "c95d071999ba0d4c601f190181eeda8137aa4571",
+  "protocol_authority": {
+    "version": "General Cross-Project Research Protocol v0.7.7",
+    "md_sha256": "84ef99170e71ef3950acd3be57bc49deedc3287f0a523119d08f6c31a3a13473",
+    "pdf_sha256": "3acb507b613fd538554c84bffe85d7c096b9b1ee661f1fe91c8e0316b91d27be"
+  },
+  "cycle_disposition": "CLOSED_NO_ADMISSION",
+  "chi_bio_status": "NOT_ADMITTED",
+  "chi_bio_value": null,
+  "chi_bio_unity_boundary_status": "NOT_TESTED",
+  "biological_stability_regime_label": "WITHHELD",
+  "candidate_locked": false,
+  "normalized_empirical_g1_authorized": false,
+  "real_b3_scc25_tcga_tf_activity_authorized": false,
+  "tested_lanes": {
+    "g2_shortterm": {
+      "status": "CLOSED_PROSPECTIVE_REFUSAL",
+      "workflow_run_id": 34756865980,
+      "artifact_id": 10317941541,
+      "artifact_sha256": "9b6890012183f6d173df4092af1629098d6bd9591490c57c53e92a270f0be55f",
+      "claim_ceiling": "D1 predictive adequacy refused at r=2 and r=3; D2 not opened; no biological boundary inference"
+    },
+    "g2_chronic_primary": {
+      "status": "CLOSED_BOUNDED_ARCHITECTURE_EVIDENCE",
+      "workflow_run_id": 34769901215,
+      "artifact_id": 10321342847,
+      "artifact_sha256": "4ad76198657cbb4f5a5839b5ad4068625ccb0801fe050d16b83006d2ef8a5687",
+      "retained_findings": [
+        "D1 mathematical spectral-radius envelope remained below the discrete-time unit circle at r=2 and r=3 under the primary frozen representation",
+        "D2 treatment-specific operator reorganization was not supported at r=2 or r=3",
+        "A3 transfer remained representation-dependent because non-normal/transient warning categories disagreed"
+      ]
+    },
+    "g2_chronic_feature_gate_robustness": {
+      "status": "CLOSED_BOUNDED_POSTRESULT_ROBUSTNESS",
+      "workflow_run_id": 34770059647,
+      "artifact_id": 10321991562,
+      "artifact_sha256": "7a6a289d14ac7129cce979f340cb54fbbde7b3e767d411c243af76af1c7afed2",
+      "retained_findings": [
+        "D2 NOT_SUPPORTED at thresholds 0.1, 1.0 and 10 for both ranks",
+        "complete D1 spectral-radius envelope BELOW the mathematical unit circle at all three feature gates for both ranks",
+        "r=2 D1 predictive adequacy remained PASS across the bounded gates",
+        "r=3 D1 predictive adequacy failed at the stringent 10 gate and non-normal warning remained representation-sensitive"
+      ]
+    },
+    "b3_matched_network_identifiability": {
+      "status": "REFUSE_B3_MATCHED_NETWORK_IDENTIFIABILITY",
+      "workflow_run_id": 34797932432,
+      "artifact_id": 10330711216,
+      "artifact_sha256": "02562ee9f1b47d497529b1e60a3c7df295cbf3b29d8983d1b50271cd189f4298",
+      "passing_dimensions": [],
+      "selected_dimension": null,
+      "promotion_effect": "NONE",
+      "real_outcomes_opened_for_representation_selection": false
+    },
+    "b3_regulon_topology_spectrum": {
+      "status": "COMPACT_GRAPH_MODE_NOT_ADMITTED",
+      "workflow_run_id": 34798559079,
+      "artifact_id": 10330477936,
+      "artifact_sha256": "ec28faedd4a1cfee32a288eebd5dd282bcd810ceab0c41e932d383bead27e30f",
+      "expression_opened": false,
+      "tf_activity_scored": false,
+      "claim_ceiling": "external regulon topology does not justify a natural compact 2-5D state basis"
+    },
+    "g1_restoration": {
+      "status": "UNRESOLVED_SEPARATE_GATE",
+      "normalized_empirical_route_authorized": false
+    }
+  },
+  "atlas_return": {
+    "current_cycle_status": "CLOSED_DEVELOPMENT_SNAPSHOT",
+    "independent_validation_atlas_status": "NOT_LOCKED_REFERENCE",
+    "chi_bio_column_authorized": false,
+    "biological_unity_boundary_authorized": false,
+    "established_non_chi_coordinates_retained": true,
+    "modal_scalar_conglomerate_views_retained_separately": true
+  },
+  "reentry_conditions": [
+    "A materially distinct pre-outcome regulatory representation with a new lineage, explicit multiplicity debt, and independent known-truth qualification",
+    "Independent restoration evidence sufficient to reopen normalized empirical G1",
+    "New untouched temporal or perturbational evidence that licenses a system-level coordinate without using Atlas placement or distance to unity for construction"
+  ],
+  "forbidden_postclosure_rescues": [
+    "retune the failed B3 ULM-to-control-PCA construction",
+    "drop unfavorable holdout seeds",
+    "choose a network or dimension from real SCC25 or TCGA outcomes",
+    "promote first graph modes solely because they are available",
+    "replace Chi_bio with an existing static scalar, CV/2, or an omnibus scalar-modal-conglomerate average",
+    "assign biological meaning to Chi_bio=1 without independent admission"
+  ]
+}

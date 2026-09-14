@@ -1,0 +1,120 @@
+{
+  "schema_version": "0.1",
+  "status": "P0_D_SOURCE_IDENTITY_AND_PROCESSED_SOURCE_BINDING_NO_CHI_OUTCOMES",
+  "freeze_date": "2026-09-12",
+  "provenance_reconciled_date": "2026-09-13",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.4_FINAL",
+  "provenance_lock": "config/gri_scc25_chronic_source_provenance_lock_v0_2.json",
+  "study": {
+    "citation": "Stein-O'Brien et al., Genome Medicine 10, 37 (2018)",
+    "doi": "10.1186/s13073-018-0545-2",
+    "cell_line": "SCC25",
+    "super_series": "GSE98815",
+    "rna_series": "GSE98812",
+    "methylation_series": "GSE98813",
+    "rna_platform": "GPL16791",
+    "methylation_platform": "GPL13534",
+    "treatment": "100nM cetuximab",
+    "control": "PBS",
+    "ordered_weeks": 11
+  },
+  "selection_firewall": {
+    "selected_by_chi_bio_agreement": false,
+    "chi_bio_outcomes_opened": false,
+    "p1_status": "NOT_SELECTED_NOT_FROZEN",
+    "main_timecourse_only": true,
+    "baseline_samples_excluded_from_main_22_state_manifest": true,
+    "stable_resistant_clones_excluded_from_main_22_state_manifest": true,
+    "feature_selection_performed_in_source_probe": false,
+    "state_reduction_fitted_in_source_probe": false
+  },
+  "processed_source_bindings": {
+    "rna_sample_metadata": {
+      "filename": "GSE98812_series_matrix.txt.gz",
+      "sha256": "f8d826be56083ac6edebcaf5d62d046e58908cbef38fdc29d16105fbef0a5441",
+      "compressed_size_bytes": 5495,
+      "sample_title_count": 36,
+      "sample_geo_accession_count": 36,
+      "value_table_status": "VALUE_TABLE_HEADER_FOUND",
+      "table_header_field_count": 37,
+      "role": "RNA_SAMPLE_METADATA_PLUS_GEO_VALUE_TABLE",
+      "main_trajectory_role": "EXACT_WEEK_ARM_SAMPLE_IDENTITY_AND_ORDER_WITHIN_36_SAMPLE_CONTAINER"
+    },
+    "rna_processed_molecular_source": {
+      "filename": "GSE98812_GEOExprsData.txt.gz",
+      "sha256": "1ce13bae71bd38f619261ec0ca5dcef5dd70b967083cee059e94758aaaf6abb5",
+      "compressed_size_bytes": 2430267,
+      "header_field_count": 37,
+      "first_data_field_count": 37,
+      "data_rows": 20531,
+      "decompressed_size_bytes": 5576986,
+      "decompressed_sha256": "1f718bc27a93d6520cc2966bb8dbe1a87e9e3a29db2021ade6242cad230696f5",
+      "role": "PROCESSED_RNA_MOLECULAR_SOURCE",
+      "anatomy_status": "GENE_BY_SAMPLE_TABLE_ANATOMY_MACHINE_VERIFIED_NO_FEATURE_SELECTION"
+    },
+    "methylation_processed_matrix": {
+      "filename": "GSE98813_series_matrix.txt.gz",
+      "sha256": "c5ee581ee6dbb258bb352e86fd1a7aa5ed6f9979550352accaeca8b0d093292e",
+      "compressed_size_bytes": 143991614,
+      "sample_title_count": 36,
+      "sample_geo_accession_count": 36,
+      "table_header_field_count": 37,
+      "value_table_status": "VALUE_TABLE_HEADER_FOUND",
+      "baseline_gsm": "GSM2612501",
+      "main_trajectory_gsm_range": "GSM2612502_GSM2612523",
+      "role": "PROCESSED_METHYLATION_VALUE_MATRIX_PLUS_SAMPLE_METADATA"
+    },
+    "methylation_raw_file_index": {
+      "filename": "GSE98813_filelist.txt",
+      "sha256": "0128c39ced68ee3a2136faa7d2354415eb18af95a2d589a5065a2b4adae49ca9",
+      "size_bytes": 6234,
+      "line_count": 78,
+      "role": "RAW_IDAT_PROVENANCE_INDEX"
+    },
+    "methylation_raw_tar": {
+      "filename": "GSE98813_RAW.tar",
+      "preflight_size_bytes": 499036160,
+      "downloaded": false,
+      "reason": "NOT_NEEDED_FOR_CURRENT_SOURCE_IDENTITY_AND_PROCESSED_SOURCE_GATE"
+    }
+  },
+  "main_timecourse": [
+    {"week":1,"arm":"PBS","rna_gsm":"GSM2612466","methylation_gsm":"GSM2612502"},
+    {"week":1,"arm":"CTX","rna_gsm":"GSM2612467","methylation_gsm":"GSM2612503"},
+    {"week":2,"arm":"PBS","rna_gsm":"GSM2612468","methylation_gsm":"GSM2612504"},
+    {"week":2,"arm":"CTX","rna_gsm":"GSM2612469","methylation_gsm":"GSM2612505"},
+    {"week":3,"arm":"PBS","rna_gsm":"GSM2612470","methylation_gsm":"GSM2612506"},
+    {"week":3,"arm":"CTX","rna_gsm":"GSM2612471","methylation_gsm":"GSM2612507"},
+    {"week":4,"arm":"PBS","rna_gsm":"GSM2612472","methylation_gsm":"GSM2612508"},
+    {"week":4,"arm":"CTX","rna_gsm":"GSM2612473","methylation_gsm":"GSM2612509"},
+    {"week":5,"arm":"PBS","rna_gsm":"GSM2612474","methylation_gsm":"GSM2612510"},
+    {"week":5,"arm":"CTX","rna_gsm":"GSM2612475","methylation_gsm":"GSM2612511"},
+    {"week":6,"arm":"PBS","rna_gsm":"GSM2612476","methylation_gsm":"GSM2612512"},
+    {"week":6,"arm":"CTX","rna_gsm":"GSM2612477","methylation_gsm":"GSM2612513"},
+    {"week":7,"arm":"PBS","rna_gsm":"GSM2612478","methylation_gsm":"GSM2612514"},
+    {"week":7,"arm":"CTX","rna_gsm":"GSM2612479","methylation_gsm":"GSM2612515"},
+    {"week":8,"arm":"PBS","rna_gsm":"GSM2612480","methylation_gsm":"GSM2612516"},
+    {"week":8,"arm":"CTX","rna_gsm":"GSM2612481","methylation_gsm":"GSM2612517"},
+    {"week":9,"arm":"PBS","rna_gsm":"GSM2612482","methylation_gsm":"GSM2612518"},
+    {"week":9,"arm":"CTX","rna_gsm":"GSM2612483","methylation_gsm":"GSM2612519"},
+    {"week":10,"arm":"PBS","rna_gsm":"GSM2612484","methylation_gsm":"GSM2612520"},
+    {"week":10,"arm":"CTX","rna_gsm":"GSM2612485","methylation_gsm":"GSM2612521"},
+    {"week":11,"arm":"PBS","rna_gsm":"GSM2612486","methylation_gsm":"GSM2612522"},
+    {"week":11,"arm":"CTX","rna_gsm":"GSM2612487","methylation_gsm":"GSM2612523"}
+  ],
+  "excluded_source_samples": {
+    "rna_baseline": ["GSM2612465", "GSM2612488", "GSM2612500"],
+    "methylation_baseline": ["GSM2612501", "GSM2612524", "GSM2612536"],
+    "rna_stable_resistant_clones": ["GSM2612489","GSM2612490","GSM2612491","GSM2612492","GSM2612493","GSM2612494","GSM2612495","GSM2612496","GSM2612497","GSM2612498","GSM2612499"],
+    "methylation_stable_resistant_clones": ["GSM2612525","GSM2612526","GSM2612527","GSM2612528","GSM2612529","GSM2612530","GSM2612531","GSM2612532","GSM2612533","GSM2612534","GSM2612535"]
+  },
+  "source_notes": [
+    "GEO SuperSeries GSE98815 exposes the paired weekly RNA and methylation accession order.",
+    "The methylation platform is GEO GPL13534 HumanMethylation450, although individual sample metadata labels the protocol as Infinium Human MethylationEPIC; preserve this metadata discrepancy rather than silently normalizing it.",
+    "Weekly molecular states are serial pooled states, not independent biological replicates.",
+    "Stable resistant clones are a separate source role and may not be silently mixed into the main 22-state trajectory.",
+    "Repeated GitHub Actions acquisition artifacts on runs 3 and 13 produced identical source projections and supersede earlier incorrect narrative/hash bindings.",
+    "The public GEO series matrices currently expose all 36 source samples, while the frozen main trajectory remains the prospectively declared 22 weekly PBS/CTX states.",
+    "GSE98812_GEOExprsData.txt.gz is a machine-verified 20531-row gene-by-36-sample processed table; this anatomy verification does not authorize feature selection or state reduction."
+  ]
+}

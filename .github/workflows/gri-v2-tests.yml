@@ -25,3 +25,43 @@ jobs:
       - run: python -m pip install --upgrade pip
       - run: python -m pip install -r requirements.txt
       - run: python -m pytest -q tests
+      - name: Run frozen G1 known-truth harness
+        run: python -m src.run_chi_bio_g1_known_truth
+      - name: Run frozen G2 comparator harness
+        run: python -m src.run_chi_bio_g2_known_truth
+      - name: Run pre-outcome G2 treatment-interaction calibration
+        run: python -m src.run_chi_bio_g2_interaction_calibration --replicates 500
+      - name: Run pre-outcome G2 D1-versus-D2 predictive calibration
+        run: python -m src.run_chi_bio_g2_model_comparison_calibration --replicates 250
+      - name: Run pre-outcome G2 short-versus-chronic scaling calibration
+        run: python -m src.run_chi_bio_g2_architecture_scaling_calibration --replicates 250
+      - name: Upload G1 known-truth result
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-chi-bio-g1-known-truth
+          path: GRI_v2/development_outputs/chi_bio_g1/GRI_CHI_BIO_G1_KNOWN_TRUTH_RESULT.json
+          if-no-files-found: error
+      - name: Upload G2 known-truth result
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-chi-bio-g2-known-truth
+          path: GRI_v2/development_outputs/chi_bio_g2/GRI_CHI_BIO_G2_KNOWN_TRUTH_RESULT.json
+          if-no-files-found: error
+      - name: Upload G2 interaction synthetic calibration
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-chi-bio-g2-interaction-calibration
+          path: GRI_v2/development_outputs/chi_bio_g2/GRI_CHI_BIO_G2_INTERACTION_SYNTHETIC_CALIBRATION.json
+          if-no-files-found: error
+      - name: Upload G2 D1-versus-D2 predictive calibration
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-chi-bio-g2-model-comparison-calibration
+          path: GRI_v2/development_outputs/chi_bio_g2/GRI_CHI_BIO_G2_D1_D2_MODEL_COMPARISON_CALIBRATION.json
+          if-no-files-found: error
+      - name: Upload G2 short-versus-chronic scaling calibration
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-chi-bio-g2-architecture-scaling-calibration
+          path: GRI_v2/development_outputs/chi_bio_g2/GRI_CHI_BIO_G2_ARCHITECTURE_SCALING_CALIBRATION.json
+          if-no-files-found: error

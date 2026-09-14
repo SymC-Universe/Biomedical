@@ -1,0 +1,159 @@
+{
+  "schema_version": "0.1",
+  "purpose": "Read-only machine-readable export needed for Chi_bio dependency, identifiability, uncertainty, and later internal P0-Q work without rerunning Stage C1.",
+  "scientific_status": "PACKAGING_SPEC_ONLY_NO_NEW_SCIENCE",
+  "source_policy": {
+    "rerun_stage_c1_allowed": false,
+    "historical_results_mutable": false,
+    "source_artifacts_read_only": true,
+    "derived_Chi_bio_values_allowed_in_this_export": false,
+    "unity_classification_allowed_in_this_export": false
+  },
+  "required_package_files": [
+    "EXPORT_MANIFEST.json",
+    "CANCER_LEVEL_SUMMARIES.csv",
+    "MODAL_SUMMARIES.csv",
+    "CROSS_LAYER_SUMMARIES.csv",
+    "ROBUSTNESS_SUMMARIES.csv",
+    "CONTEXT_SUMMARIES.csv",
+    "PROVENANCE_SHA256.json"
+  ],
+  "optional_package_files": [
+    "RESAMPLE_LEVEL_SUMMARIES.parquet",
+    "EIGENSPECTRA.parquet",
+    "PRINCIPAL_ANGLES.parquet",
+    "MODE_ABLATION.parquet",
+    "HALLMARK_COUPLING.parquet"
+  ],
+  "export_manifest_required_fields": [
+    "export_id",
+    "created_utc",
+    "research_mode",
+    "source_c1_contract_sha1",
+    "source_c1_implementation_version",
+    "source_post_c1_result_sha256",
+    "source_post_c1_status",
+    "source_working_state_or_result_identity",
+    "cancer_count",
+    "technical_tracks",
+    "no_recomputation_attestation",
+    "semantic_identity_types"
+  ],
+  "semantic_identity_types": [
+    "RAW_INPUT",
+    "PROCESSED_STATE",
+    "CONFIGURATION",
+    "RESULT_OUTPUT",
+    "DERIVED_EXPORT"
+  ],
+  "cancer_level_required_columns": [
+    "cancer",
+    "technical_track",
+    "n_eligible_c1",
+    "c1_promotion_status",
+    "H1_delta_S_median",
+    "H2_delta_CKA_median",
+    "H3a_delta_A_patient_median",
+    "H3b_delta_A_label_median",
+    "H2_adj_median",
+    "H3a_adj_median",
+    "H3b_adj_median",
+    "H2_adj_eligibility",
+    "H3a_adj_eligibility",
+    "H3b_adj_eligibility",
+    "source_record_id"
+  ],
+  "modal_required_columns": [
+    "cancer",
+    "technical_track",
+    "q1_median",
+    "H_norm_median",
+    "S_spec_median",
+    "effective_rank_median",
+    "participation_ratio_median",
+    "principal_angle_1_median",
+    "principal_angle_2_median",
+    "principal_angle_3_median",
+    "principal_angle_4_median",
+    "principal_angle_5_median",
+    "full_eigenspectrum_available",
+    "principal_angle_spectrum_available",
+    "source_record_id"
+  ],
+  "cross_layer_required_columns": [
+    "cancer",
+    "technical_track",
+    "CKA_observed_median",
+    "CKA_patient_null_median",
+    "Delta_CKA_median",
+    "A_same_median",
+    "A_patient_null_median",
+    "Delta_A_patient_median",
+    "A_label_null_median",
+    "Delta_A_label_median",
+    "TSS200_Delta_CKA_median",
+    "source_record_id"
+  ],
+  "robustness_required_columns": [
+    "cancer",
+    "technical_track",
+    "S0_pass",
+    "S0_max_abs_error",
+    "S2_interpretable_draw_count",
+    "S2_interpretable_median_delta",
+    "S3_methylation_feature_retention",
+    "S3_RNA_feature_retention",
+    "S3_Delta_CKA_median",
+    "S4_top1_Delta_CKA_median",
+    "S4_top3_Delta_CKA_median",
+    "S4_top1_to_canonical_ratio",
+    "S4_top3_to_canonical_ratio",
+    "S7_TSS200_Delta_CKA_median",
+    "S11_H2_adj_median",
+    "S11_H3a_adj_median",
+    "S11_H3b_adj_median",
+    "S11_eligible",
+    "source_record_id"
+  ],
+  "context_required_columns": [
+    "cancer",
+    "purity_leukocyte_projection_available",
+    "composition_complete_available",
+    "purity_leukocyte_r_median",
+    "VIF_median",
+    "VIF_max",
+    "projection_condition_number_median",
+    "projection_condition_number_max",
+    "RPPA_summary_available",
+    "genomic_context_summary_available",
+    "prediction_summary_available",
+    "function_map_status",
+    "limit_map_status",
+    "source_record_id"
+  ],
+  "full_eigenspectrum_optional_record": {
+    "key": ["cancer", "technical_track", "resample_id"],
+    "required_fields": [
+      "q_1", "q_2", "q_3", "q_4", "q_5", "q_6", "q_7", "q_8", "q_9", "q_10",
+      "q_11", "q_12", "q_13", "q_14", "q_15", "q_16", "q_17", "q_18", "q_19", "q_20",
+      "q_21", "q_22", "q_23", "q_24", "q_25", "q_26", "q_27", "q_28", "q_29"
+    ]
+  },
+  "provenance_rules": [
+    "Every row must carry a source_record_id resolving to EXPORT_MANIFEST or a provenance table.",
+    "Raw-input, processed-state, configuration, result-output, and derived-export hashes must be semantically typed and must not be compared as interchangeable identities.",
+    "The original post-C1 S2 sign-count table must not be used as the S2 cancer denominator; only interpretable-draw eligibility may populate S2 fields.",
+    "Unavailable values are explicit nulls with reason codes, never zeros unless zero is the scientifically defined value.",
+    "No Chi_bio formula, candidate value, unity crossing, or regime label is computed by the exporter."
+  ],
+  "reason_codes": [
+    "NOT_AVAILABLE_IN_SOURCE_ARTIFACT",
+    "NOT_APPLICABLE",
+    "NOT_EVALUABLE",
+    "NO_VARIATION",
+    "INSUFFICIENT_ELIGIBILITY",
+    "STRUCTURAL_REFUSAL",
+    "PROVENANCE_NOT_RECOVERED"
+  ],
+  "success_condition": "All source-derived values are exported without rerunning or retuning scientific calculations, internal joins are exact and provenance-resolved, and the bundle can support dependency/identifiability analyses without inspecting a Chi_bio unity placement."
+}

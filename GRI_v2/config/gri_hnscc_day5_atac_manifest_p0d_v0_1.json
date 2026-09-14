@@ -1,0 +1,85 @@
+{
+  "schema_version": "0.1",
+  "status": "P0_D_SOURCE_IDENTITY_AND_PROCESSED_HEADER_VERIFIED_NO_CHI_OUTCOMES",
+  "freeze_date": "2026-09-12",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.4_FINAL",
+  "study": {
+    "series": "GSE135604",
+    "publication_doi": "10.1038/s41416-020-0851-5",
+    "platform": "GPL11154",
+    "processed_peakset": "GSE135604_ATACpeakset.csv.gz",
+    "processed_peakset_sha256": "00bc414c58ad9ca999614669c81ec9081c0b9b058e00ad1194b88ce15d30e29c",
+    "processed_peak_rows": 115087,
+    "processed_peak_header_fields": 23,
+    "processed_peak_sample_columns_after_coordinates": 17,
+    "raw_peak_archive": "GSE135604_RAW.tar",
+    "treatment": "100nM cetuximab",
+    "control": "PBS",
+    "exposure_days": 5,
+    "nominal_replicates_per_cell_line_condition": 3
+  },
+  "selection_firewall": {
+    "chi_bio_outcomes_opened": false,
+    "selected_by_candidate_agreement": false,
+    "rna_state_dimension_selected_using_atac": false,
+    "unity_used_for_atac_feature_selection": false,
+    "p1_status": "NOT_EXTERNAL_P1"
+  },
+  "samples": {
+    "SCC1": {
+      "CTX": [
+        {"replicate":1,"gsm":"GSM4021913","processed_peak_status":"PRESENT_IN_PROCESSED_PEAKSET"},
+        {"replicate":2,"gsm":"GSM4021914","processed_peak_status":"PRESENT_IN_PROCESSED_PEAKSET"},
+        {"replicate":3,"gsm":"GSM4021915","processed_peak_status":"PRESENT_IN_PROCESSED_PEAKSET"}
+      ],
+      "PBS": [
+        {"replicate":1,"gsm":"GSM4021916","processed_peak_status":"PRESENT_IN_PROCESSED_PEAKSET"},
+        {"replicate":2,"gsm":"GSM4021917","processed_peak_status":"SAMPLE_RECORD_QC_FAILURE_NO_PROCESSED_PEAK_FILE"},
+        {"replicate":3,"gsm":"GSM4021918","processed_peak_status":"PRESENT_IN_PROCESSED_PEAKSET"}
+      ]
+    },
+    "SCC6": {
+      "CTX": [
+        {"replicate":1,"gsm":"GSM4021919","processed_peak_status":"PRESENT_IN_PROCESSED_PEAKSET"},
+        {"replicate":2,"gsm":"GSM4021920","processed_peak_status":"PRESENT_IN_PROCESSED_PEAKSET"},
+        {"replicate":3,"gsm":"GSM4021921","processed_peak_status":"PRESENT_IN_PROCESSED_PEAKSET"}
+      ],
+      "PBS": [
+        {"replicate":1,"gsm":"GSM4021922","processed_peak_status":"PRESENT_IN_PROCESSED_PEAKSET"},
+        {"replicate":2,"gsm":"GSM4021923","processed_peak_status":"PRESENT_IN_PROCESSED_PEAKSET"},
+        {"replicate":3,"gsm":"GSM4021924","processed_peak_status":"PRESENT_IN_PROCESSED_PEAKSET"}
+      ]
+    },
+    "SCC25": {
+      "CTX": [
+        {"replicate":1,"gsm":"GSM4021925","processed_peak_status":"PRESENT_IN_PROCESSED_PEAKSET"},
+        {"replicate":2,"gsm":"GSM4021926","processed_peak_status":"PRESENT_IN_PROCESSED_PEAKSET"},
+        {"replicate":3,"gsm":"GSM4021927","processed_peak_status":"PRESENT_IN_PROCESSED_PEAKSET"}
+      ],
+      "PBS": [
+        {"replicate":1,"gsm":"GSM4021928","processed_peak_status":"PRESENT_IN_PROCESSED_PEAKSET"},
+        {"replicate":2,"gsm":"GSM4021929","processed_peak_status":"PRESENT_IN_PROCESSED_PEAKSET"},
+        {"replicate":3,"gsm":"GSM4021930","processed_peak_status":"PRESENT_IN_PROCESSED_PEAKSET"}
+      ]
+    }
+  },
+  "known_qc_exceptions": [
+    {
+      "gsm": "GSM4021917",
+      "cell_line": "SCC1",
+      "condition": "PBS",
+      "replicate": 2,
+      "source_statement": "Processed peaks not provided because FASTQ processing did not result in good quality sequencing.",
+      "handling": "DO_NOT_SILENTLY_IMPUTE_OR_TREAT_AS_USABLE_PROCESSED_PEAK_REPLICATE",
+      "processed_peakset_confirmation": "SCC1PBS2_ABSENT_FROM_VERIFIED_17_SAMPLE_HEADER"
+    }
+  ],
+  "approved_architecture_role": {
+    "state": "RNA_TRANSCRIPTOMIC_REGULATORY_STATE",
+    "atac": "SUBSTRATE_CONTEXT_ENDPOINT",
+    "naive_concatenation_allowed": false,
+    "longitudinal_atac_claim_allowed": false,
+    "future_relation_test_requires_separate_freeze": true
+  },
+  "source_file_gate": "Processed peakset download/hash/header identity PASS. Feature aggregation, normalization, missingness/QC rules and cross-modal statistic remain unfrozen and must be frozen before computation."
+}
