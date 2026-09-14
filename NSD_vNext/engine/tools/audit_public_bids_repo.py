@@ -23,9 +23,14 @@ def main() -> int:
 
     print(f"dataset_name={payload['dataset_name']}")
     print(f"dataset_doi={payload['dataset_doi']}")
+    print(f"bids_version={payload['bids_version']}")
     print(f"license={payload['license']}")
     print(f"participant_rows={payload['participant_rows']}")
+    print("participant_columns=" + ",".join(payload["participant_columns"]))
     print(f"tree_subject_count={payload['tree_subject_count']}")
+    print("duplicate_participant_ids=" + ",".join(payload["duplicate_participant_ids"]))
+    print("participants_missing_from_tree=" + ",".join(payload["participants_missing_from_tree"]))
+    print("tree_subjects_missing_from_participants=" + ",".join(payload["tree_subjects_missing_from_participants"]))
     print(f"subject_identity_verified={payload['subject_identity_verified']}")
     print(f"explicit_session_count={payload['explicit_session_count']}")
     print(
