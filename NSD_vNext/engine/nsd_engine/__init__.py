@@ -26,6 +26,13 @@ from .provenance import (
 )
 from .serialization import to_canonical_json
 from .known_truth import DHOTruth, impulse_response, transfer_power
+from .modal import ModalEstimateBatch, ModalEstimator
+from .admission import (
+    AdmissionDecision,
+    AdmissionEvidence,
+    ScalarProposal,
+    decide_scalar_admission,
+)
 
 __all__ = [
     "CandidateMode",
@@ -48,4 +55,10 @@ __all__ = [
     "DHOTruth",
     "impulse_response",
     "transfer_power",
+    "ModalEstimateBatch",
+    "ModalEstimator",
+    "AdmissionDecision",
+    "AdmissionEvidence",
+    "ScalarProposal",
+    "decide_scalar_admission",
 ]
