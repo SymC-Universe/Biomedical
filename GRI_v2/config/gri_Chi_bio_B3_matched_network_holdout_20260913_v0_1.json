@@ -1,0 +1,69 @@
+{
+  "schema_version": "0.1",
+  "status": "FROZEN_BEFORE_HOLDOUT_EXECUTION",
+  "freeze_id": "GRI_CHI_BIO_B3_MATCHED_NETWORK_HOLDOUT_20260913_V0_1",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.5_FINAL",
+  "parent_scoring_freeze": "GRI_CHI_BIO_B3_REGULATORY_STATE_SCORING_20260913_V0_1",
+  "pilot_reference": {
+    "freeze_id": "GRI_CHI_BIO_B3_MATCHED_NETWORK_PILOT_20260913_V0_1",
+    "workflow_run_id": 34797721862,
+    "artifact_id": 10329254821,
+    "artifact_sha256": "1d90af6e7ea0d784fb4494274e744b0c0af8cf48cc5cfbdaf1017da44f24cd06",
+    "role": "NONPROMOTABLE_EFFECT_SIZE_AND_FAILURE_MODE_CALIBRATION_ONLY"
+  },
+  "purpose": "Prospectively validate whether the frozen B3 regulon-plus-ULM scoring layer can recover a low-dimensional regulatory state and its transition spectrum on unseen matched-network synthetic trajectories, then select the smallest dimension that passes the same gate across both frozen regulon representations.",
+  "real_expression_opened_before_holdout": false,
+  "real_tf_activity_scored_before_holdout": false,
+  "normalized_g1_authorized": false,
+  "chi_bio_status": "NOT_ADMITTED",
+  "biological_unity_boundary_admitted": false,
+  "candidate_dimensions": [2, 3, 4, 5],
+  "dimension_selection_rule": "Evaluate every candidate dimension 2,3,4,5 under every frozen holdout seed and both network representations. Select the smallest dimension that passes every primary-noise gate in every seed for BOTH CollecTRI primary and DoRothEA ABC sensitivity. If no dimension passes, refuse B3 dimension admission. Do not use diagnostic 0.30-noise performance to rescue or replace the primary-noise decision.",
+  "holdout_seeds": [31001, 31003, 31007, 31009, 31013],
+  "pilot_seed_reused": false,
+  "primary_noise_fraction_of_global_signal_sd": 0.15,
+  "diagnostic_noise_fraction_of_global_signal_sd": 0.30,
+  "network_representations": [
+    "COLLECTRI_PRIMARY",
+    "DOROTHEA_ABC_SENSITIVITY"
+  ],
+  "synthetic_truth_rule": "Inherit the frozen pilot truth family without modification: source-native 11+11 states, 10+10 transitions, stable coupled real-spectrum T with eigenvalues linearly spaced 0.55 through 0.90, seed-fixed random orthogonal conjugation, unit-norm random initial state, treatment forcing norm 0.35, seed-fixed unit-norm regulator loading rows, row-L2-normalized network matrix for signal generation only, original frozen network weights for ULM scoring.",
+  "scoring_rule": "Inherit the parent B3 scoring freeze exactly: decoupler==2.2.0, decoupler.mt.ulm, tmin=5, signed frozen network weights, t-value output, exact frozen identifier mapping, no empirical feature/panel selection.",
+  "primary_noise_pass_gate_per_seed_per_network": {
+    "finite_execution": "All generated expression, recovered ULM scores, PCA states, operator fits, and required diagnostics must be finite.",
+    "regulator_activity_median_pearson_min": 0.5,
+    "regulator_activity_fraction_corr_gt_0_5_min": 0.5,
+    "latent_subspace_minimum_canonical_cosine_min": 0.7071067811865476,
+    "latent_subspace_maximum_principal_angle_degrees_max": 45.0,
+    "transition_full_fit_status": "PASS",
+    "transition_all_loto_refits_admissible": true,
+    "transition_relative_rho_error_max": 0.10,
+    "transition_loto_must_strictly_beat_persistence_baseline": true,
+    "transition_loto_must_strictly_beat_arm_specific_loto_mean_next_state_baseline": true,
+    "design_full_rank_required": true,
+    "scaled_condition_number_max": 67108864.0
+  },
+  "threshold_rationale": {
+    "activity_recovery": "Median r>=0.5 and at least half of regulators with r>0.5 require the recovered score field to carry a nontrivial majority signal rather than relying on a small favorable subset.",
+    "subspace_recovery": "Minimum canonical cosine >=1/sqrt(2), equivalently every recovered latent direction remains within 45 degrees of known truth. This is a geometry-based more-aligned-than-orthogonal criterion fixed before unseen seeds.",
+    "spectral_recovery": "<=10 percent relative spectral-radius error is a prespecified quantitative fidelity bound on the effective transition spectrum, not a unity-centered criterion.",
+    "predictive_recovery": "The recovered-state operator must beat both already established frozen predictive baselines rather than pass only an absolute fit-error threshold.",
+    "conditioning": "Use the existing G2/G1 numerical refusal ceiling 1/sqrt(float64 epsilon); passing it is necessary but not sufficient."
+  },
+  "diagnostic_0_30_noise_rule": "Run the same metrics at 0.30 noise for every candidate, seed, and network, but report them only as stress sensitivity. They cannot change the primary-noise pass/fail decision or selected dimension.",
+  "cross_network_rule": "A B3 dimension is not admitted from CollecTRI alone. The exact same dimension must pass the full unseen-seed primary-noise gate under DoRothEA ABC as a representation sensitivity. This prevents network-source dependence from being hidden after the pilot.",
+  "post_holdout_rule": {
+    "if_one_or_more_dimensions_pass": "Freeze a final B3 empirical-state construction using the smallest fully passing dimension before any real SCC25 or TCGA TF activities are scored.",
+    "if_no_dimension_passes": "Return REFUSE_B3_MATCHED_NETWORK_IDENTIFIABILITY and do not open real B3 expression outcomes.",
+    "real_data_opening_by_this_holdout": false,
+    "normalized_g1_opening_by_this_holdout": false
+  },
+  "restoration_firewall": {
+    "b3_holdout_can_qualify_state_basis": true,
+    "b3_holdout_can_qualify_effective_transition_recovery": true,
+    "b3_holdout_cannot_identify_K_vs_R": true,
+    "normalized_g1_requires_independent_restoration_information": true,
+    "current_restoration_lane_status": "UNRESOLVED_SEPARATE_GATE"
+  },
+  "promotion_effect": "NONE_UNTIL_HOLDOUT_EXECUTED_AND_POSTRESULT_AUDITED"
+}
