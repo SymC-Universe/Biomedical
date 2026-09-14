@@ -4,8 +4,13 @@ from __future__ import annotations
 
 The raw GSE98812 GENE field is SYMBOL|ENTREZID. This versioned probe preserves
 that raw source, deterministically extracts the left SYMBOL token, excludes only
-the literal unmapped token '?', and requires every remaining named symbol to be
+the literal unmapped token '?', and requires every remaining mapped symbol to be
 unique before exact regulon matching. It never reads expression values.
+
+One frozen legacy-symbol exception is required by the source namespace audit:
+GSE98812 uses the historical symbol SLC35E2 for two distinct Entrez genes.
+Current NCBI/HGNC identity resolves Entrez 728661 -> SLC35E2B and Entrez 9906
+-> SLC35E2A. No other source row is renamed and no fuzzy mapping is permitted.
 """
 
 from io import BytesIO
@@ -37,6 +42,12 @@ from src.probe_chi_bio_dorothea_export import (
 )
 
 
+LEGACY_SYMBOL_ENTREZ_EXCEPTIONS = {
+    ("SLC35E2", "728661"): "SLC35E2B",
+    ("SLC35E2", "9906"): "SLC35E2A",
+}
+
+
 def _mapped_gene_universe(payload: bytes) -> tuple[list[str], dict]:
     if hashlib.sha256(payload).hexdigest() != GSE_SHA256:
         raise RuntimeError("GSE98812 source SHA drift")
@@ -55,26 +66,59 @@ def _mapped_gene_universe(payload: bytes) -> tuple[list[str], dict]:
     if symbol.eq("").any() or not entrez.str.fullmatch(r"\d+").all():
         raise RuntimeError("GSE98812 SYMBOL|ENTREZID grammar drift")
 
-    mapped = symbol.ne("?")
-    named = symbol[mapped]
-    if named.duplicated().any():
-        dup = sorted(named[named.duplicated(keep=False)].unique().tolist())
-        raise RuntimeError(f"named GSE98812 symbols are not unique: {dup[:20]}")
-    unknown_count = int((~mapped).sum())
-    if unknown_count <= 0:
-        raise RuntimeError("expected at least one literal '?' unmapped symbol from namespace audit")
+    mapped_mask = symbol.ne("?")
+    mapped_symbols: list[str] = []
+    applied_exceptions: list[dict] = []
+    for raw_symbol, raw_entrez in zip(symbol[mapped_mask], entrez[mapped_mask], strict=True):
+        key = (str(raw_symbol), str(raw_entrez))
+        mapped_symbol = LEGACY_SYMBOL_ENTREZ_EXCEPTIONS.get(key, str(raw_symbol))
+        mapped_symbols.append(mapped_symbol)
+        if mapped_symbol != raw_symbol:
+            applied_exceptions.append(
+                {
+                    "raw_symbol": str(raw_symbol),
+                    "entrez_id": str(raw_entrez),
+                    "mapped_symbol": mapped_symbol,
+                }
+            )
 
-    symbols = named.tolist()
-    return symbols, {
+    if len(applied_exceptions) != len(LEGACY_SYMBOL_ENTREZ_EXCEPTIONS):
+        raise RuntimeError(
+            "legacy SLC35E2 exception set did not match the frozen GSE98812 namespace exactly"
+        )
+    if sorted((x["raw_symbol"], x["entrez_id"], x["mapped_symbol"]) for x in applied_exceptions) != sorted(
+        (raw_symbol, entrez_id, mapped_symbol)
+        for (raw_symbol, entrez_id), mapped_symbol in LEGACY_SYMBOL_ENTREZ_EXCEPTIONS.items()
+    ):
+        raise RuntimeError("legacy SLC35E2 exception application drift")
+
+    mapped_series = pd.Series(mapped_symbols, dtype=str)
+    if mapped_series.duplicated().any():
+        dup = sorted(mapped_series[mapped_series.duplicated(keep=False)].unique().tolist())
+        raise RuntimeError(f"mapped GSE98812 symbols are not unique after frozen exceptions: {dup[:20]}")
+
+    unknown_count = int((~mapped_mask).sum())
+    if unknown_count != 29:
+        raise RuntimeError(f"frozen unmapped '?' row count drift: {unknown_count} != 29")
+
+    return mapped_symbols, {
         "raw_gene_rows": int(len(genes)),
         "unknown_question_mark_rows_excluded": unknown_count,
-        "named_symbol_rows": int(len(symbols)),
-        "named_symbols_unique": True,
-        "named_symbol_sha256": hashlib.sha256("\n".join(symbols).encode("utf-8")).hexdigest(),
+        "mapped_symbol_rows": int(len(mapped_symbols)),
+        "mapped_symbols_unique": True,
+        "mapped_symbol_sha256": hashlib.sha256(
+            "\n".join(mapped_symbols).encode("utf-8")
+        ).hexdigest(),
         "entrez_ids_all_numeric": True,
-        "mapping_rule": "split raw GENE exactly once on first pipe; exact left SYMBOL token; exclude literal '?' only",
-        "entrez_used_for_rescue_mapping": False,
+        "mapping_rule": (
+            "split raw GENE exactly once on first pipe; exclude literal '?' only; "
+            "retain exact left SYMBOL except frozen Entrez-backed legacy exceptions "
+            "SLC35E2|728661->SLC35E2B and SLC35E2|9906->SLC35E2A"
+        ),
+        "legacy_symbol_exceptions": applied_exceptions,
+        "entrez_used_only_for_frozen_legacy_disambiguation": True,
         "fuzzy_mapping_used": False,
+        "external_bulk_annotation_table_used": False,
     }
 
 
@@ -109,7 +153,9 @@ def run_probe(output_dir: Path) -> dict:
         "dorothea_confidence_denominator": DOROTHEA_CONFIDENCE_DENOMINATOR,
         "eligible_regulator_overlap_count": len(overlap),
         "eligible_regulator_overlap": overlap,
-        "eligible_regulator_overlap_sha256": hashlib.sha256("\n".join(overlap).encode("utf-8")).hexdigest(),
+        "eligible_regulator_overlap_sha256": hashlib.sha256(
+            "\n".join(overlap).encode("utf-8")
+        ).hexdigest(),
         "download_attempt_history": {
             "collectri": collectri_history,
             "dorothea": dorothea_history,
