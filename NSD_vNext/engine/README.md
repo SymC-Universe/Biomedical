@@ -1,11 +1,11 @@
 # NSD Structural Engine Contract Scaffold
 
-Status: PRE-ALGORITHM IMPLEMENTATION SCAFFOLD
+Status: PRE-ALGORITHM IMPLEMENTATION SCAFFOLD + KNOWN-TRUTH FIXTURES
 Date: 14 September 2026
 
-This directory begins the executable NSD vNext Structural Engine without prematurely implementing a scientific estimator.
+This directory begins the executable NSD vNext Structural Engine without prematurely implementing a clinical estimator.
 
-The first executable layer is deliberately limited to **contracts and safeguards**:
+The executable layer is deliberately limited to **contracts, safeguards, and analytically defined known-truth fixtures**:
 - provenance is mandatory;
 - subject/session identity is explicit;
 - duplicate hierarchy keys are auditable;
@@ -17,28 +17,36 @@ The first executable layer is deliberately limited to **contracts and safeguards
 - refusals are first-class outputs;
 - zero-peak states are valid;
 - candidate mode identifiers must be unique;
-- configuration hashes and JSON serialization are deterministic.
+- configuration hashes and JSON serialization are deterministic;
+- exact underdamped second-order oscillator fixtures lock natural frequency, damped frequency, resonance frequency, decay rate, and pole conventions.
 
 Current files:
 - `pyproject.toml` — minimal package/test configuration;
 - `nsd_engine/schema.py` — result, provenance, mode, scalar, and refusal contracts;
 - `nsd_engine/provenance.py` — hierarchy, join-cardinality, and split-leakage safeguards;
 - `nsd_engine/serialization.py` — deterministic JSON serialization;
+- `nsd_engine/known_truth.py` — exact underdamped oscillator impulse/transfer fixtures;
 - `nsd_engine/__init__.py` — public contract API;
 - `tests/test_contracts.py` — scalar/refusal/result safeguards;
 - `tests/test_provenance.py` — hierarchy/join/split safeguards;
-- `tests/test_serialization.py` — deterministic serialization safeguard.
+- `tests/test_serialization.py` — deterministic serialization safeguard;
+- `tests/test_known_truth.py` — oscillator convention/regression safeguards.
 
-Current local verification after provenance expansion: **15 tests passed**.
+Current local verification: **21 tests passed**.
 
-## Important boundary
+GitHub Actions contract testing is active for the branch/PR and has completed successfully on the current forward workspace.
 
-There is intentionally no clinical classifier, disorder threshold, damping estimator, chi estimator, DMD implementation, SpecParam implementation, or normative model in this scaffold.
+## Important scientific boundary
+
+There is intentionally no clinical classifier, disorder threshold, fitted damping estimator, fitted chi estimator, DMD implementation, SpecParam implementation, or normative model in this scaffold yet.
+
+The known-truth oscillator module is **not a claim that resting scalp EEG is a damped harmonic oscillator**. It is an exact mathematical fixture used to test whether future estimators recover truth or confuse distinct frequency/damping quantities.
 
 Those scientific modules enter only after their qualification plan is linked to:
 - `../docs/ESTIMATOR_LICENSING_MATRIX_v0.1.md`
 - `../docs/KNOWN_TRUTH_ADVERSARIAL_TEST_MATRIX_v0.1.md`
 - `../docs/STRUCTURAL_ENGINE_SPEC_v0.1.md`
 - `../docs/ENGINE_IMPLEMENTATION_PLAN_v0.1.md`
+- `../docs/DHO_CONVENTION_NOTE_v0.1.md`
 
-The scaffold makes it harder for later code to silently convert a descriptive feature into a dynamical claim or a repeated session into an independent subject.
+The scaffold makes it harder for later code to silently convert a descriptive feature into a dynamical claim, a repeated session into an independent subject, or a spectral peak center into an undamped natural frequency.
