@@ -8,7 +8,7 @@ def run(args):
 
 if __name__ == "__main__":
     print("NSD Phase 0D v0.2 development / qualification runner")
-    print("PROTOCOL = General v0.7.1 FINAL + authoritative v0.7.1A Addendum")
+    print("PROTOCOL = General Cross-Project Research Protocol v0.7.7 (Active Baseline, 2026-09-13)")
     print("P0-D = discovery, mechanism mapping, Function/Limit landscapes; P0-Q = controlled qualification. P1 remains fail-closed.")
     print("PURPOSE = protocol compliance, integrity, refusal, semantic guards, four-hold qualification, comparator stress, stochastic comparator qualification, truth-blind order/rank sweep, and rank-signal null stress")
     for args in [

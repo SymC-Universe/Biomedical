@@ -8,7 +8,7 @@
   "forbidden_selector_inputs": ["truth","chi","diagnosis","phenotype","treatment","historical desired ordering","GRI outcome"],
   "claim_ceiling": "P0 engineering and structural-method development only. No prospective confirmation, EEG, diagnosis, treatment, causality, whole-system scalar, preferred chi value, regime boundary, or cross-domain mechanism claim.",
   "status": "P0_CALIBRATION_ONLY_NOT_P1_FROZEN",
-  "protocol_baseline": "General Cross-Project Research Protocol v0.7.1 FINAL, 2026-09-10",
+  "protocol_baseline": "General Cross-Project Research Protocol v0.7.7, Active Baseline, 2026-09-13",
   "threshold_status": "Inherited from pre-v0.7.1 Phase0D v0.1 candidate for P0 regression only. Not authorized as P1 thresholds until MFR-14 is complete and a new freeze is committed.",
   "comparator": {"status":"P0_DMD_IMPLEMENTATION_KNOWN_TRUTH_VERIFIED_NOT_P1_FROZEN","policy":"DMD is the leading direct neural structural comparator candidate from the source-of-record review and its basic implementation passes deterministic known-truth P0 qualification. Comparator identity, common challenge matrix, scoring rule, and any ADDS claim remain unfrozen."},
   "uncertainty": {"status":"P0_CONTAINER_AND_KNOWN_TRUTH_CALIBRATION_VERIFIED_NOT_P1_FROZEN","policy":"Interval integrity, explicit INDETERMINATE semantics, and descriptive repeated-known-truth calibration are implemented and tested. Reynders-style analytical SSI single-record uncertainty is not implemented. No confidence level, simultaneous-coverage rule, or P1 uncertainty decision rule is frozen."},

@@ -1,0 +1,47 @@
+name: NSD P0-D23 Out-of-Model Refusal
+
+on:
+  push:
+    branches:
+      - neural-stability-dynamics-phase0d-v0.2-protocol-v0.7.1
+    paths:
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/P0D23_OUT_OF_MODEL_REFUSAL_PLAN.md'
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/scripts/run_p0d23_out_of_model_refusal.py'
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/tests/test_out_of_model_refusal_p0.py'
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/src/ssi_cov.py'
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/src/selector.py'
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/src/synthetic_systems.py'
+      - 'Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/configs/development_rules.json'
+      - '.github/workflows/nsd-phase0d-p0d23-out-of-model-refusal.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  p0d23-out-of-model-refusal:
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: Neural_Stability_Dynamics/Phase0D_Protocol_v0_2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install pinned P0 dependencies
+        run: python -m pip install numpy==2.3.5 scipy==1.17.0 pytest
+      - name: Run out-of-model refusal tests
+        run: python -m pytest -q tests/test_out_of_model_refusal_p0.py
+      - name: Run P0-D23 out-of-model refusal challenge
+        run: python scripts/run_p0d23_out_of_model_refusal.py --output results/p0d_mapping/out_of_model_refusal_v1.json
+      - name: Capture numerical environment
+        run: python scripts/capture_environment.py results/p0d_mapping/out_of_model_refusal_environment.json
+      - name: Upload P0-D23 artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-phase0d-p0d23-out-of-model-refusal
+          path: |
+            Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/results/p0d_mapping/out_of_model_refusal_v1.json
+            Neural_Stability_Dynamics/Phase0D_Protocol_v0_2/results/p0d_mapping/out_of_model_refusal_environment.json
+          if-no-files-found: error
