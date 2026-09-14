@@ -34,6 +34,7 @@ The project treats scalar, vector/modal, and conglomerate/system representations
 - `docs/GOM_v0.8.0_ADOPTION_CHECKLIST_v0.1.md` — project migration/adoption record.
 - `docs/CLAIM_LEDGER_v0.1.md` — evidence ceiling for every major manuscript claim.
 - `docs/PENDING_RESULT_INSERTS_v0.1.md` — manuscript locations blocked by computation or re-audit.
+- `docs/TASK_FREEZE_TEMPLATE_v0.1.md` — task-level preregistration/freeze template for P0-Q/P1 work.
 
 ### Historical reconstruction
 
@@ -45,6 +46,22 @@ The project treats scalar, vector/modal, and conglomerate/system representations
 - `docs/STRUCTURAL_ENGINE_SPEC_v0.1.md` — label-blind executable architecture and refusal rules.
 - `docs/KNOWN_TRUTH_ADVERSARIAL_TEST_MATRIX_v0.1.md` — preclinical synthetic/adversarial qualification plan.
 - `docs/DATASET_PROVENANCE_AUDIT_v0.1.md` — subject/session/trial hierarchy and dataset admission controls.
+- `docs/ENGINE_IMPLEMENTATION_PLAN_v0.1.md` — staged implementation sequence from provenance through qualified clinical overlay.
+
+### Executable scaffold
+
+- `engine/` — pre-algorithm Structural Engine package.
+  - mandatory provenance and result contracts;
+  - refusal codes;
+  - mode-specific scalar lineage;
+  - deterministic configuration/result serialization;
+  - duplicate hierarchy and metadata-join audits;
+  - subject-split leakage protection;
+  - whole-system chi rejection;
+  - regression tests;
+  - GitHub Actions contract-test workflow.
+
+The executable scaffold intentionally contains no clinical classifier and no unqualified dynamical estimator.
 
 ### Atlas, function, limits, and comparators
 
@@ -53,18 +70,20 @@ The project treats scalar, vector/modal, and conglomerate/system representations
 - `docs/NATIVE_COMPARATOR_PROGRAM_v0.1.md` — frozen native-baseline and incremental-value program.
 - `docs/CROSS_DISORDER_COMORBIDITY_TEST_PLAN_v0.1.md` — shared-versus-specific architecture and comorbidity test design.
 
-### Literature, novelty, and experiments
+### Literature, attribution, and experiments
 
 - `docs/LITERATURE_COLLISION_PASS_v0.1.md` — main prior-art collision pass.
 - `docs/LITERATURE_COLLISION_ADDENDUM_v0.1.md` — dimensional psychiatry, normative modeling, and patient-heterogeneity collision.
 - `docs/NOVELTY_ATTRIBUTION_AUDIT_v0.1.md` — separates established prior art from candidate residual contribution.
+- `docs/NOVELTY_ATTRIBUTION_ADDENDUM_v0.1.md` — narrows residual novelty after peak-absence, identifiability, DMD, state-space, and modal prior-art review.
+- `docs/CURRENT_REFERENCE_LEDGER_v0.1.md` — claim-level source ledger rebuilding citation support from scratch.
 - `docs/EXPERIMENTAL_OPPORTUNITY_PLAN_v0.1.md` — experiment-first, literature-collision workflow.
 
 ### Reporting and release planning
 
-- `docs/FIGURE_TABLE_PLAN_v0.1.md` — method/result figure and table gates.
+- `docs/FIGURE_TABLE_PLAN_v0.1.md` — method/result figure and table gates, including historical-figure firewall.
 - `docs/REPRODUCIBILITY_MATRIX_v0.1.md` — R1/R2/R3 closure plan.
-- `docs/NONCOMPUTE_WORKSTREAMS_v0.1.md` — work that can advance while computations are unfinished.
+- `docs/NONCOMPUTE_WORKSTREAMS_v0.1.md` — closure state of work that can advance before large computations.
 
 ## Historical correction now locked
 
@@ -72,6 +91,20 @@ The recovered 2025 manuscript is treated as a P0-D architecture/discovery artifa
 
 The forward workspace therefore preserves the architecture while rebuilding the evidence path from native data upward.
 
+## Novelty correction now locked provisionally
+
+NSD does not claim invention of:
+- dimensional/transdiagnostic psychiatry;
+- healthy-reference normative modeling;
+- periodic/aperiodic EEG parameterization;
+- psychiatric EEG heterogeneity;
+- neural damped-oscillator/Q/pole modeling;
+- peak-absence categories;
+- spatiotemporal modal decomposition;
+- dynamical-model identifiability analysis.
+
+The central open question is whether a **stability-oriented integration and qualification architecture** adds reproducible scientific information beyond those established native methods while preserving disorder-specific structure and refusing unsupported scalar compression.
+
 ## Status rule
 
-No draft prose may convert an old exploratory result, historical scalar, proxy, attractive visualization, classification result, or unfinished computation into a current mechanistic or predictive claim. Pending results remain explicitly pending until their evidence path closes.
+No draft prose may convert an old exploratory result, historical scalar, proxy, attractive visualization, classification result, individually legitimate method component, or unfinished computation into a current mechanistic or predictive claim. Pending results remain explicitly pending until their evidence path closes.
