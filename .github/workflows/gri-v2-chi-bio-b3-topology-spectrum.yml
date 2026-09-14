@@ -1,0 +1,40 @@
+name: GRI Chi_bio B3 regulon topology spectrum
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - gri-v071-protocol-integration-20260910-chi-bio
+    paths:
+      - 'GRI_v2/src/audit_chi_bio_b3_regulon_topology_spectrum.py'
+      - '.github/workflows/gri-v2-chi-bio-b3-topology-spectrum.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install repository dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+      - name: Execute external-regulon topology spectrum audit
+        run: python -m src.audit_chi_bio_b3_regulon_topology_spectrum
+      - name: Upload topology-only audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-chi-bio-b3-regulon-topology-spectrum-v1
+          path: GRI_v2/development_outputs/chi_bio_regulon_source/b3_topology_spectrum_20260913/GRI_CHI_BIO_B3_REGULON_TOPOLOGY_SPECTRUM.json
+          retention-days: 90
+          if-no-files-found: error
