@@ -147,3 +147,78 @@ The next literature work should be narrower:
 - whether structural model failures carry phenotype information after quality control.
 
 Those searches can proceed while computation is pending, but the next major scientific gain now requires executing the qualification matrix on real and known-truth data.
+
+## 9. Scalp EEG oscillator modeling already exists
+
+Beck, Stephen & Purdon (2018), *State Space Oscillator Models for Neural Data Analysis*, `10.1109/EMBC.2018.8513215`, explicitly apply a linear state-space oscillator model to univariate scalp EEG at quiet rest and during propofol-induced unconsciousness. Oscillatory components are represented with AR(2)-type latent processes, parameters are estimated with expectation-maximization, and model order is selected with AIC.
+
+Collision result: **SCALP EEG OSCILLATOR FITTING IS ESTABLISHED PRIOR ART**.
+
+Implication for NSD:
+- we do not need to justify oscillator modeling as alien to scalp EEG;
+- the open issue is not whether it can be done, but whether a specific fit is identifiable, reproducible, and interpretable as the intended dynamical quantity in the target cohort;
+- the forward Engine should benchmark any custom second-order fit against a native state-space oscillator implementation rather than treating the custom route as the baseline.
+
+## 10. DMD-style spatiotemporal modal structure is increasingly close to the proposed architecture
+
+Brunton et al. (2016), `10.1016/j.jneumeth.2015.10.010`, already show coupled spatial-temporal neural modes with frequency and duration in human subdural recordings.
+
+More recent 2026 EEG studies use DMD-derived modes as disease-discriminative features in alcohol-use and dementia settings, including subject-wise validation in some cases. These recent examples do not establish the quality of every DMD implementation, but they materially narrow any NSD novelty claim based simply on “modal + spatial + disease.”
+
+Collision result: **MODAL + SPATIAL + CLINICAL EEG IS PRIOR ART**.
+
+Residual NSD opportunity:
+- admission/refusal governance across multiple representation layers;
+- independent Atlas transfer;
+- explicit Function/Limit mapping;
+- head-to-head incremental value against those native modal methods.
+
+## 11. Reproducibility evidence for modal structure is modality- and method-specific
+
+DMD work in resting-state neuroimaging reports reproducible time-resolved network modes within subjects and across trials, while current EEG DMD disease studies emphasize subject-level validation and stability of recurring patterns.
+
+Collision result: **REPRODUCIBLE MODAL STRUCTURE IS PLAUSIBLE, BUT TARGET-SPECIFIC RELIABILITY REMAINS OPEN**.
+
+Therefore the NSD repeated-session program should not ask only whether a mode appears twice. It should quantify:
+- mode-presence agreement;
+- frequency agreement;
+- decay/growth agreement;
+- spatial-participation agreement;
+- mode-matching uncertainty;
+- refusal-state agreement;
+- sensitivity to preprocessing and reference choice.
+
+## 12. Reference/montage is a first-class adversary, not a cosmetic preprocessing choice
+
+EEG reference choice is known to change spatial topography and can introduce or suppress apparent extrema. The scalp signal is a mixture of cerebral and extracerebral sources, and reference estimation is itself an inverse/mixing problem.
+
+Collision result: **REFERENCE DEPENDENCE MUST ENTER THE LIMIT MAP**.
+
+Forward requirement:
+Any modal or conglomerate claim that depends on sensor-space structure must be stress-tested across at least one scientifically justified alternate referencing strategy when the dataset permits it.
+
+For a claimed dynamical scalar, the important test is not merely whether the scalar value shifts. The test is whether:
+- the same mode can still be matched;
+- its admission status changes;
+- its estimated frequency/decay changes beyond uncertainty;
+- downstream phenotype conclusions survive.
+
+A mode that exists only under one fragile referencing choice should be marked reference-sensitive rather than silently interpreted as a stable physiological object.
+
+## 13. Revised immediate non-compute endpoint
+
+After these targeted collisions, the non-compute literature side is close to a useful stopping point.
+
+What is now sufficiently established for design purposes:
+- explicit neural damping models exist in invasive and noninvasive data;
+- scalp state-space oscillator models exist;
+- neural-mass pole routes exist;
+- DMD/OMA-like modal routes exist;
+- modal + spatial + disease analysis exists;
+- generic abstention/refusal exists;
+- multimodal integration exists;
+- reference dependence and identifiability are established concerns.
+
+The remaining literature questions are narrower implementation checks, not conceptual blockers.
+
+The next major evidence-producing move is therefore computational qualification, with literature search used as a targeted support tool whenever a specific estimator, nuisance, or dataset requires it.
