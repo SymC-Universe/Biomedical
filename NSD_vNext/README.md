@@ -40,28 +40,40 @@ The project treats scalar, vector/modal, and conglomerate/system representations
 
 - `docs/HISTORICAL_SOURCE_AUDIT_v0.1.md` — source-level audit of the recovered 2025 NSD TeX/PDF package, including figure-by-figure evidentiary classification.
 
-### Measurement and model qualification
+### Measurement, datasets, and model qualification
 
 - `docs/ESTIMATOR_LICENSING_MATRIX_v0.1.md` — defines when a feature is dynamically derived, operational, proxy-only, empirical, categorical, or refused.
 - `docs/STRUCTURAL_ENGINE_SPEC_v0.1.md` — label-blind executable architecture and refusal rules.
 - `docs/KNOWN_TRUTH_ADVERSARIAL_TEST_MATRIX_v0.1.md` — preclinical synthetic/adversarial qualification plan.
-- `docs/DATASET_PROVENANCE_AUDIT_v0.1.md` — subject/session/trial hierarchy and dataset admission controls.
+- `docs/DATASET_PROVENANCE_AUDIT_v0.1.md` — subject/session/run/trial hierarchy and dataset admission controls plus first real public-data audits.
+- `docs/FORWARD_DATASET_CANDIDATES_v0.1.md` — current forward EEG dataset sequence and gate status.
 - `docs/ENGINE_IMPLEMENTATION_PLAN_v0.1.md` — staged implementation sequence from provenance through qualified clinical overlay.
+- `docs/DHO_CONVENTION_NOTE_v0.1.md` — exact second-order known-truth frequency/damping convention.
 
 ### Executable scaffold
 
 - `engine/` — pre-algorithm Structural Engine package.
   - mandatory provenance and result contracts;
+  - BIDS hierarchy and metadata-only public-dataset auditing;
+  - explicit run/session/subject separation;
+  - scans-table session-completeness audit;
+  - label-blind metadata-role firewall;
+  - descriptive spectral interface that **cannot** license dynamical chi;
   - refusal codes;
   - mode-specific scalar lineage;
+  - modal-estimator interface;
+  - scalar-admission/refusal firewall;
+  - exact second-order known-truth fixtures;
   - deterministic configuration/result serialization;
   - duplicate hierarchy and metadata-join audits;
   - subject-split leakage protection;
   - whole-system chi rejection;
   - regression tests;
-  - GitHub Actions contract-test workflow.
+  - GitHub Actions contract and public-metadata audit workflows.
 
 The executable scaffold intentionally contains no clinical classifier and no unqualified dynamical estimator.
+
+Public-data auditing is currently **metadata/hierarchy only**. A clean D2 audit does not mean the EEG payload has passed D4 readability/identity verification.
 
 ### Atlas, function, limits, and comparators
 
@@ -91,6 +103,24 @@ The recovered 2025 manuscript is treated as a P0-D architecture/discovery artifa
 
 The forward workspace therefore preserves the architecture while rebuilding the evidence path from native data upward.
 
+The permanent methodological lesson is:
+
+> **Graphability is not measurement, and measurement is not validation.**
+
+The forward evidence path is therefore:
+
+`architecture -> native observable -> qualified estimator/model -> audited hierarchy -> uncertainty -> frozen comparator -> held-out/external evidence -> claim`.
+
+## First real public-data gate results
+
+The provenance layer has now been exercised against real OpenNeuro BIDS repositories rather than only fixtures.
+
+- `ds003775`: **D2 hierarchy verified** — 111 subjects, 153 sessions, 42 repeat-session subjects, no participant/tree mismatch.
+- `ds005385`: **D2 hierarchy verified** — 608 subjects, 816 sessions, 208 repeat participants, no session-table mismatch.
+- `ds006780` / SFARI_EEG: **D2 blocked/quarantined** — README count 138, participants.tsv count 136, public tree count 139; three tree subjects lack participant-table rows; the README describes two physical resting-session days but the audited BIDS hierarchy does not currently expose a recoverable day/session mapping.
+
+The clinically tempting dataset failing the gate is a useful result. The architecture is now refusing to convert provenance ambiguity into apparent certainty.
+
 ## Novelty correction now locked provisionally
 
 NSD does not claim invention of:
@@ -107,4 +137,4 @@ The central open question is whether a **stability-oriented integration and qual
 
 ## Status rule
 
-No draft prose may convert an old exploratory result, historical scalar, proxy, attractive visualization, classification result, individually legitimate method component, or unfinished computation into a current mechanistic or predictive claim. Pending results remain explicitly pending until their evidence path closes.
+No draft prose may convert an old exploratory result, historical scalar, proxy, attractive visualization, classification result, individually legitimate method component, clean-looking public dataset, or unfinished computation into a current mechanistic or predictive claim. Pending results remain explicitly pending until their evidence path closes.
