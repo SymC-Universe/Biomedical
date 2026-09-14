@@ -1,0 +1,170 @@
+{
+  "schema_version": "0.1",
+  "status": "FROZEN_PRE_SYNTHETIC_SCORING_LAYER_NOT_EMPIRICAL_STATE_FREEZE",
+  "freeze_id": "GRI_CHI_BIO_B3_REGULATORY_STATE_SCORING_20260913_V0_1",
+  "protocol_authority": "General_Cross_Project_Research_Protocol_v0.7.5_FINAL",
+  "parent_architecture_freeze": "GRI_CHI_BIO_G1_S1_L3_CANDIDATE_FAMILY_FREEZE_20260913 / A3+B3+C3 bundle",
+  "chi_bio_status": "NOT_ADMITTED",
+  "biological_unity_boundary_admitted": false,
+  "normalized_empirical_g1_authorized": false,
+  "real_scc25_tf_activity_scoring_authorized": false,
+  "real_tcga_tf_activity_scoring_authorized": false,
+  "synthetic_known_truth_scoring_authorized": true,
+  "purpose": "Freeze the externally grounded B3 regulatory-coordinate scoring layer before matched synthetic identifiability. This freeze does not select the final low-dimensional state, panel, operator estimator, restoration structure, or Chi_bio coordinate.",
+  "primary_network": {
+    "name": "CollecTRI human signed regulons",
+    "role": "PRIMARY_B3_REGULATORY_COORDINATE_SOURCE",
+    "source_repository": "saezlab/CollecTRI",
+    "source_repository_commit": "86760ed852231c944396044c6fea4ecc38cc8bd1",
+    "provider_semantics_reference": "decoupler 2.2.0 human CollecTRI with remove_complexes=false",
+    "decoupler_release_commit": "7e8e957cbbb2230079cdd3c13a0ac114a67b9655",
+    "raw_source": "CollecTRI_regulons.csv",
+    "raw_source_sha256": "4473c9189dd53dacc80297709ad1452dda1086a1cc2185f9a56146c261668701",
+    "canonical_export_sha256": "f0bb980ad26a033fd39b370108d6d45e038127c635c7fd9b5df557e2703ef540",
+    "canonical_edge_count": 42990,
+    "canonical_source_count": 1185,
+    "canonical_target_count": 6675,
+    "positive_edge_count": 37168,
+    "negative_edge_count": 5822,
+    "zero_weight_edges": 0,
+    "conflicting_signed_source_target_pairs": 0,
+    "edge_use_rule": "Use the complete canonical human signed network after the already frozen provider semantics. Do not select CollecTRI edges using SCC25, TCGA, treatment response, cancer outcome, candidate Chi_bio, or distance to unity."
+  },
+  "representation_sensitivity_network": {
+    "name": "DoRothEA human regulons",
+    "role": "B3_REGULON_SOURCE_SENSITIVITY_NOT_PRIMARY_REPLACEMENT",
+    "source_repository": "saezlab/dorothea",
+    "source_repository_commit": "1461fb75e23e110c2281860526d4333920925282",
+    "source_path": "data/dorothea_hs.rda",
+    "source_git_blob_sha1": "75c9c0b6f9e9cfc6c34f86e2e0bf0b055ce1d9d9",
+    "source_bytes": 894668,
+    "raw_source_sha256": "fd7512dd18f0efcf01be210b652472bf750d70da5c91af12dab455919033f9b0",
+    "canonical_export_sha256": "136d68b428831c773853f5e80b60e29cc274d4ed433ca56d7dd3f1ac40c53932",
+    "full_edge_count": 454504,
+    "full_tf_count": 1333,
+    "full_target_count": 20295,
+    "confidence_subset": ["A", "B", "C"],
+    "abc_edge_count": 13223,
+    "abc_tf_count": 271,
+    "abc_target_count": 5321,
+    "stored_mor_values": [-1.0, 1.0],
+    "confidence_weight_rule": {
+      "A": 1.0,
+      "B": 0.5,
+      "C": 0.3333333333333333
+    },
+    "final_edge_weight_rule": "weight = mor * confidence_weight, equivalent to mor / {A:1,B:2,C:3}",
+    "edge_use_rule": "Use all A/B/C edges prospectively. D/E are excluded by the frozen sensitivity definition. Do not change confidence tiers after empirical activity inspection."
+  },
+  "identifier_mapping": {
+    "source_namespace": "GSE98812 processed GENE field uses SYMBOL|ENTREZID",
+    "split_rule": "Split exactly once on the first literal pipe character.",
+    "unmapped_rule": "Exclude only rows whose left symbol token is the literal '?'.",
+    "frozen_unmapped_row_count_in_gse98812": 29,
+    "legacy_symbol_entrez_exceptions": [
+      {
+        "raw_gene": "SLC35E2|728661",
+        "mapped_symbol": "SLC35E2B"
+      },
+      {
+        "raw_gene": "SLC35E2|9906",
+        "mapped_symbol": "SLC35E2A"
+      }
+    ],
+    "exception_semantics": "The two historical SLC35E2 rows represent distinct Entrez genes and are disambiguated rather than averaged or arbitrarily dropped.",
+    "all_other_rows": "Retain the exact left symbol token unchanged.",
+    "fuzzy_mapping_allowed": false,
+    "bulk_external_annotation_remapping_allowed": false,
+    "entrez_rescue_mapping_allowed": false,
+    "mapped_symbol_count_gse98812": 20502,
+    "mapped_symbol_sha256_gse98812": "0e37770b0ac05e940316e02533156d52b6f4f05dd2bc7d3ac20cca79a05507d2"
+  },
+  "regulator_eligibility_rule": {
+    "match_rule": "Exact case-sensitive regulator-network target symbol to measured expression feature symbol after the frozen namespace mapping.",
+    "minimum_distinct_measured_targets": 5,
+    "eligibility_depends_only_on": [
+      "frozen network edges",
+      "measured feature identities in the target expression source"
+    ],
+    "eligibility_must_not_depend_on": [
+      "expression magnitude",
+      "variance",
+      "treatment response",
+      "cancer phenotype",
+      "survival",
+      "candidate Chi_bio",
+      "distance to unity",
+      "later operator fit"
+    ],
+    "cross_network_intersection_required": false,
+    "reason_no_intersection_restriction": "CollecTRI is the primary representation and DoRothEA ABC is an independent representation sensitivity. Restricting the primary to the common TF intersection solely for comparability would discard externally supported primary coordinates without an independent scientific reason.",
+    "gse98812_preoutcome_qualification": {
+      "collectri_eligible_tf_count": 766,
+      "collectri_matched_edge_count": 41550,
+      "collectri_matched_target_count": 6278,
+      "collectri_eligible_tf_sha256": "78df34a7993bf8578a1c07be0947dfd6637835a636bed1e96d9eee7c421d469d",
+      "dorothea_abc_eligible_tf_count": 271,
+      "dorothea_abc_matched_edge_count": 12509,
+      "dorothea_abc_matched_target_count": 4952,
+      "dorothea_abc_eligible_tf_sha256": "e022d4b27c45d940ce8494164cb857e2f8d29012eca13753d09ac551c55eb2a2",
+      "eligible_tf_overlap_count": 249,
+      "eligible_tf_overlap_sha256": "fdd674d98a584555091a28a21ae91743e80dcc40f81cd277a9f720a76245bb6e",
+      "expression_values_opened_for_eligibility": false
+    }
+  },
+  "expression_input_rule": {
+    "required_semantics": "Normalized continuous expression compatible with ULM assumptions; raw integer counts are not permitted.",
+    "gse98812_transform_if_later_authorized": "log2(upper-quartile-normalized public source value + 1)",
+    "recompute_cpm_or_library_size_normalization": false,
+    "gene_wise_variance_scaling_before_ulm": false,
+    "reason": "ULM is defined on normalized/log-transformed feature statistics and feature scaling changes the inference by imposing equal feature importance."
+  },
+  "activity_scoring": {
+    "library": "decoupler",
+    "version": "2.2.0",
+    "release_commit": "7e8e957cbbb2230079cdd3c13a0ac114a67b9655",
+    "method": "decoupler.mt.ulm",
+    "method_semantics": "For each observation and regulator, fit a univariate linear model of measured feature statistic on that regulator's signed/weighted target vector and use the regression t-value as the regulatory activity score.",
+    "tmin": 5,
+    "tval": true,
+    "raw": false,
+    "feature_weights_used": true,
+    "output_coordinate": "ULM_T_VALUE_PER_ELIGIBLE_REGULATOR_PER_OBSERVATION",
+    "no_custom_ulm_reimplementation": true
+  },
+  "low_dimensional_state_rule": {
+    "status": "NOT_YET_FROZEN",
+    "exact_tf_panel": null,
+    "final_dimension": null,
+    "pca_or_other_reduction_rule": null,
+    "standardization_after_ulm": null,
+    "selection_must_be_based_on": "Prospectively frozen matched synthetic identifiability and rank/effective-dimension evidence, not empirical cancer or treatment outcomes.",
+    "no_g2_rank_inheritance": "The A3 r=2/r=3 G2 rank architecture is not automatically imported into B3/G1. Any B3 dimension rule must earn its own qualification."
+  },
+  "g1_restoration_firewall": {
+    "effective_regulatory_state_may_be_qualified": true,
+    "effective_jacobian_or_local_stability_work_may_continue": true,
+    "ulm_activity_is_not_a_generator": true,
+    "regulon_network_is_not_M_GRI": true,
+    "J_equals_K_minus_R_decomposition_identified_by_b3": false,
+    "independent_restoration_information_required_for_normalized_g1": true,
+    "normalized_g1_value_may_not_be_computed_from_b3_state_alone": true
+  },
+  "next_required_gate": {
+    "id": "B3_MATCHED_SYNTHETIC_IDENTIFIABILITY",
+    "must_precede": [
+      "final B3 low-dimensional state freeze",
+      "real SCC25 TF-activity state opening",
+      "real TCGA TF-activity state opening",
+      "empirical G1 operator use"
+    ],
+    "required_questions": [
+      "Does the exact scoring layer recover known regulator activity under the actual overlapping regulon geometry?",
+      "What low-dimensional state dimension is supportable without outcome-driven selection?",
+      "How sensitive is recovery to CollecTRI versus DoRothEA ABC representation?",
+      "Does the chosen state preserve known operator/modal structure in matched synthetic trajectories?",
+      "When recovery fails, does the implementation refuse rather than tune toward unity?"
+    ]
+  },
+  "promotion_effect": "NONE_SCORING_LAYER_FREEZE_ONLY"
+}
