@@ -1,7 +1,7 @@
 # NSD Forward Dataset Candidates v0.1
 
 Date: 14 September 2026
-Status: ACTIVE SOURCE-CANDIDATE AUDIT / FIRST D2 HIERARCHY GATES COMPLETE
+Status: ACTIVE SOURCE-CANDIDATE AUDIT / FIRST D3 AND D4 PAYLOAD GATES NOW CLOSED FOR PINNED ds003775 SCOPE
 Purpose: identify public, traceable neurophysiology capable of replacing the weak provenance of the historical NSD figures rather than attempting to rescue untraceable coordinates.
 
 ## 1. Selection rules
@@ -26,6 +26,7 @@ A dataset name such as “healthy” or “autism” is not itself an admission 
 
 - OpenNeuro accession: `ds003775`
 - repository Dataset DOI: `doi:10.18112/openneuro.ds003775.v1.2.1`
+- NEMAR mirror used for pinned payload verification: `on003775/v1.0.0`
 - BIDS version: `1.6.0`
 - license: CC0
 - participants.tsv rows: **111**
@@ -46,6 +47,81 @@ Current structural result:
 
 The important count is therefore not “153 participants.” It is **111 subjects, 153 sessions, with 42 subjects contributing repeated sessions**.
 
+### D3 metadata/join status
+
+For the frozen T0 healthy Engine-qualification scope, D3 is now closed:
+
+`D3_METADATA_JOIN_VERIFIED`
+
+Machine-readable manifest:
+
+`NSD_vNext/atlas/manifests/ds003775_metadata_role_manifest_v0.1.json`
+
+Rules now frozen for this task:
+- participant/session identity and acquisition metadata may enter the Structural Engine;
+- age and sex are downstream demographic covariates;
+- RAVLT, digit-span, trail-making, color-word, and verbal-fluency measures are downstream-only cognitive outcomes;
+- no diagnosis/outcome field may tune structural feature construction;
+- subject and session remain distinct units.
+
+Participant-table missingness in cognitive outcomes was explicitly audited and does not block T0 because those fields are downstream-only.
+
+### D4 real-payload verification
+
+D4 is no longer merely hypothetical.
+
+#### Single-file pilot
+
+`sub-001 / ses-t1 / task-resteyesc`
+
+The actual public EDF was downloaded in GitHub Actions and verified against the pinned public release:
+- annex MD5: exact match;
+- byte count: exact match;
+- EDF internal byte count: exact match;
+- channels: 64;
+- channel labels: exact BIDS channel-table match;
+- sampling rate: 1024 Hz on all channels;
+- duration: 240 s.
+
+Successful workflow run:
+
+`34924760163`
+
+#### Repeat-session payload pair
+
+A real repeat subject is now pinned:
+
+`sub-069`
+
+Public acquisition timestamps:
+- `ses-t1`: `2017-10-17T10:33:20`;
+- `ses-t2`: `2018-10-16T11:12:04`.
+
+Both actual EDF payloads were downloaded and independently verified against their annex identities and the common BIDS acquisition contract.
+
+Pinned annex identities:
+- t1: 31,473,920 bytes; MD5 `656b7184b5ed01e36601b79a3bf38c52`;
+- t2: 31,473,920 bytes; MD5 `0ecea6e69394a865f2fca83086f1b947`.
+
+Both sessions passed:
+- exact MD5;
+- exact byte count;
+- internal EDF byte-count consistency;
+- 64 channels;
+- exact channel-label order;
+- 1024 Hz sampling;
+- 240 s duration.
+
+Successful workflow:
+
+`NSD ds003775 D4 Repeat Pair`, run `34924915222`.
+
+Expectation manifest:
+
+`NSD_vNext/atlas/manifests/ds003775_sub069_repeat_d4_manifest_v0.1.json`
+
+This establishes a traceable real two-session pair for the first sample-level repeatability pilot. It does **not** yet make the complete 153-session dataset D5 analysis-ready.
+
 ### NSD value
 
 This is the preferred first real-data qualification source because it can test:
@@ -60,11 +136,11 @@ This is the preferred first real-data qualification source because it can test:
 
 `PRIORITY A — FIRST HEALTHY ENGINE-QUALIFICATION / RELIABILITY DATASET`
 
-Next gate:
-- D3 reviewed metadata-role/join manifest;
-- D4 actual EEG payload readability and signal-level identity checks.
+Current next gate:
+- extend D4 from exact payload/header verification into audited digital-to-physical sample decoding and generic signal-integrity characterization;
+- then qualify the first descriptive spectral route before any modal or clinical interpretation.
 
-It is not yet analysis-ready and is not the final lifespan Atlas by itself.
+It is not yet D5 analysis-ready and is not the final lifespan Atlas by itself.
 
 ## 3. Strong adult Atlas candidate — Dortmund Vital Study / OpenNeuro ds005385
 
@@ -160,7 +236,7 @@ This means:
 
 > `run != session`, and the public run labels cannot be silently reinterpreted as the two physical recording days.
 
-The new scans-session audit has been added to the Engine so this problem is measured rather than hand-waved.
+The scans-session audit in the Engine measures this rather than hand-waving it.
 
 ### Multi-paradigm value remains high
 
@@ -242,7 +318,9 @@ Release-by-release provenance and hierarchy audit is still required.
 Use `ds003775` first.
 
 Why:
-- D2 hierarchy is already clean;
+- D2 hierarchy is clean;
+- D3 roles/joins are frozen for T0;
+- exact real payloads have now passed D4 identity/header verification, including one genuine repeat-session pair;
 - manageable 64-channel dataset;
 - 42 repeat participants permit immediate subject/session discipline testing;
 - no disease labels are needed to qualify structure.
@@ -274,20 +352,21 @@ The forward NSD program no longer depends on reconstructing the untraceable 2025
 
 The public-data route already does something the old workflow could not: **it can fail a dataset before the science is allowed to use it.**
 
-The first real audit has produced both outcomes:
-- `ds003775` and `ds005385` pass clean structural hierarchy checks;
+The current audit has produced both outcomes:
+- `ds003775` now has clean D2, frozen T0 D3, and real-file D4 evidence;
+- `ds005385` passes clean structural hierarchy checks and remains next in the queue;
 - `ds006780`, despite being the most clinically tempting dataset, currently fails clean hierarchy admission.
 
-That refusal is evidence that the new safeguards are functioning, not an inconvenience to be patched around.
+That refusal is evidence that the safeguards are functioning, not an inconvenience to be patched around.
 
 ## 9. Current dataset gate status
 
 | Dataset | D0 discovered | D1 provenance | D2 hierarchy | D3 metadata roles/joins | D4 signal input | D5 analysis ready |
 | --- | --- | --- | --- | --- | --- | --- |
-| `ds003775` | YES | VERIFIED FOR CURRENT PUBLIC RELEASE METADATA | **VERIFIED** | PENDING REVIEWED MANIFEST | PENDING | NO |
+| `ds003775` | YES | VERIFIED FOR PINNED PUBLIC RELEASE | **VERIFIED** | **VERIFIED FOR T0 SCOPE** | **PILOT + REPEAT PAIR VERIFIED; FULL DATASET PENDING** | NO |
 | `ds005385` | YES | VERIFIED FOR CURRENT PUBLIC RELEASE METADATA | **VERIFIED** | PENDING REVIEWED MANIFEST | PENDING | NO |
 | `ds006780` | YES | **CONFLICTED / QUARANTINED** | **FAIL / BLOCKED** | PENDING | PENDING | NO |
 | LEMON / nm000179 | YES | PARTIAL | PENDING | PENDING | PENDING | NO |
 | HBN EEG releases | YES | PARTIAL | PENDING RELEASE-BY-RELEASE | PENDING | PENDING | NO |
 
-No dataset is promoted to D4 until the actual EEG payload identity/readability is verified. No dataset is promoted to D5 merely because its metadata hierarchy is clean.
+D4 is evidence about actual payload identity/readability, not scientific feature validity. D5 will require trustworthy sample decoding, QC characterization, and frozen analysis configuration in addition to payload verification.
