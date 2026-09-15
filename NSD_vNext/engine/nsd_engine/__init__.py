@@ -41,6 +41,13 @@ from .spectral import (
     SpectralConfig,
 )
 from .qc import ChannelQC, QCThresholds, SignalQCReport, evaluate_signal_qc
+from .edf import EDFHeader, EDFHeaderError, EDFSignalHeader, read_edf_header
+from .edf_samples import (
+    EDFChannelWindow,
+    digital_to_physical,
+    read_edf_channel_window,
+    read_edf_window,
+)
 from .system_stability import (
     LinearSystem2D,
     locally_stable_globally_unstable_fixture,
@@ -85,6 +92,14 @@ __all__ = [
     "QCThresholds",
     "SignalQCReport",
     "evaluate_signal_qc",
+    "EDFHeader",
+    "EDFHeaderError",
+    "EDFSignalHeader",
+    "read_edf_header",
+    "EDFChannelWindow",
+    "digital_to_physical",
+    "read_edf_channel_window",
+    "read_edf_window",
     "LinearSystem2D",
     "locally_stable_globally_unstable_fixture",
     "locally_unstable_globally_stabilized_fixture",
