@@ -8,8 +8,8 @@ version = "0.1.0"
 description = "Qualification-stage scaffold for the NSD vNext Structural Engine"
 requires-python = ">=3.10"
 dependencies = [
-    "numpy>=2.0,<3",
-    "scipy>=1.15,<2",
+    "numpy==2.4.6",
+    "scipy==1.17.1",
 ]
 
 [project.optional-dependencies]
