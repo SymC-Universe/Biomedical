@@ -1,7 +1,8 @@
 """NSD vNext Structural Engine contract scaffold.
 
 This package intentionally contains no clinical classifier and no estimator that
-manufactures a dynamical scalar. It defines auditable result contracts only.
+manufactures a dynamical scalar. It defines auditable result contracts plus
+label-blind qualification utilities.
 """
 
 from .schema import (
@@ -39,6 +40,13 @@ from .spectral import (
     DescriptiveSpectralEstimator,
     SpectralConfig,
 )
+from .qc import ChannelQC, QCThresholds, SignalQCReport, evaluate_signal_qc
+from .system_stability import (
+    LinearSystem2D,
+    locally_stable_globally_unstable_fixture,
+    locally_unstable_globally_stabilized_fixture,
+    same_local_different_coupling_fixture,
+)
 
 __all__ = [
     "CandidateMode",
@@ -73,4 +81,12 @@ __all__ = [
     "DescriptiveSpectralEstimate",
     "DescriptiveSpectralEstimator",
     "SpectralConfig",
+    "ChannelQC",
+    "QCThresholds",
+    "SignalQCReport",
+    "evaluate_signal_qc",
+    "LinearSystem2D",
+    "locally_stable_globally_unstable_fixture",
+    "locally_unstable_globally_stabilized_fixture",
+    "same_local_different_coupling_fixture",
 ]
