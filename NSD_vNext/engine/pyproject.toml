@@ -5,8 +5,12 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "nsd-structural-engine-contracts"
 version = "0.1.0"
-description = "Contract-only scaffold for the NSD vNext Structural Engine"
+description = "Qualification-stage scaffold for the NSD vNext Structural Engine"
 requires-python = ">=3.10"
+dependencies = [
+    "numpy>=2.0,<3",
+    "scipy>=1.15,<2",
+]
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
