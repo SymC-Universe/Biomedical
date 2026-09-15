@@ -1,0 +1,164 @@
+# NSD Modal Estimator Qualification v0.1
+
+Date: 14 September 2026
+Status: ACTIVE T0 / P0-Q
+Scope: native dynamical mode estimation before real-EEG admission
+
+## 1. Purpose
+
+The modal layer must earn local pole/frequency/decay quantities independently of descriptive spectral parameterization and independently of diagnosis.
+
+This document records the first executable route and its failure boundary.
+
+## 2. Route M1: direct output-only AR(2) least-squares estimator
+
+Model convention:
+
+```text
+x[t] = a1*x[t-1] + a2*x[t-2] + e[t]
+```
+
+The fitted discrete poles are roots of:
+
+```text
+z^2 - a1*z - a2 = 0
+```
+
+For a stable complex-conjugate pair, the estimator maps the discrete pole through:
+
+```text
+s = log(z) / dt = -alpha +/- i*omega_d
+omega_n = sqrt(alpha^2 + omega_d^2)
+zeta = alpha / omega_n
+```
+
+This is a legitimate model-specific route only when the AR(2) assumptions and operating region are qualified. It is not a generic EEG-to-damping shortcut.
+
+Implementation:
+
+`engine/nsd_engine/ar2_modal.py`
+
+## 3. Clean known-truth result
+
+Known-truth grid:
+
+- natural frequencies: 5, 10, 20 Hz;
+- damping ratios: 0.10, 0.20, 0.40, 0.60, 0.80, 0.90, 0.95;
+- durations: 10, 30, 120 s;
+- three random seeds per cell;
+- 256 Hz sampling.
+
+With **no additive observation/measurement noise**, the route performed well over most of the tested grid:
+
+- 63 grid rows;
+- median admission rate: **1.0**;
+- mean admission rate: approximately **0.995**;
+- median absolute damping-ratio error among admitted rows: **0.0142**;
+- median relative natural-frequency error: **0.0080**.
+
+Worst clean median damping errors were concentrated in short, low-frequency, highly damped cases. Examples:
+
+- 5 Hz, zeta 0.95, 10 s: median absolute zeta error about 0.070;
+- 5 Hz, zeta 0.90, 10 s: about 0.066;
+- 5 Hz, zeta 0.80, 10 s: about 0.058.
+
+Thus even in clean truth, operating-region quality depends on duration, frequency, and damping.
+
+## 4. Observation-noise falsification
+
+The same latent AR(2) truths were then contaminated with additive measurement noise expressed relative to the clean signal standard deviation.
+
+This exposed a decisive limitation of direct least-squares AR(2) fitting.
+
+### Noise ratio 0.25
+
+Across 63 rows:
+
+- mean admission rate fell to approximately **0.138**;
+- only 9 rows retained any admitted estimates;
+- median absolute damping-ratio error among those admitted rows was approximately **0.525**;
+- median relative frequency error among admitted rows was approximately **0.245**;
+- `REF_MODE_NONIDENTIFIABLE` dominated refusal behavior.
+
+The few admitted estimates were therefore not trustworthy merely because they survived the mechanical pole gate.
+
+### Noise ratios 0.50 and 1.00
+
+Across the tested grid:
+
+- admission rate: **0**;
+- no damping/frequency estimate survived the current complex-stable-pole gate;
+- refusals were `REF_MODE_NONIDENTIFIABLE`.
+
+## 5. Scientific decision
+
+Direct output-only AR(2) least squares is **not admitted for real EEG modal inference**.
+
+Current classification:
+
+`M1_AR2_DIRECT = KNOWN_TRUTH_BASELINE / REAL_EEG_NOT_ADMITTED`
+
+Why:
+
+1. clean synthetic recovery demonstrates the pole mapping and convention are mechanically sound;
+2. additive observation noise creates severe errors and/or destroys identifiability;
+3. real EEG necessarily includes measurement noise, unmodeled sources, source mixing, nonstationarity, and higher-order structure;
+4. relaxing refusal gates to obtain more real-data estimates would be backwards and is prohibited.
+
+The negative result is useful. It prevents a superficially elegant local damping-ratio pipeline from being promoted beyond its evidence.
+
+## 6. Next modal route: latent state-space oscillator
+
+The next candidate should explicitly separate latent oscillator dynamics from observation noise.
+
+Native structure:
+
+```text
+x[t+1] = A x[t] + w[t]
+y[t]   = H x[t] + v[t]
+```
+
+with an oscillatory 2D latent transition block, process noise `w`, and explicit observation noise `v`.
+
+The candidate must estimate or otherwise qualify:
+
+- latent decay / pole radius;
+- damped frequency;
+- observation-noise variance;
+- process-noise variance;
+- uncertainty/identifiability;
+- model adequacy/residual behavior.
+
+The preferred qualification route is likelihood-based state-space estimation / Kalman filtering, with parameters transformed back into established pole and modal damping terminology only after the model is admitted.
+
+## 7. Required known-truth tests for M2
+
+Before real EEG:
+
+1. clean latent oscillator;
+2. observation-noise ratios spanning the AR2 failure region;
+3. process-noise variation;
+4. duration variation;
+5. frequency/damping grid;
+6. two-mode contamination;
+7. colored observation/process disturbances;
+8. frequency drift;
+9. finite bursts/nonstationarity;
+10. non-oscillatory alternatives;
+11. model-order mismatch;
+12. initialization sensitivity;
+13. uncertainty/calibration behavior.
+
+The AR2 route remains as a comparator because agreement/disagreement between naive and observation-noise-aware estimators is itself useful Limit-Map information.
+
+## 8. Consequence for lowercase chi
+
+No local `chi_i` / modal damping ratio is admitted on real NSD EEG merely because a descriptive peak exists or an AR(2) fit returns complex poles.
+
+The sequence remains:
+
+`signal -> qualified latent/modal model -> pole/decay/frequency -> modal damping ratio zeta_i -> SymC correspondence only where warranted`
+
+not:
+
+`PSD peak -> width -> damping -> chi`.
