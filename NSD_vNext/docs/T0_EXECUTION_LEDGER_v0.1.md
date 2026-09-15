@@ -27,21 +27,44 @@ Provisional exit requirements:
 
 ## 2. Mechanical verification
 
-Latest confirmed full Engine contract suite before this ledger entry:
+Latest confirmed full Engine contract suite before the optional parameterization work:
 
 - GitHub Actions workflow: `NSD Engine Contracts`
-- run: `34924760191`
+- run: `34925476505`
 - result: SUCCESS
-- tests: **62 passed**
-- runtime: 0.21 s
+- tests: **73 passed**
+- runtime: 0.83 s
 
-The suite includes provenance, hierarchy, metadata firewall, spectral/modal contracts, exact second-order fixtures, scalar admission/refusal, serialization, generic signal QC, local-versus-embedded 2x2 stability fixtures, and EDF-header tests.
+The suite includes provenance, hierarchy, metadata firewall, descriptive spectral/modal contracts, exact second-order fixtures, scalar admission/refusal, serialization, generic signal QC, local-versus-embedded 2x2 stability fixtures, EDF-header tests, EDF digital-to-physical sample access, and Welch PSD known-truth tests.
 
-Current branch CI continues to run after every relevant PR update; a green historical run is not substituted for the current head.
+A separate exact-version descriptive parameterization qualification suite has also passed:
+
+- workflow: `NSD specparam rc7 Qualification`
+- run: `34925860672`
+- result: SUCCESS
+- tests: **7 passed**
+- exact dependency: `specparam==2.0.0rc7`
+- numerical stack in that successful run: NumPy 2.4.6 / SciPy 1.17.1
+
+The specparam tests are deliberately isolated from the main contract suite because release-candidate parameterization software must not become a silent core dependency.
+
+### Mechanical issues caught by CI rather than normalized away
+
+Two useful failures occurred during this push:
+
+1. adding a qualification-test directory initially broke setuptools automatic package discovery; package discovery was then explicitly frozen to `nsd_engine*`;
+2. an earlier eager import of the PSD stack caused D4 payload tools to fail when NumPy/SciPy were absent; the package import surface was corrected so payload/provenance utilities remain dependency-light.
+
+A third reproducibility issue was caught empirically: consecutive qualification workflows resolved NumPy 2.4.4 and then 2.4.6 under an open version range. The T0 numerical stack is therefore now explicitly frozen to:
+
+- `numpy==2.4.6`;
+- `scipy==1.17.1`.
+
+This is a qualification freeze, not a claim that these versions are universally optimal.
 
 ## 3. Local-versus-embedded stability program
 
-Executable native-system fixtures now cover:
+Executable native-system fixtures cover:
 
 - same isolated local rates and same eigenspectrum with different coupling/non-normality and different reactivity;
 - locally stable isolated components whose coupled system is globally unstable;
@@ -98,7 +121,7 @@ Dataset identity:
 - D1 provenance for pinned release: CLOSED FOR CURRENT SCOPE
 - D2 hierarchy: VERIFIED
 - D3 metadata/join: **VERIFIED FOR T0 HEALTHY QUALIFICATION**
-- D4 signal input: **PILOT VERIFIED; DATASET-WIDE/REPEAT EXPANSION ACTIVE**
+- D4 signal input: **PILOT + REAL REPEAT PAIR VERIFIED; DATASET-WIDE EXPANSION OPEN**
 - D5 analysis ready: OPEN
 
 ### D3 artifact
@@ -111,13 +134,13 @@ Canonical manifest-body SHA-256:
 
 Only identity/acquisition/recording-state metadata may enter structural feature construction. Age, sex, and all participant cognitive scores are downstream.
 
-## 6. D4 payload verification already closed for one exact real recording
+## 6. D4 payload and sample decoding
 
-Pilot:
+### Single-file pilot
 
 `sub-001 / ses-t1 / task-resteyesc`
 
-Verified by GitHub Actions against the public NEMAR payload:
+Verified against the pinned NEMAR payload:
 
 - exact annex MD5: PASS;
 - exact expected byte count: PASS;
@@ -127,70 +150,167 @@ Verified by GitHub Actions against the public NEMAR payload:
 - 1024 Hz on all channels: PASS;
 - 240 s duration: PASS.
 
-Workflow:
+Confirmed workflow run:
 
-`NSD ds003775 D4 Pilot`
+`NSD ds003775 D4 Pilot` / `34924760163`
 
-Successful run:
-
-`34924760163`
-
-Artifact:
-
-`ds003775-d4-pilot-report`
-
-This is D4 evidence for the named payload only. It does not promote the complete dataset.
-
-## 7. Repeat-session D4 expansion now active
+### Real repeat pair
 
 Frozen repeat subject:
 
 `sub-069`
 
-Public hierarchy exposes both:
+Public hierarchy:
 
 - `ses-t1`, acquisition `2017-10-17T10:33:20`;
 - `ses-t2`, acquisition `2018-10-16T11:12:04`.
 
-Pinned annex identities:
+Pinned identities:
 
 - t1: 31,473,920 bytes; MD5 `656b7184b5ed01e36601b79a3bf38c52`;
 - t2: 31,473,920 bytes; MD5 `0ecea6e69394a865f2fca83086f1b947`.
 
-Expectation manifest:
+Both files passed exact payload/header checks in workflow run `34924915222`.
 
-`atlas/manifests/ds003775_sub069_repeat_d4_manifest_v0.1.json`
+A dependency-light EDF sample reader now verifies the digital-to-physical conversion explicitly and can read bounded physical-unit channel windows without loading an entire recording.
 
-Generic verifier:
+### First real signal-integrity probe
 
-`engine/tools/d4_verify_edf_manifest.py`
+A 10-second, all-64-channel, label-blind physical-sample probe on the real repeat pair completed successfully.
 
-CI workflow:
+Observed only as descriptive integrity facts:
 
-`NSD ds003775 D4 Repeat Pair`
+- t1: 0 flat channels; 0 missing fraction; maximum repeated numerical-extreme occupancy 0.000390625;
+- t2: 0 flat channels; 0 missing fraction; maximum repeated numerical-extreme occupancy 0.00029296875.
 
-Current purpose:
+This does **not** mean the data are artifact-free or scientifically preprocessed. It shows the payload can be decoded into plausible non-flat finite physical samples and is suitable for the next qualification layer.
 
-- confirm both longitudinal payload identities;
-- verify both EDF headers against the same acquisition contract;
-- establish a real two-session payload pair suitable for the first signal-level repeatability pilot.
+## 7. Descriptive Welch PSD layer
 
-No reliability result is claimed merely because both files pass D4.
+Implemented in:
 
-## 8. Immediate execution order from here
+`engine/nsd_engine/psd.py`
 
-1. close repeat-pair D4 CI;
-2. implement sample-level EDF access with unit/scaling verification;
-3. run generic label-blind QC on a frozen subset without tuning thresholds to clinical or outcome variables;
-4. verify sample reader against known digital-to-physical conversion fixtures;
-5. implement the first accepted descriptive PSD route;
-6. run PSD/periodic-aperiodic qualification on known truth and the healthy pilot;
-7. compare t1/t2 descriptive outputs for the repeat subject;
-8. expand to the full repeat subset only after pilot behavior is mechanically and scientifically sane;
-9. begin the first empirical Function/Limit Map;
-10. then qualify state-space/modal estimators independently before local damping-ratio admission.
+Frozen primitive characteristics:
 
-## 9. Stop lines
+- SciPy Welch;
+- exact method/version recorded;
+- explicit window length;
+- explicit overlap;
+- explicit detrending;
+- explicit density/spectrum convention;
+- explicit frequency range and resolution;
+- no damping license;
+- no natural-frequency license;
+- no chi license.
+
+Known-truth tests recover a known sinusoidal frequency, check integrated PSD power against signal variance, and enforce input/frequency/window validity.
+
+### Real repeat-session PSD pilot
+
+`sub-069`, full four-minute t1/t2 recordings, all 64 channels, 1–45 Hz.
+
+Initial 4-second-window run:
+
+- Hann window;
+- 50% overlap;
+- constant detrend;
+- density scaling;
+- 0.25 Hz frequency resolution;
+- 119 Welch segments.
+
+Single-subject descriptive repeat result:
+
+- global median log-PSD correlation: approximately **0.99**;
+- median channel log-PSD correlation: approximately **0.98**;
+- minimum channel correlation in that run: approximately **0.89**.
+
+Interpretation ceiling:
+
+> one healthy subject, one acquisition family, descriptive PSD similarity only. This is not an ICC, population reliability estimate, trait claim, or clinical result.
+
+## 8. Welch-window nuisance / Limit-Map probe
+
+A prespecified 2 s / 4 s / 8 s comparison was run with no model-selection rule and no attempt to choose whichever window looked best.
+
+All settings used:
+
+- 1–45 Hz;
+- Hann;
+- 50% overlap;
+- constant detrending;
+- density scaling.
+
+### Repeat-session log-PSD similarity
+
+| Window | Resolution | Segments | Global median-PSD correlation | Median channel correlation | Minimum channel correlation |
+| ---: | ---: | ---: | ---: | ---: | ---: |
+| 2 s | 0.5 Hz | 239 | 0.9950 | 0.9929 | 0.9262 |
+| 4 s | 0.25 Hz | 119 | 0.9937 | 0.9905 | 0.9235 |
+| 8 s | 0.125 Hz | 59 | 0.9934 | 0.9869 | 0.9179 |
+
+These numbers are a nuisance map, **not** evidence for selecting 2 s as “best.”
+
+### Cross-window behavior within each recording
+
+PSD *shape* was extremely similar on the common 0.5-Hz grid across all window pairs, with median channel log-shape correlations above 0.996 in both sessions.
+
+Integrated 1–45-Hz power was more window-sensitive than shape. Median symmetric relative differences were:
+
+- t1: 2 s vs 4 s = 0.0847; 2 s vs 8 s = 0.0991; 4 s vs 8 s = 0.0172;
+- t2: 2 s vs 4 s = 0.0494; 2 s vs 8 s = 0.0757; 4 s vs 8 s = 0.0268.
+
+The maximum channel-level differences were substantially larger in some comparisons. Therefore absolute integrated power cannot be treated as configuration-invariant merely because spectral shape is highly correlated.
+
+Next required scale-up is the 42-repeat-subject population, where configuration effects can be quantified subject-aware rather than inferred from one person.
+
+## 9. Periodic/aperiodic parameterization qualification
+
+The project has **not** promoted a periodic/aperiodic parameterizer into the Atlas yet.
+
+Current qualification route:
+
+- exact isolated dependency: `specparam==2.0.0rc7`;
+- adapter: `engine/nsd_engine/specparam_adapter.py`;
+- known-truth tests: `engine/qualification_tests/test_specparam_adapter.py`;
+- exact-version qualification CI: PASS, **7 tests passed**;
+- raw Welch PSD remains independently available beneath the parameterizer;
+- returned peak bandwidth remains descriptive only.
+
+The first passing tests cover:
+
+- pure fixed aperiodic truth with no invented peak;
+- one separated Gaussian peak;
+- two separated Gaussian peaks;
+- knee truth versus a misspecified fixed model;
+- broad Gaussian bump kept descriptive;
+- exact release-candidate version freeze;
+- invalid/nonpositive power rejection.
+
+A broader known-truth failure-boundary map is now active for:
+
+- overlapping-peak separation;
+- weak-peak detection under deterministic noise;
+- frequency-resolution sensitivity;
+- knee misspecification with periodic fitting enabled;
+- broad-bump behavior.
+
+No real healthy periodic/aperiodic result is admitted until this failure map is inspected and the operating region is declared.
+
+## 10. Immediate execution order from here
+
+1. close and inspect the expanded specparam known-truth failure-boundary map;
+2. freeze the descriptive periodic/aperiodic operating region and explicit refusal conditions if the map supports one;
+3. run the exact frozen parameterizer on the real `sub-069` repeat pair only after step 2;
+4. expand descriptive Welch and, if admitted, spectral-parameterization analyses to all 42 repeat subjects;
+5. estimate subject-aware repeatability, no-peak prevalence, configuration sensitivity, and channel/region structure;
+6. begin the first empirical Function/Limit Map;
+7. only then qualify a state-space/modal estimator independently;
+8. admit local modal damping ratios only after that modal route survives known truth;
+9. populate the first healthy/reference Atlas layers;
+10. keep all clinical labels downstream until T0/T1 gates are closed.
+
+## 11. Stop lines
 
 Still prohibited at T0:
 
