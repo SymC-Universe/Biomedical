@@ -1,0 +1,97 @@
+name: NSD ds003775 Specparam Repeat Pilot
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/nsd-ds003775-specparam-repeat-pilot.yml"
+      - "NSD_vNext/atlas/manifests/ds003775_sub069_repeat_d4_manifest_v0.1.json"
+      - "NSD_vNext/engine/pyproject.toml"
+      - "NSD_vNext/engine/nsd_engine/edf.py"
+      - "NSD_vNext/engine/nsd_engine/edf_samples.py"
+      - "NSD_vNext/engine/nsd_engine/psd.py"
+      - "NSD_vNext/engine/nsd_engine/specparam_adapter.py"
+      - "NSD_vNext/engine/nsd_engine/spectral_parameterization_qc.py"
+      - "NSD_vNext/engine/tools/d4_verify_edf_manifest.py"
+      - "NSD_vNext/engine/tools/probe_specparam_repeat_manifest.py"
+      - "NSD_vNext/docs/SPECTRAL_PARAMETERIZATION_OPERATING_REGION_v0.1.md"
+
+permissions:
+  contents: read
+
+jobs:
+  healthy-repeat-parameterization:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install frozen qualification stack
+        shell: bash
+        working-directory: NSD_vNext/engine
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[parameterization_rc7]"
+
+      - name: Download pinned repeat-session EDFs
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT="$RUNNER_TEMP/nsd_specparam_repeat"
+          mkdir -p "$ROOT"
+          curl --fail --location --retry 3 --retry-delay 2 \
+            "https://data.nemar.org/on003775/v1.0.0/sub-069/ses-t1/eeg/sub-069_ses-t1_task-resteyesc_eeg.edf" \
+            --output "$ROOT/sub-069_ses-t1_task-resteyesc_eeg.edf"
+          curl --fail --location --retry 3 --retry-delay 2 \
+            "https://data.nemar.org/on003775/v1.0.0/sub-069/ses-t2/eeg/sub-069_ses-t2_task-resteyesc_eeg.edf" \
+            --output "$ROOT/sub-069_ses-t2_task-resteyesc_eeg.edf"
+
+      - name: Re-verify exact payload identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          python NSD_vNext/engine/tools/d4_verify_edf_manifest.py \
+            NSD_vNext/atlas/manifests/ds003775_sub069_repeat_d4_manifest_v0.1.json \
+            "$RUNNER_TEMP/nsd_specparam_repeat" \
+            --output "$RUNNER_TEMP/nsd_specparam_repeat/d4_identity_report.json"
+
+      - name: Run frozen descriptive parameterization repeat pilot
+        shell: bash
+        run: |
+          set -euo pipefail
+          python NSD_vNext/engine/tools/probe_specparam_repeat_manifest.py \
+            NSD_vNext/atlas/manifests/ds003775_sub069_repeat_d4_manifest_v0.1.json \
+            "$RUNNER_TEMP/nsd_specparam_repeat" \
+            --output "$RUNNER_TEMP/nsd_specparam_repeat/specparam_repeat_pilot.json"
+
+      - name: Print compact healthy-pilot summary
+        shell: bash
+        run: |
+          set -euo pipefail
+          REPORT="$RUNNER_TEMP/nsd_specparam_repeat/specparam_repeat_pilot.json"
+          python - "$REPORT" <<'PY'
+          import json, sys
+          report = json.load(open(sys.argv[1], encoding="utf-8"))
+          print("subject", report["subject_id"])
+          print("frozen_candidate", json.dumps(report["frozen_candidate"], sort_keys=True))
+          for session in report["sessions"]:
+              print(session["session_id"], json.dumps(session["summary"], sort_keys=True))
+          print("repeat_summary", json.dumps(report["repeat_summary"], sort_keys=True))
+          PY
+
+      - name: Upload healthy-pilot report
+        uses: actions/upload-artifact@v4
+        with:
+          name: ds003775-specparam-repeat-pilot
+          path: |
+            ${{ runner.temp }}/nsd_specparam_repeat/d4_identity_report.json
+            ${{ runner.temp }}/nsd_specparam_repeat/specparam_repeat_pilot.json
+          if-no-files-found: error
+          retention-days: 30

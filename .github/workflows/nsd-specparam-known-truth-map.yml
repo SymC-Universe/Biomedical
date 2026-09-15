@@ -1,0 +1,62 @@
+name: NSD specparam Known-Truth Map
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/nsd-specparam-known-truth-map.yml"
+      - "NSD_vNext/engine/pyproject.toml"
+      - "NSD_vNext/engine/nsd_engine/specparam_adapter.py"
+      - "NSD_vNext/engine/tools/probe_specparam_known_truth_map.py"
+
+permissions:
+  contents: read
+
+jobs:
+  map-known-truth:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install frozen qualification stack
+        shell: bash
+        working-directory: NSD_vNext/engine
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[parameterization_rc7]"
+          python - <<'PY'
+          from importlib.metadata import version
+          expected = {
+              "numpy": "2.4.6",
+              "scipy": "1.17.1",
+              "specparam": "2.0.0rc7",
+          }
+          for package, wanted in expected.items():
+              got = version(package)
+              assert got == wanted, (package, got, wanted)
+              print(package, got)
+          PY
+
+      - name: Run known-truth failure-boundary map
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/nsd_specparam_map"
+          python NSD_vNext/engine/tools/probe_specparam_known_truth_map.py \
+            | tee "$RUNNER_TEMP/nsd_specparam_map/specparam_known_truth_map.json"
+
+      - name: Upload known-truth map
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-specparam-known-truth-map
+          path: ${{ runner.temp }}/nsd_specparam_map/specparam_known_truth_map.json
+          if-no-files-found: error
+          retention-days: 30

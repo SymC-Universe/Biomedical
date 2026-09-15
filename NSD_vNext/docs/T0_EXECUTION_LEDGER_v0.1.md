@@ -1,0 +1,327 @@
+# NSD T0 Engine Qualification Execution Ledger v0.1
+
+Date opened: 14 September 2026
+Status: ACTIVE
+Target: T0 exit for the Neurophysiology Decision-Support Tool program
+
+## 1. T0 exit definition
+
+T0 exists to prove that the label-blind representation layer can recover known structure, refuse invalid reductions, preserve provenance, and operate on traceable real neurophysiology before any clinical model is allowed to matter.
+
+T0 does **not** claim diagnosis, prognosis, a healthy chi range, or a universal neural stability scalar.
+
+Provisional exit requirements:
+
+1. deterministic provenance/hierarchy contracts;
+2. metadata-role firewall;
+3. signal-payload identity/readability gate;
+4. generic label-blind signal QC;
+5. descriptive spectral layer qualified on fixtures and real healthy data;
+6. known-truth modal recovery for at least one native dynamical route;
+7. scalar admission/refusal only after modal qualification;
+8. local-versus-embedded stability known-truth tests;
+9. nuisance/adversarial Limit Map;
+10. repeat-session healthy qualification;
+11. CI regression coverage;
+12. versioned Engine outputs ready for Atlas serialization.
+
+## 2. Mechanical verification
+
+Latest confirmed full Engine contract suite before the optional parameterization work:
+
+- GitHub Actions workflow: `NSD Engine Contracts`
+- run: `34925476505`
+- result: SUCCESS
+- tests: **73 passed**
+- runtime: 0.83 s
+
+The suite includes provenance, hierarchy, metadata firewall, descriptive spectral/modal contracts, exact second-order fixtures, scalar admission/refusal, serialization, generic signal QC, local-versus-embedded 2x2 stability fixtures, EDF-header tests, EDF digital-to-physical sample access, and Welch PSD known-truth tests.
+
+A separate exact-version descriptive parameterization qualification suite has also passed:
+
+- workflow: `NSD specparam rc7 Qualification`
+- run: `34925860672`
+- result: SUCCESS
+- tests: **7 passed**
+- exact dependency: `specparam==2.0.0rc7`
+- numerical stack in that successful run: NumPy 2.4.6 / SciPy 1.17.1
+
+The specparam tests are deliberately isolated from the main contract suite because release-candidate parameterization software must not become a silent core dependency.
+
+### Mechanical issues caught by CI rather than normalized away
+
+Two useful failures occurred during this push:
+
+1. adding a qualification-test directory initially broke setuptools automatic package discovery; package discovery was then explicitly frozen to `nsd_engine*`;
+2. an earlier eager import of the PSD stack caused D4 payload tools to fail when NumPy/SciPy were absent; the package import surface was corrected so payload/provenance utilities remain dependency-light.
+
+A third reproducibility issue was caught empirically: consecutive qualification workflows resolved NumPy 2.4.4 and then 2.4.6 under an open version range. The T0 numerical stack is therefore now explicitly frozen to:
+
+- `numpy==2.4.6`;
+- `scipy==1.17.1`.
+
+This is a qualification freeze, not a claim that these versions are universally optimal.
+
+## 3. Local-versus-embedded stability program
+
+Executable native-system fixtures cover:
+
+- same isolated local rates and same eigenspectrum with different coupling/non-normality and different reactivity;
+- locally stable isolated components whose coupled system is globally unstable;
+- an isolated unstable component whose coupled system is asymptotically stabilized;
+- distinction between spectral abscissa and numerical-abscissa/reactivity behavior.
+
+Implemented in:
+
+`engine/nsd_engine/system_stability.py`
+
+These fixtures operationalize the GOM rule:
+
+`LOCAL DYNAMICAL IDENTITY != EMBEDDED REALIZED BEHAVIOR`
+
+without introducing a project-branded whole-system parameter.
+
+## 4. Generic signal QC
+
+Implemented in:
+
+`engine/nsd_engine/qc.py`
+
+Current capabilities:
+
+- per-channel finite/missing fraction;
+- amplitude range;
+- flat-channel detection;
+- repeated numerical-extreme occupancy as a clipping/saturation indicator;
+- channel-count accounting;
+- conservative usable-duration bookkeeping;
+- explicit caller-supplied thresholds;
+- no hidden universal EEG-quality cutoffs.
+
+The scientific rule is measurement first, task-specific admission threshold second.
+
+## 5. First healthy real-data source: ds003775
+
+Dataset identity:
+
+- OpenNeuro `ds003775`;
+- DOI `10.18112/openneuro.ds003775.v1.2.1`;
+- NEMAR mirror `on003775/v1.0.0`;
+- 111 subjects;
+- 153 sessions;
+- 42 repeat-session subjects;
+- 64-channel BioSemi EEG;
+- four-minute eyes-closed rest;
+- 1024 Hz;
+- average reference in the pinned raw release metadata.
+
+### Gate state
+
+- D0 discovery: CLOSED
+- D1 provenance for pinned release: CLOSED FOR CURRENT SCOPE
+- D2 hierarchy: VERIFIED
+- D3 metadata/join: **VERIFIED FOR T0 HEALTHY QUALIFICATION**
+- D4 signal input: **PILOT + REAL REPEAT PAIR VERIFIED; DATASET-WIDE EXPANSION OPEN**
+- D5 analysis ready: OPEN
+
+### D3 artifact
+
+`atlas/manifests/ds003775_metadata_role_manifest_v0.1.json`
+
+Canonical manifest-body SHA-256:
+
+`28d71314e720eb4be799525c27c89f1f5a6090f2464e8d82e0c071effe1afe1d`
+
+Only identity/acquisition/recording-state metadata may enter structural feature construction. Age, sex, and all participant cognitive scores are downstream.
+
+## 6. D4 payload and sample decoding
+
+### Single-file pilot
+
+`sub-001 / ses-t1 / task-resteyesc`
+
+Verified against the pinned NEMAR payload:
+
+- exact annex MD5: PASS;
+- exact expected byte count: PASS;
+- EDF internal byte-count consistency: PASS;
+- 64 channels: PASS;
+- exact channel-label sequence: PASS;
+- 1024 Hz on all channels: PASS;
+- 240 s duration: PASS.
+
+Confirmed workflow run:
+
+`NSD ds003775 D4 Pilot` / `34924760163`
+
+### Real repeat pair
+
+Frozen repeat subject:
+
+`sub-069`
+
+Public hierarchy:
+
+- `ses-t1`, acquisition `2017-10-17T10:33:20`;
+- `ses-t2`, acquisition `2018-10-16T11:12:04`.
+
+Pinned identities:
+
+- t1: 31,473,920 bytes; MD5 `656b7184b5ed01e36601b79a3bf38c52`;
+- t2: 31,473,920 bytes; MD5 `0ecea6e69394a865f2fca83086f1b947`.
+
+Both files passed exact payload/header checks in workflow run `34924915222`.
+
+A dependency-light EDF sample reader now verifies the digital-to-physical conversion explicitly and can read bounded physical-unit channel windows without loading an entire recording.
+
+### First real signal-integrity probe
+
+A 10-second, all-64-channel, label-blind physical-sample probe on the real repeat pair completed successfully.
+
+Observed only as descriptive integrity facts:
+
+- t1: 0 flat channels; 0 missing fraction; maximum repeated numerical-extreme occupancy 0.000390625;
+- t2: 0 flat channels; 0 missing fraction; maximum repeated numerical-extreme occupancy 0.00029296875.
+
+This does **not** mean the data are artifact-free or scientifically preprocessed. It shows the payload can be decoded into plausible non-flat finite physical samples and is suitable for the next qualification layer.
+
+## 7. Descriptive Welch PSD layer
+
+Implemented in:
+
+`engine/nsd_engine/psd.py`
+
+Frozen primitive characteristics:
+
+- SciPy Welch;
+- exact method/version recorded;
+- explicit window length;
+- explicit overlap;
+- explicit detrending;
+- explicit density/spectrum convention;
+- explicit frequency range and resolution;
+- no damping license;
+- no natural-frequency license;
+- no chi license.
+
+Known-truth tests recover a known sinusoidal frequency, check integrated PSD power against signal variance, and enforce input/frequency/window validity.
+
+### Real repeat-session PSD pilot
+
+`sub-069`, full four-minute t1/t2 recordings, all 64 channels, 1–45 Hz.
+
+Initial 4-second-window run:
+
+- Hann window;
+- 50% overlap;
+- constant detrend;
+- density scaling;
+- 0.25 Hz frequency resolution;
+- 119 Welch segments.
+
+Single-subject descriptive repeat result:
+
+- global median log-PSD correlation: approximately **0.99**;
+- median channel log-PSD correlation: approximately **0.98**;
+- minimum channel correlation in that run: approximately **0.89**.
+
+Interpretation ceiling:
+
+> one healthy subject, one acquisition family, descriptive PSD similarity only. This is not an ICC, population reliability estimate, trait claim, or clinical result.
+
+## 8. Welch-window nuisance / Limit-Map probe
+
+A prespecified 2 s / 4 s / 8 s comparison was run with no model-selection rule and no attempt to choose whichever window looked best.
+
+All settings used:
+
+- 1–45 Hz;
+- Hann;
+- 50% overlap;
+- constant detrending;
+- density scaling.
+
+### Repeat-session log-PSD similarity
+
+| Window | Resolution | Segments | Global median-PSD correlation | Median channel correlation | Minimum channel correlation |
+| ---: | ---: | ---: | ---: | ---: | ---: |
+| 2 s | 0.5 Hz | 239 | 0.9950 | 0.9929 | 0.9262 |
+| 4 s | 0.25 Hz | 119 | 0.9937 | 0.9905 | 0.9235 |
+| 8 s | 0.125 Hz | 59 | 0.9934 | 0.9869 | 0.9179 |
+
+These numbers are a nuisance map, **not** evidence for selecting 2 s as “best.”
+
+### Cross-window behavior within each recording
+
+PSD *shape* was extremely similar on the common 0.5-Hz grid across all window pairs, with median channel log-shape correlations above 0.996 in both sessions.
+
+Integrated 1–45-Hz power was more window-sensitive than shape. Median symmetric relative differences were:
+
+- t1: 2 s vs 4 s = 0.0847; 2 s vs 8 s = 0.0991; 4 s vs 8 s = 0.0172;
+- t2: 2 s vs 4 s = 0.0494; 2 s vs 8 s = 0.0757; 4 s vs 8 s = 0.0268.
+
+The maximum channel-level differences were substantially larger in some comparisons. Therefore absolute integrated power cannot be treated as configuration-invariant merely because spectral shape is highly correlated.
+
+Next required scale-up is the 42-repeat-subject population, where configuration effects can be quantified subject-aware rather than inferred from one person.
+
+## 9. Periodic/aperiodic parameterization qualification
+
+The project has **not** promoted a periodic/aperiodic parameterizer into the Atlas yet.
+
+Current qualification route:
+
+- exact isolated dependency: `specparam==2.0.0rc7`;
+- adapter: `engine/nsd_engine/specparam_adapter.py`;
+- known-truth tests: `engine/qualification_tests/test_specparam_adapter.py`;
+- exact-version qualification CI: PASS, **7 tests passed**;
+- raw Welch PSD remains independently available beneath the parameterizer;
+- returned peak bandwidth remains descriptive only.
+
+The first passing tests cover:
+
+- pure fixed aperiodic truth with no invented peak;
+- one separated Gaussian peak;
+- two separated Gaussian peaks;
+- knee truth versus a misspecified fixed model;
+- broad Gaussian bump kept descriptive;
+- exact release-candidate version freeze;
+- invalid/nonpositive power rejection.
+
+A broader known-truth failure-boundary map is now active for:
+
+- overlapping-peak separation;
+- weak-peak detection under deterministic noise;
+- frequency-resolution sensitivity;
+- knee misspecification with periodic fitting enabled;
+- broad-bump behavior.
+
+No real healthy periodic/aperiodic result is admitted until this failure map is inspected and the operating region is declared.
+
+## 10. Immediate execution order from here
+
+1. close and inspect the expanded specparam known-truth failure-boundary map;
+2. freeze the descriptive periodic/aperiodic operating region and explicit refusal conditions if the map supports one;
+3. run the exact frozen parameterizer on the real `sub-069` repeat pair only after step 2;
+4. expand descriptive Welch and, if admitted, spectral-parameterization analyses to all 42 repeat subjects;
+5. estimate subject-aware repeatability, no-peak prevalence, configuration sensitivity, and channel/region structure;
+6. begin the first empirical Function/Limit Map;
+7. only then qualify a state-space/modal estimator independently;
+8. admit local modal damping ratios only after that modal route survives known truth;
+9. populate the first healthy/reference Atlas layers;
+10. keep all clinical labels downstream until T0/T1 gates are closed.
+
+## 11. Stop lines
+
+Still prohibited at T0:
+
+- clinical classification;
+- ASD feature selection;
+- diagnosis-informed region selection;
+- prognosis;
+- treatment guidance;
+- universal healthy stability boundaries;
+- direct bandwidth-to-damping conversion;
+- whole-brain chi;
+- any claim that repeated-session similarity alone proves trait biology.
+
+The intended T0 outcome is a trustworthy measurement and representation engine. Clinical usefulness is tested downstream rather than assumed upstream.
