@@ -1,4 +1,4 @@
-"""NSD vNext Structural Engine contract scaffold.
+"""NSD vNext Structural Engine qualification scaffold.
 
 This package intentionally contains no clinical classifier and no estimator that
 manufactures a dynamical scalar. It defines auditable result contracts plus
@@ -40,6 +40,7 @@ from .spectral import (
     DescriptiveSpectralEstimator,
     SpectralConfig,
 )
+from .psd import PSDResult, WelchConfig, estimate_welch_psd
 from .qc import ChannelQC, QCThresholds, SignalQCReport, evaluate_signal_qc
 from .edf import EDFHeader, EDFHeaderError, EDFSignalHeader, read_edf_header
 from .edf_samples import (
@@ -88,6 +89,9 @@ __all__ = [
     "DescriptiveSpectralEstimate",
     "DescriptiveSpectralEstimator",
     "SpectralConfig",
+    "PSDResult",
+    "WelchConfig",
+    "estimate_welch_psd",
     "ChannelQC",
     "QCThresholds",
     "SignalQCReport",
