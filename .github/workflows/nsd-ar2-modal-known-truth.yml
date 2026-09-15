@@ -1,0 +1,87 @@
+name: NSD AR2 Modal Known-Truth Map
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/nsd-ar2-modal-known-truth.yml"
+      - "NSD_vNext/engine/pyproject.toml"
+      - "NSD_vNext/engine/nsd_engine/ar2_modal.py"
+      - "NSD_vNext/engine/tools/probe_ar2_modal_known_truth_map.py"
+
+permissions:
+  contents: read
+
+jobs:
+  map-ar2-modal:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install frozen numerical stack
+        shell: bash
+        working-directory: NSD_vNext/engine
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install -e .
+
+      - name: Run AR2 known-truth operating-region map
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/nsd_ar2_map"
+          python NSD_vNext/engine/tools/probe_ar2_modal_known_truth_map.py \
+            > "$RUNNER_TEMP/nsd_ar2_map/ar2_modal_known_truth_map.json"
+
+      - name: Print compact AR2 map summary
+        shell: bash
+        run: |
+          set -euo pipefail
+          REPORT="$RUNNER_TEMP/nsd_ar2_map/ar2_modal_known_truth_map.json"
+          python - "$REPORT" <<'PY'
+          import json, sys
+          report = json.load(open(sys.argv[1], encoding="utf-8"))
+          rows = report["rows"]
+          clean = [r for r in rows if r["measurement_noise_to_clean_signal_sd"] == 0.0]
+          noisy = [r for r in rows if r["measurement_noise_to_clean_signal_sd"] == 1.0]
+          def median(values):
+              values = sorted(values)
+              n = len(values)
+              return values[n//2] if n % 2 else (values[n//2-1] + values[n//2]) / 2
+          for label, subset in (("clean", clean), ("noise_ratio_1", noisy)):
+              admitted = [r["admission_rate"] for r in subset]
+              damping = [r["damping_absolute_error"]["median"] for r in subset if r["damping_absolute_error"]["median"] is not None]
+              freq = [r["frequency_relative_error"]["median"] for r in subset if r["frequency_relative_error"]["median"] is not None]
+              print(label, {
+                  "rows": len(subset),
+                  "median_admission_rate": median(admitted),
+                  "median_damping_abs_error": median(damping),
+                  "median_frequency_relative_error": median(freq),
+              })
+          print("worst_clean_rows")
+          for row in sorted(clean, key=lambda r: (r["damping_absolute_error"]["median"] or -1), reverse=True)[:10]:
+              print(json.dumps({
+                  "truth": row["truth"],
+                  "duration_seconds": row["duration_seconds"],
+                  "admission_rate": row["admission_rate"],
+                  "damping_abs_error_median": row["damping_absolute_error"]["median"],
+                  "frequency_rel_error_median": row["frequency_relative_error"]["median"],
+                  "refusal_codes": row["refusal_codes"],
+              }, sort_keys=True))
+          PY
+
+      - name: Upload AR2 map
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-ar2-modal-known-truth-map
+          path: ${{ runner.temp }}/nsd_ar2_map/ar2_modal_known_truth_map.json
+          if-no-files-found: error
+          retention-days: 30
