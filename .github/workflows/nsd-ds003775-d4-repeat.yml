@@ -6,6 +6,7 @@ on:
     paths:
       - ".github/workflows/nsd-ds003775-d4-repeat.yml"
       - "NSD_vNext/atlas/manifests/ds003775_sub069_repeat_d4_manifest_v0.1.json"
+      - "NSD_vNext/engine/nsd_engine/__init__.py"
       - "NSD_vNext/engine/nsd_engine/edf.py"
       - "NSD_vNext/engine/nsd_engine/edf_samples.py"
       - "NSD_vNext/engine/nsd_engine/qc.py"
