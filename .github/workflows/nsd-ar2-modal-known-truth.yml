@@ -54,6 +54,8 @@ jobs:
           noisy = [r for r in rows if r["measurement_noise_to_clean_signal_sd"] == 1.0]
           def median(values):
               values = sorted(values)
+              if not values:
+                  return None
               n = len(values)
               return values[n//2] if n % 2 else (values[n//2-1] + values[n//2]) / 2
           for label, subset in (("clean", clean), ("noise_ratio_1", noisy)):
@@ -65,6 +67,7 @@ jobs:
                   "median_admission_rate": median(admitted),
                   "median_damping_abs_error": median(damping),
                   "median_frequency_relative_error": median(freq),
+                  "rows_with_admitted_estimate": len(damping),
               })
           print("worst_clean_rows")
           for row in sorted(clean, key=lambda r: (r["damping_absolute_error"]["median"] or -1), reverse=True)[:10]:
@@ -79,6 +82,7 @@ jobs:
           PY
 
       - name: Upload AR2 map
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: nsd-ar2-modal-known-truth-map
