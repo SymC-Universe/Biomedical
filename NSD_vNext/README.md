@@ -9,15 +9,17 @@ This directory is the forward NSD research workspace. Historical NSD PDFs and ar
 
 The working architecture is:
 
-`NSD System Model -> Structural Engine`
+`System Model -> Structural Engine`
 
 plus
 
-`Independent Neurostability Atlas`
+`Independent Neurophysiological Reference Atlas`
 
-leading, only after validation, to
+feeding, only after task-specific validation,
 
-`NSD Tool`
+`Clinical Model Registry -> Neurophysiology Decision-Support Tool`
+
+The end-state tool is not one classifier and not one whole-brain stability score. It is intended to support independently matured functions for assessment, open-set differential diagnostic support, longitudinal monitoring, and prognosis only where longitudinal evidence earns it.
 
 The project treats scalar, vector/modal, and conglomerate/system representations as starting components of a larger stability architecture. It does not force every subject, session, channel, mode, disorder, or dataset into a single chi value.
 
@@ -36,9 +38,10 @@ The project treats scalar, vector/modal, and conglomerate/system representations
 - `docs/PENDING_RESULT_INSERTS_v0.1.md` — manuscript locations blocked by computation or re-audit.
 - `docs/TASK_FREEZE_TEMPLATE_v0.1.md` — task-level preregistration/freeze template for P0-Q/P1 work.
 
-### Historical reconstruction
+### Historical reconstruction and Chi-vs-chi investigation
 
 - `docs/HISTORICAL_SOURCE_AUDIT_v0.1.md` — source-level audit of the recovered 2025 NSD TeX/PDF package, including figure-by-figure evidentiary classification.
+- `docs/CHI_VS_chi_OLD_THINKING_HARVEST_v0.1.md` — recovers useful old architectural ideas while reframing the local-versus-embedded question in established dynamical-systems terminology rather than creating a project-branded parameter.
 
 ### Measurement, datasets, and model qualification
 
@@ -81,6 +84,20 @@ Public-data auditing is currently **metadata/hierarchy only**. A clean D2 audit 
 - `docs/FUNCTION_LIMIT_MAP_v0.1.md` — coequal functioning and failure maps.
 - `docs/NATIVE_COMPARATOR_PROGRAM_v0.1.md` — frozen native-baseline and incremental-value program.
 - `docs/CROSS_DISORDER_COMORBIDITY_TEST_PLAN_v0.1.md` — shared-versus-specific architecture and comorbidity test design.
+- `atlas/` — implementation location for future versioned reference artifacts; currently a scaffold only.
+
+### Product target and downstream clinical layers
+
+- `docs/NEUROPHYSIOLOGY_DECISION_SUPPORT_TOOL_SPEC_v0.1.md` — canonical end-state product definition and T0–T7 maturity path.
+- `clinical_models/` — empty task-specific diagnostic/prognostic model registry scaffold. No clinical model is currently admitted.
+- `reporting/` — output-contract scaffold for machine-readable and human-readable reports.
+- `tool/` — eventual UI/API orchestration layer; it may call qualified components but cannot redefine the science.
+
+Dependency direction is intentionally one-way:
+
+`recording -> engine -> atlas -> task-specific clinical model -> reporting -> tool`
+
+Clinical findings may motivate a future separately versioned scientific revision, but cannot silently retune the frozen Engine or Atlas used for the current confirmatory task.
 
 ### Literature, attribution, and experiments
 
@@ -120,6 +137,19 @@ The provenance layer has now been exercised against real OpenNeuro BIDS reposito
 - `ds006780` / SFARI_EEG: **D2 blocked/quarantined** — README count 138, participants.tsv count 136, public tree count 139; three tree subjects lack participant-table rows; the README describes two physical resting-session days but the audited BIDS hierarchy does not currently expose a recoverable day/session mapping.
 
 The clinically tempting dataset failing the gate is a useful result. The architecture is now refusing to convert provenance ambiguity into apparent certainty.
+
+## Product maturity path now frozen provisionally
+
+- **T0 — Engine qualification:** known-truth recovery, local-versus-embedded tests, adversarial Limit Map, CI regression coverage.
+- **T1 — Reference assessment:** populate and lock a first healthy/reference Atlas and generate an individual research-grade assessment report.
+- **T2 — First phenotype classifier:** narrowly frozen ASD-vs-reference research task with strong native comparators and subject-level splits.
+- **T3 — External replication:** untouched second dataset/site/population before screening claims.
+- **T4 — Differential expansion:** add disorders individually until an open-set multi-alternative differential becomes supportable.
+- **T5 — Longitudinal monitoring:** distinguish meaningful within-person change from measurement and state variation.
+- **T6 — Prognosis:** enable only for explicit outcomes/horizons with true longitudinal validation and calibration.
+- **T7 — P2 release candidate:** versioned Engine/Atlas/model bundle, reproducible build, audit log, OOD/refusal behavior, and scoped reporting.
+
+Functions mature independently. A useful reference-assessment tool may exist before diagnosis; diagnosis may mature before prognosis.
 
 ## Novelty correction now locked provisionally
 
