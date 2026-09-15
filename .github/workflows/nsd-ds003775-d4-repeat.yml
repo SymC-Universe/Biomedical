@@ -7,7 +7,10 @@ on:
       - ".github/workflows/nsd-ds003775-d4-repeat.yml"
       - "NSD_vNext/atlas/manifests/ds003775_sub069_repeat_d4_manifest_v0.1.json"
       - "NSD_vNext/engine/nsd_engine/edf.py"
+      - "NSD_vNext/engine/nsd_engine/edf_samples.py"
+      - "NSD_vNext/engine/nsd_engine/qc.py"
       - "NSD_vNext/engine/tools/d4_verify_edf_manifest.py"
+      - "NSD_vNext/engine/tools/probe_edf_qc_manifest.py"
 
 permissions:
   contents: read
@@ -47,10 +50,23 @@ jobs:
             "$RUNNER_TEMP/nsd_d4_repeat" \
             --output "$RUNNER_TEMP/nsd_d4_repeat/d4_repeat_report.json"
 
-      - name: Upload repeat-pair report
+      - name: Decode physical samples and run label-blind descriptive QC probe
+        shell: bash
+        run: |
+          set -euo pipefail
+          python NSD_vNext/engine/tools/probe_edf_qc_manifest.py \
+            NSD_vNext/atlas/manifests/ds003775_sub069_repeat_d4_manifest_v0.1.json \
+            "$RUNNER_TEMP/nsd_d4_repeat" \
+            --start-seconds 0 \
+            --duration-seconds 10 \
+            --output "$RUNNER_TEMP/nsd_d4_repeat/sample_qc_probe.json"
+
+      - name: Upload repeat-pair reports
         uses: actions/upload-artifact@v4
         with:
           name: ds003775-d4-repeat-report
-          path: ${{ runner.temp }}/nsd_d4_repeat/d4_repeat_report.json
+          path: |
+            ${{ runner.temp }}/nsd_d4_repeat/d4_repeat_report.json
+            ${{ runner.temp }}/nsd_d4_repeat/sample_qc_probe.json
           if-no-files-found: error
           retention-days: 30
