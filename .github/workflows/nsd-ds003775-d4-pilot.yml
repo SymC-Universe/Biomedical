@@ -5,6 +5,7 @@ on:
   pull_request:
     paths:
       - ".github/workflows/nsd-ds003775-d4-pilot.yml"
+      - "NSD_vNext/engine/nsd_engine/__init__.py"
       - "NSD_vNext/engine/nsd_engine/edf.py"
       - "NSD_vNext/engine/tools/d4_verify_ds003775_pilot.py"
 
