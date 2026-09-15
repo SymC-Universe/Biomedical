@@ -12,6 +12,11 @@ dependencies = [
     "scipy>=1.15,<2",
 ]
 
+[project.optional-dependencies]
+parameterization_rc7 = [
+    "specparam==2.0.0rc7",
+]
+
 [tool.pytest.ini_options]
 pythonpath = ["."]
 testpaths = ["tests"]
