@@ -1,0 +1,71 @@
+name: NSD ds003775 D3 Metadata Join Audit
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/nsd-ds003775-d3-audit.yml"
+      - "NSD_vNext/docs/manifests/ds003775_metadata_roles_v0.1.json"
+      - "NSD_vNext/engine/tools/audit_ds003775_d3.py"
+      - "NSD_vNext/engine/nsd_engine/metadata.py"
+      - "NSD_vNext/engine/tests/test_ds003775_metadata_manifest.py"
+
+permissions:
+  contents: read
+
+jobs:
+  audit-d3:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run pinned-release D3 audit
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/nsd_d3"
+          python NSD_vNext/engine/tools/audit_ds003775_d3.py \
+            NSD_vNext/docs/manifests/ds003775_metadata_roles_v0.1.json \
+            --output "$RUNNER_TEMP/nsd_d3/ds003775_d3_audit.json" \
+            > "$RUNNER_TEMP/nsd_d3/stdout.json"
+
+      - name: Print D3 closure summary
+        shell: bash
+        run: |
+          set -euo pipefail
+          REPORT="$RUNNER_TEMP/nsd_d3/ds003775_d3_audit.json"
+          python - "$REPORT" <<'PY'
+          import json, sys
+          report = json.load(open(sys.argv[1], encoding="utf-8"))
+          print("status", report["status"])
+          print("participant_row_count", report["participant_row_count"])
+          print("bids_subject_count", report["bids_subject_count"])
+          print("participant_only_ids", report["participant_only_ids"])
+          print("bids_only_ids", report["bids_only_ids"])
+          print("unreviewed_columns", report["unreviewed_columns"])
+          print("manifest_only_columns", report["manifest_only_columns"])
+          print("engine_visible_participant_columns", report["engine_visible_participant_columns"])
+          print("role_manifest_sha256", report["role_manifest_sha256"])
+          print("canonical_body_sha256", report["canonical_body_sha256"])
+          assert report["status"] == "PASS"
+          assert report["participant_row_count"] == 111
+          assert report["bids_subject_count"] == 111
+          assert report["engine_visible_participant_columns"] == ["participant_id"]
+          PY
+
+      - name: Upload D3 audit artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ds003775-d3-metadata-join-audit
+          path: ${{ runner.temp }}/nsd_d3/ds003775_d3_audit.json
+          if-no-files-found: error
+          retention-days: 30
