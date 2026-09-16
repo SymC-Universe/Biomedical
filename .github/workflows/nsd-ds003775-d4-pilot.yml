@@ -25,6 +25,13 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Install pinned NSD engine dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check ./NSD_vNext/engine
+          python -m pip check
+
       - name: Download pinned public EDF pilot
         shell: bash
         run: |
