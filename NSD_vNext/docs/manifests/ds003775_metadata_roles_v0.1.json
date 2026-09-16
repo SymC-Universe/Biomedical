@@ -1,0 +1,80 @@
+{
+  "dataset": "ds003775",
+  "manifest_version": "0.1",
+  "status": "D3_ROLE_MAP_FROZEN_JOIN_AUDIT_PENDING",
+  "source_release": {
+    "openneuro_doi": "10.18112/openneuro.ds003775.v1.2.1",
+    "participant_table": "participants.tsv"
+  },
+  "join_contract": {
+    "primary_subject_key": "participant_id",
+    "expected_cardinality": "one participant row per BIDS subject",
+    "ambiguous_or_unmatched_action": "quarantine",
+    "silent_first_match_allowed": false
+  },
+  "engine_visible_roles": [
+    "identity",
+    "acquisition",
+    "recording_state"
+  ],
+  "roles": {
+    "participant_id": "identity",
+    "age": "demographic_covariate",
+    "sex": "demographic_covariate",
+    "ravlt_1": "clinical_outcome",
+    "ravlt_5": "clinical_outcome",
+    "ravlt_tot": "clinical_outcome",
+    "ravlt_imm": "clinical_outcome",
+    "ravlt_del": "clinical_outcome",
+    "ravlt_rec": "clinical_outcome",
+    "ravlt_fp": "clinical_outcome",
+    "ds_forw": "clinical_outcome",
+    "ds_back": "clinical_outcome",
+    "ds_seq": "clinical_outcome",
+    "ds_tot": "clinical_outcome",
+    "tmt_2": "clinical_outcome",
+    "tmt_3": "clinical_outcome",
+    "tmt_4": "clinical_outcome",
+    "cw_1": "clinical_outcome",
+    "cw_2": "clinical_outcome",
+    "cw_3": "clinical_outcome",
+    "cw_4": "clinical_outcome",
+    "vf_1": "clinical_outcome",
+    "vf_2": "clinical_outcome",
+    "vf_3": "clinical_outcome"
+  },
+  "structural_engine_participant_columns": [
+    "participant_id"
+  ],
+  "downstream_only_participant_columns": [
+    "age",
+    "sex",
+    "ravlt_1",
+    "ravlt_5",
+    "ravlt_tot",
+    "ravlt_imm",
+    "ravlt_del",
+    "ravlt_rec",
+    "ravlt_fp",
+    "ds_forw",
+    "ds_back",
+    "ds_seq",
+    "ds_tot",
+    "tmt_2",
+    "tmt_3",
+    "tmt_4",
+    "cw_1",
+    "cw_2",
+    "cw_3",
+    "cw_4",
+    "vf_1",
+    "vf_2",
+    "vf_3"
+  ],
+  "recording_context_source": "BIDS hierarchy and EEG sidecars, not cognitive outcome columns",
+  "promotion_blockers": [
+    "machine-audited participant-to-BIDS-subject join cardinality",
+    "metadata missingness summary",
+    "versioned manifest hash recorded in D3 closure artifact"
+  ]
+}
