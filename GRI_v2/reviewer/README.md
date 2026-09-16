@@ -1,5 +1,24 @@
 # Reviewer entry point: GRI v2 / Cancer Stability Atlas
 
+> ## Current-state notice — 2026-09-16
+>
+> The roadmap below is retained as a **historical 2026-08-30 reviewer checkpoint**. Its statements that `gri-v2` is the active branch, Stage C0 is the current gate, and Stage C1 is not started are no longer present-tense project state.
+>
+> For current work, read first:
+>
+> - `../notes/CURRENT_STATUS_20260916_GOM_V080.md`
+> - `../docs/GRI_GOM_V080_CONTINUITY_AND_SOURCE_OF_RECORD_20260916.md`
+> - `../docs/GRI_FUNCTION_LIMIT_EVIDENCE_MAP_20260916.md`
+> - `../artifacts/GRI_OPEN_CHANNEL_DISPOSITION_LEDGER_20260916.md`
+> - `../manuscript/LIVING_MANUSCRIPT_DRAFT.md`
+> - `../manuscript/MANUSCRIPT_RECONCILIATION_LEDGER.md`
+>
+> The active development branch is now `gri-v071-protocol-integration-20260910-chi-bio`, draft PR #4 remains intentionally unmerged, Stage C1/post-C1 are historical frozen evidence, the current `Chi_bio` admission cycle is closed with `NOT_ADMITTED`, and the living revised manuscript now resides in the repository. Historical artifacts below remain valid for the stage/result they record and are not rewritten by this banner.
+
+---
+
+## Historical 2026-08-30 reviewer checkpoint
+
 **Repository state:** active development, not a validated clinical tool  
 **Active branch:** `gri-v2`  
 **Current scientific gate:** Stage C0 DNA-methylation source acquisition/audit; Stage B2 static computation and integration are closed
