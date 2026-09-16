@@ -54,6 +54,7 @@ from .edf_samples import (
 )
 from .system_stability import (
     LinearSystem2D,
+    different_local_same_global_spectrum_fixture,
     locally_stable_globally_unstable_fixture,
     locally_unstable_globally_stabilized_fixture,
     same_local_different_coupling_fixture,
@@ -105,6 +106,7 @@ __all__ = [
     "read_edf_channel_window",
     "read_edf_window",
     "LinearSystem2D",
+    "different_local_same_global_spectrum_fixture",
     "locally_stable_globally_unstable_fixture",
     "locally_unstable_globally_stabilized_fixture",
     "same_local_different_coupling_fixture",
