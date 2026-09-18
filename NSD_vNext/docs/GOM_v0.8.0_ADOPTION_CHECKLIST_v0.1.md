@@ -45,3 +45,90 @@ Disposition: RETAINED.
 ## Immediate NSD consequence
 
 The historical NSD manuscript cannot simply be cosmetically revised. Its numerical and interpretive claims need classification under the current architecture, particularly any scalar derived from broadband or peak quantities. The forward manuscript may reuse supported evidence only after its source, estimator, independence hierarchy, and epistemic class are reconstructed.
+
+
+## Live alignment audit - 18 September 2026
+
+Authoritative program baseline re-verified directly against SymC General Operations Manual v0.8.0.
+
+### Scientific alignment
+
+PASS - maturity discipline
+- Current Engine work is P0-Q qualification, not P1 confirmation.
+- The 42-subject healthy repeat analysis remains label-blind T0 descriptive/qualification evidence.
+- No qualification evidence is represented as untouched confirmation.
+
+PASS - Engine ladder
+- unit/contract checks exist;
+- known-truth recovery precedes real-data modal admission;
+- adversarial calibration is active;
+- modal admission rules are not frozen prematurely;
+- label-informed testing remains downstream;
+- standard-toolkit and external/prospective testing remain future gates.
+
+PASS - Function Map / Limit Map balance
+- ordinary healthy repeat structure is being mapped alongside failure/refusal regions;
+- high typical Welch repeat similarity is preserved without hiding poor subject/channel cases;
+- the M2 adversarial failure is preserved as Limit-Map evidence rather than tuned away.
+
+PASS - measurement and hierarchy
+- subject is retained as the independent repeatability unit;
+- sessions and channels remain nested;
+- absent peaks/zero-peak states remain meaningful categorical states;
+- no whole-brain/global chi is manufactured.
+
+PASS - local versus embedded stability
+- local modal quantities remain distinct from coupled/system behavior;
+- system_stability fixtures explicitly test cases where local and embedded stability differ;
+- higher-level system claims are not licensed from isolated modal values alone.
+
+PASS - Atlas independence
+- the Atlas is read-only with respect to Engine construction;
+- current Atlas work is schema/reference preparation, not a locked confirmatory Atlas;
+- disorder labels do not tune the healthy structural Engine or reference construction.
+
+PASS - experimental opportunity / literature collision
+- experiment families were sketched before targeted collision work;
+- prior art is credited;
+- residual questions rather than generic EEG novelty are retained.
+
+PASS - claim compression
+- descriptive spectral structure is not called damping;
+- modal damping is not called biological mechanism;
+- repeatability is not called a trait biomarker;
+- no diagnostic, prognostic, treatment, or predictive claim is enabled at T0.
+
+### Governance / execution findings and repairs
+
+CLOSED - missing explicit P0-Q qualification-search ledger
+- GOM v0.8.0 requires substantial P0-Q iteration to preserve candidate versions, reused qualification evidence, targeted failures, complexity increases, search-family accounting, and stopping rationale.
+- Added P0Q_QUALIFICATION_SEARCH_LEDGER_v0.1.md.
+
+CLOSED - redundant long-lived-PR population rerun risk
+- the cumulative PR path set could retrigger the expensive 42-subject workflow after unrelated commits.
+- added a current-synchronize diff guard and concurrency protection to nsd-ds003775-repeat-population.yml.
+- this is a run-economy/supersession repair only; scientific inputs and analysis rules are unchanged.
+
+CLOSED - M2 capability-description drift after diagnostic extension
+- the adversarial probe now reports alternative-model and split-half diagnostics.
+- M2_MODEL_ADEQUACY_PLAN_v0.1.md and the P0-Q ledger now record that capability and its interpretation ceiling.
+
+ACTIVE - capability-description synchronization
+- older planning/control documents are being refreshed where they still describe pre-population or pre-M2 states.
+- stale prose is treated as a documentation defect, not evidence that completed work is absent.
+
+ACTIVE - execution monitoring
+- provider-side GitHub workflow state is checked directly during project audits.
+- workflow existence alone is not treated as proof of liveness/progress.
+- no invisible or background AI computation is claimed.
+- executions that are superseded, canceled, or disappear without a valid terminal state remain audit targets.
+
+### Current GOM stop lines
+
+Do not advance to real-EEG modal damping/local chi until the modal adequacy route closes and freezes its admission/refusal rules.
+
+Do not use the healthy repeat population to tune a disorder separator.
+
+Do not lock a healthy Atlas as confirmatory validation until Engine qualification and Atlas-independence requirements for that claim are satisfied.
+
+Do not move any clinical claim into P1 without a complete MFR-14 record and genuinely untouched decisive evidence.
