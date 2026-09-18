@@ -21,3 +21,5 @@ release_records/
 ```
 
 Each released Atlas artifact must declare the Engine version, datasets, subject inclusion identity, recording conditions, covariates, preprocessing/configuration hashes, and scope.
+
+The first machine-readable release contract is `manifests/atlas_release_manifest_schema_v0.1.json`. It defines version/provenance/scope fields only and does not imply that an Atlas release currently exists.
