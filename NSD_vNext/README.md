@@ -76,7 +76,7 @@ The project treats scalar, vector/modal, and conglomerate/system representations
 
 The executable scaffold intentionally contains no clinical classifier and no unqualified dynamical estimator.
 
-Public-data auditing is currently **metadata/hierarchy only**. A clean D2 audit does not mean the EEG payload has passed D4 readability/identity verification.
+Public-data auditing now extends beyond metadata for the frozen ds003775 repeat subset. D4 signal identity/readability is verified for the exact 42-subject / 84-recording repeat cohort used in T0 qualification. Other datasets and the non-repeat ds003775 remainder retain their own gate states; a clean D2 audit never implies D4.
 
 ### Atlas, function, limits, and comparators
 
@@ -84,7 +84,7 @@ Public-data auditing is currently **metadata/hierarchy only**. A clean D2 audit 
 - `docs/FUNCTION_LIMIT_MAP_v0.1.md` — coequal functioning and failure maps.
 - `docs/NATIVE_COMPARATOR_PROGRAM_v0.1.md` — frozen native-baseline and incremental-value program.
 - `docs/CROSS_DISORDER_COMORBIDITY_TEST_PLAN_v0.1.md` — shared-versus-specific architecture and comorbidity test design.
-- `atlas/` — implementation location for future versioned reference artifacts; currently a scaffold only.
+- `atlas/` — active reference-artifact layer. The first machine-readable `ATLAS_P0_D` artifact is committed for the 42-subject ds003775 repeat subset, with explicit non-independence grading for Engine validation.
 
 ### Product target and downstream clinical layers
 
@@ -132,11 +132,31 @@ The forward evidence path is therefore:
 
 The provenance layer has now been exercised against real OpenNeuro BIDS repositories rather than only fixtures.
 
-- `ds003775`: **D2 hierarchy verified** — 111 subjects, 153 sessions, 42 repeat-session subjects, no participant/tree mismatch.
+- `ds003775`: **D2 hierarchy verified dataset-wide; D4 verified for the frozen repeat subset** — 111 subjects, 153 sessions, 42 repeat-session subjects; the exact 84 repeat recordings used for T0 were pinned and re-verified before analysis.
 - `ds005385`: **D2 hierarchy verified** — 608 subjects, 816 sessions, 208 repeat participants, no session-table mismatch.
 - `ds006780` / SFARI_EEG: **D2 blocked/quarantined** — README count 138, participants.tsv count 136, public tree count 139; three tree subjects lack participant-table rows; the README describes two physical resting-session days but the audited BIDS hierarchy does not currently expose a recoverable day/session mapping.
 
 The clinically tempting dataset failing the gate is a useful result. The architecture is now refusing to convert provenance ambiguity into apparent certainty.
+
+## First Atlas P0-D artifact
+
+The Atlas is no longer design-only.
+
+Version `ds003775-repeat-p0d-v0.1` now serializes the first label-blind descriptive reference/Limit-Map artifact from the 42-subject repeat cohort.
+
+Key channel-wise repeatability summaries:
+
+- aperiodic exponent ICC(A,1) median: **0.65882** across 64 channels;
+- exact peak-count agreement median: **0.53571**;
+- exact zero-peak-state agreement median: **0.90476**.
+
+This first artifact is graded `NON_INDEPENDENT_FOR_ENGINE_VALIDATION` because ds003775 also contributed to T0 qualification. It is therefore useful for P0-D Function/Limit discovery and product/reporting development, but not as independent P1 validation or a clinical normative model.
+
+Canonical files:
+
+- `atlas/reference_models/ds003775_repeat_descriptive_reference_p0d_v0.1.json`
+- `atlas/manifests/ds003775_repeat_atlas_p0d_release_v0.1.json`
+- `atlas/release_records/ds003775_repeat_p0d_v0.1.md`
 
 ## Product maturity path now frozen provisionally
 
