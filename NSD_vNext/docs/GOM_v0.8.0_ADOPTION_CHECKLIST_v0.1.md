@@ -113,6 +113,13 @@ CLOSED - M2 capability-description drift after diagnostic extension
 - the adversarial probe now reports alternative-model and split-half diagnostics.
 - M2_MODEL_ADEQUACY_PLAN_v0.1.md and the P0-Q ledger now record that capability and its interpretation ceiling.
 
+CLOSED - Atlas independence wording/evidence-path gap
+- the first ds003775 healthy reference build reuses a source already involved in descriptive Engine qualification;
+- therefore it is not independent evidence for validation of those same Engine components even though it is independent of disorder-specific tuning;
+- atlas_release_manifest_schema_v0.1.json now requires per-reference-family GOM 16.4 independence fields and grades;
+- NEUROSTABILITY_ATLAS_SPEC_v0.1.md now records the ds003775 ceiling as NON_INDEPENDENT_FOR_ENGINE_VALIDATION for the same descriptive Engine path;
+- future Atlas-P1 Engine validation requires a materially independent evidence path.
+
 ACTIVE - capability-description synchronization
 - older planning/control documents are being refreshed where they still describe pre-population or pre-M2 states.
 - stale prose is treated as a documentation defect, not evidence that completed work is absent.
