@@ -258,6 +258,32 @@ def run() -> dict[str, object]:
                 )
                 for family in ("A0", "A1", "A2")
             },
+            "median_near_optimal_start_count": {
+                family: _median(
+                    [
+                        next(
+                            fit["near_optimal_start_count"]
+                            for fit in row["full"]["fits"]
+                            if fit["family"] == family
+                        )
+                        for row in subset
+                    ]
+                )
+                for family in ("A0", "A1", "A2")
+            },
+            "median_start_nll_range": {
+                family: _median(
+                    [
+                        next(
+                            fit["start_nll_range"]
+                            for fit in row["full"]["fits"]
+                            if fit["family"] == family
+                        )
+                        for row in subset
+                    ]
+                )
+                for family in ("A0", "A1", "A2")
+            },
             "median_heldout_nll_per_sample": {
                 family: _median(
                     [
