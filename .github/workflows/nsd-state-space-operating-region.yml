@@ -1,0 +1,54 @@
+name: NSD State-Space Operating Region
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/nsd-state-space-operating-region.yml"
+      - "NSD_vNext/engine/pyproject.toml"
+      - "NSD_vNext/engine/nsd_engine/state_space_adequacy.py"
+      - "NSD_vNext/engine/nsd_engine/latent_oscillator_covariance.py"
+      - "NSD_vNext/engine/tools/probe_state_space_operating_region.py"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nsd-state-space-operating-region-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  operating-region:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install frozen numerical stack
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+
+      - name: Run state-space operating-region map
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/nsd_state_space_region"
+          python NSD_vNext/engine/tools/probe_state_space_operating_region.py \
+            --output "$RUNNER_TEMP/nsd_state_space_region/state_space_operating_region.json"
+
+      - name: Upload operating-region map
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-state-space-operating-region
+          path: ${{ runner.temp }}/nsd_state_space_region/state_space_operating_region.json
+          if-no-files-found: error
+          retention-days: 30
