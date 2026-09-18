@@ -1,11 +1,11 @@
 # Neurostability Atlas Specification v0.1
 
 Date: 14 September 2026
-Status: DESIGN SPECIFICATION / NOT YET POPULATED
+Status: ACTIVE DESIGN / FIRST DESCRIPTIVE REFERENCE BUILD PREPARATION
 
 ## 1. Purpose
 
-The Neurostability Atlas is the independent reference layer against which NSD structural outputs are interpreted. It is not allowed to tune the Structural Engine and it is not rebuilt separately for each disorder to maximize separation.
+The Neurostability Atlas is the reference layer against which NSD structural outputs are interpreted. It is not allowed to tune the Structural Engine and it is not rebuilt separately for each disorder to maximize separation. For confirmatory interpretation or Engine validation, independence is an evidence-path property that must be graded explicitly rather than inferred from the word Atlas.
 
 Primary purpose:
 
@@ -116,6 +116,26 @@ reference_model_hash
 
 After locking, disease analyses consume the same reference object unless a scientifically necessary scope change is documented as a new Atlas version.
 
+### Evidence-path independence rule
+
+Every decisively used Atlas reference family must record the GOM 16.4 evidence-path audit:
+- raw evidence source;
+- whether that source participated in Engine development or calibration;
+- whether labels/outcomes entered estimator construction;
+- whether thresholds were tuned against the Atlas;
+- whether fitted parameters or simulations are shared across the two paths;
+- whether extraction was blind to the Engine result where feasible;
+- an independence grade and rationale.
+
+Allowed grades:
+- INDEPENDENT;
+- PARTIALLY_INDEPENDENT;
+- NON_INDEPENDENT_FOR_ENGINE_VALIDATION.
+
+The first ds003775 descriptive reference build has a specific ceiling. The same 42-subject repeat source has already been used for label-blind descriptive Engine qualification and repeatability mapping. Therefore any ds003775 reference family derived from those outputs is, at minimum, NON_INDEPENDENT_FOR_ENGINE_VALIDATION of the same descriptive Engine components. It may still be a legitimate P0 reference-build artifact and, if frozen before clinical work, a reusable reference for later disorder overlays within its declared scope. It may not be presented as independent evidence that the Engine itself is valid.
+
+Future Atlas-P1 validation requires a materially independent evidence path appropriate to the claim.
+
 ## 5. Covariate strategy
 
 The Atlas should describe rather than erase ordinary structure.
@@ -216,9 +236,9 @@ Proposed Atlas maturity:
 
 Without waiting on new computations, the intended population sequence is now frozen conceptually:
 
-1. reconstruct and audit existing healthy datasets and hierarchy;
-2. populate basic spectral state;
-3. map reliability and ordinary-state effects;
+1. maintain the audited ds003775 repeat hierarchy and its explicit non-independence-for-Engine-validation grade;
+2. serialize the already qualified descriptive spectral/repeatability state as the first P0 reference-build artifact;
+3. map reliability and ordinary-state effects while preserving channel heterogeneity and open-channel states;
 4. qualify modal/dynamical estimators independently;
 5. add licensed scalar distributions only where admissible;
 6. build spatial/conglomerate healthy organization;
