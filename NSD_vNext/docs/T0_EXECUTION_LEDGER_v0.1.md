@@ -121,7 +121,7 @@ Dataset identity:
 - D1 provenance for pinned release: CLOSED FOR CURRENT SCOPE
 - D2 hierarchy: VERIFIED
 - D3 metadata/join: **VERIFIED FOR T0 HEALTHY QUALIFICATION**
-- D4 signal input: **PILOT + REAL REPEAT PAIR VERIFIED; DATASET-WIDE EXPANSION OPEN**
+- D4 signal input: **FROZEN 42-SUBJECT REPEAT POPULATION VERIFIED (84 recordings); non-repeat remainder not yet promoted**
 - D5 analysis ready: OPEN
 
 ### D3 artifact
@@ -297,20 +297,69 @@ A broader known-truth failure-boundary map is now active for:
 
 No real healthy periodic/aperiodic result is admitted until this failure map is inspected and the operating region is declared.
 
-## 10. Immediate execution order from here
+## 10. 42-subject repeat-population result
 
-1. close and inspect the expanded specparam known-truth failure-boundary map;
-2. freeze the descriptive periodic/aperiodic operating region and explicit refusal conditions if the map supports one;
-3. run the exact frozen parameterizer on the real `sub-069` repeat pair only after step 2;
-4. expand descriptive Welch and, if admitted, spectral-parameterization analyses to all 42 repeat subjects;
-5. estimate subject-aware repeatability, no-peak prevalence, configuration sensitivity, and channel/region structure;
-6. begin the first empirical Function/Limit Map;
-7. only then qualify a state-space/modal estimator independently;
-8. admit local modal damping ratios only after that modal route survives known truth;
-9. populate the first healthy/reference Atlas layers;
-10. keep all clinical labels downstream until T0/T1 gates are closed.
+Workflow:
 
-## 11. Stop lines
+- `NSD ds003775 42-Subject Repeat Population`
+- run `35304835270`
+- result: **SUCCESS**
+- 42 independent repeat subjects;
+- 84 exact pinned recordings re-verified at D4 before analysis.
+
+The authoritative result note is:
+
+`docs/DS003775_REPEAT_POPULATION_T0_RESULT_v0.1.md`
+
+Key descriptive population findings:
+
+- median global median-log-PSD repeat correlation: **0.99146**;
+- median channel log-PSD repeat correlation: **0.97946**;
+- median of each subject's minimum channel correlation: **0.74840**, with a minimum subject value of **-0.80173**;
+- median subject-level absolute aperiodic-exponent difference: **0.20476**;
+- median exact same peak-count fraction: **0.46094**;
+- median exact same zero-peak-state fraction: **0.97656**;
+- median fixed-versus-knee model-family disagreement across the 84 sessions: **0.42188**.
+
+Decision:
+
+- raw Welch spectral shape is population-useful as a descriptive layer, with important subject/channel Limit-Map outliers;
+- the descriptive periodic/aperiodic layer is retained for Atlas/Limit-Map use but is **not** promoted as a standalone trait biomarker;
+- no configuration is retuned after inspecting these results;
+- channel-wise subject-aware ICC(A,1) and categorical agreement are being added as the next frozen repeatability calculation.
+
+## 11. M2 adversarial model-adequacy result
+
+Workflow:
+
+- `NSD Latent Oscillator Adversarial Map`
+- run `35304835293`
+- result: **SUCCESS**.
+
+The current M2 single-latent-oscillator covariance gate admitted every tested misspecified adversary, including close/separated two-mode mixtures, colored observation noise, frequency drift, bursts, nonoscillatory AR(1), and white noise.
+
+A close two-mode generator achieved median covariance-fit R-squared approximately **0.9403**, slightly above the valid single-mode truth at approximately **0.9382**. Therefore fit quality alone cannot license a unique single oscillator.
+
+Current decision:
+
+`M2_LATENT_COVARIANCE = KNOWN_TRUTH_BASELINE / REAL_EEG_NOT_ADMITTED`
+
+The next modal work is explicit model adequacy/order qualification, frozen in:
+
+`docs/M2_MODEL_ADEQUACY_PLAN_v0.1.md`
+
+## 12. Immediate execution order from here
+
+1. re-run the 42-subject repeat aggregation with frozen channel-wise ICC(A,1) and categorical agreement outputs;
+2. inspect channel/region reliability and identify descriptive Function/Limit structure without choosing clinical thresholds;
+3. promote the exact 42-subject repeat subset through the D4 repeat-population gate while keeping the non-repeat dataset remainder separate;
+4. implement and qualify the M2 model-adequacy layer: nonoscillatory vs one-oscillator vs multi-oscillator alternatives, stationarity, colored-noise, residual/innovation, and identifiability checks;
+5. keep real-EEG modal damping ratios disabled until that model-adequacy route survives known truth;
+6. begin the first Atlas serialization using only qualified descriptive layers and explicit refusal/model-sensitivity states;
+7. expand to the larger adult Function/Limit dataset only after the first ds003775 T0 reference artifacts are versioned;
+8. keep all clinical labels downstream until T0/T1 gates are closed.
+
+## 13. Stop lines
 
 Still prohibited at T0:
 
