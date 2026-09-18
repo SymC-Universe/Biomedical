@@ -162,3 +162,66 @@ The sequence remains:
 not:
 
 `PSD peak -> width -> damping -> chi`.
+
+
+## 9. M2 covariance-route first known-truth map
+
+Workflow:
+
+- `NSD Latent Oscillator Covariance Map`
+- run `35304534021`
+- result: **SUCCESS**
+- estimator: `engine/nsd_engine/latent_oscillator_covariance.py`
+
+This route models a scalar observation of a latent two-dimensional damped rotation with additive white measurement noise. It fits the non-zero-lag covariance structure, allowing zero-lag observation noise to be represented separately under the stated stationary/isotropic assumptions.
+
+### Aggregate known-truth behavior
+
+Each observation-noise stratum contained 36 grid rows. Median results were:
+
+| measurement-noise SD / latent SD | median admission rate | median absolute damping-ratio error | median relative natural-frequency error | median absolute latent-fraction error | median autocorrelation R-squared |
+| ---: | ---: | ---: | ---: | ---: | ---: |
+| 0.00 | 1.0 | 0.0311 | 0.0306 | 0.0092 | 0.9292 |
+| 0.25 | 1.0 | 0.0305 | 0.0413 | 0.0182 | 0.9324 |
+| 0.50 | 1.0 | 0.0331 | 0.0390 | 0.0183 | 0.9297 |
+| 1.00 | 1.0 | 0.0358 | 0.0353 | 0.0180 | 0.9031 |
+
+This is a major improvement over direct AR(2) least squares in the specific known-truth problem for which the covariance route was designed: additive white observation noise no longer destroys median recovery across the tested grid.
+
+### Failure region remains real
+
+The aggregate medians hide a clear difficult corner. The largest damping-ratio errors were concentrated in short, low-frequency, highly damped signals.
+
+Examples from the worst rows include:
+
+- 5 Hz, zeta 0.95, 10 s, noise ratio 1.0: median absolute zeta error about **0.204**, median relative frequency error about **0.182**;
+- 10 Hz, zeta 0.95, 10 s, noise ratio 1.0: damping error about **0.197**, relative frequency error about **0.239**;
+- 5 Hz, zeta 0.95, 10 s, noise ratio 0.5: damping error about **0.185**;
+- 5 Hz, zeta 0.95, 30 s: damping error remained roughly **0.15–0.17** across several noise conditions.
+
+Therefore the current mechanical admission flag is **not yet a scientifically sufficient admission rule**. A method can return an estimate in a region where the estimate is too biased for the intended use.
+
+## 10. M2 decision and next qualification boundary
+
+Current classification:
+
+`M2_LATENT_COVARIANCE = PROMISING_KNOWN_TRUTH_ROUTE / REAL_EEG_NOT_YET_ADMITTED`
+
+What is now supported:
+
+1. the estimator can separate a latent oscillator from additive white measurement noise under its own stated model much better than naive AR(2);
+2. median damping/frequency recovery remains stable across the tested observation-noise strata;
+3. the route deserves continued qualification rather than rejection.
+
+What is **not** yet supported:
+
+1. applying the estimator to arbitrary EEG;
+2. treating its fitted oscillator as a unique biological mode;
+3. admitting real-EEG modal damping ratios;
+4. assuming the current all-admitted mechanical gate is adequate;
+5. robustness to two modes, colored noise, drift, bursts, non-oscillatory alternatives, model-order mismatch, source mixing, or initialization effects.
+
+The next M2 work must therefore map those adversaries and derive an **error-aware operating region/refusal rule from known truth before real EEG is allowed**.
+
+No clinical label enters this process.
+
