@@ -117,7 +117,7 @@ def test_stationary_single_oscillator_holdout_prefers_a1():
     )
     holdout = evaluate_comparison_on_holdout(training, signal[midpoint:])
 
-    assert holdout["winner"] == "A1"
+    assert holdout["interpretable_winner"] == "A1"
     assert (
         holdout["negative_log_likelihood_per_sample"]["A1"]
         < holdout["negative_log_likelihood_per_sample"]["A0"]
