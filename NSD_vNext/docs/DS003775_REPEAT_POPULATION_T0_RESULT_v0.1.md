@@ -101,19 +101,47 @@ Current disposition:
 
 No settings are retuned after seeing this population result.
 
-## 6. Next repeatability calculation
+## 6. Channel-wise subject-aware repeatability result
 
-The initial aggregate reports subject-level distributions but does not yet provide a formal channel-wise continuous repeatability coefficient.
+The frozen aggregation was extended and re-run without changing the spectral parameterization.
 
-The next frozen addition is therefore:
+Qualification workflow:
 
-- channel-wise aperiodic-exponent ICC(A,1), using subjects as the independent rows and the two sessions as the repeated columns;
-- channel-wise exact peak-count agreement across subjects;
-- channel-wise exact zero-peak-state agreement across subjects.
+- `NSD ds003775 42-Subject Repeat Population`
+- run `35337659470`
+- result: **SUCCESS**
+- population-summary artifact digest: `sha256:0859c127ca1cac7f2789fb12b7e66b1453f9ec6fb250e20f11eed6e84b9e0bb2`
 
-ICC(A,1) is explicitly the two-way mixed, absolute-agreement, single-measure form. Negative values are retained rather than clipped.
+The continuous repeatability statistic is **ICC(A,1)**: two-way mixed, absolute-agreement, single-measure, with subjects as independent rows and the two repeat sessions as columns. Channels are summarized separately rather than treated as independent participants. Negative ICC values would be retained rather than clipped.
+
+Across the 64 channels:
+
+| Channel-wise repeatability quantity | N channels | Median | Minimum | Maximum |
+| --- | ---: | ---: | ---: | ---: |
+| Aperiodic exponent ICC(A,1) | 64 | 0.65882 | 0.40278 | 0.83557 |
+| Exact peak-count agreement fraction | 64 | 0.53571 | 0.30952 | 0.71429 |
+| Exact zero-peak-state agreement fraction | 64 | 0.90476 | 0.78571 | 1.00000 |
+
+Additional distribution facts:
+
+- all 64 aperiodic-exponent ICC values were non-negative in this sample;
+- the 10th/25th/75th/90th percentiles of exponent ICC(A,1) were approximately 0.4864 / 0.5681 / 0.7389 / 0.7876;
+- peak-count exact agreement remained limited even after changing the aggregation view from subject-wise to channel-wise;
+- zero-peak-state agreement remained substantially more repeat-consistent than exact peak count, but was not perfect.
+
+The spatial pattern is heterogeneous. For example, exponent ICC(A,1) ranged from about 0.403 at FT8 and 0.412 at AF8 to about 0.816 at FC2 and 0.836 at F2. These are **descriptive channel differences only**. They are not interpreted as neurobiological regional effects because reference/montage, peripheral artifact susceptibility, and other acquisition factors have not yet been excluded as explanations.
 
 Peak centers are **not** assigned a channel-wise ICC at this stage because a first-listed peak is not guaranteed to preserve mode identity across sessions. A peak-matching/identity rule must be frozen before that question can be asked.
+
+### Repeatability decision
+
+The population result supports three separate treatment classes rather than one spectral-trait label:
+
+1. **Aperiodic exponent:** potentially useful reference feature with material channel and subject heterogeneity; retain with uncertainty and Limit-Map context.
+2. **Exact peak count:** descriptive/state-sensitive feature; current repeat agreement is insufficient to promote it as a stable person-level trait coordinate.
+3. **Zero-peak state:** promising categorical reference feature because repeat agreement is high across many channels, but it remains acquisition/model dependent and requires external/reference transfer before any clinical use.
+
+No repeatability cutoff was selected from these observed values.
 
 ## 7. Consequence for the future tool
 
