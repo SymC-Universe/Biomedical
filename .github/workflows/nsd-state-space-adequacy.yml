@@ -9,13 +9,14 @@ on:
       - "NSD_vNext/engine/nsd_engine/state_space_adequacy.py"
       - "NSD_vNext/engine/nsd_engine/latent_oscillator_covariance.py"
       - "NSD_vNext/engine/tools/probe_state_space_model_adequacy.py"
+      - "NSD_vNext/engine/tests/test_state_space_adequacy.py"
 
 permissions:
   contents: read
 
 concurrency:
   group: nsd-state-space-adequacy-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   prepare:
@@ -48,7 +49,8 @@ jobs:
                 NSD_vNext/engine/pyproject.toml \
                 NSD_vNext/engine/nsd_engine/state_space_adequacy.py \
                 NSD_vNext/engine/nsd_engine/latent_oscillator_covariance.py \
-                NSD_vNext/engine/tools/probe_state_space_model_adequacy.py
+                NSD_vNext/engine/tools/probe_state_space_model_adequacy.py \
+                NSD_vNext/engine/tests/test_state_space_adequacy.py
               then
                 SHOULD_RUN=false
               fi
