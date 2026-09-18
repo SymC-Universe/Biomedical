@@ -1,6 +1,6 @@
 # Reporting layer scaffold
 
-Status: OUTPUT-CONTRACT PLACEHOLDER / NO CLINICAL REPORT ENABLED
+Status: ACTIVE RESEARCH REPORT CONTRACT / NO CLINICAL REPORT ENABLED
 
 This directory will render qualified Engine, Atlas, and task-specific clinical-model outputs into machine-readable and human-readable reports.
 
@@ -52,3 +52,24 @@ Canonical product definition: `../docs/NEUROPHYSIOLOGY_DECISION_SUPPORT_TOOL_SPE
 The first frozen reporting contract is `neurophysiology_assessment_report_schema_v0.1.json`.
 
 It is a structural contract only. A field being representable in the schema does not mean its scientific module is currently enabled. Unsupported diagnostic/prognostic fields remain empty or carry an explicit non-supported/refusal status according to the product specification.
+
+
+## First real-recording example
+
+The reporting layer now contains an end-to-end research-only example generated from a real pinned ds003775 recording:
+
+- machine-readable: `examples/sub-069_ses-t1_research_structure_report_v0.1.json`
+- human-readable: `examples/sub-069_ses-t1_research_structure_report_v0.1.md`
+
+The example is deliberately labeled `RESEARCH_STRUCTURE_ONLY`.
+
+It demonstrates:
+
+- exact acquisition/provenance identity;
+- qualified descriptive spectral output;
+- Atlas-P0-D reliability context;
+- explicit model-disagreement/open-channel information;
+- refusal of unqualified modal damping / local chi;
+- screening, diagnosis, monitoring, and prognosis visibly disabled.
+
+It does **not** constitute a clinical assessment or a normative abnormality report.
