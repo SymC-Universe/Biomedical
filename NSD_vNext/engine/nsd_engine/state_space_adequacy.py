@@ -39,12 +39,14 @@ class StateSpaceModelFit:
     success: bool
     sample_count: int
     effective_sample_count: int
+    burn_in_samples: int
     parameter_count: int
     negative_log_likelihood: float
     bic: float
     converged_start_count: int
     attempted_start_count: int
     parameters: dict[str, float]
+    raw_parameters: tuple[float, ...]
     innovation_max_abs_autocorrelation: float
     innovation_rms: float
     optimizer_message: str
@@ -544,12 +546,14 @@ def fit_state_space_candidate(
         success=bool(best.success),
         sample_count=int(values.size),
         effective_sample_count=int(effective_n),
+        burn_in_samples=int(burn_in_samples),
         parameter_count=parameter_count,
         negative_log_likelihood=nll,
         bic=bic,
         converged_start_count=converged,
         attempted_start_count=len(starts),
         parameters={key: float(value) for key, value in parameters.items()},
+        raw_parameters=tuple(float(value) for value in best.x),
         innovation_max_abs_autocorrelation=max_abs_ac,
         innovation_rms=innovation_rms,
         optimizer_message=str(best.message),
@@ -604,3 +608,64 @@ def compare_state_space_candidates(
         bic_winner=ordered[0].family,
         bic_margin_to_second=float(ordered[1].bic - ordered[0].bic),
     )
+
+
+
+def evaluate_comparison_on_holdout(
+    comparison: StateSpaceComparison,
+    holdout_signal: Sequence[float],
+) -> dict[str, object]:
+    """Score frozen A0/A1/A2 fit parameters on a held-out interval.
+
+    The holdout is standardized using the training comparison's mean and
+    standard deviation. No model parameters or model order are re-fit here.
+    This is a qualification diagnostic, not a final admission rule.
+    """
+    values = np.asarray(holdout_signal, dtype=np.float64)
+    if values.ndim != 1 or values.size < 16:
+        raise ValueError("holdout_signal must be one-dimensional with at least 16 samples")
+    if not np.isfinite(values).all():
+        raise ValueError("holdout_signal contains non-finite samples")
+    if comparison.standardization_sd <= 0 or not math.isfinite(comparison.standardization_sd):
+        raise ValueError("training comparison has invalid standardization_sd")
+
+    standardized = (
+        values - comparison.standardization_mean
+    ) / comparison.standardization_sd
+    scores: dict[str, float] = {}
+    for fit in comparison.fits:
+        burn = min(fit.burn_in_samples, max(0, standardized.size // 20))
+        nll = _negative_log_likelihood(
+            standardized,
+            fit.family,
+            np.asarray(fit.raw_parameters, dtype=np.float64),
+            comparison.sampling_rate_hz,
+            comparison.fmin_hz,
+            comparison.fmax_hz,
+            burn,
+        )
+        effective_n = standardized.size - burn
+        if not math.isfinite(nll) or effective_n < 3:
+            scores[fit.family] = float("inf")
+        else:
+            scores[fit.family] = float(nll / effective_n)
+
+    winner = min(scores, key=scores.get)
+    ordered = sorted(scores.items(), key=lambda item: item[1])
+    margin = (
+        float(ordered[1][1] - ordered[0][1])
+        if len(ordered) > 1
+        and math.isfinite(ordered[0][1])
+        and math.isfinite(ordered[1][1])
+        else float("nan")
+    )
+    return {
+        "n": int(values.size),
+        "negative_log_likelihood_per_sample": scores,
+        "winner": winner,
+        "margin_to_second_per_sample": margin,
+        "note": (
+            "Parameters and model family fits are frozen from the training interval; "
+            "the holdout interval is not used for refitting."
+        ),
+    }
