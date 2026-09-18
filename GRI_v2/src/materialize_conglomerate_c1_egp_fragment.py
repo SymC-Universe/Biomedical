@@ -68,30 +68,49 @@ def sample_type(value: str) -> str | None:
     return m.group(1) if m else None
 
 
-def combine_cancer_maps(
+def build_cancer_map_from_leukocyte(
     leuk: pd.DataFrame,
     rppa: pd.DataFrame,
 ) -> Tuple[Dict[str, str], Dict[str, Any]]:
+    # Cancer identity is taken from the leukocyte PanCanAtlas source because the
+    # frozen Stage-B2 RPPA analysis did not use RPPA TumorType to assign the
+    # Stage-A cancer label. RPPA TumorType is audited only as source metadata.
     candidates: Dict[str, set[str]] = defaultdict(set)
-
     for r in leuk.itertuples(index=False):
         pid = patient_id(r.sample)
         cancer = str(r.cancer).strip()
         if pid and cancer:
             candidates[pid].add(cancer)
 
+    conflicts = {p: sorted(v) for p, v in candidates.items() if len(v) > 1}
+    if conflicts:
+        raise ValueError(
+            "Leukocyte source contains conflicting cancer labels for patient identity: "
+            + json.dumps(dict(list(sorted(conflicts.items()))[:25]), sort_keys=True)
+        )
+    mapping = {p: next(iter(v)) for p, v in candidates.items() if len(v) == 1}
+
+    rppa_disagreement = Counter()
+    compared = 0
     for r in rppa[["SampleID", "TumorType"]].itertuples(index=False):
         pid = patient_id(r.SampleID)
-        cancer = str(r.TumorType).strip()
-        if pid and cancer and cancer.lower() != "nan":
-            candidates[pid].add(cancer)
+        source_label = str(r.TumorType).strip()
+        if pid in mapping and source_label and source_label.lower() != "nan":
+            compared += 1
+            if source_label != mapping[pid]:
+                rppa_disagreement[f"{mapping[pid]}::{source_label}"] += 1
 
-    conflicts = {p: sorted(v) for p, v in candidates.items() if len(v) > 1}
-    mapping = {p: next(iter(v)) for p, v in candidates.items() if len(v) == 1}
     return mapping, {
+        "authority": "LEUKOCYTE_SOURCE_CANCER_LABEL_PENDING_STAGE_A_IDENTITY_REMATERIALIZATION",
         "mapped_patients": len(mapping),
-        "conflicting_patients": len(conflicts),
-        "conflict_preview": dict(list(sorted(conflicts.items()))[:25]),
+        "conflicting_patients": 0,
+        "rppa_labels_compared": compared,
+        "rppa_label_disagreement_total": int(sum(rppa_disagreement.values())),
+        "rppa_label_disagreement_by_pair": dict(sorted(rppa_disagreement.items())),
+        "note": (
+            "RPPA TumorType is not used as cancer-identity authority because the frozen "
+            "Stage-B2 analysis inherited cancer_type from the Stage-A cache."
+        ),
     }
 
 
@@ -261,9 +280,6 @@ def iter_genomic_rows(
             stats["candidate_source_rows"] += int(len(x))
             stats["excluded_missing_cancer_identity"] += int(x["cancer"].isna().sum())
             x = x[x["cancer"].notna()].copy()
-            for r in x.sort_values(["pid", id_col]).itertuples(index=False, name=None):
-                pass
-
             for _, r in x.sort_values(["pid", id_col]).iterrows():
                 sid = r["root"] if isinstance(r["root"], str) and r["root"] else str(r[id_col])
                 for feature_id, col in features:
@@ -290,6 +306,7 @@ def iter_genomic_rows(
 def iter_rppa_rows(
     rppa: pd.DataFrame,
     panel: List[str],
+    cancer_map: Dict[str, str],
     digest: str,
 ) -> Tuple[Iterator[Dict[str, str]], Dict[str, int]]:
     x = rppa.copy()
@@ -313,12 +330,14 @@ def iter_rppa_rows(
         "panel_features": len(panel),
         "emitted_values": 0,
         "nonfinite_panel_values_skipped": 0,
+        "excluded_missing_cancer_identity": 0,
     }
 
     def _iter() -> Iterator[Dict[str, str]]:
         for _, r in x.sort_values(["pid", "root"]).iterrows():
-            cancer = str(r["TumorType"]).strip()
-            if not cancer or cancer.lower() == "nan":
+            cancer = cancer_map.get(str(r["pid"]))
+            if not cancer:
+                stats["excluded_missing_cancer_identity"] += 1
                 continue
             for feature in panel:
                 v = pd.to_numeric(pd.Series([r[feature]]), errors="coerce").iloc[0]
@@ -378,12 +397,7 @@ def main() -> None:
     seg = pd.read_csv(paths["CNV_BURDEN"], sep="\t", dtype=str)
     rppa = pd.read_csv(paths["RPPA_FINAL"], sep="\t", dtype=str)
 
-    cancer_map, cancer_map_stats = combine_cancer_maps(leuk, rppa)
-    if cancer_map_stats["conflicting_patients"] != 0:
-        raise ValueError(
-            "Cancer identity metadata conflicts between leukocyte and RPPA sources: "
-            + json.dumps(cancer_map_stats["conflict_preview"], sort_keys=True)
-        )
+    cancer_map, cancer_map_stats = build_cancer_map_from_leukocyte(leuk, rppa)
 
     purity_iter, purity_stats = iter_purity_rows(
         purity, cancer_map, observed_hashes["ABSOLUTE_PURITY"]
@@ -396,7 +410,7 @@ def main() -> None:
         observed_hashes["CNV_BURDEN"],
     )
     rppa_iter, rppa_stats = iter_rppa_rows(
-        rppa, panel, observed_hashes["RPPA_FINAL"]
+        rppa, panel, cancer_map, observed_hashes["RPPA_FINAL"]
     )
 
     outdir = root / OUTDIR_REL
