@@ -1,0 +1,36 @@
+name: GRI Conglomerate Chi C1 small source schemas
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - gri-conglomerate-chi-tool-v1-20260918
+    paths:
+      - 'GRI_v2/src/inspect_conglomerate_c1_small_source_schemas.py'
+      - 'GRI_v2/config/gri_conglomerate_c1_source_registry_20260918.json'
+      - '.github/workflows/gri-v2-conglomerate-chi-c1-small-source-schemas.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Inspect frozen small-source schemas
+        run: python -m src.inspect_conglomerate_c1_small_source_schemas
+      - name: Upload schema artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-conglomerate-chi-c1-small-source-schemas-20260918
+          path: GRI_v2/artifacts/GRI_CONGLOMERATE_C1_SMALL_SOURCE_SCHEMAS_20260918.json
+          retention-days: 90
+          if-no-files-found: error
