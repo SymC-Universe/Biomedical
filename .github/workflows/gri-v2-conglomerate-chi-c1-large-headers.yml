@@ -1,0 +1,36 @@
+name: GRI Conglomerate Chi C1 large source headers
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - gri-conglomerate-chi-tool-v1-20260918
+    paths:
+      - 'GRI_v2/src/inspect_conglomerate_c1_large_headers.py'
+      - 'GRI_v2/config/gri_conglomerate_c1_source_registry_20260918.json'
+      - '.github/workflows/gri-v2-conglomerate-chi-c1-large-headers.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  inspect-large-headers:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Inspect large-source headers by range request
+        run: python -m src.inspect_conglomerate_c1_large_headers
+      - name: Upload header inspection
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-conglomerate-chi-c1-large-source-headers-20260918
+          path: GRI_v2/artifacts/GRI_CONGLOMERATE_C1_LARGE_SOURCE_HEADERS_20260918.json
+          retention-days: 90
+          if-no-files-found: error
