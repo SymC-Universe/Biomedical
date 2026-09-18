@@ -1,0 +1,39 @@
+name: GRI Stage A finite-filter reconstruction audit
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - gri-conglomerate-chi-tool-v1-20260918
+    paths:
+      - 'GRI_v2/src/audit_stage_a_finite_filter_reconstruction.py'
+      - 'GRI_v2/config/gri_conglomerate_c1_source_registry_20260918.json'
+      - 'GRI_v2/config/stage_c1_frozen_v2.json'
+      - 'GRI_v2/development_outputs/stage_c0_1_sample_identity/stage_c0_1_unique_match_coverage.csv'
+      - '.github/workflows/gri-stage-a-finite-filter-reconstruction.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  finite-filter-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit Stage A finite-data reconstruction
+        run: python -m src.audit_stage_a_finite_filter_reconstruction
+      - name: Upload reconstruction audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-stage-a-finite-filter-reconstruction-20260918
+          path: GRI_v2/artifacts/GRI_STAGE_A_FINITE_FILTER_RECONSTRUCTION_AUDIT_20260918.json
+          retention-days: 90
+          if-no-files-found: warn
