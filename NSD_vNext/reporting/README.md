@@ -46,3 +46,9 @@ report_maturity
 - report maturity is function-specific.
 
 Canonical product definition: `../docs/NEUROPHYSIOLOGY_DECISION_SUPPORT_TOOL_SPEC_v0.1.md`.
+
+## Machine-readable schema
+
+The first frozen reporting contract is `neurophysiology_assessment_report_schema_v0.1.json`.
+
+It is a structural contract only. A field being representable in the schema does not mean its scientific module is currently enabled. Unsupported diagnostic/prognostic fields remain empty or carry an explicit non-supported/refusal status according to the product specification.
