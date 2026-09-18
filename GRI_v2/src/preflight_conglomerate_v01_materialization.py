@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+# Remote no-outcome materialization readiness probe.
+
 import hashlib
 import json
 import tempfile
