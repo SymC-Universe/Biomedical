@@ -1,0 +1,105 @@
+{
+  "schema": "gri-conglomerate-chi-carrier-long-v1",
+  "date": "2026-09-18",
+  "required_columns": [
+    "entity_id",
+    "cohort_id",
+    "system_id",
+    "sample_id",
+    "block_id",
+    "feature_id",
+    "value",
+    "value_status",
+    "uncertainty_value",
+    "uncertainty_kind",
+    "local_embedded_role",
+    "time_index",
+    "time_order_known",
+    "evidence_class",
+    "independence_role",
+    "source_id",
+    "source_digest_or_run",
+    "transform_id"
+  ],
+  "allowed_blocks": [
+    "R",
+    "S",
+    "E",
+    "G",
+    "P",
+    "M",
+    "T",
+    "Q"
+  ],
+  "allowed_value_status": [
+    "OBSERVED",
+    "DERIVED_FROZEN",
+    "MISSING",
+    "NOT_APPLICABLE",
+    "REFUSED",
+    "NOT_IDENTIFIABLE"
+  ],
+  "numeric_value_status": [
+    "OBSERVED",
+    "DERIVED_FROZEN"
+  ],
+  "blank_value_status": [
+    "MISSING",
+    "NOT_APPLICABLE",
+    "REFUSED",
+    "NOT_IDENTIFIABLE"
+  ],
+  "allowed_uncertainty_kind": [
+    "NONE",
+    "SD",
+    "SE",
+    "CI95_HALF_WIDTH",
+    "BOOTSTRAP_SD",
+    "OTHER"
+  ],
+  "allowed_local_embedded_role": [
+    "LOCAL",
+    "EMBEDDED",
+    "CONTEXT",
+    "TEMPORAL",
+    "QUALITY",
+    "NOT_APPLICABLE"
+  ],
+  "allowed_evidence_class": [
+    "P0-D",
+    "P0-Q",
+    "P1",
+    "P2",
+    "HISTORICAL"
+  ],
+  "allowed_independence_role": [
+    "DEVELOPMENT",
+    "INTERNAL_HOLDOUT",
+    "EXTERNAL_UNTOUCHED",
+    "REUSED_DEPENDENT",
+    "NOT_APPLICABLE"
+  ],
+  "duplicate_key": [
+    "entity_id",
+    "cohort_id",
+    "sample_id",
+    "block_id",
+    "feature_id",
+    "transform_id"
+  ],
+  "forbidden_columns": [
+    "Chi_bio_value",
+    "chi_bio_value",
+    "master_score",
+    "global_stability_score",
+    "diagnostic_class",
+    "predicted_outcome"
+  ],
+  "invariants": {
+    "missing_is_not_zero": true,
+    "cross_block_aggregation": false,
+    "scalar_required": false,
+    "temporal_requires_observed_order": true,
+    "refuse_states_preserved": true
+  }
+}
