@@ -227,3 +227,67 @@ Until this adequacy program closes, the following remain prohibited for real EEG
 - diagnosis or prognosis from M2 outputs.
 
 The next code work is model-adequacy qualification, not real-data application.
+
+
+## 10. Interim adequacy-diagnostic pass
+
+Date: 18 September 2026
+Implementation commit lineage includes the diagnostic extension in engine/tools/probe_latent_oscillator_adversaries.py.
+
+Purpose:
+Test whether simple alternative-model competition and within-record stability diagnostics can expose the failure classes already discovered, without changing the production M2 admission rule.
+
+Added diagnostics:
+- single-oscillator covariance fit versus a nonoscillatory AR(1)-like covariance alternative;
+- single-oscillator covariance fit versus a two-oscillator covariance alternative;
+- split-half frequency and damping stability;
+- explicitly labeled pseudo-BIC summaries.
+
+Important statistical ceiling:
+The covariance-lag residuals are correlated. These pseudo-BIC values are qualification diagnostics only. They are not formal likelihood-based information criteria and are not frozen as admission thresholds.
+
+Observed median behavior across the deterministic three-seed adversarial map:
+
+- valid single oscillator:
+  - pseudo-BIC single minus AR1 approximately -483.9;
+  - pseudo-BIC two minus single approximately -77.7;
+  - split-half frequency symmetric relative difference approximately 0.060;
+  - split-half damping absolute difference approximately 0.016.
+
+- nonoscillatory AR(1):
+  - pseudo-BIC single minus AR1 approximately +261.4, correctly favoring the nonoscillatory alternative;
+  - pseudo-BIC two minus single approximately +16.8.
+
+- two close modes:
+  - pseudo-BIC two minus single approximately -41.3.
+
+- two separated modes:
+  - pseudo-BIC two minus single approximately -228.1.
+
+- mid-record frequency shift:
+  - split-half frequency symmetric relative difference approximately 0.508.
+
+- finite bursts:
+  - split-half damping absolute difference approximately 0.137, but frequency stability alone did not reject the case.
+
+- colored observation noise:
+  - neither split-half frequency stability nor the single-versus-AR1 comparison by itself resolves the misspecification.
+
+- white noise:
+  - covariance fit remains extremely poor, but this easy case cannot define the general adequacy rule.
+
+Scientific interpretation:
+
+1. A0 versus A1 competition is promising for the explicit nonoscillatory AR(1) failure.
+2. Split-window stability is informative for strong nonstationarity such as the frequency-shift generator.
+3. The covariance-based A2 pseudo-BIC is not a sufficient model-order rule because it improves the diagnostic criterion for both true two-mode cases and the valid single-mode truth.
+4. No post-hoc combination of these first diagnostics is promoted as the production gate.
+
+Decision:
+The frozen Section 5 architecture remains unchanged. The next substantive modal implementation should use proper innovations/Kalman likelihood or another statistically justified state-space equivalent for A0/A1/A2 competition, then add residual/innovation, stationarity, identifiability, held-out, and operating-region qualification.
+
+Current route status remains:
+
+M2_LATENT_COVARIANCE = KNOWN_TRUTH_BASELINE / REAL_EEG_NOT_ADMITTED
+
+This pass is recorded in P0Q_QUALIFICATION_SEARCH_LEDGER_v0.1.md.
