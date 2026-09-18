@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://symcuniverse.com/schemas/clinical-model-registry-entry-v0.1.json",
+  "title": "Clinical Model Registry Entry v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "model_id",
+    "task_type",
+    "target_definition",
+    "supported_labels_or_outcomes",
+    "input_engine_version",
+    "input_atlas_version",
+    "required_features",
+    "population_scope",
+    "recording_scope",
+    "training_datasets",
+    "validation_datasets",
+    "split_manifest",
+    "calibration_method",
+    "performance_metrics",
+    "uncertainty_method",
+    "out_of_domain_rule",
+    "refusal_rule",
+    "known_limitations",
+    "maturity_status"
+  ],
+  "properties": {
+    "model_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "task_type": {
+      "type": "string",
+      "enum": [
+        "SCREENING",
+        "DIFFERENTIAL_SUPPORT",
+        "LONGITUDINAL_MONITORING",
+        "PROGNOSIS",
+        "RESEARCH_CLASSIFICATION"
+      ]
+    },
+    "target_definition": {
+      "type": "string",
+      "minLength": 1
+    },
+    "supported_labels_or_outcomes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "input_engine_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "input_atlas_version": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "required_features": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "population_scope": {
+      "type": "object"
+    },
+    "recording_scope": {
+      "type": "object"
+    },
+    "training_datasets": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "validation_datasets": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "split_manifest": {
+      "type": "object"
+    },
+    "calibration_method": {
+      "type": "object"
+    },
+    "performance_metrics": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "uncertainty_method": {
+      "type": "object"
+    },
+    "out_of_domain_rule": {
+      "type": "object"
+    },
+    "refusal_rule": {
+      "type": "object"
+    },
+    "known_limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "native_comparators": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "incremental_value_status": {
+      "type": "string",
+      "enum": [
+        "ADDS",
+        "EQUIVALENT",
+        "SUBTRACTS",
+        "INDETERMINATE",
+        "NOT_TESTED"
+      ]
+    },
+    "maturity_status": {
+      "type": "string",
+      "enum": [
+        "RESEARCH_ONLY",
+        "P0_D",
+        "P0_Q",
+        "P1",
+        "P2_RELEASE_SCOPE"
+      ]
+    },
+    "provenance_hashes": {
+      "type": "object"
+    }
+  }
+}
