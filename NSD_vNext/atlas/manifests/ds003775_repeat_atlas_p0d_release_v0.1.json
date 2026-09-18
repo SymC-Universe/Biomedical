@@ -1,0 +1,73 @@
+{
+  "atlas_version": "ds003775-repeat-p0d-v0.1",
+  "maturity": "ATLAS_P0_D",
+  "engine_version": "git:357fdbdfa86230f2351479af8897029bcba5f861",
+  "dataset_versions": [
+    {
+      "dataset_id": "OpenNeuro ds003775",
+      "release_id": "v1.2.1 / NEMAR on003775 v1.0.0",
+      "doi": "10.18112/openneuro.ds003775.v1.2.1",
+      "license": "CC0",
+      "role": "REFERENCE_BUILD"
+    }
+  ],
+  "subject_inclusion_hash": "git-blob:f14459e65efb2da8d13b6851b0fca3638483b170",
+  "subject_count": 42,
+  "session_count": 84,
+  "recording_conditions": [
+    "resting eyes closed"
+  ],
+  "population_scope": {
+    "description": "Label-blind 42-subject repeat-session reference subset used for T0 descriptive Function/Limit discovery.",
+    "independent_unit": "subject",
+    "repeats_per_subject": 2,
+    "clinical_fields_used_for_selection": []
+  },
+  "age_range": null,
+  "sex_gender_variables_available": [],
+  "site_device_variables": [
+    "BioSemi 64-channel EEG",
+    "1024 Hz sampling in pinned release"
+  ],
+  "reference_scheme_scope": "Average reference as declared in pinned raw release metadata; reference sensitivity is not yet closed as a P0-Q claim.",
+  "exclusions": [
+    "No disease-specific retuning",
+    "No clinical or cognitive field used to construct the descriptive reference artifact",
+    "No modal damping ratio or local chi admitted",
+    "No healthy/pathological cutoff defined"
+  ],
+  "preprocessing_hash": "git-blob:c961c56353b9d708860b5a5abc84a94cba9f33d3",
+  "feature_definition_hash": "git-blob:fa22bb88783228eeb79b324512ba7427a4510923",
+  "reference_model_hash": "git-blob:096386cef111838edc11380a08b4ece61994c70e",
+  "function_map_version": "ds003775-repeat-p0d-v0.1",
+  "limit_map_version": "ds003775-repeat-p0d-v0.1",
+  "layers": {
+    "spectral": "EXPLORATORY",
+    "modal": "NOT_INCLUDED",
+    "licensed_local_scalars": "NOT_INCLUDED",
+    "spatial_system": "EXPLORATORY",
+    "open_channel": "EXPLORATORY"
+  },
+  "covariate_models": [],
+  "scope": "Exploratory label-blind reference and repeatability artifact for the frozen ds003775 repeat subset. It is not a clinical normative model and cannot support diagnosis or prognosis.",
+  "known_limitations": [
+    "Only 42 repeat subjects and one acquisition family are represented.",
+    "No covariate model is fitted in this P0-D artifact.",
+    "Exact peak count shows limited repeat agreement.",
+    "Aperiodic model-family disagreement is substantial in many sessions.",
+    "Channel-wise repeatability is heterogeneous and has not been separated from montage/reference or peripheral artifact effects.",
+    "First-listed peak centers are not treated as mode identities across sessions.",
+    "No modal estimator has yet passed the frozen real-EEG admission program.",
+    "No externally validated reference threshold exists."
+  ],
+  "provenance": {
+    "source_workflow": "NSD ds003775 42-Subject Repeat Population",
+    "source_run_id": 35337659470,
+    "source_run_head": "357fdbdfa86230f2351479af8897029bcba5f861",
+    "population_summary_artifact_digest": "sha256:0859c127ca1cac7f2789fb12b7e66b1453f9ec6fb250e20f11eed6e84b9e0bb2",
+    "committed_reference_artifact": "NSD_vNext/atlas/reference_models/ds003775_repeat_descriptive_reference_p0d_v0.1.json",
+    "result_record": "NSD_vNext/docs/DS003775_REPEAT_POPULATION_T0_RESULT_v0.1.md",
+    "result_record_blob": "6202ee578ed64528a1aba1ab6fd04df3157d8306",
+    "d4_scope": "42 subjects / 84 exact pinned recordings"
+  }
+}
