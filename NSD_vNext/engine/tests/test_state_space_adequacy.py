@@ -5,7 +5,7 @@ from nsd_engine.latent_oscillator_covariance import (
     LatentOscillatorTruth,
     simulate_latent_oscillator,
 )
-from nsd_engine.state_space_adequacy import compare_state_space_candidates
+from nsd_engine.state_space_adequacy import (\n    compare_state_space_candidates,\n    evaluate_comparison_on_holdout,\n)
 
 
 FS = 256.0
@@ -96,3 +96,26 @@ def test_state_space_candidates_reject_nonfinite_input():
 def test_state_space_candidates_reject_too_short_input():
     with pytest.raises(ValueError, match="at least"):
         compare_state_space_candidates(np.arange(100.0), FS)
+
+
+
+def test_stationary_single_oscillator_holdout_prefers_a1():
+    signal = simulate_latent_oscillator(
+        LatentOscillatorTruth(10.0, 0.30, FS),
+        seconds=30.0,
+        measurement_noise_to_latent_sd=0.5,
+        seed=3,
+    )
+    midpoint = signal.size // 2
+    training = compare_state_space_candidates(
+        signal[:midpoint],
+        FS,
+        optimizer_maxiter=60,
+    )
+    holdout = evaluate_comparison_on_holdout(training, signal[midpoint:])
+
+    assert holdout["winner"] == "A1"
+    assert (
+        holdout["negative_log_likelihood_per_sample"]["A1"]
+        < holdout["negative_log_likelihood_per_sample"]["A0"]
+    )
