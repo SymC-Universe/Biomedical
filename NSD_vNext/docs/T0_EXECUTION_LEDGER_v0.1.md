@@ -326,7 +326,7 @@ Decision:
 - raw Welch spectral shape is population-useful as a descriptive layer, with important subject/channel Limit-Map outliers;
 - the descriptive periodic/aperiodic layer is retained for Atlas/Limit-Map use but is **not** promoted as a standalone trait biomarker;
 - no configuration is retuned after inspecting these results;
-- channel-wise subject-aware ICC(A,1) and categorical agreement are being added as the next frozen repeatability calculation.
+- channel-wise subject-aware repeatability is now closed for this frozen output: exponent ICC(A,1) median **0.65882** across 64 channels (range **0.40278–0.83557**), exact peak-count agreement median **0.53571**, and exact zero-peak-state agreement median **0.90476**; no reliability threshold was tuned from these observations.
 
 ## 11. M2 adversarial model-adequacy result
 
@@ -350,14 +350,13 @@ The next modal work is explicit model adequacy/order qualification, frozen in:
 
 ## 12. Immediate execution order from here
 
-1. re-run the 42-subject repeat aggregation with frozen channel-wise ICC(A,1) and categorical agreement outputs;
-2. inspect channel/region reliability and identify descriptive Function/Limit structure without choosing clinical thresholds;
-3. promote the exact 42-subject repeat subset through the D4 repeat-population gate while keeping the non-repeat dataset remainder separate;
-4. implement and qualify the M2 model-adequacy layer: nonoscillatory vs one-oscillator vs multi-oscillator alternatives, stationarity, colored-noise, residual/innovation, and identifiability checks;
-5. keep real-EEG modal damping ratios disabled until that model-adequacy route survives known truth;
-6. begin the first Atlas serialization using only qualified descriptive layers and explicit refusal/model-sensitivity states;
-7. expand to the larger adult Function/Limit dataset only after the first ds003775 T0 reference artifacts are versioned;
-8. keep all clinical labels downstream until T0/T1 gates are closed.
+1. convert the closed 42-subject descriptive/repeatability outputs into the first versioned Atlas-P0-D reference artifact without inventing a healthy cutoff;
+2. preserve channel heterogeneity, model-family disagreement, zero-peak state, and refusal/open-channel rates in that artifact rather than reducing them to one score;
+3. continue the modal P0-Q adequacy program with formal nonoscillatory / one-oscillator / multi-oscillator model competition plus stationarity, colored-noise, residual/innovation, and identifiability tests;
+4. keep real-EEG modal damping ratios disabled until that modal route survives the frozen adequacy program;
+5. define the first research-grade individual assessment rendering against the versioned Atlas artifact, with diagnostic and prognostic modules explicitly disabled;
+6. expand to the larger adult Function/Limit dataset only after the first ds003775 Atlas-P0-D artifact and report contract are reproducible;
+7. keep all clinical labels downstream until T0/T1 gates are closed.
 
 ## 13. Stop lines
 
