@@ -1,0 +1,47 @@
+name: GRI Conglomerate Chi C1 EGP materialization
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - gri-conglomerate-chi-tool-v1-20260918
+    paths:
+      - 'GRI_v2/src/materialize_conglomerate_c1_egp_fragment.py'
+      - 'GRI_v2/src/materialize_conglomerate_chi_c1.py'
+      - 'GRI_v2/config/gri_conglomerate_c1_source_registry_20260918.json'
+      - 'GRI_v2/config/gri_conglomerate_chi_carrier_schema_v1.json'
+      - 'GRI_v2/development_outputs/stage_b2_rppa/stage_b2_rppa_common_panel.txt'
+      - '.github/workflows/gri-v2-conglomerate-chi-c1-egp.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  materialize-egp:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install repository dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+      - name: Run E-G-P block materialization
+        run: python -m src.materialize_conglomerate_c1_egp_fragment
+      - name: Print manifest
+        run: cat artifacts/conglomerate_c1_egp_fragment_20260918/conglomerate_c1_egp_fragment_manifest.json
+      - name: Upload E-G-P carrier fragment
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-conglomerate-chi-c1-egp-fragment-20260918
+          path: |
+            GRI_v2/artifacts/conglomerate_c1_egp_fragment_20260918/conglomerate_c1_egp_fragment.csv.gz
+            GRI_v2/artifacts/conglomerate_c1_egp_fragment_20260918/conglomerate_c1_egp_fragment_manifest.json
+          retention-days: 90
+          if-no-files-found: error
