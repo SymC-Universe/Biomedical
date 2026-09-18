@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import gzip
 import hashlib
 import json
 import math
@@ -182,7 +183,8 @@ def read_and_validate_csv(
     keys = existing_keys if existing_keys is not None else set()
     rows: List[Dict[str, str]] = []
 
-    with path.open("r", encoding="utf-8", newline="") as f:
+    opener = gzip.open if path.name.endswith(".gz") else open
+    with opener(path, "rt", encoding="utf-8", newline="") as f:
         reader = csv.DictReader(f)
         validate_header(reader.fieldnames, schema, path)
         for i, row in enumerate(reader, start=2):
