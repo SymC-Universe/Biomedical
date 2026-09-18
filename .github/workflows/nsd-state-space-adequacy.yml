@@ -15,10 +15,52 @@ permissions:
 
 concurrency:
   group: nsd-state-space-adequacy-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
+  prepare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    outputs:
+      should_run: ${{ steps.gate.outputs.should_run }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Guard against unrelated long-lived-PR retriggers
+        id: gate
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_ACTION: ${{ github.event.action }}
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.event.after }}
+        run: |
+          set -euo pipefail
+          SHOULD_RUN=true
+
+          if [[ "$EVENT_NAME" == "pull_request" && "$EVENT_ACTION" == "synchronize" ]]; then
+            if [[ -n "$BEFORE_SHA" && -n "$AFTER_SHA" ]] && git cat-file -e "$BEFORE_SHA^{commit}" 2>/dev/null; then
+              if git diff --quiet "$BEFORE_SHA" "$AFTER_SHA" -- \
+                .github/workflows/nsd-state-space-adequacy.yml \
+                NSD_vNext/engine/pyproject.toml \
+                NSD_vNext/engine/nsd_engine/state_space_adequacy.py \
+                NSD_vNext/engine/nsd_engine/latent_oscillator_covariance.py \
+                NSD_vNext/engine/tools/probe_state_space_model_adequacy.py
+              then
+                SHOULD_RUN=false
+              fi
+            fi
+          fi
+
+          echo "should_run=$SHOULD_RUN" >> "$GITHUB_OUTPUT"
+          echo "should_run=$SHOULD_RUN"
+
   adequacy-map:
+    needs: prepare
+    if: needs.prepare.outputs.should_run == 'true'
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
