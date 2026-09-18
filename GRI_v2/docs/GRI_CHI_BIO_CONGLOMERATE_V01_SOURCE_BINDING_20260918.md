@@ -53,3 +53,7 @@ The synthetic carrier gate can run entirely in GitHub. The first real-data bottl
 TCGA FINAL_HOLDOUT has already been opened for the older P0 architecture. It may be used for development/ablation of the new conglomerate version, but it cannot be called untouched confirmation of that new version.
 
 The next confirmatory diagnostic/predictive result must therefore come from an independently frozen external dataset/task.
+
+## Remote-compute note
+
+The materialization preflight is delegated to GitHub Actions. Large R/S biological matrices remain unmaterialized until exact remote acquisition and resource-safe streaming rules are bound; no local user computation is required for this preflight.
