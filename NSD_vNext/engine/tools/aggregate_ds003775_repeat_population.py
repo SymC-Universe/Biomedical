@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Aggregate label-blind ds003775 repeat-pair T0 outputs subject-wise.
 
-This deliberately reports population distributions and Limit-Map prevalence.
-It does not fit a clinical model, define a healthy boundary, or tune the frozen
-descriptive parameterizer.
+This deliberately reports population distributions, channel-wise repeatability,
+and Limit-Map prevalence. It does not fit a clinical model, define a healthy
+boundary, or tune the frozen descriptive parameterizer.
 """
 
 from __future__ import annotations
@@ -29,6 +29,75 @@ def _summary(values):
         "minimum": vals[0],
         "maximum": vals[-1],
     }
+
+
+def _icc_a1(pairs):
+    """Two-way mixed, absolute-agreement, single-measure ICC: ICC(A,1).
+
+    Each pair is one subject measured in the two repeat sessions. This is the
+    McGraw-Wong/Shrout-Fleiss absolute-agreement single-measure form:
+
+        (MSR - MSE) /
+        (MSR + (k-1)MSE + k(MSC-MSE)/n)
+
+    with k=2 sessions. Negative ICC values are retained rather than clipped.
+    """
+    rows = []
+    for pair in pairs:
+        if len(pair) != 2:
+            raise ValueError("ICC(A,1) requires exactly two measurements per subject")
+        values = [float(pair[0]), float(pair[1])]
+        if all(math.isfinite(v) for v in values):
+            rows.append(values)
+    n = len(rows)
+    k = 2
+    if n < 2:
+        return None
+
+    grand = sum(sum(row) for row in rows) / (n * k)
+    row_means = [sum(row) / k for row in rows]
+    col_means = [sum(row[j] for row in rows) / n for j in range(k)]
+
+    ss_rows = k * sum((value - grand) ** 2 for value in row_means)
+    ss_cols = n * sum((value - grand) ** 2 for value in col_means)
+    ss_total = sum((value - grand) ** 2 for row in rows for value in row)
+    ss_error = ss_total - ss_rows - ss_cols
+    if ss_error < 0 and abs(ss_error) < 1e-12:
+        ss_error = 0.0
+    if ss_error < 0:
+        raise ValueError("negative residual sum of squares in ICC calculation")
+
+    ms_rows = ss_rows / (n - 1)
+    ms_cols = ss_cols / (k - 1)
+    ms_error = ss_error / ((n - 1) * (k - 1))
+
+    denominator = (
+        ms_rows
+        + (k - 1) * ms_error
+        + (k * (ms_cols - ms_error) / n)
+    )
+    if not math.isfinite(denominator) or abs(denominator) < 1e-15:
+        return None
+    value = (ms_rows - ms_error) / denominator
+    return float(value) if math.isfinite(value) else None
+
+
+def _fixed_channel_map(session):
+    result = {}
+    for row in session.get("channels", []):
+        channel = str(row["channel"])
+        fixed = row["frozen_fixed"]
+        names = list(fixed["aperiodic_parameter_names"])
+        params = list(fixed["aperiodic_parameters"])
+        if "exponent" not in names:
+            raise ValueError(f"channel {channel} has no aperiodic exponent")
+        exponent = float(params[names.index("exponent")])
+        result[channel] = {
+            "aperiodic_exponent": exponent,
+            "peak_count": int(fixed["peak_count"]),
+            "zero_peak_state": bool(fixed["zero_peak_state"]),
+        }
+    return result
 
 
 def _load_many(root: Path, suffix: str):
@@ -57,6 +126,10 @@ def aggregate(root: Path, expected_subject_count: int) -> dict[str, object]:
         raise ValueError(
             f"expected {expected_subject_count} complete specparam+PSD subjects, found {len(common)}"
         )
+    if len(d4_subjects) != expected_subject_count:
+        raise ValueError(
+            f"expected {expected_subject_count} D4-verified subjects, found {len(d4_subjects)}"
+        )
 
     exponent_median_diff = []
     same_peak_fraction = []
@@ -71,6 +144,7 @@ def aggregate(root: Path, expected_subject_count: int) -> dict[str, object]:
     zero_peak_fractions = []
     width_boundary_hits_per_channel = []
 
+    channel_pairs = {}
     subjects = []
     for subject in common:
         spec = spec_by_subject[subject]
@@ -91,8 +165,37 @@ def aggregate(root: Path, expected_subject_count: int) -> dict[str, object]:
         psd_channel_median_corr.append(pc["channel_correlation_median"])
         psd_channel_min_corr.append(pc["channel_correlation_minimum"])
 
+        sessions = sorted(spec["sessions"], key=lambda item: str(item["session_id"]))
+        if len(sessions) != 2:
+            raise ValueError(
+                f"subject {subject} must have exactly two repeat sessions; found {len(sessions)}"
+            )
+
+        fixed_maps = [_fixed_channel_map(session) for session in sessions]
+        shared_channels = sorted(set(fixed_maps[0]) & set(fixed_maps[1]))
+        for channel in shared_channels:
+            first = fixed_maps[0][channel]
+            second = fixed_maps[1][channel]
+            bucket = channel_pairs.setdefault(
+                channel,
+                {
+                    "aperiodic_exponent": [],
+                    "peak_count_equal": [],
+                    "zero_peak_equal": [],
+                },
+            )
+            bucket["aperiodic_exponent"].append(
+                [first["aperiodic_exponent"], second["aperiodic_exponent"]]
+            )
+            bucket["peak_count_equal"].append(
+                first["peak_count"] == second["peak_count"]
+            )
+            bucket["zero_peak_equal"].append(
+                first["zero_peak_state"] == second["zero_peak_state"]
+            )
+
         session_rows = []
-        for session in spec["sessions"]:
+        for session in sessions:
             summary = session["summary"]
             channel_count = int(summary["channel_count"])
             disagreement_fractions.append(
@@ -130,8 +233,38 @@ def aggregate(root: Path, expected_subject_count: int) -> dict[str, object]:
             "global_median_log_psd_correlation": pc["global_median_psd_correlation"],
             "median_channel_log_psd_correlation": pc["channel_correlation_median"],
             "minimum_channel_log_psd_correlation": pc["channel_correlation_minimum"],
+            "shared_parameterized_channel_count": len(shared_channels),
             "sessions": session_rows,
         })
+
+    channel_repeatability = []
+    for channel in sorted(channel_pairs):
+        bucket = channel_pairs[channel]
+        exponent_pairs = bucket["aperiodic_exponent"]
+        exponent_abs_diffs = [abs(pair[0] - pair[1]) for pair in exponent_pairs]
+        peak_equal = bucket["peak_count_equal"]
+        zero_equal = bucket["zero_peak_equal"]
+        channel_repeatability.append({
+            "channel": channel,
+            "subject_pair_count": len(exponent_pairs),
+            "aperiodic_exponent_icc_a1": _icc_a1(exponent_pairs),
+            "aperiodic_exponent_absolute_difference": _summary(exponent_abs_diffs),
+            "peak_count_exact_agreement_fraction":
+                (sum(peak_equal) / len(peak_equal)) if peak_equal else None,
+            "zero_peak_state_exact_agreement_fraction":
+                (sum(zero_equal) / len(zero_equal)) if zero_equal else None,
+        })
+
+    exponent_iccs = [
+        row["aperiodic_exponent_icc_a1"] for row in channel_repeatability
+    ]
+    finite_iccs = _finite(exponent_iccs)
+    peak_agreements = [
+        row["peak_count_exact_agreement_fraction"] for row in channel_repeatability
+    ]
+    zero_agreements = [
+        row["zero_peak_state_exact_agreement_fraction"] for row in channel_repeatability
+    ]
 
     return {
         "dataset": "ds003775",
@@ -151,7 +284,26 @@ def aggregate(root: Path, expected_subject_count: int) -> dict[str, object]:
             "max_peak_count_channel_fraction_per_session": _summary(max_peak_saturation_fractions),
             "zero_peak_channel_fraction_per_session": _summary(zero_peak_fractions),
             "width_boundary_hits_per_channel_per_session": _summary(width_boundary_hits_per_channel),
+            "channelwise_aperiodic_exponent_icc_a1": {
+                **_summary(exponent_iccs),
+                "negative_count": sum(value < 0 for value in finite_iccs),
+                "nonnegative_count": sum(value >= 0 for value in finite_iccs),
+            },
+            "channelwise_peak_count_exact_agreement_fraction": _summary(peak_agreements),
+            "channelwise_zero_peak_state_exact_agreement_fraction": _summary(zero_agreements),
         },
+        "repeatability_method": {
+            "continuous": (
+                "ICC(A,1): two-way mixed, absolute-agreement, single-measure; "
+                "subjects are rows and the two repeat sessions are columns"
+            ),
+            "categorical": "channel-wise exact agreement fraction across subject pairs",
+            "hierarchy_rule": (
+                "subjects are the independent repeatability units; channels are summarized "
+                "separately and are not treated as independent subjects"
+            ),
+        },
+        "channel_repeatability": channel_repeatability,
         "subjects": subjects,
         "interpretation_ceiling": (
             "descriptive repeat population map only; no trait biomarker, damping, chi, "
@@ -176,6 +328,7 @@ def main() -> int:
     print(json.dumps({
         "subject_count": result["subject_count"],
         "population": result["population"],
+        "repeatability_method": result["repeatability_method"],
         "interpretation_ceiling": result["interpretation_ceiling"],
     }, sort_keys=True))
     return 0
