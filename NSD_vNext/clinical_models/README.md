@@ -50,3 +50,7 @@ A cross-sectional classifier is not a prognostic model.
 The first candidate clinical model is expected to be a narrowly frozen research classifier after T0/T1 qualification. ASD is the current logical first phenotype because historical project lineage exists, but no ASD model is admitted merely by this scaffold.
 
 Every clinical result remains subject to the native-comparator decision: `ADDS`, `EQUIVALENT`, `SUBTRACTS`, `INDETERMINATE`, or `NOT_TESTED`.
+
+## Machine-readable registry contract
+
+Every future registry entry must validate conceptually against `clinical_model_registry_schema_v0.1.json` and retain the native-comparator outcome and full version/provenance linkage. The presence of this schema does not admit any clinical model.
