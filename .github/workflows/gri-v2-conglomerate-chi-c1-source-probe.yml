@@ -28,6 +28,11 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Install repository dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
       - name: Run source-probe contract tests
         run: python -m pytest -q tests/test_conglomerate_c1_public_source_probe.py
 
