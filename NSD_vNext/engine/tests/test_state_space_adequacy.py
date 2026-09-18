@@ -8,6 +8,7 @@ from nsd_engine.latent_oscillator_covariance import (
 from nsd_engine.state_space_adequacy import (
     compare_state_space_candidates,
     evaluate_comparison_on_holdout,
+    fit_state_space_candidate,
 )
 
 
@@ -121,3 +122,40 @@ def test_stationary_single_oscillator_holdout_prefers_a1():
         holdout["negative_log_likelihood_per_sample"]["A1"]
         < holdout["negative_log_likelihood_per_sample"]["A0"]
     )
+
+
+def test_high_noise_a1_known_truth_avoids_degenerate_boundary():
+    signal = simulate_latent_oscillator(
+        LatentOscillatorTruth(10.0, 0.50, FS),
+        seconds=30.0,
+        measurement_noise_to_latent_sd=1.0,
+        seed=1,
+    )
+    fit = fit_state_space_candidate(
+        signal,
+        FS,
+        "A1",
+        optimizer_maxiter=80,
+    )
+
+    assert fit.parameters["latent_fraction"] > 0.05
+    assert abs(fit.parameters["natural_frequency_hz"] - 10.0) / 10.0 < 0.25
+    assert abs(fit.parameters["damping_ratio"] - 0.50) < 0.25
+    assert fit.candidate_start_count > fit.attempted_start_count
+
+
+def test_white_noise_holdout_can_report_numerical_indeterminate():
+    rng = np.random.default_rng(77)
+    signal = rng.normal(size=int(FS * 30.0))
+    midpoint = signal.size // 2
+    training = compare_state_space_candidates(
+        signal[:midpoint],
+        FS,
+        optimizer_maxiter=60,
+    )
+    holdout = evaluate_comparison_on_holdout(training, signal[midpoint:])
+
+    assert "numerically_indistinguishable" in holdout
+    if holdout["numerically_indistinguishable"]:
+        assert holdout["interpretable_winner"] is None
+        assert len(holdout["tied_families"]) >= 2

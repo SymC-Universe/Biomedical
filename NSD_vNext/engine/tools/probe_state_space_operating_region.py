@@ -34,7 +34,7 @@ from nsd_engine.state_space_adequacy import compare_state_space_candidates
 
 
 FS = 256.0
-SEEDS = (0, 1)
+SEEDS = (0, 1, 2)
 
 
 def _standardize(values: np.ndarray) -> np.ndarray:
@@ -76,6 +76,29 @@ def _single_mode_rows() -> list[dict[str, object]]:
                             optimizer_maxiter=70,
                         )
                         a1 = comparison.by_family("A1")
+                        fit_diagnostics = {
+                            fit.family: {
+                                "success": fit.success,
+                                "bic": fit.bic,
+                                "negative_log_likelihood":
+                                    fit.negative_log_likelihood,
+                                "candidate_start_count":
+                                    fit.candidate_start_count,
+                                "attempted_start_count":
+                                    fit.attempted_start_count,
+                                "converged_start_count":
+                                    fit.converged_start_count,
+                                "near_optimal_start_count":
+                                    fit.near_optimal_start_count,
+                                "start_nll_range": fit.start_nll_range,
+                                "innovation_max_abs_autocorrelation":
+                                    fit.innovation_max_abs_autocorrelation,
+                                "parameters": dict(fit.parameters),
+                                "near_optimal_parameter_ranges":
+                                    fit.near_optimal_parameter_ranges,
+                            }
+                            for fit in comparison.fits
+                        }
                         rows.append(
                             {
                                 "frequency_hz": frequency_hz,
@@ -99,6 +122,7 @@ def _single_mode_rows() -> list[dict[str, object]]:
                                 "a1_near_optimal_start_count":
                                     a1.near_optimal_start_count,
                                 "a1_parameters": dict(a1.parameters),
+                                "fit_diagnostics": fit_diagnostics,
                             }
                         )
     return rows
@@ -145,6 +169,25 @@ def _two_mode_rows() -> list[dict[str, object]]:
                     optimizer_maxiter=80,
                 )
                 a2 = comparison.by_family("A2")
+                fit_diagnostics = {
+                    fit.family: {
+                        "success": fit.success,
+                        "bic": fit.bic,
+                        "negative_log_likelihood": fit.negative_log_likelihood,
+                        "candidate_start_count": fit.candidate_start_count,
+                        "attempted_start_count": fit.attempted_start_count,
+                        "converged_start_count": fit.converged_start_count,
+                        "near_optimal_start_count":
+                            fit.near_optimal_start_count,
+                        "start_nll_range": fit.start_nll_range,
+                        "innovation_max_abs_autocorrelation":
+                            fit.innovation_max_abs_autocorrelation,
+                        "parameters": dict(fit.parameters),
+                        "near_optimal_parameter_ranges":
+                            fit.near_optimal_parameter_ranges,
+                    }
+                    for fit in comparison.fits
+                }
                 estimated_frequencies = sorted(
                     [
                         a2.parameters["mode1_natural_frequency_hz"],
@@ -170,6 +213,7 @@ def _two_mode_rows() -> list[dict[str, object]]:
                             a2.near_optimal_start_count,
                         "a2_near_optimal_parameter_ranges":
                             a2.near_optimal_parameter_ranges,
+                        "fit_diagnostics": fit_diagnostics,
                     }
                 )
     return rows

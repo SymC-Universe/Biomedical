@@ -191,6 +191,22 @@ def run() -> dict[str, object]:
                 first_half,
                 signal[midpoint:],
             )
+            first_a1 = first_half.by_family("A1")
+            second_a1 = second_half.by_family("A1")
+            first_frequency = first_a1.parameters["natural_frequency_hz"]
+            second_frequency = second_a1.parameters["natural_frequency_hz"]
+            frequency_scale = 0.5 * (
+                abs(first_frequency) + abs(second_frequency)
+            )
+            split_frequency_difference = (
+                abs(first_frequency - second_frequency) / frequency_scale
+                if frequency_scale > 0
+                else None
+            )
+            split_damping_difference = abs(
+                first_a1.parameters["damping_ratio"]
+                - second_a1.parameters["damping_ratio"]
+            )
 
             row = {
                 "scenario": scenario,
@@ -202,6 +218,10 @@ def run() -> dict[str, object]:
                     "same_winner": first_half.bic_winner == second_half.bic_winner,
                     "first_bic_margin_to_second": first_half.bic_margin_to_second,
                     "second_bic_margin_to_second": second_half.bic_margin_to_second,
+                    "a1_natural_frequency_symmetric_relative_difference":
+                        split_frequency_difference,
+                    "a1_damping_ratio_absolute_difference":
+                        split_damping_difference,
                 },
                 "heldout_from_first_half": holdout,
             }
@@ -221,8 +241,15 @@ def run() -> dict[str, object]:
     for scenario in GENERATORS:
         subset = [row for row in rows if row["scenario"] == scenario]
         full_winners = [row["full"]["bic_winner"] for row in subset]
-        heldout_winners = [
-            row["heldout_from_first_half"]["winner"] for row in subset
+        heldout_raw_winners = [
+            row["heldout_from_first_half"]["raw_winner"] for row in subset
+        ]
+        heldout_decisions = [
+            (
+                row["heldout_from_first_half"]["interpretable_winner"]
+                or "INDETERMINATE"
+            )
+            for row in subset
         ]
         summaries[scenario] = {
             "n": len(subset),
@@ -230,9 +257,13 @@ def run() -> dict[str, object]:
                 family: full_winners.count(family)
                 for family in ("A0", "A1", "A2")
             },
-            "heldout_winner_counts": {
-                family: heldout_winners.count(family)
+            "heldout_raw_winner_counts": {
+                family: heldout_raw_winners.count(family)
                 for family in ("A0", "A1", "A2")
+            },
+            "heldout_interpretable_decision_counts": {
+                family: heldout_decisions.count(family)
+                for family in ("A0", "A1", "A2", "INDETERMINATE")
             },
             "split_half_same_winner_fraction": float(
                 np.mean(
@@ -245,6 +276,24 @@ def run() -> dict[str, object]:
             "median_full_bic_margin_to_second": _median(
                 [row["full"]["bic_margin_to_second"] for row in subset]
             ),
+            "median_split_half_a1_frequency_symmetric_relative_difference":
+                _median(
+                    [
+                        row["split_half"][
+                            "a1_natural_frequency_symmetric_relative_difference"
+                        ]
+                        for row in subset
+                    ]
+                ),
+            "median_split_half_a1_damping_absolute_difference":
+                _median(
+                    [
+                        row["split_half"][
+                            "a1_damping_ratio_absolute_difference"
+                        ]
+                        for row in subset
+                    ]
+                ),
             "median_innovation_max_abs_autocorrelation": {
                 family: _median(
                     [

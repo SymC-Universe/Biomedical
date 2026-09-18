@@ -27,10 +27,12 @@ from typing import Literal, Sequence
 import numpy as np
 from scipy.linalg import block_diag, solve_discrete_are
 from scipy.optimize import minimize
-from scipy.signal import lfilter, ss2tf
+from scipy.signal import find_peaks, lfilter, ss2tf, welch
 
 
 ModelFamily = Literal["A0", "A1", "A2"]
+
+HOLDOUT_NUMERICAL_TIE_ATOL_PER_SAMPLE = 1e-8
 
 
 @dataclass(frozen=True)
@@ -44,6 +46,7 @@ class StateSpaceModelFit:
     negative_log_likelihood: float
     bic: float
     converged_start_count: int
+    candidate_start_count: int
     attempted_start_count: int
     near_optimal_start_count: int
     start_nll_range: float
@@ -310,35 +313,102 @@ def _negative_log_likelihood(
     )
 
 
+
+def _dedupe_frequency_candidates(
+    candidates: Sequence[float],
+    fmin_hz: float,
+    fmax_hz: float,
+    *,
+    maximum: int,
+    minimum_separation_hz: float,
+) -> list[float]:
+    kept: list[float] = []
+    for value in candidates:
+        frequency = float(value)
+        if not math.isfinite(frequency):
+            continue
+        if frequency <= fmin_hz or frequency >= fmax_hz:
+            continue
+        if all(abs(frequency - prior) >= minimum_separation_hz for prior in kept):
+            kept.append(frequency)
+        if len(kept) >= maximum:
+            break
+    return kept
+
+
 def _spectral_seed_frequencies(
     standardized_signal: np.ndarray,
     sampling_rate_hz: float,
     fmin_hz: float,
     fmax_hz: float,
     *,
-    maximum: int = 6,
-    minimum_separation_hz: float = 0.75,
+    maximum: int = 16,
+    minimum_separation_hz: float = 0.45,
 ) -> list[float]:
-    spectrum = np.abs(np.fft.rfft(standardized_signal)) ** 2
-    frequencies = np.fft.rfftfreq(
+    """Generate broad deterministic optimizer starts, not scientific evidence."""
+    nperseg = min(
         standardized_signal.size,
-        d=1.0 / sampling_rate_hz,
+        max(256, int(round(4.0 * sampling_rate_hz))),
+    )
+    frequencies, power = welch(
+        standardized_signal,
+        fs=sampling_rate_hz,
+        window="hann",
+        nperseg=nperseg,
+        noverlap=nperseg // 2,
+        detrend="constant",
+        scaling="density",
     )
     eligible = np.where(
-        (frequencies >= fmin_hz) & (frequencies <= fmax_hz)
+        (frequencies > fmin_hz) & (frequencies < fmax_hz)
     )[0]
-    if eligible.size == 0:
-        return [0.5 * (fmin_hz + fmax_hz)]
+    spectral_candidates: list[float] = []
+    if eligible.size:
+        local_power = power[eligible]
+        resolution = (
+            float(np.median(np.diff(frequencies[eligible])))
+            if eligible.size > 1
+            else fmax_hz - fmin_hz
+        )
+        distance = max(
+            1,
+            int(round(minimum_separation_hz / max(resolution, 1e-12))),
+        )
+        peaks, _ = find_peaks(local_power, distance=distance)
+        if peaks.size:
+            ranked_peaks = peaks[np.argsort(local_power[peaks])[::-1]]
+            spectral_candidates.extend(
+                float(frequencies[eligible[index]])
+                for index in ranked_peaks[:8]
+            )
+        ranked_bins = np.argsort(local_power)[::-1]
+        spectral_candidates.extend(
+            float(frequencies[eligible[index]])
+            for index in ranked_bins[:4]
+        )
 
-    ordered = eligible[np.argsort(spectrum[eligible])[::-1]]
-    seeds: list[float] = []
-    for index in ordered:
-        frequency = float(frequencies[index])
-        if all(abs(frequency - prior) >= minimum_separation_hz for prior in seeds):
-            seeds.append(frequency)
-        if len(seeds) >= maximum:
-            break
+    span = fmax_hz - fmin_hz
+    coarse = np.linspace(
+        fmin_hz + 0.02 * span,
+        fmax_hz - 0.02 * span,
+        16,
+    )
+    interleaved: list[float] = []
+    for index in range(max(len(spectral_candidates), coarse.size)):
+        if index < len(spectral_candidates):
+            interleaved.append(spectral_candidates[index])
+        if index < coarse.size:
+            interleaved.append(float(coarse[index]))
+
+    seeds = _dedupe_frequency_candidates(
+        interleaved,
+        fmin_hz,
+        fmax_hz,
+        maximum=maximum,
+        minimum_separation_hz=minimum_separation_hz,
+    )
     return seeds or [0.5 * (fmin_hz + fmax_hz)]
+
 
 
 def _initial_starts(
@@ -356,8 +426,14 @@ def _initial_starts(
     )
 
     if family == "A0":
-        lag1 = float(np.corrcoef(standardized_signal[:-1], standardized_signal[1:])[0, 1])
-        empirical_rho = min(0.98, max(0.05, abs(lag1))) if math.isfinite(lag1) else 0.9
+        lag1 = float(
+            np.corrcoef(standardized_signal[:-1], standardized_signal[1:])[0, 1]
+        )
+        empirical_rho = (
+            min(0.98, max(0.05, abs(lag1)))
+            if math.isfinite(lag1)
+            else 0.9
+        )
         starts = []
         for fraction in (0.5, 0.95):
             for rho in (empirical_rho, 0.9):
@@ -371,8 +447,13 @@ def _initial_starts(
 
     if family == "A1":
         starts = []
-        for frequency in seeds[:3]:
-            for fraction, rho in ((0.8, 0.93), (0.95, 0.98)):
+        profiles = (
+            (0.90, 0.97),
+            (0.75, 0.88),
+            (0.60, 0.70),
+        )
+        for frequency in seeds[:12]:
+            for fraction, rho in profiles:
                 starts.append(
                     np.asarray(
                         [
@@ -386,27 +467,33 @@ def _initial_starts(
         return starts
 
     pairs: list[tuple[float, float]] = []
-    for first_index in range(min(4, len(seeds))):
-        for second_index in range(first_index + 1, min(5, len(seeds))):
-            if abs(seeds[first_index] - seeds[second_index]) >= 1.0:
-                pairs.append((seeds[first_index], seeds[second_index]))
+    seed_subset = seeds[:10]
+    for first_index in range(len(seed_subset)):
+        for second_index in range(first_index + 1, len(seed_subset)):
+            if abs(seed_subset[first_index] - seed_subset[second_index]) >= 0.45:
+                pairs.append((seed_subset[first_index], seed_subset[second_index]))
 
-    primary = seeds[0]
-    for delta in (2.0, 5.0):
-        low = max(fmin_hz + 0.05, primary - delta)
-        high = min(fmax_hz - 0.05, primary + delta)
-        if high - low >= 1.0:
-            pairs.append((low, high))
+    for center in seeds[:4]:
+        for delta in (0.5, 1.0, 2.0, 5.0, 10.0):
+            for sign in (-1.0, 1.0):
+                second = center + sign * delta
+                if fmin_hz < second < fmax_hz:
+                    pairs.append((center, second))
 
     deduped: list[tuple[float, float]] = []
     for pair in pairs:
-        ordered = tuple(sorted(pair))
+        ordered = tuple(sorted(float(value) for value in pair))
+        if ordered[1] - ordered[0] < 0.45:
+            continue
         if not any(
-            abs(ordered[0] - prior[0]) < 0.25
-            and abs(ordered[1] - prior[1]) < 0.25
+            abs(ordered[0] - prior[0]) < 0.20
+            and abs(ordered[1] - prior[1]) < 0.20
             for prior in deduped
         ):
             deduped.append(ordered)
+        if len(deduped) >= 16:
+            break
+
     if not deduped:
         midpoint = 0.5 * (fmin_hz + fmax_hz)
         deduped = [
@@ -417,20 +504,28 @@ def _initial_starts(
         ]
 
     starts = []
-    for first_frequency, second_frequency in deduped[:6]:
-        starts.append(
-            np.asarray(
-                [
-                    _raw_fraction(0.9),
-                    _logit(0.5),
-                    _raw_rho(0.94),
-                    _raw_rho(0.94),
-                    _raw_frequency(first_frequency, fmin_hz, fmax_hz),
-                    _raw_frequency(second_frequency, fmin_hz, fmax_hz),
-                ],
-                dtype=np.float64,
+    profiles = (
+        (0.90, 0.50, 0.92, 0.92),
+        (0.90, 0.20, 0.92, 0.92),
+        (0.90, 0.80, 0.92, 0.92),
+        (0.80, 0.50, 0.72, 0.92),
+        (0.80, 0.50, 0.92, 0.72),
+    )
+    for first_frequency, second_frequency in deduped:
+        for total_fraction, split, rho1, rho2 in profiles:
+            starts.append(
+                np.asarray(
+                    [
+                        _raw_fraction(total_fraction),
+                        _logit(split),
+                        _raw_rho(rho1),
+                        _raw_rho(rho2),
+                        _raw_frequency(first_frequency, fmin_hz, fmax_hz),
+                        _raw_frequency(second_frequency, fmin_hz, fmax_hz),
+                    ],
+                    dtype=np.float64,
+                )
             )
-        )
     return starts
 
 
@@ -489,13 +584,33 @@ def fit_state_space_candidate(
         raise ValueError("signal has zero or non-finite standard deviation")
     standardized = (values - mean) / sd
 
-    starts = _initial_starts(
+    candidate_starts = _initial_starts(
         family,
         standardized,
         sampling_rate_hz,
         fmin_hz,
         fmax_hz,
     )
+    scored_starts: list[tuple[float, np.ndarray]] = []
+    for start in candidate_starts:
+        initial_nll = _negative_log_likelihood(
+            standardized,
+            family,
+            start,
+            sampling_rate_hz,
+            fmin_hz,
+            fmax_hz,
+            burn_in_samples,
+        )
+        if math.isfinite(initial_nll) and initial_nll < 1e90:
+            scored_starts.append((float(initial_nll), start))
+    scored_starts.sort(key=lambda item: item[0])
+
+    max_optimized_starts = {"A0": 4, "A1": 12, "A2": 16}[family]
+    starts = [start for _, start in scored_starts[:max_optimized_starts]]
+    if not starts:
+        starts = candidate_starts[:max_optimized_starts]
+
     solutions = []
     for start in starts:
         fit = minimize(
@@ -589,6 +704,7 @@ def fit_state_space_candidate(
         negative_log_likelihood=nll,
         bic=bic,
         converged_start_count=converged,
+        candidate_start_count=len(candidate_starts),
         attempted_start_count=len(starts),
         near_optimal_start_count=len(near_optimal),
         start_nll_range=float(finite_nlls[-1] - finite_nlls[0]),
@@ -652,22 +768,23 @@ def compare_state_space_candidates(
 
 
 
+
 def evaluate_comparison_on_holdout(
     comparison: StateSpaceComparison,
     holdout_signal: Sequence[float],
 ) -> dict[str, object]:
-    """Score frozen A0/A1/A2 fit parameters on a held-out interval.
-
-    The holdout is standardized using the training comparison's mean and
-    standard deviation. No model parameters or model order are re-fit here.
-    This is a qualification diagnostic, not a final admission rule.
-    """
+    """Score frozen fits on holdout data without refitting."""
     values = np.asarray(holdout_signal, dtype=np.float64)
     if values.ndim != 1 or values.size < 16:
-        raise ValueError("holdout_signal must be one-dimensional with at least 16 samples")
+        raise ValueError(
+            "holdout_signal must be one-dimensional with at least 16 samples"
+        )
     if not np.isfinite(values).all():
         raise ValueError("holdout_signal contains non-finite samples")
-    if comparison.standardization_sd <= 0 or not math.isfinite(comparison.standardization_sd):
+    if (
+        comparison.standardization_sd <= 0
+        or not math.isfinite(comparison.standardization_sd)
+    ):
         raise ValueError("training comparison has invalid standardization_sd")
 
     standardized = (
@@ -686,13 +803,38 @@ def evaluate_comparison_on_holdout(
             burn,
         )
         effective_n = standardized.size - burn
-        if not math.isfinite(nll) or effective_n < 3:
-            scores[fit.family] = float("inf")
-        else:
-            scores[fit.family] = float(nll / effective_n)
+        scores[fit.family] = (
+            float(nll / effective_n)
+            if math.isfinite(nll) and effective_n >= 3
+            else float("inf")
+        )
 
-    winner = min(scores, key=scores.get)
     ordered = sorted(scores.items(), key=lambda item: item[1])
+    raw_winner = ordered[0][0]
+    finite_scores = [
+        (family, score)
+        for family, score in ordered
+        if math.isfinite(score)
+    ]
+    if finite_scores:
+        best_score = finite_scores[0][1]
+        tied_families = [
+            family
+            for family, score in finite_scores
+            if score - best_score <= HOLDOUT_NUMERICAL_TIE_ATOL_PER_SAMPLE
+        ]
+    else:
+        tied_families = []
+
+    numerically_indistinguishable = len(tied_families) > 1
+    interpretable_winner = (
+        None if numerically_indistinguishable else raw_winner
+    )
+    score_range = (
+        float(finite_scores[-1][1] - finite_scores[0][1])
+        if finite_scores
+        else float("nan")
+    )
     margin = (
         float(ordered[1][1] - ordered[0][1])
         if len(ordered) > 1
@@ -703,10 +845,18 @@ def evaluate_comparison_on_holdout(
     return {
         "n": int(values.size),
         "negative_log_likelihood_per_sample": scores,
-        "winner": winner,
+        "raw_winner": raw_winner,
+        "interpretable_winner": interpretable_winner,
+        "tied_families": tied_families,
+        "numerically_indistinguishable": numerically_indistinguishable,
+        "numerical_tie_atol_per_sample":
+            HOLDOUT_NUMERICAL_TIE_ATOL_PER_SAMPLE,
+        "score_range_per_sample": score_range,
         "margin_to_second_per_sample": margin,
         "note": (
-            "Parameters and model family fits are frozen from the training interval; "
-            "the holdout interval is not used for refitting."
+            "Training parameters are frozen. Numerical ties are a "
+            "computational indeterminate state, not a scientific threshold."
         ),
     }
+
+
