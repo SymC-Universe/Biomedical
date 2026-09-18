@@ -45,7 +45,10 @@ class StateSpaceModelFit:
     bic: float
     converged_start_count: int
     attempted_start_count: int
+    near_optimal_start_count: int
+    start_nll_range: float
     parameters: dict[str, float]
+    near_optimal_parameter_ranges: dict[str, tuple[float, float]]
     raw_parameters: tuple[float, ...]
     innovation_max_abs_autocorrelation: float
     innovation_rms: float
@@ -537,6 +540,41 @@ def fit_state_space_candidate(
     )
 
     parameter_count = {"A0": 2, "A1": 3, "A2": 6}[family]
+    finite_nlls = sorted(float(item.fun) for item in solutions)
+    near_optimal = [
+        item for item in solutions if float(item.fun) <= float(best.fun) + 2.0
+    ]
+    transformed_near = []
+    for item in near_optimal:
+        try:
+            _, _, _, _, candidate_parameters = _build_model(
+                family,
+                np.asarray(item.x, dtype=np.float64),
+                sampling_rate_hz,
+                fmin_hz,
+                fmax_hz,
+            )
+            transformed_near.append(candidate_parameters)
+        except Exception:
+            continue
+
+    parameter_ranges: dict[str, tuple[float, float]] = {}
+    if transformed_near:
+        common_keys = set(transformed_near[0])
+        for item in transformed_near[1:]:
+            common_keys &= set(item)
+        for key in sorted(common_keys):
+            values_for_key = [
+                float(item[key])
+                for item in transformed_near
+                if math.isfinite(float(item[key]))
+            ]
+            if values_for_key:
+                parameter_ranges[key] = (
+                    float(min(values_for_key)),
+                    float(max(values_for_key)),
+                )
+
     effective_n = values.size - burn_in_samples
     nll = float(best.fun)
     bic = float(2.0 * nll + parameter_count * math.log(effective_n))
@@ -552,7 +590,10 @@ def fit_state_space_candidate(
         bic=bic,
         converged_start_count=converged,
         attempted_start_count=len(starts),
+        near_optimal_start_count=len(near_optimal),
+        start_nll_range=float(finite_nlls[-1] - finite_nlls[0]),
         parameters={key: float(value) for key, value in parameters.items()},
+        near_optimal_parameter_ranges=parameter_ranges,
         raw_parameters=tuple(float(value) for value in best.x),
         innovation_max_abs_autocorrelation=max_abs_ac,
         innovation_rms=innovation_rms,
