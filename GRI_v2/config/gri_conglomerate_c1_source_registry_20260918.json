@@ -1,0 +1,166 @@
+{
+  "schema": "gri-conglomerate-c1-source-registry-v1",
+  "date": "2026-09-18",
+  "status": "PRE_HEAVY_SOURCE_RESOLUTION",
+  "branch": "gri-conglomerate-chi-tool-v1-20260918",
+  "rules": {
+    "no_biological_outcome_access": true,
+    "no_model_fit": true,
+    "no_cross_block_aggregation": true,
+    "public_source_probe_only": true,
+    "small_source_full_hash_limit_bytes": 25000000,
+    "large_source_probe_mode": "HTTP_RANGE_0_0_ONLY"
+  },
+  "sources": [
+    {
+      "id": "RNA_PANCAN_FINAL",
+      "blocks": [
+        "R",
+        "M"
+      ],
+      "role": "PRIMARY_TCGA_RNA_SOURCE",
+      "file_name": "EBPlusPlusAdjustPANCAN_IlluminaHiSeq_RNASeqV2.geneExp.tsv",
+      "gdc_uuid": "3586c0da-64d0-4b74-a449-5ff4d9136611",
+      "url": "https://api.gdc.cancer.gov/data/3586c0da-64d0-4b74-a449-5ff4d9136611",
+      "expected_size_bytes": 1882540959,
+      "expected_sha256": "674b19b7ed9ae4c5ef35ee2824936429aa5d46c0735a3d180f41552fcbbdb658",
+      "probe_policy": "metadata_only_due_size",
+      "provenance": "GRI_v2/inputs/SOURCE_RUN.json"
+    },
+    {
+      "id": "ABSOLUTE_PURITY",
+      "blocks": [
+        "E"
+      ],
+      "role": "PRIMARY_CONTEXT",
+      "file_name": "TCGA_mastercalls.abs_tables_JSedit.fixed.txt",
+      "gdc_uuid": "4f277128-f793-4354-a13d-30cc7fe9f6b5",
+      "url": "https://api.gdc.cancer.gov/data/4f277128-f793-4354-a13d-30cc7fe9f6b5",
+      "expected_sha256": "f430a975433d82e0098d7405619d4f12a0c765fcd97e7d63cc9b1de7f2d763cd",
+      "probe_policy": "full_hash_if_under_limit",
+      "provenance": "GRI_v2/config/stage_b0_source_plan.json"
+    },
+    {
+      "id": "LEUKOCYTE_FRACTION",
+      "blocks": [
+        "E"
+      ],
+      "role": "PRIMARY_CONTEXT",
+      "file_name": "TCGA_all_leuk_estimate.masked.20170107.tsv",
+      "gdc_uuid": "6f75c9d7-5134-4ed1-b8f3-72856c98a4e8",
+      "url": "https://api.gdc.cancer.gov/data/6f75c9d7-5134-4ed1-b8f3-72856c98a4e8",
+      "expected_sha256": "5a8268caedbf8dc98a75be0528d583238d7355761d9fc746e42002f223a982d9",
+      "probe_policy": "full_hash_if_under_limit",
+      "provenance": "GRI_v2/config/stage_b0_source_plan.json"
+    },
+    {
+      "id": "ANEUPLOIDY_LOH",
+      "blocks": [
+        "G"
+      ],
+      "role": "PRIMARY_GENOMIC_CONTEXT",
+      "file_name": "ABSOLUTE_scores.tsv",
+      "gdc_uuid": "0e8831f4-dd7e-4673-8624-b4519c2e0d65",
+      "url": "https://api.gdc.cancer.gov/data/0e8831f4-dd7e-4673-8624-b4519c2e0d65",
+      "expected_size_bytes": 456006,
+      "expected_sha256": "4e115fd7408a06b002f34678fa46df0b05aa20ac71db57acf535238f37aa64c8",
+      "probe_policy": "full_hash_if_under_limit",
+      "provenance": "GRI_v2/development_outputs/stage_b2/STAGE_B2_SOURCE_INVENTORY.json"
+    },
+    {
+      "id": "CNV_BURDEN",
+      "blocks": [
+        "G"
+      ],
+      "role": "PRIMARY_GENOMIC_CONTEXT",
+      "file_name": "seg_based_scores.tsv",
+      "gdc_uuid": "cbfe6a9d-c3be-4982-86c7-c476dc17ca10",
+      "url": "https://api.gdc.cancer.gov/data/cbfe6a9d-c3be-4982-86c7-c476dc17ca10",
+      "expected_size_bytes": 454662,
+      "expected_sha256": "4b63eefb164866a3c49c50c04ee423d3ad1c25540f7cf39e08d997b454a189d0",
+      "probe_policy": "full_hash_if_under_limit",
+      "provenance": "GRI_v2/development_outputs/stage_b2/STAGE_B2_SOURCE_INVENTORY.json"
+    },
+    {
+      "id": "RPPA_FINAL",
+      "blocks": [
+        "P"
+      ],
+      "role": "PRIMARY_PROTEIN_PHOSPHOPROTEIN",
+      "file_name": "TCGA-RPPA-pancan-clean.txt",
+      "gdc_uuid": "fcbb373e-28d4-4818-92f3-601ede3da5e1",
+      "url": "https://api.gdc.cancer.gov/data/fcbb373e-28d4-4818-92f3-601ede3da5e1",
+      "expected_size_bytes": 18901234,
+      "expected_sha256": "06246573836865589134bd9424189f81b0d9fb436fcbf5e72024225442c400de",
+      "probe_policy": "full_hash_if_under_limit",
+      "provenance": "GRI_v2/development_outputs/stage_b2/STAGE_B2_SOURCE_INVENTORY.json"
+    },
+    {
+      "id": "METHYLATION_MERGED_27K_450K",
+      "blocks": [
+        "S",
+        "M",
+        "Q"
+      ],
+      "role": "PRIMARY_METHYLATION_SUBSTRATE",
+      "file_name": "jhu-usc.edu_PANCAN_merged_HumanMethylation27_HumanMethylation450.betaValue_whitelisted.tsv",
+      "gdc_uuid": "d82e2c44-89eb-43d9-b6d3-712732bf6a53",
+      "url": "https://api.gdc.cancer.gov/data/d82e2c44-89eb-43d9-b6d3-712732bf6a53",
+      "expected_size_bytes": 5022150019,
+      "expected_md5": "5cec086f0b002d17befef76a3241e73b",
+      "expected_probe_count": 22601,
+      "probe_policy": "metadata_only_due_size",
+      "provenance": "GRI_v2/config/stage_c0_methylation_source_plan.json"
+    }
+  ],
+  "derived_artifact_dependencies": [
+    {
+      "id": "STAGE_A_PROFILE_CACHE",
+      "blocks": [
+        "R",
+        "E",
+        "G",
+        "P",
+        "M"
+      ],
+      "expected_sha256": "e65f6788aa6037fef407169794f29d63322de2769343bb6e594fe469dfeb8e63",
+      "current_repo_state": "NOT_COMMITTED_HEAVY_DERIVED",
+      "reconstruction_basis": "RNA_PANCAN_FINAL plus exact frozen Hallmark membership and Stage A code",
+      "user_local_compute_required_now": false
+    },
+    {
+      "id": "STAGE_C1_RESULT_ZIP",
+      "blocks": [
+        "S",
+        "M",
+        "Q"
+      ],
+      "expected_name": "Stage_C1_Result.zip",
+      "current_repo_state": "NOT_CURRENTLY_ACCESSIBLE_IN_REPO_OR_FILE_LAYER",
+      "reconstruction_basis": "existing frozen C1 code plus RNA/methylation sources, or re-supply existing result archive",
+      "user_local_compute_required_now": false
+    },
+    {
+      "id": "POST_C1_SENSITIVITY_RESULT_ZIP",
+      "blocks": [
+        "S",
+        "M",
+        "Q"
+      ],
+      "expected_name": "Post_C1_Adversarial_Sensitivity_v2_2_Result.zip",
+      "expected_sha256": "85955af9e0d2333c651e445d75392b60ca9d25942a364fa29dc5c67b55bb3dd1",
+      "current_repo_state": "NOT_CURRENTLY_ACCESSIBLE_IN_REPO_OR_FILE_LAYER",
+      "reconstruction_basis": "existing completed result preferred; no scientific rerun required",
+      "user_local_compute_required_now": false
+    },
+    {
+      "id": "TEMPORAL_G2_ARTIFACTS",
+      "blocks": [
+        "T"
+      ],
+      "current_repo_state": "COMPACT_AUDITS_AND_WORKFLOW_PROVENANCE_PRESENT",
+      "reconstruction_basis": "system-specific frozen SCC25 artifacts/workflow results",
+      "user_local_compute_required_now": false
+    }
+  ]
+}
