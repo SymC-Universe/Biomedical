@@ -415,3 +415,76 @@ Current safe resume point:
 5. do not open clinical labels or real-EEG damping until their upstream gates close.
 
 User action: NONE.
+
+
+## 15. First Atlas and report milestone — 18 September 2026
+
+The first two items in the prior execution order are now closed at P0-D.
+
+### Atlas serialization
+
+Committed Atlas version:
+
+`ds003775-repeat-p0d-v0.1`
+
+Canonical artifacts:
+
+- `atlas/reference_models/ds003775_repeat_descriptive_reference_p0d_v0.1.json`;
+- `atlas/manifests/ds003775_repeat_atlas_p0d_release_v0.1.json`;
+- `atlas/release_records/ds003775_repeat_p0d_v0.1.md`.
+
+The artifact preserves population repeatability, channel heterogeneity, model-family disagreement, zero-peak behavior, and explicit Limit-Map quantities rather than compressing them into one score.
+
+Evidence-path grade for the decisively used ds003775 descriptive reference family:
+
+`NON_INDEPENDENT_FOR_ENGINE_VALIDATION`
+
+because the same source cohort contributed to T0 qualification and this P0-D reference build. It is therefore not used as independent P1 evidence.
+
+### First real-recording report path
+
+The reporting layer now contains a real pinned-recording example for `sub-069 / ses-t1`:
+
+- machine-readable JSON report;
+- human-readable research rendering;
+- reproducible report builder.
+
+The report remains:
+
+`RESEARCH_STRUCTURE_ONLY`
+
+and visibly disables:
+
+- individual abnormality scoring;
+- modal damping / local chi;
+- screening;
+- diagnosis;
+- prognosis.
+
+This establishes the product/reporting plumbing without inventing clinical capability.
+
+### Proper modal adequacy route
+
+A formal A0/A1/A2 state-space candidate-model layer using steady-state Kalman innovations likelihood and BIC is now implemented on the branch with:
+
+- A0 nonoscillatory relaxation;
+- A1 single latent oscillator;
+- A2 two latent oscillators;
+- innovation autocorrelation diagnostics;
+- split-half comparison;
+- held-out scoring.
+
+The corresponding adequacy workflow is active. The first test-file collection failure was mechanical (a literal escaped newline in the import statement) and was corrected immediately. Engine contract CI subsequently returned to green on the corrected branch lineage.
+
+No BIC winner is treated as a real-EEG admission rule. The known-truth/adversarial map must close before modal parameters can move downstream.
+
+### Current resume point
+
+1. allow the A0/A1/A2 likelihood adequacy map to complete and inspect the exact adversarial confusion pattern;
+2. freeze only the diagnostics that distinguish known truth for principled reasons; if close-mode, burst, colored-noise, or nonstationarity failures remain unresolved, keep explicit refusal states;
+3. keep real-EEG modal damping disabled until the model-adequacy operating region is declared;
+4. use the committed Atlas-P0-D and reporting contract to design the next broader, more independent reference build;
+5. advance ds005385 toward the adult Function/Limit Atlas only after its metadata and signal-input gates are explicitly closed;
+6. keep all diagnostic and prognostic models empty until T1/T2 maturity gates are earned.
+
+User action: NONE.
