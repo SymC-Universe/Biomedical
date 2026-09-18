@@ -69,5 +69,36 @@
     "result_record": "NSD_vNext/docs/DS003775_REPEAT_POPULATION_T0_RESULT_v0.1.md",
     "result_record_blob": "6202ee578ed64528a1aba1ab6fd04df3157d8306",
     "d4_scope": "42 subjects / 84 exact pinned recordings"
-  }
+  },
+  "reference_family_independence": [
+    {
+      "reference_family_id": "ds003775-repeat-descriptive-spectral-v0.1",
+      "engine_component_scope": "Welch descriptive spectral layer, frozen periodic/aperiodic descriptive candidate, repeatability and open-channel/Limit-Map outputs.",
+      "raw_evidence_sources": [
+        "OpenNeuro ds003775 v1.2.1",
+        "NEMAR on003775 v1.0.0 pinned 42-subject repeat subset"
+      ],
+      "source_data_used_in_engine_development_or_calibration": true,
+      "labels_or_outcomes_used_in_estimator_construction": false,
+      "thresholds_tuned_against_atlas": false,
+      "shared_fitted_parameters_or_simulations": false,
+      "extraction_blind_to_engine_result_where_feasible": false,
+      "independence_grade": "NON_INDEPENDENT_FOR_ENGINE_VALIDATION",
+      "rationale": "The same label-blind ds003775 repeat data were used during T0 descriptive qualification and to build this P0-D reference artifact. The spectral operating region was frozen on known truth before this population result and no clinical labels or Atlas-driven thresholds were used, but this artifact is not an independent validation source for the Engine components it helped qualify.",
+      "permitted_uses": [
+        "P0-D reference serialization",
+        "Function Map discovery",
+        "Limit Map discovery",
+        "reporting/tool contract development",
+        "planning of a later independent Atlas build"
+      ],
+      "prohibited_uses": [
+        "independent confirmation of Engine validity",
+        "P1 confirmatory evidence",
+        "clinical diagnosis or screening claims",
+        "prognostic claims",
+        "healthy/pathological cutoff definition"
+      ]
+    }
+  ]
 }
