@@ -1,38 +1,35 @@
 # ds003775 D3 Metadata/Join Closure Status v0.1
 
-Date: 16 September 2026
-Status: ACTIVE CLOSURE CONTROLLER
+Date opened: 16 September 2026
+Status: CLOSED / SUPERSEDED BY VERIFIED PROMOTION
 Dataset: OpenNeuro `ds003775`
 
-## 1. Goal
+## 1. Closure decision
 
-Promote `ds003775` from `D2_HIERARCHY_VERIFIED` to `D3_METADATA_JOIN_VERIFIED` without allowing cognitive outcomes or demographic covariates to influence Structural Engine construction.
+The D3 metadata/join gate is now closed for the frozen T0 healthy-qualification scope.
 
-## 2. Completed
+Authoritative promotion record:
 
-- D2 subject/session hierarchy reconciled: 111 subjects, 153 sessions, 42 repeat-session subjects.
-- `participants.tsv` column roles reviewed.
-- Machine-readable role manifest frozen at:
-  - `docs/manifests/ds003775_metadata_roles_v0.1.json`
-- Structural Engine participant-table visibility restricted to `participant_id`.
-- `age` and `sex` classified downstream as demographic covariates.
-- RAVLT, digit-span, trail-making, color-word, and verbal-fluency variables classified downstream as cognitive/clinical outcomes.
-- CI regression test added to reject accidental cognitive-outcome leakage into the Structural Engine.
+`docs/D3_DS003775_PROMOTION_v0.1.md`
 
-## 3. Remaining D3 blockers
+Decision:
 
-D3 is **not yet promoted**. Closure still requires:
+`ds003775 -> D3_METADATA_JOIN_VERIFIED (T0 scope)`
 
-1. machine-audited one-to-one participant-table to BIDS-subject join cardinality on the pinned release;
-2. explicit unmatched/ambiguous-record count artifact;
-3. metadata missingness summary for every reviewed participant-table column;
-4. canonical hash of the reviewed role manifest in the D3 closure artifact;
-5. confirmation that BIDS recording-state/acquisition fields used by the Engine are explicitly enumerated and role-licensed;
-6. regression test that any unreviewed metadata column remains non-admitted until assigned a reviewed role.
+This file is retained only as the historical closure controller so that the previously open blockers remain traceable.
 
-## 4. D3 promotion condition
+## 2. Previously open blockers and disposition
 
-Promote only if all of the following are true:
+1. participant-table to BIDS-subject join cardinality -> **CLOSED**
+2. unmatched/ambiguous record artifact -> **CLOSED**
+3. metadata missingness summary -> **CLOSED**
+4. canonical role-manifest hash -> **CLOSED**
+5. Engine-visible recording-state/acquisition field enumeration -> **CLOSED FOR T0 SCOPE**
+6. unreviewed-column non-admission regression control -> **CLOSED**
+
+The versioned machine-readable role manifest and the D3 audit tooling preserve the label-blind Engine firewall.
+
+## 3. Current D3 invariants
 
 ```text
 participant_to_bids_join_cardinality == one_to_one
@@ -44,16 +41,23 @@ engine_visible_participant_columns == [participant_id]
 manifest_hash_recorded == true
 ```
 
-If any condition fails, retain D3 as blocked/quarantined and record the failure rather than repairing it silently.
+Age, sex, and cognitive outcomes remain downstream-only for the frozen T0 structural-qualification task.
 
-## 5. D4 interaction
+## 4. Current downstream gate
 
-D4 signal-payload verification may proceed mechanically in parallel where identity is independently pinned, but D5 analysis-ready status cannot be granted until both D3 and D4 close.
+D3 no longer blocks T0.
 
-The existing D4 pilot/repeat workflows therefore remain useful while this D3 closure is completed.
+The current dataset gate is D4/D5:
 
-## 6. Why this matters for the eventual tool
+- D4 pilot payload identity/readability: verified previously;
+- D4 real repeat-pair identity/readability: scientifically verified previously, with current CI workflow regression under mechanical repair after an import/dependency-surface change;
+- D4 dataset-wide expansion: open;
+- D5 analysis-ready promotion: open.
 
-The future assessment/diagnostic tool must be able to prove that structural features were built without seeing cognition, diagnosis, symptom scores, or demographics that could leak target information into the representation layer.
+A later workflow regression does not revoke the underlying pinned payload evidence unless the re-run exposes a scientific mismatch. Mechanical workflow failures are tracked and repaired separately.
 
-D3 is therefore part of the clinical-tool evidence chain, not mere dataset housekeeping.
+## 5. Why this matters
+
+The future decision-support tool must preserve proof that structural features were built without cognition, diagnosis, symptom scores, or demographic outcome leakage.
+
+D3 is therefore part of the tool evidence chain and is now closed for the declared T0 scope.
