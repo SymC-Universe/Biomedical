@@ -1,0 +1,47 @@
+name: GRI Conglomerate Chi C1 public source probe
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - gri-conglomerate-chi-tool-v1-20260918
+    paths:
+      - 'GRI_v2/config/gri_conglomerate_c1_source_registry_20260918.json'
+      - 'GRI_v2/src/probe_conglomerate_c1_public_sources.py'
+      - 'GRI_v2/tests/test_conglomerate_c1_public_source_probe.py'
+      - '.github/workflows/gri-v2-conglomerate-chi-c1-source-probe.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  source-probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run source-probe contract tests
+        run: python -m pytest -q tests/test_conglomerate_c1_public_source_probe.py
+
+      - name: Probe public source identities
+        run: python -m src.probe_conglomerate_c1_public_sources
+
+      - name: Print source probe
+        run: cat artifacts/GRI_CONGLOMERATE_C1_PUBLIC_SOURCE_PROBE_20260918.json
+
+      - name: Upload source probe artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gri-conglomerate-chi-c1-public-source-probe-20260918
+          path: GRI_v2/artifacts/GRI_CONGLOMERATE_C1_PUBLIC_SOURCE_PROBE_20260918.json
+          retention-days: 90
+          if-no-files-found: error
