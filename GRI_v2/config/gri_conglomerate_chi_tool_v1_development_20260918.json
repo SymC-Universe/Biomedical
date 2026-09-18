@@ -1,0 +1,136 @@
+{
+  "schema": "gri-conglomerate-chi-tool-v1-development-freeze",
+  "date": "2026-09-18",
+  "status": "P0D_P0Q_DEVELOPMENT_FREEZE",
+  "branch": "gri-conglomerate-chi-tool-v1-20260918",
+  "definition": {
+    "Chi_bio": "capital-Chi biological stability architecture",
+    "universal_scalar_required": false,
+    "damped_oscillator_required": false,
+    "unity_boundary_required": false,
+    "historical_cv2_mechanistic_status": "PROHIBITED",
+    "master_score_required": false
+  },
+  "tool_finish_line": {
+    "shared_carrier": true,
+    "diagnostic_head_required_for_tool_claim": true,
+    "predictive_head_required_for_full_goal": true,
+    "external_validation_required": true,
+    "clinical_deployment_in_scope": false
+  },
+  "tcga_status": {
+    "role_for_new_conglomerate_v1": "DEVELOPMENT_AND_INTERNAL_QUALIFICATION_ONLY",
+    "prior_final_holdout_opened": true,
+    "new_architecture_may_claim_pristine_tcga_final_holdout": false
+  },
+  "blocks": [
+    {
+      "id": "R",
+      "name": "RNA_REGULATORY_ORGANIZATION",
+      "source_refs": [
+        "GRI_v2/development_outputs/stage_a1_1/STAGE_A1_1_SUMMARY.json",
+        "GRI_v2/docs/GRI_POST_C1_SENSITIVITY_V22_RESULT_AUDIT_20260912.md"
+      ],
+      "patient_level_repo_state": "HEAVY_SOURCE_OR_CACHE_REQUIRED"
+    },
+    {
+      "id": "S",
+      "name": "METHYLATION_REGULATORY_SUBSTRATE",
+      "source_refs": [
+        "GRI_v2/docs/GRI_POST_C1_SENSITIVITY_V22_RESULT_AUDIT_20260912.md",
+        "GRI_v2/docs/GRI_POST_C1_V22_FOUNDATIONAL_ROBUSTNESS_AUDIT_20260913.md"
+      ],
+      "patient_level_repo_state": "EXISTING_C1_HEAVY_ARTIFACT_OR_SOURCE_REMATERIALIZATION_REQUIRED"
+    },
+    {
+      "id": "E",
+      "name": "EMBEDDING_COMPOSITION_CONTEXT",
+      "source_refs": [
+        "GRI_v2/development_outputs/stage_b1/STAGE_B1_SUMMARY.json"
+      ],
+      "patient_level_repo_state": "HEAVY_SOURCE_OR_CACHE_REQUIRED"
+    },
+    {
+      "id": "G",
+      "name": "GENOMIC_CONSTRAINT_CONTEXT",
+      "source_refs": [
+        "GRI_v2/development_outputs/stage_b2_genomic/STAGE_B2_GENOMIC_SUMMARY.json"
+      ],
+      "patient_level_repo_state": "HEAVY_SOURCE_OR_CACHE_REQUIRED"
+    },
+    {
+      "id": "P",
+      "name": "PROTEIN_PHOSPHOPROTEIN_COUPLING",
+      "source_refs": [
+        "GRI_v2/development_outputs/stage_b2_rppa/STAGE_B2_RPPA_SUMMARY.json"
+      ],
+      "patient_level_repo_state": "HEAVY_SOURCE_OR_CACHE_REQUIRED"
+    },
+    {
+      "id": "M",
+      "name": "MODAL_VECTOR_CARRIER",
+      "source_refs": [
+        "GRI_v2/docs/GRI_POST_C1_SENSITIVITY_V22_RESULT_AUDIT_20260912.md",
+        "GRI_v2/docs/CHI_SCALAR_MODAL_CONGLOMERATION_FIREWALL_20260830.md"
+      ],
+      "patient_level_repo_state": "EXISTING_C1_HEAVY_ARTIFACT_OR_SOURCE_REMATERIALIZATION_REQUIRED"
+    },
+    {
+      "id": "T",
+      "name": "TEMPORAL_OPERATOR_STRUCTURE",
+      "source_refs": [
+        "GRI_v2/docs/GRI_CHI_BIO_SHORTTERM_G2_EMPIRICAL_POSTRESULT_AUDIT_20260913.md",
+        "GRI_v2/docs/GRI_CHI_BIO_CHRONIC_G2_EMPIRICAL_POSTRESULT_AUDIT_20260913.md",
+        "GRI_v2/docs/GRI_CHI_BIO_G1_RESTORATION_IDENTIFIABILITY_PLAN_20260914.md"
+      ],
+      "patient_level_repo_state": "SYSTEM_SPECIFIC_ORDERED_DATA_ONLY",
+      "static_tcga_default": "NOT_APPLICABLE_NOT_ZERO"
+    },
+    {
+      "id": "Q",
+      "name": "QUALITY_UNCERTAINTY_CONFIDENCE_REFUSAL",
+      "source_refs": [
+        "GRI_v2/config/tool_prediction_p0_final_internal_summary_20260906.json",
+        "GRI_v2/docs/TOOL_PREDICTION_P0_COMPONENT_RETENTION_DECISION_20260906.md"
+      ],
+      "patient_level_repo_state": "CURRENT_COMPACT_RESULT_PRESENT_PATIENT_LEVEL_SOURCE_REQUIRED_FOR_REBUILD"
+    }
+  ],
+  "anti_collapse_rules": {
+    "sum_blocks_into_master_score": false,
+    "average_representation_disagreement": false,
+    "static_implies_temporal": false,
+    "missing_temporal_equals_stable": false,
+    "outcome_selects_carrier": false,
+    "atlas_selects_carrier": false,
+    "post_result_dimension_shopping": false,
+    "post_result_threshold_tuning": false,
+    "historical_cv2_as_chi": false,
+    "unit_circle_as_biological_unity": false
+  },
+  "authorized_next_stage": {
+    "id": "C0",
+    "name": "CONGLOMERATE_READINESS_AUDIT",
+    "reads_new_biological_outcome": false,
+    "fits_model": false,
+    "changes_science": false,
+    "execution_environment": "GITHUB_ACTIONS"
+  },
+  "development_sequence": [
+    "C0_SOURCE_READINESS_REGISTRY",
+    "C1_PATIENT_SYSTEM_BLOCK_MATERIALIZATION",
+    "C2_RELATIONSHIP_LAYER",
+    "C3_INTERNAL_CONGLOMERATE_ABLATION",
+    "C4_DIAGNOSTIC_HEAD_FREEZE",
+    "C5_PREDICTIVE_HEAD_FREEZE",
+    "C6_EXTERNAL_VALIDATION",
+    "C7_TOOL_AND_REVISION_FREEZE"
+  ],
+  "valid_closure_states": [
+    "CONGLOMERATE_TOOL_VALIDATED",
+    "NARROWER_TOOL_VALIDATED",
+    "ARCHITECTURE_DESCRIPTIVE_ONLY",
+    "NO_PORTABLE_TOOL",
+    "REFUSED_NONIDENTIFIABLE"
+  ]
+}
