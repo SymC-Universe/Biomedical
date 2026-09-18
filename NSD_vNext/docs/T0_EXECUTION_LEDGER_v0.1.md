@@ -373,3 +373,45 @@ Still prohibited at T0:
 - any claim that repeated-session similarity alone proves trait biology.
 
 The intended T0 outcome is a trustworthy measurement and representation engine. Clinical usefulness is tested downstream rather than assumed upstream.
+
+
+## 14. GOM v0.8.0 live-alignment checkpoint - 18 September 2026
+
+Purpose tag: QUALIFICATION
+
+The authoritative SymC GOM v0.8.0 was re-read against the live NSD branch after the M2 adversarial work and 42-subject repeat population.
+
+Alignment retained:
+- T0 remains P0-Q / label-blind qualification, not P1 confirmation;
+- Function Map and Limit Map are coequal;
+- descriptive spectral structure remains distinct from dynamical/modal interpretation;
+- no whole-system chi is manufactured;
+- local dynamical identity remains distinct from embedded/system behavior;
+- Atlas information remains read-only with respect to Engine construction;
+- clinical labels remain downstream of structural qualification;
+- open-channel failures, absent features, model disagreement, and poor-reliability regions remain visible;
+- real-EEG modal damping/local chi remains disabled until model adequacy is frozen and qualified.
+
+GOM gap closed:
+- added docs/P0Q_QUALIFICATION_SEARCH_LEDGER_v0.1.md so substantial iterative qualification records candidate families, reused evidence, targeted failures, complexity increases, search history, and stopping rationale.
+
+Execution-governance repair:
+- the long-lived PR could retrigger the expensive 42-subject population workflow from cumulative pull-request path matching after unrelated commits;
+- .github/workflows/nsd-ds003775-repeat-population.yml now includes current-synchronize diff gating and concurrency cancellation so obsolete/redundant population executions do not consume compute;
+- this repair changes execution control only, not scientific inputs or analysis rules.
+
+M2 interim diagnostic result:
+- A0-like AR(1) covariance competition correctly exposes the explicit nonoscillatory AR(1) adversary;
+- split-half stability exposes strong mid-record frequency change;
+- the covariance two-oscillator pseudo-BIC improves the criterion for true two-mode adversaries but also for valid single-mode truth;
+- therefore no pseudo-BIC or post-hoc combined cutoff is frozen;
+- the proper A0/A1/A2 state-space likelihood/innovation route remains the next modal qualification task.
+
+Current safe resume point:
+1. maintain the existing 42-subject descriptive/repeatability result as P0-Q evidence;
+2. allow one current guarded population run when the repeatability code itself changes, without repeated unrelated reruns;
+3. implement the proper M2/A0-A1-A2 adequacy layer;
+4. build the first versioned descriptive Atlas artifact only from already qualified layers;
+5. do not open clinical labels or real-EEG damping until their upstream gates close.
+
+User action: NONE.
