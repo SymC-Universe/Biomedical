@@ -488,3 +488,33 @@ No BIC winner is treated as a real-EEG admission rule. The known-truth/adversari
 6. keep all diagnostic and prognostic models empty until T1/T2 maturity gates are earned.
 
 User action: NONE.
+
+
+## 16. Likelihood adequacy first-pass closure - 18 September 2026
+
+Purpose tag: QUALIFICATION
+
+Closed computations:
+- NSD State-Space Adequacy Map, run 35339774552, SUCCESS;
+- NSD State-Space Operating Region, run 35339840890, SUCCESS.
+
+Scientific progress:
+- A0/A1/A2 likelihood competition now separates the easy known-truth classes that the covariance-fit gate could not: nonoscillatory AR(1), stationary single oscillator, and well-separated two-mode truth.
+- The same run exposes unresolved close-mode, colored-noise, burst, and nonstationarity cases.
+- A whole-record A2 result is explicitly not equivalent to two simultaneous physical modes because a mid-record frequency shift can produce A2.
+
+Mechanical/identifiability finding:
+The first operating-region map contains degenerate optimization-boundary fits in some high-noise cells. It therefore cannot yet define the modal scientific operating region.
+
+Next safe action:
+1. repair optimizer initialization/search without changing A0/A1/A2 equations;
+2. rerun the same adversarial and operating-region qualification evidence;
+3. preserve any failure that remains after the mechanical repair as a candidate scientific Limit-Map boundary;
+4. retain numerical-indeterminate handling for held-out ties;
+5. then evaluate the isolated SOMATA 0.5.6 standard-toolkit comparator on the same known-truth/adversarial families;
+6. keep real-EEG modal damping and local chi disabled.
+
+Infrastructure note:
+Two legacy ds003775 provenance workflows reproduced the same external GitHub HTTP 403 on one bounded retry. The previously closed D3/D4 scientific state is not reopened by that authorization defect. Further unchanged retries are stopped under the circuit breaker until the external-source access path is repaired.
+
+User action: NONE.

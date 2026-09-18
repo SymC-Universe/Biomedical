@@ -265,3 +265,88 @@ Any future P1 claim must:
 - preserve the qualification search history;
 - compare against the strongest relevant native/simple toolkit;
 - and accept failure without retuning the frozen claim on the decisive evidence.
+
+
+## Q-MODAL-005 - Innovations-likelihood A0/A1/A2 first pass
+
+Purpose tag: QUALIFICATION
+
+Candidate architecture:
+- A0: one nonoscillatory latent relaxation state;
+- A1: one latent damped oscillator;
+- A2: two independent latent damped oscillators;
+- all with explicit white observation noise and the same standardized scalar observation;
+- steady-state Kalman innovations likelihood;
+- BIC for within-record candidate comparison;
+- frozen-parameter held-out innovations scoring;
+- innovation autocorrelation and multistart diagnostics.
+
+Mechanical qualification:
+- Engine contract CI returned green after a test-import syntax defect was corrected.
+- The syntax defect prevented test collection and carried no scientific meaning.
+
+Completed adversarial likelihood map:
+- workflow: NSD State-Space Adequacy Map;
+- run: 35339774552;
+- artifact id: 10544373917;
+- artifact digest: sha256:c4b95a4b169e7b27f6308770cad55ccc043ba16fec90816157104542d591712b.
+
+Observed full-record BIC outcomes across three deterministic seeds:
+- valid single oscillator: A1 3/3;
+- separated two-mode truth: A2 3/3;
+- nonoscillatory AR(1): A0 3/3;
+- white noise: A0 3/3;
+- close two-mode truth: A1 3/3;
+- colored observation noise: A1 3/3;
+- finite bursts: A1 3/3;
+- mid-record frequency shift: A2 3/3.
+
+The last four outcomes are not interpreted as successful physical classification. They expose the next failure architecture:
+- close modes can collapse into A1;
+- colored observation noise can be absorbed by A1 under the current white-noise assumption;
+- stationary A1 can absorb finite bursts;
+- whole-record A2 can represent temporal state change rather than two simultaneous modes.
+
+Held-out scoring also exposed a computational defect: on white noise, per-sample likelihood differences among A0/A1/A2 were approximately 1e-9, yet a raw argmin still emitted a winner. The next version therefore records a numerical-indeterminate state when differences are below the declared computational tolerance. That tolerance is not a scientific effect threshold.
+
+Completed first operating-region map:
+- workflow: NSD State-Space Operating Region;
+- run: 35339840890;
+- artifact id: 10545425165;
+- artifact digest: sha256:0f40983bbe37cd85a8dd77d14f60c95ff0b6b3aa8bec5fc37a857982dce92e1a.
+
+First-pass map:
+- single-mode grid: 5/10/20 Hz natural frequency, damping 0.2/0.5/0.8, 10/30 s, observation-noise ratio 0/0.5/1.0, two seeds;
+- A1 selected in 90/108 rows;
+- conditional on A1 selection, median parameter errors remained small;
+- several failed rows collapsed to degenerate A1 boundary solutions with near-zero latent fraction and rho near the lower optimization boundary;
+- two-mode A2 selected only 6/30 first-pass rows, and some failures converged to implausible secondary frequencies.
+
+Decision:
+The v0.1 operating-region map is NOT frozen as a scientific validity boundary because it mixes model identifiability with optimizer/search failure.
+
+Post-result P0-Q mechanical repair:
+- broaden spectral initialization using Welch-local maxima plus a deterministic coarse grid;
+- explicitly span fast and slow decay starts;
+- include close-pair A2 starts and amplitude-split alternatives;
+- pre-score the expanded start family and optimize only a bounded best subset;
+- retain the same A0/A1/A2 model equations and likelihood;
+- expose complete fit diagnostics in the rerun artifact;
+- increase the bounded operating-region sweep to three deterministic seeds.
+
+This reuses viewed qualification evidence and therefore remains P0-Q.
+
+Standard-toolkit / prior-art collision:
+State-space neural oscillator decomposition is established prior art. Beck, Stephen, and Purdon (2018, DOI 10.1109/EMBC.2018.8513215) used linear oscillator state-space models, EM parameter learning, and AIC model selection on EEG. SOMATA packages current state-space oscillator, EM, oscillator-search, switching-state-space, and residual-diagnostic methods.
+
+Pinned comparator candidate:
+- SOMATA 0.5.6;
+- PyPI release 9 August 2024;
+- BSD 3-Clause Clear;
+- comparison remains an isolated standard-toolkit lane rather than a silent Engine dependency.
+
+Novelty ceiling:
+NSD does not claim generic state-space oscillator decomposition or information-criterion order search as new. Any residual contribution must come from the qualification/refusal architecture, operating-region and failure mapping, stability interpretation, local-versus-system separation, Atlas integration, or later independently validated performance.
+
+Current stop:
+No real-EEG modal damping or local chi is admitted.

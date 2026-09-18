@@ -291,3 +291,35 @@ Current route status remains:
 M2_LATENT_COVARIANCE = KNOWN_TRUTH_BASELINE / REAL_EEG_NOT_ADMITTED
 
 This pass is recorded in P0Q_QUALIFICATION_SEARCH_LEDGER_v0.1.md.
+
+
+## 11. Proper innovations-likelihood model competition: first pass
+
+The frozen A0/A1/A2 architecture has now been implemented with steady-state Kalman innovations likelihood rather than pseudo-likelihood on correlated covariance lags.
+
+Completed adversarial run:
+- run 35339774552;
+- artifact sha256:c4b95a4b169e7b27f6308770cad55ccc043ba16fec90816157104542d591712b.
+
+What the first pass earns:
+- A1 consistently wins valid stationary single-oscillator truth in the tested adversary set;
+- A0 consistently wins the explicit nonoscillatory AR(1) truth;
+- A2 consistently wins clearly separated simultaneous two-mode truth;
+- white noise is rejected toward A0 on full-record BIC.
+
+What it does not earn:
+- close-mode resolution;
+- colored-noise adequacy;
+- burst/stationarity adequacy;
+- interpretation of a whole-record A2 result as simultaneous biological modes;
+- a production BIC margin or held-out threshold.
+
+The frequency-shift adversary is especially informative: the whole record selects A2 even though the generator is one oscillator changing frequency across time. Temporal consistency must therefore be evaluated before whole-record model order receives physical interpretation.
+
+The first operating-region run, 35339840890, also exposed degenerate optimizer solutions in some high-noise cells. Those failures cannot be promoted into the scientific Limit Map until initialization/search failure is separated from genuine non-identifiability.
+
+The next version changes optimizer initialization and diagnostics only. The A0/A1/A2 scientific model definitions remain unchanged, and the same qualification evidence is rerun transparently.
+
+The held-out scorer now distinguishes a raw numerical argmin from an interpretable winner when per-sample scores are computationally indistinguishable. This is a numerical-state safeguard, not a scientific effect threshold.
+
+Real EEG remains disabled for modal damping/local chi.
