@@ -16,6 +16,7 @@
     "reference_model_hash",
     "function_map_version",
     "limit_map_version",
+    "reference_family_independence",
     "scope",
     "provenance"
   ],
@@ -214,6 +215,87 @@
     "provenance": {
       "type": "object",
       "minProperties": 1
+    },
+    "reference_family_independence": {
+      "type": "array",
+      "minItems": 1,
+      "description": "GOM 16.4 evidence-path independence audit. Grade each decisively used Atlas reference family separately; independence is not implied by Atlas naming or by absence of clinical labels.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "reference_family_id",
+          "engine_component_scope",
+          "raw_evidence_sources",
+          "source_data_used_in_engine_development_or_calibration",
+          "labels_or_outcomes_used_in_estimator_construction",
+          "thresholds_tuned_against_atlas",
+          "shared_fitted_parameters_or_simulations",
+          "extraction_blind_to_engine_result_where_feasible",
+          "independence_grade",
+          "rationale"
+        ],
+        "properties": {
+          "reference_family_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "engine_component_scope": {
+            "type": "string",
+            "minLength": 1
+          },
+          "raw_evidence_sources": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "source_data_used_in_engine_development_or_calibration": {
+            "type": "boolean"
+          },
+          "labels_or_outcomes_used_in_estimator_construction": {
+            "type": "boolean"
+          },
+          "thresholds_tuned_against_atlas": {
+            "type": "boolean"
+          },
+          "shared_fitted_parameters_or_simulations": {
+            "type": "boolean"
+          },
+          "extraction_blind_to_engine_result_where_feasible": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "independence_grade": {
+            "type": "string",
+            "enum": [
+              "INDEPENDENT",
+              "PARTIALLY_INDEPENDENT",
+              "NON_INDEPENDENT_FOR_ENGINE_VALIDATION"
+            ]
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 1
+          },
+          "permitted_uses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "prohibited_uses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
     }
   }
 }
