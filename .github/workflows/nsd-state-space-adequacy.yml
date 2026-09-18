@@ -1,0 +1,54 @@
+name: NSD State-Space Adequacy Map
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/nsd-state-space-adequacy.yml"
+      - "NSD_vNext/engine/pyproject.toml"
+      - "NSD_vNext/engine/nsd_engine/state_space_adequacy.py"
+      - "NSD_vNext/engine/nsd_engine/latent_oscillator_covariance.py"
+      - "NSD_vNext/engine/tools/probe_state_space_model_adequacy.py"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nsd-state-space-adequacy-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  adequacy-map:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install frozen numerical stack
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+
+      - name: Run A0 A1 A2 likelihood adequacy map
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/nsd_state_space_adequacy"
+          python NSD_vNext/engine/tools/probe_state_space_model_adequacy.py \
+            --output "$RUNNER_TEMP/nsd_state_space_adequacy/state_space_adequacy_map.json"
+
+      - name: Upload adequacy map
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-state-space-adequacy-map
+          path: ${{ runner.temp }}/nsd_state_space_adequacy/state_space_adequacy_map.json
+          if-no-files-found: error
+          retention-days: 30
