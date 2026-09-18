@@ -225,3 +225,48 @@ The next M2 work must therefore map those adversaries and derive an **error-awar
 
 No clinical label enters this process.
 
+
+
+## 11. M2 adversarial model-adequacy result
+
+Workflow:
+
+- `NSD Latent Oscillator Adversarial Map`
+- run `35304835293`
+- result: **SUCCESS**
+- artifact digest: `sha256:1439e02d41d74aed68394d307381662c54e6973c432c92f81c0c57c2c72e4b31`
+
+The first explicit misspecification map tested the current single-oscillator covariance estimator against:
+
+- valid single-oscillator truth;
+- two close oscillatory modes;
+- two separated oscillatory modes;
+- colored observation noise;
+- a mid-record frequency shift;
+- finite bursts;
+- nonoscillatory AR(1) dynamics;
+- white noise.
+
+**All eight generator families were mechanically admitted in all three seeds.**
+
+Representative median covariance-fit R-squared values were:
+
+- valid single oscillator: 0.9382;
+- two close modes: 0.9403;
+- colored observation noise: 0.9132;
+- nonoscillatory AR(1): 0.8785;
+- white noise: 0.0151.
+
+The close two-mode generator fitting at least as well as the valid single-mode generator is decisive: a scalar fit-quality threshold cannot establish single-mode adequacy.
+
+Therefore the classification is tightened to:
+
+`M2_LATENT_COVARIANCE = KNOWN_TRUTH_BASELINE / REAL_EEG_NOT_ADMITTED`
+
+The route remains useful because it recovers single-mode truth under white measurement noise, but the current mechanical gate cannot distinguish that truth from important misspecified alternatives.
+
+The next qualification layer is frozen in:
+
+`docs/M2_MODEL_ADEQUACY_PLAN_v0.1.md`
+
+It requires explicit competition among nonoscillatory, one-oscillator, and two-oscillator native models plus stationarity, colored-noise, residual/innovation, identifiability, and operating-region tests before real EEG may receive an admitted modal damping ratio.
