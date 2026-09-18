@@ -1,0 +1,36 @@
+name: GRI conglomerate v0.1 materialization preflight
+
+on:
+  push:
+    branches:
+      - gri-chi-bio-conglomerate-v01-20260918
+    paths:
+      - "GRI_v2/src/preflight_conglomerate_v01_materialization.py"
+      - "GRI_v2/tests/test_conglomerate_v01_materialization_preflight.py"
+      - ".github/workflows/gri-conglomerate-v01-materialization-preflight.yml"
+  workflow_dispatch:
+
+jobs:
+  remote-source-preflight:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install minimal test dependencies
+        run: python -m pip install --disable-pip-version-check -q pytest
+      - name: Run preflight contract test
+        run: python -m pytest -q tests/test_conglomerate_v01_materialization_preflight.py
+      - name: Probe and verify remotely reconstructable sources
+        run: python -m src.preflight_conglomerate_v01_materialization
+      - name: Show materialization readiness
+        run: cat conglomerate_v01_outputs/materialization_preflight.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: GRI_CHI_BIO_CONGLOMERATE_V01_MATERIALIZATION_PREFLIGHT
+          path: GRI_v2/conglomerate_v01_outputs/materialization_preflight.json
+          if-no-files-found: error
