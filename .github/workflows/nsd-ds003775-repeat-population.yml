@@ -1,0 +1,237 @@
+name: NSD ds003775 42-Subject Repeat Population
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/nsd-ds003775-repeat-population.yml"
+      - "NSD_vNext/atlas/manifests/ds003775_repeat_subject_index_v0.1.json"
+      - "NSD_vNext/engine/pyproject.toml"
+      - "NSD_vNext/engine/nsd_engine/**"
+      - "NSD_vNext/engine/tools/build_ds003775_repeat_release_manifest.py"
+      - "NSD_vNext/engine/tools/extract_ds003775_subject_repeat_manifest.py"
+      - "NSD_vNext/engine/tools/download_repeat_manifest_payloads.py"
+      - "NSD_vNext/engine/tools/d4_verify_edf_manifest.py"
+      - "NSD_vNext/engine/tools/probe_psd_repeat_manifest.py"
+      - "NSD_vNext/engine/tools/probe_specparam_repeat_manifest.py"
+      - "NSD_vNext/engine/tools/aggregate_ds003775_repeat_population.py"
+
+permissions:
+  contents: read
+
+jobs:
+  prepare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    outputs:
+      subjects: ${{ steps.matrix.outputs.subjects }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Freeze matrix from committed repeat-subject index
+        id: matrix
+        shell: bash
+        run: |
+          set -euo pipefail
+          SUBJECTS=$(python - <<'PY'
+          import json
+          p = "NSD_vNext/atlas/manifests/ds003775_repeat_subject_index_v0.1.json"
+          d = json.load(open(p, encoding="utf-8"))
+          assert d["repeat_subject_count"] == 42
+          assert len(d["subjects"]) == 42
+          assert len(set(d["subjects"])) == 42
+          print(json.dumps(d["subjects"], separators=(",", ":")))
+          PY
+          )
+          echo "subjects=$SUBJECTS" >> "$GITHUB_OUTPUT"
+
+      - name: Build exact pinned-release repeat manifest
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/release"
+          python NSD_vNext/engine/tools/build_ds003775_repeat_release_manifest.py             NSD_vNext/atlas/manifests/ds003775_repeat_subject_index_v0.1.json             --output "$RUNNER_TEMP/release/ds003775_repeat_release_manifest.json"             > "$RUNNER_TEMP/release/build_summary.txt"
+
+      - name: Validate release-manifest scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - "$RUNNER_TEMP/release/ds003775_repeat_release_manifest.json" <<'PY'
+          import json, sys
+          d = json.load(open(sys.argv[1], encoding="utf-8"))
+          assert d["subject_count"] == 42
+          assert d["recording_count"] == 84
+          assert all(len(item["sessions"]) == 2 for item in d["subjects"])
+          print("subject_count", d["subject_count"])
+          print("recording_count", d["recording_count"])
+          print("canonical_body_sha256", d["canonical_body_sha256"])
+          PY
+
+      - name: Upload exact release manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: ds003775-repeat-release-manifest-population
+          path: ${{ runner.temp }}/release/ds003775_repeat_release_manifest.json
+          if-no-files-found: error
+          retention-days: 30
+
+  analyze:
+    needs: prepare
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        subject: ${{ fromJson(needs.prepare.outputs.subjects) }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install frozen Engine and parameterization stack
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install -e 'NSD_vNext/engine[parameterization_rc7]'
+
+      - name: Download exact release manifest
+        uses: actions/download-artifact@v4
+        with:
+          name: ds003775-repeat-release-manifest-population
+          path: ${{ runner.temp }}/release
+
+      - name: Extract subject pair manifest
+        shell: bash
+        env:
+          SUBJECT_ID: ${{ matrix.subject }}
+        run: |
+          set -euo pipefail
+          ROOT="$RUNNER_TEMP/population/$SUBJECT_ID"
+          mkdir -p "$ROOT"
+          python NSD_vNext/engine/tools/extract_ds003775_subject_repeat_manifest.py             "$RUNNER_TEMP/release/ds003775_repeat_release_manifest.json"             "$SUBJECT_ID"             --output "$ROOT/pair_manifest.json"
+
+      - name: Download pinned pair
+        shell: bash
+        env:
+          SUBJECT_ID: ${{ matrix.subject }}
+        run: |
+          set -euo pipefail
+          ROOT="$RUNNER_TEMP/population/$SUBJECT_ID"
+          python NSD_vNext/engine/tools/download_repeat_manifest_payloads.py             "$ROOT/pair_manifest.json" "$ROOT/payloads"
+
+      - name: Re-verify exact D4 identity
+        shell: bash
+        env:
+          SUBJECT_ID: ${{ matrix.subject }}
+        run: |
+          set -euo pipefail
+          ROOT="$RUNNER_TEMP/population/$SUBJECT_ID"
+          python NSD_vNext/engine/tools/d4_verify_edf_manifest.py             "$ROOT/pair_manifest.json" "$ROOT/payloads"             --output "$ROOT/"$SUBJECT_ID"_d4.json" > /dev/null
+
+      - name: Run frozen Welch repeat description
+        shell: bash
+        env:
+          SUBJECT_ID: ${{ matrix.subject }}
+        run: |
+          set -euo pipefail
+          ROOT="$RUNNER_TEMP/population/$SUBJECT_ID"
+          python NSD_vNext/engine/tools/probe_psd_repeat_manifest.py             "$ROOT/pair_manifest.json" "$ROOT/payloads"             --output "$ROOT/"$SUBJECT_ID"_psd.json" > /dev/null
+
+      - name: Run frozen descriptive periodic-aperiodic candidate
+        shell: bash
+        env:
+          SUBJECT_ID: ${{ matrix.subject }}
+        run: |
+          set -euo pipefail
+          ROOT="$RUNNER_TEMP/population/$SUBJECT_ID"
+          python NSD_vNext/engine/tools/probe_specparam_repeat_manifest.py             "$ROOT/pair_manifest.json" "$ROOT/payloads"             --output "$ROOT/"$SUBJECT_ID"_specparam.json" > /dev/null
+
+      - name: Print compact subject summary
+        shell: bash
+        env:
+          SUBJECT_ID: ${{ matrix.subject }}
+        run: |
+          set -euo pipefail
+          ROOT="$RUNNER_TEMP/population/$SUBJECT_ID"
+          python - "$ROOT/"$SUBJECT_ID"_psd.json" "$ROOT/"$SUBJECT_ID"_specparam.json" <<'PY'
+          import json, sys
+          psd = json.load(open(sys.argv[1], encoding="utf-8"))
+          sp = json.load(open(sys.argv[2], encoding="utf-8"))
+          print("subject", sp["subject_id"])
+          print("psd_global_corr", psd["repeat_comparison"]["global_median_psd_correlation"])
+          print("psd_channel_median_corr", psd["repeat_comparison"]["channel_correlation_median"])
+          print("same_peak_count_fraction", sp["repeat_summary"]["same_peak_count_fraction"])
+          print("same_zero_peak_state_fraction", sp["repeat_summary"]["same_zero_peak_state_fraction"])
+          print("exponent_abs_diff_median", sp["repeat_summary"]["aperiodic_exponent_absolute_difference"]["median"])
+          print("first_peak_center_diff_median_hz", sp["repeat_summary"]["first_listed_peak_nearest_center_difference_hz"]["median"])
+          for ses in sp["sessions"]:
+              print(
+                  ses["session_id"],
+                  "model_disagreement_fraction",
+                  ses["summary"]["aperiodic_model_disagreement_channel_fraction"],
+                  "width_boundary_hits",
+                  ses["summary"]["fixed_total_width_boundary_hits"],
+                  "max_peak_count_channels",
+                  ses["summary"]["fixed_max_peak_count_channel_count"],
+              )
+          PY
+
+      - name: Upload subject T0 outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: ds003775-repeat-${{ matrix.subject }}
+          path: |
+            ${{ runner.temp }}/population/${{ matrix.subject }}/${{ matrix.subject }}_d4.json
+            ${{ runner.temp }}/population/${{ matrix.subject }}/${{ matrix.subject }}_psd.json
+            ${{ runner.temp }}/population/${{ matrix.subject }}/${{ matrix.subject }}_specparam.json
+          if-no-files-found: error
+          retention-days: 30
+
+  aggregate:
+    needs: analyze
+    if: always() && needs.analyze.result == 'success'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Download all subject outputs
+        uses: actions/download-artifact@v4
+        with:
+          pattern: ds003775-repeat-sub-*
+          path: ${{ runner.temp }}/population-artifacts
+
+      - name: Aggregate subject-aware population Limit Map
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/population-summary"
+          python NSD_vNext/engine/tools/aggregate_ds003775_repeat_population.py             "$RUNNER_TEMP/population-artifacts"             --expected-subject-count 42             --output "$RUNNER_TEMP/population-summary/ds003775_repeat_population_summary.json"
+
+      - name: Upload population summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: ds003775-repeat-population-summary
+          path: ${{ runner.temp }}/population-summary/ds003775_repeat_population_summary.json
+          if-no-files-found: error
+          retention-days: 30
