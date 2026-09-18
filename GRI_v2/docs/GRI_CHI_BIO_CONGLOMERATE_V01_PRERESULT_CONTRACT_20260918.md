@@ -97,3 +97,7 @@ The carrier may succeed even if no scalar summary exists. A diagnostic/predictiv
 7. immutable tool/manuscript release.
 
 This contract does not choose a clinical endpoint or treatment rule. Those remain separate science-changing freezes.
+
+## Execution note
+
+The first computation authorized by this contract is the synthetic known-truth carrier gate only. Real biological outcome evaluation remains sealed until the source-to-block provenance assembly is complete and the downstream task-specific freeze is written.
