@@ -1,4 +1,4 @@
-# NSD vNext — Living Research Workspace
+# NSD vNext — Active Research Workspace
 
 Status: ACTIVE RECONSTRUCTION / NOT A VALIDATED CLINICAL TOOL
 Date initialized: 14 September 2026
@@ -27,7 +27,7 @@ The project treats scalar, vector/modal, and conglomerate/system representations
 
 ### Manuscript
 
-- `manuscript/NSD_MANUSCRIPT_WORKING_v0.1.md` — living forward manuscript draft; historical figures/results enter only after evidence reclassification.
+- `manuscript/NSD_MANUSCRIPT_WORKING_v0.1.md` — public status/provenance stub only. The active unpublished manuscript moved to the private working workspace on 18 September 2026; historical figures/results remain gated by evidence reclassification.
 
 ### Governance and continuity
 
