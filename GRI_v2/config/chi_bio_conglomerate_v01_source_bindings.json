@@ -1,0 +1,91 @@
+{
+  "schema": "GRI_CHI_BIO_CONGLOMERATE_V01_SOURCE_BINDINGS",
+  "date": "2026-09-18",
+  "carrier_role": "development_source_binding_only",
+  "blocks": {
+    "R": {
+      "role": "RNA/regulatory organization",
+      "sources": [
+        "GRI_v2/development_outputs/stage_a1_1/STAGE_A1_1_SUMMARY.json",
+        "GRI_v2/docs/GRI_POST_C1_SENSITIVITY_V22_RESULT_AUDIT_20260912.md"
+      ],
+      "patient_level_status": "REQUIRES_FROZEN_CACHE_OR_RECOMPUTATION",
+      "claim_ceiling": "static regulatory organization only"
+    },
+    "S": {
+      "role": "methylation/substrate organization",
+      "sources": [
+        "GRI_v2/development_outputs/stage_c0_methylation/STAGE_C0_METHYLATION_SOURCE_SUMMARY.json",
+        "GRI_v2/development_outputs/stage_c0_1_sample_identity/STAGE_C0_1_SAMPLE_IDENTITY_SUMMARY.json",
+        "GRI_v2/docs/STAGE_C1A_PROBE_INVENTORY_AUDIT_20260830.md",
+        "GRI_v2/docs/GRI_POST_C1_SENSITIVITY_V22_RESULT_AUDIT_20260912.md"
+      ],
+      "patient_level_status": "REQUIRES_FROZEN_C1_OR_P0_DERIVED_SCORES_OR_RECOMPUTATION",
+      "claim_ceiling": "static methylation/substrate architecture; no causal direction"
+    },
+    "E": {
+      "role": "embedding/context and measured composition",
+      "sources": [
+        "GRI_v2/development_outputs/stage_b1/STAGE_B1_SUMMARY.json"
+      ],
+      "patient_level_status": "SOURCE_HASHES_FROZEN_VALUES_NOT_COMMITTED",
+      "claim_ceiling": "measured purity/leukocyte context only"
+    },
+    "G": {
+      "role": "genomic context/constraints",
+      "sources": [
+        "GRI_v2/development_outputs/stage_b2_genomic/STAGE_B2_GENOMIC_SUMMARY.json"
+      ],
+      "patient_level_status": "SOURCE_FILES_PUBLIC_OR_RECONSTRUCTABLE_FROM_FROZEN_HASHES",
+      "claim_ceiling": "orthogonal static genomic context only"
+    },
+    "P": {
+      "role": "protein/phosphoprotein coupling",
+      "sources": [
+        "GRI_v2/development_outputs/stage_b2_rppa/STAGE_B2_RPPA_SUMMARY.json"
+      ],
+      "patient_level_status": "SOURCE_FILE_PUBLIC_OR_RECONSTRUCTABLE_FROM_FROZEN_HASH",
+      "claim_ceiling": "orthogonal static protein coupling only"
+    },
+    "M": {
+      "role": "modal/vector organization",
+      "sources": [
+        "GRI_v2/development_outputs/stage_a1_1/STAGE_A1_1_SUMMARY.json",
+        "GRI_v2/docs/GRI_POST_C1_SENSITIVITY_V22_RESULT_AUDIT_20260912.md"
+      ],
+      "patient_level_status": "REQUIRES_FROZEN_FEATURE_MATERIALIZATION",
+      "claim_ceiling": "mode-resolved static organization; not a master scalar"
+    },
+    "T": {
+      "role": "temporal/operator behavior",
+      "sources": [
+        "GRI_v2/artifacts/GRI_CURRENT_PROVENANCE_MAP_20260916.md"
+      ],
+      "verified_runs": {
+        "shortterm_g2": 34756865980,
+        "chronic_g2": 34769901215,
+        "chronic_feature_gate": 34770059647,
+        "g1_r0": 34844761409
+      },
+      "patient_level_status": "SYSTEM_SPECIFIC_SCC25_ORDERED_EVIDENCE_NOT_TCGA_PATIENT_BLOCK",
+      "claim_ceiling": "ordered/operator evidence only; not transferred to static TCGA patients"
+    },
+    "Q": {
+      "role": "uncertainty/robustness/identifiability/confidence",
+      "sources": [
+        "GRI_v2/config/tool_prediction_p0_final_internal_summary_20260906.json",
+        "GRI_v2/artifacts/P0_P3_V2_FINAL_HOLDOUT_INDEPENDENT_AUDIT_20260906.md"
+      ],
+      "patient_level_status": "CANCER_LEVEL_CONFIDENCE_CURRENTLY_VALIDATED_INTERNALLY",
+      "claim_ceiling": "internal TCGA confidence/risk ranking only"
+    }
+  },
+  "global_firewalls": {
+    "scalar_required": false,
+    "damped_oscillator_required": false,
+    "unity_boundary_required": false,
+    "clinical_endpoint_used_to_construct_carrier": false,
+    "tcga_final_holdout_is_external_for_new_conglomerate_version": false
+  },
+  "next_real_data_gate": "materialize patient/system-level block tables under frozen source identities before any new diagnostic/predictive target is opened"
+}
