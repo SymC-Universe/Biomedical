@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - gri-conglomerate-chi-tool-v1-20260918
+      - gri-conglomerate-v1-integration-20260919
     paths:
       - 'GRI_v2/docs/GRI_CONGLOMERATE_CHI_TOOL_V1_DEVELOPMENT_FREEZE_20260918.md'
       - 'GRI_v2/config/gri_conglomerate_chi_tool_v1_development_20260918.json'
