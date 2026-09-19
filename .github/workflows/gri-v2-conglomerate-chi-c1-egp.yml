@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - gri-conglomerate-chi-tool-v1-20260918
+      - gri-conglomerate-v1-integration-20260919
     paths:
       - 'GRI_v2/src/materialize_conglomerate_c1_egp_fragment.py'
       - 'GRI_v2/src/materialize_conglomerate_chi_c1.py'
