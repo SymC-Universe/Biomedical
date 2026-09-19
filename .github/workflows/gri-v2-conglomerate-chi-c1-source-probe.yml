@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - gri-conglomerate-chi-tool-v1-20260918
+      - gri-conglomerate-v1-integration-20260919
     paths:
       - 'GRI_v2/config/gri_conglomerate_c1_source_registry_20260918.json'
       - 'GRI_v2/src/probe_conglomerate_c1_public_sources.py'
