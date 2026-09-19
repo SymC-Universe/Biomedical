@@ -1,15 +1,15 @@
 # GRI v2 / Oncology Regulatory Stability Architecture
 
 **Status:** DEVELOPMENT PROGRAM, NOT A VALIDATED CANCER TOOL  
-**Status date:** 2026-09-16  
+**Status date:** 2026-09-19  
 **Program authority:** General Cross-Project Research Protocol v0.8.0 plus GRI project-local scientific controls  
-**Active development branch:** `gri-v071-protocol-integration-20260910-chi-bio`
+**Active development branch:** `gri-conglomerate-v1-integration-20260919`
 
-> **Start here for current work:** `notes/CURRENT_STATUS_20260916_GOM_V080.md`.
+> **Start here for current conglomerate work:** `docs/GRI_CONGLOMERATE_V1_BRANCH_RECONCILIATION_20260919.md` and `docs/GRI_CONGLOMERATE_CHI_TOOL_V1_DEVELOPMENT_FREEZE_20260918.md`.
 >
-> **Living manuscript:** `manuscript/LIVING_MANUSCRIPT_DRAFT.md`.
+> **Manuscript status:** active unpublished manuscript development is private. Public manuscript paths, where present, are status/provenance stubs only.
 >
-> **Source-of-record map:** `docs/GRI_GOM_V080_CONTINUITY_AND_SOURCE_OF_RECORD_20260916.md`.
+> **Program authority:** SymC General Operations Manual v0.8.0 plus GRI project-local scientific controls.
 
 ## Objective
 
@@ -123,14 +123,9 @@ Source-qualified external candidates include longitudinal/paired cancer systems 
 
 ## Manuscript workspace
 
-The revised manuscript lives in GitHub while it is being rebuilt:
+Active unpublished manuscript development is maintained privately. Public manuscript paths are retained only as status/provenance stubs where needed. Scientific source-of-record material remains public in the versioned code, configs, preregistrations, audits, compact results, hashes, and reconciliation records.
 
-- `manuscript/LIVING_MANUSCRIPT_DRAFT.md` — integrated working prose;
-- `manuscript/MANUSCRIPT_RECONCILIATION_LEDGER.md` — section, figure, number, and claim synchronization;
-- `manuscript/sections/06_G1_RESTORATION_IDENTIFIABILITY.md` — active restoration section;
-- `manuscript/README.md` — editing/source-of-record rules.
-
-The living manuscript is intentionally incomplete. It is preferable to have a visible placeholder tied to evidence than polished prose tied to an obsolete analysis.
+The manuscript must be rebuilt from promoted evidence rather than used to steer the ongoing P0-D/P0-Q program.
 
 ## Repository role
 
@@ -140,10 +135,9 @@ Present-tense claims that a computation is running, queued, failed, or complete 
 
 ## Current navigation
 
-- `notes/CURRENT_STATUS_20260916_GOM_V080.md` — current scientific and operational state
-- `docs/GRI_GOM_V080_CONTINUITY_AND_SOURCE_OF_RECORD_20260916.md` — branch/source-of-record hierarchy
+- `docs/GRI_CONGLOMERATE_V1_BRANCH_RECONCILIATION_20260919.md` — current conglomerate branch/source-of-record reconciliation
+- `docs/GRI_CONGLOMERATE_CHI_TOOL_V1_DEVELOPMENT_FREEZE_20260918.md` — current carrier/tool development contract
 - `docs/GRI_FUNCTION_LIMIT_EVIDENCE_MAP_20260916.md` — paired Function/Limit/Evidence map
 - `artifacts/GRI_OPEN_CHANNEL_DISPOSITION_LEDGER_20260916.md` — open/failure/residual channels
-- `manuscript/README.md` — manuscript workspace control
 - `reviewer/README.md` — reviewer-facing historical evidence navigation; reconcile against current state before submission
 - `artifacts/MILESTONE_ARTIFACTS.md` — milestone hashes/provenance
