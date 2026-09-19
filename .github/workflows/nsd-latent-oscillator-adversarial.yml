@@ -1,0 +1,51 @@
+name: NSD Latent Oscillator Adversarial Map
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+      - main
+    paths:
+      - ".github/workflows/nsd-latent-oscillator-adversarial.yml"
+      - "NSD_vNext/engine/pyproject.toml"
+      - "NSD_vNext/engine/nsd_engine/latent_oscillator_covariance.py"
+      - "NSD_vNext/engine/tools/probe_latent_oscillator_adversaries.py"
+
+permissions:
+  contents: read
+
+jobs:
+  adversarial-map:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install frozen numerical stack
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+
+      - name: Run M2 known-misspecification map
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/nsd_m2_adversarial"
+          python NSD_vNext/engine/tools/probe_latent_oscillator_adversaries.py             --output "$RUNNER_TEMP/nsd_m2_adversarial/m2_adversarial_map.json"
+
+      - name: Upload adversarial map
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-latent-oscillator-adversarial-map
+          path: ${{ runner.temp }}/nsd_m2_adversarial/m2_adversarial_map.json
+          if-no-files-found: error
+          retention-days: 30

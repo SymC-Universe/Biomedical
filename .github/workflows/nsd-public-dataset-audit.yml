@@ -1,0 +1,69 @@
+name: NSD Public Dataset Audit
+
+on:
+  push:
+    paths:
+      - "NSD_vNext/engine/nsd_engine/bids.py"
+      - "NSD_vNext/engine/tools/audit_public_bids_repo.py"
+      - "NSD_vNext/engine/tests/test_bids.py"
+      - ".github/workflows/nsd-public-dataset-audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Audit ${{ matrix.dataset }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        dataset:
+          - ds003775
+          - ds005385
+          - ds006780
+    steps:
+      - name: Check out NSD repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install NSD Engine scaffold
+        working-directory: NSD_vNext/engine
+        run: python -m pip install -e .
+
+      - name: Clone OpenNeuro metadata without LFS payloads
+        env:
+          GIT_LFS_SKIP_SMUDGE: "1"
+        run: |
+          git clone --depth 1 --filter=blob:none \
+            "https://github.com/OpenNeuroDatasets/${{ matrix.dataset }}.git" \
+            "/tmp/${{ matrix.dataset }}"
+
+      - name: Audit BIDS hierarchy and metadata structure
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/audit_public_bids_repo.py \
+            "/tmp/${{ matrix.dataset }}" \
+            --output "/tmp/${{ matrix.dataset }}_audit.json" \
+            | tee "/tmp/${{ matrix.dataset }}_summary.txt"
+
+      - name: Add concise audit to workflow summary
+        run: |
+          {
+            echo "## ${{ matrix.dataset }}"
+            echo '```text'
+            cat "/tmp/${{ matrix.dataset }}_summary.txt"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload machine-readable audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-${{ matrix.dataset }}-bids-audit
+          path: /tmp/${{ matrix.dataset }}_audit.json
+          if-no-files-found: error

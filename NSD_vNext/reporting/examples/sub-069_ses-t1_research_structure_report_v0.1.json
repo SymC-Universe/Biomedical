@@ -1,0 +1,116 @@
+{
+  "report_id": "ds003775-sub-069-ses-t1-structure-v0.1",
+  "subject_id": "sub-069",
+  "session_id": "ses-t1",
+  "acquisition_scope": {
+    "dataset": "OpenNeuro ds003775",
+    "pinned_release": "OpenNeuro v1.2.1 / NEMAR on003775 v1.0.0",
+    "task": "resting eyes closed",
+    "acquisition_time": "2017-10-17T10:33:20",
+    "channel_count": 64,
+    "sampling_rate_hz": 1024,
+    "duration_seconds": 240,
+    "source_payload_md5": "656b7184b5ed01e36601b79a3bf38c52"
+  },
+  "engine_version": "git:357fdbdfa86230f2351479af8897029bcba5f861",
+  "atlas_version": "ds003775-repeat-p0d-v0.1",
+  "signal_quality_status": "PARTIALLY_USABLE",
+  "out_of_domain_status": "NOT_EVALUATED",
+  "structural_profile": {
+    "spectral_state": {
+      "status": "DESCRIPTIVE_ONLY",
+      "frozen_parameterization": {
+        "aperiodic_mode": "fixed",
+        "frequency_range_hz": [
+          5,
+          35
+        ],
+        "peak_width_limits_hz": [
+          0.5,
+          12
+        ],
+        "min_peak_height_log10": 0.2,
+        "peak_threshold_sd": 3,
+        "max_n_peaks": 3
+      },
+      "aperiodic_exponent_across_channels": {
+        "n": 64,
+        "median": 1.5533933391158614,
+        "minimum": 0.6588483074799082,
+        "maximum": 1.9180463204786948
+      },
+      "fixed_mean_peak_count": 1.359375,
+      "fixed_zero_peak_channel_fraction": 0,
+      "first_listed_peak_center_frequency_hz": {
+        "n": 64,
+        "median": 10.223952374741376,
+        "minimum": 8.969215855933959,
+        "maximum": 10.47217566359333
+      },
+      "first_listed_peak_power_above_aperiodic_log10_median": 0.8811827624500661,
+      "first_listed_peak_descriptive_bandwidth_hz_median": 2.2798528980422232,
+      "dynamical_interpretation": "PROHIBITED"
+    },
+    "modal_state": {
+      "status": "NOT_ADMITTED",
+      "reason": "The current modal route has not passed the frozen model-adequacy program for real EEG."
+    },
+    "licensed_local_scalars": [],
+    "spatial_system_state": {
+      "status": "DESCRIPTIVE_CHANNEL_STRUCTURE_PRESERVED",
+      "channel_count": 64,
+      "interpretation": "Channel structure is retained, but no biological regional claim is licensed from this report."
+    },
+    "open_channel": {
+      "fixed_vs_knee_model_disagreement_channel_count": 34,
+      "fixed_vs_knee_model_disagreement_channel_fraction": 0.53125,
+      "fixed_max_peak_count_channel_count": 7,
+      "fixed_total_width_boundary_hits": 3,
+      "full_recording_qc_status": "NOT_RUN_IN_THIS_POPULATION_WORKFLOW",
+      "reference_context": {
+        "atlas_maturity": "ATLAS_P0_D",
+        "atlas_independence_for_engine_validation": "NON_INDEPENDENT_FOR_ENGINE_VALIDATION",
+        "atlas_channelwise_exponent_icc_a1_median": 0.6588193345540748,
+        "atlas_peak_count_exact_agreement_median": 0.5357142857142858,
+        "atlas_zero_peak_state_exact_agreement_median": 0.9047619047619048
+      }
+    }
+  },
+  "atlas_deviations": [],
+  "refusals": [
+    {
+      "code": "REF_REFERENCE_DEVIATION_NOT_QUALIFIED",
+      "layer": "atlas",
+      "reason": "The first Atlas-P0-D artifact captures repeatability and Limit-Map context but is not an independent clinical normative model and does not yet license individual abnormality scoring.",
+      "scope": "individual reference deviation"
+    },
+    {
+      "code": "REF_MODAL_ROUTE_NOT_QUALIFIED",
+      "layer": "modal",
+      "reason": "Known-truth adversaries show that the current single-oscillator route can admit misspecified generators; real-EEG modal parameters remain disabled.",
+      "scope": "modal damping / local chi"
+    },
+    {
+      "code": "REF_FULL_QC_NOT_RUN",
+      "layer": "signal_quality",
+      "reason": "Exact D4 payload identity/readability passed, but the 42-subject population workflow did not include a full artifact/QC classification sufficient for an unqualified USABLE status.",
+      "scope": "clinical-quality signal admission"
+    }
+  ],
+  "clinical_models_run": [],
+  "longitudinal_change": null,
+  "forecasts": [],
+  "provenance_hashes": {
+    "source_subject_artifact_digest": "sha256:938a0c6fe1df4ac13eefd8f0b29191ee770cc5eb500b772669cf9be6d274cce4",
+    "atlas_reference_blob": "git-blob:096386cef111838edc11380a08b4ece61994c70e",
+    "atlas_manifest_blob": "git-blob:8a6113343d7a4812e9adc42b38939c0a19f73192",
+    "source_population_summary_digest": "sha256:0859c127ca1cac7f2789fb12b7e66b1453f9ec6fb250e20f11eed6e84b9e0bb2"
+  },
+  "software_build": {
+    "source_workflow": "NSD ds003775 42-Subject Repeat Population",
+    "source_run_id": 35337659470,
+    "source_run_head": "357fdbdfa86230f2351479af8897029bcba5f861",
+    "reporting_contract": "neurophysiology_assessment_report_schema_v0.1"
+  },
+  "report_maturity": "RESEARCH_STRUCTURE_ONLY"
+}
