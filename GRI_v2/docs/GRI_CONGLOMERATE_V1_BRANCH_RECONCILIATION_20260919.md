@@ -46,3 +46,18 @@ The two source branches remain preserved as provenance but are superseded for pr
 8. C7 immutable tool/revision freeze.
 
 The immediate work remains source-complete, outcome-blind materialization and reconciliation of already-earned evidence.
+
+## Reconciliation verification
+
+After the workflow branch filters were moved to this reconciliation branch, the imported and native conglomerate gates were re-executed on the reconciled lineage. All eight completed successfully:
+
+- synthetic carrier gate: run `35421886950` - SUCCESS;
+- materialization preflight: run `35421888547` - SUCCESS;
+- C0 readiness: run `35421890533` - SUCCESS;
+- C1 carrier contract: run `35421892314` - SUCCESS;
+- C1 E/G/P materialization: run `35421894279` - SUCCESS;
+- C1 large-source header inspection: run `35421895768` - SUCCESS;
+- C1 small-source schema inspection: run `35421897844` - SUCCESS;
+- C1 public-source probe: run `35421899686` - SUCCESS.
+
+This closes the mechanical branch-reconciliation gate. It does not promote the biological evidence above P0-D/P0-Q or authorize outcome-dependent carrier tuning.
