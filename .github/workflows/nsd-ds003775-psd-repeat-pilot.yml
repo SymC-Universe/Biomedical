@@ -2,7 +2,10 @@ name: NSD ds003775 PSD Repeat Pilot
 
 on:
   workflow_dispatch:
-  pull_request:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+      - main
     paths:
       - ".github/workflows/nsd-ds003775-psd-repeat-pilot.yml"
       - "NSD_vNext/atlas/manifests/ds003775_sub069_repeat_d4_manifest_v0.1.json"

@@ -2,10 +2,9 @@ name: NSD Engine Contracts
 
 on:
   push:
-    paths:
-      - "NSD_vNext/engine/**"
-      - ".github/workflows/nsd-engine-contracts.yml"
-  pull_request:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+      - main
     paths:
       - "NSD_vNext/engine/**"
       - ".github/workflows/nsd-engine-contracts.yml"

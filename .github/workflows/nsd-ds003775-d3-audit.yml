@@ -2,7 +2,10 @@ name: NSD ds003775 D3 Metadata Join Audit
 
 on:
   workflow_dispatch:
-  pull_request:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+      - main
     paths:
       - ".github/workflows/nsd-ds003775-d3-audit.yml"
       - "NSD_vNext/docs/manifests/ds003775_metadata_roles_v0.1.json"

@@ -2,7 +2,10 @@ name: NSD Latent Oscillator Adversarial Map
 
 on:
   workflow_dispatch:
-  pull_request:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+      - main
     paths:
       - ".github/workflows/nsd-latent-oscillator-adversarial.yml"
       - "NSD_vNext/engine/pyproject.toml"

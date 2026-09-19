@@ -2,7 +2,10 @@ name: NSD specparam rc7 Qualification
 
 on:
   workflow_dispatch:
-  pull_request:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+      - main
     paths:
       - ".github/workflows/nsd-specparam-rc7-qualification.yml"
       - "NSD_vNext/engine/pyproject.toml"

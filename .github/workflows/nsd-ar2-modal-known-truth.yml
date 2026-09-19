@@ -2,7 +2,10 @@ name: NSD AR2 Modal Known-Truth Map
 
 on:
   workflow_dispatch:
-  pull_request:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+      - main
     paths:
       - ".github/workflows/nsd-ar2-modal-known-truth.yml"
       - "NSD_vNext/engine/pyproject.toml"
