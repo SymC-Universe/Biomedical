@@ -1,110 +1,94 @@
-# Symmetrical Convergence (SymC) — Biomedical Repository
+# SymC Biomedical Systems
 
-**Current research notice, 2026-08-29:** This repository contains both historical SymC biomedical work and active reconstruction/validation programs. Earlier publications are preserved as research history and provenance. They should not be assumed to represent the current evidential status of ongoing work.
+**Current research notice: 19 September 2026**
 
-## Active oncology research: GRI v2 / Cancer Stability Atlas
+This repository contains both historical SymC biomedical papers and active reconstruction programs. Historical PDFs, TeX files, and releases are retained for provenance. They do not automatically represent the current evidentiary status of the corresponding project.
 
-The current oncology program is being rebuilt on the [`gri-v2` branch](https://github.com/SymC-Universe/Biomedical/tree/gri-v2/GRI_v2) as **GRI v2 / Cancer Stability Atlas**.
+Current work is governed by the SymC General Operations Manual v0.8.0 plus project-local controls.
 
-It is a development program, **not a validated cancer tool**. The goal is to discover and externally validate the most predictive cancer-stability architecture supported by the data, even if the final tool differs substantially from the historical GRI manuscript.
+## Active oncology program: GRI v2 / capital-Chi biological architecture
 
-Start here:
+The active GRI conglomerate/tool source of record is:
 
-- [Current build status](https://github.com/SymC-Universe/Biomedical/blob/gri-v2/GRI_v2/notes/BUILD_STATUS.md)
-- [GRI v2 research README](https://github.com/SymC-Universe/Biomedical/blob/gri-v2/GRI_v2/README.md)
-- [Predictive-tool objective](https://github.com/SymC-Universe/Biomedical/blob/gri-v2/GRI_v2/docs/TOOL_OBJECTIVE.md)
-- [Epistemic constitution and scientific guardrails](https://github.com/SymC-Universe/Biomedical/blob/gri-v2/GRI_v2/docs/EPISTEMIC_CONSTITUTION.md)
-- [Rules required before a biological chi coordinate may be used](https://github.com/SymC-Universe/Biomedical/blob/gri-v2/GRI_v2/docs/CHI_ADMISSION_RULES.md)
-- [Stage B1 composition/context audit](https://github.com/SymC-Universe/Biomedical/blob/gri-v2/GRI_v2/docs/STAGE_B1_AUDIT_20260829.md)
-- [Stage B2 source audit](https://github.com/SymC-Universe/Biomedical/blob/gri-v2/GRI_v2/docs/STAGE_B2_SOURCE_AUDIT_20260829.md)
-- [Stage B2 frozen integration design](https://github.com/SymC-Universe/Biomedical/blob/gri-v2/GRI_v2/docs/STAGE_B2_PREREGISTRATION_20260829.md)
-- [Stage B2 RPPA audit](https://github.com/SymC-Universe/Biomedical/blob/gri-v2/GRI_v2/docs/STAGE_B2_RPPA_AUDIT_20260829.md)
+`gri-conglomerate-v1-integration-20260919`
 
-## Current GRI v2 status
+That branch reconciles two compatible 18 September development lineages that had diverged operationally. The reconciliation changes no scientific threshold, block definition, target, comparator, split, or outcome rule.
 
-The historical scalar oncology branch has been closed as a current mechanistic model. `CV/2` is retained only as a historical descriptive comparator and is **not** treated as a biological chi coordinate.
+Current GRI posture:
 
-Static Stage A is complete and retains separate measured observables rather than a master score:
+- historical `CV/2` remains a descriptive/proxy quantity, not biological damping;
+- no universal biological scalar chi is required;
+- capital Chi-bio is a block-preserving biological stability architecture, not a master score;
+- static TCGA measurements do not acquire temporal meaning by interpretation;
+- TCGA evidence already opened in prior development is P0-D/P0-Q evidence for the new conglomerate carrier, not untouched confirmation;
+- diagnostic and predictive heads must be frozen separately;
+- external validation is required before a tool claim;
+- active unpublished manuscript development is private.
 
-- **V**: expression-adjusted variability/fluctuation structure.
-- **L**: lineage/context dependence.
-- **C_in**: read “C sub in.” Internal Hallmark-module RNA coherence.
-- **C_out**: read “C sub out.” Coupling of a Hallmark RNA module to the external Hallmark-union background.
+Current conglomerate development sequence:
 
-No direction of these coordinates is defined as optimal, healthy, or pathological.
+```text
+C0 source/readiness
+-> C1 patient/system block materialization
+-> C2 relationship layer
+-> C3 internal ablation
+-> C4 diagnostic-head freeze
+-> C5 predictive-head freeze
+-> C6 external validation
+-> C7 immutable tool/revision freeze
+```
 
-Stage B1 is complete. Independent tumor-purity and DNA-methylation-derived leukocyte measurements explain a real but concentrated portion of the RNA network geometry, especially in immune/inflammatory Hallmarks, while the broader internal-coherence/external-coupling topology remains strongly preserved after adjustment.
+Historical `SymC_GRIonc.tex` and its PDF are retained as prior research. Where they treat `CV/2` as physical damping, chi=1 as a biological optimum, or static structure as dynamical evidence, that framing is superseded by the current project-local guardrails.
 
-Stage B2 is now partially closed. Its source and analysis contracts were frozen before biological association testing. The independent RPPA protein/phosphoprotein branch has completed 60 fixed-n tasks with 100/100 resamples each. Patient-aligned Hallmark-RNA/protein coupling lies above the row-permutation construction floor in every cancer at the cancer-median level and remains positive after the prespecified purity/leukocyte adjustment. This earns retention of a static cross-assay protein layer for later predictive model competition, not a causal or dynamical claim.
+## Active neurophysiology program: NSD vNext
 
-**The active computation is the preregistered Stage B2 genomic decomposition** using five separately retained aneuploidy, loss-of-heterozygosity, and copy-number coordinates. The complete frozen run contains 306 cancer-coordinate-analysis tasks. Partial genomic checkpoints are not interpreted.
+The active NSD branch is:
 
-Genome-wide DNA methylation remains separately gated behind a prospectively defined feature-reduction and platform-harmonization decision. It is not admitted or rejected based on whether the current B2 results look favorable.
+`nsd-rebuild-gom-v0.8.0`
 
-No valid biological chi coordinate has yet been established in the cancer program. If one is eventually admitted, `chi = 1` will mean a dynamical regime-balance boundary of the applicable model, not a presumed point of maximum organization, health, treatment response, or cancer stability.
+NSD is rebuilding from native neurophysiology upward rather than treating the 2025 paper's proposed state space as already validated.
 
-## Research posture
+Current state includes:
 
-The current program follows a stricter evidence ladder developed from the updated Stability Arc and Chemistry work:
+- label-blind structural Engine qualification;
+- audited public EEG provenance/hierarchy;
+- a 42-subject / 84-recording repeat-session qualification population;
+- the first descriptive Atlas P0-D reference artifact;
+- explicit refusal of whole-brain chi;
+- explicit separation of descriptive spectral structure from modal/dynamical inference;
+- direct AR(2) real-EEG modal inference refused;
+- latent-oscillator covariance fit retained only as a known-truth baseline after adversarial model-adequacy failure;
+- proper A0/A1/A2 state-space model competition under continued P0-Q qualification;
+- real-EEG modal damping/local chi still disabled;
+- clinical diagnosis, prognosis, and treatment guidance still disabled.
 
-1. preserve historical observations and failed tests;
-2. separate independently measured coordinates instead of forcing them into one scalar;
-3. use construction-aware nulls and explicit provenance;
-4. distinguish static structure from genuine dynamics;
-5. benchmark against established alternatives;
-6. freeze predictive targets before validation;
-7. require held-out and external validation before promoting a tool or mechanism.
+The active unpublished NSD manuscript has been moved to the private working workspace. Public manuscript paths are status/provenance stubs only.
 
-A manuscript is downstream of that process. The data and mathematics determine the tool architecture, not the historical narrative.
+## Historical biomedical work
 
-## Historical and archived biomedical works
+The repository also preserves earlier oncology, viral-control, Parkinson's, Alzheimer's/dementia, pain, addiction, and psychiatric-stability work.
 
-The following remain available as prior SymC research. Their presence here does not mean every earlier claim is carried into the active GRI v2 program.
+These artifacts are part of the research record, not automatic current evidence. Each domain must earn current interpretation under native observables, current provenance, current comparators, and its own promotion path.
 
-### Genomic Regulatory Instability (historical GRI)
+## Scientific posture
 
-**Mapping the Mechanical Lineage of Regulatory Control Failure in Malignancy**  
-DOI: https://doi.org/10.5281/zenodo.18435475
+Across biomedical projects:
 
-This is the historical oncology framework that motivated the current adversarial reconstruction. It is retained for provenance and should not be treated as the current validated cancer model.
-
-### Earlier oncology control work
-
-**Optimal Control Theory in Oncology (SymC Oncology v1–v3)**  
-DOI: https://doi.org/10.5281/zenodo.17507544
-
-### Viral control
-
-DOI: https://doi.org/10.5281/zenodo.17651256
-
-### Neurodegeneration
-
-- Prodromal Critical Cascade in Parkinson’s Disease: https://doi.org/10.5281/zenodo.17645851
-- Neurostability Principle, Alzheimer’s & Dementia: https://doi.org/10.5281/zenodo.17766309
-
-### Pain, addiction, and neural-control work
-
-- Neuroelastic Resonance Instability, Addiction: https://doi.org/10.5281/zenodo.17782917
-- Nociceptive Stability Principle, Pain: https://doi.org/10.5281/zenodo.17924428
-
-### Psychiatric stability
-
-- Neuro Stability Disorder, Comorbidity: https://doi.org/10.5281/zenodo.17937287
-
-### Related cross-domain SymC works
-
-- Closing Gaps: https://doi.org/10.5281/zenodo.17624098
-- Critical Chemical Equivalence: https://doi.org/10.5281/zenodo.17891563
-- SymC Noughts: https://doi.org/10.5281/zenodo.17633509
-- Adaptive Intelligence Framework: https://doi.org/10.5281/zenodo.17565787
+- native biological/neurophysiological science comes first;
+- a statistical ratio is not promoted to physical damping by notation;
+- cross-sectional order is not time;
+- scalar, modal/vector, and conglomerate/system descriptions may disagree;
+- refusal/nonidentifiability is valid;
+- Function Map and Limit Map are coequal;
+- local dynamical identity is distinct from embedded realized behavior;
+- prediction requires temporally valid endpoints and untouched/independent evidence appropriate to the stage;
+- a paper is downstream of the evidence path rather than the authority that defines it.
 
 ## Repository organization
 
 - `main` is the public landing/history branch.
-- `gri-v2` is the active oncology development branch.
-- Large source datasets are generally not committed when their identity, hashes, and regeneration paths can be preserved instead.
-- Current scientific status should be taken from the active branch’s `GRI_v2/notes/BUILD_STATUS.md`, not inferred from older PDFs or archived releases.
+- `gri-conglomerate-v1-integration-20260919` is the current GRI conglomerate/tool development source of record.
+- `nsd-rebuild-gom-v0.8.0` is the current NSD rebuild source of record.
+- Large source datasets may remain outside Git history when their exact identities, hashes, acquisition paths, and regeneration rules are preserved.
 
-## Scope
-
-The repository covers biomedical investigations involving oncology, viral dynamics, neurodegeneration, pain, addiction, psychiatric instability, and related adaptive-control questions. Current work treats cross-domain stability ideas as hypotheses to be tested under domain-appropriate measurements rather than assuming that a shared mathematical form proves a shared biological mechanism.
+For present-tense claims, use the active branch's current status/result artifacts and live GitHub Actions state rather than an old PDF or older branch README.
