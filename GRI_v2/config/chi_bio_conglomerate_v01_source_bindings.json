@@ -1,19 +1,20 @@
 {
   "schema": "GRI_CHI_BIO_CONGLOMERATE_V01_SOURCE_BINDINGS",
-  "date": "2026-09-18",
+  "date": "2026-09-21",
   "carrier_role": "development_source_binding_only",
   "blocks": {
     "R": {
-      "role": "RNA/regulatory organization",
+      "role": "RNA / regulatory-state representation",
       "sources": [
         "GRI_v2/development_outputs/stage_a1_1/STAGE_A1_1_SUMMARY.json",
         "GRI_v2/docs/GRI_POST_C1_SENSITIVITY_V22_RESULT_AUDIT_20260912.md"
       ],
       "patient_level_status": "REQUIRES_FROZEN_CACHE_OR_RECOMPUTATION",
-      "claim_ceiling": "static regulatory organization only"
+      "claim_ceiling": "static transcriptomic/regulatory-state organization only; bulk RNA is not direct regulatory dynamics or causal control",
+      "external_scrutiny_status": "NARROWED"
     },
     "S": {
-      "role": "methylation/substrate organization",
+      "role": "DNA-methylation / epigenetic-context organization",
       "sources": [
         "GRI_v2/development_outputs/stage_c0_methylation/STAGE_C0_METHYLATION_SOURCE_SUMMARY.json",
         "GRI_v2/development_outputs/stage_c0_1_sample_identity/STAGE_C0_1_SAMPLE_IDENTITY_SUMMARY.json",
@@ -21,43 +22,48 @@
         "GRI_v2/docs/GRI_POST_C1_SENSITIVITY_V22_RESULT_AUDIT_20260912.md"
       ],
       "patient_level_status": "REQUIRES_FROZEN_C1_OR_P0_DERIVED_SCORES_OR_RECOMPUTATION",
-      "claim_ceiling": "static methylation/substrate architecture; no causal direction"
+      "claim_ceiling": "static methylation/epigenetic organization only; no universal silencing direction, causal substrate inheritance, or temporal memory claim",
+      "external_scrutiny_status": "NARROWED"
     },
     "E": {
-      "role": "embedding/context and measured composition",
+      "role": "measured embedding/context and partial composition sensitivity",
       "sources": [
         "GRI_v2/development_outputs/stage_b1/STAGE_B1_SUMMARY.json"
       ],
       "patient_level_status": "SOURCE_HASHES_FROZEN_VALUES_NOT_COMMITTED",
-      "claim_ceiling": "measured purity/leukocyte context only"
+      "claim_ceiling": "ABSOLUTE purity plus leukocyte context is a bounded composition attack, not comprehensive tumour-microenvironment adjustment",
+      "external_scrutiny_status": "PARTIAL_CONTROL_ONLY"
     },
     "G": {
-      "role": "genomic context/constraints",
+      "role": "genomic context / candidate constraint layer",
       "sources": [
         "GRI_v2/development_outputs/stage_b2_genomic/STAGE_B2_GENOMIC_SUMMARY.json"
       ],
       "patient_level_status": "SOURCE_FILES_PUBLIC_OR_RECONSTRUCTABLE_FROM_FROZEN_HASHES",
-      "claim_ceiling": "orthogonal static genomic context only"
+      "claim_ceiling": "orthogonal static genomic context only; SCNA/LOH burden is not itself a demonstrated stability coordinate",
+      "external_scrutiny_status": "NARROWED"
     },
     "P": {
-      "role": "protein/phosphoprotein coupling",
+      "role": "targeted RPPA protein/phosphoprotein panel organization",
       "sources": [
         "GRI_v2/development_outputs/stage_b2_rppa/STAGE_B2_RPPA_SUMMARY.json"
       ],
       "patient_level_status": "SOURCE_FILE_PUBLIC_OR_RECONSTRUCTABLE_FROM_FROZEN_HASH",
-      "claim_ceiling": "orthogonal static protein coupling only"
+      "claim_ceiling": "targeted panel-level protein organization only; not complete proteome state and subject to antibody/platform/batch limits",
+      "external_scrutiny_status": "NARROWED"
     },
     "M": {
-      "role": "modal/vector organization",
+      "role": "modal/vector statistical organization",
       "sources": [
         "GRI_v2/development_outputs/stage_a1_1/STAGE_A1_1_SUMMARY.json",
         "GRI_v2/docs/GRI_POST_C1_SENSITIVITY_V22_RESULT_AUDIT_20260912.md"
       ],
       "patient_level_status": "REQUIRES_FROZEN_FEATURE_MATERIALIZATION",
-      "claim_ceiling": "mode-resolved static organization; not a master scalar"
+      "claim_ceiling": "mode-resolved organization within the measured representation; dynamical/modal physical interpretation requires independent temporal licensing",
+      "external_scrutiny_status": "NARROWED"
     },
     "T": {
-      "role": "temporal/operator behavior",
+      "role": "system-specific temporal/operator behavior",
       "sources": [
         "GRI_v2/artifacts/GRI_CURRENT_PROVENANCE_MAP_20260916.md"
       ],
@@ -68,16 +74,18 @@
         "g1_r0": 34844761409
       },
       "patient_level_status": "SYSTEM_SPECIFIC_SCC25_ORDERED_EVIDENCE_NOT_TCGA_PATIENT_BLOCK",
-      "claim_ceiling": "ordered/operator evidence only; not transferred to static TCGA patients"
+      "claim_ceiling": "ordered SCC25 operator evidence in frozen low-dimensional model classes only; no transfer to static TCGA patients and no global claim of biological non-reorganization",
+      "external_scrutiny_status": "SUPPORTED_WITHIN_SOURCE_AND_MODEL_CLASS"
     },
     "Q": {
-      "role": "uncertainty/robustness/identifiability/confidence",
+      "role": "uncertainty, robustness, identifiability and internal candidate confidence",
       "sources": [
         "GRI_v2/config/tool_prediction_p0_final_internal_summary_20260906.json",
         "GRI_v2/artifacts/P0_P3_V2_FINAL_HOLDOUT_INDEPENDENT_AUDIT_20260906.md"
       ],
       "patient_level_status": "CANCER_LEVEL_CONFIDENCE_CURRENTLY_VALIDATED_INTERNALLY",
-      "claim_ceiling": "internal TCGA confidence/risk ranking only"
+      "claim_ceiling": "internal TCGA risk-ranking/robustness metadata only; not calibrated general or clinical confidence",
+      "external_scrutiny_status": "SUPPORTED_INTERNAL_UNRESOLVED_EXTERNAL"
     }
   },
   "global_firewalls": {
@@ -85,7 +93,19 @@
     "damped_oscillator_required": false,
     "unity_boundary_required": false,
     "clinical_endpoint_used_to_construct_carrier": false,
-    "tcga_final_holdout_is_external_for_new_conglomerate_version": false
+    "tcga_final_holdout_is_external_for_new_conglomerate_version": false,
+    "external_domain_validation_required_for_material_interpretation": true,
+    "same_task_standard_toolkit_comparison_required_before_added_value_claim": true,
+    "joint_scalar_capital_chi_meaning_required": true
   },
-  "next_real_data_gate": "materialize patient/system-level block tables under frozen source identities before any new diagnostic/predictive target is opened"
+  "next_real_data_gate": "continue source-neutral materialization only where justified; before any new outcome-bearing conglomerate computation, freeze the joint chi<->Chi task, same-task comparator suite, missingness mode, and external challenge rules",
+  "external_scrutiny_overlay": {
+    "protocol": "GOM_v0.8.2_REVIEW_applied_prospectively_at_user_direction",
+    "active_numbered_baseline": "v0.8.1",
+    "rule": "internal coherence is not biological validation; each material interpretation requires a native-domain external challenge",
+    "standard_toolkit_status": "NOT_TESTED_AGAINST_STANDARD_TOOLKIT",
+    "capital_chi_status": "PROVISIONAL_MULTIREPRESENTATIONAL_ARCHITECTURE",
+    "universal_scalar_chi_status": "NOT_YET_ESTABLISHED",
+    "biological_unity_boundary_status": "NOT_ESTABLISHED"
+  }
 }
