@@ -12,6 +12,11 @@ from src.probe_stage_b2_sources import download, probe_data_endpoint, scan
 ROOT = Path(__file__).resolve().parents[1]
 PLAN = ROOT / "config" / "stage_b2_source_plan.json"
 
+RNA_UUID = "3586c0da-64d0-4b74-a449-5ff4d9136611"
+RNA_FILE = "EBPlusPlusAdjustPANCAN_IlluminaHiSeq_RNASeqV2.geneExp.tsv"
+RNA_EXPECTED_SIZE = 1882540959
+RNA_EXPECTED_SHA256 = "674b19b7ed9ae4c5ef35ee2824936429aa5d46c0735a3d180f41552fcbbdb658"
+
 EXPECTED = {
     "aneuploidy_loh": "4e115fd7408a06b002f34678fa46df0b05aa20ac71db57acf535238f37aa64c8",
     "cnv_burden": "4b63eefb164866a3c49c50c04ee423d3ad1c25540f7cf39e08d997b454a189d0",
@@ -56,9 +61,22 @@ def run(out_path: Path, download_dir: Path) -> dict:
     small=[r for r in records if r.get("sha256")]
     all_small_ok=all(r["hash_match"] for r in small)
     methyl=next(r for r in records if r["id"]=="methylation_merged_27k_450k")
+    rna_meta = probe_data_endpoint(f"https://api.gdc.cancer.gov/data/{RNA_UUID}")
+    rna_size = rna_meta.get("content_length")
+    rna_size_match = (rna_size == RNA_EXPECTED_SIZE)
+
     result={
         "schema":"GRI_CHI_BIO_CONGLOMERATE_V01_MATERIALIZATION_PREFLIGHT",
-        "status":"PASS" if all_small_ok else "FAIL",
+        "rna_expression": {
+            "file_name": RNA_FILE,
+            "gdc_uuid": RNA_UUID,
+            "expected_size_bytes": RNA_EXPECTED_SIZE,
+            "expected_sha256": RNA_EXPECTED_SHA256,
+            "metadata": rna_meta,
+            "size_match": rna_size_match,
+            "download_status": "METADATA_ONLY"
+        },
+        "status":"PASS" if (all_small_ok and rna_size_match) else "FAIL",
         "no_biological_outcomes_opened":True,
         "no_conglomerate_weights_selected":True,
         "no_scalar_chi_created":True,
@@ -68,14 +86,14 @@ def run(out_path: Path, download_dir: Path) -> dict:
             "G":"REMOTE_READY_SMALL_SOURCE",
             "P":"REMOTE_READY_SMALL_SOURCE",
             "S":"REMOTE_SOURCE_VERIFIED_METADATA_ONLY_LARGE_5GB",
-            "R":"SOURCE_IDENTITY_HASH_KNOWN_BUT_REMOTE_FETCH_ROUTE_NOT_YET_BOUND",
+            "R":"REMOTE_ROUTE_BOUND_METADATA_VERIFIED_IF_SIZE_MATCH; FULL_HASH_REQUIRES_STREAMED_ACQUISITION",
             "E":"RECONSTRUCT_FROM_FROZEN_PURITY_LEUKOCYTE_SOURCES_OR_RECOVER_MILESTONE_VALUES",
             "M":"DERIVE_FROM_FROZEN_R_S_CARRIERS_AFTER_MATERIALIZATION",
             "T":"SYSTEM_SPECIFIC_EXISTING_SCC25_ARTIFACTS_KEEP_SEPARATE",
             "Q":"EXISTING_INTERNAL_CONFIDENCE_AND_PROVENANCE_METADATA_READY"
         },
         "methylation_remote_size_bytes":methyl.get("metadata",{}).get("content_length"),
-        "next":"bind an exact remote source route for the frozen 1.882GB RNA matrix, then stage R/S materialization without opening clinical outcomes"
+        "next":"if RNA metadata size matches, design resource-safe streamed R/S feature materialization under exact hashes without opening clinical outcomes"
     }
     out_path.parent.mkdir(parents=True,exist_ok=True)
     out_path.write_text(json.dumps(result,indent=2,sort_keys=True)+"\n")
