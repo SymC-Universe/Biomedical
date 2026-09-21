@@ -1,0 +1,29 @@
+name: GRI brain source-native qualification
+
+on:
+  push:
+    branches:
+      - gri-chi-bio-conglomerate-v01-20260918
+    paths:
+      - "GRI_v2/src/qualify_brain_state_source_v01.py"
+      - ".github/workflows/gri-brain-source-native-qualification.yml"
+  workflow_dispatch:
+
+jobs:
+  qualify-source:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Qualify exact external source commit and summarize source-native derived evidence
+        run: python -m src.qualify_brain_state_source_v01
+      - uses: actions/upload-artifact@v4
+        with:
+          name: GRI_BRAIN_SOURCE_NATIVE_QUALIFICATION_V01
+          path: GRI_v2/brain_source_qualification_outputs/brain_source_native_qualification_v01.json
+          if-no-files-found: error
