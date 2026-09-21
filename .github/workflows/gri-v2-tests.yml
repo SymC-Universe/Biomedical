@@ -2,7 +2,7 @@ name: GRI v2 tests
 
 on:
   push:
-    branches: [gri-v2]
+    branches: [gri-v2, gri-conglomerate-v1-integration-20260921]
     paths:
       - 'GRI_v2/**'
       - '.github/workflows/gri-v2-tests.yml'
