@@ -1,0 +1,31 @@
+name: GRI brain source-native Salience reproduction
+
+on:
+  push:
+    branches:
+      - gri-chi-bio-conglomerate-v01-20260918
+    paths:
+      - "GRI_v2/src/reproduce_brain_salience_source_native_v01.py"
+      - ".github/workflows/gri-brain-salience-source-native-reproduction.yml"
+  workflow_dispatch:
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install reproduction dependencies
+        run: python -m pip install --disable-pip-version-check -q "numpy>=2,<3" "pandas>=2,<3" "scikit-learn>=1.5,<2"
+      - name: Recompute source-native Salience predictor from trial-level source file
+        run: python -m src.reproduce_brain_salience_source_native_v01
+      - uses: actions/upload-artifact@v4
+        with:
+          name: GRI_BRAIN_SALIENCE_SOURCE_NATIVE_REPRODUCTION_V01
+          path: GRI_v2/brain_source_qualification_outputs/brain_salience_source_native_reproduction_v01.json
+          if-no-files-found: error
