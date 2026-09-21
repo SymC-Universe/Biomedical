@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - gri-chi-bio-conglomerate-v01-20260918
+      - gri-conglomerate-v1-integration-20260921
     paths:
       - "GRI_v2/src/reproduce_brain_salience_source_native_v01.py"
       - ".github/workflows/gri-brain-salience-source-native-reproduction.yml"
