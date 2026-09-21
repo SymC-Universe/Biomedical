@@ -3,7 +3,7 @@ name: GRI conglomerate v0.1 materialization preflight
 on:
   push:
     branches:
-      - gri-conglomerate-v1-integration-20260919
+      - gri-chi-bio-conglomerate-v01-20260918
     paths:
       - "GRI_v2/src/preflight_conglomerate_v01_materialization.py"
       - "GRI_v2/tests/test_conglomerate_v01_materialization_preflight.py"
