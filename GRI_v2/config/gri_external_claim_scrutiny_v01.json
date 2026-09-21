@@ -1,0 +1,232 @@
+{
+  "schema": "GRI_EXTERNAL_CLAIM_SCRUTINY_V01",
+  "date": "2026-09-21",
+  "protocol_overlay": "GOM_v0.8.2_REVIEW",
+  "active_numbered_baseline": "v0.8.1",
+  "rule": "No material biological interpretation is promoted from internal coherence alone.",
+  "claims": [
+    {
+      "id": "EC-01",
+      "object": "historical transcriptomic CV/2",
+      "status": "CORRECTED_NARROWED",
+      "survives": "operational dispersion proxy",
+      "forbidden": [
+        "physical damping inference",
+        "universal stability boundary"
+      ],
+      "sources": [
+        "10.1186/s13059-014-0550-8"
+      ]
+    },
+    {
+      "id": "EC-02",
+      "object": "capital Chi-bio architecture",
+      "status": "UNRESOLVED_AS_NATIVE_ONTOLOGY",
+      "survives": "falsifiable multirepresentational project architecture",
+      "forbidden": [
+        "claim that the eight-block carrier is an established biological ontology"
+      ],
+      "sources": [
+        "10.1093/nar/gky889",
+        "10.1016/j.isci.2022.103798"
+      ]
+    },
+    {
+      "id": "EC-03",
+      "object": "R RNA block",
+      "status": "NARROWED",
+      "survives": "RNA/regulatory-state representation",
+      "forbidden": [
+        "direct causal control",
+        "direct regulatory dynamics from bulk cross-sectional RNA"
+      ],
+      "sources": [
+        "10.1186/s13059-014-0550-8",
+        "10.1038/ncomms9971"
+      ]
+    },
+    {
+      "id": "EC-04",
+      "object": "S methylation block",
+      "status": "CORRECTED_NARROWED",
+      "survives": "methylation/epigenetic-context organization",
+      "forbidden": [
+        "universal silencing direction",
+        "causal substrate inheritance from association"
+      ],
+      "sources": [
+        "10.1177/1176935119828776"
+      ]
+    },
+    {
+      "id": "EC-05",
+      "object": "purity plus leukocyte composition adjustment",
+      "status": "PARTIAL_CONTROL_ONLY",
+      "survives": "bounded composition sensitivity",
+      "forbidden": [
+        "comprehensive composition independence"
+      ],
+      "sources": [
+        "10.1038/ncomms9971"
+      ]
+    },
+    {
+      "id": "EC-06",
+      "object": "G genomic block",
+      "status": "NARROWED",
+      "survives": "genomic context/candidate constraint layer",
+      "forbidden": [
+        "SCNA burden as established stability coordinate"
+      ],
+      "sources": [
+        "10.1038/ng.2760"
+      ]
+    },
+    {
+      "id": "EC-07",
+      "object": "P RPPA block",
+      "status": "NARROWED",
+      "survives": "targeted protein/phosphoprotein panel organization",
+      "forbidden": [
+        "complete proteome state"
+      ],
+      "sources": [
+        "10.1038/ncomms4887"
+      ]
+    },
+    {
+      "id": "EC-08",
+      "object": "CKA/global cross-omic geometry",
+      "status": "SUPPORTED_AS_SIMILARITY_WITH_PRIOR_ART",
+      "survives": "representation/kernel similarity descriptor",
+      "forbidden": [
+        "CKA as a physical stability coordinate",
+        "novelty claim for kernel alignment itself"
+      ],
+      "sources": [
+        "10.1038/s41598-017-17031-8",
+        "Kornblith_et_al_ICML_2019"
+      ]
+    },
+    {
+      "id": "EC-09",
+      "object": "biased CKA robustness at n=30 high-p",
+      "status": "UNRESOLVED_METHOD_ROBUSTNESS",
+      "survives": "existing permutation-null result as historical evidence",
+      "forbidden": [
+        "overinterpretation of absolute CKA scale"
+      ],
+      "sources": [
+        "arXiv:2405.01012"
+      ]
+    },
+    {
+      "id": "EC-10",
+      "object": "Hallmark feature universe",
+      "status": "SUPPORTED_NOT_PRIVILEGED",
+      "survives": "defensible curated reduced-redundancy basis",
+      "forbidden": [
+        "claim that Hallmarks are uniquely correct for every cross-omic task"
+      ],
+      "sources": [
+        "10.1016/j.cels.2015.12.004"
+      ]
+    },
+    {
+      "id": "EC-11",
+      "object": "missing blocks remain missing",
+      "status": "NARROWED",
+      "survives": "anti-invention firewall",
+      "forbidden": [
+        "claim that complete-case restriction is unbiased without missingness assumptions"
+      ],
+      "sources": [
+        "10.3389/frai.2023.1098308"
+      ]
+    },
+    {
+      "id": "EC-12",
+      "object": "weekly SCC25 as temporal/perturbational evidence",
+      "status": "SUPPORTED_WITHIN_SOURCE",
+      "survives": "ordered RNA+methylation+cetuximab/PBS trajectory with proliferation phenotype",
+      "forbidden": [
+        "automatic transport beyond SCC25"
+      ],
+      "sources": [
+        "10.1186/s13073-018-0545-2"
+      ]
+    },
+    {
+      "id": "EC-13",
+      "object": "chronic G2 D2 non-support",
+      "status": "MODEL_CLASS_SPECIFIC_ONLY",
+      "survives": "treatment-interaction operator did not earn predictive support in frozen low-rank G2 test",
+      "forbidden": [
+        "claim of no biological reorganization"
+      ],
+      "sources": [
+        "10.1186/s13073-018-0545-2"
+      ]
+    },
+    {
+      "id": "EC-14",
+      "object": "G2 prior-art/comparator coverage",
+      "status": "GAP_FOUND",
+      "survives": "DMD/DMDc prior-art collision",
+      "forbidden": [
+        "calling source-native comparator coverage complete without CoGAPS"
+      ],
+      "sources": [
+        "10.1186/s13073-018-0545-2",
+        "10.1137/15M1013857"
+      ]
+    },
+    {
+      "id": "EC-15",
+      "object": "capital Chi added value",
+      "status": "NOT_TESTED_AGAINST_STANDARD_TOOLKIT",
+      "survives": "internal component results",
+      "forbidden": [
+        "incremental-value claim for conglomerate architecture"
+      ],
+      "sources": [
+        "10.1093/nar/gky889",
+        "10.1016/j.isci.2022.103798"
+      ]
+    },
+    {
+      "id": "EC-16",
+      "object": "GLOBAL_GEOMETRY_CONFIDENCE",
+      "status": "SUPPORTED_INTERNAL_UNRESOLVED_EXTERNAL",
+      "survives": "internal candidate risk-ranking coordinate",
+      "forbidden": [
+        "general calibrated or clinical confidence"
+      ],
+      "sources": [
+        "10.1038/s41598-017-17031-8"
+      ]
+    },
+    {
+      "id": "EC-17",
+      "object": "biological chi=1 cancer boundary",
+      "status": "NOT_ESTABLISHED",
+      "survives": "model-specific mathematical unity boundaries where licensed",
+      "forbidden": [
+        "universal cancer unity boundary"
+      ],
+      "sources": []
+    },
+    {
+      "id": "EC-18",
+      "object": "scalar chi <-> capital Chi relationship",
+      "status": "ACTIVE_INVESTIGATION",
+      "survives": "joint-meaning question itself",
+      "forbidden": [
+        "assuming correspondence because one object is constructed from the other"
+      ],
+      "sources": [
+        "GOM_v0.8.2_REVIEW_section_2.5"
+      ]
+    }
+  ]
+}
