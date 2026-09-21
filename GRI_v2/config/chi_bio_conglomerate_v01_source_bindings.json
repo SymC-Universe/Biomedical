@@ -9,9 +9,17 @@
         "GRI_v2/development_outputs/stage_a1_1/STAGE_A1_1_SUMMARY.json",
         "GRI_v2/docs/GRI_POST_C1_SENSITIVITY_V22_RESULT_AUDIT_20260912.md"
       ],
-      "patient_level_status": "REQUIRES_FROZEN_CACHE_OR_RECOMPUTATION",
+      "patient_level_status": "REMOTE_ROUTE_BOUND; PATIENT_LEVEL_FROZEN_FEATURE_MATERIALIZATION_PENDING",
       "claim_ceiling": "static transcriptomic/regulatory-state organization only; bulk RNA is not direct regulatory dynamics or causal control",
-      "external_scrutiny_status": "NARROWED"
+      "external_scrutiny_status": "NARROWED",
+      "remote_source": {
+        "file_name": "EBPlusPlusAdjustPANCAN_IlluminaHiSeq_RNASeqV2.geneExp.tsv",
+        "gdc_uuid": "3586c0da-64d0-4b74-a449-5ff4d9136611",
+        "expected_size_bytes": 1882540959,
+        "expected_sha256": "674b19b7ed9ae4c5ef35ee2824936429aa5d46c0735a3d180f41552fcbbdb658",
+        "binding_basis": "NCI GDC PanCanAtlas official Supplemental Data link, verified 2026-09-21",
+        "acquisition_status": "REMOTE_ROUTE_BOUND_METADATA_PREFLIGHT_PENDING"
+      }
     },
     "S": {
       "role": "DNA-methylation / epigenetic-context organization",
