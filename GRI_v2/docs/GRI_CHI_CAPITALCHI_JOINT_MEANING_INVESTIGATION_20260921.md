@@ -18,6 +18,24 @@ Capital Chi is presently a provisional multirepresentational architecture. In TC
 
 A capital-Chi carrier is not required to collapse to one scalar.
 
+## 1A. Post-result scalar-admission update, 2026-09-21
+
+The current frozen SCC25 R1/A3 weekly G2 representation has now undergone a dedicated eigenstructure admission diagnostic.
+
+Result:
+
+```text
+r=2: 0/33 required fits contain a complex-conjugate pair
+r=3: 32/33 required fits contain a complex-conjugate pair
+cross-rank: REPRESENTATION_DEPENDENT_SCALAR_ELIGIBILITY
+scalar chi licensed: NO
+rho(T) promoted to chi: NO
+```
+
+At r=3, the point-fit pair disappears under the already established `BASIS_LOO_2` sensitivity. Even where the pair exists, continuous-time logarithm branch choice materially changes the candidate derived ratio and no branch/generator has been independently licensed.
+
+**Current decision:** the primary SCC25 joint-meaning route proceeds with local/modal discrete-time dynamics as the local object. It does not wait for, require, or manufacture scalar `chi`. Any future scalar derivation is a separate new lineage with its own licensing burden.
+
 ## 2. Why weekly SCC25 is the first joint testbed
 
 The published weekly SCC25 experiment contains:
