@@ -1,0 +1,31 @@
+name: GRI brain OSF source inventory preflight
+
+on:
+  push:
+    branches:
+      - gri-chi-bio-conglomerate-v01-20260918
+    paths:
+      - "GRI_v2/src/preflight_brain_osf_wsgzp_inventory.py"
+      - ".github/workflows/gri-brain-osf-inventory-preflight.yml"
+  workflow_dispatch:
+
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install request dependency
+        run: python -m pip install --disable-pip-version-check -q "requests>=2.32,<3"
+      - name: Inventory OSF WSGZP source metadata
+        run: python -m src.preflight_brain_osf_wsgzp_inventory
+      - uses: actions/upload-artifact@v4
+        with:
+          name: GRI_BRAIN_OSF_WSGZP_INVENTORY_PREFLIGHT_V01
+          path: GRI_v2/brain_source_qualification_outputs/osf_wsgzp_inventory_preflight_v01.json
+          if-no-files-found: error
