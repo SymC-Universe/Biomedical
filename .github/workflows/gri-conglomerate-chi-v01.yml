@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - gri-chi-bio-conglomerate-v01-20260918
+      - gri-conglomerate-v1-integration-20260921
     paths:
       - "GRI_v2/src/conglomerate_chi_v01.py"
       - "GRI_v2/tests/test_conglomerate_chi_v01.py"
