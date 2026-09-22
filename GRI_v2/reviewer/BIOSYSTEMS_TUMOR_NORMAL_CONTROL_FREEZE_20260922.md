@@ -1,6 +1,6 @@
 # BioSystems tumor-versus-normal control freeze - 22 September 2026
 
-**Status:** PROSPECTIVE / OUTCOME-SEALED  
+**Status:** TN-C0 CLOSED / BIOLOGICAL OUTCOMES REMAIN SEALED  
 **Revision branch:** `gri-biosystems-revision-20260922`  
 **Canonical science parent:** `gri-conglomerate-v1-integration-20260921`  
 **Purpose:** answer the reviewer request for normal controls without changing the frozen tumor architecture after seeing normal molecular outcomes.
@@ -158,11 +158,15 @@ The revised paper will distinguish three separate evidentiary functions:
 
 These three layers are complementary and must not be collapsed into one use of the word “validation.”
 
-## 12. Stop boundary
+## 12. TN-C0 closure and current stop boundary
 
-The next safe action is TN-C0 metadata-only inventory.
+TN-C0 closed on 22 September 2026 under `BIOSYSTEMS_TN_C0_ELIGIBILITY_AUDIT_20260922.md` and `../config/biosystems_tn_c0_eligibility_v1.json`.
 
-Do not open normal molecular values until:
-- this freeze is committed;
-- exact source identities are bound;
-- the metadata inventory script is contract-tested to demonstrate that it cannot calculate biological outcomes.
+Frozen eligibility:
+- RNA TN-A1 primary n=30: BRCA, COAD, HNSC, KIRC, KIRP, LIHC, LUAD, LUSC, PRAD, STAD, THCA, UCEC.
+- Multiomic TN-C1 primary n=30: BRCA, LIHC, PRAD, THCA, UCEC.
+- RNA paired sensitivity n>=20: BRCA, COAD, HNSC, KICH, KIRC, KIRP, LIHC, LUAD, LUSC, PRAD, STAD, THCA, UCEC.
+
+All source-header rows that failed the active quality join were accounted for by the pre-existing `Do_not_use` exclusion; no type-01 or type-11 participant remained genuinely missing annotation.
+
+Normal molecular values remain unopened. The next authorized work is execution-contract binding and deterministic data extraction for TN-A1/TN-C1 against these exact frozen sets. No cancer, threshold, representation or eligibility rule may be changed after molecular outcome opening without explicit post-result amendment.
