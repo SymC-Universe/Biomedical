@@ -370,3 +370,18 @@ That refusal is evidence that the safeguards are functioning, not an inconvenien
 | HBN EEG releases | YES | PARTIAL | PENDING RELEASE-BY-RELEASE | PENDING | PENDING | NO |
 
 D4 is evidence about actual payload identity/readability, not scientific feature validity. D5 will require trustworthy sample decoding, QC characterization, and frozen analysis configuration in addition to payload verification.
+
+### 22 September D4 repeat-condition expansion
+
+The adult Atlas candidate now has a successful representative repeat-condition payload gate.
+
+Workflow run `35768527802` verified one prospectively selected clean repeat subject (`sub-001`) across all eight combinations of:
+- two sessions;
+- EyesClosed/EyesOpen;
+- pre/post cognitive block.
+
+All eight payloads passed exact hash, byte-count, channel-order, auxiliary-status, 1000-Hz and duration checks.
+
+The source's warning about unreliable EDF physical min/max remains binding. This result verifies payload structure, not physical voltage calibration.
+
+Next gate is a prospectively frozen scale-invariant Function/Limit task or an independently recovered calibration route. No real-EEG chi is opened.
