@@ -84,7 +84,8 @@ def gdc_project_map():
     return pmap, conflicts
 
 def modality_inventory(labels: list[str]):
-    by_type_patient = defaultdict(lambda: defaultdict(set))
+    by_type_patient_roots = defaultdict(lambda: defaultdict(set))
+    by_type_patient_labels = defaultdict(lambda: defaultdict(list))
     by_type_roots = defaultdict(Counter)
     unparsed = []
     for label in labels:
@@ -94,12 +95,25 @@ def modality_inventory(labels: list[str]):
         if not pid or not st or not rt:
             unparsed.append(label)
             continue
-        by_type_patient[st][pid].add(rt)
+        by_type_patient_roots[st][pid].add(rt)
+        by_type_patient_labels[st][pid].append(label)
         by_type_roots[st][rt] += 1
-    return by_type_patient, by_type_roots, unparsed
+    return by_type_patient_roots, by_type_patient_labels, by_type_roots, unparsed
 
-def unique_patients(d):
-    return {pid for pid, roots in d.items() if len(roots) == 1}
+def unique_patients(roots_by_patient):
+    return {pid for pid, roots in roots_by_patient.items() if len(roots) == 1}
+
+def exact_single_column_patients(roots_by_patient, labels_by_patient):
+    return {
+        pid for pid, roots in roots_by_patient.items()
+        if len(roots) == 1 and len(labels_by_patient.get(pid, [])) == 1
+    }
+
+def only_label(labels_by_patient, pid):
+    vals = labels_by_patient.get(pid, [])
+    if len(vals) != 1:
+        raise ValueError(f"Expected one source column for {pid}, found {len(vals)}")
+    return vals[0]
 
 def main():
     cfg_path = root_dir() / "GRI_v2/config/biosystems_tumor_normal_source_gate_20260922.json"
@@ -111,8 +125,8 @@ def main():
     met_labels = parse_labels(fetch_first_line(met_url))
     pmap, conflicts = gdc_project_map()
 
-    rna, rna_roots, rna_unparsed = modality_inventory(rna_labels)
-    met, met_roots, met_unparsed = modality_inventory(met_labels)
+    rna, rna_labels_by_patient, rna_roots, rna_unparsed = modality_inventory(rna_labels)
+    met, met_labels_by_patient, met_roots, met_unparsed = modality_inventory(met_labels)
 
     types = ["01", "11"]
     rows = []
@@ -121,18 +135,22 @@ def main():
         details["rna"][st] = {
             "sample_columns": sum(len(v) for v in rna[st].values()),
             "unique_patients_single_root": len(unique_patients(rna[st])),
+            "exact_single_column_patients": len(exact_single_column_patients(rna[st], rna_labels_by_patient[st])),
             "patients_with_multiple_roots": sum(1 for v in rna[st].values() if len(v) > 1),
+            "patients_with_multiple_source_columns": sum(1 for v in rna_labels_by_patient[st].values() if len(v) > 1),
             "duplicate_sample_roots": sum(1 for n in rna_roots[st].values() if n > 1),
         }
         details["methylation"][st] = {
             "sample_columns": sum(len(v) for v in met[st].values()),
             "unique_patients_single_root": len(unique_patients(met[st])),
+            "exact_single_column_patients": len(exact_single_column_patients(met[st], met_labels_by_patient[st])),
             "patients_with_multiple_roots": sum(1 for v in met[st].values() if len(v) > 1),
+            "patients_with_multiple_source_columns": sum(1 for v in met_labels_by_patient[st].values() if len(v) > 1),
             "duplicate_sample_roots": sum(1 for n in met_roots[st].values() if n > 1),
         }
 
-    rna_unique = {st: unique_patients(rna[st]) for st in types}
-    met_unique = {st: unique_patients(met[st]) for st in types}
+    rna_unique = {st: exact_single_column_patients(rna[st], rna_labels_by_patient[st]) for st in types}
+    met_unique = {st: exact_single_column_patients(met[st], met_labels_by_patient[st]) for st in types}
     cross = {st: rna_unique[st] & met_unique[st] for st in types}
     complete_pair = cross["01"] & cross["11"]
 
@@ -162,15 +180,45 @@ def main():
         w.writeheader()
         w.writerows(rows)
 
+    pair_rows = []
+    for pid in sorted(complete_pair):
+        code = pmap.get(pid)
+        if not code:
+            continue
+        pair_rows.append({
+            "cancer_type": code,
+            "patient_id": pid,
+            "rna_tumor_01_label": only_label(rna_labels_by_patient["01"], pid),
+            "rna_normal_11_label": only_label(rna_labels_by_patient["11"], pid),
+            "methylation_tumor_01_label": only_label(met_labels_by_patient["01"], pid),
+            "methylation_normal_11_label": only_label(met_labels_by_patient["11"], pid),
+            "rna_tumor_01_root": next(iter(rna["01"][pid])),
+            "rna_normal_11_root": next(iter(rna["11"][pid])),
+            "methylation_tumor_01_root": next(iter(met["01"][pid])),
+            "methylation_normal_11_root": next(iter(met["11"][pid])),
+        })
+    pair_path = out_dir / "TUMOR_NORMAL_EXACT_PAIR_MANIFEST.csv"
+    with pair_path.open("w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=list(pair_rows[0]) if pair_rows else [
+            "cancer_type","patient_id","rna_tumor_01_label","rna_normal_11_label",
+            "methylation_tumor_01_label","methylation_normal_11_label",
+            "rna_tumor_01_root","rna_normal_11_root",
+            "methylation_tumor_01_root","methylation_normal_11_root"
+        ])
+        w.writeheader()
+        w.writerows(pair_rows)
+
     summary = {
-        "schema": "gri-biosystems-tumor-normal-source-gate-result-v1",
+        "schema": "gri-biosystems-tumor-normal-source-gate-result-v1.1",
         "status": "SOURCE_GATE_COMPLETE_NO_BIOLOGICAL_VALUES",
         "rna_header_sample_columns": len(rna_labels),
         "methylation_header_sample_columns": len(met_labels),
         "sample_type_definitions": cfg["sample_types"],
         "modality_inventory": details,
         "primary_n30_eligible_cancers": [r["cancer_type"] for r in rows if r["primary_n30_eligible"]],
+        "paired_n20_eligible_cancers": [r["cancer_type"] for r in rows if r["complete_paired_01_11_crossmodal"] >= 20],
         "paired_n15_eligible_cancers": [r["cancer_type"] for r in rows if r["paired_n15_eligible"]],
+        "exact_complete_pair_manifest_rows": len(pair_rows),
         "small_normal_n20_sensitivity_cancers": [r["cancer_type"] for r in rows if r["small_normal_n20_sensitivity"]],
         "gdc_patient_project_conflicts": conflicts,
         "rna_unparsed_header_labels": rna_unparsed[:25],
