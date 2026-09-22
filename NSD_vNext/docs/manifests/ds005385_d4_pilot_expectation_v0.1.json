@@ -1,7 +1,7 @@
 {
   "schema": "NSD_DS005385_D4_PILOT_EXPECTATION_V0_1",
   "date": "2026-09-22",
-  "status": "FROZEN_BEFORE_PAYLOAD_DOWNLOAD",
+  "status": "FROZEN_MECHANICAL_RECONCILIATION_AFTER_HEADER_INSPECTION",
   "dataset": "ds005385",
   "source_release": {
     "openneuro_doi": "10.18112/openneuro.ds005385.v1.0.3",
@@ -19,9 +19,16 @@
     "expected_size_bytes": 23936896,
     "expected_sha256": "a9ef4f8bcc7b3fff6568b7a441e14230ec287faa23212713e32f37bf8a8710a7",
     "expected_signal_count": 64,
-    "expected_duration_seconds": 184.0,
-    "expected_sampling_rate_hz": 1000.0,
-    "physical_range_policy": "SOURCE_DECLARED_UNRELIABLE_DO_NOT_VALIDATE_OR_USE_FOR_SCALING"
+    "expected_duration_seconds": 184,
+    "expected_sampling_rate_hz": 1000,
+    "physical_range_policy": "SOURCE_DECLARED_UNRELIABLE_DO_NOT_VALIDATE_OR_USE_FOR_SCALING",
+    "expected_signal_count_total": 65,
+    "expected_eeg_channel_count": 64,
+    "expected_auxiliary_signal_count": 1,
+    "expected_auxiliary_signal_labels": [
+      "Status"
+    ],
+    "signal_count_reconciliation": "BIDS eeg.json EEGChannelCount=64 counts EEG electrodes; EDF payload contains one additional Status/trigger signal."
   },
   "sidecar_contract": {
     "manufacturer": "BrainProducts",
