@@ -16,7 +16,7 @@ def open_text(path: str):
 
 
 def parse_barcode(value: str):
-    value = value.strip().upper().replace(".", "-")
+    value = value.strip().strip("\\"").upper().replace(".", "-")
     m = TCGA_SAMPLE_RE.match(value)
     if not m:
         return None
