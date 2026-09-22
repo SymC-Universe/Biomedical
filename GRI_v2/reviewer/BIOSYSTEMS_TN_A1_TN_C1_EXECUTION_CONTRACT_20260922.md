@@ -34,6 +34,7 @@ Source is the exact PanCanAtlas EB++ RNA matrix already frozen in Stage A:
 - finite transform: `log2(max(expression,0)+1)`;
 - source non-finite cells remain missing;
 - Hallmark membership: exact v2026.1.Hs snapshot, deterministic membership SHA-256 `bc6a9a33d7421dc407d33a66859760ba25e47b2f398e1a43c9156f80c71b3900`.
+- RNA source-row symbol identity follows the Stage A/PanCan convention: use the substring before the first `|` in the source gene identifier; if that symbol occurs more than once, retain the first source-row occurrence before Hallmark-union restriction.
 
 RNA module metrics are unchanged Stage A definitions:
 - `C_in,pair`: median absolute pairwise Pearson correlation;
