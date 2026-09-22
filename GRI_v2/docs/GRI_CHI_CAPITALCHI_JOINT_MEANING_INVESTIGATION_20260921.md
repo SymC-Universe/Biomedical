@@ -91,21 +91,26 @@ Persistence and arm-specific mean-next-state remain simple forecast baselines.
 
 No method is allowed to "win" by answering a different question.
 
-## 6. Pre-result decision still required
+## 6. Pre-result decisions still required
 
-Before any new joint outcome-bearing computation, freeze:
+The local-object branch is now resolved for the current frozen SCC25 representation:
 
-- the exact local scalar candidate or explicit no-scalar branch;
-- the partial capital-Chi block definitions for SCC25;
+- scalar `chi`: **REFUSED for the current R1/A3 G2 representation**;
+- primary local object: **native modal/discrete-time dynamical structure (`z_local`)**;
+- `rho(T)`: retained as a model-class spectral quantity, not promoted to biological `chi`.
+
+Before any new joint outcome-bearing computation, the remaining items still require a prospective freeze:
+
+- the exact partial capital-Chi block definitions used in the SCC25 joint task;
 - feature normalization and state-reduction rules;
 - whether CoGAPS is reproduced directly or used as published prior evidence;
 - held-out temporal prediction rule;
 - incremental-value metric;
 - representation-dependence/refusal rule;
-- debiased-vs-current geometry sensitivity where CKA is used;
+- debiased-vs-current geometry sensitivity where a CKA-family statistic is used;
 - stopping rule.
 
-This packet deliberately does not choose those scientific values.
+These unresolved items are not filled from observed joint outcomes. The scalar-refusal result narrows the design rather than supplying values for the remaining choices.
 
 ## 7. Falsification outcomes
 
