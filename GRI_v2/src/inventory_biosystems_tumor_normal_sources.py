@@ -208,6 +208,29 @@ def main():
         w.writeheader()
         w.writerows(pair_rows)
 
+    sample_rows = []
+    for st in types:
+        for pid in sorted(cross[st]):
+            code = pmap.get(pid)
+            if not code:
+                continue
+            sample_rows.append({
+                "cancer_type": code,
+                "patient_id": pid,
+                "sample_type": st,
+                "rna_label": only_label(rna_labels_by_patient[st], pid),
+                "methylation_label": only_label(met_labels_by_patient[st], pid),
+                "rna_root": next(iter(rna[st][pid])),
+                "methylation_root": next(iter(met[st][pid])),
+            })
+    sample_path = out_dir / "TUMOR_NORMAL_EXACT_SAMPLE_MANIFEST.csv"
+    with sample_path.open("w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=list(sample_rows[0]) if sample_rows else [
+            "cancer_type","patient_id","sample_type","rna_label","methylation_label","rna_root","methylation_root"
+        ])
+        w.writeheader()
+        w.writerows(sample_rows)
+
     summary = {
         "schema": "gri-biosystems-tumor-normal-source-gate-result-v1.1",
         "status": "SOURCE_GATE_COMPLETE_NO_BIOLOGICAL_VALUES",
@@ -219,6 +242,7 @@ def main():
         "paired_n20_eligible_cancers": [r["cancer_type"] for r in rows if r["complete_paired_01_11_crossmodal"] >= 20],
         "paired_n15_eligible_cancers": [r["cancer_type"] for r in rows if r["paired_n15_eligible"]],
         "exact_complete_pair_manifest_rows": len(pair_rows),
+        "exact_crossmodal_sample_manifest_rows": len(sample_rows),
         "small_normal_n20_sensitivity_cancers": [r["cancer_type"] for r in rows if r["small_normal_n20_sensitivity"]],
         "gdc_patient_project_conflicts": conflicts,
         "rna_unparsed_header_labels": rna_unparsed[:25],
