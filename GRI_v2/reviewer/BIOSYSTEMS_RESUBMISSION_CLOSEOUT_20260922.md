@@ -25,15 +25,15 @@
 
 ## B. Safe work still executable without a new scientific choice
 
-- [ ] Complete streamed exact SHA-256 verification of the large R/S GDC source files and preserve artifacts.
-- [ ] Close resource-safe R/S materialization provenance at the exact-source level.
+- [x] Complete streamed exact SHA-256 verification of the large R/S GDC source files and preserve artifacts. Run `35733676268` passed both independent jobs: R = 1,882,540,959 bytes, SHA-256 `674b19b7ed9ae4c5ef35ee2824936429aa5d46c0735a3d180f41552fcbbdb658`; S = 5,022,150,019 bytes, SHA-256 `5934c497882fbe8178d128a3a7f71e765480af6bbd460e0398de3428cd075b77`.
+- [x] Close resource-safe R/S exact-source identity provenance. These verifications opened no biological outcomes, derived no features, selected no conglomerate weights, and created no scalar chi. Future materialization must bind to these frozen identities.
 - [ ] Audit/lock native-comparator software/environment provenance for the next joint task.
 - [ ] Convert all current Function/Limit/refusal results into a manuscript-ready claim inventory.
 - [ ] Build the old-submitted-claim -> revised-claim -> evidence -> manuscript-section mapping.
 - [ ] Build figure/table regeneration inventory and identify every submitted figure that must be retired rather than edited.
 - [ ] Build submission-specific source/data/code hash manifest.
 - [ ] Update non-claim ledger to include all current scalar, clinical, temporal, causal and external-confirmation refusals.
-- [ ] Prepare point-by-point response skeleton; reviewer-specific text waits for actual reviewer comments.
+- [x] Build reviewer-specific response matrix from the received BioSystems reports: `BIOSYSTEMS_REVIEWER_RESPONSE_MATRIX_20260922.md`. Final prose remains result-dependent only for tumor-versus-normal and genuine external confirmation.
 - [ ] Prepare cover-letter delta explaining author-initiated corrections independently of reviewer comments.
 - [ ] Prepare AI-assisted-research/manuscript disclosure consistent with the journal's current policy.
 - [ ] Prepare competing-interest, funding, data/code availability and author-contribution statements.
@@ -72,9 +72,10 @@ Current external candidates remain candidate-only or P0-D/P0-Q according to the 
 
 ## E. Manuscript rewrite gate
 
-After the next scientific freeze/result boundary is closed:
+The BioSystems rewrite does **not** require opening the broader SCC25 A-H joint-meaning task unless that evidence is deliberately added to this paper. Rewrite work may proceed now against the closed evidence, while the two reviewer-critical evidence gaps remain explicit placeholders:
 
-- [ ] rewrite title/abstract around the actual supported architecture, not the historical scalar claim;
+- [x] Provisional revised title approved: *Regulatory Architecture Across Human Cancers: Multiomic Evidence for Recurrent Methylation–Transcriptomic Organization*.
+- [ ] rewrite abstract around the actual supported architecture, not the historical scalar claim;
 - [ ] rewrite Introduction to distinguish development history from present claims;
 - [ ] rewrite Methods around generator/representation/admission/provenance rules;
 - [ ] replace historical `chi_GRI` figures with correctly typed scalar/modal/system evidence;
@@ -99,13 +100,15 @@ Before resubmission:
 - [ ] final clean-room/reviewer-package audit;
 - [ ] final PDF visual inspection;
 - [ ] journal metadata/highlights/keywords/package fields completed;
-- [ ] point-by-point response completed after actual reviewer report;
+- [ ] point-by-point response finalized after the two open evidence-bearing reviewer items are resolved or explicitly dispositioned;
 - [ ] editor cover letter names both reviewer-driven and author-initiated changes.
 
 ## Present stop boundary
 
 The program can still complete section B without user scientific input.
 
-The next outcome-bearing SCC25 computation cannot proceed until Decisions A-H are approved or modified.
+The next outcome-bearing SCC25 computation cannot proceed until Decisions A-H are approved or modified, but that broader GRI task is not presently a prerequisite for answering the BioSystems reviewers.
 
-Formal final resubmission is not yet authorized because the manuscript must be rewritten against the final frozen scientific state.
+For the BioSystems revision, the remaining publication-critical evidence gates are: (1) a prospectively defined tumor-versus-normal control and (2) genuinely external confirmation under a frozen MFR-14-compatible design. Mechanical reviewer-package work may continue around those gates.
+
+Formal final resubmission is not yet authorized because the current editable manuscript source is not present on the active repository lineage and the two evidence-bearing reviewer items remain open.
