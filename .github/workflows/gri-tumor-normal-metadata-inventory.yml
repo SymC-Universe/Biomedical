@@ -24,7 +24,7 @@ jobs:
           python-version: '3.12'
 
       - name: Test metadata-only firewall
-        run: python -m pytest -q GRI_v2/tests/test_inventory_tumor_normal_source_metadata.py
+        run: python GRI_v2/tests/test_inventory_tumor_normal_source_metadata.py
 
       - name: Fetch exact source headers and annotation metadata only
         shell: bash
