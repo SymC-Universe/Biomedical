@@ -40,21 +40,14 @@ jobs:
           }
 
           def fetch_first_line(url, out):
-              buf = b''
-              start = 0
-              step = 262144
-              while b'\n' not in buf:
-                  end = start + step - 1
-                  req = Request(url, headers={'Range': f'bytes={start}-{end}'})
-                  with urlopen(req, timeout=120) as r:
-                      chunk = r.read()
-                  if not chunk:
-                      raise RuntimeError(f'no bytes while reading header from {url}')
-                  buf += chunk
-                  if len(buf) > 4 * 1024 * 1024:
-                      raise RuntimeError('header exceeds 4 MiB guard')
-                  start += len(chunk)
-              Path(out).write_bytes(buf.split(b'\n', 1)[0] + b'\n')
+              req = Request(url, headers={'Range': 'bytes=0-4194303'})
+              with urlopen(req, timeout=120) as r:
+                  line = r.readline(4 * 1024 * 1024 + 1)
+              if not line:
+                  raise RuntimeError(f'no bytes while reading header from {url}')
+              if len(line) > 4 * 1024 * 1024:
+                  raise RuntimeError('header exceeds 4 MiB guard')
+              Path(out).write_bytes(line.rstrip(b'\r\n') + b'\n')
 
           for out, url in sources.items():
               fetch_first_line(url, out)
@@ -83,6 +76,11 @@ jobs:
           PY
 
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: GRI_TUMOR_NORMAL_METADATA_INVENTORY_V01
-          path: GRI_TUMOR_NORMAL_METADATA_INVENTORY_V01.json
+          path: |
+            GRI_TUMOR_NORMAL_METADATA_INVENTORY_V01.json
+            rna_header.tsv
+            methylation_header.tsv
+          if-no-files-found: warn
