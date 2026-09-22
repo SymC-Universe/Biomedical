@@ -47,6 +47,15 @@ Status vocabulary:
 
 ## Cross-reviewer revision state
 
+### Convergent internal validation retained in the paper
+
+The revised manuscript will explicitly retain both frozen TCGA systems rather than treating the held-out program as disposable once external confirmation is added:
+
+- **C1 architecture system:** prospectively frozen static methylation/RNA organization, construction-null, patient-shuffle, semantic-label, composition, missingness and technical attacks across 32 cancers.
+- **P0 transport system:** separately frozen DISCOVERY/REPLICATION/FINAL_HOLDOUT prediction/transport machinery; discovery-fitted methylation information outperformed the frozen two-covariate baseline in 17/18 FINAL_HOLDOUT cancers while stronger semantic promotion failed.
+
+These systems are nonredundant in task and failure criteria, so their agreement is reported as **convergent internal validation**. Because both inherit TCGA acquisition/processing history, they are not described as independent external cohorts and do not replace P1 external confirmation.
+
 ### Already locked without new user science decisions
 
 - Historical `CV/2` demoted to a descriptive/development comparator.
@@ -63,7 +72,7 @@ Status vocabulary:
 
 ### Remaining evidence-bearing revision gates
 
-1. **Tumor-versus-normal control.**
+1. **Tumor-versus-normal control.** Source/identity gate prospectively frozen on 22 September 2026 against exact PanCanAtlas RNA and methylation sources; no normal molecular values opened at freeze.
 2. **Genuinely external confirmation** under a prospectively frozen transported claim, representation, comparator, inclusion/exclusion rule, metric, falsifier and MFR-14 package.
 
 The SCC25 A-H joint-meaning decision packet is scientifically important to the wider GRI program but is not automatically required to answer the BioSystems reviewers. It must not be allowed to expand the paper merely because it is available.
