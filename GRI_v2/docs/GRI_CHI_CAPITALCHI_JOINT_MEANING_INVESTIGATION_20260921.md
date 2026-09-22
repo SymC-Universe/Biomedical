@@ -1,7 +1,7 @@
 # GRI scalar chi <-> capital Chi joint-meaning investigation packet
 
 **Date:** 2026-09-21  
-**Status:** INVESTIGATION DESIGN / NO NEW SCALAR FREEZE  
+**Status:** INVESTIGATION DESIGN / SCC25 SCALAR BRANCH REFUSED / LOCAL-MODAL BRANCH NEXT  
 **Purpose:** satisfy the new GOM joint-meaning requirement without presuming that either scalar chi or capital Chi must succeed.
 
 ## 1. Current objects
@@ -103,3 +103,26 @@ All are admissible:
 - neither scalar nor broader architecture transports.
 
 The purpose is to learn the relationship, not to preserve a preferred hierarchy.
+
+
+## 8. SCC25 scalar-admission result - 22 September 2026
+
+The frozen post-result eigenstructure diagnostic completed successfully on workflow run `35671381706`.
+
+Outcome:
+- rank 2: no complex pair across 33/33 required fits;
+- rank 3: complex-pair structure in 32/33 required fits but representation dependent across the coequal frozen rank alternatives;
+- no continuous generator assumed;
+- no logarithm branch selected;
+- no second-order biological factor licensed;
+- `rho(T)` not promoted to chi;
+- biological scalar chi not admitted.
+
+Canonical audit:
+`GRI_SCC25_G2_SCALAR_ADMISSION_POSTRESULT_AUDIT_20260922.md`.
+
+### Consequence for the joint investigation
+
+The current SCC25 joint investigation now follows the explicit **no-scalar branch**. Local/modal operator information may still be used as local structure, but the project must not manufacture a scalar merely to complete the lowercase-chi side of the architecture.
+
+The remaining pre-result choices in Section 6 are still required before any new outcome-bearing local/modal <-> capital-Chi computation.
