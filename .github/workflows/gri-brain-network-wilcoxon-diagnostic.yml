@@ -1,0 +1,31 @@
+name: SymC brain network Wilcoxon method diagnostic
+
+on:
+  push:
+    branches:
+      - gri-chi-bio-conglomerate-v01-20260918
+    paths:
+      - "GRI_v2/src/brain_network_wilcoxon_method_diagnostic_v01.py"
+      - ".github/workflows/gri-brain-network-wilcoxon-diagnostic.yml"
+  workflow_dispatch:
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install diagnostic dependencies
+        run: python -m pip install --disable-pip-version-check -q "numpy>=2,<3" "pandas>=2,<3" "scipy>=1.14,<2"
+      - name: Diagnose Wilcoxon implementation drift
+        run: python -m src.brain_network_wilcoxon_method_diagnostic_v01
+      - uses: actions/upload-artifact@v4
+        with:
+          name: SYMC_BRAIN_NETWORK_WILCOXON_METHOD_DIAGNOSTIC_V01
+          path: GRI_v2/brain_state_known_truth_outputs/brain_network_wilcoxon_method_diagnostic_v01.json
+          if-no-files-found: error
