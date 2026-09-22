@@ -143,7 +143,18 @@ def analyze(path: Path, modality: str) -> dict:
         gradients.append(float(res.statistic))
 
     gradients = np.asarray(gradients, dtype=float)
-    # The pinned source notebooks were executed with an environment in which\n    # scipy.stats.wilcoxon(auto) selected the exact signed-rank distribution.\n    # Modern SciPy 1.18 auto selects the asymptotic approximation for these tied\n    # ranks. A dedicated method-drift diagnostic established that method="exact"\n    # reproduces both archived source-notebook p-values exactly, so the source\n    # reproduction pins that historical behavior explicitly.\n    grad_test = wilcoxon(gradients, alternative="greater", zero_method="wilcox", method="exact")
+    # The pinned source notebooks were executed with an environment in which
+    # scipy.stats.wilcoxon(auto) selected the exact signed-rank distribution.
+    # Modern SciPy 1.18 auto selects the asymptotic approximation for these tied
+    # ranks. A dedicated method-drift diagnostic established that method="exact"
+    # reproduces both archived source-notebook p-values exactly, so the source
+    # reproduction pins that historical behavior explicitly.
+    grad_test = wilcoxon(
+        gradients,
+        alternative="greater",
+        zero_method="wilcox",
+        method="exact",
+    )
 
     return {
         "rows_at_radius_100": int(len(df)),
