@@ -5,7 +5,7 @@ import math
 import numpy as np
 import pandas as pd
 
-from GRI_v2.src import biosystems_tumor_normal_core as tn
+from src import biosystems_tumor_normal_core as tn
 
 
 def frozen_center_rna_missing_n30(expr30: np.ndarray) -> np.ndarray:
