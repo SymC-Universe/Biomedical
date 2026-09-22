@@ -1,0 +1,117 @@
+name: GRI BioSystems TN-C1 multiomic biological control
+
+on:
+  push:
+    branches:
+      - gri-biosystems-revision-20260922
+    paths:
+      - '.github/workflows/gri-biosystems-tn-c1.yml'
+      - 'GRI_v2/src/run_biosystems_tumor_normal_c1.py'
+      - 'GRI_v2/support/tn_c1_core_mask_payload.lzma.b64'
+      - 'GRI_v2/config/biosystems_tn_c0_eligibility_v1.json'
+      - 'GRI_v2/reviewer/BIOSYSTEMS_TN_A1_TN_C1_EXECUTION_CONTRACT_20260922.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tn-c1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install runtime
+        run: python -m pip install --disable-pip-version-check numpy pandas
+
+      - name: Acquire exact frozen sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          from urllib.request import Request, urlopen
+          import hashlib
+
+          sources = [
+              ("EBPlusPlusAdjustPANCAN_IlluminaHiSeq_RNASeqV2.geneExp.tsv",
+               "https://api.gdc.cancer.gov/data/3586c0da-64d0-4b74-a449-5ff4d9136611",
+               "674b19b7ed9ae4c5ef35ee2824936429aa5d46c0735a3d180f41552fcbbdb658"),
+              ("jhu-usc.edu_PANCAN_merged_HumanMethylation27_HumanMethylation450.betaValue_whitelisted.tsv",
+               "https://api.gdc.cancer.gov/data/d82e2c44-89eb-43d9-b6d3-712732bf6a53",
+               "5934c497882fbe8178d128a3a7f71e765480af6bbd460e0398de3428cd075b77"),
+              ("merged_sample_quality_annotations.tsv",
+               "https://api.gdc.cancer.gov/data/1a7d7be8-675d-4e60-a105-19d4121bdebf",
+               None),
+          ]
+
+          for name,url,expected in sources:
+              p=Path(name)
+              h=hashlib.sha256()
+              req=Request(url,headers={"User-Agent":"SymC-GRI-BioSystems/1.0"})
+              with urlopen(req,timeout=300) as r, p.open("wb") as f:
+                  while True:
+                      b=r.read(16*1024*1024)
+                      if not b: break
+                      f.write(b); h.update(b)
+              got=h.hexdigest()
+              if expected and got!=expected:
+                  raise SystemExit(f"{name} SHA mismatch {got} != {expected}")
+              print(name,p.stat().st_size,got,flush=True)
+          PY
+
+      - name: Acquire exact frozen Hallmark GMT
+        run: |
+          python - <<'PY'
+          import hashlib, pathlib, urllib.request
+          expected = "eecaf6dad908334ae885406ec72bdc0646d8917588ed7c219fac92fc5363f596"
+          urls = [
+              "https://data.broadinstitute.org/gsea-msigdb/msigdb/release/2026.1.Hs/h.all.v2026.1.Hs.symbols.gmt",
+              "https://raw.githubusercontent.com/JeanRadig/KaleidoCell/main/kaleidocell/files/h.all.v2026.1.Hs.symbols.gmt",
+          ]
+          out = pathlib.Path("h.all.v2026.1.Hs.symbols.gmt")
+          for url in urls:
+              try:
+                  with urllib.request.urlopen(urllib.request.Request(url,headers={"User-Agent":"SymC-GRI-BioSystems/1.0"}),timeout=180) as r:
+                      data=r.read()
+                  if hashlib.sha256(data).hexdigest()!=expected:
+                      continue
+                  out.write_bytes(data); print("Hallmark source identity PASS",url); break
+              except Exception as e:
+                  print("Hallmark source candidate failed",url,e)
+          else:
+              raise SystemExit("Hallmark source acquisition/hash verification failed")
+          PY
+
+      - name: Execute frozen TN-C1 biological control
+        run: |
+          mkdir -p TN_C1_RESULTS
+          python GRI_v2/src/run_biosystems_tumor_normal_c1.py             --rna EBPlusPlusAdjustPANCAN_IlluminaHiSeq_RNASeqV2.geneExp.tsv             --meth jhu-usc.edu_PANCAN_merged_HumanMethylation27_HumanMethylation450.betaValue_whitelisted.tsv             --annotation merged_sample_quality_annotations.tsv             --gmt h.all.v2026.1.Hs.symbols.gmt             --support GRI_v2/support/tn_c1_core_mask_payload.lzma.b64             --eligibility GRI_v2/config/biosystems_tn_c0_eligibility_v1.json             --out TN_C1_RESULTS             --workers 2
+
+      - name: Hash results
+        if: always()
+        run: |
+          python - <<'PY'
+          import hashlib,json,pathlib
+          root=pathlib.Path('TN_C1_RESULTS'); rows=[]
+          for p in sorted(root.glob('*')):
+              if p.is_file():
+                  h=hashlib.sha256()
+                  with p.open('rb') as f:
+                      for b in iter(lambda:f.read(1<<20),b''): h.update(b)
+                  rows.append({'file':p.name,'bytes':p.stat().st_size,'sha256':h.hexdigest()})
+          root.mkdir(exist_ok=True)
+          (root/'TN_C1_OUTPUT_SHA256.json').write_text(json.dumps(rows,indent=2)+'\n')
+          PY
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: GRI_BIOSYSTEMS_TN_C1_RESULTS_V01
+          path: TN_C1_RESULTS
+          if-no-files-found: warn
