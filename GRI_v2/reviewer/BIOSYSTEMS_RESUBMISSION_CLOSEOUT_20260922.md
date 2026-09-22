@@ -22,6 +22,8 @@
 - [x] Patient-level heavy C1 materialization boundary documented; no unnecessary 5 GB rerun authorized.
 - [x] Reviewer-facing claim/evidence map synchronized to the current program state.
 - [x] Editor-facing epistemic-change notice frozen.
+- [x] BioSystems tumor-normal control prospectively frozen before outcome opening.
+- [x] TN-C0 metadata-only eligibility closed: 12 RNA-primary cancers, 5 multiomic-primary cancers, 13 paired-RNA sensitivity cancers; no missing annotation after quality reconciliation.
 
 ## B. Safe work still executable without a new scientific choice
 
@@ -109,6 +111,6 @@ The program can still complete section B without user scientific input.
 
 The next outcome-bearing SCC25 computation cannot proceed until Decisions A-H are approved or modified, but that broader GRI task is not presently a prerequisite for answering the BioSystems reviewers.
 
-For the BioSystems revision, the remaining publication-critical evidence gates are: (1) a prospectively defined tumor-versus-normal control and (2) genuinely external confirmation under a frozen MFR-14-compatible design. Mechanical reviewer-package work may continue around those gates.
+For the BioSystems revision, the remaining publication-critical evidence gates are: (1) execute the already-frozen TN-A1/TN-C1 tumor-versus-normal control on the closed TN-C0 eligibility sets and (2) genuinely external confirmation under a frozen MFR-14-compatible design. Mechanical reviewer-package work may continue around those gates.
 
 Formal final resubmission is not yet authorized because the two evidence-bearing reviewer items remain open. Working manuscript sources are intentionally kept outside the public Biomedical repository in the private persistent project Library (`Atlas - GRI update v1/Private Working Manuscripts/Oncology`); reviewer/protocol/code provenance remains public on this revision branch.
