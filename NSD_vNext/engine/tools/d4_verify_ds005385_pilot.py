@@ -83,7 +83,8 @@ def verify(path: Path) -> dict[str, object]:
         "signal_count_total": header.signal_count == EXPECTED_SIGNAL_COUNT_TOTAL,
         "eeg_channel_count": len(labels[:EXPECTED_EEG_CHANNEL_COUNT]) == EXPECTED_EEG_CHANNEL_COUNT,
         "eeg_channel_labels": labels[:EXPECTED_EEG_CHANNEL_COUNT] == EXPECTED_LABELS,
-        "auxiliary_signal_labels": labels[EXPECTED_EEG_CHANNEL_COUNT:] == EXPECTED_AUXILIARY_LABELS,\n        "recording_duration_seconds":
+        "auxiliary_signal_labels": labels[EXPECTED_EEG_CHANNEL_COUNT:] == EXPECTED_AUXILIARY_LABELS,
+        "recording_duration_seconds":
             header.recording_duration_seconds == EXPECTED_DURATION_SECONDS,
         "sampling_rate_hz": unique_sampling_rates == [EXPECTED_SAMPLING_RATE_HZ],
         "edf_internal_size_consistency":
