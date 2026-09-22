@@ -100,7 +100,20 @@ def _split_signal_fields(block: bytes, width: int, signal_count: int) -> tuple[b
     return tuple(block[i * width : (i + 1) * width] for i in range(signal_count))
 
 
-def read_edf_header(path: str | Path) -> EDFHeader:
+def read_edf_header(
+    path: str | Path,
+    *,
+    validate_physical_range: bool = True,
+) -> EDFHeader:
+    """Read the standardized EDF header.
+
+    By default, physical calibration ranges are validated. A dataset-specific
+    D4 provenance audit may set validate_physical_range=False only when the
+    authoritative source explicitly declares those header fields unreliable.
+    This opt-out is for identity/header inspection; it does not authorize
+    conversion of digital samples to physical units from invalid calibration
+    metadata.
+    """
     path = Path(path)
     with path.open("rb") as handle:
         fixed = _read_exact(handle, 256, "fixed header")
@@ -158,7 +171,7 @@ def read_edf_header(path: str | Path) -> EDFHeader:
         physical_maximum = _parse_float(physical_maxima[index], f"physical_maximum[{index}]")
         digital_minimum = _parse_int(digital_minima[index], f"digital_minimum[{index}]")
         digital_maximum = _parse_int(digital_maxima[index], f"digital_maximum[{index}]")
-        if physical_maximum <= physical_minimum:
+        if validate_physical_range and physical_maximum <= physical_minimum:
             raise EDFHeaderError(f"physical range invalid for signal {index}")
         if digital_maximum <= digital_minimum:
             raise EDFHeaderError(f"digital range invalid for signal {index}")
