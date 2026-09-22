@@ -24,6 +24,9 @@
 - [x] Editor-facing epistemic-change notice frozen.
 - [x] BioSystems tumor-normal control prospectively frozen before outcome opening.
 - [x] TN-C0 metadata-only eligibility closed: 12 RNA-primary cancers, 5 multiomic-primary cancers, 13 paired-RNA sensitivity cancers; no missing annotation after quality reconciliation.
+- [x] TN-A1/TN-P20 RNA tumor-normal biological control closed: all three primary RNA architecture coordinates lower in tumor across 12/12 cancers (BH q=0.000488 each), reproduced in paired sensitivity at 13/13, 13/13 and 12/13 cancers (q<=0.00342).
+- [x] TN-C1 multiomic tumor-normal biological control closed: H1 lower in tumor 5/5 with every cancer's construction interval below zero; H2/H3a heterogeneous; H3b small 5/5 upward tendency without q<0.05 pan-cancer resolution.
+- [x] Tumor-normal protocol lineage ambiguity audited and closed; earlier paired-n20 execution failed at import before biological outcome computation, so the active n30 primary design remains prospectively valid.
 
 ## B. Safe work still executable without a new scientific choice
 
@@ -74,7 +77,7 @@ Current external candidates remain candidate-only or P0-D/P0-Q according to the 
 
 ## E. Manuscript rewrite gate
 
-The BioSystems rewrite does **not** require opening the broader SCC25 A-H joint-meaning task unless that evidence is deliberately added to this paper. Rewrite work may proceed now against the closed evidence, while the two reviewer-critical evidence gaps remain explicit placeholders:
+The BioSystems rewrite does **not** require opening the broader SCC25 A-H joint-meaning task unless that evidence is deliberately added to this paper. Rewrite work may proceed now against the closed evidence. The tumor-normal reviewer gap is closed; genuinely external confirmation remains the single open evidence-bearing reviewer gate:
 
 - [x] Provisional revised title approved: *Regulatory Architecture Across Human Cancers: Multiomic Evidence for Recurrent Methylation–Transcriptomic Organization*.
 - [ ] rewrite abstract around the actual supported architecture, not the historical scalar claim;
@@ -102,7 +105,7 @@ Before resubmission:
 - [ ] final clean-room/reviewer-package audit;
 - [ ] final PDF visual inspection;
 - [ ] journal metadata/highlights/keywords/package fields completed;
-- [ ] point-by-point response finalized after the two open evidence-bearing reviewer items are resolved or explicitly dispositioned;
+- [ ] point-by-point response finalized after the remaining external-confirmation item is resolved or explicitly dispositioned;
 - [ ] editor cover letter names both reviewer-driven and author-initiated changes.
 
 ## Present stop boundary
@@ -111,6 +114,6 @@ The program can still complete section B without user scientific input.
 
 The next outcome-bearing SCC25 computation cannot proceed until Decisions A-H are approved or modified, but that broader GRI task is not presently a prerequisite for answering the BioSystems reviewers.
 
-For the BioSystems revision, the remaining publication-critical evidence gates are: (1) execute the already-frozen TN-A1/TN-C1 tumor-versus-normal control on the closed TN-C0 eligibility sets and (2) genuinely external confirmation under a frozen MFR-14-compatible design. Mechanical reviewer-package work may continue around those gates.
+For the BioSystems revision, the tumor-versus-normal evidence gate is now CLOSED. The remaining publication-critical evidence gate is genuinely external confirmation under a frozen MFR-14-compatible design. Mechanical reviewer-package and manuscript work may continue around that single open gate.
 
-Formal final resubmission is not yet authorized because the two evidence-bearing reviewer items remain open. Working manuscript sources are intentionally kept outside the public Biomedical repository in the private persistent project Library (`Atlas - GRI update v1/Private Working Manuscripts/Oncology`); reviewer/protocol/code provenance remains public on this revision branch.
+Formal final resubmission is not yet authorized because the independent external-confirmation reviewer item remains open. Working manuscript sources are intentionally kept outside the public Biomedical repository in the private persistent project Library (`Atlas - GRI update v1/Private Working Manuscripts/Oncology`); reviewer/protocol/code provenance remains public on this revision branch.
