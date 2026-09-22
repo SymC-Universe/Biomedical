@@ -21,6 +21,10 @@ concurrency:
 
 jobs:
   verify:
+    strategy:
+      fail-fast: false
+      matrix:
+        block: [R, S]
     runs-on: ubuntu-24.04
     timeout-minutes: 90
     defaults:
@@ -31,18 +35,26 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
       - name: Run binding unit tests
         run: |
           python -m pip install --disable-pip-version-check -q pytest
           python -m pytest -q tests/test_stream_verify_conglomerate_rs_sources.py
-      - name: Stream and hash exact R/S sources
+
+      - name: Stream and hash exact source
         run: |
-          python -m src.stream_verify_conglomerate_rs_sources
+          python -m src.stream_verify_conglomerate_rs_sources \
+            --block "${{ matrix.block }}" \
+            --chunk-bytes 16777216 \
+            --retries 8 \
+            --output "conglomerate_v01_outputs/source_${{ matrix.block }}_stream_verification.json"
+
       - name: Print compact result
         run: |
-          python - <<'PY'
-          import json
-          p="conglomerate_v01_outputs/large_rs_stream_verification.json"
+          python - "${{ matrix.block }}" <<'PY'
+          import json, sys
+          block=sys.argv[1]
+          p=f"conglomerate_v01_outputs/source_{block}_stream_verification.json"
           d=json.load(open(p,encoding="utf-8"))
           print("status", d["status"])
           for s in d["sources"]:
@@ -54,9 +66,10 @@ jobs:
                   "sha256", s["sha256"],
               )
           PY
+
       - uses: actions/upload-artifact@v4
         with:
-          name: GRI_CONGLOMERATE_RS_STREAM_VERIFICATION_V01
-          path: GRI_v2/conglomerate_v01_outputs/large_rs_stream_verification.json
+          name: GRI_CONGLOMERATE_SOURCE_${{ matrix.block }}_STREAM_VERIFICATION_V01
+          path: GRI_v2/conglomerate_v01_outputs/source_${{ matrix.block }}_stream_verification.json
           if-no-files-found: error
           retention-days: 30
