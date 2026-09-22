@@ -1,7 +1,7 @@
 # NSD ds004148 independent-transfer source audit v0.1
 
 Date: 22 September 2026  
-Status: D0-D2 SOURCE/HIERARCHY CLOSED; D3 METADATA ROLE PARTIALLY CLOSED; CHANNEL-COUNT DISCREPANCY REQUIRES D4  
+Status: D0-D3 CLOSED FOR TRANSFER PREPARATION; D4 PILOT RESOLVES RAW PAYLOAD TO 61 CHANNELS  
 Program authority: SymC General Operations Manual v0.8.3
 
 ## Why ds004148 is being prepared
@@ -135,3 +135,17 @@ D3 metadata-role firewall: **PASS WITH SOURCE CHANNEL-COUNT DISCREPANCY**
 D4 payload/channel reconciliation: **NEXT**
 
 The dataset should remain untouched for independent transfer until D4 is closed.
+
+
+## D4 pilot resolution
+
+Workflow run `35768880156` closed the first raw-payload reconciliation.
+
+The pinned BrainVision VHDR contains `NumberOfChannels=61`, exactly 61 channel definitions, and 500 Hz sampling. The 32-bit binary layout predicts exactly 36,600,000 bytes for a 300 s recording, matching the downloaded EEG payload byte-for-byte.
+
+Thus the raw payload and `channels.tsv` agree on 61 channels. The source `*_eeg.json` value of 64 is retained as a metadata inconsistency and must not be used to synthesize or pad channels.
+
+Canonical audit:
+`DS004148_D4_PILOT_POSTRESULT_v0.1.md`.
+
+The next D4 action is a cross-session resting-state expansion before any independent signal-derived transfer outcome is opened.
