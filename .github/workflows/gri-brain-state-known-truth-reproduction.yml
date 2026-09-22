@@ -25,6 +25,7 @@ jobs:
       - name: Reproduce pinned brain network-dependence summaries
         run: python -m src.brain_state_known_truth_source_reproduction_v01
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: SYMC_BRAIN_STATE_KNOWN_TRUTH_SOURCE_REPRODUCTION_V01
           path: GRI_v2/brain_state_known_truth_outputs/brain_network_dependence_source_reproduction_v01.json
