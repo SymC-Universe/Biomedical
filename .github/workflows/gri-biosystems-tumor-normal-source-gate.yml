@@ -1,0 +1,41 @@
+name: GRI BioSystems tumor-normal source gate
+
+on:
+  push:
+    branches:
+      - gri-biosystems-revision-20260922
+    paths:
+      - "GRI_v2/config/biosystems_tumor_normal_source_gate_20260922.json"
+      - "GRI_v2/src/inventory_biosystems_tumor_normal_sources.py"
+      - ".github/workflows/gri-biosystems-tumor-normal-source-gate.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Compile source inventory
+        run: |
+          python -m py_compile GRI_v2/src/inventory_biosystems_tumor_normal_sources.py
+          python GRI_v2/src/inventory_biosystems_tumor_normal_sources.py
+
+      - name: Print source gate summary
+        run: |
+          cat GRI_v2/development_outputs/biosystems_tumor_normal_source_gate/TUMOR_NORMAL_SOURCE_GATE_SUMMARY.json
+          echo
+          cat GRI_v2/development_outputs/biosystems_tumor_normal_source_gate/TUMOR_NORMAL_SOURCE_COUNTS.csv
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: GRI_BIOSYSTEMS_TUMOR_NORMAL_SOURCE_GATE_V01
+          path: GRI_v2/development_outputs/biosystems_tumor_normal_source_gate/
