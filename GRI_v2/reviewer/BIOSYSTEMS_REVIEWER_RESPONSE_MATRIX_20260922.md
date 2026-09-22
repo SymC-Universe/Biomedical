@@ -45,6 +45,20 @@ Status vocabulary:
 | Demonstrate clinical utility beyond existing predictors | **DECLINED / NOT CLAIMED** | The revision will not promote the method to a clinical diagnostic, prognostic or treatment-response tool. Incremental clinical utility would require a separate preregistered endpoint and external validation. |
 | Explain failures / heterogeneity rather than presenting only favorable cancers | **CLOSED** | Null, failed, representation-dependent and non-identifiable branches are retained in the Function/Limit framework and cannot be silently rescued after outcome inspection. |
 
+## Internal validation to retain prominently in the revised paper
+
+The internal validation is an independent evidentiary layer within the same TCGA source program and should be shown rather than buried:
+
+- deterministic DISCOVERY -> REPLICATION -> FINAL_HOLDOUT partitions were established before their target values were opened;
+- discovery-fitted methylation transforms/loadings were transported unchanged;
+- FINAL_HOLDOUT was opened once under the frozen P3-v2 formulation;
+- 18 cancers were primary-evaluable; the frozen all-methylation-plus-covariate model beat the same two-covariate baseline in 17/18 cancers;
+- median normalized MSE was 0.444 versus 0.702 and median held-out R2 was 0.507 versus 0.188;
+- the result establishes internal transport/generalization within TCGA, not external cohort confirmation;
+- PCPG remains the reproducible loss/stress case and is retained rather than excluded.
+
+The revised manuscript should present this layer explicitly alongside, but not conflated with, the new tumor-versus-normal specificity control and the later genuinely independent external confirmation.
+
 ## Cross-reviewer revision state
 
 ### Convergent internal validation retained in the paper
@@ -72,7 +86,7 @@ These systems are nonredundant in task and failure criteria, so their agreement 
 
 ### Remaining evidence-bearing revision gates
 
-1. **Tumor-versus-normal control.** Source/identity gate prospectively frozen on 22 September 2026 against exact PanCanAtlas RNA and methylation sources; no normal molecular values opened at freeze.
+1. **Tumor-versus-normal control.** Prospectively frozen in `BIOSYSTEMS_TUMOR_NORMAL_CONTROL_FREEZE_20260922.md`; TN-C0 metadata-only inventory is the next authorized step. Source/identity gate prospectively frozen on 22 September 2026 against exact PanCanAtlas RNA and methylation sources; no normal molecular values opened at freeze.
 2. **Genuinely external confirmation** under a prospectively frozen transported claim, representation, comparator, inclusion/exclusion rule, metric, falsifier and MFR-14 package.
 
 The SCC25 A-H joint-meaning decision packet is scientifically important to the wider GRI program but is not automatically required to answer the BioSystems reviewers. It must not be allowed to expand the paper merely because it is available.
