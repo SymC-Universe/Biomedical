@@ -51,3 +51,39 @@ Whenever a compressed scalar is introduced, reviewers must be able to trace it t
 2. **conglomeration/system organization:** the module, network, or integrated system architecture being summarized.
 
 A scalar is a compressed coordinate, not the whole state. Modal structure, scalar summaries, and conglomeration-level organization should be reported together whenever the data support all three.
+
+
+## 22 September 2026 current-state supersession addendum
+
+The historical table above is retained as provenance for the earlier GRI v2 build sequence. The following rows supersede any earlier statement that Stage C1 or later architecture work is still "not started."
+
+| Topic | Current admissible statement | Status | Current evidence / audit |
+| --- | --- | --- | --- |
+| Stage C1 methylation/RNA architecture | Historical Stage C1 completed under its frozen contract across 32 cancers and 9,457 shared eligible samples with 100 resamples per cancer. The result is a static preregistered methylation/RNA architecture, not biological damping or scalar chi. | **Closed historical development result** | `../artifacts/GRI_CONGLOMERATE_CHI_C1_CARRIER_CONTRACT_CLOSURE_20260918.md`; `../docs/GRI_C1_CARRIER_MATERIALIZATION_RECOVERY_BOUNDARY_20260922.md` |
+| Patient-level heavy C1 carrier bytes | Exact full patient-level contribution arrays are provenance-identified but not currently available on the connected surface. Do not reconstruct them from summaries or rerun Stage C1 unless a future frozen task demonstrates that patient-level values are necessary. | **Execution/provenance boundary, not scientific failure** | `../docs/GRI_C1_CARRIER_MATERIALIZATION_RECOVERY_BOUNDARY_20260922.md` |
+| Capital-Chi biological architecture | Capital Chi-bio is a typed multirepresentational carrier that preserves RNA/regulatory, epigenetic, modal/vector, temporal/contextual, uncertainty and refusal structure. It is not a master scalar. | **P0-D/P0-Q architecture** | `../docs/GRI_GOM_V083_CONTINUITY_AND_SOURCE_OF_RECORD_20260921.md`; `../docs/GRI_CHI_CAPITALCHI_JOINT_MEANING_INVESTIGATION_20260921.md` |
+| SCC25 local scalar admission | The current chronic SCC25 weekly G2 representation does not license biological lowercase chi. Rank 2 has no complex pair; rank 3 pair structure is representation-dependent and no continuous generator/logarithm branch is independently licensed. | **Closed refusal for current representation** | `../docs/GRI_SCC25_G2_SCALAR_ADMISSION_POSTRESULT_AUDIT_20260922.md` |
+| SCC25 joint local/modal <-> capital-Chi task | The next joint-meaning investigation must proceed through a no-scalar local/modal branch unless a future prospective derivation independently earns a scalar. Outcome-bearing execution is blocked until Decisions A-H are prospectively frozen. | **Scientific freeze required** | `../docs/GRI_SCC25_JOINT_MEANING_NEXT_SCIENCE_DECISION_PACKET_20260922.md` |
+| External breast/prostate identity | Breast 72/72 expression samples crosswalk uniquely to methylation by patient/state; prostate 121/121 RNA samples crosswalk uniquely to 450K/EPIC methylation under frozen source-title rules. No GRI outcome was computed and no P1 cohort was selected. | **Source identity closed for metadata scope** | `../docs/GRI_EXTERNAL_GEO_IDENTITY_POSTRESULT_AUDIT_20260922.md` |
+| External melanoma identity | The source family is inventoried but three Pt22-DDP title/description patient-identity conflicts remain quarantined. | **Source manifest complete with anomalies** | `../docs/GRI_EXTERNAL_GEO_IDENTITY_POSTRESULT_AUDIT_20260922.md` |
+| External P1 confirmation | No external cohort is currently selected or frozen as decisive P1. The bottleneck is claim/representation maturity, not source discovery. | **Pre-confirmatory only** | `../docs/GRI_MFR14_EXTERNAL_CONFIRMATION_READINESS_20260916.md` |
+| Biological scalar chi | No biological scalar chi is currently admitted in the active GRI program. Historical CV/2 remains descriptive/historical only; SCC25 G2 scalar admission is refused for the current representation. | **Not admitted** | `../docs/CHI_ADMISSION_RULES.md`; `../docs/GRI_SCC25_G2_SCALAR_ADMISSION_POSTRESULT_AUDIT_20260922.md` |
+| Perturbation / recovery | Static TCGA organization is not recovery evidence. Any future perturbation/recovery claim must prospectively separate resistance, finite-time response, first reclaim, sustained recovery, reorganization, basin robustness and repeated-perturbation behavior. | **Prospective evidence layer** | `../docs/GRI_GOM_V083_CONTINUITY_AND_SOURCE_OF_RECORD_20260921.md` |
+
+### Current manuscript ceiling
+
+A reviewer-facing manuscript may now describe:
+- the historical static multiomic architecture and its frozen qualifications;
+- the development of a block-preserving capital-Chi architecture;
+- explicit refusal of biological scalar chi where the generator does not license it;
+- negative/representation-dependent SCC25 scalar-admission results;
+- source-qualified external confirmation candidates and their unresolved independence/representation gates;
+- the exact next falsifiable experiments and confirmation requirements.
+
+It may **not** describe:
+- a validated clinical diagnostic or prognostic tool;
+- a universal cancer stability scalar;
+- a cancer optimum at chi=1;
+- static architecture as dynamic recovery;
+- the current SCC25 operator as a continuous-time biological damping system;
+- any external source as confirmed P1 before its claim/task/representation/comparator/falsifier freeze and untouched test.
