@@ -93,6 +93,20 @@ def unique_participants(records, sample_to_cancer):
     )
 
 
+def duplicate_participants_by_sample_type(records):
+    seen = defaultdict(lambda: defaultdict(int))
+    for r in records:
+        seen[r["sample_type"]][r["participant"]] += 1
+    out = {}
+    examples = {}
+    for stype, counts in sorted(seen.items()):
+        dup = sorted(p for p, n in counts.items() if n > 1)
+        out[stype] = len(dup)
+        if dup:
+            examples[stype] = dup[:25]
+    return out, examples
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--rna", required=True)
@@ -124,10 +138,18 @@ def main():
             "meth_normal_11_n": len(mm["11"]),
             "rna_meth_tumor_overlap_n": len(rr["01"] & mm["01"]),
             "rna_meth_normal_overlap_n": len(rr["11"] & mm["11"]),
+            "rna_paired_tumor_normal_participants_n": len(rr["01"] & rr["11"]),
+            "multiomic_paired_tumor_normal_participants_n": len(
+                (rr["01"] & mm["01"]) & (rr["11"] & mm["11"])
+            ),
         }
         row["eligible_rna_tn_a1_n30"] = row["rna_tumor_01_n"] >= 30 and row["rna_normal_11_n"] >= 30
         row["eligible_multiomic_tn_c1_n30"] = row["rna_meth_tumor_overlap_n"] >= 30 and row["rna_meth_normal_overlap_n"] >= 30
+        row["eligible_rna_paired_sensitivity_n20"] = row["rna_paired_tumor_normal_participants_n"] >= 20
         rows.append(row)
+
+    rna_dup_by_type, rna_dup_examples = duplicate_participants_by_sample_type(rna)
+    meth_dup_by_type, meth_dup_examples = duplicate_participants_by_sample_type(meth)
 
     payload = {
         "schema": "gri-biosystems-tumor-normal-metadata-inventory-v1",
@@ -146,6 +168,10 @@ def main():
         "methylation_raw_unique_participants_by_sample_type": meth_raw_by_type,
         "rna_unmatched_examples": rna_unmatched[:25],
         "methylation_unmatched_examples": meth_unmatched[:25],
+        "rna_duplicate_participants_by_sample_type": rna_dup_by_type,
+        "methylation_duplicate_participants_by_sample_type": meth_dup_by_type,
+        "rna_duplicate_participant_examples": rna_dup_examples,
+        "methylation_duplicate_participant_examples": meth_dup_examples,
         "cancers": rows,
     }
     Path(args.out).write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
