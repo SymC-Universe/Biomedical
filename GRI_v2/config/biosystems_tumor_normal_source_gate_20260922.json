@@ -1,0 +1,67 @@
+{
+  "schema": "gri-biosystems-tumor-normal-source-gate-v1",
+  "date": "2026-09-22",
+  "status": "FROZEN_BEFORE_TUMOR_NORMAL_MOLECULAR_VALUES",
+  "purpose": "Inventory TCGA primary-tumor and solid-tissue-normal availability in the exact frozen PanCanAtlas RNA and methylation sources before any tumor-normal biological comparison.",
+  "source_bindings": {
+    "rna": {
+      "id": "RNA_PANCAN_FINAL",
+      "gdc_uuid": "3586c0da-64d0-4b74-a449-5ff4d9136611",
+      "expected_sha256": "674b19b7ed9ae4c5ef35ee2824936429aa5d46c0735a3d180f41552fcbbdb658"
+    },
+    "methylation": {
+      "id": "METHYLATION_MERGED_27K_450K",
+      "gdc_uuid": "d82e2c44-89eb-43d9-b6d3-712732bf6a53",
+      "expected_sha256": "5934c497882fbe8178d128a3a7f71e765480af6bbd460e0398de3428cd075b77",
+      "expected_probe_count": 22601
+    }
+  },
+  "sample_types": {
+    "tumor": "01",
+    "normal": "11",
+    "definitions": {
+      "01": "Primary Solid Tumor",
+      "11": "Solid Tissue Normal"
+    }
+  },
+  "source_gate_only": true,
+  "biological_values_may_be_opened": false,
+  "model_fit_allowed": false,
+  "feature_calculation_allowed": false,
+  "outcome_selected_filtering_allowed": false,
+  "inventory_outputs": [
+    "per-cancer RNA 01 and 11 unique-patient counts",
+    "per-cancer methylation 01 and 11 unique-patient counts",
+    "per-cancer cross-modal 01 and 11 unique-patient counts",
+    "per-cancer complete paired patient counts with RNA+methylation tumor and normal",
+    "duplicate/anomalous sample-root inventory"
+  ],
+  "prospective_analysis_rule_after_source_gate": {
+    "primary_unpaired_track": {
+      "minimum_crossmodal_normal_n": 30,
+      "minimum_crossmodal_tumor_n": 30,
+      "resample_n": 30,
+      "resamples": 100,
+      "comparison": "within cancer, equal-n tumor versus solid-tissue-normal using unchanged C1 constructions and construction-aware null correction"
+    },
+    "paired_patient_track": {
+      "role": "secondary consistency track",
+      "minimum_complete_pairs": 15,
+      "rule": "same participant must contribute sample type 01 and 11 in both RNA and methylation; no cross-patient pairing"
+    },
+    "small_normal_sensitivity": {
+      "role": "sensitivity only, never primary promotion",
+      "minimum_crossmodal_normal_n": 20,
+      "maximum_crossmodal_normal_n": 29,
+      "resample_n": 20
+    }
+  },
+  "claim_logic": {
+    "tumor_specificity_not_assumed": true,
+    "normal_architecture_allowed": true,
+    "if_tumor_and_normal_are_comparable": "retain architecture as recurrent tissue organization but do not call it tumor-specific",
+    "if_reproducible_tumor_normal_difference": "report direction and magnitude without converting association into mechanism",
+    "no_clinical_classifier_claim": true,
+    "no_biological_chi_claim": true
+  }
+}
