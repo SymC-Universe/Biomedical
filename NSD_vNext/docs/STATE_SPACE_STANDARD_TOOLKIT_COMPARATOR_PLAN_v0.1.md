@@ -1,7 +1,7 @@
 # NSD State-Space Standard-Toolkit Comparator Plan v0.1
 
 Date: 18 September 2026
-Status: P0-Q COMPARATOR DESIGN / NOT YET EXECUTED
+Status: P0-Q COMPARATOR ACTIVE / FAIRNESS MAPPING FROZEN
 
 ## Purpose
 
@@ -107,3 +107,38 @@ A defensible residual contribution would have to lie in one or more of:
 ## Activation condition
 
 Execute this comparator after the current A0/A1/A2 optimizer-repair rerun stabilizes the NSD implementation enough that the comparison is not dominated by a known mechanical search defect.
+
+
+## Mechanical/API preflight closure
+
+Date: 22 September 2026
+
+Pinned SOMATA 0.5.6 installed successfully in GitHub Actions and exposed the required comparator API:
+- `IterativeOscillatorModel.iterate`;
+- `get_knee_osc`;
+- `diagnose_residual_acf`.
+
+Preflight run:
+- workflow: `NSD SOMATA Comparator Preflight`;
+- run: `35671757551`;
+- artifact: `nsd-somata-comparator-preflight`;
+- artifact id: `10670958164`;
+- artifact ZIP SHA-256: `7957a8b5d0fd98c848961a8481fb1c689c2b399119e5799f591d63232a98b742`.
+
+No EEG or scientific comparator performance was evaluated in that run.
+
+## Matched-information fairness freeze
+
+The first known-truth comparator mapping is now prospectively frozen in:
+- `SOMATA_COMPARATOR_FAIRNESS_FREEZE_v0.1.md`;
+- `docs/manifests/somata_comparator_fairness_v0.1.json`.
+
+Key rule:
+both tools receive the exact same deterministic 120 Hz standardized signal produced from the already-frozen 256 Hz NSD adequacy generator realization. This follows SOMATA's documented recommendation to downsample to 120 Hz or less while preventing NSD from receiving a higher-information-rate signal.
+
+The iOsc lane permits one or two oscillators, whereas NSD A0/A1/A2 includes a nonoscillatory A0 alternative. Therefore zero-oscillator refusal is explicitly `NOT_DIRECTLY_COMPARABLE` in this first iOsc lane rather than being forced into a false equivalence.
+
+The first matched known-truth comparator is now executable under:
+`.github/workflows/nsd-somata-known-truth.yml`.
+
+No overall ADDS/EQUIVALENT/SUBTRACTS verdict is authorized by this first P0-Q run.
