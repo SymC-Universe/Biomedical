@@ -1,0 +1,88 @@
+name: GRI BioSystems tumor-normal metadata inventory
+
+on:
+  push:
+    branches:
+      - gri-biosystems-revision-20260922
+    paths:
+      - '.github/workflows/gri-tumor-normal-metadata-inventory.yml'
+      - 'GRI_v2/src/inventory_tumor_normal_source_metadata.py'
+      - 'GRI_v2/tests/test_inventory_tumor_normal_source_metadata.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tn-c0-metadata-only:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Test metadata-only firewall
+        run: python -m pytest -q GRI_v2/tests/test_inventory_tumor_normal_source_metadata.py
+
+      - name: Fetch exact source headers and annotation metadata only
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          from urllib.request import Request, urlopen
+
+          sources = {
+              'rna_header.tsv': 'https://api.gdc.cancer.gov/data/3586c0da-64d0-4b74-a449-5ff4d9136611',
+              'methylation_header.tsv': 'https://api.gdc.cancer.gov/data/d82e2c44-89eb-43d9-b6d3-712732bf6a53',
+          }
+
+          def fetch_first_line(url, out):
+              buf = b''
+              start = 0
+              step = 262144
+              while b'\n' not in buf:
+                  end = start + step - 1
+                  req = Request(url, headers={'Range': f'bytes={start}-{end}'})
+                  with urlopen(req, timeout=120) as r:
+                      chunk = r.read()
+                  if not chunk:
+                      raise RuntimeError(f'no bytes while reading header from {url}')
+                  buf += chunk
+                  if len(buf) > 4 * 1024 * 1024:
+                      raise RuntimeError('header exceeds 4 MiB guard')
+                  start += len(chunk)
+              Path(out).write_bytes(buf.split(b'\n', 1)[0] + b'\n')
+
+          for out, url in sources.items():
+              fetch_first_line(url, out)
+          PY
+          curl --fail --location --retry 5 --retry-delay 2 \
+            'https://api.gdc.cancer.gov/data/1a7d7be8-675d-4e60-a105-19d4121bdebf' \
+            -o merged_sample_quality_annotations.tsv
+
+      - name: Run TN-C0 metadata inventory
+        run: |
+          python GRI_v2/src/inventory_tumor_normal_source_metadata.py \
+            --rna rna_header.tsv \
+            --methylation methylation_header.tsv \
+            --annotation merged_sample_quality_annotations.tsv \
+            --out GRI_TUMOR_NORMAL_METADATA_INVENTORY_V01.json
+          cat GRI_TUMOR_NORMAL_METADATA_INVENTORY_V01.json
+
+      - name: Assert outcome seal
+        run: |
+          python - <<'PY'
+          import json
+          x=json.load(open('GRI_TUMOR_NORMAL_METADATA_INVENTORY_V01.json'))
+          assert x['outcome_sealed'] is True
+          assert x['molecular_values_read'] is False
+          print('Outcome seal PASS')
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: GRI_TUMOR_NORMAL_METADATA_INVENTORY_V01
+          path: GRI_TUMOR_NORMAL_METADATA_INVENTORY_V01.json
