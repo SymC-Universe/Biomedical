@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - gri-chi-bio-conglomerate-v01-20260918
+      - gri-conglomerate-v1-integration-20260921
     paths:
       - "GRI_v2/docs/GRI_SCC25_G2_SCALAR_ADMISSION_DIAGNOSTIC_PROTOCOL_20260921.md"
       - "GRI_v2/src/run_scc25_g2_scalar_admission_diagnostic.py"
