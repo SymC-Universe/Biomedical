@@ -116,6 +116,11 @@ def load_support(path):
 def load_rna(path, records, modules):
     union=set(g for m in modules.values() for g in m)
     positions=[r["rna_pos"] for r in records]
+    if len(set(positions))!=len(positions): raise ValueError("duplicate RNA source positions in frozen record set")
+    source_order=sorted(positions)
+    source_to_record={p:i for i,p in enumerate(positions)}
+    reorder=np.asarray([source_to_record[p] for p in source_order],dtype=int)
+    inverse=np.empty_like(reorder); inverse[reorder]=np.arange(len(reorder))
     use=[0]+positions
     vals=[];genes=[];seen=set()
     for ch in pd.read_csv(path,sep="\t",header=0,usecols=use,chunksize=192,low_memory=False,
@@ -126,6 +131,8 @@ def load_rna(path, records, modules):
             if g in union and g not in seen:seen.add(g);keep.append(i);genes.append(g)
         if not keep:continue
         x=ch.iloc[keep,1:].apply(pd.to_numeric,errors="coerce").to_numpy(dtype=float,copy=True).T.copy()
+        if x.shape[0]!=len(source_order): raise ValueError("RNA selected-column count drift")
+        x=x[inverse,:].copy()
         fin=np.isfinite(x);x[fin&(x<0)]=0;x[fin]=np.log2(x[fin]+1)
         vals.append(x)
     x=np.concatenate(vals,axis=1)
@@ -133,12 +140,20 @@ def load_rna(path, records, modules):
     return x,np.asarray(genes,dtype=object)
 
 def load_meth(path,records):
-    positions=[r["meth_pos"] for r in records]; use=[0]+positions
+    positions=[r["meth_pos"] for r in records]
+    if len(set(positions))!=len(positions): raise ValueError("duplicate methylation source positions in frozen record set")
+    source_order=sorted(positions)
+    source_to_record={p:i for i,p in enumerate(positions)}
+    reorder=np.asarray([source_to_record[p] for p in source_order],dtype=int)
+    inverse=np.empty_like(reorder); inverse[reorder]=np.arange(len(reorder))
+    use=[0]+positions
     probe_ids=[];blocks=[]
     for ch in pd.read_csv(path,sep="\t",header=None,skiprows=1,usecols=use,chunksize=96,engine="c",low_memory=False,
                           na_values=["","NA","N/A","NaN","nan","NULL","null"],keep_default_na=True):
         ids=ch.iloc[:,0].astype(str).str.strip().str.strip('"').tolist();probe_ids.extend(ids)
         x=ch.iloc[:,1:].apply(pd.to_numeric,errors="coerce").to_numpy(dtype=np.float32,copy=True).T.copy()
+        if x.shape[0]!=len(source_order): raise ValueError("methylation selected-column count drift")
+        x=x[inverse,:].copy()
         fin=np.isfinite(x)
         if fin.any() and (float(np.nanmin(x))<0 or float(np.nanmax(x))>1):raise ValueError("beta outside [0,1]")
         blocks.append(x)
@@ -325,6 +340,8 @@ def main():
             for p in parts:
                 k=(cancer,state,p);records.append({"cancer":cancer,"state":state,"participant":p,"rna_pos":rna_map[k]["pos"],"meth_pos":meth_map[k]["pos"]})
     for i,r in enumerate(records):r["row"]=i
+    if len({r["rna_pos"] for r in records})!=len(records) or len({r["meth_pos"] for r in records})!=len(records):
+        raise ValueError("frozen C1 record set contains duplicated assay source positions")
     pd.DataFrame(rdup).to_csv(a.out/"TN_C1_RNA_DUPLICATES_EXCLUDED.csv",index=False);pd.DataFrame(mdup).to_csv(a.out/"TN_C1_METH_DUPLICATES_EXCLUDED.csv",index=False);pd.DataFrame(records).to_csv(a.out/"TN_C1_SAMPLE_MANIFEST.csv",index=False)
     modules=parse_gmt(a.gmt);core,maskids=load_support(a.support)
     expr,genes=load_rna(a.rna,records,modules);beta,probe_ids=load_meth(a.meth,records);mask=np.asarray([str(p) in maskids for p in probe_ids],bool)
