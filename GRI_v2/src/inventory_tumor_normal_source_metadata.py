@@ -74,14 +74,23 @@ def read_annotation(path: str):
 def unique_participants(records, sample_to_cancer):
     out = defaultdict(lambda: defaultdict(set))
     unmatched = []
+    unmatched_by_sample_type = defaultdict(set)
+    raw_by_sample_type = defaultdict(set)
     for r in records:
+        raw_by_sample_type[r["sample_type"]].add(r["participant"])
         cancer = sample_to_cancer.get(r["sample"])
         if cancer is None:
             unmatched.append(r["sample"])
+            unmatched_by_sample_type[r["sample_type"]].add(r["participant"])
             continue
         if r["sample_type"] in {"01","11"}:
             out[cancer][r["sample_type"]].add(r["participant"])
-    return out, sorted(set(unmatched))
+    return (
+        out,
+        sorted(set(unmatched)),
+        {k: len(v) for k, v in sorted(unmatched_by_sample_type.items())},
+        {k: len(v) for k, v in sorted(raw_by_sample_type.items())},
+    )
 
 
 def main():
@@ -99,8 +108,8 @@ def main():
         raise RuntimeError("parsed zero TCGA RNA samples from source header")
     if not meth:
         raise RuntimeError("parsed zero TCGA methylation samples from source header")
-    rna_counts, rna_unmatched = unique_participants(rna, annotation)
-    meth_counts, meth_unmatched = unique_participants(meth, annotation)
+    rna_counts, rna_unmatched, rna_unmatched_by_type, rna_raw_by_type = unique_participants(rna, annotation)
+    meth_counts, meth_unmatched, meth_unmatched_by_type, meth_raw_by_type = unique_participants(meth, annotation)
 
     cancers = sorted(set(rna_counts) | set(meth_counts))
     rows = []
@@ -131,6 +140,12 @@ def main():
         "methylation_header_tcga_samples": len(meth),
         "rna_unmatched_sample_count": len(rna_unmatched),
         "methylation_unmatched_sample_count": len(meth_unmatched),
+        "rna_unmatched_unique_participants_by_sample_type": rna_unmatched_by_type,
+        "methylation_unmatched_unique_participants_by_sample_type": meth_unmatched_by_type,
+        "rna_raw_unique_participants_by_sample_type": rna_raw_by_type,
+        "methylation_raw_unique_participants_by_sample_type": meth_raw_by_type,
+        "rna_unmatched_examples": rna_unmatched[:25],
+        "methylation_unmatched_examples": meth_unmatched[:25],
         "cancers": rows,
     }
     Path(args.out).write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
