@@ -1,0 +1,167 @@
+name: GRI BioSystems tumor-normal biological control
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - gri-biosystems-revision-20260922
+    paths:
+      - "GRI_v2/config/biosystems_tumor_normal_execute_20260922.flag"
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  control:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    defaults:
+      run:
+        working-directory: GRI_v2
+    env:
+      C1A_SOURCE_RUN_ID: "33318029738"
+      C1A_ARTIFACT_NAME: "CSA_STAGE_C1A_PROBE_INVENTORY_WINDOWS_20260830"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install minimal runtime
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy pandas pytest
+
+      - name: Freeze verification before biological opening
+        run: |
+          python -m py_compile \
+            src/biosystems_tumor_normal_core.py \
+            src/run_biosystems_tumor_normal_control.py \
+            src/materialize_verified_gdc_source.py \
+            src/inventory_biosystems_tumor_normal_sources.py
+          python -m pytest -q \
+            tests/test_biosystems_tumor_normal_core.py \
+            tests/test_biosystems_tumor_normal_runner.py
+
+      - name: Rebuild outcome-blind exact source manifests
+        run: |
+          rm -rf development_outputs/biosystems_tumor_normal_source_gate
+          python src/inventory_biosystems_tumor_normal_sources.py
+
+      - name: Recover exact frozen C1A portable annotation artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          rm -rf c1a_handoff
+          mkdir -p c1a_handoff
+          gh run download "$C1A_SOURCE_RUN_ID" \
+            -n "$C1A_ARTIFACT_NAME" \
+            -R "$GITHUB_REPOSITORY" \
+            -D c1a_handoff
+          test -f c1a_handoff/STAGE_C1A_ANNOTATION_SOURCE_SUMMARY.json
+          test -f c1a_handoff/stage_c1a_annotation_export.tsv.gz
+          test -f c1a_handoff/stage_c1a_chen_crossreactive_probe_ids.txt
+
+      - name: Acquire exact frozen Hallmark GMT
+        run: |
+          python - <<'PY'
+          import hashlib, pathlib, urllib.request
+          expected = "eecaf6dad908334ae885406ec72bdc0646d8917588ed7c219fac92fc5363f596"
+          urls = [
+              "https://data.broadinstitute.org/gsea-msigdb/msigdb/release/2026.1.Hs/h.all.v2026.1.Hs.symbols.gmt",
+              "https://raw.githubusercontent.com/JeanRadig/KaleidoCell/main/kaleidocell/files/h.all.v2026.1.Hs.symbols.gmt",
+          ]
+          out = pathlib.Path("runtime_sources/h.all.v2026.1.Hs.symbols.gmt")
+          out.parent.mkdir(parents=True, exist_ok=True)
+          errors = []
+          for url in urls:
+              try:
+                  req = urllib.request.Request(url, headers={"User-Agent":"SymC-GRI-BioSystems/1.0"})
+                  with urllib.request.urlopen(req, timeout=180) as r:
+                      data = r.read()
+                  digest = hashlib.sha256(data).hexdigest()
+                  if digest != expected:
+                      raise RuntimeError(f"hash {digest} != {expected}")
+                  out.write_bytes(data)
+                  print(f"Hallmark GMT verified from {url}: {len(data)} bytes")
+                  break
+              except Exception as exc:
+                  errors.append(f"{url}: {exc}")
+          else:
+              raise SystemExit("Hallmark source acquisition failed:\n" + "\n".join(errors))
+          PY
+
+      - name: Materialize and verify exact RNA source
+        run: |
+          mkdir -p runtime_sources
+          python src/materialize_verified_gdc_source.py \
+            --uuid 3586c0da-64d0-4b74-a449-5ff4d9136611 \
+            --output runtime_sources/EBPlusPlusAdjustPANCAN_IlluminaHiSeq_RNASeqV2.geneExp.tsv \
+            --size 1882540959 \
+            --sha256 674b19b7ed9ae4c5ef35ee2824936429aa5d46c0735a3d180f41552fcbbdb658
+
+      - name: Materialize and verify exact methylation source
+        run: |
+          python src/materialize_verified_gdc_source.py \
+            --uuid d82e2c44-89eb-43d9-b6d3-712732bf6a53 \
+            --output runtime_sources/jhu-usc.edu_PANCAN_merged_HumanMethylation27_HumanMethylation450.betaValue_whitelisted.tsv \
+            --size 5022150019 \
+            --sha256 5934c497882fbe8178d128a3a7f71e765480af6bbd460e0398de3428cd075b77
+
+      - name: Reproduce exact frozen C1A probe map and mask
+        run: |
+          rm -rf runtime_c1a_probe_inventory
+          python src/run_stage_c1a_probe_inventory.py \
+            --methylation-tsv runtime_sources/jhu-usc.edu_PANCAN_merged_HumanMethylation27_HumanMethylation450.betaValue_whitelisted.tsv \
+            --annotation-export c1a_handoff/stage_c1a_annotation_export.tsv.gz \
+            --chen-ids c1a_handoff/stage_c1a_chen_crossreactive_probe_ids.txt \
+            --source-summary c1a_handoff/STAGE_C1A_ANNOTATION_SOURCE_SUMMARY.json \
+            --outdir runtime_c1a_probe_inventory
+
+      - name: Execute frozen tumor-normal control
+        run: |
+          rm -rf development_outputs/biosystems_tumor_normal_control
+          python src/run_biosystems_tumor_normal_control.py \
+            --config config/biosystems_tumor_normal_control_v1_0.json \
+            --pair-manifest development_outputs/biosystems_tumor_normal_source_gate/TUMOR_NORMAL_EXACT_PAIR_MANIFEST.csv \
+            --sample-manifest development_outputs/biosystems_tumor_normal_source_gate/TUMOR_NORMAL_EXACT_SAMPLE_MANIFEST.csv \
+            --rna-source runtime_sources/EBPlusPlusAdjustPANCAN_IlluminaHiSeq_RNASeqV2.geneExp.tsv \
+            --methylation-source runtime_sources/jhu-usc.edu_PANCAN_merged_HumanMethylation27_HumanMethylation450.betaValue_whitelisted.tsv \
+            --gmt runtime_sources/h.all.v2026.1.Hs.symbols.gmt \
+            --probe-flags runtime_c1a_probe_inventory/stage_c1a_probe_flags.csv.gz \
+            --probe-map runtime_c1a_probe_inventory/stage_c1a_probe_gene_region_map.csv.gz \
+            --outdir development_outputs/biosystems_tumor_normal_control
+
+      - name: Print compact result
+        if: always()
+        run: |
+          if test -f development_outputs/biosystems_tumor_normal_control/TUMOR_NORMAL_RUN_SUMMARY.json; then
+            cat development_outputs/biosystems_tumor_normal_control/TUMOR_NORMAL_RUN_SUMMARY.json
+          fi
+          if test -f development_outputs/biosystems_tumor_normal_control/TUMOR_NORMAL_GLOBAL_INFERENCE.csv; then
+            echo
+            cat development_outputs/biosystems_tumor_normal_control/TUMOR_NORMAL_GLOBAL_INFERENCE.csv
+          fi
+          if test -f development_outputs/biosystems_tumor_normal_control/TUMOR_NORMAL_CANCER_SUMMARY.csv; then
+            echo
+            cat development_outputs/biosystems_tumor_normal_control/TUMOR_NORMAL_CANCER_SUMMARY.csv
+          fi
+
+      - name: Remove raw multi-GB source material
+        if: always()
+        run: rm -rf runtime_sources
+
+      - name: Upload compact control evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: GRI_BIOSYSTEMS_TUMOR_NORMAL_CONTROL_V01
+          path: |
+            GRI_v2/development_outputs/biosystems_tumor_normal_control/
+            GRI_v2/development_outputs/biosystems_tumor_normal_source_gate/
+            GRI_v2/runtime_c1a_probe_inventory/STAGE_C1A_PROBE_INVENTORY_SUMMARY.json
+            GRI_v2/runtime_c1a_probe_inventory/stage_c1a_regulatory_stratum_counts.csv
+          if-no-files-found: warn
