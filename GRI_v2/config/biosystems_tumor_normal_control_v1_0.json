@@ -31,7 +31,9 @@
     "annotation": {
       "config_path": "GRI_v2/config/stage_c1_annotation_feature_plan.json",
       "annotation_export_sha256": "a7f83233f97c3933752d74b8042e967de88df20eba2cf477a536136631a8da17",
-      "chen_id_export_sha256": "078e95716af2b20c3515f59d09310d20c43deb5ed8ba8d1b70885810acde2179"
+      "chen_id_export_sha256": "078e95716af2b20c3515f59d09310d20c43deb5ed8ba8d1b70885810acde2179",
+      "probe_flags_sha256": "5777ff7331c4bae750ed1c87bb6eb93136c56ade6dbf8522829db1f5659ac455",
+      "probe_gene_region_map_sha256": "78f38d420a486427d67d88f67f5da83d1811003bf578b3c673f1dcbee5912296"
     }
   },
   "identity": {
@@ -85,7 +87,9 @@
     "technical_tracks": [
       "PRIMARY_PUBLICATION",
       "MASKED_TECHNICAL"
-    ]
+    ],
+    "expected_hallmark_union_source_genes": 4188,
+    "rna_source_gene_rule": "gene symbol is token before first literal |; preserve source order and retain first occurrence only, matching frozen Stage A lineage"
   },
   "nulls": {
     "permutations": 199,
