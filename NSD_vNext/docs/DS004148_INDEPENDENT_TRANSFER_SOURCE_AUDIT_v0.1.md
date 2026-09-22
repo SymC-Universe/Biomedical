@@ -149,3 +149,17 @@ Canonical audit:
 `DS004148_D4_PILOT_POSTRESULT_v0.1.md`.
 
 The next D4 action is a cross-session resting-state expansion before any independent signal-derived transfer outcome is opened.
+
+
+## Cross-session D4 closure
+
+Run `35769238959` verified six prospectively pinned resting recordings for `sub-01` across all three sessions and both eyes-closed/eyes-open states.
+
+All 6/6 passed exact source identity, 61-channel VHDR definition, 500-Hz sampling, 32-bit-float binary layout, 300-s duration and exact expected byte count.
+
+This makes the source mechanically ready for a prospectively frozen independent label-blind transfer task.
+
+Canonical audit:
+`DS004148_D4_RESTING_CROSSSESSION_POSTRESULT_v0.1.md`.
+
+No signal-derived transfer result has been opened.
