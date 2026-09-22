@@ -39,3 +39,34 @@ Do not:
 - treat recovery as stability;
 - open a decisive external outcome before the task/carrier/comparator/falsifier freeze;
 - create a master Chi score by summing carrier blocks.
+
+
+## 22 September execution update
+
+### SCC25 scalar-admission diagnostic
+
+Workflow run `35671381706` completed successfully.
+
+The result does **not** admit biological scalar chi:
+- rank 2 has no complex-conjugate pair in any required fit;
+- rank 3 pair structure is representation dependent;
+- no continuous generator, unique logarithm branch, or second-order biological factor is licensed.
+
+Current disposition:
+`SCC25_G2_SCALAR_CHI = REFUSED_FOR_CURRENT_REPRESENTATION`.
+
+The joint chi<->Chi program therefore proceeds through the local/modal branch without manufacturing a scalar.
+
+### Current safe backend work
+
+The remote materialization preflight is green:
+- RNA source metadata size matches the frozen 1,882,540,959-byte source;
+- small G/P sources pass exact SHA-256;
+- the 5,022,150,019-byte merged methylation source is metadata-bound;
+- no biological outcomes were opened.
+
+The next mechanical/data-provenance action is streamed exact-hash verification of the large R/S sources and resource-safe acquisition/materialization preparation.
+
+### Scientific stop line
+
+No new outcome-bearing SCC25 joint test may run until the remaining local/modal-to-capital-Chi task choices are prospectively frozen.
