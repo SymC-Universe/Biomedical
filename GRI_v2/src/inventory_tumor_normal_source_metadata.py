@@ -52,24 +52,25 @@ def read_annotation(path: str):
         if not barcode_col or not cancer_col:
             raise ValueError(f"annotation requires barcode and cancer columns; found {reader.fieldnames}")
         mapping = {}
+        excluded_dnu = {}
         conflicts = []
         for row in reader:
             p = parse_barcode(row.get(barcode_col, "") or "")
             if not p:
                 continue
             participant, stype, sample = p
-            if dnu_col and str(row.get(dnu_col,"")).strip().lower() in {"true","1","yes","y"}:
-                continue
             cancer = str(row.get(cancer_col,"")).strip()
             if not cancer:
+                continue
+            if dnu_col and str(row.get(dnu_col,"")).strip().lower() in {"true","1","yes","y"}:
+                excluded_dnu[sample] = cancer
                 continue
             old = mapping.get(sample)
             if old and old != cancer:
                 conflicts.append({"sample": sample, "cancer_a": old, "cancer_b": cancer})
             else:
                 mapping[sample] = cancer
-        return mapping, conflicts
-
+        return mapping, conflicts, excluded_dnu
 
 def unique_participants(records, sample_to_cancer):
     out = defaultdict(lambda: defaultdict(set))
@@ -90,6 +91,29 @@ def unique_participants(records, sample_to_cancer):
         sorted(set(unmatched)),
         {k: len(v) for k, v in sorted(unmatched_by_sample_type.items())},
         {k: len(v) for k, v in sorted(raw_by_sample_type.items())},
+    )
+
+
+def classify_unmatched(records, active_mapping, excluded_dnu):
+    dnu_by_type = defaultdict(set)
+    missing_by_type = defaultdict(set)
+    dnu_by_cancer_type = defaultdict(lambda: defaultdict(set))
+    for r in records:
+        if r["sample"] in active_mapping:
+            continue
+        stype = r["sample_type"]
+        if r["sample"] in excluded_dnu:
+            dnu_by_type[stype].add(r["participant"])
+            dnu_by_cancer_type[excluded_dnu[r["sample"]]][stype].add(r["participant"])
+        else:
+            missing_by_type[stype].add(r["participant"])
+    return (
+        {k: len(v) for k, v in sorted(dnu_by_type.items())},
+        {k: len(v) for k, v in sorted(missing_by_type.items())},
+        {
+            cancer: {stype: len(parts) for stype, parts in sorted(by_type.items())}
+            for cancer, by_type in sorted(dnu_by_cancer_type.items())
+        },
     )
 
 
@@ -115,7 +139,7 @@ def main():
     ap.add_argument("--out", required=True)
     args = ap.parse_args()
 
-    annotation, conflicts = read_annotation(args.annotation)
+    annotation, conflicts, excluded_dnu = read_annotation(args.annotation)
     rna = read_header_samples(args.rna)
     meth = read_header_samples(args.methylation)
     if not rna:
@@ -124,6 +148,8 @@ def main():
         raise RuntimeError("parsed zero TCGA methylation samples from source header")
     rna_counts, rna_unmatched, rna_unmatched_by_type, rna_raw_by_type = unique_participants(rna, annotation)
     meth_counts, meth_unmatched, meth_unmatched_by_type, meth_raw_by_type = unique_participants(meth, annotation)
+    rna_dnu_by_type, rna_missing_by_type, rna_dnu_by_cancer_type = classify_unmatched(rna, annotation, excluded_dnu)
+    meth_dnu_by_type, meth_missing_by_type, meth_dnu_by_cancer_type = classify_unmatched(meth, annotation, excluded_dnu)
 
     cancers = sorted(set(rna_counts) | set(meth_counts))
     rows = []
@@ -164,6 +190,12 @@ def main():
         "methylation_unmatched_sample_count": len(meth_unmatched),
         "rna_unmatched_unique_participants_by_sample_type": rna_unmatched_by_type,
         "methylation_unmatched_unique_participants_by_sample_type": meth_unmatched_by_type,
+        "rna_quality_excluded_dnu_unique_participants_by_sample_type": rna_dnu_by_type,
+        "methylation_quality_excluded_dnu_unique_participants_by_sample_type": meth_dnu_by_type,
+        "rna_missing_annotation_unique_participants_by_sample_type": rna_missing_by_type,
+        "methylation_missing_annotation_unique_participants_by_sample_type": meth_missing_by_type,
+        "rna_quality_excluded_dnu_by_cancer_sample_type": rna_dnu_by_cancer_type,
+        "methylation_quality_excluded_dnu_by_cancer_sample_type": meth_dnu_by_cancer_type,
         "rna_raw_unique_participants_by_sample_type": rna_raw_by_type,
         "methylation_raw_unique_participants_by_sample_type": meth_raw_by_type,
         "rna_unmatched_examples": rna_unmatched[:25],
