@@ -1,0 +1,118 @@
+{
+  "schema": "gri-biosystems-tumor-normal-control-v1.0",
+  "status": "FROZEN_BEFORE_TUMOR_NORMAL_BIOLOGICAL_OPENING",
+  "frozen_date": "2026-09-22",
+  "seed_namespace": "GRI_BIOSYSTEMS_TUMOR_NORMAL_20260922",
+  "source_bindings": {
+    "rna": {
+      "gdc_uuid": "3586c0da-64d0-4b74-a449-5ff4d9136611",
+      "filename": "EBPlusPlusAdjustPANCAN_IlluminaHiSeq_RNASeqV2.geneExp.tsv",
+      "sha256": "674b19b7ed9ae4c5ef35ee2824936429aa5d46c0735a3d180f41552fcbbdb658",
+      "transform": "numeric; values <0 clipped to 0; log2(x+1); source non-finite remains missing; gene symbol is token before first literal |; first occurrence retained under frozen source order"
+    },
+    "methylation": {
+      "gdc_uuid": "d82e2c44-89eb-43d9-b6d3-712732bf6a53",
+      "sha256": "5934c497882fbe8178d128a3a7f71e765480af6bbd460e0398de3428cd075b77",
+      "expected_probe_rows": 22601,
+      "value_bounds": [
+        0,
+        1
+      ]
+    },
+    "hallmark": {
+      "filename": "h.all.v2026.1.Hs.symbols.gmt",
+      "raw_sha256": "eecaf6dad908334ae885406ec72bdc0646d8917588ed7c219fac92fc5363f596",
+      "membership_sha256": "bc6a9a33d7421dc407d33a66859760ba25e47b2f398e1a43c9156f80c71b3900",
+      "urls": [
+        "https://data.broadinstitute.org/gsea-msigdb/msigdb/release/2026.1.Hs/h.all.v2026.1.Hs.symbols.gmt",
+        "https://raw.githubusercontent.com/JeanRadig/KaleidoCell/main/kaleidocell/files/h.all.v2026.1.Hs.symbols.gmt"
+      ]
+    },
+    "annotation": {
+      "config_path": "GRI_v2/config/stage_c1_annotation_feature_plan.json",
+      "annotation_export_sha256": "a7f83233f97c3933752d74b8042e967de88df20eba2cf477a536136631a8da17",
+      "chen_id_export_sha256": "078e95716af2b20c3515f59d09310d20c43deb5ed8ba8d1b70885810acde2179"
+    }
+  },
+  "identity": {
+    "tumor_sample_type": "01",
+    "normal_sample_type": "11",
+    "exact_single_source_column_required": true,
+    "exact_single_root_required": true,
+    "source_origin_duplicates_preserved_but_primary_excluded": true
+  },
+  "primary_paired": {
+    "cancers": [
+      "BRCA",
+      "COAD",
+      "HNSC",
+      "KIRC",
+      "KIRP",
+      "LIHC",
+      "PRAD",
+      "THCA",
+      "UCEC"
+    ],
+    "fixed_n": 20,
+    "resamples": 100,
+    "same_participants_across_tissues": true
+  },
+  "secondary_unpaired_n30": {
+    "cancers": [
+      "BRCA",
+      "LIHC",
+      "PRAD",
+      "THCA",
+      "UCEC"
+    ],
+    "fixed_n": 30,
+    "resamples": 100,
+    "role": "corroboration_only_cannot_rescue_primary"
+  },
+  "feature_rules": {
+    "methylation_finite_fraction_min": 0.95,
+    "rna_finite_fraction_min": 0.95,
+    "rna_minimum_finite": 20,
+    "rna_minimum_hallmark_genes": 15,
+    "methylation_minimum_hallmark_genes": 10,
+    "methylation_minimum_hallmark_probes": 10,
+    "minimum_common_hallmarks": 25,
+    "primary_stratum": "PROMOTER_CORE",
+    "promoter_core_groups": [
+      "TSS200"
+    ],
+    "shared_tumor_normal_carrier_required": true,
+    "technical_tracks": [
+      "PRIMARY_PUBLICATION",
+      "MASKED_TECHNICAL"
+    ]
+  },
+  "nulls": {
+    "permutations": 199,
+    "h2": "patient-row permutation of methylation centered kernel relative to RNA kernel",
+    "h3a": "patient-row permutation of methylation Hallmark score matrix relative to RNA Hallmark score matrix",
+    "h2_effect": "(observed - median(null))/(1 - median(null))",
+    "h3a_effect": "observed - median(patient-null)"
+  },
+  "inference": {
+    "biological_unit": "cancer",
+    "cancer_summary": "median across deterministic draws; 5th and 95th percentiles are construction-stability intervals",
+    "primary_endpoints": [
+      "TN_H2_HEADROOM",
+      "TN_H3A_PATIENT_NULL_EXCESS"
+    ],
+    "pan_cancer_test": "exact_two_sided_sign_test_on_cancer_median_tumor_minus_normal",
+    "multiplicity": "Benjamini-Hochberg across the two primary endpoints",
+    "alpha": 0.05,
+    "no_direction_prespecified": true
+  },
+  "claim_firewall": {
+    "tumor_specificity_not_assumed": true,
+    "normal_architecture_allowed": true,
+    "clinical_classifier": false,
+    "causal_direction": false,
+    "biological_chi": false,
+    "treatment_response": false,
+    "primary_failure_cannot_be_rescued_by_secondary_or_masked_track": true
+  }
+}
