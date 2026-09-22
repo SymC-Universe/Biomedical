@@ -1,0 +1,11 @@
+GRI BioSystems tumor-normal control execution authorization
+date=2026-09-22
+status=FROZEN_READY_TO_OPEN
+preflight_run=35776139828
+preflight_result=12/12_pass
+source_gate_hardened_run=35775152422
+primary=paired_n20
+primary_cancers=BRCA,COAD,HNSC,KIRC,KIRP,LIHC,PRAD,THCA,UCEC
+secondary=unpaired_n30
+secondary_cancers=BRCA,LIHC,PRAD,THCA,UCEC
+normal_values_opened_before_this_commit=false
