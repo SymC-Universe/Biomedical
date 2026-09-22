@@ -1,7 +1,7 @@
 # NSD ds005385 D3 metadata-role closure v0.1
 
 Date: 22 September 2026  
-Status: D3 METADATA ROLE/JOIN CONTRACT CLOSED; D4 PENDING  
+Status: D3 METADATA ROLE/JOIN CONTRACT CLOSED; D4 REPRESENTATIVE REPEAT-CONDITION STRUCTURE VERIFIED  
 Program authority: SymC General Operations Manual v0.8.3
 
 ## Source pinned
@@ -70,3 +70,20 @@ D4 must verify representative real payloads against the source acquisition contr
 - safe digital-to-physical decoding that does not trust the source-warned invalid physical min/max header values.
 
 Only after D4 may a ds005385 P0-Q Function/Limit task be frozen.
+
+
+## 22 September D4 update
+
+The single-file pilot and the prospectively frozen eight-recording repeat-condition expansion are now complete.
+
+Run `35768527802` verified `sub-001` across both sessions and all EyesClosed/EyesOpen x pre/post conditions:
+- 8/8 exact SHA-256 identities passed;
+- 8/8 exact sizes passed;
+- 65 total EDF signals with 64 EEG + Status in every recording;
+- exact channel order and 1000 Hz passed;
+- exact per-file duration and EDF byte consistency passed.
+
+Physical calibration remains deliberately unlicensed because the source warns that EDF physical min/max fields may be invalid.
+
+Canonical audit:
+`DS005385_D4_REPEAT_CONDITION_POSTRESULT_v0.1.md`.
