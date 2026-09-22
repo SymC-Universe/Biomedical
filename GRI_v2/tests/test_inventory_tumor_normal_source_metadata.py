@@ -12,8 +12,8 @@ def test_metadata_only_inventory():
         meth = td / "meth.tsv"
         ann = td / "ann.tsv"
         out = td / "out.json"
-        rna.write_text("gene\tTCGA-AA-0001-01A\tTCGA-AA-0002-11A\nG1\tSECRET_TUMOR\tSECRET_NORMAL\n")
-        meth.write_text("probe\tTCGA-AA-0001-01A\tTCGA-AA-0002-11A\nP1\t999\t888\n")
+        rna.write_text("gene\t"TCGA-AA-0001-01A"\t"TCGA-AA-0002-11A"\nG1\tSECRET_TUMOR\tSECRET_NORMAL\n")
+        meth.write_text("probe\t"TCGA-AA-0001-01A"\t"TCGA-AA-0002-11A"\nP1\t999\t888\n")
         ann.write_text("aliquot_barcode\tcancer type\tDo_not_use\nTCGA-AA-0001-01A\tTEST\tFalse\nTCGA-AA-0002-11A\tTEST\tFalse\n")
         subprocess.run([
             sys.executable, SCRIPT,
