@@ -2,8 +2,10 @@
 
 **Status:** CLOSED SOURCE/IDENTITY GATE; NO BIOLOGICAL VALUES OPENED  
 **Workflow:** GRI BioSystems tumor-normal source gate  
-**Run:** 35774748332  
-**Artifact:** GRI_BIOSYSTEMS_TUMOR_NORMAL_SOURCE_GATE_V01, artifact 10714969175  
+**Initial run:** 35774748332  
+**Hardened identity run:** 35775152422  
+**Initial artifact:** GRI_BIOSYSTEMS_TUMOR_NORMAL_SOURCE_GATE_V01, artifact 10714969175  
+**Hardened artifact:** same source-gate workflow; exact-pair manifest emitted under v1.1  
 **Artifact digest:** sha256:75ff6f0af67be78f1ce88cbb4680739ae8b52adc3b9c03c585dad26e6c8e5a8d
 
 ## Frozen source identities
@@ -29,7 +31,9 @@ The gate read source headers and GDC case/project identity only. It did not read
 
 ## Primary paired-control feasibility
 
-The strongest control is participant-paired tumor versus normal using the same patient, with both sample type 01 and sample type 11 present in both RNA and methylation.
+The hardened gate retained the same nine n=20-eligible cancers and produced **408 exact complete cross-modal tumor/normal participant pairs** across the source.
+
+The strongest control is participant-paired tumor versus normal using the same patient, with both sample type 01 and sample type 11 present in both RNA and methylation. The hardened v1.1 identity gate additionally requires exactly one source column per required slot; source-origin duplicate columns are preserved in provenance but not value-selected into the primary comparison.
 
 The prospectively chosen primary analysis requires at least 20 complete cross-modal pairs so the existing RNA minimum-finite-sample rule remains usable without inventing a post-result exception.
 
@@ -38,7 +42,7 @@ The prospectively chosen primary analysis requires at least 20 complete cross-mo
 | Cancer | Complete paired cross-modal participants |
 | --- | ---: |
 | BRCA | 94 |
-| COAD | 28 |
+| COAD | 27 |
 | HNSC | 20 |
 | KIRC | 23 |
 | KIRP | 23 |
