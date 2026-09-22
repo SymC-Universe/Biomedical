@@ -1,7 +1,7 @@
 # NSD State-Space Standard-Toolkit Comparator Plan v0.1
 
 Date: 18 September 2026
-Status: P0-Q COMPARATOR ACTIVE / FAIRNESS MAPPING FROZEN
+Status: P0-Q FIRST COMPARATOR COMPLETE / SECOND-LANE DESIGN REQUIRED
 
 ## Purpose
 
@@ -142,3 +142,28 @@ The first matched known-truth comparator is now executable under:
 `.github/workflows/nsd-somata-known-truth.yml`.
 
 No overall ADDS/EQUIVALENT/SUBTRACTS verdict is authorized by this first P0-Q run.
+
+
+## First matched known-truth result
+
+Run `35758411626` completed successfully.
+
+Artifact:
+- `nsd-somata-known-truth-v0-1`;
+- artifact id `10709057858`;
+- artifact ZIP SHA-256 `d8e09646a122399feb3846d5a36df67d4d4a0925d0554853cc0a8da324d65156`.
+
+The result is audited in:
+`SOMATA_COMPARATOR_POSTRESULT_v0.1.md`.
+
+Key disposition:
+- gross single-versus-separated-two-mode behavior is reproducible across both architectures on the matched 120 Hz lane;
+- close-mode and frequency-shift cases retain disagreements;
+- SOMATA iOsc does not contain a zero-oscillator alternative, so nonoscillatory refusal is not directly comparable;
+- the 256 -> 120 Hz transform materially changes NSD model-order behavior for some stochastic controls, so the first lane cannot be treated as a semantically neutral reproduction of the native 256 Hz qualification task.
+
+No tool ranking is authorized.
+
+A second comparator version requires a new prospective design that separates:
+1. native-at-comparator-rate truth from resampling effects;
+2. oscillator decomposition from an explicit nonoscillatory standard-toolkit alternative.
