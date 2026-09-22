@@ -95,6 +95,10 @@ def main():
     annotation, conflicts = read_annotation(args.annotation)
     rna = read_header_samples(args.rna)
     meth = read_header_samples(args.methylation)
+    if not rna:
+        raise RuntimeError("parsed zero TCGA RNA samples from source header")
+    if not meth:
+        raise RuntimeError("parsed zero TCGA methylation samples from source header")
     rna_counts, rna_unmatched = unique_participants(rna, annotation)
     meth_counts, meth_unmatched = unique_participants(meth, annotation)
 
