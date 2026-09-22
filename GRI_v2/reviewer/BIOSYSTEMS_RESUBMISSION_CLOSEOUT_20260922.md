@@ -28,9 +28,9 @@
 - [x] Complete streamed exact SHA-256 verification of the large R/S GDC source files and preserve artifacts. Run `35733676268` passed both independent jobs: R = 1,882,540,959 bytes, SHA-256 `674b19b7ed9ae4c5ef35ee2824936429aa5d46c0735a3d180f41552fcbbdb658`; S = 5,022,150,019 bytes, SHA-256 `5934c497882fbe8178d128a3a7f71e765480af6bbd460e0398de3428cd075b77`.
 - [x] Close resource-safe R/S exact-source identity provenance. These verifications opened no biological outcomes, derived no features, selected no conglomerate weights, and created no scalar chi. Future materialization must bind to these frozen identities.
 - [ ] Audit/lock native-comparator software/environment provenance for the next joint task.
-- [ ] Convert all current Function/Limit/refusal results into a manuscript-ready claim inventory.
-- [ ] Build the old-submitted-claim -> revised-claim -> evidence -> manuscript-section mapping.
-- [ ] Build figure/table regeneration inventory and identify every submitted figure that must be retired rather than edited.
+- [x] Convert the current Function/Limit/refusal state into a manuscript-ready revision claim map: `BIOSYSTEMS_SUBMITTED_TO_REVISED_CLAIM_MAP_20260922.md`.
+- [x] Build the old-submitted-claim -> revised-claim -> evidence -> manuscript-section mapping in that claim map.
+- [x] Build figure/table regeneration inventory and identify every submitted figure that must be retired rather than edited: `BIOSYSTEMS_FIGURE_TABLE_REGEN_INVENTORY_20260922.md`. All three submitted main figures are retired; the historical driver table is retired unless re-derived from a new frozen question.
 - [ ] Build submission-specific source/data/code hash manifest.
 - [ ] Update non-claim ledger to include all current scalar, clinical, temporal, causal and external-confirmation refusals.
 - [x] Build reviewer-specific response matrix from the received BioSystems reports: `BIOSYSTEMS_REVIEWER_RESPONSE_MATRIX_20260922.md`. Final prose remains result-dependent only for tumor-versus-normal and genuine external confirmation.
