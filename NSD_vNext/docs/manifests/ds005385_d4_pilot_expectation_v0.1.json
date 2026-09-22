@@ -1,0 +1,36 @@
+{
+  "schema": "NSD_DS005385_D4_PILOT_EXPECTATION_V0_1",
+  "date": "2026-09-22",
+  "status": "FROZEN_BEFORE_PAYLOAD_DOWNLOAD",
+  "dataset": "ds005385",
+  "source_release": {
+    "openneuro_doi": "10.18112/openneuro.ds005385.v1.0.3",
+    "public_git_repository": "OpenNeuroDatasets/ds005385",
+    "public_git_commit": "6a558cd5852503e66df9ac7fdac2f3a7f4ed5f12",
+    "nemar_mirror": "on005385/v1.0.0"
+  },
+  "pilot_recording": {
+    "bids_path": "sub-001/ses-1/eeg/sub-001_ses-1_task-EyesClosed_acq-pre_eeg.edf",
+    "subject": "sub-001",
+    "session": "ses-1",
+    "task": "EyesClosed",
+    "acquisition": "pre",
+    "annex_key": "SHA256E-s23936896--a9ef4f8bcc7b3fff6568b7a441e14230ec287faa23212713e32f37bf8a8710a7.edf",
+    "expected_size_bytes": 23936896,
+    "expected_sha256": "a9ef4f8bcc7b3fff6568b7a441e14230ec287faa23212713e32f37bf8a8710a7",
+    "expected_signal_count": 64,
+    "expected_duration_seconds": 184.0,
+    "expected_sampling_rate_hz": 1000.0,
+    "physical_range_policy": "SOURCE_DECLARED_UNRELIABLE_DO_NOT_VALIDATE_OR_USE_FOR_SCALING"
+  },
+  "sidecar_contract": {
+    "manufacturer": "BrainProducts",
+    "manufacturer_model": "BrainAmp DC",
+    "cap_model": "actiCAP 64",
+    "reference": "FCz",
+    "ground": "AFz",
+    "power_line_frequency_hz": 50,
+    "recording_type": "continuous"
+  },
+  "claim_ceiling": "D4 payload identity/header/readability only; no EEG feature, modal inference, chi, diagnosis, or outcome."
+}
