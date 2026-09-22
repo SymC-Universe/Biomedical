@@ -25,7 +25,7 @@ Status vocabulary:
 | Analyze cancers separately rather than relying on pooled pan-cancer behavior | **CLOSED** | Cancer-specific construction and evaluation are built into the current program; Stage C1 historically closed across 32 cancers. |
 | Remove mean-variance dependence / show the signal is not merely CV-vs-mean structure | **CLOSED WITH LIMIT** | The biological-damping interpretation of CV/2 has been withdrawn. Modern mean-variance scrutiny, construction-aware nulls, finite-sample calibration and composition controls now bound the remaining static claims. |
 | Replace toy Poisson logic with realistic nulls | **CLOSED** | The current architecture uses construction-aware resampling/permutation/null controls rather than treating a Poisson anchor as mechanistic validation. |
-| Include normal controls / establish tumor specificity | **OPEN** | No reviewer-ready tumor-versus-normal control is yet frozen as a revision result. This is one of the two principal evidence gaps remaining. |
+| Include normal controls / establish tumor specificity | **DESIGN + ELIGIBILITY CLOSED; BIOLOGICAL RESULT OPEN** | TN-C0 is frozen and closed without opening molecular values. Primary RNA control has 12 eligible cancers; primary RNA+methylation control has 5; paired RNA sensitivity has 13. TN-A1/TN-C1 molecular execution remains the evidence-bearing step. |
 | Control purity / stromal / immune composition | **CLOSED WITH LIMIT** | Purity and methylation-derived leukocyte fraction are explicitly modeled. The revision will state that measured composition is bounded and does not equal complete microenvironment removal. |
 | Replace subjective zones with objective change-point/statistical rules | **CLOSED / HISTORICAL CLAIM RETIRED** | The revised paper does not depend on the submitted Warning/Confirmation/Collapse zoning as a biological phase sequence. Unsupported phase-boundary language is retired rather than cosmetically re-thresholded. |
 | Validate in an independent dataset | **OPEN** | External breast/prostate/melanoma source identities are qualified, but no outcome has been opened and no decisive P1 cohort has been frozen. TCGA FINAL HOLDOUT remains internal validation only. |
@@ -86,7 +86,7 @@ These systems are nonredundant in task and failure criteria, so their agreement 
 
 ### Remaining evidence-bearing revision gates
 
-1. **Tumor-versus-normal control.** Prospectively frozen in `BIOSYSTEMS_TUMOR_NORMAL_CONTROL_FREEZE_20260922.md`; TN-C0 metadata-only inventory is the next authorized step. Source/identity gate prospectively frozen on 22 September 2026 against exact PanCanAtlas RNA and methylation sources; no normal molecular values opened at freeze.
+1. **Tumor-versus-normal control.** Design and TN-C0 eligibility are closed under `BIOSYSTEMS_TUMOR_NORMAL_CONTROL_FREEZE_20260922.md` and `BIOSYSTEMS_TN_C0_ELIGIBILITY_AUDIT_20260922.md`. Frozen sets are 12 RNA-primary cancers, 5 multiomic-primary cancers, and 13 paired-sensitivity cancers. No normal molecular values were opened during eligibility. TN-A1/TN-C1 execution remains open.
 2. **Genuinely external confirmation** under a prospectively frozen transported claim, representation, comparator, inclusion/exclusion rule, metric, falsifier and MFR-14 package.
 
 The SCC25 A-H joint-meaning decision packet is scientifically important to the wider GRI program but is not automatically required to answer the BioSystems reviewers. It must not be allowed to expand the paper merely because it is available.
