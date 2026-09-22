@@ -12,7 +12,7 @@ Date: 14 September 2026
 | Spatial organization | Which regional/channel relationships survive preprocessing and aggregation? | Underdeveloped historically | Preserve channel/regional structure and compare with whole-head summaries |
 | Modal organization | Which poles/modes/subspaces are reproducibly identifiable? | M1 rejected for real EEG; M2 recovers single-oscillator truth under white observation noise but fails model-adequacy adversaries | Complete A0/A1/A2 state-space adequacy, stationarity, residual/innovation, identifiability, held-out, and operating-region qualification before real-EEG modal admission |
 | Scalar licensing | Where can a true dynamical chi be recovered? | No real-EEG scalar currently licensed; descriptive peaks and current M2 fits do not earn local chi | Freeze a qualified modal route first; then license only mode-specific scalars with explicit lineage, uncertainty, and refusal |
-| Conglomerate organization | How do modes, channels, and regions organize at system level? | Candidate architecture | Build relational/network measures without forcing scalar collapse |
+| Conglomerate organization | How do modes, channels, and regions organize at system level? | Exact coupled-second-order known truth now proves local damping, embedded asymptotic structure, transient gain, and recovery are not interchangeable; no real-EEG system operator yet licensed | Preserve native local/modal and system descriptors; next empirical gate is identifiable coupling/operator structure without forcing scalar collapse |
 | Healthy-to-clinical comparison | Which structures shift in ASD or other phenotypes? | Intentionally blocked downstream of T0/T1; historical findings remain non-authoritative | Lock qualified healthy/reference layers first, then freeze a subject-level clinical task with simple/native baselines and untouched evidence |
 | Development/age | How does architecture change with age? | Atlas target | Age-residualized reference design |
 | Perturbation/recovery | How does the system respond to state changes? | Candidate future track | Repeated-state or longitudinal datasets |
@@ -39,8 +39,23 @@ Date: 14 September 2026
 | NSD-L15 | No coherent shared architecture across disorders | Retire or narrow shared-instability claim |
 | NSD-L16 | Method failure suggests biology but lacks independent test | Treat as new hypothesis, not biological transition evidence |
 | NSD-L17 | Single-oscillator covariance model fits multimode/nonstationary/nonoscillatory truth | Refuse real-EEG modal damping until explicit model adequacy/order qualification is satisfied |
-| NSD-L18 | Alternative-model diagnostic improves by adding complexity even for valid single-mode truth | Do not freeze pseudo-BIC/model-order threshold; require statistically justified likelihood/held-out adequacy framework |
+| NSD-L18 | Alternative-model diagnostic improves by adding complexity even for valid single-mode truth | Do not freeze pseudo-BIC/model-order threshold; require statistically justified likelihood/held-out adequacy framework |\n| NSD-L19 | Identical local modal damping ratios can coexist with different embedded spectra, transient gain, or global stability | Do not use local chi vector or any average of local chi as a sufficient system-level descriptor |\n| NSD-L20 | Identical full eigenspectra can coexist with materially different transient amplification and recovery in non-normal coupled systems | Do not treat eigenspectrum/spectral abscissa alone as sufficient for perturbation or resilience claims; retain reactivity/transient/recovery descriptors where the question requires them |
 
 ## Priority balance check
 
 Current NSD work has now materially strengthened representative healthy/function mapping through the 42-subject repeat population while also exposing substantial descriptive and modal limits. The balance rule still favors continued ordinary healthy/channel/region mapping in parallel with the M2 adequacy challenge. The project should not become failure-only: the next Atlas work should preserve both the high-occupancy functioning interior and the outlier/refusal structure rather than allowing adversarial modal work to displace representative neurophysiology.
+
+
+## 22 September coupled-system known-truth update
+
+Run `35759456553` closed the first explicit second-order GOM v0.8.3 local-chi / broader-system known-truth task.
+
+The exact fixtures establish:
+- same local `zeta_i` + same full eigenvalues can still produce maximum transient gain 1.0 versus ~2.34 and different sustained return behavior;
+- same local `zeta_i` can reorganize the embedded modal spectrum under reciprocal coupling;
+- stable isolated modes can become globally unstable after coupling.
+
+This is a Limit-Map result about representation sufficiency. It is not evidence that these particular matrices describe human EEG.
+
+Canonical audit:
+`CHI_SYSTEM_COUPLED_KNOWN_TRUTH_POSTRESULT_v0.1.md`.
