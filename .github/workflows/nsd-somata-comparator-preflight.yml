@@ -8,6 +8,10 @@ on:
     paths:
       - ".github/workflows/nsd-somata-comparator-preflight.yml"
       - "NSD_vNext/engine/tools/preflight_somata_comparator.py"
+  pull_request:
+    paths:
+      - ".github/workflows/nsd-somata-comparator-preflight.yml"
+      - "NSD_vNext/engine/tools/preflight_somata_comparator.py"
 
 permissions:
   contents: read
