@@ -385,3 +385,24 @@ All eight payloads passed exact hash, byte-count, channel-order, auxiliary-statu
 The source's warning about unreliable EDF physical min/max remains binding. This result verifies payload structure, not physical voltage calibration.
 
 Next gate is a prospectively frozen scale-invariant Function/Limit task or an independently recovered calibration route. No real-EEG chi is opened.
+
+
+## ds004148 independent transfer candidate
+
+OpenNeuro `ds004148` has now entered the independent label-blind transfer-preparation lane.
+
+Pinned public structure:
+- 60 subjects;
+- 3 sessions per subject;
+- 5 states per session;
+- 900 raw BrainVision recordings at 500 Hz.
+
+A source metadata discrepancy was found: the BIDS EEG JSON declares 64 EEG channels while the channel tables contain 61 rows.
+
+D4 pilot run `35768880156` resolved the raw payload itself to **61 channels**:
+- VHDR `NumberOfChannels=61`;
+- 61 channel definitions;
+- exact annex identities;
+- exact 61 x 500 Hz x 300 s x 4-byte binary size.
+
+No NSD feature or clinical/behavioral outcome was opened. The next gate is cross-session resting-payload expansion, then a prospectively frozen independent-transfer task.
