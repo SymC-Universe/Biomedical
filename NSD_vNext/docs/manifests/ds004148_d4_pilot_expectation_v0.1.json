@@ -1,0 +1,42 @@
+{
+  "schema": "NSD_DS004148_D4_PILOT_EXPECTATION_V0_1",
+  "date": "2026-09-22",
+  "status": "FROZEN_BEFORE_D4_PAYLOAD_EXECUTION",
+  "dataset": "ds004148",
+  "source_release": {
+    "openneuro_doi": "10.18112/openneuro.ds004148.v1.0.0",
+    "public_git_repository": "OpenNeuroDatasets/ds004148",
+    "public_git_commit": "0c740d838a2c33feeec0b6e514aea323d0e65ca4",
+    "nemar_mirror": "on004148/v1.0.0"
+  },
+  "pilot": {
+    "subject": "sub-01",
+    "session": "ses-session1",
+    "task": "eyesclosed",
+    "relative_base": "sub-01/ses-session1/eeg/sub-01_ses-session1_task-eyesclosed_eeg",
+    "files": {
+      "eeg": {
+        "size_bytes": 36600000,
+        "md5": "0fceeb9eb4163b86b815061f8fff80d7"
+      },
+      "vhdr": {
+        "size_bytes": 1122,
+        "md5": "c5e313903936ef2fb9c1b3e0bfd61593"
+      },
+      "vmrk": {
+        "size_bytes": 5960,
+        "md5": "372402829a14249220eb8365f964d2de"
+      }
+    }
+  },
+  "bids_contract": {
+    "channels_tsv_rows": 61,
+    "eeg_json_declared_channel_count": 64,
+    "sampling_rate_hz": 500,
+    "recording_duration_seconds": 300,
+    "units": "uV",
+    "reference": "FCz"
+  },
+  "discrepancy_rule": "raw BrainVision NumberOfChannels and binary layout adjudicate payload structure; preserve BIDS JSON mismatch as source metadata discrepancy rather than altering payload",
+  "claim_ceiling": "D4 payload identity/header/channel reconciliation only; no EEG-derived feature, modal inference, chi, capital-Chi, or behavioral outcome."
+}
