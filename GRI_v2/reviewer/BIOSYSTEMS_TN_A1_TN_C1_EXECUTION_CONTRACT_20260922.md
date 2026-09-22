@@ -110,6 +110,13 @@ Methylation source and Stage C1 definitions remain inherited:
 
 Seed namespace for tissue-state C1 resampling/nulls: `GRI_BIOSYS_TN_C1_20260922`, using the already-frozen C1 `stable_seed` tokenization with tissue state appended to the cancer token.
 
+Probe completeness/imputation is bound symmetrically before resampling:
+- within each cancer and tissue state, a probe must be finite in >=95% of the full quality-eligible RNA+methylation overlap pool for that state, matching the frozen C1 within-cancer completeness rule;
+- the **primary tumor-normal representation is the intersection** of probes passing that frozen 95% rule in both tumor and normal for the cancer, so both states use the identical ordered probe universe;
+- PRIMARY_PUBLICATION uses this common probe set; MASKED_TECHNICAL additionally removes the frozen 579-probe technical-mask union;
+- missing beta values in a retained probe are completed with the median of that probe within the corresponding cancer/state overlap pool, matching the inherited within-cohort C1 imputation rule while avoiding cross-state information leakage;
+- if the common primary representation falls below the inherited C1 representation requirements, that cancer/track is TN-NOT_EVALUABLE and is not rescued.
+
 For each state/draw/track, retain:
 - H1: `delta_s = s_spec - null_s_spec`;
 - H2: `delta_cka = CKA - patient-null CKA`;
