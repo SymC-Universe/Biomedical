@@ -4,13 +4,13 @@
 
 This repository contains both historical SymC biomedical papers and active reconstruction programs. Historical PDFs, TeX files, and releases are retained for provenance. They do not automatically represent the current evidentiary status of the corresponding project.
 
-Current work is governed by the SymC General Operations Manual v0.8.0 plus project-local controls.
+Current work is governed by the SymC General Operations Manual v0.8.3 plus project-local controls.
 
 ## Active oncology program: GRI v2 / capital-Chi biological architecture
 
 The active GRI conglomerate/tool source of record is:
 
-`gri-conglomerate-v1-integration-20260919`
+`gri-conglomerate-v1-integration-20260921`
 
 That branch reconciles two compatible 18 September development lineages that had diverged operationally. The reconciliation changes no scientific threshold, block definition, target, comparator, split, or outcome rule.
 
@@ -74,6 +74,9 @@ These artifacts are part of the research record, not automatic current evidence.
 
 Across biomedical projects:
 
+- GOM v0.8.3 makes the joint meaning of any licensed local/modal chi and the broader system Chi architecture an explicit research target;
+- perturbation/recovery is a separately defined evidence layer, and stability is not defined as recovery;
+
 - native biological/neurophysiological science comes first;
 - a statistical ratio is not promoted to physical damping by notation;
 - cross-sectional order is not time;
@@ -87,7 +90,7 @@ Across biomedical projects:
 ## Repository organization
 
 - `main` is the public landing/history branch.
-- `gri-conglomerate-v1-integration-20260919` is the current GRI conglomerate/tool development source of record.
+- `gri-conglomerate-v1-integration-20260921` is the current GRI conglomerate/tool development source of record.
 - `nsd-rebuild-gom-v0.8.0` is the current NSD rebuild source of record.
 - Large source datasets may remain outside Git history when their exact identities, hashes, acquisition paths, and regeneration rules are preserved.
 
