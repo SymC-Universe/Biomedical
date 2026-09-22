@@ -342,3 +342,33 @@ Their useful continuity is not the old numerical answers. It is that, before the
 - and systems-within-systems.
 
 Those ideas now re-enter the program only as explicit, independently testable architecture using established terminology wherever possible. The old work remains valuable as a hypothesis generator even where its original confidence exceeded its evidence.
+
+## 10. First exact coupled-second-order result
+
+Date: 22 September 2026
+
+The CVX program now has an executable second-order known-truth result rather than only a design proposal.
+
+Workflow:
+- `NSD Chi-vs-System Coupled Known Truth`;
+- run `35759456553`;
+- artifact `nsd-chi-system-coupled-known-truth-v0-1`;
+- artifact ZIP SHA-256 `b58c3e84194d6e303dcc1b1763b87466bf1364e2d5d4ffa832d0c687220cfd8b`.
+
+Exact findings:
+1. identical local damping ratios and identical full eigenspectra can coexist with substantially different transient amplification and return behavior;
+2. identical local damping ratios can coexist with different embedded modal spectra after coupling;
+3. locally stable second-order components can form a globally unstable coupled system.
+
+Thus the joint lowercase-chi / broader-system target is not merely a semantic distinction. In exact known truth:
+- local damping;
+- embedded asymptotic spectrum;
+- transient reactivity/gain;
+- recovery
+
+are separable properties.
+
+Canonical result audit:
+`CHI_SYSTEM_COUPLED_KNOWN_TRUTH_POSTRESULT_v0.1.md`.
+
+No whole-system scalar is promoted. The empirical NSD question remains whether analogous system/operator structure can be identified from neural data with sufficient reproducibility and model adequacy.
