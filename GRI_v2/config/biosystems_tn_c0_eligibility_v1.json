@@ -1,0 +1,102 @@
+{
+  "schema": "gri-biosystems-tn-c0-eligibility-v1.0",
+  "status": "FROZEN_TN_C0_METADATA_ELIGIBILITY",
+  "date": "2026-09-22",
+  "outcome_sealed": true,
+  "molecular_values_read": false,
+  "sample_types": {
+    "01": "Primary Solid Tumor",
+    "11": "Solid Tissue Normal"
+  },
+  "thresholds": {
+    "rna_primary_each_state_unique_participants_min": 30,
+    "multiomic_each_state_rna_methylation_overlap_min": 30,
+    "rna_paired_sensitivity_participants_min": 20
+  },
+  "source_identity": {
+    "rna_gdc_uuid": "3586c0da-64d0-4b74-a449-5ff4d9136611",
+    "methylation_gdc_uuid": "d82e2c44-89eb-43d9-b6d3-712732bf6a53",
+    "sample_quality_annotation_gdc_uuid": "1a7d7be8-675d-4e60-a105-19d4121bdebf"
+  },
+  "execution": {
+    "branch": "gri-biosystems-revision-20260922",
+    "head_commit": "52599f2521df4819bd5cbaa21372a8f45713f04a",
+    "workflow_run": 35784202933,
+    "artifact_id": 10719607059,
+    "artifact_digest": "sha256:3ff9aa61654bd468041040a31c8dbda427fc7ca6b5ea6afd1af07f06a95ad3f8",
+    "inventory_json_sha256": "81d1e7c2089a8a4957593542df8628cf21cf976025161ee194974397c60eca6e",
+    "rna_header_sha256": "598c13309763ead5e347a772cabf51b7df4ba9a1eac87bcf4df56d803b065434",
+    "methylation_header_sha256": "932b1bc6155d522ade004ac0b7a4ed304b175615b7b7a397566884ba4a1c4e7c"
+  },
+  "quality_accounting": {
+    "annotation_conflicts": 0,
+    "rna_missing_annotation_unique_participants": 0,
+    "methylation_missing_annotation_unique_participants": 0,
+    "rna_quality_excluded_dnu_unique_participants_by_sample_type": {
+      "01": 136,
+      "06": 1,
+      "11": 23
+    },
+    "methylation_quality_excluded_dnu_unique_participants_by_sample_type": {
+      "01": 34,
+      "11": 1
+    },
+    "rna_duplicate_participants_by_sample_type": {
+      "01": 4,
+      "02": 5,
+      "03": 0,
+      "05": 0,
+      "06": 0,
+      "07": 0,
+      "11": 0
+    },
+    "methylation_duplicate_participants_by_sample_type": {
+      "01": 43,
+      "02": 5,
+      "03": 0,
+      "05": 0,
+      "06": 0,
+      "07": 0,
+      "11": 0
+    }
+  },
+  "eligible_sets": {
+    "rna_primary_n30": [
+      "BRCA",
+      "COAD",
+      "HNSC",
+      "KIRC",
+      "KIRP",
+      "LIHC",
+      "LUAD",
+      "LUSC",
+      "PRAD",
+      "STAD",
+      "THCA",
+      "UCEC"
+    ],
+    "multiomic_primary_n30": [
+      "BRCA",
+      "LIHC",
+      "PRAD",
+      "THCA",
+      "UCEC"
+    ],
+    "rna_paired_sensitivity_n20": [
+      "BRCA",
+      "COAD",
+      "HNSC",
+      "KICH",
+      "KIRC",
+      "KIRP",
+      "LIHC",
+      "LUAD",
+      "LUSC",
+      "PRAD",
+      "STAD",
+      "THCA",
+      "UCEC"
+    ]
+  },
+  "next_gate": "BIOLOGICAL_VALUES_REMAIN_SEALED_UNTIL_TN_A1_TN_C1_EXECUTION_CONTRACT_IS_BOUND_TO_THIS_ELIGIBILITY"
+}
