@@ -87,3 +87,26 @@ def test_read_edf_header_refuses_declared_header_size_mismatch(tmp_path):
 
     with pytest.raises(EDFHeaderError, match="header_bytes mismatch"):
         read_edf_header(path)
+
+
+def test_source_declared_invalid_physical_range_can_be_ignored_for_d4_header_audit(tmp_path):
+    path = tmp_path / "invalid-physical-range.edf"
+    _write_synthetic_edf(path)
+    data = bytearray(path.read_bytes())
+
+    signal_count = 2
+    physical_min_start = 256 + 16 * signal_count + 80 * signal_count + 8 * signal_count
+    physical_max_start = physical_min_start + 8 * signal_count
+
+    data[physical_min_start : physical_min_start + 8] = _field(100, 8)
+    data[physical_max_start : physical_max_start + 8] = _field(-100, 8)
+    path.write_bytes(bytes(data))
+
+    with pytest.raises(EDFHeaderError, match="physical range invalid"):
+        read_edf_header(path)
+
+    header = read_edf_header(path, validate_physical_range=False)
+    assert header.signal_count == 2
+    assert header.expected_file_size_bytes == path.stat().st_size
+    assert header.signals[0].physical_minimum == pytest.approx(100.0)
+    assert header.signals[0].physical_maximum == pytest.approx(-100.0)
