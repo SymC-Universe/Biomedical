@@ -2,7 +2,7 @@
 
 Status: ACTIVE RECONSTRUCTION / NOT A VALIDATED CLINICAL TOOL
 Date initialized: 14 September 2026
-Governing manual: SymC General Operations Manual v0.8.0
+Governing manual: SymC General Operations Manual v0.8.3
 Working branch: `nsd-rebuild-gom-v0.8.0`
 
 This directory is the forward NSD research workspace. Historical NSD PDFs and archives remain provenance, not current evidentiary authority.
@@ -21,7 +21,7 @@ feeding, only after task-specific validation,
 
 The end-state tool is not one classifier and not one whole-brain stability score. It is intended to support independently matured functions for assessment, open-set differential diagnostic support, longitudinal monitoring, and prognosis only where longitudinal evidence earns it.
 
-The project treats scalar, vector/modal, and conglomerate/system representations as starting components of a larger stability architecture. It does not force every subject, session, channel, mode, disorder, or dataset into a single chi value.
+The project treats scalar, vector/modal, and conglomerate/system representations as starting components of a larger stability architecture. It does not force every subject, session, channel, mode, disorder, or dataset into a single chi value. Under GOM v0.8.3, the joint meaning of any licensed local/modal chi and the broader neural Chi architecture is itself a research target, including how system organization conditions local realized behavior. Perturbation/recovery is a separate prospectively defined evidence layer rather than a synonym for stability.
 
 ## Canonical working files
 
@@ -31,9 +31,10 @@ The project treats scalar, vector/modal, and conglomerate/system representations
 
 ### Governance and continuity
 
-- `docs/NSD_PROJECT_PROTOCOL_v0.1.md` — project-local safeguards under GOM v0.8.0.
+- `docs/NSD_PROJECT_PROTOCOL_v0.1.md` — project-local safeguards under GOM v0.8.3.
 - `docs/CONTINUITY_STATE_v0.1.md` — current continuity record and permanent historical correction.
-- `docs/GOM_v0.8.0_ADOPTION_CHECKLIST_v0.1.md` — project migration/adoption record.
+- `docs/GOM_v0.8.0_ADOPTION_CHECKLIST_v0.1.md` — historical project migration/adoption record.
+- `docs/GOM_V0.8.3_MIGRATION_20260921.md` — current program-governance migration and joint chi/Chi plus perturbation/recovery requirements.
 - `docs/CLAIM_LEDGER_v0.1.md` — evidence ceiling for every major manuscript claim.
 - `docs/PENDING_RESULT_INSERTS_v0.1.md` — manuscript locations blocked by computation or re-audit.
 - `docs/TASK_FREEZE_TEMPLATE_v0.1.md` — task-level preregistration/freeze template for P0-Q/P1 work.
