@@ -165,27 +165,28 @@ def one_cancer(cancer):
     global _X,_GENES,_MODULES,_GROUPS
     out_mod=[]; out_draw=[]; out_mem=[]; paired_mod=[]; paired_draw=[]; paired_mem=[]
     g=_GROUPS[cancer]
-    for rep in range(PRIMARY_REPS):
-        sels={}
-        for state in ["TUMOR","NORMAL"]:
-            pool=g[state]
-            rng=np.random.default_rng(stable_seed(PRIMARY_NAMESPACE,cancer,state,rep))
-            sel=np.sort(rng.choice(pool,size=FIXED_N,replace=False)); sels[state]=sel
-            m=metric_rows(_X[sel,:],_GENES,_MODULES)
-            out_mem.append({"lane":"TN_A1","cancer":cancer,"state":state,"resample":rep,
-                            "participants":"|".join(g["row_to_participant"][int(i)] for i in sel)})
-            for z in m:
-                out_mod.append({"lane":"TN_A1","cancer":cancer,"state":state,"resample":rep,"module":z.module,
-                                "n_genes":z.n_genes,"cin_pairwise_median_abs":z.cin_pairwise_median_abs,
-                                "cin_pc1_variance_fraction":z.cin_pc1_variance_fraction,
-                                "cout_eigengene_median_abs":z.cout_eigengene_median_abs,
-                                "pc1_imputed_fraction":z.pc1_imputed_fraction})
-            if not m: raise ValueError(f"{cancer} {state}: no evaluable Hallmarks")
-            out_draw.append({"lane":"TN_A1","cancer":cancer,"state":state,"resample":rep,
-                             "evaluable_hallmarks":len(m),
-                             "cin_pairwise":float(np.nanmedian([z.cin_pairwise_median_abs for z in m])),
-                             "cin_pc1":float(np.nanmedian([z.cin_pc1_variance_fraction for z in m])),
-                             "cout":float(np.nanmedian([z.cout_eigengene_median_abs for z in m]))})
+    if g.get("PRIMARY_ELIGIBLE", False):
+        for rep in range(PRIMARY_REPS):
+            sels={}
+            for state in ["TUMOR","NORMAL"]:
+                pool=g[state]
+                rng=np.random.default_rng(stable_seed(PRIMARY_NAMESPACE,cancer,state,rep))
+                sel=np.sort(rng.choice(pool,size=FIXED_N,replace=False)); sels[state]=sel
+                m=metric_rows(_X[sel,:],_GENES,_MODULES)
+                out_mem.append({"lane":"TN_A1","cancer":cancer,"state":state,"resample":rep,
+                                "participants":"|".join(g["row_to_participant"][int(i)] for i in sel)})
+                for z in m:
+                    out_mod.append({"lane":"TN_A1","cancer":cancer,"state":state,"resample":rep,"module":z.module,
+                                    "n_genes":z.n_genes,"cin_pairwise_median_abs":z.cin_pairwise_median_abs,
+                                    "cin_pc1_variance_fraction":z.cin_pc1_variance_fraction,
+                                    "cout_eigengene_median_abs":z.cout_eigengene_median_abs,
+                                    "pc1_imputed_fraction":z.pc1_imputed_fraction})
+                if not m: raise ValueError(f"{cancer} {state}: no evaluable Hallmarks")
+                out_draw.append({"lane":"TN_A1","cancer":cancer,"state":state,"resample":rep,
+                                 "evaluable_hallmarks":len(m),
+                                 "cin_pairwise":float(np.nanmedian([z.cin_pairwise_median_abs for z in m])),
+                                 "cin_pc1":float(np.nanmedian([z.cin_pc1_variance_fraction for z in m])),
+                                 "cout":float(np.nanmedian([z.cout_eigengene_median_abs for z in m]))})
     paired_parts=g.get("PAIRED_PARTS",[])
     if len(paired_parts)>=PAIRED_N:
         for rep in range(PAIRED_REPS):
@@ -266,7 +267,7 @@ def main():
     recdf.to_csv(a.out/"TN_RNA_SAMPLE_MANIFEST.csv",index=False)
     groups={}
     for cancer in sorted(primary):
-        groups[cancer]={"row_to_participant":dict(zip(recdf.matrix_row.astype(int),recdf.participant.astype(str)))}
+        groups[cancer]={"row_to_participant":dict(zip(recdf.matrix_row.astype(int),recdf.participant.astype(str))),"PRIMARY_ELIGIBLE":True}
         groups[cancer]["participant_to_row"]={}
         for state in ["TUMOR","NORMAL"]:
             z=recdf[(recdf.cancer.eq(cancer))&(recdf.state.eq(state))]
@@ -275,7 +276,7 @@ def main():
             groups[cancer]["participant_to_row"][state]=dict(zip(z.participant.astype(str),z.matrix_row.astype(int)))
         groups[cancer]["PAIRED_PARTS"]=sorted(set(groups[cancer]["participant_to_row"]["TUMOR"])&set(groups[cancer]["participant_to_row"]["NORMAL"]))
     for cancer in sorted(paired-primary):
-        groups[cancer]={"row_to_participant":dict(zip(recdf.matrix_row.astype(int),recdf.participant.astype(str))),"participant_to_row":{}}
+        groups[cancer]={"row_to_participant":dict(zip(recdf.matrix_row.astype(int),recdf.participant.astype(str))),"participant_to_row":{},"PRIMARY_ELIGIBLE":False}
         for state in ["TUMOR","NORMAL"]:
             z=recdf[(recdf.cancer.eq(cancer))&(recdf.state.eq(state))]
             groups[cancer][state]=z.matrix_row.to_numpy(int)
