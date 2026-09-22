@@ -1,0 +1,96 @@
+name: GRI BioSystems TN RNA biological control
+
+on:
+  push:
+    branches:
+      - gri-biosystems-revision-20260922
+    paths:
+      - '.github/workflows/gri-biosystems-tn-rna.yml'
+      - 'GRI_v2/src/run_biosystems_tumor_normal_rna.py'
+      - 'GRI_v2/src/module_network.py'
+      - 'GRI_v2/src/module_network_accel.py'
+      - 'GRI_v2/config/biosystems_tn_c0_eligibility_v1.json'
+      - 'GRI_v2/reviewer/BIOSYSTEMS_TN_A1_TN_C1_EXECUTION_CONTRACT_20260922.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tn-rna:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install runtime
+        run: python -m pip install --disable-pip-version-check numpy pandas
+
+      - name: Download exact frozen sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 5 --retry-delay 3 \
+            'https://api.gdc.cancer.gov/data/3586c0da-64d0-4b74-a449-5ff4d9136611' \
+            -o EBPlusPlusAdjustPANCAN_IlluminaHiSeq_RNASeqV2.geneExp.tsv
+          curl --fail --location --retry 5 --retry-delay 3 \
+            'https://api.gdc.cancer.gov/data/1a7d7be8-675d-4e60-a105-19d4121bdebf' \
+            -o merged_sample_quality_annotations.tsv
+          curl --fail --location --retry 5 --retry-delay 3 \
+            'https://data.broadinstitute.org/gsea-msigdb/msigdb/release/2026.1.Hs/h.all.v2026.1.Hs.symbols.gmt' \
+            -o h.all.v2026.1.Hs.symbols.gmt || true
+          python - <<'PY'
+          import hashlib, pathlib, urllib.request
+          p=pathlib.Path('h.all.v2026.1.Hs.symbols.gmt')
+          exp='eecaf6dad908334ae885406ec72bdc0646d8917588ed7c219fac92fc5363f596'
+          def sha(x):
+              h=hashlib.sha256()
+              with open(x,'rb') as f:
+                  for b in iter(lambda:f.read(1<<20),b''): h.update(b)
+              return h.hexdigest()
+          if (not p.exists()) or sha(p)!=exp:
+              urllib.request.urlretrieve(
+                'https://raw.githubusercontent.com/JeanRadig/KaleidoCell/main/kaleidocell/files/h.all.v2026.1.Hs.symbols.gmt',
+                p
+              )
+          got=sha(p)
+          if got!=exp:
+              raise SystemExit(f'Hallmark source hash mismatch: {got}')
+          print('Hallmark source identity PASS')
+          PY
+
+      - name: Run frozen TN-A1 and TN-P20 biological controls
+        env:
+          PYTHONPATH: GRI_v2
+        run: |
+          mkdir -p TN_RNA_RESULTS
+          python GRI_v2/src/run_biosystems_tumor_normal_rna.py \
+            --rna EBPlusPlusAdjustPANCAN_IlluminaHiSeq_RNASeqV2.geneExp.tsv \
+            --annotation merged_sample_quality_annotations.tsv \
+            --gmt h.all.v2026.1.Hs.symbols.gmt \
+            --eligibility GRI_v2/config/biosystems_tn_c0_eligibility_v1.json \
+            --out TN_RNA_RESULTS \
+            --workers 2
+
+      - name: Hash results
+        run: |
+          python - <<'PY'
+          import hashlib,json,pathlib
+          rows=[]
+          for p in sorted(pathlib.Path('TN_RNA_RESULTS').glob('*')):
+              if p.is_file():
+                  h=hashlib.sha256(p.read_bytes()).hexdigest()
+                  rows.append({'file':p.name,'bytes':p.stat().st_size,'sha256':h})
+          pathlib.Path('TN_RNA_RESULTS/TN_RNA_OUTPUT_SHA256.json').write_text(json.dumps(rows,indent=2)+'\n')
+          PY
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: GRI_BIOSYSTEMS_TN_RNA_RESULTS_V01
+          path: TN_RNA_RESULTS
+          if-no-files-found: warn
