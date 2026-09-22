@@ -11,7 +11,10 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from src import biosystems_tumor_normal_core as core
+try:
+    from src import biosystems_tumor_normal_core as core
+except ModuleNotFoundError:
+    import biosystems_tumor_normal_core as core
 
 
 NA_VALUES = ["", "NA", "N/A", "NaN", "nan", "NULL", "null"]
