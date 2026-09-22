@@ -2,14 +2,14 @@
 
 **Status:** DEVELOPMENT PROGRAM, NOT A VALIDATED CANCER TOOL  
 **Status date:** 2026-09-19  
-**Program authority:** General Cross-Project Research Protocol v0.8.0 plus GRI project-local scientific controls  
-**Active development branch:** `gri-conglomerate-v1-integration-20260919`
+**Program authority:** SymC General Operations Manual v0.8.3 plus GRI project-local scientific controls  
+**Active development branch:** `gri-conglomerate-v1-integration-20260921`
 
 > **Start here for current conglomerate work:** `docs/GRI_CONGLOMERATE_V1_BRANCH_RECONCILIATION_20260919.md` and `docs/GRI_CONGLOMERATE_CHI_TOOL_V1_DEVELOPMENT_FREEZE_20260918.md`.
 >
 > **Manuscript status:** active unpublished manuscript development is private. Public manuscript paths, where present, are status/provenance stubs only.
 >
-> **Program authority:** SymC General Operations Manual v0.8.0 plus GRI project-local scientific controls.
+> **Program authority:** SymC General Operations Manual v0.8.3 plus GRI project-local scientific controls.
 
 ## Objective
 
@@ -19,7 +19,7 @@ The historical GRI manuscript is provenance, not the target model. Historical `c
 
 ## Current scientific state
 
-The strongest current result is architectural rather than scalar.
+The strongest current result is architectural rather than scalar. Under GOM v0.8.3, if a local/modal lowercase chi is ever licensed, its relationship with the broader capital-Chi biological architecture is itself a research target rather than an assumed equivalence. Perturbation/recovery evidence is treated as its own ordered evidence layer and stability is not defined as recovery.
 
 GRI retains reproducible internal static Pan-Cancer organization across RNA, methylation/substrate, composition/context, genomic, and protein/phosphoprotein layers. Ordered SCC25 work adds a separate temporal qualification layer. At the same time, the program preserves prospective failures and identifiability limits rather than forcing those layers into one master coordinate.
 
@@ -56,7 +56,7 @@ Canonical current controls:
 - `docs/EPISTEMIC_CONSTITUTION.md`
 - `docs/CHI_ADMISSION_RULES.md`
 - `docs/TOOL_OBJECTIVE.md`
-- `docs/GRI_GOM_V080_CONTINUITY_AND_SOURCE_OF_RECORD_20260916.md`
+- `docs/GRI_GOM_V083_CONTINUITY_AND_SOURCE_OF_RECORD_20260921.md`
 - `docs/GRI_FUNCTION_LIMIT_EVIDENCE_MAP_20260916.md`
 
 ## Closed static Pan-Cancer lineage
