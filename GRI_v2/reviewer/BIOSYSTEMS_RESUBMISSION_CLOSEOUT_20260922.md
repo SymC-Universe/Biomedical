@@ -111,4 +111,4 @@ The next outcome-bearing SCC25 computation cannot proceed until Decisions A-H ar
 
 For the BioSystems revision, the remaining publication-critical evidence gates are: (1) a prospectively defined tumor-versus-normal control and (2) genuinely external confirmation under a frozen MFR-14-compatible design. Mechanical reviewer-package work may continue around those gates.
 
-Formal final resubmission is not yet authorized because the current editable manuscript source is not present on the active repository lineage and the two evidence-bearing reviewer items remain open.
+Formal final resubmission is not yet authorized because the two evidence-bearing reviewer items remain open. Working manuscript sources are intentionally kept outside the public Biomedical repository in the private persistent project Library (`Atlas - GRI update v1/Private Working Manuscripts/Oncology`); reviewer/protocol/code provenance remains public on this revision branch.
