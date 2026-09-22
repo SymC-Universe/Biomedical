@@ -28,7 +28,9 @@ from nsd_engine.edf import read_edf_header
 
 EXPECTED_SIZE_BYTES = 23_936_896
 EXPECTED_SHA256 = "a9ef4f8bcc7b3fff6568b7a441e14230ec287faa23212713e32f37bf8a8710a7"
-EXPECTED_SIGNAL_COUNT = 64
+EXPECTED_SIGNAL_COUNT_TOTAL = 65
+EXPECTED_EEG_CHANNEL_COUNT = 64
+EXPECTED_AUXILIARY_LABELS = ("Status",)
 EXPECTED_DURATION_SECONDS = 184.0
 EXPECTED_SAMPLING_RATE_HZ = 1000.0
 EXPECTED_LABELS = (
@@ -78,11 +80,12 @@ def verify(path: Path) -> dict[str, object]:
     checks = {
         "size_bytes": actual_size == EXPECTED_SIZE_BYTES,
         "annex_sha256": actual_sha256 == EXPECTED_SHA256,
-        "signal_count": header.signal_count == EXPECTED_SIGNAL_COUNT,
-        "recording_duration_seconds":
+        "signal_count_total": header.signal_count == EXPECTED_SIGNAL_COUNT_TOTAL,
+        "eeg_channel_count": len(labels[:EXPECTED_EEG_CHANNEL_COUNT]) == EXPECTED_EEG_CHANNEL_COUNT,
+        "eeg_channel_labels": labels[:EXPECTED_EEG_CHANNEL_COUNT] == EXPECTED_LABELS,
+        "auxiliary_signal_labels": labels[EXPECTED_EEG_CHANNEL_COUNT:] == EXPECTED_AUXILIARY_LABELS,\n        "recording_duration_seconds":
             header.recording_duration_seconds == EXPECTED_DURATION_SECONDS,
         "sampling_rate_hz": unique_sampling_rates == [EXPECTED_SAMPLING_RATE_HZ],
-        "channel_labels": labels == EXPECTED_LABELS,
         "edf_internal_size_consistency":
             header.expected_file_size_bytes == actual_size,
     }
@@ -108,7 +111,9 @@ def verify(path: Path) -> dict[str, object]:
             "version": header.version,
             "patient_id": header.patient_id,
             "recording_id": header.recording_id,
-            "signal_count": header.signal_count,
+            "signal_count_total": header.signal_count,
+            "eeg_channel_count_expected_from_bids": EXPECTED_EEG_CHANNEL_COUNT,
+            "auxiliary_signal_count": max(0, header.signal_count - EXPECTED_EEG_CHANNEL_COUNT),
             "recording_duration_seconds": header.recording_duration_seconds,
             "unique_sampling_rates_hz": unique_sampling_rates,
             "channel_labels": list(labels),
