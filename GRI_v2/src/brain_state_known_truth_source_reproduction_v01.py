@@ -191,7 +191,16 @@ def main() -> None:
         "epistemic_class": "SOURCE_NATIVE_REPRODUCTION",
         "source_repo": SOURCE_REPO,
         "source_commit": SOURCE_COMMIT,
-        "claim_ceiling": (\n            "Reproduces source-native network-dependence summaries from pinned derived "\n            "tables. It does not establish scalar chi, capital Chi, or SymC incremental value."\n        ),\n        "wilcoxon_reproduction_rule": (\n            "method=exact is explicitly pinned to reproduce the archived source-notebook "\n            "behavior after a separate runtime-method diagnostic showed SciPy 1.18 auto "\n            "switches to the asymptotic approximation for tied ranks."\n        ),\n        "modalities": {},
+        "claim_ceiling": (
+            "Reproduces source-native network-dependence summaries from pinned derived "
+            "tables. It does not establish scalar chi, capital Chi, or SymC incremental value."
+        ),
+        "wilcoxon_reproduction_rule": (
+            "method=exact is explicitly pinned to reproduce the archived source-notebook "
+            "behavior after a separate runtime-method diagnostic showed SciPy 1.18 auto "
+            "switches to the asymptotic approximation for tied ranks."
+        ),
+        "modalities": {},
     }
 
     overall = True
