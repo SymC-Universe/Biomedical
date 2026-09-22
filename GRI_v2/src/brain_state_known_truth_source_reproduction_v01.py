@@ -170,14 +170,14 @@ def validate(result: dict, expected: dict) -> dict:
         checks[f"count_{n}"] = result["counts"][n] == expected["counts"][n]
 
     checks["friedman_chi2"] = close(result["friedman_chi2"], expected["friedman_chi2"], 5e-4)
-    checks["friedman_p"] = np.isclose(result["friedman_p"], expected["friedman_p"], rtol=5e-3, atol=1e-20)
+    checks["friedman_p"] = bool(np.isclose(result["friedman_p"], expected["friedman_p"], rtol=5e-3, atol=1e-20))
     checks["metric_pairs"] = result["metric_pairs"] == expected["metric_pairs"]
     checks["median_gradient_rho"] = close(result["median_gradient_rho"], expected["median_gradient_rho"], 5e-6)
     checks["mean_gradient_rho"] = close(result["mean_gradient_rho"], expected["mean_gradient_rho"], 5e-6)
     checks["positive_pairs"] = result["positive_pairs"] == expected["positive_pairs"]
-    checks["gradient_wilcoxon_p"] = np.isclose(
+    checks["gradient_wilcoxon_p"] = bool(np.isclose(
         result["gradient_wilcoxon_p"], expected["gradient_wilcoxon_p"], rtol=5e-5, atol=1e-12
-    )
+    ))
     return {
         "checks": checks,
         "all_pass": bool(all(checks.values())),
