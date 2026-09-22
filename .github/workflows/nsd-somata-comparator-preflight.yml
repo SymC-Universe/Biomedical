@@ -1,0 +1,42 @@
+name: NSD SOMATA Comparator Preflight
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - ".github/workflows/nsd-somata-comparator-preflight.yml"
+      - "NSD_vNext/engine/tools/preflight_somata_comparator.py"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nsd-somata-preflight-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install pinned comparator
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install "somata==0.5.6"
+      - name: Run mechanical API preflight
+        run: |
+          mkdir -p "$RUNNER_TEMP/nsd_somata_preflight"
+          python NSD_vNext/engine/tools/preflight_somata_comparator.py \
+            --output "$RUNNER_TEMP/nsd_somata_preflight/somata_preflight.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nsd-somata-comparator-preflight
+          path: ${{ runner.temp }}/nsd_somata_preflight/somata_preflight.json
+          if-no-files-found: error
+          retention-days: 30
