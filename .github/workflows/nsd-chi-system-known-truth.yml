@@ -1,0 +1,44 @@
+name: NSD Chi-vs-System Coupled Known Truth
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - ".github/workflows/nsd-chi-system-known-truth.yml"
+      - "NSD_vNext/engine/nsd_engine/coupled_second_order.py"
+      - "NSD_vNext/engine/tests/test_coupled_second_order.py"
+      - "NSD_vNext/engine/tools/probe_chi_system_coupled_known_truth.py"
+      - "NSD_vNext/docs/CHI_SYSTEM_COUPLED_KNOWN_TRUTH_v0.1.md"
+
+permissions:
+  contents: read
+
+jobs:
+  known-truth:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install engine
+        run: |
+          python -m pip install -e NSD_vNext/engine
+          python -m pip install pytest
+      - name: Run coupled-system regression tests
+        run: |
+          python -m pytest -q NSD_vNext/engine/tests/test_coupled_second_order.py
+      - name: Emit known-truth artifact
+        run: |
+          mkdir -p "$RUNNER_TEMP/nsd_chi_system"
+          python NSD_vNext/engine/tools/probe_chi_system_coupled_known_truth.py \
+            --output "$RUNNER_TEMP/nsd_chi_system/result.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nsd-chi-system-coupled-known-truth-v0-1
+          path: ${{ runner.temp }}/nsd_chi_system/result.json
+          if-no-files-found: error
+          retention-days: 30
