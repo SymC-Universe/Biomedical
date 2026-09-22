@@ -1,0 +1,37 @@
+{
+  "schema": "GRI_SCC25_RECIPROCAL_JOINT_INFORMATION_P0Q_V01",
+  "freeze_date": "2026-09-22",
+  "status": "FROZEN_BEFORE_RECIPROCAL_RESULT",
+  "mode": "P0_Q_RECIPROCAL_QUALIFICATION",
+  "promotion_effect": "NONE",
+  "freeze_doc": "GRI_v2/docs/GRI_SCC25_RECIPROCAL_JOINT_INFORMATION_FREEZE_20260922.md",
+  "source_manifest": "GRI_v2/config/gri_scc25_paired_timecourse_manifest_p0d_v0_1.json",
+  "forward_config": "GRI_v2/config/gri_scc25_joint_information_p0d_20260922_v1.json",
+  "rna_ranks": [2, 3],
+  "methylation_ranks": [2, 3],
+  "scalar_chi_assumed": false,
+  "models": {
+    "system_history": "METH_next ~ METH_now + treatment + week + treatment*week + intercept",
+    "joint_reciprocal": "METH_next ~ METH_now + RNA_now + treatment + week + treatment*week + intercept",
+    "estimator": "OLS_LSTSQ",
+    "evaluation": "LEAVE_ONE_TRANSITION_OUT",
+    "full_rank_required": true
+  },
+  "alignment_null": {
+    "type": "INDEPENDENT_WITHIN_ARM_CIRCULAR_SHIFTS_OF_RNA_CURRENT",
+    "pbs_shifts": [1,2,3,4,5,6,7,8,9],
+    "ctx_shifts": [1,2,3,4,5,6,7,8,9],
+    "n_configurations": 81,
+    "p_formula": "(1 + count(null_improvement >= observed_improvement)) / 82"
+  },
+  "support_rule": {
+    "label": "LOCAL_ADDS_TO_SYSTEM_BEYOND_TIME",
+    "requirements": [
+      "conditional_improvement_reciprocal > 0",
+      "joint_sse < persistence_sse",
+      "joint_sse < arm_mean_sse",
+      "p_alignment <= 0.10"
+    ],
+    "exploratory_alpha": 0.10
+  }
+}
