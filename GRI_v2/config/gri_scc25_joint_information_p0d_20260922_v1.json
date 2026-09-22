@@ -1,0 +1,80 @@
+{
+  "schema": "GRI_SCC25_JOINT_INFORMATION_P0D_V01",
+  "freeze_date": "2026-09-22",
+  "status": "FROZEN_BEFORE_JOINT_RNA_METHYLATION_RESULT",
+  "mode": "P0_D_EXPLORATORY",
+  "promotion_effect": "NONE",
+  "freeze_doc": "GRI_v2/docs/GRI_SCC25_JOINT_INFORMATION_P0D_FREEZE_20260922.md",
+  "source_manifest": "GRI_v2/config/gri_scc25_paired_timecourse_manifest_p0d_v0_1.json",
+  "chronic_rna_freeze": "GRI_v2/config/gri_Chi_bio_chronic_g2_r1_A3_empirical_freeze_20260913_v1.json",
+  "local_representation": {
+    "type": "RNA_R1_CONTROL_ONLY_UNSUPERVISED",
+    "ranks": [
+      2,
+      3
+    ],
+    "scalar_chi_assumed": false
+  },
+  "system_context_representation": {
+    "type": "METHYLATION_PBS_ONLY_FULL_COMPLETE_CPG_SAMPLESPACE_PCA",
+    "ranks": [
+      2,
+      3
+    ],
+    "complete_across_main_22_required": true,
+    "feature_selection": "NONE_BEYOND_FINITE_COMPLETE_CASE",
+    "center": "PBS_11_STATE_FEATURE_MEAN"
+  },
+  "models": {
+    "local": "RNA_next ~ RNA_now + treatment + intercept",
+    "joint": "RNA_next ~ RNA_now + METH_now + treatment + intercept",
+    "estimator": "OLS_LSTSQ",
+    "evaluation": "LEAVE_ONE_TRANSITION_OUT",
+    "full_rank_required": true
+  },
+  "alignment_null": {
+    "type": "INDEPENDENT_WITHIN_ARM_CIRCULAR_SHIFTS",
+    "pbs_shifts": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "ctx_shifts": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "n_configurations": 81,
+    "p_formula": "(1 + count(null_improvement >= observed_improvement)) / 82"
+  },
+  "support_rule": {
+    "label": "SYSTEM_CONTEXT_ADDS_INFORMATION",
+    "requirements": [
+      "conditional_improvement > 0",
+      "joint_sse < persistence_sse",
+      "joint_sse < arm_mean_sse",
+      "p_alignment <= 0.10"
+    ],
+    "exploratory_alpha": 0.1,
+    "note": "Exploratory P0-D screen only; no confirmatory significance claim."
+  },
+  "alternative_labels": {
+    "local_sufficient": "LOCAL_MODAL_SUFFICIENT_FOR_THIS_TASK",
+    "alignment_unresolved": "ALIGNMENT_DEPENDENT_UNRESOLVED",
+    "both_inadequate": "BOTH_INADEQUATE",
+    "refuse": "REFUSE_ILL_CONDITIONED",
+    "representation_dependent": "REPRESENTATION_DEPENDENT"
+  }
+}
