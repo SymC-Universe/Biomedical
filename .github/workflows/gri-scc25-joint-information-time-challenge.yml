@@ -1,0 +1,32 @@
+name: GRI SCC25 time-conditioned joint-information challenge
+
+on:
+  push:
+    branches:
+      - gri-chi-bio-conglomerate-v01-20260918
+    paths:
+      - "GRI_v2/src/run_scc25_joint_information_time_challenge_v01.py"
+      - ".github/workflows/gri-scc25-joint-information-time-challenge.yml"
+  workflow_dispatch:
+
+jobs:
+  challenge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: GRI_v2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install numerical dependency
+        run: python -m pip install --disable-pip-version-check -q "numpy>=2,<3"
+      - name: Run frozen time-conditioned challenge
+        run: python -m src.run_scc25_joint_information_time_challenge_v01
+      - uses: actions/upload-artifact@v4
+        with:
+          name: GRI_SCC25_JOINT_INFORMATION_TIME_CHALLENGE_V01
+          path: GRI_v2/joint_information_scc25_time_outputs/scc25_joint_information_time_challenge_v01.json
+          if-no-files-found: error
