@@ -137,7 +137,7 @@ def load_hallmark_union(source, records, modules):
             if g in union and g not in seen:
                 seen.add(g); keep.append(i); genes.append(g)
         if not keep: continue
-        vals=chunk.iloc[keep,1:].apply(pd.to_numeric,errors="coerce").to_numpy(dtype=float).T
+        vals=chunk.iloc[keep,1:].apply(pd.to_numeric,errors="coerce").to_numpy(dtype=float, copy=True).T.copy()
         finite=np.isfinite(vals)
         vals[finite & (vals<0)] = 0.0
         vals[finite] = np.log2(vals[finite] + 1.0)
