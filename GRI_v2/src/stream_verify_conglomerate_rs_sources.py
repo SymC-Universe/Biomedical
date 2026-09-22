@@ -30,8 +30,8 @@ METHYLATION_SUMMARY = (
     / "STAGE_C0_METHYLATION_SOURCE_SUMMARY.json"
 )
 
-DEFAULT_CHUNK_BYTES = 64 * 1024 * 1024
-DEFAULT_RETRIES = 3
+DEFAULT_CHUNK_BYTES = 16 * 1024 * 1024
+DEFAULT_RETRIES = 8
 USER_AGENT = "SymC-GRI-source-verifier/1.0"
 
 
@@ -205,8 +205,14 @@ def run(
     chunk_bytes: int = DEFAULT_CHUNK_BYTES,
     timeout_s: int = 180,
     retries: int = DEFAULT_RETRIES,
+    block: str | None = None,
 ) -> dict[str, Any]:
     specs = _source_specs()
+    if block is not None:
+        wanted = block.strip().upper()
+        specs = [spec for spec in specs if spec["block_id"] == wanted]
+        if len(specs) != 1:
+            raise ValueError(f"unknown block {block!r}; expected R or S")
     verified: list[dict[str, Any]] = []
     for spec in specs:
         verified.append(
@@ -251,6 +257,7 @@ def main() -> None:
     parser.add_argument("--chunk-bytes", type=int, default=DEFAULT_CHUNK_BYTES)
     parser.add_argument("--timeout-seconds", type=int, default=180)
     parser.add_argument("--retries", type=int, default=DEFAULT_RETRIES)
+    parser.add_argument("--block", choices=["R", "S"], default=None)
     args = parser.parse_args()
 
     result = run(
@@ -258,6 +265,7 @@ def main() -> None:
         chunk_bytes=args.chunk_bytes,
         timeout_s=args.timeout_seconds,
         retries=args.retries,
+        block=args.block,
     )
     print(json.dumps(result, indent=2, sort_keys=True))
 
