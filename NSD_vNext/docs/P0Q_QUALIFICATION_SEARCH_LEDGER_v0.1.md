@@ -389,3 +389,49 @@ This lane can map agreement, disagreement, model-family differences, residual be
 
 Stopping rule:
 No manual comparator rescue on viewed scenarios. If a second comparator family is required after inspection, such as dOsc, AutoReg/nonoscillatory competition, or switching-state-space inference, it becomes a separately frozen comparator version.
+
+
+### Q-COMP-001 result
+
+Run `35758411626` completed the frozen SOMATA v0.5.6 matched-information lane.
+
+Observed model-count behavior:
+- valid single: NSD A1 3/3; SOMATA 1 oscillator 3/3;
+- separated two-mode: NSD A2 3/3; SOMATA 2 oscillators 3/3;
+- close two-mode: NSD A1 3/3; SOMATA 1 oscillator 2/3 and 2 oscillators 1/3;
+- finite bursts: NSD A1 3/3; SOMATA 1 oscillator 3/3;
+- frequency shift: NSD A2 3/3; SOMATA 2 oscillators 2/3 and 1 oscillator 1/3;
+- colored observation noise at matched 120 Hz: both selected two-component representations 3/3.
+
+Nonoscillatory controls remain not directly comparable because iOsc has no zero-component candidate.
+
+The matched 120 Hz transform itself altered NSD behavior for colored observation noise and nonoscillatory AR(1) compared with the earlier 256 Hz qualification map. Therefore resampling is now an explicit qualification variable.
+
+Disposition:
+`FIRST_STANDARD_TOOLKIT_LANE_COMPLETE_SECOND_LANE_REQUIRED_BEFORE_TOOLKIT_ADEQUACY_CLAIM`.
+
+Canonical audit:
+`SOMATA_COMPARATOR_POSTRESULT_v0.1.md`.
+
+## Q-MODAL-STATIONARITY-001 - temporal consistency / occupancy map
+
+Purpose tag: QUALIFICATION / LIMIT MAP
+
+Run:
+`35758951850`.
+
+Result:
+- frequency reorganization is strongly exposed by split-window frequency inconsistency even when whole-record A2 is selected;
+- damping reorganization can remain whole-record A1 while split-window damping changes sharply;
+- finite bursts and amplitude steps can remain whole-record A1 while local RMS occupancy becomes strongly heterogeneous.
+
+No threshold was frozen from the same rows.
+
+Disposition:
+`DIAGNOSTIC_CHANNELS_SUPPORTED_PRODUCTION_REFUSAL_THRESHOLD_NOT_YET_QUALIFIED`.
+
+Canonical audit:
+`STATE_SPACE_STATIONARITY_POSTRESULT_v0.1.md`.
+
+Next scientific gate:
+Choose/freeze threshold-construction logic and a separate validation grid before promoting `REF_NONSTATIONARY`.
