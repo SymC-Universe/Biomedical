@@ -151,12 +151,14 @@ def parse_miniml(xml_path: Path, accession: str) -> dict[str, Any]:
                 "gsm": sample_acc,
                 "title": first_text(node, "Title"),
                 "source": first_text(node, "Source"),
+                "description": first_text(node, "Description"),
                 "type": first_text(node, "Type"),
                 "channel_count": first_text(node, "Channel-Count"),
                 "characteristics": characteristic_records(node),
                 "relations": relation_records(node),
                 "platform_refs": sample_platform_refs(node),
                 "supplementary_data": texts(node, "Supplementary-Data"),
+                "data_processing": texts(node, "Data-Processing"),
             })
         elif name == "Series":
             series_nodes.append(node)
