@@ -1,5 +1,5 @@
 {
-  "schema": "gri-biosystems-tumor-normal-source-gate-v1",
+  "schema": "gri-biosystems-tumor-normal-source-gate-v1.1",
   "date": "2026-09-22",
   "status": "FROZEN_BEFORE_TUMOR_NORMAL_MOLECULAR_VALUES",
   "purpose": "Inventory TCGA primary-tumor and solid-tissue-normal availability in the exact frozen PanCanAtlas RNA and methylation sources before any tumor-normal biological comparison.",
@@ -20,8 +20,8 @@
     "tumor": "01",
     "normal": "11",
     "definitions": {
-      "01": "Primary Solid Tumor",
-      "11": "Solid Tissue Normal"
+      "11": "Solid Tissue Normal",
+      "01": "Primary Solid Tumor"
     }
   },
   "source_gate_only": true,
@@ -37,23 +37,18 @@
     "duplicate/anomalous sample-root inventory"
   ],
   "prospective_analysis_rule_after_source_gate": {
-    "primary_unpaired_track": {
+    "primary_paired_track": {
+      "minimum_complete_pairs": 20,
+      "resample_n": 20,
+      "resamples": 100,
+      "comparison": "within cancer, same participants contribute type 01 and type 11 RNA+methylation; use shared feature carrier and repeated construction-aware nulls"
+    },
+    "secondary_unpaired_n30": {
       "minimum_crossmodal_normal_n": 30,
       "minimum_crossmodal_tumor_n": 30,
       "resample_n": 30,
       "resamples": 100,
-      "comparison": "within cancer, equal-n tumor versus solid-tissue-normal using unchanged C1 constructions and construction-aware null correction"
-    },
-    "paired_patient_track": {
-      "role": "secondary consistency track",
-      "minimum_complete_pairs": 15,
-      "rule": "same participant must contribute sample type 01 and 11 in both RNA and methylation; no cross-patient pairing"
-    },
-    "small_normal_sensitivity": {
-      "role": "sensitivity only, never primary promotion",
-      "minimum_crossmodal_normal_n": 20,
-      "maximum_crossmodal_normal_n": 29,
-      "resample_n": 20
+      "comparison": "within cancer, equal-n tumor and normal draws from exact single-column crossmodal samples; secondary corroboration only"
     }
   },
   "claim_logic": {
@@ -63,5 +58,6 @@
     "if_reproducible_tumor_normal_difference": "report direction and magnitude without converting association into mechanism",
     "no_clinical_classifier_claim": true,
     "no_biological_chi_claim": true
-  }
+  },
+  "identity_rule": "Primary eligibility requires exactly one source column and exactly one sample root for each required modality/tissue slot; source-origin duplicates are preserved but excluded from the primary comparison rather than value-selected."
 }
