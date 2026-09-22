@@ -74,7 +74,7 @@ jobs:
             --gmt h.all.v2026.1.Hs.symbols.gmt \
             --eligibility GRI_v2/config/biosystems_tn_c0_eligibility_v1.json \
             --out TN_RNA_RESULTS \
-            --workers 2
+            --workers 6
 
       - name: Hash results
         run: |
