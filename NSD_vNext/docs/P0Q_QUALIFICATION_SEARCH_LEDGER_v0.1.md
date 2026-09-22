@@ -2,7 +2,7 @@
 
 Date opened: 18 September 2026
 Status: ACTIVE
-Program authority: SymC General Operations Manual v0.8.0
+Program authority: SymC General Operations Manual v0.8.3
 Scope: substantial iterative qualification work for the label-blind NSD Structural Engine
 
 ## Purpose
@@ -350,3 +350,42 @@ NSD does not claim generic state-space oscillator decomposition or information-c
 
 Current stop:
 No real-EEG modal damping or local chi is admitted.
+
+
+## Q-COMP-001 - SOMATA matched-information standard-toolkit lane
+
+Purpose tag: QUALIFICATION / STANDARD-TOOLKIT COMPARATOR
+
+Comparator:
+- SOMATA 0.5.6;
+- `IterativeOscillatorModel` iOsc search;
+- one/two-oscillator native knee-selected model;
+- package-native residual ACF diagnostics.
+
+Preflight:
+- run `35671757551` passed;
+- required API present;
+- no EEG or comparator performance opened.
+
+Prospective fairness mapping frozen before performance:
+- source generator remains the existing eight-scenario NSD A0/A1/A2 adequacy generator;
+- each deterministic 256 Hz source realization is transformed once to a shared 120 Hz signal using deterministic polyphase resampling;
+- the shared signal is demeaned and population-SD standardized once;
+- the exact same array is sent to both NSD and SOMATA;
+- SOMATA uses native iOsc settings with `osc_range=2`;
+- NSD equations/search remain unchanged;
+- no per-scenario manual tuning;
+- one/two-mode quantities are compared where semantic mapping is legitimate;
+- zero-oscillator/nonoscillatory refusal is explicitly not directly comparable in iOsc because that search begins with at least one oscillator.
+
+Complexity decision:
+No comparator setting was selected from SOMATA performance because performance had not yet been opened when the fairness mapping was frozen.
+
+Current execution:
+`NSD SOMATA Known-Truth Comparator` is the first outcome-bearing P0-Q comparator workflow.
+
+Claim ceiling:
+This lane can map agreement, disagreement, model-family differences, residual behavior, and parameter recovery on known truth. It cannot by itself license real-EEG modal damping/local chi, establish overall tool superiority, or become P1 evidence.
+
+Stopping rule:
+No manual comparator rescue on viewed scenarios. If a second comparator family is required after inspection, such as dOsc, AutoReg/nonoscillatory competition, or switching-state-space inference, it becomes a separately frozen comparator version.
