@@ -1,3 +1,19 @@
+> ## BioSystems revision source-of-record — 2026-09-22
+>
+> For the active BioSystems revision, use:
+>
+> - `BIOSYSTEMS_REVIEWER_RESPONSE_MATRIX_20260922.md`
+> - `BIOSYSTEMS_RESUBMISSION_CLOSEOUT_20260922.md`
+> - `CLAIM_EVIDENCE_MAP.md`
+> - canonical science parent `gri-conglomerate-v1-integration-20260921` @ `0f471d32940386052da2b8da3b34cd4fc2b064b4`
+> - revision-only branch `gri-biosystems-revision-20260922`
+>
+> The older 2026-09-16 notice below is historical. Its cited `GRI_v2/manuscript/LIVING_MANUSCRIPT_DRAFT.md` and reconciliation-ledger paths are not present on the checked current or cited historical branch and must not be treated as current manuscript sources-of-record. TCGA discovery/replication/final-holdout work is internal evidence; no external cohort is yet P1 confirmation.
+>
+> The two reviewer-critical open evidence gates are prospectively defined tumor-versus-normal control and genuinely external confirmation. The broader SCC25 A-H joint-meaning task is not automatically a prerequisite for this revision.
+
+---
+
 # Reviewer entry point: GRI v2 / Cancer Stability Atlas
 
 > ## Current-state notice — 2026-09-16
