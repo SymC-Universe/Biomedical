@@ -8,7 +8,9 @@ on:
     paths:
       - ".github/workflows/gri-external-geo-metadata-freeze.yml"
       - "GRI_v2/src/freeze_external_geo_miniml_sources.py"
-      - "GRI_v2/tests/test_freeze_external_geo_miniml_sources.py"\n      - "GRI_v2/src/derive_external_geo_identity_tables.py"\n      - "GRI_v2/tests/test_derive_external_geo_identity_tables.py"
+      - "GRI_v2/tests/test_freeze_external_geo_miniml_sources.py"
+      - "GRI_v2/src/derive_external_geo_identity_tables.py"
+      - "GRI_v2/tests/test_derive_external_geo_identity_tables.py"
 
 permissions:
   contents: read
@@ -29,19 +31,32 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
       - name: Unit tests
         run: |
           python -m pip install --disable-pip-version-check -q pytest
-          python -m pytest -q tests/test_freeze_external_geo_miniml_sources.py tests/test_derive_external_geo_identity_tables.py
+          python -m pytest -q \
+            tests/test_freeze_external_geo_miniml_sources.py \
+            tests/test_derive_external_geo_identity_tables.py
+
       - name: Download and freeze GEO MINiML metadata
         run: |
           python -m src.freeze_external_geo_miniml_sources
-      - name: Print summary
+
+      - name: Derive mechanical identity crosswalks
+        run: |
+          python -m src.derive_external_geo_identity_tables
+
+      - name: Print summaries
         run: |
           cat external_source_outputs/geo_miniml_20260922/external_geo_source_manifest_summary.json
+          cat external_source_outputs/identity_20260922/external_identity_summary.json
+
       - uses: actions/upload-artifact@v4
         with:
           name: GRI_EXTERNAL_GEO_SOURCE_MANIFEST_SET_V01
-          path: |\n            GRI_v2/external_source_outputs/geo_miniml_20260922/\n            GRI_v2/external_source_outputs/identity_20260922/
+          path: |
+            GRI_v2/external_source_outputs/geo_miniml_20260922/
+            GRI_v2/external_source_outputs/identity_20260922/
           if-no-files-found: error
           retention-days: 30
