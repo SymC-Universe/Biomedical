@@ -45,15 +45,37 @@ BRCA, COAD, HNSC, KIRC, KIRP, LIHC, PRAD, THCA, UCEC.
 
 ### Feature comparability
 
-For each paired draw, tumor and normal are evaluated on a **shared eligible feature carrier** determined without using effect direction:
+Feature eligibility is frozen at the **full source-eligible control cohort within cancer**, before the 100 draw-level effects are calculated. It is not reselected according to tumor-normal effect direction.
 
-- H2 all-probe methylation carrier: a probe must satisfy the frozen finite-data rule in both tissue states;
-- RNA Hallmark-union carrier: a gene must satisfy the frozen RNA finite/nonzero-variance rule in both tissue states;
-- H3 promoter-core carrier: fixed mapping and Hallmark definitions; a Hallmark must meet the frozen mapping/feature-count requirements in both tissue states.
+For each cancer:
+
+- H2 methylation carrier: a probe must be at least 95% finite across all exact paired tumor samples **and** at least 95% finite across all exact paired normal samples. The primary track retains the resulting shared PanCanAtlas probe carrier. The mandatory robustness track additionally removes the already-frozen C1A technical-mask union. Missing retained beta values are median-imputed separately by tissue using the full paired source-eligible cancer cohort.
+- H2 RNA carrier: a gene must belong to the frozen MSigDB Hallmark-union representation, map uniquely under the same Stage-A gene-symbol rule, be at least 95% finite across both paired tissue cohorts, and have nonzero finite variance in both. The same ordered shared gene set is used for tumor and normal.
+- H3 promoter-core carrier: the frozen TSS200 positional probe-gene map and Hallmark definitions are reused. Within each draw, the original C1 Hallmark eligibility rules are applied separately to tumor and normal, and the comparison uses the intersection of Hallmarks evaluable in both tissues.
 
 This intersection rule prevents a tumor-normal difference from being manufactured by comparing different feature inventories.
 
-## 4. Primary endpoints
+### Sample-size generalization firewall
+
+Several frozen C1 helper functions encoded the original fixed sample size as an implementation assertion (`n=30`) even though their mathematical operations are sample-size generic. The tumor-normal program therefore uses dedicated generalized implementations frozen before biological opening:
+
+- methylation Hallmark PC1: identical column-centering/SVD/orientation rule for arbitrary `n`;
+- RNA Hallmark PC1: identical finite-coverage, z-scoring, standardized-zero-imputation, SVD and orientation rules, with `required = max(20, ceil(0.95*n))`;
+- full-modal RNA centering: identical finite-mean centering and zero-centered binding of source-missing cells for arbitrary `n`;
+- CKA, patient permutations and same-Hallmark statistics: identical formulas with permutation length equal to the frozen draw size.
+
+A regression test must demonstrate numerical equivalence to the original frozen C1 arithmetic at `n=30` before any tumor-normal molecular outcome is opened. The n=20 primary is therefore an explicit prospective sample-size adaptation, not an accidental call into n=30-only code.
+
+## 4. Analysis tracks
+
+Two C1-compatible tracks are mandatory:
+
+- **PRIMARY_PUBLICATION:** the shared eligible exact PanCanAtlas probe carrier with no additional result-driven technical filtering.
+- **MASKED_TECHNICAL:** the same shared carrier after excluding the frozen C1A Chen-cross-reactive/common-SNP union.
+
+The masked track is robustness only. It cannot rescue an unfavorable primary result, and a material sign reversal is reported as technical-mask dependence.
+
+## 5. Primary endpoints
 
 The primary family contains two endpoints because they directly express the manuscript's cross-layer architecture claim.
 
@@ -78,13 +100,13 @@ Compute the frozen same-Hallmark methylation/RNA Hallmark coupling in tumor and 
 
 H3b same-label semantic advantage is **secondary/descriptive only** and cannot rescue TN-H2 or TN-H3a.
 
-## 5. Secondary endpoints
+## 6. Secondary endpoints
 
 - H1 methylation spectral organization may be reported as a within-layer context control, but it is not required for the tumor-specific cross-layer claim.
 - H3b label specificity is descriptive and retains its current support-sensitive ceiling.
 - absolute observed tumor and normal values are shown alongside null-corrected effects so a difference cannot be hidden behind a delta alone.
 
-## 6. Cancer-level and pan-cancer inference
+## 7. Cancer-level and pan-cancer inference
 
 The biological inferential unit is cancer, not the 100 resamples.
 
@@ -99,7 +121,7 @@ Pan-cancer:
 - report the pan-cancer median difference and all cancer directions;
 - no cancer is removed for an unfavorable sign.
 
-## 7. Interpretation / falsifier logic
+## 8. Interpretation / falsifier logic
 
 No direction is prespecified.
 
@@ -109,7 +131,7 @@ No direction is prespecified.
 - A statistically detectable but small difference is reported as detectable, not automatically biologically large.
 - No result licenses causal methylation-to-RNA direction, a clinical classifier, treatment-response prediction, biological chi, or a healthy/cancer critical boundary.
 
-## 8. Secondary high-sample n=30 corroboration
+## 9. Secondary high-sample n=30 corroboration
 
 Frozen eligible cancers: BRCA, LIHC, PRAD, THCA, UCEC.
 
@@ -121,11 +143,11 @@ Frozen eligible cancers: BRCA, LIHC, PRAD, THCA, UCEC.
 
 This track cannot overturn a failed paired primary result.
 
-## 9. Composition limitation
+## 10. Composition limitation
 
 ABSOLUTE tumor purity is not a symmetric normal-tissue covariate, so the C1 tumor purity/leukocyte projection is not transplanted mechanically onto normals. The paired same-patient design and within-project comparison reduce several confounds but do not make tumor-normal effects cell-intrinsic. Tissue cellular-composition differences remain an explicit limitation.
 
-## 10. Stop rules
+## 11. Stop rules
 
 Stop and return an indeterminate/refusal result rather than retuning if:
 
