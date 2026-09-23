@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "project": "Bio Chi Investigation",
-  "authority": "SymC GOM v0.8.4",
+  "authority": "SymC GOM v0.8.6 + Bio Chi project-specific three-object nomenclature decision 2026-09-23",
   "branch": "chi-bio-recovery-p0d-20260922",
   "continuation_policy": {
     "resume_from_checkpoint": true,
@@ -10,8 +10,7 @@
     "manuscript_private": true
   },
   "nomenclature": {
-    "chi": "program-wide scalar stability class/symbol",
-    "chi_bio": "biological scalar instance/sublabel of chi if licensed",
+    "chi_bio": "biological scalar instance/sublabel of program-wide chi if licensed",
     "Chi_bio": "biological modal/vector representation",
     "Bio_Chi": "biological conglomerate/system stability architecture"
   },
@@ -150,5 +149,6 @@
     "decisive evidence would be opened before required freeze/independence controls",
     "upstream contradiction invalidates a frozen result",
     "publication-level claim expansion requires user decision"
-  ]
+  ],
+  "nomenclature_note": "Exactly three biological objects. Program-wide chi is a parent symbol/class, not a fourth biological object."
 }
