@@ -161,3 +161,15 @@ The generic external-source freeze is pinned in `BIO_CHI/config/EXTERNAL_SOURCE_
 - treat Blum exact JM reproduction as blocked unless an original implementation resolves the histogram construction; do not fabricate a binning rule;
 - qualify candidate testbeds against the frozen P0-D eligibility contract without using expected SymC agreement as a selection criterion;
 - keep `chi_bio`, `Chi_bio`, and Bio Chi admission closed until their respective prospective gates are satisfied.
+
+## Autorun provenance — 23 September 2026 source-gate closure
+
+- PR #6 head at verification before checkpoint writes: `f6d4cbc0026da3a0e2cadbb12b71bb4ee0163416`; PR remained **open, draft, mergeable**, on `chi-bio-recovery-p0d-20260922`.
+- Blum Mendeley public-files resolution/source freeze: run **35862686108**, SUCCESS; artifact **10751061699**. Exact `data.zip` UUID `b8e7b821-d59b-4b42-b34e-1d679ace693d`, size **8,352,835 bytes**, archive SHA-256 `8bbd1ead46b5bb6b676bd47a5f415fdd790840a9c726321dc5c209b9c527bc62`.
+- Blum metadata-only ZIP inventory revalidation: run **35863951277**, SUCCESS; artifact **10751880243**; **103 members**; member payloads not read.
+- Blum documentation/header-only native-input mapping revalidation: run **35863951436**, SUCCESS; artifact **10751309038**; biological data rows not read and native metric not computed.
+- Exact Blum Figure-1H Jeffries-Matusita reproduction remains **REFUSED / METHOD UNDERSPECIFIED** per `BIO_CHI/config/BLUM2019_NATIVE_METHOD_QUALIFICATION_PIN_v0_1.json`. No binning, smoothing, alignment, or missing-data convention was invented.
+- Lee SRP040309 metadata source map: run **35863951560**, SUCCESS; artifact **10751845181**; 19 paired-end RNA-seq runs under SRP040309 / PRJNA241034.
+- Harmange/Shaffer metadata-only lineage audit: run **35863952068**, SUCCESS; artifact **10751386783**. No molecular values were opened.
+- Bio Chi governance/privacy guard at the same verified head: run **35863951732**, SUCCESS.
+- Working manuscript scope remains **NOT OPEN / PRIVATE**; no manuscript text was introduced into the public investigation branch.
