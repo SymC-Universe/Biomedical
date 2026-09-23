@@ -1,0 +1,58 @@
+name: BioSystems adversarial R1 P1 precision B9999
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - biosystems-adversarial-r1-20260923
+    paths:
+      - '.github/workflows/biosystems-adversarial-r1-p1-precision.yml'
+      - 'GRI_v2/src/run_biosystems_adversarial_r1_p1_precision.py'
+      - 'GRI_v2/reviewer/BIOSYSTEMS_ADVERSARIAL_R1_P1_PRECISION_FREEZE_20260923.md'
+
+jobs:
+  p1-precision:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      NUMEXPR_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check numpy pandas
+      - name: Download exact frozen external sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p p1_source
+          curl --fail --location --retry 5 'https://ftp.ncbi.nlm.nih.gov/geo/series/GSE237nnn/GSE237995/suppl/GSE237995_RawCounts.csv.gz' -o p1_source/GSE237995_RawCounts.csv.gz
+          curl --fail --location --retry 5 'https://ftp.ncbi.nlm.nih.gov/geo/series/GSE262nnn/GSE262522/suppl/GSE262522_m450K_Proc_Funnorm.tsv.gz' -o p1_source/GSE262522_m450K_Proc_Funnorm.tsv.gz
+          curl --fail --location --retry 5 'https://ftp.ncbi.nlm.nih.gov/geo/series/GSE262nnn/GSE262524/suppl/GSE262524_EPIC_Proc_Funnorm.tsv.gz' -o p1_source/GSE262524_EPIC_Proc_Funnorm.tsv.gz
+      - name: Execute frozen B9999 precision extension
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=GRI_v2 python GRI_v2/src/run_biosystems_adversarial_r1_p1_precision.py \
+            --config GRI_v2/config/biosystems_external_prostate_p1_v1_0.json \
+            --rna p1_source/GSE237995_RawCounts.csv.gz \
+            --m450 p1_source/GSE262522_m450K_Proc_Funnorm.tsv.gz \
+            --epic p1_source/GSE262524_EPIC_Proc_Funnorm.tsv.gz \
+            --gmt GRI_v2/support/h.all.v2026.1.Hs.symbols.gmt \
+            --c1-probes GRI_v2/support/c1_probe_ids_22601.txt \
+            --support GRI_v2/support/c1_external_support_payload.txt \
+            --out R1_P1_PRECISION \
+            --workers 4
+      - name: Remove third-party source files
+        if: always()
+        run: rm -rf p1_source
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: BIOSYSTEMS_ADVERSARIAL_R1_P1_PRECISION_V01
+          path: R1_P1_PRECISION
+          if-no-files-found: warn
