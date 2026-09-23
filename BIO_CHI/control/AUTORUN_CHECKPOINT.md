@@ -128,3 +128,53 @@ A governance CI run after the queue update failed because `BIO_CHI/src/validate_
 5. Preserve every Figure 8 B/C finite-window failure, v0.1/v0.2 indeterminate, v0.3 mechanical failure, and all source-access refusals/limitations.
 6. Do not select the NF-kB complex pair, define `chi_bio`, admit `Chi_bio`, or infer Bio Chi until the prospective biological observability/identifiability and representation gates are satisfied.
 7. Keep working manuscript prose private.
+
+
+## GOM v0.8.4 review and continuation — 23 September 2026 07:45 CDT
+
+The authoritative GOM v0.8.4 was re-read before continuation. This run explicitly applies:
+- P0-D as exploratory/function mapping with full provenance and preserved failures, not confirmation;
+- separate P0-Q qualification before any confirmatory promotion;
+- joint scalar `chi_bio` / modal `Chi_bio` / conglomerate Bio Chi meaning as a research target rather than three independent scores;
+- Function Map and Limit Map as coequal outputs;
+- recovery decomposition rather than a default single resilience score;
+- domain-informed mediation: shared agreement or coherent math does not replace native-domain/source checks;
+- the v0.8.4 V1/V2/V3 reproducibility-guide structure and master smoke-test requirement where a guide exists.
+
+No scientific endpoint, cohort, null, boundary, representation, carrier rule, mode-selection rule, or interpretation threshold was changed during this GOM alignment.
+
+### Durable source/method progress
+
+- Blum 2019 Mendeley Version 2 exact archive is now source-frozen through the supported public API:
+  - file UUID `b8e7b821-d59b-4b42-b34e-1d679ace693d`;
+  - size 8,352,835 bytes;
+  - SHA-256 `8bbd1ead46b5bb6b676bd47a5f415fdd790840a9c726321dc5c209b9c527bc62`.
+- Metadata-only ZIP inventory passed with 103 members and zero member-payload reads.
+- Figure-1 README/header mapping passed without reading biological data rows.
+- The published Jeffries-Matusita formula is explicit, but the public method record does not specify the histogram construction sufficiently for exact Figure-1H reproduction. This is now preserved as `EXACT_NATIVE_METRIC_REPRODUCTION_BLOCKED_METHOD_UNDERSPECIFIED`. No binning rule was invented.
+- Harmange GSE237228 metadata-only lineage audit passed: PRJNA994430, 22 samples with explicit SRA experiment links, and lineage/condition metadata fields are present. This closes source identity only, not biological carrier inheritance.
+- Shaffer GSE97682 metadata-only audit passed: SuperSeries GSE97679/80/81, PRJNA382641, 155 samples with SRA links, and explicit Drug/NoDrug/48hrholiday/7dayholiday labels.
+- Lee SRP040309 source mapping passed: PRJNA241034, 19 public paired-end RNA-seq runs.
+- Lee sample metadata mapping passed: public RNA contains untreated, stressed, and drug-tolerant states but no explicitly labeled reconverted/post-withdrawal RNA state. Therefore SRP040309 is not treated as a direct transcriptomic recovery trajectory.
+- Working manuscript privacy remains unchanged.
+
+### Reproducibility-guide repair
+
+`BIO_CHI/reviewer/REPRODUCE.md` was rebuilt into GOM v0.8.4 verification sections V1-V9. Each section now contains a visible `[CLAIM]`, executable command, expected terminal status/current tolerance, and exact source/pin identity. A repository-local master reviewer smoke test and CI workflow were added. The smoke test is a consistency/reproducibility check only and is explicitly prevented from becoming biological validation.
+
+### Active mechanical execution
+
+- BioProject-to-SRA reconciliation for Harmange PRJNA994430 and Shaffer PRJNA382641 is running under GitHub Actions run **35864501395** from a prospective metadata-only freeze.
+- Reviewer smoke-test CI is active under run **35864501351**.
+- These workflows may be repaired mechanically if necessary; no outcome-dependent scientific change is licensed.
+
+### Exact next safe resume
+
+1. Inspect runs 35864501395 and 35864501351. Preserve any failure artifact/log; repair only demonstrated mechanical defects.
+2. If BioProject reconciliation passes, pin exact SRA study/run identities and update the testbed/source ledgers.
+3. If reviewer smoke passes, record the GOM v0.8.4 reproducibility-guide state as operational.
+4. Continue Q2 using source/design gates only. Do not rescue Blum exact JM reproduction by inventing histogram parameters.
+5. Do not treat Lee SRP040309 as a direct RNA recovery trajectory unless an independent source supplies a post-withdrawal state.
+6. Continue Harmange/Shaffer/Rehman/Su qualification toward prospectively frozen recovery/carrier testbeds without using expected SymC agreement for selection.
+7. Keep `chi_bio`, `Chi_bio`, Bio Chi, and Stability Inheritance admission closed until their respective prospective gates are satisfied.
+8. Keep all working manuscript prose private.
