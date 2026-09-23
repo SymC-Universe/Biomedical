@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.1",
+  "status": "INDETERMINATE_NUMERICAL_ROOT_SOLVER",
+  "authority": "SymC GOM v0.8.4",
+  "workflow_run_id": 35855582887,
+  "workflow_head_sha": "13822146788a0c43348e77ffcd0d5403f1ed5f55",
+  "artifact_id": 10747481642,
+  "artifact_name": "BIO_CHI_JARUS_LOCAL_STABILITY_V02",
+  "artifact_sha256": "602a43ea939049fb024cb00117c55b62b499ddf6bab2d9e2dc92a9c7103ca30b",
+  "freeze": "BIO_CHI/config/JARUS_FIG8_LOCAL_STABILITY_FREEZE_v0_2.json",
+  "preserved_predecessor": "BIO_CHI/config/JARUS_LOCAL_STABILITY_V01_RESULT_PIN.json",
+  "results": {
+    "FIG8A_NOMINAL_DAMPED": {
+      "accepted_distinct_roots": 0,
+      "status": "INDETERMINATE_ROOT_MULTIPLICITY",
+      "exitflag_counts": {"1": 69, "0": 1},
+      "best_residual_inf": 1.1357094245768992e-7,
+      "best_positive_candidate": [0.05201750121536218, 0.009002328977496529, 0.27204121811150633, 0.27204121811150633, 0.3108460442993857, 0.27204121811150633]
+    },
+    "FIG8B_LIMIT_CYCLE": {
+      "accepted_distinct_roots": 0,
+      "status": "INDETERMINATE_ROOT_MULTIPLICITY",
+      "exitflag_counts": {"1": 68, "0": 1, "-2": 1},
+      "best_residual_inf": 1.132609284901898e-7,
+      "best_positive_candidate": [0.05201750121536217, 0.009315232990707844, 0.2613658190606659, 0.2613658190606659, 0.8521441966935893, 0.2613658190606659]
+    },
+    "FIG8C_RELAXATION_OSCILLATION": {
+      "accepted_distinct_roots": 0,
+      "status": "INDETERMINATE_ROOT_MULTIPLICITY",
+      "exitflag_counts": {"1": 67, "0": 2, "-2": 1},
+      "best_residual_inf": 3.2589544934598716e-7,
+      "best_positive_candidate": [0.05201750121536218, 0.009693879765055884, 0.24995244390635835, 0.24995244390635835, 0.880549561840256, 0.24995244390635835]
+    }
+  },
+  "diagnosis": "Moving from log-state to physical-state fsolve improved the best physical residual from about 8.56e-5 to about 1e-7 but still did not satisfy the prospectively frozen 1e-9 acceptance threshold. The solver frequently returned positive exit flags before meeting the physical residual gate. Therefore no equilibrium or local-stability classification is admitted from v0.2.",
+  "scientific_disposition": {
+    "paper_local_stability_claim_pass": false,
+    "paper_local_stability_claim_fail": false,
+    "finite_window_results_preserved": true,
+    "chi_bio_constructed": false,
+    "mode_selected": false,
+    "preserve_indeterminate": true
+  },
+  "next_safe_action": "Run one prospectively frozen bounded residual-minimization cross-check using exactly the same 70 seed states and unchanged root acceptance/Jacobian criteria. If that cross-check also cannot produce an accepted root, close this numerical route as INDETERMINATE rather than weakening the threshold or adding seeds."
+}
