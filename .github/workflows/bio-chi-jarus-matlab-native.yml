@@ -8,11 +8,6 @@ on:
       - 'BIO_CHI/src/prepare_jarus_matlab_native.sh'
       - 'BIO_CHI/src/jarus_matlab_native_wrapper.m'
       - '.github/workflows/bio-chi-jarus-matlab-native.yml'
-  pull_request:
-    paths:
-      - 'BIO_CHI/src/prepare_jarus_matlab_native.sh'
-      - 'BIO_CHI/src/jarus_matlab_native_wrapper.m'
-      - '.github/workflows/bio-chi-jarus-matlab-native.yml'
   workflow_dispatch:
 
 permissions:
