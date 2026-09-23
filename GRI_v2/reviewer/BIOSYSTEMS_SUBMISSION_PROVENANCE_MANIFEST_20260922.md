@@ -13,11 +13,9 @@
 | MSigDB Hallmark 2026.1.Hs raw GMT | SHA-256 `eecaf6dad908334ae885406ec72bdc0646d8917588ed7c219fac92fc5363f596` |
 | Frozen Hallmark membership | SHA-256 `bc6a9a33d7421dc407d33a66859760ba25e47b2f398e1a43c9156f80c71b3900` |
 | C1A annotation export | SHA-256 `a7f83233f97c3933752d74b8042e967de88df20eba2cf477a536136631a8da17` |
-| C1A Chen cross-reactive ID export | SHA-256 `078e95716af2b20c3515f59d09310d20c3515f59d09310d20c3515f59d0931` **DO NOT USE: placeholder-length check intentionally fails; canonical identity is recovered from source artifact at execution** |
+| C1A Chen cross-reactive ID export | SHA-256 `078e95716af2b20c3515f59d09310d20c43deb5ed8ba8d1b70885810acde2179` |
 | C1 exact probe carrier | 22,601 unique probe IDs; reconstruction bound to run `33318029738` artifact `CSA_STAGE_C1A_PROBE_INVENTORY_WINDOWS_20260830` |
 | Sample-quality annotation | GDC UUID `1a7d7be8-675d-4e60-a105-19d4121bdebf` |
-
-> **Integrity note:** the Chen export hash is not copied manually into submission metadata from memory. The exact frozen source artifact is recovered and hash-checked by the execution workflow. Any manifest generated for final release must populate it from the machine record rather than this human-readable index.
 
 ## Completed tumor-normal evidence
 
