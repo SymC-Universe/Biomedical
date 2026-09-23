@@ -1,0 +1,168 @@
+{
+  "schema_version": "0.1",
+  "status": "active_source_qualification",
+  "selection_rule": "design_quality_and_falsifiability_not_symc_agreement",
+  "testbeds": [
+    {
+      "id": "sharma2010_pc9",
+      "role": [
+        "cancer_recovery",
+        "chromatin"
+      ],
+      "tier": "A",
+      "recovery": true,
+      "public_data": "partial_tbd"
+    },
+    {
+      "id": "shaffer2017_melanoma",
+      "role": [
+        "recovery_boundary",
+        "reorganization"
+      ],
+      "tier": "A",
+      "recovery": true,
+      "accessions": [
+        "GSE97682",
+        "SRP103406"
+      ]
+    },
+    {
+      "id": "harmange2023_scmemoryseq",
+      "role": [
+        "memory",
+        "lineage",
+        "inheritance"
+      ],
+      "tier": "A",
+      "recovery": "partial",
+      "accessions": [
+        "GSE237228"
+      ]
+    },
+    {
+      "id": "rehman2021_crc_dtp",
+      "role": [
+        "cancer_recovery",
+        "rechallenge",
+        "lineage"
+      ],
+      "tier": "A",
+      "recovery": true,
+      "accessions": [
+        "GSE145356",
+        "EGAS00001004773"
+      ]
+    },
+    {
+      "id": "marsolier2022_tnbc_h3k27me3",
+      "role": [
+        "substrate",
+        "inheritance",
+        "intervention"
+      ],
+      "tier": "A",
+      "recovery": "partial",
+      "accessions": [
+        "GSE164716"
+      ]
+    },
+    {
+      "id": "su_sequential_waves_melanoma",
+      "role": [
+        "hysteresis",
+        "reorganization",
+        "chromatin"
+      ],
+      "tier": "A",
+      "recovery": true,
+      "accession_status": "tbd"
+    },
+    {
+      "id": "lee2014_paclitaxel",
+      "role": [
+        "secondary_recovery"
+      ],
+      "tier": "B",
+      "recovery": true,
+      "accessions": [
+        "SRP040309"
+      ]
+    },
+    {
+      "id": "jiang2020_yeast_memory",
+      "role": [
+        "known_truth",
+        "memory",
+        "rechallenge"
+      ],
+      "tier": "A",
+      "recovery": true,
+      "accession_status": "tbd"
+    },
+    {
+      "id": "mixseq2020",
+      "role": [
+        "response_only_negative_control"
+      ],
+      "tier": "C",
+      "recovery": false
+    },
+    {
+      "id": "sciplex2020",
+      "role": [
+        "response_surface_negative_control"
+      ],
+      "tier": "C",
+      "recovery": false,
+      "accessions": [
+        "GSE139944"
+      ]
+    },
+    {
+      "id": "son2021_nfkb",
+      "role": [
+        "chi_bio_candidate",
+        "modal"
+      ],
+      "tier": "B",
+      "recovery": "partial",
+      "data_access": "trace_data_on_request"
+    },
+    {
+      "id": "jarus_nfkb_identifiable",
+      "role": [
+        "chi_bio_model_candidate"
+      ],
+      "tier": "A_B",
+      "recovery": true,
+      "data_access": "supplement_code_raw_tbd"
+    },
+    {
+      "id": "geva2006_p53",
+      "role": [
+        "chi_bio_limit_case"
+      ],
+      "tier": "B_C",
+      "recovery": false,
+      "data_access": "supplementary"
+    },
+    {
+      "id": "blum2019_erk",
+      "role": [
+        "modal_identification",
+        "chi_bio_candidate"
+      ],
+      "tier": "A_B",
+      "recovery": true,
+      "data_access": "code_public_raw_tbd"
+    }
+  ],
+  "promotion_requirements": [
+    "exact source identity",
+    "time ordering verified",
+    "return target definable for recovery claims",
+    "native comparator recorded",
+    "data access sufficient for reproducible execution",
+    "no target-result-based testbed promotion"
+  ]
+}
