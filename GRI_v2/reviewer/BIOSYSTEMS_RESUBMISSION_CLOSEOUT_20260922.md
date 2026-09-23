@@ -1,6 +1,6 @@
 # GRI BioSystems revision/resubmission closeout - 22 September 2026
 
-**Status:** ACTIVE / NOT YET READY FOR FINAL RESUBMISSION  
+**Status:** SCIENCE GATES CLOSED / RELEASE WORK ACTIVE  
 **Manuscript:** *Collapse of Regulatory Capacity Drives Convergent Phenotypes in Human Cancer*  
 **Journal:** BioSystems  
 **Canonical science branch:** `gri-conglomerate-v1-integration-20260921`  
@@ -70,14 +70,14 @@ Before any external cohort is called P1 confirmation:
 - [x] freeze metrics/effect-size/pass-fail rules;
 - [x] document untouched outcome status;
 - [x] complete MFR-14 prospective execution record for the frozen prostate P1 task;
-- [ ] execute on genuinely untouched evidence;
-- [ ] preserve fail/indeterminate/non-identifiable outcomes without rescue.
+- [x] execute on genuinely untouched evidence;
+- [x] preserve fail/indeterminate/non-identifiable outcomes without rescue.
 
-Independent prostate P1 is now frozen prospectively under `BIOSYSTEMS_EXTERNAL_PROSTATE_P1_FREEZE_20260922.md`; source-only preflight run `35801003396` passed without opening GRI outcomes. Decisive execution is run `35801487875`.
+Independent prostate P1 completed successfully under the frozen contract in run `35801966289`, artifact `10726636434`, digest `sha256:1d7bbef7a4f8ea0cb254c139879e8ec53b9498f8d95c9c97fa28f21367075cde`. Primary 450K n=30 is `P1_PARTIAL_TRANSPORT` because H1 passes (BH q=0.003) while H2/H3a do not. Full n=32 450K is concordant. EPIC independently reproduces H1 (q=0.003) but reverses H2/H3a effect signs, triggering the preregistered final label `P1_REPRESENTATION_DEPENDENT`. No rescue was performed.
 
 ## E. Manuscript rewrite gate
 
-The BioSystems rewrite does **not** require opening the broader SCC25 A-H joint-meaning task unless that evidence is deliberately added to this paper. Rewrite work may proceed now against the closed evidence. The tumor-normal reviewer gap is closed; genuinely external confirmation remains the single open evidence-bearing reviewer gate:
+The BioSystems rewrite does **not** require opening the broader SCC25 A-H joint-meaning task unless that evidence is deliberately added to this paper. Rewrite work may proceed now against the closed evidence. Both tumor-normal and external-confirmation reviewer gates are dispositioned:
 
 - [x] Provisional revised title approved: *Regulatory Architecture Across Human Cancers: Multiomic Evidence for Recurrent Methylation–Transcriptomic Organization*.
 - [ ] rewrite abstract around the actual supported architecture, not the historical scalar claim;
@@ -105,7 +105,7 @@ Before resubmission:
 - [ ] final clean-room/reviewer-package audit;
 - [ ] final PDF visual inspection;
 - [ ] journal metadata/highlights/keywords/package fields completed;
-- [ ] point-by-point response finalized after the remaining external-confirmation item is resolved or explicitly dispositioned;
+- [ ] point-by-point response finalized against the now-closed tumor-normal and bounded external-confirmation results;
 - [ ] editor cover letter names both reviewer-driven and author-initiated changes.
 
 ## Present stop boundary
@@ -114,6 +114,6 @@ The program can still complete section B without user scientific input.
 
 The next outcome-bearing SCC25 computation cannot proceed until Decisions A-H are approved or modified, but that broader GRI task is not presently a prerequisite for answering the BioSystems reviewers.
 
-For the BioSystems revision, the tumor-versus-normal evidence gate is now CLOSED. The remaining publication-critical evidence gate is genuinely external confirmation under a frozen MFR-14-compatible design. Mechanical reviewer-package and manuscript work may continue around that single open gate.
+For the BioSystems revision, both evidence-bearing reviewer gates are now closed or bounded. No additional scientific result is required before final resubmission. Remaining work is manuscript synchronization, reviewer-response prose, figure/table regeneration, release packaging, citation/source verification, clean-room audit and final PDF inspection.
 
-Formal final resubmission is not yet authorized because the independent external-confirmation reviewer item remains open. Working manuscript sources are intentionally kept outside the public Biomedical repository in the private persistent project Library (`Atlas - GRI update v1/Private Working Manuscripts/Oncology`); reviewer/protocol/code provenance remains public on this revision branch.
+Formal final resubmission is not yet authorized only because release/manuscript mechanics remain incomplete, not because a scientific evidence gate is open. Working manuscript sources are intentionally kept outside the public Biomedical repository in the private persistent project Library (`Atlas - GRI update v1/Private Working Manuscripts/Oncology`); reviewer/protocol/code provenance remains public on this revision branch.
