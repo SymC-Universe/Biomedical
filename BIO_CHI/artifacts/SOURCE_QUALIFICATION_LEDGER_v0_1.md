@@ -1,114 +1,104 @@
 # Bio Chi source qualification ledger v0.1
 
-**Date:** 22 September 2026  
+**Date:** 23 September 2026  
 **Status:** ACTIVE / OUTCOME-BLIND SOURCE QUALIFICATION  
 **Rule:** source qualification establishes identity and reproducibility only. It does not promote a biological result.
+
+## Frozen public-source map
+
+The generic external-source freeze is pinned in `BIO_CHI/config/EXTERNAL_SOURCE_FREEZE_PIN_v0_1.json`. That record preserves exact file-map identities and available hashes for GSE145356, GSE164716, GSE237228, GSE97682, and GSE255671 without interpreting molecular values. Large files that exceeded the frozen hash ceiling remain explicitly deferred rather than implicitly treated as hashed.
 
 ## Verified public source records
 
 ### Rehman et al. 2021 — colorectal diapause-like DTP
 
-- GEO: **GSE145356**
-- GEO status: public.
+- GEO: **GSE145356**.
 - Organism: Homo sapiens.
 - Design includes vehicle, DTP-state, regrowth, and resistant samples.
 - Samples: 25.
 - BioProject: PRJNA606811.
 - SRA study: **SRP249585**.
-- Processed merged HTSeq read-count file is available from the GEO Series record.
-- Raw sequencing is available through SRA.
-- WES accession reported by the paper: EGAS00001004773. Controlled-access handling must be audited separately.
+- Processed merged HTSeq read-count material and raw sequencing paths are public.
+- WES accession reported by the paper: EGAS00001004773. Controlled-access handling remains separate.
 
 **Source disposition:** PUBLIC RNA EXECUTION FEASIBLE. Barcode/WES components require separate source-path audit.
 
 ### Marsolier et al. 2022 — H3K27me3 chemotolerance
 
-- GEO SuperSeries: **GSE164716**
-- GEO status: public.
-- Organism: Homo sapiens.
-- Samples: 100.
-- Public subseries include:
-  - GSE164385 scChIP-seq
-  - GSE164409 ChIP-seq
-  - GSE164715 scRNA-seq
-  - GSE186965 ChIP-reChIP
-  - GSE186966 CUT&Tag
-  - GSE196764 WES
-- GEO raw archive: GSE164716_RAW.tar, approximately 13.2 GB at current record.
-- Public analysis code:
-  - vallotlab/ChemoPersistance
-  - TeamPerie/lentiviral_barcode_detection_in10X_data
+- GEO SuperSeries: **GSE164716**.
+- Public subseries include GSE164385, GSE164409, GSE164715, GSE186965, GSE186966, and GSE196764.
+- Public analysis code includes `vallotlab/ChemoPersistance` and `TeamPerie/lentiviral_barcode_detection_in10X_data`.
 - Published code release v1.0.0 is archived on Zenodo, DOI 10.5281/zenodo.6010802.
 
-**Source disposition:** STRONG PUBLIC MULTIOMIC/CARRIER CANDIDATE. Exact primary files and minimal reproducible subset still need freezing before analysis.
+**Source disposition:** STRONG PUBLIC MULTIOMIC/CARRIER CANDIDATE. Minimal executable subset remains to be selected under the frozen eligibility contract, not by target result.
 
 ### Harmange et al. 2023 — scMemorySeq
 
-- GEO: **GSE237228**
-- GEO status: public.
-- Organism: Homo sapiens.
-- Experiment types include high-throughput expression profiling and genome binding/occupancy profiling.
-- Samples: 22.
-- Series contains untreated and treatment-effect scRNA-seq records and associated chromatin-accessibility data.
+- GEO: **GSE237228**.
+- Public series contains expression and chromatin-accessibility material; exact GEO file identities are now captured by the external-source freeze.
 
-**Source disposition:** PUBLIC LINEAGE/MEMORY CANDIDATE. Exact barcode/scRNA/ATAC file map must be frozen before execution.
+**Source disposition:** PUBLIC LINEAGE/MEMORY CANDIDATE. Exact lineage-barcode-to-sample mapping remains a Q2 task.
 
 ### Shaffer et al. 2017 — rare-cell priming and resistance
 
-- GEO SuperSeries: **GSE97682**
-- GEO status: public.
-- Organism: Homo sapiens.
-- Samples: 155.
-- Experiment types include RNA-seq and chromatin/occupancy profiling.
-- Public raw and processed series material is available from GEO.
-- Historical paper-level SRA lineage must be reconciled to the current GEO/BioProject record before scripts are frozen.
+- GEO SuperSeries: **GSE97682**.
+- Public raw/processed series material is captured by the external-source freeze.
+- Historical paper-level SRA lineage still requires exact reconciliation before an execution script is frozen.
 
 **Source disposition:** PUBLIC RECOVERY/REORGANIZATION BOUNDARY CANDIDATE.
 
 ### Srivatsan et al. 2020 — sci-Plex
 
-- GEO: **GSE139944**
-- BioProject: PRJNA587707.
-- SRA study: SRP228591.
-- Public raw and processed data available.
-- Primary design has perturbation response without washout/recovery.
+- GEO: **GSE139944**; BioProject PRJNA587707; SRA SRP228591.
+- Primary design is perturbation response without washout/recovery.
 
-**Source disposition:** PUBLIC RESPONSE-SURFACE NEGATIVE CONTROL. Must refuse recovery claims by design.
+**Source disposition:** PUBLIC RESPONSE-SURFACE NEGATIVE CONTROL. Recovery claims must be refused by design.
 
 ### Lee et al. 2014 — paclitaxel tolerance
 
 - Paper reports SRA accession **SRP040309**.
-- Public-source verification of the exact run/file map remains pending.
+- Exact run/file map remains pending.
 
 **Source disposition:** ACCESSION REPORTED / SOURCE MAP PENDING.
 
-## Scalar/model-track source qualification
+## Scalar/model-track and known-truth source qualification
 
 ### Jaruszewicz-Błońska et al. 2023 — identifiable NF-κB model
 
 - DOI: 10.1371/journal.pone.0286416.
-- Open-access PLOS ONE / PMC article.
-- Reduced six-variable ODE model.
-- Article states computer codes for original/reduced models are supplied as S1 Code.
-- The model includes an on-off TNF protocol used for identifiability analysis.
-- It is a model-identifiability candidate, not by itself a biological χ admission.
+- Reduced six-variable ODE source is supplied as S1 Code and is hash-pinned in the Bio Chi source freeze.
+- Native source reproduction, Figure-8 execution, local-stability work, all-mode inventory, and full-state coordinate control are tracked separately in machine-readable pins.
+- This executable model remains a model-identifiability candidate; it is not by itself a biological `chi_bio` admission.
 
-**Source disposition:** EXECUTABLE MODEL QUALIFICATION CANDIDATE.
+**Source disposition:** EXECUTABLE MODEL QUALIFICATION PATH ACTIVE. Primary biological observability/identifiability remains a separate Q2/Q3 gate.
 
 ### Son et al. 2021 — dynamic NF-κB
 
 - DOI: 10.1126/scisignal.aaz4382.
-- Dense single-cell trajectories described in the article.
-- Paper states single-cell trace data are available upon request rather than an immediately verified public repository.
+- Full-text source audit confirms dense single-cell stimulation/recovery timing, but the primary single-cell trace data are stated to be available **upon request**.
+- Custom MATLAB control/analysis software is described; no stable public repository was established by the targeted audit.
 
-**Source disposition:** SCIENTIFICALLY STRONG / ACCESS RISK.
+**Source disposition:** SCIENTIFICALLY STRONG / REPRODUCIBILITY ACCESS RISK. Do not treat the trajectories as public-downloadable.
+
+### Jiang et al. 2020 — yeast stress memory
+
+- DOI: 10.1126/scisignal.aay3585; PMCID: PMC7302112.
+- Article and supplementary material are public; the paper states data needed for its conclusions are in the article/supplement.
+- The targeted full-text audit did not establish a standalone public raw single-cell trajectory repository or accession.
+- Custom MATLAB code is stated to be available upon request.
+
+**Source disposition:** STRONG KNOWN-TRUTH DESIGN / RAW-TRACE EXECUTION ACCESS NOT YET CLOSED. Public article/supplement is not equivalent to a frozen raw trajectory package.
 
 ### Blum et al. 2019 — temporal ERK/MAPK perturbation
 
-- Public model/inference code reported at `Mijan/LFNS_MSB`.
-- Raw single-cell data acquisition path remains to be verified.
+- DOI: 10.15252/msb.20198947.
+- Full text reports online source data for the main figures and describes short temporal perturbations with washout/recovery.
+- Native population comparison uses the Jeffries-Matusita distance.
+- Public model/inference repository `Mijan/LFNS_MSB` is now pinned outcome-blind at branch `MSB_version`, commit `5c917abda0618d75c00c9cab45f24ed893dd71f1`, tree `cbb79d66f79a84bc8af28ca85f1678295348da83` in `BIO_CHI/config/BLUM2019_PUBLIC_SOURCE_PIN_v0_1.json`.
+- The pinned repository README identifies the code as the trimmed LF-NS toolbox used for the Blum inference runs; model configurations occur under `FGF2_models`, and public inference-result directories are present under `Inference_results`.
+- The targeted audit did **not** establish raw microscopy as a public downloadable package.
 
-**Source disposition:** MODEL/CODE ACCESSIBLE / RAW DATA AUDIT PENDING.
+**Source disposition:** PUBLIC PROCESSED-DATA + MODEL/INFERENCE SOURCE QUALIFIED; RAW MICROSCOPY UNVERIFIED. Candidate status is unchanged; no promotion has occurred.
 
 ### Geva-Zatorsky et al. 2006 — p53/Mdm2
 
@@ -123,43 +113,34 @@
 
 ### Su et al. 2026 — sequential transcriptional waves and NF-κB-driven chromatin remodeling
 
-- Version of record: Nature Communications 17, 3228 (2026).
-- DOI: **10.1038/s41467-026-71349-4**.
-- GEO: **GSE255671** for gene expression, ATAC-seq, and ChIP-seq generated in the study.
-- BioProject: **PRJNA1076128**.
-- Additional public longitudinal data:
-  - GSE65186;
-  - EGAS00001000992;
-  - ArrayExpress E-MTAB-5493.
-- Public analysis/modeling code: `jihoonlee0/melanoma_reversible_transition`.
-- Archived code release: Zenodo DOI **10.5281/zenodo.17751601**.
-- The published study explicitly includes oncogene inhibition followed by release and reports a hysteretic forward/reverse trajectory.
+- Nature Communications 17, 3228 (2026), DOI **10.1038/s41467-026-71349-4**.
+- GEO **GSE255671**; BioProject **PRJNA1076128**; additional longitudinal sources GSE65186, EGAS00001000992, and E-MTAB-5493.
+- Public analysis/modeling code: `jihoonlee0/melanoma_reversible_transition`; archived release DOI **10.5281/zenodo.17751601**.
+- Study includes oncogene inhibition followed by release and a reported hysteretic forward/reverse trajectory.
+- GSE255671 exact public file-map identity is captured by the external-source freeze.
 
-**Source disposition:** STRONG PUBLIC HYSTERESIS/REORGANIZATION CANDIDATE. Exact minimal file subset and source hashes still need freezing.
+**Source disposition:** STRONG PUBLIC HYSTERESIS/REORGANIZATION CANDIDATE. Minimal execution subset must still be frozen before outcome opening.
 
-## Unresolved high-priority sources
+## Preserved unresolved/source-limited cases
 
-1. **Jiang et al. 2020 yeast stress-memory**
-   - DOI: 10.1126/scisignal.aay3585; PMCID: PMC7302112.
-   - article and supplementary materials are publicly readable.
-   - BioStudies literature mirror: S-EPMC7302112.
-   - targeted public-source search did **not** establish a standalone raw single-cell trace repository or accession.
-   - disposition remains **PUBLIC ARTICLE/SUPPLEMENT; RAW TRACE PACKAGE UNVERIFIED**. Do not assume raw trajectories are downloadable until an exact file path is frozen.
-2. **Sharma et al. 2010 PC9 DTP/DTEP**
-   - DOI: 10.1016/j.cell.2010.02.027; PMCID: PMC2851638.
-   - full article is publicly readable through PMC and documents drug-free reversal/resensitization.
-   - the Reproducibility Project: Cancer Biology registered a detailed replication protocol (eLife 2016, DOI 10.7554/eLife.09462), which is useful as an independent protocol-level comparator.
-   - targeted public-source search did **not** establish a modern standalone machine-readable raw dataset for the original 2010 study.
-   - disposition remains **STRONG BIOLOGICAL RECOVERY REFERENCE / ORIGINAL RAW DATA UNVERIFIED**.
-3. **Harmange barcode mapping**
-   - exact lineage-barcode files and relationship to GEO sample records must be mapped.
+1. **Sharma et al. 2010 PC9 DTP/DTEP**
+   - DOI 10.1016/j.cell.2010.02.027; PMCID PMC2851638.
+   - Public original article documents drug-free reversal/resensitization.
+   - Reproducibility Project: Cancer Biology registered a detailed replication protocol, DOI 10.7554/eLife.09462.
+   - No modern standalone machine-readable raw dataset for the original 2010 study was established by targeted search.
+   - **Disposition: STRONG BIOLOGICAL RECOVERY REFERENCE / ORIGINAL RAW DATA UNVERIFIED.**
+2. **Harmange lineage-barcode mapping**
+   - Exact lineage-barcode files and their mapping to GEO sample records remain to be closed.
+3. **Jiang raw single-cell trajectories**
+   - Public paper/supplement confirmed; standalone raw trace package remains unverified.
+4. **Son NF-κB primary trajectories**
+   - Explicitly upon request; not a public-download execution path at present.
 
 ## Next mechanical source tasks
 
-- enumerate files and checksums for GSE145356, GSE164716, GSE237228, and GSE97682;
-- freeze a minimal downloadable subset for each candidate without opening new target outcomes;
-- identify licenses/redistribution constraints;
-- freeze exact Su GSE255671/PRJNA1076128 file subset and hashes;
-- verify Jiang and Sharma reusable-data availability;
-- map Jaruszewicz S1 Code to a pinned repository-local test fixture or source hash;
-- record all source identities in machine-readable manifests before any newly designed analysis opens target outcomes.
+- continue exact lineage/carrier mapping for Harmange and other carrier-qualified candidates;
+- reconcile Shaffer SRA/BioProject lineage before freezing an execution subset;
+- verify Lee SRP040309 exact run/file map;
+- inspect Blum public processed source-data identity and determine whether the published native Jeffries-Matusita result can be reproduced without inventing a new representation;
+- qualify candidate testbeds against the frozen P0-D eligibility contract without using expected SymC agreement as a selection criterion;
+- keep `chi_bio`, `Chi_bio`, and Bio Chi admission closed until their respective prospective gates are satisfied.
