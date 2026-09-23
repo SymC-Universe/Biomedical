@@ -224,3 +224,30 @@ A polling timeout, chat timeout, workflow queue, or interrupted tool call never 
 5. Build an outcome-blind known-truth qualification freeze from the best accessible pulse/recovery system.
 6. Build a separate cancer-recovery freeze only after source and native-metric reproduction gates pass.
 7. Keep all manuscript prose private and continue public reviewer/reproducibility records in GitHub.
+
+
+## Resume update — 22 September 2026 22:40 CDT
+
+**Verified state**
+- PR #6 remains OPEN, DRAFT, and mergeable.
+- Branch head advanced through source-freeze repair work.
+- Opening deep searches remain completed; no new broad search is required.
+- Q1 remains targeted-only; Q2 remains the first active mechanical gate.
+- Governance/privacy CI passed on the source-freeze repair commit.
+
+**Mechanical progress this run**
+- Added `BIO_CHI/src/freeze_external_sources.py` and `.github/workflows/bio-chi-external-source-freeze.yml`.
+- First source-freeze run preserved its failure artifact rather than hiding the failure.
+- Diagnosed two mechanical defects: GEO directory navigation links were being misclassified as files, and unknown-size remote files could be downloaded before the 100 MB hash ceiling was established.
+- Repaired both defects without changing any scientific endpoint or source-selection rule.
+- Corrected workflow triggering so the freeze is observable on PR commits.
+- Current repaired external-source-freeze run: GitHub Actions run **35815293416**. At checkpoint time it is in progress.
+- Jaruszewicz S1 Code identity independently verified as DOI asset `10.1371/journal.pone.0286416.s015` (ZIP); native model reproduction remains gated on successful source freeze/pinning.
+- Jiang 2020 and Sharma 2010 source availability statuses were narrowed in `SOURCE_QUALIFICATION_LEDGER_v0_1.md`: public article/supplement/protocol material is available, but no standalone original raw machine-readable trace/data package was established by the targeted public-source check. This is recorded as unresolved rather than inferred away.
+
+**Exact next safe resume**
+1. Inspect run 35815293416. If mechanically failed, preserve logs/artifact, repair only the mechanical defect, and rerun.
+2. If successful, fetch the `BIO_CHI_EXTERNAL_SOURCE_FREEZE_V01` artifact and promote its exact file identities/hashes into a durable source manifest.
+3. Pin the Jaruszewicz S1 Code archive/member hashes and reproduce the published native reduced-model behavior before deriving any `χ_bio` quantity.
+4. Do not open a new scalar definition, recovery endpoint, or representation choice without the relevant freeze.
+5. Keep manuscript text private.
