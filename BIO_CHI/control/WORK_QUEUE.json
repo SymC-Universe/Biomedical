@@ -29,17 +29,17 @@
     {
       "id": "Q2",
       "name": "dataset_eligibility_source_qualification",
-      "status": "active_blum_source_schema_qualified_exact_native_metric_reproduction_refused_method_underspecified_parallel_lineage_source_mapping_active"
+      "status": "active_su_processed_expression_identity_rehman_native_method_code_search_harmange_carrier_mapping"
     },
     {
       "id": "Q3",
       "name": "known_truth_qualification_system",
-      "status": "pending_Q2_known_truth_source_and_native_metric_exactness"
+      "status": "pending_Q2_exact_known_truth_native_method_or_explicit_limit_map"
     },
     {
       "id": "Q4",
       "name": "cancer_recovery_system",
-      "status": "pending_Q2_cancer_recovery_source_subset_freeze"
+      "status": "pending_Q2_recovery_native_metric_and_source_freeze"
     },
     {
       "id": "Q5",
@@ -68,37 +68,40 @@
     }
   ],
   "active_source_gate": {
-    "candidate": "blum2019_erk",
-    "article_doi": "10.15252/msb.20198947",
-    "processed_dataset_pin": "BIO_CHI/config/BLUM2019_MENDELEY_DATA_PIN_v0_1.json",
-    "source_freeze_result_pin": "BIO_CHI/config/BLUM2019_MENDELEY_SOURCE_FREEZE_V02_RESULT_PIN.json",
-    "processed_dataset_doi": "10.17632/ccnxn84w8z.2",
-    "processed_dataset_file": "data.zip",
-    "processed_dataset_license": "CC BY 4.0",
-    "direct_archive_endpoint_frozen": true,
-    "archive_file_uuid": "b8e7b821-d59b-4b42-b34e-1d679ace693d",
-    "archive_size_bytes": 8352835,
-    "archive_sha256": "8bbd1ead46b5bb6b676bd47a5f415fdd790840a9c726321dc5c209b9c527bc62",
-    "schema_inventory_status": "PASS_METADATA_ONLY_INVENTORY_103_MEMBERS",
-    "schema_inventory_run": 35863951277,
-    "schema_inventory_artifact": 10751880243,
-    "native_input_mapping_status": "PASS_DOCUMENTATION_AND_HEADERS_CAPTURED_NO_DATA_ROWS",
-    "native_input_mapping_run": 35863951436,
-    "native_input_mapping_artifact": 10751309038,
-    "native_method_qualification_pin": "BIO_CHI/config/BLUM2019_NATIVE_METHOD_QUALIFICATION_PIN_v0_1.json",
-    "exact_native_metric_reproduction_status": "REFUSED_METHOD_UNDERSPECIFIED",
-    "missing_method_details": [
-      "histogram bin count",
-      "histogram bin edges/range and shared-bin rule",
-      "pseudocount/smoothing rule",
-      "missing-value handling",
-      "time alignment/interpolation rule",
-      "original Figure 1H implementation code"
-    ],
-    "scientific_values_opened": false,
-    "testbed_promoted": false,
-    "next_safe_task": "continue outcome-blind Q2 source qualification: Harmange lineage/barcode mapping, Shaffer execution-source reconciliation, and Lee SRP040309 source/design mapping; seek exact Blum JM implementation only if a public/original script can be identified without inventing method choices",
-    "scientific_stop_before": "introducing any new histogram/alignment/state-representation rule and calling it the published Blum native implementation"
+    "stage": "Q2_SOURCE_METHOD_AND_LIMIT_MAPPING",
+    "testbed_promotion": false,
+    "completed": {
+      "blum_archive_sha256": "8bbd1ead46b5bb6b676bd47a5f415fdd790840a9c726321dc5c209b9c527bc62",
+      "blum_native_method_disposition": "EXACT_NATIVE_METRIC_REPRODUCTION_BLOCKED_METHOD_UNDERSPECIFIED",
+      "harmange_geo": "GSE237228",
+      "harmange_bioproject": "PRJNA994430",
+      "harmange_sra_study": "SRP449288",
+      "harmange_geo_samples": 22,
+      "harmange_sra_runs": 23,
+      "shaffer_geo": "GSE97682",
+      "shaffer_umbrella_bioproject": "PRJNA382641",
+      "shaffer_child_bioprojects": [
+        "PRJNA382674",
+        "PRJNA382752",
+        "PRJNA382753"
+      ],
+      "shaffer_sra_studies": [
+        "SRP103825",
+        "SRP103827",
+        "SRP103828"
+      ],
+      "shaffer_sra_runs": 155,
+      "lee_public_rna_recovery_status": "NO_EXPLICIT_RECONVERTED_OR_POST_WITHDRAWAL_RNA_SAMPLE_IN_SRP040309",
+      "su_native_source_metadata_pin": "BIO_CHI/config/SU2026_NATIVE_METHOD_SOURCE_METADATA_V01_RESULT_PIN.json",
+      "su_public_code_pin": "BIO_CHI/config/SU2026_PUBLIC_CODE_PIN_v0_1.json",
+      "su_m397_rna_timepoints": 15
+    },
+    "active": {
+      "su_next": "freeze exact processed-expression file identity/hash before opening values",
+      "rehman_next": "seek exact author analysis code/source implementation for Figure 4 PCA; otherwise preserve exact-native-method under-specification",
+      "harmange_next": "map lineage/barcode carrier correspondence from source documentation without opening target outcomes"
+    },
+    "scientific_stop_before": "inventing a missing native implementation detail, changing a frozen representation/endpoint, promoting a testbed based on agreement, or admitting chi_bio/Chi_bio/Bio Chi"
   },
   "active_native_model_gate": {
     "system": "Jaruszewicz-Blonska reduced NF-kB model",
