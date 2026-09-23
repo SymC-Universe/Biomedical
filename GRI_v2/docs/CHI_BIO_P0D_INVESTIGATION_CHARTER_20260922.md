@@ -17,7 +17,7 @@ The new question is broader and recovery-first:
 
 > How does biological organization before and during a perturbation constrain resistance, transient response, recovery, reorganization, memory, and failure to reclaim an admissible state, and can any local/modal scalar coordinate be licensed that adds information to the broader biological stability architecture?
 
-`χ` is the only scalar chi and remains withheld in biology unless a native dynamical model earns it. `Χ_bio` / `Chi_bio` denotes the biological modal/vector representation. **Bio Chi** denotes the conglomerate/system biological stability architecture that integrates `χ`, `Χ_bio`, coupling, substrate, context, memory, history, perturbation response, recovery, reorganization, and their relations. Bio Chi is not a scalar and is not an arithmetic sum.
+`χ` is the program-wide scalar stability class/symbol. `χ_bio` is the biological-domain instance/sublabel of `χ` and remains withheld unless a native biological model earns it. `Χ_bio` / `Chi_bio` denotes the biological modal/vector representation. **Bio Chi** denotes the conglomerate/system biological stability architecture that integrates `χ_bio`, `Χ_bio`, coupling, substrate, context, memory, history, perturbation response, recovery, reorganization, and their relations. Bio Chi is not a scalar and is not an arithmetic sum.
 
 ## 2. Inherited facts and non-negotiable boundaries
 
@@ -72,9 +72,9 @@ For a defined perturbation-removal experiment, map separately:
 
 No default single resilience score is permitted.
 
-### Q2. Joint `χ` / `Χ_bio` / Bio Chi meaning
+### Q2. Joint `χ_bio` / `Χ_bio` / Bio Chi meaning
 
-If a biological scalar `χ` is licensed, test the cross-level relationships:
+If a biological scalar `χ_bio` is licensed, test the cross-level relationships:
 
 - Does the scalar/modal object predict resistance, recovery path, recovery time, reorganization, or repeated-perturbation behavior?
 - Does broader system organization explain cases in which similar local scalar values produce different realized behavior?
@@ -188,7 +188,7 @@ The investigation narrows rather than repairs itself if:
 - an apparent boundary depends on tuning, rank, basis, normalization, or post-result selection;
 - independent transport fails.
 
-A valid outcome is therefore a modal `Χ_bio` and/or conglomerate Bio Chi result with no admitted biological scalar `χ`.
+A valid outcome is therefore a modal `Χ_bio` and/or conglomerate Bio Chi result with no admitted biological scalar `χ_bio`.
 
 ## 9. Immediate execution sequence
 
@@ -205,7 +205,7 @@ A valid outcome is therefore a modal `Χ_bio` and/or conglomerate Bio Chi result
 ```text
 ChiBio_mode = P0_D_EXPLORATORY
 Chi_bio_modal = OPEN_RECONSTRUCTION
-scalar_chi = WITHHELD
+scalar_chi_bio = WITHHELD
 historical_biological_scalar_lineage = CLOSED_NOT_ADMITTED
 recovery_hypothesis = ACTIVE
 stability_inheritance_hypothesis = ACTIVE_BUT_UNPROVEN
