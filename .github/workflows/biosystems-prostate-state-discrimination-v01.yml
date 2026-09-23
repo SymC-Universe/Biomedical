@@ -1,0 +1,41 @@
+name: BioSystems prostate state discrimination v01
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [biosystems-claim-extension-p0d-20260923]
+    paths:
+      - 'GRI_v2/config/biosystems_external_prostate_diagnostic_pca_lopo_v01_freeze.json'
+      - 'GRI_v2/src/run_biosystems_external_prostate_diagnostic_lopo_v01.py'
+      - '.github/workflows/biosystems-prostate-state-discrimination-v01.yml'
+
+jobs:
+  run:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install numpy pandas
+      - name: Download exact 450K source
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/prostate_state out_prostate_state
+          curl -L --fail --retry 3 --retry-delay 2 -o /tmp/prostate_state/m450.gz https://ftp.ncbi.nlm.nih.gov/geo/series/GSE262nnn/GSE262522/suppl/GSE262522_m450K_Proc_Funnorm.tsv.gz
+          echo "90a7a8c12343831524a9711be7e0b3f33f297fe408662fa68c5efa49a7c862d0  /tmp/prostate_state/m450.gz" | sha256sum -c -
+      - name: Run frozen leave-pair-out test
+        run: |
+          python GRI_v2/src/run_biosystems_external_prostate_diagnostic_lopo_v01.py --matrix /tmp/prostate_state/m450.gz --config GRI_v2/config/biosystems_external_prostate_p1_v1_0.json --c1-probes GRI_v2/support/c1_probe_ids_22601.txt --out out_prostate_state
+      - uses: actions/upload-artifact@v4
+        with:
+          name: biosystems-prostate-state-discrimination-v01
+          path: out_prostate_state
+          if-no-files-found: error
+          retention-days: 90
