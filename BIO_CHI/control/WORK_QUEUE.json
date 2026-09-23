@@ -24,12 +24,12 @@
     {
       "id": "Q1",
       "name": "literature_collision_candidate_expansion",
-      "status": "active"
+      "status": "active_targeted_only"
     },
     {
       "id": "Q2",
       "name": "dataset_eligibility_source_qualification",
-      "status": "active"
+      "status": "active_sources_frozen_qualification_continues"
     },
     {
       "id": "Q3",
@@ -44,12 +44,12 @@
     {
       "id": "Q5",
       "name": "chi_bio_scalar_track",
-      "status": "active_discovery_no_admission"
+      "status": "active_native_model_reproduction_no_admission"
     },
     {
       "id": "Q6",
       "name": "Chi_bio_modal_track",
-      "status": "pending_Q2_Q3"
+      "status": "pending_Q2_Q3_native_model_gate"
     },
     {
       "id": "Q7",
@@ -67,6 +67,15 @@
       "status": "not_open_private"
     }
   ],
+  "active_native_model_gate": {
+    "system": "Jaruszewicz-Blonska reduced NF-kB model",
+    "published_code_pin": "BIO_CHI/config/EXTERNAL_SOURCE_FREEZE_PIN_v0_1.json",
+    "compatibility_reproduction_pin": "BIO_CHI/config/JARUS_MATLAB_COMPAT_PIN_v0_1.json",
+    "native_behavior_freeze": "BIO_CHI/config/JARUS_NATIVE_BEHAVIOR_FREEZE_v0_1.json",
+    "target_output_capture_run": 35848534891,
+    "chi_bio_constructed": false,
+    "next_gate": "capture and reproduce authors-native behavior before modal or scalar construction"
+  },
   "stop_conditions": [
     "material scientific choice changes a frozen hypothesis/model/endpoint",
     "frozen source is scientifically non-evaluable and cannot be repaired mechanically",
