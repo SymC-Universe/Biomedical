@@ -8,11 +8,6 @@ on:
       - 'BIO_CHI/config/P0D_GEO_LINEAGE_METADATA_FREEZE_v0_1.json'
       - 'BIO_CHI/src/audit_geo_lineage_metadata_v0_1.py'
       - '.github/workflows/bio-chi-geo-lineage-metadata-v01.yml'
-  pull_request:
-    paths:
-      - 'BIO_CHI/config/P0D_GEO_LINEAGE_METADATA_FREEZE_v0_1.json'
-      - 'BIO_CHI/src/audit_geo_lineage_metadata_v0_1.py'
-      - '.github/workflows/bio-chi-geo-lineage-metadata-v01.yml'
   workflow_dispatch:
 
 permissions:
