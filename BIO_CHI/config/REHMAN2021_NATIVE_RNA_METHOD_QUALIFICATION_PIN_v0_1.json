@@ -1,0 +1,56 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "source": "Rehman et al. 2021 CRC DTP native RNA-seq method qualification",
+  "article_doi": "10.1016/j.cell.2020.11.018",
+  "geo": "GSE145356",
+  "source_manifest": "BIO_CHI/config/EXTERNAL_SOURCE_FREEZE_PIN_v0_1.json",
+  "native_method": {
+    "groups": {
+      "control": 7,
+      "dtp": 3,
+      "regrowth": 3
+    },
+    "aligner": "STAR v2.4.2a",
+    "xenograft_filter": "XenofilteR v0.99.0",
+    "counter": "HTSeq v0.6.1",
+    "r_version": "3.5.0",
+    "edgeR_version": "3.24.0",
+    "limma_version": "3.38.3",
+    "pca_function": "R prcomp",
+    "pca_input_description": "z-scores normalized within each dataset; all expressed genes",
+    "control_definition": "DMSO and saline treated tumors",
+    "differential_expression_thresholds": {
+      "fold_change_gt": 1.5,
+      "fold_change_lt": 0.6666666666666666,
+      "fdr_lt": 0.05
+    }
+  },
+  "exact_reproduction_gap": {
+    "status": "MATERIAL_METHOD_DETAIL_UNSPECIFIED",
+    "missing": [
+      "threshold/rule used to remove non-expressed genes",
+      "exact edgeR library-size normalization procedure and parameters",
+      "whether limma-voom, limma-trend, or another limma path was used",
+      "exact prcomp center/scale arguments",
+      "batch-correction rule if any",
+      "exact top-variable-gene ranking metric where variable-gene subsets are used",
+      "the custom R scripts referenced by the paper for RNA-seq/PCA analyses"
+    ],
+    "public_code_audit": "The paper's declared public code/resources identify Pairtree/Pairtree inputs and Gillespie simulation code, but the custom RNA/PCA R scripts were not established as public by the targeted source audit."
+  },
+  "disposition": "EXACT_FIGURE4_RNA_PCA_REPRODUCTION_BLOCKED_METHOD_UNDERSPECIFIED",
+  "allowed_next_steps": [
+    "continue searching for original custom R analysis scripts or source-data implementation",
+    "reproduce source identity and metadata without outcome interpretation",
+    "if a new RNA/PCA pipeline is proposed, freeze it as a new exploratory method and do not label it an exact native reproduction"
+  ],
+  "forbidden_inferences": [
+    "do not infer missing edgeR/limma/prcomp choices from common practice",
+    "do not claim exact Figure 4A reproduction from GSE145356 counts alone",
+    "do not promote Rehman based on expected Bio Chi agreement",
+    "do not construct chi_bio, Chi_bio or Bio Chi from this method gap"
+  ],
+  "molecular_values_interpreted": false,
+  "testbed_promoted": false
+}
