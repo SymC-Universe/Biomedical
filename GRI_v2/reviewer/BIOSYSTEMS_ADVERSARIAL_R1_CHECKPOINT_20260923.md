@@ -1,7 +1,7 @@
 # BioSystems adversarial Round 1 checkpoint
 
 **Date:** 23 September 2026
-**Status:** ACTIVE
+**Status:** COMPLETE / SUBMISSION READY
 **Branch:** `biosystems-adversarial-r1-20260923`
 **Immutable parent release:** `biosystems-resubmission-20260923-final` @ `18b1e3b6c828626143ac37da3fe279dd605751d5`
 **Program authority:** SymC General Operations Manual v0.8.4
@@ -149,27 +149,47 @@ Candidate title:
 
 The candidates are not final until the active H1 composition test is incorporated and PDF/reviewer-package QA is repeated.
 
-## Remaining queue
+## Final Round-1 completion state
 
-1. **External prostate metadata/technical audit: COMPLETE.** Run `35815335966`, artifact `10731351466`, digest `sha256:5d055b08611a8191024efb8337d62ffb87bbd2f14ec8ca66521513abb8d6fb39`. Only race qualified as an adjustment candidate; race was already attacked successfully. Disposition `NO_ADDITIONAL_IDENTIFIABLE_TECHNICAL_COVARIATES`. Broader unrecorded batch/plate/site/age/sex structure remains an explicit limitation.
-2. **P0 equal-capacity issue: CLOSED BY CLAIM COMPRESSION / RUN-ECONOMY AUDIT.** The criticism is valid. P0 is removed from Abstract central evidence and cannot claim Hallmark-specific incremental value. A fair 45-dimensional generic-methylation comparator would require rebuilding the full 5.02 GB methylation / 1.88 GB RNA source-projection chain as a new post-FINAL experiment because participant-level FINAL matrices and a historical executable capacity-control freeze are not preserved. `BIOSYSTEMS_ADVERSARIAL_R1_P0_CAPACITY_FEASIBILITY_AUDIT_20260923.md` records why that rebuild is not warranted after withdrawing the stronger claim.
-3. **Tumor-normal composition attack: CLOSED WITH LIMIT.** Hallmark breadth is 49/50, 47/50, 50/50 lower in TN-A1 and 48/50, 48/50, 50/50 in TN-P20. Source-only leukocyte audit run `35815627669`, artifact `10731146689`, digest `sha256:ef5f4dd43fcc6ccefc79e61adcfecd618c6164effcd61e4dc2120f824672a227` found zero cancers meeting symmetric n=30 or paired-n20 leukocyte coverage. Disposition `NO_SYMMETRIC_LEUKOCYTE_ROUTE`. TN must remain an unadjusted tissue-state contrast; composition independence is not claimed.
-4. **External permutation precision: COMPLETE.** Repaired run `35815566680`, artifact `10731477329`, digest `sha256:c4a54434de5584be0f2d42defc10b82f5c3af4c9584a941ed6391f01bdaa6c65`. Disposition `R1_P1_PRECISION_CONCORDANT`. Primary 450K and EPIC H1 each remain at the finer B=9,999 floor (`p=0.0001`, BH `q=0.0003`); H2/H3a remain unresolved/nontransporting. Original P1 classification unchanged.
-5. **External RNA representation.** Do not apply DESeq median-ratio normalization to TCGA EB++ RSEM because those are not raw counts. Instead, explicitly test any legitimate same-object transform sensitivity available from the existing TCGA representation, or retain RNA-representation mismatch as an unresolved external limitation.
-6. **Standard-toolkit / technical comparator: COMPLETE MATCHED ATTACK.** Run `35815819898`, artifact `10731877118`, digest `sha256:d8d953f7803e8dd048a85a6bb96298315dcfd4c9eff38bd3b400731386cb4e70`. H1 remains positive in 30/30 composition-complete cancers after preserving linear purity/leukocyte and TCGA Tissue Source Site mean structure (median +0.0816210; exact p=1.86e-9). Ordinary PCA PC1 concentration is also positive 30/30 against the identical stronger null (median +0.0685776; exact p=1.86e-9). MOFA/SNF/DIABLO are not run merely for optics because they do not answer this exact within-layer null question and no superiority claim is made over them.
-7. **Reporting fixes.** Name all TN-A1/TN-P20 cancers; remove stale shared-missingness text; distinguish “no gate remains for this revision” from future P0-Q controls; remove first-person abstract language; normalize single-author pronouns; remove unnecessary en-dash markup; correct title/abstract/response wording.
-8. **Reviewer citation response: COMPLETE.** Bibliographic and scope adjudication is frozen in `BIOSYSTEMS_ADVERSARIAL_R1_REVIEWER_CITATION_AUDIT_20260923.md`: PMIDs 39485254, 39617063, 38409266 are relevant with limits; unrelated engineering-control references are explicitly declined after withdrawal of the control-theory analogy.
-9. **Public reproducibility.** Keep freeze contracts, configs, workflows, result audits, reviewer adjudication, and release provenance in GitHub. Keep only manuscript/supplement text private. Prepare a public reproducibility index suitable for Zenodo snapshotting before resubmission.
-10. **Private release candidate.** After scientific controls close, rebuild the private main/supplement, compile, render, visually inspect, cross-audit all claims/values/citations, and cut a new Round-1 resubmission package.
+All Round-1 queue items are complete.
 
-Every completed gate must update this checkpoint before the next long workflow begins.
+### Scientific controls
+- external P1 tissue-state ambiguity: reviewer hypothesis false; primary H1/H2/H3a are tumor-only;
+- external H1 race sensitivity: complete / robust to source-declared AA/EA axis;
+- H1 measured-composition-preserving null: complete / 30 of 30 positive;
+- H1 composition + TCGA TSS-preserving null: complete / 30 of 30 positive;
+- conventional PCA matched comparator: complete / 30 of 30 positive under the stronger null;
+- external metadata/technical source audit: complete / no additional source-identifiable covariate beyond race;
+- TN leukocyte availability: complete / no symmetric frozen-source route;
+- TN Hallmark breadth: complete / direction broad, not composition-independent;
+- external P1 B=9,999 precision: complete / H1 retained, H2/H3a nontransport retained;
+- P0 capacity criticism: closed by claim compression; no retroactive capacity-control claim;
+- reviewer citation audit: complete;
+- standard-toolkit framing/comparator: complete with matched PCA comparator and no superiority claim;
+- biological chi / exceptional-point / recovery wording removed from active claim frame.
 
-### H1 technical gate closure
+### Private release candidate
+- main: `GRI_BioSystems_working_v11_R1_2026-09-23.tex/.pdf`;
+- supplement: `GRI_BioSystems_supplement_working_v9_R1_2026-09-23.tex/.pdf`;
+- reviewer response: `BioSystems_Response_to_Reviewers_v3_R1_2026-09-23.md/.pdf`;
+- cover letter: `BioSystems_Cover_Letter_v3_R1_2026-09-23.md/.pdf`;
+- private package: `BioSystems_Resubmission_R1_Final_20260923.zip`;
+- package SHA-256: `7a27d9942e9566ec4eb563dfd71c0db27b9f9924d928f573b672cb5fb963aeef`.
 
-`BIOSYSTEMS_ADVERSARIAL_R1_H1_TSS_AUDIT_20260923.md` closes the composition+TSS-preserving H1 attack as `R1_H1_COMP_TSS_ROBUST`. This remains a post-result adversarial sensitivity and cannot retroactively promote C1.
+### Visual / release QA
+- main: 19 pages rendered and inspected;
+- supplement: 13 pages rendered and inspected;
+- response: 9 pages rendered and inspected;
+- cover letter: 2 pages rendered and inspected;
+- no material clipping, overlap, broken figure placement, or page-flow defect found.
+
+### Public closure
+- `BIOSYSTEMS_ADVERSARIAL_R1_PUBLIC_REPRODUCIBILITY_INDEX_20260923.md`;
+- `BIOSYSTEMS_ADVERSARIAL_R1_ADJUDICATION_MATRIX_20260923.md`;
+- `BIOSYSTEMS_ADVERSARIAL_R1_FINAL_RELEASE_AUDIT_20260923.md`.
 
 ## Stop rule
 
-Do not reopen chi_bio, recovery dynamics, SCC25, or a new clinical endpoint in this manuscript.
-Do not redesign P1.
-Do not call H1 composition-independent unless a test actually supports that much; the active test can only address the two measured covariates.
+Round 1 is complete. Do not reopen chi_bio, recovery dynamics, SCC25, a new clinical endpoint, or a new external cohort inside this frozen revision unless the user explicitly opens a new scientific branch.
+
+**STATUS: COMPLETE / SUBMISSION READY**
