@@ -36,8 +36,8 @@
 - [x] Convert the current Function/Limit/refusal state into a manuscript-ready revision claim map: `BIOSYSTEMS_SUBMITTED_TO_REVISED_CLAIM_MAP_20260922.md`.
 - [x] Build the old-submitted-claim -> revised-claim -> evidence -> manuscript-section mapping in that claim map.
 - [x] Build figure/table regeneration inventory and identify every submitted figure that must be retired rather than edited: `BIOSYSTEMS_FIGURE_TABLE_REGEN_INVENTORY_20260922.md`. All three submitted main figures are retired; the historical driver table is retired unless re-derived from a new frozen question.
-- [ ] Build submission-specific source/data/code hash manifest.
-- [ ] Update non-claim ledger to include all current scalar, clinical, temporal, causal and external-confirmation refusals.
+- [x] Build submission-specific source/data/code hash manifest: `BIOSYSTEMS_SUBMISSION_PROVENANCE_MANIFEST_20260922.md`; final P1/result/manuscript hashes remain release-time fill fields.
+- [x] Update non-claim ledger to include all current scalar, clinical, temporal, causal and external-confirmation refusals: `BIOSYSTEMS_REVISED_NONCLAIM_LEDGER_20260922.md`.
 - [x] Build reviewer-specific response matrix from the received BioSystems reports: `BIOSYSTEMS_REVIEWER_RESPONSE_MATRIX_20260922.md`. Final prose remains result-dependent only for tumor-versus-normal and genuine external confirmation.
 - [ ] Prepare cover-letter delta explaining author-initiated corrections independently of reviewer comments.
 - [ ] Prepare AI-assisted-research/manuscript disclosure consistent with the journal's current policy.
@@ -63,17 +63,17 @@ No outcome-bearing run proceeds until A-H are prospectively frozen.
 
 Before any external cohort is called P1 confirmation:
 
-- [ ] freeze the exact transported claim and falsifier;
-- [ ] freeze representation compatibility;
-- [ ] freeze inclusion/exclusion and anomaly handling;
-- [ ] freeze native/simple comparator;
-- [ ] freeze metrics/effect-size/pass-fail rules;
-- [ ] document untouched outcome status;
-- [ ] complete MFR-14;
+- [x] freeze the exact transported claim and falsifier;
+- [x] freeze representation compatibility;
+- [x] freeze inclusion/exclusion and anomaly handling;
+- [x] freeze native/simple comparator;
+- [x] freeze metrics/effect-size/pass-fail rules;
+- [x] document untouched outcome status;
+- [x] complete MFR-14 prospective execution record for the frozen prostate P1 task;
 - [ ] execute on genuinely untouched evidence;
 - [ ] preserve fail/indeterminate/non-identifiable outcomes without rescue.
 
-Current external candidates remain candidate-only or P0-D/P0-Q according to the MFR-14 readiness matrix.
+Independent prostate P1 is now frozen prospectively under `BIOSYSTEMS_EXTERNAL_PROSTATE_P1_FREEZE_20260922.md`; source-only preflight run `35801003396` passed without opening GRI outcomes. Decisive execution is run `35801487875`.
 
 ## E. Manuscript rewrite gate
 
