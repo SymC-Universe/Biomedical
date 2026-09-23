@@ -18,7 +18,7 @@
   "queue": [
     {"id":"Q0","name":"governance_reproducibility_spine","status":"complete_maintain"},
     {"id":"Q1","name":"literature_collision_candidate_expansion","status":"active_targeted_only"},
-    {"id":"Q2","name":"dataset_eligibility_source_qualification","status":"active_sources_frozen_qualification_continues"},
+    {"id":"Q2","name":"dataset_eligibility_source_qualification","status":"active_blum_public_processed_dataset_identified_direct_endpoint_hash_pending"},
     {"id":"Q3","name":"known_truth_qualification_system","status":"pending_Q2"},
     {"id":"Q4","name":"cancer_recovery_system","status":"pending_Q2"},
     {"id":"Q5","name":"chi_bio_scalar_track","status":"active_native_behavior_and_local_stability_qualified_scalar_not_admitted_full_state_representation_control_complete_q2q3_observability_gate"},
@@ -27,6 +27,23 @@
     {"id":"Q8","name":"stability_inheritance_biological_test","status":"pending_carrier_qualified_data"},
     {"id":"Q9","name":"working_manuscript","status":"not_open_private"}
   ],
+  "active_source_gate": {
+    "candidate": "blum2019_erk",
+    "reason": "public processed-data and native model/inference identities are now established without viewing a SymC target result",
+    "article_doi": "10.15252/msb.20198947",
+    "processed_dataset_pin": "BIO_CHI/config/BLUM2019_MENDELEY_DATA_PIN_v0_1.json",
+    "processed_dataset_doi": "10.17632/ccnxn84w8z.2",
+    "processed_dataset_file": "data.zip",
+    "processed_dataset_reported_size": "7.97 MB",
+    "processed_dataset_license": "CC BY 4.0",
+    "code_source_pin": "BIO_CHI/config/BLUM2019_PUBLIC_SOURCE_PIN_v0_1.json",
+    "direct_archive_endpoint_frozen": false,
+    "archive_sha256_frozen": false,
+    "archive_contents_opened": false,
+    "testbed_promoted": false,
+    "next_safe_task": "freeze exact downloadable endpoint and SHA-256 for the versioned public data.zip, then inventory schema/file identities only before any native-metric execution",
+    "scientific_stop_before": "choosing a new observable/state representation if the public archive does not directly encode the published native metric inputs"
+  },
   "active_native_model_gate": {
     "system": "Jaruszewicz-Blonska reduced NF-kB model",
     "published_code_pin": "BIO_CHI/config/EXTERNAL_SOURCE_FREEZE_PIN_v0_1.json",
