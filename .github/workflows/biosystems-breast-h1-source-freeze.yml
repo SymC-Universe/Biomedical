@@ -1,4 +1,4 @@
-name: BioSystems breast H1 source freeze
+name: BioSystems breast H1 source identity verification
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
             https://ftp.ncbi.nlm.nih.gov/geo/series/GSE58nnn/GSE58999/matrix/GSE58999_series_matrix.txt.gz
           sha256sum /tmp/GSE58999_series_matrix.txt.gz | tee breast_source_freeze/SHA256.txt
           stat -c '%s' /tmp/GSE58999_series_matrix.txt.gz | tee breast_source_freeze/SIZE_BYTES.txt
-      - name: Capture metadata only
+      - name: Capture metadata only (post-result source verification)
         shell: bash
         run: |
           python - <<'PY'
