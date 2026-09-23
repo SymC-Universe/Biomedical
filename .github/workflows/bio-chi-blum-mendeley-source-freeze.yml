@@ -7,10 +7,6 @@ on:
     paths:
       - 'BIO_CHI/src/freeze_blum_mendeley_source.py'
       - '.github/workflows/bio-chi-blum-mendeley-source-freeze.yml'
-  pull_request:
-    paths:
-      - 'BIO_CHI/src/freeze_blum_mendeley_source.py'
-      - '.github/workflows/bio-chi-blum-mendeley-source-freeze.yml'
   workflow_dispatch:
 
 permissions:
