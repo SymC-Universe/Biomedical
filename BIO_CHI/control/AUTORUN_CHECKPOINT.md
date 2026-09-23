@@ -24,7 +24,7 @@ Machine-readable source of record: `BIO_CHI/control/WORK_QUEUE.json`.
 
 - Q0 governance/reproducibility: COMPLETE / MAINTAIN.
 - Q1 literature collision: ACTIVE TARGETED-ONLY; both broad searches are complete.
-- Q2 dataset eligibility/source qualification: ACTIVE; frozen source identities exist and observability/access qualification continues.
+- Q2 dataset eligibility/source qualification: ACTIVE; Blum 2019 now has versioned public processed-data and immutable model/inference identities, with direct archive endpoint/hash still pending.
 - Q3 known-truth qualification: PENDING Q2.
 - Q4 cancer recovery: PENDING Q2.
 - Q5 `chi_bio`: ACTIVE; native NF-kB model behavior/local stability and full-state coordinate sanity control complete; scalar **NOT ADMITTED**.
@@ -45,7 +45,8 @@ Both broad Undermind searches remain COMPLETE: biological stability/perturbation
 - MATLAB R2023b execution uses exactly one documented API compatibility repair; equations, parameters, protocol, and scientific interpretation were not changed.
 - The authors' seven supplied-driver figures are not Figure 8A-C and must never be relabeled as such.
 - Native output capture and source-structure audit are pinned.
-- Blum 2019 public inference/model source is pinned outcome-blind in `BIO_CHI/config/BLUM2019_PUBLIC_SOURCE_PIN_v0_1.json` to `Mijan/LFNS_MSB`, commit `5c917abda0618d75c00c9cab45f24ed893dd71f1`, tree `cbb79d66f79a84bc8af28ca85f1678295348da83`. This does not promote Blum as a testbed and does not establish raw microscopy as public.
+- Blum 2019 public inference/model source is pinned outcome-blind in `BIO_CHI/config/BLUM2019_PUBLIC_SOURCE_PIN_v0_1.json` to `Mijan/LFNS_MSB`, commit `5c917abda0618d75c00c9cab45f24ed893dd71f1`, tree `cbb79d66f79a84bc8af28ca85f1678295348da83`.
+- Blum 2019 processed-data identity is pinned before archive inspection in `BIO_CHI/config/BLUM2019_MENDELEY_DATA_PIN_v0_1.json`: Mendeley Data Version 2, DOI `10.17632/ccnxn84w8z.2`, `data.zip`, reported size 7.97 MB, CC BY 4.0. Direct archive endpoint and SHA-256 remain intentionally unclaimed until reproducibly acquired.
 
 ## Preserved Figure 8 behavior evidence
 
@@ -99,21 +100,31 @@ Interpretation is deliberately narrow: **necessary-not-sufficient numerical coor
 
 - Jiang 2020: public article/supplement confirmed; no standalone public raw single-cell trace package established; custom MATLAB code stated as upon request.
 - Son 2021: primary single-cell NF-kB trajectories explicitly upon request; no public execution path established for those traces.
-- Blum 2019: public processed figure-source data are reported; public model/inference source is now immutably pinned; raw microscopy public-download status remains unverified. Native Jeffries-Matusita population distance is documented in the publication.
+- Blum 2019: the access gap narrowed materially. The article reports figure source-data ZIPs plus Code EV1/CellProfiler pipelines, public model/inference source is immutably pinned, and a versioned public processed dataset has been identified at Mendeley Data DOI `10.17632/ccnxn84w8z.2`. The archive identity is frozen before contents are opened. Raw microscopy is still not assumed public.
 - Sharma 2010: public article and independent replication protocol exist, but original machine-readable raw data remain unverified.
 
 These access findings narrow reproducible testbed eligibility; none is a result-based promotion.
 
 ## Mechanical governance failure preserved and repaired
 
-A governance CI run after the queue update failed because `BIO_CHI/src/validate_control.py` requires the checkpoint to contain the literal headings/tokens `Mechanical continuation authority`, `Scientific stop conditions`, and `Current execution queue`. The prior checkpoint carried equivalent content under different headings. This is classified as a **mechanical governance-drift failure**, not a scientific failure. The exact required headings are restored in this checkpoint without changing the scientific contract. The failed run/log remains part of provenance.
+A governance CI run after the queue update failed because `BIO_CHI/src/validate_control.py` requires the checkpoint to contain the literal headings/tokens `Mechanical continuation authority`, `Scientific stop conditions`, and `Current execution queue`. The prior checkpoint carried equivalent content under different headings. This is classified as a **mechanical governance-drift failure**, not a scientific failure. The exact required headings were restored without changing the scientific contract. Follow-up governance/privacy run **35860921714** completed **SUCCESS**.
+
+## Durable progress this run
+
+- Full-state Jaruszewicz representation control result pinned at `BIO_CHI/config/JARUS_FULL_STATE_REPRESENTATION_CONTROL_V01_RESULT_PIN.json`.
+- Work queue advanced back to Q2/Q3 biological observability/source qualification without scalar/modal promotion.
+- Targeted full-text source audit updated the Jiang, Son, Blum, and Jaruszewicz access states.
+- Blum public model/inference source pinned at immutable Git commit/tree.
+- Blum versioned Mendeley processed-data identity pinned before archive inspection.
+- Source qualification ledger and machine-readable testbed registry updated.
+- The governance-drift failure was preserved, mechanically repaired, and verified by passing governance/privacy CI.
 
 ## Exact next safe resume
 
-1. Verify governance/privacy CI passes with the restored checkpoint tokens. If it fails mechanically, preserve the log and repair only the validator/checkpoint contract without changing science.
-2. Continue Q2 outcome-blind qualification. First preference is to close a reproducible native-metric path using already-public material, not to choose a testbed based on expected SymC behavior.
-3. For Blum 2019, verify the exact public processed source-data object(s) and whether the published Jeffries-Matusita result can be reproduced from public processed material without inventing a new biological state representation. If a representation choice is scientifically material, stop before choosing it.
-4. Continue Harmange lineage/barcode mapping, Shaffer source-lineage reconciliation, and Lee SRP040309 file mapping as mechanical source tasks.
+1. Freeze the exact downloadable endpoint and SHA-256 for Blum Mendeley `data.zip` without interpreting archive contents. If the hosting/API path prevents direct programmatic acquisition, preserve that access limitation rather than substituting an unversioned copy.
+2. Once acquired, inventory only archive file identities/schema first. Do not compute the native metric until inputs can be mapped to the published Jeffries-Matusita definition without inventing a new observable/state representation.
+3. If the public processed archive directly supports the published native metric, prospectively freeze native-metric reproduction before opening its result. If a materially new representation choice is required, stop at the scientific decision boundary.
+4. Continue Harmange lineage/barcode mapping, Shaffer source-lineage reconciliation, and Lee SRP040309 file mapping as parallel mechanical Q2 work.
 5. Preserve every Figure 8 B/C finite-window failure, v0.1/v0.2 indeterminate, v0.3 mechanical failure, and all source-access refusals/limitations.
 6. Do not select the NF-kB complex pair, define `chi_bio`, admit `Chi_bio`, or infer Bio Chi until the prospective biological observability/identifiability and representation gates are satisfied.
 7. Keep working manuscript prose private.
