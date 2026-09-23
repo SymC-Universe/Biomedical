@@ -40,6 +40,8 @@ jobs:
           name: BIO_CHI_JARUS_NATIVE_SMOKE_V01
           path: |
             BIO_CHI/artifacts/generated/jarus_native_smoke/native_smoke_manifest.json
+            BIO_CHI/artifacts/generated/jarus_native_smoke/octave_compat_diagnostic.json
+            BIO_CHI/artifacts/generated/jarus_native_smoke/octave_console.txt
             BIO_CHI/artifacts/generated/jarus_native_smoke/octave_stdout.txt
             BIO_CHI/artifacts/generated/jarus_native_smoke/native_workspace.mat
           if-no-files-found: warn
