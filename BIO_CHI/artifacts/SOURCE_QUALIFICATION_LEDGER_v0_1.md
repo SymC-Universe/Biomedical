@@ -119,11 +119,27 @@
 
 **Source disposition:** LIMIT-CASE CANDIDATE, NOT PRIMARY RECOVERY.
 
+## Verified hysteresis/reorganization source
+
+### Su et al. 2026 — sequential transcriptional waves and NF-κB-driven chromatin remodeling
+
+- Version of record: Nature Communications 17, 3228 (2026).
+- DOI: **10.1038/s41467-026-71349-4**.
+- GEO: **GSE255671** for gene expression, ATAC-seq, and ChIP-seq generated in the study.
+- BioProject: **PRJNA1076128**.
+- Additional public longitudinal data:
+  - GSE65186;
+  - EGAS00001000992;
+  - ArrayExpress E-MTAB-5493.
+- Public analysis/modeling code: `jihoonlee0/melanoma_reversible_transition`.
+- Archived code release: Zenodo DOI **10.5281/zenodo.17751601**.
+- The published study explicitly includes oncogene inhibition followed by release and reports a hysteretic forward/reverse trajectory.
+
+**Source disposition:** STRONG PUBLIC HYSTERESIS/REORGANIZATION CANDIDATE. Exact minimal file subset and source hashes still need freezing.
+
 ## Unresolved high-priority sources
 
-1. **Su sequential transcriptional-wave / hysteresis melanoma study**
-   - exact public accession and canonical publication identity must be resolved before promotion.
-2. **Jiang et al. 2020 yeast stress-memory**
+1. **Jiang et al. 2020 yeast stress-memory**
    - paper is open access; exact downloadable single-cell trace/source package remains unverified.
 3. **Sharma et al. 2010 PC9 DTP/DTEP**
    - recovery figures are strong, but machine-readable public source availability must be established.
@@ -135,7 +151,7 @@
 - enumerate files and checksums for GSE145356, GSE164716, GSE237228, and GSE97682;
 - freeze a minimal downloadable subset for each candidate without opening new target outcomes;
 - identify licenses/redistribution constraints;
-- resolve exact Su study identity/accession;
+- freeze exact Su GSE255671/PRJNA1076128 file subset and hashes;
 - verify Jiang and Sharma reusable-data availability;
 - map Jaruszewicz S1 Code to a pinned repository-local test fixture or source hash;
 - record all source identities in machine-readable manifests before any newly designed analysis opens target outcomes.
