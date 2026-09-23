@@ -17,7 +17,7 @@ The new question is broader and recovery-first:
 
 > How does biological organization before and during a perturbation constrain resistance, transient response, recovery, reorganization, memory, and failure to reclaim an admissible state, and can any local/modal scalar coordinate be licensed that adds information to the broader biological stability architecture?
 
-The biological stability architecture is denoted here by capital `Χ_bio` only as the GOM representation label for the progressively reconstructed architecture. It is not presumed to be a scalar, a master score, or a complete ontology. Lowercase `χ_bio` is withheld unless a native dynamical model earns it.
+**Chi Bio** is the canonical prose name for capital `Χ_bio`, the progressively reconstructed biological stability architecture. It is not presumed to be a scalar, a master score, or a complete ontology. Lowercase `χ_bio` is withheld unless a native dynamical model earns it. `Biological Chi` and `X_bio` are not used as prospective alternate names.
 
 ## 2. Inherited facts and non-negotiable boundaries
 
@@ -72,7 +72,7 @@ For a defined perturbation-removal experiment, map separately:
 
 No default single resilience score is permitted.
 
-### Q2. Joint lowercase-chi / capital-Chi meaning
+### Q2. Joint `χ_bio` / Chi Bio meaning
 
 If a local or modal scalar is licensed, test both directions of the relationship:
 
@@ -188,7 +188,7 @@ The investigation narrows rather than repairs itself if:
 - an apparent boundary depends on tuning, rank, basis, normalization, or post-result selection;
 - independent transport fails.
 
-A valid outcome is therefore a capital-Chi architecture with no admitted lowercase biological chi.
+A valid outcome is therefore a Chi Bio (`Χ_bio`) architecture with no admitted lowercase `χ_bio`.
 
 ## 9. Immediate execution sequence
 
@@ -204,11 +204,23 @@ A valid outcome is therefore a capital-Chi architecture with no admitted lowerca
 
 ```text
 ChiBio_mode = P0_D_EXPLORATORY
-capital_Chi_bio_architecture = OPEN_RECONSTRUCTION
+Chi_Bio_X_bio_architecture = OPEN_RECONSTRUCTION
 lowercase_chi_bio = WITHHELD
-historical_scalar_Chi_bio_lineage = CLOSED_NOT_ADMITTED
+historical_scalar_chi_bio_lineage = CLOSED_NOT_ADMITTED
 recovery_hypothesis = ACTIVE
 stability_inheritance_hypothesis = ACTIVE_BUT_UNPROVEN
 chi_equals_one_biological_boundary = NOT_ASSUMED
 first_task = LITERATURE_AND_DATASET_ELIGIBILITY_COLLISION
 ```
+
+## Canonical terminology control
+
+Prospective writing in this lineage uses:
+
+```text
+χ_bio = lowercase scalar/local-modal coordinate, if licensed
+Chi Bio = canonical prose name for capital Χ_bio, the broader biological stability architecture
+χ_bio <-> Χ_bio = relation to be discovered
+```
+
+Do not introduce `Biological Chi` or `X_bio` as alternate prospective names. Historical quoted labels are preserved only as provenance.
