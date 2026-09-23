@@ -1,0 +1,69 @@
+name: BioSystems HCI005 decitabine namespace audit v01
+
+on:
+  push:
+    branches:
+      - biosystems-claim-extension-p0d-20260923
+    paths:
+      - '.github/workflows/biosystems-hci005-decitabine-namespace-v01.yml'
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download exact RNA source
+        run: |
+          mkdir -p /tmp/hci005 out_hci005_namespace
+          curl -L --fail --retry 3 --retry-delay 2 \
+            -o /tmp/hci005/rna.gz \
+            https://ftp.ncbi.nlm.nih.gov/geo/series/GSE171nnn/GSE171073/suppl/GSE171073_Veh.vs.Dec_HCI005.cntTable.txt.gz
+          echo "1cbd6826074498a57025124da0a2857f1248338b21aaf1e3034cea48c7f68397  /tmp/hci005/rna.gz" | sha256sum -c -
+      - name: Audit identifier namespace only
+        shell: bash
+        run: |
+          python - <<'PY'
+          import base64,gzip,hashlib,json,lzma
+          from pathlib import Path
+          import csv
+          raw=lzma.decompress(base64.b64decode(Path('GRI_v2/support/tn_c1_core_mask_payload.lzma.b64').read_bytes()))
+          lines=raw.decode().splitlines(); k=lines.index('MASK')
+          genes=set()
+          for line in lines[1:k]:
+              if not line: continue
+              _,gs=line.split('\t',1)
+              genes.update(g for g in gs.split(';') if g)
+          ids=[]
+          with gzip.open('/tmp/hci005/rna.gz','rt',encoding='utf-8',errors='replace',newline='') as f:
+              header=next(csv.reader([f.readline().rstrip('\r\n')],delimiter='\t',quotechar='"'))
+              for line in f:
+                  row=next(csv.reader([line.rstrip('\r\n')],delimiter='\t',quotechar='"'))
+                  if row: ids.append(row[0].strip())
+          exact=sorted(set(ids)&genes)
+          out={
+            'schema_version':'0.1',
+            'status':'PASS_IDENTIFIER_ONLY_AUDIT',
+            'values_read':False,
+            'rna_header':header,
+            'identifier_rows':len(ids),
+            'identifier_unique':len(set(ids)),
+            'first_30_identifiers':ids[:30],
+            'promoter_gene_namespace_count':len(genes),
+            'exact_symbol_overlap_count':len(exact),
+            'exact_symbol_overlap_first_50':exact[:50],
+            'pipe_count':sum('|' in x for x in ids),
+            'ensembl_like_count':sum(x.startswith('ENSG') for x in ids)
+          }
+          Path('out_hci005_namespace/HCI005_DECITABINE_NAMESPACE_AUDIT_V01.json').write_text(json.dumps(out,indent=2,sort_keys=True)+'\n')
+          print(json.dumps(out,indent=2,sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: biosystems-hci005-decitabine-namespace-v01
+          path: out_hci005_namespace
+          retention-days: 90
