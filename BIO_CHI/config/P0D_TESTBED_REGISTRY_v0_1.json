@@ -115,10 +115,16 @@
       "tier": "A_B",
       "recovery": true,
       "doi": "10.15252/msb.20198947",
-      "data_access": "public_processed_source_data_for_figures_raw_microscopy_not_explicitly_public",
-      "code_access": "public_github_Mijan_LFNS_MSB_model_files_inference_outputs_and_CellProfiler_pipeline",
+      "processed_dataset_doi": "10.17632/ccnxn84w8z.2",
+      "processed_dataset_file": "data.zip",
+      "processed_dataset_reported_size": "7.97 MB",
+      "processed_dataset_license": "CC BY 4.0",
+      "processed_dataset_pin": "BIO_CHI/config/BLUM2019_MENDELEY_DATA_PIN_v0_1.json",
+      "data_access": "public_versioned_processed_dataset_and_article_figure_source_data_raw_microscopy_not_established",
+      "code_access": "public_github_Mijan_LFNS_MSB_model_files_and_inference_outputs",
+      "code_source_pin": "BIO_CHI/config/BLUM2019_PUBLIC_SOURCE_PIN_v0_1.json",
       "native_metric": "Jeffries_Matusita_population_distance_defined_in_paper",
-      "source_qualification_note": "Full text states source data are available online for main figures and all inference results/model files are public; perturbation protocols include short pulses and washout. This closes a public processed-data/code gap but does not by itself promote the testbed."
+      "source_qualification_note": "Public processed-data identity is now closed at Mendeley Data V2 plus an immutable GitHub model/inference commit. Direct data.zip URL/hash remains to be frozen before execution. This closes an access identity gap but does not promote the testbed or authorize a new representation."
     }
   ],
   "promotion_requirements": [
