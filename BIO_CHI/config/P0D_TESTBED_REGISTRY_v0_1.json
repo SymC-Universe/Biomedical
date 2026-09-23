@@ -34,7 +34,20 @@
         "48hrholiday",
         "7dayholiday"
       ],
-      "source_qualification_note": "GSE97682 SuperSeries and 155 per-sample SRA experiment links are frozen; source metadata explicitly includes drug-holiday labels. Execution subset remains unselected."
+      "source_qualification_note": "GSE97682/PRJNA382641 umbrella lineage is frozen; the 155-run set partitions exactly across three child BioProjects and three SRA studies. Drug-holiday labels are explicit in GEO metadata; execution subset remains unselected.",
+      "sra_studies": [
+        "SRP103825",
+        "SRP103827",
+        "SRP103828"
+      ],
+      "child_bioprojects": [
+        "PRJNA382674",
+        "PRJNA382752",
+        "PRJNA382753"
+      ],
+      "sra_run_count": 155,
+      "bioproject_sra_reconciliation_pin": "BIO_CHI/config/P0D_BIOPROJECT_SRA_RECONCILIATION_V02_RESULT_PIN.json",
+      "retired_unverified_accession": "SRP103406"
     },
     {
       "id": "harmange2023_scmemoryseq",
@@ -53,7 +66,11 @@
       "sra_experiment_count": 22,
       "metadata_lineage_fields_verified": true,
       "carrier_admission": "not_established",
-      "source_qualification_note": "GEO-to-SRX sample identity and lineage/condition metadata fields are frozen; causal carrier correspondence remains unproven."
+      "source_qualification_note": "GSE237228 has 22 GEO samples with explicit SRX links; PRJNA994430 resolves to 23 SRA runs in SRP449288. Source lineage is qualified; causal carrier correspondence remains unproven.",
+      "sra_study": "SRP449288",
+      "sra_run_count": 23,
+      "geo_sample_count": 22,
+      "bioproject_sra_reconciliation_pin": "BIO_CHI/config/P0D_BIOPROJECT_SRA_RECONCILIATION_V02_RESULT_PIN.json"
     },
     {
       "id": "rehman2021_crc_dtp",
@@ -113,7 +130,14 @@
       "code": [
         "github:jihoonlee0/melanoma_reversible_transition",
         "zenodo:10.5281/zenodo.17751601"
-      ]
+      ],
+      "public_source_status": "m397_timecourse_and_native_method_source_qualified_outcomes_sealed",
+      "rna_timecourse_count": 15,
+      "native_source_metadata_result_pin": "BIO_CHI/config/SU2026_NATIVE_METHOD_SOURCE_METADATA_V01_RESULT_PIN.json",
+      "public_code_pin": "BIO_CHI/config/SU2026_PUBLIC_CODE_PIN_v0_1.json",
+      "public_code_commit": "a2b2119f6d69d49e33ff4b57fb04b2b1eaf5fe68",
+      "native_hysteresis_scalar": "not_defined_in_publication",
+      "next_source_gate": "freeze exact processed expression file identity/hash before reading values"
     },
     {
       "id": "lee2014_paclitaxel",
