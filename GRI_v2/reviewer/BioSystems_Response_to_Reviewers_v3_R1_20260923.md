@@ -1,6 +1,6 @@
 # Response to Reviewers
 
-**Round-1 adversarial synchronization:** 23 September 2026
+**Final revision synchronization:** 23 September 2026
 
 **Manuscript:** BIOSYS-D-26-00267  
 **Submitted title:** *Collapse of Regulatory Capacity Drives Convergent Phenotypes in Human Cancer*  
@@ -22,9 +22,9 @@ Below is the point-by-point response.
 
 ### 1. Verify expression units and preprocessing
 
-**Response:** Agreed. The Methods now states the exact source representation. Stage A uses the PanCanAtlas **EB++ batch-adjusted, already normalized RSEM** matrix; it is not treated as raw counts. Finite source values receive the downstream transform `log2(max(x,0)+1)`, while source non-finite values remain missing. The pseudocount is retained as part of the frozen representation and primarily affects the lowest-expression range. Historical CV/2 is not used as a biological damping coordinate or as evidence for the current claims.
+**Response:** Agreed. The Methods now states the exact source representation and downstream Stage A transform. Stage A uses the PanCanAtlas **EB++ batch-adjusted, already normalized RSEM** matrix; it is not treated as raw counts. Finite source values receive the downstream transform `log2(max(x,0)+1)`, while source non-finite values remain missing. The pseudocount is retained as part of the frozen representation and primarily affects the lowest-expression range. Historical CV/2 is not used as a biological damping coordinate or as evidence for the current claims.
 
-**Revision:** Source identity, preprocessing, transformations, missingness rules, and exact source hashes are explicit in Methods and the reproducibility record.
+**Revision:** Source identity and preprocessing are explicit in Methods; detailed transformation, missingness, and exact source-hash records are retained in the Supplementary Information and public reproducibility record.
 
 ### 2. Analyze cancers separately rather than relying on pooled pan-cancer behavior
 
@@ -133,7 +133,7 @@ The cancer-regulation references suggested by the reviewer were also evaluated a
 
 **Response:** The revised paper centers on directly measured RNA and methylation, with genomic/context branches retained only where they constrain interpretation. Shared TCGA acquisition/processing prevents internal layers from being relabeled as independent external confirmation. The independent prostate study remains the distinct external layer.
 
-**Revision:** The earlier response language implying that protein/phosphoprotein evidence was a central component of the revised manuscript has been removed because that analysis is not part of the present main-paper claim set.
+**Revision:** An orthogonal TCGA RNA/protein branch is retained as supplementary supporting evidence rather than independent external validation. Its 31/31 positive cancer-level medians are reported in Supplementary Stage B2, while the independent prostate study remains the distinct external layer.
 
 ### 3. Cancer-specific robustness
 
@@ -141,7 +141,7 @@ The cancer-regulation references suggested by the reviewer were also evaluated a
 
 ### 4. Reproducibility / method detail
 
-**Response:** The scientific chronology is now publicly inspectable in the GitHub repository `SymC-Universe/Biomedical` on the Round-1 branch `biosystems-adversarial-r1-20260923`. The public repository contains the prospective freeze contracts, configs, code, deterministic seeds, source hashes, workflows, outcome artifacts, post-result audits, reviewer-adjudication matrix, and a Round-1 reproducibility index. The pre-Round-1 release was snapshotted on an immutable branch before the additional adversarial sensitivities were added, so the chronology can be reconstructed independently rather than relying on local file timestamps.
+**Response:** The scientific chronology is now publicly inspectable in the GitHub repository `SymC-Universe/Biomedical` on the post-result branch `biosystems-v24-final-polish-20260923`. The public repository contains the prospective freeze contracts, configs, code, deterministic seeds, source hashes, workflows, outcome artifacts, post-result audits, reviewer-adjudication matrix, and a final reproducibility index. The pre-adversarial release was snapshotted on an immutable branch before the additional adversarial sensitivities were added, so the chronology can be reconstructed independently rather than relying on local file timestamps.
 
 The editable manuscript and supplement remain private authoring artifacts until journal submission; this does not conceal scientific decision rules, workflow identities, or result artifacts.
 
@@ -182,7 +182,7 @@ For transparency, major self-corrections identified during the rebuild include:
 7. C1 source-identity/missingness amendments and post-C1 adversarial sensitivities;
 8. tumor-normal controls frozen before normal molecular outcomes were opened;
 9. independent prostate transport frozen before external molecular outcomes were opened;
-10. post-result Round-1 sensitivities explicitly separated from the original preregistered analyses rather than backdated into them.
+10. post-result adversarial sensitivities explicitly separated from the original preregistered analyses rather than backdated into them.
 
 The public GitHub history preserves these distinctions through dated freeze files, workflow commits, run IDs, artifact hashes, failed mechanical attempts, and post-result audits.
 
