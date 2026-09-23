@@ -265,3 +265,37 @@ The manuscript text remains private; these hashes bind the private submission ar
 The final-clause audit also binds the 30/30 exclusions (DLBC/THYM), matched 0.12332 -> 0.09998 -> 0.08162 attenuation sequence, per-cancer TSS support, 5/32 missingness-projection scope, and external paired-RNA attenuation language.
 
 **INDEX STATUS: COMPLETE / V12 FINAL-CLAUSE RELEASE.**
+
+
+## V24 final polish closure
+
+**Current reviewer-facing source-of-truth branch:** `biosystems-v24-final-polish-20260923`.
+
+The final polish addressed the last external audit without changing any frozen scientific result:
+
+- reviewer-response branch pointer updated to the current closure branch;
+- internal response-process wording removed;
+- the Stage A `log2(max(x,0)+1)` transform added explicitly to main Methods;
+- five Elsevier-compliant highlights added as a separate Word file, each 67-71 characters;
+- the Abstract now separates prospectively frozen tests from post-result confound-preserving sensitivities;
+- internal “Round-1” wording removed from reviewer-facing manuscript/supplement prose;
+- the main-text RNA/RPPA 31/31 statement now points explicitly to Supplementary Stage B2;
+- the Abstract and Discussion now state that canonical H1 positivity is not cancer-specific by itself because the canonical null destroys all cross-probe covariance.
+
+Public result-record verification against the final text:
+- H1 composition+TSS audit: 30/30 positive, median +0.0816210492;
+- P0 final holdout: 17/18 favorable, exact one-sided p=0.000072479248046875;
+- external prostate: H1 +0.303090, H2 +0.019724, H3a -0.040489 on primary 450K, with final `P1_REPRESENTATION_DEPENDENT`;
+- RPPA Stage B2: 31/31 positive cancer-level medians;
+- TN-C1: H1 lower in tumor in 5/5 eligible cancers, median -0.15023;
+- M397 recovery: rho=-0.8857142857, exact one-sided p=0.0166666667.
+
+Final private artifact hashes:
+- main v24 PDF: `46db0b2a399e1a04d0f06fb3f7e88d6a70df8b91c9def3c6f5f3d56dc241966e`;
+- supplement v18 PDF: `3b0480e7675b79cb43fdbba66967d477fd04dda916c2d8d6901830f05bb5632c`;
+- reviewer response v12 PDF: `d257b55cd003386d992f4cf832b8dacdddebc3547bf011a4589ae8a4353b03dc`;
+- cover letter v9 PDF: `0152bc3a63d509e6bdbbe20a55e43c1dd4407fd9cfdda9e9f5deb0dbaf4694a7`;
+- highlights v1 DOCX: `a29d85ae4f81f6f1e2f72f4939c2188461fbb313e5b00324164b7b047cce44dd`;
+- final v24 ZIP: `e87b2ed86e99fb0e2057a43f34ee21435b9297c7cbb0cf5aa142c0fb27322725`.
+
+The main manuscript compiles with zero undefined references and zero overfull/underfull warnings after the final heading wrap. The supplement compiles with zero undefined references and one harmless underfull box. All final PDFs and the highlights DOCX passed render inspection.
