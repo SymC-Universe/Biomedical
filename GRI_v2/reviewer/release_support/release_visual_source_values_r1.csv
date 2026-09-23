@@ -1,0 +1,41 @@
+<PARSED TEXT FOR SHEET: 1 / 1 TABS
+TAB NAME: release_visual_source_values_r1.csv>index,source_block,quantity,value,note
+0,C1_AGGREGATE,H1,0.128,32/32 positive; q=3.10e-10
+1,C1_AGGREGATE,H2,0.2295,32/32 positive; q=3.10e-10
+2,C1_AGGREGATE,H3a,0.0981,32/32 positive; q=3.10e-10
+3,C1_AGGREGATE,H3b,0.02125,29/32 positive; q=1.28e-6
+4,TN_C1,BRCA H1 dS,-0.1673,tumor-minus-normal
+5,TN_C1,BRCA H2 dCKA,0.0226,tumor-minus-normal
+6,TN_C1,BRCA H3a dA_patient,-0.0049,tumor-minus-normal
+7,TN_C1,BRCA H3b dA_label,0.0116,tumor-minus-normal
+8,TN_C1,LIHC H1 dS,-0.1,tumor-minus-normal
+9,TN_C1,LIHC H2 dCKA,0.0095,tumor-minus-normal
+10,TN_C1,LIHC H3a dA_patient,-0.0287,tumor-minus-normal
+11,TN_C1,LIHC H3b dA_label,0.0,tumor-minus-normal
+12,TN_C1,PRAD H1 dS,-0.1367,tumor-minus-normal
+13,TN_C1,PRAD H2 dCKA,-0.062,tumor-minus-normal
+14,TN_C1,PRAD H3a dA_patient,0.0438,tumor-minus-normal
+15,TN_C1,PRAD H3b dA_label,0.0487,tumor-minus-normal
+16,TN_C1,THCA H1 dS,-0.2513,tumor-minus-normal
+17,TN_C1,THCA H2 dCKA,-0.3256,tumor-minus-normal
+18,TN_C1,THCA H3a dA_patient,-0.03,tumor-minus-normal
+19,TN_C1,THCA H3b dA_label,0.0027,tumor-minus-normal
+20,TN_C1,UCEC H1 dS,-0.1502,tumor-minus-normal
+21,TN_C1,UCEC H2 dCKA,-0.3486,tumor-minus-normal
+22,TN_C1,UCEC H3a dA_patient,-0.1364,tumor-minus-normal
+23,TN_C1,UCEC H3b dA_label,0.0416,tumor-minus-normal
+24,TN_A1,"C_in,pair",-0.0560717,primary median
+25,TN_A1,"C_in,PC1",-0.0730223,primary median
+26,TN_A1,C_out,-0.1085434,primary median
+27,TN_P20,"C_in,pair",-0.0657291,paired sensitivity median
+28,TN_P20,"C_in,PC1",-0.071959,paired sensitivity median
+29,TN_P20,C_out,-0.0964471,paired sensitivity median
+30,EXTERNAL_P1,450K n=30 H1 dS,0.30309,q=0.003
+31,EXTERNAL_P1,450K n=30 H2 dCKA,0.019724,q=0.4065
+32,EXTERNAL_P1,450K n=30 H3a dA_patient,-0.040489,q=0.813
+33,EXTERNAL_P1,450K n=32 H1 dS,0.317045,q=0.003
+34,EXTERNAL_P1,450K n=32 H2 dCKA,0.016723,q=0.426
+35,EXTERNAL_P1,450K n=32 H3a dA_patient,-0.007331,q=0.549
+36,EXTERNAL_P1,EPIC n=26 H1 dS,0.358394,q=0.003
+37,EXTERNAL_P1,EPIC n=26 H2 dCKA,-0.017032,q=0.69
+38,EXTERNAL_P1,EPIC n=26 H3a dA_patient,0.030769,q=0.5175
