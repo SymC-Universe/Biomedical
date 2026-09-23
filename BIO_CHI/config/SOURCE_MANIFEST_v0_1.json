@@ -1,0 +1,62 @@
+{
+  "schema_version": "0.1",
+  "status": "outcome_blind_source_preflight",
+  "sources": [
+    {
+      "id": "rehman2021_geo",
+      "accession": "GSE145356",
+      "landing_page": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE145356",
+      "files": [
+        "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE145nnn/GSE145356/suppl/GSE145356_merged_HTSeq_readCounts_V2.txt.gz",
+        "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE145nnn/GSE145356/suppl/GSE145356_RAW.tar"
+      ],
+      "expected_public": true,
+      "outcome_opened_by_preflight": false
+    },
+    {
+      "id": "marsolier2022_geo",
+      "accession": "GSE164716",
+      "landing_page": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE164716",
+      "files": [
+        "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE164nnn/GSE164716/suppl/GSE164716_RAW.tar"
+      ],
+      "expected_public": true,
+      "outcome_opened_by_preflight": false
+    },
+    {
+      "id": "harmange2023_geo",
+      "accession": "GSE237228",
+      "landing_page": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE237228",
+      "files": [],
+      "expected_public": true,
+      "outcome_opened_by_preflight": false,
+      "note": "enumerate exact supplementary/barcode files before analysis"
+    },
+    {
+      "id": "shaffer2017_geo",
+      "accession": "GSE97682",
+      "landing_page": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE97682",
+      "files": [],
+      "expected_public": true,
+      "outcome_opened_by_preflight": false,
+      "note": "enumerate exact subseries/file set before analysis"
+    },
+    {
+      "id": "su2026_geo",
+      "accession": "GSE255671",
+      "landing_page": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE255671",
+      "files": [],
+      "expected_public": true,
+      "outcome_opened_by_preflight": false
+    },
+    {
+      "id": "jarus_nfkb_model",
+      "accession": "DOI:10.1371/journal.pone.0286416",
+      "landing_page": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0286416",
+      "files": [],
+      "expected_public": true,
+      "outcome_opened_by_preflight": false,
+      "note": "S1 Code source must be pinned locally before model qualification"
+    }
+  ]
+}
