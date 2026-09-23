@@ -74,21 +74,33 @@ def one_lane(label, source, participant_ids, c1_probe_ids, c1_mask, workers):
                   race_AA=int(np.sum(race=="AA")),race_EA=int(np.sum(race=="EA")))
         rows.append(rr)
 
-        resid=residualize_race(b,race)
-        obs_r,null_r=h1_nulls(
-            resid,
-            R1_NAMESPACE,
-            label+"_RACE_RESIDUAL",
-            track,
-            workers=workers,
-        )
-        r=endpoint_row("H1_RACE_RESIDUAL",obs_r,null_r)
-        r.update(lane=label,track=track,n=int(b.shape[0]),probe_count=int(b.shape[1]),
-                 race_AA=int(np.sum(race=="AA")),race_EA=int(np.sum(race=="EA")),
-                 raw_effect=float(rr["effect"]),
-                 effect_retention_fraction=float(r["effect"]/rr["effect"]) if rr["effect"]!=0 else np.nan,
-                 passes_p05=bool(r["effect"]>0 and r["p_upper"]<=0.05))
-        rows.append(r)
+        levels=sorted(set(race.tolist()))
+        if levels == ["AA","EA"]:
+            resid=residualize_race(b,race)
+            obs_r,null_r=h1_nulls(
+                resid,
+                R1_NAMESPACE,
+                label+"_RACE_RESIDUAL",
+                track,
+                workers=workers,
+            )
+            r=endpoint_row("H1_RACE_RESIDUAL",obs_r,null_r)
+            r.update(lane=label,track=track,n=int(b.shape[0]),probe_count=int(b.shape[1]),
+                     race_AA=int(np.sum(race=="AA")),race_EA=int(np.sum(race=="EA")),
+                     race_residual_status="EVALUABLE_TWO_RACE",
+                     raw_effect=float(rr["effect"]),
+                     effect_retention_fraction=float(r["effect"]/rr["effect"]) if rr["effect"]!=0 else np.nan,
+                     passes_p05=bool(r["effect"]>0 and r["p_upper"]<=0.05))
+            rows.append(r)
+        else:
+            rows.append({
+                "endpoint":"H1_RACE_RESIDUAL","observed":np.nan,"null_mean":np.nan,"null_median":np.nan,
+                "null_sd":np.nan,"effect":np.nan,"p_upper":np.nan,"p_two":np.nan,
+                "lane":label,"track":track,"n":int(b.shape[0]),"probe_count":int(b.shape[1]),
+                "race_AA":int(np.sum(race=="AA")),"race_EA":int(np.sum(race=="EA")),
+                "race_residual_status":"NOT_IDENTIFIABLE_SINGLE_RACE",
+                "raw_effect":float(rr["effect"]),"effect_retention_fraction":np.nan,"passes_p05":False
+            })
 
         aa=(race=="AA")
         if int(aa.sum())>=20:
@@ -157,25 +169,30 @@ def main():
     pr=primary.iloc[0]
     primary_status="R1_H1_RACE_ROBUST" if bool(pr.passes_p05) else "R1_H1_RACE_SENSITIVE"
 
-    epic=df[(df.lane=="SENSITIVITY_EPIC_N26")&(df.track=="PRIMARY_PUBLICATION")&(df.endpoint=="H1_RACE_RESIDUAL")]
-    if len(epic)!=1:
-        raise ValueError("EPIC race-residual H1 row missing")
-    er=epic.iloc[0]
-    cross_platform=bool(pr.passes_p05 and er.passes_p05)
+    epic_raw=df[(df.lane=="SENSITIVITY_EPIC_N26")&(df.track=="PRIMARY_PUBLICATION")&(df.endpoint=="H1_RAW_RECONSTRUCTION")]
+    epic_resid=df[(df.lane=="SENSITIVITY_EPIC_N26")&(df.track=="PRIMARY_PUBLICATION")&(df.endpoint=="H1_RACE_RESIDUAL")]
+    if len(epic_raw)!=1 or len(epic_resid)!=1:
+        raise ValueError("EPIC H1 rows missing")
+    eraw=epic_raw.iloc[0]
+    eresid=epic_resid.iloc[0]
+    epic_single_race=(str(eresid.get("race_residual_status",""))=="NOT_IDENTIFIABLE_SINGLE_RACE")
+    cross_platform=bool(pr.passes_p05 and epic_single_race and eraw["effect"]>0 and eraw["p_upper"]<=0.05)
 
     summary={
         "schema":"biosystems-adversarial-r1-external-h1-race-v1",
         "status":"COMPLETE",
         "role":"POST_RESULT_ADVERSARIAL_SENSITIVITY_CANNOT_RESCUE_ORIGINAL_P1",
         "primary_status":primary_status,
-        "cross_platform_race_residual_support":cross_platform,
+        "cross_platform_support_class":"PRIMARY_RACE_ROBUST_WITH_SINGLE_RACE_EPIC_SUPPORT" if cross_platform else "NO_CROSS_PLATFORM_RACE_SUPPORT",
+        "cross_platform_race_residual_support":False,
         "diagnostics":diags,
         "primary_row":pr.to_dict(),
-        "epic_row":er.to_dict(),
+        "epic_raw_row":eraw.to_dict(),
+        "epic_race_residual_row":eresid.to_dict(),
         "source_sha256":{"m450":EXPECTED["m450"],"epic":EXPECTED["epic"]},
         "B":999,
         "namespace":R1_NAMESPACE,
-        "claim_ceiling":"tests known AA/EA axis only; does not adjust purity, age, sex, center, plate, batch, or other composition",
+        "claim_ceiling":"tests known AA/EA axis in mixed-race 450K lanes; EPIC is single-race and therefore supports only race-homogeneous replication, not race residualization; does not adjust purity, age, sex, center, plate, batch, or other composition",
     }
     (a.out/"R1_EXTERNAL_H1_RACE_SUMMARY.json").write_text(json.dumps(summary,indent=2,sort_keys=True,default=lambda x: x.item() if hasattr(x,"item") else str(x))+"\n")
 
