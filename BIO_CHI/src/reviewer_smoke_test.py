@@ -12,15 +12,15 @@ def fail(msg):
     raise SystemExit(1)
 
 q = load("BIO_CHI/control/WORK_QUEUE.json")
-if q.get("authority") != "SymC GOM v0.8.4": fail("authority drift")
+if q.get("authority") != "SymC GOM v0.8.6 + Bio Chi project-specific three-object nomenclature decision 2026-09-23": fail("authority drift")
 if q.get("continuation_policy",{}).get("manuscript_private") is not True: fail("manuscript privacy drift")
 expected = {
- "chi":"program-wide scalar stability class/symbol",
- "chi_bio":"biological scalar instance/sublabel of chi if licensed",
+ "chi_bio":"biological scalar instance/sublabel of program-wide chi if licensed",
  "Chi_bio":"biological modal/vector representation",
  "Bio_Chi":"biological conglomerate/system stability architecture"
 }
 if q.get("nomenclature") != expected: fail("nomenclature drift")
+if q.get("nomenclature_note") != "Exactly three biological objects. Program-wide chi is a parent symbol/class, not a fourth biological object.": fail("three-object nomenclature note drift")
 
 b = load("BIO_CHI/config/BLUM2019_MENDELEY_SOURCE_FREEZE_V02_RESULT_PIN.json")
 if b.get("status") != "PASS_SOURCE_ARCHIVE_IDENTITY_FROZEN": fail("Blum archive pin not PASS")
