@@ -21,8 +21,8 @@
     {"id":"Q2","name":"dataset_eligibility_source_qualification","status":"active_sources_frozen_qualification_continues"},
     {"id":"Q3","name":"known_truth_qualification_system","status":"pending_Q2"},
     {"id":"Q4","name":"cancer_recovery_system","status":"pending_Q2"},
-    {"id":"Q5","name":"chi_bio_scalar_track","status":"native_behavior_and_local_stability_qualified_scalar_not_admitted_full_state_representation_control_active"},
-    {"id":"Q6","name":"Chi_bio_modal_track","status":"descriptive_generator_modal_precursor_complete_full_state_representation_control_active_full_admission_pending_Q2_Q3"},
+    {"id":"Q5","name":"chi_bio_scalar_track","status":"active_native_behavior_and_local_stability_qualified_scalar_not_admitted_full_state_representation_control_complete_q2q3_observability_gate"},
+    {"id":"Q6","name":"Chi_bio_modal_track","status":"active_descriptive_generator_modal_precursor_complete_full_state_representation_control_complete_full_admission_pending_Q2_Q3"},
     {"id":"Q7","name":"Bio_Chi_conglomerate_track","status":"pending_Q3_Q4_Q6"},
     {"id":"Q8","name":"stability_inheritance_biological_test","status":"pending_carrier_qualified_data"},
     {"id":"Q9","name":"working_manuscript","status":"not_open_private"}
@@ -49,13 +49,17 @@
     "modal_inventory_status": "COMPLETE_DESCRIPTIVE_POST_VIEW_ALL_SIX_MODES",
     "modal_inventory_prospective_validation": false,
     "full_state_representation_control_freeze": "BIO_CHI/config/JARUS_FULL_STATE_REPRESENTATION_CONTROL_FREEZE_v0_1.json",
+    "full_state_representation_control_result_pin": "BIO_CHI/config/JARUS_FULL_STATE_REPRESENTATION_CONTROL_V01_RESULT_PIN.json",
     "full_state_representation_control_role": "necessary_not_sufficient_numerical_coordinate_invariance_only",
     "full_state_representation_control_run": 35858028617,
-    "full_state_representation_control_state_at_queue_update": "in_progress_matlab_setup",
+    "full_state_representation_control_artifact": 10747928363,
+    "full_state_representation_control_artifact_sha256": "0241360c65de72408eb7ddd68ce6ddf6956b7a7517d952ed1ac52e1dc884084a",
+    "full_state_representation_control_status": "SUCCESS_ALL_RECORDS_FINITE_NO_SPECTRAL_ABSCISSA_SIGN_CHANGE",
+    "full_state_representation_control_max_observed_relative_complex_difference": 3.9989097652916227e-10,
     "chi_bio_constructed": false,
     "Chi_bio_admitted": false,
     "Bio_Chi_constructed": false,
-    "next_gate": "inspect run 35858028617 and preserve any failure; if finite, pin the full-state coordinate-control evidence, then return to outcome-blind Q2/Q3 biological observability/identifiability qualification before any reduced observable representation or chi_bio scalar admission"
+    "next_gate": "return to outcome-blind Q2/Q3 biological observability and identifiability qualification before any reduced observable representation or chi_bio scalar admission"
   },
   "stop_conditions": [
     "material scientific choice changes a frozen hypothesis/model/endpoint",
