@@ -1,0 +1,33 @@
+{
+  "schema_version": "0.1",
+  "experiment": "EXTERNAL_PROSTATE_DIAGNOSTIC_PCA_LOPO_V01",
+  "status": "FROZEN_BEFORE_NEW_DIAGNOSTIC_OUTCOME_COMPUTATION",
+  "source": {
+    "geo": "GSE262522",
+    "file": "GSE262522_m450K_Proc_Funnorm.tsv.gz",
+    "sha256": "90a7a8c12343831524a9711be7e0b3f33f297fe408662fa68c5efa49a7c862d0",
+    "participant_source": "GRI_v2/config/biosystems_external_prostate_p1_v1_0.json",
+    "participants": "full 32 complete tumor/adjacent pairs"
+  },
+  "representation": {
+    "carrier": "exact frozen C1 22,601 probe IDs",
+    "cv": "leave-one-participant-pair-out, 32 folds",
+    "train_feature_gate": "probe has >=95% finite values separately in training tumors and training normals",
+    "imputation": "training-fold probe median only",
+    "scaling": "training-fold mean and sample SD only; zero/nonfinite SD removed",
+    "pc1": "leading principal component fit on training samples only",
+    "orientation": "multiply PC1 by -1 if training tumor mean score is below training normal mean score",
+    "heldout_projection": "use frozen training loading/center/scale only"
+  },
+  "primary": {
+    "endpoint": "number of held-out pairs with tumor PC1 score > matched normal PC1 score",
+    "null": "Binomial(n=32,p=0.5)",
+    "alternative": "greater",
+    "support_rule": "one-sided exact p <= 0.05 and concordant pairs > 16"
+  },
+  "comparator": {
+    "endpoint": "training-feature global mean beta score with orientation learned in training fold",
+    "role": "simple comparator; no ADDS claim unless PC1 beats it under a separately reported paired discordance test"
+  },
+  "claim_ceiling": "exploratory external tissue-state discrimination; not clinical diagnostic utility, not a deployable biomarker, and not an H1 patient-level score"
+}
