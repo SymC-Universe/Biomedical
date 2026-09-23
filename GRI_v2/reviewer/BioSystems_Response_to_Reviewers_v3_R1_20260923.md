@@ -165,7 +165,7 @@ A fair equal-capacity post-FINAL comparator would require a new source-projectio
 
 ## Reviewer-suggested engineering-control references
 
-The suggested boost-converter, electric-vehicle-control, and drilling/control references were considered. Because the revised manuscript withdraws the prior oscillator/control-theoretic cancer analogy and now asks a static molecular-architecture question, those engineering-control papers are outside the scientific scope of the revised study and were not added. This is an explicit scope decision rather than an oversight.
+The suggested boost-converter, electric-vehicle-control, and drilling/control references were considered. Because the revised manuscript withdraws the prior **static transcriptomic damping mapping** (including the historical CV/2-as-damping interpretation, rank-as-time logic, and unsupported identification of ensemble mean/variance with oscillator frequency/dissipation), those engineering-control papers are not used as biological validation of the present static TCGA claims. The broader dynamic/control question is not declared false or abandoned: it is reserved for directly ordered perturbation-response data and native dynamical models, where oscillation, recovery, hysteresis, modal dominance, and reorganization can be tested without importing a mechanical oscillator into cross-sectional expression statistics. This is an explicit scope decision rather than an oversight.
 
 ---
 
@@ -185,6 +185,12 @@ For transparency, major self-corrections identified during the rebuild include:
 10. post-result Round-1 sensitivities explicitly separated from the original preregistered analyses rather than backdated into them.
 
 The public GitHub history preserves these distinctions through dated freeze files, workflow commits, run IDs, artifact hashes, failed mechanical attempts, and post-result audits.
+
+## Post-revision dynamic-lineage clarification
+
+A separate P0-D Bio Chi investigation was intentionally kept outside the confirmatory TCGA spine while its native dynamic assumptions were tested. That work has now been reintegrated into the public reproducibility lineage without being relabeled as confirmation of the static manuscript. Two bounded findings matter for interpretation: (i) an executable six-state NF-kB model contains both real modes and a complex-conjugate pair, but the complex pair is not automatically the stability-setting mode in the nominal stable case; and (ii) a prospectively frozen M397 melanoma withdrawal analysis supports realized transcriptomic recovery toward the pre-treatment state in one ordered trajectory (Spearman rho = -0.8857, exact one-sided p = 0.0167) under its frozen simple-distance metric. These findings justify retaining dynamic-response questions as an active biological research line, but they do not restore the historical CV/2 damping construction, establish a universal oscillator model for cancer, or promote a general predictive cancer tool.
+
+The manuscript-facing claim therefore remains narrower: static TCGA architecture is interpreted statically; direct temporal language is used only for genuinely ordered perturbation/recovery evidence; and predictive-tool promotion remains bounded by the external-transport results already reported.
 
 ## Summary of the revised claim
 
