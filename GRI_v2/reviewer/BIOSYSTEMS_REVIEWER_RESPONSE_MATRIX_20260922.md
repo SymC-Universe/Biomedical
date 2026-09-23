@@ -28,7 +28,7 @@ Status vocabulary:
 | Include normal controls / establish tumor specificity | **CLOSED WITH LIMIT** | The prospectively frozen tumor-normal control is complete. TN-A1 shows lower tumor values in 12/12 cancers for all three RNA architecture coordinates (BH q=0.000488 for each); TN-P20 reproduces the direction in 13/13, 13/13, and 12/13 cancers (q<=0.00342). TN-C1 shows H1 methylation organization lower in tumor in 5/5 cancers, while H2/H3a are heterogeneous and H3b has a small 5/5 upward tendency without q<0.05 resolution. This establishes a tumor-associated shift relative to TCGA adjacent normal, not healthy-population specificity. |
 | Control purity / stromal / immune composition | **CLOSED WITH LIMIT** | Purity and methylation-derived leukocyte fraction are explicitly modeled. The revision will state that measured composition is bounded and does not equal complete microenvironment removal. |
 | Replace subjective zones with objective change-point/statistical rules | **CLOSED / HISTORICAL CLAIM RETIRED** | The revised paper does not depend on the submitted Warning/Confirmation/Collapse zoning as a biological phase sequence. Unsupported phase-boundary language is retired rather than cosmetically re-thresholded. |
-| Validate in an independent dataset | **P1 FROZEN; OUTCOME OPEN** | The independent prostate family (GSE237995 RNA-seq + GSE262522 450K + GSE262524 EPIC) is now prospectively frozen as the decisive external cohort before any GRI molecular result is opened. Primary P1 uses 30 paired 450K participants for H1/H2/H3a transport; 32-pair full-set and 26-pair EPIC analyses are mandatory sensitivities and cannot rescue the primary. TCGA FINAL_HOLDOUT remains internal validation only. |
+| Validate in an independent dataset | **CLOSED WITH LIMIT** | The preregistered independent prostate P1 executed successfully. Primary 450K n=30 gives PARTIAL TRANSPORT: H1 strongly replicates (effect +0.3031, BH q=0.003), H2 remains positive but unresolved (q=0.4065), and H3a does not transport. Full n=32 450K is concordant. EPIC independently replicates H1 (effect +0.3584, q=0.003) but flips the signs of H2/H3a, triggering the frozen final label P1_REPRESENTATION_DEPENDENT. The manuscript will claim external validation only for H1 methylation organization, not for universal H2/H3a transport. |
 | Remove temporal language unsupported by cross-sectional data | **CLOSED** | Static TCGA results are explicitly firewalled from recovery, damping, inheritance, treatment-response and causal temporal claims. |
 | Keep therapeutic implications hypothetical | **CLOSED / CLAIM WITHDRAWN** | No actionable treatment-state rule is claimed. Perturbation/recovery and treatment response require separate prospective evidence. |
 | Add direct methylation/chromatin/ATAC evidence | **CLOSED WITH LIMIT** | Methylation is now a measured cross-layer component with frozen source, identity and analysis contracts. Static methylation-RNA organization does not establish causal chromatin control or temporal substrate inheritance. ATAC/ordered perturbational evidence remains a separate lane. |
@@ -37,7 +37,7 @@ Status vocabulary:
 
 | Reviewer issue | Revision status | Current disposition |
 | --- | --- | --- |
-| Independent cohort validation | **P1 FROZEN; OUTCOME OPEN** | The decisive external prostate cohort and transported H1/H2/H3a claim are frozen prospectively in `BIOSYSTEMS_EXTERNAL_PROSTATE_P1_FREEZE_20260922.md`; external molecular outcomes remain unopened. The result may fully transport, partially transport, fail, become representation-dependent, or be indeterminate without rescue. |
+| Independent cohort validation | **CLOSED WITH LIMIT** | The frozen external prostate test is complete and audited in `BIOSYSTEMS_EXTERNAL_PROSTATE_P1_POSTRESULT_AUDIT_20260922.md`. H1 transports strongly on both 450K and EPIC; H2/H3a do not transport consistently and remain representation/platform dependent. This is reported as partial external confirmation, not a universal replication claim. |
 | Additional omics validation | **CLOSED WITH LIMIT** | RNA, methylation, genomic and protein/phosphoprotein layers provide multiomic internal qualification. Shared TCGA lineage prevents relabeling these as independent external confirmation. |
 | Cancer-specific robustness | **CLOSED** | Cancer-specific analyses, fixed finite-sample calibration and held-out evaluation are part of the rebuilt program. |
 | Reproducibility / method detail | **CLOSED IN ARCHITECTURE; RELEASE PACKAGING OPEN** | Frozen configs, tests, hashes, source audits and reviewer maps exist. Submission-specific immutable tag, final figure/table provenance map and final clean-room package remain release tasks. |
@@ -86,8 +86,10 @@ These systems are nonredundant in task and failure criteria, so their agreement 
 
 ### Remaining evidence-bearing revision gates
 
+**None.** Both reviewer-critical evidence-bearing gates are now dispositioned.
+
 1. **Tumor-versus-normal control: CLOSED.** Frozen TN-A1/TN-P20/TN-C1 execution is complete and audited in `BIOSYSTEMS_TUMOR_NORMAL_BIOLOGICAL_CLOSEOUT_20260922.md`. The supported result is a reproducible tumor-associated weakening of RNA modular organization and methylation H1, with heterogeneous persistence/reorganization of cross-layer geometry.
-2. **Genuinely external confirmation: P1 FROZEN / OUTCOME OPEN.** The independent prostate cohort, representation, endpoint family, nulls, multiplicity, sensitivities, failure classes and MFR-14 record are prospectively frozen; the decisive molecular result has not yet been opened.
+2. **Genuinely external confirmation: CLOSED WITH LIMIT.** The independent prostate P1 has executed under its frozen contract. H1 reproduces strongly across both methylation platforms; H2/H3a do not transport consistently, so the final preregistered classification is `P1_REPRESENTATION_DEPENDENT` and the external claim is restricted accordingly.
 
 The SCC25 A-H joint-meaning decision packet is scientifically important to the wider GRI program but is not automatically required to answer the BioSystems reviewers. It must not be allowed to expand the paper merely because it is available.
 
@@ -108,6 +110,6 @@ Proceed mechanically on:
 - journal disclosure/availability/contribution boilerplate after current policy verification.
 
 Stop before:
-- choosing or opening the decisive external P1 outcome;
+- any post-result rescue of the completed external P1;
 - inventing a tumor-normal definition or threshold after seeing the result;
 - changing a frozen scientific representation merely to satisfy reviewer wording.
