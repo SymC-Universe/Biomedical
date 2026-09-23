@@ -24,7 +24,7 @@ Machine-readable source of record: `BIO_CHI/control/WORK_QUEUE.json`.
 
 - Q0 governance/reproducibility: COMPLETE / MAINTAIN.
 - Q1 literature collision: ACTIVE TARGETED-ONLY; both broad searches are complete.
-- Q2 dataset eligibility/source qualification: ACTIVE; Blum 2019 now has versioned public processed-data and immutable model/inference identities, with direct archive endpoint/hash still pending.
+- Q2 dataset eligibility/source qualification: ACTIVE; Blum 2019 public source/schema qualification is closed through exact archive UUID/hash and header/README mapping. Exact published Jeffries-Matusita reproduction is REFUSED because material histogram/alignment implementation details are not specified in the public record. Parallel Harmange/Shaffer/Lee source mapping remains active.
 - Q3 known-truth qualification: PENDING Q2.
 - Q4 cancer recovery: PENDING Q2.
 - Q5 `chi_bio`: ACTIVE; native NF-kB model behavior/local stability and full-state coordinate sanity control complete; scalar **NOT ADMITTED**.
@@ -46,7 +46,7 @@ Both broad Undermind searches remain COMPLETE: biological stability/perturbation
 - The authors' seven supplied-driver figures are not Figure 8A-C and must never be relabeled as such.
 - Native output capture and source-structure audit are pinned.
 - Blum 2019 public inference/model source is pinned outcome-blind in `BIO_CHI/config/BLUM2019_PUBLIC_SOURCE_PIN_v0_1.json` to `Mijan/LFNS_MSB`, commit `5c917abda0618d75c00c9cab45f24ed893dd71f1`, tree `cbb79d66f79a84bc8af28ca85f1678295348da83`.
-- Blum 2019 processed-data identity is pinned before archive inspection in `BIO_CHI/config/BLUM2019_MENDELEY_DATA_PIN_v0_1.json`: Mendeley Data Version 2, DOI `10.17632/ccnxn84w8z.2`, `data.zip`, reported size 7.97 MB, CC BY 4.0. Direct archive endpoint and SHA-256 remain intentionally unclaimed until reproducibly acquired.
+- Blum 2019 processed-data identity is pinned in `BIO_CHI/config/BLUM2019_MENDELEY_DATA_PIN_v0_1.json`: Mendeley Data Version 2, DOI `10.17632/ccnxn84w8z.2`, `data.zip`, CC BY 4.0. The supported Mendeley public-files API resolved exact file UUID `b8e7b821-d59b-4b42-b34e-1d679ace693d`; archive size is 8,352,835 bytes and SHA-256 is `8bbd1ead46b5bb6b676bd47a5f415fdd790840a9c726321dc5c209b9c527bc62`. The earlier UUID-unresolved access failure remains preserved as superseded mechanical evidence.
 
 ## Preserved Figure 8 behavior evidence
 
@@ -109,6 +109,15 @@ These access findings narrow reproducible testbed eligibility; none is a result-
 
 A governance CI run after the queue update failed because `BIO_CHI/src/validate_control.py` requires the checkpoint to contain the literal headings/tokens `Mechanical continuation authority`, `Scientific stop conditions`, and `Current execution queue`. The prior checkpoint carried equivalent content under different headings. This is classified as a **mechanical governance-drift failure**, not a scientific failure. The exact required headings were restored without changing the scientific contract. Follow-up governance/privacy run **35860921714** completed **SUCCESS**.
 
+## Q2 Blum archive and native-method disposition
+
+- Mendeley source-freeze workflow **35862686108** completed SUCCESS and reproducibly acquired the exact public `data.zip` bytes; artifact **10751061699**. Archive SHA-256: `8bbd1ead46b5bb6b676bd47a5f415fdd790840a9c726321dc5c209b9c527bc62`.
+- Metadata-only archive inventory workflow **35863951277** completed SUCCESS; artifact **10751880243**. It enumerated **103** ZIP members without reading member payloads.
+- Frozen documentation/header-only mapping workflow **35863951436** completed SUCCESS; artifact **10751309038**. Figure-1 EKAR source columns are explicit and no biological data rows were read.
+- `BIO_CHI/config/BLUM2019_NATIVE_METHOD_QUALIFICATION_PIN_v0_1.json` records a preserved **EXACT_NATIVE_METRIC_REPRODUCTION_BLOCKED_METHOD_UNDERSPECIFIED** disposition. Missing public implementation details include histogram bin count/edges/shared-bin rule, smoothing/pseudocount handling, missing-value handling, exact time alignment/interpolation, and the original Figure-1H implementation code.
+- No replacement binning rule was invented; no Blum scientific values were opened for this gate; `chi_bio`, `Chi_bio`, and Bio Chi remain unconstructed/unadmitted.
+- Parallel Q2 source mapping also advanced: Lee SRP040309 source mapping passed with **19** public paired-end RNA-seq runs under PRJNA241034, and the Harmange/Shaffer metadata-only lineage audit passed without opening molecular values.
+
 ## Durable progress this run
 
 - Full-state Jaruszewicz representation control result pinned at `BIO_CHI/config/JARUS_FULL_STATE_REPRESENTATION_CONTROL_V01_RESULT_PIN.json`.
@@ -121,10 +130,10 @@ A governance CI run after the queue update failed because `BIO_CHI/src/validate_
 
 ## Exact next safe resume
 
-1. Freeze the exact downloadable endpoint and SHA-256 for Blum Mendeley `data.zip` without interpreting archive contents. If the hosting/API path prevents direct programmatic acquisition, preserve that access limitation rather than substituting an unversioned copy.
-2. Once acquired, inventory only archive file identities/schema first. Do not compute the native metric until inputs can be mapped to the published Jeffries-Matusita definition without inventing a new observable/state representation.
-3. If the public processed archive directly supports the published native metric, prospectively freeze native-metric reproduction before opening its result. If a materially new representation choice is required, stop at the scientific decision boundary.
-4. Continue Harmange lineage/barcode mapping, Shaffer source-lineage reconciliation, and Lee SRP040309 file mapping as parallel mechanical Q2 work.
+1. Preserve the Blum exact-native-metric refusal unless an original/public implementation supplies the missing histogram/alignment rules; do not infer them from common practice.
+2. Continue Harmange lineage/barcode mapping from the qualified 22-sample/SRX map without treating metadata presence as causal-carrier proof.
+3. Continue Shaffer SuperSeries/subseries reconciliation and freeze any execution subset prospectively before opening outcomes.
+4. Continue Lee SRP040309 source/design mapping only within its demonstrated limitation: public response/state-transition RNA source, not a direct post-withdrawal transcriptomic recovery trajectory.
 5. Preserve every Figure 8 B/C finite-window failure, v0.1/v0.2 indeterminate, v0.3 mechanical failure, and all source-access refusals/limitations.
 6. Do not select the NF-kB complex pair, define `chi_bio`, admit `Chi_bio`, or infer Bio Chi until the prospective biological observability/identifiability and representation gates are satisfied.
 7. Keep working manuscript prose private.
