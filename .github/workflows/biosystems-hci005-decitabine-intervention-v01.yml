@@ -1,0 +1,48 @@
+name: BioSystems HCI005 decitabine intervention v01
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [biosystems-claim-extension-p0d-20260923]
+    paths:
+      - 'GRI_v2/config/biosystems_hci005_decitabine_intervention_v01_freeze.json'
+      - 'GRI_v2/src/run_biosystems_hci005_decitabine_intervention_v01.py'
+      - '.github/workflows/biosystems-hci005-decitabine-intervention-v01.yml'
+
+jobs:
+  run:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install numpy pandas
+      - name: Acquire exact frozen sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/hci005 out_hci005_intervention
+          curl -L --fail --retry 3 --retry-delay 2 -o /tmp/hci005/meth.gz https://ftp.ncbi.nlm.nih.gov/geo/series/GSE171nnn/GSE171069/matrix/GSE171069_series_matrix.txt.gz
+          curl -L --fail --retry 3 --retry-delay 2 -o /tmp/hci005/rna.gz https://ftp.ncbi.nlm.nih.gov/geo/series/GSE171nnn/GSE171073/suppl/GSE171073_Veh.vs.Dec_HCI005.cntTable.txt.gz
+          curl -L --fail --retry 3 --retry-delay 2 -o /tmp/hci005/gencode.v33.gtf.gz https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_33/gencode.v33.annotation.gtf.gz
+          echo "65ee8783e9d47f568a94a35944719c1aae1df0c693150dd2bcdba44b876c55ad  /tmp/hci005/meth.gz" | sha256sum -c -
+          echo "1cbd6826074498a57025124da0a2857f1248338b21aaf1e3034cea48c7f68397  /tmp/hci005/rna.gz" | sha256sum -c -
+          echo "4e8afc75f90821668b0a8f45a33c31a792b4b4f754621d76ad9e50b0492a3a89  /tmp/hci005/gencode.v33.gtf.gz" | sha256sum -c -
+      - name: Execute frozen intervention test
+        run: |
+          python GRI_v2/src/run_biosystems_hci005_decitabine_intervention_v01.py \
+            --freeze GRI_v2/config/biosystems_hci005_decitabine_intervention_v01_freeze.json \
+            --methylation /tmp/hci005/meth.gz \
+            --rna /tmp/hci005/rna.gz \
+            --gencode /tmp/hci005/gencode.v33.gtf.gz \
+            --c1-probes GRI_v2/support/c1_probe_ids_22601.txt \
+            --support GRI_v2/support/tn_c1_core_mask_payload.lzma.b64 \
+            --out out_hci005_intervention
+      - uses: actions/upload-artifact@v4
+        with:
+          name: biosystems-hci005-decitabine-intervention-v01
+          path: out_hci005_intervention
+          if-no-files-found: error
+          retention-days: 90
