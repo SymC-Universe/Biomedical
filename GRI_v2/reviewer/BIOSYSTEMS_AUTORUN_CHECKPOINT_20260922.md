@@ -51,7 +51,7 @@ Historical disposition remains:
 - normalized empirical G1 blocked by restoration identifiability;
 - broader recovery hypothesis remains scientifically compatible with current tumor-normal findings but requires a new lineage and causally/dynamically informative recovery evidence.
 
-BioSystems submission work has priority. Chi_bio/recovery is the next dedicated investigation after this revision is locked.
+BioSystems submission work has priority. Chi_bio/recovery is the next dedicated investigation after this revision is locked. The distance assessment is formalized in `GRI_v2/docs/GRI_CHI_BIO_DISTANCE_TO_ADMISSION_20260922.md` (commit `979cf5e...`): recovery is a focused new dynamical investigation, while scalar chi admission still requires a new lineage with restoration identifiability, scalar derivation, representation robustness, native-baseline incremental value, prospective boundary testing if applicable, and independent transport. Do not delay the current revision for this.
 
 ### External validation reviewer gate
 This is the **only remaining publication-critical evidence-bearing reviewer gate**.
