@@ -114,14 +114,16 @@ def list_directory(url: str) -> tuple[list[str], str]:
     parser.feed(text)
     names: list[str] = []
     for href in parser.hrefs:
+        if href.startswith(("?", "#", "/")) or href.endswith("/"):
+            continue
         parsed = urllib.parse.urlparse(href)
         path = parsed.path
-        name = path.rstrip("/").split("/")[-1]
-        if not name or name in {"..", "."}:
+        if "/" in path:
             continue
-        if href.startswith("?") or href.startswith("#"):
+        name = urllib.parse.unquote(path)
+        if not name or name in {"..", ".", "index.html"}:
             continue
-        names.append(urllib.parse.unquote(name))
+        names.append(name)
     return sorted(set(names)), sha256(raw)
 
 
