@@ -1,0 +1,46 @@
+name: BioSystems breast external H1 P0D v01
+
+on:
+  push:
+    branches:
+      - biosystems-claim-extension-p0d-20260923
+    paths:
+      - 'GRI_v2/src/run_biosystems_breast_external_h1_p0d_v01.py'
+      - '.github/workflows/biosystems-breast-external-h1-p0d-v01.yml'
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install numpy pandas
+      - name: Download GSE58999 series matrix
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/gse58999 out_breast_h1
+          curl -L --fail --retry 3 --retry-delay 3 \
+            -o /tmp/gse58999/GSE58999_series_matrix.txt.gz \
+            https://ftp.ncbi.nlm.nih.gov/geo/series/GSE58nnn/GSE58999/matrix/GSE58999_series_matrix.txt.gz
+          ls -lh /tmp/gse58999/GSE58999_series_matrix.txt.gz
+          sha256sum /tmp/gse58999/GSE58999_series_matrix.txt.gz
+      - name: Run frozen H1 transport
+        run: |
+          python GRI_v2/src/run_biosystems_breast_external_h1_p0d_v01.py \
+            --matrix /tmp/gse58999/GSE58999_series_matrix.txt.gz \
+            --c1-probes GRI_v2/support/c1_probe_ids_22601.txt \
+            --support GRI_v2/support/tn_c1_core_mask_payload.lzma.b64 \
+            --out out_breast_h1
+      - name: Upload result
+        uses: actions/upload-artifact@v4
+        with:
+          name: biosystems-breast-external-h1-p0d-v01
+          path: out_breast_h1
+          if-no-files-found: error
+          retention-days: 90
