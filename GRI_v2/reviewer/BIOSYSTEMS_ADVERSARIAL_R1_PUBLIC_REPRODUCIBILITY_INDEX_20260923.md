@@ -1,9 +1,10 @@
 # BioSystems adversarial Round 1 - public reproducibility index
 
 **Date:** 23 September 2026
-**Status:** COMPLETE / ROUND-1 RELEASE INDEX
+**Status:** COMPLETE / ROUND-1 RELEASE INDEX + V23 BIO CHI/TOOL CLOSURE
 **Public repository:** `SymC-Universe/Biomedical`
-**Adversarial branch:** `biosystems-adversarial-r1-20260923`
+**Round-1 adversarial branch:** `biosystems-adversarial-r1-20260923`  
+**Current closure branch:** `biosystems-v23-biochi-tool-closure-20260923`
 **Immutable parent release:** `biosystems-resubmission-20260923-final` @ `18b1e3b6c828626143ac37da3fe279dd605751d5`
 **Program authority:** SymC General Operations Manual v0.8.4
 
@@ -201,6 +202,25 @@ Disposition:
 - conventional PCA PC1-fraction comparator also 30/30 positive, median +0.0685775794, same exact p.
 
 This post-result attack preserves linear purity/leukocyte effects and TCGA TSS mean structure; it does not establish full batch/composition independence.
+
+## V23 Bio Chi / predictive-tool reintegration
+
+The intentionally separate Bio Chi P0-D investigation was selectively reintegrated onto the final-scrutiny submission spine at commit `fac4e3ed6f57122d93cd8a7fc25c8e2dd67fed44`. The divergent Bio Chi history was **not** merged wholesale. The reintegration copied the current `BIO_CHI/` evidence tree, dedicated Bio Chi workflows, and the two GRI/Bio-Chi bridge documents without replacing the v22 submission lineage.
+
+Durable continuation records:
+- `GRI_v2/control/BIOSYSTEMS_V23_BIOCHI_TOOL_CLOSURE_CHECKPOINT_20260923.md`;
+- `GRI_v2/config/gri_biochi_tool_reintegration_v1_20260923.json`.
+
+Current bounded dynamic evidence includes:
+- executable NF-kB local/modal evidence in which a complex-conjugate pair exists but is not automatically the slowest/stability-setting mode in the nominal stable case;
+- full-state smooth-coordinate numerical invariance as a necessary-not-sufficient control;
+- a prospectively frozen M397 melanoma withdrawal analysis supporting return toward the pre-treatment transcriptomic state under the frozen simple distance (rho = -0.8857142857; exact one-sided p = 0.0166666667; descriptive recovery fraction approximately 0.6823).
+
+These results reopen the dynamic-response lineage without restoring the historical static CV/2 damping interpretation. They do not establish a universal biological scalar chi, a general cancer oscillator, or an externally validated recovery predictor.
+
+### Predictive-tool status at submission closure
+
+The original P0 all-methylation predictor remains a bounded internal predictive result. Its stronger promotion is restricted by the existing capacity/eligibility limits and by failure of H2/H3a cross-layer transport in the independent prostate study. H1 within-methylation organization does transport independently. Accordingly, the current submission does not claim a general predictive or clinical cancer tool. The public record preserves the internal predictor, the external transport boundary, the Conglomerate Chi-bio carrier contract, and the newly reunited dynamic evidence as one auditable lineage rather than relabeling an unfinished external-validation step as success.
 
 ## Public/private boundary
 
