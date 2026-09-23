@@ -21,8 +21,8 @@
     {"id":"Q2","name":"dataset_eligibility_source_qualification","status":"active_sources_frozen_qualification_continues"},
     {"id":"Q3","name":"known_truth_qualification_system","status":"pending_Q2"},
     {"id":"Q4","name":"cancer_recovery_system","status":"pending_Q2"},
-    {"id":"Q5","name":"chi_bio_scalar_track","status":"native_behavior_and_local_stability_qualified_scalar_not_admitted_representation_gate_pending"},
-    {"id":"Q6","name":"Chi_bio_modal_track","status":"descriptive_generator_modal_precursor_complete_full_admission_pending_Q2_Q3_and_representation_gate"},
+    {"id":"Q5","name":"chi_bio_scalar_track","status":"native_behavior_and_local_stability_qualified_scalar_not_admitted_full_state_representation_control_active"},
+    {"id":"Q6","name":"Chi_bio_modal_track","status":"descriptive_generator_modal_precursor_complete_full_state_representation_control_active_full_admission_pending_Q2_Q3"},
     {"id":"Q7","name":"Bio_Chi_conglomerate_track","status":"pending_Q3_Q4_Q6"},
     {"id":"Q8","name":"stability_inheritance_biological_test","status":"pending_carrier_qualified_data"},
     {"id":"Q9","name":"working_manuscript","status":"not_open_private"}
@@ -48,10 +48,14 @@
     "modal_inventory_pin": "BIO_CHI/config/JARUS_MODAL_INVENTORY_V01_RESULT_PIN.json",
     "modal_inventory_status": "COMPLETE_DESCRIPTIVE_POST_VIEW_ALL_SIX_MODES",
     "modal_inventory_prospective_validation": false,
+    "full_state_representation_control_freeze": "BIO_CHI/config/JARUS_FULL_STATE_REPRESENTATION_CONTROL_FREEZE_v0_1.json",
+    "full_state_representation_control_role": "necessary_not_sufficient_numerical_coordinate_invariance_only",
+    "full_state_representation_control_run": 35858028617,
+    "full_state_representation_control_state_at_queue_update": "in_progress_matlab_setup",
     "chi_bio_constructed": false,
     "Chi_bio_admitted": false,
     "Bio_Chi_constructed": false,
-    "next_gate": "freeze an explicit representation/identifiability sensitivity test that retains the complete six-mode generator before any scalar reduction or biological modal admission; preserve the finite-window B/C failures and do not select a preferred complex pair from the observed spectrum"
+    "next_gate": "inspect run 35858028617 and preserve any failure; if finite, pin the full-state coordinate-control evidence, then return to outcome-blind Q2/Q3 biological observability/identifiability qualification before any reduced observable representation or chi_bio scalar admission"
   },
   "stop_conditions": [
     "material scientific choice changes a frozen hypothesis/model/endpoint",
