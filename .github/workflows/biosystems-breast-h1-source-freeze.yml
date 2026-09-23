@@ -1,0 +1,93 @@
+name: BioSystems breast H1 source freeze
+
+on:
+  push:
+    branches:
+      - biosystems-claim-extension-p0d-20260923
+    paths:
+      - '.github/workflows/biosystems-breast-h1-source-freeze.yml'
+  workflow_dispatch:
+
+jobs:
+  freeze:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download canonical GEO series matrix
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p breast_source_freeze
+          curl -L --fail --retry 3 --retry-delay 2 \
+            -o /tmp/GSE58999_series_matrix.txt.gz \
+            https://ftp.ncbi.nlm.nih.gov/geo/series/GSE58nnn/GSE58999/matrix/GSE58999_series_matrix.txt.gz
+          sha256sum /tmp/GSE58999_series_matrix.txt.gz | tee breast_source_freeze/SHA256.txt
+          stat -c '%s' /tmp/GSE58999_series_matrix.txt.gz | tee breast_source_freeze/SIZE_BYTES.txt
+      - name: Capture metadata only
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv, gzip, hashlib, json, re
+          from pathlib import Path
+          src=Path('/tmp/GSE58999_series_matrix.txt.gz')
+          sha=hashlib.sha256(src.read_bytes()).hexdigest()
+          meta={}
+          with gzip.open(src,'rt',encoding='utf-8',errors='replace',newline='') as f:
+              for line in f:
+                  if line.startswith('!series_matrix_table_begin'):
+                      break
+                  if not line.startswith('!Sample_'):
+                      continue
+                  row=next(csv.reader([line.rstrip('\n')],delimiter='\t',quotechar='"'))
+                  key=row[0]
+                  vals=row[1:]
+                  meta.setdefault(key,[]).append(vals)
+          acc=meta.get('!Sample_geo_accession',[[]])[0]
+          titles=meta.get('!Sample_title',[[]])[0]
+          sources=meta.get('!Sample_source_name_ch1',[[]])[0]
+          chars=meta.get('!Sample_characteristics_ch1',[])
+          if len(acc)!=88:
+              raise SystemExit(f'EXPECTED_88_SAMPLES_GOT_{len(acc)}')
+          recs=[]
+          for i,gsm in enumerate(acc):
+              d={'gsm':gsm,'title':titles[i] if i<len(titles) else None,
+                 'source_name':sources[i] if i<len(sources) else None}
+              for block in chars:
+                  if i>=len(block): continue
+                  s=block[i]
+                  if ':' in s:
+                      k,v=s.split(':',1)
+                      d[k.strip().lower().replace(' ','_')]=v.strip()
+              recs.append(d)
+          pairs={}
+          for d in recs:
+              pid=d.get('unique_patient_id')
+              state=d.get('sample_type')
+              if not pid or state not in {'primary tumor','lymph node metastasis'}:
+                  raise SystemExit(f'BAD_METADATA_RECORD {d}')
+              pairs.setdefault(pid,{})[state]=d['gsm']
+          bad={k:v for k,v in pairs.items() if set(v)!={'primary tumor','lymph node metastasis'}}
+          if len(pairs)!=44 or bad:
+              raise SystemExit(f'PAIR_GATE_FAIL n={len(pairs)} bad={bad}')
+          out={
+              'schema':'biosystems-breast-h1-source-freeze-v01',
+              'status':'PASS_METADATA_ONLY_SOURCE_FREEZE',
+              'geo':'GSE58999',
+              'series_matrix_url':'https://ftp.ncbi.nlm.nih.gov/geo/series/GSE58nnn/GSE58999/matrix/GSE58999_series_matrix.txt.gz',
+              'sha256':sha,
+              'size_bytes':src.stat().st_size,
+              'sample_count':len(recs),
+              'patient_pair_count':len(pairs),
+              'records':recs,
+              'pairs':dict(sorted(pairs.items())),
+              'molecular_values_read':False
+          }
+          Path('breast_source_freeze/BREAST_H1_SOURCE_FREEZE.json').write_text(json.dumps(out,indent=2,sort_keys=True)+'\n')
+          print(json.dumps({k:out[k] for k in ['status','sha256','size_bytes','sample_count','patient_pair_count','molecular_values_read']},indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: biosystems-breast-h1-source-freeze
+          path: breast_source_freeze
+          retention-days: 90
+          if-no-files-found: error
