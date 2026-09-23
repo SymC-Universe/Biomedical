@@ -137,17 +137,17 @@ Audit:
 
 The v10 release remains the immutable parent.
 
-Current Round-1 private candidates in local working state:
-- `GRI_BioSystems_working_v11_R1_2026-09-23.tex`;
-- `GRI_BioSystems_supplement_working_v9_R1_2026-09-23.tex`;
-- `BioSystems_Response_to_Reviewers_v3_R1_2026-09-23.md`;
-- `BioSystems_Cover_Letter_v3_R1_2026-09-23.md`;
+Final Round-1 private release after final-clause tightening:
+- `GRI_BioSystems_working_v12_R1_2026-09-23.tex/.pdf`;
+- `GRI_BioSystems_supplement_working_v10_R1_2026-09-23.tex/.pdf`;
+- `BioSystems_Response_to_Reviewers_v4_R1_2026-09-23.md/.pdf`;
+- `BioSystems_Cover_Letter_v4_R1_2026-09-23.md/.pdf`;
 - `BioSystems_Submission_Metadata_v2_R1_2026-09-23.md`.
 
 Candidate title:
 *Recurrent Methylation Organization Across Human Cancers with Context-Dependent Methylation-RNA Coupling*
 
-The candidates are not final until the active H1 composition test is incorporated and PDF/reviewer-package QA is repeated.
+The final-clause pass is complete. Exact denominator identities, matched stronger-null attenuation, per-cancer TSS support, missingness-scope limits, and the external RNA attenuation wording are now incorporated. PDF/reviewer-package QA was repeated.
 
 ## Final Round-1 completion state
 
@@ -169,21 +169,22 @@ All Round-1 queue items are complete.
 - biological chi / exceptional-point / recovery wording removed from active claim frame.
 
 ### Private release candidate
-- main: `GRI_BioSystems_working_v11_R1_2026-09-23.tex/.pdf`;
-- supplement: `GRI_BioSystems_supplement_working_v9_R1_2026-09-23.tex/.pdf`;
-- reviewer response: `BioSystems_Response_to_Reviewers_v3_R1_2026-09-23.md/.pdf`;
-- cover letter: `BioSystems_Cover_Letter_v3_R1_2026-09-23.md/.pdf`;
-- private package: `BioSystems_Resubmission_R1_Final_20260923.zip`;
-- package SHA-256: `7a27d9942e9566ec4eb563dfd71c0db27b9f9924d928f573b672cb5fb963aeef`.
+- main: `GRI_BioSystems_working_v12_R1_2026-09-23.tex/.pdf`;
+- supplement: `GRI_BioSystems_supplement_working_v10_R1_2026-09-23.tex/.pdf`;
+- reviewer response: `BioSystems_Response_to_Reviewers_v4_R1_2026-09-23.md/.pdf`;
+- cover letter: `BioSystems_Cover_Letter_v4_R1_2026-09-23.md/.pdf`;
+- private package: `BioSystems_Resubmission_R1_v12_Final_20260923.zip`;
+- package SHA-256: `2531ca4e3e1a72e1473c97cb4c7a402f217ed2d2068753e5a8780b1d94ee8226`.
 
 ### Visual / release QA
 - main: 19 pages rendered and inspected;
-- supplement: 13 pages rendered and inspected;
-- response: 9 pages rendered and inspected;
+- supplement: 14 pages rendered and inspected;
+- response: 6 pages rendered and inspected;
 - cover letter: 2 pages rendered and inspected;
 - no material clipping, overlap, broken figure placement, or page-flow defect found.
 
 ### Public closure
+- `BIOSYSTEMS_ADVERSARIAL_R1_FINAL_CLAUSE_AUDIT_20260923.md`;
 - `BIOSYSTEMS_ADVERSARIAL_R1_PUBLIC_REPRODUCIBILITY_INDEX_20260923.md`;
 - `BIOSYSTEMS_ADVERSARIAL_R1_ADJUDICATION_MATRIX_20260923.md`;
 - `BIOSYSTEMS_ADVERSARIAL_R1_FINAL_RELEASE_AUDIT_20260923.md`.
@@ -191,5 +192,7 @@ All Round-1 queue items are complete.
 ## Stop rule
 
 Round 1 is complete. Do not reopen chi_bio, recovery dynamics, SCC25, a new clinical endpoint, or a new external cohort inside this frozen revision unless the user explicitly opens a new scientific branch.
+
+Final-clause release hashes and exact TSS support are frozen in `BIOSYSTEMS_ADVERSARIAL_R1_FINAL_CLAUSE_AUDIT_20260923.md`.
 
 **STATUS: COMPLETE / SUBMISSION READY**
