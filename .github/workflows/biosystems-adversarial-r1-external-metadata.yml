@@ -1,0 +1,49 @@
+name: BioSystems adversarial R1 external metadata audit
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - biosystems-adversarial-r1-20260923
+    paths:
+      - '.github/workflows/biosystems-adversarial-r1-external-metadata.yml'
+      - 'GRI_v2/src/run_biosystems_adversarial_r1_external_metadata.py'
+      - 'GRI_v2/reviewer/BIOSYSTEMS_ADVERSARIAL_R1_EXTERNAL_METADATA_FREEZE_20260923.md'
+
+jobs:
+  metadata-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check pandas
+      - name: Download GEO series-matrix metadata only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p meta
+          curl --fail --location --retry 4 'https://ftp.ncbi.nlm.nih.gov/geo/series/GSE237nnn/GSE237995/matrix/GSE237995_series_matrix.txt.gz' -o meta/GSE237995_series_matrix.txt.gz
+          curl --fail --location --retry 4 'https://ftp.ncbi.nlm.nih.gov/geo/series/GSE262nnn/GSE262522/matrix/GSE262522_series_matrix.txt.gz' -o meta/GSE262522_series_matrix.txt.gz
+          curl --fail --location --retry 4 'https://ftp.ncbi.nlm.nih.gov/geo/series/GSE262nnn/GSE262524/matrix/GSE262524_series_matrix.txt.gz' -o meta/GSE262524_series_matrix.txt.gz
+      - name: Execute frozen metadata-only audit
+        run: |
+          python GRI_v2/src/run_biosystems_adversarial_r1_external_metadata.py \
+            --rna meta/GSE237995_series_matrix.txt.gz \
+            --m450 meta/GSE262522_series_matrix.txt.gz \
+            --epic meta/GSE262524_series_matrix.txt.gz \
+            --config GRI_v2/config/biosystems_external_prostate_p1_v1_0.json \
+            --out R1_EXTERNAL_METADATA
+      - name: Assert no molecular source was downloaded
+        run: |
+          test ! -e GSE237995_RawCounts.csv.gz
+          test ! -e GSE262522_m450K_Proc_Funnorm.tsv.gz
+          test ! -e GSE262524_EPIC_Proc_Funnorm.tsv.gz
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: BIOSYSTEMS_ADVERSARIAL_R1_EXTERNAL_METADATA_V01
+          path: R1_EXTERNAL_METADATA
+          if-no-files-found: warn
