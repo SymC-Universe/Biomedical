@@ -187,3 +187,10 @@ No scientific endpoint, cohort, null, boundary, representation, carrier rule, mo
 6. Continue Harmange/Shaffer/Rehman/Su qualification toward prospectively frozen recovery/carrier testbeds without using expected SymC agreement for selection.
 7. Keep `chi_bio`, `Chi_bio`, Bio Chi, and Stability Inheritance admission closed until their respective prospective gates are satisfied.
 8. Keep all working manuscript prose private.
+
+## Preserved BioProject/SRA reconciliation repair
+
+- Reconciliation v0.1 run **35864958524** failed with `FAIL_SOURCE_RECONCILIATION` because the Shaffer SuperSeries BioProject `PRJNA382641` was compared directly against child-project accessions `PRJNA382674`, `PRJNA382752`, and `PRJNA382753`. Artifact **10751561638** preserves the failure.
+- This was a mechanical hierarchy-modeling defect, not a biological contradiction.
+- Reconciliation v0.2 run **35864958490** completed SUCCESS and explicitly models the Shaffer child-project union. It recovered all **155** runs with no missing or extra runs; artifact **10752061357**.
+- The v0.1 failure remains preserved and is not overwritten by v0.2.
