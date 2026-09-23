@@ -11,7 +11,19 @@
         "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE145nnn/GSE145356/suppl/GSE145356_RAW.tar"
       ],
       "expected_public": true,
-      "outcome_opened_by_preflight": false
+      "outcome_opened_by_preflight": false,
+      "verified_files": [
+        {
+          "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE145nnn/GSE145356/suppl/GSE145356_merged_HTSeq_readCounts_V2.txt.gz",
+          "content_length_bytes": 1191595,
+          "last_modified": "Fri, 14 Feb 2020 22:47:16 GMT"
+        },
+        {
+          "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE145nnn/GSE145356/suppl/GSE145356_RAW.tar",
+          "content_length_bytes": 5847040,
+          "last_modified": "Fri, 08 Jan 2021 04:50:19 GMT"
+        }
+      ]
     },
     {
       "id": "marsolier2022_geo",
@@ -21,7 +33,14 @@
         "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE164nnn/GSE164716/suppl/GSE164716_RAW.tar"
       ],
       "expected_public": true,
-      "outcome_opened_by_preflight": false
+      "outcome_opened_by_preflight": false,
+      "verified_files": [
+        {
+          "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE164nnn/GSE164716/suppl/GSE164716_RAW.tar",
+          "content_length_bytes": 14151997440,
+          "last_modified": "Thu, 01 Feb 2024 16:50:29 GMT"
+        }
+      ]
     },
     {
       "id": "harmange2023_geo",
@@ -58,5 +77,8 @@
       "outcome_opened_by_preflight": false,
       "note": "S1 Code source must be pinned locally before model qualification"
     }
-  ]
+  ],
+  "preflight_run_id": 35810054670,
+  "preflight_artifact_id": 10729701313,
+  "preflight_artifact_digest": "sha256:cb3224e9b457896de257a3bbd93d7a4c8c2a7def2f0ab9d6d7971f1a65db063d"
 }
