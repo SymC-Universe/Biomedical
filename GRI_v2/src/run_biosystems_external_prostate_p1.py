@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
-import argparse, csv, gzip, hashlib, json, math
+import argparse, base64, csv, gzip, hashlib, json, lzma, math
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
@@ -17,6 +17,9 @@ EXPECTED = {
     "gmt": "eecaf6dad908334ae885406ec72bdc0646d8917588ed7c219fac92fc5363f596",
 }
 B = 999
+C1_PROBE_IDS_SHA = "589365b92797f6e0ea479b75437c44ed86327cfc86b3e7caf7df01b4be2bcdd9"
+SUPPORT_B64_SHA = "1463a4a6ad157dc770278ef97b6fcd2fb80b6e73ce4d774a2ca47aa7870391b1"
+SUPPORT_RAW_SHA = "d45947345007b901e684adf92840889acf1ab00377153d54de2766cd1084c9b2"
 
 
 def sha256_file(path: Path, chunk=8 * 1024 * 1024) -> str:
@@ -70,27 +73,37 @@ def resolve_header(header, participant: str, state: str):
     return hits[0]
 
 
-def load_c1_support(flags_path: Path, map_path: Path):
-    flags = pd.read_csv(flags_path, compression="gzip")
-    if len(flags) != 22601 or flags["probe_id"].nunique() != 22601:
-        raise ValueError("C1 probe flag universe drift")
-    probe_ids = flags["probe_id"].astype(str).to_numpy(object)
-    mask = flags["technical_mask_union"].astype(int).to_numpy() == 1
-    if int(mask.sum()) != 579:
-        raise ValueError(f"C1 technical mask drift: {int(mask.sum())}")
+def load_c1_support(probe_ids_path: Path, support_path: Path):
+    if sha256_file(probe_ids_path) != C1_PROBE_IDS_SHA:
+        raise ValueError("C1 compact probe-ID carrier SHA mismatch")
+    probe_ids = [x.strip() for x in probe_ids_path.read_text().splitlines() if x.strip()]
+    if len(probe_ids) != 22601 or len(set(probe_ids)) != 22601:
+        raise ValueError("C1 compact probe-ID carrier drift")
 
-    mp = pd.read_csv(map_path, compression="gzip", dtype=str)
-    core = mp[mp["regulatory_stratum"].astype(str).str.contains("PROMOTER_CORE", regex=False)].copy()
-    if core["probe_id"].nunique() != 3999:
-        raise ValueError(f"PROMOTER_CORE probe count drift: {core['probe_id'].nunique()}")
-    gene_map_raw = {}
-    for pid, g in core[["probe_id", "gene_symbol"]].itertuples(index=False):
-        if not g or str(g).lower() == "nan":
+    b = support_path.read_bytes()
+    if hashlib.sha256(b).hexdigest() != SUPPORT_B64_SHA:
+        raise ValueError("C1 support payload b64 hash mismatch")
+    raw = lzma.decompress(base64.b64decode(b))
+    if hashlib.sha256(raw).hexdigest() != SUPPORT_RAW_SHA:
+        raise ValueError("C1 support payload raw hash mismatch")
+    txt = raw.decode("utf-8").splitlines()
+    if not txt or txt[0] != "CORE" or "MASK" not in txt:
+        raise ValueError("C1 support payload schema drift")
+    k = txt.index("MASK")
+    core = {}
+    for line in txt[1:k]:
+        if not line:
             continue
-        gene_map_raw.setdefault(str(pid), []).append(str(g))
-    for pid in list(gene_map_raw):
-        gene_map_raw[pid] = list(dict.fromkeys(gene_map_raw[pid]))
-    return probe_ids, mask, gene_map_raw
+        pid, genes = line.split("\t", 1)
+        core[pid] = [g for g in genes.split(";") if g]
+    mask_ids = {x for x in txt[k+1:] if x}
+    if len(core) != 3999 or len(mask_ids) != 579:
+        raise ValueError(f"C1 support semantic drift core={len(core)} mask={len(mask_ids)}")
+    probe_ids_arr = np.asarray(probe_ids, dtype=object)
+    mask = np.asarray([p in mask_ids for p in probe_ids], dtype=bool)
+    if int(mask.sum()) != 579:
+        raise ValueError("C1 compact carrier / mask mismatch")
+    return probe_ids_arr, mask, core
 
 
 def read_external_methylation(path: Path, required_probe_order, participant_ids):
@@ -562,8 +575,8 @@ def main():
     ap.add_argument("--m450", required=True, type=Path)
     ap.add_argument("--epic", required=True, type=Path)
     ap.add_argument("--gmt", required=True, type=Path)
-    ap.add_argument("--c1-flags", required=True, type=Path)
-    ap.add_argument("--c1-map", required=True, type=Path)
+    ap.add_argument("--c1-probes", required=True, type=Path)
+    ap.add_argument("--support", required=True, type=Path)
     ap.add_argument("--out", required=True, type=Path)
     ap.add_argument("--workers", type=int, default=4)
     a = ap.parse_args()
@@ -578,7 +591,7 @@ def main():
         print(label, path.stat().st_size, got, flush=True)
 
     modules = parse_gmt(a.gmt)
-    c1_probe_ids, c1_mask, core_raw = load_c1_support(a.c1_flags, a.c1_map)
+    c1_probe_ids, c1_mask, core_raw = load_c1_support(a.c1_probes, a.support)
 
     primary_parts = cfg["primary_450k"]["selected_participants"]
     full32_parts = cfg["primary_450k"]["complete_pair_pool"]
