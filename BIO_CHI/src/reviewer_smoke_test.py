@@ -42,6 +42,19 @@ lm = load("BIO_CHI/config/LEE2014_SRA_SAMPLE_METADATA_V01_RESULT_PIN.json")
 if lm.get("status") != "PASS_SRA_SAMPLE_METADATA_MAP": fail("Lee metadata pin not PASS")
 if lm.get("explicit_reconverted_or_post_withdrawal_rna_samples") != 0: fail("Lee recovery-source limitation drift")
 
+bp = load("BIO_CHI/config/P0D_BIOPROJECT_SRA_RECONCILIATION_V02_RESULT_PIN.json")
+if bp.get("status") != "PASS_BIOPROJECT_PARENT_CHILD_RECONCILIATION": fail("BioProject hierarchy pin not PASS")
+if bp.get("shaffer2017",{}).get("run_count") != 155: fail("Shaffer SRA run-count drift")
+if bp.get("shaffer2017",{}).get("missing_from_child_union") != [] or bp.get("shaffer2017",{}).get("extra_in_child_union") != []:
+    fail("Shaffer parent/child run-set drift")
+if bp.get("molecular_values_interpreted") is not False: fail("BioProject reconciliation crossed outcome boundary")
+
+su = load("BIO_CHI/config/SU2026_NATIVE_METHOD_SOURCE_METADATA_V01_RESULT_PIN.json")
+if su.get("status") != "PASS_SU_NATIVE_SOURCE_METADATA": fail("Su native-source metadata pin not PASS")
+if su.get("expected_m397_rna_gsm_count") != 15 or su.get("missing_gsms") != []: fail("Su M397 source membership drift")
+if su.get("expression_values_read") is not False or su.get("surprisal_computed") is not False:
+    fail("Su source qualification crossed outcome/method boundary")
+
 native = q.get("active_native_model_gate",{})
 for k in ("chi_bio_constructed","Chi_bio_admitted","Bio_Chi_constructed"):
     if native.get(k) is not False: fail("premature admission flag " + k)
