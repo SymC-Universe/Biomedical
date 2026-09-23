@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import csv, hashlib, io, json, pathlib, urllib.parse, urllib.request
+import csv, hashlib, io, json, pathlib, time, urllib.error, urllib.parse, urllib.request
 from collections import Counter
 from datetime import datetime, timezone
 
@@ -13,9 +13,22 @@ OUT_FILE=OUT/"bioproject_sra_reconciliation_v0_1.json"
 UA="BioChiReviewerReproducibility/0.1"
 
 def fetch(url):
-    req=urllib.request.Request(url,headers={"User-Agent":UA})
-    with urllib.request.urlopen(req,timeout=180) as r:
-        return r.read()
+    last = None
+    for attempt in range(6):
+        req=urllib.request.Request(url,headers={"User-Agent":UA})
+        try:
+            with urllib.request.urlopen(req,timeout=180) as r:
+                data = r.read()
+            time.sleep(0.4)
+            return data
+        except urllib.error.HTTPError as exc:
+            last = exc
+            if exc.code != 429 or attempt == 5:
+                raise
+            retry_after = exc.headers.get("Retry-After")
+            delay = float(retry_after) if retry_after and retry_after.isdigit() else min(16.0, 1.0 * (2 ** attempt))
+            time.sleep(delay)
+    raise last
 
 def sha256(b): return hashlib.sha256(b).hexdigest()
 
