@@ -3,7 +3,7 @@
 **Created:** 22 September 2026
 **Status:** ACTIVE
 **Branch:** `gri-biosystems-revision-20260922`
-**Program authority:** SymC General Operations Manual v0.8.3
+**Program authority:** SymC General Operations Manual v0.8.4
 **Purpose:** allow future ChatGPT runs to resume BioSystems revision work after polling/session/tool interruptions without user intervention.
 
 ## Non-negotiable resume rule
@@ -122,7 +122,7 @@ Do not publish this working manuscript to the public Biomedical repository.
 ## Current execution queue
 
 ### Q1 - external P1 implementation and preflight
-**NEXT.**
+**COMPLETE.**
 
 Build the outcome-bearing external prostate runner by transporting the already frozen C1 constructions, not inventing new statistics.
 
@@ -140,6 +140,9 @@ Required before result opening:
 Scientific rules may not change.
 
 ### Q2 - execute external P1
+**COMPLETE.** Frozen run `35801966289` succeeded; artifact `10726636434`, digest `sha256:1d7bbef7a4f8ea0cb254c139879e8ec53b9498f8d95c9c97fa28f21367075cde`. Primary 450K n=30 = `P1_PARTIAL_TRANSPORT`; full n=32 concordant; EPIC reproduces H1 but reverses H2/H3a signs; final preregistered disposition = `P1_REPRESENTATION_DEPENDENT`. No rescue performed.
+
+Historical instruction retained below for audit:
 After Q1 mechanical/identity gates pass, execute the frozen external result.
 
 On completion:
@@ -149,6 +152,8 @@ On completion:
 - do not rescue a failed primary with n=32 or EPIC.
 
 ### Q3 - manuscript integration
+**SUBSTANTIALLY COMPLETE.** Private main manuscript has advanced through `GRI_BioSystems_working_v8_2026-09-22.tex`; supplement through v7. External P1, tumor-normal, AI disclosure, funding/conflict/contribution statements and source citation are integrated. Figure/caption synchronization remains part of release work.
+
 Integrate the external result into the private working manuscript:
 - abstract;
 - Methods;
@@ -162,6 +167,8 @@ Integrate the external result into the private working manuscript:
 If P1 fails or partially transports, narrow the manuscript exactly as required rather than redesigning P1.
 
 ### Q4 - reviewer package
+**ACTIVE.** Reviewer matrix, claim map and resubmission closeout are synchronized to the completed P1. Private `BioSystems_Response_to_Reviewers_v1_2026-09-22.md` and `BioSystems_Cover_Letter_v1_2026-09-22.md` are drafted. Final prose/cross-reference synchronization remains after figures are frozen.
+
 Update:
 - `BIOSYSTEMS_REVIEWER_RESPONSE_MATRIX_20260922.md`
 - `BIOSYSTEMS_RESUBMISSION_CLOSEOUT_20260922.md`
@@ -173,6 +180,8 @@ Update:
 - editor-facing author-initiated correction delta.
 
 ### Q5 - final submission mechanics
+**CURRENT PRIORITY.** All scientific evidence gates are closed. Active blocker is regenerated visual/release packaging under GOM v0.8.4. The completed C1 result archive is not currently accessible, so no heavy scientific rerun is authorized merely to recreate charts; visuals must be regenerated from verified accessible result artifacts/audited aggregates or replaced with evidence-equivalent release visuals.
+
 Complete:
 - final figures/tables;
 - citation/source verification;
