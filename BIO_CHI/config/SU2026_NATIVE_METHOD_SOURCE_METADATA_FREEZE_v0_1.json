@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Su 2026 M397 native-method source metadata qualification",
+  "purpose_tag": "P0_D_NATIVE_METHOD_SOURCE_QUALIFICATION",
+  "source_subset": "BIO_CHI/config/SU2026_SOURCE_SUBSET_v0_1.json",
+  "family_soft_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE255nnn/GSE255671/soft/GSE255671_family.soft.gz",
+  "family_soft_sha256": "558cc094375f27af9c786f4bb12da1e86b228129203691d3b5cdd38c6214cd4c",
+  "code_pin": "BIO_CHI/config/SU2026_PUBLIC_CODE_PIN_v0_1.json",
+  "permitted_operations": [
+    "verify exact frozen family-SOFT SHA-256",
+    "parse selected GSM metadata fields only",
+    "record title, source name, characteristics, data_processing, relation, supplementary file and platform metadata",
+    "confirm all prospectively frozen M397 RNA timepoints are represented"
+  ],
+  "forbidden_operations": [
+    "read expression matrix values",
+    "calculate surprisal modules or SVD",
+    "inspect target hysteresis geometry",
+    "change the frozen M397 timepoint membership",
+    "construct a new hysteresis statistic",
+    "construct chi_bio, Chi_bio, or Bio Chi"
+  ],
+  "pass_rule": "all frozen M397 RNA timepoint GSMs are present and metadata explicitly identifies the processing/source route needed for the published native analysis",
+  "fail_rule": "missing frozen GSM or metadata too ambiguous to identify the native processed expression input",
+  "scientific_effect": "NONE; method/source qualification only",
+  "status": "FROZEN_BEFORE_SOFT_METADATA_PARSE"
+}
