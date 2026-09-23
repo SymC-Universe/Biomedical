@@ -80,3 +80,24 @@ This sensitivity does **not**:
 - make the B=999 Monte Carlo floor more precise.
 
 The original P1 remains the publication lineage. This test exists solely to determine whether one known source-level sample axis explains H1.
+
+
+## Pre-outcome implementation amendment v1.1
+
+Workflow run `35812072624` failed after completing the 450K calculations but before writing or printing any endpoint result because the EPIC subset contains only EA-labeled participants. The failure was:
+
+`ValueError: race residualization requires AA+EA, got ['EA']`.
+
+No numerical H1 sensitivity outcome was opened from that run.
+
+This is a source-structure implementation defect, not a scientific outcome. The source identity already establishes that the EPIC subset is race-homogeneous. The following rule is therefore frozen before retry:
+
+- if a lane contains both AA and EA, perform the frozen per-CpG race residualization;
+- if a lane contains only one race, mark `H1_RACE_RESIDUAL` as `NOT_IDENTIFIABLE_SINGLE_RACE` and do not fabricate a regression coefficient;
+- a single-race lane is reported as a race-homogeneous supporting sensitivity using its raw H1 result, because the between-race axis is absent by construction;
+- the primary decision remains based only on mixed-race `PRIMARY_450K_N30` race-residualized H1;
+- the EPIC lane cannot rescue a failed primary and cannot be described as a successful race-adjusted regression.
+
+The cross-platform wording is correspondingly narrowed: if primary race-residualized H1 passes and the race-homogeneous EPIC raw H1 remains positive/significant under its original frozen null, the result is described as `PRIMARY_RACE_ROBUST_WITH_SINGLE_RACE_EPIC_SUPPORT`, not as two-platform race residualization.
+
+No participant, probe, endpoint, null, B, threshold, source, or original P1 interpretation changes.
