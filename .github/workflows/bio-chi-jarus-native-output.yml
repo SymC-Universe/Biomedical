@@ -25,7 +25,7 @@ jobs:
         uses: matlab-actions/setup-matlab@v3
         with:
           release: R2023b
-      - name: Run authors driver and capture all plotted numeric line series
+      - name: Run authors driver and capture plotted values plus semantic metadata
         id: capture
         continue-on-error: true
         uses: matlab-actions/run-command@v3
@@ -44,7 +44,9 @@ jobs:
               p=pathlib.Path(p)
               return hashlib.sha256(p.read_bytes()).hexdigest() if p.exists() else None
           summary_path=root/'capture_summary.json'
+          semantics_path=root/'semantic_map.json'
           summary=json.loads(summary_path.read_text()) if summary_path.exists() else None
+          semantics=json.loads(semantics_path.read_text()) if semantics_path.exists() else None
           csvs=sorted(root.glob('figure_*_axis_*_line_*.csv'))
           records=[]
           for p in csvs:
@@ -63,14 +65,15 @@ jobs:
                       pass
               records.append({'file':p.name,'sha256':h(p),'row_count':rows,'finite_row_count':finite_rows})
           action=os.environ.get('CAPTURE_OUTCOME')
-          ok=bool(action == 'success' and summary and summary.get('numeric_line_count',0) == len(csvs) and len(csvs) > 0 and all(r['finite_row_count'] > 0 for r in records))
+          ok=bool(action == 'success' and summary and semantics is not None and summary.get('schema_version') == '0.2' and summary.get('numeric_line_count',0) == len(csvs) and len(csvs) > 0 and all(r['finite_row_count'] > 0 for r in records))
           result={
-            'schema_version':'0.1',
-            'audit_type':'authors_native_plot_output_capture',
+            'schema_version':'0.2',
+            'audit_type':'authors_native_plot_output_and_semantic_capture',
             'status':'PASS' if ok else 'CAPTURE_FAILURE',
             'source_reproduction_run':35836946074,
             'source_reproduction_status':'PASS',
             'compatibility_pin':'BIO_CHI/config/JARUS_MATLAB_COMPAT_PIN_v0_1.json',
+            'behavior_freeze':'BIO_CHI/config/JARUS_NATIVE_BEHAVIOR_FREEZE_v0_1.json',
             'published_source_preserved':True,
             'execution_copy_modified':True,
             'repair_count':1,
@@ -79,10 +82,11 @@ jobs:
             'capture_outcome':action,
             'capture_summary':summary,
             'capture_summary_sha256':h(summary_path),
+            'semantic_map_sha256':h(semantics_path),
             'matlab_stdout_sha256':h(root/'matlab_stdout.txt'),
             'native_plot_capture_mat_sha256':h(root/'native_plot_capture.mat'),
             'numeric_series':records,
-            'interpretation_limit':'This artifact exhaustively captures authors-native plotted numeric series only. It does not select a line, classify damping, infer a modal coordinate, or license chi_bio.'
+            'interpretation_limit':'This artifact captures authors-native plotted numeric series and their authored figure/axis metadata. It does not promote a line, classify damping, infer a modal coordinate, or license chi_bio.'
           }
           out=root/'native_output_capture_manifest.json'
           out.write_text(json.dumps(result,indent=2)+'\n')
@@ -92,9 +96,10 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: BIO_CHI_JARUS_NATIVE_OUTPUT_CAPTURE_V01
+          name: BIO_CHI_JARUS_NATIVE_OUTPUT_CAPTURE_V02
           path: |
             BIO_CHI/artifacts/generated/jarus_native_plot_capture/capture_summary.json
+            BIO_CHI/artifacts/generated/jarus_native_plot_capture/semantic_map.json
             BIO_CHI/artifacts/generated/jarus_native_plot_capture/native_output_capture_manifest.json
             BIO_CHI/artifacts/generated/jarus_native_plot_capture/matlab_stdout.txt
             BIO_CHI/artifacts/generated/jarus_native_plot_capture/native_plot_capture.mat
@@ -111,5 +116,5 @@ jobs:
           result=json.loads(p.read_text())
           if result.get('status') != 'PASS':
               raise SystemExit('BIO_CHI_JARUS_NATIVE_OUTPUT_CAPTURE_FAIL')
-          print('BIO_CHI_JARUS_NATIVE_OUTPUT_CAPTURE_PASS')
+          print('BIO_CHI_JARUS_NATIVE_OUTPUT_CAPTURE_V02_PASS')
           PY
