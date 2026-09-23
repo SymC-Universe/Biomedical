@@ -1,0 +1,72 @@
+name: BioSystems HCI005 GENCODE v33 namespace map v01
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [biosystems-claim-extension-p0d-20260923]
+    paths:
+      - '.github/workflows/biosystems-hci005-gencode33-map-v01.yml'
+
+jobs:
+  map:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download exact source identities
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/hci005 out_hci005_map
+          curl -L --fail --retry 3 --retry-delay 2 -o /tmp/hci005/rna.gz https://ftp.ncbi.nlm.nih.gov/geo/series/GSE171nnn/GSE171073/suppl/GSE171073_Veh.vs.Dec_HCI005.cntTable.txt.gz
+          echo "1cbd6826074498a57025124da0a2857f1248338b21aaf1e3034cea48c7f68397  /tmp/hci005/rna.gz" | sha256sum -c -
+          curl -L --fail --retry 3 --retry-delay 2 -o /tmp/hci005/gencode.v33.annotation.gtf.gz https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_33/gencode.v33.annotation.gtf.gz
+          sha256sum /tmp/hci005/gencode.v33.annotation.gtf.gz
+      - name: Build identifier map without reading expression values
+        shell: bash
+        run: |
+          python - <<'PY'
+          import base64,csv,gzip,hashlib,json,lzma,re
+          from pathlib import Path
+          raw=lzma.decompress(base64.b64decode(Path('GRI_v2/support/tn_c1_core_mask_payload.lzma.b64').read_bytes()))
+          lines=raw.decode().splitlines();k=lines.index('MASK');prom=set()
+          for line in lines[1:k]:
+              if not line:continue
+              _,gs=line.split('\t',1);prom.update(g for g in gs.split(';') if g)
+          ids=[]
+          with gzip.open('/tmp/hci005/rna.gz','rt',encoding='utf-8',errors='replace',newline='') as f:
+              next(f)
+              for line in f:
+                  row=next(csv.reader([line.rstrip('\r\n')],delimiter='\t',quotechar='"'))
+                  if row:ids.append(row[0].split('.')[0])
+          mapping={}
+          pat_id=re.compile(r'gene_id "([^"]+)"')
+          pat_name=re.compile(r'gene_name "([^"]+)"')
+          with gzip.open('/tmp/hci005/gencode.v33.annotation.gtf.gz','rt',encoding='utf-8',errors='replace') as f:
+              for line in f:
+                  if not line or line.startswith('#'):continue
+                  p=line.rstrip('\n').split('\t')
+                  if len(p)<9 or p[2]!='gene':continue
+                  mi=pat_id.search(p[8]);mn=pat_name.search(p[8])
+                  if mi and mn:mapping[mi.group(1).split('.')[0]]=mn.group(1)
+          mapped=[mapping.get(x) for x in ids]
+          overlap=sorted({x for x in mapped if x in prom})
+          h=hashlib.sha256(Path('/tmp/hci005/gencode.v33.annotation.gtf.gz').read_bytes()).hexdigest()
+          out={'schema_version':'0.1','status':'PASS_GENCODE33_NAMESPACE_MAP','values_read':False,
+               'gencode_v33_sha256':h,'rna_id_rows':len(ids),'gencode_gene_map_count':len(mapping),
+               'rna_ids_mapped_to_symbol':sum(x is not None for x in mapped),
+               'promoter_gene_namespace_count':len(prom),
+               'mapped_promoter_overlap_count':len(overlap),
+               'mapped_promoter_overlap_first_50':overlap[:50]}
+          Path('out_hci005_map/HCI005_GENCODE33_NAMESPACE_MAP_V01.json').write_text(json.dumps(out,indent=2,sort_keys=True)+'\n')
+          print(json.dumps(out,indent=2,sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: biosystems-hci005-gencode33-map-v01
+          path: out_hci005_map
+          if-no-files-found: error
+          retention-days: 90
