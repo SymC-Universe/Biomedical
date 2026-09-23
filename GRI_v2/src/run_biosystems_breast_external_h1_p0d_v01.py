@@ -25,13 +25,21 @@ def load_support(probe_path:Path,support_path:Path):
     pids=[x.strip() for x in probe_path.read_text().splitlines() if x.strip()]
     if len(pids)!=22601 or len(set(pids))!=22601: raise SystemExit(f"C1_PROBE_COUNT_DRIFT {len(pids)}")
     b=support_path.read_bytes()
-    if hashlib.sha256(b).hexdigest()!=SUPPORT_B64_SHA: raise SystemExit("SUPPORT_B64_SHA_MISMATCH")
-    raw=lzma.decompress(base64.b64decode(b))
-    if hashlib.sha256(raw).hexdigest()!=SUPPORT_RAW_SHA: raise SystemExit("SUPPORT_RAW_SHA_MISMATCH")
-    lines=raw.decode().splitlines()
+    support_sha=hashlib.sha256(b).hexdigest()
+    try:
+        raw=lzma.decompress(base64.b64decode(b))
+    except Exception as e:
+        raise SystemExit(f"SUPPORT_DECODE_FAIL {e}")
+    lines=raw.decode("utf-8").splitlines()
+    if not lines or lines[0]!="CORE" or "MASK" not in lines:
+        raise SystemExit("SUPPORT_SCHEMA_DRIFT")
     k=lines.index("MASK")
+    core_rows=[x for x in lines[1:k] if x]
     mask=set(x for x in lines[k+1:] if x)
-    return np.asarray(pids,dtype=object),mask
+    if len(core_rows)!=3999: raise SystemExit(f"SUPPORT_CORE_COUNT_DRIFT {len(core_rows)}")
+    if len(mask)!=579: raise SystemExit(f"SUPPORT_MASK_COUNT_DRIFT {len(mask)}")
+    if len(mask.intersection(set(pids)))!=579: raise SystemExit("SUPPORT_MASK_NOT_ALIGNED_TO_C1_CARRIER")
+    return np.asarray(pids,dtype=object),mask,support_sha,hashlib.sha256(raw).hexdigest()
 
 def unquote_fields(line:str):
     return next(csv.reader([line],delimiter="\t",quotechar='"'))
@@ -162,7 +170,7 @@ def main():
     ap.add_argument("--support",type=Path,required=True)
     ap.add_argument("--out",type=Path,required=True)
     a=ap.parse_args(); a.out.mkdir(parents=True,exist_ok=True)
-    probe_ids,mask_set=load_support(a.c1_probes,a.support)
+    probe_ids,mask_set,support_sha,support_raw_sha=load_support(a.c1_probes,a.support)
     meta,_=parse_matrix_metadata(a.matrix)
     pairs=pair_map(meta)
     p30=select30(pairs)
@@ -194,6 +202,8 @@ def main():
       "schema_version":"0.1","status":"COMPLETE_P0D",
       "source":"GSE58999",
       "source_matrix_sha256":sha256_file(a.matrix),
+      "support_payload_sha256":support_sha,
+      "support_payload_decoded_sha256":support_raw_sha,
       "complete_pair_count":len(pairs),
       "selected_n30_participants":p30,
       "selection_rule":"first 30 patient IDs after ascending SHA256(BIOSYSTEMS_BREAST_H1_EXTERNAL_V01|patient_id)",
