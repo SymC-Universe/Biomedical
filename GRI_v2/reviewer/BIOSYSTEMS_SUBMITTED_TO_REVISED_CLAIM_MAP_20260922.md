@@ -30,10 +30,11 @@
 
 The new manuscript should not be written by softening the submitted prose sentence by sentence. It should be rebuilt from the **revised admissible claim** column, then cite only frozen evidence that directly supports each statement. The submitted wording is provenance and a response-letter comparison source, not the narrative skeleton.
 
-## Two unresolved claim families
+## Previously unresolved claim families now dispositioned
 
-Two reviewer-facing claims remain intentionally unwritten pending prospective evidence:
-1. whether the revised architecture distinguishes tumor from appropriate normal tissue under a frozen tumor-versus-normal design;
-2. whether a transported claim confirms in a genuinely external cohort under frozen representation, comparator, metric, falsifier and MFR-14 rules.
+Both reviewer-facing prospective gates have now closed:
 
-No sentence in the revised Abstract or Conclusions should imply either result before those gates close.
+1. **Tumor versus normal:** internal TCGA controls support reproducible tumor-associated weakening of RNA modular organization and methylation H1, while broader cross-layer changes remain heterogeneous. This is a same-program adjacent-normal control, not a healthy-population claim.
+2. **Independent external transport:** the preregistered prostate P1 provides strong independent H1 validation across 450K and EPIC, while H2/H3a do not transport consistently. The final frozen external classification is `P1_REPRESENTATION_DEPENDENT`.
+
+The revised Abstract and Conclusions may now report these outcomes exactly at that ceiling. They must not summarize the external study as full-framework validation.
