@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Su/M397 exact processed reversible RPKM source freeze",
+  "purpose_tag": "P0_D_SOURCE_QUALIFICATION",
+  "geo_series": "GSE134459",
+  "source_file": "GSE134459_Reversible_RPKM_values.txt.gz",
+  "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE134nnn/GSE134459/suppl/GSE134459_Reversible_RPKM_values.txt.gz",
+  "provenance": [
+    "M397 GSM3958009-GSM3958023 are members of GSE134459 and GSE255671",
+    "M397 sample GEO descriptions identify 'Reversible RPKM values.txt'",
+    "GSE134459 Series record lists GSE134459_Reversible_RPKM_values.txt.gz as processed supplementary data"
+  ],
+  "permitted_operations": [
+    "download exact compressed bytes",
+    "record size, HTTP metadata and SHA-256",
+    "verify gzip magic only"
+  ],
+  "forbidden_operations": [
+    "decompress file",
+    "read header or expression values",
+    "calculate surprisal or hysteresis",
+    "select genes/timepoints from data values",
+    "construct chi_bio, Chi_bio or Bio Chi"
+  ],
+  "scientific_effect": "NONE; exact processed-input identity only",
+  "status": "FROZEN_BEFORE_FILE_DOWNLOAD"
+}
