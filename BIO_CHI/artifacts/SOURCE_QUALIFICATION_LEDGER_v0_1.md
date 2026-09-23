@@ -67,9 +67,11 @@ The generic external-source freeze is pinned in `BIO_CHI/config/EXTERNAL_SOURCE_
 - Metadata-only source-map run **35863794417** passed and froze the exact NCBI RunInfo response (SHA-256 `79a96a4b70a4dcafab26f253cfa57fc53038008993085bf957e2285502fde2cd`).
 - The study contains **19 public RNA-seq runs**, 19 experiments, 19 SRA samples, and 19 BioSamples; all runs are paired-end Illumina RNA-seq.
 - Sequence reads were not downloaded and no expression values were opened.
-- A second metadata-only gate is mapping experiment/sample titles and treatment/state labels before any recovery analysis.
+- The second metadata-only gate, run **35863951516**, also passed. It maps 5 untreated, 5 stressed, and 5 drug-tolerant single-cell RNA-seq samples plus 1 untreated, 1 stressed, and 2 drug-tolerant bulk RNA-seq samples.
+- The exact SRA metadata XML is frozen at SHA-256 `33a2445f81ad0b21bde062aebefdd5c89b2bb0031f306edc95764d6d3eda6834`.
+- **No explicitly labeled reconverted or post-withdrawal RNA sample is present in SRP040309.** This is a source-design limitation, not a negative biological result.
 
-**Source disposition:** PUBLIC SRA RUN MAP QUALIFIED / SAMPLE-CONDITION METADATA MAPPING ACTIVE.
+**Source disposition:** PUBLIC RESPONSE/STATE-TRANSITION RNA SOURCE QUALIFIED. SRP040309 IS NOT A DIRECT TRANSCRIPTOMIC RECOVERY TRAJECTORY; retain Lee 2014 only as secondary recovery literature/phenotypic context unless an independent public recovery source is identified.
 
 ## Scalar/model-track and known-truth source qualification
 
