@@ -1,0 +1,39 @@
+name: Bio Chi Jaruszewicz local stability v0.3
+
+on:
+  push:
+    branches:
+      - chi-bio-recovery-p0d-20260922
+    paths:
+      - 'BIO_CHI/config/JARUS_FIG8_LOCAL_STABILITY_FREEZE_v0_3.json'
+      - 'BIO_CHI/src/jarus_fig8_local_stability_v03.m'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  local-stability-v03:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare pinned source plus frozen compatibility repair
+        run: bash BIO_CHI/src/prepare_jarus_matlab_compat.sh
+      - name: Prepare frozen Figure 8 parameter copies
+        run: python BIO_CHI/src/prepare_jarus_fig8_cases.py
+      - uses: matlab-actions/setup-matlab@v3
+        with:
+          release: R2023b
+          products: Optimization_Toolbox
+      - name: Execute frozen bounded residual cross-check
+        uses: matlab-actions/run-command@v3
+        with:
+          command: run('BIO_CHI/src/jarus_fig8_local_stability_v03.m')
+          generate-summary: false
+      - name: Upload bounded residual stability evidence including nulls and failures
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_JARUS_LOCAL_STABILITY_V03
+          path: BIO_CHI/artifacts/generated/jarus_fig8_local_stability_v03/local_stability_v0_3.json
+          if-no-files-found: error
