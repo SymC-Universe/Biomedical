@@ -1,7 +1,7 @@
 # BioSystems autonomous continuation checkpoint
 
 **Created:** 22 September 2026
-**Status:** ACTIVE
+**Status:** COMPLETE / SUBMISSION READY
 **Branch:** `gri-biosystems-revision-20260922`
 **Program authority:** SymC General Operations Manual v0.8.4
 **Purpose:** allow future ChatGPT runs to resume BioSystems revision work after polling/session/tool interruptions without user intervention.
@@ -54,7 +54,7 @@ Historical disposition remains:
 BioSystems submission work has priority. Chi_bio/recovery is the next dedicated investigation after this revision is locked. The distance assessment is formalized in `GRI_v2/docs/GRI_CHI_BIO_DISTANCE_TO_ADMISSION_20260922.md` (commit `979cf5e...`): recovery is a focused new dynamical investigation, while scalar chi admission still requires a new lineage with restoration identifiability, scalar derivation, representation robustness, native-baseline incremental value, prospective boundary testing if applicable, and independent transport. Do not delay the current revision for this.
 
 ### External validation reviewer gate
-This is the **only remaining publication-critical evidence-bearing reviewer gate**.
+**CLOSED WITH LIMIT.**
 
 Frozen source:
 - RNA: GSE237995
@@ -85,39 +85,44 @@ Secondary:
 
 No biological chi, recovery, causal methylation->RNA, treatment-response, or clinical claim is part of this P1 task.
 
-## Last completed external step
+## External result closure
 
-Outcome-blind source preflight completed successfully:
+Frozen independent prostate P1 completed successfully:
+- workflow run: `35801966289`;
+- artifact: `GRI_BIOSYSTEMS_EXTERNAL_PROSTATE_P1_V01`;
+- artifact ID: `10726636434`;
+- artifact digest: `sha256:1d7bbef7a4f8ea0cb254c139879e8ec53b9498f8d95c9c97fa28f21367075cde`;
+- primary 450K n=30: H1 PASS (effect +0.303090, BH q=0.003), H2 unresolved, H3a no transport;
+- full n=32 450K sensitivity: concordant;
+- EPIC n=26: H1 PASS (effect +0.358394, q=0.003), H2/H3a sign-reverse and remain unresolved;
+- final preregistered class: `P1_REPRESENTATION_DEPENDENT`;
+- secondary external paired RNA tumor-normal replication: not confirmed.
 
-- workflow run: `35801003396`
-- artifact: `GRI_BIOSYSTEMS_EXTERNAL_PROSTATE_P1_SOURCE_PREFLIGHT_V01`
-- artifact ID: `10725064779`
-- artifact digest: `sha256:f77168c359135047d01dbd23b1f848e7929a0a2c0ce2a0254dee374c703aa7d1`
-- result: SUCCESS
-- GRI biological outcome opened: FALSE
-- all frozen primary and EPIC participants present in required source headers;
-- no source-header participant ambiguity;
-- RNA source: 58,037 Ensembl rows;
-- 450K source: 485,512 unique CpG rows;
-- EPIC source: 865,859 unique CpG rows.
-
-Exact source hashes are preserved in the preflight artifact and must be inherited by the outcome-bearing run.
+No rescue was performed.
 
 ## Private manuscript state
 
 Private Library folder:
 `/Atlas - GRI update v1/Private Working Manuscripts/Oncology`
 
-Current working source:
-`GRI_BioSystems_working_v5_2026-09-22.tex`
+Final private main:
+- `GRI_BioSystems_working_v10_2026-09-23.tex`;
+- `GRI_BioSystems_working_v10_2026-09-23.pdf`.
 
-v5 already:
-- integrates the closed tumor-normal result into abstract/methods/results/discussion/limitations/conclusion;
-- removes obsolete language saying the post-C1 sensitivity tranche remains pending;
-- preserves static-vs-recovery firewall;
-- leaves genuine external confirmation as the remaining explicit evidence placeholder.
+Final private supplement:
+- `GRI_BioSystems_supplement_working_v8_2026-09-23.tex`;
+- `GRI_BioSystems_supplement_working_v8_2026-09-23.pdf`.
 
-Do not publish this working manuscript to the public Biomedical repository.
+Final reviewer package:
+- `BioSystems_Response_to_Reviewers_v2_2026-09-23.md/.pdf`;
+- `BioSystems_Cover_Letter_v2_2026-09-23.md/.pdf`;
+- five release figures;
+- `BioSystems_Resubmission_Package_20260923.zip`.
+
+Private bundle SHA-256:
+`125a5432355835cd5fdc4f835cb3ad3cc3665c27e4ae30f7f3f332cae620e431`.
+
+Do not publish the private manuscript/submission bundle to the public Biomedical repository.
 
 ## Current execution queue
 
@@ -152,7 +157,7 @@ On completion:
 - do not rescue a failed primary with n=32 or EPIC.
 
 ### Q3 - manuscript integration
-**SUBSTANTIALLY COMPLETE.** Private main manuscript has advanced through `GRI_BioSystems_working_v8_2026-09-22.tex`; supplement through v7. External P1, tumor-normal, AI disclosure, funding/conflict/contribution statements and source citation are integrated. Figure/caption synchronization remains part of release work.
+**COMPLETE.** Final private main is v10; supplement is v8. External P1, tumor-normal, declarations, figures, captions, citations and claim ceilings are synchronized.
 
 Integrate the external result into the private working manuscript:
 - abstract;
@@ -167,7 +172,7 @@ Integrate the external result into the private working manuscript:
 If P1 fails or partially transports, narrow the manuscript exactly as required rather than redesigning P1.
 
 ### Q4 - reviewer package
-**ACTIVE.** Reviewer matrix, claim map and resubmission closeout are synchronized to the completed P1. Private `BioSystems_Response_to_Reviewers_v1_2026-09-22.md` and `BioSystems_Cover_Letter_v1_2026-09-22.md` are drafted. Final prose/cross-reference synchronization remains after figures are frozen.
+**COMPLETE.** Reviewer matrix, claim map, resubmission closeout, final reviewer index, response letter v2 and cover letter v2 are synchronized to the completed P1 and final release.
 
 Update:
 - `BIOSYSTEMS_REVIEWER_RESPONSE_MATRIX_20260922.md`
@@ -180,7 +185,7 @@ Update:
 - editor-facing author-initiated correction delta.
 
 ### Q5 - final submission mechanics
-**CURRENT PRIORITY.** All scientific evidence gates are closed. Active blocker is regenerated visual/release packaging under GOM v0.8.4. The completed C1 result archive is not currently accessible, so no heavy scientific rerun is authorized merely to recreate charts; visuals must be regenerated from verified accessible result artifacts/audited aggregates or replaced with evidence-equivalent release visuals.
+**COMPLETE.** All scientific evidence gates and release mechanics are closed. Five release figures were regenerated from audited aggregates without reopening the heavy C1 science run. Main and supplement PDFs passed render/visual QA; final main v10 differs from the inspected v9 only in the updated Elsevier AI-declaration heading on page 17.
 
 Complete:
 - final figures/tables;
@@ -213,13 +218,18 @@ Stop and surface the issue only for:
 
 ## Final completion condition
 
-This checkpoint is complete when:
+All completion conditions are satisfied:
+
 1. external P1 is dispositioned under the frozen contract;
-2. manuscript and reviewer response are synchronized to that result;
-3. all reviewer concerns are either closed or explicitly narrowed/declined;
+2. manuscript and reviewer response are synchronized;
+3. reviewer concerns are closed, bounded, or explicitly not claimed;
 4. final release/reproducibility package passes;
 5. submission-ready files are available privately to the user.
 
-At that point set:
-`STATUS: COMPLETE / SUBMISSION READY`
-and do not start a new scientific branch automatically.
+Public release records:
+- `GRI_v2/reviewer/BIOSYSTEMS_FINAL_REVIEWER_INDEX_20260923.md`;
+- `GRI_v2/reviewer/BIOSYSTEMS_FINAL_RESUBMISSION_RELEASE_AUDIT_20260923.md`.
+
+**STATUS: COMPLETE / SUBMISSION READY**
+
+Do not start a new scientific branch automatically from this checkpoint.
