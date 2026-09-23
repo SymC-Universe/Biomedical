@@ -1,0 +1,52 @@
+name: BioSystems SCC25 response direction v01
+
+on:
+  push:
+    branches:
+      - biosystems-claim-extension-p0d-20260923
+    paths:
+      - 'GRI_v2/config/biosystems_scc25_response_direction_v01_freeze.json'
+      - 'GRI_v2/src/run_biosystems_scc25_response_direction_v01.py'
+      - '.github/workflows/biosystems-scc25-response-direction-v01.yml'
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install numpy pandas
+      - name: Download hash-bound sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/scc25 out_scc25
+          curl -L --fail --retry 3 --retry-delay 3 \
+            -o /tmp/scc25/GSE98812_GEOExprsData.txt.gz \
+            https://ftp.ncbi.nlm.nih.gov/geo/series/GSE98nnn/GSE98812/suppl/GSE98812_GEOExprsData.txt.gz
+          curl -L --fail --retry 3 --retry-delay 3 \
+            -o /tmp/scc25/GSE98813_series_matrix.txt.gz \
+            https://ftp.ncbi.nlm.nih.gov/geo/series/GSE98nnn/GSE98813/matrix/GSE98813_series_matrix.txt.gz
+          sha256sum /tmp/scc25/*
+      - name: Run frozen SCC25 extension
+        run: |
+          python GRI_v2/src/run_biosystems_scc25_response_direction_v01.py \
+            --freeze GRI_v2/config/biosystems_scc25_response_direction_v01_freeze.json \
+            --manifest GRI_v2/config/gri_scc25_paired_timecourse_manifest_p0d_v0_1.json \
+            --rna /tmp/scc25/GSE98812_GEOExprsData.txt.gz \
+            --methylation /tmp/scc25/GSE98813_series_matrix.txt.gz \
+            --c1-probes GRI_v2/support/c1_probe_ids_22601.txt \
+            --support GRI_v2/support/tn_c1_core_mask_payload.lzma.b64 \
+            --out out_scc25
+      - name: Upload result
+        uses: actions/upload-artifact@v4
+        with:
+          name: biosystems-scc25-response-direction-v01
+          path: out_scc25
+          if-no-files-found: error
+          retention-days: 90
