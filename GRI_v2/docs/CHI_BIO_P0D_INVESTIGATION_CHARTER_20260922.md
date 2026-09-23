@@ -17,7 +17,7 @@ The new question is broader and recovery-first:
 
 > How does biological organization before and during a perturbation constrain resistance, transient response, recovery, reorganization, memory, and failure to reclaim an admissible state, and can any local/modal scalar coordinate be licensed that adds information to the broader biological stability architecture?
 
-`Χ_bio` / `Chi_bio` denotes the system-scale biological stability architecture/state in which local/modal coordinates are embedded and realized. Lowercase `χ_bio` is withheld unless a native dynamical model earns it. **Biological Chi** denotes the integrated construct containing `χ_bio`, `Χ_bio`, and the empirically discovered relation between them. Biological Chi is not a third scalar and is not an arithmetic sum.
+`χ` is the only scalar chi and remains withheld in biology unless a native dynamical model earns it. `Χ_bio` / `Chi_bio` denotes the biological modal/vector representation. **Bio Chi** denotes the conglomerate/system biological stability architecture that integrates `χ`, `Χ_bio`, coupling, substrate, context, memory, history, perturbation response, recovery, reorganization, and their relations. Bio Chi is not a scalar and is not an arithmetic sum.
 
 ## 2. Inherited facts and non-negotiable boundaries
 
@@ -72,9 +72,9 @@ For a defined perturbation-removal experiment, map separately:
 
 No default single resilience score is permitted.
 
-### Q2. Joint `χ_bio` / `Χ_bio` meaning
+### Q2. Joint `χ` / `Χ_bio` / Bio Chi meaning
 
-If a local or modal scalar is licensed, test both directions of the relationship:
+If a biological scalar `χ` is licensed, test the cross-level relationships:
 
 - Does the scalar/modal object predict resistance, recovery path, recovery time, reorganization, or repeated-perturbation behavior?
 - Does broader system organization explain cases in which similar local scalar values produce different realized behavior?
@@ -125,7 +125,7 @@ No method is labeled SymC-specific merely because it uses eigenvalues, modes, st
 
 ## 5. Scalar chi admission firewall
 
-Lowercase `χ_bio` remains `WITHHELD` at opening.
+Lowercase `χ` remains `WITHHELD` at opening.
 
 A candidate scalar may be investigated only if:
 
@@ -188,7 +188,7 @@ The investigation narrows rather than repairs itself if:
 - an apparent boundary depends on tuning, rank, basis, normalization, or post-result selection;
 - independent transport fails.
 
-A valid outcome is therefore a `Χ_bio` architecture with no admitted lowercase `χ_bio`; Biological Chi would then remain an integrated construct whose scalar component is absent or unresolved.
+A valid outcome is therefore a modal `Χ_bio` and/or conglomerate Bio Chi result with no admitted biological scalar `χ`.
 
 ## 9. Immediate execution sequence
 
@@ -204,9 +204,9 @@ A valid outcome is therefore a `Χ_bio` architecture with no admitted lowercase 
 
 ```text
 ChiBio_mode = P0_D_EXPLORATORY
-capital_Chi_bio_architecture = OPEN_RECONSTRUCTION
-lowercase_chi_bio = WITHHELD
-historical_scalar_chi_bio_lineage = CLOSED_NOT_ADMITTED
+Chi_bio_modal = OPEN_RECONSTRUCTION
+scalar_chi = WITHHELD
+historical_biological_scalar_lineage = CLOSED_NOT_ADMITTED
 recovery_hypothesis = ACTIVE
 stability_inheritance_hypothesis = ACTIVE_BUT_UNPROVEN
 chi_equals_one_biological_boundary = NOT_ASSUMED
