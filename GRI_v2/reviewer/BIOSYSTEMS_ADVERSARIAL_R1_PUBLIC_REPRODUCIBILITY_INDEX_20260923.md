@@ -1,7 +1,7 @@
 # BioSystems adversarial Round 1 - public reproducibility index
 
 **Date:** 23 September 2026
-**Status:** ACTIVE / ROUND-1 RELEASE INDEX
+**Status:** COMPLETE / ROUND-1 RELEASE INDEX
 **Public repository:** `SymC-Universe/Biomedical`
 **Adversarial branch:** `biosystems-adversarial-r1-20260923`
 **Immutable parent release:** `biosystems-resubmission-20260923-final` @ `18b1e3b6c828626143ac37da3fe279dd605751d5`
@@ -220,3 +220,23 @@ Private until journal submission:
 - intermediate authoring PDFs.
 
 The private boundary does not conceal any scientific decision rule or result identity.
+
+
+## Final Round-1 release binding
+
+Final public release audit:
+- `GRI_v2/reviewer/BIOSYSTEMS_ADVERSARIAL_R1_FINAL_RELEASE_AUDIT_20260923.md`.
+
+Private package:
+- `BioSystems_Resubmission_R1_Final_20260923.zip`;
+- SHA-256 `7a27d9942e9566ec4eb563dfd71c0db27b9f9924d928f573b672cb5fb963aeef`.
+
+Private main PDF SHA-256:
+`1920411994aa18cd60533e042c5d90dad9eac9ad9c219f12b9a423294ca1f91a`.
+
+Private supplement PDF SHA-256:
+`ae59d743d130e371306c00466ce8b94c0e3f84546dcb8d4babf4cb16c248b14a`.
+
+The manuscript text remains private; these hashes bind the private submission artifacts to the public chronology without exposing the authoring files.
+
+**INDEX STATUS: COMPLETE.**
