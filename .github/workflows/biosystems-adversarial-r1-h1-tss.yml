@@ -1,0 +1,76 @@
+name: BioSystems adversarial R1 H1 composition plus TSS null
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - biosystems-adversarial-r1-20260923
+    paths:
+      - '.github/workflows/biosystems-adversarial-r1-h1-tss.yml'
+      - 'GRI_v2/src/run_biosystems_adversarial_r1_h1_tss.py'
+      - 'GRI_v2/reviewer/BIOSYSTEMS_ADVERSARIAL_R1_H1_TSS_FREEZE_20260923.md'
+
+jobs:
+  h1-tss:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      NUMEXPR_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check numpy pandas
+      - name: Acquire exact frozen TCGA sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          from urllib.request import Request,urlopen
+          import hashlib
+          sources=[
+            ("methylation.tsv","https://api.gdc.cancer.gov/data/d82e2c44-89eb-43d9-b6d3-712732bf6a53","5934c497882fbe8178d128a3a7f71e765480af6bbd460e0398de3428cd075b77"),
+            ("purity.tsv","https://api.gdc.cancer.gov/data/4f277128-f793-4354-a13d-30cc7fe9f6b5","f430a975433d82e0098d7405619d4f12a0c765fcd97e7d63cc9b1de7f2d763cd"),
+            ("leukocyte.tsv","https://api.gdc.cancer.gov/data/6f75c9d7-5134-4ed1-b8f3-72856c98a4e8","5a8268caedbf8dc98a75be0528d583238d7355761d9fc746e42002f223a982d9"),
+            ("annotation.tsv","https://api.gdc.cancer.gov/data/1a7d7be8-675d-4e60-a105-19d4121bdebf",None),
+          ]
+          for name,url,exp in sources:
+              p=Path(name);h=hashlib.sha256();req=Request(url,headers={"User-Agent":"SymC-BioSystems-R1/1.0"})
+              with urlopen(req,timeout=300) as r,p.open("wb") as f:
+                  while True:
+                      b=r.read(16*1024*1024)
+                      if not b:break
+                      f.write(b);h.update(b)
+              if exp and h.hexdigest()!=exp:raise SystemExit(f"{name} SHA mismatch")
+          url="https://api.gdc.cancer.gov/data/3586c0da-64d0-4b74-a449-5ff4d9136611"
+          req=Request(url,headers={"Range":"bytes=0-4194303","User-Agent":"SymC-BioSystems-R1/1.0"})
+          with urlopen(req,timeout=180) as r:prefix=r.read(4*1024*1024)
+          nl=prefix.find(b"\n")
+          if nl<0:raise SystemExit("RNA header exceeds prefix")
+          Path("rna_header.txt").write_bytes(prefix[:nl+1])
+          PY
+      - name: Execute frozen H1 comp plus TSS sensitivity
+        run: |
+          PYTHONPATH=GRI_v2 python GRI_v2/src/run_biosystems_adversarial_r1_h1_tss.py \
+            --meth methylation.tsv \
+            --annotation annotation.tsv \
+            --purity purity.tsv \
+            --leuk leukocyte.tsv \
+            --rna-header rna_header.txt \
+            --c1-probes GRI_v2/support/c1_probe_ids_22601.txt \
+            --out R1_H1_TSS \
+            --workers 4
+      - name: Remove third-party source files
+        if: always()
+        run: rm -f methylation.tsv purity.tsv leukocyte.tsv annotation.tsv rna_header.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: BIOSYSTEMS_ADVERSARIAL_R1_H1_TSS_V01
+          path: R1_H1_TSS
+          if-no-files-found: warn
