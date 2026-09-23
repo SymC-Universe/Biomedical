@@ -137,9 +137,13 @@ The generic external-source freeze is pinned in `BIO_CHI/config/EXTERNAL_SOURCE_
 - GEO metadata explicitly reports hg19, htseq-count v0.6.0, TxDb.Hsapiens.UCSC.hg19.knownGene, RPKM/FPKM-related processed expression and read-count processing. This qualifies source/method identity only.
 - Public analysis/modeling code `jihoonlee0/melanoma_reversible_transition` is pinned at commit `a2b2119f6d69d49e33ff4b57fb04b2b1eaf5fe68`, tree `a0d9cd0dcf25cda1a53cc8670f77490c0395764c`; `surprisal.m` blob `2dac24e398f30451388c2acbe1406e23afcdad50` implements log-transform + SVD structure. Archived release DOI: **10.5281/zenodo.17751601**.
 - The publication defines forward/reverse module coordinates and an ODE/MCMC analysis, but it does **not** provide a single scalar hysteresis-area/distance statistic. No new hysteresis scalar will be invented at source qualification.
-- Exact processed-expression file identity/hash remains the next source gate before opening expression values.
+- GSE255671_RAW.tar was traversed remotely at TAR-header level with **zero ordinary member-payload bytes read**. It contains 50 ChIP/ATAC BigWig/bedGraph members and no M397 RNA expression matrix. This source-design fact is pinned in `SU2026_GSE255671_REMOTE_TAR_INVENTORY_V01_RESULT_PIN.json`.
+- The M397 samples also belong to **GSE134459**, whose Series record supplies `GSE134459_Reversible_RPKM_values.txt.gz`. That exact compressed file is now frozen at **2,071,888 bytes**, SHA-256 `1ec204f02187289fdc0d718fe2291d34f2e3e6b943dcdf8fe627718d75a42d8c`, before decompression/value inspection.
+- A header-only audit read zero data rows and confirmed exactly the 15 frozen trajectory columns: Control, D3, D8, D13, D21, D29, D33, D38, D59, dr29.D4, dr29.D10, dr29.D15, dr29.D17, dr29.D30, dr29.D35.
+- This source closure exposed a **native-method collision** that is now preserved, not repaired: the publication describes FPKM/whole-transcriptome/15-timepoint surprisal, the exact public trajectory object is annotated RPKM, and public `surprisal.m` assumes a preloaded `all` matrix while commenting `400*17`. The public materials do not resolve RPKM-vs-FPKM, 15-vs-17, 400-vs-whole-transcriptome, exact input loading/filtering, or zero/pseudocount handling.
+- Exact native surprisal reproduction is therefore pinned as `EXACT_NATIVE_SURPRISAL_REPRODUCTION_BLOCKED_INPUT_METHOD_COLLISION`. No choice among these alternatives will be made after viewing expression outcomes.
 
-**Source disposition:** STRONG PUBLIC HYSTERESIS/REORGANIZATION SOURCE + NATIVE-METHOD IDENTITY QUALIFIED. OUTCOME VALUES REMAIN SEALED FOR THE NEW BIO CHI ANALYSIS.
+**Source disposition:** STRONG PUBLIC HYSTERESIS/REORGANIZATION SOURCE QUALIFIED; EXACT NATIVE SURPRISAL REPRODUCTION CURRENTLY BLOCKED BY PRESERVED INPUT/METHOD COLLISION. OUTCOME VALUES REMAIN SEALED.
 
 ## Preserved unresolved/source-limited cases
 
@@ -193,3 +197,14 @@ The generic external-source freeze is pinned in `BIO_CHI/config/EXTERNAL_SOURCE_
 - The previously unverified `SRP103406` label is retired prospectively for this lineage.
 
 **Source disposition:** PARENT/CHILD SRA PROVENANCE QUALIFIED; no biological outcome or testbed promotion follows from this bookkeeping result.
+
+
+### Rehman 2021 native RNA method qualification
+
+- GSE145356 source identity remains qualified and public.
+- The paper specifies STAR v2.4.2a, XenofilteR v0.99.0, HTSeq v0.6.1, R 3.5.0, edgeR 3.24.0, limma 3.38.3, `prcomp`, z-score normalization, and Figure-4 group counts of control n=7, DTP n=3, regrowth n=3.
+- Exact Figure-4 RNA/PCA reproduction remains under-specified: the non-expression filter threshold, exact edgeR normalization, limma path, `prcomp` center/scale arguments, batch rule, variable-gene rule, and the custom R scripts are not established in the public resources.
+- The paper's declared public computational resources cover Pairtree/Pairtree inputs and Gillespie simulations; targeted GitHub/source search did not establish the custom RNA/PCA R implementation.
+- This is pinned as `EXACT_FIGURE4_RNA_PCA_REPRODUCTION_BLOCKED_METHOD_UNDERSPECIFIED`.
+
+**Source disposition:** CANCER RECOVERY BIOLOGY REMAINS IMPORTANT, BUT EXACT PUBLIC RNA/PCA NATIVE REPRODUCTION IS A LIMIT-MAP HOLD. Any replacement RNA pipeline must be separately prospectively frozen and cannot be called the original Figure-4 implementation.
