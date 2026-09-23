@@ -24,7 +24,8 @@
       "accessions": [
         "GSE97682",
         "SRP103406"
-      ]
+      ],
+      "public_source_status": "verified"
     },
     {
       "id": "harmange2023_scmemoryseq",
@@ -37,7 +38,8 @@
       "recovery": "partial",
       "accessions": [
         "GSE237228"
-      ]
+      ],
+      "public_source_status": "verified"
     },
     {
       "id": "rehman2021_crc_dtp",
@@ -50,8 +52,11 @@
       "recovery": true,
       "accessions": [
         "GSE145356",
+        "SRP249585",
+        "PRJNA606811",
         "EGAS00001004773"
-      ]
+      ],
+      "public_rna_status": "verified"
     },
     {
       "id": "marsolier2022_tnbc_h3k27me3",
@@ -63,8 +68,15 @@
       "tier": "A",
       "recovery": "partial",
       "accessions": [
-        "GSE164716"
-      ]
+        "GSE164716",
+        "GSE164385",
+        "GSE164409",
+        "GSE164715",
+        "GSE186965",
+        "GSE186966",
+        "GSE196764"
+      ],
+      "public_source_status": "verified"
     },
     {
       "id": "su_sequential_waves_melanoma",
@@ -75,7 +87,19 @@
       ],
       "tier": "A",
       "recovery": true,
-      "accession_status": "tbd"
+      "accession_status": "verified_public",
+      "accessions": [
+        "GSE255671",
+        "PRJNA1076128",
+        "GSE65186",
+        "EGAS00001000992",
+        "E-MTAB-5493"
+      ],
+      "doi": "10.1038/s41467-026-71349-4",
+      "code": [
+        "github:jihoonlee0/melanoma_reversible_transition",
+        "zenodo:10.5281/zenodo.17751601"
+      ]
     },
     {
       "id": "lee2014_paclitaxel",
