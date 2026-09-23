@@ -5,180 +5,120 @@
   "testbeds": [
     {
       "id": "sharma2010_pc9",
-      "role": [
-        "cancer_recovery",
-        "chromatin"
-      ],
+      "role": ["cancer_recovery", "chromatin"],
       "tier": "A",
       "recovery": true,
-      "public_data": "partial_tbd"
+      "public_data": "public_article_and_replication_protocol_original_raw_machine_readable_data_unverified"
     },
     {
       "id": "shaffer2017_melanoma",
-      "role": [
-        "recovery_boundary",
-        "reorganization"
-      ],
+      "role": ["recovery_boundary", "reorganization"],
       "tier": "A",
       "recovery": true,
-      "accessions": [
-        "GSE97682",
-        "SRP103406"
-      ],
+      "accessions": ["GSE97682", "SRP103406"],
       "public_source_status": "verified"
     },
     {
       "id": "harmange2023_scmemoryseq",
-      "role": [
-        "memory",
-        "lineage",
-        "inheritance"
-      ],
+      "role": ["memory", "lineage", "inheritance"],
       "tier": "A",
       "recovery": "partial",
-      "accessions": [
-        "GSE237228"
-      ],
+      "accessions": ["GSE237228"],
       "public_source_status": "verified"
     },
     {
       "id": "rehman2021_crc_dtp",
-      "role": [
-        "cancer_recovery",
-        "rechallenge",
-        "lineage"
-      ],
+      "role": ["cancer_recovery", "rechallenge", "lineage"],
       "tier": "A",
       "recovery": true,
-      "accessions": [
-        "GSE145356",
-        "SRP249585",
-        "PRJNA606811",
-        "EGAS00001004773"
-      ],
+      "accessions": ["GSE145356", "SRP249585", "PRJNA606811", "EGAS00001004773"],
       "public_rna_status": "verified"
     },
     {
       "id": "marsolier2022_tnbc_h3k27me3",
-      "role": [
-        "substrate",
-        "inheritance",
-        "intervention"
-      ],
+      "role": ["substrate", "inheritance", "intervention"],
       "tier": "A",
       "recovery": "partial",
-      "accessions": [
-        "GSE164716",
-        "GSE164385",
-        "GSE164409",
-        "GSE164715",
-        "GSE186965",
-        "GSE186966",
-        "GSE196764"
-      ],
+      "accessions": ["GSE164716", "GSE164385", "GSE164409", "GSE164715", "GSE186965", "GSE186966", "GSE196764"],
       "public_source_status": "verified"
     },
     {
       "id": "su_sequential_waves_melanoma",
-      "role": [
-        "hysteresis",
-        "reorganization",
-        "chromatin"
-      ],
+      "role": ["hysteresis", "reorganization", "chromatin"],
       "tier": "A",
       "recovery": true,
       "accession_status": "verified_public",
-      "accessions": [
-        "GSE255671",
-        "PRJNA1076128",
-        "GSE65186",
-        "EGAS00001000992",
-        "E-MTAB-5493"
-      ],
+      "accessions": ["GSE255671", "PRJNA1076128", "GSE65186", "EGAS00001000992", "E-MTAB-5493"],
       "doi": "10.1038/s41467-026-71349-4",
-      "code": [
-        "github:jihoonlee0/melanoma_reversible_transition",
-        "zenodo:10.5281/zenodo.17751601"
-      ]
+      "code": ["github:jihoonlee0/melanoma_reversible_transition", "zenodo:10.5281/zenodo.17751601"]
     },
     {
       "id": "lee2014_paclitaxel",
-      "role": [
-        "secondary_recovery"
-      ],
+      "role": ["secondary_recovery"],
       "tier": "B",
       "recovery": true,
-      "accessions": [
-        "SRP040309"
-      ]
+      "accessions": ["SRP040309"]
     },
     {
       "id": "jiang2020_yeast_memory",
-      "role": [
-        "known_truth",
-        "memory",
-        "rechallenge"
-      ],
+      "role": ["known_truth", "memory", "rechallenge"],
       "tier": "A",
       "recovery": true,
-      "accession_status": "tbd"
+      "doi": "10.1126/scisignal.aay3585",
+      "accession_status": "public_article_and_supplement_no_repository_accession",
+      "data_access": "summarized_data_and_supplement_public_raw_single_cell_trace_package_not_publicly_identified",
+      "code_access": "custom_matlab_code_available_upon_request",
+      "source_qualification_note": "Full-text availability statement says all data needed for conclusions are in paper/supplement; code and strains are upon request. No standalone raw single-cell trajectory repository was identified."
     },
     {
       "id": "mixseq2020",
-      "role": [
-        "response_only_negative_control"
-      ],
+      "role": ["response_only_negative_control"],
       "tier": "C",
       "recovery": false
     },
     {
       "id": "sciplex2020",
-      "role": [
-        "response_surface_negative_control"
-      ],
+      "role": ["response_surface_negative_control"],
       "tier": "C",
       "recovery": false,
-      "accessions": [
-        "GSE139944"
-      ]
+      "accessions": ["GSE139944"]
     },
     {
       "id": "son2021_nfkb",
-      "role": [
-        "chi_bio_candidate",
-        "modal"
-      ],
+      "role": ["chi_bio_candidate", "modal"],
       "tier": "B",
       "recovery": "partial",
-      "data_access": "trace_data_on_request"
+      "doi": "10.1126/scisignal.aaz4382",
+      "data_access": "single_cell_trace_data_on_request",
+      "code_access": "custom_matlab_control_and_analysis_software_no_public_repository_identified",
+      "source_qualification_note": "Stimulation timing and model details are described, but primary single-cell trajectories are explicitly available upon request."
     },
     {
       "id": "jarus_nfkb_identifiable",
-      "role": [
-        "chi_bio_model_candidate"
-      ],
+      "role": ["chi_bio_model_candidate"],
       "tier": "A_B",
       "recovery": true,
-      "data_access": "supplement_code_raw_tbd"
+      "doi": "10.1371/journal.pone.0286416",
+      "data_access": "supplementary_S1_code_frozen_primary_single_cell_dataset_not_separately_qualified",
+      "source_pin": "BIO_CHI/config/EXTERNAL_SOURCE_FREEZE_PIN_v0_1.json"
     },
     {
       "id": "geva2006_p53",
-      "role": [
-        "chi_bio_limit_case"
-      ],
+      "role": ["chi_bio_limit_case"],
       "tier": "B_C",
       "recovery": false,
       "data_access": "supplementary"
     },
     {
       "id": "blum2019_erk",
-      "role": [
-        "modal_identification",
-        "chi_bio_candidate"
-      ],
+      "role": ["modal_identification", "chi_bio_candidate", "known_truth_candidate"],
       "tier": "A_B",
       "recovery": true,
-      "data_access": "code_public_raw_tbd"
+      "doi": "10.15252/msb.20198947",
+      "data_access": "public_processed_source_data_for_figures_raw_microscopy_not_explicitly_public",
+      "code_access": "public_github_Mijan_LFNS_MSB_model_files_inference_outputs_and_CellProfiler_pipeline",
+      "native_metric": "Jeffries_Matusita_population_distance_defined_in_paper",
+      "source_qualification_note": "Full text states source data are available online for main figures and all inference results/model files are public; perturbation protocols include short pulses and washout. This closes a public processed-data/code gap but does not by itself promote the testbed."
     }
   ],
   "promotion_requirements": [
