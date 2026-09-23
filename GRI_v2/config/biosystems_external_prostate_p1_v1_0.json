@@ -1,0 +1,168 @@
+{
+  "schema": "gri-biosystems-external-prostate-p1-v1.0",
+  "status": "FROZEN_BEFORE_EXTERNAL_MOLECULAR_OUTCOME_OPENING",
+  "date": "2026-09-22",
+  "protocol_authority": "SymC General Operations Manual v0.8.3",
+  "seed_namespace": "GRI_BIOSYS_EXT_PROSTATE_P1_20260922",
+  "primary_seed_token": "PRIMARY_450K_N30",
+  "primary_seed_u32": 1434512159,
+  "source_accessions": {
+    "rna": "GSE237995",
+    "methylation_450k": "GSE262522",
+    "methylation_epic": "GSE262524"
+  },
+  "source_files": {
+    "rna_counts": "GSE237995_RawCounts.csv.gz",
+    "methylation_450k_funnorm": "GSE262522_m450K_Proc_Funnorm.tsv.gz",
+    "methylation_epic_funnorm": "GSE262524_EPIC_Proc_Funnorm.tsv.gz"
+  },
+  "metadata_crosswalk": {
+    "workflow_run": 35733020358,
+    "artifact_id": 10696736434,
+    "artifact_digest": "sha256:f133746616509943ba385f4964b70ee66e4c3b8c028c909ef98382e61a362d36",
+    "prostate_crosswalk_sha256": "620f532cd3578d0deedbc08b42176e9f6c7a05c7249fe7ec6a7edca21bd82947",
+    "total_rows": 121,
+    "unique_participants": 63,
+    "gri_outcome_opened": false
+  },
+  "primary_450k": {
+    "complete_pair_pool_n": 32,
+    "fixed_n": 30,
+    "complete_pair_pool": [
+      "PT-00153875",
+      "PT-00162955",
+      "PT-00180319",
+      "PT-00187338",
+      "PT-00190334",
+      "PT-00190362",
+      "PT-00190805",
+      "PT-00191716",
+      "PT-00192088",
+      "PT-00195338",
+      "PT-00195907",
+      "PT-00197746",
+      "PT-00200672",
+      "PT-00201372",
+      "PT-00208975",
+      "PT-00214541",
+      "PT-00214592",
+      "PT-00216325",
+      "PT-00216417",
+      "PT-00216463",
+      "PT-00220025",
+      "PT-00224181",
+      "PT-00227158",
+      "PT-00228928",
+      "PT-00229031",
+      "PT-00233979",
+      "PT-00235411",
+      "PT-00236614",
+      "PT-00237623",
+      "PT-00238051",
+      "PT-00267366",
+      "PT-00282384"
+    ],
+    "selected_participants": [
+      "PT-00153875",
+      "PT-00162955",
+      "PT-00180319",
+      "PT-00187338",
+      "PT-00190334",
+      "PT-00190362",
+      "PT-00190805",
+      "PT-00191716",
+      "PT-00192088",
+      "PT-00195907",
+      "PT-00197746",
+      "PT-00200672",
+      "PT-00201372",
+      "PT-00208975",
+      "PT-00214541",
+      "PT-00214592",
+      "PT-00216325",
+      "PT-00216417",
+      "PT-00216463",
+      "PT-00220025",
+      "PT-00224181",
+      "PT-00228928",
+      "PT-00229031",
+      "PT-00233979",
+      "PT-00235411",
+      "PT-00236614",
+      "PT-00237623",
+      "PT-00238051",
+      "PT-00267366",
+      "PT-00282384"
+    ],
+    "held_out_from_primary": [
+      "PT-00195338",
+      "PT-00227158"
+    ],
+    "selected_race_pairs": {
+      "AA": 25,
+      "EA": 5
+    },
+    "full_n32_sensitivity_required": true
+  },
+  "epic_sensitivity": {
+    "complete_pair_n": 26,
+    "participants": [
+      "PT-00177543",
+      "PT-00179840",
+      "PT-00191831",
+      "PT-00193110",
+      "PT-00193228",
+      "PT-00193349",
+      "PT-00193649",
+      "PT-00193829",
+      "PT-00194403",
+      "PT-00194466",
+      "PT-00194498",
+      "PT-00196174",
+      "PT-00197815",
+      "PT-00211536",
+      "PT-00217159",
+      "PT-00219496",
+      "PT-00222678",
+      "PT-00225118",
+      "PT-00225395",
+      "PT-00231030",
+      "PT-00231182",
+      "PT-00231846",
+      "PT-00231995",
+      "PT-00235895",
+      "PT-00237328",
+      "PT-00251650"
+    ],
+    "role": "MANDATORY_PLATFORM_SENSITIVITY_CANNOT_RESCUE_PRIMARY"
+  },
+  "primary_endpoints": [
+    "P1_H1_DELTA_S",
+    "P1_H2_DELTA_CKA",
+    "P1_H3A_DELTA_A_PATIENT"
+  ],
+  "permutations": {
+    "h2": 999,
+    "h3a": 999,
+    "paired_state_swap": 999
+  },
+  "multiplicity": {
+    "primary": "BH_H1_H2_H3A",
+    "secondary_rna": "BH_CIN_PAIR_CIN_PC1_COUT"
+  },
+  "primary_outcomes": [
+    "P1_FULL_TRANSPORT",
+    "P1_PARTIAL_TRANSPORT",
+    "P1_NO_TRANSPORT",
+    "P1_REPRESENTATION_DEPENDENT",
+    "P1_INDETERMINATE"
+  ],
+  "claim_firewall": {
+    "biological_chi": false,
+    "capital_chi_master_scalar": false,
+    "causal_methylation_to_rna": false,
+    "treatment_response": false,
+    "clinical_utility": false,
+    "external_cohort_confirmation_only": true
+  }
+}
