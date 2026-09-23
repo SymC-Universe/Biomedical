@@ -1,0 +1,77 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "authority": "SymC GOM v0.8.4",
+  "branch": "chi-bio-recovery-p0d-20260922",
+  "continuation_policy": {
+    "resume_from_checkpoint": true,
+    "mechanical_blockers_are_stop_conditions": false,
+    "scientific_decision_required_for_stop": true,
+    "manuscript_private": true
+  },
+  "nomenclature": {
+    "chi": "program-wide scalar stability class/symbol",
+    "chi_bio": "biological scalar instance/sublabel of chi if licensed",
+    "Chi_bio": "biological modal/vector representation",
+    "Bio_Chi": "biological conglomerate/system stability architecture"
+  },
+  "queue": [
+    {
+      "id": "Q0",
+      "name": "governance_reproducibility_spine",
+      "status": "complete_maintain"
+    },
+    {
+      "id": "Q1",
+      "name": "literature_collision_candidate_expansion",
+      "status": "active"
+    },
+    {
+      "id": "Q2",
+      "name": "dataset_eligibility_source_qualification",
+      "status": "active"
+    },
+    {
+      "id": "Q3",
+      "name": "known_truth_qualification_system",
+      "status": "pending_Q2"
+    },
+    {
+      "id": "Q4",
+      "name": "cancer_recovery_system",
+      "status": "pending_Q2"
+    },
+    {
+      "id": "Q5",
+      "name": "chi_bio_scalar_track",
+      "status": "active_discovery_no_admission"
+    },
+    {
+      "id": "Q6",
+      "name": "Chi_bio_modal_track",
+      "status": "pending_Q2_Q3"
+    },
+    {
+      "id": "Q7",
+      "name": "Bio_Chi_conglomerate_track",
+      "status": "pending_Q3_Q4_Q6"
+    },
+    {
+      "id": "Q8",
+      "name": "stability_inheritance_biological_test",
+      "status": "pending_carrier_qualified_data"
+    },
+    {
+      "id": "Q9",
+      "name": "working_manuscript",
+      "status": "not_open_private"
+    }
+  ],
+  "stop_conditions": [
+    "material scientific choice changes a frozen hypothesis/model/endpoint",
+    "frozen source is scientifically non-evaluable and cannot be repaired mechanically",
+    "decisive evidence would be opened before required freeze/independence controls",
+    "upstream contradiction invalidates a frozen result",
+    "publication-level claim expansion requires user decision"
+  ]
+}
