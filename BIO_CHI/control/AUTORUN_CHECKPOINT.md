@@ -194,3 +194,23 @@ No scientific endpoint, cohort, null, boundary, representation, carrier rule, mo
 - This was a mechanical hierarchy-modeling defect, not a biological contradiction.
 - Reconciliation v0.2 run **35864958490** completed SUCCESS and explicitly models the Shaffer child-project union. It recovered all **155** runs with no missing or extra runs; artifact **10752061357**.
 - The v0.1 failure remains preserved and is not overwritten by v0.2.
+
+
+## Blum Figure 2 native observable reproduction — 23 September 2026
+
+- Figure-2 documentation/header mapping run **35867313079** completed SUCCESS; artifact **10752731514**, digest `sha256:ee779f7de0e80ae7b9ff6379fec78a990057688dc7f5d971893a86add18cd5ff`. No biological data rows were read.
+- The prospectively frozen publication-native reproduction contract was committed before Figure-2 values were opened. It uses every Figure-2 single-pulse group across 3, 10, and 60 min source files; each cell is normalized to its own arithmetic mean over observed `0 <= realtime <= 40 min`; group population means are then computed at each exact observed realtime. No interpolation, smoothing, imputation, post-view subgroup selection, modal fitting, or SymC metric is licensed.
+- Native-observable reproduction run **35873188226** completed SUCCESS; artifact **10755884524**, digest `sha256:301a672b5f722bac6e0c0aeab650d1d30220b37219c98146d43726ecf12fe829`.
+- Result: **PASS_NATIVE_FIG2_POPULATION_MEAN_REPRODUCTION**.
+- Source coverage: **279,016** observations, **3,068** unique single-cell tracks across the three pulse-duration files, **36** prospectively included source groups, and **91** time points per group. Baseline support was 19–21 observations/cell for 3 min, 17–21 for 10 min, and 19–21 for 60 min.
+- Result pin: `BIO_CHI/config/BLUM2019_FIG2_NATIVE_MEAN_V01_RESULT_PIN.json`.
+- Epistemic effect is narrow but material: a publication-native biological trajectory observable is now reproducibly available on the Bio Chi branch. This does **not** establish reduced-state observability, parameter identifiability, mode selection, scalar adequacy, `chi_bio`, `Chi_bio`, or Bio Chi.
+
+### Exact next safe resume
+
+1. Treat the reproduced EKAR population trajectory as the native biological observable layer, not as a SymC coordinate.
+2. Advance Q3 with a prospectively frozen **observability/identifiability qualification** before any reduced-state mapping or `chi_bio` construction.
+3. Preserve the existing Jaruszewicz finite-window failures, local-stability evidence, representation control, Blum Figure-1H native-metric refusal, Su native-method collision, and Rehman native-PCA under-specification.
+4. Continue Harmange lineage/carrier mapping mechanically in parallel where source documentation permits, without promoting metadata fields to causal carriers.
+5. Do not select a modal pair, reduced observable, damping fit, scalar formula, or biological inheritance criterion after viewing the Blum trajectories. Any such choice is a scientific decision and must be prospectively licensed.
+6. Keep working manuscript prose private.
