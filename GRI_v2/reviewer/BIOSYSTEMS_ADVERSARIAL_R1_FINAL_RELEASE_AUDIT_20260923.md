@@ -30,51 +30,53 @@ No original P1 result, sample set, endpoint, threshold, null, seed, multiplicity
 ## Private release candidate
 
 Private main:
-- `GRI_BioSystems_working_v11_R1_2026-09-23.tex`
-- `GRI_BioSystems_working_v11_R1_2026-09-23.pdf`
+- `GRI_BioSystems_working_v12_R1_2026-09-23.tex`
+- `GRI_BioSystems_working_v12_R1_2026-09-23.pdf`
 - 19 pages
 
 Private supplement:
-- `GRI_BioSystems_supplement_working_v9_R1_2026-09-23.tex`
-- `GRI_BioSystems_supplement_working_v9_R1_2026-09-23.pdf`
-- 13 pages
+- `GRI_BioSystems_supplement_working_v10_R1_2026-09-23.tex`
+- `GRI_BioSystems_supplement_working_v10_R1_2026-09-23.pdf`
+- 14 pages
 
 Private response:
-- `BioSystems_Response_to_Reviewers_v3_R1_2026-09-23.md`
-- `BioSystems_Response_to_Reviewers_v3_R1_2026-09-23.pdf`
-- 9 pages
+- `BioSystems_Response_to_Reviewers_v4_R1_2026-09-23.md`
+- `BioSystems_Response_to_Reviewers_v4_R1_2026-09-23.pdf`
+- 6 pages
 
 Private cover letter:
-- `BioSystems_Cover_Letter_v3_R1_2026-09-23.md`
-- `BioSystems_Cover_Letter_v3_R1_2026-09-23.pdf`
+- `BioSystems_Cover_Letter_v4_R1_2026-09-23.md`
+- `BioSystems_Cover_Letter_v4_R1_2026-09-23.pdf`
 - 2 pages
 
 Private package:
-- `BioSystems_Resubmission_R1_Final_20260923.zip`
-- SHA-256 `7a27d9942e9566ec4eb563dfd71c0db27b9f9924d928f573b672cb5fb963aeef`
+- `BioSystems_Resubmission_R1_v12_Final_20260923.zip`
+- SHA-256 `2531ca4e3e1a72e1473c97cb4c7a402f217ed2d2068753e5a8780b1d94ee8226`
 - 17 packaged files
 
 ## Byte identities
 
-- main v11 TeX: `2c0335ea7e6087375348d44f154ee60e8fc2edf1465602da45e6cb943cde8ca4`
-- main v11 PDF: `1920411994aa18cd60533e042c5d90dad9eac9ad9c219f12b9a423294ca1f91a`
-- supplement v9 TeX: `0a4aaf7118d5da78294511a06ffe0e0ec54ed47f6396ae55a6bce8133540238f`
-- supplement v9 PDF: `ae59d743d130e371306c00466ce8b94c0e3f84546dcb8d4babf4cb16c248b14a`
-- reviewer response Markdown: `06eaac2b614b2fc68f464269e735c368a3095fc000c3970d8642a546f0c4b152`
-- reviewer response PDF: `db0511aff466646f70dc9f9fd4e2ea6a6b1b63b3c17936a7cc076f0d6869a083`
-- cover letter Markdown: `6920f47e3d4ed07cddce2f5c195768b60dd428a5ed09930dbf7ab664cbabae4e`
-- cover letter PDF: `5dadbe49ff4efa95e9b6a4e733d89ceddf7ce391b405fe73b7e162201a7b2cff`
+- main v12 TeX: `29c25e0ebf7040e88e67c723392f87fd59a74fcc79116e82a1b5c4a43b69d67e`
+- main v12 PDF: `fdf1170705fdf86ab4ae665a855c5c974cedc2971e53fe611c51ff62a20fdf6b`
+- supplement v10 TeX: `d6fa4b26a0d378c325b652adc059a1eebe958e2acd2c5bb536f889a522ee6de4`
+- supplement v10 PDF: `35edb01a1220ba91459ef5fa91eb175bd9db0e2d5050bfa06f932b4fc6914007`
+- reviewer response v4 Markdown: `df55df867aba491acea1eeed397744c48e0ad986913d4f47d1d607e4e72732a3`
+- reviewer response v4 PDF: `40b6edb573f04597342adef02c9364fcbaa818b8f0963db1f8421b58943fceaa`
+- cover letter v4 Markdown: `d2f112a78b86f0e2f886a695068e8cbb51fa8264713ed119aebaafbd1156cb3b`
+- cover letter v4 PDF: `3ab257cbeaa6dd3b33e12e6cb61ffb5fb8f819b9445ed5548726d550c2c11857`
 
 The complete private per-file SHA-256 manifest is retained in:
-`SHA256SUMS_BIOSYSTEMS_R1_FINAL_20260923.txt`.
+`SHA256SUMS_BIOSYSTEMS_R1_V12_FINAL_20260923.txt`.
 
 ## PDF QA
 
 All final private PDFs were rendered after candidate assembly:
 - main: 19/19 pages rendered, openable, non-encrypted, text PDF;
-- supplement: 13/13 pages rendered, openable, non-encrypted, text PDF;
-- response: 9/9 pages rendered;
+- supplement: 14/14 pages rendered, openable, non-encrypted, text PDF;
+- response: 6/6 pages rendered;
 - cover letter: 2/2 pages rendered.
+
+The final-clause pass additionally verified the stronger-null equations, 30-cancer TSS longtable, 15.6%/84.4% missingness-scope sentence, and corrected a legacy unescaped `50%` LaTeX source line in Supplement S3.
 
 Montage inspection found no material clipping, overlap, broken figure placement, or page-flow defect requiring correction.
 
@@ -106,6 +108,8 @@ The private boundary does not conceal any analysis decision, workflow identity, 
 
 `ROUND1_VISUAL_QA = PASS`
 
-`ROUND1_PRIVATE_PACKAGE = FROZEN`
+`ROUND1_PRIVATE_PACKAGE = FROZEN_V12_FINAL_CLAUSES`
 
-**FINAL STATUS: SUBMISSION READY AFTER ADVERSARIAL ROUND 1.**
+Final-clause details and exact TSS support are bound in `BIOSYSTEMS_ADVERSARIAL_R1_FINAL_CLAUSE_AUDIT_20260923.md`.
+
+**FINAL STATUS: SUBMISSION READY AFTER ADVERSARIAL ROUND 1 / V12 FINAL-CLAUSE RELEASE.**
