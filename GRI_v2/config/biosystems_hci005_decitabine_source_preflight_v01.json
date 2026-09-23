@@ -1,0 +1,26 @@
+{
+  "schema_version": "0.1",
+  "project": "BioSystems claim extension",
+  "gate": "HCI005_DECITABINE_SOURCE_PREFLIGHT",
+  "status": "SOURCE_URLS_FROZEN_BEFORE_NEW_VALUE_INTERPRETATION",
+  "scientific_question": "Can direct pharmacologic DNA-demethylation in a cancer PDX produce gene-matched methylation-RNA changes consistent with intervention-supported methylation-to-RNA regulation?",
+  "methylation": {
+    "geo": "GSE171069",
+    "source_role": "HCI-005 vehicle vs decitabine EPIC methylation",
+    "series_matrix_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE171nnn/GSE171069/matrix/GSE171069_series_matrix.txt.gz",
+    "expected_groups": {
+      "Vehicle": 4,
+      "Decitabine": 4
+    }
+  },
+  "rna": {
+    "geo": "GSE171073",
+    "source_role": "HCI-005 vehicle vs decitabine RNA-seq counts",
+    "processed_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE171nnn/GSE171073/suppl/GSE171073_Veh.vs.Dec_HCI005.cntTable.txt.gz",
+    "expected_groups": {
+      "Vehicle": 4,
+      "Decitabine": 4
+    }
+  },
+  "no_outcome_selection": true
+}
