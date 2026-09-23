@@ -1,0 +1,23 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Blum 2019 Figure 2 native population-mean input mapping",
+  "workflow_run_id": 35867313079,
+  "workflow_head_sha": "c49b36fd3f5a774ead1d660e3821a19605e6b1a8",
+  "artifact_id": 10752731514,
+  "artifact_digest": "sha256:ee779f7de0e80ae7b9ff6379fec78a990057688dc7f5d971893a86add18cd5ff",
+  "status": "PASS_FIG2_NATIVE_INPUT_MAPPING",
+  "archive_sha256": "8bbd1ead46b5bb6b676bd47a5f415fdd790840a9c726321dc5c209b9c527bc62",
+  "figure2_members_verified": 10,
+  "ekar_columns": ["intensity_ekar", "realtime", "group.idx", "id", "fov"],
+  "grouping_columns": ["group", "group.idx"],
+  "pulse_columns": ["fov", "intensity_pulse", "realtime", "group.idx"],
+  "pulse_durations_min": [3, 10, 60],
+  "data_rows_read": false,
+  "metric_computed": false,
+  "scientific_values_interpreted": false,
+  "chi_bio_constructed": false,
+  "Chi_bio_admitted": false,
+  "Bio_Chi_constructed": false,
+  "next_gate": "prospectively frozen Figure 2 native population-mean reproduction using the publication-defined per-cell t=0..40 min baseline normalization and all source groups"
+}
