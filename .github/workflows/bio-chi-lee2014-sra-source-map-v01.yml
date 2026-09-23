@@ -8,11 +8,6 @@ on:
       - 'BIO_CHI/config/LEE2014_SRP040309_SOURCE_MAP_FREEZE_v0_1.json'
       - 'BIO_CHI/src/map_lee2014_sra_source_v0_1.py'
       - '.github/workflows/bio-chi-lee2014-sra-source-map-v01.yml'
-  pull_request:
-    paths:
-      - 'BIO_CHI/config/LEE2014_SRP040309_SOURCE_MAP_FREEZE_v0_1.json'
-      - 'BIO_CHI/src/map_lee2014_sra_source_v0_1.py'
-      - '.github/workflows/bio-chi-lee2014-sra-source-map-v01.yml'
   workflow_dispatch:
 
 permissions:
