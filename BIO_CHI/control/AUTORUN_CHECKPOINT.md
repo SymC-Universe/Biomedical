@@ -65,21 +65,30 @@ Stop and surface the issue only when proceeding would require one of the followi
 - control validator and CI guard.
 
 ### Q1 — literature collision and candidate expansion
-**STATUS: ACTIVE**
+**STATUS: OPENING COLLISION COMPLETE / TARGETED UPDATES CONTINUE**
 
 Completed:
 - deep search: biological stability, perturbation recovery, memory, inheritance;
 - deep search: native biological generators for χ_bio;
 - targeted full-text extraction for Sharma 2010, Shaffer 2017, Harmange 2023, Lee 2014, MIX-Seq, sci-Plex, and Jiang 2020.
 
+Completed additional full-text extraction:
+- Rehman 2021 CRC diapause-like DTP;
+- Marsolier 2022 TNBC H3K27me3;
+- Su 2026 melanoma hysteresis/chromatin remodeling;
+- Son 2021 NF-κB;
+- Jaruszewicz-Błońska 2023 identifiable NF-κB model;
+- Geva-Zatorsky 2006 p53/Mdm2;
+- Blum 2019 ERK temporal perturbation.
+
+Verified public source identities include GSE145356, GSE164716, GSE237228, GSE97682, GSE139944, and GSE255671/PRJNA1076128. See the source qualification ledger.
+
 Next:
-- full-text extraction of highest-value new recovery candidates from the completed deep search;
-- full-text extraction of NF-κB / p53 / ERK scalar-track candidates;
-- verify public data accessions and raw/processed data availability;
-- record standard native comparators and whether washout/recovery is actually present.
+- continue targeted literature only where it resolves a specific execution gap;
+- verify exact downloadable file maps, source hashes, and licenses for the leading candidates.
 
 ### Q2 — dataset eligibility and source qualification
-**STATUS: ACTIVE**
+**STATUS: ACTIVE / PUBLIC SOURCE PREFLIGHT SCAFFOLD COMMITTED**
 
 Build and maintain the eligibility matrix against:
 - reference state;
@@ -189,3 +198,29 @@ This checkpoint remains ACTIVE until:
 - all promoted results have reproducible GitHub paths and immutable provenance.
 
 A polling timeout, chat timeout, workflow queue, or interrupted tool call never satisfies a stop condition.
+
+
+## Last durable progress
+
+- Public reproducibility spine established under `BIO_CHI/`.
+- Draft PR **#6** opened: `WIP: Bio Chi P0-D recovery, modal and conglomerate investigation`.
+- Private working-manuscript folder established at `/Atlas - Chi Bio/Private Working Manuscripts`.
+- Manuscript privacy firewall committed.
+- Opening literature collision complete: 282 recovery/inheritance papers and 278 native-generator papers surfaced by the two deep searches.
+- High-priority full-text extraction completed for recovery, substrate, hysteresis, and scalar/modal candidates.
+- Dataset eligibility matrix and machine-readable registry committed.
+- Outcome-blind source qualification ledger committed.
+- Su et al. 2026 canonical source resolved to Nature Communications DOI 10.1038/s41467-026-71349-4 with GSE255671 / PRJNA1076128 and public code/Zenodo archive.
+- Generic source endpoint preflight script, source manifest, and GitHub Actions workflow committed.
+- Reviewer `REPRODUCE.md` committed.
+- Hourly auto-resume is enabled from this checkpoint.
+
+## Exact next safe actions
+
+1. Enumerate exact supplementary/raw/processed files for GSE145356, GSE164716, GSE237228, GSE97682, and GSE255671.
+2. Freeze source-file manifests and hashes without inspecting newly designed target outcomes.
+3. Resolve Jiang 2020 and Sharma 2010 machine-readable source availability.
+4. Pin the Jaruszewicz NF-kB S1 Code and reproduce its native identifiable-model behavior before any χ_bio construction.
+5. Build an outcome-blind known-truth qualification freeze from the best accessible pulse/recovery system.
+6. Build a separate cancer-recovery freeze only after source and native-metric reproduction gates pass.
+7. Keep all manuscript prose private and continue public reviewer/reproducibility records in GitHub.
