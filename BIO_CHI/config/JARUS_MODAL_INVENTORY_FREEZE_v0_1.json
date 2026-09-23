@@ -32,6 +32,7 @@
     "whether spectral-abscissa sign is invariant across the three already-computed steps"
   ],
   "counting_rule": "real/nonreal counts use the exact stored JSON imaginary component, with no newly introduced numerical threshold",
+  "spread_rule": "absolute spread is the maximum matched complex distance from the multiplier-1.0 reference; relative spread is absolute spread divided by the absolute value of the reference eigenvalue when nonzero, otherwise null",
   "guards": {
     "preserve_behavior_failures": true,
     "preserve_v01_v02_indeterminates": true,
