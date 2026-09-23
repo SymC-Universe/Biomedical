@@ -8,11 +8,6 @@ on:
       - 'BIO_CHI/config/LEE2014_SRA_SAMPLE_METADATA_FREEZE_v0_1.json'
       - 'BIO_CHI/src/map_lee2014_sample_metadata_v0_1.py'
       - '.github/workflows/bio-chi-lee2014-sample-metadata-v01.yml'
-  pull_request:
-    paths:
-      - 'BIO_CHI/config/LEE2014_SRA_SAMPLE_METADATA_FREEZE_v0_1.json'
-      - 'BIO_CHI/src/map_lee2014_sample_metadata_v0_1.py'
-      - '.github/workflows/bio-chi-lee2014-sample-metadata-v01.yml'
   workflow_dispatch:
 
 permissions:
