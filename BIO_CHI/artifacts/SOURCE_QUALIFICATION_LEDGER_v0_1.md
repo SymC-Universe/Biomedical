@@ -92,13 +92,17 @@ The generic external-source freeze is pinned in `BIO_CHI/config/EXTERNAL_SOURCE_
 ### Blum et al. 2019 — temporal ERK/MAPK perturbation
 
 - DOI: 10.15252/msb.20198947.
-- Full text reports online source data for the main figures and describes short temporal perturbations with washout/recovery.
+- Publication date: 19 November 2019; article is open access under CC BY 4.0.
+- The article's data-availability section states that CellProfiler pipelines are supplied as Code EV1 and that the inference source, model files, and inference results are public at `Mijan/LFNS_MSB`.
+- Article supplementary resources include source-data ZIPs for Figures 1–5, Code EV1, and CP pipelines.
+- Public model/inference repository `Mijan/LFNS_MSB` is pinned outcome-blind at branch `MSB_version`, commit `5c917abda0618d75c00c9cab45f24ed893dd71f1`, tree `cbb79d66f79a84bc8af28ca85f1678295348da83` in `BIO_CHI/config/BLUM2019_PUBLIC_SOURCE_PIN_v0_1.json`.
+- A separate public processed dataset is now identified at **Mendeley Data DOI 10.17632/ccnxn84w8z.2**, Version 2, published 13 May 2020. The repository lists `data.zip` at **7.97 MB**, contributors Maciej Dobrzynski and Yannick Blum, and **CC BY 4.0** licensing. Identity is pinned in `BIO_CHI/config/BLUM2019_MENDELEY_DATA_PIN_v0_1.json` before archive inspection.
 - Native population comparison uses the Jeffries-Matusita distance.
-- Public model/inference repository `Mijan/LFNS_MSB` is now pinned outcome-blind at branch `MSB_version`, commit `5c917abda0618d75c00c9cab45f24ed893dd71f1`, tree `cbb79d66f79a84bc8af28ca85f1678295348da83` in `BIO_CHI/config/BLUM2019_PUBLIC_SOURCE_PIN_v0_1.json`.
-- The pinned repository README identifies the code as the trimmed LF-NS toolbox used for the Blum inference runs; model configurations occur under `FGF2_models`, and public inference-result directories are present under `Inference_results`.
-- The targeted audit did **not** establish raw microscopy as a public downloadable package.
+- Short temporal perturbations with washout/recovery are described in the publication.
+- Direct `data.zip` endpoint and archive SHA-256 are **not yet frozen**; no hash is claimed.
+- Raw microscopy public-download status is not inferred from the processed-data deposit.
 
-**Source disposition:** PUBLIC PROCESSED-DATA + MODEL/INFERENCE SOURCE QUALIFIED; RAW MICROSCOPY UNVERIFIED. Candidate status is unchanged; no promotion has occurred.
+**Source disposition:** PUBLIC VERSIONED PROCESSED DATA + PUBLIC MODEL/INFERENCE SOURCE QUALIFIED. DIRECT ARCHIVE ENDPOINT/HASH PENDING. Candidate status is unchanged; no result-based promotion has occurred.
 
 ### Geva-Zatorsky et al. 2006 — p53/Mdm2
 
@@ -138,9 +142,9 @@ The generic external-source freeze is pinned in `BIO_CHI/config/EXTERNAL_SOURCE_
 
 ## Next mechanical source tasks
 
+- freeze the exact downloadable endpoint and SHA-256 of Blum Mendeley `data.zip` without interpreting archive contents; then inventory only schema/file identities before any native-metric execution;
 - continue exact lineage/carrier mapping for Harmange and other carrier-qualified candidates;
 - reconcile Shaffer SRA/BioProject lineage before freezing an execution subset;
 - verify Lee SRP040309 exact run/file map;
-- inspect Blum public processed source-data identity and determine whether the published native Jeffries-Matusita result can be reproduced without inventing a new representation;
 - qualify candidate testbeds against the frozen P0-D eligibility contract without using expected SymC agreement as a selection criterion;
 - keep `chi_bio`, `Chi_bio`, and Bio Chi admission closed until their respective prospective gates are satisfied.
