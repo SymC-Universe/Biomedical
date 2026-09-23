@@ -6,11 +6,6 @@ on:
       - 'BIO_CHI/config/P0D_BIOPROJECT_SRA_RECONCILIATION_FREEZE_v0_1.json'
       - 'BIO_CHI/src/reconcile_bioproject_sra_v0_1.py'
       - '.github/workflows/bio-chi-bioproject-sra-reconciliation-v01.yml'
-  pull_request:
-    paths:
-      - 'BIO_CHI/config/P0D_BIOPROJECT_SRA_RECONCILIATION_FREEZE_v0_1.json'
-      - 'BIO_CHI/src/reconcile_bioproject_sra_v0_1.py'
-      - '.github/workflows/bio-chi-bioproject-sra-reconciliation-v01.yml'
   workflow_dispatch:
 permissions:
   contents: read
