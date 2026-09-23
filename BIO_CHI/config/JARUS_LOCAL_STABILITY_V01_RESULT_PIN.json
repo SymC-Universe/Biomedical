@@ -1,0 +1,24 @@
+{
+  "schema_version": "0.1",
+  "status": "INDETERMINATE_NUMERICAL_ROOT_SOLVER",
+  "authority": "SymC GOM v0.8.4",
+  "workflow_run_id": 35855206926,
+  "artifact_id": 10747375715,
+  "artifact_name": "BIO_CHI_JARUS_LOCAL_STABILITY_V01",
+  "artifact_sha256": "902c9d590a768eb9a1c6ad93ffd99fe1beb17ccbacf35028d963155e1f7e5060",
+  "freeze": "BIO_CHI/config/JARUS_FIG8_LOCAL_STABILITY_FREEZE_v0_1.json",
+  "results": {
+    "FIG8A_NOMINAL_DAMPED": {"accepted_distinct_roots": 0, "status": "INDETERMINATE_ROOT_MULTIPLICITY", "exitflag_counts": {"1": 61, "-2": 8, "0": 1}, "best_residual_inf": 0.00008562221985911934},
+    "FIG8B_LIMIT_CYCLE": {"accepted_distinct_roots": 0, "status": "INDETERMINATE_ROOT_MULTIPLICITY", "exitflag_counts": {"1": 60, "-2": 9, "0": 1}, "best_residual_inf": 0.00008562221985911934},
+    "FIG8C_RELAXATION_OSCILLATION": {"accepted_distinct_roots": 0, "status": "INDETERMINATE_ROOT_MULTIPLICITY", "exitflag_counts": {"1": 63, "-2": 7}, "best_residual_inf": 0.00008562221985911934}
+  },
+  "diagnosis": "The prospectively frozen log-state coordinate transform prevented an accepted root in all three cases. Many starts returned a nominally successful fsolve exit flag while retaining residuals around 1e-4, far above the frozen 1e-9 acceptance gate. This is a numerical-coordinate failure, not evidence that the TR=1 equilibrium is absent. In log coordinates, dF/dz = dF/dx * x can become artificially small as candidate components approach zero, allowing step/optimality stopping without satisfying the physical residual gate.",
+  "scientific_disposition": {
+    "paper_local_stability_claim_pass": false,
+    "paper_local_stability_claim_fail": false,
+    "chi_bio_constructed": false,
+    "mode_selected": false,
+    "preserve_indeterminate": true
+  },
+  "next_safe_action": "Version the root solver only: use the identical frozen multistart seeds and acceptance criteria in physical state coordinates, filter final roots for positivity, and keep the Jacobian/stability rule unchanged. Do not extend the multistart set or change residual thresholds after seeing this result."
+}
