@@ -16,65 +16,31 @@
     "Bio_Chi": "biological conglomerate/system stability architecture"
   },
   "queue": [
-    {
-      "id": "Q0",
-      "name": "governance_reproducibility_spine",
-      "status": "complete_maintain"
-    },
-    {
-      "id": "Q1",
-      "name": "literature_collision_candidate_expansion",
-      "status": "active_targeted_only"
-    },
-    {
-      "id": "Q2",
-      "name": "dataset_eligibility_source_qualification",
-      "status": "active_sources_frozen_qualification_continues"
-    },
-    {
-      "id": "Q3",
-      "name": "known_truth_qualification_system",
-      "status": "pending_Q2"
-    },
-    {
-      "id": "Q4",
-      "name": "cancer_recovery_system",
-      "status": "pending_Q2"
-    },
-    {
-      "id": "Q5",
-      "name": "chi_bio_scalar_track",
-      "status": "active_native_model_reproduction_no_admission"
-    },
-    {
-      "id": "Q6",
-      "name": "Chi_bio_modal_track",
-      "status": "pending_Q2_Q3_native_model_gate"
-    },
-    {
-      "id": "Q7",
-      "name": "Bio_Chi_conglomerate_track",
-      "status": "pending_Q3_Q4_Q6"
-    },
-    {
-      "id": "Q8",
-      "name": "stability_inheritance_biological_test",
-      "status": "pending_carrier_qualified_data"
-    },
-    {
-      "id": "Q9",
-      "name": "working_manuscript",
-      "status": "not_open_private"
-    }
+    {"id":"Q0","name":"governance_reproducibility_spine","status":"complete_maintain"},
+    {"id":"Q1","name":"literature_collision_candidate_expansion","status":"active_targeted_only"},
+    {"id":"Q2","name":"dataset_eligibility_source_qualification","status":"active_sources_frozen_qualification_continues"},
+    {"id":"Q3","name":"known_truth_qualification_system","status":"pending_Q2"},
+    {"id":"Q4","name":"cancer_recovery_system","status":"pending_Q2"},
+    {"id":"Q5","name":"chi_bio_scalar_track","status":"active_native_behavior_execution_no_admission"},
+    {"id":"Q6","name":"Chi_bio_modal_track","status":"pending_native_behavior_and_Q2_Q3"},
+    {"id":"Q7","name":"Bio_Chi_conglomerate_track","status":"pending_Q3_Q4_Q6"},
+    {"id":"Q8","name":"stability_inheritance_biological_test","status":"pending_carrier_qualified_data"},
+    {"id":"Q9","name":"working_manuscript","status":"not_open_private"}
   ],
   "active_native_model_gate": {
     "system": "Jaruszewicz-Blonska reduced NF-kB model",
     "published_code_pin": "BIO_CHI/config/EXTERNAL_SOURCE_FREEZE_PIN_v0_1.json",
     "compatibility_reproduction_pin": "BIO_CHI/config/JARUS_MATLAB_COMPAT_PIN_v0_1.json",
     "native_behavior_freeze": "BIO_CHI/config/JARUS_NATIVE_BEHAVIOR_FREEZE_v0_1.json",
-    "target_output_capture_run": 35848534891,
+    "source_structure_pin": "BIO_CHI/config/JARUS_SOURCE_STRUCTURE_PIN_v0_1.json",
+    "native_output_capture_pin": "BIO_CHI/config/JARUS_NATIVE_OUTPUT_CAPTURE_PIN_v0_2.json",
+    "figure8_execution_freeze": "BIO_CHI/config/JARUS_FIG8_EXECUTION_FREEZE_v0_1.json",
+    "figure8_execution_run": 35849437099,
+    "figure8_execution_state_at_queue_update": "queued",
     "chi_bio_constructed": false,
-    "next_gate": "capture and reproduce authors-native behavior before modal or scalar construction"
+    "Chi_bio_constructed": false,
+    "Bio_Chi_constructed": false,
+    "next_gate": "complete the frozen Figure 8 trajectory execution, preserve any failure, then freeze a separate behavior/stability adjudication method before classification or modal/scalar construction"
   },
   "stop_conditions": [
     "material scientific choice changes a frozen hypothesis/model/endpoint",
