@@ -108,32 +108,30 @@ Reviewer 2 boost-converter / EV-control / drilling-control papers are outside th
 Main v11 conclusion no longer invokes biological chi, exceptional-point behavior or substrate/recovery lineage.
 Supplement candidate removes the candidate-chi section and unnecessary exceptional-point reminders.
 
-## Active scientific run
+## Closed H1 measured-composition gate
 
 ### H1 measured-composition-preserving null
+**CLOSED / R1_H1_MEASURED_COMPOSITION_ROBUST.**
 
 Freeze:
 `GRI_v2/reviewer/BIOSYSTEMS_ADVERSARIAL_R1_H1_COMPOSITION_FREEZE_20260923.md`
 
-Runner:
-`GRI_v2/src/run_biosystems_adversarial_r1_h1_composition.py`
+Successful run:
+- workflow `35812910672`;
+- artifact `BIOSYSTEMS_ADVERSARIAL_R1_H1_COMPOSITION_V01`;
+- artifact ID `10730212562`;
+- artifact SHA-256 `fce0384e972e0f9646448546afe6bbcec3dda1214dc17460b455651274319e1d`.
 
-Workflow:
-`.github/workflows/biosystems-adversarial-r1-h1-composition.yml`
+Across the 30 frozen composition-complete cancers:
+- positive cancer medians 30/30;
+- pan-cancer median `delta_comp_preserved = 0.0999769955`;
+- IQR 0.0727836524 to 0.1097330090;
+- exact two-sided sign-test p = 1.862645149230957e-09.
 
-Active workflow run:
-`35812910672`
+This closes only the two measured linear composition axes (ABSOLUTE purity and methylation-derived leukocyte fraction). It does not remove batch, plate, center, array, subtype, age, sex, ancestry, stromal structure, or other latent covariance.
 
-Scientific question:
-Does raw H1 remain above a null that preserves the cross-probe structure linearly explained by ABSOLUTE purity and methylation-derived leukocyte fraction?
-
-Expected composition-complete C1 set:
-30 cancers; DLBC and THYM below n=30 gate.
-
-Primary effect:
-`S_raw - S_composition_preserving_null`.
-
-No result-dependent change to source, cohort, n, probe carrier, covariates, draw count, null, or decision rule is permitted.
+Audit:
+`GRI_v2/reviewer/BIOSYSTEMS_ADVERSARIAL_R1_H1_COMPOSITION_AUDIT_20260923.md`.
 
 ## Private candidate manuscript state
 
@@ -153,16 +151,18 @@ The candidates are not final until the active H1 composition test is incorporate
 
 ## Remaining queue
 
-1. Finish run 35812910672 and audit it.
-2. Integrate H1 composition result without exceeding its claim ceiling.
-3. Decide whether a second external cancer is scientifically necessary after the composition result; do not add one merely because it is favorable.
-4. Finish main/supplement/response/cover synchronization.
-5. Replace TeX en-dash markup and single-author pronoun inconsistencies.
-6. Recompile main and supplement.
-7. Render/visually inspect PDFs under the PDF QA workflow.
-8. Run cross-file claim/value/citation audit.
-9. Freeze Round-1 public adjudication matrix and provenance manifest.
-10. Cut a new private resubmission candidate only if all Round-1 issues close.
+1. **External prostate metadata/technical audit.** Inventory every source-bound non-outcome demographic/technical covariate that is actually available for the frozen 450K and EPIC lanes before deciding whether another H1 residualization is scientifically identifiable.
+2. **P0 equal-capacity issue.** Keep v10/v11 P0 claim bounded below the 24-cancer promotion floor. Build a new, explicitly post-FINAL P0-Q capacity-matched comparator only if the frozen source/score artifacts needed for a fair same-data comparison can be reconstructed without inventing a historical preregistration.
+3. **Tumor-normal composition attack.** Preserve the completed Hallmark-breadth result and test any source-supported composition sensitivity that is symmetric enough to be interpretable. Otherwise narrow the TN language to an unadjusted state contrast and state why purity cannot be symmetrically transported to adjacent normal.
+4. **External permutation precision.** A higher-B H1/H2/H3a precision sensitivity may be added only as a post-result Monte Carlo-resolution check; it cannot rewrite the original B=999 P1 result.
+5. **External RNA representation.** Do not apply DESeq median-ratio normalization to TCGA EB++ RSEM because those are not raw counts. Instead, explicitly test any legitimate same-object transform sensitivity available from the existing TCGA representation, or retain RNA-representation mismatch as an unresolved external limitation.
+6. **Standard-toolkit comparison.** Add only a scientifically matched comparator. Do not run MOFA/SNF/DIABLO merely for optics if the task is not equivalent; document the closest standard comparator and what question it does/does not answer.
+7. **Reporting fixes.** Name all TN-A1/TN-P20 cancers; remove stale shared-missingness text; distinguish “no gate remains for this revision” from future P0-Q controls; remove first-person abstract language; normalize single-author pronouns; remove unnecessary en-dash markup; correct title/abstract/response wording.
+8. **Reviewer citation response.** Retain the three relevant Reviewer-1 cancer-regulation citations; explicitly decline irrelevant control-engineering citations in the response letter.
+9. **Public reproducibility.** Keep freeze contracts, configs, workflows, result audits, reviewer adjudication, and release provenance in GitHub. Keep only manuscript/supplement text private. Prepare a public reproducibility index suitable for Zenodo snapshotting before resubmission.
+10. **Private release candidate.** After scientific controls close, rebuild the private main/supplement, compile, render, visually inspect, cross-audit all claims/values/citations, and cut a new Round-1 resubmission package.
+
+Every completed gate must update this checkpoint before the next long workflow begins.
 
 ## Stop rule
 
