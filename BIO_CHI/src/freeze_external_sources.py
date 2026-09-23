@@ -69,6 +69,31 @@ def head(url: str) -> dict:
 def sha256(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
+def probe_size(url: str) -> tuple[int | None, dict]:
+    req = urllib.request.Request(
+        url,
+        headers={"User-Agent": USER_AGENT, "Range": "bytes=0-0"},
+        method="GET",
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r:
+            meta = {
+                "probe_status": getattr(r, "status", None),
+                "probe_content_range": r.headers.get("Content-Range"),
+                "probe_content_length": r.headers.get("Content-Length"),
+            }
+            cr = r.headers.get("Content-Range")
+            if cr and "/" in cr:
+                total = cr.rsplit("/", 1)[1]
+                if total.isdigit():
+                    return int(total), meta
+            cl = r.headers.get("Content-Length")
+            if cl and cl.isdigit() and getattr(r, "status", None) == 200:
+                return int(cl), meta
+            return None, meta
+    except Exception as exc:
+        return None, {"probe_error": f"{type(exc).__name__}: {exc}"}
+
 
 def geo_bucket(gse: str) -> str:
     m = re.fullmatch(r"GSE(\d+)", gse)
@@ -109,7 +134,19 @@ def freeze_file(url: str) -> dict:
     except Exception:
         size = None
     record = {"url": url, **meta, "content_length_bytes": size}
-    if size is not None and size > HASH_LIMIT_BYTES:
+    if size is None:
+        size, probe_meta = probe_size(url)
+        record.update(probe_meta)
+        record["content_length_bytes"] = size
+    if size is None:
+        record.update({
+            "sha256": None,
+            "hash_status": "DEFERRED_UNKNOWN_SIZE",
+            "hash_limit_bytes": HASH_LIMIT_BYTES,
+            "content_interpreted": False,
+        })
+        return record
+    if size > HASH_LIMIT_BYTES:
         record.update({
             "sha256": None,
             "hash_status": "DEFERRED_LARGE_FILE",
