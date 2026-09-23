@@ -1,0 +1,115 @@
+name: Bio Chi Jaruszewicz native output capture
+
+on:
+  push:
+    branches:
+      - chi-bio-recovery-p0d-20260922
+    paths:
+      - 'BIO_CHI/src/jarus_matlab_native_plot_capture.m'
+      - 'BIO_CHI/src/prepare_jarus_matlab_compat.sh'
+      - '.github/workflows/bio-chi-jarus-native-output.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  capture-native-output:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare pinned source plus frozen one-line MATLAB compatibility repair
+        run: bash BIO_CHI/src/prepare_jarus_matlab_compat.sh
+      - name: Set up MATLAB R2023b
+        uses: matlab-actions/setup-matlab@v3
+        with:
+          release: R2023b
+      - name: Run authors driver and capture all plotted numeric line series
+        id: capture
+        continue-on-error: true
+        uses: matlab-actions/run-command@v3
+        with:
+          command: run('BIO_CHI/src/jarus_matlab_native_plot_capture.m')
+          generate-summary: false
+      - name: Freeze capture provenance
+        if: always()
+        env:
+          CAPTURE_OUTCOME: ${{ steps.capture.outcome }}
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, os, pathlib
+          root=pathlib.Path('BIO_CHI/artifacts/generated/jarus_native_plot_capture')
+          def h(p):
+              p=pathlib.Path(p)
+              return hashlib.sha256(p.read_bytes()).hexdigest() if p.exists() else None
+          summary_path=root/'capture_summary.json'
+          summary=json.loads(summary_path.read_text()) if summary_path.exists() else None
+          csvs=sorted(root.glob('figure_*_axis_*_line_*.csv'))
+          records=[]
+          for p in csvs:
+              rows=0
+              finite_rows=0
+              for line in p.read_text(errors='replace').splitlines():
+                  if not line.strip():
+                      continue
+                  rows += 1
+                  vals=line.split(',')
+                  try:
+                      numbers=[float(v) for v in vals]
+                      if all(x == x and abs(x) != float('inf') for x in numbers):
+                          finite_rows += 1
+                  except Exception:
+                      pass
+              records.append({'file':p.name,'sha256':h(p),'row_count':rows,'finite_row_count':finite_rows})
+          action=os.environ.get('CAPTURE_OUTCOME')
+          ok=bool(action == 'success' and summary and summary.get('numeric_line_count',0) == len(csvs) and len(csvs) > 0 and all(r['finite_row_count'] > 0 for r in records))
+          result={
+            'schema_version':'0.1',
+            'audit_type':'authors_native_plot_output_capture',
+            'status':'PASS' if ok else 'CAPTURE_FAILURE',
+            'source_reproduction_run':35836946074,
+            'source_reproduction_status':'PASS',
+            'compatibility_pin':'BIO_CHI/config/JARUS_MATLAB_COMPAT_PIN_v0_1.json',
+            'published_source_preserved':True,
+            'execution_copy_modified':True,
+            'repair_count':1,
+            'scientific_endpoint_opened':False,
+            'chi_bio_constructed':False,
+            'capture_outcome':action,
+            'capture_summary':summary,
+            'capture_summary_sha256':h(summary_path),
+            'matlab_stdout_sha256':h(root/'matlab_stdout.txt'),
+            'native_plot_capture_mat_sha256':h(root/'native_plot_capture.mat'),
+            'numeric_series':records,
+            'interpretation_limit':'This artifact exhaustively captures authors-native plotted numeric series only. It does not select a line, classify damping, infer a modal coordinate, or license chi_bio.'
+          }
+          out=root/'native_output_capture_manifest.json'
+          out.write_text(json.dumps(result,indent=2)+'\n')
+          print(json.dumps(result,indent=2))
+          PY
+      - name: Upload native output capture
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_JARUS_NATIVE_OUTPUT_CAPTURE_V01
+          path: |
+            BIO_CHI/artifacts/generated/jarus_native_plot_capture/capture_summary.json
+            BIO_CHI/artifacts/generated/jarus_native_plot_capture/native_output_capture_manifest.json
+            BIO_CHI/artifacts/generated/jarus_native_plot_capture/matlab_stdout.txt
+            BIO_CHI/artifacts/generated/jarus_native_plot_capture/native_plot_capture.mat
+            BIO_CHI/artifacts/generated/jarus_native_plot_capture/figure_*_axis_*_line_*.csv
+          if-no-files-found: warn
+      - name: Enforce capture gate
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json, pathlib
+          p=pathlib.Path('BIO_CHI/artifacts/generated/jarus_native_plot_capture/native_output_capture_manifest.json')
+          if not p.exists():
+              raise SystemExit('BIO_CHI_JARUS_NATIVE_OUTPUT_CAPTURE_MANIFEST_MISSING')
+          result=json.loads(p.read_text())
+          if result.get('status') != 'PASS':
+              raise SystemExit('BIO_CHI_JARUS_NATIVE_OUTPUT_CAPTURE_FAIL')
+          print('BIO_CHI_JARUS_NATIVE_OUTPUT_CAPTURE_PASS')
+          PY
