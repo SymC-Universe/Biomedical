@@ -29,12 +29,12 @@
     {
       "id": "Q2",
       "name": "dataset_eligibility_source_qualification",
-      "status": "active_su_processed_expression_identity_rehman_native_method_code_search_harmange_carrier_mapping"
+      "status": "active_native_observable_qualified_su_rehman_method_limits_harmange_carrier_mapping"
     },
     {
       "id": "Q3",
       "name": "known_truth_qualification_system",
-      "status": "pending_Q2_exact_known_truth_native_method_or_explicit_limit_map"
+      "status": "active_blum_native_observable_reproduced_observability_identifiability_gate_pending"
     },
     {
       "id": "Q4",
@@ -44,12 +44,12 @@
     {
       "id": "Q5",
       "name": "chi_bio_scalar_track",
-      "status": "active_native_behavior_and_local_stability_qualified_scalar_not_admitted_full_state_representation_control_complete_q2q3_observability_gate"
+      "status": "active_native_behavior_local_stability_and_native_biological_observable_qualified_scalar_not_admitted"
     },
     {
       "id": "Q6",
       "name": "Chi_bio_modal_track",
-      "status": "active_descriptive_generator_modal_precursor_complete_full_state_representation_control_complete_full_admission_pending_Q2_Q3"
+      "status": "active_descriptive_generator_modal_precursor_complete_native_biological_observable_qualified_full_admission_pending_observability_identifiability"
     },
     {
       "id": "Q7",
@@ -94,12 +94,21 @@
       "lee_public_rna_recovery_status": "NO_EXPLICIT_RECONVERTED_OR_POST_WITHDRAWAL_RNA_SAMPLE_IN_SRP040309",
       "su_native_source_metadata_pin": "BIO_CHI/config/SU2026_NATIVE_METHOD_SOURCE_METADATA_V01_RESULT_PIN.json",
       "su_public_code_pin": "BIO_CHI/config/SU2026_PUBLIC_CODE_PIN_v0_1.json",
-      "su_m397_rna_timepoints": 15
+      "su_m397_rna_timepoints": 15,
+      "blum_fig2_native_input_mapping_status": "PASS_FIG2_NATIVE_INPUT_MAPPING",
+      "blum_fig2_native_input_mapping_run": 35867313079,
+      "blum_fig2_native_input_mapping_artifact": 10752731514,
+      "blum_fig2_native_mean_status": "PASS_NATIVE_FIG2_POPULATION_MEAN_REPRODUCTION",
+      "blum_fig2_native_mean_run": 35873188226,
+      "blum_fig2_native_mean_artifact": 10755884524,
+      "blum_fig2_native_mean_total_rows": 279016,
+      "blum_fig2_native_mean_total_unique_cell_tracks": 3068
     },
     "active": {
       "su_next": "freeze exact processed-expression file identity/hash before opening values",
       "rehman_next": "seek exact author analysis code/source implementation for Figure 4 PCA; otherwise preserve exact-native-method under-specification",
-      "harmange_next": "map lineage/barcode carrier correspondence from source documentation without opening target outcomes"
+      "harmange_next": "map lineage/barcode carrier correspondence from source documentation without opening target outcomes",
+      "blum_next": "P0-Q observability/identifiability qualification of publication-native EKAR trajectory representation before any reduced-state or chi_bio construction"
     },
     "scientific_stop_before": "inventing a missing native implementation detail, changing a frozen representation/endpoint, promoting a testbed based on agreement, or admitting chi_bio/Chi_bio/Bio Chi"
   },
@@ -133,7 +142,7 @@
     "chi_bio_constructed": false,
     "Chi_bio_admitted": false,
     "Bio_Chi_constructed": false,
-    "next_gate": "outcome-blind Q2/Q3 biological observability and identifiability qualification before any reduced observable representation or chi_bio scalar admission"
+    "next_gate": "outcome-blind P0-Q biological observability and identifiability qualification using the now-reproduced native biological trajectory layer before any reduced observable representation or chi_bio scalar admission"
   },
   "stop_conditions": [
     "material scientific choice changes a frozen hypothesis/model/endpoint",
