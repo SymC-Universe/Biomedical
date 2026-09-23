@@ -1,0 +1,54 @@
+{
+  "schema_version": "0.1",
+  "project": "BioSystems claim extension",
+  "experiment": "SCC25_CETUXIMAB_RESPONSE_DIRECTION_V01",
+  "status": "FROZEN_BEFORE_NEW_OUTCOME_COMPUTATION",
+  "source": {
+    "rna_series": "GSE98812",
+    "rna_file": "GSE98812_GEOExprsData.txt.gz",
+    "rna_sha256": "1ce13bae71bd38f619261ec0ca5dcef5dd70b967083cee059e94758aaaf6abb5",
+    "methylation_series": "GSE98813",
+    "methylation_file": "GSE98813_series_matrix.txt.gz",
+    "methylation_sha256": "c5ee581ee6dbb258bb352e86fd1a7aa5ed6f9979550352accaeca8b0d093292e",
+    "manifest": "GRI_v2/config/gri_scc25_paired_timecourse_manifest_p0d_v0_1.json"
+  },
+  "source_defined_phases": {
+    "sensitive": [
+      1,
+      2,
+      3
+    ],
+    "resistance_acquisition": [
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "late_resistant": [
+      9,
+      10,
+      11
+    ]
+  },
+  "E2": {
+    "methylation_distance": "median absolute CTX-minus-PBS beta difference across frozen C1 carrier probes passing finite support at all 22 weekly states",
+    "rna_preprocess": "map SYMBOL|ENTREZID to SYMBOL; discard blank/?; aggregate duplicate SYMBOL rows by median per sample; robust-standardize each gene across the 22 frozen weekly states by median and MAD; discard zero/nonfinite MAD",
+    "rna_distance": "median absolute CTX-minus-PBS robust-z difference across retained genes at each week",
+    "phase_test": "exact Kruskal-Wallis permutation over all assignments preserving 3/5/3 phase sizes",
+    "multiplicity": "BH across methylation-distance and RNA-distance phase tests",
+    "support_rule": "at least one molecular distance has BH q <= 0.05; report the other independently; no direction is pre-imposed"
+  },
+  "E3": {
+    "methylation_gene_object": "for each gene with frozen promoter-core mapping, median CTX-minus-PBS beta difference across mapped C1 probes at each week",
+    "rna_gene_object": "CTX-minus-PBS robust-z expression difference per retained gene at each week",
+    "gene_intersection": "genes with both objects at every required transition; no outcome-based gene filtering",
+    "forward": "absolute Spearman across genes between methylation_delta(t) and RNA_delta(t+1)",
+    "reverse": "absolute Spearman across genes between RNA_delta(t) and methylation_delta(t+1)",
+    "transitions": "weeks 1->2 through 10->11",
+    "primary_statistic": "mean(forward_abs_rho - reverse_abs_rho) across 10 transitions",
+    "exact_null": "all 2^10 within-transition forward/reverse swaps",
+    "support_rule": "primary statistic > 0 and exact one-sided p <= 0.05",
+    "claim_ceiling": "temporal-direction asymmetry only; not causal methylation-to-RNA regulation without an independent methylation intervention"
+  }
+}
