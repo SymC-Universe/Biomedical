@@ -1,13 +1,13 @@
-# Chi Bio nomenclature and joint research target
+# Biological Chi nomenclature and joint research target
 
 **Date:** 22 September 2026  
 **Status:** ACTIVE P0-D NOMENCLATURE / JOINT-TARGET CLARIFICATION  
 **Branch:** `chi-bio-recovery-p0d-20260922`  
 **Authority:** SymC General Operations Manual v0.8.4
 
-## 1. Canonical naming
+## 1. Canonical three-level naming
 
-The biology program uses exactly two scientific objects.
+The biology program uses two scientific representations plus one integrated biological construct.
 
 ### 1.1 `chi_bio` / lowercase `χ_bio`
 
@@ -26,78 +26,81 @@ A candidate `χ_bio` must be derived from a native biological generator or prosp
 
 The historical `CV/2` construction remains closed and is not redefined as `χ_bio`.
 
-### 1.2 Chi Bio / capital `Χ_bio`
+### 1.2 `Chi_bio` / capital `Χ_bio`
 
-**Chi Bio** is the canonical plain-language name for **capital `Χ_bio`**.
+`Χ_bio` denotes the **system-scale biological stability architecture/state** in which local/modal coordinates are embedded and realized.
 
-They are the same scientific object.
-
-`Χ_bio` denotes the progressively reconstructed **biological stability architecture** across modal/vector, network/conglomerate, substrate, context, memory, perturbation-response, recovery, reorganization, and other empirically supported layers.
+It may contain modal/vector structure, coupling, substrate state, network/conglomerate organization, context, memory, perturbation-response, recovery, reorganization, and other empirically supported layers.
 
 `Χ_bio` is not assumed to be a scalar, master score, arithmetic sum, or complete ontology.
 
-The alternative prose labels **Biological Chi** and **X_bio** are retired for prospective writing. They may appear only when quoting or discussing historical material. In prose use **Chi Bio**. In equations or compact mathematical notation use **`Χ_bio`**.
+### 1.3 Biological Chi
 
-There is no third Chi object.
+**Biological Chi** is the integrated biological stability construct containing both `χ_bio` and `Χ_bio` **and the empirically discovered relation between them**.
+
+Biological Chi is therefore not a third scalar and is not defined as an arithmetic combination.
+
+Conceptually:
+
+```text
+Biological Chi = { χ_bio, Χ_bio, relation(χ_bio <-> Χ_bio) }
+```
+
+The relation is essential because a local/modal coordinate may contribute to system organization while the system architecture may in turn condition the realized meaning and behavior of that local coordinate.
+
+To avoid collision with the GOM's technical use of "conglomerate/system representation," prospective documents should describe Biological Chi as the **integrated construct** or **full biological stability construct**, not as a separate "conglomerate layer."
 
 ## 2. Joint research target
 
 The central working relation is:
 
 ```text
-local/modal χ_bio  <-->  Chi Bio / Χ_bio  -->  realized biological response
-         ^                    |
-         |                    v
-      substrate / inheritance / embedding / feedback / history
+χ_bio  <-------------------->  Χ_bio
+ local/modal scalar             system-scale architecture
+        \                        /
+         \                      /
+          ---- Biological Chi ---
+          integrated construct
 ```
-
-The relationship itself is a research target.
 
 Required questions include:
 
 1. When a local/modal `χ_bio` is licensed, does it predict resistance, transient response, first reclaim, sustained recovery, reorganization, memory, or repeated-perturbation behavior?
-2. Does Chi Bio explain why similar local `χ_bio` values can produce different realized outcomes?
-3. Does local/modal structure contribute prospectively to `Χ_bio`, and does the broader architecture condition the realized meaning of the local scalar?
+2. Does `Χ_bio` explain why similar local `χ_bio` values can produce different realized outcomes?
+3. Does local/modal structure contribute prospectively to `Χ_bio`, and does `Χ_bio` condition the realized meaning of `χ_bio`?
 4. Can a lower-level substrate or carrier transmit a local stability relation into the embedded system under the Stability Inheritance evidence ladder?
 5. What information is lost when `Χ_bio` is compressed to `χ_bio`?
-6. Is there any regime in which `χ_bio` is sufficient and Chi Bio adds no held-out value?
-7. Is there any regime in which no scalar `χ_bio` is identifiable but Chi Bio remains reproducibly predictive?
-8. If a biologically meaningful boundary is discovered, is it generator-derived and prospectively testable rather than normalized toward a preferred value?
+6. Is there any regime in which `χ_bio` is sufficient and `Χ_bio` adds no held-out value?
+7. Is there any regime in which no scalar `χ_bio` is identifiable but `Χ_bio` remains reproducibly predictive?
+8. Does the combined Biological Chi construct predict held-out biological response better than either representation alone?
+9. If a biologically meaningful boundary is discovered, is it generator-derived and prospectively testable rather than normalized toward a preferred value?
 
-## 3. The apparent "trio"
-
-The apparent three-part structure is not three Chis. It is:
-
-1. **`χ_bio` — coordinate:** a local/modal compressed biological stability coordinate when licensed.
-2. **Chi Bio / `Χ_bio` — architecture:** the broader system organization in which local coordinates are embedded and realized.
-3. **`χ_bio <-> Χ_bio` — relation:** the still-unknown law or mapping connecting local/modal stability to realized whole-system biological stability.
-
-The third item is a relation to discover, not a separately named Chi quantity.
-
-## 4. Falsifiable outcomes
+## 3. Falsifiable outcomes
 
 All of the following are valid outcomes:
 
 - a useful `χ_bio` exists and explains most realized behavior;
-- `χ_bio` exists locally but Chi Bio materially conditions its realized behavior;
+- `χ_bio` exists locally but `Χ_bio` materially conditions its realized behavior;
 - multiple distinct `χ_bio` classes exist for different native generators;
-- Chi Bio is predictive while no robust scalar `χ_bio` is admitted;
+- `Χ_bio` is predictive while no robust scalar `χ_bio` is admitted;
+- the integrated Biological Chi construct adds held-out value beyond either representation alone;
+- the integrated construct adds no value beyond a simpler representation;
 - neither representation adds value beyond native biological methods.
 
 No outcome is to be repaired into a preferred hierarchy.
 
-## 5. Immediate investigation consequence
+## 4. Immediate investigation consequence
 
-The Chi Bio P0-D investigation proceeds on three coordinated analysis tracks:
+The P0-D investigation proceeds on three coordinated analysis tracks:
 
 ### Scalar track
 Search for native biological generators and perturbation/recovery systems capable of licensing candidate `χ_bio` coordinates.
 
 ### Architecture track
-Reconstruct Chi Bio (`Χ_bio`) from modal/state, substrate, system, context, memory, and recovery information without requiring scalar admission.
+Reconstruct `Χ_bio` from modal/state, substrate, system, context, memory, and recovery information without requiring scalar admission.
 
-### Joint track
-Test whether `χ_bio` and `Χ_bio` together explain held-out biological response better than either alone, and map where one representation conditions, complements, or renders the other unnecessary.
+### Biological Chi integration track
+Test the joint object `{χ_bio, Χ_bio, relation}` prospectively against held-out biological behavior. Determine whether the relation conditions, complements, or renders one representation unnecessary.
 
 ## Canonical rule
 
@@ -105,12 +108,12 @@ Test whether `χ_bio` and `Χ_bio` together explain held-out biological response
 χ_bio
 = lowercase scalar/local-modal biological coordinate, if licensed
 
-Chi Bio
-= canonical prose name for capital Χ_bio
-= broader biological stability architecture
+Χ_bio / Chi_bio
+= capital system-scale biological stability architecture/state
 
-χ_bio <-> Χ_bio
-= relation to be discovered, not a third Chi
+Biological Chi
+= integrated construct containing χ_bio, Χ_bio, and their relation
+= not a third scalar and not an arithmetic sum
 ```
 
-**Prospective writing rule:** use `Chi Bio` in prose and `Χ_bio` in equations. Do not introduce `Biological Chi` or `X_bio` as alternate names.
+**Prospective writing rule:** use `χ_bio` for the lowercase scalar, `Χ_bio` or `Chi_bio` for the capital architecture, and **Biological Chi** only for the integrated construct.
