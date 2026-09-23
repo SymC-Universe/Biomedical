@@ -1,6 +1,6 @@
 # BioSystems submission provenance manifest - 22 September 2026
 
-**Status:** ACTIVE / P1 RESULT FIELD PENDING  
+**Status:** COMPLETE / FINAL RELEASE BOUND  
 **Purpose:** submission-specific source, code, config and evidence identity index.  
 **Revision branch:** `gri-biosystems-revision-20260922`
 
@@ -62,8 +62,13 @@ P1 scientific freeze:
 - execution clarification final commit `807cf13b357b4156695839cc0d95fa128f1317c1`
 - executor mechanical head before launch: `f8dccf37b142163b8ecdd060810232ab63e7c526`
 - launch commit: `867e611c87545f09671a306cdce741f605496154`
-- active workflow run: `35801487875`
-- decisive result identity: **PENDING**
+- decisive workflow run: `35801966289`
+- outcome head: `e410257c95fddc50b39bc147b4780d214f731d0e`
+- artifact: `GRI_BIOSYSTEMS_EXTERNAL_PROSTATE_P1_V01`
+- artifact ID: `10726636434`
+- artifact digest: `sha256:1d7bbef7a4f8ea0cb254c139879e8ec53b9498f8d95c9c97fa28f21367075cde`
+- primary 450K n=30: `P1_PARTIAL_TRANSPORT`
+- final sensitivity-adjudicated result: `P1_REPRESENTATION_DEPENDENT`
 
 ## Reviewer/governance identities
 
@@ -76,18 +81,25 @@ P1 scientific freeze:
 
 ## Private manuscript source
 
-Current editable manuscript is intentionally outside the public repository:
-`Atlas - GRI update v1/Private Working Manuscripts/Oncology/GRI_BioSystems_working_v5_2026-09-22.tex`
+Final editable manuscript remains intentionally outside the public repository in the private Project Library.
 
-Final release must record the exact Library/exported byte hash of the manuscript source and final PDF after the external P1 result is incorporated and visual QA is complete.
+Final private identities:
+- main TeX `GRI_BioSystems_working_v10_2026-09-23.tex`: SHA-256 `494d74e6622bf5b4f827086cb8aec9159ad6d6c186b16aa126462e10fe5fc5e2`;
+- main PDF `GRI_BioSystems_working_v10_2026-09-23.pdf`: SHA-256 `1809245173dabb6744472541f40b36c8b7aff03dfb0f1d84c4d363919e41ac99`;
+- supplement PDF `GRI_BioSystems_supplement_working_v8_2026-09-23.pdf`: SHA-256 `636b8cc720e3240d4bbb8a697507b2b36adf66775fe27b012f45208c96e41974`;
+- reviewer response Markdown: SHA-256 `04110891cc9c0287a9e752e1966c0224ccf66b204a2cc67584772b20c622b911`;
+- cover-letter Markdown: SHA-256 `77972f9473318cb1339dd33e7906a67f2ee9ee6be98feac01b6bf02c1ec42236`;
+- final private ZIP: SHA-256 `125a5432355835cd5fdc4f835cb3ad3cc3665c27e4ae30f7f3f332cae620e431`.
 
 ## Release rule
 
 This file is an index, not a substitute for machine-generated `SHA256SUMS`.
 
-Before final resubmission:
-1. replace the P1 pending field with the completed run/artifact/digest;
-2. export the final private manuscript source;
-3. generate machine hashes for manuscript, supplement, figures, tables, configs and response package;
-4. cross-check every human-readable hash here against those machine records;
-5. refuse release on any discrepancy.
+Final resubmission checks:
+1. P1 pending field replaced with completed run/artifact/digest: PASS.
+2. final private manuscript source/PDF exported and byte-hashed: PASS.
+3. machine hashes generated for manuscript, supplement, figures, response and cover package: PASS.
+4. human-readable identities reconciled to machine records: PASS.
+5. final render/visual QA: PASS.
+
+**RELEASE STATUS: PASS / SUBMISSION READY.**
