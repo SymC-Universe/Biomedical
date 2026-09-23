@@ -251,3 +251,33 @@ A polling timeout, chat timeout, workflow queue, or interrupted tool call never 
 3. Pin the Jaruszewicz S1 Code archive/member hashes and reproduce the published native reduced-model behavior before deriving any `χ_bio` quantity.
 4. Do not open a new scalar definition, recovery endpoint, or representation choice without the relevant freeze.
 5. Keep manuscript text private.
+
+
+## Resume update — 22 September 2026 22:48 CDT
+
+**Continuity fault found and repaired**
+- The `Bio Chi Auto-Resume` automation had become **disabled** after its last run at 2026-09-23T03:23:25Z. This explains why no successor work was visible.
+- The automation has been re-enabled on its hourly schedule. No scientific state was changed.
+
+**Completed since prior checkpoint**
+- External source freeze run **35815327119** completed **SUCCESS**.
+- Artifact **10731275797** (`BIO_CHI_EXTERNAL_SOURCE_FREEZE_V01`) was downloaded and inspected; artifact digest:
+  `sha256:42cceaa2fb074eb29962eaba893f63648f5a6e4e6dcccba4397ebd02743c80ba`.
+- The freeze reports zero source-freeze failures and `molecular_values_interpreted=false`.
+- Exact hashes were frozen for accessible sub-100 MB GEO files across GSE145356, GSE164716, GSE237228, GSE97682, and GSE255671. Large archives remain explicitly `DEFERRED_LARGE_FILE`, not silently unhashed.
+- Jaruszewicz NF-kB S1 Code is now pinned at archive SHA-256:
+  `76c51b2b9c44e931f62d4956df2a0aee1b02a481472125d4ae8a0e268ad885f0`.
+  The archive contains 23 members; the three Reduced2023 MATLAB files and two Reduced2023 BNGL files have frozen member hashes.
+- Durable compact pin committed as `BIO_CHI/config/EXTERNAL_SOURCE_FREEZE_PIN_v0_1.json`.
+
+**Currently running**
+- **35815725949** — `Bio Chi Jaruszewicz native model smoke`: installs GNU Octave, verifies the untouched published S1 archive/member hashes, and runs the published Reduced2023 MATLAB driver without constructing χ_bio.
+- **35815725976** — `Bio Chi external source freeze`: reproducibility re-run triggered by the new source/native-model commit.
+- **35815725937** — Bio Chi governance/privacy guard.
+- **35815725936** — GRI v2 tests.
+
+**Next safe action**
+1. Inspect native smoke run 35815725949.
+2. If mechanical failure: preserve logs/artifact, repair the wrapper only, and rerun unchanged published source.
+3. If pass: freeze native-output hashes and begin native behavior reproduction/adjudication before any χ_bio definition or modal compression.
+4. Maintain manuscript privacy and continue Q2/Q5 mechanically.
