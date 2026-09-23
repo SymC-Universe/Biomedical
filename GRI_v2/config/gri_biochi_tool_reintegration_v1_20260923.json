@@ -1,0 +1,48 @@
+{
+  "schema": "gri-biochi-tool-reintegration-v1",
+  "date": "2026-09-23",
+  "status": "ACTIVE_CLOSURE",
+  "branch": "biosystems-v23-biochi-tool-closure-20260923",
+  "parent_submission_branch": "biosystems-v22-final-scrutiny-freeze-20260923",
+  "selective_reintegration_commit": "fac4e3ed6f57122d93cd8a7fc25c8e2dd67fed44",
+  "old_biochi_branch": "chi-bio-recovery-p0d-20260922",
+  "old_biochi_pr_merge_vehicle": false,
+  "stale_public_manuscript_tex_edit_allowed": false,
+  "current_manuscript_private": true,
+  "blocks": {
+    "M": {
+      "new_evidence": [
+        "BIO_CHI/config/JARUS_MODAL_INVENTORY_V01_RESULT_PIN.json",
+        "BIO_CHI/config/JARUS_FULL_STATE_REPRESENTATION_CONTROL_V01_RESULT_PIN.json"
+      ],
+      "status": "DESCRIPTIVE_NATIVE_MODAL_PRECURSOR_NOT_ADMITTED_AS_CHI_BIO"
+    },
+    "T": {
+      "new_evidence": [
+        "BIO_CHI/config/SU2026_SIMPLE_RECOVERY_V01_FREEZE.json",
+        "BIO_CHI/artifacts/SU2026_SIMPLE_RECOVERY_V01_RESULT_AUDIT_20260923.md"
+      ],
+      "status": "ORDERED_RECOVERY_SUPPORTED_P0D_ONE_MELANOMA_TRAJECTORY"
+    },
+    "Q": {
+      "new_evidence": [
+        "BIO_CHI/control/AUTORUN_CHECKPOINT.md",
+        "BIO_CHI/reviewer/REPRODUCE.md"
+      ],
+      "status": "REFUSAL_PROVENANCE_AND_REPRODUCIBILITY_ACTIVE"
+    }
+  },
+  "static_scalar_status": "NOT_ADMITTED",
+  "historical_cv2_status": "RETIRED_NOT_PHYSICAL_DAMPING",
+  "internal_predictive_core": "SUPPORTED_BOUNDED_INTERNAL",
+  "external_cross_layer_transport": "NOT_DETECTED",
+  "external_h1_structural_transport": "SUPPORTED",
+  "general_predictive_tool_promotion": "NOT_LICENSED",
+  "manuscript_facing_closure": "BOUNDED_INTERNAL_PREDICTION_PLUS_EXTERNAL_STRUCTURAL_TRANSPORT_PLUS_DIRECT_DYNAMIC_EVIDENCE",
+  "next": [
+    "REVIEWER_RESPONSE_SCOPE_REPAIR",
+    "PUBLIC_REPRODUCIBILITY_INDEX_UPDATE",
+    "PRIVATE_V22_MANUSCRIPT_CONSISTENCY_AUDIT",
+    "FINAL_SUBMISSION_BINDING"
+  ]
+}
