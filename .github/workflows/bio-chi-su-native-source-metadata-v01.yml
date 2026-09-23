@@ -1,0 +1,34 @@
+name: Bio Chi Su native source metadata v0.1
+on:
+  push:
+    branches: [chi-bio-recovery-p0d-20260922]
+    paths:
+      - 'BIO_CHI/config/SU2026_NATIVE_METHOD_SOURCE_METADATA_FREEZE_v0_1.json'
+      - 'BIO_CHI/src/audit_su_native_source_metadata_v0_1.py'
+      - '.github/workflows/bio-chi-su-native-source-metadata-v01.yml'
+  pull_request:
+    paths:
+      - 'BIO_CHI/config/SU2026_NATIVE_METHOD_SOURCE_METADATA_FREEZE_v0_1.json'
+      - 'BIO_CHI/src/audit_su_native_source_metadata_v0_1.py'
+      - '.github/workflows/bio-chi-su-native-source-metadata-v01.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit hash-pinned Su GEO metadata only
+        run: python BIO_CHI/src/audit_su_native_source_metadata_v0_1.py
+      - name: Upload native-source metadata audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_SU_NATIVE_SOURCE_METADATA_V01
+          path: BIO_CHI/artifacts/generated/su2026_native_method_source_metadata_v0_1.json
+          if-no-files-found: error
