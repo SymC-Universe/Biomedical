@@ -4,7 +4,7 @@
 **Last updated:** 23 September 2026  
 **Status:** ACTIVE  
 **Branch:** `chi-bio-recovery-p0d-20260922`  
-**Authority:** SymC General Operations Manual v0.8.4
+**Authority:** SymC General Operations Manual v0.8.6 + Bio Chi project-specific three-object nomenclature decision (23 September 2026)
 
 ## Resume contract
 
@@ -16,7 +16,7 @@ Without asking the user again, continuation may perform literature/source audits
 
 ## Scientific stop conditions
 
-Stop substantive work and surface the decision only if proceeding requires selecting or changing a scientific hypothesis after viewing decisive evidence; changing a frozen endpoint/cohort/threshold/boundary/state representation/null/comparator/mapping; choosing among materially different native biological models when the choice changes interpretation; opening decisive evidence before required freeze/independence controls; redefining `chi`, `chi_bio`, `Chi_bio`, Bio Chi, or an inheritance criterion; overriding a failed/refused/indeterminate result; expanding a publication-level causal or universal claim beyond licensed evidence; or proceeding past a source defect that makes the frozen task scientifically non-evaluable and cannot be repaired mechanically.
+Stop substantive work and surface the decision only if proceeding requires selecting or changing a scientific hypothesis after viewing decisive evidence; changing a frozen endpoint/cohort/threshold/boundary/state representation/null/comparator/mapping; choosing among materially different native biological models when the choice changes interpretation; opening decisive evidence before required freeze/independence controls; redefining `chi_bio`, `Chi_bio`, Bio Chi, or an inheritance criterion; overriding a failed/refused/indeterminate result; expanding a publication-level causal or universal claim beyond licensed evidence; or proceeding past a source defect that makes the frozen task scientifically non-evaluable and cannot be repaired mechanically.
 
 ## Current execution queue
 
