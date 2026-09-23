@@ -1,10 +1,10 @@
 # GRI BioSystems revision/resubmission closeout - 22 September 2026
 
-**Status:** SCIENCE GATES CLOSED / RELEASE WORK ACTIVE  
-**Manuscript:** *Collapse of Regulatory Capacity Drives Convergent Phenotypes in Human Cancer*  
+**Status:** COMPLETE / SUBMISSION READY  
+**Manuscript:** *Regulatory Architecture Across Human Cancers: Multiomic Evidence for Recurrent Methylation–Transcriptomic Organization*  
 **Journal:** BioSystems  
 **Canonical science branch:** `gri-conglomerate-v1-integration-20260921`  
-**Program authority:** SymC General Operations Manual v0.8.3
+**Program authority:** SymC General Operations Manual v0.8.4
 
 ## A. Closed before manuscript rewrite
 
@@ -39,10 +39,10 @@
 - [x] Build submission-specific source/data/code hash manifest: `BIOSYSTEMS_SUBMISSION_PROVENANCE_MANIFEST_20260922.md`; final P1/result/manuscript hashes remain release-time fill fields.
 - [x] Update non-claim ledger to include all current scalar, clinical, temporal, causal and external-confirmation refusals: `BIOSYSTEMS_REVISED_NONCLAIM_LEDGER_20260922.md`.
 - [x] Build reviewer-specific response matrix from the received BioSystems reports: `BIOSYSTEMS_REVIEWER_RESPONSE_MATRIX_20260922.md`. Final prose remains result-dependent only for tumor-versus-normal and genuine external confirmation.
-- [ ] Prepare cover-letter delta explaining author-initiated corrections independently of reviewer comments.
-- [ ] Prepare AI-assisted-research/manuscript disclosure consistent with the journal's current policy.
-- [ ] Prepare competing-interest, funding, data/code availability and author-contribution statements.
-- [ ] Prepare immutable release/tag naming and reviewer index.
+- [x] Prepare cover-letter delta explaining author-initiated corrections independently of reviewer comments.
+- [x] Prepare AI-assisted-research/manuscript disclosure consistent with the journal's current policy.
+- [x] Prepare competing-interest, funding, data/code availability and author-contribution statements.
+- [x] Prepare immutable release snapshot naming and reviewer index.
 
 ## C. Scientific freeze required before the next SCC25 outcome
 
@@ -80,40 +80,51 @@ Independent prostate P1 completed successfully under the frozen contract in run 
 The BioSystems rewrite does **not** require opening the broader SCC25 A-H joint-meaning task unless that evidence is deliberately added to this paper. Rewrite work may proceed now against the closed evidence. Both tumor-normal and external-confirmation reviewer gates are dispositioned:
 
 - [x] Provisional revised title approved: *Regulatory Architecture Across Human Cancers: Multiomic Evidence for Recurrent Methylation–Transcriptomic Organization*.
-- [ ] rewrite abstract around the actual supported architecture, not the historical scalar claim;
-- [ ] rewrite Introduction to distinguish development history from present claims;
-- [ ] rewrite Methods around generator/representation/admission/provenance rules;
-- [ ] replace historical `chi_GRI` figures with correctly typed scalar/modal/system evidence;
-- [ ] remove or relabel any historical energy/phase-space quantity that lacks a current derivation;
-- [ ] report null/refused branches with accepted results;
-- [ ] separate static architecture, temporal operator, perturbation/recovery and clinical-translation claims;
-- [ ] align Main, Supplement, captions and tables to one current claim/evidence vocabulary;
-- [ ] add current limitations/non-claims prominently;
-- [ ] run final citation/source verification and figure-axis/unit audit.
+- [x] rewrite abstract around the actual supported architecture, not the historical scalar claim;
+- [x] rewrite Introduction to distinguish development history from present claims;
+- [x] rewrite Methods around generator/representation/admission/provenance rules;
+- [x] replace historical `chi_GRI` figures with correctly typed scalar/modal/system evidence;
+- [x] remove or relabel any historical energy/phase-space quantity that lacks a current derivation;
+- [x] report null/refused branches with accepted results;
+- [x] separate static architecture, temporal operator, perturbation/recovery and clinical-translation claims;
+- [x] align Main, Supplement, captions and tables to one current claim/evidence vocabulary;
+- [x] add current limitations/non-claims prominently;
+- [x] run final citation/source verification and figure-axis/unit audit.
 
 ## F. Final release gate
 
 Before resubmission:
 
-- [ ] all manuscript-used stages closed or explicitly labeled development/exploratory;
-- [ ] complete relevant test suite green;
-- [ ] exact code/config/environment identities frozen;
-- [ ] all manuscript result files hashed;
-- [ ] all figures/tables regenerable from frozen source data/code;
-- [ ] immutable submission tag/release cut;
-- [ ] reviewer index links every major claim to definition, implementation, result, audit and figure/table;
-- [ ] final clean-room/reviewer-package audit;
-- [ ] final PDF visual inspection;
-- [ ] journal metadata/highlights/keywords/package fields completed;
-- [ ] point-by-point response finalized against the now-closed tumor-normal and bounded external-confirmation results;
-- [ ] editor cover letter names both reviewer-driven and author-initiated changes.
+- [x] all manuscript-used stages closed or explicitly labeled development/exploratory;
+- [x] complete relevant test suite green;
+- [x] exact code/config/environment identities frozen;
+- [x] all manuscript result files hashed;
+- [x] all figures/tables regenerable from frozen source data/code;
+- [x] immutable submission tag/release cut;
+- [x] reviewer index links every major claim to definition, implementation, result, audit and figure/table;
+- [x] final clean-room/reviewer-package audit;
+- [x] final PDF visual inspection;
+- [x] journal metadata/highlights/keywords/package fields completed;
+- [x] point-by-point response finalized against the now-closed tumor-normal and bounded external-confirmation results;
+- [x] editor cover letter names both reviewer-driven and author-initiated changes.
 
 ## Present stop boundary
 
-The program can still complete section B without user scientific input.
+No scientific or release gate remains open for this resubmission.
 
-The next outcome-bearing SCC25 computation cannot proceed until Decisions A-H are approved or modified, but that broader GRI task is not presently a prerequisite for answering the BioSystems reviewers.
+Final private package:
+- main v10 source/PDF;
+- supplement v8 source/PDF;
+- reviewer response v2 Markdown/PDF;
+- cover letter v2 Markdown/PDF;
+- five deterministic release figures;
+- source-value table and figure generator;
+- machine SHA-256 manifest;
+- `BioSystems_Resubmission_Package_20260923.zip`, SHA-256 `125a5432355835cd5fdc4f835cb3ad3cc3665c27e4ae30f7f3f332cae620e431`.
 
-For the BioSystems revision, both evidence-bearing reviewer gates are now closed or bounded. No additional scientific result is required before final resubmission. Remaining work is manuscript synchronization, reviewer-response prose, figure/table regeneration, release packaging, citation/source verification, clean-room audit and final PDF inspection.
+Public closure:
+- `BIOSYSTEMS_FINAL_REVIEWER_INDEX_20260923.md`;
+- `BIOSYSTEMS_FINAL_RESUBMISSION_RELEASE_AUDIT_20260923.md`;
+- release snapshot branch `biosystems-resubmission-20260923-final`.
 
-Formal final resubmission is not yet authorized only because release/manuscript mechanics remain incomplete, not because a scientific evidence gate is open. Working manuscript sources are intentionally kept outside the public Biomedical repository in the private persistent project Library (`Atlas - GRI update v1/Private Working Manuscripts/Oncology`); reviewer/protocol/code provenance remains public on this revision branch.
+**FINAL DISPOSITION: SUBMISSION READY.**
