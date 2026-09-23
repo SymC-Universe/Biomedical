@@ -584,24 +584,28 @@ def main():
     full32_parts = cfg["primary_450k"]["complete_pair_pool"]
     epic_parts = cfg["epic_sensitivity"]["participants"]
 
+    mask_lookup = {str(p): bool(m) for p, m in zip(c1_probe_ids, c1_mask)}
+    def aligned_mask(pids):
+        return np.asarray([mask_lookup[str(p)] for p in pids], dtype=bool)
+
     m30 = read_external_methylation(a.m450, c1_probe_ids, primary_parts)
     r30 = read_external_rna(a.rna, primary_parts, modules)
     primary, primary_nulls, primary_diag = run_architecture_lane(
-        m30["tumor"], m30["normal"], c1_probe_ids, c1_mask, r30["tumor"], r30["genes"],
+        m30["tumor"], m30["normal"], m30["probe_ids"], aligned_mask(m30["probe_ids"]), r30["tumor"], r30["genes"],
         core_raw, modules, ns, "PRIMARY_450K_N30", a.workers
     )
 
     m32 = read_external_methylation(a.m450, c1_probe_ids, full32_parts)
     r32 = read_external_rna(a.rna, full32_parts, modules)
     full32, full32_nulls, full32_diag = run_architecture_lane(
-        m32["tumor"], m32["normal"], c1_probe_ids, c1_mask, r32["tumor"], r32["genes"],
+        m32["tumor"], m32["normal"], m32["probe_ids"], aligned_mask(m32["probe_ids"]), r32["tumor"], r32["genes"],
         core_raw, modules, ns, "SENSITIVITY_450K_N32", a.workers
     )
 
     me = read_external_methylation(a.epic, c1_probe_ids, epic_parts)
     re = read_external_rna(a.rna, epic_parts, modules)
     epic, epic_nulls, epic_diag = run_architecture_lane(
-        me["tumor"], me["normal"], c1_probe_ids, c1_mask, re["tumor"], re["genes"],
+        me["tumor"], me["normal"], me["probe_ids"], aligned_mask(me["probe_ids"]), re["tumor"], re["genes"],
         core_raw, modules, ns, "SENSITIVITY_EPIC_N26", a.workers
     )
 
