@@ -1,0 +1,67 @@
+{
+  "schema_version": "0.2",
+  "project": "Bio Chi Investigation",
+  "authority": "SymC GOM v0.8.4",
+  "freeze_type": "prospective_mechanical_repair_of_invalid_native_behavior_execution",
+  "supersedes_for_behavior_adjudication": "BIO_CHI/config/JARUS_FIG8_EXECUTION_FREEZE_v0_1.json",
+  "preserved_failure_pin": "BIO_CHI/config/JARUS_FIG8_EXECUTION_VALIDITY_PIN_v0_1.json",
+  "repair_basis": [
+    "published Figure 8 describes tonic TNF beginning at t=1 h",
+    "published Figure 8B/C parameter sets are unchanged",
+    "source audit proves the supplied helper hardcodes t_end=24 h and plot_tspan_h=[0,10] and therefore cannot safely execute the prior 30 h B/C calls",
+    "the invalid v0.1 B/C output is preserved and is neither a scientific pass nor failure"
+  ],
+  "scientific_endpoint_opened_at_freeze": false,
+  "behavior_adjudication_rule_changed": false,
+  "chi_bio_constructed_at_freeze": false,
+  "execution": {
+    "runtime": "MATLAB R2023b",
+    "solver_family": "ode23s",
+    "model_equations": "pinned Reduced2023 reduced.m with only the prospectively frozen Figure 8 parameter overrides",
+    "state_order": ["IKKn", "IKKa", "free nuclear NF-kappaB", "A20", "free cytoplasmic IkappaBalpha", "IkappaBalpha_t"],
+    "initial_reference_state": [1, 0, 0, 0, 0, 0],
+    "equilibration": "integrate the pinned reduced equations from -20 h to 1 h with TR=0 from the published TR=0 steady state, then use the terminal state as the tonic-stimulation initial condition",
+    "tnf_protocol": "set TR=1 continuously from t=1 h through the frozen observation endpoint; do not append a TNF-off rest segment",
+    "output": "raw six-state trajectory with strictly monotone time; no plotting normalization is used for behavior adjudication",
+    "classification_this_gate": "none"
+  },
+  "cases": [
+    {
+      "id": "FIG8A_NOMINAL_DAMPED",
+      "observation_start_hours": 0,
+      "tnf_onset_hours": 1,
+      "observation_end_hours": 10,
+      "endpoint_basis": "published helper native plot span is [0,10] h and its nominal continuous protocol uses 9 h TNF beginning at 1 h",
+      "parameter_overrides": {}
+    },
+    {
+      "id": "FIG8B_LIMIT_CYCLE",
+      "observation_start_hours": 0,
+      "tnf_onset_hours": 1,
+      "observation_end_hours": 30,
+      "endpoint_basis": "paper Figure 8 long-window limit-cycle panel; tonic TNF remains ON through the observation endpoint",
+      "parameter_overrides": {"a2_s^-1": 0.02, "c5a_s^-1": 0.00001, "i1a_s^-1": 0.0001}
+    },
+    {
+      "id": "FIG8C_RELAXATION_OSCILLATION",
+      "observation_start_hours": 0,
+      "tnf_onset_hours": 1,
+      "observation_end_hours": 30,
+      "endpoint_basis": "paper Figure 8 long-window relaxation-like panel; tonic TNF remains ON through the observation endpoint",
+      "parameter_overrides": {"a2_s^-1": 0.01, "c5a_s^-1": 0.00001, "i1a_s^-1": 0.0001}
+    }
+  ],
+  "guards": {
+    "no_model_equation_change": true,
+    "no_parameter_change_beyond_published_figure8_sets": true,
+    "no_posthoc_behavior_threshold_change": true,
+    "no_smoothing": true,
+    "no_scalar_construction": true,
+    "no_mode_selection": true,
+    "strictly_monotone_time_required": true,
+    "all_states_finite_required": true,
+    "preserve_failed_or_nonmatching_case": true
+  },
+  "next_gate_if_execution_succeeds": "bind the corrected trajectories to the already-frozen Figure 8 behavior adjudication rules before any stability-mode or chi_bio construction",
+  "forbidden_interpretation": "This repair changes execution control flow only to implement tonic TNF over the paper/source-defined observation horizon. It does not rescue a biological claim, choose a favorable regime, or license chi_bio."
+}
