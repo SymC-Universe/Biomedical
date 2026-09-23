@@ -9,6 +9,8 @@ on:
       - '.github/workflows/gri-biosystems-external-prostate-p1.yml'
       - 'GRI_v2/src/run_biosystems_external_prostate_p1.py'
       - 'GRI_v2/config/biosystems_external_prostate_p1_v1_0.json'
+      - 'GRI_v2/support/c1_probe_ids_22601.txt'
+      - 'GRI_v2/support/tn_c1_core_mask_payload.lzma.b64'
       - 'GRI_v2/reviewer/BIOSYSTEMS_EXTERNAL_PROSTATE_P1_EXECUTION_CLARIFICATION_20260922.md'
 
 jobs:
@@ -44,40 +46,6 @@ jobs:
           curl --fail --location --retry 5 --retry-delay 3 \
             'https://ftp.ncbi.nlm.nih.gov/geo/series/GSE262nnn/GSE262524/suppl/GSE262524_EPIC_Proc_Funnorm.tsv.gz' \
             -o p1_sources/GSE262524_EPIC_Proc_Funnorm.tsv.gz
-
-      - name: Acquire exact frozen PanCan C1 carrier source
-        shell: bash
-        run: |
-          set -euo pipefail
-          curl --fail --location --retry 5 --retry-delay 3 \
-            'https://api.gdc.cancer.gov/data/d82e2c44-89eb-43d9-b6d3-712732bf6a53' \
-            -o p1_sources/jhu-usc.edu_PANCAN_merged_HumanMethylation27_HumanMethylation450.betaValue_whitelisted.tsv
-
-      - name: Recover exact frozen C1A annotation sources
-        shell: bash
-        run: |
-          set -euo pipefail
-          rm -rf c1a_handoff
-          mkdir -p c1a_handoff
-          gh run download 33318029738 \
-            --repo SymC-Universe/Biomedical \
-            -n CSA_STAGE_C1A_PROBE_INVENTORY_WINDOWS_20260830 \
-            -D c1a_handoff
-          test -f c1a_handoff/stage_c1a_annotation_export.tsv.gz
-          test -f c1a_handoff/stage_c1a_chen_crossreactive_probe_ids.txt
-          test -f c1a_handoff/STAGE_C1A_ANNOTATION_SOURCE_SUMMARY.json
-
-      - name: Reconstruct exact 22601-probe C1 carrier without parsing PanCan beta values
-        shell: bash
-        run: |
-          set -euo pipefail
-          rm -rf c1a_runtime
-          python GRI_v2/src/run_stage_c1a_probe_inventory.py \
-            --methylation-tsv p1_sources/jhu-usc.edu_PANCAN_merged_HumanMethylation27_HumanMethylation450.betaValue_whitelisted.tsv \
-            --annotation-export c1a_handoff/stage_c1a_annotation_export.tsv.gz \
-            --chen-ids c1a_handoff/stage_c1a_chen_crossreactive_probe_ids.txt \
-            --source-summary c1a_handoff/STAGE_C1A_ANNOTATION_SOURCE_SUMMARY.json \
-            --outdir c1a_runtime
 
       - name: Acquire exact frozen Hallmark GMT
         shell: bash
@@ -115,8 +83,8 @@ jobs:
             --m450 p1_sources/GSE262522_m450K_Proc_Funnorm.tsv.gz \
             --epic p1_sources/GSE262524_EPIC_Proc_Funnorm.tsv.gz \
             --gmt p1_sources/h.all.v2026.1.Hs.symbols.gmt \
-            --c1-flags c1a_runtime/stage_c1a_probe_flags.csv.gz \
-            --c1-map c1a_runtime/stage_c1a_probe_gene_region_map.csv.gz \
+            --c1-probes GRI_v2/support/c1_probe_ids_22601.txt \
+            --support GRI_v2/support/tn_c1_core_mask_payload.lzma.b64 \
             --out P1_RESULTS \
             --workers 4
 
@@ -139,7 +107,7 @@ jobs:
 
       - name: Remove large source material
         if: always()
-        run: rm -rf p1_sources c1a_handoff c1a_runtime
+        run: rm -rf p1_sources
 
       - uses: actions/upload-artifact@v4
         if: always()
