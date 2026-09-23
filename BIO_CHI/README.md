@@ -2,7 +2,7 @@
 
 **Status:** ACTIVE P0-D / FUNCTION + LIMIT MAPPING  
 **Branch:** `chi-bio-recovery-p0d-20260922`  
-**Program authority:** SymC General Operations Manual v0.8.4  
+**Program authority:** SymC General Operations Manual v0.8.6 + Bio Chi project-specific three-object nomenclature decision (23 September 2026)  
 **Repository role:** public reproducibility, evidence, protocol, code, provenance, checkpoints, and reviewer navigation. Working manuscript text is private.
 
 ## Scientific hierarchy
@@ -21,7 +21,7 @@ Bio Chi
 = biological conglomerate/system stability architecture
 ```
 
-The cross-level mappings among `χ_bio`, `Χ_bio`, and Bio Chi are themselves research targets.
+The project contains exactly three biological objects: `χ_bio`, `Chi_bio`, and Bio Chi. The program-wide `χ` symbol is not a fourth biological object. Cross-level mappings among the three biological objects are themselves research targets.
 
 ## Current scientific state
 
