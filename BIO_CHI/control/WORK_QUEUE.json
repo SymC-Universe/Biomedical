@@ -29,7 +29,7 @@
     {
       "id": "Q2",
       "name": "dataset_eligibility_source_qualification",
-      "status": "active_source_mapping_blum_exact_archive_closed_method_limit_preserved_harmange_shaffer_lee_metadata_qualified_bioproject_sra_reconciliation_active"
+      "status": "active_blum_source_schema_qualified_exact_native_metric_reproduction_refused_method_underspecified_parallel_lineage_source_mapping_active"
     },
     {
       "id": "Q3",
@@ -68,30 +68,37 @@
     }
   ],
   "active_source_gate": {
-    "stage": "Q2_SOURCE_AND_METHOD_QUALIFICATION",
-    "testbed_promotion": false,
-    "completed": {
-      "blum_exact_archive_pin": "BIO_CHI/config/BLUM2019_MENDELEY_SOURCE_FREEZE_V02_RESULT_PIN.json",
-      "blum_archive_sha256": "8bbd1ead46b5bb6b676bd47a5f415fdd790840a9c726321dc5c209b9c527bc62",
-      "blum_schema_inventory": "PASS_METADATA_ONLY_103_MEMBERS",
-      "blum_native_method_disposition": "EXACT_NATIVE_METRIC_REPRODUCTION_BLOCKED_METHOD_UNDERSPECIFIED",
-      "harmange_shaffer_geo_lineage_pin": "BIO_CHI/config/P0D_GEO_LINEAGE_METADATA_V01_RESULT_PIN.json",
-      "harmange_source_status": "GSE237228_PRJNA994430_22_GEO_SAMPLES_WITH_SRX_LINKS",
-      "shaffer_source_status": "GSE97682_SUPERSERIES_PRJNA382641_155_GEO_SAMPLES_WITH_SRX_LINKS_AND_DRUG_HOLIDAY_LABELS",
-      "lee_run_map_pin": "BIO_CHI/config/LEE2014_SRP040309_SOURCE_MAP_V01_RESULT_PIN.json",
-      "lee_sample_metadata_pin": "BIO_CHI/config/LEE2014_SRA_SAMPLE_METADATA_V01_RESULT_PIN.json",
-      "lee_public_rna_recovery_status": "NO_EXPLICIT_RECONVERTED_OR_POST_WITHDRAWAL_RNA_SAMPLE_IN_SRP040309"
-    },
-    "active": {
-      "bioproject_sra_reconciliation_run": 35864501395,
-      "bioprojects": [
-        "PRJNA994430",
-        "PRJNA382641"
-      ],
-      "scientific_values_opened": false
-    },
-    "next_safe_task": "inspect and pin BioProject-to-SRA reconciliation; then continue outcome-blind recovery/source qualification without inventing a replacement Blum metric or treating Lee SRP040309 as direct recovery",
-    "scientific_stop_before": "any new state representation, testbed promotion rule change, recovery endpoint change, carrier mapping, or chi_bio/Chi_bio/Bio Chi admission that is not already prospectively frozen"
+    "candidate": "blum2019_erk",
+    "article_doi": "10.15252/msb.20198947",
+    "processed_dataset_pin": "BIO_CHI/config/BLUM2019_MENDELEY_DATA_PIN_v0_1.json",
+    "source_freeze_result_pin": "BIO_CHI/config/BLUM2019_MENDELEY_SOURCE_FREEZE_V02_RESULT_PIN.json",
+    "processed_dataset_doi": "10.17632/ccnxn84w8z.2",
+    "processed_dataset_file": "data.zip",
+    "processed_dataset_license": "CC BY 4.0",
+    "direct_archive_endpoint_frozen": true,
+    "archive_file_uuid": "b8e7b821-d59b-4b42-b34e-1d679ace693d",
+    "archive_size_bytes": 8352835,
+    "archive_sha256": "8bbd1ead46b5bb6b676bd47a5f415fdd790840a9c726321dc5c209b9c527bc62",
+    "schema_inventory_status": "PASS_METADATA_ONLY_INVENTORY_103_MEMBERS",
+    "schema_inventory_run": 35863951277,
+    "schema_inventory_artifact": 10751880243,
+    "native_input_mapping_status": "PASS_DOCUMENTATION_AND_HEADERS_CAPTURED_NO_DATA_ROWS",
+    "native_input_mapping_run": 35863951436,
+    "native_input_mapping_artifact": 10751309038,
+    "native_method_qualification_pin": "BIO_CHI/config/BLUM2019_NATIVE_METHOD_QUALIFICATION_PIN_v0_1.json",
+    "exact_native_metric_reproduction_status": "REFUSED_METHOD_UNDERSPECIFIED",
+    "missing_method_details": [
+      "histogram bin count",
+      "histogram bin edges/range and shared-bin rule",
+      "pseudocount/smoothing rule",
+      "missing-value handling",
+      "time alignment/interpolation rule",
+      "original Figure 1H implementation code"
+    ],
+    "scientific_values_opened": false,
+    "testbed_promoted": false,
+    "next_safe_task": "continue outcome-blind Q2 source qualification: Harmange lineage/barcode mapping, Shaffer execution-source reconciliation, and Lee SRP040309 source/design mapping; seek exact Blum JM implementation only if a public/original script can be identified without inventing method choices",
+    "scientific_stop_before": "introducing any new histogram/alignment/state-representation rule and calling it the published Blum native implementation"
   },
   "active_native_model_gate": {
     "system": "Jaruszewicz-Blonska reduced NF-kB model",
