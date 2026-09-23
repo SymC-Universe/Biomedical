@@ -227,16 +227,21 @@ The private boundary does not conceal any scientific decision rule or result ide
 Final public release audit:
 - `GRI_v2/reviewer/BIOSYSTEMS_ADVERSARIAL_R1_FINAL_RELEASE_AUDIT_20260923.md`.
 
+Final-clause audit:
+- `GRI_v2/reviewer/BIOSYSTEMS_ADVERSARIAL_R1_FINAL_CLAUSE_AUDIT_20260923.md`.
+
 Private package:
-- `BioSystems_Resubmission_R1_Final_20260923.zip`;
-- SHA-256 `7a27d9942e9566ec4eb563dfd71c0db27b9f9924d928f573b672cb5fb963aeef`.
+- `BioSystems_Resubmission_R1_v12_Final_20260923.zip`;
+- SHA-256 `2531ca4e3e1a72e1473c97cb4c7a402f217ed2d2068753e5a8780b1d94ee8226`.
 
-Private main PDF SHA-256:
-`1920411994aa18cd60533e042c5d90dad9eac9ad9c219f12b9a423294ca1f91a`.
+Private main v12 PDF SHA-256:
+`fdf1170705fdf86ab4ae665a855c5c974cedc2971e53fe611c51ff62a20fdf6b`.
 
-Private supplement PDF SHA-256:
-`ae59d743d130e371306c00466ce8b94c0e3f84546dcb8d4babf4cb16c248b14a`.
+Private supplement v10 PDF SHA-256:
+`35edb01a1220ba91459ef5fa91eb175bd9db0e2d5050bfa06f932b4fc6914007`.
 
 The manuscript text remains private; these hashes bind the private submission artifacts to the public chronology without exposing the authoring files.
 
-**INDEX STATUS: COMPLETE.**
+The final-clause audit also binds the 30/30 exclusions (DLBC/THYM), matched 0.12332 -> 0.09998 -> 0.08162 attenuation sequence, per-cancer TSS support, 5/32 missingness-projection scope, and external paired-RNA attenuation language.
+
+**INDEX STATUS: COMPLETE / V12 FINAL-CLAUSE RELEASE.**
