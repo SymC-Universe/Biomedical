@@ -41,13 +41,14 @@ with (BIO / "config" / "P0D_TESTBED_REGISTRY_v0_1.json").open(encoding="utf-8") 
 
 n = queue.get("nomenclature", {})
 expected = {
-    "chi": "program-wide scalar stability class/symbol",
-    "chi_bio": "biological scalar instance/sublabel of chi if licensed",
+    "chi_bio": "biological scalar instance/sublabel of program-wide chi if licensed",
     "Chi_bio": "biological modal/vector representation",
     "Bio_Chi": "biological conglomerate/system stability architecture",
 }
 if n != expected:
     fail(f"nomenclature drift: {n!r}")
+if queue.get("nomenclature_note") != "Exactly three biological objects. Program-wide chi is a parent symbol/class, not a fourth biological object.":
+    fail("three-object nomenclature note drift")
 
 policy = queue.get("continuation_policy", {})
 if policy.get("resume_from_checkpoint") is not True:
