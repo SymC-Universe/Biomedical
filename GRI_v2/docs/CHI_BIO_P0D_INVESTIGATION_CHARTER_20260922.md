@@ -3,7 +3,7 @@
 **Opened:** 22 September 2026  
 **Status:** P0-D EXPLORATORY / FUNCTION MAPPING  
 **Branch:** `chi-bio-recovery-p0d-20260922`  
-**Program authority:** SymC General Operations Manual v0.8.4  
+**Program authority:** SymC General Operations Manual v0.8.6, with the later Bio Chi project-specific three-object nomenclature decision controlling biological object names  
 **Inherited source state:** `gri-biosystems-revision-20260922`  
 **Purpose tag:** `FUNCTION_MAPPING | HYPOTHESIS_GENERATION`
 
@@ -11,7 +11,7 @@
 
 The BioSystems tumor-normal control now supports a static result: tumor tissue shows a reproducible weakening of several within-layer/modular organization measures relative to TCGA adjacent normal tissue, while cross-layer organization persists and reorganizes heterogeneously. That result does not measure recovery and does not admit a biological scalar chi.
 
-The historical scalar `Chi_bio` admission cycle remains closed as `NOT_ADMITTED`. This lineage does not reopen or retune it.
+The historical scalar `χ_bio` admission cycle remains closed as `NOT_ADMITTED`. This lineage does not reopen or retune it.
 
 The new question is broader and recovery-first:
 
@@ -188,7 +188,7 @@ The investigation narrows rather than repairs itself if:
 - an apparent boundary depends on tuning, rank, basis, normalization, or post-result selection;
 - independent transport fails.
 
-A valid outcome is therefore a modal `Χ_bio` and/or conglomerate Bio Chi result with no admitted biological scalar `χ_bio`.
+A valid outcome is therefore an informative modal/vector `Chi_bio` and/or conglomerate/system Bio Chi result with no admitted biological scalar `χ_bio`.
 
 ## 9. Immediate execution sequence
 
@@ -215,12 +215,23 @@ first_task = LITERATURE_AND_DATASET_ELIGIBILITY_COLLISION
 
 ## Canonical terminology control
 
-Prospective writing in this lineage uses:
+The Bio Chi project contains exactly three biological objects. This project-specific nomenclature decision is later than the generic GOM wording and controls terminology inside this lineage:
 
 ```text
-χ_bio = lowercase scalar/local-modal biological coordinate, if licensed
-Χ_bio / Chi_bio = capital system-scale biological stability architecture/state
-Biological Chi = integrated construct containing χ_bio, Χ_bio, and their relation
+χ_bio
+= lowercase biological scalar instance of program-wide χ, if licensed
+
+Chi_bio
+= biological modal/vector representation
+
+Bio Chi
+= biological conglomerate/system stability architecture
 ```
 
-Biological Chi is not a third scalar and is not defined as an arithmetic sum. The relation `χ_bio <-> Χ_bio` is itself a research target and is part of the integrated Biological Chi construct.
+There is no fourth biological object.
+
+The program-wide symbol `χ` is the parent scalar class/symbol and is not counted as a fourth Bio Chi object.
+
+Bio Chi is not an arithmetic sum. The relations `χ_bio <-> Chi_bio`, `Chi_bio <-> Bio Chi`, and `χ_bio <-> Bio Chi` are themselves research targets.
+
+**Prospective writing rule:** use `χ_bio` only for the scalar biological coordinate when licensed; use `Chi_bio` for modal/vector biological structure; use **Bio Chi** for the conglomerate/system architecture.
