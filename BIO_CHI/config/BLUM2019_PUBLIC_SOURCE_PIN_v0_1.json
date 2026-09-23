@@ -1,0 +1,48 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "source": "Blum et al. 2019 temporal ERK/MAPK perturbation",
+  "doi": "10.15252/msb.20198947",
+  "repository": "Mijan/LFNS_MSB",
+  "branch": "MSB_version",
+  "commit_sha": "5c917abda0618d75c00c9cab45f24ed893dd71f1",
+  "tree_sha": "cbb79d66f79a84bc8af28ca85f1678295348da83",
+  "commit_date_utc": "2019-08-20T10:10:05Z",
+  "commit_message": "remarks for inference results added",
+  "verified_public_components": {
+    "readme_path": "README.txt",
+    "readme_blob_sha": "8c1625ef2e1be0c7e9f89ee5936cd1a6df0856a1",
+    "model_config_root": "FGF2_models",
+    "inference_results_root": "Inference_results",
+    "inference_result_examples": [
+      "Inference_results/Fgf_A1",
+      "Inference_results/Fgf_A2",
+      "Inference_results/Fgf_A3",
+      "Inference_results/Fgf_B1",
+      "Inference_results/Fgf_B2",
+      "Inference_results/Fgf_B3",
+      "Inference_results/Fgf_C1",
+      "Inference_results/Fgf_C2",
+      "Inference_results/Fgf_C3",
+      "Inference_results/Fgf_D1",
+      "Inference_results/Fgf_D2",
+      "Inference_results/Fgf_D3"
+    ],
+    "readme_claim": "trimmed LF-NS toolbox used for the Blum et al. inference runs; examples of configuration files are under FGF2_models"
+  },
+  "public_processed_data_status": "paper full text reports online source data for main figures",
+  "raw_microscopy_status": "not established as public by the targeted source audit",
+  "native_metric": "Jeffries-Matusita population distance as defined by the publication",
+  "recovery_design": "short temporal perturbations with washout/recovery are described in the publication",
+  "outcome_opened": false,
+  "promotion_decision": "NONE",
+  "chi_bio_constructed": false,
+  "Chi_bio_admitted": false,
+  "Bio_Chi_constructed": false,
+  "epistemic_role": "outcome-blind source identity pin for Q2/Q3 qualification",
+  "notes": [
+    "The repository identity is pinned to the immutable commit and tree above rather than a moving branch name.",
+    "Public model/inference source does not imply that raw microscopy is publicly downloadable.",
+    "This pin does not choose Blum 2019 as the known-truth testbed and does not authorize a new state representation or scalar construction."
+  ]
+}
