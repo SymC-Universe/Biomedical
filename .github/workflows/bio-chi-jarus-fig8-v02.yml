@@ -1,0 +1,72 @@
+name: Bio Chi Jaruszewicz Figure 8 v0.2
+
+on:
+  push:
+    branches:
+      - chi-bio-recovery-p0d-20260922
+    paths:
+      - 'BIO_CHI/config/JARUS_FIG8_EXECUTION_FREEZE_v0_2.json'
+      - 'BIO_CHI/config/JARUS_FIG8_BEHAVIOR_ADJUDICATION_FREEZE_v0_2.json'
+      - 'BIO_CHI/src/jarus_fig8_tonic_execute_v02.m'
+      - 'BIO_CHI/src/adjudicate_jarus_fig8_behavior_v02.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  execute:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare pinned source plus frozen compatibility repair
+        run: bash BIO_CHI/src/prepare_jarus_matlab_compat.sh
+      - name: Prepare frozen Figure 8 parameter copies
+        run: python BIO_CHI/src/prepare_jarus_fig8_cases.py
+      - uses: matlab-actions/setup-matlab@v3
+        with:
+          release: R2023b
+      - name: Execute corrected monotone tonic trajectories
+        uses: matlab-actions/run-command@v3
+        with:
+          command: run('BIO_CHI/src/jarus_fig8_tonic_execute_v02.m')
+          generate-summary: false
+      - name: Verify execution integrity
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          p=pathlib.Path('BIO_CHI/artifacts/generated/jarus_fig8_execution_v02/execution_summary.json')
+          d=json.loads(p.read_text())
+          assert len(d['cases']) == 3
+          assert all(x['time_monotone'] and x['all_states_finite'] for x in d['cases'])
+          assert not d['behavior_classified']
+          print('BIO_CHI_JARUS_FIG8_V02_EXECUTION_INTEGRITY_PASS')
+          PY
+      - name: Upload corrected trajectory evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_JARUS_FIG8_EXECUTION_V02
+          path: |
+            BIO_CHI/artifacts/generated/jarus_fig8_cases/case_preparation_manifest.json
+            BIO_CHI/artifacts/generated/jarus_fig8_execution_v02/**
+          if-no-files-found: error
+
+  adjudicate:
+    needs: execute
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: BIO_CHI_JARUS_FIG8_EXECUTION_V02
+          path: BIO_CHI/artifacts/generated
+      - name: Apply prospectively bound behavior rule unchanged
+        run: python BIO_CHI/src/adjudicate_jarus_fig8_behavior_v02.py
+      - name: Upload behavior adjudication including failures and refusals
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_JARUS_FIG8_BEHAVIOR_V02
+          path: BIO_CHI/artifacts/generated/jarus_fig8_behavior_v02/behavior_adjudication_v0_2.json
+          if-no-files-found: error

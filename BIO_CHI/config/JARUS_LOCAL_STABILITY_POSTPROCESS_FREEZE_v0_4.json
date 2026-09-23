@@ -1,0 +1,43 @@
+{
+  "schema_version": "0.4",
+  "status": "PROSPECTIVELY_FROZEN_MECHANICAL_POSTPROCESS_REPAIR_BEFORE_V04_OUTPUT",
+  "authority": "SymC GOM v0.8.4",
+  "source_result_pin": "BIO_CHI/config/JARUS_LOCAL_STABILITY_V03_RESULT_PIN.json",
+  "source_workflow_run_id": 35856542703,
+  "source_artifact_id": 10748186325,
+  "source_artifact_name": "BIO_CHI_JARUS_LOCAL_STABILITY_V03",
+  "source_artifact_zip_sha256": "7b17c4b2ec5c3cfd280eac48155903f329a57a1a62e4918ef4fcac4ed3aea7a9",
+  "scientific_question_changed": false,
+  "root_solver_rerun": false,
+  "parameter_cases_changed": false,
+  "seed_set_changed": false,
+  "root_acceptance_changed": false,
+  "jacobian_recomputed": false,
+  "jacobian_rule_changed": false,
+  "repair": {
+    "type": "artifact_only_postprocessing",
+    "input_field": "cases[].roots.jacobian_steps[].max_real_eigenvalue",
+    "discarded_inconsistent_summary_field": "cases[].roots.max_real_eigenvalues",
+    "reason": "the v0.3 stored summary vector is [0,0,0] while the same immutable artifact stores nonzero per-step maxima; classification must be derived from the primary per-step records under the already frozen rule",
+    "required_jacobian_step_multipliers": [1.0, 0.5, 0.25],
+    "classification": "STABLE only if max real eigenvalue <0 for all three stored steps; UNSTABLE only if >0 for all three stored steps; otherwise INDETERMINATE_NUMERICAL_SIGN",
+    "paper_claim_adjudication": {
+      "FIG8A_NOMINAL_DAMPED": "PASS only for exactly one accepted positive root classified STABLE",
+      "FIG8B_LIMIT_CYCLE": "PASS only for exactly one accepted positive root classified UNSTABLE",
+      "FIG8C_RELAXATION_OSCILLATION": "PASS only for exactly one accepted positive root classified UNSTABLE"
+    }
+  },
+  "guards": {
+    "verify_source_zip_sha256": true,
+    "preserve_v03_mechanical_failure": true,
+    "preserve_v01_v02_indeterminates": true,
+    "finite_window_results_preserved": true,
+    "no_new_roots": true,
+    "no_new_jacobians": true,
+    "no_threshold_retuning": true,
+    "no_mode_selection": true,
+    "no_chi_bio_construction": true,
+    "no_Chi_bio_construction": true,
+    "no_Bio_Chi_construction": true
+  }
+}

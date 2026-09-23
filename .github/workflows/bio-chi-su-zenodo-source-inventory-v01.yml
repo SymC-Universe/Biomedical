@@ -1,0 +1,29 @@
+name: Bio Chi Su Zenodo source inventory v0.1
+on:
+  push:
+    branches: [chi-bio-recovery-p0d-20260922]
+    paths:
+      - 'BIO_CHI/config/SU2026_ZENODO_SOURCE_INVENTORY_FREEZE_v0_1.json'
+      - 'BIO_CHI/src/inventory_su_zenodo_source_v0_1.py'
+      - '.github/workflows/bio-chi-su-zenodo-source-inventory-v01.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inventory:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Inventory Zenodo source release without member payload reads
+        run: python BIO_CHI/src/inventory_su_zenodo_source_v0_1.py
+      - name: Upload source inventory
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_SU_ZENODO_SOURCE_INVENTORY_V01
+          path: BIO_CHI/artifacts/generated/su2026_zenodo_source_inventory_v0_1.json
+          if-no-files-found: error

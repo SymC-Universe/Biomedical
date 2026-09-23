@@ -1,0 +1,59 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "source": "Blum et al. 2019 native Jeffries-Matusita method qualification",
+  "article_doi": "10.15252/msb.20198947",
+  "source_archive_pin": "BIO_CHI/config/BLUM2019_MENDELEY_SOURCE_FREEZE_V02_RESULT_PIN.json",
+  "input_mapping_freeze": "BIO_CHI/config/BLUM2019_NATIVE_METRIC_INPUT_MAPPING_FREEZE_v0_1.json",
+  "input_mapping_workflow": {
+    "run_id": 35863106904,
+    "artifact_id": 10750309130,
+    "artifact_digest": "sha256:0e82e9cb6a11e599e59b2b2f08e7c4525b8dbf717bfb0ba2f0689f1e7a40f8c5",
+    "head_sha": "bdfabf2fde8848906400184fa2e3e394f947b10b"
+  },
+  "exact_source_mapping": {
+    "ekar_header": "intensity_ekar,realtime,group.idx,id,fov",
+    "grouping_header": "group,group.idx",
+    "pulse_header": "fov,intensity_pulse,realtime,group.idx",
+    "readme_explicit_semantics": true,
+    "readme_sha256": "995cf70e541fdf91aa057741ad7c9f284c2c55a2eda1661dd6d8c55239c63ab6",
+    "data_rows_opened": false
+  },
+  "published_native_method": {
+    "jeffries_matusita": "d_JM(p,q)=sum_i (sqrt(p_i)-sqrt(q_i))^2",
+    "integrated_population_distance": "d_popul=sum_k d_JM(k)/(2N)",
+    "baseline_normalization": "each single-cell trajectory normalized to its own pre-GF-stimulation mean over the stated t=[0,40] min baseline window",
+    "observable": "single-cell EKAR2G FRET ratio",
+    "implementation_language_reported": "R"
+  },
+  "exact_reproduction_gap": {
+    "status": "MATERIAL_METHOD_DETAIL_UNSPECIFIED",
+    "missing": [
+      "number of histogram bins",
+      "histogram bin edges/range",
+      "whether bins are shared across populations/time",
+      "pseudocount or smoothing rule",
+      "missing-value handling",
+      "exact time alignment/interpolation rule if traces differ",
+      "complete implementation code for the Figure 1H population-distance calculation"
+    ],
+    "evidence": "full paper/supplement method audit did not specify these details; pinned public LFNS_MSB repository is model/inference code and no JM implementation was established"
+  },
+  "disposition": "EXACT_NATIVE_METRIC_REPRODUCTION_BLOCKED_METHOD_UNDERSPECIFIED",
+  "allowed_next_steps": [
+    "seek an exact original analysis script or author-provided implementation",
+    "use this dataset for source/schema qualification without claiming exact Figure 1H reproduction",
+    "if a new histogram rule is later proposed, freeze it explicitly as a new exploratory method rather than calling it the published native implementation"
+  ],
+  "forbidden_inferences": [
+    "do not infer a binning rule from common practice",
+    "do not claim Figure 1H exact reproduction",
+    "do not promote Blum as known-truth based on source availability alone",
+    "do not use the under-specified native metric as a confirmation gate",
+    "do not construct chi_bio, Chi_bio, or Bio Chi from this source gap"
+  ],
+  "scientific_values_interpreted": false,
+  "chi_bio_constructed": false,
+  "Chi_bio_admitted": false,
+  "Bio_Chi_constructed": false
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": "0.2",
+  "project": "Bio Chi Investigation",
+  "source": "Blum et al. 2019 Mendeley Data Version 2 data.zip exact-byte freeze",
+  "epistemic_role": "outcome-blind source identity; no archive member contents opened",
+  "dataset_id": "ccnxn84w8z",
+  "dataset_version": 2,
+  "dataset_doi": "10.17632/ccnxn84w8z.2",
+  "public_files_api": "https://data.mendeley.com/public-api/datasets/ccnxn84w8z/files?folder_id=root&version=2",
+  "public_files_api_response_sha256": "2b1e811e40a5c3241d6c4eb93031c99036001beeb316f99de3960540d9b84a25",
+  "selected_file": {
+    "id": "b8e7b821-d59b-4b42-b34e-1d679ace693d",
+    "filename": "data.zip",
+    "size_bytes": 8352835,
+    "content_details_id": "9db775ab-1ae8-49c2-8ad6-018d0c3f9af2",
+    "download_url": "https://data.mendeley.com/public-files/datasets/ccnxn84w8z/files/b8e7b821-d59b-4b42-b34e-1d679ace693d/file_downloaded"
+  },
+  "frozen_archive": {
+    "resolved_url": "https://prod-dcd-datasets-public-files-eu-west-1.s3.eu-west-1.amazonaws.com/8490808a-fe93-4dd0-9e51-23d262bbc345",
+    "size_bytes": 8352835,
+    "sha256": "8bbd1ead46b5bb6b676bd47a5f415fdd790840a9c726321dc5c209b9c527bc62",
+    "etag": "\"84471709f16b4f729de0668417b1407f\"",
+    "last_modified": "Wed, 13 May 2020 19:21:24 GMT",
+    "content_type": "application/zip",
+    "zip_magic_verified": true
+  },
+  "workflow": {
+    "run_id": 35862686108,
+    "artifact_id": 10751061699,
+    "artifact_digest": "sha256:3d6662749d550762e2534e7f3670e522c6b4fef9739d4c21ecb0b2a146fd5c2e",
+    "head_sha": "bcbc979e456c28de34def4024446fbed31c26be5"
+  },
+  "status": "PASS_SOURCE_ARCHIVE_IDENTITY_FROZEN",
+  "archive_contents_opened": false,
+  "scientific_values_interpreted": false,
+  "testbed_promoted": false,
+  "chi_bio_constructed": false,
+  "Chi_bio_admitted": false,
+  "Bio_Chi_constructed": false,
+  "next_gate": "prospectively frozen metadata-only ZIP member inventory; no member payload reads or biological metric computation"
+}

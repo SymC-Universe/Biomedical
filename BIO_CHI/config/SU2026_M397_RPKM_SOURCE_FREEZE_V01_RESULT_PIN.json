@@ -1,0 +1,21 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Su/M397 exact processed reversible RPKM source freeze",
+  "workflow_run_id": 35866612813,
+  "workflow_head_sha": "3927f24735d5051f232e16fb4718f31e261fb038",
+  "artifact_id": 10752354801,
+  "artifact_digest": "sha256:a12cb4244a096fffa5b89c492f587681b0405879cb3926b07f1d40f4e1cc8daf",
+  "status": "PASS_EXACT_COMPRESSED_SOURCE_FROZEN",
+  "geo_series": "GSE134459",
+  "source_file": "GSE134459_Reversible_RPKM_values.txt.gz",
+  "size_bytes": 2071888,
+  "sha256": "1ec204f02187289fdc0d718fe2291d34f2e3e6b943dcdf8fe627718d75a42d8c",
+  "last_modified": "Mon, 22 Jul 2019 11:50:06 GMT",
+  "decompressed": false,
+  "header_read": false,
+  "expression_values_read": false,
+  "scientific_values_interpreted": false,
+  "source_effect": "The exact processed RPKM object named by the M397 GEO sample descriptions is now byte-frozen before any decompression or value inspection.",
+  "next_gate": "prospectively frozen header-only schema audit against the 15 frozen M397 trajectory labels"
+}

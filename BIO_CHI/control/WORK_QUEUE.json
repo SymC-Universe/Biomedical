@@ -1,0 +1,154 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "authority": "SymC GOM v0.8.6 + Bio Chi project-specific three-object nomenclature decision 2026-09-23",
+  "branch": "chi-bio-recovery-p0d-20260922",
+  "continuation_policy": {
+    "resume_from_checkpoint": true,
+    "mechanical_blockers_are_stop_conditions": false,
+    "scientific_decision_required_for_stop": true,
+    "manuscript_private": true
+  },
+  "nomenclature": {
+    "chi_bio": "biological scalar instance/sublabel of program-wide chi if licensed",
+    "Chi_bio": "biological modal/vector representation",
+    "Bio_Chi": "biological conglomerate/system stability architecture"
+  },
+  "queue": [
+    {
+      "id": "Q0",
+      "name": "governance_reproducibility_spine",
+      "status": "complete_maintain"
+    },
+    {
+      "id": "Q1",
+      "name": "literature_collision_candidate_expansion",
+      "status": "active_targeted_only"
+    },
+    {
+      "id": "Q2",
+      "name": "dataset_eligibility_source_qualification",
+      "status": "active_native_observable_qualified_su_rehman_method_limits_harmange_carrier_mapping"
+    },
+    {
+      "id": "Q3",
+      "name": "known_truth_qualification_system",
+      "status": "active_blum_native_observable_reproduced_observability_identifiability_gate_pending"
+    },
+    {
+      "id": "Q4",
+      "name": "cancer_recovery_system",
+      "status": "pending_Q2_recovery_native_metric_and_source_freeze"
+    },
+    {
+      "id": "Q5",
+      "name": "chi_bio_scalar_track",
+      "status": "active_native_behavior_local_stability_and_native_biological_observable_qualified_scalar_not_admitted"
+    },
+    {
+      "id": "Q6",
+      "name": "Chi_bio_modal_track",
+      "status": "active_descriptive_generator_modal_precursor_complete_native_biological_observable_qualified_full_admission_pending_observability_identifiability"
+    },
+    {
+      "id": "Q7",
+      "name": "Bio_Chi_conglomerate_track",
+      "status": "pending_Q3_Q4_Q6"
+    },
+    {
+      "id": "Q8",
+      "name": "stability_inheritance_biological_test",
+      "status": "pending_carrier_qualified_data"
+    },
+    {
+      "id": "Q9",
+      "name": "working_manuscript",
+      "status": "not_open_private"
+    }
+  ],
+  "active_source_gate": {
+    "stage": "Q2_SOURCE_METHOD_AND_LIMIT_MAPPING",
+    "testbed_promotion": false,
+    "completed": {
+      "blum_archive_sha256": "8bbd1ead46b5bb6b676bd47a5f415fdd790840a9c726321dc5c209b9c527bc62",
+      "blum_native_method_disposition": "EXACT_NATIVE_METRIC_REPRODUCTION_BLOCKED_METHOD_UNDERSPECIFIED",
+      "harmange_geo": "GSE237228",
+      "harmange_bioproject": "PRJNA994430",
+      "harmange_sra_study": "SRP449288",
+      "harmange_geo_samples": 22,
+      "harmange_sra_runs": 23,
+      "shaffer_geo": "GSE97682",
+      "shaffer_umbrella_bioproject": "PRJNA382641",
+      "shaffer_child_bioprojects": [
+        "PRJNA382674",
+        "PRJNA382752",
+        "PRJNA382753"
+      ],
+      "shaffer_sra_studies": [
+        "SRP103825",
+        "SRP103827",
+        "SRP103828"
+      ],
+      "shaffer_sra_runs": 155,
+      "lee_public_rna_recovery_status": "NO_EXPLICIT_RECONVERTED_OR_POST_WITHDRAWAL_RNA_SAMPLE_IN_SRP040309",
+      "su_native_source_metadata_pin": "BIO_CHI/config/SU2026_NATIVE_METHOD_SOURCE_METADATA_V01_RESULT_PIN.json",
+      "su_public_code_pin": "BIO_CHI/config/SU2026_PUBLIC_CODE_PIN_v0_1.json",
+      "su_m397_rna_timepoints": 15,
+      "blum_fig2_native_input_mapping_status": "PASS_FIG2_NATIVE_INPUT_MAPPING",
+      "blum_fig2_native_input_mapping_run": 35867313079,
+      "blum_fig2_native_input_mapping_artifact": 10752731514,
+      "blum_fig2_native_mean_status": "PASS_NATIVE_FIG2_POPULATION_MEAN_REPRODUCTION",
+      "blum_fig2_native_mean_run": 35873188226,
+      "blum_fig2_native_mean_artifact": 10755884524,
+      "blum_fig2_native_mean_total_rows": 279016,
+      "blum_fig2_native_mean_total_unique_cell_tracks": 3068
+    },
+    "active": {
+      "su_next": "freeze exact processed-expression file identity/hash before opening values",
+      "rehman_next": "seek exact author analysis code/source implementation for Figure 4 PCA; otherwise preserve exact-native-method under-specification",
+      "harmange_next": "map lineage/barcode carrier correspondence from source documentation without opening target outcomes",
+      "blum_next": "P0-Q observability/identifiability qualification of publication-native EKAR trajectory representation before any reduced-state or chi_bio construction"
+    },
+    "scientific_stop_before": "inventing a missing native implementation detail, changing a frozen representation/endpoint, promoting a testbed based on agreement, or admitting chi_bio/Chi_bio/Bio Chi"
+  },
+  "active_native_model_gate": {
+    "system": "Jaruszewicz-Blonska reduced NF-kB model",
+    "published_code_pin": "BIO_CHI/config/EXTERNAL_SOURCE_FREEZE_PIN_v0_1.json",
+    "compatibility_reproduction_pin": "BIO_CHI/config/JARUS_MATLAB_COMPAT_PIN_v0_1.json",
+    "source_structure_pin": "BIO_CHI/config/JARUS_SOURCE_STRUCTURE_PIN_v0_1.json",
+    "native_output_capture_pin": "BIO_CHI/config/JARUS_NATIVE_OUTPUT_CAPTURE_PIN_v0_2.json",
+    "figure8_execution_and_behavior_pin": "BIO_CHI/config/JARUS_FIG8_V02_RESULT_PIN_v0_1.json",
+    "finite_window_behavior_status": {
+      "FIG8A_NOMINAL_DAMPED": "PASS_DAMPED_COMPATIBLE",
+      "FIG8B_LIMIT_CYCLE": "FAIL_NATIVE_BEHAVIOR_UNDER_FROZEN_FINITE_WINDOW_RULE",
+      "FIG8C_RELAXATION_OSCILLATION": "FAIL_NATIVE_BEHAVIOR_UNDER_FROZEN_FINITE_WINDOW_RULE"
+    },
+    "finite_window_failures_preserved": true,
+    "local_stability_v01": "INDETERMINATE_PRESERVED",
+    "local_stability_v02": "INDETERMINATE_PRESERVED",
+    "local_stability_v03": "MECHANICAL_POSTPROCESS_INCONSISTENCY_PRESERVED",
+    "local_stability_v04_pin": "BIO_CHI/config/JARUS_LOCAL_STABILITY_V04_RESULT_PIN.json",
+    "local_stability_v04_status": "PASS_ALL_FROZEN_FIG8_CASES",
+    "modal_inventory_pin": "BIO_CHI/config/JARUS_MODAL_INVENTORY_V01_RESULT_PIN.json",
+    "modal_inventory_status": "COMPLETE_DESCRIPTIVE_POST_VIEW_ALL_SIX_MODES",
+    "modal_inventory_prospective_validation": false,
+    "full_state_representation_control_result_pin": "BIO_CHI/config/JARUS_FULL_STATE_REPRESENTATION_CONTROL_V01_RESULT_PIN.json",
+    "full_state_representation_control_run": 35858028617,
+    "full_state_representation_control_artifact": 10747928363,
+    "full_state_representation_control_artifact_sha256": "0241360c65de72408eb7ddd68ce6ddf6956b7a7517d952ed1ac52e1dc884084a",
+    "full_state_representation_control_status": "SUCCESS_ALL_RECORDS_FINITE_NO_SPECTRAL_ABSCISSA_SIGN_CHANGE",
+    "full_state_representation_control_max_observed_relative_complex_difference": 3.9989097652916227e-10,
+    "chi_bio_constructed": false,
+    "Chi_bio_admitted": false,
+    "Bio_Chi_constructed": false,
+    "next_gate": "outcome-blind P0-Q biological observability and identifiability qualification using the now-reproduced native biological trajectory layer before any reduced observable representation or chi_bio scalar admission"
+  },
+  "stop_conditions": [
+    "material scientific choice changes a frozen hypothesis/model/endpoint",
+    "frozen source is scientifically non-evaluable and cannot be repaired mechanically",
+    "decisive evidence would be opened before required freeze/independence controls",
+    "upstream contradiction invalidates a frozen result",
+    "publication-level claim expansion requires user decision"
+  ],
+  "nomenclature_note": "Exactly three biological objects. Program-wide chi is a parent symbol/class, not a fourth biological object."
+}

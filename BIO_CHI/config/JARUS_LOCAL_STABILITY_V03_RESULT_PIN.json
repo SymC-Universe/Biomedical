@@ -1,0 +1,49 @@
+{
+  "schema_version": "0.1",
+  "status": "MECHANICAL_POSTPROCESS_INCONSISTENCY",
+  "authority": "SymC GOM v0.8.4",
+  "workflow_run_id": 35856542703,
+  "workflow_head_sha": "a9ad69733849cf1a98dd2a58d282c0afaf356cdc",
+  "artifact_id": 10748186325,
+  "artifact_name": "BIO_CHI_JARUS_LOCAL_STABILITY_V03",
+  "artifact_zip_sha256": "7b17c4b2ec5c3cfd280eac48155903f329a57a1a62e4918ef4fcac4ed3aea7a9",
+  "freeze": "BIO_CHI/config/JARUS_FIG8_LOCAL_STABILITY_FREEZE_v0_3.json",
+  "preserved_predecessors": [
+    "BIO_CHI/config/JARUS_LOCAL_STABILITY_V01_RESULT_PIN.json",
+    "BIO_CHI/config/JARUS_LOCAL_STABILITY_V02_RESULT_PIN.json"
+  ],
+  "root_finding_result": {
+    "FIG8A_NOMINAL_DAMPED": {
+      "accepted_distinct_roots": 1,
+      "residual_inf": 2.4210600429834528e-14,
+      "embedded_jacobian_step_max_real": [-0.00015742806743638337, -0.00015742806743851014, -0.00015742806743604594],
+      "stored_summary_max_real_eigenvalues": [0, 0, 0]
+    },
+    "FIG8B_LIMIT_CYCLE": {
+      "accepted_distinct_roots": 1,
+      "residual_inf": 1.0787811616230769e-17,
+      "embedded_jacobian_step_max_real": [0.0000078771409093412285, 0.0000078771409143521771, 0.0000078771409074521417],
+      "stored_summary_max_real_eigenvalues": [0, 0, 0]
+    },
+    "FIG8C_RELAXATION_OSCILLATION": {
+      "accepted_distinct_roots": 1,
+      "residual_inf": 1.0344097800540908e-16,
+      "embedded_jacobian_step_max_real": [0.000033151588466560035, 0.00003315158847704545, 0.000033151588477307704],
+      "stored_summary_max_real_eigenvalues": [0, 0, 0]
+    }
+  },
+  "diagnosis": "The final bounded residual solver succeeded in finding exactly one accepted positive root for each frozen Figure 8 case at residuals far below the unchanged 1e-9 gate, and each root contains three finite-difference Jacobian records with internally consistent nonzero max-real eigenvalues. However, the v0.3 aggregate max_real_eigenvalues field was serialized as [0,0,0] for every case and the classification therefore became INDETERMINATE_NUMERICAL_SIGN. This is internally inconsistent with the embedded Jacobian-step records and is treated as a mechanical postprocessing defect, not a scientific null or failure.",
+  "scientific_disposition": {
+    "v03_paper_local_stability_claim_pass": false,
+    "v03_paper_local_stability_claim_fail": false,
+    "v03_result_promoted": false,
+    "finite_window_results_preserved": true,
+    "prior_indeterminates_preserved": true,
+    "chi_bio_constructed": false,
+    "Chi_bio_constructed": false,
+    "Bio_Chi_constructed": false,
+    "mode_selected": false,
+    "preserve_mechanical_failure": true
+  },
+  "next_safe_action": "Do not rerun root finding or alter any scientific setting. Mechanically re-adjudicate the immutable v0.3 artifact by deriving the three max-real values directly from each stored jacobian_steps record and applying the already frozen sign rule. Verify the exact source artifact ZIP digest before adjudication."
+}

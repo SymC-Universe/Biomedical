@@ -1,0 +1,33 @@
+name: Bio Chi GEO metadata audit
+
+on:
+  push:
+    branches:
+      - chi-bio-recovery-p0d-20260922
+    paths:
+      - 'BIO_CHI/config/SU2026_SOURCE_SUBSET_v0_1.json'
+      - 'BIO_CHI/config/REHMAN2021_SOURCE_SUBSET_v0_1.json'
+      - 'BIO_CHI/src/audit_geo_metadata.py'
+      - '.github/workflows/bio-chi-geo-metadata.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  geo-metadata:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit GEO metadata only
+        run: python BIO_CHI/src/audit_geo_metadata.py
+      - name: Upload metadata audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_GEO_METADATA_AUDIT_V01
+          path: BIO_CHI/artifacts/generated/geo_metadata_audit_v0_1.json
+          if-no-files-found: error

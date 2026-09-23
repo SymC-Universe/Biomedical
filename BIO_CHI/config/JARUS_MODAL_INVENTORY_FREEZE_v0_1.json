@@ -1,0 +1,51 @@
+{
+  "schema_version": "0.1",
+  "status": "FROZEN_DESCRIPTIVE_POST_VIEW_MODAL_INVENTORY",
+  "authority": "SymC GOM v0.8.4",
+  "source_local_stability_pin": "BIO_CHI/config/JARUS_LOCAL_STABILITY_V04_RESULT_PIN.json",
+  "source_v03_workflow_run_id": 35856542703,
+  "source_v03_artifact_id": 10748186325,
+  "source_v03_artifact_zip_sha256": "7b17c4b2ec5c3cfd280eac48155903f329a57a1a62e4918ef4fcac4ed3aea7a9",
+  "epistemic_role": "descriptive_post_view_generator_audit_only",
+  "prospective_validation_claim_allowed": false,
+  "purpose": "inventory every stored eigenvalue for every frozen Figure 8 case and all three already-computed finite-difference Jacobian step sizes without selecting a mode or constructing a scalar coordinate",
+  "input": {
+    "cases": ["FIG8A_NOMINAL_DAMPED", "FIG8B_LIMIT_CYCLE", "FIG8C_RELAXATION_OSCILLATION"],
+    "jacobian_step_multipliers": [1.0, 0.5, 0.25],
+    "all_six_modes_required": true,
+    "jacobian_recomputed": false,
+    "root_solver_rerun": false
+  },
+  "mode_matching": {
+    "reference_step_multiplier": 1.0,
+    "method": "exhaustive minimum-total-complex-distance assignment over all 6! permutations",
+    "distance": "absolute complex eigenvalue distance",
+    "tie_break": "lexicographically smallest permutation among exactly equal total costs",
+    "purpose": "descriptive numerical step-size correspondence only; assignment is not a biological mode-selection rule"
+  },
+  "reported_quantities": [
+    "all six complex eigenvalues at every step multiplier",
+    "all-mode assignment from multiplier 1.0 to 0.5 and 0.25",
+    "per-mode absolute and relative complex spread across step multipliers",
+    "count of eigenvalues whose stored imaginary component is exactly zero and count whose stored imaginary component is nonzero",
+    "spectral abscissa at every step multiplier",
+    "whether spectral-abscissa sign is invariant across the three already-computed steps"
+  ],
+  "counting_rule": "real/nonreal counts use the exact stored JSON imaginary component, with no newly introduced numerical threshold",
+  "spread_rule": "absolute spread is the maximum matched complex distance from the multiplier-1.0 reference; relative spread is absolute spread divided by the absolute value of the reference eigenvalue when nonzero, otherwise null",
+  "guards": {
+    "preserve_behavior_failures": true,
+    "preserve_v01_v02_indeterminates": true,
+    "preserve_v03_mechanical_failure": true,
+    "no_mode_selection": true,
+    "no_preferred_complex_pair": true,
+    "no_chi_bio_construction": true,
+    "no_Chi_bio_admission": true,
+    "no_Bio_Chi_construction": true,
+    "no_representation_independence_claim": true,
+    "no_identifiability_claim_beyond_published_model_qualification": true,
+    "no_limit_cycle_proof": true,
+    "no_new_threshold_for_scientific_promotion": true
+  },
+  "next_gate_after_inventory": "Use the complete modal inventory only to design and freeze an explicit representation/identifiability sensitivity test before any scalar reduction. If no non-arbitrary same-mode scalar construction survives that future gate, refuse chi_bio for this system."
+}

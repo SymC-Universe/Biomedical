@@ -1,0 +1,29 @@
+name: Bio Chi BioProject SRA reconciliation v0.1
+on:
+  push:
+    branches: [chi-bio-recovery-p0d-20260922]
+    paths:
+      - 'BIO_CHI/config/P0D_BIOPROJECT_SRA_RECONCILIATION_FREEZE_v0_1.json'
+      - 'BIO_CHI/src/reconcile_bioproject_sra_v0_1.py'
+      - '.github/workflows/bio-chi-bioproject-sra-reconciliation-v01.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reconcile:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reconcile BioProject to SRA metadata
+        run: python BIO_CHI/src/reconcile_bioproject_sra_v0_1.py
+      - name: Upload source reconciliation
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_BIOPROJECT_SRA_RECONCILIATION_V01
+          path: BIO_CHI/artifacts/generated/bioproject_sra_reconciliation_v0_1.json
+          if-no-files-found: error

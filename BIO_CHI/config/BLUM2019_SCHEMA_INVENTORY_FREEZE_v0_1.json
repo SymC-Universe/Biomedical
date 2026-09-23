@@ -1,0 +1,29 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Blum 2019 processed archive metadata-only schema inventory",
+  "purpose_tag": "P0_D_FUNCTION_MAPPING_SOURCE_QUALIFICATION",
+  "source_pin": "BIO_CHI/config/BLUM2019_MENDELEY_SOURCE_FREEZE_V02_RESULT_PIN.json",
+  "frozen_archive_sha256": "8bbd1ead46b5bb6b676bd47a5f415fdd790840a9c726321dc5c209b9c527bc62",
+  "frozen_download_url": "https://data.mendeley.com/public-files/datasets/ccnxn84w8z/files/b8e7b821-d59b-4b42-b34e-1d679ace693d/file_downloaded",
+  "permitted_operations": [
+    "download exact frozen archive",
+    "verify exact SHA-256 before archive inspection",
+    "read ZIP central-directory metadata only",
+    "record member path, directory flag, uncompressed size, compressed size, CRC32, extension, top-level path",
+    "record aggregate counts and sizes"
+  ],
+  "forbidden_operations": [
+    "read any member payload",
+    "parse biological values",
+    "calculate Jeffries-Matusita or any other native/SymC metric",
+    "choose a new state representation",
+    "select samples or conditions based on values",
+    "promote Blum 2019 as a testbed from this inventory",
+    "construct chi_bio, Chi_bio, or Bio Chi"
+  ],
+  "pass_rule": "archive hash matches frozen source and central-directory metadata can be enumerated with zero member payload reads",
+  "fail_rule": "hash mismatch, archive parse failure, or any requirement to inspect member payload to identify the archive structure",
+  "scientific_effect": "NONE; source qualification only",
+  "status": "FROZEN_BEFORE_SCHEMA_INVENTORY"
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "authority": "SymC GOM v0.8.4",
+  "freeze_type": "prospective_native_behavior_execution_contract",
+  "basis": [
+    "BIO_CHI/config/JARUS_NATIVE_BEHAVIOR_FREEZE_v0_1.json",
+    "BIO_CHI/config/JARUS_MATLAB_COMPAT_PIN_v0_1.json",
+    "BIO_CHI/config/JARUS_SOURCE_STRUCTURE_PIN_v0_1.json"
+  ],
+  "scientific_endpoint_opened_at_freeze": false,
+  "chi_bio_constructed_at_freeze": false,
+  "execution": {
+    "runtime": "MATLAB R2023b",
+    "solver_family": "ode23s",
+    "model_equations": "pinned Reduced2023 reduced.m",
+    "compatibility_change": "only the already frozen ode23s options-slot repair in simulate_reduced.m",
+    "tnf_protocol": "one continuous pulse beginning at t=1 h",
+    "initialization_and_equilibration": "use the authors supplied simulate_reduced.m unchanged apart from the frozen compatibility repair",
+    "output": "capture every plotted numeric line plus authored axis semantics; retain normalized plotting exactly as the published helper implements it",
+    "classification_this_gate": "none"
+  },
+  "cases": [
+    {
+      "id": "FIG8A_NOMINAL_DAMPED",
+      "duration_hours": 9,
+      "parameter_overrides": {}
+    },
+    {
+      "id": "FIG8B_LIMIT_CYCLE",
+      "duration_hours": 30,
+      "parameter_overrides": {
+        "a2_s^-1": 0.02,
+        "c5a_s^-1": 0.00001,
+        "i1a_s^-1": 0.0001
+      }
+    },
+    {
+      "id": "FIG8C_RELAXATION_OSCILLATION",
+      "duration_hours": 30,
+      "parameter_overrides": {
+        "a2_s^-1": 0.01,
+        "c5a_s^-1": 0.00001,
+        "i1a_s^-1": 0.0001
+      }
+    }
+  ],
+  "guards": {
+    "no_posthoc_parameter_change": true,
+    "no_posthoc_time_window_change": true,
+    "no_damping_threshold": true,
+    "no_scalar_construction": true,
+    "no_mode_selection": true,
+    "preserve_nonmatching_or_failed_case": true,
+    "figure8_reproduction_must_be_distinguished_from_the_unmodified_published_driver": true
+  },
+  "next_gate_if_execution_succeeds": "audit the three frozen trajectories against the authors native qualitative behavior claims using a separately frozen stability/trajectory adjudication method"
+}

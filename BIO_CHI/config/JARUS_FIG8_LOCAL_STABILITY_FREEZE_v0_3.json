@@ -1,0 +1,59 @@
+{
+  "schema_version": "0.3",
+  "status": "PROSPECTIVELY_FROZEN_FINAL_NUMERICAL_ROOT_CROSSCHECK_BEFORE_V03_OUTPUT",
+  "authority": "SymC GOM v0.8.4",
+  "preserved_predecessors": [
+    "BIO_CHI/config/JARUS_LOCAL_STABILITY_V01_RESULT_PIN.json",
+    "BIO_CHI/config/JARUS_LOCAL_STABILITY_V02_RESULT_PIN.json"
+  ],
+  "scientific_question_changed": false,
+  "parameter_cases_changed": false,
+  "seed_set_changed": false,
+  "root_acceptance_changed": false,
+  "jacobian_rule_changed": false,
+  "numerical_crosscheck": {
+    "solver": "MATLAB lsqnonlin bounded residual minimization in physical state coordinates",
+    "reason": "both fsolve coordinate variants stopped with positive exit flags before satisfying the unchanged physical residual gate; a bounded nonlinear least-squares solve directly targets the six physical RHS residuals while enforcing native nonnegative state support",
+    "matlab_release": "R2023b",
+    "product": "Optimization Toolbox",
+    "lower_bounds": [0, 0, 0, 0, 0, 0],
+    "upper_bounds": [null, null, null, null, null, null],
+    "random_generator": "twister",
+    "random_seed": 20260923,
+    "random_multistarts": 64,
+    "random_seed_domain_per_state": "log-uniform on [1e-6, 10]",
+    "additional_fixed_seeds": [0.0001, 0.001, 0.01, 0.1, 0.5, 1.0],
+    "function_tolerance": 1e-20,
+    "step_tolerance": 1e-14,
+    "optimality_tolerance": 1e-14,
+    "maximum_iterations": 5000,
+    "maximum_function_evaluations": 100000,
+    "accepted_root_exitflag": "strictly positive",
+    "accepted_root_residual_inf_norm": 1e-9,
+    "accepted_root_final_state": "all finite and strictly positive",
+    "root_cluster_relative_inf_tolerance": 1e-6,
+    "no_previous_candidate_used_as_seed": true,
+    "no_posthoc_multistart_extension": true,
+    "no_root_selection": true
+  },
+  "jacobian": {
+    "method": "unchanged central finite differences at every accepted positive root",
+    "base_step_per_coordinate": "machine_epsilon^(1/3) * max(1, abs(x_j))",
+    "step_multipliers": [1.0, 0.5, 0.25],
+    "classification": "STABLE only if max real eigenvalue <0 for all three steps; UNSTABLE only if >0 for all three; otherwise INDETERMINATE_NUMERICAL_SIGN"
+  },
+  "paper_claim_adjudication": {
+    "FIG8A_NOMINAL_DAMPED": "PASS only for exactly one accepted positive root classified STABLE",
+    "FIG8B_LIMIT_CYCLE": "PASS only for exactly one accepted positive root classified UNSTABLE",
+    "FIG8C_RELAXATION_OSCILLATION": "PASS only for exactly one accepted positive root classified UNSTABLE"
+  },
+  "closure_rule": "If no accepted root is found for a case in this final bounded cross-check, retain that case as INDETERMINATE_NUMERICAL_ROOT_SOLVER under the current frozen numerical route. Do not weaken the 1e-9 residual threshold, add seeds, use trajectory states as seeds, or relabel the result.",
+  "guards": {
+    "prior_indeterminates_preserved": true,
+    "finite_window_results_preserved": true,
+    "no_trajectory_state_used_as_seed": true,
+    "no_threshold_retuning": true,
+    "no_mode_selection": true,
+    "no_chi_bio_construction": true
+  }
+}

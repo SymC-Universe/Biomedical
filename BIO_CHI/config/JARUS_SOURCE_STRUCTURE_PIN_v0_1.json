@@ -1,0 +1,51 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "authority": "SymC GOM v0.8.4",
+  "run": {
+    "id": 35849088543,
+    "workflow": "Bio Chi Jaruszewicz source structure audit",
+    "head_sha": "29f8b327d03c109bfe9300bafbb649034ff246dd",
+    "status": "PASS"
+  },
+  "artifact": {
+    "id": 10744627896,
+    "name": "BIO_CHI_JARUS_SOURCE_STRUCTURE_V01",
+    "size_bytes": 1863,
+    "digest": "sha256:88eef313259e4237facf816b47d2e38de21023e1f11d30d8009f3793876264b3",
+    "expires_at": "2026-12-22T10:29:30Z"
+  },
+  "source_facts": {
+    "nominal_parameters_from_reduced_m": {
+      "a2_s^-1": 0.0763,
+      "c5a_s^-1": 0.00005778,
+      "i1a_s^-1": 0.000595
+    },
+    "tnf_addition_time_hours": 1,
+    "published_driver_protocols_in_order": [
+      "Continuous: one 9 h TNF pulse",
+      "Pulses 5-60 min: three pulses",
+      "Pulses 5-100 min: three pulses",
+      "Pulses 5-200 min: three pulses",
+      "Pulses 22.5-45 min: three pulses",
+      "Pulses 45-90 min: three pulses",
+      "On off protocol: one 2 h TNF pulse followed by 10 h off"
+    ],
+    "plotted_axes": [
+      "TNF",
+      "IKK_a",
+      "free nuclear NF-kappaB",
+      "A20",
+      "free cytoplasmic IkappaBalpha",
+      "IkappaBalpha_t"
+    ],
+    "published_driver_contains_figure8_parameter_overrides": false
+  },
+  "interpretation": {
+    "scientific_endpoint_opened": false,
+    "chi_bio_constructed": false,
+    "licenses_native_driver_protocol_mapping": true,
+    "licenses_figure8_behavior_reproduction": false,
+    "next_safe_gate": "run the prospectively frozen Figure 8A-C parameter cases using the pinned reduced equations and the same MATLAB ODE23s solver family, retaining the published driver/source evidence separately"
+  }
+}

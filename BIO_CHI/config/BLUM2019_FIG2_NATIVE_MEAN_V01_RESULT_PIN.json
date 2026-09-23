@@ -1,0 +1,31 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Blum 2019 Figure 2 native population-mean reproduction",
+  "workflow_run_id": 35873188226,
+  "workflow_head_sha": "7df1e6cb05c570b0fa9f1295723d2468d93a7399",
+  "artifact_id": 10755884524,
+  "artifact_digest": "sha256:301a672b5f722bac6e0c0aeab650d1d30220b37219c98146d43726ecf12fe829",
+  "status": "PASS_NATIVE_FIG2_POPULATION_MEAN_REPRODUCTION",
+  "archive_sha256": "8bbd1ead46b5bb6b676bd47a5f415fdd790840a9c726321dc5c209b9c527bc62",
+  "total_source_rows": 279016,
+  "total_unique_cell_tracks_across_duration_files": 3068,
+  "pulse_duration_summary": {
+    "3": {"rows": 108325, "unique_cells": 1191, "groups": 12, "timepoints_per_group": 91, "baseline_observations_per_cell_min": 19, "baseline_observations_per_cell_max": 21},
+    "10": {"rows": 88755, "unique_cells": 976, "groups": 12, "timepoints_per_group": 91, "baseline_observations_per_cell_min": 17, "baseline_observations_per_cell_max": 21},
+    "60": {"rows": 81936, "unique_cells": 901, "groups": 12, "timepoints_per_group": 91, "baseline_observations_per_cell_min": 19, "baseline_observations_per_cell_max": 21}
+  },
+  "normalization_rule": "Each cell divided by its own arithmetic mean over observed 0 <= realtime <= 40 min values; population arithmetic mean then computed at each exact observed realtime within each exact source group.",
+  "all_source_groups_included": true,
+  "group_total": 36,
+  "interpolation_used": false,
+  "smoothing_used": false,
+  "imputation_used": false,
+  "raw_row_level_values_emitted": false,
+  "symc_metric_computed": false,
+  "chi_bio_constructed": false,
+  "Chi_bio_admitted": false,
+  "Bio_Chi_constructed": false,
+  "scientific_effect": "Publication-native biological trajectory observable reproduced from prospectively frozen source without SymC fitting. This qualifies an observable layer only; it does not establish scalar/modal adequacy or admit chi_bio, Chi_bio, or Bio Chi.",
+  "next_gate": "P0-Q biological observability/identifiability qualification of the native trajectory representation before any reduced-state or scalar construction"
+}

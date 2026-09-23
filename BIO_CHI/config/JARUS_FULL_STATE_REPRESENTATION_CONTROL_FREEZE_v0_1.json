@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.1",
+  "status": "PROSPECTIVELY_FROZEN_NUMERICAL_REPRESENTATION_CONTROL",
+  "authority": "SymC GOM v0.8.4",
+  "source_model": "Jaruszewicz-Blonska reduced six-state NF-kB model",
+  "source_v03_workflow_run_id": 35856542703,
+  "source_v03_artifact_id": 10748186325,
+  "source_v03_artifact_zip_sha256": "7b17c4b2ec5c3cfd280eac48155903f329a57a1a62e4918ef4fcac4ed3aea7a9",
+  "source_local_stability_pin": "BIO_CHI/config/JARUS_LOCAL_STABILITY_V04_RESULT_PIN.json",
+  "source_modal_inventory_pin": "BIO_CHI/config/JARUS_MODAL_INVENTORY_V01_RESULT_PIN.json",
+  "epistemic_role": "necessary_not_sufficient_full_state_coordinate_invariance_control",
+  "scientific_question": "Does the local six-mode generator spectrum remain numerically consistent when the same full native state is expressed through invertible coordinate changes that preserve all six state dimensions?",
+  "cases": ["FIG8A_NOMINAL_DAMPED", "FIG8B_LIMIT_CYCLE", "FIG8C_RELAXATION_OSCILLATION"],
+  "equilibrium_source": "the exactly one accepted positive root already frozen in the immutable v0.3 artifact for each case; no root solving is rerun",
+  "representations": [
+    {
+      "id": "physical_x",
+      "definition": "x",
+      "equilibrium": "x_star"
+    },
+    {
+      "id": "equilibrium_normalized_z",
+      "definition": "z_i = x_i / x_star_i",
+      "inverse": "x_i = x_star_i z_i",
+      "equilibrium": "all ones"
+    },
+    {
+      "id": "log_equilibrium_normalized_y",
+      "definition": "y_i = log(x_i / x_star_i)",
+      "inverse": "x_i = x_star_i exp(y_i)",
+      "equilibrium": "all zeros"
+    }
+  ],
+  "finite_difference_rule": {
+    "scheme": "central difference",
+    "base_step": "eps^(1/3)",
+    "multipliers": [1.0, 0.5, 0.25],
+    "physical_x_step": "multiplier * eps^(1/3) * max(1, abs(x_star_j))",
+    "normalized_and_log_step": "multiplier * eps^(1/3) * max(1, abs(q_star_j))"
+  },
+  "comparison": {
+    "retain_all_six_eigenvalues": true,
+    "matching": "exhaustive minimum-total-complex-distance assignment over all 6! permutations, using physical_x as reference at the same finite-difference multiplier",
+    "report": [
+      "all six eigenvalues for every representation and multiplier",
+      "spectral abscissa for every representation and multiplier",
+      "all-mode assignment and total complex distance to physical_x",
+      "per-mode absolute and relative complex difference from physical_x"
+    ],
+    "relative_difference": "absolute complex difference divided by absolute physical_x reference eigenvalue when nonzero, otherwise null",
+    "scientific_promotion_threshold": null
+  },
+  "guards": {
+    "no_root_solver_rerun": true,
+    "no_parameter_change": true,
+    "no_behavior_reclassification": true,
+    "preserve_finite_window_B_C_failures": true,
+    "preserve_v01_v02_indeterminates": true,
+    "preserve_v03_postprocess_failure": true,
+    "no_mode_selection": true,
+    "no_preferred_complex_pair": true,
+    "no_chi_bio_construction": true,
+    "no_Chi_bio_admission": true,
+    "no_Bio_Chi_construction": true,
+    "no_claim_that_invertible_coordinate_invariance_establishes_biological_representation_independence": true,
+    "no_observable_projection_or_state_reduction": true
+  },
+  "interpretation_rule": "Agreement across these invertible full-state coordinates is only a necessary numerical sanity check. Because local Jacobians under smooth invertible full-state coordinate changes are theoretically related by similarity at an equilibrium, this control cannot by itself establish biological representation independence, identifiability, observability, or scalar adequacy.",
+  "next_gate_if_execution_is_finite": "Return to outcome-blind Q2/Q3 biological observability and identifiability qualification before any reduced observable representation or chi_bio scalar admission."
+}

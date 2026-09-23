@@ -1,0 +1,31 @@
+{
+  "schema_version": "0.2",
+  "status": "PROSPECTIVELY_BOUND_BEFORE_CORRECTED_TRAJECTORY_REVIEW",
+  "authority": "SymC GOM v0.8.4",
+  "method_source": "BIO_CHI/config/JARUS_FIG8_BEHAVIOR_ADJUDICATION_FREEZE_v0_1.json",
+  "method_source_blob_sha": "89648111544c47881c0cc50651f0f4a3c08c87bf",
+  "corrected_execution_freeze": "BIO_CHI/config/JARUS_FIG8_EXECUTION_FREEZE_v0_2.json",
+  "method_changed": false,
+  "threshold_changed": false,
+  "observable_changed": false,
+  "case_label_changed": false,
+  "rules": {
+    "numeric_noise_floor": "1000 * machine_epsilon * max(1, max(abs(y))) for each trajectory",
+    "extrema_method": "sign changes in first differences after t=1 h; discard only excursions at or below numeric noise floor",
+    "minimum_complete_amplitudes": 2,
+    "FIG8A_NOMINAL_DAMPED": "PASS only if every evaluable successive complete oscillation amplitude is strictly smaller than its predecessor; otherwise FAIL or INDETERMINATE if too few cycles",
+    "FIG8B_LIMIT_CYCLE": "finite-window sustained compatibility PASS if at least two complete amplitudes survive and the full amplitude sequence is not strictly decreasing; stable limit cycle itself remains unproved at this gate",
+    "FIG8C_RELAXATION_OSCILLATION": "apply the same sustained-periodicity rule as B; relaxation-like/spiky morphology remains NOT_QUANTITATIVELY_ADJUDICATED because no paper-defined threshold exists"
+  },
+  "evidence_firewall": {
+    "corrected_trajectory_values_opened_before_binding": false,
+    "invalid_v0_1_execution_values_were_seen": true,
+    "invalid_v0_1_values_may_not_change_the_adjudication_rule": true,
+    "no_smoothing": true,
+    "no_fitted_damping_constant": true,
+    "no_mode_selection": true,
+    "no_chi_bio_construction": true
+  },
+  "required_preservation": "Any PASS, FAIL, INDETERMINATE, or refusal produced under these inherited rules is retained. The v0.1 mechanical failure remains independently preserved.",
+  "next_gate_if_compatible": "freeze equilibrium/local-stability and representation-sensitivity analysis before Jacobian poles or any chi_bio construction"
+}
