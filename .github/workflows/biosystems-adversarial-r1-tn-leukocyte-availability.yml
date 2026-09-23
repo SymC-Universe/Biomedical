@@ -1,0 +1,43 @@
+name: BioSystems adversarial R1 TN leukocyte availability
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - biosystems-adversarial-r1-20260923
+    paths:
+      - '.github/workflows/biosystems-adversarial-r1-tn-leukocyte-availability.yml'
+      - 'GRI_v2/src/run_biosystems_adversarial_r1_tn_leukocyte_availability.py'
+      - 'GRI_v2/reviewer/BIOSYSTEMS_ADVERSARIAL_R1_TN_LEUKOCYTE_AVAILABILITY_FREEZE_20260923.md'
+
+jobs:
+  availability:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check numpy pandas
+      - name: Download exact frozen leukocyte source
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 5 \
+            'https://api.gdc.cancer.gov/data/6f75c9d7-5134-4ed1-b8f3-72856c98a4e8' \
+            -o Leukocyte_Fraction.tsv
+      - name: Execute source-only availability audit
+        run: |
+          python GRI_v2/src/run_biosystems_adversarial_r1_tn_leukocyte_availability.py \
+            --leuk Leukocyte_Fraction.tsv \
+            --out R1_TN_LEUKOCYTE_AVAILABILITY
+      - name: Remove third-party source
+        if: always()
+        run: rm -f Leukocyte_Fraction.tsv
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: BIOSYSTEMS_ADVERSARIAL_R1_TN_LEUKOCYTE_AVAILABILITY_V01
+          path: R1_TN_LEUKOCYTE_AVAILABILITY
+          if-no-files-found: warn
