@@ -27,10 +27,11 @@
     "all six complex eigenvalues at every step multiplier",
     "all-mode assignment from multiplier 1.0 to 0.5 and 0.25",
     "per-mode absolute and relative complex spread across step multipliers",
-    "count of real modes and complex-conjugate members",
+    "count of eigenvalues whose stored imaginary component is exactly zero and count whose stored imaginary component is nonzero",
     "spectral abscissa at every step multiplier",
     "whether spectral-abscissa sign is invariant across the three already-computed steps"
   ],
+  "counting_rule": "real/nonreal counts use the exact stored JSON imaginary component, with no newly introduced numerical threshold",
   "guards": {
     "preserve_behavior_failures": true,
     "preserve_v01_v02_indeterminates": true,
