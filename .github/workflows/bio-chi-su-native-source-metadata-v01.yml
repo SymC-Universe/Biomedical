@@ -6,11 +6,6 @@ on:
       - 'BIO_CHI/config/SU2026_NATIVE_METHOD_SOURCE_METADATA_FREEZE_v0_1.json'
       - 'BIO_CHI/src/audit_su_native_source_metadata_v0_1.py'
       - '.github/workflows/bio-chi-su-native-source-metadata-v01.yml'
-  pull_request:
-    paths:
-      - 'BIO_CHI/config/SU2026_NATIVE_METHOD_SOURCE_METADATA_FREEZE_v0_1.json'
-      - 'BIO_CHI/src/audit_su_native_source_metadata_v0_1.py'
-      - '.github/workflows/bio-chi-su-native-source-metadata-v01.yml'
   workflow_dispatch:
 permissions:
   contents: read
