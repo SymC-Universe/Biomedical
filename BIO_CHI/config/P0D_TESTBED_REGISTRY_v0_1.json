@@ -5,63 +5,140 @@
   "testbeds": [
     {
       "id": "sharma2010_pc9",
-      "role": ["cancer_recovery", "chromatin"],
+      "role": [
+        "cancer_recovery",
+        "chromatin"
+      ],
       "tier": "A",
       "recovery": true,
       "public_data": "public_article_and_replication_protocol_original_raw_machine_readable_data_unverified"
     },
     {
       "id": "shaffer2017_melanoma",
-      "role": ["recovery_boundary", "reorganization"],
+      "role": [
+        "recovery_boundary",
+        "reorganization"
+      ],
       "tier": "A",
       "recovery": true,
-      "accessions": ["GSE97682", "SRP103406"],
-      "public_source_status": "verified"
+      "accessions": [
+        "GSE97682",
+        "GSE97679",
+        "GSE97680",
+        "GSE97681",
+        "PRJNA382641"
+      ],
+      "public_source_status": "superseries_bioproject_srx_lineage_qualified",
+      "sra_experiment_count": 155,
+      "declared_recovery_labels": [
+        "48hrholiday",
+        "7dayholiday"
+      ],
+      "source_qualification_note": "GSE97682 SuperSeries and 155 per-sample SRA experiment links are frozen; source metadata explicitly includes drug-holiday labels. Execution subset remains unselected."
     },
     {
       "id": "harmange2023_scmemoryseq",
-      "role": ["memory", "lineage", "inheritance"],
+      "role": [
+        "memory",
+        "lineage",
+        "inheritance"
+      ],
       "tier": "A",
       "recovery": "partial",
-      "accessions": ["GSE237228"],
-      "public_source_status": "verified"
+      "accessions": [
+        "GSE237228",
+        "PRJNA994430"
+      ],
+      "public_source_status": "metadata_lineage_map_qualified",
+      "sra_experiment_count": 22,
+      "metadata_lineage_fields_verified": true,
+      "carrier_admission": "not_established",
+      "source_qualification_note": "GEO-to-SRX sample identity and lineage/condition metadata fields are frozen; causal carrier correspondence remains unproven."
     },
     {
       "id": "rehman2021_crc_dtp",
-      "role": ["cancer_recovery", "rechallenge", "lineage"],
+      "role": [
+        "cancer_recovery",
+        "rechallenge",
+        "lineage"
+      ],
       "tier": "A",
       "recovery": true,
-      "accessions": ["GSE145356", "SRP249585", "PRJNA606811", "EGAS00001004773"],
+      "accessions": [
+        "GSE145356",
+        "SRP249585",
+        "PRJNA606811",
+        "EGAS00001004773"
+      ],
       "public_rna_status": "verified"
     },
     {
       "id": "marsolier2022_tnbc_h3k27me3",
-      "role": ["substrate", "inheritance", "intervention"],
+      "role": [
+        "substrate",
+        "inheritance",
+        "intervention"
+      ],
       "tier": "A",
       "recovery": "partial",
-      "accessions": ["GSE164716", "GSE164385", "GSE164409", "GSE164715", "GSE186965", "GSE186966", "GSE196764"],
+      "accessions": [
+        "GSE164716",
+        "GSE164385",
+        "GSE164409",
+        "GSE164715",
+        "GSE186965",
+        "GSE186966",
+        "GSE196764"
+      ],
       "public_source_status": "verified"
     },
     {
       "id": "su_sequential_waves_melanoma",
-      "role": ["hysteresis", "reorganization", "chromatin"],
+      "role": [
+        "hysteresis",
+        "reorganization",
+        "chromatin"
+      ],
       "tier": "A",
       "recovery": true,
       "accession_status": "verified_public",
-      "accessions": ["GSE255671", "PRJNA1076128", "GSE65186", "EGAS00001000992", "E-MTAB-5493"],
+      "accessions": [
+        "GSE255671",
+        "PRJNA1076128",
+        "GSE65186",
+        "EGAS00001000992",
+        "E-MTAB-5493"
+      ],
       "doi": "10.1038/s41467-026-71349-4",
-      "code": ["github:jihoonlee0/melanoma_reversible_transition", "zenodo:10.5281/zenodo.17751601"]
+      "code": [
+        "github:jihoonlee0/melanoma_reversible_transition",
+        "zenodo:10.5281/zenodo.17751601"
+      ]
     },
     {
       "id": "lee2014_paclitaxel",
-      "role": ["secondary_recovery"],
+      "role": [
+        "secondary_recovery"
+      ],
       "tier": "B",
       "recovery": true,
-      "accessions": ["SRP040309"]
+      "accessions": [
+        "SRP040309",
+        "PRJNA241034"
+      ],
+      "public_source_status": "sra_run_map_qualified_sample_metadata_mapping_active",
+      "run_count": 19,
+      "library_strategy": "RNA-Seq",
+      "library_layout": "PAIRED",
+      "source_map_pin": "BIO_CHI/config/LEE2014_SRP040309_SOURCE_MAP_V01_RESULT_PIN.json"
     },
     {
       "id": "jiang2020_yeast_memory",
-      "role": ["known_truth", "memory", "rechallenge"],
+      "role": [
+        "known_truth",
+        "memory",
+        "rechallenge"
+      ],
       "tier": "A",
       "recovery": true,
       "doi": "10.1126/scisignal.aay3585",
@@ -72,20 +149,29 @@
     },
     {
       "id": "mixseq2020",
-      "role": ["response_only_negative_control"],
+      "role": [
+        "response_only_negative_control"
+      ],
       "tier": "C",
       "recovery": false
     },
     {
       "id": "sciplex2020",
-      "role": ["response_surface_negative_control"],
+      "role": [
+        "response_surface_negative_control"
+      ],
       "tier": "C",
       "recovery": false,
-      "accessions": ["GSE139944"]
+      "accessions": [
+        "GSE139944"
+      ]
     },
     {
       "id": "son2021_nfkb",
-      "role": ["chi_bio_candidate", "modal"],
+      "role": [
+        "chi_bio_candidate",
+        "modal"
+      ],
       "tier": "B",
       "recovery": "partial",
       "doi": "10.1126/scisignal.aaz4382",
@@ -95,7 +181,9 @@
     },
     {
       "id": "jarus_nfkb_identifiable",
-      "role": ["chi_bio_model_candidate"],
+      "role": [
+        "chi_bio_model_candidate"
+      ],
       "tier": "A_B",
       "recovery": true,
       "doi": "10.1371/journal.pone.0286416",
@@ -104,14 +192,20 @@
     },
     {
       "id": "geva2006_p53",
-      "role": ["chi_bio_limit_case"],
+      "role": [
+        "chi_bio_limit_case"
+      ],
       "tier": "B_C",
       "recovery": false,
       "data_access": "supplementary"
     },
     {
       "id": "blum2019_erk",
-      "role": ["modal_identification", "chi_bio_candidate", "known_truth_candidate"],
+      "role": [
+        "modal_identification",
+        "chi_bio_candidate",
+        "known_truth_candidate"
+      ],
       "tier": "A_B",
       "recovery": true,
       "doi": "10.15252/msb.20198947",
@@ -124,7 +218,22 @@
       "code_access": "public_github_Mijan_LFNS_MSB_model_files_and_inference_outputs",
       "code_source_pin": "BIO_CHI/config/BLUM2019_PUBLIC_SOURCE_PIN_v0_1.json",
       "native_metric": "Jeffries_Matusita_population_distance_defined_in_paper",
-      "source_qualification_note": "Public processed-data identity is now closed at Mendeley Data V2 plus an immutable GitHub model/inference commit. Direct data.zip URL/hash remains to be frozen before execution. This closes an access identity gap but does not promote the testbed or authorize a new representation."
+      "source_qualification_note": "Exact public archive bytes and Figure-1 input columns are frozen. The published JM formula is explicit, but histogram construction is under-specified, so exact Figure-1H reproduction is not claimed and no binning rule will be invented.",
+      "processed_dataset_exact_file_id": "b8e7b821-d59b-4b42-b34e-1d679ace693d",
+      "processed_dataset_size_bytes": 8352835,
+      "processed_dataset_sha256": "8bbd1ead46b5bb6b676bd47a5f415fdd790840a9c726321dc5c209b9c527bc62",
+      "processed_dataset_source_freeze_pin": "BIO_CHI/config/BLUM2019_MENDELEY_SOURCE_FREEZE_V02_RESULT_PIN.json",
+      "schema_inventory_status": "pass_metadata_only_103_members",
+      "native_metric_exact_reproduction_status": "blocked_method_underspecified",
+      "native_metric_method_gap": [
+        "histogram_bin_count",
+        "bin_edges_range",
+        "shared_bin_rule",
+        "smoothing_or_pseudocount",
+        "missing_value_rule",
+        "exact_time_alignment_rule",
+        "original_figure1h_implementation"
+      ]
     }
   ],
   "promotion_requirements": [
