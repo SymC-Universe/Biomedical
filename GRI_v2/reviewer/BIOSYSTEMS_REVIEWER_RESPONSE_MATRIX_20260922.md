@@ -40,7 +40,7 @@ Status vocabulary:
 | Independent cohort validation | **CLOSED WITH LIMIT** | The frozen external prostate test is complete and audited in `BIOSYSTEMS_EXTERNAL_PROSTATE_P1_POSTRESULT_AUDIT_20260922.md`. H1 transports strongly on both 450K and EPIC; H2/H3a do not transport consistently and remain representation/platform dependent. This is reported as partial external confirmation, not a universal replication claim. |
 | Additional omics validation | **CLOSED WITH LIMIT** | RNA, methylation, genomic and protein/phosphoprotein layers provide multiomic internal qualification. Shared TCGA lineage prevents relabeling these as independent external confirmation. |
 | Cancer-specific robustness | **CLOSED** | Cancer-specific analyses, fixed finite-sample calibration and held-out evaluation are part of the rebuilt program. |
-| Reproducibility / method detail | **CLOSED IN ARCHITECTURE; RELEASE PACKAGING OPEN** | Frozen configs, tests, hashes, source audits and reviewer maps exist. Submission-specific immutable tag, final figure/table provenance map and final clean-room package remain release tasks. |
+| Reproducibility / method detail | **CLOSED** | Frozen configs, tests, hashes, source audits and reviewer maps exist. The final main/supplement, deterministic figure-generation package, reviewer response, cover letter, final SHA-256 manifest, reviewer index and release audit are frozen; the release snapshot branch is `biosystems-resubmission-20260923-final`. |
 | Biological mechanism grounding | **CLOSED WITH LIMIT** | The revision is recast around measured regulatory architecture and explicit representation limits. Association is not presented as causal mechanism where causality was not measured. |
 | Demonstrate clinical utility beyond existing predictors | **DECLINED / NOT CLAIMED** | The revision will not promote the method to a clinical diagnostic, prognostic or treatment-response tool. Incremental clinical utility would require a separate preregistered endpoint and external validation. |
 | Explain failures / heterogeneity rather than presenting only favorable cancers | **CLOSED** | Null, failed, representation-dependent and non-identifiable branches are retained in the Function/Limit framework and cannot be silently rescued after outcome inspection. |
@@ -93,23 +93,12 @@ These systems are nonredundant in task and failure criteria, so their agreement 
 
 The SCC25 A-H joint-meaning decision packet is scientifically important to the wider GRI program but is not automatically required to answer the BioSystems reviewers. It must not be allowed to expand the paper merely because it is available.
 
-## Manuscript-source integrity issue
+## Manuscript-source integrity closure
 
-Several historical status/reviewer files refer to `GRI_v2/manuscript/LIVING_MANUSCRIPT_DRAFT.md` and a manuscript reconciliation ledger. Those paths are not present on the current canonical branch or the cited historical branch checked on 22 September 2026. They therefore cannot be treated as current repository sources-of-record.
-
-Until a current editable manuscript source is explicitly committed, reviewer work may update the revision ledger, response matrix, source/claim maps and reproducibility records, but must not pretend that manuscript wording has been edited in Git.
+Historical repository paths that once referred to a missing editable manuscript remain historical only. The current editable manuscript is intentionally stored in the private Project Library and is byte-bound in the final release audit. Public reviewer/protocol/code provenance remains on the revision branch; private manuscript/submission files are not published to the public Biomedical repository.
 
 ## Next safe work
 
-Proceed mechanically on:
-- figure/table retirement and regeneration inventory;
-- old submitted claim -> revised claim -> evidence -> target section map;
-- submission hash/source manifest;
-- non-claim ledger synchronization;
-- point-by-point response prose incorporating the now-closed tumor-normal result while preserving the open external-confirmation gate;
-- journal disclosure/availability/contribution boilerplate after current policy verification.
+No additional evidence-bearing or manuscript-repair work is required for this BioSystems resubmission.
 
-Stop before:
-- any post-result rescue of the completed external P1;
-- inventing a tumor-normal definition or threshold after seeing the result;
-- changing a frozen scientific representation merely to satisfy reviewer wording.
+The package is **SUBMISSION READY**. Future SCC25/chi/recovery work remains outside this revision and may not be imported retroactively into the frozen package.
