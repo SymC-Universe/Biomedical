@@ -1,4 +1,4 @@
-# BioSystems v18 GOM v0.8.4 compliance audit - 23 September 2026
+> SUPERSEDED BY `BIOSYSTEMS_GOM_V086_COMBINED_AUDIT_20260923.md` after user supplied GOM v0.8.6 as the definitive active baseline. This v0.8.4 audit is retained for lineage only.\n\n# BioSystems v18 GOM v0.8.4 compliance audit - 23 September 2026
 
 Status: SCIENCE READY / RELEASE-GOVERNANCE CLEANUP REQUIRED
 Current manuscript: GRI_BioSystems_working_v18_R1_2026-09-23
