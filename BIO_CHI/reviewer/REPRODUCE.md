@@ -1,75 +1,215 @@
 # Reproducing the Bio Chi investigation
 
-This page is the reviewer-facing "how" entry point.
+This is the reviewer-facing reproducibility entry point for the active Bio Chi P0-D/P0-Q lineage.
 
-## 1. Clone and checkout
+**Current scientific ceiling:** source qualification, native-method/model qualification, Function/Limit mapping, and prospective gate construction. No biological chi_bio, Chi_bio, or Bio Chi law is admitted by this guide.
 
-```bash
+Working manuscript prose is intentionally private. The public repository contains the scientific contracts, source identities, code, controls, failures/refusals, workflow provenance, and executable verification paths needed to audit the work.
+
+## Checkout
+
+~~~bash
 git clone https://github.com/SymC-Universe/Biomedical.git
 cd Biomedical
 git checkout chi-bio-recovery-p0d-20260922
-```
+~~~
 
-For a published result, use the exact release tag/commit recorded beside that result rather than the moving branch.
+For any released manuscript claim, use the exact release commit/tag and SHA-256 manifest named by that release rather than the moving research branch.
 
-## 2. Validate the governance and privacy contract
+## V1 — governance, nomenclature, and manuscript privacy
 
-```bash
+**[CLAIM]** The active Bio Chi lineage is governed by GOM v0.8.4, preserves the scalar → modal/vector → conglomerate hierarchy, has a durable continuation queue/checkpoint, and excludes working-manuscript drafts from the public Bio Chi tree.
+
+~~~bash
 python BIO_CHI/src/validate_control.py
-```
+~~~
 
-Expected output:
+Expected terminal status:
 
-```text
+~~~text
 BIO_CHI_CONTROL_PASS
-```
+~~~
 
-This checks the canonical χ / χ_bio / Χ_bio / Bio Chi hierarchy, the durable queue, continuation rules, testbed IDs, required reviewer files, and the public working-manuscript firewall.
+Primary inputs:
+- BIO_CHI/control/WORK_QUEUE.json
+- BIO_CHI/control/AUTORUN_CHECKPOINT.md
+- BIO_CHI/reviewer/MANUSCRIPT_PRIVACY_FIREWALL.md
+- GRI_v2/docs/CHI_BIO_NOMENCLATURE_AND_JOINT_TARGET_20260922.md
 
-## 3. Verify source endpoints
+## V2 — generic public-source endpoint preflight
 
-```bash
+**[CLAIM]** Declared public source endpoints in the opening Bio Chi source manifest are mechanically reachable without opening biological target outcomes.
+
+~~~bash
 python BIO_CHI/src/preflight_sources.py
-```
+~~~
 
-The script:
-- reads `BIO_CHI/config/SOURCE_MANIFEST_v0_1.json`;
-- verifies declared public source endpoints;
-- records content length/HTTP metadata when supplied;
-- does **not** inspect biological target outcomes;
-- writes `BIO_CHI/artifacts/generated/source_preflight_v0_1.json`.
+Expected terminal status:
 
-GitHub Actions also executes this preflight and stores the JSON as artifact `BIO_CHI_SOURCE_PREFLIGHT_V01`.
+~~~text
+BIO_CHI_SOURCE_PREFLIGHT_PASS
+~~~
 
-## 4. Inspect testbed selection
+Output: BIO_CHI/artifacts/generated/source_preflight_v0_1.json.
 
-Human-readable:
-- `BIO_CHI/artifacts/DATASET_ELIGIBILITY_MATRIX_v0_1.md`
-- `BIO_CHI/artifacts/SOURCE_QUALIFICATION_LEDGER_v0_1.md`
-- `BIO_CHI/artifacts/LITERATURE_SEARCH_LEDGER_v0_1.md`
+This is an endpoint/provenance check only. It does not validate a scientific result.
 
-Machine-readable:
-- `BIO_CHI/config/P0D_TESTBED_REGISTRY_v0_1.json`
+## V3 — Blum 2019 exact processed-archive identity
 
-Testbeds are selected by design quality, source accessibility, native biological validity, and falsifiability, not by whether their published result resembles SymC.
+**[CLAIM]** Mendeley Data Version 2 for Blum et al. 2019 resolves through the supported public-files API to one exact data.zip whose frozen SHA-256 is 8bbd1ead46b5bb6b676bd47a5f415fdd790840a9c726321dc5c209b9c527bc62.
 
-## 5. Manuscript
+~~~bash
+python BIO_CHI/src/freeze_blum_mendeley_source_v0_2.py
+~~~
 
-There is intentionally no working manuscript in the public repository.
+Expected terminal status:
 
-The public GitHub repository is the reproducibility and evidence source of record. Working manuscript text remains private until an authorized submission/release snapshot is created.
+~~~text
+BIO_CHI_BLUM_MENDELEY_SOURCE_FREEZE_V02_PASS
+~~~
 
-## 6. Future promoted results
+Pinned result: BIO_CHI/config/BLUM2019_MENDELEY_SOURCE_FREEZE_V02_RESULT_PIN.json.
 
-Every promoted result will add:
-- frozen config/preregistration;
-- exact source manifest and hashes;
-- executable analysis code;
-- tests/known-bad controls;
-- environment lock;
-- workflow run and artifact digest;
-- compact machine-readable results;
-- figure/table generator;
-- claim/evidence and non-claim record.
+The freeze verifies archive bytes without opening member contents.
 
-A reviewer should therefore be able to move from a manuscript claim to the exact computation without asking the author to email scripts.
+## V4 — Blum archive schema-only inventory
+
+**[CLAIM]** The hash-pinned Blum archive can be enumerated at ZIP-directory level without reading member payloads.
+
+~~~bash
+python BIO_CHI/src/inventory_blum_mendeley_archive_v0_1.py
+~~~
+
+Expected terminal status:
+
+~~~text
+BIO_CHI_BLUM_SCHEMA_INVENTORY_PASS
+~~~
+
+Expected current inventory summary:
+- archive SHA-256: 8bbd1ead46b5bb6b676bd47a5f415fdd790840a9c726321dc5c209b9c527bc62
+- members: 103
+- member_payloads_read: false
+
+## V5 — Blum published-input mapping and Limit-Map refusal
+
+**[CLAIM]** The public Figure-1 source package explicitly maps EKAR trajectories, condition grouping, and pulse-channel metadata, but the public article/supplement does not fully specify the histogram construction needed to claim an exact reproduction of the published Jeffries-Matusita Figure-1H result.
+
+~~~bash
+python BIO_CHI/src/map_blum_native_metric_inputs_v0_1.py
+~~~
+
+Expected terminal status:
+
+~~~text
+BIO_CHI_BLUM_NATIVE_INPUT_MAPPING_PASS
+~~~
+
+Expected source headers include:
+- intensity_ekar,realtime,group.idx,id,fov
+- group,group.idx
+- fov,intensity_pulse,realtime,group.idx
+
+Adjudication pin: BIO_CHI/config/BLUM2019_NATIVE_METHOD_QUALIFICATION_PIN_v0_1.json.
+
+Expected disposition:
+
+~~~text
+EXACT_NATIVE_METRIC_REPRODUCTION_BLOCKED_METHOD_UNDERSPECIFIED
+~~~
+
+This refusal is part of the Limit Map. A reviewer should not substitute an arbitrary histogram binning rule and call it the published implementation.
+
+## V6 — Harmange and Shaffer metadata-only source lineage
+
+**[CLAIM]** Hash-pinned GEO metadata resolves the Harmange GSE237228 and Shaffer GSE97682 source lineages without reading molecular values or cell-level metadata rows.
+
+~~~bash
+python BIO_CHI/src/audit_geo_lineage_metadata_v0_1.py
+~~~
+
+Expected terminal status:
+
+~~~text
+BIO_CHI_GEO_LINEAGE_METADATA_AUDIT_PASS
+~~~
+
+Pinned result: BIO_CHI/config/P0D_GEO_LINEAGE_METADATA_V01_RESULT_PIN.json.
+
+Current source-level expectations:
+- Harmange: GSE237228 → PRJNA994430, 22 GEO samples with explicit SRA experiment links.
+- Shaffer: GSE97682 → GSE97679/GSE97680/GSE97681 + PRJNA382641, 155 GEO samples with explicit SRA experiment links.
+- molecular values read: false.
+
+## V7 — Lee 2014 public SRA run map
+
+**[CLAIM]** Paper-reported SRP040309 resolves reproducibly to 19 public paired-end RNA-seq runs under PRJNA241034 without downloading sequence reads.
+
+~~~bash
+python BIO_CHI/src/map_lee2014_sra_source_v0_1.py
+~~~
+
+Expected terminal status:
+
+~~~text
+BIO_CHI_LEE2014_SRA_SOURCE_MAP_PASS
+~~~
+
+Pinned result: BIO_CHI/config/LEE2014_SRP040309_SOURCE_MAP_V01_RESULT_PIN.json.
+
+Current expected count: 19 runs.
+
+## V8 — Lee 2014 sample/state metadata and recovery-source limitation
+
+**[CLAIM]** Public SRP040309 metadata explicitly identifies untreated, stressed, and drug-tolerant RNA-seq states, but contains no explicitly labeled reconverted/post-withdrawal RNA state.
+
+~~~bash
+python BIO_CHI/src/map_lee2014_sample_metadata_v0_1.py
+~~~
+
+Expected terminal status:
+
+~~~text
+BIO_CHI_LEE2014_SAMPLE_METADATA_PASS
+~~~
+
+Pinned result: BIO_CHI/config/LEE2014_SRA_SAMPLE_METADATA_V01_RESULT_PIN.json.
+
+Expected current source-level state counts:
+- single-cell: 5 untreated, 5 stressed, 5 drug-tolerant
+- bulk: 1 untreated, 1 stressed, 2 drug-tolerant
+- explicitly labeled reconverted/post-withdrawal RNA samples: 0
+
+This does not claim that biological reconversion is absent. It means the public SRP040309 RNA deposit is not itself a direct transcriptomic recovery trajectory.
+
+## V9 — master smoke test
+
+**[CLAIM]** The current public Bio Chi evidence spine is internally consistent with the active nomenclature, privacy rule, source pins, preserved source-method limitations, and no-premature-admission flags.
+
+~~~bash
+python BIO_CHI/src/reviewer_smoke_test.py
+~~~
+
+Expected terminal status:
+
+~~~text
+BIO_CHI_REVIEWER_SMOKE_PASS
+~~~
+
+The smoke test chains the current pinned control assertions. It does not upgrade self-consistency into independent biological validation.
+
+## Reproducibility levels and claim ceiling
+
+The exact demonstrated level must be stated beside each future promoted result. Source identity, same-code reproducibility, known-truth qualification, and independent biological validation are different evidence classes and are not interchangeable.
+
+Current branch-level rule:
+
+~~~text
+source qualification != scientific validation
+model self-consistency != biological validation
+native-model reproduction != chi_bio admission
+modal inventory != Chi_bio admission
+cross-layer association != Stability Inheritance
+~~~
+
+Failures, refusals, indeterminate results, access limitations, and representation failures remain part of the evidence record rather than being deleted when later steps succeed.
