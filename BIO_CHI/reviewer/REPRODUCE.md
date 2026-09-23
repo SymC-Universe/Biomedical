@@ -182,7 +182,54 @@ Expected current source-level state counts:
 
 This does not claim that biological reconversion is absent. It means the public SRP040309 RNA deposit is not itself a direct transcriptomic recovery trajectory.
 
-## V9 — master smoke test
+## V9 — BioProject parent/child SRA provenance reconciliation
+
+**[CLAIM]** Harmange and Shaffer public SRA identities can be reconciled without flattening parent/child BioProject structure or opening molecular outcomes.
+
+~~~bash
+python BIO_CHI/src/reconcile_bioproject_sra_v0_2.py
+~~~
+
+Expected terminal status:
+
+~~~text
+BIO_CHI_BIOPROJECT_SRA_RECONCILIATION_V02_PASS
+~~~
+
+Pinned result: BIO_CHI/config/P0D_BIOPROJECT_SRA_RECONCILIATION_V02_RESULT_PIN.json.
+
+Expected current provenance:
+- Harmange: PRJNA994430 → SRP449288 → 23 SRA runs.
+- Shaffer umbrella query PRJNA382641 → SRP103825 / SRP103827 / SRP103828 → child BioProjects PRJNA382674 / PRJNA382752 / PRJNA382753 → exact 155-run union.
+- missing/extra runs in child union: 0/0.
+
+The v0.1 hierarchy failure remains pinned separately and is not erased.
+
+## V10 — Su 2026 M397 native-method source metadata
+
+**[CLAIM]** The prospectively frozen 15-point M397 RNA trajectory is present in hash-verified GSE255671 metadata and its public processing route can be identified without opening expression values or computing surprisal/hysteresis.
+
+~~~bash
+python BIO_CHI/src/audit_su_native_source_metadata_v0_1.py
+~~~
+
+Expected terminal status:
+
+~~~text
+BIO_CHI_SU_NATIVE_SOURCE_METADATA_PASS
+~~~
+
+Pinned result: BIO_CHI/config/SU2026_NATIVE_METHOD_SOURCE_METADATA_V01_RESULT_PIN.json.
+
+Expected current source facts:
+- expected M397 RNA GSMs: 15
+- missing GSMs: 0
+- expression_values_read: false
+- surprisal_computed: false
+
+Public analysis-code identity is pinned in BIO_CHI/config/SU2026_PUBLIC_CODE_PIN_v0_1.json. This verification does not reproduce the biological hysteresis result and does not create a new hysteresis scalar.
+
+## V11 — master smoke test
 
 **[CLAIM]** The current public Bio Chi evidence spine is internally consistent with the active nomenclature, privacy rule, source pins, preserved source-method limitations, and no-premature-admission flags.
 
