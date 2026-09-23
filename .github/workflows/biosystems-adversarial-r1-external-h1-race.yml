@@ -1,0 +1,65 @@
+name: BioSystems adversarial R1 external H1 race sensitivity
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - biosystems-adversarial-r1-20260923
+    paths:
+      - '.github/workflows/biosystems-adversarial-r1-external-h1-race.yml'
+      - 'GRI_v2/src/run_biosystems_adversarial_r1_external_h1_race.py'
+      - 'GRI_v2/reviewer/BIOSYSTEMS_ADVERSARIAL_R1_EXTERNAL_H1_RACE_FREEZE_20260923.md'
+
+jobs:
+  r1-h1-race:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      NUMEXPR_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install runtime
+        run: python -m pip install --disable-pip-version-check numpy pandas
+
+      - name: Acquire exact methylation sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p r1_sources
+          curl --fail --location --retry 5 --retry-delay 3 \
+            'https://ftp.ncbi.nlm.nih.gov/geo/series/GSE262nnn/GSE262522/suppl/GSE262522_m450K_Proc_Funnorm.tsv.gz' \
+            -o r1_sources/GSE262522_m450K_Proc_Funnorm.tsv.gz
+          curl --fail --location --retry 5 --retry-delay 3 \
+            'https://ftp.ncbi.nlm.nih.gov/geo/series/GSE262nnn/GSE262524/suppl/GSE262524_EPIC_Proc_Funnorm.tsv.gz' \
+            -o r1_sources/GSE262524_EPIC_Proc_Funnorm.tsv.gz
+
+      - name: Execute frozen Round 1 H1 race sensitivity
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf R1_H1_RACE_RESULTS
+          PYTHONPATH=GRI_v2 python GRI_v2/src/run_biosystems_adversarial_r1_external_h1_race.py \
+            --config GRI_v2/config/biosystems_external_prostate_p1_v1_0.json \
+            --m450 r1_sources/GSE262522_m450K_Proc_Funnorm.tsv.gz \
+            --epic r1_sources/GSE262524_EPIC_Proc_Funnorm.tsv.gz \
+            --c1-probes GRI_v2/support/c1_probe_ids_22601.txt \
+            --support GRI_v2/support/tn_c1_core_mask_payload.lzma.b64 \
+            --out R1_H1_RACE_RESULTS \
+            --workers 4
+
+      - name: Remove source material
+        if: always()
+        run: rm -rf r1_sources
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: BIOSYSTEMS_ADVERSARIAL_R1_EXTERNAL_H1_RACE_V01
+          path: R1_H1_RACE_RESULTS
+          if-no-files-found: warn
