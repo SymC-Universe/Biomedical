@@ -173,3 +173,9 @@ The generic external-source freeze is pinned in `BIO_CHI/config/EXTERNAL_SOURCE_
 - Harmange/Shaffer metadata-only lineage audit: run **35863952068**, SUCCESS; artifact **10751386783**. No molecular values were opened.
 - Bio Chi governance/privacy guard at the same verified head: run **35863951732**, SUCCESS.
 - Working manuscript scope remains **NOT OPEN / PRIVATE**; no manuscript text was introduced into the public investigation branch.
+
+### Preserved BioProject hierarchy repair
+
+- BioProject/SRA reconciliation v0.1 run **35864958524** failed because Shaffer's SuperSeries parent BioProject `PRJNA382641` was treated as though child-project accessions should equal the parent accession. The failure artifact is **10751561638**.
+- v0.2 run **35864958490** repaired only that source-hierarchy logic by reconciling the explicit child projects `PRJNA382674`, `PRJNA382752`, and `PRJNA382753`; it recovered the full **155-run** union with zero missing and zero extra runs. Artifact **10752061357**.
+- The repair changes source bookkeeping only. It does not alter sample biology, outcomes, cohorts, or interpretation rules.
