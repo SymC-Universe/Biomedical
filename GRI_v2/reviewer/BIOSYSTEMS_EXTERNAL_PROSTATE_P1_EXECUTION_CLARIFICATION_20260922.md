@@ -40,3 +40,12 @@ For the primary 450K lane, RNA size factors are fitted once using the 60 selecte
 EPIC sensitivity analogously fits its RNA normalization on all 52 paired samples (26 + 26).
 
 No normalization parameter is selected from P1 endpoint results.
+
+## Sensitivity conflict rule
+
+Before outcome opening, define a material conflict for a primary endpoint as either:
+
+- reversal of the sign of its null-corrected effect relative to the primary 450K publication track; or
+- disagreement in BH-q<0.05 endpoint status between the primary track and the mandatory sensitivity being compared.
+
+The full-n=32 450K analysis and the EPIC lane remain sensitivities and cannot rescue the frozen n=30 primary. A conflict is reported as representation/platform dependence rather than averaged away.
