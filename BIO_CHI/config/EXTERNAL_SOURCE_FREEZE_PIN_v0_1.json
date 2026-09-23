@@ -1,0 +1,72 @@
+{
+  "schema_version": "0.1",
+  "source_run_id": 35815327119,
+  "artifact_id": 10731275797,
+  "artifact_digest": "sha256:42cceaa2fb074eb29962eaba893f63648f5a6e4e6dcccba4397ebd02743c80ba",
+  "generated_at_utc": "2026-09-23T03:41:53.712701+00:00",
+  "audit_type": "outcome_blind_source_file_freeze",
+  "molecular_values_interpreted": false,
+  "hash_limit_bytes": 104857600,
+  "geo": [
+    {
+      "accession": "GSE145356",
+      "files": [
+        {"name":"GSE145356_RAW.tar","bytes":5847040,"hash_status":"FROZEN","sha256":"7e3b4ee7b5951cac94837b11d010a0a40ea0a4f3c4a7d0ee9df47dbbc4e1cbcc"},
+        {"name":"GSE145356_merged_HTSeq_readCounts_V2.txt.gz","bytes":1191595,"hash_status":"FROZEN","sha256":"b0fe61c87cec2673ac37abef4f112f7d1d292212d3abe1149ac69340718e1447"},
+        {"name":"GSE145356_series_matrix.txt.gz","bytes":4032,"hash_status":"FROZEN","sha256":"6e3acc9ec223d12f281b28e7e2a4d8d7314a36f3808ed4e877c782276dfa5fa3"},
+        {"name":"GSE145356_family.soft.gz","bytes":4224,"hash_status":"FROZEN","sha256":"1a39c3472db263c4c32964bb9467e5842bf6f70992ed3c98ef17884893522fb0"}
+      ]
+    },
+    {
+      "accession": "GSE164716",
+      "files": [
+        {"name":"GSE164716_RAW.tar","bytes":14151997440,"hash_status":"DEFERRED_LARGE_FILE","sha256":null},
+        {"name":"GSE164716_series_matrix.txt.gz","bytes":17598,"hash_status":"FROZEN","sha256":"970aa3a37029c9a8a44ee230b0f446d8600368757ffff5c4ec8d78a6e1a85d0c"},
+        {"name":"GSE164716_family.soft.gz","bytes":22165,"hash_status":"FROZEN","sha256":"43149c8b3b9641b7e19f8fdae9f5cfcecd17c06afed6d4b9f2f7113c1333f10d"}
+      ]
+    },
+    {
+      "accession": "GSE237228",
+      "files": [
+        {"name":"GSE237228_10x_exp3_barcodes.tsv.gz","bytes":178688,"hash_status":"FROZEN","sha256":"3e2fdc6d8ab9100c0fa45916fd000c4e541b83810ce449911679c3f03d26403a"},
+        {"name":"GSE237228_10x_exp3_genes.tsv.gz","bytes":222720,"hash_status":"FROZEN","sha256":"5ebb23ca9a6cb968c4e72c3a65d3e3c626f378dda04a3dfe6ad54f19f87961b5"},
+        {"name":"GSE237228_10x_exp3_matrix.mtx.gz","bytes":501295219,"hash_status":"DEFERRED_LARGE_FILE","sha256":null},
+        {"name":"GSE237228_10x_exp3_metadata.tsv.gz","bytes":3359006,"hash_status":"FROZEN","sha256":"f22aaf6947d38a018c0c4d13ceedacbd3bdffc296f727e171b66a21b7a06434b"},
+        {"name":"GSE237228_RAW.tar","bytes":355102720,"hash_status":"DEFERRED_LARGE_FILE","sha256":null},
+        {"name":"GSE237228_series_matrix.txt.gz","bytes":3295,"hash_status":"FROZEN","sha256":"12bbb9e6bf36e130e8aeb0f836c8778bc7deb035383db4aa8a57d2ccba022fbf"},
+        {"name":"GSE237228_family.soft.gz","bytes":3737,"hash_status":"FROZEN","sha256":"29db7f5d77b661487c892c3b55948164884923daf0469560e04a5f843ba56dd5"}
+      ]
+    },
+    {
+      "accession": "GSE97682",
+      "files": [
+        {"name":"GSE97682_RAW.tar","bytes":966021120,"hash_status":"DEFERRED_LARGE_FILE","sha256":null},
+        {"name":"GSE97682_series_matrix.txt.gz","bytes":7643,"hash_status":"FROZEN","sha256":"288cf881a1f648b116861215ac1680189c372f5634405c3e7867a6c5c3daa3fb"},
+        {"name":"GSE97682_family.soft.gz","bytes":9991,"hash_status":"FROZEN","sha256":"41bd2622d600fe5fedbb322f6d76174ea6d07aa62a0bb34960ffa18b7b18e18b"}
+      ]
+    },
+    {
+      "accession": "GSE255671",
+      "files": [
+        {"name":"GSE255671_RAW.tar","bytes":13340180480,"hash_status":"DEFERRED_LARGE_FILE","sha256":null},
+        {"name":"GSE255671_series_matrix.txt.gz","bytes":11711,"hash_status":"FROZEN","sha256":"f9b8d462907d0dad361d01618fdee6dc09a24c91e7b74c6ccd9c671b5fc0050d"},
+        {"name":"GSE255671_family.soft.gz","bytes":14990,"hash_status":"FROZEN","sha256":"558cc094375f27af9c786f4bb12da1e86b228129203691d3b5cdd38c6214cd4c"}
+      ]
+    }
+  ],
+  "jarus_nfkb_s1_code": {
+    "doi_asset": "https://doi.org/10.1371/journal.pone.0286416.s015",
+    "bytes": 37613,
+    "sha256": "76c51b2b9c44e931f62d4956df2a0aee1b02a481472125d4ae8a0e268ad885f0",
+    "archive_status": "ZIP_OK",
+    "member_count": 23,
+    "reduced_model_members": [
+      {"path":"S1_Codes/BNGL files/Reduced2023 - BNGL file/fitted_reduced_model_combination_protocol.bngl","sha256":"572f25c3f2bd11dce3f5cf974868c3f078104cf4f223c739d1bed7cc42f3103c"},
+      {"path":"S1_Codes/BNGL files/Reduced2023 - BNGL file/fitted_reduced_model_on_off_protocol.bngl","sha256":"3bd1c19d95465c37ee02012a98ad96fb5a7b84e47c73306948e337d27291f54a"},
+      {"path":"S1_Codes/MATLAB files/Reduced2023/reduced.m","sha256":"b42924cf0b30b8dcb15dac1022f93dd57a535501bd0dcdfa96ed516cb7e25c6c"},
+      {"path":"S1_Codes/MATLAB files/Reduced2023/run_simulate_reduced.m","sha256":"2acbc191ff2f48bb6f4382a7156b3bf3eaf58122fa06d06c76e3b7a39d51e951"},
+      {"path":"S1_Codes/MATLAB files/Reduced2023/simulate_reduced.m","sha256":"4660bd10fbfeddee2cb2061e79c10b922b3a6c87ae736ee7ef51dfc6a3d5ec8a"}
+    ]
+  },
+  "failures": []
+}
