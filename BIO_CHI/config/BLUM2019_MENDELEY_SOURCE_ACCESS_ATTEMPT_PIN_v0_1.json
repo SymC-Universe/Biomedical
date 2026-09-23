@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "source": "Blum et al. 2019 Mendeley Data Version 2 acquisition",
+  "dataset_doi": "10.17632/ccnxn84w8z.2",
+  "dataset_id": "ccnxn84w8z",
+  "dataset_version": 2,
+  "expected_file": "data.zip",
+  "workflow_run_id": 35862127483,
+  "workflow_head_sha": "7e51b226ef177bee3298fd07adcb1ebaa09391fc",
+  "artifact_id": 10751055520,
+  "artifact_zip_sha256": "5ad2daaab9dd3c40c3f0d37e97d10f8648331ce9c75c0b5b27641d213a6b1599",
+  "status": "MECHANICAL_SOURCE_ACCESS_FAILURE",
+  "landing_page": {
+    "url": "https://data.mendeley.com/datasets/ccnxn84w8z/2",
+    "http_status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "size_bytes": 119493,
+    "sha256": "254098032783cfb03b9a8e5868f3967c8feee0bf2e2359f855005da4805ebf65",
+    "expected_filename_literal_found": false
+  },
+  "attempts": [
+    {
+      "url": "https://data.mendeley.com/public-files/datasets/ccnxn84w8z/files/data.zip/download",
+      "result": "HTTP_404"
+    },
+    {
+      "url": "https://data.mendeley.com/public-files/datasets/ccnxn84w8z/files/data.zip/file_downloaded",
+      "result": "HTTP_200_JSON_BAD_REQUEST_NOT_ARCHIVE",
+      "response_sha256": "f48a655efea32d12002ea1e5a9fe43586fe1fd46c88a186b338aa8df26e6be16"
+    }
+  ],
+  "archive_contents_opened": false,
+  "scientific_values_interpreted": false,
+  "scientific_effect": "NONE",
+  "source_effect": "Versioned dataset identity remains valid and public, but the exact file UUID/direct archive byte endpoint is not yet programmatically frozen.",
+  "forbidden_inferences": [
+    "do not classify the dataset as absent or inaccessible to humans",
+    "do not claim an archive SHA-256",
+    "do not invent a file UUID",
+    "do not promote Blum 2019 because it has a public deposit",
+    "do not inspect or compute biological outcomes before valid archive bytes are frozen and schema-only inventory is complete"
+  ],
+  "next_safe_task": "resolve the exact public file UUID/download endpoint from a supported metadata/API route or continue parallel Q2 source qualification; do not repeat demonstrated filename-only routes unchanged"
+}
