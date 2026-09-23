@@ -34,18 +34,25 @@ The generic external-source freeze is pinned in `BIO_CHI/config/EXTERNAL_SOURCE_
 
 ### Harmange et al. 2023 — scMemorySeq
 
-- GEO: **GSE237228**.
-- Public series contains expression and chromatin-accessibility material; exact GEO file identities are now captured by the external-source freeze.
+- GEO: **GSE237228**; BioProject **PRJNA994430**.
+- Metadata-only lineage audit run **35863431965** passed without opening molecular values or cell-level metadata rows.
+- The Series contains **22** GEO samples and each sample has an explicit SRA experiment link (SRX21003294 through SRX21003315).
+- The frozen cell-metadata header explicitly contains lineage and condition fields, including `nCount_lineage`, `nFeature_lineage`, `conditions`, `Primed_UCell`, `clusterID`, `TGFB1`, `TGFBRi`, and `PI3Ki`.
+- Frozen supplementary identities include barcodes, genes, matrix, metadata, and RAW archive paths.
+- This closes the high-level source-lineage identity gap. It does **not** establish that a particular barcode/state is a causal Stability Inheritance carrier.
 
-**Source disposition:** PUBLIC LINEAGE/MEMORY CANDIDATE. Exact lineage-barcode-to-sample mapping remains a Q2 task.
+**Source disposition:** PUBLIC LINEAGE/MEMORY SOURCE MAP QUALIFIED. Biological carrier correspondence/intervention remains a separate scientific gate.
 
 ### Shaffer et al. 2017 — rare-cell priming and resistance
 
-- GEO SuperSeries: **GSE97682**.
-- Public raw/processed series material is captured by the external-source freeze.
-- Historical paper-level SRA lineage still requires exact reconciliation before an execution script is frozen.
+- GEO SuperSeries: **GSE97682**; BioProject **PRJNA382641**.
+- Metadata-only lineage audit run **35863431965** passed without opening molecular values.
+- GSE97682 is explicitly the SuperSeries of **GSE97679, GSE97680, and GSE97681**.
+- The SuperSeries contains **155** samples, all with explicit SRA experiment links (SRX2733818 through SRX2733973).
+- GEO metadata explicitly contains Drug, NoDrug, **48hrholiday**, and **7dayholiday** conditions; the audit recorded 76 Drug, 36 NoDrug, 5 48-hour-holiday, and 5 7-day-holiday sample labels. These are source labels only, not outcome adjudications.
+- Raw/processed Series material remains captured by the external-source freeze.
 
-**Source disposition:** PUBLIC RECOVERY/REORGANIZATION BOUNDARY CANDIDATE.
+**Source disposition:** PUBLIC RECOVERY/REORGANIZATION SOURCE LINEAGE QUALIFIED. Execution-subset selection remains prospective and outcome-blind.
 
 ### Srivatsan et al. 2020 — sci-Plex
 
@@ -56,10 +63,13 @@ The generic external-source freeze is pinned in `BIO_CHI/config/EXTERNAL_SOURCE_
 
 ### Lee et al. 2014 — paclitaxel tolerance
 
-- Paper reports SRA accession **SRP040309**.
-- Exact run/file map remains pending.
+- Paper-reported SRA accession **SRP040309** now resolves cleanly under BioProject **PRJNA241034**.
+- Metadata-only source-map run **35863794417** passed and froze the exact NCBI RunInfo response (SHA-256 `79a96a4b70a4dcafab26f253cfa57fc53038008993085bf957e2285502fde2cd`).
+- The study contains **19 public RNA-seq runs**, 19 experiments, 19 SRA samples, and 19 BioSamples; all runs are paired-end Illumina RNA-seq.
+- Sequence reads were not downloaded and no expression values were opened.
+- A second metadata-only gate is mapping experiment/sample titles and treatment/state labels before any recovery analysis.
 
-**Source disposition:** ACCESSION REPORTED / SOURCE MAP PENDING.
+**Source disposition:** PUBLIC SRA RUN MAP QUALIFIED / SAMPLE-CONDITION METADATA MAPPING ACTIVE.
 
 ## Scalar/model-track and known-truth source qualification
 
@@ -96,13 +106,14 @@ The generic external-source freeze is pinned in `BIO_CHI/config/EXTERNAL_SOURCE_
 - The article's data-availability section states that CellProfiler pipelines are supplied as Code EV1 and that the inference source, model files, and inference results are public at `Mijan/LFNS_MSB`.
 - Article supplementary resources include source-data ZIPs for Figures 1–5, Code EV1, and CP pipelines.
 - Public model/inference repository `Mijan/LFNS_MSB` is pinned outcome-blind at branch `MSB_version`, commit `5c917abda0618d75c00c9cab45f24ed893dd71f1`, tree `cbb79d66f79a84bc8af28ca85f1678295348da83` in `BIO_CHI/config/BLUM2019_PUBLIC_SOURCE_PIN_v0_1.json`.
-- A separate public processed dataset is now identified at **Mendeley Data DOI 10.17632/ccnxn84w8z.2**, Version 2, published 13 May 2020. The repository lists `data.zip` at **7.97 MB**, contributors Maciej Dobrzynski and Yannick Blum, and **CC BY 4.0** licensing. Identity is pinned in `BIO_CHI/config/BLUM2019_MENDELEY_DATA_PIN_v0_1.json` before archive inspection.
-- Native population comparison uses the Jeffries-Matusita distance.
-- Short temporal perturbations with washout/recovery are described in the publication.
-- Direct `data.zip` endpoint and archive SHA-256 are **not yet frozen**; no hash is claimed.
-- Raw microscopy public-download status is not inferred from the processed-data deposit.
+- Mendeley Data DOI **10.17632/ccnxn84w8z.2**, Version 2, is now frozen through its supported public-files API. Exact `data.zip` UUID: `b8e7b821-d59b-4b42-b34e-1d679ace693d`; exact archive size: **8,352,835 bytes**; SHA-256: `8bbd1ead46b5bb6b676bd47a5f415fdd790840a9c726321dc5c209b9c527bc62`.
+- Outcome-blind schema inventory found **103** ZIP members without reading member payloads; the scientific payload is organized under `data/` with source-data folders for Figures 1–5 and Appendix plus CellProfiler pipelines.
+- A prospectively frozen documentation/header-only audit mapped the Figure-1 source fields without reading data rows: EKAR trajectories use `intensity_ekar,realtime,group.idx,id,fov`; grouping uses `group,group.idx`; pulse-channel records use `fov,intensity_pulse,realtime,group.idx`.
+- The publication defines the native Jeffries-Matusita distance and integrated population distance, but a full-text method audit did **not** establish the histogram bin count, bin edges/range, common-bin rule, smoothing/pseudocount rule, missing-value handling, exact alignment/interpolation rule, or the original Figure-1H implementation code.
+- Therefore exact Figure-1H native-metric reproduction is **method-underspecified** under the current public record. No binning convention will be inferred from common practice.
+- Raw microscopy public-download status remains unclaimed.
 
-**Source disposition:** PUBLIC VERSIONED PROCESSED DATA + PUBLIC MODEL/INFERENCE SOURCE QUALIFIED. DIRECT ARCHIVE ENDPOINT/HASH PENDING. Candidate status is unchanged; no result-based promotion has occurred.
+**Source disposition:** PUBLIC SOURCE/SCHEMA QUALIFIED; EXACT PUBLISHED JM REPRODUCTION BLOCKED BY METHOD UNDER-SPECIFICATION. This is a preserved Limit-Map/source-method finding, not a reason to invent a replacement metric.
 
 ### Geva-Zatorsky et al. 2006 — p53/Mdm2
 
@@ -142,9 +153,9 @@ The generic external-source freeze is pinned in `BIO_CHI/config/EXTERNAL_SOURCE_
 
 ## Next mechanical source tasks
 
-- freeze the exact downloadable endpoint and SHA-256 of Blum Mendeley `data.zip` without interpreting archive contents; then inventory only schema/file identities before any native-metric execution;
-- continue exact lineage/carrier mapping for Harmange and other carrier-qualified candidates;
-- reconcile Shaffer SRA/BioProject lineage before freezing an execution subset;
-- verify Lee SRP040309 exact run/file map;
+- complete the already-frozen Lee SRP040309 experiment/sample metadata map so treatment/state labels are source-derived rather than inferred;
+- continue Harmange lineage/carrier mapping from the now-qualified 22-sample/SRX source map, without treating metadata presence as inherited-carrier proof;
+- freeze a Shaffer execution subset only after its SuperSeries/subseries role and recovery-return target are stated prospectively;
+- treat Blum exact JM reproduction as blocked unless an original implementation resolves the histogram construction; do not fabricate a binning rule;
 - qualify candidate testbeds against the frozen P0-D eligibility contract without using expected SymC agreement as a selection criterion;
 - keep `chi_bio`, `Chi_bio`, and Bio Chi admission closed until their respective prospective gates are satisfied.
