@@ -7,12 +7,6 @@ on:
     paths:
       - 'BIO_CHI/src/audit_jarus_simulation_horizon.py'
       - 'BIO_CHI/src/prepare_jarus_matlab_compat.sh'
-      - '.github/workflows/bio-chi-jarus-simulation-horizon.yml'
-  pull_request:
-    paths:
-      - 'BIO_CHI/src/audit_jarus_simulation_horizon.py'
-      - 'BIO_CHI/src/prepare_jarus_matlab_compat.sh'
-      - '.github/workflows/bio-chi-jarus-simulation-horizon.yml'
   workflow_dispatch:
 
 permissions:
