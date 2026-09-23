@@ -1,7 +1,7 @@
 # BioSystems v23 Bio Chi / tool closure checkpoint
 
 **Date:** 23 September 2026  
-**Status:** ACTIVE CLOSURE CHECKPOINT  
+**Status:** COMPLETE / FINAL SUBMISSION CHECKPOINT  
 **Branch:** `biosystems-v23-biochi-tool-closure-20260923`  
 **Authority:** SymC General Operations Manual v0.8.6
 
@@ -54,3 +54,22 @@ This is a bounded closure for the manuscript-facing claim, not a declaration tha
 5. freeze submission only after main, supplement, reviewer response, and reproducibility guide agree on claim ceilings.
 
 If interrupted, resume from the first incomplete item above. No polling state is required to reconstruct this checkpoint.
+
+
+## Final closure
+
+Final public closure record:
+`GRI_v2/reviewer/BIOSYSTEMS_V23_FINAL_SUBMISSION_CLOSURE_20260923.md`
+
+Closure-record commit:
+`8259ce99a191792ded7e8730e99eb828033c7c94`
+
+Final private package:
+`BioSystems_Resubmission_R1_v23_Final_20260923.zip`
+
+Package SHA-256:
+`92312942d9435a927abea3d6a7666cc3cf6fd4382221d1a52960881bf963b173`
+
+Historical divergent Bio Chi PR #7 is CLOSED and superseded by selective reintegration.
+
+No incomplete scientific or mechanical task remains in this closure queue. Any later work begins as a new post-submission or editor/reviewer-response lineage rather than silently modifying this frozen package.
