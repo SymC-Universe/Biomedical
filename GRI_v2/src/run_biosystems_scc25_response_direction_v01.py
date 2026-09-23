@@ -104,18 +104,18 @@ def read_meth_matrix(path:Path, gsms, required_probes):
     if len(keep)<15000: raise SystemExit(f"LOW_FINITE_C1_SUPPORT {len(keep)}")
     return keep,x
 
-def read_rna(path:Path, gsms):
+def read_rna(path:Path, source_columns):
     df=pd.read_csv(path,sep="\t",compression="gzip",low_memory=False)
     if "GENE" not in df.columns: raise SystemExit("RNA_GENE_COLUMN_MISSING")
-    miss=[g for g in gsms if g not in df.columns]
-    if miss: raise SystemExit(f"RNA_GSM_MISSING {miss}")
+    miss=[g for g in source_columns if g not in df.columns]
+    if miss: raise SystemExit(f"RNA_SOURCE_COLUMN_MISSING {miss}")
     raw=df["GENE"].astype(str).str.strip()
     symbol=raw.str.split("|",n=1,regex=False).str[0].str.strip()
-    vals=df[gsms].apply(pd.to_numeric,errors="coerce")
+    vals=df[source_columns].apply(pd.to_numeric,errors="coerce")
     tmp=vals.copy(); tmp.insert(0,"symbol",symbol)
     tmp=tmp.loc[(tmp["symbol"]!="")&(tmp["symbol"]!="?")&(tmp["symbol"].str.lower()!="nan")]
     # fixed duplicate rule: median per symbol per sample
-    agg=tmp.groupby("symbol",sort=True)[gsms].median()
+    agg=tmp.groupby("symbol",sort=True)[source_columns].median()
     x=agg.to_numpy(float)
     med=np.nanmedian(x,axis=1,keepdims=True)
     mad=np.nanmedian(np.abs(x-med),axis=1)
@@ -148,8 +148,11 @@ def main():
     states=sorted(man["main_timecourse"],key=lambda z:(z["week"],0 if z["arm"]=="PBS" else 1))
     if len(states)!=22: raise SystemExit("MAIN_TIMECOURSE_COUNT_DRIFT")
     rna_gsms=[z["rna_gsm"] for z in states]; meth_gsms=[z["methylation_gsm"] for z in states]
+    # The hash-bound processed RNA source uses source-native generation/arm columns rather than GSM names.
+    # This mapping was established in the outcome-free chronic source audit before this extension.
+    rna_source_columns=[f"C{z['week']}.PBS" if z["arm"]=="PBS" else f"C{z['week']}.100nM" for z in states]
     pids,mx=read_meth_matrix(a.methylation,meth_gsms,probes)
-    genes,rx=read_rna(a.rna,rna_gsms)
+    genes,rx=read_rna(a.rna,rna_source_columns)
 
     # indexes are PBS,CTX within each week
     meth_dist=[]; rna_dist=[]; meth_delta=[]; rna_delta=[]
@@ -214,6 +217,10 @@ def main():
       "schema_version":"0.1","status":"COMPLETE_P0D",
       "source_sha256":{"rna":sha256_file(a.rna),"methylation":sha256_file(a.methylation),
                        "support_payload":support_sha,"support_decoded":support_raw_sha},
+      "rna_gsm_to_source_column":[
+        {"week":z["week"],"arm":z["arm"],"gsm":z["rna_gsm"],"source_column":col}
+        for z,col in zip(states,rna_source_columns)
+      ],
       "c1_probe_count_retained_all_22_states":int(len(pids)),
       "rna_gene_count_after_fixed_symbol_and_MAD_gate":int(len(genes)),
       "promoter_rna_common_gene_count":int(len(common)),
