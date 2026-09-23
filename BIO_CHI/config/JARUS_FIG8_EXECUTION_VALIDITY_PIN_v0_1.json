@@ -1,0 +1,63 @@
+{
+  "schema_version": "0.1",
+  "status": "MECHANICAL_EXECUTION_INVALID_FOR_FIG8B_C_BEHAVIOR",
+  "authority": "SymC GOM v0.8.4",
+  "source_execution_pin": "BIO_CHI/config/JARUS_FIG8_EXECUTION_PIN_v0_1.json",
+  "source_execution_run": 35849437099,
+  "source_execution_artifact_sha256": "92b848b6a229e844744a4b2be1cf2dc363282cb1481b36175df07e2c63219d4d",
+  "source_control_flow_audit": {
+    "run_id": 35854246990,
+    "artifact_id": 10746961568,
+    "artifact_sha256": "055bc534a3fae9796f06ca9f5d7fff68a2f741667ea54a141d265d27a6553b35",
+    "facts": {
+      "hardcoded_integration_end_hours": 24,
+      "tnf_onset_hours": 1,
+      "hardcoded_plot_span_hours": [0, 10],
+      "rest_step_uses_hardcoded_integration_end": true
+    }
+  },
+  "diagnosis": "The supplied simulate_reduced.m helper treats duration_hours as TNF-on duration. For the frozen 30 h B/C calls, TNF begins at 1 h and pulse_end becomes 31 h while the helper retains t_end=24 h. It therefore appends a reverse-time rest integration from 31 h to 24 h. The resulting reverse segment becomes numerically unstable and cannot be used to adjudicate the authors' Figure 8B/C behavior claims. The helper also hardcodes plotting normalization/x-limits to 0-10 h and therefore is not a direct long-window Figure 8B/C driver.",
+  "trajectory_integrity": {
+    "FIG8A_NOMINAL_DAMPED": {
+      "rows": 251,
+      "time_min_h": -20.0,
+      "time_max_h": 24.0,
+      "negative_time_steps": 0,
+      "nonfinite_nuclear_nfkb_values": 0,
+      "status": "TIME_MONOTONE_FINITE_BUT_NOT_YET_BEHAVIOR_ADJUDICATED"
+    },
+    "FIG8B_LIMIT_CYCLE": {
+      "rows": 1988,
+      "time_min_h": -20.0,
+      "time_max_h": 31.0,
+      "negative_time_steps": 1542,
+      "first_time_reversal_h": [31.0, 30.979815691701],
+      "nonfinite_nuclear_nfkb_values": 13,
+      "first_nonfinite_time_h": 29.5686374506187,
+      "max_abs_finite_nuclear_nfkb": 1.20395404967828e152,
+      "status": "MECHANICALLY_INVALID_AFTER_TIME_REVERSAL"
+    },
+    "FIG8C_RELAXATION_OSCILLATION": {
+      "rows": 2145,
+      "time_min_h": -20.0,
+      "time_max_h": 31.0,
+      "negative_time_steps": 1548,
+      "first_time_reversal_h": [31.0, 30.9834779244355],
+      "nonfinite_nuclear_nfkb_values": 14,
+      "first_nonfinite_time_h": 29.4740891428576,
+      "max_abs_finite_nuclear_nfkb": 7.32842025773171e151,
+      "status": "MECHANICALLY_INVALID_AFTER_TIME_REVERSAL"
+    }
+  },
+  "scientific_disposition": {
+    "native_behavior_failure_declared": false,
+    "native_behavior_pass_declared": false,
+    "behavior_classified": false,
+    "chi_bio_constructed": false,
+    "Chi_bio_constructed": false,
+    "Bio_Chi_constructed": false,
+    "preserve_failure": true,
+    "reason": "A demonstrable execution-control-flow defect precedes scientific adjudication. Under GOM it is preserved and repaired mechanically rather than converted into either a biological failure or a pass."
+  },
+  "next_safe_action": "Create a versioned Figure 8 execution contract that distinguishes observation horizon from TNF-on duration and executes tonic TNF monotonically through the paper-defined observation window, without changing model equations, Figure 8 parameter sets, solver family, or the already-frozen behavior-adjudication rules."
+}
