@@ -9,14 +9,6 @@ on:
       - 'BIO_CHI/config/JARUS_FIG8_BEHAVIOR_ADJUDICATION_FREEZE_v0_2.json'
       - 'BIO_CHI/src/jarus_fig8_tonic_execute_v02.m'
       - 'BIO_CHI/src/adjudicate_jarus_fig8_behavior_v02.py'
-      - '.github/workflows/bio-chi-jarus-fig8-v02.yml'
-  pull_request:
-    paths:
-      - 'BIO_CHI/config/JARUS_FIG8_EXECUTION_FREEZE_v0_2.json'
-      - 'BIO_CHI/config/JARUS_FIG8_BEHAVIOR_ADJUDICATION_FREEZE_v0_2.json'
-      - 'BIO_CHI/src/jarus_fig8_tonic_execute_v02.m'
-      - 'BIO_CHI/src/adjudicate_jarus_fig8_behavior_v02.py'
-      - '.github/workflows/bio-chi-jarus-fig8-v02.yml'
   workflow_dispatch:
 
 permissions:
