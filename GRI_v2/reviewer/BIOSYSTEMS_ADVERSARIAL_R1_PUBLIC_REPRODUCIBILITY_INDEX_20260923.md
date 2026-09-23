@@ -179,15 +179,28 @@ This file records whether each adversarial comment is valid, partly valid, false
 
 Every long gate is frozen before execution and the checkpoint is updated before the next major run.
 
-## Active gate
+## Round-1 H1 composition + TSS attack
 
-At the time this index version was created, the composition + TCGA Tissue Source Site H1 null was active under:
+Freeze:
+- `BIOSYSTEMS_ADVERSARIAL_R1_H1_TSS_FREEZE_20260923.md`.
 
-- `BIOSYSTEMS_ADVERSARIAL_R1_H1_TSS_FREEZE_20260923.md`;
-- runner `GRI_v2/src/run_biosystems_adversarial_r1_h1_tss.py`;
-- workflow `.github/workflows/biosystems-adversarial-r1-h1-tss.yml`.
+Execution:
+- run `35815819898`;
+- artifact `BIOSYSTEMS_ADVERSARIAL_R1_H1_TSS_V01`;
+- artifact ID `10731877118`;
+- digest `sha256:d8d953f7803e8dd048a85a6bb96298315dcfd4c9eff38bd3b400731386cb4e70`.
 
-Its result must be added here only after terminal audit.
+Audit:
+- `BIOSYSTEMS_ADVERSARIAL_R1_H1_TSS_AUDIT_20260923.md`.
+
+Disposition:
+- `R1_H1_COMP_TSS_ROBUST`;
+- H1 composition+TSS-preserved median +0.0816210492;
+- 30/30 positive cancers;
+- exact two-sided sign p `1.862645149230957e-09`;
+- conventional PCA PC1-fraction comparator also 30/30 positive, median +0.0685775794, same exact p.
+
+This post-result attack preserves linear purity/leukocyte effects and TCGA TSS mean structure; it does not establish full batch/composition independence.
 
 ## Public/private boundary
 
