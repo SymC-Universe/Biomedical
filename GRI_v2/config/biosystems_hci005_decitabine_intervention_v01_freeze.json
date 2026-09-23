@@ -1,0 +1,91 @@
+{
+  "schema_version": "0.1",
+  "experiment": "HCI005_DECITABINE_METHYLATION_RNA_INTERVENTION_V01",
+  "status": "FROZEN_BEFORE_MOLECULAR_VALUE_OPENING_FOR_THIS_TEST",
+  "sources": {
+    "methylation_geo": "GSE171069",
+    "methylation_file": "GSE171069_series_matrix.txt.gz",
+    "methylation_sha256": "65ee8783e9d47f568a94a35944719c1aae1df0c693150dd2bcdba44b876c55ad",
+    "rna_geo": "GSE171073",
+    "rna_file": "GSE171073_Veh.vs.Dec_HCI005.cntTable.txt.gz",
+    "rna_sha256": "1cbd6826074498a57025124da0a2857f1248338b21aaf1e3034cea48c7f68397",
+    "gencode": "GENCODE v33",
+    "gencode_gtf_sha256": "4e8afc75f90821668b0a8f45a33c31a792b4b4f754621d76ad9e50b0492a3a89",
+    "c1_probe_carrier_sha256": "589365b92797f6e0ea479b75437c44ed86327cfc86b3e7caf7df01b4be2bcdd9"
+  },
+  "replicate_map": [
+    {
+      "replicate": 1,
+      "group": "Vehicle",
+      "methylation_gsm": "GSM5218270",
+      "rna_column": "HCI005_Vehicle_1_RNAAligned.out.bam.C"
+    },
+    {
+      "replicate": 2,
+      "group": "Vehicle",
+      "methylation_gsm": "GSM5218271",
+      "rna_column": "HCI005_Vehicle_2_RNAAligned.out.bam.C"
+    },
+    {
+      "replicate": 3,
+      "group": "Vehicle",
+      "methylation_gsm": "GSM5218272",
+      "rna_column": "HCI005_Vehicle_3_RNAAligned.out.bam.C"
+    },
+    {
+      "replicate": 4,
+      "group": "Vehicle",
+      "methylation_gsm": "GSM5218273",
+      "rna_column": "HCI005_Vehicle_4_RNAAligned.out.bam.C"
+    },
+    {
+      "replicate": 1,
+      "group": "Decitabine",
+      "methylation_gsm": "GSM5218274",
+      "rna_column": "HCI005_Dec_1_RNAAligned.out.bam.T"
+    },
+    {
+      "replicate": 2,
+      "group": "Decitabine",
+      "methylation_gsm": "GSM5218275",
+      "rna_column": "HCI005_Dec_2_RNAAligned.out.bam.T"
+    },
+    {
+      "replicate": 3,
+      "group": "Decitabine",
+      "methylation_gsm": "GSM5218276",
+      "rna_column": "HCI005_Dec_3_RNAAligned.out.bam.T"
+    },
+    {
+      "replicate": 4,
+      "group": "Decitabine",
+      "methylation_gsm": "GSM5218277",
+      "rna_column": "HCI005_Dec_4_RNAAligned.out.bam.T"
+    }
+  ],
+  "methylation": {
+    "feature_universe": "intersection of exact C1 22,601 probe carrier with source matrix; require finite beta in all 8 HCI-005 samples",
+    "manipulation_statistic": "median across retained C1 probes of mean(Decitabine beta)-mean(Vehicle beta)",
+    "treatment_null": "all 70 assignments of 4 of 8 multiomic replicate identities to Decitabine; one-sided p for statistic <= observed",
+    "support_rule": "observed median delta < 0 and exact p <= 0.05"
+  },
+  "rna": {
+    "identifier_map": "strip Ensembl version if present; map Ensembl gene ID to GENCODE v33 gene_name",
+    "duplicate_symbol_rule": "sum raw counts over Ensembl gene IDs mapping to the same gene symbol",
+    "size_factor_rule": "DESeq-style median ratio using symbols with finite strictly positive counts in all 8 samples",
+    "transform": "log2(normalized_count + 1)",
+    "gene_delta": "mean(Decitabine transformed expression)-mean(Vehicle transformed expression)"
+  },
+  "promoter_gene": {
+    "methylation_gene_object": "for each frozen promoter-core gene, per sample median beta across retained mapped C1 promoter probes; gene delta = mean Decitabine - mean Vehicle",
+    "analysis_genes": "genes with GENCODE-mapped RNA and at least one retained promoter-core C1 probe; no outcome filtering"
+  },
+  "coupling": {
+    "primary_statistic": "Spearman rho across analysis genes between promoter methylation gene delta and RNA gene delta",
+    "expected_direction": "negative",
+    "identity_null": "B=9999 deterministic RNA gene-label permutations; one-sided p for rho <= observed",
+    "treatment_null": "all 70 synchronous treatment-label assignments across the eight matched multiomic replicate identities; recompute both gene-delta vectors and rho; one-sided p for rho <= observed",
+    "support_rule": "rho < 0, identity-null p <= 0.05, treatment-null p <= 0.05, and methylation manipulation support passes"
+  },
+  "claim_ceiling": "intervention-consistent gene-matched promoter demethylation/RNA coupling in one HCI-005 decitabine-treated breast-cancer PDX model; not proof of local causal regulation for each gene, not a pan-cancer causal law, and does not erase the negative SCC25 temporal-direction result"
+}
