@@ -18,7 +18,7 @@ For any released manuscript claim, use the exact release commit/tag and SHA-256 
 
 ## V1 — governance, nomenclature, and manuscript privacy
 
-**[CLAIM]** The active Bio Chi lineage is governed by GOM v0.8.4, preserves the scalar → modal/vector → conglomerate hierarchy, has a durable continuation queue/checkpoint, and excludes working-manuscript drafts from the public Bio Chi tree.
+**[CLAIM]** The active Bio Chi lineage is governed by GOM v0.8.6 together with the later project-specific three-object nomenclature decision: `χ_bio` scalar, `Chi_bio` modal/vector, and Bio Chi conglomerate/system. The program-wide `χ` symbol is not a fourth biological object. The lineage has a durable continuation queue/checkpoint and excludes working-manuscript drafts from the public Bio Chi tree.
 
 ~~~bash
 python BIO_CHI/src/validate_control.py
