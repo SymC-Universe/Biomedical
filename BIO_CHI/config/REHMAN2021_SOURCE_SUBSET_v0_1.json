@@ -36,7 +36,7 @@
   ],
   "processed_counts_file": "GSE145356_merged_HTSeq_readCounts_V2.txt.gz",
   "raw_archive": "GSE145356_RAW.tar",
-  "group_mapping_status": "pending_metadata_only_audit",
+  "group_mapping_status": "verified_from_GEO_SOFT_metadata_only",
   "recovery_claim_allowed_from_design": true,
   "rechallenge_evidence_in_paper": true,
   "scalar_chi_bio_status": "not_defined",
@@ -44,5 +44,49 @@
     "All 25 GEO samples are retained at this stage to avoid result-based sample selection.",
     "Exact mapping of barcode/tracking and treatment-state labels will be taken from GEO metadata and paper methods before any new analysis.",
     "No Bio Chi endpoint or scalar construction is defined here."
-  ]
+  ],
+  "groups": {
+    "saline_8w": [
+      "GSM4315308",
+      "GSM4315309",
+      "GSM4315310"
+    ],
+    "dmso_8w": [
+      "GSM4315311",
+      "GSM4315312",
+      "GSM4315313",
+      "GSM4315329",
+      "GSM4315330",
+      "GSM4315331",
+      "GSM4315332"
+    ],
+    "fu_lv_8w": [
+      "GSM4315314",
+      "GSM4315315",
+      "GSM4315316"
+    ],
+    "cpt11_regrowth": [
+      "GSM4315317",
+      "GSM4315318",
+      "GSM4315319"
+    ],
+    "folfiri_regrowth": [
+      "GSM4315320",
+      "GSM4315321",
+      "GSM4315322"
+    ],
+    "cpt11_resistant_7mo": [
+      "GSM4315323",
+      "GSM4315324",
+      "GSM4315325"
+    ],
+    "cpt11_8w": [
+      "GSM4315326",
+      "GSM4315327",
+      "GSM4315328"
+    ]
+  },
+  "geo_soft_sha256": "1a39c3472db263c4c32964bb9467e5842bf6f70992ed3c98ef17884893522fb0",
+  "geo_soft_size_bytes": 4224,
+  "metadata_audit_molecular_values_opened": false
 }
