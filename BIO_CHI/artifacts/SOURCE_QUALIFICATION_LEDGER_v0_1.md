@@ -140,10 +140,18 @@
 ## Unresolved high-priority sources
 
 1. **Jiang et al. 2020 yeast stress-memory**
-   - paper is open access; exact downloadable single-cell trace/source package remains unverified.
-3. **Sharma et al. 2010 PC9 DTP/DTEP**
-   - recovery figures are strong, but machine-readable public source availability must be established.
-4. **Harmange barcode mapping**
+   - DOI: 10.1126/scisignal.aay3585; PMCID: PMC7302112.
+   - article and supplementary materials are publicly readable.
+   - BioStudies literature mirror: S-EPMC7302112.
+   - targeted public-source search did **not** establish a standalone raw single-cell trace repository or accession.
+   - disposition remains **PUBLIC ARTICLE/SUPPLEMENT; RAW TRACE PACKAGE UNVERIFIED**. Do not assume raw trajectories are downloadable until an exact file path is frozen.
+2. **Sharma et al. 2010 PC9 DTP/DTEP**
+   - DOI: 10.1016/j.cell.2010.02.027; PMCID: PMC2851638.
+   - full article is publicly readable through PMC and documents drug-free reversal/resensitization.
+   - the Reproducibility Project: Cancer Biology registered a detailed replication protocol (eLife 2016, DOI 10.7554/eLife.09462), which is useful as an independent protocol-level comparator.
+   - targeted public-source search did **not** establish a modern standalone machine-readable raw dataset for the original 2010 study.
+   - disposition remains **STRONG BIOLOGICAL RECOVERY REFERENCE / ORIGINAL RAW DATA UNVERIFIED**.
+3. **Harmange barcode mapping**
    - exact lineage-barcode files and relationship to GEO sample records must be mapped.
 
 ## Next mechanical source tasks
