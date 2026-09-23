@@ -132,11 +132,14 @@ The generic external-source freeze is pinned in `BIO_CHI/config/EXTERNAL_SOURCE_
 
 - Nature Communications 17, 3228 (2026), DOI **10.1038/s41467-026-71349-4**.
 - GEO **GSE255671**; BioProject **PRJNA1076128**; additional longitudinal sources GSE65186, EGAS00001000992, and E-MTAB-5493.
-- Public analysis/modeling code: `jihoonlee0/melanoma_reversible_transition`; archived release DOI **10.5281/zenodo.17751601**.
-- Study includes oncogene inhibition followed by release and a reported hysteretic forward/reverse trajectory.
-- GSE255671 exact public file-map identity is captured by the external-source freeze.
+- The 15-point M397 RNA trajectory was frozen prospectively from metadata only: D0, D3, D8, D13, D21, D29, D33, D38, D59 and post-D29-removal DR4, DR10, DR15, DR17, DR30, DR35.
+- Native-source metadata run **35865443566** completed **PASS_SU_NATIVE_SOURCE_METADATA** with all 15 expected GSMs present and no expression values opened; artifact **10751772307**, digest `sha256:056a11a25b783d880b69da7c1e68a8a80f3ba9e33d9d7f44eb376fdebd944237`.
+- GEO metadata explicitly reports hg19, htseq-count v0.6.0, TxDb.Hsapiens.UCSC.hg19.knownGene, RPKM/FPKM-related processed expression and read-count processing. This qualifies source/method identity only.
+- Public analysis/modeling code `jihoonlee0/melanoma_reversible_transition` is pinned at commit `a2b2119f6d69d49e33ff4b57fb04b2b1eaf5fe68`, tree `a0d9cd0dcf25cda1a53cc8670f77490c0395764c`; `surprisal.m` blob `2dac24e398f30451388c2acbe1406e23afcdad50` implements log-transform + SVD structure. Archived release DOI: **10.5281/zenodo.17751601**.
+- The publication defines forward/reverse module coordinates and an ODE/MCMC analysis, but it does **not** provide a single scalar hysteresis-area/distance statistic. No new hysteresis scalar will be invented at source qualification.
+- Exact processed-expression file identity/hash remains the next source gate before opening expression values.
 
-**Source disposition:** STRONG PUBLIC HYSTERESIS/REORGANIZATION CANDIDATE. Minimal execution subset must still be frozen before outcome opening.
+**Source disposition:** STRONG PUBLIC HYSTERESIS/REORGANIZATION SOURCE + NATIVE-METHOD IDENTITY QUALIFIED. OUTCOME VALUES REMAIN SEALED FOR THE NEW BIO CHI ANALYSIS.
 
 ## Preserved unresolved/source-limited cases
 
@@ -179,3 +182,14 @@ The generic external-source freeze is pinned in `BIO_CHI/config/EXTERNAL_SOURCE_
 - BioProject/SRA reconciliation v0.1 run **35864958524** failed because Shaffer's SuperSeries parent BioProject `PRJNA382641` was treated as though child-project accessions should equal the parent accession. The failure artifact is **10751561638**.
 - v0.2 run **35864958490** repaired only that source-hierarchy logic by reconciling the explicit child projects `PRJNA382674`, `PRJNA382752`, and `PRJNA382753`; it recovered the full **155-run** union with zero missing and zero extra runs. Artifact **10752061357**.
 - The repair changes source bookkeeping only. It does not alter sample biology, outcomes, cohorts, or interpretation rules.
+
+
+### BioProject/SRA hierarchy reconciliation
+
+- v0.1 is preserved as a source-hierarchy failure: it incorrectly required every Shaffer RunInfo BioProject to equal the umbrella query accession `PRJNA382641`. The failure is pinned in `BIO_CHI/config/P0D_BIOPROJECT_SRA_RECONCILIATION_V01_FAILURE_PIN.json`.
+- Prospectively repaired v0.2 run **35864928756** passed; artifact **10752086226**, digest `sha256:b0fd3e0f3d02dd1dae92b6f86aa9a9736c51172e770fd9c2e7de0caf15ebe83b`.
+- Harmange: query `PRJNA994430` resolves to **23 SRA runs** in **SRP449288**; the run union is exact. The 22 GEO samples versus 23 SRA runs are retained as distinct source facts rather than forced to one-to-one identity.
+- Shaffer: umbrella query `PRJNA382641` resolves to **155 SRA runs** partitioned exactly across studies **SRP103825, SRP103827, SRP103828** and child BioProjects **PRJNA382674, PRJNA382752, PRJNA382753**; union has zero missing/extra runs.
+- The previously unverified `SRP103406` label is retired prospectively for this lineage.
+
+**Source disposition:** PARENT/CHILD SRA PROVENANCE QUALIFIED; no biological outcome or testbed promotion follows from this bookkeeping result.
