@@ -25,6 +25,7 @@
     "fsolve_function_tolerance": 1e-12,
     "fsolve_step_tolerance": 1e-12,
     "maximum_iterations": 2000,
+    "accepted_root_exitflag": "strictly positive",
     "accepted_root_residual_inf_norm": 1e-9,
     "accepted_root_final_state": "all finite and strictly positive",
     "root_cluster_relative_inf_tolerance": 1e-6,
