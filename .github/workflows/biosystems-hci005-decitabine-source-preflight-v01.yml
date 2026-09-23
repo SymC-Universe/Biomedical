@@ -1,0 +1,86 @@
+name: BioSystems HCI005 decitabine source preflight v01
+
+on:
+  push:
+    branches:
+      - biosystems-claim-extension-p0d-20260923
+    paths:
+      - 'GRI_v2/config/biosystems_hci005_decitabine_source_preflight_v01.json'
+      - '.github/workflows/biosystems-hci005-decitabine-source-preflight-v01.yml'
+  workflow_dispatch:
+
+jobs:
+  preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download frozen source endpoints
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/hci005 out_hci005_preflight
+          curl -L --fail --retry 3 --retry-delay 3 \
+            -o /tmp/hci005/GSE171069_series_matrix.txt.gz \
+            https://ftp.ncbi.nlm.nih.gov/geo/series/GSE171nnn/GSE171069/matrix/GSE171069_series_matrix.txt.gz
+          curl -L --fail --retry 3 --retry-delay 3 \
+            -o /tmp/hci005/GSE171073_Veh.vs.Dec_HCI005.cntTable.txt.gz \
+            https://ftp.ncbi.nlm.nih.gov/geo/series/GSE171nnn/GSE171073/suppl/GSE171073_Veh.vs.Dec_HCI005.cntTable.txt.gz
+          sha256sum /tmp/hci005/*
+      - name: Capture schema only
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv,gzip,hashlib,json
+          from pathlib import Path
+          root=Path('/tmp/hci005')
+          def sha(p):
+              h=hashlib.sha256()
+              with p.open('rb') as f:
+                  for b in iter(lambda:f.read(1024*1024),b''):h.update(b)
+              return h.hexdigest()
+          mp=root/'GSE171069_series_matrix.txt.gz'
+          titles=[]; accessions=[]; chars=[]; table_header=[]
+          with gzip.open(mp,'rt',encoding='utf-8',errors='replace',newline='') as f:
+              for line in f:
+                  if line.startswith('!Sample_title'):
+                      titles=next(csv.reader([line.rstrip('\r\n')],delimiter='\t',quotechar='"'))[1:]
+                  elif line.startswith('!Sample_geo_accession'):
+                      accessions=next(csv.reader([line.rstrip('\r\n')],delimiter='\t',quotechar='"'))[1:]
+                  elif line.startswith('!Sample_characteristics_ch1'):
+                      chars.append(next(csv.reader([line.rstrip('\r\n')],delimiter='\t',quotechar='"'))[1:])
+                  elif line.startswith('!series_matrix_table_begin'):
+                      table_header=next(csv.reader([next(f).rstrip('\r\n')],delimiter='\t',quotechar='"'))
+                      break
+          rp=root/'GSE171073_Veh.vs.Dec_HCI005.cntTable.txt.gz'
+          with gzip.open(rp,'rt',encoding='utf-8',errors='replace',newline='') as f:
+              rna_header=next(csv.reader([f.readline().rstrip('\r\n')],delimiter='\t',quotechar='"'))
+          out={
+            'schema_version':'0.1',
+            'status':'PASS_SCHEMA_ONLY_SOURCE_PREFLIGHT',
+            'values_read':False,
+            'methylation':{
+              'sha256':sha(mp),'bytes':mp.stat().st_size,
+              'sample_titles':titles,'sample_geo_accessions':accessions,
+              'characteristics_rows':chars,
+              'table_header':table_header,
+              'table_header_field_count':len(table_header)
+            },
+            'rna':{
+              'sha256':sha(rp),'bytes':rp.stat().st_size,
+              'header':rna_header,'header_field_count':len(rna_header)
+            }
+          }
+          Path('out_hci005_preflight/HCI005_DECITABINE_SOURCE_PREFLIGHT_V01.json').write_text(json.dumps(out,indent=2,sort_keys=True)+'\n')
+          print(json.dumps(out,indent=2,sort_keys=True))
+          PY
+      - name: Upload preflight
+        uses: actions/upload-artifact@v4
+        with:
+          name: biosystems-hci005-decitabine-source-preflight-v01
+          path: out_hci005_preflight
+          if-no-files-found: error
+          retention-days: 90
