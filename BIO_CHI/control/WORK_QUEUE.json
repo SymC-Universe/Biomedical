@@ -16,39 +16,82 @@
     "Bio_Chi": "biological conglomerate/system stability architecture"
   },
   "queue": [
-    {"id":"Q0","name":"governance_reproducibility_spine","status":"complete_maintain"},
-    {"id":"Q1","name":"literature_collision_candidate_expansion","status":"active_targeted_only"},
-    {"id":"Q2","name":"dataset_eligibility_source_qualification","status":"active_blum_public_processed_dataset_identity_closed_direct_archive_uuid_hash_pending_access_failures_preserved"},
-    {"id":"Q3","name":"known_truth_qualification_system","status":"pending_Q2"},
-    {"id":"Q4","name":"cancer_recovery_system","status":"pending_Q2"},
-    {"id":"Q5","name":"chi_bio_scalar_track","status":"active_native_behavior_and_local_stability_qualified_scalar_not_admitted_full_state_representation_control_complete_q2q3_observability_gate"},
-    {"id":"Q6","name":"Chi_bio_modal_track","status":"active_descriptive_generator_modal_precursor_complete_full_state_representation_control_complete_full_admission_pending_Q2_Q3"},
-    {"id":"Q7","name":"Bio_Chi_conglomerate_track","status":"pending_Q3_Q4_Q6"},
-    {"id":"Q8","name":"stability_inheritance_biological_test","status":"pending_carrier_qualified_data"},
-    {"id":"Q9","name":"working_manuscript","status":"not_open_private"}
+    {
+      "id": "Q0",
+      "name": "governance_reproducibility_spine",
+      "status": "complete_maintain"
+    },
+    {
+      "id": "Q1",
+      "name": "literature_collision_candidate_expansion",
+      "status": "active_targeted_only"
+    },
+    {
+      "id": "Q2",
+      "name": "dataset_eligibility_source_qualification",
+      "status": "active_source_mapping_blum_exact_archive_closed_method_limit_preserved_harmange_shaffer_lee_metadata_qualified_bioproject_sra_reconciliation_active"
+    },
+    {
+      "id": "Q3",
+      "name": "known_truth_qualification_system",
+      "status": "pending_Q2_known_truth_source_and_native_metric_exactness"
+    },
+    {
+      "id": "Q4",
+      "name": "cancer_recovery_system",
+      "status": "pending_Q2_cancer_recovery_source_subset_freeze"
+    },
+    {
+      "id": "Q5",
+      "name": "chi_bio_scalar_track",
+      "status": "active_native_behavior_and_local_stability_qualified_scalar_not_admitted_full_state_representation_control_complete_q2q3_observability_gate"
+    },
+    {
+      "id": "Q6",
+      "name": "Chi_bio_modal_track",
+      "status": "active_descriptive_generator_modal_precursor_complete_full_state_representation_control_complete_full_admission_pending_Q2_Q3"
+    },
+    {
+      "id": "Q7",
+      "name": "Bio_Chi_conglomerate_track",
+      "status": "pending_Q3_Q4_Q6"
+    },
+    {
+      "id": "Q8",
+      "name": "stability_inheritance_biological_test",
+      "status": "pending_carrier_qualified_data"
+    },
+    {
+      "id": "Q9",
+      "name": "working_manuscript",
+      "status": "not_open_private"
+    }
   ],
   "active_source_gate": {
-    "candidate": "blum2019_erk",
-    "article_doi": "10.15252/msb.20198947",
-    "processed_dataset_pin": "BIO_CHI/config/BLUM2019_MENDELEY_DATA_PIN_v0_1.json",
-    "processed_dataset_doi": "10.17632/ccnxn84w8z.2",
-    "processed_dataset_file": "data.zip",
-    "processed_dataset_reported_size": "7.97 MB",
-    "processed_dataset_license": "CC BY 4.0",
-    "code_source_pin": "BIO_CHI/config/BLUM2019_PUBLIC_SOURCE_PIN_v0_1.json",
-    "publisher_endpoint_config": "BIO_CHI/config/BLUM2019_PUBLISHER_SOURCE_ENDPOINTS_v0_1.json",
-    "publisher_access_attempt_pin": "BIO_CHI/config/BLUM2019_PUBLISHER_SOURCE_ACCESS_ATTEMPT_PIN_v0_1.json",
-    "publisher_programmatic_access_status": "MECHANICAL_SOURCE_ACCESS_FAILURE_NON_ARCHIVE_HTML_RESPONSE",
-    "mendeley_access_attempt_pin": "BIO_CHI/config/BLUM2019_MENDELEY_SOURCE_ACCESS_ATTEMPT_PIN_v0_1.json",
-    "mendeley_programmatic_access_status": "MECHANICAL_SOURCE_ACCESS_FAILURE_FILE_UUID_UNRESOLVED",
-    "mendeley_landing_page_frozen": true,
-    "mendeley_landing_page_sha256": "254098032783cfb03b9a8e5868f3967c8feee0bf2e2359f855005da4805ebf65",
-    "direct_archive_endpoint_frozen": false,
-    "archive_sha256_frozen": false,
-    "archive_contents_opened": false,
-    "testbed_promoted": false,
-    "next_safe_task": "resolve exact Mendeley file UUID/download endpoint via supported metadata/API route or continue parallel Q2 source mapping; do not repeat demonstrated filename-only routes unchanged",
-    "scientific_stop_before": "choosing a new observable/state representation if a valid public archive does not directly encode published native metric inputs"
+    "stage": "Q2_SOURCE_AND_METHOD_QUALIFICATION",
+    "testbed_promotion": false,
+    "completed": {
+      "blum_exact_archive_pin": "BIO_CHI/config/BLUM2019_MENDELEY_SOURCE_FREEZE_V02_RESULT_PIN.json",
+      "blum_archive_sha256": "8bbd1ead46b5bb6b676bd47a5f415fdd790840a9c726321dc5c209b9c527bc62",
+      "blum_schema_inventory": "PASS_METADATA_ONLY_103_MEMBERS",
+      "blum_native_method_disposition": "EXACT_NATIVE_METRIC_REPRODUCTION_BLOCKED_METHOD_UNDERSPECIFIED",
+      "harmange_shaffer_geo_lineage_pin": "BIO_CHI/config/P0D_GEO_LINEAGE_METADATA_V01_RESULT_PIN.json",
+      "harmange_source_status": "GSE237228_PRJNA994430_22_GEO_SAMPLES_WITH_SRX_LINKS",
+      "shaffer_source_status": "GSE97682_SUPERSERIES_PRJNA382641_155_GEO_SAMPLES_WITH_SRX_LINKS_AND_DRUG_HOLIDAY_LABELS",
+      "lee_run_map_pin": "BIO_CHI/config/LEE2014_SRP040309_SOURCE_MAP_V01_RESULT_PIN.json",
+      "lee_sample_metadata_pin": "BIO_CHI/config/LEE2014_SRA_SAMPLE_METADATA_V01_RESULT_PIN.json",
+      "lee_public_rna_recovery_status": "NO_EXPLICIT_RECONVERTED_OR_POST_WITHDRAWAL_RNA_SAMPLE_IN_SRP040309"
+    },
+    "active": {
+      "bioproject_sra_reconciliation_run": 35864501395,
+      "bioprojects": [
+        "PRJNA994430",
+        "PRJNA382641"
+      ],
+      "scientific_values_opened": false
+    },
+    "next_safe_task": "inspect and pin BioProject-to-SRA reconciliation; then continue outcome-blind recovery/source qualification without inventing a replacement Blum metric or treating Lee SRP040309 as direct recovery",
+    "scientific_stop_before": "any new state representation, testbed promotion rule change, recovery endpoint change, carrier mapping, or chi_bio/Chi_bio/Bio Chi admission that is not already prospectively frozen"
   },
   "active_native_model_gate": {
     "system": "Jaruszewicz-Blonska reduced NF-kB model",
