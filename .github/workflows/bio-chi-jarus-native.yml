@@ -1,0 +1,45 @@
+name: Bio Chi Jaruszewicz native model smoke
+
+on:
+  push:
+    branches:
+      - chi-bio-recovery-p0d-20260922
+    paths:
+      - 'BIO_CHI/src/run_jarus_native_smoke.sh'
+      - 'BIO_CHI/config/EXTERNAL_SOURCE_FREEZE_PIN_v0_1.json'
+      - '.github/workflows/bio-chi-jarus-native.yml'
+  pull_request:
+    paths:
+      - 'BIO_CHI/src/run_jarus_native_smoke.sh'
+      - 'BIO_CHI/config/EXTERNAL_SOURCE_FREEZE_PIN_v0_1.json'
+      - '.github/workflows/bio-chi-jarus-native.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  native-smoke:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install GNU Octave
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends octave
+      - name: Run untouched published reduced-model driver
+        run: bash BIO_CHI/src/run_jarus_native_smoke.sh
+      - name: Upload native smoke evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_JARUS_NATIVE_SMOKE_V01
+          path: |
+            BIO_CHI/artifacts/generated/jarus_native_smoke/native_smoke_manifest.json
+            BIO_CHI/artifacts/generated/jarus_native_smoke/octave_stdout.txt
+            BIO_CHI/artifacts/generated/jarus_native_smoke/native_workspace.mat
+          if-no-files-found: warn
