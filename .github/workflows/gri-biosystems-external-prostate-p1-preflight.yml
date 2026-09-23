@@ -1,0 +1,160 @@
+name: GRI BioSystems external prostate P1 source preflight
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - gri-biosystems-revision-20260922
+    paths:
+      - '.github/workflows/gri-biosystems-external-prostate-p1-preflight.yml'
+      - 'GRI_v2/config/biosystems_external_prostate_p1_v1_0.json'
+
+jobs:
+  source-preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Download frozen external source files
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p p1_source
+          curl --fail --location --retry 5 --retry-delay 3 \
+            'https://ftp.ncbi.nlm.nih.gov/geo/series/GSE237nnn/GSE237995/suppl/GSE237995_RawCounts.csv.gz' \
+            -o p1_source/GSE237995_RawCounts.csv.gz
+          curl --fail --location --retry 5 --retry-delay 3 \
+            'https://ftp.ncbi.nlm.nih.gov/geo/series/GSE262nnn/GSE262522/suppl/GSE262522_m450K_Proc_Funnorm.tsv.gz' \
+            -o p1_source/GSE262522_m450K_Proc_Funnorm.tsv.gz
+          curl --fail --location --retry 5 --retry-delay 3 \
+            'https://ftp.ncbi.nlm.nih.gov/geo/series/GSE262nnn/GSE262524/suppl/GSE262524_EPIC_Proc_Funnorm.tsv.gz' \
+            -o p1_source/GSE262524_EPIC_Proc_Funnorm.tsv.gz
+
+      - name: Inspect identities and namespaces without biological computation
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import csv, gzip, hashlib, json, pathlib, re
+
+          root = pathlib.Path('p1_source')
+          cfg = json.loads(pathlib.Path('GRI_v2/config/biosystems_external_prostate_p1_v1_0.json').read_text())
+
+          def sha256(p):
+              h=hashlib.sha256()
+              with p.open('rb') as f:
+                  for b in iter(lambda:f.read(8*1024*1024), b''):
+                      h.update(b)
+              return h.hexdigest()
+
+          def inspect_table(path, delimiter):
+              with gzip.open(path, 'rt', newline='') as f:
+                  r=csv.reader(f, delimiter=delimiter)
+                  header=next(r)
+                  row_count=0
+                  first_ids=[]
+                  duplicate_first_ids=0
+                  seen=set()
+                  for row in r:
+                      if not row:
+                          continue
+                      row_count += 1
+                      k=str(row[0]).strip().strip('"')
+                      if len(first_ids)<25:
+                          first_ids.append(k)
+                      if k in seen:
+                          duplicate_first_ids += 1
+                      else:
+                          seen.add(k)
+              return {
+                  'header_columns': len(header),
+                  'header_first_20': header[:20],
+                  'data_rows': row_count,
+                  'unique_first_column_ids': len(seen),
+                  'duplicate_first_column_ids': duplicate_first_ids,
+                  'first_column_examples': first_ids,
+              }
+
+          rna = root/'GSE237995_RawCounts.csv.gz'
+          m450 = root/'GSE262522_m450K_Proc_Funnorm.tsv.gz'
+          epic = root/'GSE262524_EPIC_Proc_Funnorm.tsv.gz'
+          report = {
+              'schema':'gri-biosystems-external-prostate-p1-source-preflight-v1',
+              'status':'SOURCE_PREFLIGHT_ONLY_NO_GRI_BIOLOGICAL_COMPUTATION',
+              'gri_outcome_opened':False,
+              'files':{}
+          }
+          for name,p,delim in [
+              ('rna',rna,','),
+              ('methylation_450k',m450,'\t'),
+              ('methylation_epic',epic,'\t'),
+          ]:
+              z=inspect_table(p,delim)
+              z['bytes']=p.stat().st_size
+              z['sha256']=sha256(p)
+              report['files'][name]=z
+
+          required_primary=set(cfg['primary_450k']['selected_participants'])
+          required_epic=set(cfg['epic_sensitivity']['participants'])
+
+          def normalize_header_token(x):
+              x=str(x).strip().strip('"')
+              return x
+
+          def participant_hits(headers, required):
+              hs=[normalize_header_token(x) for x in headers]
+              out={}
+              for p in sorted(required):
+                  hits=[h for h in hs if p in h]
+                  out[p]=hits
+              return out
+
+          report['header_participant_hits']={
+              'rna_primary':participant_hits(report['files']['rna']['header_first_20'], required_primary),
+              'm450_primary':participant_hits(report['files']['methylation_450k']['header_first_20'], required_primary),
+              'epic_sensitivity':participant_hits(report['files']['methylation_epic']['header_first_20'], required_epic),
+              'note':'first-20 preview only; full header membership is evaluated below'
+          }
+
+          def read_header(path,delim):
+              with gzip.open(path,'rt',newline='') as f:
+                  return next(csv.reader(f,delimiter=delim))
+
+          rh=read_header(rna,',')
+          mh=read_header(m450,'\t')
+          eh=read_header(epic,'\t')
+          report['full_header_membership']={
+              'rna_primary':{p:[h for h in rh if p in str(h)] for p in sorted(required_primary)},
+              'm450_primary':{p:[h for h in mh if p in str(h)] for p in sorted(required_primary)},
+              'rna_epic_participants':{p:[h for h in rh if p in str(h)] for p in sorted(required_epic)},
+              'epic_sensitivity':{p:[h for h in eh if p in str(h)] for p in sorted(required_epic)}
+          }
+          report['missing_participants']={
+              k:[p for p,h in v.items() if len(h)==0]
+              for k,v in report['full_header_membership'].items()
+          }
+          report['ambiguous_participants']={
+              k:{p:h for p,h in v.items() if len(h)>2}
+              for k,v in report['full_header_membership'].items()
+          }
+
+          pathlib.Path('P1_SOURCE_PREFLIGHT.json').write_text(json.dumps(report,indent=2,sort_keys=True)+'\n')
+          print(json.dumps(report,indent=2,sort_keys=True))
+          if any(report['missing_participants'].values()):
+              raise SystemExit('required participant missing from one or more frozen source headers')
+          PY
+
+      - name: Hash source-preflight output
+        run: sha256sum P1_SOURCE_PREFLIGHT.json > P1_SOURCE_PREFLIGHT.sha256
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: GRI_BIOSYSTEMS_EXTERNAL_PROSTATE_P1_SOURCE_PREFLIGHT_V01
+          path: |
+            P1_SOURCE_PREFLIGHT.json
+            P1_SOURCE_PREFLIGHT.sha256
+          if-no-files-found: error
