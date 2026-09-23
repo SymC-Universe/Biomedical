@@ -1,7 +1,7 @@
 # BioSystems adversarial Round 1 adjudication matrix
 
 **Date:** 23 September 2026
-**Status:** ACTIVE
+**Status:** COMPLETE
 **Branch:** `biosystems-adversarial-r1-20260923`
 **Immutable parent release:** `biosystems-resubmission-20260923-final` @ `18b1e3b6c828626143ac37da3fe279dd605751d5`
 **Program authority:** SymC General Operations Manual v0.8.4
@@ -106,12 +106,17 @@ Before Round-1 submission release, add:
 2. a frozen release snapshot branch/tag equivalent;
 3. Zenodo-ready public package manifest excluding third-party redistributability-prohibited data and the private manuscript text.
 
-## Current highest-priority unresolved items
+## Final Round-1 disposition
 
-1. external metadata/technical source identifiability;
-2. TN composition sensitivity if a symmetric source-supported route exists;
-3. P0-Q capacity comparator feasibility;
-4. optional higher-B P1 Monte Carlo precision;
-5. synchronized manuscript/response/cover/reproducibility release.
+All Round-1 issues are now either:
+- closed by direct code/source audit;
+- closed by a prospectively frozen post-result sensitivity;
+- narrowed to the claim actually supported;
+- or retained explicitly as an unresolved limitation where the source cannot identify the requested adjustment.
 
-No chi_bio/recovery/SCC25 extension belongs in this revision.
+No scientific evidence-bearing gate remains open for this BioSystems revision.
+
+Final release audit:
+`BIOSYSTEMS_ADVERSARIAL_R1_FINAL_RELEASE_AUDIT_20260923.md`.
+
+**MATRIX STATUS: COMPLETE.**
