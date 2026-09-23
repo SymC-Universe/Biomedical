@@ -1,0 +1,44 @@
+{
+  "schema_version": "0.1",
+  "status": "PASS_EXECUTION_ONLY",
+  "system": "Jaruszewicz-Blonska reduced NF-kB model",
+  "workflow_run_id": 35849437099,
+  "workflow_head_sha": "3510762129e7d5b973f1207a5a3d9ce3d422c6ef",
+  "artifact": {
+    "id": 10744409262,
+    "name": "BIO_CHI_JARUS_FIG8_EXECUTION_V01",
+    "size_bytes": 393813,
+    "sha256": "92b848b6a229e844744a4b2be1cf2dc363282cb1481b36175df07e2c63219d4d"
+  },
+  "execution_freeze": "BIO_CHI/config/JARUS_FIG8_EXECUTION_FREEZE_v0_1.json",
+  "source_structure_pin": "BIO_CHI/config/JARUS_SOURCE_STRUCTURE_PIN_v0_1.json",
+  "case_preparation_manifest_sha256": "5f9bae392a9ae64e632b1222dca63e46304f15422670b9f3ece985849efc7794",
+  "execution_summary_sha256": "5b8dcf76581c62557d23336bd1638da80b4a6fb8c8e748005cc3cd703e348e21",
+  "matlab": "R2023b Update 11 (23.2.0.3097123)",
+  "cases": [
+    {
+      "case_id": "FIG8A_NOMINAL_DAMPED",
+      "trajectory_capture_mat_sha256": "104309ef34c1160b4ca98ca8a60b3f8e74e5dd6287254d43ca496f2e6c89f1b1",
+      "semantic_map_sha256": "5b3cd6e8a83c3043b0473287d839a9cf7bba4d794cc4bfa2532f9748e0cb0f42",
+      "csv_count": 6
+    },
+    {
+      "case_id": "FIG8B_LIMIT_CYCLE",
+      "trajectory_capture_mat_sha256": "71690daff807859752d2b66469bb3204cc2683e1616312dda23afd7a7ebeb11c",
+      "semantic_map_sha256": "5b3cd6e8a83c3043b0473287d839a9cf7bba4d794cc4bfa2532f9748e0cb0f42",
+      "csv_count": 6
+    },
+    {
+      "case_id": "FIG8C_RELAXATION_OSCILLATION",
+      "trajectory_capture_mat_sha256": "b85d64d2329939833a26cb851a6edcd06f2660886d48e9c49b2237375dd70fa1",
+      "semantic_map_sha256": "5b3cd6e8a83c3043b0473287d839a9cf7bba4d794cc4bfa2532f9748e0cb0f42",
+      "csv_count": 6
+    }
+  ],
+  "scientific_endpoint_opened": false,
+  "behavior_classified": false,
+  "chi_bio_constructed": false,
+  "Chi_bio_constructed": false,
+  "Bio_Chi_constructed": false,
+  "interpretation_limit": "This pin proves only successful execution and immutable trajectory provenance under the frozen Figure 8 contract. It does not classify behavior, prove a limit cycle, or license scalar/modal Bio Chi quantities."
+}
