@@ -17,7 +17,7 @@ The new question is broader and recovery-first:
 
 > How does biological organization before and during a perturbation constrain resistance, transient response, recovery, reorganization, memory, and failure to reclaim an admissible state, and can any local/modal scalar coordinate be licensed that adds information to the broader biological stability architecture?
 
-**Chi Bio** is the canonical prose name for capital `Χ_bio`, the progressively reconstructed biological stability architecture. It is not presumed to be a scalar, a master score, or a complete ontology. Lowercase `χ_bio` is withheld unless a native dynamical model earns it. `Biological Chi` and `X_bio` are not used as prospective alternate names.
+`Χ_bio` / `Chi_bio` denotes the system-scale biological stability architecture/state in which local/modal coordinates are embedded and realized. Lowercase `χ_bio` is withheld unless a native dynamical model earns it. **Biological Chi** denotes the integrated construct containing `χ_bio`, `Χ_bio`, and the empirically discovered relation between them. Biological Chi is not a third scalar and is not an arithmetic sum.
 
 ## 2. Inherited facts and non-negotiable boundaries
 
@@ -72,7 +72,7 @@ For a defined perturbation-removal experiment, map separately:
 
 No default single resilience score is permitted.
 
-### Q2. Joint `χ_bio` / Chi Bio meaning
+### Q2. Joint `χ_bio` / `Χ_bio` meaning
 
 If a local or modal scalar is licensed, test both directions of the relationship:
 
@@ -188,7 +188,7 @@ The investigation narrows rather than repairs itself if:
 - an apparent boundary depends on tuning, rank, basis, normalization, or post-result selection;
 - independent transport fails.
 
-A valid outcome is therefore a Chi Bio (`Χ_bio`) architecture with no admitted lowercase `χ_bio`.
+A valid outcome is therefore a `Χ_bio` architecture with no admitted lowercase `χ_bio`; Biological Chi would then remain an integrated construct whose scalar component is absent or unresolved.
 
 ## 9. Immediate execution sequence
 
@@ -204,7 +204,7 @@ A valid outcome is therefore a Chi Bio (`Χ_bio`) architecture with no admitted 
 
 ```text
 ChiBio_mode = P0_D_EXPLORATORY
-Chi_Bio_X_bio_architecture = OPEN_RECONSTRUCTION
+capital_Chi_bio_architecture = OPEN_RECONSTRUCTION
 lowercase_chi_bio = WITHHELD
 historical_scalar_chi_bio_lineage = CLOSED_NOT_ADMITTED
 recovery_hypothesis = ACTIVE
@@ -218,9 +218,9 @@ first_task = LITERATURE_AND_DATASET_ELIGIBILITY_COLLISION
 Prospective writing in this lineage uses:
 
 ```text
-χ_bio = lowercase scalar/local-modal coordinate, if licensed
-Chi Bio = canonical prose name for capital Χ_bio, the broader biological stability architecture
-χ_bio <-> Χ_bio = relation to be discovered
+χ_bio = lowercase scalar/local-modal biological coordinate, if licensed
+Χ_bio / Chi_bio = capital system-scale biological stability architecture/state
+Biological Chi = integrated construct containing χ_bio, Χ_bio, and their relation
 ```
 
-Do not introduce `Biological Chi` or `X_bio` as alternate prospective names. Historical quoted labels are preserved only as provenance.
+Biological Chi is not a third scalar and is not defined as an arithmetic sum. The relation `χ_bio <-> Χ_bio` is itself a research target and is part of the integrated Biological Chi construct.
