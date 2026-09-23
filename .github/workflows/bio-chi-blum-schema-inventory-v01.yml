@@ -9,12 +9,6 @@ on:
       - 'BIO_CHI/config/BLUM2019_SCHEMA_INVENTORY_FREEZE_v0_1.json'
       - 'BIO_CHI/src/inventory_blum_mendeley_archive_v0_1.py'
       - '.github/workflows/bio-chi-blum-schema-inventory-v01.yml'
-  pull_request:
-    paths:
-      - 'BIO_CHI/config/BLUM2019_MENDELEY_SOURCE_FREEZE_V02_RESULT_PIN.json'
-      - 'BIO_CHI/config/BLUM2019_SCHEMA_INVENTORY_FREEZE_v0_1.json'
-      - 'BIO_CHI/src/inventory_blum_mendeley_archive_v0_1.py'
-      - '.github/workflows/bio-chi-blum-schema-inventory-v01.yml'
   workflow_dispatch:
 
 permissions:
