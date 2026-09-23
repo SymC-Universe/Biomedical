@@ -33,6 +33,30 @@ jobs:
           curl --fail --location --retry 5 'https://ftp.ncbi.nlm.nih.gov/geo/series/GSE237nnn/GSE237995/suppl/GSE237995_RawCounts.csv.gz' -o p1_source/GSE237995_RawCounts.csv.gz
           curl --fail --location --retry 5 'https://ftp.ncbi.nlm.nih.gov/geo/series/GSE262nnn/GSE262522/suppl/GSE262522_m450K_Proc_Funnorm.tsv.gz' -o p1_source/GSE262522_m450K_Proc_Funnorm.tsv.gz
           curl --fail --location --retry 5 'https://ftp.ncbi.nlm.nih.gov/geo/series/GSE262nnn/GSE262524/suppl/GSE262524_EPIC_Proc_Funnorm.tsv.gz' -o p1_source/GSE262524_EPIC_Proc_Funnorm.tsv.gz
+      - name: Acquire exact frozen Hallmark GMT
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 5 --retry-delay 3 \
+            'https://data.broadinstitute.org/gsea-msigdb/msigdb/release/2026.1.Hs/h.all.v2026.1.Hs.symbols.gmt' \
+            -o p1_source/h.all.v2026.1.Hs.symbols.gmt || true
+          python - <<'PY'
+          import hashlib, pathlib, urllib.request
+          p=pathlib.Path('p1_source/h.all.v2026.1.Hs.symbols.gmt')
+          exp='eecaf6dad908334ae885406ec72bdc0646d8917588ed7c219fac92fc5363f596'
+          def sha(x):
+              h=hashlib.sha256()
+              with open(x,'rb') as f:
+                  for b in iter(lambda:f.read(1<<20),b''): h.update(b)
+              return h.hexdigest()
+          if (not p.exists()) or sha(p)!=exp:
+              urllib.request.urlretrieve(
+                'https://raw.githubusercontent.com/JeanRadig/KaleidoCell/main/kaleidocell/files/h.all.v2026.1.Hs.symbols.gmt', p
+              )
+          got=sha(p)
+          if got!=exp: raise SystemExit(f'Hallmark hash mismatch {got}')
+          PY
+
       - name: Execute frozen B9999 precision extension
         shell: bash
         run: |
@@ -42,9 +66,9 @@ jobs:
             --rna p1_source/GSE237995_RawCounts.csv.gz \
             --m450 p1_source/GSE262522_m450K_Proc_Funnorm.tsv.gz \
             --epic p1_source/GSE262524_EPIC_Proc_Funnorm.tsv.gz \
-            --gmt GRI_v2/support/h.all.v2026.1.Hs.symbols.gmt \
+            --gmt p1_source/h.all.v2026.1.Hs.symbols.gmt \
             --c1-probes GRI_v2/support/c1_probe_ids_22601.txt \
-            --support GRI_v2/support/c1_external_support_payload.txt \
+            --support GRI_v2/support/tn_c1_core_mask_payload.lzma.b64 \
             --out R1_P1_PRECISION \
             --workers 4
       - name: Remove third-party source files
