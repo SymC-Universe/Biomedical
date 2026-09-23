@@ -126,11 +126,27 @@
         "SRP040309",
         "PRJNA241034"
       ],
-      "public_source_status": "sra_run_map_qualified_sample_metadata_mapping_active",
+      "public_source_status": "sra_run_and_sample_metadata_qualified",
       "run_count": 19,
       "library_strategy": "RNA-Seq",
       "library_layout": "PAIRED",
-      "source_map_pin": "BIO_CHI/config/LEE2014_SRP040309_SOURCE_MAP_V01_RESULT_PIN.json"
+      "source_map_pin": "BIO_CHI/config/LEE2014_SRP040309_SOURCE_MAP_V01_RESULT_PIN.json",
+      "sample_metadata_result_pin": "BIO_CHI/config/LEE2014_SRA_SAMPLE_METADATA_V01_RESULT_PIN.json",
+      "public_rna_states": {
+        "single_cell": {
+          "untreated": 5,
+          "stressed": 5,
+          "drug_tolerant": 5
+        },
+        "bulk": {
+          "untreated": 1,
+          "stressed": 1,
+          "drug_tolerant": 2
+        }
+      },
+      "explicit_public_rna_recovery_samples": 0,
+      "recovery_source_status": "paper_reports_reconversion_but_SRP040309_has_no_explicit_post_withdrawal_RNA_state",
+      "execution_role": "response_state_transition_secondary_recovery_reference_not_primary_transcriptomic_recovery"
     },
     {
       "id": "jiang2020_yeast_memory",
