@@ -1,0 +1,36 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Blum 2019 Figure 2 native population-mean input mapping",
+  "purpose_tag": "P0_Q_KNOWN_TRUTH_NATIVE_METHOD_QUALIFICATION",
+  "source_pin": "BIO_CHI/config/BLUM2019_MENDELEY_SOURCE_FREEZE_V02_RESULT_PIN.json",
+  "source_sha256": "8bbd1ead46b5bb6b676bd47a5f415fdd790840a9c726321dc5c209b9c527bc62",
+  "literature_selection_rule": "Use all Figure 2 single-pulse source groups/durations (3, 10, 60 min), selected from publication structure before opening data values. Do not select a favorable FGF/dose/time course.",
+  "allowed_members": [
+    "data/Source data for Figure 2/README.txt",
+    "data/Source data for Figure 2/sp3_allGF_ekar.csv.gz",
+    "data/Source data for Figure 2/sp3_allGF_grouping.csv",
+    "data/Source data for Figure 2/sp3_allGF_pulse.csv.gz",
+    "data/Source data for Figure 2/sp10_allGF_ekar.csv.gz",
+    "data/Source data for Figure 2/sp10_allGF_grouping.csv",
+    "data/Source data for Figure 2/sp10_allGF_pulse.csv.gz",
+    "data/Source data for Figure 2/sp60_allGF_ekar.csv.gz",
+    "data/Source data for Figure 2/sp60_allGF_grouping.csv",
+    "data/Source data for Figure 2/sp60_allGF_pulse.csv.gz"
+  ],
+  "permitted_operations": [
+    "verify archive SHA-256",
+    "read full Figure 2 README",
+    "read only first logical header line of each CSV/CSV.GZ",
+    "record member SHA-256 and size"
+  ],
+  "forbidden_operations": [
+    "read any biological data row",
+    "compute means, confidence intervals, rebounds or other outcomes",
+    "choose a subset based on observed values",
+    "construct chi_bio, Chi_bio or Bio Chi"
+  ],
+  "native_metric_target": "population-averaged single-cell EKAR/FRET temporal trajectory after per-cell pre-stimulation baseline normalization; all Figure 2 single-pulse groups",
+  "scientific_effect": "NONE until a separate reproduction contract is frozen after source/header mapping",
+  "status": "FROZEN_BEFORE_FIG2_README_HEADER_INSPECTION"
+}
