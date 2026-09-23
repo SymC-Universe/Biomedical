@@ -8,11 +8,6 @@ on:
       - 'BIO_CHI/config/BLUM2019_NATIVE_METRIC_INPUT_MAPPING_FREEZE_v0_1.json'
       - 'BIO_CHI/src/map_blum_native_metric_inputs_v0_1.py'
       - '.github/workflows/bio-chi-blum-native-input-mapping-v01.yml'
-  pull_request:
-    paths:
-      - 'BIO_CHI/config/BLUM2019_NATIVE_METRIC_INPUT_MAPPING_FREEZE_v0_1.json'
-      - 'BIO_CHI/src/map_blum_native_metric_inputs_v0_1.py'
-      - '.github/workflows/bio-chi-blum-native-input-mapping-v01.yml'
   workflow_dispatch:
 
 permissions:
