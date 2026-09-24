@@ -33,7 +33,7 @@
     {
       "id": "Q3",
       "name": "known_truth_qualification_system",
-      "status": "active_blum_native_observable_reproduced_observability_identifiability_gate_pending"
+      "status": "active_known_truth_nfkb_qualified_blum_b3_local_generator_refused_nondifferentiable"
     },
     {
       "id": "Q4",
@@ -53,7 +53,7 @@
     {
       "id": "Q7",
       "name": "Bio_Chi_conglomerate_track",
-      "status": "active_joint_system_limit_map_after_scalar_transport_refusal"
+      "status": "active_system_recovery_architecture_after_scalar_limit_map"
     },
     {
       "id": "Q8",
@@ -112,7 +112,7 @@
       "su_next": "freeze exact processed-expression file identity/hash before opening values",
       "rehman_next": "seek exact author analysis code/source implementation for Figure 4 PCA; otherwise preserve exact-native-method under-specification",
       "harmange_next": "map lineage/barcode carrier correspondence from source documentation without opening target outcomes",
-      "blum_next": "P0-Q observability/identifiability qualification of publication-native EKAR trajectory representation before any reduced-state or chi_bio construction",
+      "blum_next": "B3 unstimulated local-pole route closed by nondifferentiable equilibrium; retain trajectory/network architecture and do not rescue scalar",
       "d2fc2_next": "closed_nonidentifiable_multiple_stable_pairs; preserve refusal and advance modal/system Limit Map"
     },
     "scientific_stop_before": "inventing a missing native implementation detail, changing a frozen representation/endpoint, promoting a testbed based on agreement, or admitting chi_bio/Chi_bio/Bio Chi"
@@ -147,14 +147,16 @@
     "chi_bio_constructed": "candidate_only_not_admitted",
     "Chi_bio_admitted": false,
     "Bio_Chi_constructed": false,
-    "next_gate": "advance Bio Chi joint/system Limit Map without rescuing scalar; use independently frozen perturbation/recovery and intervention lanes",
+    "next_gate": "advance Bio Chi conglomerate/system test using a same-system perturbation/recovery design; scalar may remain absent",
     "jarus_observability_p0q_pin": "BIO_CHI/config/JARUS_OSCILLATORY_MODE_OBSERVABILITY_P0Q_V01_RESULT_PIN.json",
     "jarus_observability_p0q_status": "PASS_P0Q_OSCILLATORY_MODE_OBSERVABILITY",
     "jarus_candidate_chi_bio": 0.21311451897468006,
     "d2fc2_result_pin": "BIO_CHI/config/D2FC2_NFKB_INDEPENDENT_MODAL_P1_V02_RESULT_PIN.json",
     "d2fc2_status": "NON_IDENTIFIABLE_MULTIPLE_STABLE_COMPLEX_PAIRS",
     "d2fc2_stable_complex_pair_count": 2,
-    "d2fc2_held_out_identifiable_count": 0
+    "d2fc2_held_out_identifiable_count": 0,
+    "blum_b3_result_pin": "BIO_CHI/config/BLUM2019_B3_MODAL_P0Q_V01_RESULT_PIN.json",
+    "blum_b3_status": "REFUSE_LOCAL_GENERATOR_NONDIFFERENTIABLE_AT_SOURCE_EQUILIBRIUM"
   },
   "stop_conditions": [
     "material scientific choice changes a frozen hypothesis/model/endpoint",
