@@ -141,7 +141,7 @@ The cancer-regulation references suggested by the reviewer were also evaluated a
 
 ### 4. Reproducibility / method detail
 
-**Response:** The scientific chronology is now publicly inspectable in the GitHub repository `SymC-Universe/Biomedical` on the post-result branch `biosystems-v24-final-polish-20260923`. The public repository contains the prospective freeze contracts, configs, code, deterministic seeds, source hashes, workflows, outcome artifacts, post-result audits, reviewer-adjudication matrix, and a final reproducibility index. The pre-adversarial release was snapshotted on an immutable branch before the additional adversarial sensitivities were added, so the chronology can be reconstructed independently rather than relying on local file timestamps.
+**Response:** The scientific chronology is now publicly inspectable in the GitHub repository `SymC-Universe/Biomedical` on the post-result branch `biosystems-v25-final-artwork-20260923`. The public repository contains the prospective freeze contracts, configs, code, deterministic seeds, source hashes, workflows, outcome artifacts, post-result audits, reviewer-adjudication matrix, and a final reproducibility index. The pre-adversarial release was snapshotted on an immutable branch before the additional adversarial sensitivities were added, so the chronology can be reconstructed independently rather than relying on local file timestamps.
 
 The editable manuscript and supplement remain private authoring artifacts until journal submission; this does not conceal scientific decision rules, workflow identities, or result artifacts.
 
