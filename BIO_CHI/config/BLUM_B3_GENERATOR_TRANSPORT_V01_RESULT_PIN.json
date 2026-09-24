@@ -1,0 +1,39 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Blum B3 stoichiometric-subspace generator transport v0.1",
+  "status": "REFUSE_B3_MODAL_NUMERICAL_CONDITIONING",
+  "epistemic_mode": "P0-Q",
+  "freeze": "BIO_CHI/config/BLUM_B3_GENERATOR_TRANSPORT_FREEZE_v0_1.json",
+  "workflow_run_id": 36059353698,
+  "workflow_head_sha": "7e30008daffb46de042e34d85da9f3709cea0712",
+  "artifact": {
+    "id": 10833896562,
+    "name": "BIO_CHI_BLUM_B3_GENERATOR_TRANSPORT_V01",
+    "digest": "sha256:3631cec35a331e04633479874988267f8160987b7815930a45e1aa9b6c7241d5"
+  },
+  "result_sha256": "0458cb5cfd95e9ec1d56c9e106166d3769c4769d11765d8b988509124da4bbc2",
+  "dynamic_subspace_dimension": 8,
+  "native_FRET_observability": "FULL_RANK_8_IN_ALL_FOUR_LANE_CONTEXT_RECORDS",
+  "modal_disposition": {
+    "primary_2p5": "PASS_B3_GENERATOR_MODAL_QUALIFICATION",
+    "primary_250": "REFUSE_FINITE_DIFFERENCE_STEP_ROBUSTNESS",
+    "sensitivity_2p5": "REFUSE_FINITE_DIFFERENCE_STEP_ROBUSTNESS",
+    "sensitivity_250": "REFUSE_FINITE_DIFFERENCE_STEP_ROBUSTNESS"
+  },
+  "numerical_diagnostics": {
+    "maximum_eigenvector_condition_number_2": 80836.45048199015,
+    "minimum_normalized_eigenvalue_separation": 0.0013976491497972392,
+    "maximum_basis_invariance_relative_eigenvalue_difference": 1.672298707871414e-13,
+    "maximum_finite_difference_step_relative_eigenvalue_spread": 0.02857847236226514,
+    "frozen_step_spread_ceiling": 0.0001
+  },
+  "scalar_candidate_signal": {
+    "status_in_v0_1_output": "SCALAR_TRANSPORT_PRESENT",
+    "promotion_disposition": "WITHHELD_DUE_UPSTREAM_MODAL_NUMERICAL_REFUSAL",
+    "common_contexts_with_FRET_visible_complex_pairs": ["SUSTAINED_FGF_2P5","SUSTAINED_FGF_250"],
+    "note": "No scalar transport claim is admitted from a generator whose numerical derivative qualification failed."
+  },
+  "failure_interpretation": "The refusal is driven by complex-mode sensitivity to the frozen coordinate finite-difference step. Full FRET observability, basis invariance, eigensystem separation, and eigenvector conditioning pass their respective frozen sanity floors. This result is preserved and may be used as P0-Q qualification evidence for a new derivative implementation, not overwritten.",
+  "next_gate": "new P0-Q version using an analytic reaction-network Jacobian independently checked against complex-step differentiation; do not loosen the v0.1 threshold or relabel v0.1 as pass"
+}
