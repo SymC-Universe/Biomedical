@@ -172,7 +172,7 @@ ybs=smoothdata(yb,'sgolay',5);
 knownBadEmpiricalPass=numel(lb)<2;
 
 result=struct();
-result.schema_version='0.1';
+result.schema_version='0.2';
 result.project='Bio Chi Investigation';
 result.gate='D2FC2 independent NF-kB generator/modal and publication-native validation-observability test';
 result.freeze='BIO_CHI/config/D2FC2_NFKB_INDEPENDENT_MODAL_P1_FREEZE_v0_2.json';
@@ -226,7 +226,7 @@ else
     end
 end
 
-fid=fopen(fullfile(outdir,'d2fc2_independent_modal_p1_v0_1.json'),'w');
+fid=fopen(fullfile(outdir,'d2fc2_independent_modal_p1_v0_2.json'),'w');
 fwrite(fid,jsonencode(result,'PrettyPrint',true),'char'); fclose(fid);
 
 disp(result.status);
