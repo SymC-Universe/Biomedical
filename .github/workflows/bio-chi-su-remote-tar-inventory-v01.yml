@@ -1,0 +1,29 @@
+name: Bio Chi Su remote TAR inventory v0.1
+on:
+  push:
+    branches: [chi-bio-recovery-p0d-20260922]
+    paths:
+      - 'BIO_CHI/config/SU2026_GSE255671_REMOTE_TAR_INVENTORY_FREEZE_v0_1.json'
+      - 'BIO_CHI/src/inventory_su_gse255671_remote_tar_v0_1.py'
+      - '.github/workflows/bio-chi-su-remote-tar-inventory-v01.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inventory:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Traverse remote TAR headers only
+        run: python BIO_CHI/src/inventory_su_gse255671_remote_tar_v0_1.py
+      - name: Upload remote TAR inventory
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_SU_REMOTE_TAR_INVENTORY_V01
+          path: BIO_CHI/artifacts/generated/su2026_gse255671_remote_tar_inventory_v0_1.json
+          if-no-files-found: error

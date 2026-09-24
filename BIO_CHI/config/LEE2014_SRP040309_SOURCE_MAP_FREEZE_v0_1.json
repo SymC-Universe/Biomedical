@@ -1,0 +1,25 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Lee et al. 2014 SRP040309 SRA metadata-only source map",
+  "purpose_tag": "P0_D_SOURCE_QUALIFICATION",
+  "reported_study_accession": "SRP040309",
+  "permitted_operations": [
+    "query NCBI SRA E-utilities for SRP040309 metadata",
+    "record study/project/experiment/sample/run accessions",
+    "record library strategy, source, selection, layout, platform, release dates, spots/bases and public metadata returned by RunInfo",
+    "hash the exact RunInfo response used"
+  ],
+  "forbidden_operations": [
+    "download sequence reads",
+    "open expression outcomes",
+    "derive paclitaxel response values",
+    "select samples based on observed molecular outcomes",
+    "promote Lee 2014 as a testbed",
+    "construct chi_bio, Chi_bio, or Bio Chi"
+  ],
+  "pass_rule": "SRP040309 resolves to one or more public SRA runs with explicit experiment/sample/project identities in a hash-pinned RunInfo response",
+  "fail_rule": "study accession does not resolve, RunInfo is unavailable/unparseable, or identity is ambiguous",
+  "scientific_effect": "NONE; source identity only",
+  "status": "FROZEN_BEFORE_SRA_METADATA_QUERY"
+}

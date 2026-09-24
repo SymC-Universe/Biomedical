@@ -1,0 +1,42 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Su/M397 frozen RPKM header-only schema capture",
+  "workflow_run_id": 35866758488,
+  "workflow_head_sha": "155413008f73679885bd0727be6c88e6bd3a415e",
+  "artifact_id": 10752534935,
+  "artifact_digest": "sha256:ee256c92679063bec68fbe29e543ebc93cb34ddc146c3471b46c325f5caec5bf",
+  "status": "PASS_HEADER_ONLY_SCHEMA_CAPTURE",
+  "source_sha256": "1ec204f02187289fdc0d718fe2291d34f2e3e6b943dcdf8fe627718d75a42d8c",
+  "column_count": 22,
+  "metadata_columns": [
+    "symbol",
+    "chr",
+    "start",
+    "stop",
+    "length.kb",
+    "strand",
+    "description"
+  ],
+  "trajectory_columns": [
+    "Control",
+    "D3",
+    "D8",
+    "D13",
+    "D21",
+    "D29",
+    "D33",
+    "D38",
+    "D59",
+    "dr29.D4",
+    "dr29.D10",
+    "dr29.D15",
+    "dr29.D17",
+    "dr29.D30",
+    "dr29.D35"
+  ],
+  "data_lines_read": 0,
+  "rpkm_values_read": false,
+  "scientific_values_interpreted": false,
+  "source_effect": "The exact processed file contains the prospectively frozen 15-point M397 forward/reverse trajectory as explicit columns. No expression value has been opened."
+}

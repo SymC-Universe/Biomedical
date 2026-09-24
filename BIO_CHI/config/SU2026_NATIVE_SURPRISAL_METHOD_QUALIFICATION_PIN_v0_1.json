@@ -1,0 +1,62 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "source": "Su et al. 2026 M397 surprisal native-method qualification",
+  "article_doi": "10.1038/s41467-026-71349-4",
+  "processed_source_pin": "BIO_CHI/config/SU2026_M397_RPKM_SOURCE_FREEZE_V01_RESULT_PIN.json",
+  "header_pin": "BIO_CHI/config/SU2026_M397_RPKM_HEADER_V01_RESULT_PIN.json",
+  "public_code_pin": "BIO_CHI/config/SU2026_PUBLIC_CODE_PIN_v0_1.json",
+  "public_record": {
+    "file_name": "GSE134459_Reversible_RPKM_values.txt.gz",
+    "exact_sha256": "1ec204f02187289fdc0d718fe2291d34f2e3e6b943dcdf8fe627718d75a42d8c",
+    "trajectory_columns": 15,
+    "geo_sample_descriptions": "Reversible RPKM values.txt"
+  },
+  "publication_method": {
+    "expression_measure_stated": "FPKM normalized expression",
+    "transform": "natural logarithm",
+    "matrix_orientation": "k transcripts x n time points, SVD Y = G Omega P^T",
+    "timepoints": 15,
+    "modules_retained": 2,
+    "module_names": [
+      "M_late / Module-1",
+      "M_early / Module-2"
+    ],
+    "whole_transcriptome_language": true
+  },
+  "public_surprisal_code": {
+    "path": "surprisal.m",
+    "blob_sha": "2dac24e398f30451388c2acbe1406e23afcdad50",
+    "explicit_core": [
+      "lnall=log(all)",
+      "[u r v]=svd(lnall,0)",
+      "lambdaall=r*v'",
+      "Gall=u"
+    ],
+    "unstated_input_loader": true,
+    "comment_dimension": "400*17",
+    "code_vs_paper_dimension_mismatch": true
+  },
+  "unresolved_collisions": [
+    "publication says FPKM while the exact public trajectory file is explicitly named/annotated RPKM",
+    "publication describes 15 M397 timepoints while public surprisal.m comments 400*17",
+    "surprisal.m does not define how variable 'all' is loaded/filtered from the processed file",
+    "paper suggests whole-transcriptome deconvolution, while 400-gene code comment is unexplained",
+    "pseudocount/zero handling before natural log is not specified",
+    "exact gene inclusion/filtering for the surprisal input is not specified sufficiently to reconcile the code comment with the paper"
+  ],
+  "disposition": "EXACT_NATIVE_SURPRISAL_REPRODUCTION_BLOCKED_INPUT_METHOD_COLLISION",
+  "scientific_effect": "Limit-Map result. Do not resolve the discrepancy by choosing RPKM/FPKM, 15/17 columns, 400/all genes, or zero handling after seeing outcomes.",
+  "allowed_next_steps": [
+    "search original supplementary/source material or author code for the exact 'all' matrix construction",
+    "continue source/provenance qualification",
+    "if a new implementation is later proposed, freeze it prospectively as an exploratory reconstruction rather than exact native reproduction"
+  ],
+  "expression_values_opened": false,
+  "surprisal_computed": false,
+  "hysteresis_computed": false,
+  "testbed_promoted": false,
+  "chi_bio_constructed": false,
+  "Chi_bio_admitted": false,
+  "Bio_Chi_constructed": false
+}

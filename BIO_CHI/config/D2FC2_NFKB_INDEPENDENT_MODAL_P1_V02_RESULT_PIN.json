@@ -1,0 +1,59 @@
+{
+  "schema_version": "0.2",
+  "project": "Bio Chi Investigation",
+  "gate": "D2FC2 independent NF-kB generator/modal and publication-native validation-observability test",
+  "date": "2026-09-24",
+  "authority": "SymC GOM v0.8.6",
+  "freeze": "BIO_CHI/config/D2FC2_NFKB_INDEPENDENT_MODAL_P1_FREEZE_v0_2.json",
+  "workflow_run_id": 36042402642,
+  "workflow_head_sha": "66e4bf361d9e5831a8137a3b88f118247a47ae54",
+  "artifact_id": 10828030362,
+  "artifact_digest": "sha256:6af0d5800d74d2d94de9afc224a0f17f5c1eac431d7acf5b2990582aec6d0381",
+  "result_sha256": "d6461afae88bb983eef88883ded530ea68538f1a385ed60a2b63a97533e1d5b9",
+  "status": "NON_IDENTIFIABLE_MULTIPLE_STABLE_COMPLEX_PAIRS",
+  "source_partition_pass": true,
+  "maximum_matched_complex_pair_relative_spread": 4.251924354925679e-6,
+  "stable_complex_pair_count": 2,
+  "stable_complex_pairs": [
+    {
+      "real_s_inv": -0.00037913855291454228,
+      "imag_s_inv": 0.0005390910514028178,
+      "chi_candidate": 0.5752682884966086,
+      "period_min": 61.832473840167886
+    },
+    {
+      "real_s_inv": -0.0002714473246602079,
+      "imag_s_inv": 0.00010406212657423503,
+      "chi_candidate": 0.9337377028467813,
+      "period_min": 640.6429395723383
+    }
+  ],
+  "held_out_validation": {
+    "condition_count": 5,
+    "identifiable_condition_count": 0,
+    "peak_counts": {
+      "1X30 sec": 1,
+      "1X2 min": 1,
+      "1X15 min": 1,
+      "2X3 min": 1,
+      "3X2 min": 1
+    }
+  },
+  "known_bad_generator_pass": true,
+  "known_bad_empirical_pass": true,
+  "epistemic_record": {
+    "initial_v0_1_partition_test_invalidated_before_result_review": true,
+    "v0_2_mechanical_recovery_record": "BIO_CHI/artifacts/D2FC2_V02_MECHANICAL_RECOVERY_20260924.md",
+    "invalid_v0_2_artifact_viewed_during_contract_debugging": true,
+    "pristine_p1_claim_allowed": false,
+    "role": "bounded independent external qualification and Limit Map evidence under repaired implementation of the pre-existing freeze"
+  },
+  "scientific_disposition": {
+    "chi_bio": "NOT_INDEPENDENTLY_ADMITTED__JARUSZEWICZ_P0Q_MODEL_SPECIFIC_CANDIDATE_RETAINED",
+    "Chi_bio": "MODAL_MULTIPLICITY_AND_IDENTIFIABILITY_LIMIT_SUPPORTED__NOT_BROADLY_ADMITTED",
+    "Bio_Chi": "NOT_CONSTRUCTED_BY_THIS_GATE",
+    "chi_equal_1_boundary": "NOT_CLAIMED",
+    "universal_biological_scalar": "NOT_CLAIMED"
+  },
+  "interpretation": "The independent D2FC2 NF-kB model contains two numerically stable complex-conjugate local mode pairs. The frozen pair-selection rule therefore refuses a unique scalar chi_bio rather than choosing a favorable pair after viewing the spectrum. None of the five publication-defined held-out mean nuclear-RelA validation conditions supplies two peaks under the frozen empirical rule, so an empirical oscillatory frequency is also non-identifiable in this validation window. This preserves the Jaruszewicz scalar as a model-specific P0-Q-qualified candidate while strengthening the biological Limit Map: NF-kB dynamics can require a modal representation because scalar reduction is not uniquely identifiable across model lineages."
+}

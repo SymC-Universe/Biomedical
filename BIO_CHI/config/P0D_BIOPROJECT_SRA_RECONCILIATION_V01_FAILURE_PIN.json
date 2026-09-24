@@ -1,0 +1,41 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Harmange/Shaffer BioProject-to-SRA study reconciliation v0.1",
+  "workflow_run_id": 35864662528,
+  "workflow_head_sha": "7f75abfeef85cbd6e53ff9e1401713da1a30eb5c",
+  "artifact_id": 10751382731,
+  "artifact_digest": "sha256:1f4492514c8c795c879ddcf437b3aebac1e560960825b27ee3d85e717a702024",
+  "status": "FAIL_SOURCE_RECONCILIATION_PRESERVED",
+  "mechanical_history": {
+    "initial_failure": "HTTP 429 rate limit before artifact generation",
+    "repair": "bounded exponential backoff plus pacing; no scientific/source criterion changed",
+    "repaired_run_result": "query completed and exposed source hierarchy mismatch"
+  },
+  "harmange": {
+    "query_bioproject": "PRJNA994430",
+    "run_count": 23,
+    "sra_studies": [
+      "SRP449288"
+    ],
+    "source_status": "query_resolved"
+  },
+  "shaffer": {
+    "query_bioproject": "PRJNA382641",
+    "run_count": 155,
+    "sra_studies": [
+      "SRP103825",
+      "SRP103827",
+      "SRP103828"
+    ],
+    "runinfo_bioprojects": [
+      "PRJNA382674",
+      "PRJNA382752",
+      "PRJNA382753"
+    ],
+    "failure_reason": "v0.1 incorrectly required every RunInfo BioProject value to equal the umbrella query accession PRJNA382641"
+  },
+  "interpretation": "The mismatch is preserved as a source-hierarchy finding. It is not evidence of invalid data. A v0.2 audit must test whether the parent BioProject query's run set is exactly partitioned by the child BioProjects rather than coercing child records to the parent accession.",
+  "scientific_values_interpreted": false,
+  "promotion_decision": "NONE"
+}

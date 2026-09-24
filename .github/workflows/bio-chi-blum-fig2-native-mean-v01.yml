@@ -1,0 +1,30 @@
+name: Bio Chi Blum Fig2 native mean reproduction v0.1
+on:
+  push:
+    branches: [chi-bio-recovery-p0d-20260922]
+    paths:
+      - 'BIO_CHI/config/BLUM2019_FIG2_NATIVE_MEAN_REPRODUCTION_FREEZE_v0_1.json'
+      - 'BIO_CHI/config/BLUM2019_FIG2_NATIVE_MEAN_INPUT_MAPPING_V01_RESULT_PIN.json'
+      - 'BIO_CHI/src/reproduce_blum_fig2_native_population_mean_v0_1.py'
+      - '.github/workflows/bio-chi-blum-fig2-native-mean-v01.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reproduce:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reproduce publication-native Figure 2 population means
+        run: python BIO_CHI/src/reproduce_blum_fig2_native_population_mean_v0_1.py
+      - name: Upload native population-mean result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_BLUM_FIG2_NATIVE_MEAN_V01
+          path: BIO_CHI/artifacts/generated/blum2019_fig2_native_population_mean_v0_1.json
+          if-no-files-found: error

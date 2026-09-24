@@ -1,0 +1,32 @@
+name: Bio Chi governance and privacy guard
+
+on:
+  push:
+    branches:
+      - chi-bio-recovery-p0d-20260922
+    paths:
+      - 'BIO_CHI/**'
+      - 'GRI_v2/docs/CHI_BIO_*'
+      - '.github/workflows/bio-chi-control.yml'
+  pull_request:
+    paths:
+      - 'BIO_CHI/**'
+      - 'GRI_v2/docs/CHI_BIO_*'
+      - '.github/workflows/bio-chi-control.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate Bio Chi control spine
+        run: python BIO_CHI/src/validate_control.py

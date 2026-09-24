@@ -1,0 +1,186 @@
+{
+  "schema_version": "0.1",
+  "status": "candidate_source_subset_frozen_from_metadata_only",
+  "study": "Su et al. 2026 sequential transcriptional waves and NF-kB-driven chromatin remodeling",
+  "doi": "10.1038/s41467-026-71349-4",
+  "geo": "GSE255671",
+  "bioproject": "PRJNA1076128",
+  "selection_basis": "published experimental ordering and assay identity only; no molecular values inspected for this new Bio Chi design",
+  "primary_cell_line": "M397",
+  "rna_timecourse": [
+    {
+      "gsm": "GSM3958009",
+      "label": "M397 Day0",
+      "phase": "baseline",
+      "time_day": 0
+    },
+    {
+      "gsm": "GSM3958010",
+      "label": "M397 Day3",
+      "phase": "drug_on",
+      "time_day": 3
+    },
+    {
+      "gsm": "GSM3958011",
+      "label": "M397 Day8",
+      "phase": "drug_on",
+      "time_day": 8
+    },
+    {
+      "gsm": "GSM3958012",
+      "label": "M397 Day13",
+      "phase": "drug_on",
+      "time_day": 13
+    },
+    {
+      "gsm": "GSM3958013",
+      "label": "M397 Day21",
+      "phase": "drug_on",
+      "time_day": 21
+    },
+    {
+      "gsm": "GSM3958014",
+      "label": "M397 Day29",
+      "phase": "drug_on",
+      "time_day": 29
+    },
+    {
+      "gsm": "GSM3958015",
+      "label": "M397 Day33",
+      "phase": "drug_on",
+      "time_day": 33
+    },
+    {
+      "gsm": "GSM3958016",
+      "label": "M397 Day38",
+      "phase": "drug_on",
+      "time_day": 38
+    },
+    {
+      "gsm": "GSM3958017",
+      "label": "M397 Day59",
+      "phase": "drug_on",
+      "time_day": 59
+    },
+    {
+      "gsm": "GSM3958018",
+      "label": "M397 DR29 Day4",
+      "phase": "drug_removed",
+      "days_after_removal": 4
+    },
+    {
+      "gsm": "GSM3958019",
+      "label": "M397 DR29 Day10",
+      "phase": "drug_removed",
+      "days_after_removal": 10
+    },
+    {
+      "gsm": "GSM3958020",
+      "label": "M397 DR29 Day15",
+      "phase": "drug_removed",
+      "days_after_removal": 15
+    },
+    {
+      "gsm": "GSM3958021",
+      "label": "M397 DR29 Day17",
+      "phase": "drug_removed",
+      "days_after_removal": 17
+    },
+    {
+      "gsm": "GSM3958022",
+      "label": "M397 DR29 Day30",
+      "phase": "drug_removed",
+      "days_after_removal": 30
+    },
+    {
+      "gsm": "GSM3958023",
+      "label": "M397 DR29 Day35",
+      "phase": "drug_removed",
+      "days_after_removal": 35
+    }
+  ],
+  "atac_anchor_samples": [
+    {
+      "gsm": "GSM3948809",
+      "phase": "baseline",
+      "label": "M397_D0_ATAC-seq"
+    },
+    {
+      "gsm": "GSM3948810",
+      "phase": "drug_on_early",
+      "label": "M397_D3_ATAC-seq"
+    },
+    {
+      "gsm": "GSM3948811",
+      "phase": "drug_on_late",
+      "label": "M397_D32_ATAC-seq"
+    },
+    {
+      "gsm": "GSM3948812",
+      "phase": "drug_removed",
+      "label": "M397_DR_ATAC-seq"
+    }
+  ],
+  "histone_anchor_samples": [
+    {
+      "gsm": "GSM4550480",
+      "mark": "H3K4me3",
+      "phase": "baseline"
+    },
+    {
+      "gsm": "GSM4550481",
+      "mark": "H3K4me3",
+      "phase": "drug_on_early"
+    },
+    {
+      "gsm": "GSM4550483",
+      "mark": "H3K4me3",
+      "phase": "drug_on_late"
+    },
+    {
+      "gsm": "GSM4550484",
+      "mark": "H3K4me3",
+      "phase": "drug_removed"
+    },
+    {
+      "gsm": "GSM4550485",
+      "mark": "H3K27ac",
+      "phase": "baseline"
+    },
+    {
+      "gsm": "GSM4550486",
+      "mark": "H3K27ac",
+      "phase": "drug_on_early"
+    },
+    {
+      "gsm": "GSM4550488",
+      "mark": "H3K27ac",
+      "phase": "drug_on_late"
+    },
+    {
+      "gsm": "GSM4550489",
+      "mark": "H3K27ac",
+      "phase": "drug_removed"
+    }
+  ],
+  "replicate_histone_samples": [
+    "GSM8067755",
+    "GSM8067756",
+    "GSM8067757",
+    "GSM8067758",
+    "GSM8067759",
+    "GSM8067760",
+    "GSM8067761",
+    "GSM8067762",
+    "GSM8067763",
+    "GSM8067764"
+  ],
+  "recovery_claim_allowed_from_design": true,
+  "hysteresis_testable_from_design": true,
+  "scalar_chi_bio_status": "not_defined",
+  "notes": [
+    "This config freezes source membership/timing only.",
+    "No Bio Chi endpoint, distance metric, modal rank, null, or scalar construction is defined here.",
+    "Published time labels make this suitable for a future prospectively frozen recovery/hysteresis analysis."
+  ]
+}

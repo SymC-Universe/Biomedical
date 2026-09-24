@@ -1,0 +1,216 @@
+# Bio Chi continuation checkpoint — 24 September 2026
+
+**Status:** ACTIVE P0-D / P0-Q continuation
+**Purpose:** QUALIFICATION | FUNCTION_MAPPING
+**Authority:** SymC General Operations Manual v0.8.6
+**Authoritative GOM SHA-256:** `82d7096627ede6b9522368e8eea2591d0c51f02e35ed78b24000182d2cdde44c`
+**Branch:** `chi-bio-recovery-p0d-20260922`
+**Branch head at checkpoint creation:** `1c714540ff2f778387f009075ab313a8f9bc3b44`
+**Draft PR:** #6
+
+## Completed verified state
+
+- Canonical three-object biology nomenclature remains:
+  - `chi_bio`: biological scalar instance of program-wide scalar chi, only if licensed.
+  - `Chi_bio`: biological modal/vector representation.
+  - Bio Chi: biological conglomerate/system stability architecture.
+- Historical CV/2 scalar route remains closed and is not reopened.
+- Jaruszewicz-Blońska reduced NF-kB source, execution, local-stability, six-mode inventory, and full-state representation-control evidence are frozen and preserved.
+- Local-stability v0.4: Figure 8A equilibrium STABLE; Figure 8B/C equilibria UNSTABLE.
+- Six-mode inventory: four real modes plus one complex-conjugate pair in every frozen Figure 8 case.
+- Full-state smooth-coordinate control: no spectral-abscissa sign change; maximum relative complex difference 3.9989097652916227e-10.
+- Blum 2019 native ERK Figure 2 population-mean trajectory representation reproduced from frozen public source.
+- Su 2026 M397 post-withdrawal transcriptomic recovery supported at P0-D under its frozen simple metric.
+- Preserved finite-window Figure 8B/C behavior failures remain failures of the frozen finite-window rules and are not erased.
+- No biological scalar `chi_bio`, modal `Chi_bio`, or Bio Chi conglomerate is promoted by this checkpoint.
+
+## New session finding and epistemic status
+
+The GOM v0.8.6 scalar rule explicitly permits a complex-conjugate pole pair of a licensed second-order factor to define
+`chi = -Re(lambda)/|lambda|`.
+
+The nominal Figure 8A oscillatory pair therefore supplies a **post-result candidate scalar construction**. This is DATA_DERIVED / POST_RESULT and carries promotion debt. It is not confirmatory evidence for itself.
+
+A preliminary session-level calculation indicated that the free nuclear NF-kB trajectory may expose a ringdown consistent with the same candidate pole pair. Because this observation was made after inspecting the existing outcome, it is treated only as a hypothesis-generating preflight until reproduced by a frozen repository analysis.
+
+## Current gate
+
+Determine whether the already-frozen NF-kB complex-pair mode is biologically observable and identifiable from a prospectively specified native output without selecting the mode or output after evaluating the qualification result.
+
+The gate must keep separate:
+- mode existence;
+- modal participation;
+- observability;
+- identifiability;
+- scalar calculation;
+- uncertainty;
+- final admission/refusal.
+
+## Next exact action
+
+1. Reconstruct the required inputs from frozen Jaruszewicz artifacts and published source semantics without altering scientific state.
+2. Confirm whether trajectory output and eigenvector/eigenvalue records are sufficient to compute a predeclared observability/participation test.
+3. If sufficient, freeze a P0-Q observability/identifiability contract before running the qualification analysis.
+4. Execute using repository production code and preserve a known-bad/refusal fixture.
+5. Update `AUTORUN_CHECKPOINT.md` and `WORK_QUEUE.json` after adjudication.
+6. Continue automatically to the next safe Bio Chi gate if no scientific choice is required.
+
+## Safe resume point
+
+If interrupted, begin by verifying the current branch head and this file, then inspect the frozen Jaruszewicz artifacts. Do not redefine the scalar, select a different complex pair, alter the biological observable after outcome inspection, or reinterpret Figure 8B/C failures.
+
+## Scientific state changed
+
+NO. This checkpoint records current evidence and a post-result candidate route only. No new biological object is admitted.
+
+
+## Checkpoint update — NF-kB P0-Q observability gate closed
+
+- Freeze: `BIO_CHI/config/JARUS_OSCILLATORY_MODE_OBSERVABILITY_P0Q_FREEZE_v0_1.json`
+- Workflow: `.github/workflows/bio-chi-jarus-observability-p0q-v01.yml`
+- Run: `36030274455`
+- Head: `f200a31419c1e7521c6f46a4d4b1d0dba0cd4203`
+- Artifact: `10822470378`, digest `sha256:af6a1f1954d5007bab517533f8edc5744bde6c5d2ca4dc4f838f611cf0d529ae`
+- Result pin: `BIO_CHI/config/JARUS_OSCILLATORY_MODE_OBSERVABILITY_P0Q_V01_RESULT_PIN.json`
+- Outcome: `PASS_P0Q_OSCILLATORY_MODE_OBSERVABILITY`
+- Known-bad monotone exponential fixture: correctly REFUSED.
+- Generator candidate: sigma = 0.7199381921 h^-1, omega = 3.3005691898 rad h^-1, candidate chi_bio = 0.2131145190.
+- Frozen native-output fit: sigma = 0.7264565074 h^-1, omega = 3.3053468931 rad h^-1, candidate operational chi = 0.2146589025.
+- Relative differences: omega 0.145%, sigma 0.905%, chi 0.725%.
+- Oscillatory model versus simple exponential: delta AIC = 261.57.
+- Epistemic ceiling: qualification only. No biological object admitted because Figure 8A is the already-viewed qualification case.
+
+### Next exact action
+
+Audit genuinely independent native biological evidence capable of testing the now-frozen scalar/modal mapping without outcome leakage. Build the MFR/independence record before opening decisive values. Prefer direct measured NF-kB trajectories or another native biological generator/observable pair. If no untouched empirical route can be qualified from available public data, preserve that limitation and advance the modal/system tracks that do not depend on scalar admission.
+
+### Safe resume point
+
+Begin from the independent-evidence audit. Do not revisit or retune the P0-Q estimator or qualification thresholds based on later outcomes.
+
+
+## Checkpoint update — independent-evidence program opened
+
+### Kizilirmak 2023 sealed source
+- Sealed Data S1 inventory PASS.
+- Archive SHA-256: `9ee2914095e9676b92806c33e46929965c6b4c7535f74a00d4462152678ba7b8`.
+- 23 CSV members; numeric values remain unopened.
+- The source paper's approximately four-hour Figure 2 window is under-resolved for the frozen damped-ringdown estimator. Do not weaken the estimator to force this dataset into scalar transport. Preserve this source for later phenotype/refusal/intervention testing.
+
+### Qiao 2022 sealed source
+- Repository pinned at `LingxiaQiao/oscillation@e137cd4ec4a84e0e6562eb9be53690a237d2e3e5`.
+- NF-kB archive SHA-256: `c29694fdd748445d64c5d6b7d8734d8cb825713ed0f8daaa7b69651e82870298`.
+- Numeric `oscillation_data.mat` remains unopened.
+- Method-only script confirms 5-minute sampling and six single-cell circuit datasets.
+- Source paper establishes monitoring up to 10 h and sustained noisy synthetic NF-kB oscillations. This is a Limit Map/refusal candidate rather than a fair numerical transport test for the damped-ringdown scalar.
+
+### D2FC2 independent model/validation test
+- External source pinned at `recleelab/D2FCSquared@4414c1556e3068c9bfe2162d5ba9d2cf770713fc`.
+- Source code defines scenarios 1-4 as fitting and scenarios 5-9 as validation.
+- Experimental matrices and fitted spreadsheets were not opened before the freeze.
+- Freeze: `BIO_CHI/config/D2FC2_NFKB_INDEPENDENT_MODAL_P1_FREEZE_v0_1.json`.
+- Production script: `BIO_CHI/src/run_d2fc2_independent_modal_p1_v0_1.m`.
+- Workflow: `.github/workflows/bio-chi-d2fc2-independent-modal-p1-v01.yml`.
+- All five validation conditions are locked; no dropping, pair switching, or post-result threshold adjustment is permitted.
+- Generator-derived chi is tested independently from empirical frequency observability. The three-hour validation horizon is not used to estimate damping.
+
+### Next exact action
+Adjudicate the D2FC2 workflow exactly under the frozen gate. If it passes, pin the result and update chi_bio / Chi_bio status at the bounded model-specific level. If it fails or is non-identifiable, preserve the failure and advance the modal/system Limit Map without repairing the scalar. Then proceed to the next safe Bio Chi cross-level/recovery test.
+
+### Safe resume point
+Verify the newest D2FC2 workflow run for head `ae5b3eaefed4eb712be0dc83fdf5cda2e471934d` or its mechanically repaired successor. No Kizilirmak or Qiao numeric trajectory archive may be opened before its own frozen outcome-bearing contract.
+
+
+## Checkpoint update — D2FC2 source-partition correction before result review
+
+The first D2FC2 scientific freeze inherited a row-based fit/validation grouping from the repository convenience script. Before any scientific output from that lane was retrieved or inspected, the peer-reviewed Nature Communications article was checked and showed a different publication-native optimization partition: Control, 1X6 min, 1X30 min, and 4X1.5 min were the four PSO training conditions; the other five mean conditions were held-out validation.
+
+The v0.1 scientific test is therefore preserved as `INVALID_TEST_SOURCE_PARTITION` in `BIO_CHI/artifacts/D2FC2_V01_INVALIDATION_20260924.md`. No v0.1 result may support admission or alter thresholds.
+
+The corrected outcome-blind freeze is `BIO_CHI/config/D2FC2_NFKB_INDEPENDENT_MODAL_P1_FREEZE_v0_2.json`. Its validation conditions are addressed by publication-defined names rather than row position:
+- 1X30 sec
+- 1X2 min
+- 1X15 min
+- 2X3 min
+- 3X2 min
+
+No scalar definition, numerical threshold, pair rule, or expected direction changed. The correction is provenance-driven and was made before result review.
+
+### Current exact action
+Adjudicate workflow `Bio Chi D2FC2 independent NF-kB modal P1 candidate v0.2`, run `36032806692` or its mechanically repaired successor.
+
+### Safe resume point
+Ignore all v0.1 scientific outputs. Resume only from v0.2 and preserve the publication-defined partition.
+
+
+## Checkpoint update — D2FC2 v0.2 source-fidelity and contract repairs
+
+The independent D2FC2 gate remains scientifically frozen under `BIO_CHI/config/D2FC2_NFKB_INDEPENDENT_MODAL_P1_FREEZE_v0_2.json`.
+
+Mechanical/source-fidelity sequence:
+- run `36032806692`: failed before analysis because a species-only `StatesToLog` override omitted constant parameters required by source observables;
+- run `36033103372`: after restoring source logging, failed at t=0 because the bare model's zero Gaussian IKK widths can generate undefined repeated-assignment values before any source IKK profile is loaded;
+- commit `69ca8a838ef538b08a7efc1caee2b6263bcfefff`: apply the publication-native Control IKK profile before TR=0 equilibration and restore the authors' 1e-8 equilibration tolerances;
+- run `36041986061`: reached the analysis and produced an artifact but adjudicated itself `INVALID_TEST_SOURCE_PARTITION`; the artifact was opened only to diagnose that invalid status;
+- the audit found two implementation mismatches with the pre-existing v0.2 freeze: an accidental hard-coded whole-file row order check despite the freeze requiring named conditions, and an all-spectrum relative-spread calculation despite the freeze requiring matched complex-pair spread;
+- commit `66e4bf361d9e5831a8137a3b88f118247a47ae54`: align implementation to exact named membership/uniqueness and complex-pair-only numerical spread;
+- `BIO_CHI/artifacts/D2FC2_V02_MECHANICAL_RECOVERY_20260924.md` records the full audit and the fact that numerical fields in the invalid artifact were visible before the final contract repair.
+
+Current execution:
+- run `36042402642`
+- head `66e4bf361d9e5831a8137a3b88f118247a47ae54`
+- status at checkpoint: IN PROGRESS
+- scientific thresholds, pair-count rule, scalar definition, five publication-defined held-out conditions, empirical peak rule, and pass/fail criteria remain unchanged.
+
+Epistemic caution:
+Because the invalid run artifact contained scientific numerical fields and was inspected during contract debugging, the corrected execution carries explicit provenance debt. It may provide bounded independent external qualification, but it must not be represented as an outcome-never-viewed pristine P1 confirmation merely because the final implementation now matches the original freeze.
+
+Repository guards:
+- reviewer smoke guard repaired to distinguish `candidate_only_not_admitted` from actual admission;
+- control validator repaired to recognize explicit P0-D/P0-Q/P1/P2 queue maturity prefixes;
+- both guards pass on commit `66e4bf361d9e5831a8137a3b88f118247a47ae54`.
+
+### Safe resume point
+Poll run `36042402642`. If it produces a valid scientific adjudication, pin it exactly and advance the Function/Limit Map without retuning. If it fails mechanically, repair source execution only. Do not alter the D2FC2 scientific freeze in response to its result.
+
+
+## Checkpoint update — scalar transport Limit Map and same-system joint gate
+
+Independent D2FC2 v0.2 has closed as `NON_IDENTIFIABLE_MULTIPLE_STABLE_COMPLEX_PAIRS` and is pinned in `BIO_CHI/config/D2FC2_NFKB_INDEPENDENT_MODAL_P1_V02_RESULT_PIN.json`. The repaired execution run was `36042402642`, artifact `10828030362`. It contains two stable complex pairs (candidate chi values approximately 0.5753 and 0.9337), while none of five publication-defined held-out nuclear-RelA validation conditions yielded the two peaks required by the frozen empirical-frequency rule. The Jaruszewicz scalar remains a model-specific P0-Q candidate and is not independently transported as a unique D2FC2 scalar.
+
+Blum 2019 ERK publication-selected B3 was then tested under a prospectively frozen unstimulated local-generator gate. Run `36043170485` exposed a mathematical refusal rather than a repairable execution defect: B3 has `h_nfb=0.74022` and source equilibrium `Nfb_star=0`, so the fractional-Hill feedback is not differentiable at that equilibrium. The centered local Jacobian required for a pole-based scalar/modal construction is not licensed there. Result is pinned in `BIO_CHI/config/BLUM2019_B3_MODAL_P0Q_V01_RESULT_PIN.json` as `REFUSE_LOCAL_GENERATOR_NONDIFFERENTIABLE_AT_SOURCE_EQUILIBRIUM`. No one-sided derivative, shifted equilibrium, regularization, or alternate model topology is allowed as a rescue within that gate.
+
+The scalar Limit Map now contains three distinct cases:
+- Jaruszewicz NF-kB: one observable licensed oscillatory carrier, chi_bio candidate approximately 0.2131;
+- D2FC2 NF-kB: multiple stable complex carriers, unique scalar refused;
+- Blum B3 ERK: native unstimulated local Jacobian not licensed because the source vector field is non-differentiable there.
+
+The next GOM-required joint-meaning test is now frozen within the Jaruszewicz system rather than mixing unrelated datasets.
+
+Source-complete audit run `36044134345` verified:
+- source equilibrium `x_star=[1,0,0,0,0,0]`;
+- `c3a=0.000372 s^-1`;
+- TNF is binary and enters the IKK equations directly;
+- source TNF begins at 1 h;
+- source simulation ends at 24 h;
+- publication display window is 0-10 h;
+- all seven native driver protocols and exact pulse timings are known.
+
+Joint freeze:
+`BIO_CHI/config/JARUS_JOINT_SCALAR_MODAL_SYSTEM_P0Q_FREEZE_v0_1.json`.
+
+Representations:
+1. chi_bio-bearing complex-pair carrier: inherited frozen conjugate pair plus biorthogonal input/output residues. This is explicitly not chi_bio alone.
+2. Chi_bio local modal representation: complete six-mode linear generator `dx=Jdx+Bdu`.
+3. Bio Chi same-system nonlinear reference: complete source-native nonlinear six-state model under the same TNF history. This is a same-model Function/Limit reference, not experimental ground truth.
+
+No trajectory fitting, per-protocol gain/phase/offset fitting, or mode reselection is allowed. All seven native protocols are mandatory. Primary metric is raw nuclear NF-kB NRMSE normalized by the nonlinear reference range. Frozen adequacy rules and allowed outcomes are in the freeze.
+
+Current execution:
+- workflow: `Bio Chi Jaruszewicz joint scalar-modal-system P0-Q v0.1`
+- run: `36044426805`
+- head: `9fd779c34cd8a8d9dd617ef581862286b00b2122`
+- status at checkpoint: IN PROGRESS, MATLAB setup/execution pending.
+
+### Safe resume point
+Poll run `36044426805`. If mechanical failure occurs, repair execution only without changing the freeze. If a valid result is produced, pin it unchanged, update Q7, and follow its Function/Limit implication. No user decision is currently required.

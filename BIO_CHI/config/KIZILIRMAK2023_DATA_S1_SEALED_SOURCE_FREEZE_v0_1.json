@@ -1,0 +1,41 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Independent empirical NF-kB Data S1 sealed-source inventory",
+  "status": "OUTCOME_BLIND_SOURCE_INVENTORY",
+  "source": {
+    "citation": "Kizilirmak C, Monteleone E, Garcia-Manteiga JM, et al. Small transcriptional differences among cell clones lead to distinct NF-kB dynamics. iScience. 2023;26(12):108573.",
+    "doi": "10.1016/j.isci.2023.108573",
+    "pmid": "38144455",
+    "pmcid": "PMC10746373",
+    "pii": "S2589004223026500",
+    "article_role": "independent measured single-cell NF-kB dynamics",
+    "data_object": "Data S1, CSV files reproducing Figures 1, 2, 5, and 6",
+    "archive_url": "https://ars.els-cdn.com/content/image/1-s2.0-S2589004223026500-mmc2.zip"
+  },
+  "independence": {
+    "numeric_values_opened_before_freeze": false,
+    "file_inventory_allowed": true,
+    "article_level_description_known": true,
+    "known_article_level_behavior": "The paper reports heterogeneous persistent, oscillatory, and weak NF-kB responses; no Data S1 trajectory values have been loaded or summarized in Bio Chi.",
+    "role_if_source_inventory_passes": "candidate untouched empirical P1 evidence; exact claim and inclusion rules must be frozen before any CSV value is opened"
+  },
+  "inventory_only": {
+    "permitted": [
+      "HTTP retrieval status",
+      "archive byte size",
+      "archive SHA-256",
+      "member names",
+      "member compressed/uncompressed sizes",
+      "archive integrity"
+    ],
+    "prohibited": [
+      "load CSV values",
+      "summarize trajectories",
+      "plot trajectories",
+      "select clones/cells by observed fit",
+      "compute chi",
+      "compute oscillation statistics"
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+name: Bio Chi Jaruszewicz joint scalar-modal-system P0-Q v0.1
+
+on:
+  push:
+    branches:
+      - chi-bio-recovery-p0d-20260922
+    paths:
+      - 'BIO_CHI/config/JARUS_JOINT_SCALAR_MODAL_SYSTEM_P0Q_FREEZE_v0_1.json'
+      - 'BIO_CHI/src/run_jarus_joint_scalar_modal_system_p0q_v0_1.m'
+      - '.github/workflows/bio-chi-jarus-joint-scalar-modal-system-p0q-v01.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  joint-response:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare pinned source
+        run: |
+          set -euo pipefail
+          bash BIO_CHI/src/prepare_jarus_matlab_compat.sh
+      - uses: matlab-actions/setup-matlab@v3
+        with:
+          release: R2023b
+      - name: Execute frozen joint response test
+        uses: matlab-actions/run-command@v3
+        with:
+          command: run('BIO_CHI/src/run_jarus_joint_scalar_modal_system_p0q_v0_1.m')
+          generate-summary: false
+      - name: Hash and summarize
+        run: |
+          set -euo pipefail
+          OUT="BIO_CHI/artifacts/generated/jarus_joint_scalar_modal_system_p0q_v01"
+          sha256sum "$OUT/jarus_joint_scalar_modal_system_p0q_v0_1.json" > "$OUT/SHA256SUMS.txt"
+          python - <<'PY'
+          import json, pathlib
+          p=pathlib.Path('BIO_CHI/artifacts/generated/jarus_joint_scalar_modal_system_p0q_v01/jarus_joint_scalar_modal_system_p0q_v0_1.json')
+          j=json.loads(p.read_text())
+          print(json.dumps({
+            'status':j['status'],
+            'pair_median_nrmse':j['pair_median_nrmse'],
+            'full_modal_median_nrmse':j['full_modal_median_nrmse'],
+            'pair_max_nrmse':j['pair_max_nrmse'],
+            'full_modal_max_nrmse':j['full_modal_max_nrmse'],
+            'protocols_full_modal_better':j['protocols_full_modal_better'],
+            'median_pair_minus_full_modal_nrmse':j['median_pair_minus_full_modal_nrmse']
+          },indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_JARUS_JOINT_SCALAR_MODAL_SYSTEM_P0Q_V01
+          path: BIO_CHI/artifacts/generated/jarus_joint_scalar_modal_system_p0q_v01/
+          if-no-files-found: error

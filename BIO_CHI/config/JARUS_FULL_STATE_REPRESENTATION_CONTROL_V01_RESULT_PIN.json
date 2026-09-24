@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "system": "Jaruszewicz-Blonska reduced NF-kB model",
+  "control": "full_state_coordinate_invariance_v0_1",
+  "freeze": "BIO_CHI/config/JARUS_FULL_STATE_REPRESENTATION_CONTROL_FREEZE_v0_1.json",
+  "workflow_run_id": 35858028617,
+  "workflow_head_sha": "5296fe3d9b80efdbc2a2da6f4f08a1885f5d1fb1",
+  "artifact": {
+    "id": 10747928363,
+    "name": "BIO_CHI_JARUS_FULL_STATE_REPRESENTATION_CONTROL_V01",
+    "zip_sha256": "0241360c65de72408eb7ddd68ce6ddf6956b7a7517d952ed1ac52e1dc884084a",
+    "size_bytes": 6452
+  },
+  "source_artifact": {
+    "id": 10748186325,
+    "zip_sha256": "7b17c4b2ec5c3cfd280eac48155903f329a57a1a62e4918ef4fcac4ed3aea7a9"
+  },
+  "execution": {
+    "status": "SUCCESS",
+    "execution_complete": true,
+    "all_records_finite": true
+  },
+  "observed_summary": {
+    "any_spectral_abscissa_sign_change_vs_physical_x": false,
+    "maximum_observed_relative_complex_difference": 3.9989097652916227e-10
+  },
+  "representation_set": [
+    "native_physical_x",
+    "equilibrium_normalized_z_i_equals_x_i_over_xstar_i",
+    "log_equilibrium_normalized_y_i_equals_log_x_i_over_xstar_i"
+  ],
+  "epistemic_role": "necessary_not_sufficient_numerical_coordinate_invariance_control",
+  "promotion_threshold": null,
+  "chi_bio_constructed": false,
+  "Chi_bio_admitted": false,
+  "Bio_Chi_constructed": false,
+  "interpretation": "The complete six-state local generator remained numerically invariant, to the observed tolerance reported above, under the frozen smooth invertible full-state coordinate transforms. This is a numerical sanity check only. It does not establish biological observability, reduced-representation invariance, mode-selection validity, scalar adequacy, or biological representation independence.",
+  "forbidden_inferences": [
+    "do not select the complex pair from this control",
+    "do not define or admit chi_bio from this control",
+    "do not admit Chi_bio from this control",
+    "do not infer Bio Chi from this control",
+    "do not erase preserved finite-window failures or indeterminate paths"
+  ],
+  "next_gate": "return to outcome-blind Q2/Q3 biological observability and identifiability qualification before any reduced observable representation or scalar admission"
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "GEO source-lineage and metadata-only reconciliation for Harmange 2023 and Shaffer 2017",
+  "purpose_tag": "P0_D_SOURCE_QUALIFICATION",
+  "external_source_pin": "BIO_CHI/config/EXTERNAL_SOURCE_FREEZE_PIN_v0_1.json",
+  "datasets": [
+    {
+      "id": "harmange2023_scmemoryseq",
+      "geo": "GSE237228",
+      "family_soft": {
+        "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE237nnn/GSE237228/soft/GSE237228_family.soft.gz",
+        "sha256": "29db7f5d77b661487c892c3b55948164884923daf0469560e04a5f843ba56dd5"
+      },
+      "metadata_header": {
+        "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE237nnn/GSE237228/suppl/GSE237228_10x_exp3_metadata.tsv.gz",
+        "sha256": "f22aaf6947d38a018c0c4d13ceedacbd3bdffc296f727e171b66a21b7a06434b"
+      },
+      "related_frozen_files": [
+        "GSE237228_10x_exp3_barcodes.tsv.gz",
+        "GSE237228_10x_exp3_genes.tsv.gz",
+        "GSE237228_10x_exp3_matrix.mtx.gz"
+      ]
+    },
+    {
+      "id": "shaffer2017_melanoma",
+      "geo": "GSE97682",
+      "family_soft": {
+        "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE97nnn/GSE97682/soft/GSE97682_family.soft.gz",
+        "sha256": "41bd2622d600fe5fedbb322f6d76174ea6d07aa62a0bb34960ffa18b7b18e18b"
+      }
+    }
+  ],
+  "permitted_operations": [
+    "verify exact frozen SHA-256 of metadata files",
+    "parse GEO Series and Sample metadata fields only",
+    "record sample accessions, titles, source names, characteristics, and declared relations",
+    "read only the first header row of Harmange cell metadata TSV",
+    "record explicit subseries/BioProject/SRA relations when declared in GEO metadata"
+  ],
+  "forbidden_operations": [
+    "read molecular expression values",
+    "read cell-level metadata rows beyond the header",
+    "compute treatment or resistance outcomes",
+    "select cohorts based on result values",
+    "promote a testbed",
+    "construct chi_bio, Chi_bio, or Bio Chi"
+  ],
+  "scientific_effect": "NONE; source lineage and reproducibility qualification only",
+  "status": "FROZEN_BEFORE_METADATA_PARSE"
+}

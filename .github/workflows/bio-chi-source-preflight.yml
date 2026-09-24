@@ -1,0 +1,32 @@
+name: Bio Chi source preflight
+
+on:
+  push:
+    branches:
+      - chi-bio-recovery-p0d-20260922
+    paths:
+      - 'BIO_CHI/config/SOURCE_MANIFEST_v0_1.json'
+      - 'BIO_CHI/src/preflight_sources.py'
+      - '.github/workflows/bio-chi-source-preflight.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify public source endpoints without opening outcomes
+        run: python BIO_CHI/src/preflight_sources.py
+      - name: Upload source preflight manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_SOURCE_PREFLIGHT_V01
+          path: BIO_CHI/artifacts/generated/source_preflight_v0_1.json
+          if-no-files-found: error
