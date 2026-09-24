@@ -24,31 +24,13 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p output
-          URL=$(python - <<'PY'
-import json
-p=json.load(open("BIO_CHI/config/KIZILIRMAK2023_DATA_S1_SEALED_SOURCE_FREEZE_v0_1.json"))
-print(p["source"]["archive_url"])
-PY
-)
+          URL=$(python -c 'import json; p=json.load(open("BIO_CHI/config/KIZILIRMAK2023_DATA_S1_SEALED_SOURCE_FREEZE_v0_1.json")); print(p["source"]["archive_url"])')
           curl --fail --location --retry 2 --output data_s1_sealed.zip "$URL"
           unzip -t data_s1_sealed.zip > output/archive_integrity.txt
           sha256sum data_s1_sealed.zip > output/archive_sha256.txt
           stat -c '%s' data_s1_sealed.zip > output/archive_bytes.txt
           unzip -l data_s1_sealed.zip > output/member_inventory.txt
-          python - <<'PY'
-import json, pathlib, zipfile
-z=zipfile.ZipFile("data_s1_sealed.zip")
-members=[{"name":i.filename,"compressed_bytes":i.compress_size,"uncompressed_bytes":i.file_size,"crc32":f"{i.CRC:08x}"} for i in z.infolist()]
-out={
- "schema_version":"0.1",
- "status":"PASS_SEALED_SOURCE_INVENTORY",
- "member_count":len(members),
- "members":members,
- "numeric_member_values_opened":False,
- "interpretation":"Archive identity and topology only. No CSV member values were loaded, summarized, plotted, or inspected."
-}
-pathlib.Path("output/source_inventory_v0_1.json").write_text(json.dumps(out,indent=2)+"\n")
-PY
+          python -c 'import json,pathlib,zipfile; z=zipfile.ZipFile("data_s1_sealed.zip"); m=[{"name":i.filename,"compressed_bytes":i.compress_size,"uncompressed_bytes":i.file_size,"crc32":format(i.CRC,"08x")} for i in z.infolist()]; o={"schema_version":"0.1","status":"PASS_SEALED_SOURCE_INVENTORY","member_count":len(m),"members":m,"numeric_member_values_opened":False,"interpretation":"Archive identity and topology only. No CSV member values were loaded, summarized, plotted, or inspected."}; pathlib.Path("output/source_inventory_v0_1.json").write_text(json.dumps(o,indent=2)+"\\n")'
           sha256sum output/* > output/SHA256SUMS.txt
 
       - uses: actions/upload-artifact@v4
