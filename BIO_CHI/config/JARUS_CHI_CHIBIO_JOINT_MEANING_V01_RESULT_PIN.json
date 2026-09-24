@@ -1,0 +1,51 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "model-specific chi_bio <-> Chi_bio joint meaning and local-vs-realized behavior",
+  "status": "PASS_JOINT_MEANING_QUALIFICATION",
+  "epistemic_mode": "P0-Q",
+  "freeze": "BIO_CHI/config/JARUS_CHI_CHIBIO_JOINT_MEANING_FREEZE_v0_1.json",
+  "workflow_run_id": 36057883879,
+  "workflow_head_sha": "118285bccf7143321c9a4b5c63637c87472e0b24",
+  "artifact": {
+    "id": 10833575069,
+    "name": "BIO_CHI_JARUS_JOINT_MEANING_V01",
+    "digest": "sha256:b89fd186693f35bf8a97f6ee2a4f730d0da98950216518531c0d688ee7aebf36"
+  },
+  "result_sha256": "31ebdf6ddd75d7aa674dbefe3bc0a80c617917c13bc1b0b83c9acc4bef033617",
+  "joint_outcomes": [
+    "Chi_bio_ADDS_LOCAL_INFORMATION",
+    "REALIZED_BEHAVIOR_REQUIRES_SYSTEM_LAYER"
+  ],
+  "case_summary": {
+    "FIG8A_NOMINAL_DAMPED": {
+      "chi_bio": 0.21311451897468062,
+      "pair_sets_spectral_abscissa": false,
+      "pair_efold_seconds": 5000.429258540933,
+      "system_slowest_local_efold_seconds": 6352.107449988864,
+      "local_vs_realized": "CONCORDANT_DECAY"
+    },
+    "FIG8B_LIMIT_CYCLE": {
+      "chi_bio": -0.013237916094370914,
+      "pair_sets_spectral_abscissa": true,
+      "local_pair_direction": "AMPLIFYING",
+      "finite_window_direction": "DECREASING_AMPLITUDE",
+      "local_vs_realized": "DIVERGENT"
+    },
+    "FIG8C_RELAXATION_OSCILLATION": {
+      "chi_bio": -0.055011684534635286,
+      "pair_sets_spectral_abscissa": true,
+      "local_pair_direction": "AMPLIFYING",
+      "finite_window_direction": "DECREASING_AMPLITUDE",
+      "local_vs_realized": "DIVERGENT"
+    }
+  },
+  "interpretation": "The scalar biological mode is informative but not generally sufficient for local system stability, and the complete local modal architecture is itself insufficient to identify finite-window realized trajectory morphology in all regimes. The relationship therefore requires a distinct system/trajectory layer rather than a master scalar.",
+  "guards": {
+    "master_scalar_created": false,
+    "chi_equal_1_boundary_claimed": false,
+    "stable_limit_cycle_proved": false,
+    "P1_confirmation_claimed": false
+  },
+  "next_gate": "Class-C model-specific Bio Chi conglomerate adjudication"
+}
