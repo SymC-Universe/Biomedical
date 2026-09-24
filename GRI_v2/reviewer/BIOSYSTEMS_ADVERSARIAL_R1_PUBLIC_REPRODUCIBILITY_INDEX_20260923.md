@@ -299,3 +299,29 @@ Final private artifact hashes:
 - final v24 ZIP: `e87b2ed86e99fb0e2057a43f34ee21435b9297c7cbb0cf5aa142c0fb27322725`.
 
 The main manuscript compiles with zero undefined references and zero overfull/underfull warnings after the final heading wrap. The supplement compiles with zero undefined references and one harmless underfull box. All final PDFs and the highlights DOCX passed render inspection.
+
+
+## V25 final artwork and reviewer-cleanup closure
+
+**Current reviewer-facing source-of-truth branch:** `biosystems-v25-final-artwork-20260923`.
+
+This release performs no scientific rerun and changes no frozen result. It closes the final manuscript/artwork consistency review:
+
+- main TN-C1 callouts now point directly to Figure 3; cancer lists and eligibility remain in the Supplementary Information;
+- the 30-cancer H1 post-result sensitivity and 27-cancer projected C1 denominator rules are explicitly distinguished;
+- the perturbational P0-D section now states at entry that its isolated model-system checks do not establish dynamical laws for human cancer tissue or alter the frozen C1/P1 spine;
+- the <=150-word abstract is carried into the release source;
+- main figure filenames now match compiled Figure 1-4 numbering;
+- the evidence-architecture artwork is labeled Supplementary Figure S1;
+- every submitted figure is paired with an editable SVG generated directly from its vector PDF and render-checked.
+
+Final private release:
+- `BioSystems_Resubmission_R1_v25_Final_20260923.zip`
+- SHA-256 `cb9f65998b92e2b5d948ebcc4972e4e21e04d594c0ef1ab807eda80224cbc6c3`
+
+Primary artifact hashes:
+- main v25 PDF: `4b38f9436f2c50a80365757fd64508e386012d4a2c3ba722ac03fffc0ba2e77a`;
+- supplement v19 PDF: `4196d1578aa9131c739a59fd5fa24b325d47449c737f177adb36569856f8bc13`;
+- reviewer response v13 PDF: `d8ec8436141479999ac9c8d0ce79ddddef6d6ce45e107b91a95937b43f62e661`.
+
+The release manifest was verified after clean-room extraction. Main manuscript, supplement, response PDF, and all SVG artwork passed render inspection.
