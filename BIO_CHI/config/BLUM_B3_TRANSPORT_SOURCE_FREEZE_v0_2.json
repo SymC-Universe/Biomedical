@@ -1,0 +1,233 @@
+{
+  "schema_version": "0.2",
+  "project": "Bio Chi Investigation",
+  "date": "2026-09-24",
+  "status": "FROZEN_P0Q_MECHANICAL_SOURCE_GRID_REPAIR_BEFORE_TRAJECTORY_RESULT",
+  "authority": "SymC General Operations Manual v0.8.6",
+  "epistemic_mode": "P0-Q",
+  "purpose": "freeze the publication-selected Blum 2019 B3 deterministic ERK model and reproduce a source-native latent trajectory before any Bio Chi eigenspectrum or scalar construction is opened",
+  "source_repository": {
+    "repository": "Mijan/LFNS_MSB",
+    "commit": "5c917abda0618d75c00c9cab45f24ed893dd71f1",
+    "tree": "cbb79d66f79a84bc8af28ca85f1678295348da83"
+  },
+  "publication_model_selection": {
+    "topology": "Fgf_B3",
+    "role": "publication-selected final network after held-out pulse validation and independent HSPG perturbation",
+    "post_result_choice_by_SymC": false
+  },
+  "source_files": {
+    "model": {
+      "path": "FGF2_models/Fgf_B3/FGF_Model_B3.txt",
+      "git_blob_sha": "42986702c611249a83c11da3cebb8ae3d12f9379"
+    },
+    "initial_states": {
+      "path": "FGF2_models/Fgf_B3/initial_states_B3.txt",
+      "git_blob_sha": "e73e9718acb44e394cf62ba2f35db8a02f2fb468"
+    },
+    "measurement": {
+      "path": "FGF2_models/Fgf_B3/measurement_FRET_B3.txt",
+      "git_blob_sha": "26556a6a69b5e61420dcbf79b1e08ff6e0b85474"
+    },
+    "primary_parameter_summary": {
+      "path": "Inference_results/Fgf_B3/NaClO3_simulations/sim_model_summary.txt",
+      "git_blob_sha": "8b19517d15a81464b153b83e4e60ee279527cdde"
+    },
+    "primary_reference_trajectory": {
+      "path": "Inference_results/Fgf_B3/NaClO3_simulations/sim_latent_states_sus_2-5ng.txt",
+      "git_blob_sha": "3139ebe266b1962f74971f26507dcfdc720b74f2"
+    },
+    "primary_reference_times": {
+      "path": "Inference_results/Fgf_B3/NaClO3_simulations/sim_times.txt",
+      "git_blob_sha": "1d35368bfac909eec0da7dae446d2ff0b6cce81b"
+    },
+    "parameter_sensitivity_summary": {
+      "path": "Inference_results/Fgf_B3/results/sus_3_20/sim_pred_model_summary.txt",
+      "git_blob_sha": "4c0f594b542bab1b9ebc58ac10455f11b99bb4c5"
+    }
+  },
+  "state_order": [
+    "Ras",
+    "Ras_star",
+    "Raf",
+    "Raf_star",
+    "Mek",
+    "Mek_star",
+    "Erk",
+    "Erk_star",
+    "Nfb",
+    "Nfb_star",
+    "FgfR",
+    "FgfR_star",
+    "H",
+    "H_F",
+    "H_F_R"
+  ],
+  "primary_parameter_names": [
+    "k_1_2",
+    "K_1_2",
+    "k_2_1",
+    "K_2_1",
+    "k_3_4",
+    "K_3_4",
+    "K_NFB",
+    "k_4_3",
+    "K_4_3",
+    "k_5_6",
+    "K_5_6",
+    "k_6_5",
+    "K_6_5",
+    "k_7_8",
+    "K_7_8",
+    "k_8_7",
+    "K_8_7",
+    "f_1_2",
+    "F_1_2",
+    "f_2_1",
+    "F_2_1",
+    "h_nfb",
+    "r_h",
+    "r_3_4",
+    "r_4_3",
+    "r_5_6",
+    "r_6_5",
+    "r_5_7",
+    "r_7_5",
+    "fgfr_init_mean",
+    "nfb_init",
+    "h_init_mean",
+    "FRET_sigma",
+    "FRET_E"
+  ],
+  "primary_parameter_values": [
+    0.036679,
+    0.0016812,
+    1.4068,
+    1.8015,
+    16.982,
+    0.059062,
+    0.000094404,
+    0.083865,
+    0.0078253,
+    20.103,
+    0.2632,
+    0.12642,
+    0.059488,
+    0.70793,
+    0.0000037324,
+    1.1856,
+    0.29026,
+    0.00040209,
+    0.00085591,
+    0.00011599,
+    0.0007001,
+    0.68933,
+    0.81731,
+    0.078035,
+    0.045113,
+    0.014377,
+    0.10463,
+    99.0946,
+    1.856,
+    0.47803,
+    0.40447,
+    1.8446,
+    0.0001,
+    0.032964
+  ],
+  "sensitivity_parameter_values": [
+    0.016844,
+    0.0000034583,
+    0.4346,
+    0.67715,
+    56.254,
+    0.0000077839,
+    0.00001153,
+    0.36814,
+    0.15001,
+    13.794,
+    0.058137,
+    0.47814,
+    0.091544,
+    0.38159,
+    0.00001059,
+    2.4405,
+    1.6517,
+    0.000030379,
+    0.0023234,
+    0.000015526,
+    0.00016109,
+    0.91952,
+    0.88639,
+    0.0525,
+    0.042172,
+    0.010962,
+    0.070598,
+    74.927,
+    1.2759,
+    0.31228,
+    1.7881,
+    1.5745,
+    0.0001,
+    0.015879
+  ],
+  "primary_reproduction_protocol": {
+    "experiment": "sus_2-5ng",
+    "fgf_input": 2.5,
+    "input_rule": "sustained from t=0 throughout the 0 to 180 minute source trajectory",
+    "times_minutes": "exact source sim_times.txt, 0 to 178 in 2 minute increments",
+    "initial_state_rule": "source-native initial_states_B3 values using the primary vector's fgfr_init_mean, nfb_init, and h_init_mean",
+    "solver": "scipy.integrate.solve_ivp(method='BDF', rtol=1e-10, atol=1e-10) as an independent deterministic ODE reproduction of the source CVODE model",
+    "comparison": "all 15 states at all 91 source timepoints",
+    "pass_thresholds_frozen_before_result": {
+      "maximum_absolute_state_error": 0.0005,
+      "root_mean_square_state_error": 0.00005,
+      "all_values_finite": true
+    },
+    "source_precision_note": "source latent-state text is rounded ASCII output, so byte-level numeric equality is not required",
+    "timepoint_count": 90
+  },
+  "stoichiometric_dynamic_subspace_rule_for_future_generator_gate": {
+    "full_state_jacobian_not_directly_interpreted": true,
+    "reason": "reaction-network conservation laws create exact or numerical zero directions that are constraints rather than independent dynamical stability modes",
+    "construction": "form the 15x16 reaction stoichiometric matrix S in source state/reaction order; compute an orthonormal basis Q for col(S); analyze J_reduced = Q^T J Q",
+    "basis_invariance_requirement": "future modal conclusions must be invariant to orthonormal basis choice within the same stoichiometric column space",
+    "no_spectrum_opened_in_this_gate": true
+  },
+  "guards": {
+    "no_ERK_eigenvalues_before_native_reproduction_pass": true,
+    "no_chi_bio_before_generator_gate": true,
+    "no_forced_complex_pair": true,
+    "allow_scalar_refusal": true,
+    "preserve_primary_and_sensitivity_parameter_roles": true,
+    "no_chi_equal_1_boundary_claim": true,
+    "no_P1_confirmation_language": true
+  },
+  "next_if_reproduction_passes": "freeze and execute generator-first stoichiometric-subspace modal transport at source-defined sustained FGF2 inputs, with scalar refusal allowed",
+  "next_if_reproduction_fails": "preserve failure, debug only mechanical equation/order/parameter mapping errors, and do not open ERK spectra until native reproduction is resolved",
+  "supersedes_for_native_reproduction": "BIO_CHI/config/BLUM_B3_TRANSPORT_SOURCE_FREEZE_v0_1.json",
+  "preserved_failed_run": {
+    "workflow_run_id": 36058688918,
+    "status": "MECHANICAL_PRE_RESULT_TIME_GRID_ASSERTION_FAILURE",
+    "result_opened": false,
+    "solver_executed": false,
+    "scientific_threshold_evaluated": false
+  },
+  "repair_scope": {
+    "changed": [
+      "primary_reproduction_protocol source time endpoint from 180 to 178 minutes",
+      "source timepoint count from 91 to 90"
+    ],
+    "unchanged": [
+      "model topology",
+      "source commit/tree/blob identities",
+      "parameter vectors",
+      "ODE equations",
+      "initial-state rule",
+      "FGF input",
+      "solver family/tolerances",
+      "all frozen pass thresholds",
+      "future stoichiometric-subspace rule"
+    ]
+  }
+}
