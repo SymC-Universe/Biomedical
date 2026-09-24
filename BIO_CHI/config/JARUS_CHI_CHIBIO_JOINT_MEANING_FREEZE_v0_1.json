@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "date": "2026-09-24",
+  "status": "FROZEN_P0Q_JOINT_MEANING_QUALIFICATION",
+  "authority": "SymC General Operations Manual v0.8.6 joint chi/Chi meaning requirement",
+  "epistemic_mode": "P0-Q",
+  "outcomes_already_viewed": true,
+  "purpose": "qualify what the already-admitted model-specific chi_bio and Chi_bio mean together, and determine whether their relationship is sufficient to explain local and realized NF-kB behavior without collapsing them into one scalar",
+  "sources": [
+    "BIO_CHI/config/JARUS_CHI_BIO_SCALAR_P0Q_V01_RESULT_PIN.json",
+    "BIO_CHI/config/JARUS_CHI_BIO_MODAL_ADMISSION_V01.json",
+    "BIO_CHI/config/JARUS_MODAL_INVENTORY_V01_RESULT_PIN.json",
+    "BIO_CHI/config/JARUS_FIG8_V02_RESULT_PIN_v0_1.json",
+    "BIO_CHI/config/JARUS_LOCAL_NONLINEAR_ROUNDTRIP_V01_RESULT_PIN.json"
+  ],
+  "questions": {
+    "J1_scalar_sufficiency_for_local_system": "Does the chi_bio complex pair identify the spectral-abscissa-setting mode and therefore the slowest/local-dominant linear behavior?",
+    "J2_modal_sufficiency_for_local_nonlinear_behavior": "Does the complete local Chi_bio representation reproduce native nonlinear behavior in the local perturbation limit?",
+    "J3_local_vs_finite_window_realized_behavior": "Does local modal stability sign alone determine the frozen finite-window observed oscillation-amplitude behavior?",
+    "J4_information_gain": "What scientifically relevant information is gained moving from chi_bio to Chi_bio and from local Chi_bio to realized nonlinear behavior?"
+  },
+  "predeclared_classifications": {
+    "SCALAR_SUFFICIENT_LOCAL": "the chi_bio pair sets the spectral abscissa and no slower local mode exists",
+    "SCALAR_INCOMPLETE_LOCAL": "a separate mode sets the spectral abscissa or materially changes local interpretation",
+    "MODAL_LOCAL_ROUNDTRIP_SUPPORTED": "complete frozen local modal representation passes nonlinear local round-trip",
+    "LOCAL_REALIZED_DIRECTION_CONCORDANT": "local modal stability sign and finite-window amplitude trend have the same directional interpretation under the frozen behavior rule",
+    "LOCAL_REALIZED_DIRECTION_DIVERGENT": "local modal stability sign and finite-window amplitude trend differ; preserve as scale/state/attractor information rather than forcing reconciliation"
+  },
+  "guards": {
+    "no_arithmetic_combination_of_chi_bio_and_Chi_bio": true,
+    "no_master_scalar": true,
+    "no_erasure_of_B_C_finite_window_failures": true,
+    "no_chi_equal_1_boundary": true,
+    "no_claim_that_local_linear_stability_equals_global_attractor_stability": true,
+    "no_P1_confirmation_language": true,
+    "no_post_result_threshold_tuning": true
+  },
+  "allowed_joint_outcomes": [
+    "SCALAR_SUFFICIENT_WITHIN_DECLARED_LOCAL_QUESTION",
+    "Chi_bio_ADDS_LOCAL_INFORMATION",
+    "REALIZED_BEHAVIOR_REQUIRES_SYSTEM_LAYER",
+    "REPRESENTATION_DEPENDENT",
+    "NO_ADDED_VALUE"
+  ],
+  "next_if_system_layer_required": "adjudicate whether the model-specific scalar/modal/realized-behavior relationship satisfies the project Class-C Bio Chi conglomerate gates at P0-Q; if broad admission remains blocked, preserve the model-specific relationship and proceed to independent B3 ERK transport"
+}
