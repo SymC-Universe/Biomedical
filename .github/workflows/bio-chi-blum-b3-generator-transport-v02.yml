@@ -1,0 +1,58 @@
+name: Bio Chi Blum B3 analytic generator transport P0-Q v0.2
+
+on:
+  push:
+    branches:
+      - bio-chi-closure-p0q-20260924
+    paths:
+      - 'BIO_CHI/config/BLUM_B3_GENERATOR_TRANSPORT_FREEZE_v0_2.json'
+      - 'BIO_CHI/src/analyze_blum_b3_generator_transport_v02.py'
+      - '.github/workflows/bio-chi-blum-b3-generator-transport-v02.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  generator-transport:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install numerical dependencies
+        run: python -m pip install --disable-pip-version-check numpy scipy
+      - name: Execute frozen analytic-Jacobian transport
+        run: python BIO_CHI/src/analyze_blum_b3_generator_transport_v02.py
+      - name: Validate result schema
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          p=pathlib.Path('BIO_CHI/artifacts/generated/blum_b3_generator_transport_v02/blum_b3_generator_transport_v0_2.json')
+          if not p.exists():
+              raise SystemExit('BLUM_B3_V02_RESULT_MISSING')
+          d=json.loads(p.read_text())
+          allowed_modal={
+              'PASS_B3_GENERATOR_MODAL_QUALIFICATION',
+              'PASS_B3_MODAL_WITH_PARTIAL_FRET_OBSERVABILITY',
+              'REFUSE_ANALYTIC_JACOBIAN_SELF_CHECK',
+              'REFUSE_B3_MODAL_NUMERICAL_CONDITIONING',
+              'INDETERMINATE_EQUILIBRIUM'
+          }
+          allowed_scalar={
+              'SCALAR_TRANSPORT_PRESENT',
+              'SCALAR_TRANSPORT_PARAMETER_DEPENDENT',
+              'SCALAR_TRANSPORT_REFUSED',
+              'SCALAR_TRANSPORT_WITHHELD_UPSTREAM_MODAL_REFUSAL'
+          }
+          if d.get('modal_transport_status') not in allowed_modal:
+              raise SystemExit(f"bad modal status {d.get('modal_transport_status')}")
+          if d.get('scalar_transport_status') not in allowed_scalar:
+              raise SystemExit(f"bad scalar status {d.get('scalar_transport_status')}")
+          print('BIO_CHI_BLUM_B3_V02_VALID',d['modal_transport_status'],d['scalar_transport_status'])
+          PY
+      - name: Upload analytic generator transport evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_BLUM_B3_GENERATOR_TRANSPORT_V02
+          path: BIO_CHI/artifacts/generated/blum_b3_generator_transport_v02/blum_b3_generator_transport_v0_2.json
+          if-no-files-found: error
