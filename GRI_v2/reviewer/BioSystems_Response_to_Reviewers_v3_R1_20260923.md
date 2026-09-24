@@ -125,6 +125,26 @@ The cancer-regulation references suggested by the reviewer were also evaluated a
 
 ## Reviewer 2
 
+### Point-by-point disposition map
+
+| Original point | Disposition | Detailed response / manuscript location |
+|---|---|---|
+| 1. Temporal progression / irreversible transitions | Cross-sectional temporal claims withdrawn; direct ordered evidence kept only as model-specific post-result evidence | Dynamic-lineage clarification; Main Discussion: tumor-normal state difference and post-result perturbational extensions |
+| 2. Biological interpretation of $\chi=\sigma/(2\mu)$ as damping | Historical CV/2 damping interpretation withdrawn | Engineering-control scope paragraph; Author-initiated corrections 1-2; Main Discussion scope statement |
+| 3. Inter-tumor variability as dynamic evolution | Not inferred | Main Introduction/Methods static framing; Main Discussion limitations |
+| 4. Phase-transition / bifurcation claims | Withdrawn rather than re-thresholded | Author-initiated corrections; no phase-transition or bifurcation claim remains in the revised manuscript |
+| 5. Independent dataset validation | Executed, with partial transport | Reviewer 2 response 1; Main Results: independent prostate transport |
+| 6. Relation to established cancer mechanisms | Added as biological context without converting association to mechanism | Reviewer 2 response 5; Main Introduction and Hallmark-level Discussion |
+| 7. Substrate Capture linked to measurable biology | Causal Substrate Capture claim withdrawn | Author-initiated corrections; measured methylation and tumor-normal analyses retained without substrate-capture causality |
+| 8. Therapeutic resistance claims | Withdrawn | Main Conclusion and response summary |
+| 9. Therapeutic implications | Withdrawn; no treatment rule claimed | Reviewer 1 treatment response; Main Conclusion |
+| 10. Cancer-type-specific analysis | Implemented with cancer as inferential unit | Reviewer 2 response 3; Main Methods/Results |
+| 11. Additional omics | Added as bounded supporting layers | Reviewer 2 response 2; Supplementary Stage B2 |
+| 12. Preprocessing / workflow / reproducibility | Expanded and publicly auditable | Reviewer 2 response 4; Main Methods; Data and code availability |
+| 13. Nonlinear, stochastic, and multiscale regulation | Oscillator abstraction no longer imposed on static TCGA; dynamic questions restricted to ordered/native systems | Engineering-control scope paragraph; Dynamic-lineage clarification; Supplementary synthetic known-truth section |
+| 14. Instability-gene comparison with biomarkers/drivers | Historical instability-driver list withdrawn, so no biomarker comparison is asserted | Author-initiated corrections; revised manuscript reports bounded Hallmark-level associations instead |
+| 15. Predictive value beyond existing indicators | Strong clinical/predictive claim withdrawn; bounded internal P0 result retained with capacity ceiling | Reviewer 2 response 6; Supplementary P0 predictive branch and clinical-utility extension |
+
 ### 1. Independent cohort validation
 
 **Response:** Completed prospectively as described above. The result is deliberately partial: H1 transports across 450K and EPIC; H2/H3a do not transport detectably. The final procedural label remains `P1_REPRESENTATION_DEPENDENT` under the frozen sensitivity rule.
@@ -141,7 +161,7 @@ The cancer-regulation references suggested by the reviewer were also evaluated a
 
 ### 4. Reproducibility / method detail
 
-**Response:** The scientific chronology is now publicly inspectable in the GitHub repository `SymC-Universe/Biomedical` on the post-result branch `biosystems-v25-final-artwork-20260923`. The public repository contains the prospective freeze contracts, configs, code, deterministic seeds, source hashes, workflows, outcome artifacts, post-result audits, reviewer-adjudication matrix, and a final reproducibility index. The pre-adversarial release was snapshotted on an immutable branch before the additional adversarial sensitivities were added, so the chronology can be reconstructed independently rather than relying on local file timestamps.
+**Response:** The scientific chronology is now publicly inspectable in the GitHub repository `SymC-Universe/Biomedical` on the post-result branch `biosystems-v26-final-substantive-20260923`. The public repository contains the prospective freeze contracts, configs, code, deterministic seeds, source hashes, workflows, outcome artifacts, post-result audits, reviewer-adjudication matrix, and a final reproducibility index. The pre-adversarial release was snapshotted on an immutable branch before the additional adversarial sensitivities were added, so the chronology can be reconstructed independently rather than relying on local file timestamps.
 
 The editable manuscript and supplement remain private authoring artifacts until journal submission; this does not conceal scientific decision rules, workflow identities, or result artifacts.
 
@@ -188,7 +208,7 @@ The public GitHub history preserves these distinctions through dated freeze file
 
 ## Post-revision dynamic-lineage clarification
 
-A separate P0-D Bio Chi investigation was intentionally kept outside the confirmatory TCGA spine while its native dynamic assumptions were tested. That work has now been reintegrated into the public reproducibility lineage without being relabeled as confirmation of the static manuscript. Two bounded findings matter for interpretation: (i) an executable six-state NF-kB model contains both real modes and a complex-conjugate pair, but the complex pair is not automatically the stability-setting mode in the nominal stable case; and (ii) a prospectively frozen M397 melanoma withdrawal analysis supports realized transcriptomic recovery toward the pre-treatment state in one ordered trajectory (Spearman rho = -0.8857, exact one-sided p = 0.0167) under its frozen simple-distance metric. These findings justify retaining dynamic-response questions as an active biological research line, but they do not restore the historical CV/2 damping construction, establish a universal oscillator model for cancer, or promote a general predictive cancer tool.
+A separate P0-D dynamic/recovery investigation was intentionally kept outside the confirmatory TCGA spine while its native dynamic assumptions were tested. That work has now been reintegrated into the public reproducibility lineage without being relabeled as confirmation of the static manuscript. Two bounded findings matter for interpretation: (i) an executable six-state NF-kB model contains both real modes and a complex-conjugate pair, but the complex pair is not automatically the stability-setting mode in the nominal stable case; and (ii) a prospectively frozen M397 melanoma withdrawal analysis supports realized transcriptomic recovery toward the pre-treatment state in one ordered trajectory (Spearman rho = -0.8857, exact one-sided p = 0.0167) under its frozen simple-distance metric. These findings justify retaining dynamic-response questions as an active biological research line, but they do not restore the historical CV/2 damping construction, establish a universal oscillator model for cancer, or promote a general predictive cancer tool.
 
 The manuscript-facing claim therefore remains narrower: static TCGA architecture is interpreted statically; direct temporal language is used only for genuinely ordered perturbation/recovery evidence; and predictive-tool promotion remains bounded by the external-transport results already reported.
 
