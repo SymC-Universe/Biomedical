@@ -1,0 +1,51 @@
+name: Bio Chi Blum B3 local nonlinear round-trip P0-Q v0.1
+
+on:
+  push:
+    branches:
+      - bio-chi-closure-p0q-20260924
+    paths:
+      - 'BIO_CHI/config/BLUM_B3_LOCAL_NONLINEAR_ROUNDTRIP_FREEZE_v0_1.json'
+      - 'BIO_CHI/src/run_blum_b3_local_nonlinear_roundtrip_v01.py'
+      - '.github/workflows/bio-chi-blum-b3-local-roundtrip-v01.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  roundtrip:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install numerical dependencies
+        run: python -m pip install --disable-pip-version-check numpy scipy
+      - name: Execute frozen ERK local nonlinear round-trip
+        run: python BIO_CHI/src/run_blum_b3_local_nonlinear_roundtrip_v01.py
+      - name: Validate result schema
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          p=pathlib.Path('BIO_CHI/artifacts/generated/blum_b3_local_nonlinear_roundtrip_v01/blum_b3_local_nonlinear_roundtrip_v0_1.json')
+          if not p.exists():
+              raise SystemExit('B3_ROUNDTRIP_RESULT_MISSING')
+          d=json.loads(p.read_text())
+          allowed={
+              'PASS_B3_LOCAL_NONLINEAR_ROUNDTRIP',
+              'FAIL_B3_PAIR_LOCAL_ROUNDTRIP',
+              'FAIL_B3_FULL_MODAL_LOCAL_ROUNDTRIP',
+              'FAIL_B3_IMPLEMENTATION_SELF_CHECK',
+              'INDETERMINATE_POSITIVITY_SCALE',
+              'INDETERMINATE_NUMERICAL'
+          }
+          if d.get('status') not in allowed:
+              raise SystemExit(f"unexpected status {d.get('status')}")
+          print('BIO_CHI_B3_ROUNDTRIP_VALID',d['status'])
+          PY
+      - name: Upload ERK local round-trip evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_BLUM_B3_LOCAL_NONLINEAR_ROUNDTRIP_V01
+          path: BIO_CHI/artifacts/generated/blum_b3_local_nonlinear_roundtrip_v01/blum_b3_local_nonlinear_roundtrip_v0_1.json
+          if-no-files-found: error
