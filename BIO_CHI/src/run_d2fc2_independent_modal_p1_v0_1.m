@@ -6,9 +6,12 @@
 set(groot,'defaultFigureVisible','off');
 close all force;
 
-root = pwd;
+thisfile = mfilename('fullpath');
+srcdir = fileparts(thisfile);
+biodir = fileparts(srcdir);
+root = fileparts(biodir);
 ext = fullfile(root,'external_d2fc2');
-outdir = fullfile(root,'BIO_CHI','artifacts','generated','d2fc2_independent_modal_p1');
+outdir = fullfile(biodir,'artifacts','generated','d2fc2_independent_modal_p1');
 if exist(outdir,'dir'), rmdir(outdir,'s'); end
 mkdir(outdir);
 
