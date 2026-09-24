@@ -1,0 +1,74 @@
+name: Bio Chi chi_bio scalar P0-Q v0.1
+
+on:
+  push:
+    branches:
+      - bio-chi-closure-p0q-20260924
+    paths:
+      - 'BIO_CHI/config/JARUS_CHI_BIO_SCALAR_P0Q_FREEZE_v0_1.json'
+      - 'BIO_CHI/src/qualify_jarus_chi_bio_scalar_v01.py'
+      - '.github/workflows/bio-chi-jarus-chi-bio-scalar-p0q-v01.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  scalar-qualification:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      OBS_ARTIFACT_ID: '10827090061'
+      OBS_ARTIFACT_SHA256: 'b1fa44a0fa8a6d29cbcbb0fed6733993296ab6addc8263e47d5ee27da68a1063'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download immutable observability artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          curl -L --fail --retry 3 \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            -o /tmp/BIO_CHI_JARUS_OBSERVABILITY_V01.zip \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/${OBS_ARTIFACT_ID}/zip"
+          echo "${OBS_ARTIFACT_SHA256}  /tmp/BIO_CHI_JARUS_OBSERVABILITY_V01.zip" | sha256sum -c -
+          mkdir -p BIO_CHI/artifacts/generated/jarus_chi_bio_scalar_source
+          python - <<'PY'
+          import pathlib, zipfile
+          z=zipfile.ZipFile('/tmp/BIO_CHI_JARUS_OBSERVABILITY_V01.zip')
+          names=[n for n in z.namelist() if pathlib.PurePosixPath(n).name=='observability_v0_1.json']
+          if len(names)!=1:
+              raise SystemExit(f'expected one observability_v0_1.json, got {names}')
+          pathlib.Path('BIO_CHI/artifacts/generated/jarus_chi_bio_scalar_source/observability_v0_1.json').write_bytes(z.read(names[0]))
+          PY
+
+      - name: Execute frozen scalar qualification
+        run: |
+          python BIO_CHI/src/qualify_jarus_chi_bio_scalar_v01.py \
+            BIO_CHI/artifacts/generated/jarus_chi_bio_scalar_source/observability_v0_1.json \
+            BIO_CHI/artifacts/generated/jarus_chi_bio_scalar_p0q_v01
+
+      - name: Enforce adjudication schema
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          p=pathlib.Path('BIO_CHI/artifacts/generated/jarus_chi_bio_scalar_p0q_v01/jarus_chi_bio_scalar_p0q_v0_1.json')
+          d=json.loads(p.read_text())
+          allowed={'CHI_BIO_P0Q_SUPPORTED_MODEL_SPECIFIC','CHI_BIO_P0Q_REFUSED_NONIDENTIFIABLE'}
+          if d.get('status') not in allowed:
+              raise SystemExit(f"unexpected status {d.get('status')}")
+          if len(d.get('cases',[])) != 3:
+              raise SystemExit('expected three frozen cases')
+          print('BIO_CHI_SCALAR_GATE_VALID',d['status'])
+          PY
+
+      - name: Upload scalar qualification evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_JARUS_CHI_BIO_SCALAR_P0Q_V01
+          path: BIO_CHI/artifacts/generated/jarus_chi_bio_scalar_p0q_v01/jarus_chi_bio_scalar_p0q_v0_1.json
+          if-no-files-found: error
