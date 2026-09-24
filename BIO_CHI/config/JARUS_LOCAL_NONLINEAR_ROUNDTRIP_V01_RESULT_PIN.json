@@ -1,0 +1,68 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Jaruszewicz local nonlinear modal round-trip",
+  "status": "PASS_LOCAL_NONLINEAR_ROUNDTRIP",
+  "epistemic_mode": "P0-Q",
+  "freeze": "BIO_CHI/config/JARUS_LOCAL_NONLINEAR_ROUNDTRIP_FREEZE_v0_1.json",
+  "workflow_run_id": 36056753510,
+  "workflow_head_sha": "221bf2741806abd02047a08054a43e3ddb82622e",
+  "artifact": {
+    "id": 10832423538,
+    "name": "BIO_CHI_JARUS_LOCAL_NONLINEAR_ROUNDTRIP_V01",
+    "digest": "sha256:4ad39aa7be631ba30ec698c8bc6348fb3d1ace53cf29775c7a94db37c5ebba06"
+  },
+  "result_sha256": "5fda17ec4c4b71f63923e5fb47e61c8fb9e3bdcbb5a1fce6a54d0cadf31df0db",
+  "cases": {
+    "FIG8A_NOMINAL_DAMPED": {
+      "chi_bio": 0.21311451897468062,
+      "pair_primary_error_1e-3": 0.00024944157726531865,
+      "pair_primary_error_1e-4": 0.00009641245714380446,
+      "pair_sensitivity_error_1e-5": 0.00036292357119395262,
+      "full_primary_error_1e-3": 0.0011568668500602831,
+      "full_primary_error_1e-4": 0.00011866061355605764,
+      "full_sensitivity_error_1e-5": 0.000169568428268838,
+      "pair_vs_full_linear_relative_error": 1.2635625300394252e-15,
+      "real_pole_refusal": "PASS"
+    },
+    "FIG8B_LIMIT_CYCLE": {
+      "chi_bio": -0.013237916094370914,
+      "pair_primary_error_1e-3": 0.0007978536258912589,
+      "pair_primary_error_1e-4": 0.00015338082855127284,
+      "pair_sensitivity_error_1e-5": 0.00040987656522771234,
+      "full_primary_error_1e-3": 0.0025672398635532374,
+      "full_primary_error_1e-4": 0.00027666547801502784,
+      "full_sensitivity_error_1e-5": 0.00022458973730938445,
+      "pair_vs_full_linear_relative_error": 4.579274577615247e-15,
+      "real_pole_refusal": "PASS"
+    },
+    "FIG8C_RELAXATION_OSCILLATION": {
+      "chi_bio": -0.055011684534635286,
+      "pair_primary_error_1e-3": 0.0008320890379278164,
+      "pair_primary_error_1e-4": 0.00015299851204128627,
+      "pair_sensitivity_error_1e-5": 0.0004238331711630503,
+      "full_primary_error_1e-3": 0.003492244396811767,
+      "full_primary_error_1e-4": 0.0003690559913350921,
+      "full_sensitivity_error_1e-5": 0.0002197051822339567,
+      "pair_vs_full_linear_relative_error": 1.1454835246616656e-14,
+      "real_pole_refusal": "PASS"
+    }
+  },
+  "scientific_disposition": {
+    "pair_lane_primary": "PASS_ALL_THREE_CASES",
+    "full_six_state_lane_primary": "PASS_ALL_THREE_CASES",
+    "analytic_vs_full_linear_self_check": "PASS_ALL_THREE_CASES",
+    "single_real_pole_refusal": "PASS_ALL_THREE_CASES",
+    "chi_bio_model_specific": "P0Q_SUPPORTED",
+    "Chi_bio_admitted": false,
+    "Bio_Chi_constructed": false,
+    "p1_confirmation_claimed": false
+  },
+  "limit_map": {
+    "one_e_minus_five_pair_sensitivity_monotonic": false,
+    "one_e_minus_five_full_sensitivity_monotonic_A": false,
+    "interpretation": "The prospectively primary 1e-3 to 1e-4 convergence rule passes in every pair and full-modal lane. The 1e-5 sensitivity rises for the pair lane in all three cases and for the full-modal lane in case A, consistent with a numerical-error floor or tolerance interaction. This sensitivity is preserved and does not overturn the frozen primary rule."
+  },
+  "claim_ceiling": "The frozen local modal representation and the already-qualified model-specific chi_bio factor reproduce the source-native nonlinear NF-kB dynamics in the local regime under the primary perturbation-convergence rule. This is P0-Q qualification only and does not establish cross-system transport, P1 confirmation, a biological chi=1 boundary, or whole-system Bio Chi.",
+  "next_gate": "formal model-specific Chi_bio modal admission adjudication using the complete six-mode evidence stack"
+}
