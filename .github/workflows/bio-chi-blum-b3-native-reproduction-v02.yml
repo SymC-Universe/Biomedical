@@ -1,0 +1,53 @@
+name: Bio Chi Blum B3 native reproduction P0-Q v0.2
+
+on:
+  push:
+    branches:
+      - bio-chi-closure-p0q-20260924
+    paths:
+      - 'BIO_CHI/config/BLUM_B3_TRANSPORT_SOURCE_FREEZE_v0_2.json'
+      - 'BIO_CHI/src/reproduce_blum_b3_native_v02.py'
+      - '.github/workflows/bio-chi-blum-b3-native-reproduction-v02.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install numerical dependencies
+        run: python -m pip install --disable-pip-version-check numpy scipy
+
+      - name: Fetch exact pinned source trajectory and time grid
+        run: |
+          set -euo pipefail
+          mkdir -p BIO_CHI/artifacts/generated/blum_b3_source_v02
+          curl -L --fail --retry 3 \
+            -o BIO_CHI/artifacts/generated/blum_b3_source_v02/sim_latent_states_sus_2-5ng.txt \
+            https://raw.githubusercontent.com/Mijan/LFNS_MSB/5c917abda0618d75c00c9cab45f24ed893dd71f1/Inference_results/Fgf_B3/NaClO3_simulations/sim_latent_states_sus_2-5ng.txt
+          curl -L --fail --retry 3 \
+            -o BIO_CHI/artifacts/generated/blum_b3_source_v02/sim_times.txt \
+            https://raw.githubusercontent.com/Mijan/LFNS_MSB/5c917abda0618d75c00c9cab45f24ed893dd71f1/Inference_results/Fgf_B3/NaClO3_simulations/sim_times.txt
+
+      - name: Execute repaired frozen native reproduction
+        run: |
+          python BIO_CHI/src/reproduce_blum_b3_native_v02.py \
+            --freeze BIO_CHI/config/BLUM_B3_TRANSPORT_SOURCE_FREEZE_v0_2.json \
+            --trajectory BIO_CHI/artifacts/generated/blum_b3_source_v02/sim_latent_states_sus_2-5ng.txt \
+            --times BIO_CHI/artifacts/generated/blum_b3_source_v02/sim_times.txt \
+            --out BIO_CHI/artifacts/generated/blum_b3_native_reproduction_v02
+
+      - name: Upload reproduction evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_BLUM_B3_NATIVE_REPRODUCTION_V02
+          path: |
+            BIO_CHI/artifacts/generated/blum_b3_native_reproduction_v02/blum_b3_native_reproduction_v0_2.json
+            BIO_CHI/artifacts/generated/blum_b3_native_reproduction_v02/blum_b3_reproduced_states.csv
+          if-no-files-found: warn
