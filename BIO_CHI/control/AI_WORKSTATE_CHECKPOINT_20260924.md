@@ -119,3 +119,25 @@ Adjudicate the D2FC2 workflow exactly under the frozen gate. If it passes, pin t
 
 ### Safe resume point
 Verify the newest D2FC2 workflow run for head `ae5b3eaefed4eb712be0dc83fdf5cda2e471934d` or its mechanically repaired successor. No Kizilirmak or Qiao numeric trajectory archive may be opened before its own frozen outcome-bearing contract.
+
+
+## Checkpoint update — D2FC2 source-partition correction before result review
+
+The first D2FC2 scientific freeze inherited a row-based fit/validation grouping from the repository convenience script. Before any scientific output from that lane was retrieved or inspected, the peer-reviewed Nature Communications article was checked and showed a different publication-native optimization partition: Control, 1X6 min, 1X30 min, and 4X1.5 min were the four PSO training conditions; the other five mean conditions were held-out validation.
+
+The v0.1 scientific test is therefore preserved as `INVALID_TEST_SOURCE_PARTITION` in `BIO_CHI/artifacts/D2FC2_V01_INVALIDATION_20260924.md`. No v0.1 result may support admission or alter thresholds.
+
+The corrected outcome-blind freeze is `BIO_CHI/config/D2FC2_NFKB_INDEPENDENT_MODAL_P1_FREEZE_v0_2.json`. Its validation conditions are addressed by publication-defined names rather than row position:
+- 1X30 sec
+- 1X2 min
+- 1X15 min
+- 2X3 min
+- 3X2 min
+
+No scalar definition, numerical threshold, pair rule, or expected direction changed. The correction is provenance-driven and was made before result review.
+
+### Current exact action
+Adjudicate workflow `Bio Chi D2FC2 independent NF-kB modal P1 candidate v0.2`, run `36032806692` or its mechanically repaired successor.
+
+### Safe resume point
+Ignore all v0.1 scientific outputs. Resume only from v0.2 and preserve the publication-defined partition.
