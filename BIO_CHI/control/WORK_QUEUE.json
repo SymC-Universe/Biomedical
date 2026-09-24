@@ -43,17 +43,17 @@
     {
       "id": "Q5",
       "name": "chi_bio_scalar_track",
-      "status": "active_native_behavior_local_stability_and_native_biological_observable_qualified_scalar_not_admitted"
+      "status": "model_specific_P0Q_admitted_NFkB_broad_transport_pending"
     },
     {
       "id": "Q6",
       "name": "Chi_bio_modal_track",
-      "status": "active_descriptive_generator_modal_precursor_complete_native_biological_observable_qualified_full_admission_pending_observability_identifiability"
+      "status": "model_specific_P0Q_admitted_complete_six_mode_NFkB_broad_transport_pending"
     },
     {
       "id": "Q7",
       "name": "Bio_Chi_conglomerate_track",
-      "status": "pending_Q3_Q4_Q6"
+      "status": "active_joint_meaning_local_vs_realized_behavior_qualification"
     },
     {
       "id": "Q8",
@@ -138,10 +138,12 @@
     "full_state_representation_control_artifact_sha256": "0241360c65de72408eb7ddd68ce6ddf6956b7a7517d952ed1ac52e1dc884084a",
     "full_state_representation_control_status": "SUCCESS_ALL_RECORDS_FINITE_NO_SPECTRAL_ABSCISSA_SIGN_CHANGE",
     "full_state_representation_control_max_observed_relative_complex_difference": 3.9989097652916227e-10,
-    "chi_bio_constructed": false,
-    "Chi_bio_admitted": false,
+    "chi_bio_constructed": true,
+    "Chi_bio_admitted": true,
     "Bio_Chi_constructed": false,
-    "next_gate": "outcome-blind P0-Q biological observability and identifiability qualification using the now-reproduced native biological trajectory layer before any reduced observable representation or chi_bio scalar admission"
+    "next_gate": "joint chi_bio <-> Chi_bio meaning and local-vs-realized-behavior qualification, then publication-selected Blum B3 transport if warranted",
+    "chi_bio_model_specific_status": "P0Q_SUPPORTED_MODEL_SPECIFIC",
+    "Chi_bio_model_specific_status": "P0Q_ADMITTED_MODEL_SPECIFIC"
   },
   "stop_conditions": [
     "material scientific choice changes a frozen hypothesis/model/endpoint",
