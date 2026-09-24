@@ -1,0 +1,46 @@
+{
+  "schema_version": "0.2",
+  "project": "Bio Chi Investigation",
+  "gate": "Blum B3 publication-native deterministic trajectory reproduction",
+  "status": "PASS_NATIVE_B3_TRAJECTORY_REPRODUCTION",
+  "epistemic_mode": "P0-Q",
+  "freeze": "BIO_CHI/config/BLUM_B3_TRANSPORT_SOURCE_FREEZE_v0_2.json",
+  "preserved_failed_pre_result_run": {
+    "workflow_run_id": 36058688918,
+    "status": "MECHANICAL_PRE_RESULT_TIME_GRID_ASSERTION_FAILURE",
+    "solver_executed": false,
+    "trajectory_result_opened": false
+  },
+  "workflow_run_id": 36058880837,
+  "workflow_head_sha": "b50374c568d7d8daf258b5a862686f44e8a9e132",
+  "artifact": {
+    "id": 10833771181,
+    "name": "BIO_CHI_BLUM_B3_NATIVE_REPRODUCTION_V02",
+    "digest": "sha256:de36f6c03d13ee826ab340ca41b9f9b5985c553167066e8d36a6c6d06afb6cc5"
+  },
+  "result_sha256": "e7a477f6bcfcb637d92543453ef0a58540bf95adf791bf3f682173bf48958fa8",
+  "source_shape": [15,90],
+  "experiment": {
+    "name": "sus_2-5ng",
+    "fgf_input": 2.5,
+    "time_start_min": 0,
+    "time_end_min": 178
+  },
+  "metrics": {
+    "maximum_absolute_state_error": 4.969693971679234e-06,
+    "root_mean_square_state_error": 7.640367112344724e-07,
+    "maximum_conserved_pool_drift": 3.9401815143946806e-13
+  },
+  "frozen_thresholds": {
+    "maximum_absolute_state_error": 0.0005,
+    "root_mean_square_state_error": 0.00005
+  },
+  "scientific_disposition": {
+    "native_B3_equations_parameter_mapping": "QUALIFIED_FOR_GENERATOR_ANALYSIS",
+    "ERK_spectrum_opened": false,
+    "chi_bio_constructed": false,
+    "Chi_bio_constructed": false,
+    "Bio_Chi_transport_adjudicated": false
+  },
+  "next_gate": "freeze and execute stoichiometric-dynamic-subspace B3 generator analysis, preserving scalar refusal"
+}
