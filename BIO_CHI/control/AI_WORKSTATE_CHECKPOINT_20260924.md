@@ -172,3 +172,45 @@ Repository guards:
 
 ### Safe resume point
 Poll run `36042402642`. If it produces a valid scientific adjudication, pin it exactly and advance the Function/Limit Map without retuning. If it fails mechanically, repair source execution only. Do not alter the D2FC2 scientific freeze in response to its result.
+
+
+## Checkpoint update — scalar transport Limit Map and same-system joint gate
+
+Independent D2FC2 v0.2 has closed as `NON_IDENTIFIABLE_MULTIPLE_STABLE_COMPLEX_PAIRS` and is pinned in `BIO_CHI/config/D2FC2_NFKB_INDEPENDENT_MODAL_P1_V02_RESULT_PIN.json`. The repaired execution run was `36042402642`, artifact `10828030362`. It contains two stable complex pairs (candidate chi values approximately 0.5753 and 0.9337), while none of five publication-defined held-out nuclear-RelA validation conditions yielded the two peaks required by the frozen empirical-frequency rule. The Jaruszewicz scalar remains a model-specific P0-Q candidate and is not independently transported as a unique D2FC2 scalar.
+
+Blum 2019 ERK publication-selected B3 was then tested under a prospectively frozen unstimulated local-generator gate. Run `36043170485` exposed a mathematical refusal rather than a repairable execution defect: B3 has `h_nfb=0.74022` and source equilibrium `Nfb_star=0`, so the fractional-Hill feedback is not differentiable at that equilibrium. The centered local Jacobian required for a pole-based scalar/modal construction is not licensed there. Result is pinned in `BIO_CHI/config/BLUM2019_B3_MODAL_P0Q_V01_RESULT_PIN.json` as `REFUSE_LOCAL_GENERATOR_NONDIFFERENTIABLE_AT_SOURCE_EQUILIBRIUM`. No one-sided derivative, shifted equilibrium, regularization, or alternate model topology is allowed as a rescue within that gate.
+
+The scalar Limit Map now contains three distinct cases:
+- Jaruszewicz NF-kB: one observable licensed oscillatory carrier, chi_bio candidate approximately 0.2131;
+- D2FC2 NF-kB: multiple stable complex carriers, unique scalar refused;
+- Blum B3 ERK: native unstimulated local Jacobian not licensed because the source vector field is non-differentiable there.
+
+The next GOM-required joint-meaning test is now frozen within the Jaruszewicz system rather than mixing unrelated datasets.
+
+Source-complete audit run `36044134345` verified:
+- source equilibrium `x_star=[1,0,0,0,0,0]`;
+- `c3a=0.000372 s^-1`;
+- TNF is binary and enters the IKK equations directly;
+- source TNF begins at 1 h;
+- source simulation ends at 24 h;
+- publication display window is 0-10 h;
+- all seven native driver protocols and exact pulse timings are known.
+
+Joint freeze:
+`BIO_CHI/config/JARUS_JOINT_SCALAR_MODAL_SYSTEM_P0Q_FREEZE_v0_1.json`.
+
+Representations:
+1. chi_bio-bearing complex-pair carrier: inherited frozen conjugate pair plus biorthogonal input/output residues. This is explicitly not chi_bio alone.
+2. Chi_bio local modal representation: complete six-mode linear generator `dx=Jdx+Bdu`.
+3. Bio Chi same-system nonlinear reference: complete source-native nonlinear six-state model under the same TNF history. This is a same-model Function/Limit reference, not experimental ground truth.
+
+No trajectory fitting, per-protocol gain/phase/offset fitting, or mode reselection is allowed. All seven native protocols are mandatory. Primary metric is raw nuclear NF-kB NRMSE normalized by the nonlinear reference range. Frozen adequacy rules and allowed outcomes are in the freeze.
+
+Current execution:
+- workflow: `Bio Chi Jaruszewicz joint scalar-modal-system P0-Q v0.1`
+- run: `36044426805`
+- head: `9fd779c34cd8a8d9dd617ef581862286b00b2122`
+- status at checkpoint: IN PROGRESS, MATLAB setup/execution pending.
+
+### Safe resume point
+Poll run `36044426805`. If mechanical failure occurs, repair execution only without changing the freeze. If a valid result is produced, pin it unchanged, update Q7, and follow its Function/Limit implication. No user decision is currently required.
