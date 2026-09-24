@@ -141,3 +141,34 @@ Adjudicate workflow `Bio Chi D2FC2 independent NF-kB modal P1 candidate v0.2`, r
 
 ### Safe resume point
 Ignore all v0.1 scientific outputs. Resume only from v0.2 and preserve the publication-defined partition.
+
+
+## Checkpoint update — D2FC2 v0.2 source-fidelity and contract repairs
+
+The independent D2FC2 gate remains scientifically frozen under `BIO_CHI/config/D2FC2_NFKB_INDEPENDENT_MODAL_P1_FREEZE_v0_2.json`.
+
+Mechanical/source-fidelity sequence:
+- run `36032806692`: failed before analysis because a species-only `StatesToLog` override omitted constant parameters required by source observables;
+- run `36033103372`: after restoring source logging, failed at t=0 because the bare model's zero Gaussian IKK widths can generate undefined repeated-assignment values before any source IKK profile is loaded;
+- commit `69ca8a838ef538b08a7efc1caee2b6263bcfefff`: apply the publication-native Control IKK profile before TR=0 equilibration and restore the authors' 1e-8 equilibration tolerances;
+- run `36041986061`: reached the analysis and produced an artifact but adjudicated itself `INVALID_TEST_SOURCE_PARTITION`; the artifact was opened only to diagnose that invalid status;
+- the audit found two implementation mismatches with the pre-existing v0.2 freeze: an accidental hard-coded whole-file row order check despite the freeze requiring named conditions, and an all-spectrum relative-spread calculation despite the freeze requiring matched complex-pair spread;
+- commit `66e4bf361d9e5831a8137a3b88f118247a47ae54`: align implementation to exact named membership/uniqueness and complex-pair-only numerical spread;
+- `BIO_CHI/artifacts/D2FC2_V02_MECHANICAL_RECOVERY_20260924.md` records the full audit and the fact that numerical fields in the invalid artifact were visible before the final contract repair.
+
+Current execution:
+- run `36042402642`
+- head `66e4bf361d9e5831a8137a3b88f118247a47ae54`
+- status at checkpoint: IN PROGRESS
+- scientific thresholds, pair-count rule, scalar definition, five publication-defined held-out conditions, empirical peak rule, and pass/fail criteria remain unchanged.
+
+Epistemic caution:
+Because the invalid run artifact contained scientific numerical fields and was inspected during contract debugging, the corrected execution carries explicit provenance debt. It may provide bounded independent external qualification, but it must not be represented as an outcome-never-viewed pristine P1 confirmation merely because the final implementation now matches the original freeze.
+
+Repository guards:
+- reviewer smoke guard repaired to distinguish `candidate_only_not_admitted` from actual admission;
+- control validator repaired to recognize explicit P0-D/P0-Q/P1/P2 queue maturity prefixes;
+- both guards pass on commit `66e4bf361d9e5831a8137a3b88f118247a47ae54`.
+
+### Safe resume point
+Poll run `36042402642`. If it produces a valid scientific adjudication, pin it exactly and advance the Function/Limit Map without retuning. If it fails mechanically, repair source execution only. Do not alter the D2FC2 scientific freeze in response to its result.
