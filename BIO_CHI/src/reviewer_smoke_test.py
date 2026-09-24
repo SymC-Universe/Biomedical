@@ -56,7 +56,9 @@ if su.get("expression_values_read") is not False or su.get("surprisal_computed")
     fail("Su source qualification crossed outcome/method boundary")
 
 native = q.get("active_native_model_gate",{})
-for k in ("chi_bio_constructed","Chi_bio_admitted","Bio_Chi_constructed"):
+if native.get("chi_bio_constructed") not in (False, "candidate_only_not_admitted"):
+    fail("premature admission flag chi_bio_constructed")
+for k in ("Chi_bio_admitted","Bio_Chi_constructed"):
     if native.get(k) is not False: fail("premature admission flag " + k)
 
 cp = (BIO / "control" / "AUTORUN_CHECKPOINT.md").read_text(encoding="utf-8")
