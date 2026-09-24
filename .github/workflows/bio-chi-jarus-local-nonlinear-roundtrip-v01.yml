@@ -1,0 +1,92 @@
+name: Bio Chi local nonlinear round-trip P0-Q v0.1
+
+on:
+  push:
+    branches:
+      - bio-chi-closure-p0q-20260924
+    paths:
+      - 'BIO_CHI/config/JARUS_LOCAL_NONLINEAR_ROUNDTRIP_FREEZE_v0_1.json'
+      - 'BIO_CHI/src/jarus_local_nonlinear_roundtrip_v01.m'
+      - '.github/workflows/bio-chi-jarus-local-nonlinear-roundtrip-v01.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  roundtrip:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      SOURCE_ARTIFACT_ID: '10748186325'
+      SOURCE_ARTIFACT_SHA256: '7b17c4b2ec5c3cfd280eac48155903f329a57a1a62e4918ef4fcac4ed3aea7a9'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download immutable local-stability artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          curl -L --fail --retry 3 \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            -o /tmp/BIO_CHI_JARUS_LOCAL_STABILITY_V03.zip \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/${SOURCE_ARTIFACT_ID}/zip"
+          echo "${SOURCE_ARTIFACT_SHA256}  /tmp/BIO_CHI_JARUS_LOCAL_STABILITY_V03.zip" | sha256sum -c -
+          mkdir -p BIO_CHI/artifacts/generated/jarus_roundtrip_source
+          python - <<'PY'
+          import pathlib, zipfile
+          z=zipfile.ZipFile('/tmp/BIO_CHI_JARUS_LOCAL_STABILITY_V03.zip')
+          names=[n for n in z.namelist() if pathlib.PurePosixPath(n).name=='local_stability_v0_3.json']
+          if len(names)!=1:
+              raise SystemExit(f'expected one local_stability_v0_3.json, got {names}')
+          pathlib.Path('BIO_CHI/artifacts/generated/jarus_roundtrip_source/local_stability_v0_3.json').write_bytes(z.read(names[0]))
+          PY
+
+      - name: Prepare pinned native source and frozen Figure 8 cases
+        run: |
+          set -euo pipefail
+          bash BIO_CHI/src/prepare_jarus_matlab_compat.sh
+          python BIO_CHI/src/prepare_jarus_fig8_cases.py
+
+      - uses: matlab-actions/setup-matlab@v3
+        with:
+          release: R2023b
+
+      - name: Execute frozen local nonlinear round-trip
+        uses: matlab-actions/run-command@v3
+        with:
+          command: run('BIO_CHI/src/jarus_local_nonlinear_roundtrip_v01.m')
+          generate-summary: false
+
+      - name: Enforce finite adjudication output
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          p=pathlib.Path('BIO_CHI/artifacts/generated/jarus_local_nonlinear_roundtrip_v01/jarus_local_nonlinear_roundtrip_v0_1.json')
+          if not p.exists():
+              raise SystemExit('BIO_CHI_ROUNDTRIP_RESULT_MISSING')
+          d=json.loads(p.read_text())
+          allowed={
+            'PASS_LOCAL_NONLINEAR_ROUNDTRIP',
+            'FAIL_PAIR_LOCAL_ROUNDTRIP',
+            'FAIL_FULL_MODAL_LOCAL_ROUNDTRIP',
+            'FAIL_IMPLEMENTATION_SELF_CHECK',
+            'INDETERMINATE_NUMERICAL'
+          }
+          if d.get('status') not in allowed:
+              raise SystemExit(f"unexpected status {d.get('status')}")
+          if len(d.get('cases',[])) != 3:
+              raise SystemExit('expected three cases')
+          print('BIO_CHI_ROUNDTRIP_RESULT_VALID',d['status'])
+          PY
+
+      - name: Upload round-trip evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_JARUS_LOCAL_NONLINEAR_ROUNDTRIP_V01
+          path: BIO_CHI/artifacts/generated/jarus_local_nonlinear_roundtrip_v01/jarus_local_nonlinear_roundtrip_v0_1.json
+          if-no-files-found: error
