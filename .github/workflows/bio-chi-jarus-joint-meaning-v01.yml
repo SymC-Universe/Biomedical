@@ -1,0 +1,41 @@
+name: Bio Chi joint meaning P0-Q v0.1
+
+on:
+  push:
+    branches:
+      - bio-chi-closure-p0q-20260924
+    paths:
+      - 'BIO_CHI/config/JARUS_CHI_CHIBIO_JOINT_MEANING_FREEZE_v0_1.json'
+      - 'BIO_CHI/src/adjudicate_jarus_joint_meaning_v01.py'
+      - '.github/workflows/bio-chi-jarus-joint-meaning-v01.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  joint-meaning:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Execute frozen joint-meaning adjudication
+        run: python BIO_CHI/src/adjudicate_jarus_joint_meaning_v01.py
+      - name: Validate result
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          p=pathlib.Path('BIO_CHI/artifacts/generated/jarus_joint_meaning_v01/jarus_joint_meaning_v0_1.json')
+          d=json.loads(p.read_text())
+          if d.get('status') != 'PASS_JOINT_MEANING_QUALIFICATION':
+              raise SystemExit(d.get('status'))
+          if len(d.get('cases',[])) != 3:
+              raise SystemExit('expected three cases')
+          print('BIO_CHI_JOINT_MEANING_PASS')
+          PY
+      - name: Upload result
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_JARUS_JOINT_MEANING_V01
+          path: BIO_CHI/artifacts/generated/jarus_joint_meaning_v01/jarus_joint_meaning_v0_1.json
+          if-no-files-found: error
