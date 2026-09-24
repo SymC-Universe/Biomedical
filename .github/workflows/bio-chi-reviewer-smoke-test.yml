@@ -1,7 +1,7 @@
 name: Bio Chi reviewer smoke test
 on:
   push:
-    branches: [chi-bio-recovery-p0d-20260922]
+    branches: [chi-bio-recovery-p0d-20260922, bio-chi-closure-p0q-20260924]
     paths:
       - 'BIO_CHI/config/**'
       - 'BIO_CHI/control/**'
