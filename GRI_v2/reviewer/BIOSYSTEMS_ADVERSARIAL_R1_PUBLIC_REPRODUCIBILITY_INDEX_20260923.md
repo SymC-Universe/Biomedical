@@ -325,3 +325,38 @@ Primary artifact hashes:
 - reviewer response v13 PDF: `d8ec8436141479999ac9c8d0ce79ddddef6d6ce45e107b91a95937b43f62e661`.
 
 The release manifest was verified after clean-room extraction. Main manuscript, supplement, response PDF, and all SVG artwork passed render inspection.
+
+
+## V26 substantive response closure
+
+**Current reviewer-facing source-of-truth branch:** `biosystems-v26-final-substantive-20260923`.
+
+This release changes no frozen result and performs no scientific rerun. It closes the remaining substantive review-navigation and cross-reference items:
+
+- main headroom cross-reference corrected from Supplementary Eq. (6) to Supplementary Eq. (8);
+- Abstract remains below 150 words and now states the TCGA-internal H2/H3a 32/32 recurrence before reporting their failure to transport externally;
+- Reviewer 2 now has an explicit 15-point disposition map preserving the original decision-letter order;
+- Reviewer 1 ATAC scope is explicit: ATAC-seq was not analyzed and no chromatin-accessibility endpoint is claimed;
+- the internal "Bio Chi" lineage label was removed from reviewer-facing Data Availability / response prose in favor of "dynamic/recovery evidence";
+- the duplicated "post-result post-result" phrase was removed.
+
+The late PDF-corruption allegation was checked by rendering every page of the main manuscript, response letter, and cover letter. The reported walls of repeated numerals and duplicate visual headings are text-extraction artifacts and are not present in the rendered PDFs.
+
+Reference verification retained the source truth:
+- DIABLO DOI renders as `10.1093/bioinformatics/bty1054`;
+- the NFI paper DOI renders as `10.1016/j.mcpro.2024.100890`;
+- Reyngold is spelled correctly;
+- PubMed lists Helka Göös, so the LaTeX `G\"o\"os` spelling is retained.
+
+Final private release:
+- `BioSystems_Resubmission_R1_v26_Final_20260923.zip`
+- SHA-256 `ffc75421b0fa1c692373d7d03af2a227afa3890036fe4e4115f82e19086a44a3`
+
+Primary artifact hashes:
+- main v26 PDF: `3d8951dc52f28455efae3af0337df5805612be030916b3e43ae42a3560904001`;
+- supplement v19 PDF: `4196d1578aa9131c739a59fd5fa24b325d47449c737f177adb36569856f8bc13`;
+- reviewer response v14 PDF: `f65126e682b1d0df37a4a2525adec21a35b8f59d2035b0e4ee7fee9f7511f259`;
+- cover letter v9 PDF: `0152bc3a63d509e6bdbbe20a55e43c1dd4407fd9cfdda9e9f5deb0dbaf4694a7`;
+- highlights DOCX: `a29d85ae4f81f6f1e2f72f4939c2188461fbb313e5b00324164b7b047cce44dd`.
+
+The v26 release manifest was verified after clean-room extraction across all 22 payload files.
