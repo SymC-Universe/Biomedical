@@ -27,9 +27,10 @@ parameterSet = parameters.D2FCSquared;
 model = UpdateParameters(model,parameterSet,16);
 initialCondition = [model.Species.Value]';
 
-% Log species only for local-generator construction.
+% Preserve the source-native StatesToLog layout. The source model appends constant
+% parameters required by observables after the species, and its own SimulateModel
+% routine relies on the first numel(model.Species) columns being species.
 cs = getconfigset(model,'active');
-cs.RuntimeOptions.StatesToLog = model.Species;
 set(cs,'SolverType','sundials');
 set(cs.SolverOptions,'AbsoluteTolerance',1e-9);
 set(cs.SolverOptions,'RelativeTolerance',1e-9);
