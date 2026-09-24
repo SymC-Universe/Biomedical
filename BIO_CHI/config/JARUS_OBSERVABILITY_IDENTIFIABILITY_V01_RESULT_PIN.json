@@ -1,0 +1,44 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Jaruszewicz NF-kB six-state local observability/identifiability P0-Q",
+  "status": "PASS_LOCAL_OBSERVABILITY",
+  "freeze": "BIO_CHI/config/JARUS_OBSERVABILITY_IDENTIFIABILITY_FREEZE_v0_1.json",
+  "workflow_run_id": 36041571003,
+  "workflow_head_sha": "5c844dee2c166961c2d889d2d7f92a012e4bf535",
+  "artifact": {
+    "id": 10827090061,
+    "name": "BIO_CHI_JARUS_OBSERVABILITY_V01",
+    "digest": "sha256:b1fa44a0fa8a6d29cbcbb0fed6733993296ab6addc8263e47d5ee27da68a1063"
+  },
+  "result_sha256": "a10d182484a024d12ccdcfb6850ea24e8090fb1a2f4e58f7406a415eab65ce26",
+  "primary_observable": "free nuclear NF-kappaB",
+  "cases": {
+    "FIG8A_NOMINAL_DAMPED": {
+      "full_rank_all_steps": true,
+      "complex_pair_output_visibility_reference_step": 0.6898530492188886,
+      "observability_rank_reference_step": 6
+    },
+    "FIG8B_LIMIT_CYCLE": {
+      "full_rank_all_steps": true,
+      "complex_pair_output_visibility_reference_step": 0.26888820558107257,
+      "observability_rank_reference_step": 6
+    },
+    "FIG8C_RELAXATION_OSCILLATION": {
+      "full_rank_all_steps": true,
+      "complex_pair_output_visibility_reference_step": 0.2618969944488679,
+      "observability_rank_reference_step": 6
+    }
+  },
+  "scientific_disposition": {
+    "local_observability_gate": "PASS",
+    "complete_six_state_generator_preserved": true,
+    "mode_selected_by_favorable_result": false,
+    "chi_bio_constructed": false,
+    "chi_bio_admitted": false,
+    "Chi_bio_admitted": false,
+    "Bio_Chi_constructed": false
+  },
+  "interpretation": "The publication-native free nuclear NF-kB output is locally sufficient to observe the complete six-state linearized generator under the frozen rank rule for all three Figure 8 parameter cases and all three frozen Jacobian finite-difference steps. This is P0-Q qualification only. It does not establish scalar adequacy, prospective confirmation, a biological chi=1 boundary, or whole-system Bio Chi.",
+  "next_gate": "Freeze a same-mode scalar qualification test that does not change the candidate pole pair or output after viewing trajectory agreement, and that respects the generator/state appropriate to each source-native perturbation protocol."
+}
