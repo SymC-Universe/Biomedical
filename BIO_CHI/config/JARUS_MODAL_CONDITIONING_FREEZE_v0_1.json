@@ -1,0 +1,54 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "date": "2026-09-24",
+  "status": "FROZEN_P0Q_BEFORE_MODAL_CONDITIONING_RESULT",
+  "authority": "SymC General Operations Manual v0.8.6",
+  "epistemic_mode": "P0-Q",
+  "purpose": "close Class-M gate M3 by quantifying degeneracy and eigensystem conditioning of the complete six-state Jaruszewicz-Blonska NF-kB local generator without selecting or retuning modes",
+  "source_roundtrip_pin": "BIO_CHI/config/JARUS_LOCAL_NONLINEAR_ROUNDTRIP_V01_RESULT_PIN.json",
+  "source_local_stability_artifact": {
+    "id": 10748186325,
+    "sha256": "7b17c4b2ec5c3cfd280eac48155903f329a57a1a62e4918ef4fcac4ed3aea7a9"
+  },
+  "cases": [
+    "FIG8A_NOMINAL_DAMPED",
+    "FIG8B_LIMIT_CYCLE",
+    "FIG8C_RELAXATION_OSCILLATION"
+  ],
+  "jacobian_step_multipliers": [1.0, 0.5, 0.25],
+  "representation_scope": "native physical six-state coordinates; previously passed smooth invertible full-state coordinate control is inherited separately",
+  "metrics": {
+    "all_six_eigenvalues": true,
+    "minimum_pairwise_complex_eigenvalue_separation": true,
+    "minimum_normalized_eigenvalue_separation": "min_ij |lambda_i-lambda_j| / max(max_k |lambda_k|, realmin)",
+    "right_eigenvector_matrix_condition_number_2": "cond(V,2) after MATLAB eig(J)",
+    "reciprocal_condition": "1/cond(V,2)",
+    "unique_nonreal_conjugate_pair": true
+  },
+  "numerical_refusal_rule": {
+    "refuse_if": [
+      "any eigenvalue or metric is nonfinite",
+      "unique nonreal conjugate pair is lost at any frozen Jacobian step",
+      "minimum normalized eigenvalue separation <= sqrt(eps)",
+      "cond(V,2) >= 1/sqrt(eps)"
+    ],
+    "basis": "machine-precision numerical identifiability sanity floor, not a biological effect threshold"
+  },
+  "guards": {
+    "all_six_modes_preserved": true,
+    "no_mode_selection": true,
+    "no_parameter_change": true,
+    "no_scalar_redefinition": true,
+    "no_chi_equal_1_claim": true,
+    "no_cross_system_claim": true,
+    "preserve_prior_failures_and_sensitivities": true
+  },
+  "allowed_outcomes": [
+    "PASS_MODAL_NUMERICAL_CONDITIONING",
+    "REFUSE_MODAL_NUMERICAL_CONDITIONING",
+    "INDETERMINATE_NUMERICAL"
+  ],
+  "next_if_pass": "adjudicate model-specific Chi_bio admission against Class M gates M0-M4",
+  "next_if_fail": "retain generator evidence descriptively but refuse model-specific Chi_bio admission for this representation"
+}
