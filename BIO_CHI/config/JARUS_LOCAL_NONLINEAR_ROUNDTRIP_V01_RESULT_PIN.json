@@ -18,12 +18,14 @@
       "chi_bio": 0.21311451897468062,
       "pair_primary_error_1e-3": 0.00024944157726531865,
       "pair_primary_error_1e-4": 0.00009641245714380446,
-      "pair_sensitivity_error_1e-5": 0.00036292357119395262,
+      "pair_sensitivity_error_1e-5": 0.0003629235711939526,
       "full_primary_error_1e-3": 0.0011568668500602831,
       "full_primary_error_1e-4": 0.00011866061355605764,
       "full_sensitivity_error_1e-5": 0.000169568428268838,
       "pair_vs_full_linear_relative_error": 1.2635625300394252e-15,
-      "real_pole_refusal": "PASS"
+      "real_pole_refusal": "PASS",
+      "lambda_real": -0.0001999828311323393,
+      "lambda_imag": 0.000916824774951986
     },
     "FIG8B_LIMIT_CYCLE": {
       "chi_bio": -0.013237916094370914,
@@ -34,7 +36,9 @@
       "full_primary_error_1e-4": 0.00027666547801502784,
       "full_sensitivity_error_1e-5": 0.00022458973730938445,
       "pair_vs_full_linear_relative_error": 4.579274577615247e-15,
-      "real_pole_refusal": "PASS"
+      "real_pole_refusal": "PASS",
+      "lambda_real": 0.000007877140909341252,
+      "lambda_imag": 0.0005949917357326226
     },
     "FIG8C_RELAXATION_OSCILLATION": {
       "chi_bio": -0.055011684534635286,
@@ -45,7 +49,9 @@
       "full_primary_error_1e-4": 0.0003690559913350921,
       "full_sensitivity_error_1e-5": 0.0002197051822339567,
       "pair_vs_full_linear_relative_error": 1.1454835246616656e-14,
-      "real_pole_refusal": "PASS"
+      "real_pole_refusal": "PASS",
+      "lambda_real": 0.000033151588466559615,
+      "lambda_imag": 0.00060171557465329
     }
   },
   "scientific_disposition": {
