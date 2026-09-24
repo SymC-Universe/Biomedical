@@ -1,0 +1,42 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "generator-derived chi_bio scalar qualification",
+  "status": "CHI_BIO_P0Q_SUPPORTED_MODEL_SPECIFIC",
+  "epistemic_mode": "P0-Q",
+  "freeze": "BIO_CHI/config/JARUS_CHI_BIO_SCALAR_P0Q_FREEZE_v0_1.json",
+  "workflow_run_id": 36056349523,
+  "workflow_head_sha": "7cdd364d7c36d19b636379385c7c86e5487f6da3",
+  "artifact": {
+    "id": 10831964266,
+    "name": "BIO_CHI_JARUS_CHI_BIO_SCALAR_P0Q_V01",
+    "digest": "sha256:8b01ded2b92af70c3c5997b9292e6b7377660eaa3a82b4be88512fca910a5bc5"
+  },
+  "result_sha256": "ba72aba52d05974108e39590c12225d7efc6f0ab5e26d04808123cfb124e4444",
+  "native_comparator_disposition": "CHI_BIO_P0Q_EQUIVALENT_TO_NATIVE_POLE_DESCRIPTION",
+  "model_specific_chi_bio_admissible": true,
+  "broad_biological_chi_bio_admitted": false,
+  "system_scalar_claimed": false,
+  "chi_equal_1_boundary_claimed": false,
+  "cases": {
+    "FIG8A_NOMINAL_DAMPED": {
+      "chi_bio": 0.21311451896536007,
+      "interpretation": "LOCALLY_DAMPED_OSCILLATORY_FACTOR",
+      "relative_numerical_spread": 7.486305738803327e-11
+    },
+    "FIG8B_LIMIT_CYCLE": {
+      "chi_bio": -0.01323791609620615,
+      "interpretation": "LOCALLY_AMPLIFYING_OSCILLATORY_FACTOR",
+      "relative_numerical_spread": 8.640247463611322e-10
+    },
+    "FIG8C_RELAXATION_OSCILLATION": {
+      "chi_bio": -0.05501168454650771,
+      "interpretation": "LOCALLY_AMPLIFYING_OSCILLATORY_FACTOR",
+      "relative_numerical_spread": 3.260593742548699e-10
+    }
+  },
+  "claim_ceiling": "A model-specific biological scalar instance of program-wide chi is licensed for the unique observable complex-conjugate local invariant factor of the source-native six-state NF-kB model. It is an interpretable compression of the native pole pair, not a superior native estimator, not a system scalar, and not P1-confirmed across independent biological systems.",
+  "Chi_bio_admitted": false,
+  "Bio_Chi_constructed": false,
+  "next_gate": "local nonlinear round-trip qualification of the frozen modal factor, followed by modal Chi_bio disposition"
+}
