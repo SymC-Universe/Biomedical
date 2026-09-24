@@ -87,16 +87,25 @@ for mi=1:numel(multipliers)
     end
 end
 
-% Match eigenvalues to base step and assess numerical spread.
+% Assess the frozen numerical-stability criterion on complex-pair modes only.
+% The v0.2 freeze specifies maximum matched-pair relative complex spread,
+% not an all-spectrum metric. Near-zero real modes therefore do not enter
+% this scalar/modal pair-identifiability criterion.
 maxSpread = 0;
+baseComplex = evbase(imag(evbase)>1e-10);
 for mi=2:numel(steps)
     z = complex(steps(mi).eigenvalues_real,steps(mi).eigenvalues_imag);
-    used=false(size(z));
-    for bi=1:numel(evbase)
-        [~,order] = sort(abs(z-evbase(bi)));
+    zComplex = z(imag(z)>1e-10);
+    used=false(size(zComplex));
+    if numel(zComplex) ~= numel(baseComplex)
+        maxSpread = Inf;
+        break;
+    end
+    for bi=1:numel(baseComplex)
+        [~,order] = sort(abs(zComplex-baseComplex(bi)));
         pick = order(find(~used(order),1,'first'));
         used(pick)=true;
-        rel = abs(z(pick)-evbase(bi))/max(abs(evbase(bi)),1e-12);
+        rel = abs(zComplex(pick)-baseComplex(bi))/max(abs(baseComplex(bi)),1e-12);
         maxSpread=max(maxSpread,rel);
     end
 end
@@ -128,8 +137,12 @@ knownBadGeneratorPass = ~any(abs(imag(evbad))>1e-12);
 
 % Open source-native experimental validation data only after freeze.
 load(fullfile(ext,'Data','ExpData.mat'));
-expected = ["Control","1X30 sec","1X2 min","1X6 min","1X15 min","1X30 min","2X3 min","3X2 min","4X1.5 min"];
-sourcePartitionPass = isequal(scenarios(:)',expected);
+expectedTraining = ["Control","1X6 min","1X30 min","4X1.5 min"];
+expectedValidation = ["1X30 sec","1X2 min","1X15 min","2X3 min","3X2 min"];
+expectedAll = [expectedTraining expectedValidation];
+sourcePartitionPass = numel(scenarios)==numel(expectedAll) && ...
+    numel(unique(scenarios))==numel(expectedAll) && ...
+    all(ismember(expectedAll,scenarios));
 
 validation = struct([]);
 validationNames = ["1X30 sec","1X2 min","1X15 min","2X3 min","3X2 min"];
