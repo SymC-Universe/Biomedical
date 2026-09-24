@@ -25,6 +25,18 @@ parameters = readtable(fullfile(ext,'ModelParameters.xlsx'),"Sheet","MainTextMod
 model = D2FCSquared();
 parameterSet = parameters.D2FCSquared;
 model = UpdateParameters(model,parameterSet,16);
+
+% The authors' source never simulates the bare model before loading an IKK
+% trajectory. The Gaussian input widths initialize at zero and can otherwise
+% generate undefined repeated-assignment values even with TR=0. Load the
+% publication-native Control IKK profile before the source-native equilibration.
+fittedIKKProfiles = readtable(fullfile(ext,'Data','MeanIKKTrajectories.csv'));
+scenarios = string(fittedIKKProfiles.Scenarios);
+controlIndex = find(scenarios=="Control",1,'first');
+if isempty(controlIndex), error('BIO_CHI_D2FC2_CONTROL_PROFILE_MISSING'); end
+controlIKKPars = fittedIKKProfiles{controlIndex,2:end};
+model = UpdateParameters(model,controlIKKPars,1);
+
 initialCondition = [model.Species.Value]';
 
 % Preserve the source-native StatesToLog layout. The source model appends constant
@@ -32,9 +44,8 @@ initialCondition = [model.Species.Value]';
 % routine relies on the first numel(model.Species) columns being species.
 cs = getconfigset(model,'active');
 set(cs,'SolverType','sundials');
-set(cs.SolverOptions,'AbsoluteTolerance',1e-9);
-set(cs.SolverOptions,'RelativeTolerance',1e-9);
-set(cs.SolverOptions,'MaxStep',60);
+set(cs.SolverOptions,'AbsoluteTolerance',1e-8);
+set(cs.SolverOptions,'RelativeTolerance',1e-8);
 
 TR = sbioselect(model,"Type","parameter","Name","TR");
 TR.Value = 0;
@@ -117,8 +128,6 @@ knownBadGeneratorPass = ~any(abs(imag(evbad))>1e-12);
 
 % Open source-native experimental validation data only after freeze.
 load(fullfile(ext,'Data','ExpData.mat'));
-fittedIKKProfiles = readtable(fullfile(ext,'Data','MeanIKKTrajectories.csv'));
-scenarios = string(fittedIKKProfiles.Scenarios);
 expected = ["Control","1X30 sec","1X2 min","1X6 min","1X15 min","1X30 min","2X3 min","3X2 min","4X1.5 min"];
 sourcePartitionPass = isequal(scenarios(:)',expected);
 
