@@ -1,0 +1,80 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "date": "2026-09-24",
+  "status": "FROZEN_P0Q_BEFORE_BLUM_B3_LOCAL_NONLINEAR_ROUNDTRIP",
+  "authority": "SymC General Operations Manual v0.8.6",
+  "epistemic_mode": "P0-Q",
+  "purpose": "qualify the independently transported B3 ERK mode-specific chi_bio factors and complete 8D Chi_bio modal precursor by testing local convergence of the source-native nonlinear ODE to the frozen analytic generator",
+  "source_generator_pin": "BIO_CHI/config/BLUM_B3_GENERATOR_TRANSPORT_V02_RESULT_PIN.json",
+  "source_generator_required_status": "PASS_B3_GENERATOR_MODAL_QUALIFICATION",
+  "source_native_reproduction_pin": "BIO_CHI/config/BLUM_B3_NATIVE_REPRODUCTION_V02_RESULT_PIN.json",
+  "parameter_lanes": ["primary","sensitivity"],
+  "input_contexts": [
+    {"id":"SUSTAINED_FGF_2P5","fgf_input":2.5},
+    {"id":"SUSTAINED_FGF_250","fgf_input":250.0}
+  ],
+  "equilibrium_and_generator": {
+    "same_source_native_ODE_equilibrium_rule_as_generator_v0_2": true,
+    "dynamic_subspace": "8D col(S)",
+    "Jacobian": "analytic reaction-network Jacobian previously qualified against complex-step",
+    "all_modes_preserved": true
+  },
+  "solver": {
+    "family": "scipy.integrate.solve_ivp BDF",
+    "rtol": 1e-10,
+    "atol": 1e-12,
+    "samples_per_lane": 401
+  },
+  "amplitude_rule": {
+    "primary_fractions_of_safe_scale": [0.001,0.0001],
+    "sensitivity_fraction_of_safe_scale": 0.00001,
+    "safe_scale": "min(||x_star||_2, 0.5 * a_positive), where a_positive is the largest positive amplitude before any component with negative direction reaches zero",
+    "no_clipping_or_state_projection": true
+  },
+  "pair_lane": {
+    "eligible_pairs": "every FRET-visible complex-conjugate pair from the frozen analytic B3 generator; no post-result pair selection",
+    "phase_rule": "rotate reduced right eigenvector by exp(-i arg(C_r v)) so the linear FRET projection is real and positive at t=0",
+    "physical_direction": "normalized real part of Q v_phase",
+    "horizon": "two local periods, 4*pi/|Im(lambda)|",
+    "linear_prediction": "exact pair evolution in the physical stoichiometric subspace",
+    "metrics": [
+      "relative Frobenius/L2 error of all 15 state displacements",
+      "relative L2 error of deterministic FRET displacement"
+    ],
+    "implementation_self_check": "pair analytic state evolution versus complete expm(J_r t) evolution from the same pair-subspace initial condition; relative state error <= 1e-9",
+    "primary_pass_rule": "for every eligible pair, both all-state and FRET errors at 1e-4 must be lower than their corresponding errors at 1e-3; all values finite"
+  },
+  "full_modal_lane": {
+    "physical_directions": "the eight fixed independent source stoichiometric columns [0,2,4,6,8,10,12,14], normalized without outcome-dependent sign changes",
+    "horizon": "five local e-fold times, 5/|spectral_abscissa|",
+    "linear_prediction": "Q expm(J_r t) Q^T delta_x0",
+    "metrics": [
+      "relative Frobenius/L2 error of all 15 state displacements",
+      "relative L2 error of deterministic FRET displacement where its linear prediction norm is nonzero"
+    ],
+    "primary_pass_rule": "for all eight physical directions, all-state error at 1e-4 must be lower than at 1e-3; FRET error must also decrease when both frozen predictions have nonzero norm"
+  },
+  "real_pole_refusal_control": {
+    "rule": "a single real reduced-generator pole must still be refused by the scalar constructor",
+    "required": true
+  },
+  "allowed_outcomes": [
+    "PASS_B3_LOCAL_NONLINEAR_ROUNDTRIP",
+    "FAIL_B3_PAIR_LOCAL_ROUNDTRIP",
+    "FAIL_B3_FULL_MODAL_LOCAL_ROUNDTRIP",
+    "FAIL_B3_IMPLEMENTATION_SELF_CHECK",
+    "INDETERMINATE_POSITIVITY_SCALE",
+    "INDETERMINATE_NUMERICAL"
+  ],
+  "guards": {
+    "no_pair_selection": true,
+    "no_parameter_lane_selection": true,
+    "no_result_based_amplitude_or_window_change": true,
+    "no_chi_equal_1_boundary_claim": true,
+    "no_system_scalar": true,
+    "no_P1_confirmation_language": true,
+    "preserve_v0_1_derivative_refusal": true
+  },
+  "next_if_pass": "formal ERK model-specific Chi_bio admission and cross-system scalar/modal transport disposition, then freeze ERK joint local-vs-realized response for Bio Chi transport"
+}
