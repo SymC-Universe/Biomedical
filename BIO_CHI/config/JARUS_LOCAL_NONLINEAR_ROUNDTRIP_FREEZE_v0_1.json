@@ -1,0 +1,79 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "date": "2026-09-24",
+  "status": "FROZEN_P0Q_BEFORE_NONLINEAR_ROUNDTRIP",
+  "authority": "SymC General Operations Manual v0.8.6",
+  "epistemic_mode": "P0-Q",
+  "purpose": "qualify the already-frozen model-specific chi_bio factor and the complete local Chi_bio modal precursor by testing convergence of native nonlinear NF-kB dynamics to their frozen local linear/modal predictions",
+  "source_scalar_pin": "BIO_CHI/config/JARUS_CHI_BIO_SCALAR_P0Q_V01_RESULT_PIN.json",
+  "source_observability_pin": "BIO_CHI/config/JARUS_OBSERVABILITY_IDENTIFIABILITY_V01_RESULT_PIN.json",
+  "source_local_stability_artifact": {
+    "id": 10748186325,
+    "sha256": "7b17c4b2ec5c3f70ff51c1efea2686d5a0498"
+  },
+  "cases": [
+    "FIG8A_NOMINAL_DAMPED",
+    "FIG8B_LIMIT_CYCLE",
+    "FIG8C_RELAXATION_OSCILLATION"
+  ],
+  "jacobian": {
+    "finite_difference_multiplier": 1.0,
+    "same_native_equations_and_equilibria_as_prior_gates": true
+  },
+  "solver": {
+    "family": "ode23s",
+    "TR": 1,
+    "RelTol": 1e-10,
+    "AbsTol": 1e-12
+  },
+  "amplitudes": {
+    "primary_fraction_of_equilibrium_norm": [0.001, 0.0001],
+    "sensitivity_fraction_of_equilibrium_norm": 0.00001
+  },
+  "horizon": {
+    "pair_lane": "two periods of the frozen positive-imaginary complex pole: 4*pi/|Im(lambda)|",
+    "full_modal_lane": "same horizon as pair lane for within-case comparability",
+    "samples": 401
+  },
+  "pair_lane": {
+    "mode": "unique positive-imaginary member of the already-frozen conjugate pair",
+    "phase_rule": "rotate eigenvector by exp(-i*arg(C*v)) so the publication-native free nuclear NF-kB projection is real and maximized at t=0; this fixes eigenvector phase only and does not select a different mode",
+    "initial_direction": "normalized real part of the phase-fixed eigenvector",
+    "linear_prediction": "real(v_phase*exp(lambda*t))/||real(v_phase)|| scaled by perturbation amplitude",
+    "observable": "free nuclear NF-kB",
+    "metric": "relative L2 error between nonlinear observable displacement and pair-based linear prediction",
+    "primary_pass_rule": "relative error at 1e-4 equilibrium-norm fraction must be lower than at 1e-3; both must be finite",
+    "sensitivity": "1e-5 reported but not used to overturn a primary pass or failure"
+  },
+  "full_modal_lane": {
+    "initial_direction": "normalized all-ones six-state vector; fixed before result",
+    "linear_prediction": "expm(J*t)*delta_x0 using the complete six-state Jacobian",
+    "observable": "all six state displacements together",
+    "metric": "relative Frobenius/L2 trajectory error across all states",
+    "primary_pass_rule": "relative error at 1e-4 equilibrium-norm fraction must be lower than at 1e-3; both must be finite",
+    "sensitivity": "1e-5 reported but not used to overturn a primary pass or failure"
+  },
+  "implementation_self_check": {
+    "pair_vs_full_linear": "for pair-subspace initial condition, pair analytic prediction and expm(J*t) prediction must agree to relative error <= 1e-8",
+    "real_pole_refusal": "the least-negative real eigenvalue is passed to the scalar constructor as a single real pole and must return REFUSE_SINGLE_REAL_POLE"
+  },
+  "guards": {
+    "no_mode_reselection": true,
+    "no_result_based_window_change": true,
+    "no_result_based_amplitude_change": true,
+    "no_chi_equal_1_boundary_claim": true,
+    "no_p1_confirmation_language": true,
+    "preserve_unstable_B_C_equilibria": true,
+    "preserve_prior_finite_window_failures": true
+  },
+  "allowed_outcomes": [
+    "PASS_LOCAL_NONLINEAR_ROUNDTRIP",
+    "FAIL_PAIR_LOCAL_ROUNDTRIP",
+    "FAIL_FULL_MODAL_LOCAL_ROUNDTRIP",
+    "FAIL_IMPLEMENTATION_SELF_CHECK",
+    "INDETERMINATE_NUMERICAL"
+  ],
+  "next_if_pass": "adjudicate model-specific Chi_bio modal admission and then open the Bio Chi joint local-vs-realized-behavior gate",
+  "next_if_fail": "preserve chi_bio algebraic P0-Q result but narrow or refuse the affected dynamical/modal interpretation"
+}
