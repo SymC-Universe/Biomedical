@@ -43,17 +43,17 @@
     {
       "id": "Q5",
       "name": "chi_bio_scalar_track",
-      "status": "p0q_nfkb_scalar_candidate_qualified_jaruszewicz_independent_d2fc2_test_in_progress"
+      "status": "p0q_jaruszewicz_scalar_candidate_qualified_independent_d2fc2_refused_nonidentifiable_multiple_pairs"
     },
     {
       "id": "Q6",
       "name": "Chi_bio_modal_track",
-      "status": "p0q_nfkb_modal_observability_qualified_jaruszewicz_independent_d2fc2_test_in_progress"
+      "status": "p0q_jaruszewicz_modal_observability_qualified_d2fc2_modal_multiplicity_limit_mapped"
     },
     {
       "id": "Q7",
       "name": "Bio_Chi_conglomerate_track",
-      "status": "pending_Q3_Q4_Q6"
+      "status": "active_joint_system_limit_map_after_scalar_transport_refusal"
     },
     {
       "id": "Q8",
@@ -113,7 +113,7 @@
       "rehman_next": "seek exact author analysis code/source implementation for Figure 4 PCA; otherwise preserve exact-native-method under-specification",
       "harmange_next": "map lineage/barcode carrier correspondence from source documentation without opening target outcomes",
       "blum_next": "P0-Q observability/identifiability qualification of publication-native EKAR trajectory representation before any reduced-state or chi_bio construction",
-      "d2fc2_next": "adjudicate source-native scenarios 5-9 against frozen independent generator/modal gate"
+      "d2fc2_next": "closed_nonidentifiable_multiple_stable_pairs; preserve refusal and advance modal/system Limit Map"
     },
     "scientific_stop_before": "inventing a missing native implementation detail, changing a frozen representation/endpoint, promoting a testbed based on agreement, or admitting chi_bio/Chi_bio/Bio Chi"
   },
@@ -147,10 +147,14 @@
     "chi_bio_constructed": "candidate_only_not_admitted",
     "Chi_bio_admitted": false,
     "Bio_Chi_constructed": false,
-    "next_gate": "adjudicate independently frozen D2FC2 external-model/source-native-validation gate; preserve Kizilirmak and Qiao sealed Limit Map sources",
+    "next_gate": "advance Bio Chi joint/system Limit Map without rescuing scalar; use independently frozen perturbation/recovery and intervention lanes",
     "jarus_observability_p0q_pin": "BIO_CHI/config/JARUS_OSCILLATORY_MODE_OBSERVABILITY_P0Q_V01_RESULT_PIN.json",
     "jarus_observability_p0q_status": "PASS_P0Q_OSCILLATORY_MODE_OBSERVABILITY",
-    "jarus_candidate_chi_bio": 0.21311451897468006
+    "jarus_candidate_chi_bio": 0.21311451897468006,
+    "d2fc2_result_pin": "BIO_CHI/config/D2FC2_NFKB_INDEPENDENT_MODAL_P1_V02_RESULT_PIN.json",
+    "d2fc2_status": "NON_IDENTIFIABLE_MULTIPLE_STABLE_COMPLEX_PAIRS",
+    "d2fc2_stable_complex_pair_count": 2,
+    "d2fc2_held_out_identifiable_count": 0
   },
   "stop_conditions": [
     "material scientific choice changes a frozen hypothesis/model/endpoint",
