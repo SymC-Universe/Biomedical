@@ -1,0 +1,78 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "date": "2026-09-24",
+  "decision": "CHI_BIO_MODAL_P0Q_ADMITTED_MODEL_SPECIFIC",
+  "epistemic_mode": "P0-Q",
+  "authority": [
+    "SymC General Operations Manual v0.8.6",
+    "BIO_CHI/docs/P0D_TESTBED_ELIGIBILITY_CONTRACT_v0_1.md Class M"
+  ],
+  "system": "Jaruszewicz-Blonska reduced six-state NF-kB model",
+  "representation": "complete local six-mode eigensystem of the source-native six-state generator around the frozen Figure 8 equilibria, with observable participation, numerical conditioning, representation scope, and refusal metadata",
+  "class_M_gates": {
+    "M0_state_vector_or_native_multivariate_representation": {
+      "status": "PASS",
+      "evidence": "source-native six-state ODE representation and pinned state order"
+    },
+    "M1_mode_subspace_carrier_construction_frozen_independently": {
+      "status": "PASS",
+      "evidence": [
+        "BIO_CHI/config/JARUS_MODAL_INVENTORY_V01_RESULT_PIN.json",
+        "all six modes preserved",
+        "no outcome-driven mode selection"
+      ]
+    },
+    "M2_temporal_perturbational_or_repeated_state_information": {
+      "status": "PASS",
+      "evidence": [
+        "BIO_CHI/config/JARUS_OBSERVABILITY_IDENTIFIABILITY_V01_RESULT_PIN.json",
+        "BIO_CHI/config/JARUS_LOCAL_NONLINEAR_ROUNDTRIP_V01_RESULT_PIN.json"
+      ]
+    },
+    "M3_degeneracy_conditioning_representation_dependence_assessed": {
+      "status": "PASS",
+      "evidence": [
+        "BIO_CHI/config/JARUS_FULL_STATE_REPRESENTATION_CONTROL_V01_RESULT_PIN.json",
+        "BIO_CHI/config/JARUS_MODAL_CONDITIONING_V01_RESULT_PIN.json"
+      ],
+      "scope": "native physical six-state coordinates plus inherited smooth invertible full-state eigenvalue sanity control; reduced-representation invariance is not claimed"
+    },
+    "M4_native_simple_comparator_available": {
+      "status": "PASS",
+      "evidence": [
+        "full native six-state nonlinear generator retained",
+        "full complex pole/eigenvalue record retained",
+        "model-specific chi_bio explicitly classified as a compression rather than replacement"
+      ]
+    }
+  },
+  "admission": {
+    "Chi_bio_model_specific_admitted": true,
+    "broad_biological_Chi_bio_admitted": false,
+    "cross_system_transport_established": false,
+    "P1_confirmation_established": false,
+    "system_scalar_created": false
+  },
+  "relationship_to_chi_bio": {
+    "chi_bio_status": "P0Q_SUPPORTED_MODEL_SPECIFIC",
+    "rule": "chi_bio is the scalar of one licensed observable complex-conjugate invariant factor; Chi_bio is the complete six-mode local modal record and cannot be replaced by that scalar",
+    "information_retained_only_by_Chi_bio": [
+      "four real local modes",
+      "which mode sets the spectral abscissa",
+      "all modal timescales",
+      "mode participation and output visibility",
+      "conditioning and representation scope",
+      "local instability information not reducible to the selected pair alone"
+    ]
+  },
+  "preserved_limits": [
+    "Figure 8B and Figure 8C finite-window behavior failures remain preserved",
+    "1e-5 nonlinear-roundtrip sensitivity reversals remain visible as a numerical-floor warning",
+    "no reduced-representation invariance claim",
+    "no biological chi=1 boundary",
+    "no cross-system or universal biological modal claim"
+  ],
+  "claim_ceiling": "Within the source-native Jaruszewicz-Blonska six-state NF-kB model, the complete local modal/vector stability representation qualifies as model-specific Chi_bio at P0-Q. It is not P1 confirmation and is not yet a general biological modal architecture.",
+  "next_gate": "joint chi_bio <-> Chi_bio meaning and local-vs-realized-behavior qualification before Bio Chi conglomerate admission"
+}
