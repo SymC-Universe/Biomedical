@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - chi-bio-recovery-p0d-20260922
+      - bio-chi-closure-p0q-20260924
     paths:
       - 'BIO_CHI/**'
       - 'GRI_v2/docs/CHI_BIO_*'
