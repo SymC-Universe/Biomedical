@@ -62,3 +62,28 @@ If interrupted, begin by verifying the current branch head and this file, then i
 ## Scientific state changed
 
 NO. This checkpoint records current evidence and a post-result candidate route only. No new biological object is admitted.
+
+
+## Checkpoint update — NF-kB P0-Q observability gate closed
+
+- Freeze: `BIO_CHI/config/JARUS_OSCILLATORY_MODE_OBSERVABILITY_P0Q_FREEZE_v0_1.json`
+- Workflow: `.github/workflows/bio-chi-jarus-observability-p0q-v01.yml`
+- Run: `36030274455`
+- Head: `f200a31419c1e7521c6f46a4d4b1d0dba0cd4203`
+- Artifact: `10822470378`, digest `sha256:af6a1f1954d5007bab517533f8edc5744bde6c5d2ca4dc4f838f611cf0d529ae`
+- Result pin: `BIO_CHI/config/JARUS_OSCILLATORY_MODE_OBSERVABILITY_P0Q_V01_RESULT_PIN.json`
+- Outcome: `PASS_P0Q_OSCILLATORY_MODE_OBSERVABILITY`
+- Known-bad monotone exponential fixture: correctly REFUSED.
+- Generator candidate: sigma = 0.7199381921 h^-1, omega = 3.3005691898 rad h^-1, candidate chi_bio = 0.2131145190.
+- Frozen native-output fit: sigma = 0.7264565074 h^-1, omega = 3.3053468931 rad h^-1, candidate operational chi = 0.2146589025.
+- Relative differences: omega 0.145%, sigma 0.905%, chi 0.725%.
+- Oscillatory model versus simple exponential: delta AIC = 261.57.
+- Epistemic ceiling: qualification only. No biological object admitted because Figure 8A is the already-viewed qualification case.
+
+### Next exact action
+
+Audit genuinely independent native biological evidence capable of testing the now-frozen scalar/modal mapping without outcome leakage. Build the MFR/independence record before opening decisive values. Prefer direct measured NF-kB trajectories or another native biological generator/observable pair. If no untouched empirical route can be qualified from available public data, preserve that limitation and advance the modal/system tracks that do not depend on scalar admission.
+
+### Safe resume point
+
+Begin from the independent-evidence audit. Do not revisit or retune the P0-Q estimator or qualification thresholds based on later outcomes.
