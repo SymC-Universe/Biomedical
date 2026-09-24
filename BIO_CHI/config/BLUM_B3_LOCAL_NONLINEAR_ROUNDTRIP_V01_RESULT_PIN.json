@@ -1,0 +1,57 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Blum B3 local nonlinear round-trip",
+  "status": "FAIL_B3_FULL_MODAL_LOCAL_ROUNDTRIP",
+  "epistemic_mode": "P0-Q",
+  "freeze": "BIO_CHI/config/BLUM_B3_LOCAL_NONLINEAR_ROUNDTRIP_FREEZE_v0_1.json",
+  "workflow_run_id": 36060135051,
+  "workflow_head_sha": "8dd2c4b33d2fb9a3f3341898e8f12e3880624868",
+  "artifact": {
+    "id": 10834690057,
+    "name": "BIO_CHI_BLUM_B3_LOCAL_NONLINEAR_ROUNDTRIP_V01",
+    "digest": "sha256:f7f6383db53221d57e6be3a485780f5a1a0387c9eaa4a26dc5a14626e2f07b72"
+  },
+  "result_sha256": "2f447b69c56db82a2ef7c5729f7bcc9cce7841c63e17f5ef09b553f050baaf5b",
+  "pair_lane_all_contexts_pass": true,
+  "full_modal_lane_all_contexts_pass": false,
+  "implementation_self_checks_pass": true,
+  "context_failures": {
+    "primary_SUSTAINED_FGF_2P5": {
+      "pair_lane": "PASS",
+      "full_modal_lane": "FAIL",
+      "failing_fixed_stoichiometric_columns": [4,6,10,14]
+    },
+    "primary_SUSTAINED_FGF_250": {
+      "pair_lane": "PASS",
+      "full_modal_lane": "FAIL",
+      "failing_fixed_stoichiometric_columns": [10,12,14]
+    },
+    "sensitivity_SUSTAINED_FGF_2P5": {
+      "pair_lane": "PASS",
+      "full_modal_lane": "FAIL",
+      "failing_fixed_stoichiometric_columns": [6,10,14]
+    },
+    "sensitivity_SUSTAINED_FGF_250": {
+      "pair_lane": "PASS",
+      "full_modal_lane": "FAIL",
+      "failing_fixed_stoichiometric_columns": [10,12,14]
+    }
+  },
+  "scientific_disposition": {
+    "mode_resolved_chi_bio_class_transport": "RETAINED_P0Q_SUPPORTED",
+    "all_FRET_visible_complex_pair_roundtrips": "PASS",
+    "complete_8D_Chi_bio_nonlinear_roundtrip": "FAIL",
+    "ERK_Chi_bio_model_specific_admission": "REFUSED_UNDER_CURRENT_GATE",
+    "Bio_Chi_cross_system_transport": "NOT_OPENED",
+    "single_system_scalar_created": false,
+    "P1_confirmation_claimed": false
+  },
+  "preserved_interpretation": "The independent ERK B3 system supports transport of the generator-derived mode-specific chi_bio construction: every frozen FRET-visible complex invariant factor passes its local nonlinear round-trip. The complete 8D modal representation does not satisfy the frozen all-direction local nonlinear convergence rule and therefore cannot be admitted as ERK model-specific Chi_bio under this version. This failure is retained rather than repaired by dropping unfavorable directions or retuning amplitudes.",
+  "limit_map": {
+    "repeated_failure_columns": [10,14],
+    "context_dependent_failure_columns": [4,6,12],
+    "meaning": "The failure is structured across fixed stoichiometric directions rather than a failure of the transported complex-pair scalar family. No mechanistic interpretation of the failing columns is promoted without a new preregistered analysis."
+  },
+  "next_safe_action": "close the present ERK transport cycle with scalar-class transport supported and full modal transport refused; any attempt to reinterpret, replace, or subset the failed 8D modal carrier requires a new scientific P0-Q lineage"
+}
