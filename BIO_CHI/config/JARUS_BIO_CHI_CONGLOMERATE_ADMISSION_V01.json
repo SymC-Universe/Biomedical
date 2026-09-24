@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "date": "2026-09-24",
+  "decision": "BIO_CHI_CONGLOMERATE_P0Q_ADMITTED_MODEL_SPECIFIC",
+  "epistemic_mode": "P0-Q",
+  "authority": [
+    "SymC General Operations Manual v0.8.6",
+    "BIO_CHI/docs/P0D_TESTBED_ELIGIBILITY_CONTRACT_v0_1.md Class C"
+  ],
+  "system": "Jaruszewicz-Blonska reduced NF-kB model under the frozen Figure 8 parameter/input regimes",
+  "Bio_Chi_definition_in_this_admission": "the model-specific relationship among the licensed local scalar chi_bio factor, the complete local modal Chi_bio representation, the native nonlinear system trajectory, and the frozen perturbation/input context; not an arithmetic composite and not a scalar",
+  "class_C_gates": {
+    "C0_two_independently_defined_representation_layers": {
+      "status": "PASS",
+      "basis": [
+        "local generator/modal layer defined from the native six-state equations",
+        "finite-window nonlinear behavior layer frozen and adjudicated separately before the later chi_bio/Chi_bio construction"
+      ],
+      "note": "chi_bio and Chi_bio are not counted as independent merely because they have different names; chi_bio is nested within the modal generator"
+    },
+    "C1_cross_level_relation_tested_not_assumed": {
+      "status": "PASS",
+      "evidence": "BIO_CHI/config/JARUS_CHI_CHIBIO_JOINT_MEANING_V01_RESULT_PIN.json"
+    },
+    "C2_context_history_substrate_contributions_separated_where_identifiable": {
+      "status": "PASS_WITH_SCOPE",
+      "identified_context": [
+        "TR=1 stimulated equilibrium/local generator",
+        "case-specific source-native parameter regime",
+        "local perturbation limit versus finite-window nonlinear trajectory"
+      ],
+      "not_present_or_not_claimed": [
+        "chromatin or genomic substrate",
+        "long-term cellular memory",
+        "cross-tissue history"
+      ],
+      "rule": "unmeasured substrate/history are not invented as hidden Bio Chi components"
+    },
+    "C3_held_out_or_prospective_behavior_added_information": {
+      "status": "PASS_P0Q",
+      "evidence": [
+        "prospectively frozen Figure 8 finite-window behavior adjudication predates the later chi_bio/Chi_bio construction",
+        "B/C local modal instability coexists with decreasing frozen finite-window amplitudes, adding system-trajectory information beyond the simpler local representations",
+        "local nonlinear round-trip separately verifies that this divergence is not caused by failure of the local linearization in the declared local regime"
+      ],
+      "claim_limit": "qualification evidence, not P1 confirmation"
+    },
+    "C4_disagreement_retained": {
+      "status": "PASS",
+      "evidence": [
+        "A preserves scalar-pair versus slower-real-mode disagreement",
+        "B/C preserve local-instability versus finite-window-decreasing-amplitude disagreement",
+        "earlier B/C frozen behavior failures remain failures"
+      ]
+    },
+    "C5_failure_to_add_value_allowed": {
+      "status": "PASS_BY_DESIGN",
+      "basis": "joint gate predeclared NO_ADDED_VALUE as an allowed outcome; observed result instead supports added system-layer information"
+    }
+  },
+  "admission": {
+    "Bio_Chi_model_specific_admitted": true,
+    "broad_biological_Bio_Chi_admitted": false,
+    "cross_system_transport_established": false,
+    "P1_confirmation_established": false,
+    "predictive_tool_status": false,
+    "master_scalar_created": false
+  },
+  "current_three_object_status": {
+    "chi_bio": "P0Q_MODEL_SPECIFIC_ADMITTED_LOCAL_COMPLEX_FACTOR",
+    "Chi_bio": "P0Q_MODEL_SPECIFIC_ADMITTED_COMPLETE_LOCAL_SIX_MODE_REPRESENTATION",
+    "Bio_Chi": "P0Q_MODEL_SPECIFIC_ADMITTED_RELATIONAL_SYSTEM_ARCHITECTURE"
+  },
+  "what_Bio_Chi_adds_here": [
+    "distinguishes the licensed oscillatory scalar from slower or additional local modes",
+    "distinguishes local generator stability from finite-window realized nonlinear trajectory behavior",
+    "retains perturbation/input context instead of treating one local number as the whole system",
+    "provides an explicit place for disagreement rather than averaging it away"
+  ],
+  "preserved_limits": [
+    "no global attractor topology is proved for B/C by this admission",
+    "no biological chi=1 boundary is claimed",
+    "no cross-system universality is claimed",
+    "no recovery law is inferred from the NF-kB Figure 8 model alone",
+    "no substrate inheritance is claimed",
+    "P0-Q qualification is not P1 confirmation"
+  ],
+  "next_gate": "independent cross-system transport in publication-selected deterministic Blum 2019 ERK model B3, preserving native ERK/FRET structure and allowing scalar refusal"
+}
