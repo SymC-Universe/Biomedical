@@ -1,0 +1,63 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "date": "2026-09-24",
+  "status": "FROZEN_P0Q_BEFORE_SCALAR_ADJUDICATION",
+  "authority": "SymC General Operations Manual v0.8.6",
+  "purpose": "qualify the model-specific biological scalar construction for the unique observable complex-conjugate invariant factor of the Jaruszewicz-Blonska six-state NF-kB generator",
+  "epistemic_mode": "P0-Q",
+  "candidate_provenance": "post-result P0-D discovery; this qualification cannot serve as P1 confirmation",
+  "source_observability_pin": "BIO_CHI/config/JARUS_OBSERVABILITY_IDENTIFIABILITY_V01_RESULT_PIN.json",
+  "source_observability_artifact": {
+    "id": 10827090061,
+    "digest": "sha256:b1fa44a0fa8a6d29cbcbb0fed6733993296ab6addc8263e47d5ee27da68a1063",
+    "result_sha256": "a10d182484a024d12ccdcfb6850ea24e8090fb1a2f4e58f7406a415eab65ce26"
+  },
+  "cases": [
+    "FIG8A_NOMINAL_DAMPED",
+    "FIG8B_LIMIT_CYCLE",
+    "FIG8C_RELAXATION_OSCILLATION"
+  ],
+  "factor_rule": {
+    "eligible_pair": "the unique stored nonreal conjugate pair in each complete six-state local generator; no pair selected by favorable scalar value",
+    "characteristic_factor": "(s-lambda)(s-conj(lambda)) = s^2 + gamma*s + omega0^2",
+    "gamma": "-2*Re(lambda)",
+    "omega0": "|lambda|",
+    "omega_d": "|Im(lambda)|",
+    "chi_bio": "-Re(lambda)/|lambda|",
+    "identity_check": "omega0^2 = (gamma/2)^2 + omega_d^2"
+  },
+  "qualification_gates": {
+    "native_generator": "PASS inherited",
+    "biological_observability": "PASS inherited through publication-native free nuclear NF-kB output",
+    "same_mode": "all scalar quantities must come from the same unique conjugate pair",
+    "numerical_robustness": "compute independently at Jacobian multipliers 1.0, 0.5, 0.25; require finite values and invariant sign of Re(lambda), Im(lambda) pair type, and chi_bio sign; report spread without tuning a promotion threshold",
+    "full_state_representation_scope": "inherit passed smooth invertible full-state coordinate-invariance control; do not claim reduced-representation invariance",
+    "native_comparator": "report the full complex pole pair, gamma, omega0, and omega_d alongside chi_bio; scalar compression is not allowed to claim information beyond the native pair"
+  },
+  "interpretation": {
+    "positive_chi": "locally damped oscillatory invariant factor",
+    "negative_chi": "locally amplifying oscillatory invariant factor; preserve sign and do not remap to 0-to-1",
+    "chi_equal_1_boundary": "NOT_CLAIMED; no biological critical-damping boundary is inferred in this gate",
+    "system_scalar": false,
+    "mode_specific": true
+  },
+  "allowed_outcomes": [
+    "CHI_BIO_P0Q_SUPPORTED_MODEL_SPECIFIC",
+    "CHI_BIO_P0Q_REFUSED_NONIDENTIFIABLE",
+    "CHI_BIO_P0Q_REFUSED_REPRESENTATION_DEPENDENT",
+    "CHI_BIO_P0Q_EQUIVALENT_TO_NATIVE_POLE_DESCRIPTION",
+    "INDETERMINATE"
+  ],
+  "adjudication_rule": "If the factor is generator-derived, same-mode, locally observable, numerically stable in sign/type across all frozen Jacobian steps, and full-state representation scope is preserved, classify the scalar as model-specific P0-Q admissible. Simultaneously classify it as mathematically equivalent compression of the native pole pair, not a superior native estimator.",
+  "guards": {
+    "no_clipping_negative_chi": true,
+    "no_system_level_chi": true,
+    "no_chi_equal_1_claim": true,
+    "no_post_result_mode_change": true,
+    "no_p1_confirmation_language": true,
+    "preserve_full_pole_pair": true,
+    "preserve_all_prior_failures": true
+  },
+  "next_if_supported": "run a local nonlinear round-trip qualification and then update Chi_bio modal disposition; broad transport remains separate"
+}
