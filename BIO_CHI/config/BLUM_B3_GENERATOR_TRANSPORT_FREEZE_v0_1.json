@@ -1,0 +1,119 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "date": "2026-09-24",
+  "status": "FROZEN_P0Q_BEFORE_BLUM_B3_GENERATOR_SPECTRUM",
+  "authority": "SymC General Operations Manual v0.8.6",
+  "epistemic_mode": "P0-Q",
+  "purpose": "test independent cross-system transport of the Bio Chi scalar/modal construction in the publication-selected deterministic Blum 2019 B3 ERK model without forcing a scalar or interpreting conservation-law zero modes as dynamics",
+  "source_reproduction_pin": "BIO_CHI/config/BLUM_B3_NATIVE_REPRODUCTION_V02_RESULT_PIN.json",
+  "source_freeze": "BIO_CHI/config/BLUM_B3_TRANSPORT_SOURCE_FREEZE_v0_2.json",
+  "required_source_reproduction_status": "PASS_NATIVE_B3_TRAJECTORY_REPRODUCTION",
+  "state_order": [
+    "Ras","Ras_star","Raf","Raf_star","Mek","Mek_star","Erk","Erk_star",
+    "Nfb","Nfb_star","FgfR","FgfR_star","H","H_F","H_F_R"
+  ],
+  "reaction_order": [
+    "Ras_to_Ras_star","Ras_star_to_Ras","Raf_to_Raf_star","Raf_star_to_Raf",
+    "Mek_to_Mek_star","Mek_star_to_Mek","Erk_to_Erk_star","Erk_star_to_Erk",
+    "Nfb_to_Nfb_star","Nfb_star_to_Nfb","FgfR_to_FgfR_star","FgfR_star_to_FgfR",
+    "H_to_H_F","H_F_to_H","H_F_plus_FgfR_to_H_F_R","H_F_R_to_H_F_plus_FgfR"
+  ],
+  "stoichiometric_structure": {
+    "expected_rank": 8,
+    "conserved_pools": [
+      "Ras + Ras_star",
+      "Raf + Raf_star",
+      "Mek + Mek_star",
+      "Erk + Erk_star",
+      "Nfb + Nfb_star",
+      "FgfR + FgfR_star + H_F_R",
+      "H + H_F + H_F_R"
+    ],
+    "dynamic_subspace": "orthonormal Q spanning col(S), S is the exact 15x16 source reaction stoichiometric matrix",
+    "reduced_generator": "J_r = Q^T J Q",
+    "raw_full_state_zero_modes_interpretable_as_stability_modes": false,
+    "basis_invariance_control": "compare SVD-based Q against an orthonormal QR basis constructed from a fixed independent source-stoichiometry column set; matched reduced eigenvalues must agree within relative complex tolerance 1e-8"
+  },
+  "parameter_lanes": {
+    "primary": {
+      "role": "publication Figure 7 / HSPG model-selection B3 vector",
+      "values_source": "BIO_CHI/config/BLUM_B3_TRANSPORT_SOURCE_FREEZE_v0_2.json primary_parameter_values"
+    },
+    "sensitivity": {
+      "role": "source-defined B3 prediction vector",
+      "values_source": "BIO_CHI/config/BLUM_B3_TRANSPORT_SOURCE_FREEZE_v0_2.json sensitivity_parameter_values"
+    }
+  },
+  "input_contexts": [
+    {"id":"SUSTAINED_FGF_2P5","fgf_input":2.5},
+    {"id":"SUSTAINED_FGF_250","fgf_input":250.0}
+  ],
+  "equilibrium_gate": {
+    "initial_state": "source-native initial state with lane-specific fgfr_init_mean, nfb_init, h_init_mean",
+    "solver": "scipy.integrate.solve_ivp BDF, rtol=1e-10, atol=1e-12",
+    "candidate_horizons_minutes": [1000,10000,100000],
+    "selection_rule": "use the earliest frozen horizon whose terminal ||f(x)||_inf <= 1e-9 and conserved-pool drift <= 1e-8",
+    "nonnegative_states_required": true,
+    "failure_outcome": "INDETERMINATE_EQUILIBRIUM"
+  },
+  "jacobian_gate": {
+    "method": "central finite difference of the independently reproduced native ODE",
+    "base_step": "eps^(1/3) * max(1, abs(x_j))",
+    "multipliers": [1.0,0.5,0.25],
+    "all_reduced_modes_preserved": true,
+    "mode_matching": "minimum-total-complex-distance assignment across frozen Jacobian steps",
+    "maximum_relative_complex_spread_for_numerical_pass": 0.0001
+  },
+  "conditioning_gate": {
+    "minimum_normalized_eigenvalue_separation": "strictly greater than sqrt(eps)",
+    "maximum_right_eigenvector_condition_number_2": "strictly less than 1/sqrt(eps)",
+    "failure_outcome": "REFUSE_MODAL_NUMERICAL_CONDITIONING"
+  },
+  "publication_native_output": {
+    "name": "deterministic FRET measurement",
+    "noise_term": "omitted for local deterministic observability",
+    "measurement_parameters": ["FRET_E","erk_max=0.8","erk_initial=0"],
+    "reduced_output_gradient": "C_r = grad_x h(x_star) Q",
+    "observability_matrix": "[C_r; C_r J_r; ...; C_r J_r^(r-1)]",
+    "rank_rule": "SVD rank with max(shape)*eps*largest_singular_value tolerance",
+    "mode_visibility": "|C_r v_i| / (||C_r||_2 ||v_i||_2)",
+    "numerically_visible_mode_floor": "sqrt(eps)"
+  },
+  "scalar_gate": {
+    "eligible_objects": "all nonreal conjugate pairs of J_r, with no post-result pair selection",
+    "pair_scalar": "chi_bio_i = -Re(lambda_i)/|lambda_i|",
+    "also_report": ["gamma_i=-2 Re(lambda_i)","omega0_i=|lambda_i|","omega_d_i=|Im(lambda_i)|","FRET mode visibility"],
+    "single_real_pole_refused": true,
+    "if_no_complex_pair": "SCALAR_REFUSED_NO_COMPLEX_FACTOR",
+    "if_complex_pairs_exist_but_none_are_FRET_visible": "SCALAR_REFUSED_NOT_OBSERVABLE",
+    "if_one_or_more_FRET_visible_pairs": "MODEL_SPECIFIC_CHI_BIO_PAIR_FAMILY_PRESENT",
+    "system_scalar_created": false,
+    "chi_equal_1_boundary_claimed": false
+  },
+  "cross_lane_transport_logic": {
+    "modal_transport": "report primary and sensitivity complete reduced eigensystems separately; disagreement is representation/parameter sensitivity, not grounds to choose the favorable lane",
+    "scalar_transport": "broad pair-family transport requires at least one licensed FRET-visible complex pair in both source-defined parameter lanes under at least one common frozen input context; otherwise report the narrower/refused result",
+    "NFkB_numeric_value_matching_required": false,
+    "NFkB_mode_count_matching_required": false
+  },
+  "allowed_outcomes": [
+    "PASS_B3_GENERATOR_MODAL_QUALIFICATION",
+    "PASS_B3_MODAL_WITH_PARTIAL_FRET_OBSERVABILITY",
+    "REFUSE_B3_MODAL_NUMERICAL_CONDITIONING",
+    "INDETERMINATE_EQUILIBRIUM",
+    "SCALAR_TRANSPORT_PRESENT",
+    "SCALAR_TRANSPORT_PARAMETER_DEPENDENT",
+    "SCALAR_TRANSPORT_REFUSED"
+  ],
+  "guards": {
+    "no_raw_conservation_zero_modes_counted": true,
+    "no_favorable_pair_selection": true,
+    "no_parameter_lane_selection_after_result": true,
+    "no_chi_equal_1_claim": true,
+    "no_master_scalar": true,
+    "no_P1_confirmation_language": true,
+    "native_full_model_remains_comparator": true
+  },
+  "next_if_evaluable": "freeze and execute local nonlinear round-trip/realized-response joint test in B3 only after this modal/scalar transport result is pinned"
+}
