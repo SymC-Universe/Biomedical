@@ -1,0 +1,40 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Jaruszewicz complete six-mode numerical conditioning",
+  "status": "PASS_MODAL_NUMERICAL_CONDITIONING",
+  "epistemic_mode": "P0-Q",
+  "freeze": "BIO_CHI/config/JARUS_MODAL_CONDITIONING_FREEZE_v0_1.json",
+  "workflow_run_id": 36057362293,
+  "workflow_head_sha": "479d936157a0065045eebc92f713cbea1156a99d",
+  "artifact": {
+    "id": 10833041753,
+    "name": "BIO_CHI_JARUS_MODAL_CONDITIONING_V01",
+    "digest": "sha256:f442e0cdf613349a02418cda10333ac8ad9a6d834b77874c5803189e2efd2f25"
+  },
+  "result_sha256": "2d6a1a1b27c398149af6c755fcaccae12c0aea1f511845d87cf2d98c3d218fce",
+  "representation_scope": "native physical six-state coordinates",
+  "summary": {
+    "maximum_condition_number_V_2": 164.38628922351265,
+    "minimum_reciprocal_condition_V_2": 0.0060832323956185944,
+    "minimum_normalized_eigenvalue_separation": 0.017714018820196083,
+    "frozen_separation_floor_sqrt_eps": 1.4901161193847656e-8,
+    "frozen_condition_ceiling_inv_sqrt_eps": 67108864,
+    "unique_nonreal_conjugate_pair_all_cases_all_steps": true,
+    "all_steps_pass": true
+  },
+  "case_condition_numbers_reference_step": {
+    "FIG8A_NOMINAL_DAMPED": 164.38628922351265,
+    "FIG8B_LIMIT_CYCLE": 27.112906079903127,
+    "FIG8C_RELAXATION_OSCILLATION": 24.62567878394879
+  },
+  "scientific_disposition": {
+    "M3_numerical_degeneracy_conditioning": "PASS",
+    "full_state_coordinate_control": "INHERITED_PASS",
+    "chi_bio_model_specific": "INHERITED_P0Q_SUPPORTED",
+    "Chi_bio_admitted": false,
+    "Bio_Chi_constructed": false
+  },
+  "claim_ceiling": "The complete local six-mode eigensystem is numerically identifiable and nondegenerate under the frozen native-coordinate numerical gate. This does not establish reduced-representation invariance, cross-system transport, P1 confirmation, or whole-system Bio Chi.",
+  "next_gate": "formal Class-M M0-M4 model-specific Chi_bio admission adjudication"
+}
