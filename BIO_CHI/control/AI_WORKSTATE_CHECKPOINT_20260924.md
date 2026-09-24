@@ -87,3 +87,35 @@ Audit genuinely independent native biological evidence capable of testing the no
 ### Safe resume point
 
 Begin from the independent-evidence audit. Do not revisit or retune the P0-Q estimator or qualification thresholds based on later outcomes.
+
+
+## Checkpoint update — independent-evidence program opened
+
+### Kizilirmak 2023 sealed source
+- Sealed Data S1 inventory PASS.
+- Archive SHA-256: `9ee2914095e9676b92806c33e46929965c6b4c7535f74a00d4462152678ba7b8`.
+- 23 CSV members; numeric values remain unopened.
+- The source paper's approximately four-hour Figure 2 window is under-resolved for the frozen damped-ringdown estimator. Do not weaken the estimator to force this dataset into scalar transport. Preserve this source for later phenotype/refusal/intervention testing.
+
+### Qiao 2022 sealed source
+- Repository pinned at `LingxiaQiao/oscillation@e137cd4ec4a84e0e6562eb9be53690a237d2e3e5`.
+- NF-kB archive SHA-256: `c29694fdd748445d64c5d6b7d8734d8cb825713ed0f8daaa7b69651e82870298`.
+- Numeric `oscillation_data.mat` remains unopened.
+- Method-only script confirms 5-minute sampling and six single-cell circuit datasets.
+- Source paper establishes monitoring up to 10 h and sustained noisy synthetic NF-kB oscillations. This is a Limit Map/refusal candidate rather than a fair numerical transport test for the damped-ringdown scalar.
+
+### D2FC2 independent model/validation test
+- External source pinned at `recleelab/D2FCSquared@4414c1556e3068c9bfe2162d5ba9d2cf770713fc`.
+- Source code defines scenarios 1-4 as fitting and scenarios 5-9 as validation.
+- Experimental matrices and fitted spreadsheets were not opened before the freeze.
+- Freeze: `BIO_CHI/config/D2FC2_NFKB_INDEPENDENT_MODAL_P1_FREEZE_v0_1.json`.
+- Production script: `BIO_CHI/src/run_d2fc2_independent_modal_p1_v0_1.m`.
+- Workflow: `.github/workflows/bio-chi-d2fc2-independent-modal-p1-v01.yml`.
+- All five validation conditions are locked; no dropping, pair switching, or post-result threshold adjustment is permitted.
+- Generator-derived chi is tested independently from empirical frequency observability. The three-hour validation horizon is not used to estimate damping.
+
+### Next exact action
+Adjudicate the D2FC2 workflow exactly under the frozen gate. If it passes, pin the result and update chi_bio / Chi_bio status at the bounded model-specific level. If it fails or is non-identifiable, preserve the failure and advance the modal/system Limit Map without repairing the scalar. Then proceed to the next safe Bio Chi cross-level/recovery test.
+
+### Safe resume point
+Verify the newest D2FC2 workflow run for head `ae5b3eaefed4eb712be0dc83fdf5cda2e471934d` or its mechanically repaired successor. No Kizilirmak or Qiao numeric trajectory archive may be opened before its own frozen outcome-bearing contract.
