@@ -1,0 +1,36 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Qiao 2022 method-only source characterization",
+  "workflow_run_id": 36031334154,
+  "workflow_head_sha": "22c15e571690abb6dfc62958d661a66b628a5d6a",
+  "artifact_id": 10822396845,
+  "artifact_digest": "sha256:9ca0d3b9809e75a60185e4999142051276729c615fd1bb3e362195d0186af943",
+  "numeric_mat_opened": false,
+  "method_facts": {
+    "datasets": [
+      "scZBZ055_20150404",
+      "scZBZ055_20150507",
+      "scZBZ097_20150606",
+      "scZBZ097_20161207",
+      "scZBZ237_20160424",
+      "scZBZ237_20160425"
+    ],
+    "sampling_interval_min": 5,
+    "source_native_peak_detection": "Savitzky-Golay smoothing; MinPeakProminence 0.2; MinPeakHeight 2",
+    "source_native_outputs": [
+      "interpeak-period distribution",
+      "CV of period",
+      "peak-amplitude distribution",
+      "CV of amplitude"
+    ],
+    "biological_role": "single-cell synthetic NF-kB circuits with distinct feedback topology"
+  },
+  "literature_context": {
+    "source_paper_reports_monitoring_up_to_hours": 10,
+    "source_paper_reports_sustained_noisy_oscillations": true
+  },
+  "disposition": "LIMIT_MAP_SUSTAINED_OSCILLATOR_CANDIDATE__NUMERIC_DATA_REMAINS_SEALED",
+  "reason": "The frozen Jaruszewicz P0-Q scalar route is a damped local ringdown coordinate. Qiao supplies long single-cell sustained noisy oscillations and is therefore better suited to testing refusal/regime limits than numerical transport of a damped-ringdown value.",
+  "next_allowed_use": "Open the numeric MAT only under a separately frozen Limit Map/refusal contract."
+}
