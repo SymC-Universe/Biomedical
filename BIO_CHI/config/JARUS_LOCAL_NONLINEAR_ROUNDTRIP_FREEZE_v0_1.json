@@ -10,7 +10,7 @@
   "source_observability_pin": "BIO_CHI/config/JARUS_OBSERVABILITY_IDENTIFIABILITY_V01_RESULT_PIN.json",
   "source_local_stability_artifact": {
     "id": 10748186325,
-    "sha256": "7b17c4b2ec5c3f70ff51c1efea2686d5a0498"
+    "sha256": "7b17c4b2ec5c3cfd280eac48155903f329a57a1a62e4918ef4fcac4ed3aea7a9"
   },
   "cases": [
     "FIG8A_NOMINAL_DAMPED",
