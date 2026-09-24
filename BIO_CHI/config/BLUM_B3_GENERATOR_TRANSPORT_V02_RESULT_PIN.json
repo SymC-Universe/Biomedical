@@ -1,0 +1,67 @@
+{
+  "schema_version": "0.2",
+  "project": "Bio Chi Investigation",
+  "gate": "Blum B3 analytic-Jacobian stoichiometric-subspace generator transport",
+  "status": "PASS_B3_GENERATOR_MODAL_QUALIFICATION",
+  "scalar_transport_status": "SCALAR_TRANSPORT_PRESENT",
+  "epistemic_mode": "P0-Q",
+  "freeze": "BIO_CHI/config/BLUM_B3_GENERATOR_TRANSPORT_FREEZE_v0_2.json",
+  "preserved_v01_refusal": "BIO_CHI/config/BLUM_B3_GENERATOR_TRANSPORT_V01_RESULT_PIN.json",
+  "workflow_run_id": 36059720897,
+  "workflow_head_sha": "9d02b9901e681f8d4ab9c8866fd782e8c53d6400",
+  "artifact": {
+    "id": 10834131756,
+    "name": "BIO_CHI_BLUM_B3_GENERATOR_TRANSPORT_V02",
+    "digest": "sha256:5cbb9b15952d1e4eb65b27e94c1b32e13dcbce96a1d21a7eaeff80b47b003e90"
+  },
+  "result_sha256": "b4f8fa4767b3492cf0b7b04bb757fb59ba05a833872b2890c025f4b0cb6271bb",
+  "dynamic_subspace_dimension": 8,
+  "all_contexts_FRET_observability_rank": 8,
+  "analytic_jacobian_self_check": {
+    "maximum_source_native_rhs_anchor_error": 1.1102230246251565e-16,
+    "maximum_analytic_vs_complex_step_relative_Frobenius_error": 5.601601658685993e-16,
+    "frozen_ceiling": 1e-9,
+    "pass": true
+  },
+  "records": {
+    "primary_FGF_2p5": {
+      "spectral_abscissa": -0.05245437745980297,
+      "complex_pairs": [
+        {"chi_bio_i":0.7895553996254342,"lambda_real":-0.19658153536460676,"lambda_imag":0.1527923399655939,"FRET_visibility":0.3670283396204934}
+      ]
+    },
+    "primary_FGF_250": {
+      "spectral_abscissa": -0.11893547172702869,
+      "complex_pairs": [
+        {"chi_bio_i":0.9987378659694208,"lambda_real":-2.787208586019304,"lambda_imag":0.14016791513461138,"FRET_visibility":0.9516488181533063},
+        {"chi_bio_i":0.44685558122602326,"lambda_real":-0.11893547172702869,"lambda_imag":0.23810914309976008,"FRET_visibility":0.24082587181409829}
+      ]
+    },
+    "sensitivity_FGF_2p5": {
+      "spectral_abscissa": -0.04631429252247771,
+      "complex_pairs": [
+        {"chi_bio_i":0.9876192057889538,"lambda_real":-1.5058863026475091,"lambda_imag":0.23919026552056757,"FRET_visibility":0.7549498918916195},
+        {"chi_bio_i":0.7256487157753422,"lambda_real":-0.2047179131073542,"lambda_imag":0.19411500601547976,"FRET_visibility":0.3299120872560908}
+      ]
+    },
+    "sensitivity_FGF_250": {
+      "spectral_abscissa": -0.17842053962234575,
+      "complex_pairs": [
+        {"chi_bio_i":0.9838374276647827,"lambda_real":-1.6948356218019431,"lambda_imag":0.30846970896187265,"FRET_visibility":0.6621484608003285},
+        {"chi_bio_i":0.739956318262569,"lambda_real":-0.2636072853547343,"lambda_imag":0.239631359547962,"FRET_visibility":0.31312972317666526}
+      ]
+    }
+  },
+  "scientific_disposition": {
+    "model_specific_ERK_Chi_bio_generator_precursor": "QUALIFIED",
+    "mode_resolved_chi_bio_class_transport": "SUPPORTED_AT_P0Q",
+    "single_system_scalar_transport": "NOT_CLAIMED",
+    "numeric_chi_value_invariance": "NOT_SUPPORTED_OR_REQUIRED",
+    "complex_pair_count_invariance": "NOT_SUPPORTED",
+    "broad_biological_Bio_Chi_admitted": false,
+    "P1_confirmation_claimed": false,
+    "chi_equal_1_boundary_claimed": false
+  },
+  "interpretation": "Independent ERK B3 transport supports the generator-derived, mode-specific chi_bio construction and a complete observable modal architecture, while showing that the number and values of scalar factors depend on biological context and source-defined parameterization. This is transport of the representation class, not transport of one preferred scalar value.",
+  "next_gate": "local nonlinear round-trip of all ERK complex invariant factors plus the complete 8D modal generator before formal ERK Chi_bio admission and Bio Chi joint-meaning transport"
+}
