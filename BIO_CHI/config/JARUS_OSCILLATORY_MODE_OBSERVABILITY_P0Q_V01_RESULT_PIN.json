@@ -1,0 +1,39 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Jaruszewicz NF-kB oscillatory-mode observability P0-Q",
+  "workflow_run_id": 36030274455,
+  "workflow_head_sha": "f200a31419c1e7521c6f46a4d4b1d0dba0cd4203",
+  "artifact_id": 10822470378,
+  "artifact_digest": "sha256:af6a1f1954d5007bab517533f8edc5744bde6c5d2ca4dc4f838f611cf0d529ae",
+  "result_sha256": "d65ceb10b6b5a26e3214767fe8c08486e3e4400e802557d249fe7105e5e8194a",
+  "known_bad_sha256": "02b6f9d3b556acce00e1b1b93273c9a104c64a87340f086ba288a8fcf87caccd",
+  "status": "PASS_P0Q_OSCILLATORY_MODE_OBSERVABILITY",
+  "epistemic_status": "P0_Q_POSTRESULT_QUALIFICATION",
+  "known_bad_refusal": "PASS",
+  "fit_start_h": 2.39368479783672,
+  "generator": {
+    "sigma_h_inv": 0.7199381920764186,
+    "omega_h_inv": 3.300569189827146,
+    "chi_candidate": 0.21311451897468006
+  },
+  "observable_fit": {
+    "sigma_h_inv": 0.7264565073905326,
+    "omega_h_inv": 3.305346893079767,
+    "chi_candidate": 0.21465890254139075,
+    "delta_aic_vs_single_exponential": 261.5716111505397,
+    "jtj_condition": 1115.438717228254
+  },
+  "relative_errors": {
+    "omega": 0.0014475391903150778,
+    "sigma": 0.009053992948080826,
+    "chi": 0.0072467308850701784
+  },
+  "scope": {
+    "chi_bio_admitted": false,
+    "Chi_bio_admitted": false,
+    "Bio_Chi_constructed": false,
+    "next_status": "QUALIFIED_CANDIDATE_REQUIRES_INDEPENDENT_TEST"
+  },
+  "interpretation": "The frozen Figure 8A qualification case supports observability of the unique stable complex-pair mode in the publication-native free nuclear NF-kB output under the frozen P0-Q estimator. Because the route was discovered after inspecting Figure 8A, this qualifies the candidate only. It does not independently confirm or admit chi_bio, Chi_bio, or Bio Chi."
+}
