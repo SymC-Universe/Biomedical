@@ -43,12 +43,12 @@
     {
       "id": "Q5",
       "name": "chi_bio_scalar_track",
-      "status": "active_native_behavior_local_stability_and_native_biological_observable_qualified_scalar_not_admitted"
+      "status": "p0q_nfkb_scalar_candidate_qualified_jaruszewicz_independent_d2fc2_test_in_progress"
     },
     {
       "id": "Q6",
       "name": "Chi_bio_modal_track",
-      "status": "active_descriptive_generator_modal_precursor_complete_native_biological_observable_qualified_full_admission_pending_observability_identifiability"
+      "status": "p0q_nfkb_modal_observability_qualified_jaruszewicz_independent_d2fc2_test_in_progress"
     },
     {
       "id": "Q7",
@@ -101,13 +101,19 @@
       "blum_fig2_native_mean_run": 35873188226,
       "blum_fig2_native_mean_artifact": 10755884524,
       "blum_fig2_native_mean_total_rows": 279016,
-      "blum_fig2_native_mean_total_unique_cell_tracks": 3068
+      "blum_fig2_native_mean_total_unique_cell_tracks": 3068,
+      "kizilirmak_sealed_archive_sha256": "9ee2914095e9676b92806c33e46929965c6b4c7535f74a00d4462152678ba7b8",
+      "kizilirmak_numeric_values_opened": false,
+      "qiao_nfkb_archive_sha256": "c29694fdd748445d64c5d6b7d8734d8cb825713ed0f8daaa7b69651e82870298",
+      "qiao_numeric_mat_opened": false,
+      "qiao_sampling_interval_min": 5
     },
     "active": {
       "su_next": "freeze exact processed-expression file identity/hash before opening values",
       "rehman_next": "seek exact author analysis code/source implementation for Figure 4 PCA; otherwise preserve exact-native-method under-specification",
       "harmange_next": "map lineage/barcode carrier correspondence from source documentation without opening target outcomes",
-      "blum_next": "P0-Q observability/identifiability qualification of publication-native EKAR trajectory representation before any reduced-state or chi_bio construction"
+      "blum_next": "P0-Q observability/identifiability qualification of publication-native EKAR trajectory representation before any reduced-state or chi_bio construction",
+      "d2fc2_next": "adjudicate source-native scenarios 5-9 against frozen independent generator/modal gate"
     },
     "scientific_stop_before": "inventing a missing native implementation detail, changing a frozen representation/endpoint, promoting a testbed based on agreement, or admitting chi_bio/Chi_bio/Bio Chi"
   },
@@ -138,10 +144,13 @@
     "full_state_representation_control_artifact_sha256": "0241360c65de72408eb7ddd68ce6ddf6956b7a7517d952ed1ac52e1dc884084a",
     "full_state_representation_control_status": "SUCCESS_ALL_RECORDS_FINITE_NO_SPECTRAL_ABSCISSA_SIGN_CHANGE",
     "full_state_representation_control_max_observed_relative_complex_difference": 3.9989097652916227e-10,
-    "chi_bio_constructed": false,
+    "chi_bio_constructed": "candidate_only_not_admitted",
     "Chi_bio_admitted": false,
     "Bio_Chi_constructed": false,
-    "next_gate": "outcome-blind P0-Q biological observability and identifiability qualification using the now-reproduced native biological trajectory layer before any reduced observable representation or chi_bio scalar admission"
+    "next_gate": "adjudicate independently frozen D2FC2 external-model/source-native-validation gate; preserve Kizilirmak and Qiao sealed Limit Map sources",
+    "jarus_observability_p0q_pin": "BIO_CHI/config/JARUS_OSCILLATORY_MODE_OBSERVABILITY_P0Q_V01_RESULT_PIN.json",
+    "jarus_observability_p0q_status": "PASS_P0Q_OSCILLATORY_MODE_OBSERVABILITY",
+    "jarus_candidate_chi_bio": 0.21311451897468006
   },
   "stop_conditions": [
     "material scientific choice changes a frozen hypothesis/model/endpoint",
