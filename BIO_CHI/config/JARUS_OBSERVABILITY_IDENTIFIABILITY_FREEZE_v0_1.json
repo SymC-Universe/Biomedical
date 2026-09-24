@@ -1,0 +1,75 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "date": "2026-09-24",
+  "status": "FROZEN_P0Q_BEFORE_OBSERVABILITY_RESULT",
+  "authority": "SymC General Operations Manual v0.8.6",
+  "purpose": "P0-Q biological observability and identifiability qualification of the complete frozen six-state Jaruszewicz-Blonska NF-kB local generator before any chi_bio admission",
+  "parent_checkpoint": "BIO_CHI/control/CLOSURE_P0Q_CHECKPOINT_20260924.md",
+  "source_local_stability_artifact": {
+    "id": 10748186325,
+    "sha256": "7b17c4b2ec5c3cfd280eac48155903f329a57a1a62e4918ef4fcac4ed3aea7a9"
+  },
+  "source_structure_pin": "BIO_CHI/config/JARUS_SOURCE_STRUCTURE_PIN_v0_1.json",
+  "source_modal_inventory_pin": "BIO_CHI/config/JARUS_MODAL_INVENTORY_V01_RESULT_PIN.json",
+  "state_order": [
+    "IKKn",
+    "IKKa",
+    "free nuclear NF-kappaB",
+    "A20",
+    "free cytoplasmic IkappaBalpha",
+    "IkappaBalpha_t"
+  ],
+  "primary_observable": {
+    "name": "free nuclear NF-kappaB",
+    "state_index_one_based": 3,
+    "selection_vector": [0, 0, 1, 0, 0, 0],
+    "basis": "publication-native plotted biological output established before this gate"
+  },
+  "cases": [
+    "FIG8A_NOMINAL_DAMPED",
+    "FIG8B_LIMIT_CYCLE",
+    "FIG8C_RELAXATION_OSCILLATION"
+  ],
+  "jacobian_rule": {
+    "equilibrium_source": "immutable accepted root from local-stability v0.3 artifact",
+    "recomputation": "recompute the native six-state Jacobian from the pinned reduced equations at the immutable equilibrium",
+    "finite_difference_multipliers": [1.0, 0.5, 0.25],
+    "same_rule_as_prior_gate": true
+  },
+  "observability_tests": {
+    "full_state_rank": {
+      "matrix": "O = [C; C J_s; C J_s^2; ...; C J_s^5]",
+      "scaled_generator": "J_s = J / max(||J||_2, machine_safe_floor)",
+      "rank_method": "SVD",
+      "rank_tolerance": "max(O.shape) * eps * largest_singular_value",
+      "pass_rule": "rank(O) = 6 at all three frozen Jacobian step multipliers"
+    },
+    "mode_output_visibility": {
+      "definition": "|C v_j| / ||v_j||_2 for every right eigenvector v_j",
+      "all_modes_reported": true,
+      "promotion_threshold": null,
+      "role": "descriptive identifiability evidence only; no mode may be selected by largest visibility"
+    },
+    "complex_pair_consistency": {
+      "rule": "the already-identified unique nonreal conjugate pair must remain the same conjugate eigenspace across the three frozen numerical Jacobians",
+      "role": "necessary numerical identity check only"
+    }
+  },
+  "guards": {
+    "all_six_modes_preserved": true,
+    "no_mode_selected_by_result": true,
+    "no_chi_bio_value_used_in_observability_decision": true,
+    "no_trajectory_decay_fit_used_in_observability_decision": true,
+    "no_chi_equal_1_boundary_claim": true,
+    "no_universal_biology_claim": true,
+    "preserve_all_prior_failures": true
+  },
+  "adjudication": {
+    "PASS_LOCAL_OBSERVABILITY": "full six-state local generator is observable through the publication-native nuclear NF-kB output under the frozen rank rule at every Jacobian step",
+    "REFUSE_LOCAL_OBSERVABILITY": "rank deficiency occurs under at least one frozen Jacobian step",
+    "INDETERMINATE_NUMERICAL": "SVD/rank result is numerically inconsistent across frozen steps or nonfinite"
+  },
+  "next_if_pass": "freeze and execute a separate same-mode scalar trajectory qualification rule on source-native pulse protocols without changing the candidate mode or observable",
+  "next_if_fail": "retain Chi_bio as generator-level precursor only and refuse nuclear-NF-kB-based chi_bio qualification for this route"
+}
