@@ -1,0 +1,27 @@
+name: Bio Chi Jaruszewicz literal source check
+
+on:
+  push:
+    branches:
+      - chi-bio-recovery-p0d-20260922
+    paths:
+      - '.github/workflows/bio-chi-jarus-literal-source-check.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  literal-check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash BIO_CHI/src/prepare_jarus_matlab_compat.sh
+      - name: Print exact source equation and schedule blocks
+        run: |
+          set -euo pipefail
+          BASE="BIO_CHI/artifacts/generated/jarus_matlab_compat/source/S1_Codes/MATLAB files/Reduced2023"
+          sed -n '23,56p' "$BASE/reduced.m"
+          echo '--- SCHEDULE ---'
+          sed -n '24,84p' "$BASE/simulate_reduced.m"
