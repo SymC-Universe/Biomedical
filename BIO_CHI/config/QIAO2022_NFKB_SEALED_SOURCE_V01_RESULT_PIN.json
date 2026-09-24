@@ -1,0 +1,24 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Qiao 2022 NF-kB sealed-source inventory",
+  "workflow_run_id": 36031202760,
+  "workflow_head_sha": "315b3e8e55a33ff893efbd7ce90a3d7a6cd79aed",
+  "artifact_id": 10821267400,
+  "artifact_digest": "sha256:c12a8c181ab3ed9f472b9d9e4ae72f7aa1930999ea6aba5de1ad8b821a3e160f",
+  "status": "PASS_SEALED_SOURCE_INVENTORY",
+  "source_archive": {
+    "bytes": 193587,
+    "sha256": "c29694fdd748445d64c5d6b7d8734d8cb825713ed0f8daaa7b69651e82870298",
+    "member_count": 2
+  },
+  "members": [
+    "Robust oscillation-CV of period/cv_period_syntheticNFKB.m",
+    "Robust oscillation-CV of period/oscillation_data.mat"
+  ],
+  "data_open_state": {
+    "numeric_mat_opened": false,
+    "method_script_may_be_inspected": true
+  },
+  "interpretation": "Exact public source archive is frozen. Numeric NF-kB values remain sealed; only the non-data method script may be opened next to establish provenance and acquisition semantics."
+}
