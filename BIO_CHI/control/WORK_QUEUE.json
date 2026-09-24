@@ -2,7 +2,7 @@
   "schema_version": "0.1",
   "project": "Bio Chi Investigation",
   "authority": "SymC GOM v0.8.6 + Bio Chi project-specific three-object nomenclature decision 2026-09-23",
-  "branch": "chi-bio-recovery-p0d-20260922",
+  "branch": "bio-chi-closure-p0q-20260924",
   "continuation_policy": {
     "resume_from_checkpoint": true,
     "mechanical_blockers_are_stop_conditions": false,
@@ -33,7 +33,7 @@
     {
       "id": "Q3",
       "name": "known_truth_qualification_system",
-      "status": "active_blum_native_observable_reproduced_observability_identifiability_gate_pending"
+      "status": "active_blum_B3_publication_selected_transport_native_reproduction_preflight"
     },
     {
       "id": "Q4",
@@ -53,7 +53,7 @@
     {
       "id": "Q7",
       "name": "Bio_Chi_conglomerate_track",
-      "status": "active_joint_meaning_local_vs_realized_behavior_qualification"
+      "status": "model_specific_P0Q_admitted_NFkB_broad_transport_pending"
     },
     {
       "id": "Q8",
@@ -107,7 +107,7 @@
       "su_next": "freeze exact processed-expression file identity/hash before opening values",
       "rehman_next": "seek exact author analysis code/source implementation for Figure 4 PCA; otherwise preserve exact-native-method under-specification",
       "harmange_next": "map lineage/barcode carrier correspondence from source documentation without opening target outcomes",
-      "blum_next": "P0-Q observability/identifiability qualification of publication-native EKAR trajectory representation before any reduced-state or chi_bio construction"
+      "blum_next": "reproduce publication-selected B3 Figure-7 native deterministic trajectory from frozen source before any ERK generator spectrum is opened"
     },
     "scientific_stop_before": "inventing a missing native implementation detail, changing a frozen representation/endpoint, promoting a testbed based on agreement, or admitting chi_bio/Chi_bio/Bio Chi"
   },
@@ -140,10 +140,11 @@
     "full_state_representation_control_max_observed_relative_complex_difference": 3.9989097652916227e-10,
     "chi_bio_constructed": true,
     "Chi_bio_admitted": true,
-    "Bio_Chi_constructed": false,
-    "next_gate": "joint chi_bio <-> Chi_bio meaning and local-vs-realized-behavior qualification, then publication-selected Blum B3 transport if warranted",
+    "Bio_Chi_constructed": true,
+    "next_gate": "publication-selected Blum B3 independent cross-system transport: native trajectory reproduction, stoichiometric-subspace generator audit, scalar/modal/system refusal-or-admission",
     "chi_bio_model_specific_status": "P0Q_SUPPORTED_MODEL_SPECIFIC",
-    "Chi_bio_model_specific_status": "P0Q_ADMITTED_MODEL_SPECIFIC"
+    "Chi_bio_model_specific_status": "P0Q_ADMITTED_MODEL_SPECIFIC",
+    "Bio_Chi_model_specific_status": "P0Q_ADMITTED_MODEL_SPECIFIC"
   },
   "stop_conditions": [
     "material scientific choice changes a frozen hypothesis/model/endpoint",
