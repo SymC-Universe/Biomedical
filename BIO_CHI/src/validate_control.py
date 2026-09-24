@@ -23,6 +23,10 @@ ALLOWED_QUEUE_STATUS_PREFIXES = {
     "active",
     "pending",
     "not_open",
+    "p0d",
+    "p0q",
+    "p1",
+    "p2",
 }
 
 def fail(msg: str) -> None:
