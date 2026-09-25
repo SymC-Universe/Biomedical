@@ -59,9 +59,10 @@ def _download(url: str, path: Path) -> None:
 def _resolve_annex_identity(
     repository: str,
     commit: str,
-    eeg_path: str,
+    source_path: str,
+    extension: str,
 ) -> dict[str, object]:
-    encoded = urllib.parse.quote(eeg_path, safe="/")
+    encoded = urllib.parse.quote(source_path, safe="/")
     api_url = (
         f"https://api.github.com/repos/{repository}/contents/{encoded}"
         f"?ref={commit}"
@@ -78,11 +79,16 @@ def _resolve_annex_identity(
         target = payload
 
     if not target:
-        raise ValueError(f"could not resolve git-annex target for {eeg_path}")
+        raise ValueError(f"could not resolve git-annex target for {source_path}")
 
-    match = re.search(r"MD5E-s(\d+)--([0-9a-fA-F]{32})\.eeg", str(target))
+    match = re.search(
+        rf"MD5E-s(\\d+)--([0-9a-fA-F]{{32}})\\.{re.escape(extension)}",
+        str(target),
+    )
     if not match:
-        raise ValueError(f"unrecognized git-annex target for {eeg_path}: {target}")
+        raise ValueError(
+            f"unrecognized git-annex target for {source_path}: {target}"
+        )
 
     return {
         "git_annex_target": str(target),
@@ -104,31 +110,48 @@ def _recording(
     mirror = source_release["nemar_mirror"]
     base = f"{subject}/{session}/eeg/{subject}_{session}_task-{task}_eeg"
 
-    raw_base = f"https://raw.githubusercontent.com/{repository}/{commit}/{base}"
     nemar_base = f"https://data.nemar.org/{mirror}/{base}"
 
-    vhdr_path = root / f"{subject}__{session}__{task}.vhdr"
-    vmrk_path = root / f"{subject}__{session}__{task}.vmrk"
-    eeg_path = root / f"{subject}__{session}__{task}.eeg"
+    local_paths = {
+        "vhdr": root / f"{subject}__{session}__{task}.vhdr",
+        "vmrk": root / f"{subject}__{session}__{task}.vmrk",
+        "eeg": root / f"{subject}__{session}__{task}.eeg",
+    }
+    identities = {}
 
-    vhdr_path.write_bytes(_request_bytes(raw_base + ".vhdr"))
-    vmrk_path.write_bytes(_request_bytes(raw_base + ".vmrk"))
-
-    annex = _resolve_annex_identity(repository, commit, base + ".eeg")
-    _download(nemar_base + ".eeg", eeg_path)
-
-    observed_size = eeg_path.stat().st_size
-    observed_md5 = _hash(eeg_path, "md5")
-    if observed_size != int(annex["expected_size_bytes"]):
-        raise ValueError(
-            f"{subject} {session}: EEG size mismatch "
-            f"{observed_size} != {annex['expected_size_bytes']}"
+    for extension in ("vhdr", "vmrk", "eeg"):
+        source_path = base + "." + extension
+        annex = _resolve_annex_identity(
+            repository,
+            commit,
+            source_path,
+            extension,
         )
-    if observed_md5 != str(annex["expected_md5"]):
-        raise ValueError(
-            f"{subject} {session}: EEG MD5 mismatch "
-            f"{observed_md5} != {annex['expected_md5']}"
-        )
+        _download(nemar_base + "." + extension, local_paths[extension])
+
+        observed_size = local_paths[extension].stat().st_size
+        observed_md5 = _hash(local_paths[extension], "md5")
+        if observed_size != int(annex["expected_size_bytes"]):
+            raise ValueError(
+                f"{subject} {session} {extension}: size mismatch "
+                f"{observed_size} != {annex['expected_size_bytes']}"
+            )
+        if observed_md5 != str(annex["expected_md5"]):
+            raise ValueError(
+                f"{subject} {session} {extension}: MD5 mismatch "
+                f"{observed_md5} != {annex['expected_md5']}"
+            )
+
+        identities[extension] = {
+            **annex,
+            "observed_size_bytes": observed_size,
+            "observed_md5": observed_md5,
+            "sha256": _hash(local_paths[extension], "sha256"),
+        }
+
+    vhdr_path = local_paths["vhdr"]
+    vmrk_path = local_paths["vmrk"]
+    eeg_path = local_paths["eeg"]
 
     header = _parse_vhdr(vhdr_path)
     if int(header["number_of_channels"]) != 61:
@@ -160,14 +183,7 @@ def _recording(
         "log_psd": np.asarray(log_psd, dtype=float),
         "source_identity": {
             "base": base,
-            "eeg_expected_size_bytes": annex["expected_size_bytes"],
-            "eeg_observed_size_bytes": observed_size,
-            "eeg_expected_md5": annex["expected_md5"],
-            "eeg_observed_md5": observed_md5,
-            "eeg_sha256": _hash(eeg_path, "sha256"),
-            "vhdr_sha256": _hash(vhdr_path, "sha256"),
-            "vmrk_sha256": _hash(vmrk_path, "sha256"),
-            "git_annex_target": annex["git_annex_target"],
+            "files": identities,
             "d4_pass": True,
         },
     }
