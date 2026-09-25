@@ -1,0 +1,19 @@
+{
+  "schema_version":"0.1",
+  "project":"Bio Chi Investigation",
+  "gate":"Marsolier source-native processed-object schema freeze",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "workflow_run_id":36091445308,
+  "workflow_head_sha":"d15e716c6a2cf1c830af813ba9bcbfab4a8b27e1",
+  "artifact_id":10845668082,
+  "artifact_digest":"sha256:d9c689a3900302f34f8e8f9ca74d048eb477f74f922dd0ff332eafb8d2375d78",
+  "status":"PASS_RDATA_SCHEMA_AUDIT",
+  "objects":{
+    "persister_metadata":{"rows":36966,"cols":24,"sha256":"83666f8d75965cf215a306278f71d03adbfa96fa688a6c4f36a70f6569b3e2fe","required_columns_present":["cell_id","sample_id","cons_BC_lenti","louvain_partition","CDH2"]},
+    "persister_pca":{"rows":36966,"pcs":50,"sha256":"79a244bae180a9fc9ad7663a9faaf93c0cb1c3b1e960a7cbdd9426ee9570f00d"},
+    "unc5fu_metadata":{"rows":24149,"cols":19,"sha256":"c92e431a717d88b154d6b39f09ddcc63ade2cab9165c35f2ad2c638efb9917dc","required_columns_present":["cell_id","sample_id","cons_BC_lenti","louvain_partition","CDH2"]},
+    "unc5fu_pca":{"rows":24149,"pcs":50,"sha256":"21ce11bc0fa188f6f6e6fce2862c52c4587b41dce664413495d2fbae2d307b70"}
+  },
+  "scientific_values_recorded":false,
+  "next_gate":"execute the already-frozen Marsolier top-down lineage-inheritance and intervention analyses"
+}
