@@ -61,7 +61,8 @@ with zipfile.ZipFile(ROOT/"mmc2.zip") as z:
         if i.filename.lower().endswith(".csv"):
             raw = z.read(i.filename).decode("utf-8","replace").splitlines()
             rec["line_count"] = len(raw)
-            rec["header"] = raw[0].split(",") if raw else []
+            rec["column_count"] = len(raw[0].split(",")) if raw else 0
+            rec["headerless_numeric_matrix"] = True
         members.append(rec)
     report["files"]["data_s1"]["members"] = members
 
@@ -136,8 +137,8 @@ for sh in report["files"]["table_s3"].get("sheets",[]):
 md += ["","## Data S1 archive members"]
 for i in report["files"]["data_s1"]["members"]:
     md.append(f"- `{i['name']}` ({i['bytes']} bytes; {i.get('line_count','?')} lines)")
-    if "header" in i:
-        md.append(f"  - header: `{i['header']}`")
+    if i.get("headerless_numeric_matrix"):
+        md.append(f"  - headerless numeric matrix; columns: `{i.get('column_count',0)}`")
 md += ["","## GEO supplementary metadata"]
 for line in report["geo"].get("supplementary_file_lines",[]):
     md.append(f"- `{line}`")
