@@ -198,3 +198,20 @@ Expected:
 - two pair-level Limit Map excursions retained rather than hidden by the state median.
 
 Interpretation: the frozen descriptive representation transported to this independent one-subject source at the state-median level without retuning. The result remains P0-Q and does not license modal damping, lowercase chi, capital Chi, diagnosis, recovery, or population inference.
+
+
+## V9. Verify checkpoint continuation
+
+[CLAIM] NSD checkpoints automatically hand off to the next already-justified experiment rather than waiting for a new user prompt.
+
+Required behavior:
+- checkpoint state and result ceiling are committed before continuation;
+- mechanical blockers are repaired without changing frozen science;
+- failures/outliers receive root-cause and anomaly disposition;
+- the next experiment is prospectively frozen before its target outcome is opened;
+- execution stops only at a genuine scientific decision boundary.
+
+Current continuation:
+`ds004148 corrected descriptive transfer -> ds004148 eyes-open spatial/state localization`.
+
+Interpretation: this is an operations/reproducibility rule. It cannot be used to silently enlarge scientific claims or retune an experiment after seeing its result.
