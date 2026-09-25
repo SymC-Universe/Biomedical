@@ -133,3 +133,18 @@ Required manuscript ceiling:
 - state explicitly that one independent subject prevents population generalization.
 
 Source prose and complete values: `DS004148_DESCRIPTIVE_TRANSFER_POSTRESULT_v0.2.md`.
+
+
+## PRI-NSD-10 — Spatial localization and independent-subject replication
+
+Target manuscript: healthy/reference Function-Limit transfer section in the private active manuscript.
+
+Spatial localization evidence is closed:
+- workflow run `36139756523`;
+- artifact `nsd-ds004148-spatial-localization-suite-v0-1`;
+- target 11/21 high-shift eligible channels;
+- session1-session3 10/19 and session2-session3 11/21 versus session1-session2 8/35;
+- model-family instability in 8/11 target high-shift channels;
+- result remains descriptive P0-D.
+
+The next insertion remains blocked until the untouched MFR-14 replication closes. Do not turn the sub-01 localization into a subject-level generalization before that result exists.
