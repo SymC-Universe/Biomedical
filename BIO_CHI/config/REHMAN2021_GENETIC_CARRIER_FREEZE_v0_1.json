@@ -1,0 +1,62 @@
+{
+  "schema_version":"0.1",
+  "project":"Bio Chi Investigation",
+  "gate":"Rehman POP66 genetic carrier persistence layer",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "evidence_role":"POSTRESULT_P0Q_CARRIER_QUALIFICATION",
+  "reason_postresult":"The source paper's genetic-selection conclusion is known and a few SSM rows were inspected during source qualification; this gate cannot become P1 confirmation.",
+  "source":{
+    "repository":"morrislab/crc-dtp-ith-analysis",
+    "commit":"61edd1800beef76a73c8d491149a34beda732afd",
+    "combined_params_path":"inputs.nocna.combined/POP66.params.json",
+    "combined_params_blob":"342d2d344a8fb2f2e77ac35d0b98655b641a362a",
+    "combined_ssm_path":"inputs.nocna.combined/POP66.ssm",
+    "combined_ssm_blob":"de3655162836447570f62a9d27b528f7919c4afb"
+  },
+  "source_sample_order":[
+    "Patient (P0)",
+    "Xenograft (G0)",
+    "Vehicle tumor 1",
+    "Vehicle tumor 2",
+    "CPT-11 Regrowth",
+    "CPT-11 Resistant #1",
+    "CPT-11 Resistant #2",
+    "CPT-11 Resistant #3"
+  ],
+  "mutation_rows":{
+    "include":"all combined POP66 SSM mutation rows except source-declared garbage IDs",
+    "source_declared_garbage":["s44","s66"],
+    "vaf":"var_reads/total_reads",
+    "zero_total_reads":"refuse row if any required sample has total_reads <=0"
+  },
+  "primary_baseline":{
+    "samples":["Patient (P0)","Xenograft (G0)","Vehicle tumor 1","Vehicle tumor 2"],
+    "centroid":"mutation-wise arithmetic mean VAF"
+  },
+  "baseline_sensitivity":{
+    "samples":["Vehicle tumor 1","Vehicle tumor 2"],
+    "centroid":"mutation-wise arithmetic mean VAF"
+  },
+  "posttreatment_samples":{
+    "recovery":["CPT-11 Regrowth"],
+    "resistant":["CPT-11 Resistant #1","CPT-11 Resistant #2","CPT-11 Resistant #3"]
+  },
+  "metrics":{
+    "primary":"RMS VAF deviation from frozen baseline centroid across all retained mutations",
+    "secondary":["1-Pearson correlation to baseline centroid","median absolute VAF deviation from baseline centroid"],
+    "descriptive_carrier_gate":"regrowth must be closer to baseline than each of the three resistant samples on the primary RMS metric in both primary and vehicle-only baseline definitions",
+    "no_p_value":"Only one regrowth genetic sample exists in the combined source; no inferential p-value is manufactured."
+  },
+  "cross_level_adjudication":{
+    "if_carrier_gate_passes":"supports descriptive substrate/carrier persistence accompanying functional recovery despite mixed transcriptomic modal reorganization",
+    "if_carrier_gate_fails":"carrier persistence is not established by direct VAF geometry and the cross-level Bio Chi interpretation remains RNA/behavior-only",
+    "heldout_prediction_claim":false
+  },
+  "forbidden":[
+    "claim exact MATH reproduction",
+    "infer clone frequencies from SSM without running the source Pairtree model",
+    "select mutation subsets based on regrowth versus resistant separation",
+    "construct a scalar chi from VAF geometry"
+  ],
+  "status":"FROZEN_BEFORE_FULL_SSM_NUMERIC_ANALYSIS"
+}
