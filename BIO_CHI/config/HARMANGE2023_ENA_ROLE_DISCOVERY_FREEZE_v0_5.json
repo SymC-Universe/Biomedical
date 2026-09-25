@@ -1,0 +1,27 @@
+{
+  "schema_version":"0.5",
+  "project":"Bio Chi Investigation",
+  "gate":"Harmange 2023 ENA run-level source-role discovery repair",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "bioproject":"PRJNA994430",
+  "sra_study":"SRP449288",
+  "expected_runs":23,
+  "query_fields":[
+    "run_accession","experiment_accession","sample_accession","secondary_sample_accession",
+    "study_accession","secondary_study_accession","sample_title","experiment_title",
+    "library_name","library_strategy","library_source","library_selection","library_layout",
+    "instrument_platform","instrument_model","scientific_name","base_count","read_count","first_public"
+  ],
+  "permitted_operations":[
+    "query ENA portal read_run metadata for PRJNA994430",
+    "record source metadata fields only",
+    "identify metadata-defined lineage/barcode/lentiviral/feature-barcode runs or experiments by literal source text",
+    "do not retrieve FASTQ or sequence payloads"
+  ],
+  "forbidden_operations":[
+    "download sequencing reads",
+    "inspect sequence content",
+    "infer lineage identity from transcriptomic outcomes"
+  ],
+  "status":"FROZEN_BEFORE_ENA_METADATA_QUERY"
+}
