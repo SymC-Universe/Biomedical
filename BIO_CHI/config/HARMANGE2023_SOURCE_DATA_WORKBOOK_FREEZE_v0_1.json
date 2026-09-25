@@ -1,0 +1,26 @@
+{
+  "schema_version":"0.1",
+  "project":"Bio Chi Investigation",
+  "gate":"Harmange 2023 Nature Source Data workbook byte freeze and text-only schema inventory",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "source":{
+    "filename":"41467_2023_41811_MOESM8_ESM.xlsx",
+    "url":"https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41467-023-41811-8/MediaObjects/41467_2023_41811_MOESM8_ESM.xlsx",
+    "caltech_record":"1xbbf-adg66",
+    "reported_md5":"63f82b375e63ca842001fd4697f871cb",
+    "reported_size_kb":563.1
+  },
+  "permitted_operations":[
+    "download exact workbook bytes",
+    "verify MD5 and compute SHA-256/byte size",
+    "open workbook read-only",
+    "record sheet names, dimensions and non-empty string cell values with coordinates",
+    "replace numeric, formula, date, boolean and error cells with type markers without recording their values"
+  ],
+  "forbidden_operations":[
+    "record numeric source-data values",
+    "compute treatment effects",
+    "select a favorable figure/sheet based on numerical outcomes"
+  ],
+  "status":"FROZEN_BEFORE_SOURCE_DATA_VALUES"
+}
