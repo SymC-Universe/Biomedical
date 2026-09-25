@@ -1,0 +1,23 @@
+{
+  "schema_version":"0.4",
+  "project":"Bio Chi Investigation",
+  "gate":"Harmange 2023 SRA run-level source-role discovery",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "bioproject":"PRJNA994430",
+  "sra_study":"SRP449288",
+  "expected_geo_samples":22,
+  "expected_sra_runs":23,
+  "permitted_operations":[
+    "download NCBI SRA RunInfo metadata for the frozen BioProject/study",
+    "record run, experiment, sample, BioSample, library name, library strategy, library source, library selection, platform, model, spots, bases and submitted sample title fields",
+    "identify metadata-defined runs or experiments whose names/descriptions contain lineage, barcode, lentiviral, feature-barcode or related source terms",
+    "do not download or read sequencing reads"
+  ],
+  "forbidden_operations":[
+    "download FASTQ/SRA read payloads",
+    "inspect sequence content",
+    "infer lineage identity from expression outcomes"
+  ],
+  "qualification_question":"Does the 23-run SRA hierarchy expose a distinct lineage/barcode sequencing library or explicit run-level mapping omitted from the GEO processed metadata?",
+  "status":"FROZEN_BEFORE_SRA_RUNINFO"
+}
