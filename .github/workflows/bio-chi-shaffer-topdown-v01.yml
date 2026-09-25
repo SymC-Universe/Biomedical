@@ -1,0 +1,33 @@
+name: Bio Chi Shaffer top-down analysis v0.1
+on:
+  push:
+    branches: [bio-chi-topdown-pivot-20260924]
+    paths:
+      - 'BIO_CHI/config/SHAFFER2017_TOPDOWN_EVENT_FREEZE_v0_1.json'
+      - 'BIO_CHI/src/analyze_shaffer2017_topdown_v0_1.py'
+      - '.github/workflows/bio-chi-shaffer-topdown-v01.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  analyze:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependency
+        run: python -m pip install --disable-pip-version-check numpy==2.3.3
+      - name: Run frozen Shaffer top-down recovery analysis
+        run: python BIO_CHI/src/analyze_shaffer2017_topdown_v0_1.py
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_SHAFFER_TOPDOWN_V01
+          path: |
+            BIO_CHI/artifacts/generated/shaffer2017_topdown_analysis_v0_1.json
+            BIO_CHI/artifacts/generated/SHAFFER2017_TOPDOWN_ANALYSIS_V01_AUDIT.md
+          if-no-files-found: error
