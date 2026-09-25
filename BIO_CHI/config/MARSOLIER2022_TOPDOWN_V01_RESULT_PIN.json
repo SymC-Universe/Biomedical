@@ -1,0 +1,43 @@
+{
+  "schema_version":"0.1",
+  "project":"Bio Chi Investigation",
+  "gate":"Marsolier 2022 top-down substrate-conditioned persistence/inheritance analysis",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "workflow_run_id":36091719356,
+  "workflow_head_sha":"e4bc4c9c9ab9d4276fca66517990f2e4c51f5d6c",
+  "artifact_id":10845907169,
+  "artifact_digest":"sha256:300ca27190f04eb3eb2f4989f3e654a2dd6affaa7e81d384dd1e34d458707f04",
+  "status":"PASS_ANALYSIS_EXECUTED_WITH_NEGATIVE_PRIMARY_GATES",
+  "bio_chi":{
+    "status":"P0Q_SUBSTRATE_CONDITIONED_LINEAGE_FATE_NOT_REPRODUCED_IN_FROZEN_SINGLE_CELL_GATE",
+    "matched_pair_1_delta_unique_fraction":-0.04248575270538513,
+    "matched_pair_2_delta_unique_fraction":0.0268056589724498,
+    "directional_gate":false
+  },
+  "modal":{
+    "status":"P0Q_BASELINE_TRANSCRIPTOMIC_MODAL_INHERITANCE_NOT_DETECTED",
+    "retained_pc_count":22,
+    "cumulative_variance":0.8016014822062397,
+    "future_persister_lineages":46,
+    "nonpersisting_lineages":98,
+    "centroid_distance":0.8633974684467087,
+    "permutation_p":0.37806219378062195,
+    "leave_one_lineage_out_balanced_accuracy":0.45252883762200535,
+    "balanced_accuracy_permutation_p":0.785921407859214
+  },
+  "intervention_modal":{
+    "matched_centroid_distances":[5.4819591386646,2.707397073935129],
+    "chemonaive_comparator_distance":3.309176488864819,
+    "role":"descriptive_only_no_directional_success_rule"
+  },
+  "source_native_sensitivity":{
+    "CDH2_high_partition_test":"NOT_EVALUABLE",
+    "reason":"all partition median CDH2 values were tied at zero; frozen tie rule selected C1 but one matched sample had only 4 barcoded cells, below the frozen minimum"
+  },
+  "scalar":{
+    "opened":false,
+    "disposition":"SCALAR_NOT_REQUIRED_AND_NOT_LICENSED"
+  },
+  "claim_ceiling":"P0-Q source-native processed-object qualification only; negative frozen single-cell gates do not refute the broader paper biology",
+  "next_gate":"close Marsolier lineage and re-run the top-down system selector excluding completed Rehman and Marsolier lineages"
+}
