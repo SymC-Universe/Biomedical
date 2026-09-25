@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0",
+  "project": "Bio Chi Investigation",
+  "record_type": "ERK_B3_MODAL_LINEAGE",
+  "date": "2026-09-24",
+  "authority": "SymC General Operations Manual v0.8.6",
+  "current_branch": "bio-chi-erk-modal-v2-p0q-20260924",
+  "system": "Blum 2019 publication-selected deterministic B3 ERK model",
+  "lineage_status": "CLOSED_AFTER_V2_REFUSAL_WITH_LIMITS_PRESERVED",
+  "stages": [
+    {
+      "stage": "L0_SOURCE_SELECTION",
+      "status": "PASS",
+      "record": "BIO_CHI/config/BLUM_B3_TRANSPORT_SOURCE_FREEZE_v0_2.json",
+      "finding": "Publication-selected B3 topology, source commit/tree/blobs, parameter lanes, state order, and deterministic FRET output frozen before SymC spectrum analysis."
+    },
+    {
+      "stage": "L1_NATIVE_REPRODUCTION_V01",
+      "status": "MECHANICAL_PRE_RESULT_FAILURE",
+      "workflow_run_id": 36058688918,
+      "finding": "Source time-grid assertion failed before solver execution or trajectory result opening; preserved as mechanical evidence."
+    },
+    {
+      "stage": "L2_NATIVE_REPRODUCTION_V02",
+      "status": "PASS_NATIVE_B3_TRAJECTORY_REPRODUCTION",
+      "record": "BIO_CHI/config/BLUM_B3_NATIVE_REPRODUCTION_V02_RESULT_PIN.json",
+      "workflow_run_id": 36058880837,
+      "artifact_id": 10833771181,
+      "finding": "All 15 source-native latent states reproduced over the frozen sustained-FGF trajectory within the predeclared numeric thresholds."
+    },
+    {
+      "stage": "L3_GENERATOR_V01",
+      "status": "REFUSE_B3_MODAL_NUMERICAL_CONDITIONING",
+      "record": "BIO_CHI/config/BLUM_B3_GENERATOR_TRANSPORT_V01_RESULT_PIN.json",
+      "finding": "Finite-difference derivative route failed its frozen numerical consistency rule. Failure retained and not reclassified."
+    },
+    {
+      "stage": "L4_GENERATOR_V02_ANALYTIC",
+      "status": "PASS_B3_GENERATOR_MODAL_QUALIFICATION",
+      "record": "BIO_CHI/config/BLUM_B3_GENERATOR_TRANSPORT_V02_RESULT_PIN.json",
+      "workflow_run_id": 36059720897,
+      "artifact_id": 10834131756,
+      "scalar_transport_status": "SCALAR_TRANSPORT_PRESENT",
+      "finding": "Analytic reaction-network Jacobian independently matched complex-step differentiation; 8D stoichiometric dynamic generator qualified; all frozen contexts fully FRET-observable; one or more licensed complex chi_bio factors present in both source-defined parameter lanes under common inputs."
+    },
+    {
+      "stage": "L5_MODAL_ROUNDTRIP_V1",
+      "status": "FAIL_B3_FULL_MODAL_LOCAL_ROUNDTRIP",
+      "record": "BIO_CHI/config/BLUM_B3_LOCAL_NONLINEAR_ROUNDTRIP_V01_RESULT_PIN.json",
+      "workflow_run_id": 36060135051,
+      "artifact_id": 10834690057,
+      "finding": "Every FRET-visible complex-pair lane passed, but the complete 8D frozen fixed-stoichiometric-direction round-trip failed in every context.",
+      "limit_record": "BIO_CHI/config/ERK_B3_LIMIT_MAP_V01.json"
+    },
+    {
+      "stage": "L6_USER_AUTHORIZED_MODAL_V2",
+      "status": "FROZEN_NEW_P0Q_LINEAGE",
+      "record": "BIO_CHI/config/ERK_B3_INVARIANT_MODAL_V2_FREEZE_v0_1.json",
+      "finding": "After preserving v1 as a Limit Map, a distinct question was opened: test every natural invariant modal carrier rather than arbitrary spanning directions. Same primary amplitude-convergence rule retained."
+    },
+    {
+      "stage": "L7_INVARIANT_MODAL_V2",
+      "status": "FAIL_ERK_COMPLEX_SUBSPACE_ROUNDTRIP_V2",
+      "record": "BIO_CHI/config/ERK_B3_INVARIANT_MODAL_V2_RESULT_PIN.json",
+      "workflow_run_id": 36077741838,
+      "artifact_id": 10840389755,
+      "finding": "52/64 frozen modal directions passed; 15/25 carrier-context records passed. Real-mode failures remained and two complex-pair subspaces failed one frozen negative-real direction in the FGF=250 contexts. Complete ERK Chi_bio admission remained refused."
+    }
+  ],
+  "current_object_disposition": {
+    "chi_bio": {
+      "cross_system_representation_class": "SUPPORTED_AT_P0Q_BETWEEN_NFkB_AND_ERK",
+      "numeric_value_invariance": "NOT_SUPPORTED_OR_REQUIRED",
+      "ERK_generator_licensing": "SUPPORTED",
+      "ERK_local_nonlinear_qualification": "SUPPORTED_FOR_V1_FRET_PHASE_PAIR_LANES_BUT_NOT_UNIFORM_ACROSS_ALL_V2_COMPLEX_SUBSPACE_DIRECTIONS",
+      "claim_ceiling": "Mode-specific local scalar representation class with explicit context and directional nonlinear limits; no system scalar and no biological chi=1 boundary."
+    },
+    "Chi_bio": {
+      "NFkB_model_specific": "P0Q_ADMITTED",
+      "ERK_generator_precursor": "QUALIFIED",
+      "ERK_v1_complete_modal_admission": "REFUSED",
+      "ERK_v2_invariant_modal_admission": "REFUSED",
+      "cross_system_transport": "NOT_ESTABLISHED"
+    },
+    "Bio_Chi": {
+      "NFkB_model_specific": "P0Q_ADMITTED",
+      "ERK_cross_system_transport": "NOT_OPENED",
+      "reason": "ERK modal layer did not earn admission under either v1 or v2."
+    }
+  },
+  "combined_limit_map": {
+    "v1_limit": "Complete 8D local linear adequacy does not hold uniformly across the frozen arbitrary source-stoichiometric directions at the tested amplitudes.",
+    "v2_limit": "Natural invariant modal carriers also do not show uniform local nonlinear round-trip adequacy under the stricter all-sign/all-subspace-direction rule.",
+    "shared_information": "ERK local linear structure is strongly informative but its nonlinear adequacy is direction- and context-dependent at the frozen perturbation scales.",
+    "specific_v2_pattern": "The only complex-pair subspace failures occur at FGF=250; many failed comparisons occur at very small relative errors and worsen again at 1e-5, consistent with a numerical-floor or stiffness interaction, but the frozen rules remain failures."
+  },
+  "scientific_lineage_interpretation": "Across this ERK lineage, the generator-derived mode-specific scalar construction transports more readily than complete modal nonlinear closure. The result supports separation of scalar, modal, and realized-system layers: success at one layer neither guarantees nor rescues another. The v1 and v2 failures are complementary limits, not contradictory analyses.",
+  "promotion_debt": [
+    "No P1 confirmation has been performed.",
+    "Any future ERK modal lineage must cite both v1 and v2 failures.",
+    "A third ERK representation may not be selected solely because it is expected to remove the observed failures.",
+    "Any claim that the failures are merely numerical requires a separately frozen numerical-resolution investigation and cannot retroactively change either result.",
+    "Cross-system Bio Chi transport remains closed until an independent system earns both modal and system-layer admission."
+  ],
+  "lineage_close_rule": "No third ERK modal representation is opened in this cycle. The lineage closes with scalar-class transport supported, ERK modal admission refused under two distinct qualification questions, and both limits retained."
+}
