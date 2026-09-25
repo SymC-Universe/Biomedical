@@ -1,0 +1,82 @@
+{
+  "schema_version":"0.1",
+  "project":"Bio Chi Investigation",
+  "lineage":"shaffer2017_topdown_wm989_holiday",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "evidence_tier":"P0-Q",
+  "source":{
+    "paper":"Shaffer et al. 2017 melanoma rare-cell variability and drug-induced reprogramming",
+    "geo":"GSE97681",
+    "processed_file":"GSE97681_wm9LdB_star_HTSeqCounts_full.tsv.gz",
+    "processed_sha256":"243aeec0b7cf196fd74182636c6c6e07e37beda7f4f40f8699bbf7992a0da376"
+  },
+  "bio_chi_event":{
+    "phenomenon":"transcriptomic recovery versus reorganization during a source-defined drug holiday",
+    "system":"WM989 melanoma subclones",
+    "baseline":"source-defined NoDrug state for the same subclone",
+    "perturbation":"source-defined Drug state",
+    "post_perturbation_states":["48hrholiday","7dayholiday"],
+    "return_target":"same-subclone NoDrug state",
+    "primary_question":"After drug removal, does each source-defined subclone move back toward its own NoDrug transcriptomic state by day 7?"
+  },
+  "carriers":{
+    "E3":{
+      "baseline":{"accession":"GSM2575312","title":"A6_ColonyE3_NoDrug"},
+      "lanes":[
+        {"lane":"E3_A4","drug":{"accession":"GSM2575324","title":"ColonyE3-WellA4-drug"},"holiday48":{"accession":"GSM2575322","title":"ColonyE3-WellA4-48hrholiday"},"holiday7":{"accession":"GSM2575323","title":"ColonyE3-WellA4-7dayholiday"}}
+      ]
+    },
+    "G3":{
+      "baseline":{"accession":"GSM2575316","title":"A6_ColonyG3_NoDrug"},
+      "lanes":[
+        {"lane":"G3_B6","drug":{"accession":"GSM2575329","title":"ColonyG3-WellB6-drug"},"holiday48":{"accession":"GSM2575327","title":"ColonyG3-WellB6-48hrholiday"},"holiday7":{"accession":"GSM2575328","title":"ColonyG3-WellB6-7dayholiday"}},
+        {"lane":"G3_C6","drug":{"accession":"GSM2575332","title":"ColonyG3-WellC6-drug"},"holiday48":{"accession":"GSM2575330","title":"ColonyG3-WellC6-48hrholiday"},"holiday7":{"accession":"GSM2575331","title":"ColonyG3-WellC6-7dayholiday"}}
+      ]
+    },
+    "H1":{
+      "baseline":{"accession":"GSM2575318","title":"A6_ColonyH1_NoDrug"},
+      "lanes":[
+        {"lane":"H1_A3","drug":{"accession":"GSM2575335","title":"ColonyH1-WellA3-drug"},"holiday48":{"accession":"GSM2575333","title":"ColonyH1-WellA3-48hrholiday"},"holiday7":{"accession":"GSM2575334","title":"ColonyH1-WellA3-7dayholiday"}},
+        {"lane":"H1_D5","drug":{"accession":"GSM2575340","title":"ColonyH1-WellD5-drug"},"holiday48":{"accession":"GSM2575338","title":"ColonyH1-WellD5-48hrholiday"},"holiday7":{"accession":"GSM2575339","title":"ColonyH1-WellD5-7dayholiday"}}
+      ]
+    }
+  },
+  "expression_processing":{
+    "input_format":"long table experiment,sampleID,gene_id,counts",
+    "selected_samples_only":true,
+    "duplicate_gene_sample_rows":"FAIL",
+    "special_HTSeq_rows":"exclude gene_id beginning with __",
+    "library_normalization":"CPM",
+    "gene_filter":"CPM >= 1 in at least 3 of the 18 unique frozen samples",
+    "transform":"log2(CPM + 1)"
+  },
+  "whole_event_primary":{
+    "distance":"1 - Pearson correlation to same-subclone NoDrug baseline",
+    "lane_metrics":["drug_distance","holiday48_distance","holiday7_distance","return48=1-holiday48/drug","return7=1-holiday7/drug"],
+    "carrier_aggregation":"mean each distance across same-subclone lanes before primary gate",
+    "primary_gate":"all three subclones have mean holiday7 distance < mean drug distance",
+    "exact_sign_test":"one-sided across 3 subclones; p=0.125 if all three improve; resolution diagnostic only",
+    "temporal_secondary":"report whether holiday48 improves versus drug and whether holiday7 improves versus holiday48 for each lane and carrier; not required for primary pass"
+  },
+  "whole_event_sensitivity":{
+    "distance":"Euclidean after per-gene z-scaling across the 18 frozen samples; remove zero-variance genes",
+    "role":"directional robustness only; no independent promotion"
+  },
+  "modal_gate":{
+    "basis":"centered SVD/PCA of the 18 frozen logCPM samples; no outcome labels used to fit basis",
+    "retention":"minimum leading PCs explaining at least 80% cumulative variance",
+    "distance":"Euclidean distance in retained-PC score space to same-subclone NoDrug baseline",
+    "carrier_aggregation":"mean lane distances by subclone",
+    "modal_return_gate":"all three subclones have mean day-7 modal distance < mean drug modal distance",
+    "direction_metric":"cosine between Drug-to-day7 displacement and Drug-to-baseline target vector in retained-PC space",
+    "interpretation_if_whole_event_pass_modal_fail":"global transcriptomic recovery with modal reorganization/non-restoration",
+    "interpretation_if_both_pass":"recovery includes return in the frozen retained modal representation"
+  },
+  "scalar_gate":{
+    "opened":false,
+    "reason":"No source-native continuous-time generator is established for this holiday RNA state-space; static PCA does not license scalar construction."
+  },
+  "pseudoreplication_control":"Five wells are descriptive lanes nested within three subclones; subclone is the primary directional carrier.",
+  "claim_ceiling":"P0-Q within-source recovery/reorganization qualification; no independent held-out behavior lane exists in this frozen branch.",
+  "status":"FROZEN_BEFORE_MOLECULAR_COUNT_VALUES"
+}
