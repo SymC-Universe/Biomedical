@@ -1,0 +1,46 @@
+{
+  "schema": "NSD_DS004148_EYESOPEN_MFR14_REPLICATION_MANIFEST_V0_1",
+  "date": "2026-09-25",
+  "status": "FROZEN_BEFORE_UNTOUCHED_SUBJECT_SIGNAL_OUTCOMES",
+  "dataset": "ds004148",
+  "source_release": {
+    "openneuro_doi": "10.18112/openneuro.ds004148.v1.0.0",
+    "public_git_repository": "OpenNeuroDatasets/ds004148",
+    "public_git_commit": "0c740d838a2c33feeec0b6e514aea323d0e65ca4",
+    "nemar_mirror": "on004148/v1.0.0"
+  },
+  "task": "eyesopen",
+  "sessions": [
+    "ses-session1",
+    "ses-session2",
+    "ses-session3"
+  ],
+  "subjects": [
+    "sub-02",
+    "sub-03",
+    "sub-04",
+    "sub-05",
+    "sub-06",
+    "sub-07",
+    "sub-08",
+    "sub-09",
+    "sub-10",
+    "sub-11",
+    "sub-12",
+    "sub-13",
+    "sub-14",
+    "sub-15"
+  ],
+  "selection_basis": "lowest 14 numeric subjects after discovery subject sub-01; fixed before any signal-derived outcome from these subjects",
+  "independent_subject_count": 14,
+  "raw_contract": {
+    "expected_channels": 61,
+    "expected_sampling_rate_hz": 500,
+    "expected_duration_seconds": 300,
+    "expected_binary_format": "IEEE_FLOAT_32",
+    "expected_orientation": "MULTIPLEXED"
+  },
+  "source_identity_rule": "For each pinned path, resolve the git-annex EEG object key from the pinned GitHub commit before raw download; parse expected size and MD5 from that key; fetch VHDR/VMRK from the same pinned commit; then download EEG from the declared NEMAR mirror and require exact size/MD5 before feature extraction.",
+  "metadata_firewall": "Only subject identity, session, task, acquisition/decoding metadata, and exact source identity are visible to this replication. Demographic, questionnaire, behavioral, symptom, and clinical fields are excluded.",
+  "claim_ceiling": "Untouched within-dataset independent-subject descriptive replication of the session-pair pattern only; no modal damping, natural frequency, lowercase chi, capital Chi, diagnosis, recovery, treatment, or broad population generalization."
+}
