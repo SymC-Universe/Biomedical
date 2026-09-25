@@ -73,36 +73,40 @@
     {
       "id": "Q11",
       "name": "harmange_source_carrier_mapping",
-      "status": "active_schema_pass_explicit_lineage_identity_join_open"
+      "status": "refused_direct_bridge_current_reproducibility_source_materialization_limit_raw_rebuild_deferred"
+    },
+    {
+      "id": "Q12",
+      "name": "shaffer2017_gri_biochi_bridge",
+      "status": "active_source_pass_design_frozen_preprocessing_and_modal_definition_next"
+    },
+    {
+      "id": "Q13",
+      "name": "harmange_native_stochastic_model_review",
+      "status": "pending_nonblocking_review_whether_source_native_two_state_model_licenses_any_program_level_dynamic_object_scalar_not_assumed"
     }
   ],
   "active_source_gate": {
-    "stage": "GRI_BIOCHI_BRIDGE_HARMANGE_CARRIER_MAPPING",
+    "stage": "GRI_BIOCHI_BRIDGE_SHAFFER_PREANALYSIS",
     "testbed_promotion": false,
     "completed": {
-      "bridge_feasibility_run": 36100652432,
-      "bridge_feasibility_artifact": 10848767854,
-      "bridge_feasibility_status": "PASS_FEASIBILITY_AUDIT",
-      "harmange_schema_first_run": 36100750619,
-      "harmange_schema_first_run_status": "MECHANICAL_FAILURE_PYTHON_BOOLEAN",
-      "harmange_schema_repair_run": 36100798262,
-      "harmange_schema_repair_artifact": 10849222240,
-      "harmange_schema_status": "PASS_SOURCE_CARRIER_SCHEMA",
-      "harmange_metadata_rows": 40021,
-      "harmange_metadata_columns": 26,
-      "harmange_metadata_sha256": "f22aaf6947d38a018c0c4d13ceedacbd3bdffc296f727e171b66a21b7a06434b",
-      "harmange_processed_barcode_rows": 40021,
-      "harmange_processed_barcode_sha256": "3e2fdc6d8ab9100c0fa45916fd000c4e541b83810ce449911679c3f03d26403a"
+      "harmange_direct_bridge": "REFUSED_CURRENT_REPRODUCIBILITY_SOURCE_MATERIALIZATION_LIMIT",
+      "shaffer_source_schema_run": 36137066754,
+      "shaffer_source_schema_artifact": 10865252231,
+      "shaffer_source_schema_status": "PASS_SOURCE_SCHEMA_AND_TIMEPOINT_MAP",
+      "shaffer_file1_sha256": "7bb7296f36d32e71e8b63bf7e813351f058e92ab9cda81ec9fd9b67d81f674f3",
+      "shaffer_file2_sha256": "a1c6180334d037c002b173faf8cdd2162b4d8563cc93e0eb0014cbfe222c4cd8",
+      "evidence_role_freeze": "BIO_CHI/config/SHAFFER2017_BRIDGE_DESIGN_FREEZE_v0_1.json"
     },
     "active": {
-      "current_system": "Harmange 2023 GSE237228 melanoma scMemorySeq",
-      "current_question": "resolve exact source-defined cell-to-lineage identity join without opening target outcomes",
-      "scalar_B1": "CLOSED_NOT_LICENSED_NO_NATIVE_CONTINUOUS_GENERATOR",
-      "modal_B2": "OPEN_AFTER_CARRIER_MAP",
-      "relational_B3": "OPEN_AFTER_CARRIER_MAP",
-      "next": "recover/freeze exact dominant lineage assignment object or equivalent released mapping; if unrecoverable, refuse Harmange direct bridge and open frozen Shaffer backup"
+      "current_system": "Shaffer 2017 WM989 melanoma vemurafenib timecourse",
+      "current_question": "freeze batch-aware preprocessing, common-gene universe, unsupervised modal construction, and native/simple comparator before B2/B3 molecular analysis",
+      "scalar_B1": "CLOSED_PENDING_SEPARATE_NATIVE_GENERATOR_REVIEW",
+      "modal_B2": "OPEN_AFTER_PREANALYSIS_FREEZE",
+      "relational_B3": "OPEN_AFTER_B2_AND_COMPARATOR_FREEZE",
+      "next": "build and audit preanalysis preprocessing/modal contract without opening resistance-target gene effects"
     },
-    "scientific_stop_before": "opening B2/B3 molecular target values before the lineage carrier join is frozen, inferring lineage identity from nCount_lineage/nFeature_lineage, relabeling ATAC as methylation, or constructing chi_bio without a licensed generator"
+    "scientific_stop_before": "using outcome-selected resistance genes in the primary modal definition, treating sequencing-run differences as biology, interpreting ATAC as methylation, claiming same-source validation as external confirmation, or constructing chi_bio without a qualifying complex dynamical carrier"
   },
   "active_native_model_gate": {
     "system": "Jaruszewicz-Blonska reduced NF-kB model",
@@ -163,7 +167,7 @@
       "ERK_Chi_bio_admission": "REFUSED_CURRENT_GATE",
       "Bio_Chi_transport": "NOT_OPENED"
     },
-    "current_scientific_stop": "GRI↔Bio Chi bridge active. Harmange carrier mapping is the current source-only gate; B2/B3 outcomes remain unopened.",
+    "current_scientific_stop": "GRI↔Bio Chi bridge active. Harmange direct bridge refused for current source-materialization limits; Shaffer 2017 source passed and preanalysis design is frozen.",
     "Su2026_oncology_system": {
       "status": "CLOSED_P0Q",
       "scalar": "REFUSED_UNCERTAINTY_SENSITIVE_EQUIVALENT_NATIVE_INVARIANT",
