@@ -1,0 +1,71 @@
+name: NSD ds004148 Eyes-Open Header Topology Audit
+
+on:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - ".github/workflows/nsd-ds004148-eyesopen-header-audit.yml"
+      - "NSD_vNext/docs/DS004148_EYESOPEN_HEADER_AUDIT_FREEZE_v0.1.md"
+      - "NSD_vNext/engine/tools/audit_ds004148_eyesopen_channel_topology.py"
+      - "NSD_vNext/atlas/reference_models/ds003775_repeat_descriptive_reference_p0d_matched59_v0.1.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nsd-ds004148-eyesopen-header-audit-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Execute frozen header-only audit
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/nsd-header-audit-suite"
+          python NSD_vNext/engine/tools/audit_ds004148_eyesopen_channel_topology.py \
+            --matched-reference NSD_vNext/atlas/reference_models/ds003775_repeat_descriptive_reference_p0d_matched59_v0.1.json \
+            --output-dir "$RUNNER_TEMP/nsd-header-audit-suite"
+
+      - name: Remove VHDR payloads before packaging
+        run: |
+          set -euo pipefail
+          rm -rf "$RUNNER_TEMP/nsd-header-audit-suite/vhdr_payloads"
+
+      - name: Build reviewer-facing audit suite
+        run: |
+          set -euo pipefail
+          cp NSD_vNext/docs/DS004148_EYESOPEN_HEADER_AUDIT_FREEZE_v0.1.md "$RUNNER_TEMP/nsd-header-audit-suite/"
+          cp NSD_vNext/docs/DS004148_EYESOPEN_MFR14_V0_1_FAILURE_ROOTCAUSE.md "$RUNNER_TEMP/nsd-header-audit-suite/"
+          cp NSD_vNext/engine/tools/audit_ds004148_eyesopen_channel_topology.py "$RUNNER_TEMP/nsd-header-audit-suite/"
+          cp NSD_vNext/atlas/reference_models/ds003775_repeat_descriptive_reference_p0d_matched59_v0.1.json "$RUNNER_TEMP/nsd-header-audit-suite/"
+          printf "%s\n" \
+            'python NSD_vNext/engine/tools/audit_ds004148_eyesopen_channel_topology.py \' \
+            '  --matched-reference NSD_vNext/atlas/reference_models/ds003775_repeat_descriptive_reference_p0d_matched59_v0.1.json \' \
+            '  --output-dir ./nsd-header-audit-output' \
+            > "$RUNNER_TEMP/nsd-header-audit-suite/RUN_COMMAND.txt"
+          (cd "$RUNNER_TEMP/nsd-header-audit-suite" && sha256sum * > SHA256SUMS.txt)
+
+      - name: Master smoke verification
+        run: |
+          set -euo pipefail
+          python -c 'import json,sys; d=json.load(open(sys.argv[1],encoding="utf-8")); assert d["subject_count"]==60; assert d["expected_record_count"]==180; assert d["audited_record_count"]==180; assert d["failure_count"]==0; assert len(d["records"])==180; assert d["claim_ceiling"].startswith("source/header topology only"); print("MASTER_SMOKE_TEST=PASS")' "$RUNNER_TEMP/nsd-header-audit-suite/ds004148_eyesopen_header_topology_audit_v0.1.json"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nsd-ds004148-eyesopen-header-audit-suite-v0-1
+          path: ${{ runner.temp }}/nsd-header-audit-suite
+          if-no-files-found: error
+          retention-days: 90
