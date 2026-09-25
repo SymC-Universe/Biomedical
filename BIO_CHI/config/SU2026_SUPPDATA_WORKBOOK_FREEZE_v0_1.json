@@ -1,0 +1,29 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Su 2026 Supplementary Data workbook byte freeze and text-only schema inventory",
+  "purpose_tag": "P0_Q_SOURCE_QUALIFICATION",
+  "branch": "bio-chi-oncology-p0q-20260924",
+  "expected_filename": "41467_2026_71349_MOESM3_ESM.xlsx",
+  "expected_md5": "0782c704db69b2c4fa8b2a8a5e8ec552",
+  "candidate_urls": [
+    "https://pmc.ncbi.nlm.nih.gov/articles/instance/13083995/bin/41467_2026_71349_MOESM3_ESM.xlsx",
+    "https://authors.library.caltech.edu/records/wb7wk-sh344/files/41467_2026_71349_MOESM3_ESM.xlsx?download=1"
+  ],
+  "permitted_operations": [
+    "download exact workbook bytes",
+    "verify MD5",
+    "compute SHA-256 and byte size",
+    "open workbook in read-only mode",
+    "record sheet names and dimensions",
+    "record nonempty string cell values and cell coordinates",
+    "replace every numeric, formula, date, boolean or error cell by a type marker without recording its value"
+  ],
+  "forbidden_operations": [
+    "record numeric coefficient values",
+    "compute eigenvalues or chi",
+    "compare forward and reverse quantitative results",
+    "select scenarios based on numerical outcomes"
+  ],
+  "status": "FROZEN_BEFORE_WORKBOOK_ACQUISITION"
+}
