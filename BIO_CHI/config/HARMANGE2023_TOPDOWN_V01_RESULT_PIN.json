@@ -1,0 +1,51 @@
+{
+  "schema_version":"0.1",
+  "project":"Bio Chi Investigation",
+  "gate":"Harmange 2023 top-down state-switch-to-resistance event",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "workflow_run_id":36100800273,
+  "workflow_head_sha":"f018ba60b7e630e0f551b589f0ff967ab0da1f49",
+  "artifact_id":10849266895,
+  "artifact_digest":"sha256:2bff4bb0301892453cf3b921a9ab0c93d0c6396924d3cfe276900d4d0c915f61",
+  "status":"PASS_ANALYSIS_EXECUTED",
+  "state_switch_primary":{
+    "paired_lineages":8,
+    "median_delta_primed_fraction_PI3Ki_minus_control":-0.90909091,
+    "negative":6,
+    "positive":0,
+    "zero":2,
+    "exact_one_sided_sign_p":0.015625,
+    "gate_pass":true
+  },
+  "reverse_direction_context":{
+    "paired_lineages":278,
+    "median_delta_primed_fraction_TGFB1_minus_control":0.16666667,
+    "positive":204,
+    "negative":0,
+    "zero":74,
+    "exact_one_sided_sign_p":3.8893845486632136e-62
+  },
+  "functional_resistance":{
+    "resistant_cells":{
+      "matched_biological_replicates":3,
+      "PI3Ki_lower_in_all":true,
+      "median_delta_cells":-24793.83333333333,
+      "exact_one_sided_sign_p":0.125
+    },
+    "resistant_colonies":{
+      "matched_biological_replicates":3,
+      "PI3Ki_lower_in_all":true,
+      "median_delta_colonies":-20.166666666666664,
+      "exact_one_sided_sign_p":0.125
+    },
+    "gate_pass":true
+  },
+  "scientific_disposition":{
+    "Bio_Chi":"P0Q_WITHIN_SOURCE_STATE_MEMORY_TO_RESISTANCE_RELATION_SUPPORTED",
+    "required_internal_representation":"LINEAGE_RESOLVED_TWO_STATE_COMPOSITION",
+    "full_transcriptomic_modal_representation":"NOT_REQUIRED_FOR_THE_FROZEN_EVENT",
+    "scalar":"SCALAR_NOT_REQUIRED_AND_NOT_LICENSED"
+  },
+  "claim_ceiling":"Within-source P0-Q mechanistic relation. Lineages are not biological replicates; resistance p-values are resolution diagnostics at n=3 biological replicates. No independent P1 confirmation or universal biological scalar follows.",
+  "next_gate":"close Harmange lineage, synthesize the top-down representation-adequacy matrix, then source-qualify the remaining Sharma 2010 candidate without inventing a new system."
+}
