@@ -446,10 +446,13 @@ def main() -> int:
     )
     _write_summary(result, args.output_dir / "VERIFY_SUMMARY.md")
 
+    failure_types = Counter(item["error_type"] for item in result["failures"])
     print(json.dumps({
         "status": result["status"],
         "audited_record_count": result["audited_record_count"],
         "failure_count": result["failure_count"],
+        "failure_types": dict(failure_types),
+        "failure_examples": result["failures"][:10],
         "unique_channel_signature_count": result[
             "unique_channel_signature_count"
         ],
