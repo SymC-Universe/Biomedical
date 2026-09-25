@@ -1,0 +1,26 @@
+name: Bio Chi Harmange SRA role discovery v0.4
+on:
+  push:
+    branches: [bio-chi-topdown-pivot-20260924]
+    paths:
+      - 'BIO_CHI/config/HARMANGE2023_SRA_ROLE_DISCOVERY_FREEZE_v0_4.json'
+      - 'BIO_CHI/src/discover_harmange2023_sra_roles_v0_4.py'
+      - '.github/workflows/bio-chi-harmange-sra-roles-v04.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  discover:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Audit SRA run metadata only
+        run: python BIO_CHI/src/discover_harmange2023_sra_roles_v0_4.py
+      - name: Upload SRA role map
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_HARMANGE_SRA_ROLES_V04
+          path: BIO_CHI/artifacts/generated/harmange2023_sra_role_discovery_v0_4.json
+          if-no-files-found: error
