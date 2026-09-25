@@ -1,0 +1,35 @@
+{
+  "schema_version":"0.2",
+  "project":"Bio Chi Investigation",
+  "gate":"Harmange 2023 outcome-blind lineage-source schema discovery",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "geo":"GSE237228",
+  "known_files":{
+    "barcodes":{"name":"GSE237228_10x_exp3_barcodes.tsv.gz","sha256":"3e2fdc6d8ab9100c0fa45916fd000c4e541b83810ce449911679c3f03d26403a"},
+    "genes":{"name":"GSE237228_10x_exp3_genes.tsv.gz","sha256":"5ebb23ca9a6cb968c4e72c3a65d3e3c626f378dda04a3dfe6ad54f19f87961b5"},
+    "matrix":{"name":"GSE237228_10x_exp3_matrix.mtx.gz","expected_bytes":501295219},
+    "metadata":{"name":"GSE237228_10x_exp3_metadata.tsv.gz","sha256":"f22aaf6947d38a018c0c4d13ceedacbd3bdffc296f727e171b66a21b7a06434b"},
+    "raw_tar":{"name":"GSE237228_RAW.tar","expected_bytes":355102720},
+    "soft":{"name":"GSE237228_family.soft.gz","sha256":"29db7f5d77b661487c892c3b55948164884923daf0469560e04a5f843ba56dd5"}
+  },
+  "permitted_operations":[
+    "download and verify the small source files already hash-pinned",
+    "read cell-barcode identifiers from the barcodes file",
+    "read feature identifiers/names from the genes file",
+    "read MatrixMarket comments and dimension line only, with zero matrix entries consumed",
+    "read GEO SOFT metadata and all supplementary-file/source relation fields",
+    "list GEO supplementary directory filenames and metadata",
+    "download GSE237228_RAW.tar and list archive member names, paths, sizes and compression metadata only",
+    "do not extract or read any RAW.tar member payload"
+  ],
+  "forbidden_operations":[
+    "read MatrixMarket molecular entries",
+    "read expression matrix values",
+    "read RAW.tar member payloads",
+    "score cell states",
+    "associate molecular outcomes with lineage identity",
+    "select lineages from outcomes"
+  ],
+  "qualification_question":"Does the public source expose an exact lineage-assay/barcode object or a deterministic mapping from lineage-assay cells to the expression-cell metadata?",
+  "status":"FROZEN_BEFORE_SOURCE_SCHEMA_DISCOVERY"
+}
