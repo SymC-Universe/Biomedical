@@ -1,0 +1,93 @@
+name: NSD ds004148 Independent Descriptive Transfer
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/nsd-ds004148-descriptive-transfer.yml"
+      - "NSD_vNext/docs/DS004148_DESCRIPTIVE_TRANSFER_FREEZE_v0.1.md"
+      - "NSD_vNext/docs/manifests/ds004148_d4_resting_crosssession_v0.1.json"
+      - "NSD_vNext/atlas/reference_models/ds003775_repeat_descriptive_reference_p0d_v0.1.json"
+      - "NSD_vNext/engine/pyproject.toml"
+      - "NSD_vNext/engine/nsd_engine/psd.py"
+      - "NSD_vNext/engine/nsd_engine/specparam_adapter.py"
+      - "NSD_vNext/engine/nsd_engine/spectral_parameterization_qc.py"
+      - "NSD_vNext/engine/tools/run_ds004148_descriptive_transfer.py"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nsd-ds004148-descriptive-transfer-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  transfer:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install exact frozen descriptive stack
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install -e 'NSD_vNext/engine[parameterization_rc7]'
+
+      - name: Execute frozen independent transfer
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/nsd-transfer-suite"
+          python NSD_vNext/engine/tools/run_ds004148_descriptive_transfer.py \
+            --manifest NSD_vNext/docs/manifests/ds004148_d4_resting_crosssession_v0.1.json \
+            --atlas NSD_vNext/atlas/reference_models/ds003775_repeat_descriptive_reference_p0d_v0.1.json \
+            --output-dir "$RUNNER_TEMP/nsd-transfer-suite"
+
+      - name: Remove raw payloads before packaging
+        run: |
+          set -euo pipefail
+          rm -rf "$RUNNER_TEMP/nsd-transfer-suite/payloads"
+
+      - name: Build suite provenance and hashes
+        run: |
+          set -euo pipefail
+          cp NSD_vNext/docs/DS004148_DESCRIPTIVE_TRANSFER_FREEZE_v0.1.md "$RUNNER_TEMP/nsd-transfer-suite/"
+          cp NSD_vNext/docs/manifests/ds004148_d4_resting_crosssession_v0.1.json "$RUNNER_TEMP/nsd-transfer-suite/"
+          cp NSD_vNext/atlas/reference_models/ds003775_repeat_descriptive_reference_p0d_v0.1.json "$RUNNER_TEMP/nsd-transfer-suite/"
+          cp NSD_vNext/engine/tools/run_ds004148_descriptive_transfer.py "$RUNNER_TEMP/nsd-transfer-suite/"
+          cp NSD_vNext/engine/pyproject.toml "$RUNNER_TEMP/nsd-transfer-suite/"
+          (cd "$RUNNER_TEMP/nsd-transfer-suite" && sha256sum * > SHA256SUMS.txt)
+          cat > "$RUNNER_TEMP/nsd-transfer-suite/RUN_COMMAND.txt" <<'EOF'
+python NSD_vNext/engine/tools/run_ds004148_descriptive_transfer.py \
+  --manifest NSD_vNext/docs/manifests/ds004148_d4_resting_crosssession_v0.1.json \
+  --atlas NSD_vNext/atlas/reference_models/ds003775_repeat_descriptive_reference_p0d_v0.1.json \
+  --output-dir ./nsd-transfer-output
+EOF
+
+      - name: Master smoke verification
+        run: |
+          set -euo pipefail
+          python - "$RUNNER_TEMP/nsd-transfer-suite/ds004148_descriptive_transfer_result_v0.1.json" <<'PY'
+import json, sys
+data = json.load(open(sys.argv[1], encoding="utf-8"))
+assert data["recording_count"] == 6
+assert sorted(data["states"]) == ["eyesclosed", "eyesopen"]
+assert all(state["pair_count"] == 3 for state in data["states"].values())
+assert data["licenses_modal_damping"] is False
+assert data["licenses_local_chi"] is False
+assert data["licenses_capital_chi"] is False
+assert data["licenses_diagnosis"] is False
+assert data["licenses_population_inference"] is False
+print("MASTER_SMOKE_TEST=PASS")
+PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nsd-ds004148-descriptive-transfer-suite-v0-1
+          path: ${{ runner.temp }}/nsd-transfer-suite
+          if-no-files-found: error
+          retention-days: 90
