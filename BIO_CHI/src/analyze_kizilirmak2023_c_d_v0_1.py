@@ -56,7 +56,7 @@ def dynamic_metrics(raw: np.ndarray, dt_min: float=6.0) -> dict:
         prom=props.get("prominences",np.array([]))
         peaks=peaks[prom>0.15]
         counts.append(int(len(peaks)))
-        aucs.append(float(np.trapz(y,dx=dt_min)))
+        aucs.append(float(np.trapezoid(y,dx=dt_min)))
         first_peaks.append(float(np.max(y)))
     counts=np.asarray(counts,int)
     aucs=np.asarray(aucs,float)
