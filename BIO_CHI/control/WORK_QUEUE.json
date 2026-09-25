@@ -2,7 +2,7 @@
   "schema_version": "0.1",
   "project": "Bio Chi Investigation",
   "authority": "SymC GOM v0.8.6 + Bio Chi project-specific three-object nomenclature decision 2026-09-23",
-  "branch": "bio-chi-closure-p0q-20260924",
+  "branch": "bio-chi-erk-modal-v2-p0q-20260924",
   "continuation_policy": {
     "resume_from_checkpoint": true,
     "mechanical_blockers_are_stop_conditions": false,
@@ -33,7 +33,7 @@
     {
       "id": "Q3",
       "name": "known_truth_qualification_system",
-      "status": "complete_blum_B3_partial_transport_scalar_supported_full_modal_refused"
+      "status": "complete_ERK_B3_modal_lineage_closed_v1_v2_refusals_scalar_class_transport_supported"
     },
     {
       "id": "Q4",
@@ -43,17 +43,17 @@
     {
       "id": "Q5",
       "name": "chi_bio_scalar_track",
-      "status": "active_NFkB_model_specific_P0Q_admitted_ERK_scalar_class_transport_supported"
+      "status": "active_NFkB_P0Q_admitted_ERK_scalar_class_transport_supported_with_directional_nonlinear_limit"
     },
     {
       "id": "Q6",
       "name": "Chi_bio_modal_track",
-      "status": "active_NFkB_model_specific_P0Q_admitted_ERK_complete_8D_modal_transport_refused"
+      "status": "active_NFkB_P0Q_admitted_ERK_modal_generator_precursor_qualified_v1_v2_admission_refused"
     },
     {
       "id": "Q7",
       "name": "Bio_Chi_conglomerate_track",
-      "status": "active_NFkB_model_specific_P0Q_admitted_cross_system_Bio_Chi_transport_not_established"
+      "status": "active_NFkB_P0Q_admitted_ERK_cross_system_Bio_Chi_transport_not_opened"
     },
     {
       "id": "Q8",
@@ -112,7 +112,7 @@
       "su_next": "freeze exact processed-expression file identity/hash before opening values",
       "rehman_next": "seek exact author analysis code/source implementation for Figure 4 PCA; otherwise preserve exact-native-method under-specification",
       "harmange_next": "map lineage/barcode carrier correspondence from source documentation without opening target outcomes",
-      "blum_next": "CURRENT_TRANSPORT_CYCLE_CLOSED; new ERK modal representation or a different independent biological transport system requires scientific choice"
+      "blum_next": "ERK_B3_MODAL_LINEAGE_CLOSED_AFTER_V2_REFUSAL; no third ERK modal representation opened in this cycle"
     },
     "scientific_stop_before": "inventing a missing native implementation detail, changing a frozen representation/endpoint, promoting a testbed based on agreement, or admitting chi_bio/Chi_bio/Bio Chi"
   },
@@ -146,7 +146,7 @@
     "chi_bio_constructed": true,
     "Chi_bio_admitted": true,
     "Bio_Chi_constructed": true,
-    "next_gate": "SCIENTIFIC_STOP: choose new P0-Q ERK modal-representation lineage or different independent biological system; current ERK cycle closed at partial transport",
+    "next_gate": "ERK B3 lineage closed: preserve v1 and v2 modal limits; further ERK modal or numerical-resolution work requires a separately frozen new lineage",
     "chi_bio_model_specific_status": "P0Q_SUPPORTED_MODEL_SPECIFIC",
     "Chi_bio_model_specific_status": "P0Q_ADMITTED_MODEL_SPECIFIC",
     "Bio_Chi_model_specific_status": "P0Q_ADMITTED_MODEL_SPECIFIC"
@@ -171,9 +171,20 @@
       "chi_bio_representation_class_transport": "SUPPORTED_P0Q",
       "all_FRET_visible_complex_pair_roundtrips": "PASS",
       "complete_8D_Chi_bio_roundtrip": "FAIL",
-      "ERK_Chi_bio_admission": "REFUSED_CURRENT_GATE",
-      "Bio_Chi_transport": "NOT_OPENED"
+      "ERK_Chi_bio_admission": "REFUSED_V1_AND_V2",
+      "Bio_Chi_transport": "NOT_OPENED",
+      "invariant_modal_v2": "FAIL_ERK_COMPLEX_SUBSPACE_ROUNDTRIP_V2",
+      "invariant_modal_v2_direction_pass": "52/64",
+      "invariant_modal_v2_carrier_context_pass": "15/25"
     },
-    "current_scientific_stop": "Opening a replacement ERK modal representation or choosing the next independent transport system changes the scientific question/representation and requires user intervention."
+    "current_scientific_stop": "ERK B3 modal lineage closed after two distinct P0-Q refusals. No third ERK modal representation is authorized in this cycle."
+  },
+  "erk_modal_lineage": {
+    "v1_limit_pin": "BIO_CHI/config/ERK_B3_LIMIT_MAP_V01.json",
+    "v2_freeze": "BIO_CHI/config/ERK_B3_INVARIANT_MODAL_V2_FREEZE_v0_1.json",
+    "v2_result_pin": "BIO_CHI/config/ERK_B3_INVARIANT_MODAL_V2_RESULT_PIN.json",
+    "complete_lineage_json": "BIO_CHI/config/ERK_B3_MODAL_LINEAGE_V01.json",
+    "complete_lineage_record": "BIO_CHI/docs/ERK_B3_MODAL_LINEAGE_RECORD_20260924.md",
+    "status": "CLOSED_AFTER_V2_REFUSAL_WITH_LIMITS_PRESERVED"
   }
 }
