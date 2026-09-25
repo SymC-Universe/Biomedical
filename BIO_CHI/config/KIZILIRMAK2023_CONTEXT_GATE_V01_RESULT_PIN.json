@@ -1,0 +1,84 @@
+{
+  "schema_version": "0.1",
+  "task_id": "GRI_BIOCHI_KIZILIRMAK_CONTEXT_GATE_20260925",
+  "date": "2026-09-25",
+  "evidence_tier": "P0 post-result mechanistic representation control",
+  "execution": {
+    "run_id": 36193712229,
+    "head_sha": "bfecf506ed385e6bce4ef765d682cff450791e6d",
+    "artifact_id": 10889028217,
+    "artifact_digest": "sha256:7287cbf2387633c161158aae14f896832a2031f2efb3e9f5c36138ee1fdb4018"
+  },
+  "classification": "CONTEXT_GATING_LIMIT_OF_GLOBAL_STATIC_SCALAR",
+  "TNF": {
+    "oscillatory_fraction": {
+      "B": 0.15827338129496402,
+      "R": 0.5485714285714286,
+      "G": 0.4682926829268293
+    },
+    "median_AUC": {
+      "B": 414.22407,
+      "R": 336.44076,
+      "G": 271.7625
+    },
+    "first_peak": {
+      "B": 2.68706,
+      "R": 2.43726,
+      "G": 1.69742
+    },
+    "Tnfrsf1a_mean": {
+      "B": 6.366640576973682,
+      "R": 6.13229433089957,
+      "G": 5.691502904724122
+    },
+    "rank_match": true
+  },
+  "IL1B": {
+    "oscillatory_fraction": {
+      "B": 0.19938650306748465,
+      "R": 0.391025641025641,
+      "G": 0.796875
+    },
+    "median_AUC": {
+      "B": 416.690865,
+      "R": 308.028765,
+      "G": 323.90307
+    },
+    "first_peak": {
+      "B": 2.6315,
+      "R": 2.25045,
+      "G": 2.51627
+    },
+    "Il1rap_mean": {
+      "B": 1.765320473427114,
+      "R": 1.23902823210543,
+      "G": 1.399755538750836
+    },
+    "rank_match": true
+  },
+  "stimulus_shift": {
+    "B": {
+      "delta_osc": 0.04111312177252063,
+      "delta_auc": 2.466795,
+      "delta_first_peak": -0.05556
+    },
+    "R": {
+      "delta_osc": -0.15754578754578757,
+      "delta_auc": -28.411995,
+      "delta_first_peak": -0.18681
+    },
+    "G": {
+      "delta_osc": 0.3285823170731707,
+      "delta_auc": 52.14057,
+      "delta_first_peak": 0.81885
+    }
+  },
+  "adjudication": {
+    "literal_static_to_physical_damping": "NON_IDENTIFIABLE_UNSUPPORTED",
+    "context_independent_global_static_predictor": "FALSIFIED_AT_THIS_SCOPE_BY_G_TRANSPORT",
+    "B_R_global_correspondence": "DESCRIPTIVE_SURVIVOR_SCOPE_LIMITED_P0",
+    "local_four_gene_scalar": "REPRESENTATION_FAILURE",
+    "native_oscillation_damping_question": "SUPPORTED_WHERE_NATIVE_ORDERED_DATA_OR_GENERATOR_LICENSES_IT"
+  },
+  "manuscript_use": "May support a bounded main-text representation/context-gating paragraph. Must be labeled post-result, non-cancer mechanistic control and not external oncology validation."
+}
