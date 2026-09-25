@@ -1,0 +1,65 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "program_order": [
+    "Bio_Chi_phenomenon",
+    "required_modal_or_vector_representation",
+    "optional_scalar_compression"
+  ],
+  "bio_chi_identifiability": {
+    "mandatory": {
+      "carrier_defined": true,
+      "baseline_or_substrate_defined": true,
+      "perturbation_defined": true,
+      "time_ordered_response_present": true,
+      "post_perturbation_outcome_defined": true,
+      "return_target_if_recovery_claimed": true,
+      "internal_organization_observable_mappable_to_same_system": true,
+      "native_or_simple_behavioral_comparator_available": true
+    },
+    "promotion_beyond_within_source_description": {
+      "independent_or_heldout_behavior_test_required": true
+    },
+    "inheritance_additional_requirements": {
+      "preperturbation_substrate_feature": true,
+      "carrier_link_to_later_response": true,
+      "no_postoutcome_carrier_selection": true
+    }
+  },
+  "modal_rule": {
+    "opened_only_after_bio_chi_event_freeze": true,
+    "native_model_first": true,
+    "analysis_derived_representation_allowed_if_no_native_model": true,
+    "prospective_freeze_required": true,
+    "retain_all_components_under_frozen_rule": true,
+    "simple_comparator_required": true,
+    "failure_or_refusal_allowed": true
+  },
+  "scalar_rule": {
+    "optional": true,
+    "opened_only_if_behaviorally_relevant_after_modal_or_internal_organization_definition": true,
+    "robust_carrier_required": true,
+    "postresult_mode_selection_forbidden": true,
+    "must_preserve_predeclared_bio_chi_relevant_distinction": true,
+    "must_add_compression_or_predictive_utility_beyond_simple_native_descriptor": true,
+    "refusal_allowed": true,
+    "chi_equal_1_boundary_not_assumed": true
+  },
+  "selection_rule": {
+    "primary": "maximize fulfillment of mandatory Bio Chi event requirements before considering lower-level mathematical convenience",
+    "tie_breakers_in_order": [
+      "heldout_or_rechallenge_behavior_available",
+      "carrier_or_lineage continuity",
+      "preperturbation substrate measurement",
+      "public reproducible quantitative data",
+      "native functional endpoint"
+    ],
+    "forbidden": [
+      "select based on observed SymC agreement",
+      "select based on presence of complex poles",
+      "select based on favorable prior chi value",
+      "repair a failed prior lineage by relabeling its representation"
+    ]
+  },
+  "status": "FROZEN_BEFORE_TOP_DOWN_SYSTEM_SELECTION"
+}
