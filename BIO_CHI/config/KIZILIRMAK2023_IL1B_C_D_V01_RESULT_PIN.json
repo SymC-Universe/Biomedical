@@ -1,0 +1,79 @@
+{
+  "schema_version": "0.1",
+  "task_id": "GRI_BIOCHI_KIZILIRMAK_IL1B_C_D_TRANSPORT_20260925",
+  "date": "2026-09-25",
+  "evidence_tier": "P0 exploratory transport / source-qualified relational test",
+  "execution": {
+    "run_id": 36193460850,
+    "head_sha": "fef32326972839aee952ebfaf508bafc750df949",
+    "artifact_id": 10888628721,
+    "artifact_digest": "sha256:b145463682c4e4240a915b45a5a203e7cb53eb7d6f108539fa5b5360f4e418f1"
+  },
+  "native_dynamics": {
+    "B": {
+      "oscillatory_fraction": 0.19938650306748465,
+      "median_auc": 416.690865,
+      "first_peak_median": 2.81515
+    },
+    "R": {
+      "oscillatory_fraction": 0.391025641025641,
+      "median_auc": 308.028765,
+      "first_peak_median": 2.5346
+    },
+    "G": {
+      "oscillatory_fraction": 0.796875,
+      "median_auc": 323.90307,
+      "first_peak_median": 2.795
+    },
+    "primary_R_gt_B": true,
+    "secondary_G_gt_B": true
+  },
+  "A_genomewide": {
+    "medians": {
+      "B": 0.020837388494938158,
+      "R": 0.017425016629488917,
+      "G": 0.020443785424828668
+    },
+    "Delta_BR": 0.003412371865449241,
+    "Delta_BG": 0.00039360307010949044,
+    "BR_direction_robust": true,
+    "BG_direction_robust": false,
+    "disposition": "PARTIAL_SCOPE_LIMITED_CORRESPONDENCE_NOT_GLOBAL_TRANSPORT"
+  },
+  "B_IL1B_circuit": {
+    "genes": [
+      "Il1rap",
+      "Rela",
+      "Nfkbia",
+      "Tnfaip3"
+    ],
+    "medians": {
+      "B": 0.011268075581173381,
+      "R": 0.02007797471189682,
+      "G": 0.020430667649190784
+    },
+    "Delta_BR": -0.00880989913072344,
+    "Delta_BG": -0.009162592068017403,
+    "BR_direction_robust": true,
+    "BG_direction_robust": true,
+    "gene_directions_BR": {
+      "Il1rap": "positive",
+      "Rela": "negative",
+      "Nfkbia": "positive",
+      "Tnfaip3": "negative"
+    },
+    "disposition": "REPRESENTATION_FAILURE_FOR_SCALAR_CIRCUIT_AGGREGATE"
+  },
+  "D": {
+    "classification": "global_nontransport",
+    "interpretation": "Static genome-wide chi_GRI does not transport as a context-independent predictor across IL-1beta because clone G undergoes a large stimulus-specific dynamical reorganization while retaining a B-like static scalar. Local four-gene scalar aggregation is also contradicted by stable component heterogeneity."
+  },
+  "legacy_claim_adjudication": {
+    "literal_mu_to_omega_sigma_to_gamma": "NON_IDENTIFIABLE_UNSUPPORTED",
+    "chi_equal_1_biological_boundary": "UNSUPPORTED",
+    "context_independent_static_chi_to_dynamics": "FALSIFIED_BY_G_TRANSPORT_COUNTEREXAMPLE_AT_THIS_SCOPE",
+    "B_vs_R_static_dynamic_correspondence": "DESCRIPTIVE_SURVIVOR_SCOPE_LIMITED_P0",
+    "local_four_gene_scalar_damping_proxy": "REPRESENTATION_FAILURE",
+    "native_damping_oscillation_in_ordered_data": "SUPPORTED_SCOPE_LIMITED_TO_NATIVE_SYSTEMS"
+  }
+}
