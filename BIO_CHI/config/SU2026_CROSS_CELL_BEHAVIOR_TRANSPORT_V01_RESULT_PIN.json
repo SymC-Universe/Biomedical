@@ -1,0 +1,38 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Su 2026 no-retuning cross-cell-line behavior transport",
+  "branch": "bio-chi-oncology-p0q-20260924",
+  "workflow_run_id": 36086865141,
+  "workflow_head_sha": "9b9665f8414348d8be904ba8cb88cb7af787011b",
+  "artifact_id": 10843713657,
+  "artifact_digest": "sha256:aa1d8c0bb5f38a8207d2fff6c4cf2b772428702f43edb523615c4828978ad0fc",
+  "status": "FAIL_C3_HELDOUT_BEHAVIOR_GATE",
+  "HCC827": {
+    "eligible": true,
+    "expression_values_read": true,
+    "unambiguous_coverage_fraction_range": [0.908, 0.974],
+    "aggregate_statewise_variance_normalized_SSE": {
+      "transported_generator": 2508.5029005507567,
+      "constant_state": 382.61191479210515,
+      "M397_empirical_displacement_template": 16073.04565885416
+    },
+    "primary_gate_pass": false,
+    "disposition": "FAIL_NO_RETUNING_BEHAVIOR_TRANSPORT"
+  },
+  "HT29": {
+    "eligible": false,
+    "expression_values_read": false,
+    "unambiguous_coverage_fraction_range": [0.84, 0.866],
+    "disposition": "SOURCE_LIMITED_NOT_EVALUATED_VALUES_REMAIN_UNOPENED"
+  },
+  "scientific_effect": {
+    "Bio_Chi_C3_heldout_behavior_gate": "FAIL",
+    "M397_generator_cross_cell_behavior_transport": "NOT_ESTABLISHED",
+    "target_scalar_constructed": false,
+    "parameter_refitting": false,
+    "favorable_carrier_selection": false
+  },
+  "epistemic_ceiling": "P0-Q only; no P1 confirmation",
+  "next_gate": "close the Su oncology lineage with explicit scalar refusal, uncertainty-aware modal qualification, and Bio Chi held-out transport failure; any new oncology system is a fresh lineage rather than a repair"
+}
