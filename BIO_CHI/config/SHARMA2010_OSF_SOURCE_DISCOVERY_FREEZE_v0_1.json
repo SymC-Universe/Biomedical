@@ -1,0 +1,30 @@
+{
+  "schema_version":"0.1",
+  "project":"Bio Chi Investigation",
+  "gate":"Sharma 2010 / RP-CB Study 2 public source discovery",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "original_paper":{
+    "doi":"10.1016/j.cell.2010.02.027",
+    "pmcid":"PMC2851638"
+  },
+  "replication_source":{
+    "osf_node":"xbign",
+    "doi":"10.17605/OSF.IO/XBIGN",
+    "role":"public quantitative replication-source qualification for the prelisted Sharma 2010 candidate"
+  },
+  "permitted_operations":[
+    "query OSF public metadata APIs",
+    "recursively list public files/folders with names, sizes, hashes and download URLs",
+    "classify filenames by protocol/recovery/resensitization keywords",
+    "do not download data values in this gate"
+  ],
+  "forbidden_operations":[
+    "read experimental numeric contents",
+    "select files based on observed effect size",
+    "reinterpret incomplete replication as confirmation or refutation"
+  ],
+  "keywords":[
+    "withdraw","withdrawn","recovery","resens","resensit","DTP","persister","erlotinib","growth","survival","raw","data","protocol"
+  ],
+  "status":"FROZEN_BEFORE_OSF_SOURCE_DISCOVERY"
+}
