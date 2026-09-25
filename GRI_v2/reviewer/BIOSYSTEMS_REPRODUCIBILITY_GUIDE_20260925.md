@@ -57,6 +57,21 @@ The three representation levels are kept distinct:
 
 These outcomes connect the cancer work to the same scalar/modal/system representation hierarchy while preserving refusal. They do **not** establish a universal cancer scalar, a chi=1 boundary, or a direct same-carrier bridge from static GRI architecture to realized biological chi behavior.
 
+## Post-result context-gating control
+
+A later P0 exploratory representation control tested whether the historical pre-stimulus RNA proxy could be treated as a context-independent determinant of later NF-kB oscillatory/persistent behavior. The control used Kizilirmak et al. (2023), which provides five untreated RNA biological replicates for clones B/R/G and source-native single-cell NF-kB dynamics under both TNF-alpha and IL-1beta.
+
+The result does **not** restore the historical physical damping interpretation. Under TNF-alpha, the genome-wide historical proxy showed a robust B-versus-R descriptive correspondence with persistent versus oscillatory behavior. Under IL-1beta, clone G became strongly more oscillatory while its pre-stimulus global proxy was unchanged, so the stronger context-independent static-to-dynamics claim failed transport. A source-native receptor diagnostic reproduced the input-specific early-response rank under both stimuli using TNFR1 for TNF-alpha and IL-1R3/Il1rap for IL-1beta. The local four-gene circuit proxy also refused scalar aggregation because component directions were heterogeneous.
+
+The current evidence-first disposition is therefore:
+- literal RNA mean-to-frequency and RNA SD-to-dissipation identification: non-identifiable/unsupported from static RNA alone;
+- a universal or context-independent static damping proxy: not supported, with the cross-input claim falsified at this source scope;
+- the B-versus-R historical-proxy correspondence: retained only as a scope-limited descriptive survivor;
+- local circuit scalarization: representation failure;
+- damping/oscillation on source-native ordered dynamical carriers: retained where directly licensed.
+
+Reproducibility record: branch `gri-biochi-bridge-p0q-20260925`; primary frozen result pin `BIO_CHI/config/KIZILIRMAK2023_CONTEXT_GATE_V01_RESULT_PIN.json`; closure checkpoint `BIO_CHI/control/KIZILIRMAK2023_CONTEXT_GATE_CLOSURE_20260925.md`. This control is post-result and non-cancer; it is a representation/context-gating stress test, not external oncology validation.
+
 ## Damping and oscillation scope
 
 The revision does **not** discard damping or oscillation as biological dynamical questions. It separates the carrier on which those terms are licensed.
