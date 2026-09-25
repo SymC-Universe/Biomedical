@@ -78,7 +78,7 @@
     {
       "id": "Q12",
       "name": "shaffer2017_gri_biochi_bridge",
-      "status": "active_source_pass_design_frozen_preprocessing_and_modal_definition_next"
+      "status": "source_qualification_closed_method_decision_packet_open_target_molecular_effects_closed"
     },
     {
       "id": "Q13",
@@ -87,26 +87,30 @@
     }
   ],
   "active_source_gate": {
-    "stage": "GRI_BIOCHI_BRIDGE_SHAFFER_PREANALYSIS",
+    "stage": "GRI_BIOCHI_BRIDGE_SHAFFER_METHOD_SELECTION",
     "testbed_promotion": false,
     "completed": {
       "harmange_direct_bridge": "REFUSED_CURRENT_REPRODUCIBILITY_SOURCE_MATERIALIZATION_LIMIT",
       "shaffer_source_schema_run": 36137066754,
-      "shaffer_source_schema_artifact": 10865252231,
-      "shaffer_source_schema_status": "PASS_SOURCE_SCHEMA_AND_TIMEPOINT_MAP",
-      "shaffer_file1_sha256": "7bb7296f36d32e71e8b63bf7e813351f058e92ab9cda81ec9fd9b67d81f674f3",
-      "shaffer_file2_sha256": "a1c6180334d037c002b173faf8cdd2162b4d8563cc93e0eb0014cbfe222c4cd8",
-      "evidence_role_freeze": "BIO_CHI/config/SHAFFER2017_BRIDGE_DESIGN_FREEZE_v0_1.json"
+      "shaffer_metadata_map_run": 36139305633,
+      "shaffer_metadata_map_status": "PASS_METADATA_MAP",
+      "shaffer_common_gene_count": 63682,
+      "shaffer_common_gene_set_sha256": "4db34ea45114b8d2acdbe79f454562751b6f692ee4e349ba6953ac2d5f4341d5",
+      "gse97681_metadata_run": 36157584442,
+      "gse97681_metadata_artifact": 10873604376,
+      "gse97681_metadata_status": "PASS_METADATA_ONLY",
+      "gse97681_role_disposition": "FROZEN_INTERNAL_VALIDATION_AND_SAME_SOURCE_TRANSFER_ROLES_MECHANICALLY_SUPPORTED",
+      "method_decision_packet": "BIO_CHI/control/SHAFFER2017_PREANALYSIS_METHOD_DECISION_PACKET_20260925.md"
     },
     "active": {
-      "current_system": "Shaffer 2017 WM989 melanoma vemurafenib timecourse",
-      "current_question": "freeze batch-aware preprocessing, common-gene universe, unsupervised modal construction, and native/simple comparator before B2/B3 molecular analysis",
+      "current_system": "Shaffer 2017 WM989 melanoma vemurafenib bridge with GSE97679 development and GSE97681 internal validation / same-source transfer",
+      "current_question": "select and freeze source-compatible preprocessing, modal representation, B2/B3 task, comparators, refusal rule, and validation endpoints before opening target molecular effects",
       "scalar_B1": "CLOSED_PENDING_SEPARATE_NATIVE_GENERATOR_REVIEW",
-      "modal_B2": "OPEN_AFTER_PREANALYSIS_FREEZE",
-      "relational_B3": "OPEN_AFTER_B2_AND_COMPARATOR_FREEZE",
-      "next": "build and audit preanalysis preprocessing/modal contract without opening resistance-target gene effects"
+      "modal_B2": "CLOSED_UNTIL_METHOD_FREEZE",
+      "relational_B3": "CLOSED_UNTIL_METHOD_FREEZE",
+      "next": "continue source-method literature and executable preprocessing qualification; prepare exact candidate freeze choices; do not open target molecular effects"
     },
-    "scientific_stop_before": "using outcome-selected resistance genes in the primary modal definition, treating sequencing-run differences as biology, interpreting ATAC as methylation, claiming same-source validation as external confirmation, or constructing chi_bio without a qualifying complex dynamical carrier"
+    "scientific_stop_before": "promoting a candidate normalization/filter/modal/B2/B3/comparator/endpoint choice to authoritative freeze without scientific adjudication, using outcome-selected genes, interpreting run differences as biology, relabeling ATAC as methylation, claiming same-source validation as external confirmation, or constructing chi_bio without a qualifying dynamical carrier"
   },
   "active_native_model_gate": {
     "system": "Jaruszewicz-Blonska reduced NF-kB model",
@@ -149,7 +153,7 @@
     "decisive evidence would be opened before required freeze/independence controls",
     "upstream contradiction invalidates a frozen result",
     "publication-level claim expansion requires user decision",
-    "Harmange exact cell-to-lineage carrier mapping cannot be recovered reproducibly from released source/code"
+    "Shaffer preanalysis method selection requires a science-adjacent freeze before target molecular effects are opened"
   ],
   "nomenclature_note": "Exactly three biological objects. Program-wide chi is a parent symbol/class, not a fourth biological object.",
   "cross_system_transport": {
@@ -167,7 +171,7 @@
       "ERK_Chi_bio_admission": "REFUSED_CURRENT_GATE",
       "Bio_Chi_transport": "NOT_OPENED"
     },
-    "current_scientific_stop": "GRI↔Bio Chi bridge active. Harmange direct bridge refused for current source-materialization limits; Shaffer 2017 source passed and preanalysis design is frozen.",
+    "current_scientific_stop": "GRI↔Bio Chi Shaffer source qualification closed. Method-selection gate active; target molecular effects remain unopened until preprocessing/modal/comparator/endpoint choices are frozen.",
     "Su2026_oncology_system": {
       "status": "CLOSED_P0Q",
       "scalar": "REFUSED_UNCERTAINTY_SENSITIVE_EQUIVALENT_NATIVE_INVARIANT",
