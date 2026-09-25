@@ -1,0 +1,27 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Su 2026 Supplementary Data workbook byte freeze and text-only schema inventory",
+  "branch": "bio-chi-oncology-p0q-20260924",
+  "workflow_run_id": 36085881944,
+  "workflow_head_sha": "49764c13ebc52991e8ef4ab5e7193093bc7faa40",
+  "artifact_id": 10843662039,
+  "artifact_digest": "sha256:1ed7354b3f43630b26314beb01f3baa08241a2fffa9918e37729bcb682e2a7b9",
+  "status": "PASS_SOURCE_BYTES_AND_TEXT_ONLY_SCHEMA_INVENTORY",
+  "workbook": {
+    "filename": "41467_2026_71349_MOESM3_ESM.xlsx",
+    "byte_size": 8731215,
+    "md5": "0782c704db69b2c4fa8b2a8a5e8ec552",
+    "sha256": "b53a5e4cbba33d901e4c046143f9097309c98256897ccfc1aa06c2a85786d5c3",
+    "sheet_count": 9
+  },
+  "relevant_schema": {
+    "Supplementary Data 1": "time-resolved M397 RNA expression, Control through DR35, plus correlations with lambda2/Mearly and lambda1/Mlate",
+    "Supplementary Data 3": "temporal lambda1/Mlate and lambda2/Mearly module scores",
+    "Supplementary Data 4": "gene-level Gi1 and Gi2 module-specific contribution scores",
+    "Supplementary Data 5": "best-fitted ODE parameters for four polarity combinations under Drug ON and four under Drug OFF"
+  },
+  "numeric_values_recorded": false,
+  "scientific_values_interpreted": false,
+  "next_gate": "freeze exact sheet/cell mapping and source-faithful state reconstruction before opening coefficient values"
+}
