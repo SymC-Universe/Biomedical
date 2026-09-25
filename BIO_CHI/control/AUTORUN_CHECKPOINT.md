@@ -2,51 +2,55 @@
 
 **Last updated:** 25 September 2026  
 **Branch:** `gri-biochi-bridge-p0q-20260925`  
-**Status:** ACTIVE SHAFFER PRE-ANALYSIS FREEZE  
+**Status:** SHAFFER SOURCE QUALIFICATION CLOSED / METHOD-SELECTION GATE ACTIVE  
 **Authority:** SymC General Operations Manual v0.8.6 + GRI controls + Bio Chi three-object nomenclature.
 
 ## Resume here
 
-The Harmange direct same-carrier bridge is closed at the current reproducibility level because the decisive per-lineage identity objects cannot be materialized from the lightweight public processed release without reopening the raw SRA / Feature Barcode pipeline. Preserve that refusal. Do not infer lineage identity from lineage-count metadata.
-
 The active bridge source is Shaffer et al. 2017.
 
 ### Completed
-- Harmange source schema PASS, exact lineage algorithm recovered, direct carrier materialization refused;
-- Shaffer backup opened under pre-frozen rules;
-- GSE97679 processed RNA source audit PASS;
-- processed RNA file 1: 509,456 rows, SHA-256 `7bb7296f36d32e71e8b63bf7e813351f058e92ab9cda81ec9fd9b67d81f674f3`;
-- processed RNA file 2: 636,820 rows, SHA-256 `a1c6180334d037c002b173faf8cdd2162b4d8563cc93e0eb0014cbfe222c4cd8`;
-- untreated, week-1, week-4, EGFR-high, and mixed source labels reproduced;
-- no gene-effect target statistic opened;
-- evidence roles frozen:
-  - GSE97679/GSE97680 WM989 = development;
-  - GSE97681 WM989 = source-internal validation;
-  - GSE97681 WM983B = same-source cross-cell-line transfer;
-  - external confirmation = unopened.
+- Harmange direct bridge refused for current source-materialization limits without inventing lineage identity.
+- GSE97679 source schema PASS.
+- GSE97679 metadata/common-gene audit PASS: 63,682 genes shared exactly across both processed RNA runs.
+- week-1 states span both GSE97679 sequencing runs and remain the internal run-sensitivity bridge.
+- GSE97681 metadata-only audit PASS on run 36157584442.
+- all five GSE97681 processed tables are retrievable and share the same 63,682-gene universe/hash as GSE97679.
+- WM989 source material mechanically supports the frozen source-internal validation role with paired drug/no-drug plus 48-hour and 7-day holiday states.
+- WM983B source material mechanically supports the frozen same-source transfer role with paired and longitudinal drug-state records.
+- no target-gene effect, resistance-marker selection, B2 result, B3 result, or chi_bio calculation was used to qualify these sources.
 
-### Batch rule
-GSE97679 processed RNA is split across sequencing runs. Run identity is a nuisance/blocking factor.
+### Inherited scientific constraints
+Do not restart closed GRI routes:
+- historical CV/2 is closed;
+- static covariance is not a native dynamical operator;
+- feature filtering is separate from normalization;
+- target outcomes may not define the primary representation;
+- same-source validation is not external confirmation;
+- chi_bio scalar admission is not required for Chi_bio modal or Bio Chi investigation.
 
-Do not:
-- use raw cross-run count distance as biological trajectory;
-- choose genes from resistance outcomes to define the primary modal object;
-- relabel ATAC as methylation;
-- call same-paper transfer external confirmation.
+### Current method-selection gate
+The Shaffer source uses raw HTSeq counts and source-native DESeq2 analysis. This removes the tximport-count ambiguity that made DESeq2 VST a conditional/sensitivity candidate in the earlier SCC25 normalization packet.
 
-### Immediate next action
-Freeze and implement the preanalysis contract:
-1. exact common-gene universe;
-2. count filtering independent of outcome;
-3. normalization and batch handling;
-4. unsupervised modal construction;
-5. B2 statistic;
-6. simple/native comparators;
-7. GSE97681 internal-validation endpoint.
+Candidate method packet:
+`BIO_CHI/control/SHAFFER2017_PREANALYSIS_METHOD_DECISION_PACKET_20260925.md`
 
-Only after those are frozen may target expression values be analyzed.
+Current candidates only, not frozen:
+- DESeq2 VST as source-compatible primary candidate for review;
+- deterministic library-size + log transform as minimal sensitivity/baseline;
+- TMM/log-CPM as optional composition-robust sensitivity if a clean development-only reference rule is established;
+- PCA/SVD-type unsupervised geometry as the first low-complexity modal candidate/baseline.
 
-### Parallel nonblocking review
-Harmange's published stochastic two-state model contains `k_on`, `k_off`, growth, and death terms. Review it separately to determine what dynamical object it licenses. Do not infer scalar `chi_bio` unless a qualifying complex mode exists.
+### Immediate safe continuation
+Continue:
+1. source-method and comparator literature review;
+2. executable preprocessing/environment preflight without target-effect interpretation;
+3. exact sample-role and batch/run mechanics;
+4. refinement of the candidate decision packet.
 
-No user intervention is required for the current mechanical/preanalysis steps.
+Stop before:
+- freezing normalization/filter/modal/comparator/B2/B3/endpoint choices without scientific adjudication;
+- opening target molecular effects;
+- constructing chi_bio without a qualifying dynamical carrier.
+
+The hourly continuation check should advance only the safe work above and surface the method freeze as a scientific decision once the candidate packet is sufficiently resolved.
