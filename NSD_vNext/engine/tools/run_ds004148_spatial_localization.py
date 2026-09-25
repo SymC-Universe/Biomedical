@@ -134,6 +134,10 @@ def _channel_pair(
             "MODEL_FAMILY_UNSTABLE": bool(
                 a["model_family_disagreement"] or b["model_family_disagreement"]
             ),
+            "MODEL_FAMILY_REFUSED": bool(
+                a.get("model_family_refused", False)
+                or b.get("model_family_refused", False)
+            ),
             "PEAK_COUNT_CHANGED": int(a["peak_count"]) != int(b["peak_count"]),
             "ZERO_PEAK_STATE_CHANGED": bool(a["zero_peak_state"]) != bool(b["zero_peak_state"]),
             "max_peak_count_reached_any": bool(
@@ -196,6 +200,9 @@ def _pair_summary(
         "MODEL_FAMILY_UNSTABLE_within_PEAK_SHIFT_HIGH": sum(
             bool(row["MODEL_FAMILY_UNSTABLE"]) for row in high
         ),
+        "MODEL_FAMILY_REFUSED_within_PEAK_SHIFT_HIGH": sum(
+            bool(row["MODEL_FAMILY_REFUSED"]) for row in high
+        ),
         "PEAK_COUNT_CHANGED_within_PEAK_SHIFT_HIGH": sum(
             bool(row["PEAK_COUNT_CHANGED"]) for row in high
         ),
@@ -242,6 +249,7 @@ def _pair_summary(
                 "APERIODIC_DIFF_HIGH": row["APERIODIC_DIFF_HIGH"],
                 "PSD_CORRELATION_LOW": row["PSD_CORRELATION_LOW"],
                 "MODEL_FAMILY_UNSTABLE": row["MODEL_FAMILY_UNSTABLE"],
+                "MODEL_FAMILY_REFUSED": row["MODEL_FAMILY_REFUSED"],
                 "PEAK_COUNT_CHANGED": row["PEAK_COUNT_CHANGED"],
                 "ZERO_PEAK_STATE_CHANGED": row["ZERO_PEAK_STATE_CHANGED"],
             }
