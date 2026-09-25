@@ -1,0 +1,26 @@
+name: Bio Chi top-down system selection v0.1
+on:
+  push:
+    branches: [bio-chi-topdown-pivot-20260924]
+    paths:
+      - 'BIO_CHI/config/BIO_CHI_TOPDOWN_SYSTEM_SELECTION_FREEZE_v0_1.json'
+      - 'BIO_CHI/src/select_bio_chi_topdown_system_v0_1.py'
+      - '.github/workflows/bio-chi-topdown-system-selection-v01.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  select:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select next system from frozen design contract
+        run: python BIO_CHI/src/select_bio_chi_topdown_system_v0_1.py
+      - name: Upload selection
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_TOPDOWN_SYSTEM_SELECTION_V01
+          path: BIO_CHI/artifacts/generated/topdown_system_selection_v0_1.json
+          if-no-files-found: error
