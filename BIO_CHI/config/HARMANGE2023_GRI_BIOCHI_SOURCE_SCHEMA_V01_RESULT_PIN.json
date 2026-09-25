@@ -1,0 +1,28 @@
+{
+  "schema_version":"0.1",
+  "project":"GRI Bio Chi Bridge",
+  "gate":"Harmange 2023 source/carrier schema audit",
+  "branch":"gri-biochi-bridge-p0q-20260925",
+  "workflow_run_id":36100798262,
+  "workflow_head_sha":"b64cce93ebda6f7c29d1f57184daf24550870127",
+  "artifact_id":10849222240,
+  "artifact_digest":"sha256:64044fb922477c753b5ed1e01ea5c62bf5e11bdd6dd8eea1d817cdd1602de10d",
+  "status":"PASS_SOURCE_CARRIER_SCHEMA",
+  "metadata":{
+    "sha256":"f22aaf6947d38a018c0c4d13ceedacbd3bdffc296f727e171b66a21b7a06434b",
+    "size_bytes":3359006,
+    "rows_excluding_header":40021,
+    "columns":26
+  },
+  "barcodes":{
+    "sha256":"3e2fdc6d8ab9100c0fa45916fd000c4e541b83810ce449911679c3f03d26403a",
+    "size_bytes":178688,
+    "rows":40021
+  },
+  "lineage_assay_fields":["nCount_lineage","nFeature_lineage"],
+  "condition_state_fields":["conditions","Primed_UCell","clusterID","TGFB1","TGFBRi","PI3Ki"],
+  "explicit_dominant_lineage_identity_in_exported_metadata":false,
+  "molecular_values_opened":false,
+  "target_outcomes_computed":false,
+  "next_action":"resolve exact lineage identity to cell mapping from source-defined lineage-assignment object or equivalent released data; do not infer lineage ID from lineage count fields"
+}
