@@ -29,8 +29,8 @@ Investigate the A-positive / B-discordant result without changing the frozen C+D
 
 ## Decision rules
 
-- If A changes sign broadly across expression strata or lower-mean stresses, classify `A_MEAN_SCALE_FRAGILE`.
-- If A remains positive across all frozen strata/stresses but chi is strongly mean-dependent, classify `A_DIRECTION_ROBUST_BUT_MEAN_DEPENDENT`.
-- If B genes split directions or leave-one-gene-out summaries change sign, classify `B_COMPONENT_HETEROGENEITY`.
+- Define an A expression-stratification failure as either (i) a negative Delta_A in 3 or more of the 10 frozen pooled-mean deciles, or (ii) a negative Delta_A under any of the four frozen lower-mean percentile stresses. If triggered, classify `A_MEAN_SCALE_FRAGILE`.
+- Define strong mean dependence descriptively as absolute Spearman rho(chi_GRI, transformed mean) >= 0.5 in both B and R. If the A direction passes the preceding stability rule and this dependence criterion is met, classify `A_DIRECTION_ROBUST_BUT_MEAN_DEPENDENT`; otherwise report `A_DIRECTION_ROBUST_WITHOUT_STRONG_MEAN_DEPENDENCE`.
+- If the four B genes include both positive and negative B-minus-R chi contrasts, or if any leave-one-gene-out circuit summary changes sign relative to full B, classify `B_COMPONENT_HETEROGENEITY`.
 - The parent D disposition remains `scale_or_representation_instability_no_promotion` regardless of these diagnostics.
 - Any mechanistic reinterpretation produced here remains post-result and cannot enter the manuscript as confirmatory evidence without an independent test.
