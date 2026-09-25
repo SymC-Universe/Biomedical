@@ -82,7 +82,7 @@ def _resolve_annex_identity(
         raise ValueError(f"could not resolve git-annex target for {source_path}")
 
     match = re.search(
-        rf"MD5E-s(\\d+)--([0-9a-fA-F]{{32}})\\.{re.escape(extension)}",
+        rf"MD5E-s(\d+)--([0-9a-fA-F]{{32}})\.{re.escape(extension)}",
         str(target),
     )
     if not match:
