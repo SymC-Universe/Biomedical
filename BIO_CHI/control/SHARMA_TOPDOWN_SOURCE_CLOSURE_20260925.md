@@ -30,7 +30,6 @@ However, the complete recursive filename inventory contained no source file expl
 - withdrawal;
 - recovery;
 - resensitization;
-- resensitization;
 - drug-free return.
 
 The discovery gate did not open any experimental values.
