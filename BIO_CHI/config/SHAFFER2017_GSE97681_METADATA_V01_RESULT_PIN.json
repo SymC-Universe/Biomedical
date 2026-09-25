@@ -1,0 +1,32 @@
+{
+  "schema_version":"0.1",
+  "project":"GRI Bio Chi Bridge",
+  "gate":"GSE97681 processed-source metadata-only audit",
+  "branch":"gri-biochi-bridge-p0q-20260925",
+  "workflow_run_id":36157584442,
+  "workflow_head_sha":"4ed484266c4a583197c1652d3c231bed71207d8a",
+  "workflow_artifact_id":10873604376,
+  "workflow_artifact_zip_sha256":"b588f34fae07011a0bfe312b60623f1fe9ca63bb16309b4dfe10304bb580283f",
+  "status":"PASS_METADATA_ONLY",
+  "common_gene_set_sha256":"4db34ea45114b8d2acdbe79f454562751b6f692ee4e349ba6953ac2d5f4341d5",
+  "common_gene_count":63682,
+  "files":[
+    {"file":"GSE97681_meltedData_wm983b_run3.tsv.gz","system_role":"WM983B","sha256":"a43868450eed7e2af6631eb81803b8375294304813d820f94e50c8c9e419e1ec","size_bytes":5375178,"rows":1464686,"samples":23},
+    {"file":"GSE97681_meltedData_wm983b_run4.tsv.gz","system_role":"WM983B","sha256":"2d72976f529171b5cdae1a343265a461ba4ef974e09f74b98fb0fd3b0499ba53","size_bytes":4696127,"rows":1273640,"samples":20},
+    {"file":"GSE97681_meltedwm983bLdB_run2.tsv.gz","system_role":"WM983B","sha256":"2a439cd53a87e4eb9c88949aefdce58f5e96304a9c37d4193b714571f1552e69","size_bytes":5734923,"rows":1528368,"samples":24},
+    {"file":"GSE97681_wm983bLdB_star_HTSeqCounts.tsv.gz","system_role":"WM983B","sha256":"26fc4dd92ef864e5ed2bc4b760b463f107e4ee25cd6b18affdbe3b8163834719","size_bytes":4668752,"rows":1273640,"samples":20},
+    {"file":"GSE97681_wm9LdB_star_HTSeqCounts_full.tsv.gz","system_role":"WM989","sha256":"243aeec0b7cf196fd74182636c6c6e07e37beda7f4f40f8699bbf7992a0da376","size_bytes":9443653,"rows":2547280,"samples":40}
+  ],
+  "source_role_checks":{
+    "WM989_paired_drug_noDrug":true,
+    "WM989_48h_holiday":true,
+    "WM989_7day_holiday":true,
+    "WM983B_paired_drug_noDrug":true,
+    "WM983B_longitudinal_week1_week3_week5":true,
+    "WM983B_48h_off_and_drug_on":true
+  },
+  "target_molecular_values_used_for_inference":false,
+  "endpoint_selection_performed":false,
+  "disposition":"FROZEN_INTERNAL_VALIDATION_AND_SAME_SOURCE_TRANSFER_ROLES_MECHANICALLY_SUPPORTED",
+  "next_action":"review source-native preprocessing and comparator methods; stop before freezing any B2/B3 method choice without scientific review"
+}
