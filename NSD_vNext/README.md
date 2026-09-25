@@ -2,7 +2,7 @@
 
 Status: ACTIVE RECONSTRUCTION / NOT A VALIDATED CLINICAL TOOL
 Date initialized: 14 September 2026
-Governing manual: SymC General Operations Manual v0.8.3
+Governing manual: SymC General Operations Manual v0.8.6
 Working branch: `nsd-rebuild-gom-v0.8.0`
 
 This directory is the forward NSD research workspace. Historical NSD PDFs and archives remain provenance, not current evidentiary authority.
@@ -111,6 +111,7 @@ Clinical findings may motivate a future separately versioned scientific revision
 
 ### Reporting and release planning
 
+- `docs/REPRODUCIBILITY_GUIDE_v0.1.md` — GOM v0.8.6 executable V-section verification path, including the frozen ds004148 independent descriptive-transfer suite.
 - `docs/FIGURE_TABLE_PLAN_v0.1.md` — method/result figure and table gates, including historical-figure firewall.
 - `docs/REPRODUCIBILITY_MATRIX_v0.1.md` — R1/R2/R3 closure plan.
 - `docs/NONCOMPUTE_WORKSTREAMS_v0.1.md` — closure state of work that can advance before large computations.
@@ -189,3 +190,11 @@ The central open question is whether a **stability-oriented integration and qual
 ## Status rule
 
 No draft prose may convert an old exploratory result, historical scalar, proxy, attractive visualization, classification result, individually legitimate method component, clean-looking public dataset, or unfinished computation into a current mechanistic or predictive claim. Pending results remain explicitly pending until their evidence path closes.
+
+## 24 September 2026 independent-transfer checkpoint
+
+The six-recording ds004148 D4 resting source is now mechanically closed and a prospective P0-Q descriptive-transfer task is frozen before signal-derived outcome inspection. The task reuses the existing ds003775 Welch and periodic/aperiodic representation without retuning, compares eyes-closed and eyes-open cross-session structure separately, preserves exact channel-label semantics, and emits metric-level Function/Limit observations rather than a composite transfer score.
+
+The execution path is versioned in `docs/DS004148_DESCRIPTIVE_TRANSFER_FREEZE_v0.1.md`, `docs/REPRODUCIBILITY_GUIDE_v0.1.md`, `engine/tools/run_ds004148_descriptive_transfer.py`, and `.github/workflows/nsd-ds004148-descriptive-transfer.yml`.
+
+This checkpoint does not license real-EEG modal damping, lowercase chi, broader capital Chi, a global scalar, diagnosis, recovery, resilience, or population inference. The first pilot contains one independent subject, with sessions and channels treated as nested repeated measurements.
