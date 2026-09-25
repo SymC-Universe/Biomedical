@@ -1,0 +1,32 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Su 2026 native-comparator and reported-SEM Limit Map",
+  "branch": "bio-chi-oncology-p0q-20260924",
+  "workflow_run_id": 36086434597,
+  "workflow_head_sha": "e55680452f4200a0faed4fe0b55e06e88d0a95c0",
+  "artifact_id": 10844290632,
+  "artifact_digest": "sha256:097bb737f1260ed08f4cd55c03c2168f17951d21b3b7b8c59ff85065315c3fa8",
+  "status": "PASS",
+  "native_comparator": {
+    "status": "EXACT_EQUIVALENCE_CONFIRMED",
+    "max_abs_difference": 1.1102230246251565e-16,
+    "identity": "For a real 2x2 generator with a complex-conjugate pair, chi = -trace(J)/(2*sqrt(det(J))).",
+    "added_information_beyond_native_trace_and_determinant": false
+  },
+  "reported_sem_limit_map": {
+    "interpretation": "deterministic hyperrectangle stress test; not a confidence interval or probability statement",
+    "nominal_complex_scenarios": ["ON_PP","OFF_PN","OFF_NN"],
+    "only_scenario_remaining_real_at_all_1SEM_and_2SEM_corners": "OFF_PP",
+    "all_nominal_complex_scenarios_cross_complex_real_boundary_within_1SEM_corner_grid": true,
+    "all_nominal_complex_scenarios_have_some_unstable_1SEM_corners": true,
+    "scalar_carrier_classification_robust_to_reported_SEM": false
+  },
+  "scientific_effect": {
+    "su_scalar_nominal_values_are_source_model_point_estimates": true,
+    "su_scalar_model_specific_admission_under_uncertainty": "REFUSE_UNCERTAINTY_SENSITIVE",
+    "cross_system_scalar_transport_into_oncology_from_this_source": "NOT_ESTABLISHED",
+    "modal_uncertainty_gate": "REQUIRES_COMPLETE_GENERATOR_AND_DEGENERACY_ADJUDICATION"
+  },
+  "next_gate": "adjudicate complete two-state modal representation under degeneracy/SEM stress, then test the predeclared relational Bio Chi hypotheses without relying on a continuous scalar carrier"
+}
