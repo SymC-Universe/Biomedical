@@ -1,0 +1,53 @@
+{
+  "schema_version":"0.2",
+  "project":"Bio Chi Investigation",
+  "lineage":"rehman2021_topdown",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "evidence_tier":"P0-Q",
+  "source_map_pin":"BIO_CHI/config/REHMAN2021_HEADER_SOURCE_MAP_V01_RESULT_PIN.json",
+  "source":{
+    "counts_url":"https://ftp.ncbi.nlm.nih.gov/geo/series/GSE145nnn/GSE145356/suppl/GSE145356_merged_HTSeq_readCounts_V2.txt.gz",
+    "counts_sha256":"b0fe61c87cec2673ac37abef4f112f7d1d292212d3abe1149ac69340718e1447",
+    "soft_url":"https://ftp.ncbi.nlm.nih.gov/geo/series/GSE145nnn/GSE145356/soft/GSE145356_family.soft.gz",
+    "soft_sha256":"1a39c3472db263c4c32964bb9467e5842bf6f70992ed3c98ef17884893522fb0"
+  },
+  "primary_groups":{
+    "control":["GSM4315308","GSM4315309","GSM4315310","GSM4315329","GSM4315330","GSM4315331","GSM4315332"],
+    "dtp":["GSM4315326","GSM4315327","GSM4315328"],
+    "regrowth":["GSM4315317","GSM4315318","GSM4315319"]
+  },
+  "heldout_boundary_group":["GSM4315323","GSM4315324","GSM4315325"],
+  "control_sensitivity_additional":["GSM4315311","GSM4315312","GSM4315313"],
+  "whole_event":{
+    "normalization":"library-size CPM then log2(CPM+1)",
+    "gene_filter":"CPM >=1 in at least 3 of the 13 primary samples",
+    "primary_distance":"1-Pearson correlation to primary control centroid",
+    "sensitivity_distance":"Euclidean distance after gene-wise z-scaling across the 13 primary samples; zero-variance genes removed",
+    "recovery_index":"1 - median(regrowth distance)/median(DTP distance)",
+    "recovery_exact_test":"one-sided exact permutation over the 6 DTP/regrowth labels; statistic median(DTP distance)-median(regrowth distance)",
+    "heldout_boundary_test":"one-sided exact permutation over the 6 regrowth/resistant labels; statistic median(resistant distance)-median(regrowth distance)",
+    "control_sensitivity":"repeat event distance calculations after adding the 3 barcoded DMSO controls, without changing the gene filter rule",
+    "no_multiple_testing_promotion":"exact tests are resolution diagnostics; effect direction and frozen heldout consistency are primary"
+  },
+  "modal":{
+    "basis":"PCA/SVD fitted only to the 13 primary samples after gene-wise z-scaling of the frozen filtered logCPM matrix",
+    "labels_used_to_fit_basis":false,
+    "retention":"minimum leading PCs reaching >=80% cumulative variance",
+    "all_retained_PCs_analyzed":true,
+    "heldout_resistant_projection":"project into frozen primary basis",
+    "return_vector_metric":"cosine between DTP-to-regrowth centroid displacement and DTP-to-control centroid displacement in retained-PC space",
+    "per_PC_return_fraction":"1 - abs(regrowth_mean-control_mean)/abs(dtp_mean-control_mean) when denominator >1e-12",
+    "purpose":"distinguish direct modal return, compensatory reorganization, persistent displacement, or divergence",
+    "native_source_PCA_exact_reproduction_claimed":false
+  },
+  "scalar":{
+    "opened":false,
+    "reason":"No source-native dynamical generator is defined for this RNA state-space branch and static PCA is not sufficient to license a same-mode dynamical scalar."
+  },
+  "behavioral_anchor":{
+    "regrowth":"paper reports re-sensitivity to CPT-11 upon reinjection/rechallenge",
+    "resistant":"paper reports continued growth on CPT-11 and resistance upon reinjection/rechallenge",
+    "interpretation":"group-level source behavior anchor only; not an individual-level predictive endpoint"
+  },
+  "status":"FROZEN_BEFORE_COUNT_DATA_ROWS"
+}
