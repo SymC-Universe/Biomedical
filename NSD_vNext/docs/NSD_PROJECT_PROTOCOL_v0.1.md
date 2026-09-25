@@ -2,12 +2,12 @@
 
 Status: ACTIVE WORKING PROJECT PROTOCOL
 Date: 14 September 2026
-Governing program standard: SymC General Operations Manual v0.8.0
+Governing program standard: SymC General Operations Manual v0.8.6
 Scope: Neuro Stability Disorder / neurophysiological stability architecture
 
 ## 1. Purpose
 
-This protocol keeps NSD-specific scientific safeguards local while inheriting the full GOM v0.8.0 scientific floor. It may strengthen the GOM but may not weaken MFR-14, native-model-first reasoning, epistemic classification, promotion debt, anti-circularity, refusal, reproducibility, Function Map/Limit Map, or independence requirements.
+This protocol keeps NSD-specific scientific safeguards local while inheriting the full GOM v0.8.6 scientific floor. It may strengthen the GOM but may not weaken MFR-14, native-model-first reasoning, epistemic classification, promotion debt, anti-circularity, refusal, reproducibility, Function Map/Limit Map, or independence requirements.
 
 ## 2. NSD System Model
 
@@ -182,6 +182,22 @@ For neurophysiology, preserve dataset identity, subject/session IDs or privacy-s
 
 ## 15. GOM migration integrity
 
-Historical NSD-specific safeguards that were present in earlier General Protocol versions remain local obligations unless explicitly retired with a scientific reason. Consolidation into GOM v0.8.0 does not erase project-specific rules.
+Historical NSD-specific safeguards that were present in earlier General Protocol versions remain local obligations unless explicitly retired with a scientific reason. Consolidation into the active GOM does not erase project-specific rules.
 
 The historical NSD manuscript is provenance, not an answer key. Current claims are rebuilt from the present evidence architecture.
+
+
+## 16. Checkpoint auto-continuation
+
+Checkpoints are execution handoffs, not stopping conditions. Once a checkpoint is written and audited, the next previously authorized scientific or mechanical step proceeds automatically when all of the following are true:
+
+- the next step is already justified by the frozen plan or closed result;
+- it does not require a new scientific judgment from the user;
+- it does not change the estimator, threshold, dataset role, claim ceiling, or interpretation after result inspection;
+- required provenance and reproducibility records can be preserved.
+
+Mechanical failures are repaired and rerun without waiting for user prompting if the frozen science is unchanged.
+
+Scientific failures, anomalous outputs, or outliers are not bypassed. They are preserved, investigated for root cause and reproducibility, and classified before continuation.
+
+The automatic chain stops only at a true scientific decision boundary or other explicit user-level choice.
