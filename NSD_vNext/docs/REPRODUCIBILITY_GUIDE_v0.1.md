@@ -85,11 +85,12 @@ python -m pip install -e 'NSD_vNext/engine[parameterization_rc7]'
 python NSD_vNext/engine/tools/run_ds004148_descriptive_transfer.py \
   --manifest NSD_vNext/docs/manifests/ds004148_d4_resting_crosssession_v0.1.json \
   --atlas NSD_vNext/atlas/reference_models/ds003775_repeat_descriptive_reference_p0d_v0.1.json \
+  --matched-reference NSD_vNext/atlas/reference_models/ds003775_repeat_descriptive_reference_p0d_matched59_v0.1.json \
   --output-dir ./nsd-transfer-output
 ```
 
 Expected outputs:
-- `ds004148_descriptive_transfer_result_v0.1.json`;
+- `ds004148_descriptive_transfer_result_v0.2.json`;
 - `VERIFY_SUMMARY.md`;
 - two state blocks, eyes closed and eyes open;
 - three same-state session-pair comparisons per state;
@@ -107,7 +108,7 @@ Run:
 ```bash
 python - <<'PY'
 import json
-p = "./nsd-transfer-output/ds004148_descriptive_transfer_result_v0.1.json"
+p = "./nsd-transfer-output/ds004148_descriptive_transfer_result_v0.2.json"
 d = json.load(open(p, encoding="utf-8"))
 for key in [
     "licenses_modal_damping",
@@ -134,7 +135,7 @@ Workflow:
 `.github/workflows/nsd-ds004148-descriptive-transfer.yml`
 
 Expected artifact:
-`nsd-ds004148-descriptive-transfer-suite-v0-1`
+`nsd-ds004148-descriptive-transfer-suite-v0-2`
 
 Required packaged records:
 - `DS004148_DESCRIPTIVE_TRANSFER_FREEZE_v0.1.md`;
@@ -142,7 +143,7 @@ Required packaged records:
 - `ds003775_repeat_descriptive_reference_p0d_v0.1.json`;
 - `run_ds004148_descriptive_transfer.py`;
 - `pyproject.toml`;
-- `ds004148_descriptive_transfer_result_v0.1.json`;
+- `ds004148_descriptive_transfer_result_v0.2.json`;
 - `VERIFY_SUMMARY.md`;
 - `RUN_COMMAND.txt`;
 - `SHA256SUMS.txt`.
@@ -158,7 +159,7 @@ Run:
 ```bash
 python - <<'PY'
 import json
-p = "./nsd-transfer-output/ds004148_descriptive_transfer_result_v0.1.json"
+p = "./nsd-transfer-output/ds004148_descriptive_transfer_result_v0.2.json"
 d = json.load(open(p, encoding="utf-8"))
 assert d["recording_count"] == 6
 assert sorted(d["states"]) == ["eyesclosed", "eyesopen"]
@@ -175,3 +176,25 @@ PY
 Expected: `MASTER_SMOKE_TEST=PASS`.
 
 Interpretation: a passing smoke test establishes package and contract integrity only. Scientific interpretation remains bounded by the freeze and post-result record.
+
+
+## V8. Verify corrected exact-label closure
+
+[CLAIM] The promoted ds004148 transfer result uses the exact 59-channel label intersection required by the prospective freeze, and the first 61-versus-64 implementation is retained only as provenance.
+
+Inspect:
+
+```bash
+cat NSD_vNext/docs/DS004148_EXACT_LABEL_REFERENCE_REMEDIATION_v0.1.md
+cat NSD_vNext/docs/DS004148_DESCRIPTIVE_TRANSFER_POSTRESULT_v0.2.md
+```
+
+Expected:
+- corrected workflow run `36088323374`;
+- artifact `nsd-ds004148-descriptive-transfer-suite-v0-2`;
+- artifact digest `sha256:f6ce93029c38d72016c2bfd17f4e1b7bdc74bdc5d3ac0fac780896052bf170ce`;
+- exact comparison channel count = 59;
+- all nine state-median indicators for eyes closed and all nine for eyes open labeled `WITHIN_PREVIOUS_ENVELOPE`;
+- two pair-level Limit Map excursions retained rather than hidden by the state median.
+
+Interpretation: the frozen descriptive representation transported to this independent one-subject source at the state-median level without retuning. The result remains P0-Q and does not license modal damping, lowercase chi, capital Chi, diagnosis, recovery, or population inference.
