@@ -1,0 +1,19 @@
+{
+  "schema_version":"0.2",
+  "project":"Bio Chi Investigation",
+  "gate":"Repaired top-down next-system selection",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "workflow_run_id":36091287883,
+  "workflow_head_sha":"fd99033241883c0b520ffe8c28e178430e003967",
+  "artifact_id":10845946380,
+  "artifact_digest":"sha256:f62bb2ded23490364c16678620fca7ca7a625c15d5a5af4dd5e2ad9476ef64bc",
+  "status":"UNIQUE_SYSTEM_SELECTED",
+  "selected_system":"marsolier2022_tnbc_h3k27me3",
+  "selected_primary_event":"persistence_inheritance",
+  "tie_vector":[1,1,1,1,1],
+  "other_eligible":[{"id":"shaffer2017_melanoma","primary_event":"recovery_boundary_reorganization","tie_vector":[0,1,1,1,1]}],
+  "conditional_return_logic_applied":true,
+  "molecular_outcomes_used":false,
+  "supersedes":"BIO_CHI/config/TOPDOWN_SYSTEM_SELECTION_V01_RESULT_PIN.json",
+  "scientific_effect":"Marsolier 2022 is the next top-down lineage because the persistence/inheritance event satisfies the whole-event contract without requiring a recovery-to-baseline endpoint and uniquely wins the frozen tie-breakers."
+}
