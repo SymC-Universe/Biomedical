@@ -215,3 +215,51 @@ Current continuation:
 `ds004148 corrected descriptive transfer -> ds004148 eyes-open spatial/state localization`.
 
 Interpretation: this is an operations/reproducibility rule. It cannot be used to silently enlarge scientific claims or retune an experiment after seeing its result.
+
+
+## V10. Verify spatial/state localization closure
+
+[CLAIM] The sub-01 pair-level excursion was localized with channel-specific parent context before any independent-subject replication outcome was opened.
+
+Inspect:
+
+```bash
+cat NSD_vNext/docs/DS004148_SPATIAL_LOCALIZATION_FREEZE_v0.1.md
+cat NSD_vNext/docs/DS004148_SPATIAL_LOCALIZATION_POSTRESULT_v0.1.md
+```
+
+Expected:
+- workflow run `36139756523`;
+- suite `nsd-ds004148-spatial-localization-suite-v0-1`;
+- artifact digest `sha256:2a8db256d431f8a436c66229accb633c2d5511709388f1bbd31485de5e9b7ea0`;
+- parent reference rebuilt from 42 frozen ds003775 subject artifacts;
+- 59 exact matched labels;
+- target eyes-open session2-session3: 11/21 eligible channels above channel-specific parent q95;
+- eyes-open session1-session3: 10/19 high;
+- eyes-open session1-session2: 8/35 high;
+- modal/damping/chi/capital-Chi firewalls remain false.
+
+Interpretation: the localization identifies a session-3 eyes-open descriptive pattern and model-family coupling in sub-01. It is explanatory discovery and does not establish an independent-subject effect.
+
+## V11. Verify untouched MFR-14 handoff
+
+[CLAIM] The next checkpoint proceeds automatically into an untouched independent-subject replication without reusing sub-01 or retuning the representation.
+
+Inspect:
+
+```bash
+cat NSD_vNext/docs/DS004148_EYESOPEN_MFR14_REPLICATION_FREEZE_v0.1.md
+cat NSD_vNext/docs/manifests/ds004148_eyesopen_mfr14_replication_v0.1.json
+```
+
+Expected:
+- subjects `sub-02` through `sub-15`;
+- 14 independent subjects;
+- all three eyes-open sessions per subject;
+- exact source/D4 gate before features;
+- no replacement subjects after signal outcomes;
+- subject-level paired contrasts;
+- exact sign tests with Holm correction for the two predeclared high-shift-fraction contrasts;
+- no modal, chi, capital-Chi, clinical, recovery, or broad population promotion.
+
+Interpretation: this is the first untouched independent-subject test of the session-3 descriptive pattern within ds004148.
