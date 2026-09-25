@@ -1,0 +1,53 @@
+{
+  "schema_version": "0.1",
+  "project": "GRI Bio Chi Bridge",
+  "gate": "Shaffer 2017 metadata-only common-gene and carrier map audit",
+  "branch": "gri-biochi-bridge-p0q-20260925",
+  "source_commit": "6f278851c9778a3005090ad0f1c8f56a876624aa",
+  "workflow_run_id": 36139305633,
+  "workflow_artifact_id": 10866465249,
+  "workflow_artifact_zip_sha256": "5999e5b4512b53a11defde7ba9ff3bb4dff654adc9320682848de130e13fff51",
+  "status": "PASS_METADATA_MAP",
+  "files": [
+    {
+      "index": 1,
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE97nnn/GSE97679/suppl/GSE97679_meltedData_20150722_EGFRsortRNArun1.tsv.gz",
+      "sha256": "7bb7296f36d32e71e8b63bf7e813351f058e92ab9cda81ec9fd9b67d81f674f3",
+      "size_bytes": 1953578,
+      "gene_count": 63682,
+      "sample_count": 8
+    },
+    {
+      "index": 2,
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE97nnn/GSE97679/suppl/GSE97679_meltedData_20150831_EGFRsortRNArun2.tsv.gz",
+      "sha256": "a1c6180334d037c002b173faf8cdd2162b4d8563cc93e0eb0014cbfe222c4cd8",
+      "size_bytes": 2418265,
+      "gene_count": 63682,
+      "sample_count": 10
+    }
+  ],
+  "common_gene_count": 63682,
+  "union_gene_count": 63682,
+  "genes_outside_common_by_file": [
+    0,
+    0
+  ],
+  "common_gene_set_sha256": "4db34ea45114b8d2acdbe79f454562751b6f692ee4e349ba6953ac2d5f4341d5",
+  "all_samples_mapped_timepoint": true,
+  "all_samples_mapped_population": true,
+  "counts_or_gene_effects_used_for_scientific_inference": false,
+  "carrier_summary": {
+    "primary_matched_EGFR_high_vs_mixed_pairs": {
+      "noDrug": 3,
+      "week1": 2,
+      "week4": 2,
+      "total": 7
+    },
+    "week1_spans_both_sequencing_runs": true,
+    "week4_EGFR_negative_samples_present": 2,
+    "week5_samples_present_but_not_part_of_frozen_primary_three_timepoint_design": true
+  },
+  "disposition": "SOURCE_METADATA_GATE_CLOSED",
+  "next_safe_action": "qualify GSE97681 source metadata/carrier structure without opening B2/B3 target molecular effects",
+  "scientific_stop": "freeze of filtering, normalization, modal construction, B2 statistic, and comparator choices is science-adjacent and must not be silently promoted from candidate to authoritative method"
+}
