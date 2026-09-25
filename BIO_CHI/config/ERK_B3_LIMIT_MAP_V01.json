@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "project": "Bio Chi Investigation",
+  "record_type": "LIMIT_MAP",
+  "date": "2026-09-24",
+  "authority": "SymC General Operations Manual v0.8.6",
+  "system": "Blum 2019 publication-selected deterministic B3 ERK model",
+  "lineage": "bio-chi-closure-p0q-20260924",
+  "limit_id": "ERK_B3_COMPLETE_8D_ARBITRARY_DIRECTION_LOCAL_ROUNDTRIP_LIMIT_V1",
+  "source_pin": "BIO_CHI/config/BLUM_B3_LOCAL_NONLINEAR_ROUNDTRIP_V01_RESULT_PIN.json",
+  "status": "ESTABLISHED_P0Q_LIMIT",
+  "frozen_question": "Does the complete 8D stoichiometric dynamic-subspace linear generator reproduce native nonlinear dynamics under the predeclared fixed source-stoichiometric perturbation directions with 1e-4 error lower than 1e-3 for every direction?",
+  "answer": "NO",
+  "preserved_result": {
+    "pair_lane_all_contexts_pass": true,
+    "full_modal_lane_all_contexts_pass": false,
+    "failing_columns": {
+      "primary_FGF_2P5": [4,6,10,14],
+      "primary_FGF_250": [10,12,14],
+      "sensitivity_FGF_2P5": [6,10,14],
+      "sensitivity_FGF_250": [10,12,14]
+    },
+    "repeated_failures_all_contexts": [10,14],
+    "context_dependent_failures": [4,6,12]
+  },
+  "what_this_limit_means": [
+    "The complete 8D local linear generator is not qualified under the frozen arbitrary-direction round-trip rule at the tested amplitudes.",
+    "The failure is structured rather than random across the fixed source-stoichiometric directions.",
+    "All FRET-visible complex-pair invariant-factor lanes passed separately, so the failure does not erase mode-resolved chi_bio scalar transport.",
+    "The failure prevents ERK Chi_bio admission under v1 and blocks Bio Chi cross-system transport from that lineage."
+  ],
+  "what_this_limit_does_not_mean": [
+    "It does not prove the analytic generator is wrong; that generator passed source-RHS anchoring and complex-step derivative checks.",
+    "It does not prove every native modal invariant subspace fails local nonlinear adequacy.",
+    "It does not permit dropping failing directions, retuning amplitudes, or relabeling v1 as passed.",
+    "It does not establish a biological chi=1 boundary or a system scalar."
+  ],
+  "promotion_debt": "Any later ERK modal admission must cite this limit, use a separately frozen scientific question/representation, and remain explicit that it does not retroactively repair or supersede the v1 failure.",
+  "next_lineage_authorization": "User explicitly authorized a new ERK modal lineage after preserving this limit."
+}
