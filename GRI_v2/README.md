@@ -1,3 +1,7 @@
+> **Current BioSystems submission reviewer route (25 September 2026):** `reviewer/BIOSYSTEMS_REPRODUCIBILITY_GUIDE_20260925.md`.
+>
+> The guide is the current submission navigation layer. Historical program-status prose below remains provenance and should not be used by itself to infer the submitted paper's present claim set.
+
 # GRI v2 / Oncology Regulatory Stability Architecture
 
 **Status:** DEVELOPMENT PROGRAM, NOT A VALIDATED CANCER TOOL  
