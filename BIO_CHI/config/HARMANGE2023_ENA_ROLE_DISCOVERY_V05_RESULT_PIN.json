@@ -1,0 +1,19 @@
+{
+  "schema_version":"0.5",
+  "project":"Bio Chi Investigation",
+  "gate":"Harmange 2023 ENA run-level source-role discovery",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "workflow_run_id":36097862948,
+  "workflow_head_sha":"515f81659273356194d6e9a3c4e30fd6f5408e8e",
+  "artifact_id":10848042038,
+  "artifact_digest":"sha256:e886d8992f0171a6553804060ca4d7c30d27527f2d7e46ce828cbb7d9a52e852",
+  "status":"PASS_ENA_RUN_METADATA_AUDIT",
+  "run_count":23,
+  "experiment_count":22,
+  "sample_count":22,
+  "library_strategy_counts":{"ATAC-seq":12,"RNA-Seq":11},
+  "distinct_explicit_lineage_or_barcode_run_metadata":false,
+  "sequencing_payload_opened":false,
+  "scientific_effect":"SRA/ENA metadata alone does not expose the lineage carrier mapping, but it preserves the exact 23-run hierarchy and confirms there is not an explicitly labeled separate lineage library in run metadata.",
+  "superseded_by_source_path":"Author public Google Drive repository and BarcodeAnalysis code expose the lineage-aware processed objects and exact processing route."
+}
