@@ -1,0 +1,87 @@
+{
+  "schema_version":"0.1",
+  "project":"Bio Chi Investigation",
+  "lineage":"marsolier2022_topdown",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "evidence_tier":"P0-Q",
+  "selection_pin":"BIO_CHI/config/TOPDOWN_SYSTEM_SELECTION_V02_RESULT_PIN.json",
+  "source_code":{
+    "repository":"vallotlab/ChemoPersistance",
+    "commit":"2c546ef7293f9dd58e0acf1c5d16e7616cf6789a"
+  },
+  "primary_bio_chi_event":{
+    "phenomenon":"substrate-conditioned persistence inheritance",
+    "system":"MDA-MB-468 TNBC lineage-barcoded cells",
+    "baseline":"chemonaive cells before 5-FU exposure",
+    "perturbation":"5-FU chemotherapy",
+    "outcome":"early drug-tolerant persistence, followed by later resistant states",
+    "substrate_intervention":"H3K27me3 depletion with UNC1999/EZH2i-1 before or with 5-FU",
+    "frozen_question":"Does changing the pre-treatment chromatin substrate alter which lineages can occupy the persister state, and is any such fate change captured by baseline transcriptomic modal organization?"
+  },
+  "source_defined_samples":{
+    "chemonaive":["MM468_chemonaive"],
+    "early_persister":["MM468_5FU1_day33","MM468_5FU3_day50","MM468_5FU2_day67","MM468_5FU3_day77"],
+    "late_resistant":["MM468_5FU2_day171","MM468_5FU3_day202","MM468_5FU1_day214"],
+    "unc5fu_matched":[
+      ["MM468_5FU7_day21","MM468_5FU7_UNC_day21"],
+      ["MM468_5FU1_day33","MM468_5FU1_UNC_day33"]
+    ]
+  },
+  "inheritance_carrier":{
+    "carrier":"cons_BC_lenti lineage barcode",
+    "future_persister_rule":"a chemonaive lineage is future-persister if the same barcode occurs in any frozen early-persister sample",
+    "nonpersisting_rule":"a barcoded chemonaive lineage absent from all frozen early-persister samples",
+    "cell_level_pseudoreplication_control":"aggregate baseline PCA coordinates to one centroid per lineage barcode before group testing"
+  },
+  "baseline_modal_test":{
+    "source_object":"pca_persister.RData",
+    "basis_status":"source-native unsupervised PCA fit by the published pipeline across the source analysis cells; outcome data contributed to the unsupervised basis, so this is P0-Q representation qualification rather than prospective prediction",
+    "retention":"minimum leading PCs whose sample-score variances reach at least 80% cumulative variance",
+    "standardization":"z-scale retained PC coordinates across baseline lineage centroids using population SD; remove zero-variance PCs",
+    "primary_statistic":"Euclidean distance between future-persister and nonpersisting lineage centroids in standardized retained-PC space",
+    "permutation":"10000 lineage-label permutations preserving observed group sizes; fixed seed 20260924; one-sided statistic >= observed",
+    "secondary":"leave-one-lineage-out nearest-centroid balanced accuracy in the same standardized retained-PC space; compare against the same frozen label permutations",
+    "interpretation":"tests whether baseline transcriptomic modal organization carries detectable inheritance information; failure does not negate the whole-event lineage/substrate phenomenon"
+  },
+  "substrate_intervention_lineage_test":{
+    "source_object":"UNC_5FU annot_int.RData",
+    "matched_pairs":[
+      ["MM468_5FU7_day21","MM468_5FU7_UNC_day21"],
+      ["MM468_5FU1_day33","MM468_5FU1_UNC_day33"]
+    ],
+    "primary_metric":"unique lineage barcodes divided by number of barcoded cells within each sample",
+    "secondary_metric":"normalized Shannon entropy of lineage counts, defined as Shannon/log(number of unique barcodes) when more than one lineage is present",
+    "directional_gate":"both matched timepoints must show higher primary lineage diversity under UNC+5FU than 5FU alone",
+    "no_p_value":"two matched timepoints are treated as deterministic source lanes, not as an inferential sample",
+    "cluster_specific_sensitivity":{
+      "state_definition":"among all cells in the four matched samples, choose the frozen louvain_partition with the highest median CDH2 expression before reading barcode diversity by treatment",
+      "minimum_barcoded_cells_per_sample_cluster":20,
+      "metric":"same unique-lineage fraction and normalized Shannon entropy",
+      "role":"source-native sensitivity matching the paper's CDH2-high persister interpretation; not required for the primary whole-event gate"
+    }
+  },
+  "intervention_modal_relation":{
+    "source_object":"pca_UNC_5FU.RData",
+    "purpose":"determine whether substrate-induced lineage broadening is accompanied by a large transcriptomic modal shift or can occur with comparatively preserved modal state",
+    "retention":"minimum leading PCs reaching at least 80% cumulative score variance",
+    "metric":"Euclidean distance between matched 5FU and UNC+5FU sample centroids after z-scaling retained PCs across all source-object cells",
+    "comparator":"distance between the two chemonaive source samples if both are present in the same PCA object; otherwise report without promotion comparator",
+    "no_directional_success_rule":true
+  },
+  "source_reported_external_replication":{
+    "systems":["MDA-MB-468","BT20","HCC38"],
+    "fact_role":"paper-level contextual replication only unless exact machine-readable functional values are independently frozen and recomputed",
+    "claims_not_upgraded":true
+  },
+  "scalar_gate":{
+    "opened":false,
+    "reason":"No source-native continuous-time generator has been established for this lineage-level persistence event. Scalar construction is not required to test substrate-conditioned fate."
+  },
+  "promotion_logic":{
+    "Bio_Chi_relation_supported_if":"the frozen matched UNC+5FU lineage-diversity gate passes and carrier mapping is valid",
+    "modal_inheritance_supported_if":"baseline lineage-level PCA permutation is significant under the frozen test",
+    "modal_not_required_if":"the Bio Chi lineage gate passes but baseline modal inheritance test does not",
+    "Bio_Chi_relation_refused_if":"matched lineage-diversity gate fails or required barcode/sample mapping is invalid"
+  },
+  "status":"FROZEN_BEFORE_SOURCE_RDATA_VALUE_ANALYSIS"
+}
