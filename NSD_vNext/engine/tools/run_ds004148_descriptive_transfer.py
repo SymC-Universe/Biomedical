@@ -389,7 +389,7 @@ def execute(
         }
 
     return {
-        "schema": "NSD_DS004148_DESCRIPTIVE_TRANSFER_RESULT_V0_1",
+        "schema": "NSD_DS004148_DESCRIPTIVE_TRANSFER_RESULT_V0_2",
         "status": "P0_Q_INDEPENDENT_LABEL_BLIND_DESCRIPTIVE_TRANSFER",
         "dataset": "ds004148",
         "subject": manifest["subject"],
@@ -489,7 +489,7 @@ def main() -> int:
     args = parser.parse_args()
 
     result = execute(args.manifest, args.atlas, args.matched_reference, args.output_dir)
-    result_path = args.output_dir / "ds004148_descriptive_transfer_result_v0.1.json"
+    result_path = args.output_dir / "ds004148_descriptive_transfer_result_v0.2.json"
     result_path.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     _write_summary(result, args.output_dir / "VERIFY_SUMMARY.md")
     print(json.dumps({
