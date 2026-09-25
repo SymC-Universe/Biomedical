@@ -1,0 +1,22 @@
+{
+  "schema_version":"0.1",
+  "project":"Bio Chi Investigation",
+  "gate":"Rehman 2021 processed-count header and Figure-4 sample identity audit",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "workflow_run_id":36090842670,
+  "workflow_head_sha":"fc0fe953c06a52c1aa247e2a49e9430adb929518",
+  "artifact_id":10845602240,
+  "artifact_digest":"sha256:aa177be80cceb0e5db85caae0410298b09968d6ea5d44c109500f74643ddc104",
+  "status":"PASS_HEADER_SOURCE_MAP",
+  "counts_header_column_count":28,
+  "mapped_expression_columns":25,
+  "non_expression_columns":["Ensembl.Gene.ID","Gene.symbol","EntrezGene.ID"],
+  "molecular_values_opened":false,
+  "resolved_primary_groups":{
+    "control":["GSM4315308","GSM4315309","GSM4315310","GSM4315329","GSM4315330","GSM4315331","GSM4315332"],
+    "dtp":["GSM4315326","GSM4315327","GSM4315328"],
+    "regrowth":["GSM4315317","GSM4315318","GSM4315319"],
+    "resistant_boundary":["GSM4315323","GSM4315324","GSM4315325"]
+  },
+  "control_resolution":"The paper-native Figure-4 control n=7 is uniquely resolved as three saline controls plus four non-barcoded DMSO CTRL1-CTRL4 samples; the additional three barcoded DMSO samples remain sensitivity-only."
+}
