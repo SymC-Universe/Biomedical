@@ -1,0 +1,52 @@
+{
+  "schema_version": "0.1",
+  "project": "GRI Bio Chi Bridge",
+  "lineage": "harmange2023_cell_lineage_mapping",
+  "branch": "gri-biochi-bridge-p0q-20260925",
+  "epistemic_mode": "P0-Q",
+  "source_script": {
+    "public_drive_file_id": "1T0Xn9F9yMJb0W1E49-Sfht64V0WzY5lz",
+    "title": "10X3_Analysis_unorm_sctrans.Rmd",
+    "internal_title": "10X1_r1_r2_Analysis",
+    "sha256": "83fa46694fe0e757bd60c8a1b23a70c57d8d051ffb5e73b87945ed6e47056e7e"
+  },
+  "source_native_algorithm": {
+    "cell_filter": "nFeature_lineage > 0 and nFeature_lineage < 20",
+    "initial_lineage_filter": "raw lineage row sum > 1",
+    "binary_count_threshold": 3,
+    "well_groups": {
+      "group_1": [1,2,3,4],
+      "group_2": [5,6,7,8]
+    },
+    "well_constraint": "a lineage may occur only within one well group and in no more than four wells",
+    "precollapse_max_lineage_cells": 273,
+    "multi_barcode_combination_min_occurrences": 3,
+    "multi_barcode_cell_overlap_rule": "shared barcode count > round(0.6 * barcode-set size)",
+    "multi_barcode_collapse_identity": "first barcode index in source-native barcode set",
+    "single_barcode_cell_gate": true,
+    "final_lineage_min_cells": 3,
+    "final_lineage_max_cells": 273,
+    "final_cell_gate": "exactly one retained lineage barcode",
+    "lineage_id": "retained source feature/row identity"
+  },
+  "condition_map_from_source_script": {
+    "Control": [1,5],
+    "TGFB1": [2,6],
+    "TGFBRi": [3,7],
+    "PI3Ki": [4,8]
+  },
+  "source_reported_reproduction_checks": {
+    "experiment3_total_cells": 40021,
+    "accepted_lineages": 19740,
+    "minimum_cells_per_lineage": 3,
+    "fraction_lineages_present_all_four_conditions_approx": 0.49
+  },
+  "interpretive_firewall": {
+    "lineage_assignment_is_outcome": false,
+    "lineage_assignment_is_carrier_mapping": true,
+    "primed_fraction_not_opened_at_mapping_stage": true,
+    "B1_scalar_closed": true,
+    "B2_B3_target_values_closed_until_mapping_pass": true
+  },
+  "next_gate": "inspect GEO feature schema, then reproduce source-native lineage assignment without gene-expression target analysis"
+}
