@@ -1,0 +1,101 @@
+name: NSD ds004148 Spatial State Localization
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/nsd-ds004148-spatial-localization.yml"
+      - "NSD_vNext/docs/DS004148_SPATIAL_LOCALIZATION_FREEZE_v0.1.md"
+      - "NSD_vNext/docs/manifests/ds004148_d4_resting_crosssession_v0.1.json"
+      - "NSD_vNext/docs/manifests/ds003775_matched59_source_artifacts_v0.1.json"
+      - "NSD_vNext/engine/tools/build_ds003775_channel_localization_reference.py"
+      - "NSD_vNext/engine/tools/run_ds004148_descriptive_transfer.py"
+      - "NSD_vNext/engine/tools/run_ds004148_spatial_localization.py"
+      - "NSD_vNext/engine/pyproject.toml"
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: nsd-ds004148-spatial-localization-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  localization:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install frozen descriptive stack
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install -e 'NSD_vNext/engine[parameterization_rc7]'
+
+      - name: Recover the 42 frozen ds003775 parent artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: ds003775-repeat-sub-*
+          path: ${{ runner.temp }}/ds003775-parent-artifacts
+          merge-multiple: false
+          github-token: ${{ github.token }}
+          repository: SymC-Universe/Biomedical
+          run-id: 35337659470
+
+      - name: Build channel-specific parent reference
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/nsd-localization-suite"
+          python NSD_vNext/engine/tools/build_ds003775_channel_localization_reference.py \
+            "$RUNNER_TEMP/ds003775-parent-artifacts" \
+            --output "$RUNNER_TEMP/nsd-localization-suite/ds003775_channel_localization_reference_v0.1.json"
+
+      - name: Execute frozen spatial/state localization
+        run: |
+          set -euo pipefail
+          python NSD_vNext/engine/tools/run_ds004148_spatial_localization.py \
+            --manifest NSD_vNext/docs/manifests/ds004148_d4_resting_crosssession_v0.1.json \
+            --parent-reference "$RUNNER_TEMP/nsd-localization-suite/ds003775_channel_localization_reference_v0.1.json" \
+            --output-dir "$RUNNER_TEMP/nsd-localization-suite"
+
+      - name: Remove raw payloads before packaging
+        run: |
+          set -euo pipefail
+          rm -rf "$RUNNER_TEMP/nsd-localization-suite/payloads"
+          rm -rf "$RUNNER_TEMP/ds003775-parent-artifacts"
+
+      - name: Build reviewer-facing suite
+        run: |
+          set -euo pipefail
+          cp NSD_vNext/docs/DS004148_SPATIAL_LOCALIZATION_FREEZE_v0.1.md "$RUNNER_TEMP/nsd-localization-suite/"
+          cp NSD_vNext/docs/DS004148_DESCRIPTIVE_TRANSFER_POSTRESULT_v0.2.md "$RUNNER_TEMP/nsd-localization-suite/"
+          cp NSD_vNext/docs/manifests/ds004148_d4_resting_crosssession_v0.1.json "$RUNNER_TEMP/nsd-localization-suite/"
+          cp NSD_vNext/docs/manifests/ds003775_matched59_source_artifacts_v0.1.json "$RUNNER_TEMP/nsd-localization-suite/"
+          cp NSD_vNext/engine/tools/build_ds003775_channel_localization_reference.py "$RUNNER_TEMP/nsd-localization-suite/"
+          cp NSD_vNext/engine/tools/run_ds004148_spatial_localization.py "$RUNNER_TEMP/nsd-localization-suite/"
+          cp NSD_vNext/engine/pyproject.toml "$RUNNER_TEMP/nsd-localization-suite/"
+          printf "%s\n" \
+            'python NSD_vNext/engine/tools/run_ds004148_spatial_localization.py \' \
+            '  --manifest NSD_vNext/docs/manifests/ds004148_d4_resting_crosssession_v0.1.json \' \
+            '  --parent-reference ./ds003775_channel_localization_reference_v0.1.json \' \
+            '  --output-dir ./nsd-localization-output' \
+            > "$RUNNER_TEMP/nsd-localization-suite/RUN_COMMAND.txt"
+          (cd "$RUNNER_TEMP/nsd-localization-suite" && sha256sum * > SHA256SUMS.txt)
+
+      - name: Master smoke verification
+        run: |
+          set -euo pipefail
+          python -c 'import json,sys; d=json.load(open(sys.argv[1],encoding="utf-8")); t=d["target_pair"]; assert d["parent_reference"]["subject_count"]==42; assert d["parent_reference"]["matched_channel_count"]==59; assert t["task"]=="eyesopen"; assert t["session_a"]=="ses-session2"; assert t["session_b"]=="ses-session3"; assert t["matched_channel_count"]==59; assert len(t["channels"])==59; assert len(d["same_state_controls"])==5; assert len(d["all_pairs"])==6; assert d["licenses_modal_damping"] is False; assert d["licenses_natural_frequency"] is False; assert d["licenses_local_chi"] is False; assert d["licenses_capital_chi"] is False; assert d["licenses_diagnosis"] is False; assert d["licenses_population_inference"] is False; print("MASTER_SMOKE_TEST=PASS")' "$RUNNER_TEMP/nsd-localization-suite/ds004148_spatial_localization_result_v0.1.json"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nsd-ds004148-spatial-localization-suite-v0-1
+          path: ${{ runner.temp }}/nsd-localization-suite
+          if-no-files-found: error
+          retention-days: 90
