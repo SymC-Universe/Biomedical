@@ -1,0 +1,129 @@
+{
+  "schema": "NSD_DS003775_MATCHED_59_REFERENCE_V0_1",
+  "status": "POST_RESULT_MECHANICAL_REMEDIATION_OF_PREDECLARED_EXACT_LABEL_RULE",
+  "source_workflow_run": 35337659470,
+  "source_population_artifact_digest": "sha256:0859c127ca1cac7f2789fb12b7e66b1453f9ec6fb250e20f11eed6e84b9e0bb2",
+  "derivation_note": "Derived after the first ds004148 suite exposed an implementation mismatch. The exact-label-intersection rule itself was frozen before target outcome inspection. No target-derived threshold or parameter was selected.",
+  "channels": [
+    "AF3",
+    "AF4",
+    "AF7",
+    "AF8",
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5",
+    "C6",
+    "CP1",
+    "CP2",
+    "CP3",
+    "CP4",
+    "CP5",
+    "CP6",
+    "CPz",
+    "Cz",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "F5",
+    "F6",
+    "F7",
+    "F8",
+    "FC1",
+    "FC2",
+    "FC3",
+    "FC4",
+    "FC5",
+    "FC6",
+    "FT7",
+    "FT8",
+    "Fp1",
+    "Fp2",
+    "Fpz",
+    "Fz",
+    "O1",
+    "O2",
+    "Oz",
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7",
+    "P8",
+    "PO3",
+    "PO4",
+    "PO7",
+    "PO8",
+    "POz",
+    "Pz",
+    "T7",
+    "T8",
+    "TP7",
+    "TP8"
+  ],
+  "channel_count": 59,
+  "subject_count": 42,
+  "session_count": 84,
+  "pair_metrics": {
+    "median_channel_log_psd_correlation": {
+      "n": 42,
+      "minimum": 0.634755695230509,
+      "median": 0.9797997370657643,
+      "maximum": 0.9904703352877252
+    },
+    "aperiodic_exponent_absolute_difference_median": {
+      "n": 42,
+      "minimum": 0.0917658305272453,
+      "median": 0.2037131522239889,
+      "maximum": 1.4635474176928642
+    },
+    "same_peak_count_fraction": {
+      "n": 42,
+      "minimum": 0.22033898305084745,
+      "median": 0.4745762711864407,
+      "maximum": 0.8813559322033898
+    },
+    "same_zero_peak_state_fraction": {
+      "n": 42,
+      "minimum": 0.4406779661016949,
+      "median": 0.9830508474576272,
+      "maximum": 1
+    },
+    "first_peak_nearest_center_difference_median_hz": {
+      "n": 42,
+      "minimum": 0.039168235629499115,
+      "median": 0.2825619418066392,
+      "maximum": 2.038389537671165
+    }
+  },
+  "recording_metrics": {
+    "aperiodic_model_disagreement_channel_fraction": {
+      "n": 84,
+      "minimum": 0.11864406779661017,
+      "median": 0.43220338983050843,
+      "maximum": 0.9491525423728814
+    },
+    "max_peak_count_channel_fraction": {
+      "n": 84,
+      "minimum": 0,
+      "median": 0.07627118644067796,
+      "maximum": 0.5254237288135594
+    },
+    "zero_peak_channel_fraction": {
+      "n": 84,
+      "minimum": 0,
+      "median": 0.01694915254237288,
+      "maximum": 0.6271186440677966
+    },
+    "width_boundary_hits_per_channel": {
+      "n": 84,
+      "minimum": 0,
+      "median": 0.059322033898305086,
+      "maximum": 0.3050847457627119
+    }
+  }
+}
