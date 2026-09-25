@@ -2,7 +2,7 @@
   "schema_version": "0.1",
   "project": "Bio Chi Investigation",
   "authority": "SymC GOM v0.8.6 + Bio Chi project-specific three-object nomenclature decision 2026-09-23",
-  "branch": "bio-chi-oncology-p0q-20260924",
+  "branch": "gri-biochi-bridge-p0q-20260925",
   "continuation_policy": {
     "resume_from_checkpoint": true,
     "mechanical_blockers_are_stop_conditions": false,
@@ -64,57 +64,45 @@
       "id": "Q9",
       "name": "working_manuscript",
       "status": "not_open_private"
+    },
+    {
+      "id": "Q10",
+      "name": "gri_biochi_bridge_feasibility",
+      "status": "complete_pass_no_prospective_B1_scalar_candidate_Harmange_and_Shaffer_B2_B3_candidates"
+    },
+    {
+      "id": "Q11",
+      "name": "harmange_source_carrier_mapping",
+      "status": "active_schema_pass_explicit_lineage_identity_join_open"
     }
   ],
   "active_source_gate": {
-    "stage": "ONCOLOGY_P0Q_CLOSED",
+    "stage": "GRI_BIOCHI_BRIDGE_HARMANGE_CARRIER_MAPPING",
     "testbed_promotion": false,
     "completed": {
-      "blum_archive_sha256": "8bbd1ead46b5bb6b676bd47a5f415fdd790840a9c726321dc5c209b9c527bc62",
-      "blum_native_method_disposition": "EXACT_NATIVE_METRIC_REPRODUCTION_BLOCKED_METHOD_UNDERSPECIFIED",
-      "harmange_geo": "GSE237228",
-      "harmange_bioproject": "PRJNA994430",
-      "harmange_sra_study": "SRP449288",
-      "harmange_geo_samples": 22,
-      "harmange_sra_runs": 23,
-      "shaffer_geo": "GSE97682",
-      "shaffer_umbrella_bioproject": "PRJNA382641",
-      "shaffer_child_bioprojects": [
-        "PRJNA382674",
-        "PRJNA382752",
-        "PRJNA382753"
-      ],
-      "shaffer_sra_studies": [
-        "SRP103825",
-        "SRP103827",
-        "SRP103828"
-      ],
-      "shaffer_sra_runs": 155,
-      "lee_public_rna_recovery_status": "NO_EXPLICIT_RECONVERTED_OR_POST_WITHDRAWAL_RNA_SAMPLE_IN_SRP040309",
-      "su_native_source_metadata_pin": "BIO_CHI/config/SU2026_NATIVE_METHOD_SOURCE_METADATA_V01_RESULT_PIN.json",
-      "su_public_code_pin": "BIO_CHI/config/SU2026_PUBLIC_CODE_PIN_v0_1.json",
-      "su_m397_rna_timepoints": 15,
-      "blum_fig2_native_input_mapping_status": "PASS_FIG2_NATIVE_INPUT_MAPPING",
-      "blum_fig2_native_input_mapping_run": 35867313079,
-      "blum_fig2_native_input_mapping_artifact": 10752731514,
-      "blum_fig2_native_mean_status": "PASS_NATIVE_FIG2_POPULATION_MEAN_REPRODUCTION",
-      "blum_fig2_native_mean_run": 35873188226,
-      "blum_fig2_native_mean_artifact": 10755884524,
-      "blum_fig2_native_mean_total_rows": 279016,
-      "blum_fig2_native_mean_total_unique_cell_tracks": 3068,
-      "blum_B3_native_reproduction_status": "PASS_NATIVE_B3_TRAJECTORY_REPRODUCTION",
-      "blum_B3_generator_modal_status": "PASS_B3_GENERATOR_MODAL_QUALIFICATION",
-      "blum_B3_scalar_transport_status": "SCALAR_TRANSPORT_PRESENT",
-      "blum_B3_local_roundtrip_status": "FAIL_B3_FULL_MODAL_LOCAL_ROUNDTRIP",
-      "blum_B3_pair_roundtrip_all_contexts": "PASS"
+      "bridge_feasibility_run": 36100652432,
+      "bridge_feasibility_artifact": 10848767854,
+      "bridge_feasibility_status": "PASS_FEASIBILITY_AUDIT",
+      "harmange_schema_first_run": 36100750619,
+      "harmange_schema_first_run_status": "MECHANICAL_FAILURE_PYTHON_BOOLEAN",
+      "harmange_schema_repair_run": 36100798262,
+      "harmange_schema_repair_artifact": 10849222240,
+      "harmange_schema_status": "PASS_SOURCE_CARRIER_SCHEMA",
+      "harmange_metadata_rows": 40021,
+      "harmange_metadata_columns": 26,
+      "harmange_metadata_sha256": "f22aaf6947d38a018c0c4d13ceedacbd3bdffc296f727e171b66a21b7a06434b",
+      "harmange_processed_barcode_rows": 40021,
+      "harmange_processed_barcode_sha256": "3e2fdc6d8ab9100c0fa45916fd000c4e541b83810ce449911679c3f03d26403a"
     },
     "active": {
-      "su_next": "CLOSED; no further Su lineage action without opening a new scientific lineage",
-      "rehman_next": "seek exact author analysis code/source implementation for Figure 4 PCA; otherwise preserve exact-native-method under-specification",
-      "harmange_next": "map lineage/barcode carrier correspondence from source documentation without opening target outcomes",
-      "blum_next": "ERK cycle closed and refusal preserved; user selected a different oncology system rather than replacement ERK representation"
+      "current_system": "Harmange 2023 GSE237228 melanoma scMemorySeq",
+      "current_question": "resolve exact source-defined cell-to-lineage identity join without opening target outcomes",
+      "scalar_B1": "CLOSED_NOT_LICENSED_NO_NATIVE_CONTINUOUS_GENERATOR",
+      "modal_B2": "OPEN_AFTER_CARRIER_MAP",
+      "relational_B3": "OPEN_AFTER_CARRIER_MAP",
+      "next": "recover/freeze exact dominant lineage assignment object or equivalent released mapping; if unrecoverable, refuse Harmange direct bridge and open frozen Shaffer backup"
     },
-    "scientific_stop_before": "inventing a missing native implementation detail, changing a frozen representation/endpoint, promoting a testbed based on agreement, or admitting chi_bio/Chi_bio/Bio Chi"
+    "scientific_stop_before": "opening B2/B3 molecular target values before the lineage carrier join is frozen, inferring lineage identity from nCount_lineage/nFeature_lineage, relabeling ATAC as methylation, or constructing chi_bio without a licensed generator"
   },
   "active_native_model_gate": {
     "system": "Jaruszewicz-Blonska reduced NF-kB model",
@@ -157,7 +145,7 @@
     "decisive evidence would be opened before required freeze/independence controls",
     "upstream contradiction invalidates a frozen result",
     "publication-level claim expansion requires user decision",
-    "current oncology lineage is closed; any new independent biological transport system is a fresh scientific lineage"
+    "Harmange exact cell-to-lineage carrier mapping cannot be recovered reproducibly from released source/code"
   ],
   "nomenclature_note": "Exactly three biological objects. Program-wide chi is a parent symbol/class, not a fourth biological object.",
   "cross_system_transport": {
@@ -175,7 +163,7 @@
       "ERK_Chi_bio_admission": "REFUSED_CURRENT_GATE",
       "Bio_Chi_transport": "NOT_OPENED"
     },
-    "current_scientific_stop": "Current Su oncology lineage is closed. A new independent system or replacement representation is a scientific expansion requiring user intervention.",
+    "current_scientific_stop": "GRI↔Bio Chi bridge active. Harmange carrier mapping is the current source-only gate; B2/B3 outcomes remain unopened.",
     "Su2026_oncology_system": {
       "status": "CLOSED_P0Q",
       "scalar": "REFUSED_UNCERTAINTY_SENSITIVE_EQUIVALENT_NATIVE_INVARIANT",
