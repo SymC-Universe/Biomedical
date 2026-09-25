@@ -1,0 +1,177 @@
+# NSD Reproducibility Guide v0.1
+
+Status: ACTIVE
+Date: 24 September 2026
+Program authority: SymC General Operations Manual v0.8.6
+Working branch: `nsd-rebuild-gom-v0.8.0`
+
+This guide is the executable verification path for the current NSD healthy descriptive and independent-transfer work. It supplements the broader R1/R2/R3 matrix and follows the GOM v0.8.6 V-section format.
+
+## V1. Verify the frozen independent source
+
+[CLAIM] The current ds004148 transfer pilot uses the exact six resting recordings already closed at D4 before any signal-derived transfer result was opened.
+
+Run:
+
+```bash
+python NSD_vNext/engine/tools/d4_verify_ds004148_resting_crosssession.py \
+  --manifest NSD_vNext/docs/manifests/ds004148_d4_resting_crosssession_v0.1.json \
+  --download-dir ./ds004148-d4-payloads \
+  --output ./ds004148-d4-report.json
+```
+
+Expected:
+- 6/6 recordings pass exact identity and raw-layout checks;
+- raw payload resolves to 61 channels, 500 Hz, 300 s, IEEE 32-bit float;
+- the source JSON 64-channel declaration remains a provenance anomaly rather than being repaired by padding.
+
+Interpretation: this verifies source identity and decoding. It does not verify any neural stability claim.
+
+## V2. Verify the pre-result transfer freeze
+
+[CLAIM] The descriptive transfer task, representation, hierarchy, comparison metrics, refusal rules, and interpretation ceiling were frozen before signal-derived ds004148 transfer outcomes were opened.
+
+Inspect:
+
+```bash
+cat NSD_vNext/docs/DS004148_DESCRIPTIVE_TRANSFER_FREEZE_v0.1.md
+```
+
+Expected:
+- same-state session pairs only;
+- frozen Welch and specparam settings reused without retuning;
+- no composite transfer score;
+- channels remain nested repeated measurements;
+- no ds004148-driven threshold choice;
+- modal damping, lowercase chi, capital Chi, global chi, diagnosis, recovery, and population inference remain prohibited.
+
+Interpretation: this is the prospective task contract, not a result.
+
+## V3. Verify the committed reference parent
+
+[CLAIM] Transfer labels are referenced to the previously committed ds003775 descriptive P0-D artifact rather than a ds004148-tuned baseline.
+
+Inspect:
+
+```bash
+python - <<'PY'
+import json
+p = "NSD_vNext/atlas/reference_models/ds003775_repeat_descriptive_reference_p0d_v0.1.json"
+d = json.load(open(p, encoding="utf-8"))
+print(d["atlas_data_id"])
+print(d["maturity"])
+print(d["subject_count"], d["session_count"])
+print(d["population"])
+PY
+```
+
+Expected:
+- atlas_data_id: `ds003775-repeat-p0d-v0.1`;
+- maturity: `ATLAS_P0_D`;
+- 42 subjects and 84 sessions;
+- empirical minimum, median, and maximum values remain unchanged.
+
+Interpretation: the reference is a descriptive Function/Limit artifact. It is not an independent confirmatory Atlas and does not establish a healthy clinical boundary.
+
+## V4. Execute the independent descriptive transfer suite
+
+[CLAIM] The frozen representation can be applied without retuning to the six D4-pinned ds004148 recordings and returns the predeclared metric-by-metric transfer vector plus Limit Map.
+
+Run:
+
+```bash
+python -m pip install -e 'NSD_vNext/engine[parameterization_rc7]'
+
+python NSD_vNext/engine/tools/run_ds004148_descriptive_transfer.py \
+  --manifest NSD_vNext/docs/manifests/ds004148_d4_resting_crosssession_v0.1.json \
+  --atlas NSD_vNext/atlas/reference_models/ds003775_repeat_descriptive_reference_p0d_v0.1.json \
+  --output-dir ./nsd-transfer-output
+```
+
+Expected outputs:
+- `ds004148_descriptive_transfer_result_v0.1.json`;
+- `VERIFY_SUMMARY.md`;
+- two state blocks, eyes closed and eyes open;
+- three same-state session-pair comparisons per state;
+- per-recording Limit metrics;
+- descriptive labels `WITHIN_PREVIOUS_ENVELOPE`, `OUTSIDE_PREVIOUS_ENVELOPE`, or `REFUSED_OR_NOT_AVAILABLE`.
+
+Interpretation: the labels describe transport relative to a previous empirical envelope. They are not tuned success thresholds. An outside-envelope value is retained as a Limit Map observation.
+
+## V5. Verify the scientific firewalls
+
+[CLAIM] The transfer suite cannot silently promote a descriptive result into damping, chi, capital Chi, diagnosis, or population inference.
+
+Run:
+
+```bash
+python - <<'PY'
+import json
+p = "./nsd-transfer-output/ds004148_descriptive_transfer_result_v0.1.json"
+d = json.load(open(p, encoding="utf-8"))
+for key in [
+    "licenses_modal_damping",
+    "licenses_local_chi",
+    "licenses_capital_chi",
+    "licenses_diagnosis",
+    "licenses_population_inference",
+]:
+    print(key, d[key])
+    assert d[key] is False
+print("FIREWALL_CHECK=PASS")
+PY
+```
+
+Expected: every licensing field is `False` and the final line is `FIREWALL_CHECK=PASS`.
+
+Interpretation: descriptive repeat structure remains descriptive. Repeat similarity is not called recovery or resilience.
+
+## V6. Verify suite integrity
+
+[CLAIM] The GitHub Actions suite packages the exact freeze, source manifest, reference artifact, production runner, dependency declaration, result, verification summary, run command, and SHA-256 ledger while excluding downloaded raw EEG payloads.
+
+Workflow:
+`.github/workflows/nsd-ds004148-descriptive-transfer.yml`
+
+Expected artifact:
+`nsd-ds004148-descriptive-transfer-suite-v0-1`
+
+Required packaged records:
+- `DS004148_DESCRIPTIVE_TRANSFER_FREEZE_v0.1.md`;
+- `ds004148_d4_resting_crosssession_v0.1.json`;
+- `ds003775_repeat_descriptive_reference_p0d_v0.1.json`;
+- `run_ds004148_descriptive_transfer.py`;
+- `pyproject.toml`;
+- `ds004148_descriptive_transfer_result_v0.1.json`;
+- `VERIFY_SUMMARY.md`;
+- `RUN_COMMAND.txt`;
+- `SHA256SUMS.txt`.
+
+Interpretation: the artifact is the compact reviewer-facing reproduction suite for this experiment. It does not redistribute the raw EEG.
+
+## V7. Master smoke test
+
+[CLAIM] A completed suite has the expected hierarchy and preserves every current interpretation firewall.
+
+Run:
+
+```bash
+python - <<'PY'
+import json
+p = "./nsd-transfer-output/ds004148_descriptive_transfer_result_v0.1.json"
+d = json.load(open(p, encoding="utf-8"))
+assert d["recording_count"] == 6
+assert sorted(d["states"]) == ["eyesclosed", "eyesopen"]
+assert all(state["pair_count"] == 3 for state in d["states"].values())
+assert d["licenses_modal_damping"] is False
+assert d["licenses_local_chi"] is False
+assert d["licenses_capital_chi"] is False
+assert d["licenses_diagnosis"] is False
+assert d["licenses_population_inference"] is False
+print("MASTER_SMOKE_TEST=PASS")
+PY
+```
+
+Expected: `MASTER_SMOKE_TEST=PASS`.
+
+Interpretation: a passing smoke test establishes package and contract integrity only. Scientific interpretation remains bounded by the freeze and post-result record.
