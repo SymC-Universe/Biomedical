@@ -2,44 +2,51 @@
 
 **Last updated:** 25 September 2026  
 **Branch:** `gri-biochi-bridge-p0q-20260925`  
-**Status:** ACTIVE SOURCE/CARRIER QUALIFICATION  
+**Status:** ACTIVE SHAFFER PRE-ANALYSIS FREEZE  
 **Authority:** SymC General Operations Manual v0.8.6 + GRI controls + Bio Chi three-object nomenclature.
 
 ## Resume here
 
-Do not resume from the closed Su oncology stop. The active program is the GRI ↔ Bio Chi bridge.
+The Harmange direct same-carrier bridge is closed at the current reproducibility level because the decisive per-lineage identity objects cannot be materialized from the lightweight public processed release without reopening the raw SRA / Feature Barcode pipeline. Preserve that refusal. Do not infer lineage identity from lineage-count metadata.
 
-### Completed in this bridge
-- bridge question and anti-collapse rules frozen before new outcomes;
-- automated bridge-feasibility audit: PASS;
-- no prospective B1 scalar bridge candidate currently available;
-- Harmange 2023 selected prospectively for B2/B3 based on design/source structure;
-- first Harmange schema run failed mechanically on Python Boolean syntax and is preserved;
-- exact repair rerun passed;
-- GSE237228 metadata: 40,021 rows / 26 columns, SHA-256 `f22aaf6947d38a018c0c4d13ceedacbd3bdffc296f727e171b66a21b7a06434b`;
-- processed cell-barcode file: 40,021 rows, SHA-256 `3e2fdc6d8ab9100c0fa45916fd000c4e541b83810ce449911679c3f03d26403a`;
-- lineage-assay and condition/state fields are present;
-- no target molecular outcome has been computed.
+The active bridge source is Shaffer et al. 2017.
 
-### Current carrier gap
-The GEO metadata exposes lineage-assay counts but not the final explicit dominant lineage identity required for the same-carrier bridge.
+### Completed
+- Harmange source schema PASS, exact lineage algorithm recovered, direct carrier materialization refused;
+- Shaffer backup opened under pre-frozen rules;
+- GSE97679 processed RNA source audit PASS;
+- processed RNA file 1: 509,456 rows, SHA-256 `7bb7296f36d32e71e8b63bf7e813351f058e92ab9cda81ec9fd9b67d81f674f3`;
+- processed RNA file 2: 636,820 rows, SHA-256 `a1c6180334d037c002b173faf8cdd2162b4d8563cc93e0eb0014cbfe222c4cd8`;
+- untreated, week-1, week-4, EGFR-high, and mixed source labels reproduced;
+- no gene-effect target statistic opened;
+- evidence roles frozen:
+  - GSE97679/GSE97680 WM989 = development;
+  - GSE97681 WM989 = source-internal validation;
+  - GSE97681 WM983B = same-source cross-cell-line transfer;
+  - external confirmation = unopened.
 
-The source paper states that lineage barcodes are recovered and linked to 10x cell barcodes through the Feature Barcode pipeline, followed by additional lineage filtering/assignment in `10X1_r1_r2_Analysis_unorm_sctrans.Rmd`.
+### Batch rule
+GSE97679 processed RNA is split across sequencing runs. Run identity is a nuisance/blocking factor.
 
-Do not infer lineage identity from `nCount_lineage` or `nFeature_lineage`.
+Do not:
+- use raw cross-run count distance as biological trajectory;
+- choose genes from resistance outcomes to define the primary modal object;
+- relabel ATAC as methylation;
+- call same-paper transfer external confirmation.
 
 ### Immediate next action
-Recover and freeze the exact released cell-to-lineage assignment object/script path or an equivalent reproducible table.
+Freeze and implement the preanalysis contract:
+1. exact common-gene universe;
+2. count filtering independent of outcome;
+3. normalization and batch handling;
+4. unsupervised modal construction;
+5. B2 statistic;
+6. simple/native comparators;
+7. GSE97681 internal-validation endpoint.
 
-If recovered:
-1. freeze cell ↔ lineage ↔ condition mapping;
-2. define the first B2 static-RNA-to-modal/state-switching test before outcome values are opened;
-3. define B3 held-out/native comparator;
-4. execute without opening scalar B1.
+Only after those are frozen may target expression values be analyzed.
 
-If not recoverable:
-- record source-carrier refusal;
-- preserve Harmange as useful biological/context evidence;
-- open Shaffer 2017 as the already-frozen backup B2/B3 source.
+### Parallel nonblocking review
+Harmange's published stochastic two-state model contains `k_on`, `k_off`, growth, and death terms. Review it separately to determine what dynamical object it licenses. Do not infer scalar `chi_bio` unless a qualifying complex mode exists.
 
-No user intervention is required for these mechanical/source steps.
+No user intervention is required for the current mechanical/preanalysis steps.
