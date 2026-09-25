@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.1",
+  "project": "GRI Bio Chi Bridge",
+  "lineage": "shaffer2017_preprocessing_environment_preflight",
+  "branch": "gri-biochi-bridge-p0q-20260925",
+  "epistemic_mode": "P0-Q_MECHANICAL_ENVIRONMENT_ONLY",
+  "purpose": "Verify executable RNA-seq preprocessing toolchain and API behavior on synthetic counts only before any Shaffer molecular outcome is opened.",
+  "allowed": [
+    "record R, Bioconductor, DESeq2, edgeR, limma, and jsonlite versions",
+    "exercise DESeq2 size-factor, dispersion, VST, and frozen-dispersion-function API paths on deterministic synthetic counts",
+    "exercise edgeR TMM/log-CPM on deterministic synthetic counts",
+    "exercise deterministic library-size plus log baseline on deterministic synthetic counts",
+    "record finite-output and repeatability checks"
+  ],
+  "forbidden": [
+    "download or read GSE97679 or GSE97681 molecular count values",
+    "select a primary normalization method",
+    "select a feature filter",
+    "select a batch correction",
+    "construct the B2 modal object",
+    "evaluate B2 or B3",
+    "select a GSE97681 validation endpoint",
+    "construct chi_bio"
+  ],
+  "synthetic_seed": 20260925,
+  "status_rule": "PASS only if all declared package/API checks execute and all transformed values are finite; otherwise preserve FAIL with the exact failed check.",
+  "scientific_effect": "NONE_METHOD_NOT_FROZEN"
+}
