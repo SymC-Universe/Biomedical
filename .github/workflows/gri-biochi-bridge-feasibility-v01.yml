@@ -1,0 +1,34 @@
+name: GRI Bio Chi bridge feasibility v0.1
+
+on:
+  push:
+    branches: [gri-biochi-bridge-p0q-20260925]
+    paths:
+      - 'BIO_CHI/config/GRI_BIOCHI_BRIDGE_FREEZE_v0_1.json'
+      - 'BIO_CHI/src/audit_gri_biochi_bridge_feasibility_v0_1.py'
+      - '.github/workflows/gri-biochi-bridge-feasibility-v01.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run frozen bridge feasibility audit
+        run: python BIO_CHI/src/audit_gri_biochi_bridge_feasibility_v0_1.py
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: GRI_BIOCHI_BRIDGE_FEASIBILITY_V01
+          path: |
+            BIO_CHI/artifacts/generated/gri_biochi_bridge_feasibility_v0_1.json
+            BIO_CHI/artifacts/generated/GRI_BIOCHI_BRIDGE_FEASIBILITY_V0_1_AUDIT.md
+          if-no-files-found: error
