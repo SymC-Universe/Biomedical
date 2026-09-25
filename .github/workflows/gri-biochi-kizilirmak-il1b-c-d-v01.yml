@@ -1,0 +1,33 @@
+name: GRI Bio Chi Kizilirmak IL1beta C plus D v0.1
+on:
+  push:
+    branches: [gri-biochi-bridge-p0q-20260925]
+    paths:
+      - 'BIO_CHI/config/KIZILIRMAK2023_IL1B_C_D_TRANSPORT_FREEZE_v0_1.json'
+      - 'BIO_CHI/src/analyze_kizilirmak2023_il1b_c_d_v0_1.py'
+      - '.github/workflows/gri-biochi-kizilirmak-il1b-c-d-v01.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  analyze:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check numpy pandas scipy xlrd
+      - name: Run frozen IL1beta transport
+        run: python BIO_CHI/src/analyze_kizilirmak2023_il1b_c_d_v0_1.py
+      - name: Upload artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: KIZILIRMAK2023_IL1B_C_D_V01
+          path: |
+            BIO_CHI/artifacts/generated/kizilirmak2023_il1b_c_d_v01/KIZILIRMAK2023_IL1B_C_D_RESULT_PIN_V01.json
+            BIO_CHI/artifacts/generated/kizilirmak2023_il1b_c_d_v01/KIZILIRMAK2023_IL1B_C_D_RESULT_AUDIT_V01.md
+          if-no-files-found: error
