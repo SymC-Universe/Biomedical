@@ -1,0 +1,35 @@
+{
+  "schema_version":"0.1",
+  "project":"Bio Chi Investigation",
+  "gate":"Harmange 2023 author-processed exp1 lineage carrier qualification",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "workflow_run_id":36098399301,
+  "workflow_head_sha":"69d8885e614c01d87d7354e6246e179b5a24d9f7",
+  "artifact_id":10848505821,
+  "artifact_digest":"sha256:43bb2a4ddd57870c2b11c7cae07ed6234e869a954b3b835a73664f2dc0d1be20",
+  "status":"PASS_CARRIER_QUALIFICATION",
+  "source_rds":{
+    "drive_file_id":"1RHw2ZCyb8LJlO5XUJ9q_hGQyFbwJnIXT",
+    "bytes":2589295730,
+    "sha256":"34f5909ea6d914161acc5e153ec6a618c24517bb950367a9425b01d967bf29bf"
+  },
+  "retained_cell_count":7581,
+  "unique_lineage_count":321,
+  "lineage_size":{"min":4,"q25":8,"median":15,"q75":31,"max":121},
+  "startID_cell_counts":{"E":2036,"M":5545},
+  "startID_lineage_counts":{"E":122,"M":199},
+  "well_count":8,
+  "rep_count":2,
+  "qualification_checks":{
+    "minimum_unique_lineages":true,
+    "all_lineages_min_cells":true,
+    "all_lineages_max_cells":true,
+    "one_startID_per_lineage":true,
+    "at_least_two_startID_classes":true
+  },
+  "carrier_defined":true,
+  "carrier_or_lineage_continuity":true,
+  "causal_inheritance":"NOT_ESTABLISHED",
+  "molecular_outcome_values_opened":false,
+  "scientific_effect":"The prior carrier-source gap is closed. Harmange is now eligible for top-down system selection under the existing identifiability contract, without using final transcriptional-state outcomes to qualify the carrier."
+}
