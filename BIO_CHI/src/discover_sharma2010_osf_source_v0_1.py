@@ -62,23 +62,51 @@ def flatten(nodes):
         if n.get("children"): out.extend(flatten(n["children"]))
     return out
 
+def discover_node(node_id, label):
+    providers=page_all(f"https://api.osf.io/v2/nodes/{node_id}/files/")
+    trees=[]
+    for p in providers:
+        a=p.get("attributes") or {}
+        provider_name=a.get("name") or p.get("id")
+        href=f"https://api.osf.io/v2/nodes/{node_id}/files/{p.get('id')}/"
+        try:
+            tree=walk_files(href,f"{label}/{provider_name}")
+        except Exception:
+            rel=(p.get("relationships") or {}).get("files")
+            fallback=related_href(rel)
+            tree=walk_files(fallback,f"{label}/{provider_name}") if fallback else []
+        trees.append({"node_id":node_id,"node_label":label,"provider_id":p.get("id"),"provider_name":provider_name,"tree":tree})
+    return trees
+
+def collect_nodes(root_id):
+    seen=set()
+    out=[]
+    stack=[root_id]
+    while stack:
+        nid=stack.pop()
+        if nid in seen: continue
+        seen.add(nid)
+        n=get_json(f"https://api.osf.io/v2/nodes/{nid}/")
+        attrs=(n.get("data") or {}).get("attributes",{})
+        label=attrs.get("title") or nid
+        out.append({"id":nid,"title":label,"category":attrs.get("category")})
+        try:
+            children=page_all(f"https://api.osf.io/v2/nodes/{nid}/children/")
+            for ch in children:
+                cid=ch.get("id")
+                if cid and cid not in seen: stack.append(cid)
+        except Exception:
+            pass
+    return out
+
 def main():
     cfg=json.loads(CFG.read_text())
     node=cfg["replication_source"]["osf_node"]
     root=get_json(f"https://api.osf.io/v2/nodes/{node}/")
-    providers=page_all(f"https://api.osf.io/v2/nodes/{node}/files/")
+    nodes=collect_nodes(node)
     alltrees=[]
-    for p in providers:
-        a=p.get("attributes") or {}
-        provider_name=a.get("name") or p.get("id")
-        href=f"https://api.osf.io/v2/nodes/{node}/files/{p.get('id')}/"
-        try:
-            tree=walk_files(href,provider_name)
-        except Exception:
-            rel=(p.get("relationships") or {}).get("files")
-            fallback=related_href(rel)
-            tree=walk_files(fallback,provider_name) if fallback else []
-        alltrees.append({"provider_id":p.get("id"),"provider_name":provider_name,"tree":tree})
+    for n in nodes:
+        alltrees.extend(discover_node(n["id"],n["title"]))
     flat=[]
     for p in alltrees: flat.extend(flatten(p["tree"]))
     keys=[k.lower() for k in cfg["keywords"]]
@@ -97,13 +125,13 @@ def main():
         "description":(root.get("data") or {}).get("attributes",{}).get("description"),
         "date_modified":(root.get("data") or {}).get("attributes",{}).get("date_modified")
       },
-      "provider_count":len(providers),"file_folder_count":len(flat),
-      "providers":alltrees,"keyword_hits":hits,
+      "node_count":len(nodes),"provider_count":len(alltrees),"file_folder_count":len(flat),
+      "nodes":nodes,"providers":alltrees,"keyword_hits":hits,
       "experimental_values_opened":False
     }
     OUT.write_text(json.dumps(result,indent=2)+"\n")
     print(json.dumps({
-      "status":result["status"],"node":result["node"],"provider_count":len(providers),"file_folder_count":len(flat),
+      "status":result["status"],"node":result["node"],"node_count":len(nodes),"provider_count":len(alltrees),"file_folder_count":len(flat),
       "keyword_hits":[{"path":x["path"],"kind":x["kind"],"size":x["size"],"matched_keywords":x["matched_keywords"]} for x in hits],
       "experimental_values_opened":False
     },indent=2))
