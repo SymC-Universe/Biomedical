@@ -53,10 +53,17 @@ url, zdat = fetch(URLS["data_s1"], ROOT/"mmc2.zip")
 report["files"]["data_s1"] = {"url":url,"bytes":len(zdat),"sha256":sha256(zdat)}
 
 with zipfile.ZipFile(ROOT/"mmc2.zip") as z:
-    report["files"]["data_s1"]["members"] = [
-        {"name":i.filename,"bytes":i.file_size,"compressed_bytes":i.compress_size}
-        for i in z.infolist() if not i.is_dir()
-    ]
+    members = []
+    for i in z.infolist():
+        if i.is_dir():
+            continue
+        rec = {"name":i.filename,"bytes":i.file_size,"compressed_bytes":i.compress_size}
+        if i.filename.lower().endswith(".csv"):
+            raw = z.read(i.filename).decode("utf-8","replace").splitlines()
+            rec["line_count"] = len(raw)
+            rec["header"] = raw[0].split(",") if raw else []
+        members.append(rec)
+    report["files"]["data_s1"]["members"] = members
 
 # Excel schema only. Read no expression rows.
 try:
@@ -66,7 +73,17 @@ try:
     for sname in book.sheet_names():
         sh = book.sheet_by_name(sname)
         header = [str(sh.cell_value(0,c)) for c in range(sh.ncols)] if sh.nrows else []
-        sheets.append({"name":sname,"nrows":sh.nrows,"ncols":sh.ncols,"header":header})
+        gene_id_examples = [str(sh.cell_value(r,0)) for r in range(1,min(sh.nrows,11))] if sh.ncols else []
+        target_genes = ["Tnfrsf1a","Rela","Nfkbia","Tnfaip3"]
+        target_gene_rows = {}
+        if sh.ncols:
+            wanted = {g.lower(): g for g in target_genes}
+            for r in range(1, sh.nrows):
+                gid = str(sh.cell_value(r,0)).strip()
+                if gid.lower() in wanted:
+                    target_gene_rows[wanted[gid.lower()]] = r + 1
+        sheets.append({"name":sname,"nrows":sh.nrows,"ncols":sh.ncols,"header":header,
+                       "gene_id_examples":gene_id_examples,"target_gene_rows_1based":target_gene_rows})
     report["files"]["table_s3"]["sheets"] = sheets
 except Exception as e:
     report["files"]["table_s3"]["schema_error"] = f"{type(e).__name__}: {e}"
@@ -113,10 +130,14 @@ f"- Data S1 SHA256: `{report['files']['data_s1']['sha256']}`",
 ]
 for sh in report["files"]["table_s3"].get("sheets",[]):
     md += [f"- `{sh['name']}`: {sh['nrows']} rows x {sh['ncols']} columns",
-           f"  - header: `{sh['header']}`"]
+           f"  - header: `{sh['header']}`",
+           f"  - gene ID examples: `{sh.get('gene_id_examples',[])}`",
+           f"  - frozen TNF/NF-kB circuit gene rows: `{sh.get('target_gene_rows_1based',{})}`"]
 md += ["","## Data S1 archive members"]
 for i in report["files"]["data_s1"]["members"]:
-    md.append(f"- `{i['name']}` ({i['bytes']} bytes)")
+    md.append(f"- `{i['name']}` ({i['bytes']} bytes; {i.get('line_count','?')} lines)")
+    if "header" in i:
+        md.append(f"  - header: `{i['header']}`")
 md += ["","## GEO supplementary metadata"]
 for line in report["geo"].get("supplementary_file_lines",[]):
     md.append(f"- `{line}`")
