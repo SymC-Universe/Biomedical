@@ -1,0 +1,26 @@
+name: Bio Chi Shaffer WM989 recovery metadata v0.1
+on:
+  push:
+    branches: [bio-chi-topdown-pivot-20260924]
+    paths:
+      - 'BIO_CHI/config/SHAFFER2017_WM989_RECOVERY_METADATA_FREEZE_v0_1.json'
+      - 'BIO_CHI/src/audit_shaffer2017_wm989_recovery_metadata_v0_1.py'
+      - '.github/workflows/bio-chi-shaffer-wm989-recovery-metadata-v01.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Audit target subclone metadata only
+        run: python BIO_CHI/src/audit_shaffer2017_wm989_recovery_metadata_v0_1.py
+      - name: Upload metadata map
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_SHAFFER_WM989_RECOVERY_METADATA_V01
+          path: BIO_CHI/artifacts/generated/shaffer2017_wm989_recovery_metadata_v0_1.json
+          if-no-files-found: error
