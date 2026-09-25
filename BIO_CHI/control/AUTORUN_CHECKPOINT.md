@@ -1,78 +1,69 @@
 # Bio Chi autonomous continuation checkpoint
 
-**Last updated:** 24 September 2026  
-**Status:** SCIENTIFIC STOP AFTER ONCOLOGY P0-Q CLOSURE  
-**Branch:** `bio-chi-oncology-p0q-20260924`  
-**Authority:** SymC General Operations Manual v0.8.6 + Bio Chi three-object nomenclature decision.
+**Last updated:** 25 September 2026  
+**Status:** SCIENTIFIC STOP AFTER TOP-DOWN PRELISTED PHASE  
+**Branch:** `bio-chi-topdown-pivot-20260924`  
+**Authority:** SymC General Operations Manual v0.8.6 + Bio Chi top-down identifiability contract.
 
 ## Resume contract
 
-On every continuation, verify this branch/head and `BIO_CHI/control/WORK_QUEUE.json`. Preserve every frozen decision, failure, null, refusal, sensitivity, source collision, and representation-dependent result. Mechanical/audit/reproducibility work may continue without user intervention. A new independent biological system or replacement representation is a scientific expansion and requires user intervention.
+Verify this branch/head, `BIO_CHI/control/WORK_QUEUE.json`, and `BIO_CHI/control/TOPDOWN_PHASE_CHECKPOINT_20260925.md` before continuing.
 
-## Current closed evidence state
+Preserve every frozen pass, failure, refusal, source limitation, uncertainty result, and representation-dependent outcome.
 
-### NF-kB reference system
-- model-specific scalar: P0-Q admitted;
-- complete six-mode representation: P0-Q admitted;
-- relational system architecture: P0-Q admitted;
-- no biological chi=1 boundary or system scalar.
+Mechanical reproducibility, audit, packaging, and documentation work may continue without user intervention. Opening an entirely new biological system or declaring the current phase publication-ready is a scientific/phase decision and requires user intervention.
 
-### ERK B3 independent system
-- native B3 reproduction: PASS;
-- generator/modal precursor: qualified;
-- scalar representation-class transport: SUPPORTED at P0-Q;
-- complete 8D modal round-trip: FAIL under the frozen all-direction gate;
-- ERK complete modal admission: REFUSED;
-- cross-system Bio Chi transport: not established.
+## Active construction order
 
-### Su 2026 oncology lineage
-Source: M397 melanoma reversible transition with source-native two-module ODE, plus frozen HCC827 cross-cell behavior transport.
+`whole Bio Chi event -> minimum required internal organization -> optional scalar compression`.
 
-Scalar:
-- nominal complex pairs occur in 3/8 source scenarios;
-- 5/8 scenarios are real-only refusals;
-- scalar is exactly equivalent to normalized native trace/determinant pole geometry in this 2x2 model;
-- every nominal complex scenario crosses the real/complex boundary within the frozen +/-1 reported-SEM corner grid;
-- disposition: `REFUSED_UNCERTAINTY_SENSITIVE_EQUIVALENT_NATIVE_INVARIANT`.
+A lower representation is not opened merely because it is mathematically available. It must be required by the frozen biological event, resolve a defined ambiguity, improve transport/prediction, or provide nonredundant compression.
 
-Complete modal representation:
-- publication-equation generator uniquely reproduces the source-derived trajectories relative to the incompatible pinned public-code sign convention;
-- complete two-state generator is reproducibly defined across all eight scenarios;
-- individual pole type is uncertainty-sensitive in 7/8 scenarios;
-- disposition: `QUALIFIED_MODEL_SPECIFIC_UNCERTAINTY_AWARE_NATIVE_GENERATOR_FAMILY`.
+## Completed program state
 
-Relational/conglomerate:
-- M397 recovery coexists descriptively with strong drug-on/drug-off generator reorganization and no continuous matched scalar carrier;
-- HCC827 passed the frozen pre-outcome carrier-coverage gate;
-- unchanged M397 generator aggregate normalized SSE = 2508.5029;
-- constant-state baseline = 382.6119;
-- empirical M397 displacement template = 16073.0457;
-- frozen held-out behavior gate: FAIL;
-- HT-29 failed the source-coverage gate and its expression values remained unopened;
-- disposition: `NOT_ADMITTED_C3_HELDOUT_BEHAVIOR_FAILURE`.
+- **NF-kB:** model-specific P0-Q scalar, complete modal, and relational qualification admitted.
+- **ERK B3:** scalar representation-class transport supported; complete 8D modal object refused under the frozen gate; cross-system conglomerate transport not established.
+- **Su 2026 melanoma:** complete uncertainty-aware native generator family qualified; scalar refused under parameter uncertainty/redundancy; HCC827 no-retuning behavior transport failed.
+- **Rehman 2021 CRC:** partial recovery with mixed modal return/reorganization; simple baseline-like VAF return explanation failed; scalar not required.
+- **Marsolier 2022 TNBC:** frozen substrate-conditioned lineage gate not reproduced; baseline transcriptomic modal inheritance not detected; scalar not required.
+- **Shaffer 2017 melanoma:** common three-carrier drug-holiday recovery gate not reproduced; modal representation parallels carrier heterogeneity; scalar not required.
+- **Harmange 2023 melanoma:** frozen within-source state-memory-to-resistance relation supported at P0-Q; lineage-resolved two-state composition is sufficient internal organization; full PCA and scalar compression not required.
+- **Sharma 2010 PC9:** current public replication material is source-limited for the required withdrawal/resensitization event; no lower representation opened.
 
-Primary closure record:
-`BIO_CHI/control/ONCOLOGY_P0Q_CLOSURE_20260924.md`
+## Harmange positive top-down result
 
-## Preserved Limit Map items
+PI3Ki state-switch gate:
+- 8 paired source lineages;
+- median primed-fraction change = -0.9091;
+- 6 lower, 0 higher, 2 unchanged;
+- exact one-sided sign p = 0.015625.
 
-- historical CV/2 biological scalar remains retired;
-- NF-kB B/C finite-window behavior failures remain preserved;
-- ERK B3 complete modal round-trip failure remains preserved;
-- Su publication/public-code sign inconsistency remains preserved even though source-fidelity adjudication favors the current publication equation;
-- Su scalar point estimates remain reported but are not promoted through their uncertainty failure;
-- HCC827 transport failure remains failed and is not repaired by carrier selection or refitting;
-- HT-29 remains source-limited and unviewed at the expression-value level for this analysis.
+Reverse TGFB1 context:
+- 278 paired lineages;
+- 204 higher, 0 lower, 74 unchanged;
+- median change = +0.1667.
 
-## Mechanical continuation authority
+Later resistance after pretreatment:
+- resistant cells lower under PI3Ki in 3/3 biological replicates;
+- resistant colonies lower under PI3Ki in 3/3 biological replicates;
+- exact sign p = 0.125 for each endpoint, resolution-limited at n=3.
 
-Allowed without user intervention:
-- hash/result-pin verification;
-- workflow artifact recovery;
-- checkpoint/README/reviewer-navigation synchronization;
-- packaging and reproducibility audits;
-- correction of mechanical documentation drift that does not alter scientific interpretation.
+Claim ceiling: within-source P0-Q relation only.
+
+## Primary current records
+
+- `BIO_CHI/control/TOPDOWN_PHASE_CHECKPOINT_20260925.md`
+- `BIO_CHI/control/TOPDOWN_REPRESENTATION_ADEQUACY_MATRIX_20260924.md`
+- `BIO_CHI/control/HARMANGE_TOPDOWN_CLOSURE_20260924.md`
+- `BIO_CHI/control/SHARMA_TOPDOWN_SOURCE_CLOSURE_20260925.md`
+- `BIO_CHI/control/WORK_QUEUE.json`
 
 ## Current scientific stop
 
-The present oncology lineage is closed. Further substantive work requires choosing a fresh independent biological system, or opening a materially different representation with an independently justified scientific basis. Either choice changes the scientific plan and is the next user-intervention point.
+All prelisted top-down candidates are closed or source-disposed.
+
+The next substantive choice is:
+1. open a fresh independent biological system under a new frozen top-down source/event contract, or
+2. close the current qualification phase and move to synthesis/manuscript integration/prospective-test design.
+
+Do not choose between those options mechanically.
