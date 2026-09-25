@@ -1,0 +1,25 @@
+{
+  "schema_version":"0.3",
+  "project":"Bio Chi Investigation",
+  "gate":"Harmange 2023 public 10x metadata-header and sample-role discovery",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "raw_tar_sha256":"8a3b0c25f74530f39efcef890555bb51b1df61f95207c4b10e6e77d222ea2eb0",
+  "metadata_members":[
+    "GSM7597476_10x_exp1_metadata.tsv.gz",
+    "GSM7597477_10x_exp2_metadata.tsv.gz"
+  ],
+  "permitted_operations":[
+    "download the already source-frozen GSE237228_RAW.tar and verify SHA-256",
+    "extract only the two declared metadata members",
+    "read only the header line from each extracted metadata member",
+    "read GEO SOFT metadata for GSM7597476 and GSM7597477 including titles, descriptions, characteristics, relations and supplementary-file declarations",
+    "read no expression or lineage-assay values"
+  ],
+  "forbidden_operations":[
+    "read metadata data rows",
+    "read matrix entries",
+    "read molecular values",
+    "infer lineage continuity from nCount_lineage alone"
+  ],
+  "status":"FROZEN_BEFORE_METADATA_MEMBER_HEADERS"
+}
