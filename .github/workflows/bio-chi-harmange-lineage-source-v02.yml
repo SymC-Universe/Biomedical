@@ -1,0 +1,26 @@
+name: Bio Chi Harmange lineage source discovery v0.2
+on:
+  push:
+    branches: [bio-chi-topdown-pivot-20260924]
+    paths:
+      - 'BIO_CHI/config/HARMANGE2023_LINEAGE_SOURCE_DISCOVERY_FREEZE_v0_2.json'
+      - 'BIO_CHI/src/discover_harmange2023_lineage_source_v0_2.py'
+      - '.github/workflows/bio-chi-harmange-lineage-source-v02.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  discover:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Discover public lineage source schema without reading molecular values
+        run: python BIO_CHI/src/discover_harmange2023_lineage_source_v0_2.py
+      - name: Upload source discovery
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_HARMANGE_LINEAGE_SOURCE_V02
+          path: BIO_CHI/artifacts/generated/harmange2023_lineage_source_discovery_v0_2.json
+          if-no-files-found: error
