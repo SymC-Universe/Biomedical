@@ -1,0 +1,32 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Su 2026 Supplementary Data source identity freeze for oncology P0-Q",
+  "date": "2026-09-24",
+  "branch": "bio-chi-oncology-p0q-20260924",
+  "paper_doi": "10.1038/s41467-026-71349-4",
+  "pmcid": "PMC13083995",
+  "supplementary_data": {
+    "publisher_archive_filename": "41467_2026_71349_MOESM3_ESM.xlsx",
+    "publisher_reported_md5": "0782c704db69b2c4fa8b2a8a5e8ec552",
+    "publisher_reported_size": "8.7 MB",
+    "pmc_reported_size": "8.3 MB",
+    "role_from_article": "Supplementary Data workbook; Supplementary Data 5 contains fitted coefficients for forward and reverse two-module ODE trajectories",
+    "local_sha256": null,
+    "local_bytes_acquired": false
+  },
+  "source_code": {
+    "repository": "jihoonlee0/melanoma_reversible_transition",
+    "commit": "a2b2119f6d69d49e33ff4b57fb04b2b1eaf5fe68",
+    "model_file": "Runge-Kutta4,5-250124.py",
+    "model_blob": "9105d12c4717e8abca64ec6cad002084d07534ec"
+  },
+  "outcome_opening_state": {
+    "published_general_interpretation_known": true,
+    "SymC_modal_values_computed": false,
+    "Supplementary_Data_5_parameter_table_opened_for_SymC": false,
+    "scenario_parameter_mapping_frozen": false
+  },
+  "status": "SOURCE_IDENTITY_FROZEN_PARAMETER_TABLE_PENDING",
+  "next_gate": "acquire exact workbook bytes, compute SHA-256, freeze sheet/table/scenario mapping, then execute the already-frozen generator/modal analysis"
+}
