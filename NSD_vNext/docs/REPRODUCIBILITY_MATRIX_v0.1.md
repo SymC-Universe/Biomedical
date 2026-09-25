@@ -153,3 +153,18 @@ The canonical executable verification path is now `REPRODUCIBILITY_GUIDE_v0.1.md
 The next experiment has been prospectively frozen as `DS004148_DESCRIPTIVE_TRANSFER_FREEZE_v0.1.md`. It uses the six D4-verified ds004148 resting recordings from one subject and reuses the already-frozen ds003775 descriptive representation without ds004148-driven tuning. The suite is required to preserve subject/session/channel hierarchy, report complete same-state pairwise values, compare state medians to the previously committed ds003775 empirical envelopes, retain outside-envelope observations as Limit Map information, and refuse unsupported modal, chi, capital-Chi, clinical, recovery, or population claims.
 
 Current transfer reproducibility state: `FROZEN / EXECUTION SUITE VERSIONED / RESULT NOT PROMOTED UNTIL WORKFLOW AND POST-RESULT AUDIT CLOSE`.
+
+
+## 24 September 2026 corrected transfer closure
+
+The first ds004148 transfer suite was withheld during post-result audit because its aggregate cross-dataset comparison did not enforce the prospectively frozen exact-label rule. This was corrected without retuning by rebuilding the ds003775 envelopes from the original 42 subject artifacts over the exact 59 shared channel labels.
+
+Promoted workflow run: `36088323374`
+
+Promoted artifact: `nsd-ds004148-descriptive-transfer-suite-v0-2`
+
+Artifact digest: `sha256:f6ce93029c38d72016c2bfd17f4e1b7bdc74bdc5d3ac0fac780896052bf170ce`
+
+Result status: `P0-Q CLOSED / DESCRIPTIVE TRANSFER ONLY`
+
+All 18 state-median transport indicators remained within matched ds003775 empirical envelopes. Two pair-level excursions are retained in the Limit Map and documented in `DS004148_DESCRIPTIVE_TRANSFER_POSTRESULT_v0.2.md`. No scalar, modal, clinical, or population promotion follows from this result.
