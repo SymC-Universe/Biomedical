@@ -1,0 +1,13 @@
+{
+  "schema_version":"0.4",
+  "project":"Bio Chi Investigation",
+  "gate":"Harmange 2023 SRA run-level source-role discovery",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "workflow_run_id":36097802726,
+  "workflow_head_sha":"236c03ecc23069d0810233da83a8dca2cae18795",
+  "status":"MECHANICAL_METADATA_ENDPOINT_FAILURE",
+  "cause":"NCBI legacy RunInfo endpoint no longer returned CSV for the BioProject query; the trace endpoint did not accept the BioProject accession.",
+  "scientific_effect":"NONE",
+  "sequencing_payload_opened":false,
+  "repair":"use a separately frozen ENA read_run metadata query for the same BioProject/study; preserve this endpoint failure"
+}
