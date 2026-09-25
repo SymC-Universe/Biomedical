@@ -1,4 +1,5 @@
 name: NSD ds004148 Independent Descriptive Transfer
+# execution retrigger after pre-result documentation synchronization
 
 on:
   workflow_dispatch:
