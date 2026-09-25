@@ -1,0 +1,53 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "lineage": "rehman2021_topdown",
+  "branch": "bio-chi-topdown-pivot-20260924",
+  "evidence_tier": "P0-Q",
+  "source": {
+    "paper_doi": "10.1016/j.cell.2020.11.018",
+    "geo": "GSE145356",
+    "processed_counts_file": "GSE145356_merged_HTSeq_readCounts_V2.txt.gz",
+    "processed_counts_sha256": "b0fe61c87cec2673ac37abef4f112f7d1d292212d3abe1149ac69340718e1447"
+  },
+  "bio_chi_event": {
+    "carrier_system": "POP66 colorectal cancer PDX transcriptomic state under CPT-11 treatment/withdrawal design as represented by the frozen GEO groups",
+    "baseline": "vehicle control tumors; frozen source control definition combines saline and DMSO",
+    "perturbed_state": "CPT-11 DTP-state tumors harvested while on treatment",
+    "post_perturbation_return_state": "CPT-11 regrowth tumors after treatment cessation",
+    "return_target": "vehicle-control transcriptomic organization",
+    "functional_recovery_anchor": "paper-level reinjection/rechallenge shows regrowth tumors remained CPT-11 sensitive on re-exposure",
+    "irreversible_boundary_anchor": "long-term CPT-11 resistant tumors grew on treatment and remained resistant on reinjection/rechallenge"
+  },
+  "primary_public_rna_groups": {
+    "control": ["GSM4315308","GSM4315309","GSM4315310","GSM4315311","GSM4315312","GSM4315313","GSM4315329","GSM4315330","GSM4315331","GSM4315332"],
+    "dtp": ["GSM4315326","GSM4315327","GSM4315328"],
+    "regrowth": ["GSM4315317","GSM4315318","GSM4315319"],
+    "resistant_boundary": ["GSM4315323","GSM4315324","GSM4315325"]
+  },
+  "control_note": "The paper-native Figure 4 control count is seven, while GEO contains additional CTRL-labeled samples. Exact inclusion must be resolved by source/header metadata before values are opened. No control subset will be chosen after observing expression values.",
+  "whole_event_analysis": {
+    "normalization": "library-size CPM followed by log2(CPM+1)",
+    "gene_filter": "CPM >= 1 in at least 3 samples of the frozen primary control+dtp+regrowth set",
+    "primary_distance": "1 - Pearson correlation between each sample and the frozen control centroid in filtered logCPM space",
+    "sensitivity_distance": "Euclidean distance after per-gene centering/scaling using the frozen primary control+dtp+regrowth set; genes with zero scale are removed",
+    "recovery_index": "1 - median_distance(regrowth,control_centroid)/median_distance(dtp,control_centroid)",
+    "recovery_direction": "positive index means transcriptomic return toward control",
+    "exact_label_test": "one-sided exact permutation of DTP versus regrowth labels among the six samples using difference in median distance to the fixed control centroid",
+    "resistant_boundary": "held out from event-definition calculations and opened only after the recovery metric is frozen; compare resistant median distance to regrowth median distance",
+    "no_claim_if": "source control subset cannot be resolved without a post-result choice"
+  },
+  "downward_modal_gate": {
+    "open_only_if_event_identifiable": true,
+    "representation": "prospectively frozen PCA/SVD on the primary control+dtp+regrowth normalized matrix only; no group labels used to fit basis",
+    "component_retention": "retain the minimum leading components explaining at least 80% cumulative variance, with all retained components analyzed",
+    "heldout_projection": "resistant samples projected into the frozen primary basis",
+    "purpose": "determine whether whole-event return is modal return, modal compensation/reorganization, or neither",
+    "not_exact_reproduction_of_source_figure4": true
+  },
+  "scalar_gate": {
+    "status": "CLOSED_UNTIL_MODAL_AND_EVENT_RESULTS_REQUIRE_COMPRESSION",
+    "no_scalar_constructed_from_static_PCA_by_default": true
+  },
+  "status": "FROZEN_BEFORE_PROCESSED_COUNT_VALUES"
+}
