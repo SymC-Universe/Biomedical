@@ -1,0 +1,27 @@
+{
+  "schema_version":"0.1",
+  "project":"Bio Chi Investigation",
+  "gate":"Harmange 2023 Nature Source Data workbook byte freeze and text-only schema inventory",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "workflow_run_id":36098797728,
+  "workflow_head_sha":"c0776e8a482384987d730c72ddb660e3202143bd",
+  "artifact_id":10848955873,
+  "artifact_digest":"sha256:a8e7ee2f58026a084e07c943bf2c5d19825b90d5c9483a6092a211d9339df5d0",
+  "status":"PASS_SOURCE_BYTES_AND_TEXT_ONLY_SCHEMA_INVENTORY",
+  "workbook":{
+    "filename":"41467_2023_41811_MOESM8_ESM.xlsx",
+    "byte_size":563067,
+    "md5":"63f82b375e63ca842001fd4697f871cb",
+    "sha256":"dd847a75480f82a16ed070be07a8da40aeec27fa5289685ef5fdf3730f387b72",
+    "sheet_count":19
+  },
+  "preopened_schema":{
+    "Fig. 5G":["Condition","Lineage","propOfprimed","numCells"],
+    "Fig. 5H":["Condition","Lineage","propOfprimed","numCells"],
+    "Fig. 6C":["Condition","replicate","ncells"],
+    "Fig. 6D":["condition","replicate","well","numColonies"]
+  },
+  "numeric_values_recorded":false,
+  "scientific_values_interpreted":false,
+  "next_gate":"freeze a top-down state-switch-to-resistance event analysis using Fig. 5G/5H and Fig. 6C/6D before opening numeric values"
+}
