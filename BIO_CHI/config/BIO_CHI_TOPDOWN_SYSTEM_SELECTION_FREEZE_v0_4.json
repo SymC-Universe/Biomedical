@@ -1,0 +1,76 @@
+{
+  "schema_version":"0.4",
+  "project":"Bio Chi Investigation",
+  "gate":"Top-down next-system selection after Rehman, Marsolier and Shaffer closure",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "selection_contract":"BIO_CHI/config/BIO_CHI_IDENTIFIABILITY_CONTRACT_v0_1.json",
+  "selection_uses_molecular_outcomes":false,
+  "completed_or_closed_systems":[
+    "su_sequential_waves_melanoma",
+    "rehman2021_crc_dtp",
+    "marsolier2022_tnbc_h3k27me3",
+    "shaffer2017_melanoma"
+  ],
+  "candidates":[
+    {
+      "id":"harmange2023_scmemoryseq",
+      "primary_event":"lineage_memory_and_perturbation_driven_state_switching",
+      "recovery_claimed":false,
+      "return_target_defined":false,
+      "carrier_defined":true,
+      "carrier_evidence_pin":"BIO_CHI/config/HARMANGE2023_EXP1_CARRIER_V01_RESULT_PIN.json",
+      "baseline_or_substrate_defined":true,
+      "perturbation_defined":true,
+      "time_ordered_response_present":true,
+      "post_perturbation_outcome_defined":true,
+      "internal_organization_observable_mappable_to_same_system":true,
+      "native_or_simple_behavioral_comparator_available":true,
+      "heldout_or_rechallenge_behavior_available":true,
+      "carrier_or_lineage_continuity":true,
+      "preperturbation_substrate_measurement":true,
+      "public_reproducible_quantitative_data":true,
+      "native_functional_endpoint":true,
+      "notes":"Public author lineage object now source-qualified without opening final transcriptional-state outcomes. Paper/source design contains same-lineage perturbation comparisons plus a separate drug-resistance functional anchor."
+    },
+    {
+      "id":"sharma2010_pc9",
+      "primary_event":"recovery_resensitization",
+      "recovery_claimed":true,
+      "return_target_defined":true,
+      "carrier_defined":false,
+      "baseline_or_substrate_defined":true,
+      "perturbation_defined":true,
+      "time_ordered_response_present":true,
+      "post_perturbation_outcome_defined":true,
+      "internal_organization_observable_mappable_to_same_system":true,
+      "native_or_simple_behavioral_comparator_available":true,
+      "heldout_or_rechallenge_behavior_available":true,
+      "carrier_or_lineage_continuity":false,
+      "preperturbation_substrate_measurement":true,
+      "public_reproducible_quantitative_data":false,
+      "native_functional_endpoint":true,
+      "notes":"Strong historical biology; original raw machine-readable data remain unverified."
+    }
+  ],
+  "mandatory_fields":[
+    "carrier_defined",
+    "baseline_or_substrate_defined",
+    "perturbation_defined",
+    "time_ordered_response_present",
+    "post_perturbation_outcome_defined",
+    "internal_organization_observable_mappable_to_same_system",
+    "native_or_simple_behavioral_comparator_available"
+  ],
+  "conditional_requirements":{
+    "return_target":"recovery_claimed is false OR return_target_defined is true"
+  },
+  "tie_breakers_in_order":[
+    "heldout_or_rechallenge_behavior_available",
+    "carrier_or_lineage_continuity",
+    "preperturbation_substrate_measurement",
+    "public_reproducible_quantitative_data",
+    "native_functional_endpoint"
+  ],
+  "selection_rule":"filter candidates satisfying all mandatory fields and conditional return-target rule; among survivors choose lexicographically by the ordered Boolean tie-breaker vector; if exact tie remains, stop for user intervention",
+  "status":"FROZEN_BEFORE_SELECTION_EXECUTION"
+}
