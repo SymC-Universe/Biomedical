@@ -34,12 +34,11 @@ SENSITIVITY_KNEE = SpecparamSettings(
 )
 
 PAIR_METRIC_TO_REFERENCE = {
-    "global_median_log_psd_correlation": "global_median_log_psd_correlation",
     "median_channel_log_psd_correlation": "median_channel_log_psd_correlation",
-    "aperiodic_exponent_absolute_difference_median": "aperiodic_exponent_absolute_difference_subject_median",
-    "same_peak_count_fraction": "same_peak_count_fraction_per_subject",
-    "same_zero_peak_state_fraction": "same_zero_peak_state_fraction_per_subject",
-    "first_peak_nearest_center_difference_median_hz": "first_peak_nearest_center_difference_subject_median_hz",
+    "aperiodic_exponent_absolute_difference_median": "aperiodic_exponent_absolute_difference_median",
+    "same_peak_count_fraction": "same_peak_count_fraction",
+    "same_zero_peak_state_fraction": "same_zero_peak_state_fraction",
+    "first_peak_nearest_center_difference_median_hz": "first_peak_nearest_center_difference_median_hz",
 }
 RECORDING_METRIC_TO_REFERENCE = {
     "aperiodic_model_disagreement_channel_fraction": "aperiodic_model_disagreement_fraction_per_session",
@@ -216,10 +215,14 @@ def _pearson(first: np.ndarray, second: np.ndarray) -> float:
     return float(np.corrcoef(first, second)[0, 1])
 
 
-def _pair(first: dict[str, object], second: dict[str, object]) -> dict[str, object]:
+def _pair(
+    first: dict[str, object],
+    second: dict[str, object],
+    allowed_labels: set[str],
+) -> dict[str, object]:
     first_channels = {str(item["channel"]): item for item in first["channels"]}
     second_channels = {str(item["channel"]): item for item in second["channels"]}
-    shared = sorted(set(first_channels) & set(second_channels))
+    shared = sorted(set(first_channels) & set(second_channels) & allowed_labels)
     if not shared:
         raise ValueError("no shared channels")
 
@@ -251,15 +254,11 @@ def _pair(first: dict[str, object], second: dict[str, object]) -> dict[str, obje
     if not correlations:
         raise ValueError("no finite PSD correlations")
 
-    global_first = np.median(first["log_psd"], axis=0)
-    global_second = np.median(second["log_psd"], axis=0)
-
     return {
         "task": first["task"],
         "session_a": first["session"],
         "session_b": second["session"],
         "shared_channel_count": len(shared),
-        "global_median_log_psd_correlation": _pearson(global_first, global_second),
         "median_channel_log_psd_correlation": float(np.median(correlations)),
         "aperiodic_exponent_absolute_difference_median": float(np.median(exponent_differences)),
         "same_peak_count_fraction": peak_count_equal / len(shared),
@@ -291,31 +290,78 @@ def _label(value: float | None, reference: dict[str, object]) -> str:
     return "WITHIN_PREVIOUS_ENVELOPE" if low <= float(value) <= high else "OUTSIDE_PREVIOUS_ENVELOPE"
 
 
-def execute(manifest_path: Path, atlas_path: Path, output_dir: Path) -> dict[str, object]:
+def _summarize_channels(channels: list[dict[str, object]]) -> dict[str, float]:
+    if not channels:
+        raise ValueError("cannot summarize an empty channel set")
+    count = len(channels)
+    return {
+        "aperiodic_model_disagreement_channel_fraction": sum(
+            bool(item["model_family_disagreement"]) for item in channels
+        ) / count,
+        "zero_peak_channel_fraction": sum(bool(item["zero_peak_state"]) for item in channels) / count,
+        "max_peak_count_channel_fraction": sum(
+            bool(item["max_peak_count_reached"]) for item in channels
+        ) / count,
+        "width_boundary_hits_per_channel": sum(
+            int(item["width_boundary_hit_count"]) for item in channels
+        ) / count,
+    }
+
+
+def execute(
+    manifest_path: Path,
+    atlas_path: Path,
+    matched_reference_path: Path,
+    output_dir: Path,
+) -> dict[str, object]:
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     atlas = json.loads(atlas_path.read_text(encoding="utf-8"))
+    matched_reference = json.loads(matched_reference_path.read_text(encoding="utf-8"))
 
     output_dir.mkdir(parents=True, exist_ok=True)
     payload_dir = output_dir / "payloads"
     payload_dir.mkdir(exist_ok=True)
 
     recordings = [_recording(item, manifest, payload_dir) for item in manifest["recordings"]]
+
+    reference_channels = {str(item["channel"]) for item in atlas["channel_repeatability"]}
+    target_channels = set(recordings[0]["channel_labels"])
+    exact_intersection = sorted(reference_channels & target_channels)
+    matched_labels = set(str(label) for label in matched_reference["channels"])
+    if set(exact_intersection) != matched_labels:
+        raise ValueError(
+            "matched reference labels do not equal the exact ds003775/ds004148 channel intersection"
+        )
+    if int(matched_reference["channel_count"]) != len(matched_labels):
+        raise ValueError("matched reference channel count mismatch")
+
+    for recording in recordings:
+        selected = [
+            item for item in recording["channels"]
+            if str(item["channel"]) in matched_labels
+        ]
+        if len(selected) != len(matched_labels):
+            raise ValueError("recording does not contain all matched reference channels")
+        recording["matched_summary"] = _summarize_channels(selected)
+
     grouped: dict[str, list[dict[str, object]]] = {}
     for recording in recordings:
         grouped.setdefault(str(recording["task"]), []).append(recording)
 
     states = {}
-    population = atlas["population"]
     for task, items in sorted(grouped.items()):
         items = sorted(items, key=lambda item: str(item["session"]))
-        pairs = [_pair(first, second) for first, second in combinations(items, 2)]
+        pairs = [
+            _pair(first, second, matched_labels)
+            for first, second in combinations(items, 2)
+        ]
 
         pair_summaries = {}
         reference_comparison = {}
         for metric, reference_key in PAIR_METRIC_TO_REFERENCE.items():
             summary = _summary([pair.get(metric) for pair in pairs])
             pair_summaries[metric] = summary
-            reference = population[reference_key]
+            reference = matched_reference["pair_metrics"][reference_key]
             reference_comparison[metric] = {
                 "state_median": summary["median"],
                 "ds003775_reference": reference,
@@ -324,9 +370,9 @@ def execute(manifest_path: Path, atlas_path: Path, output_dir: Path) -> dict[str
 
         recording_summaries = {}
         for metric, reference_key in RECORDING_METRIC_TO_REFERENCE.items():
-            summary = _summary([float(item["summary"][metric]) for item in items])
+            summary = _summary([float(item["matched_summary"][metric]) for item in items])
             recording_summaries[metric] = summary
-            reference = population[reference_key]
+            reference = matched_reference["recording_metrics"][reference_key]
             reference_comparison[metric] = {
                 "state_median": summary["median"],
                 "ds003775_reference": reference,
@@ -342,10 +388,6 @@ def execute(manifest_path: Path, atlas_path: Path, output_dir: Path) -> dict[str
             "reference_comparison": reference_comparison,
         }
 
-    reference_channels = {str(item["channel"]) for item in atlas["channel_repeatability"]}
-    target_channels = set(recordings[0]["channel_labels"])
-    exact_intersection = sorted(reference_channels & target_channels)
-
     return {
         "schema": "NSD_DS004148_DESCRIPTIVE_TRANSFER_RESULT_V0_1",
         "status": "P0_Q_INDEPENDENT_LABEL_BLIND_DESCRIPTIVE_TRANSFER",
@@ -358,6 +400,13 @@ def execute(manifest_path: Path, atlas_path: Path, output_dir: Path) -> dict[str
             "source_workflow_run": atlas["source_workflow_run"],
             "source_artifact_digest": atlas["source_artifact_digest"],
             "file_sha256": hashlib.sha256(atlas_path.read_bytes()).hexdigest(),
+        },
+        "matched_reference": {
+            "schema": matched_reference["schema"],
+            "status": matched_reference["status"],
+            "source_workflow_run": matched_reference["source_workflow_run"],
+            "channel_count": matched_reference["channel_count"],
+            "file_sha256": hashlib.sha256(matched_reference_path.read_bytes()).hexdigest(),
         },
         "frozen_representation": {
             "welch": WELCH.__dict__,
@@ -377,7 +426,8 @@ def execute(manifest_path: Path, atlas_path: Path, output_dir: Path) -> dict[str
                 "session": item["session"],
                 "task": item["task"],
                 "channel_count": len(item["channel_labels"]),
-                "summary": item["summary"],
+                "full_61_summary": item["summary"],
+                "matched_59_summary": item["matched_summary"],
                 "source_identity": item["source_identity"],
             }
             for item in recordings
@@ -434,10 +484,11 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--manifest", required=True, type=Path)
     parser.add_argument("--atlas", required=True, type=Path)
+    parser.add_argument("--matched-reference", required=True, type=Path)
     parser.add_argument("--output-dir", required=True, type=Path)
     args = parser.parse_args()
 
-    result = execute(args.manifest, args.atlas, args.output_dir)
+    result = execute(args.manifest, args.atlas, args.matched_reference, args.output_dir)
     result_path = args.output_dir / "ds004148_descriptive_transfer_result_v0.1.json"
     result_path.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     _write_summary(result, args.output_dir / "VERIFY_SUMMARY.md")
