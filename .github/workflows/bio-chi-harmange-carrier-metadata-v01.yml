@@ -1,0 +1,26 @@
+name: Bio Chi Harmange carrier metadata v0.1
+on:
+  push:
+    branches: [bio-chi-topdown-pivot-20260924]
+    paths:
+      - 'BIO_CHI/config/HARMANGE2023_CARRIER_METADATA_FREEZE_v0_1.json'
+      - 'BIO_CHI/src/audit_harmange2023_carrier_metadata_v0_1.py'
+      - '.github/workflows/bio-chi-harmange-carrier-metadata-v01.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Audit lineage carrier metadata without expression values
+        run: python BIO_CHI/src/audit_harmange2023_carrier_metadata_v0_1.py
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_HARMANGE_CARRIER_METADATA_V01
+          path: BIO_CHI/artifacts/generated/harmange2023_carrier_metadata_v0_1.json
+          if-no-files-found: error
