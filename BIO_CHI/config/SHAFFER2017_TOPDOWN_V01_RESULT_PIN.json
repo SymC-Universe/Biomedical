@@ -1,0 +1,45 @@
+{
+  "schema_version":"0.1",
+  "project":"Bio Chi Investigation",
+  "gate":"Shaffer 2017 top-down WM989 drug-holiday recovery analysis",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "workflow_run_id":36097435986,
+  "workflow_head_sha":"9641ff1d0c1177da3294650f13fa02a80863882a",
+  "artifact_id":10847783686,
+  "artifact_digest":"sha256:90e8a8d1e941278360490210f89662eba3b5048816677fce1400abcc2f60ca8b",
+  "status":"PASS_ANALYSIS_EXECUTED_WITH_NEGATIVE_PRIMARY_GATE",
+  "whole_event":{
+    "primary_pass":false,
+    "carrier_successes":2,
+    "carrier_count":3,
+    "exact_one_sided_sign_p":0.5,
+    "carrier_return7":{
+      "E3":0.0758195005714255,
+      "G3":0.023934637505296785,
+      "H1":-0.0634713246930485
+    },
+    "z_euclidean_day7_direction":{
+      "E3":true,
+      "G3":true,
+      "H1":false
+    }
+  },
+  "modal":{
+    "retained_pc_count":4,
+    "cumulative_variance":0.8431533540476936,
+    "modal_return_pass":false,
+    "carrier_return7":{
+      "E3":0.058614616762060145,
+      "G3":0.010811070942047474,
+      "H1":-0.036771926081928585
+    }
+  },
+  "scientific_disposition":{
+    "Bio_Chi_relation":"P0Q_RECOVERY_NOT_REPRODUCED_UNDER_FROZEN_PRIMARY_GATE",
+    "modal_relation":"PARALLELS_GLOBAL_DIRECTION_WITH_H1_NONRETURN",
+    "scalar":"SCALAR_NOT_REQUIRED_AND_NOT_LICENSED"
+  },
+  "pseudoreplication_control":"five wells nested within three subclones; primary carrier is subclone",
+  "claim_ceiling":"P0-Q within-source holiday analysis; no independent heldout behavior lane",
+  "next_gate":"close Shaffer lineage and continue mechanical source qualification for currently ineligible top-down candidates before any new scientific selection"
+}
