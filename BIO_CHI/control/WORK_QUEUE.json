@@ -2,7 +2,7 @@
   "schema_version": "0.1",
   "project": "Bio Chi Investigation",
   "authority": "SymC GOM v0.8.6 + Bio Chi project-specific three-object nomenclature decision 2026-09-23",
-  "branch": "bio-chi-closure-p0q-20260924",
+  "branch": "bio-chi-oncology-p0q-20260924",
   "continuation_policy": {
     "resume_from_checkpoint": true,
     "mechanical_blockers_are_stop_conditions": false,
@@ -38,22 +38,22 @@
     {
       "id": "Q4",
       "name": "cancer_recovery_system",
-      "status": "pending_Q2_recovery_native_metric_and_source_freeze"
+      "status": "active_su2026_oncology_native_generator_P0Q_source_parameter_freeze"
     },
     {
       "id": "Q5",
       "name": "chi_bio_scalar_track",
-      "status": "active_NFkB_model_specific_P0Q_admitted_ERK_scalar_class_transport_supported"
+      "status": "active_NFkB_model_specific_admitted_ERK_scalar_transport_supported_Su2026_oncology_pending"
     },
     {
       "id": "Q6",
       "name": "Chi_bio_modal_track",
-      "status": "active_NFkB_model_specific_P0Q_admitted_ERK_complete_8D_modal_transport_refused"
+      "status": "active_NFkB_model_specific_admitted_ERK_modal_refused_Su2026_oncology_pending"
     },
     {
       "id": "Q7",
       "name": "Bio_Chi_conglomerate_track",
-      "status": "active_NFkB_model_specific_P0Q_admitted_cross_system_Bio_Chi_transport_not_established"
+      "status": "active_NFkB_model_specific_admitted_ERK_Bio_Chi_not_opened_Su2026_oncology_pending"
     },
     {
       "id": "Q8",
@@ -109,10 +109,10 @@
       "blum_B3_pair_roundtrip_all_contexts": "PASS"
     },
     "active": {
-      "su_next": "freeze exact processed-expression file identity/hash before opening values",
+      "su_next": "freeze Supplementary Data 5/source-data artifact identity, fitted parameter table, scenario labels, and initial-condition mapping before SymC modal calculations",
       "rehman_next": "seek exact author analysis code/source implementation for Figure 4 PCA; otherwise preserve exact-native-method under-specification",
       "harmange_next": "map lineage/barcode carrier correspondence from source documentation without opening target outcomes",
-      "blum_next": "CURRENT_TRANSPORT_CYCLE_CLOSED; new ERK modal representation or a different independent biological transport system requires scientific choice"
+      "blum_next": "ERK cycle closed and refusal preserved; user selected a different oncology system rather than replacement ERK representation"
     },
     "scientific_stop_before": "inventing a missing native implementation detail, changing a frozen representation/endpoint, promoting a testbed based on agreement, or admitting chi_bio/Chi_bio/Bio Chi"
   },
@@ -146,7 +146,7 @@
     "chi_bio_constructed": true,
     "Chi_bio_admitted": true,
     "Bio_Chi_constructed": true,
-    "next_gate": "SCIENTIFIC_STOP: choose new P0-Q ERK modal-representation lineage or different independent biological system; current ERK cycle closed at partial transport",
+    "next_gate": "ONCOLOGY REENTRY ACTIVE: Su 2026 source-native two-module generator qualification under SU2026_ONCOLOGY_P0Q_FREEZE_v0_1.json",
     "chi_bio_model_specific_status": "P0Q_SUPPORTED_MODEL_SPECIFIC",
     "Chi_bio_model_specific_status": "P0Q_ADMITTED_MODEL_SPECIFIC",
     "Bio_Chi_model_specific_status": "P0Q_ADMITTED_MODEL_SPECIFIC"
@@ -174,6 +174,13 @@
       "ERK_Chi_bio_admission": "REFUSED_CURRENT_GATE",
       "Bio_Chi_transport": "NOT_OPENED"
     },
-    "current_scientific_stop": "Opening a replacement ERK modal representation or choosing the next independent transport system changes the scientific question/representation and requires user intervention."
+    "current_scientific_stop": "RESOLVED_20260924: user selected oncology continuation using a different independent biological system; ERK refusal preserved",
+    "Su2026_oncology_system": {
+      "status": "ACTIVE_P0Q_SOURCE_PARAMETER_FREEZE",
+      "source_model": "two-module affine ODE",
+      "code_commit": "a2b2119f6d69d49e33ff4b57fb04b2b1eaf5fe68",
+      "freeze": "BIO_CHI/config/SU2026_ONCOLOGY_P0Q_FREEZE_v0_1.json",
+      "checkpoint": "BIO_CHI/control/ONCOLOGY_REENTRY_CHECKPOINT_20260924.md"
+    }
   }
 }
