@@ -1,0 +1,30 @@
+{
+  "schema_version":"0.1",
+  "project":"Bio Chi Investigation",
+  "gate":"Rehman 2021 processed-count header and Figure-4 sample identity audit",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "geo":"GSE145356",
+  "counts_url":"https://ftp.ncbi.nlm.nih.gov/geo/series/GSE145nnn/GSE145356/suppl/GSE145356_merged_HTSeq_readCounts_V2.txt.gz",
+  "counts_sha256":"b0fe61c87cec2673ac37abef4f112f7d1d292212d3abe1149ac69340718e1447",
+  "soft_url":"https://ftp.ncbi.nlm.nih.gov/geo/series/GSE145nnn/GSE145356/soft/GSE145356_family.soft.gz",
+  "soft_sha256":"1a39c3472db263c4c32964bb9467e5842bf6f70992ed3c98ef17884893522fb0",
+  "permitted_operations":[
+    "download and hash exact compressed source files",
+    "read only the first decompressed line of the counts file",
+    "parse GEO sample accession, title, and characteristics from SOFT metadata",
+    "map count-header columns to GEO sample titles/accessions"
+  ],
+  "forbidden_operations":[
+    "read any count data row",
+    "compute expression summaries",
+    "inspect group-separation outcomes"
+  ],
+  "figure4_expected_group_counts":{"control":7,"dtp":3,"regrowth":3},
+  "prospective_mapping_rule":{
+    "control":"three saline_8w samples plus four non-barcoded CTRL1-CTRL4 DMSO samples if and only if their GEO characteristics identify them as vehicle controls and this yields the paper-native n=7",
+    "dtp":"three cpt11_8w samples if GEO characteristics identify them as CPT-11 DTP/on-treatment samples",
+    "regrowth":"three cpt11_regrowth samples if GEO characteristics identify them as CPT-11 regrowth/post-cessation samples",
+    "barcoded_DMSO_samples":"exclude from Figure-4 primary event if the above source-derived mapping uniquely resolves n=7 control; retain as source-available sensitivity only, not primary"
+  },
+  "status":"FROZEN_BEFORE_HEADER_AUDIT"
+}
