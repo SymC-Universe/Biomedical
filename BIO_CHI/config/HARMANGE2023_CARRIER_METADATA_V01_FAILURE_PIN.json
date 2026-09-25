@@ -1,0 +1,13 @@
+{
+  "schema_version":"0.1",
+  "project":"Bio Chi Investigation",
+  "gate":"Harmange 2023 lineage-carrier metadata qualification v0.1",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "workflow_run_id":36097533553,
+  "workflow_head_sha":"111aebf9bdbcb69da9b54221df6957a04a42c685",
+  "status":"MECHANICAL_SOURCE_SCHEMA_FAILURE",
+  "observed_metadata_fields":["orig.ident","nCount_RNA","nFeature_RNA","nCount_lineage","nFeature_lineage","percent.mt","percent.rb","well","rep","nCount_SCT","nFeature_SCT","S.Score","G2M.Score","Phase","SCT_snn_res.0.5","seurat_clusters","conditions","Primed_UCell","clusterID","Control","TGFB1","TGFBRi","PI3Ki","Conditions_pVSds","UMAP_1","UMAP_2"],
+  "missing_expected_field":"cons_BC_lenti",
+  "scientific_effect":"NONE. The prior source-ledger description overstated the frozen metadata schema. Carrier qualification remains unresolved and no molecular values were opened.",
+  "repair":"perform an outcome-blind source-schema discovery from GEO SOFT supplementary-file metadata and the public barcodes/genes files before any further carrier analysis"
+}
