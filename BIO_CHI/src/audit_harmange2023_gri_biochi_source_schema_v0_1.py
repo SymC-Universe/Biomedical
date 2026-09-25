@@ -52,8 +52,8 @@ result={
  "barcodes":{"sha256":bar_info["sha256"],"size_bytes":bar_info["size_bytes"],"rows":barcode_row_count,"first_record_shape_only":len(barcode_header_or_first)},
  "field_groups":{"lineage_fields":lineage_fields,"condition_fields":condition_fields,"state_fields":state_fields},
  "design_checks":required_design,
- "molecular_values_opened":false,
- "target_outcomes_computed":false,
+ "molecular_values_opened":False,
+ "target_outcomes_computed":False,
  "next_action":"freeze exact lineage-to-cell and condition mapping using metadata identifiers only" if status.startswith("PASS") else "refuse Harmange bridge carrier and move to frozen Shaffer backup"
 }
 (outdir/"harmange2023_gri_biochi_source_schema_v0_1.json").write_text(json.dumps(result,indent=2)+"\n")
