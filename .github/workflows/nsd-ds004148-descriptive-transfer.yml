@@ -61,29 +61,17 @@ jobs:
           cp NSD_vNext/engine/tools/run_ds004148_descriptive_transfer.py "$RUNNER_TEMP/nsd-transfer-suite/"
           cp NSD_vNext/engine/pyproject.toml "$RUNNER_TEMP/nsd-transfer-suite/"
           (cd "$RUNNER_TEMP/nsd-transfer-suite" && sha256sum * > SHA256SUMS.txt)
-          cat > "$RUNNER_TEMP/nsd-transfer-suite/RUN_COMMAND.txt" <<'EOF'
-python NSD_vNext/engine/tools/run_ds004148_descriptive_transfer.py \
-  --manifest NSD_vNext/docs/manifests/ds004148_d4_resting_crosssession_v0.1.json \
-  --atlas NSD_vNext/atlas/reference_models/ds003775_repeat_descriptive_reference_p0d_v0.1.json \
-  --output-dir ./nsd-transfer-output
-EOF
+          printf '%s\n' \
+            'python NSD_vNext/engine/tools/run_ds004148_descriptive_transfer.py \' \
+            '  --manifest NSD_vNext/docs/manifests/ds004148_d4_resting_crosssession_v0.1.json \' \
+            '  --atlas NSD_vNext/atlas/reference_models/ds003775_repeat_descriptive_reference_p0d_v0.1.json \' \
+            '  --output-dir ./nsd-transfer-output' \
+            > "$RUNNER_TEMP/nsd-transfer-suite/RUN_COMMAND.txt"
 
       - name: Master smoke verification
         run: |
           set -euo pipefail
-          python - "$RUNNER_TEMP/nsd-transfer-suite/ds004148_descriptive_transfer_result_v0.1.json" <<'PY'
-import json, sys
-data = json.load(open(sys.argv[1], encoding="utf-8"))
-assert data["recording_count"] == 6
-assert sorted(data["states"]) == ["eyesclosed", "eyesopen"]
-assert all(state["pair_count"] == 3 for state in data["states"].values())
-assert data["licenses_modal_damping"] is False
-assert data["licenses_local_chi"] is False
-assert data["licenses_capital_chi"] is False
-assert data["licenses_diagnosis"] is False
-assert data["licenses_population_inference"] is False
-print("MASTER_SMOKE_TEST=PASS")
-PY
+          python -c 'import json,sys; d=json.load(open(sys.argv[1],encoding="utf-8")); assert d["recording_count"]==6; assert sorted(d["states"])==["eyesclosed","eyesopen"]; assert all(s["pair_count"]==3 for s in d["states"].values()); assert d["licenses_modal_damping"] is False; assert d["licenses_local_chi"] is False; assert d["licenses_capital_chi"] is False; assert d["licenses_diagnosis"] is False; assert d["licenses_population_inference"] is False; print("MASTER_SMOKE_TEST=PASS")' "$RUNNER_TEMP/nsd-transfer-suite/ds004148_descriptive_transfer_result_v0.1.json"
 
       - uses: actions/upload-artifact@v4
         with:
