@@ -1,0 +1,64 @@
+name: Bio Chi Harmange exp1 lineage carrier qualification v0.1
+on:
+  push:
+    branches: [bio-chi-topdown-pivot-20260924]
+    paths:
+      - 'BIO_CHI/config/HARMANGE2023_EXP1_CARRIER_FREEZE_v0_1.json'
+      - 'BIO_CHI/src/extract_harmange_exp1_lineage_carrier_v0_1.R'
+      - 'BIO_CHI/src/finalize_harmange_exp1_lineage_carrier_v0_1.py'
+      - '.github/workflows/bio-chi-harmange-exp1-carrier-v01.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qualify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Google Drive downloader
+        run: python -m pip install --disable-pip-version-check gdown==5.2.0
+      - name: Download exact public author lineage RDS
+        run: |
+          mkdir -p BIO_CHI/artifacts/generated/harmange_exp1_work
+          gdown --id 1RHw2ZCyb8LJlO5XUJ9q_hGQyFbwJnIXT -O BIO_CHI/artifacts/generated/harmange_exp1_work/10X1_lineage.rds
+          python - <<'PY'
+          import pathlib
+          p=pathlib.Path("BIO_CHI/artifacts/generated/harmange_exp1_work/10X1_lineage.rds")
+          print({"bytes":p.stat().st_size})
+          if p.stat().st_size != 2589295730:
+              raise SystemExit("downloaded RDS byte-size mismatch")
+          PY
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: '4.4.1'
+      - name: Install minimal R object dependencies
+        run: Rscript -e 'install.packages(c("SeuratObject","jsonlite"), repos="https://cloud.r-project.org")'
+      - name: Extract lineage-carrier metadata only
+        run: |
+          Rscript BIO_CHI/src/extract_harmange_exp1_lineage_carrier_v0_1.R \
+            BIO_CHI/artifacts/generated/harmange_exp1_work/10X1_lineage.rds \
+            BIO_CHI/artifacts/generated/harmange_exp1_lineage_carrier_v0_1.json \
+            BIO_CHI/artifacts/generated/harmange_exp1_lineage_carriers_v0_1.csv
+      - name: Finalize hashes and qualification
+        run: |
+          python BIO_CHI/src/finalize_harmange_exp1_lineage_carrier_v0_1.py \
+            BIO_CHI/artifacts/generated/harmange_exp1_work/10X1_lineage.rds \
+            BIO_CHI/artifacts/generated/harmange_exp1_lineage_carrier_v0_1.json \
+            BIO_CHI/artifacts/generated/harmange_exp1_lineage_carriers_v0_1.csv \
+            2589295730
+      - name: Remove large source object before artifact upload
+        if: always()
+        run: rm -rf BIO_CHI/artifacts/generated/harmange_exp1_work
+      - name: Upload compact carrier qualification
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_HARMANGE_EXP1_CARRIER_V01
+          path: |
+            BIO_CHI/artifacts/generated/harmange_exp1_lineage_carrier_v0_1.json
+            BIO_CHI/artifacts/generated/harmange_exp1_lineage_carriers_v0_1.csv
+          if-no-files-found: error
