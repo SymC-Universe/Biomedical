@@ -1,0 +1,46 @@
+{
+  "schema_version":"0.1",
+  "project":"Bio Chi Investigation",
+  "lineage":"marsolier2022_topdown",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "gate":"Marsolier source-native processed-object schema freeze",
+  "source_code":{
+    "repository":"vallotlab/ChemoPersistance",
+    "commit":"2c546ef7293f9dd58e0acf1c5d16e7616cf6789a"
+  },
+  "objects":[
+    {
+      "id":"persister_metadata",
+      "path":"output/scRNAseq/MM468/Persister/Unsupervised/RData/persister_gene_cell_annot.RData",
+      "blob":"a0ac1655c961adb0a12dbcc50ce4dfaf03765218"
+    },
+    {
+      "id":"persister_pca",
+      "path":"output/scRNAseq/MM468/Persister/Unsupervised/RData/pca_persister.RData",
+      "blob":"d2b87b0b637e0c85b74cf6879be7b94f061b0719"
+    },
+    {
+      "id":"unc5fu_metadata",
+      "path":"output/scRNAseq/MM468/UNC_5FU/Unsupervised/RData/annot_int.RData",
+      "blob":"6cfc6a00e1e6cad9c08564b376c1d634d429c6f2"
+    },
+    {
+      "id":"unc5fu_pca",
+      "path":"output/scRNAseq/MM468/UNC_5FU/Unsupervised/RData/pca_UNC_5FU.RData",
+      "blob":"41b5ebb5702874aef336cfa5eae46f15eb380a52"
+    }
+  ],
+  "permitted_operations":[
+    "download exact RData bytes from the pinned commit",
+    "compute SHA-256 and byte size",
+    "load RData in an isolated R environment",
+    "record object names, R classes, dimensions, column names, and rowname presence only"
+  ],
+  "forbidden_operations":[
+    "record cell-level numeric PCA values",
+    "record barcode identities or frequencies",
+    "compare future-persister versus nonpersister outcomes",
+    "compare 5FU versus UNC+5FU outcomes"
+  ],
+  "status":"FROZEN_BEFORE_RDATA_SCHEMA_AUDIT"
+}
