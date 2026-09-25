@@ -124,6 +124,30 @@ if b3_rt.get("scientific_disposition",{}).get("ERK_Chi_bio_model_specific_admiss
 if b3_rt.get("scientific_disposition",{}).get("Bio_Chi_cross_system_transport") != "NOT_OPENED":
     fail("B3 Bio Chi transport scope drift")
 
+erk_limit = load("BIO_CHI/config/ERK_B3_LIMIT_MAP_V01.json")
+if erk_limit.get("status") != "ESTABLISHED_P0Q_LIMIT":
+    fail("ERK v1 Limit Map drift")
+
+erk_v2 = load("BIO_CHI/config/ERK_B3_INVARIANT_MODAL_V2_RESULT_PIN.json")
+if erk_v2.get("status") != "FAIL_ERK_COMPLEX_SUBSPACE_ROUNDTRIP_V2":
+    fail("ERK invariant-modal v2 refusal drift")
+if erk_v2.get("summary_counts",{}).get("direction_pass") != 52:
+    fail("ERK v2 direction-pass count drift")
+if erk_v2.get("summary_counts",{}).get("direction_tests") != 64:
+    fail("ERK v2 direction-test count drift")
+if erk_v2.get("scientific_disposition",{}).get("ERK_Chi_bio_v2_admission") != "REFUSED_UNDER_INVARIANT_CARRIER_GATE":
+    fail("ERK v2 Chi_bio refusal drift")
+if erk_v2.get("scientific_disposition",{}).get("Bio_Chi_cross_system_transport") != "NOT_OPENED":
+    fail("ERK v2 Bio Chi scope drift")
+
+erk_lineage = load("BIO_CHI/config/ERK_B3_MODAL_LINEAGE_V01.json")
+if erk_lineage.get("lineage_status") != "CLOSED_AFTER_V2_REFUSAL_WITH_LIMITS_PRESERVED":
+    fail("ERK lineage closure drift")
+if erk_lineage.get("current_object_disposition",{}).get("Chi_bio",{}).get("ERK_v1_complete_modal_admission") != "REFUSED":
+    fail("ERK lineage v1 refusal drift")
+if erk_lineage.get("current_object_disposition",{}).get("Chi_bio",{}).get("ERK_v2_invariant_modal_admission") != "REFUSED":
+    fail("ERK lineage v2 refusal drift")
+
 native = q.get("active_native_model_gate",{})
 for k in ("chi_bio_constructed","Chi_bio_admitted","Bio_Chi_constructed"):
     if native.get(k) is not True:
@@ -133,8 +157,10 @@ cross = q.get("cross_system_transport",{})
 erk = cross.get("ERK_B3_independent_system",{})
 if erk.get("chi_bio_representation_class_transport") != "SUPPORTED_P0Q":
     fail("queue ERK scalar transport drift")
-if erk.get("ERK_Chi_bio_admission") != "REFUSED_CURRENT_GATE":
+if erk.get("ERK_Chi_bio_admission") != "REFUSED_V1_AND_V2":
     fail("queue ERK modal refusal drift")
+if erk.get("invariant_modal_v2") != "FAIL_ERK_COMPLEX_SUBSPACE_ROUNDTRIP_V2":
+    fail("queue ERK v2 result drift")
 if erk.get("Bio_Chi_transport") != "NOT_OPENED":
     fail("queue ERK Bio Chi scope drift")
 
