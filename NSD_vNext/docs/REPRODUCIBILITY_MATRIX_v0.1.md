@@ -144,3 +144,12 @@ The current reproducibility boundary is:
 - P1/P2 evidence cannot inherit P0-Q qualification evidence as untouched confirmation.
 
 Capability descriptions should be re-synchronized again whenever the modal adequacy gate, first Atlas artifact, or first clinical task changes state.
+
+
+## 24 September 2026 GOM v0.8.6 synchronization
+
+The canonical executable verification path is now `REPRODUCIBILITY_GUIDE_v0.1.md`, which uses the GOM v0.8.6 V-section format with visible [CLAIM] markers, exact commands, expected outputs, interpretation ceilings, and a master smoke test. This R1/R2/R3 matrix remains the maturity overview rather than the only reproduction instruction.
+
+The next experiment has been prospectively frozen as `DS004148_DESCRIPTIVE_TRANSFER_FREEZE_v0.1.md`. It uses the six D4-verified ds004148 resting recordings from one subject and reuses the already-frozen ds003775 descriptive representation without ds004148-driven tuning. The suite is required to preserve subject/session/channel hierarchy, report complete same-state pairwise values, compare state medians to the previously committed ds003775 empirical envelopes, retain outside-envelope observations as Limit Map information, and refuse unsupported modal, chi, capital-Chi, clinical, recovery, or population claims.
+
+Current transfer reproducibility state: `FROZEN / EXECUTION SUITE VERSIONED / RESULT NOT PROMOTED UNTIL WORKFLOW AND POST-RESULT AUDIT CLOSE`.
