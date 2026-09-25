@@ -1,0 +1,12 @@
+{
+  "schema_version":"0.1",
+  "project":"Bio Chi Investigation",
+  "gate":"Shaffer 2017 WM989 recovery-carrier metadata match",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "geo":"GSE97681",
+  "target_cell_line":"WM989",
+  "target_subclones":["E3","G3","H1"],
+  "permitted_operations":["read GEO SOFT metadata only","report all source-labeled samples for the frozen target subclones"],
+  "forbidden_operations":["read processed molecular values","drop samples based on expression outcomes"],
+  "status":"FROZEN_BEFORE_TARGET_SUBCLONE_METADATA_AUDIT"
+}
