@@ -1,0 +1,40 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Su 2026 oncology generator qualification and source-sign adjudication",
+  "branch": "bio-chi-oncology-p0q-20260924",
+  "inputs": {
+    "workbook_freeze": "BIO_CHI/config/SU2026_SUPPDATA_WORKBOOK_V01_RESULT_PIN.json",
+    "source_mapping_freeze": "BIO_CHI/config/SU2026_ONCOLOGY_SOURCE_MAPPING_FREEZE_v0_2.json",
+    "sign_collision_freeze": "BIO_CHI/config/SU2026_GENERATOR_SIGN_COLLISION_FREEZE_v0_1.json"
+  },
+  "mapping_adjudication": {
+    "scenario_metric": "joint two-state RMSE over true experimental time points",
+    "aggregate_metric": "sum across scenarios of statewise variance-normalized SSE",
+    "unique_mapping_rule": "one candidate must have strictly lower joint RMSE in all 8 scenarios and lower aggregate normalized SSE",
+    "otherwise": "REFUSE_UNIQUE_GENERATOR_NONIDENTIFIABLE"
+  },
+  "trajectory_checks": {
+    "integrator": "RK45",
+    "max_step_days": 0.1,
+    "closed_form_crosscheck": true,
+    "published_coefficients_only": true,
+    "no_refitting": true,
+    "true_observations_only_for_fit_metrics": true
+  },
+  "modal_checks": {
+    "all_8_scenarios_required": true,
+    "complex_threshold_abs_imag": 1e-10,
+    "condition_number_finite_required": true,
+    "real_only_scalar_disposition": "REFUSE_SCALAR_FOR_SCENARIO",
+    "same_mode_chi_rule": "-Re(lambda)/abs(lambda)"
+  },
+  "cross_condition_checks": {
+    "matched_pairs_only": ["PP","NP","PN","NN"],
+    "scalar_motion_requires_complex_pair_both_conditions": true,
+    "modal_change_metrics": ["relative_Frobenius_generator_change","trace_change","determinant_change","discriminant_change"],
+    "memory_claim": "NOT_TESTABLE_FROM_SEPARATE_DRUG_ON_AND_DRUG_OFF_GENERATORS_ALONE"
+  },
+  "epistemic_ceiling": "P0-Q model/source qualification only; no P1 confirmation and no universal boundary",
+  "status": "FROZEN_BEFORE_NUMERIC_PARAMETER_OPENING"
+}
