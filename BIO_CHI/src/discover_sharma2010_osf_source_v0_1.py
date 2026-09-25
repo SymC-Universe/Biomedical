@@ -70,10 +70,15 @@ def main():
     alltrees=[]
     for p in providers:
         a=p.get("attributes") or {}
-        rel=(p.get("relationships") or {}).get("files")
-        href=related_href(rel)
-        tree=walk_files(href,a.get("name") or p.get("id")) if href else []
-        alltrees.append({"provider_id":p.get("id"),"provider_name":a.get("name"),"tree":tree})
+        provider_name=a.get("name") or p.get("id")
+        href=f"https://api.osf.io/v2/nodes/{node}/files/{p.get('id')}/"
+        try:
+            tree=walk_files(href,provider_name)
+        except Exception:
+            rel=(p.get("relationships") or {}).get("files")
+            fallback=related_href(rel)
+            tree=walk_files(fallback,provider_name) if fallback else []
+        alltrees.append({"provider_id":p.get("id"),"provider_name":provider_name,"tree":tree})
     flat=[]
     for p in alltrees: flat.extend(flatten(p["tree"]))
     keys=[k.lower() for k in cfg["keywords"]]
