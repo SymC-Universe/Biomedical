@@ -1,0 +1,52 @@
+{
+  "schema_version":"0.1",
+  "project":"GRI Bio Chi Bridge",
+  "lineage":"shaffer2017_bridge_design",
+  "branch":"gri-biochi-bridge-p0q-20260925",
+  "freeze_date":"2026-09-25",
+  "epistemic_mode":"P0-Q",
+  "evidence_roles":{
+    "development":{
+      "source":"GSE97679 + GSE97680",
+      "system":"WM989",
+      "role":"population-level RNA regulatory architecture plus matched chromatin-accessibility context across source-defined vemurafenib timepoints",
+      "independence":"DEPENDENT_DEVELOPMENT"
+    },
+    "internal_validation":{
+      "source":"GSE97681",
+      "system":"WM989",
+      "role":"distinct subclone/drug/holiday trajectories; used only after B2/B3 development definitions are frozen",
+      "independence":"SOURCE_INTERNAL_VALIDATION"
+    },
+    "cross_cell_line_transfer":{
+      "source":"GSE97681",
+      "system":"WM983B",
+      "role":"same-paper cross-cell-line transport check after WM989 freeze",
+      "independence":"SAME_SOURCE_NOT_EXTERNAL_CONFIRMATION"
+    },
+    "external_confirmation":{
+      "source":null,
+      "role":"future independent study not used in current definition",
+      "independence":"UNOPENED"
+    }
+  },
+  "carrier_contract":{
+    "development_carrier":"population x treatment-time x biological replicate",
+    "rna_batch_handling":"sequencing-run identity is a nuisance/blocking variable and may not be interpreted as biological trajectory",
+    "require_within_run_controls":true,
+    "cross_run_raw_count_distance_forbidden":true,
+    "common_gene_space_required":true,
+    "ATAC_is_methylation":false,
+    "time_order_is_native_generator":false
+  },
+  "bridge_targets":{
+    "B1_scalar":"CLOSED_UNLESS_SEPARATE_NATIVE_GENERATOR_REVIEW_LICENSES_COMPLEX_MODE",
+    "B2_modal":"OPEN_AFTER_PREPROCESSING_AND_MODAL_DEFINITION_FREEZE",
+    "B3_relational":"OPEN_AFTER_B2_DEFINITION_AND_NATIVE_COMPARATOR_FREEZE"
+  },
+  "B2_preanalysis_rule":"modal representation must be unsupervised with respect to resistance outcome and defined from development data only",
+  "B3_preanalysis_rule":"realized resistance/recovery endpoint and native/simple comparators must be frozen before target values are opened",
+  "feature_selection_rule":"no resistance-marker or outcome-selected gene panel may define the primary bridge",
+  "promotion_rule":"GSE97681 and WM983B cannot be described as external confirmation because they belong to the same publication/source lineage",
+  "next_action":"freeze preprocessing, common-gene universe, modal construction, and native comparator before any B2 target calculation"
+}
