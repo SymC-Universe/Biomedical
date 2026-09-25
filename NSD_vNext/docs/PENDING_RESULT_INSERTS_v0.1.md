@@ -110,3 +110,26 @@ Prospective record:
 - no modal damping, lowercase chi, capital Chi, global chi, diagnosis, recovery, or population inference is licensed.
 
 Insertion rule: add result prose to the private canonical manuscript only after workflow completion, artifact hashing, post-result audit, and claim-ceiling reconciliation. The public manuscript path remains a status stub and must not be substituted for the inaccessible private canonical manuscript.
+
+
+### PRI-NSD-09 result closure, 24 September 2026
+
+Status: RESULT READY FOR PRIVATE-MAIN INSERTION
+
+Promoted evidence:
+- corrected workflow run `36088323374`;
+- suite `nsd-ds004148-descriptive-transfer-suite-v0-2`;
+- digest `sha256:f6ce93029c38d72016c2bfd17f4e1b7bdc74bdc5d3ac0fac780896052bf170ce`;
+- 59 exact shared labels for cross-dataset comparison;
+- 6 recordings from one independent ds004148 subject;
+- 18/18 state-median transport indicators within the matched ds003775 empirical envelopes;
+- pair-level Limit Map retained, including the 4.048975 Hz eyes-open session 2 versus session 3 first-listed-peak displacement.
+
+Required manuscript ceiling:
+- call the result independent descriptive transfer, not population validation;
+- do not call repeat similarity recovery or resilience;
+- do not infer damping or natural frequency from descriptive bandwidth/peak centers;
+- do not promote lowercase chi, capital Chi, global chi, diagnosis, or treatment inference;
+- state explicitly that one independent subject prevents population generalization.
+
+Source prose and complete values: `DS004148_DESCRIPTIVE_TRANSFER_POSTRESULT_v0.2.md`.
