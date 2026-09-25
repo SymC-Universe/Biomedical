@@ -1,0 +1,31 @@
+name: Bio Chi Marsolier RData schema v0.1
+on:
+  push:
+    branches: [bio-chi-topdown-pivot-20260924]
+    paths:
+      - 'BIO_CHI/config/MARSOLIER2022_SOURCE_OBJECT_SCHEMA_FREEZE_v0_1.json'
+      - 'BIO_CHI/src/audit_marsolier2022_source_objects_v0_1.R'
+      - '.github/workflows/bio-chi-marsolier-source-schema-v01.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: '4.4.3'
+      - name: Install jsonlite
+        run: Rscript -e 'install.packages("jsonlite", repos="https://cloud.r-project.org")'
+      - name: Audit pinned source-object schema
+        run: Rscript BIO_CHI/src/audit_marsolier2022_source_objects_v0_1.R
+      - name: Upload schema result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_MARSOLIER_SOURCE_SCHEMA_V01
+          path: BIO_CHI/artifacts/generated/marsolier2022_source_object_schema_v0_1.json
+          if-no-files-found: error
