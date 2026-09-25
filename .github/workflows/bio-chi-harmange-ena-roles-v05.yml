@@ -1,0 +1,26 @@
+name: Bio Chi Harmange ENA role discovery v0.5
+on:
+  push:
+    branches: [bio-chi-topdown-pivot-20260924]
+    paths:
+      - 'BIO_CHI/config/HARMANGE2023_ENA_ROLE_DISCOVERY_FREEZE_v0_5.json'
+      - 'BIO_CHI/src/discover_harmange2023_ena_roles_v0_5.py'
+      - '.github/workflows/bio-chi-harmange-ena-roles-v05.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  discover:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Audit ENA run metadata only
+        run: python BIO_CHI/src/discover_harmange2023_ena_roles_v0_5.py
+      - name: Upload ENA role map
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_HARMANGE_ENA_ROLES_V05
+          path: BIO_CHI/artifacts/generated/harmange2023_ena_role_discovery_v0_5.json
+          if-no-files-found: error
