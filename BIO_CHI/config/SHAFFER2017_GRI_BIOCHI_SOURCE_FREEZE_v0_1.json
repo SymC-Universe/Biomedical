@@ -1,0 +1,47 @@
+{
+  "schema_version":"0.1",
+  "project":"GRI Bio Chi Bridge",
+  "lineage":"shaffer2017_melanoma_timecourse",
+  "branch":"gri-biochi-bridge-p0q-20260925",
+  "epistemic_mode":"P0-Q",
+  "selection_basis":"pre-frozen backup selected after Harmange source-carrier refusal; source/design information only",
+  "source":{
+    "paper":"Shaffer et al. 2017, Rare cell variability and drug-induced reprogramming as a mode of cancer drug resistance",
+    "doi":"10.1038/nature22794",
+    "superseries":"GSE97682",
+    "rna_series":"GSE97679",
+    "atac_series":"GSE97680",
+    "rna_processed_files":[
+      "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE97nnn/GSE97679/suppl/GSE97679_meltedData_20150722_EGFRsortRNArun1.tsv.gz",
+      "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE97nnn/GSE97679/suppl/GSE97679_meltedData_20150831_EGFRsortRNArun2.tsv.gz"
+    ]
+  },
+  "frozen_design":{
+    "cell_system":"WM989 melanoma",
+    "perturbation":"1 uM vemurafenib",
+    "rna_timepoints":["noDrug","1week","4weeks"],
+    "rna_populations":["mix","EGFR-high","negative where source-defined"],
+    "rna_biological_replicates":"source-defined; audit before analysis",
+    "atac_timepoints":["noDrug","week1","week4","week5 where source-defined"],
+    "atac_populations":["mix","EGFR-high","negative where source-defined"]
+  },
+  "bridge_scope":{
+    "B1_scalar":"CLOSED_NOT_LICENSED_NO_NATIVE_CONTINUOUS_TIME_GENERATOR_FROZEN",
+    "B2_modal":"OPEN_AFTER_SOURCE_SCHEMA_AND_TIMEPOINT_CARRIER_AUDIT",
+    "B3_relational":"OPEN_AFTER_SOURCE_SCHEMA_AND_TIMEPOINT_CARRIER_AUDIT",
+    "GRI_R_block":"RNA regulatory organization candidate",
+    "GRI_S_methylation_block":"NOT_PRESENT",
+    "ATAC_status":"SEPARATE_CHROMATIN_ACCESSIBILITY_CONTEXT_NOT_RELABELLED_AS_METHYLATION",
+    "carrier":"source-defined WM989 population x treatment-time x replicate",
+    "heldout_rule":"freeze development and held-out replicate/timepoint roles before opening target molecular statistics"
+  },
+  "anti_collapse":{
+    "ATAC_is_methylation":false,
+    "static_expression_is_damping":false,
+    "timepoint_order_is_native_generator":false,
+    "post_outcome_feature_selection":false,
+    "master_Bio_Chi_score":false,
+    "chi_equals_one_boundary":false
+  },
+  "next_gate":"audit processed RNA source schema and exact sample/timepoint/replicate mapping without computing target molecular outcomes"
+}
