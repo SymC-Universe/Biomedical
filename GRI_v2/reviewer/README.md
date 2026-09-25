@@ -1,3 +1,15 @@
+> ## Current BioSystems submission entry point — 25 September 2026
+>
+> Start with:
+>
+> - `BIOSYSTEMS_REPRODUCIBILITY_GUIDE_20260925.md`
+>
+> That guide is the submission-specific reviewer route for manuscript BIOSYS-D-26-00267 and supersedes the historical navigation below for the current paper. It binds the v26 scientific parent to the separately frozen biological-chi qualification record and explicitly excludes the active same-carrier bridge branch from the submission evidence spine.
+>
+> Older notices below are retained as chronology only.
+>
+> ---
+
 > ## BioSystems revision source-of-record — 2026-09-22
 >
 > For the active BioSystems revision, use:
