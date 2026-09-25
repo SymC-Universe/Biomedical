@@ -1,0 +1,26 @@
+name: Bio Chi Harmange metadata header role discovery v0.3
+on:
+  push:
+    branches: [bio-chi-topdown-pivot-20260924]
+    paths:
+      - 'BIO_CHI/config/HARMANGE2023_METADATA_MEMBER_HEADER_FREEZE_v0_3.json'
+      - 'BIO_CHI/src/discover_harmange2023_metadata_headers_v0_3.py'
+      - '.github/workflows/bio-chi-harmange-metadata-headers-v03.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  discover:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Discover public 10x metadata headers and sample roles
+        run: python BIO_CHI/src/discover_harmange2023_metadata_headers_v0_3.py
+      - name: Upload discovery
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_HARMANGE_METADATA_HEADERS_V03
+          path: BIO_CHI/artifacts/generated/harmange2023_metadata_member_header_v0_3.json
+          if-no-files-found: error
