@@ -1,0 +1,72 @@
+{
+  "schema_version": "0.1",
+  "project": "GRI <-> Bio Chi bridge",
+  "task_id": "GRI_BIOCHI_KIZILIRMAK_IL1B_C_D_TRANSPORT_20260925",
+  "date": "2026-09-25",
+  "evidence_tier": "P0 exploratory transport / source-qualified relational test",
+  "branch": "gri-biochi-bridge-p0q-20260925",
+  "parent": "KIZILIRMAK2023_C_D_V01_RESULT_PIN.json",
+  "legacy_claim_rule": "evidence-first; no rescue objective",
+  "source": {
+    "paper": "Kizilirmak et al. 2023, Small transcriptional differences among cell clones lead to distinct NF-kB dynamics",
+    "doi": "10.1016/j.isci.2023.108573",
+    "geo": "GSE247446",
+    "table_s3_sha256": "f76c8eaf685d192f2340d178aac62f8263004077276d3e64f96ba41faab408f4",
+    "data_s1_sha256": "9ee2914095e9676b92806c33e46929965c6b4c7535f74a00d4462152678ba7b8"
+  },
+  "transport_question": "Does the previously observed genome-wide pre-stimulus chi_GRI correspondence with later NF-kB dynamics survive a mechanistically distinct IL-1beta input, and does the source-native IL-1beta circuit again refuse or support scalar collapse?",
+  "A_genomewide": {
+    "status": "unchanged from TNF C+D primary",
+    "formula": "chi_GRI = sample_sd(source-published log2 RPKM)/(2*mean(source-published log2 RPKM))",
+    "clone_summary": "median gene-wise chi_GRI over common eligible genome-wide genes",
+    "primary_contrast": "Delta_A = median_chi_B - median_chi_R",
+    "secondary_contrast": "median_chi_B - median_chi_G",
+    "no_redefinition": true,
+    "leave_one_replicate_out_rule": "identical to TNF C+D freeze"
+  },
+  "B_IL1B_circuit": {
+    "genes": ["Il1rap", "Rela", "Nfkbia", "Tnfaip3"],
+    "source_basis": "IL-1R3 limiting receptor plus NF-kB p65, IkBa feedback, and A20 feedback species in the source IL-1beta/NF-kB model",
+    "only_change_from_TNF_B": "Tnfrsf1a replaced by Il1rap",
+    "clone_summary": "median of four frozen gene-wise chi_GRI values",
+    "primary_contrast": "Delta_B_IL1 = median_circuit_chi_B - median_circuit_chi_R",
+    "secondary_contrast": "median_circuit_chi_B - median_circuit_chi_G",
+    "report_each_gene": true,
+    "leave_one_replicate_out_rule": "same five matched omissions",
+    "leave_one_gene_out": "diagnostic only, never a replacement B"
+  },
+  "native_dynamic_gate": {
+    "stimulus": "100 ng/mL IL-1beta",
+    "primary_pair": "B versus R",
+    "primary_endpoint": "source-reproducible fraction of cells with >=2 peaks under published smoothing/prominence rule",
+    "required_primary_direction": "oscillatory_fraction_R > oscillatory_fraction_B",
+    "secondary_pair": "B versus G",
+    "required_secondary_direction": "oscillatory_fraction_G > oscillatory_fraction_B",
+    "persistence_endpoint": "median AUC, with source-expected B greater than R and G if reproduced",
+    "early_activation": "descriptive source control only; expected B approximately G greater than R; not used to rescue the primary oscillation gate",
+    "failure_rule": "if R>B primary oscillatory ordering fails, stop transport interpretation; if G>B fails, record partial transport rather than retune"
+  },
+  "D_joint": {
+    "inputs_only": ["frozen A outputs", "IL-1beta B outputs", "native IL-1beta dynamic reproduction"],
+    "no_new_features_thresholds_or_weights": true,
+    "interpretation_classes": [
+      "global_transport_with_local_scalar_refusal",
+      "global_and_local_concordant_transport",
+      "global_nontransport",
+      "partial_dynamic_transport",
+      "scale_or_representation_instability",
+      "joint_null"
+    ]
+  },
+  "claim_ceiling": {
+    "allowed_if_positive": "exploratory transport evidence that pre-stimulus historical RNA fluctuation structure carries information about later NF-kB dynamical phenotype across two distinct inflammatory inputs in this source",
+    "forbidden": [
+      "mu equals omega",
+      "sigma equals gamma",
+      "chi_GRI is a physical damping ratio",
+      "chi=1 is a biological critical boundary",
+      "local circuit must be scalar",
+      "cancer-wide generalization"
+    ]
+  }
+}
