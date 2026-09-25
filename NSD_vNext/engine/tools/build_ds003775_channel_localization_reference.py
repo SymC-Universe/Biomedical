@@ -64,7 +64,7 @@ def _find_subject_dirs(root: Path) -> list[Path]:
     return nested
 
 
-def build(root: Path) -> dict[str, object]:
+def build(root: Path, labels: tuple[str, ...] = MATCHED_LABELS) -> dict[str, object]:
     subject_dirs = _find_subject_dirs(root)
     if len(subject_dirs) != 42:
         raise ValueError(f"expected 42 subject artifact directories, found {len(subject_dirs)}")
@@ -80,7 +80,7 @@ def build(root: Path) -> dict[str, object]:
             "max_peak_count_reached": [],
             "width_boundary_hits": [],
         }
-        for label in MATCHED_LABELS
+        for label in labels
     }
     subject_ids: list[str] = []
 
@@ -109,7 +109,7 @@ def build(root: Path) -> dict[str, object]:
             raise ValueError(f"{subject_id}: expected exactly two repeat sessions")
         first, second = list(sessions.values())
 
-        for label in MATCHED_LABELS:
+        for label in labels:
             if label not in first or label not in second or label not in correlations:
                 raise ValueError(f"{subject_id}: missing matched channel {label}")
 
@@ -152,8 +152,8 @@ def build(root: Path) -> dict[str, object]:
         "source_workflow_run": SOURCE_WORKFLOW_RUN,
         "source_population_artifact_digest": SOURCE_POPULATION_ARTIFACT_DIGEST,
         "subject_count": len(subject_ids),
-        "matched_channel_count": len(MATCHED_LABELS),
-        "matched_channels": list(MATCHED_LABELS),
+        "matched_channel_count": len(labels),
+        "matched_channels": list(labels),
         "quantile_rule": (
             "linear empirical q05/median/q95; descriptive context only, "
             "not confidence intervals or population inference"
@@ -162,7 +162,7 @@ def build(root: Path) -> dict[str, object]:
         "channels": {},
     }
 
-    for label in MATCHED_LABELS:
+    for label in labels:
         record = per_channel[label]
         output["channels"][label] = {
             "log_psd_correlation": _summary(record["log_psd_correlation"]),
@@ -188,9 +188,24 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("artifact_root", type=Path)
     parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument(
+        "--labels-manifest",
+        type=Path,
+        help="Optional JSON manifest with an exact 'labels' list. Default preserves the original 59-label localization reference.",
+    )
     args = parser.parse_args()
 
-    result = build(args.artifact_root)
+    labels = MATCHED_LABELS
+    if args.labels_manifest is not None:
+        payload = json.loads(args.labels_manifest.read_text(encoding="utf-8"))
+        labels = tuple(str(label) for label in payload["labels"])
+        if not labels or len(labels) != len(set(labels)):
+            raise ValueError("labels manifest must contain a non-empty unique labels list")
+
+    result = build(args.artifact_root, labels=labels)
+    result["label_source"] = (
+        str(args.labels_manifest) if args.labels_manifest is not None else "DEFAULT_MATCHED_LABELS"
+    )
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps({
