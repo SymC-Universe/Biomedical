@@ -1,0 +1,38 @@
+{
+  "schema_version":"0.1",
+  "project":"Bio Chi Investigation",
+  "gate":"Harmange 2023 author-processed exp1 lineage carrier qualification",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "source":{
+    "drive_file_id":"1RHw2ZCyb8LJlO5XUJ9q_hGQyFbwJnIXT",
+    "filename":"10X1_Filterd_BatchCor_unnorm_sctrans_lin_BC_3readMin.rds",
+    "expected_bytes":2589295730,
+    "author_rmd_sha256":"b42fd38716ce89aa42edf243e002e674f8a2690f7abb7670d42918ca13d080a7",
+    "author_repository_pin":"BIO_CHI/config/HARMANGE2023_AUTHOR_REPOSITORY_PIN_v0_1.json"
+  },
+  "permitted_operations":[
+    "download and SHA-256 hash the exact public author RDS",
+    "deserialize the Seurat object",
+    "read only row names and the metadata columns lin, startID, well and rep",
+    "record source object class/version fields and metadata column names without reading assay matrices",
+    "compute lineage counts, lineage-size distribution, startID distribution and well/rep coverage",
+    "write an aggregate lineage-carrier table containing lineage, startID and cell count only"
+  ],
+  "forbidden_operations":[
+    "read RNA assay values",
+    "read lineage assay count matrices",
+    "read clusterID, crID, dir_crID, states or any other biological outcome field",
+    "read UMAP/PCA/reduction values",
+    "select lineages based on final transcriptional state"
+  ],
+  "qualification_rule":{
+    "minimum_unique_lineages":100,
+    "all_lineages_min_cells":4,
+    "all_lineages_max_cells":128,
+    "one_startID_per_lineage_required":true,
+    "at_least_two_startID_classes_required":true,
+    "carrier_defined_if_all_rules_pass":true,
+    "causal_inheritance":"NOT_ESTABLISHED_BY_THIS_GATE"
+  },
+  "status":"FROZEN_BEFORE_AUTHOR_RDS_DESERIALIZATION"
+}
