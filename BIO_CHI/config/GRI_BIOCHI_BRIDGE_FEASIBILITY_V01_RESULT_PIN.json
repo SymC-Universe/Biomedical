@@ -1,0 +1,16 @@
+{
+  "schema_version": "0.1",
+  "project": "GRI Bio Chi Bridge",
+  "gate": "outcome-blind bridge feasibility audit",
+  "branch": "gri-biochi-bridge-p0q-20260925",
+  "workflow_run_id": 36100652432,
+  "workflow_head_sha": "9ecabdaeaa51ea593f073233523671d6cdefa3ad",
+  "artifact_id": 10848767854,
+  "artifact_digest": "sha256:404157b1e805d52af7b5511d12046860b6713d35bece3e5082c840b42334d9de",
+  "status": "PASS_FEASIBILITY_AUDIT",
+  "B1_external_candidates": [],
+  "B1_dependent_only_candidates": ["su2026_m397_melanoma"],
+  "B2_external_candidates": ["shaffer2017_melanoma", "harmange2023_scmemoryseq"],
+  "B3_external_candidates": ["shaffer2017_melanoma", "harmange2023_scmemoryseq"],
+  "next_action": "Harmange 2023 source/carrier schema audit under frozen source selection"
+}
