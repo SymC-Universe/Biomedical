@@ -1,0 +1,16 @@
+{
+  "schema_version":"0.4",
+  "project":"Bio Chi Investigation",
+  "gate":"Top-down next-system selection after Rehman, Marsolier and Shaffer closure",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "workflow_run_id":36098727296,
+  "workflow_head_sha":"07c574fa9aade122fd2c5f56d916372e2eb43027",
+  "artifact_id":10849125408,
+  "artifact_digest":"sha256:2815f01022ce67a7c87c9fb37706c06897ad76c3acf5d4b6af813c97a540be4a",
+  "status":"UNIQUE_SYSTEM_SELECTED",
+  "selected_system":"harmange2023_scmemoryseq",
+  "primary_event":"lineage_memory_and_perturbation_driven_state_switching",
+  "tie_vector":[1,1,1,1,1],
+  "molecular_outcomes_used":false,
+  "scientific_effect":"Harmange 2023 becomes the next top-down lineage after the public author-processed lineage carrier passed the frozen source qualification gate."
+}
