@@ -1,0 +1,16 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Top-down next-system selection",
+  "branch": "bio-chi-topdown-pivot-20260924",
+  "workflow_run_id": 36090744166,
+  "workflow_head_sha": "c6c2938f8f08ecab0e9ea28631c36132c19bb0c8",
+  "status": "UNIQUE_SYSTEM_SELECTED",
+  "selected_system": "rehman2021_crc_dtp",
+  "eligible_systems": [
+    {"id":"rehman2021_crc_dtp","tie_vector":[1,1,0,1,1]},
+    {"id":"shaffer2017_melanoma","tie_vector":[0,1,1,1,1]}
+  ],
+  "molecular_outcomes_used": false,
+  "scientific_effect": "Rehman 2021 becomes the next top-down Bio Chi lineage by the frozen event-completeness and falsifiability rule, not by lower-level mathematical convenience."
+}
