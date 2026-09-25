@@ -93,3 +93,19 @@ This strengthens the forward architecture: neural damping remains a legitimate m
 ## Working rule
 
 Continuity preserves questions, evidence lineage, architectural insight, and lessons. It does not preserve a conclusion that no longer satisfies the current scientific standard.
+
+## Checkpoint auto-continuation rule — 25 September 2026
+
+A research checkpoint is a durable recovery point, not a request for new permission.
+
+When a checkpoint closes and the next step is already scientifically justified, previously authorized, and does not require a new scientific choice, execution continues automatically. The executor must:
+
+1. write the checkpoint and its scientific ceiling;
+2. audit failures, anomalies, and outliers before promotion;
+3. repair purely mechanical or infrastructure blockers without waiting for user prompting when frozen science is unchanged;
+4. continue into the next already-justified experiment;
+5. stop only when a genuine scientific decision, new claim boundary, new data commitment requiring approval, or other user-level choice is reached.
+
+A failed checkpoint does not terminate the line. The failure is preserved as evidence and investigated for root cause, reproducibility, distributional/outlier status, and separation of implementation/infrastructure causes from genuine data/model behavior before the next action is chosen.
+
+This rule applies to the current ds004148 sequence: corrected independent descriptive transfer -> spatial/state localization -> additional untouched-subject replication if the localization result remains interpretable and the next rung does not require a new scientific choice.
