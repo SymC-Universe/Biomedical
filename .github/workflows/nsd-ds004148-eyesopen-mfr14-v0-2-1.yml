@@ -1,0 +1,117 @@
+name: NSD ds004148 Eyes-Open MFR14 Replication v0.2.1
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - ".github/workflows/nsd-ds004148-eyesopen-mfr14-v0-2-1.yml"
+      - "NSD_vNext/docs/DS004148_EYESOPEN_MFR14_V0_2_1_CORRECTION_FREEZE.md"
+      - "NSD_vNext/engine/tools/run_ds004148_eyesopen_mfr14_replication_v0_2_1.py"
+      - "NSD_vNext/engine/tools/run_ds004148_spatial_localization.py"
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: nsd-ds004148-eyesopen-mfr14-v0-2-1
+  cancel-in-progress: false
+
+jobs:
+  replicate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install frozen descriptive stack
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install -e 'NSD_vNext/engine[parameterization_rc7]'
+
+      - name: Recover 42 frozen ds003775 parent artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: ds003775-repeat-sub-*
+          path: ${{ runner.temp }}/ds003775-parent-artifacts
+          merge-multiple: false
+          github-token: ${{ github.token }}
+          repository: SymC-Universe/Biomedical
+          run-id: 35337659470
+
+      - name: Build stable57 channel parent reference
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/nsd-replication-v021"
+          python NSD_vNext/engine/tools/build_ds003775_channel_localization_reference.py \
+            "$RUNNER_TEMP/ds003775-parent-artifacts" \
+            --labels-manifest NSD_vNext/docs/manifests/ds004148_eyesopen_dataset_stable57_v0.1.json \
+            --output "$RUNNER_TEMP/nsd-replication-v021/ds003775_channel_localization_reference_stable57_v0.1.json"
+
+      - name: Execute corrected untouched MFR14 v0.2.1 replication
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set +e
+          python NSD_vNext/engine/tools/run_ds004148_eyesopen_mfr14_replication_v0_2_1.py \
+            --cohort-manifest NSD_vNext/docs/manifests/ds004148_eyesopen_mfr14_replication_v0.2.json \
+            --parent-reference "$RUNNER_TEMP/nsd-replication-v021/ds003775_channel_localization_reference_stable57_v0.1.json" \
+            --output-dir "$RUNNER_TEMP/nsd-replication-v021"
+          code=$?
+          printf "%s\n" "$code" > "$RUNNER_TEMP/nsd-replication-v021/EXECUTION_EXIT_CODE.txt"
+          exit 0
+
+      - name: Remove raw payloads and parent artifacts
+        if: always()
+        run: |
+          rm -rf "$RUNNER_TEMP/nsd-replication-v021/payloads"
+          rm -rf "$RUNNER_TEMP/ds003775-parent-artifacts"
+
+      - name: Build reviewer-facing suite
+        if: always()
+        run: |
+          set -euo pipefail
+          cp NSD_vNext/docs/DS004148_EYESOPEN_MFR14_REPLICATION_FREEZE_v0.2.md "$RUNNER_TEMP/nsd-replication-v021/"
+          cp NSD_vNext/docs/DS004148_EYESOPEN_MFR14_V0_2_1_CORRECTION_FREEZE.md "$RUNNER_TEMP/nsd-replication-v021/"
+          cp NSD_vNext/docs/DS004148_MFR14_V0_2_PARAMETERIZATION_FAILURE_POSTRESULT.md "$RUNNER_TEMP/nsd-replication-v021/"
+          cp NSD_vNext/docs/DS004148_EYESOPEN_HEADER_AUDIT_POSTRESULT_v0.1.md "$RUNNER_TEMP/nsd-replication-v021/"
+          cp NSD_vNext/docs/manifests/ds004148_eyesopen_mfr14_replication_v0.2.json "$RUNNER_TEMP/nsd-replication-v021/"
+          cp NSD_vNext/docs/manifests/ds004148_eyesopen_dataset_stable57_v0.1.json "$RUNNER_TEMP/nsd-replication-v021/"
+          cp NSD_vNext/engine/tools/build_ds003775_channel_localization_reference.py "$RUNNER_TEMP/nsd-replication-v021/"
+          cp NSD_vNext/engine/tools/run_ds004148_eyesopen_mfr14_replication_v0_2_1.py "$RUNNER_TEMP/nsd-replication-v021/"
+          cp NSD_vNext/engine/pyproject.toml "$RUNNER_TEMP/nsd-replication-v021/"
+          printf "%s\n" \
+            'python NSD_vNext/engine/tools/run_ds004148_eyesopen_mfr14_replication_v0_2_1.py \' \
+            '  --cohort-manifest NSD_vNext/docs/manifests/ds004148_eyesopen_mfr14_replication_v0.2.json \' \
+            '  --parent-reference ./ds003775_channel_localization_reference_stable57_v0.1.json \' \
+            '  --output-dir ./nsd-replication-v021-output' \
+            > "$RUNNER_TEMP/nsd-replication-v021/RUN_COMMAND.txt"
+          (cd "$RUNNER_TEMP/nsd-replication-v021" && find . -maxdepth 1 -type f ! -name SHA256SUMS.txt -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS.txt)
+
+      - name: Master smoke verification
+        if: always()
+        run: |
+          set -euo pipefail
+          test "$(cat "$RUNNER_TEMP/nsd-replication-v021/EXECUTION_EXIT_CODE.txt")" = "0" || exit 0
+          python -c 'import json,sys; d=json.load(open(sys.argv[1],encoding="utf-8")); assert d["requested_subject_count"]==14; assert d["completed_subject_count"]==14; assert len(d["failures"])==0; assert len(d["subjects"])==14; assert d["parent_reference"]["matched_channel_count"]==57; assert d["licenses_modal_damping"] is False; assert d["licenses_natural_frequency"] is False; assert d["licenses_local_chi"] is False; assert d["licenses_capital_chi"] is False; assert d["licenses_diagnosis"] is False; assert d["licenses_population_inference"] is False; print("MASTER_SMOKE_TEST=PASS")' "$RUNNER_TEMP/nsd-replication-v021/ds004148_eyesopen_mfr14_replication_result_v0.2.1.json"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nsd-ds004148-eyesopen-mfr14-replication-suite-v0-2-1
+          path: ${{ runner.temp }}/nsd-replication-v021
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Enforce corrected execution status
+        if: always()
+        run: |
+          set -euo pipefail
+          test "$(cat "$RUNNER_TEMP/nsd-replication-v021/EXECUTION_EXIT_CODE.txt")" = "0"
