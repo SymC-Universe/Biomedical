@@ -1,0 +1,39 @@
+{
+  "schema_version":"0.1",
+  "project":"Bio Chi Investigation",
+  "gate":"Sharma 2010 / RP-CB Study 2 public source discovery",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "workflow_run_id":36101087560,
+  "workflow_head_sha":"857b95bfd7dbd517784b8d7139591b748c53bb82",
+  "artifact_id":10848543607,
+  "artifact_digest":"sha256:c226e6cc78784bee69d7be0be9aabd9abdd7ce46c4c075b595223f61f0755dac",
+  "status":"PASS_SOURCE_DISCOVERY_SOURCE_LIMITED_FOR_TOPDOWN_RECOVERY_EVENT",
+  "osf":{
+    "node":"xbign",
+    "title":"Study 2: Replication of Sharma et al., 2010 (Cell)",
+    "node_count":7,
+    "provider_count":7,
+    "file_folder_count":99,
+    "description_states_incomplete_experiments":true
+  },
+  "quantitative_files_identified":[
+    "Data/osfstorage/Study_2_percent_DTP.csv",
+    "Data/osfstorage/Study_2_survival_data.csv"
+  ],
+  "recovery_endpoint_file_search":{
+    "withdraw_or_withdrawn_filename_hits":0,
+    "resens_or_resensit_filename_hits":0,
+    "recovery_filename_hits":0,
+    "drug_free_filename_hits":0,
+    "interpretation":"The recursively inventoried public RP-CB source contains DTP-generation/survival material but no explicitly identifiable quantitative withdrawal/resensitization file needed for the frozen top-down recovery event."
+  },
+  "experimental_values_opened":false,
+  "scientific_disposition":{
+    "topdown_recovery_resensitization_event":"SOURCE_LIMITED_NOT_EVALUABLE_FROM_CURRENT_PUBLIC_REPLICATION_MATERIAL",
+    "scalar":"NOT_OPENED",
+    "modal":"NOT_OPENED",
+    "Bio_Chi":"NOT_TESTED_FROM_THIS_SOURCE"
+  },
+  "claim_ceiling":"Source-availability disposition only. It does not refute the original Sharma reversible drug-tolerance biology and does not treat the incomplete replication as a negative biological result.",
+  "next_gate":"close the Sharma candidate as source-limited and stop after synchronizing the top-down phase, because all prelisted candidates have now been closed or source-disposed."
+}
