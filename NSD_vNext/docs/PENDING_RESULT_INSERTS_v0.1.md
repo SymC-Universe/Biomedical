@@ -95,3 +95,18 @@ Required:
 ## PRI-NSD-08 — Final abstract/conclusion
 
 Rewrite only after the claim ledger is reconciled with PRI-NSD-01 through PRI-NSD-07. Final summary language must come from closed evidence, not from historical narrative continuity.
+
+
+## PRI-NSD-09 — Independent healthy descriptive transfer
+
+Target manuscript: healthy reference / Function-Limit transfer result section in the private active manuscript.
+
+Prospective record:
+- `DS004148_DESCRIPTIVE_TRANSFER_FREEZE_v0.1.md` was committed before signal-derived transfer outcome inspection;
+- source: ds004148, one subject, six D4-pinned resting recordings across three sessions and eyes-closed/eyes-open states;
+- frozen ds003775 Welch and periodic/aperiodic representation reused without retuning;
+- channels and sessions remain nested repeated measurements;
+- metric-by-metric transfer and Limit Map only, with no composite transfer score;
+- no modal damping, lowercase chi, capital Chi, global chi, diagnosis, recovery, or population inference is licensed.
+
+Insertion rule: add result prose to the private canonical manuscript only after workflow completion, artifact hashing, post-result audit, and claim-ceiling reconciliation. The public manuscript path remains a status stub and must not be substituted for the inaccessible private canonical manuscript.
