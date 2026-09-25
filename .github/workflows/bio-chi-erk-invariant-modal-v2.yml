@@ -1,0 +1,57 @@
+name: Bio Chi ERK invariant-modal v2 P0-Q
+
+on:
+  push:
+    branches:
+      - bio-chi-erk-modal-v2-p0q-20260924
+    paths:
+      - 'BIO_CHI/config/ERK_B3_INVARIANT_MODAL_V2_FREEZE_v0_1.json'
+      - 'BIO_CHI/src/run_erk_b3_invariant_modal_v2.py'
+      - '.github/workflows/bio-chi-erk-invariant-modal-v2.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  invariant-modal-v2:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install numerical dependencies
+        run: python -m pip install --disable-pip-version-check numpy scipy
+
+      - name: Execute frozen ERK invariant-modal v2 gate
+        run: python BIO_CHI/src/run_erk_b3_invariant_modal_v2.py
+
+      - name: Validate v2 result schema
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          p=pathlib.Path('BIO_CHI/artifacts/generated/erk_b3_invariant_modal_v2/erk_b3_invariant_modal_v2_result.json')
+          if not p.exists():
+              raise SystemExit('ERK_MODAL_V2_RESULT_MISSING')
+          d=json.loads(p.read_text())
+          allowed={
+              'PASS_ERK_INVARIANT_MODAL_ROUNDTRIP_V2',
+              'FAIL_ERK_REAL_MODE_CARRIER_ROUNDTRIP_V2',
+              'FAIL_ERK_COMPLEX_SUBSPACE_ROUNDTRIP_V2',
+              'FAIL_ERK_MODAL_IMPLEMENTATION_SELF_CHECK_V2',
+              'REFUSE_ERK_NONDECAY_REAL_MODE_V2',
+              'INDETERMINATE_ERK_MODAL_V2'
+          }
+          if d.get('status') not in allowed:
+              raise SystemExit(f"unexpected status {d.get('status')}")
+          if d.get('v1_limit_retained') is not True:
+              raise SystemExit('ERK_MODAL_V2_V1_LIMIT_NOT_RETAINED')
+          print('BIO_CHI_ERK_MODAL_V2_VALID',d['status'])
+          PY
+
+      - name: Upload ERK invariant-modal v2 evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_ERK_INVARIANT_MODAL_V2
+          path: BIO_CHI/artifacts/generated/erk_b3_invariant_modal_v2/erk_b3_invariant_modal_v2_result.json
+          if-no-files-found: error
