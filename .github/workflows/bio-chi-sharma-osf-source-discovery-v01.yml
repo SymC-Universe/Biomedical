@@ -1,0 +1,29 @@
+name: Bio Chi Sharma OSF source discovery v0.1
+on:
+  push:
+    branches: [bio-chi-topdown-pivot-20260924]
+    paths:
+      - 'BIO_CHI/config/SHARMA2010_OSF_SOURCE_DISCOVERY_FREEZE_v0_1.json'
+      - 'BIO_CHI/src/discover_sharma2010_osf_source_v0_1.py'
+      - '.github/workflows/bio-chi-sharma-osf-source-discovery-v01.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  discover:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Discover public OSF source metadata only
+        run: python BIO_CHI/src/discover_sharma2010_osf_source_v0_1.py
+      - name: Upload source inventory
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_SHARMA_OSF_SOURCE_DISCOVERY_V01
+          path: BIO_CHI/artifacts/generated/sharma2010_osf_source_discovery_v0_1.json
+          if-no-files-found: error
