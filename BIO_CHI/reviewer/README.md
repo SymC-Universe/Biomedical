@@ -19,14 +19,20 @@ A reviewer should be able to answer, from GitHub alone whenever redistribution p
 
 ## Current evidence level
 
-**P0-D exploratory / function + limit mapping.**
+**Mixed P0-Q qualification state with current oncology lineage closed.**
 
-No biological scalar χ_bio is admitted. No universal Bio Chi law is established. No causal Stability Inheritance claim is established.
+The evidence is intentionally asymmetric:
+- NF-kB has model-specific P0-Q qualification/admission across scalar, complete modal, and relational levels.
+- ERK B3 independently supports scalar representation-class transport but refuses complete modal admission under its frozen gate.
+- Su 2026 melanoma refuses the scalar under reported-parameter uncertainty, qualifies the complete two-state native generator/modal family with explicit degeneracy limits, and fails the frozen HCC827 held-out behavior-transport gate.
+- Broad cross-system Bio Chi transport is not established.
+- No universal biological scalar value, chi=1 boundary, or causal Stability Inheritance law is established.
 
 ## Navigation
 
+- `../control/ONCOLOGY_P0Q_CLOSURE_20260924.md` — current oncology closure and dispositions.
 - `../README.md` — scientific status and project map.
-- `../control/AUTORUN_CHECKPOINT.md` — durable execution state.
+- `../control/AUTORUN_CHECKPOINT.md` — durable execution state and current scientific stop.
 - `../control/WORK_QUEUE.json` — machine-readable queue.
 - `../artifacts/DATASET_ELIGIBILITY_MATRIX_v0_1.md` — testbed selection evidence.
 - `../config/P0D_TESTBED_REGISTRY_v0_1.json` — machine-readable testbed registry.
