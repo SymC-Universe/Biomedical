@@ -2,7 +2,7 @@
 
 **Date:** 24 September 2026  
 **Branch:** `bio-chi-topdown-pivot-20260924`  
-**Status:** ACTIVE PROGRAM SYNTHESIS AFTER HARMANGE CLOSURE
+**Status:** PRELISTED TOP-DOWN PHASE COMPLETE
 
 This matrix records what each completed biological lineage actually required. It is not a ranking and it does not force all systems into the same lower-level representation.
 
@@ -15,6 +15,7 @@ This matrix records what each completed biological lineage actually required. It
 | Marsolier 2022 TNBC | frozen substrate-conditioned lineage-diversity gate not reproduced | baseline transcriptomic modal inheritance not detected | not required and not licensed | matched intervention lanes disagreed in direction |
 | Shaffer 2017 melanoma | common three-carrier drug-holiday recovery relation not reproduced | four-PC modal return paralleled carrier heterogeneity | not required and not licensed | E3/G3 returned, H1 did not |
 | Harmange 2023 melanoma | within-source state-memory -> later-resistance relation supported | lineage-resolved two-state composition sufficient for frozen event; full PCA not required | not required and not licensed | P0-Q within-source, resistance n=3 biological replicates |
+| Sharma 2010 PC9 | complete recovery/resensitization event source-limited in current public replication materials | not opened because the whole event is not quantitatively source-identifiable | not opened | DTP/survival data exist, but no explicit quantitative withdrawal/resensitization dataset was identified |
 
 ## Program-level result
 
@@ -35,6 +36,6 @@ Across the completed lineages:
 
 The scalar is now treated as an adequacy outcome, not a mandatory ingredient.
 
-## Current unresolved program question
+## Current scientific stop
 
-The remaining prelisted Sharma 2010 PC9 system is being source-qualified because it directly tests reversible drug tolerance and resensitization. No entirely new system is opened by this matrix.
+All prelisted systems are now closed or source-disposed. Opening another independent biological system would be a new scientific expansion. The alternative is to close this qualification phase and move to synthesis, manuscript integration, and prospective-test design.
