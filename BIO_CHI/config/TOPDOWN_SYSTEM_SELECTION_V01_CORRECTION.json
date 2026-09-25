@@ -1,0 +1,18 @@
+{
+  "schema_version":"0.1",
+  "project":"Bio Chi Investigation",
+  "issue":"top-down system selector conditional-return-target implementation error",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "discovered_after":"Rehman P0-Q event/modal/carrier analyses",
+  "upstream_contract":"BIO_CHI/config/BIO_CHI_IDENTIFIABILITY_CONTRACT_v0_1.json",
+  "affected_record":"BIO_CHI/config/TOPDOWN_SYSTEM_SELECTION_V01_RESULT_PIN.json",
+  "error":"The frozen contract requires a return/reference target only when a recovery claim is made. The v0.1 candidate table encoded return_target_if_recovery_claimed as a universally required Boolean and set Marsolier 2022 false because its primary role is persistence/inheritance rather than clean recovery. This incorrectly made that candidate ineligible.",
+  "scientific_effect":{
+    "Rehman_analysis_validity":"UNCHANGED_P0Q_STRESS_TEST",
+    "claim_Rehman_uniquely_selected_under_contract":"SUPERSEDED",
+    "next_system_selection":"MUST_RERUN_WITH_CONDITIONAL_LOGIC_BEFORE_NEW_OUTCOMES"
+  },
+  "repair_rule":"candidate is eligible on return-target criterion if recovery_claimed is false OR a return target is defined",
+  "no_outcome_based_repair":true,
+  "status":"FROZEN_BEFORE_REPAIRED_SELECTION"
+}
