@@ -1,0 +1,71 @@
+{
+  "schema_version":"0.1",
+  "project":"Bio Chi Investigation",
+  "lineage":"harmange2023_topdown",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "evidence_tier":"P0-Q",
+  "selection_pin":"BIO_CHI/config/TOPDOWN_SYSTEM_SELECTION_V04_RESULT_PIN.json",
+  "source_workbook_sha256":"dd847a75480f82a16ed070be07a8da40aeec27fa5289685ef5fdf3730f387b72",
+  "bio_chi_event":{
+    "phenomenon":"lineage-memory modulation changes later targeted-therapy resistance",
+    "system":"WM989 melanoma",
+    "baseline":"untreated/control lineage state",
+    "perturbations":["TGFB1","PI3Ki"],
+    "intermediate_state":"fraction of cells in the primed-for-resistance transcriptional state within the same lineage after 5 days",
+    "functional_outcome":"resistant cells and resistant colonies after 5-day pretreatment followed by 4 weeks BRAFi/MEKi",
+    "primary_direction":"PI3Ki should drive primed lineages toward the drug-susceptible state and reduce later resistance",
+    "reverse_direction_context":"TGFB1 should drive fully drug-susceptible control lineages toward the primed state; treated as mechanistic complement, not required for the primary gate"
+  },
+  "source_sheets":{
+    "switch_into_primed":"Fig. 5G",
+    "switch_out_of_primed":"Fig. 5H",
+    "resistant_cells":"Fig. 6C",
+    "resistant_colonies":"Fig. 6D"
+  },
+  "state_switch_gate":{
+    "primary_sheet":"Fig. 5H",
+    "carrier":"Lineage",
+    "eligibility":"lineages present in Control and PI3Ki rows of the source sheet",
+    "statistic":"within-lineage delta propOfprimed = PI3Ki - Control",
+    "direction":"negative",
+    "pass_rule":"median delta < 0 and at least 6 of the 8 source lineages have delta < 0",
+    "exact_sign_test":"one-sided exact binomial on negative deltas, zeros excluded and reported separately",
+    "p_value_role":"resolution/consistency diagnostic only; not a promotion threshold"
+  },
+  "reverse_switch_context":{
+    "sheet":"Fig. 5G",
+    "carrier":"Lineage",
+    "comparison":"TGFB1 - Control propOfprimed",
+    "direction":"positive",
+    "report":"median delta, positive/negative/zero lineage counts and one-sided exact sign p",
+    "role":"contextual reverse-direction check; failure does not rescue or overturn the primary PI3Ki gate"
+  },
+  "functional_gate":{
+    "technical_replication_control":"aggregate technical wells/cells to one mean per biological replicate within condition before direction testing",
+    "primary_condition":"PI3Ki",
+    "comparator":"Control",
+    "resistant_cells_sheet":"Fig. 6C",
+    "resistant_colonies_sheet":"Fig. 6D",
+    "direction":"PI3Ki lower than Control",
+    "pass_rule":"all source-defined biological replicates evaluable in each endpoint must have PI3Ki < Control for both resistant-cell and resistant-colony replicate means",
+    "exact_sign_test":"one-sided exact binomial per endpoint over biological replicates",
+    "p_value_role":"resolution diagnostic only"
+  },
+  "bio_chi_promotion":{
+    "supported_if":"state_switch_gate passes AND functional_gate passes in both resistance endpoints",
+    "refused_if":"either frozen primary gate fails",
+    "interpretation_if_supported":"within-source P0-Q relation linking same-lineage state-memory modulation to later resistance, not a universal law and not independent P1 confirmation"
+  },
+  "downward_modal_rule":{
+    "required_representation":"lineage-resolved two-state composition is the minimum internal organization needed for this event",
+    "full_transcriptomic_modal_analysis_required":false,
+    "reason":"the source defines the behaviorally relevant internal state directly as within-lineage primed versus drug-susceptible composition; extra PCA would be post-hoc ornament unless needed to explain a gate mismatch",
+    "stochastic_generator_note":"paper reports a two-state switching model, but no scalar or source-native generator is opened unless the top-down event requires additional compression after the frozen gates"
+  },
+  "scalar_gate":{
+    "opened":false,
+    "reason":"whole-event identifiability does not require scalar compression; state composition and functional outcome are directly source-defined",
+    "postresult_scalar_invention_forbidden":true
+  },
+  "status":"FROZEN_BEFORE_NUMERIC_SOURCE_DATA_OPENING"
+}
