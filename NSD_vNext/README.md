@@ -198,3 +198,14 @@ The six-recording ds004148 D4 resting source is now mechanically closed and a pr
 The execution path is versioned in `docs/DS004148_DESCRIPTIVE_TRANSFER_FREEZE_v0.1.md`, `docs/REPRODUCIBILITY_GUIDE_v0.1.md`, `engine/tools/run_ds004148_descriptive_transfer.py`, and `.github/workflows/nsd-ds004148-descriptive-transfer.yml`.
 
 This checkpoint does not license real-EEG modal damping, lowercase chi, broader capital Chi, a global scalar, diagnosis, recovery, resilience, or population inference. The first pilot contains one independent subject, with sessions and channels treated as nested repeated measurements.
+
+
+## 24 September 2026 corrected independent-transfer result
+
+The P0-Q ds004148 independent descriptive-transfer experiment is closed with corrected exact-label suite v0.2. Cross-dataset comparison uses the 59 labels shared exactly between ds004148 and the frozen ds003775 reference. All 61 ds004148 channels remain in the local descriptive record.
+
+All 18 state-median transport indicators, nine for eyes closed and nine for eyes open, fall inside the matched ds003775 empirical envelopes. Two individual same-state session pairs remain on the Limit Map: an eyes-closed exponent-difference median below the prior minimum and an eyes-open first-listed-peak nearest-center displacement of 4.048975 Hz above the matched parent maximum of 2.038390 Hz.
+
+The promoted workflow is run `36088323374`. The reviewer-facing artifact is `nsd-ds004148-descriptive-transfer-suite-v0-2`, digest `sha256:f6ce93029c38d72016c2bfd17f4e1b7bdc74bdc5d3ac0fac780896052bf170ce`.
+
+The complete result and ceiling are in `docs/DS004148_DESCRIPTIVE_TRANSFER_POSTRESULT_v0.2.md`. This closes descriptive transport only. Modal damping, lowercase chi, broader capital Chi, a global scalar, diagnosis, recovery, and population inference remain unlicensed.
