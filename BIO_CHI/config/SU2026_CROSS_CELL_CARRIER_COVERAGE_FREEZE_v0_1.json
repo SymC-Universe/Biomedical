@@ -1,0 +1,31 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Su 2026 cross-cell-line carrier coverage audit",
+  "branch": "bio-chi-oncology-p0q-20260924",
+  "purpose_tag": "P0_Q_PREOUTCOME_ELIGIBILITY",
+  "source_workbook_sha256": "b53a5e4cbba33d901e4c046143f9097309c98256897ccfc1aa06c2a85786d5c3",
+  "source_gene_sets": {
+    "definition": "the four already-frozen M397 top-500 Mearly/Mlate polarity sets from Supplementary Data 4",
+    "Mearly_score_column": "Gi2",
+    "Mlate_score_column": "Gi1",
+    "positive_rule": "500 largest strictly positive scores",
+    "negative_rule": "500 most negative strictly negative scores"
+  },
+  "candidate_transport_sources": [
+    {"sheet":"Supplementart Data 8","system":"HCC827","treatment":"erlotinib","time_labels":["Control","D3","D14","D21"]},
+    {"sheet":"Supplementary Data 9","system":"HT-29","treatment":"dabrafenib + cetuximab","time_labels":["Control","D3","D14","D21"]}
+  ],
+  "permitted_operations": [
+    "read Supplementary Data 4 gene identities and contribution scores to recreate already-opened frozen gene sets",
+    "read only gene identifiers and header text from Supplementary Data 8 and 9",
+    "count overlap, missing genes, duplicates and exact gene-set hashes"
+  ],
+  "forbidden_operations": [
+    "read HCC827 or HT-29 expression values",
+    "compute transport predictions",
+    "select a favorable carrier based on expression outcomes"
+  ],
+  "eligibility_threshold": "NOT_SET_UNTIL_COVERAGE_AUDIT; coverage is source availability, not outcome",
+  "status": "FROZEN_BEFORE_CROSS_CELL_EXPRESSION_VALUES"
+}
