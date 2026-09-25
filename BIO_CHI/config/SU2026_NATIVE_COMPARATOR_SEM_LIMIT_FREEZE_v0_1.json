@@ -1,0 +1,36 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Su 2026 native-comparator and reported-SEM Limit Map",
+  "branch": "bio-chi-oncology-p0q-20260924",
+  "evidence_role": "POSTRESULT_P0Q_SENSITIVITY_AND_LIMIT_MAP",
+  "upstream_result_pin": "BIO_CHI/config/SU2026_ONCOLOGY_GENERATOR_V01_RESULT_PIN.json",
+  "selected_generator_mapping": "PUBLICATION_EQUATION",
+  "native_comparator": {
+    "complex_pair_identity_to_test": "chi_eigen = -Re(lambda)/abs(lambda) versus chi_invariants = -trace(J)/(2*sqrt(det(J))) when discriminant<0 and determinant>0",
+    "absolute_tolerance": 1e-12,
+    "interpretation_if_equal": "scalar is an exact normalized native 2x2 pole invariant, not additional information beyond trace and determinant"
+  },
+  "reported_sem_limit_map": {
+    "dynamic_parameters": ["Me-e", "Ml-e", "Me-l", "Ml-l"],
+    "additive_parameters_excluded_from_spectrum": ["Be", "Bl"],
+    "levels": [1.0, 2.0],
+    "construction": "evaluate all 2^4 corners independently at nominal plus/minus level times each reported SEM",
+    "probability_interpretation": "NONE; deterministic hyperrectangle stress test only",
+    "record_for_every_scenario_and_level": [
+      "discriminant_min_max",
+      "complex_corner_count",
+      "stable_corner_count",
+      "spectral_abscissa_min_max",
+      "chi_min_max_over_complex_corners",
+      "eigenvector_condition_number_min_max"
+    ],
+    "no_postresult_corner_selection": true
+  },
+  "adjudication_notes": {
+    "nominal_complex_pair_can_remain_model_specific_even_if_sem_stress_test_crosses_discriminant_zero": true,
+    "fragile_pair_classification_must_be_labeled": true,
+    "uncertainty_test_cannot_promote_to_P1": true
+  },
+  "status": "FROZEN_BEFORE_SEM_LIMIT_MAP_EXECUTION"
+}
