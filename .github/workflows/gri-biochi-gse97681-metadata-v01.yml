@@ -1,0 +1,29 @@
+name: GRI Bio Chi GSE97681 metadata v0.1
+on:
+  push:
+    branches: [gri-biochi-bridge-p0q-20260925]
+    paths:
+      - 'BIO_CHI/config/SHAFFER2017_GSE97681_SOURCE_METADATA_FREEZE_v0_1.json'
+      - 'BIO_CHI/src/audit_shaffer2017_gse97681_source_metadata_v0_1.py'
+      - '.github/workflows/gri-biochi-gse97681-metadata-v01.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit frozen GSE97681 processed-source metadata
+        run: python BIO_CHI/src/audit_shaffer2017_gse97681_source_metadata_v0_1.py
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: SHAFFER2017_GSE97681_METADATA_V01
+          path: BIO_CHI/artifacts/generated/shaffer2017_gse97681_source_metadata_v0_1.json
+          if-no-files-found: error
