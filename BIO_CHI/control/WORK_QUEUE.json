@@ -38,22 +38,22 @@
     {
       "id": "Q4",
       "name": "cancer_recovery_system",
-      "status": "active_su2026_oncology_native_generator_P0Q_source_parameter_freeze"
+      "status": "closed_Su2026_oncology_recovery_model_lineage"
     },
     {
       "id": "Q5",
       "name": "chi_bio_scalar_track",
-      "status": "active_NFkB_model_specific_admitted_ERK_scalar_transport_supported_Su2026_oncology_pending"
+      "status": "closed_current_lineage_NFkB_admitted_ERK_scalar_class_transport_Su_oncology_refused_uncertainty_sensitive"
     },
     {
       "id": "Q6",
       "name": "Chi_bio_modal_track",
-      "status": "active_NFkB_model_specific_admitted_ERK_modal_refused_Su2026_oncology_pending"
+      "status": "closed_current_lineage_NFkB_admitted_ERK_complete_modal_refused_Su_native_generator_family_qualified_uncertainty_aware"
     },
     {
       "id": "Q7",
       "name": "Bio_Chi_conglomerate_track",
-      "status": "active_NFkB_model_specific_admitted_ERK_Bio_Chi_not_opened_Su2026_oncology_pending"
+      "status": "closed_current_lineage_NFkB_model_specific_admitted_cross_system_Bio_Chi_not_established_Su_HCC827_C3_failed"
     },
     {
       "id": "Q8",
@@ -67,7 +67,7 @@
     }
   ],
   "active_source_gate": {
-    "stage": "Q2_SOURCE_METHOD_AND_LIMIT_MAPPING",
+    "stage": "ONCOLOGY_P0Q_CLOSED",
     "testbed_promotion": false,
     "completed": {
       "blum_archive_sha256": "8bbd1ead46b5bb6b676bd47a5f415fdd790840a9c726321dc5c209b9c527bc62",
@@ -109,7 +109,7 @@
       "blum_B3_pair_roundtrip_all_contexts": "PASS"
     },
     "active": {
-      "su_next": "freeze Supplementary Data 5/source-data artifact identity, fitted parameter table, scenario labels, and initial-condition mapping before SymC modal calculations",
+      "su_next": "CLOSED; no further Su lineage action without opening a new scientific lineage",
       "rehman_next": "seek exact author analysis code/source implementation for Figure 4 PCA; otherwise preserve exact-native-method under-specification",
       "harmange_next": "map lineage/barcode carrier correspondence from source documentation without opening target outcomes",
       "blum_next": "ERK cycle closed and refusal preserved; user selected a different oncology system rather than replacement ERK representation"
@@ -146,7 +146,7 @@
     "chi_bio_constructed": true,
     "Chi_bio_admitted": true,
     "Bio_Chi_constructed": true,
-    "next_gate": "ONCOLOGY REENTRY ACTIVE: Su 2026 source-native two-module generator qualification under SU2026_ONCOLOGY_P0Q_FREEZE_v0_1.json",
+    "next_gate": "SCIENTIFIC_STOP: current oncology lineage closed; selecting another independent system is a scientific expansion",
     "chi_bio_model_specific_status": "P0Q_SUPPORTED_MODEL_SPECIFIC",
     "Chi_bio_model_specific_status": "P0Q_ADMITTED_MODEL_SPECIFIC",
     "Bio_Chi_model_specific_status": "P0Q_ADMITTED_MODEL_SPECIFIC"
@@ -156,7 +156,8 @@
     "frozen source is scientifically non-evaluable and cannot be repaired mechanically",
     "decisive evidence would be opened before required freeze/independence controls",
     "upstream contradiction invalidates a frozen result",
-    "publication-level claim expansion requires user decision"
+    "publication-level claim expansion requires user decision",
+    "current oncology lineage is closed; any new independent biological transport system is a fresh scientific lineage"
   ],
   "nomenclature_note": "Exactly three biological objects. Program-wide chi is a parent symbol/class, not a fourth biological object.",
   "cross_system_transport": {
@@ -174,13 +175,15 @@
       "ERK_Chi_bio_admission": "REFUSED_CURRENT_GATE",
       "Bio_Chi_transport": "NOT_OPENED"
     },
-    "current_scientific_stop": "RESOLVED_20260924: user selected oncology continuation using a different independent biological system; ERK refusal preserved",
+    "current_scientific_stop": "Current Su oncology lineage is closed. A new independent system or replacement representation is a scientific expansion requiring user intervention.",
     "Su2026_oncology_system": {
-      "status": "ACTIVE_P0Q_SOURCE_PARAMETER_FREEZE",
-      "source_model": "two-module affine ODE",
-      "code_commit": "a2b2119f6d69d49e33ff4b57fb04b2b1eaf5fe68",
-      "freeze": "BIO_CHI/config/SU2026_ONCOLOGY_P0Q_FREEZE_v0_1.json",
-      "checkpoint": "BIO_CHI/control/ONCOLOGY_REENTRY_CHECKPOINT_20260924.md"
+      "status": "CLOSED_P0Q",
+      "scalar": "REFUSED_UNCERTAINTY_SENSITIVE_EQUIVALENT_NATIVE_INVARIANT",
+      "modal": "QUALIFIED_MODEL_SPECIFIC_UNCERTAINTY_AWARE_NATIVE_GENERATOR_FAMILY",
+      "Bio_Chi": "NOT_ADMITTED_C3_HELDOUT_BEHAVIOR_FAILURE",
+      "HCC827_transport": "FAIL_NO_RETUNING_BEHAVIOR_TRANSPORT",
+      "HT29": "SOURCE_LIMITED_VALUES_UNOPENED",
+      "closure": "BIO_CHI/control/ONCOLOGY_P0Q_CLOSURE_20260924.md"
     }
   }
 }
