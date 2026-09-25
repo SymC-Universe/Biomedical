@@ -1,0 +1,65 @@
+{
+  "schema_version":"0.1",
+  "project":"Bio Chi Investigation",
+  "gate":"Rehman 2021 top-down whole-event and derived modal analysis",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "workflow_run_id":36090961111,
+  "workflow_head_sha":"4572676c16b42f06c7af727657fd7ba66b155de7",
+  "artifact_id":10845328221,
+  "artifact_digest":"sha256:b5c6fce13f856cf5ca250e1ae92fefada4747c73eac2381c21829954d39d99a5",
+  "status":"PASS_ANALYSIS_EXECUTED",
+  "primary":{
+    "filtered_genes":16891,
+    "pearson_distance":{
+      "control_median":0.014458790765181306,
+      "dtp_median":0.07871755627495913,
+      "regrowth_median":0.05039691043226113,
+      "resistant_median":0.045531348627506296,
+      "recovery_index":0.35977547046524727,
+      "dtp_vs_regrowth_exact_one_sided_p":0.1,
+      "resistant_vs_regrowth_exact_one_sided_p":0.7
+    },
+    "z_euclidean":{
+      "control_median":97.87357857761108,
+      "dtp_median":194.3896439549314,
+      "regrowth_median":153.14368198553075,
+      "resistant_median":181.91158752646285,
+      "recovery_index":0.21218188958133688,
+      "dtp_vs_regrowth_exact_one_sided_p":0.1,
+      "resistant_vs_regrowth_exact_one_sided_p":0.1
+    },
+    "modal":{
+      "retained_pc_count":6,
+      "cumulative_variance":0.8286382979625414,
+      "dtp_to_regrowth_vs_dtp_to_control_return_vector_cosine":0.7872164008570364,
+      "per_pc_return_fraction":{
+        "PC1":0.7853156639488557,
+        "PC2":-0.8452412351291034,
+        "PC3":-0.718891482468871,
+        "PC4":0.9095485603865527,
+        "PC5":-10.028204990363337,
+        "PC6":-0.8520119857833934
+      },
+      "heldout_resistant_centroid_distance":{
+        "to_control":109.18218245514511,
+        "to_regrowth":50.25083177881292,
+        "to_dtp":167.52844475517756
+      }
+    }
+  },
+  "control_sensitivity":{
+    "pearson_recovery_index":0.5211768818725173,
+    "pearson_recovery_exact_p":0.1,
+    "pearson_resistant_vs_regrowth_exact_p":0.3,
+    "note":"The correlation-distance control sensitivity genuinely uses the additional three barcoded DMSO controls. The z-Euclidean block in the generated artifact remains mechanically identical to the primary z analysis because the primary z-centroid was retained by the code; it is not treated as an independent control-set sensitivity."
+  },
+  "scientific_disposition":{
+    "Bio_Chi_event":"IDENTIFIABLE_PARTIAL_TRANSCRIPTOMIC_RETURN",
+    "modal_relation":"MIXED_RETURN_AND_REORGANIZATION",
+    "heldout_resistant_boundary":"METRIC_DEPENDENT_NOT_ROBUSTLY_CLASSIFIED_BY_RNA_GEOMETRY_ALONE",
+    "scalar":"NOT_OPENED_STATIC_PCA_DOES_NOT_LICENSE_DYNAMIC_SCALAR",
+    "exact_source_Figure4_reproduction":false
+  },
+  "claim_ceiling":"P0-Q replacement analysis of public counts; exact permutation p-values are resolution-limited at n=3 versus n=3 and are not promotion thresholds",
+  "next_gate":"integrate the public POP66 genetic carrier layer under a frozen direct-VAF geometry analysis, then adjudicate whether recovery plus modal reorganization is supported by substrate/carrier persistence versus resistant selection"
+}
