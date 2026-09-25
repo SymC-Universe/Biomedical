@@ -1,0 +1,20 @@
+{
+  "schema_version":"0.1",
+  "project":"Bio Chi Investigation",
+  "gate":"Shaffer 2017 metadata and source-schema audit",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "accessions":["GSE97682","GSE97679","GSE97680","GSE97681"],
+  "permitted_operations":[
+    "download and hash GEO family SOFT metadata",
+    "record sample accession, title, source name, platform, characteristics and relation fields",
+    "record subseries relationships",
+    "list supplementary filenames and sizes from GEO FTP directory listings",
+    "inspect text/header-only content of small supplementary files only after a separate source-file freeze"
+  ],
+  "forbidden_operations":[
+    "read molecular values",
+    "choose a subset from molecular outcomes",
+    "compute recovery or modal statistics"
+  ],
+  "status":"FROZEN_BEFORE_METADATA_AUDIT"
+}
