@@ -1,0 +1,16 @@
+{
+  "schema_version":"0.3",
+  "project":"Bio Chi Investigation",
+  "gate":"Top-down next-system selection after Rehman and Marsolier closure",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "workflow_run_id":36097114295,
+  "workflow_head_sha":"f0e6eff7e636b375b3b39625b11b8e3289f2d53c",
+  "artifact_id":10848115523,
+  "artifact_digest":"sha256:684deb78eae269fdf98f791280b29439fd54af21aff12c058a464857853fc98e",
+  "status":"UNIQUE_SYSTEM_SELECTED",
+  "selected_system":"shaffer2017_melanoma",
+  "primary_event":"recovery_boundary_reorganization",
+  "tie_vector":[0,1,1,1,1],
+  "molecular_outcomes_used":false,
+  "scientific_effect":"Shaffer 2017 becomes the next top-down lineage under the frozen identifiability contract after closing Rehman and Marsolier."
+}
