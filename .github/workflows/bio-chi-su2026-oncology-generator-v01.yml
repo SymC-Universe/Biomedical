@@ -1,0 +1,35 @@
+name: Bio Chi Su 2026 oncology generator analysis v0.1
+on:
+  push:
+    branches: [bio-chi-oncology-p0q-20260924]
+    paths:
+      - 'BIO_CHI/config/SU2026_ONCOLOGY_GENERATOR_ANALYSIS_FREEZE_v0_1.json'
+      - 'BIO_CHI/config/SU2026_ONCOLOGY_SOURCE_MAPPING_FREEZE_v0_2.json'
+      - 'BIO_CHI/config/SU2026_GENERATOR_SIGN_COLLISION_FREEZE_v0_1.json'
+      - 'BIO_CHI/src/analyze_su2026_oncology_generator_v0_1.py'
+      - '.github/workflows/bio-chi-su2026-oncology-generator-v01.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  analyze:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install scientific dependencies
+        run: python -m pip install --disable-pip-version-check numpy==2.3.3 scipy==1.16.2 openpyxl==3.1.5
+      - name: Run frozen oncology generator analysis
+        run: python BIO_CHI/src/analyze_su2026_oncology_generator_v0_1.py
+      - name: Upload analysis artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_SU2026_ONCOLOGY_GENERATOR_V01
+          path: |
+            BIO_CHI/artifacts/generated/su2026_oncology_generator_analysis_v0_1.json
+            BIO_CHI/artifacts/generated/SU2026_ONCOLOGY_GENERATOR_ANALYSIS_V01_AUDIT.md
+          if-no-files-found: error
