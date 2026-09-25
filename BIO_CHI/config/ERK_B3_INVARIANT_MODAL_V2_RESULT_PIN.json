@@ -1,0 +1,113 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "ERK B3 invariant-modal carrier nonlinear round-trip v2",
+  "status": "FAIL_ERK_COMPLEX_SUBSPACE_ROUNDTRIP_V2",
+  "epistemic_mode": "P0-Q",
+  "freeze": "BIO_CHI/config/ERK_B3_INVARIANT_MODAL_V2_FREEZE_v0_1.json",
+  "workflow_run_id": 36077741838,
+  "workflow_head_sha": "de5193af2c9ee13b7d2311d1f561d80cebb2a489",
+  "artifact": {
+    "id": 10840389755,
+    "name": "BIO_CHI_ERK_INVARIANT_MODAL_V2",
+    "digest": "sha256:2dec0ea57049d8b7fb59f52b53d6b3cabcd85ab6db2f67b74965b191ce5bfb97"
+  },
+  "result_sha256": "fc1701995797adb0f4dda8ee7f83874bf5b75f37a562e0bea37939c91d3fd88b",
+  "v1_limit_retained": true,
+  "summary_counts": {
+    "contexts": 4,
+    "carrier_context_records": 25,
+    "carrier_context_pass": 15,
+    "carrier_context_fail": 10,
+    "direction_tests": 64,
+    "direction_pass": 52,
+    "direction_fail": 12,
+    "real_mode_carriers": 18,
+    "real_mode_carrier_pass": 10,
+    "real_mode_carrier_fail": 8,
+    "real_mode_direction_tests": 36,
+    "real_mode_direction_pass": 26,
+    "real_mode_direction_fail": 10,
+    "complex_pair_carriers": 7,
+    "complex_pair_carrier_pass": 5,
+    "complex_pair_carrier_fail": 2,
+    "complex_pair_direction_tests": 28,
+    "complex_pair_direction_pass": 26,
+    "complex_pair_direction_fail": 2
+  },
+  "context_summary": {
+    "primary_FGF_2P5": {
+      "carriers": 7,
+      "directions": 16,
+      "direction_pass": 14,
+      "failed_carriers": 2,
+      "complex_pair_failures": 0
+    },
+    "primary_FGF_250": {
+      "carriers": 6,
+      "directions": 16,
+      "direction_pass": 12,
+      "failed_carriers": 3,
+      "complex_pair_failures": 1
+    },
+    "sensitivity_FGF_2P5": {
+      "carriers": 6,
+      "directions": 16,
+      "direction_pass": 14,
+      "failed_carriers": 2,
+      "complex_pair_failures": 0
+    },
+    "sensitivity_FGF_250": {
+      "carriers": 6,
+      "directions": 16,
+      "direction_pass": 12,
+      "failed_carriers": 3,
+      "complex_pair_failures": 1
+    }
+  },
+  "complex_subspace_failures": [
+    {
+      "lane": "primary",
+      "context": "SUSTAINED_FGF_250",
+      "lambda_real": -0.11893547172702869,
+      "lambda_imag": 0.23810914309976008,
+      "chi_bio_i": 0.44685558122602326,
+      "direction": "PAIR_RE_MINUS",
+      "state_error_1e-3": 0.00006130599786611875,
+      "state_error_1e-4": 0.00006660805978368268,
+      "FRET_error_1e-3": 0.00008627097258369823,
+      "FRET_error_1e-4": 0.00006383981374752185,
+      "failure_basis": "frozen all-state convergence rule"
+    },
+    {
+      "lane": "sensitivity",
+      "context": "SUSTAINED_FGF_250",
+      "lambda_real": -1.6948356218019431,
+      "lambda_imag": 0.30846970896187265,
+      "chi_bio_i": 0.9838374276647827,
+      "direction": "PAIR_RE_MINUS",
+      "state_error_1e-3": 0.000016078255408651488,
+      "state_error_1e-4": 0.00001732435716246995,
+      "FRET_error_1e-3": 0.000008662251485468959,
+      "FRET_error_1e-4": 0.00002029565426649059,
+      "failure_basis": "frozen all-state and FRET convergence rules"
+    }
+  ],
+  "scientific_disposition": {
+    "ERK_Chi_bio_v2_admission": "REFUSED_UNDER_INVARIANT_CARRIER_GATE",
+    "ERK_Chi_bio_v1_admission": "REFUSED_UNDER_ARBITRARY_DIRECTION_GATE",
+    "mode_resolved_chi_bio_generator_construction": "RETAINED",
+    "scalar_representation_class_cross_system_transport": "RETAINED_WITH_NEW_DIRECTIONAL_NONLINEAR_LIMIT",
+    "uniform_complex_subspace_nonlinear_adequacy": "NOT_ESTABLISHED",
+    "complete_ERK_modal_transport": "NOT_ESTABLISHED",
+    "Bio_Chi_cross_system_transport": "NOT_OPENED",
+    "P1_confirmation_claimed": false
+  },
+  "limit_map": {
+    "numerical_floor_pattern": "Many failing primary comparisons occur at very small relative errors and worsen again at 1e-5, consistent with numerical-floor or stiffness interaction, but the frozen 1e-3 to 1e-4 rule is not retroactively changed.",
+    "directional_asymmetry": "Several modes pass one sign and fail the opposite sign, showing that local nonlinear adequacy is direction-sensitive at the frozen perturbation scales.",
+    "high_FGF_complex_pair_limit": "The only complex-pair subspace failures occur in the frozen FGF=250 contexts, one in each source-defined parameter lane."
+  },
+  "claim_ceiling": "The natural invariant modal carriers provide substantial but not uniform local nonlinear adequacy in the independent ERK B3 system. The evidence does not license complete ERK Chi_bio admission under v2. The generator-derived mode-specific chi_bio construction remains supported as a local scalar representation class, now with an explicit directional nonlinear Limit Map.",
+  "next_action": "record the complete ERK modal lineage without opening a third representation in this cycle"
+}
