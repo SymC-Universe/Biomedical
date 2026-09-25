@@ -1,0 +1,60 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "lineage": "oncology_p0q_su2026",
+  "branch": "bio-chi-oncology-p0q-20260924",
+  "frozen_date": "2026-09-24",
+  "evidence_tier": "P0-Q",
+  "system": {
+    "paper": "Su et al. 2026, Sequential transcriptional waves and NF-kB-driven chromatin remodeling direct drug-induced dedifferentiation in cancer",
+    "doi": "10.1038/s41467-026-71349-4",
+    "model": "BRAF-mutant melanoma reversible transition, source-native two-gene-module affine ODE",
+    "code_repository": "jihoonlee0/melanoma_reversible_transition",
+    "code_commit": "a2b2119f6d69d49e33ff4b57fb04b2b1eaf5fe68",
+    "source_model_file": "Runge-Kutta4,5-250124.py",
+    "source_model_blob": "9105d12c4717e8abca64ec6cad002084d07534ec"
+  },
+  "native_state": {
+    "dimension": 2,
+    "coordinates": ["g1", "g2"],
+    "semantic_mapping": "freeze from publication/source labels; do not infer condition or polarity solely from scenario index"
+  },
+  "native_equations": {
+    "dg1_dt": "alpha1 - beta1*g1 - a1*g2",
+    "dg2_dt": "alpha2 + a2*g1 - a3*g2",
+    "jacobian": [["-beta1", "-a1"], ["a2", "-a3"]]
+  },
+  "scalar_rule": {
+    "constructor": "chi_bio = -Re(lambda)/abs(lambda)",
+    "eligible_carrier": "source-native complex-conjugate eigenfactor only",
+    "same_mode_required": true,
+    "real_only_disposition": "REFUSE_SCALAR_FOR_SCENARIO",
+    "negative_chi": "retain as local amplification",
+    "chi_equal_1_boundary": "NOT_CLAIMED"
+  },
+  "modal_rule": {
+    "object": "complete source-native 2D generator/eigenstructure plus source mapping, conditioning/uncertainty, and trajectory-reproduction metadata",
+    "drop_unfavorable_modes": false,
+    "self_consistency_alone_sufficient": false
+  },
+  "bio_chi_rule": {
+    "object": "relational architecture among local scalar/modal structure, forward/reverse context, and realized recovery/reorganization",
+    "must_compare_against": ["raw eigenvalues", "trace", "determinant", "discriminant", "direct decay/growth rate", "oscillation frequency when present"],
+    "known_recovery_result_is_postresult": true,
+    "p1_confirmation": false
+  },
+  "source_freeze_required_before_modal_values": {
+    "supplementary_data_5_identity": true,
+    "parameter_table_hash": true,
+    "scenario_label_mapping": true,
+    "initial_conditions_or_source_trajectory_inputs": true
+  },
+  "all_scenarios_rule": "analyze every source-defined eligible fitted scenario; no outcome-based scenario selection",
+  "relation_to_gri": "GRI is a separate static evidence layer and cannot supply missing dynamics or be relabeled as chi_bio",
+  "stop_if": [
+    "scenario-to-parameter mapping is ambiguous",
+    "a new representation or mode-selection rule would be invented after viewing outcome",
+    "source model cannot reproduce declared trajectories under published values",
+    "continuation requires changing frozen three-object definitions or inherited dispositions"
+  ]
+}
