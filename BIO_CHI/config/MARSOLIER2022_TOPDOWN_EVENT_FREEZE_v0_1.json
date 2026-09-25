@@ -58,7 +58,9 @@
     "primary_statistic": "Euclidean distance between future-persister and nonpersisting lineage centroids in standardized retained-PC space",
     "permutation": "10000 lineage-label permutations preserving observed group sizes; fixed seed 20260924; one-sided statistic >= observed",
     "secondary": "leave-one-lineage-out nearest-centroid balanced accuracy in the same standardized retained-PC space; compare against the same frozen label permutations",
-    "interpretation": "tests whether baseline transcriptomic modal organization carries detectable inheritance information; failure does not negate the whole-event lineage/substrate phenomenon"
+    "interpretation": "tests whether baseline transcriptomic modal organization carries detectable inheritance information; failure does not negate the whole-event lineage/substrate phenomenon",
+    "alpha": 0.05,
+    "permutation_tail": "one-sided, permuted statistic >= observed"
   },
   "substrate_intervention_lineage_test": {
     "source_object": "UNC_5FU annot_int.RData",
@@ -108,7 +110,7 @@
   },
   "promotion_logic": {
     "Bio_Chi_relation_supported_if": "the frozen matched UNC+5FU lineage-diversity gate passes and carrier mapping is valid",
-    "modal_inheritance_supported_if": "baseline lineage-level PCA permutation is significant under the frozen test",
+    "modal_inheritance_supported_if": "baseline lineage-level PCA primary permutation p <= 0.05 under the frozen test",
     "modal_not_required_if": "the Bio Chi lineage gate passes but baseline modal inheritance test does not",
     "Bio_Chi_relation_refused_if": "matched lineage-diversity gate fails or required barcode/sample mapping is invalid"
   },
