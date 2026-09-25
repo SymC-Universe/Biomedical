@@ -1,0 +1,36 @@
+name: NSD ds004148 Eyes-Closed Header Audit
+
+on:
+  push:
+    branches: [nsd-rebuild-gom-v0.8.0]
+    paths:
+      - 'NSD_vNext/docs/DS004148_EYESCLOSED_HEADER_AUDIT_FREEZE_v0.1.md'
+      - 'NSD_vNext/engine/tools/audit_ds004148_eyesclosed_channel_topology.py'
+      - '.github/workflows/nsd-ds004148-eyesclosed-header-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Audit frozen eyes-closed header topology
+        run: |
+          mkdir -p "$RUNNER_TEMP/nsd-eyesclosed-header"
+          python NSD_vNext/engine/tools/audit_ds004148_eyesclosed_channel_topology.py \
+            --matched-reference NSD_vNext/atlas/reference_models/ds003775_repeat_descriptive_reference_p0d_matched59_v0.1.json \
+            --output-dir "$RUNNER_TEMP/nsd-eyesclosed-header"
+      - name: Upload source-only audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-ds004148-eyesclosed-header-audit-suite-v0-1
+          path: "$RUNNER_TEMP/nsd-eyesclosed-header"
+          if-no-files-found: error
