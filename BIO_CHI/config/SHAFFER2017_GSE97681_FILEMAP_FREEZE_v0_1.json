@@ -1,0 +1,26 @@
+{
+  "schema_version":"0.1",
+  "project":"Bio Chi Investigation",
+  "gate":"Shaffer 2017 GSE97681 processed-file identity, header and recovery-label map",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "geo":"GSE97681",
+  "processed_files":[
+    "GSE97681_meltedData_wm983b_run3.tsv.gz",
+    "GSE97681_meltedData_wm983b_run4.tsv.gz",
+    "GSE97681_meltedwm983bLdB_run2.tsv.gz",
+    "GSE97681_wm983bLdB_star_HTSeqCounts.tsv.gz",
+    "GSE97681_wm9LdB_star_HTSeqCounts_full.tsv.gz"
+  ],
+  "permitted_operations":[
+    "download and hash exact compressed processed files",
+    "read only the first decompressed line from each processed file",
+    "read GEO SOFT metadata and map sample accessions/titles/characteristics",
+    "report source-defined NoDrug, Drug, 48hrholiday and 7dayholiday sample identities"
+  ],
+  "forbidden_operations":[
+    "read molecular data rows",
+    "compute expression values",
+    "choose samples based on molecular outcomes"
+  ],
+  "status":"FROZEN_BEFORE_PROCESSED_FILE_HEADER_AUDIT"
+}
