@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Su 2026 oncology generator qualification and source-sign adjudication",
+  "branch": "bio-chi-oncology-p0q-20260924",
+  "workflow_run_id": 36086204603,
+  "workflow_head_sha": "c989021b27597ec0f65805cd45745dece2cb7ab2",
+  "artifact_id": 10844355621,
+  "artifact_digest": "sha256:9ae11f26a6d93231095d9563d32b2e66def1d24a66a1a2a32ca9c44690569ffa",
+  "status": "PASS_ANALYSIS_EXECUTED",
+  "source_workbook_sha256": "b53a5e4cbba33d901e4c046143f9097309c98256897ccfc1aa06c2a85786d5c3",
+  "mapping_adjudication": {
+    "status": "UNIQUE_MAPPING_SOURCE_FIDELITY_SUPPORTED",
+    "selected_mapping": "PUBLICATION_EQUATION",
+    "publication_equation_aggregate_statewise_variance_normalized_sse": 4.8968030204405935,
+    "public_code_mapping_aggregate_statewise_variance_normalized_sse": 1.3854837858570248e38,
+    "publication_mapping_lower_joint_rmse_scenarios": 8,
+    "scenario_count": 8
+  },
+  "selected_mapping_modal_summary": {
+    "scenario_count": 8,
+    "complex_pair_scenarios": ["ON_PP", "OFF_PN", "OFF_NN"],
+    "real_only_scalar_refusals": ["ON_NP", "ON_PN", "ON_NN", "OFF_PP", "OFF_NP"],
+    "chi_candidates": {
+      "ON_PP": 0.9896042374417108,
+      "OFF_PN": 0.9170605214488299,
+      "OFF_NN": 0.5464006945532414
+    },
+    "eigenvector_condition_number_range": [1.564288516337718, 25.39938748680274],
+    "all_spectral_abscissae_negative": true
+  },
+  "cross_condition_summary": {
+    "matched_carriers": ["PP", "NP", "PN", "NN"],
+    "relative_generator_change_range": [0.6287519114138123, 0.9718486486682827],
+    "matched_pairs_with_chi_both_conditions": 0,
+    "scalar_motion_status": "NOT_TESTABLE_ALL_MATCHED_PAIRS",
+    "memory_status": "NOT_TESTABLE_FROM_SEPARATE_CONDITION_SPECIFIC_GENERATORS"
+  },
+  "source_collision": {
+    "publication_code_sign_collision_preserved": true,
+    "resolution": "The current publication equation mapping reproduces the source-derived trajectories vastly better than applying the pinned public-code sign convention to the current published coefficients. The inconsistency remains part of the Limit Map and is not erased."
+  },
+  "epistemic_ceiling": "P0-Q source/model qualification only; no P1 confirmation, no universal biological scalar, and no chi=1 biological boundary",
+  "next_gate": "execute the predeclared native-comparator/redundancy and parameter-uncertainty Limit Map, then adjudicate model-specific scalar/modal/conglomerate dispositions"
+}
