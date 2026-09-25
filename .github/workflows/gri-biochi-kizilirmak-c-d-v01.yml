@@ -1,0 +1,35 @@
+name: GRI Bio Chi Kizilirmak C plus D v0.1
+on:
+  push:
+    branches: [gri-biochi-bridge-p0q-20260925]
+    paths:
+      - 'BIO_CHI/config/KIZILIRMAK2023_C_D_EXECUTION_FREEZE_v0_1.json'
+      - 'BIO_CHI/src/analyze_kizilirmak2023_c_d_v0_1.py'
+      - '.github/workflows/gri-biochi-kizilirmak-c-d-v01.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  analyze:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install analysis dependencies
+        run: python -m pip install --disable-pip-version-check numpy pandas scipy xlrd
+      - name: Run frozen C plus D analysis
+        run: python BIO_CHI/src/analyze_kizilirmak2023_c_d_v0_1.py
+      - name: Upload result artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: KIZILIRMAK2023_C_D_V01
+          path: |
+            BIO_CHI/artifacts/generated/kizilirmak2023_c_d_v01/KIZILIRMAK2023_C_D_RESULT_PIN_V01.json
+            BIO_CHI/artifacts/generated/kizilirmak2023_c_d_v01/KIZILIRMAK2023_C_D_RESULT_AUDIT_V01.md
+            BIO_CHI/artifacts/generated/kizilirmak2023_c_d_v01/KIZILIRMAK2023_GENEWISE_CHI_GRI_V01.csv
+            BIO_CHI/artifacts/generated/kizilirmak2023_c_d_v01/KIZILIRMAK2023_CIRCUIT_CHI_GRI_V01.csv
+          if-no-files-found: warn
