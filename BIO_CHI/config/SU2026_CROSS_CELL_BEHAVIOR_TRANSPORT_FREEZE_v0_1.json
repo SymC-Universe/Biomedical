@@ -1,0 +1,59 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Su 2026 no-retuning cross-cell-line behavior transport",
+  "branch": "bio-chi-oncology-p0q-20260924",
+  "evidence_tier": "P0-Q",
+  "upstream": {
+    "M397_generator_result": "BIO_CHI/config/SU2026_ONCOLOGY_GENERATOR_V01_RESULT_PIN.json",
+    "M397_scalar_limit": "BIO_CHI/config/SU2026_NATIVE_COMPARATOR_SEM_LIMIT_V01_RESULT_PIN.json",
+    "coverage_gate": "BIO_CHI/config/SU2026_CROSS_CELL_CARRIER_COVERAGE_FREEZE_v0_1.json"
+  },
+  "source_eligibility": {
+    "exact_gene_symbol_mapping": true,
+    "ambiguous_duplicate_symbols": "exclude from transported carrier and do not backfill",
+    "minimum_unambiguous_coverage_each_of_four_source_gene_sets": 0.90,
+    "eligibility_is_decided_before_expression_values_are_read": true,
+    "below_threshold_disposition": "SOURCE_LIMITED_NOT_EVALUATED_VALUES_REMAIN_UNOPENED"
+  },
+  "candidate_systems_in_order": [
+    {"sheet":"Supplementart Data 8","system":"HCC827","treatment":"erlotinib","times_days":[0,3,14,21],"labels":["Control","D3","D14","D21"]},
+    {"sheet":"Supplementary Data 9","system":"HT-29","treatment":"dabrafenib + cetuximab","times_days":[0,3,14,21],"labels":["Control","D3","D14","D21"]}
+  ],
+  "carrier_rule": {
+    "retain_all_four_M397_drug_ON_polarity_carriers": ["PP","NP","PN","NN"],
+    "Mearly_sets": {"positive":"Gi2 top-500 positive","negative":"Gi2 top-500 negative"},
+    "Mlate_sets": {"positive":"Gi1 top-500 positive","negative":"Gi1 top-500 negative"},
+    "no_favorable_carrier_selection": true
+  },
+  "transport_prediction": {
+    "initial_state": "candidate cell line observed Control carrier mean",
+    "generator": "matching M397 publication-equation Drug ON generator and basal vector transported unchanged",
+    "parameter_refitting": false,
+    "state_rescaling": false,
+    "timepoints_evaluated": ["D3","D14","D21"]
+  },
+  "comparators": {
+    "constant_state": "candidate Control state carried forward unchanged",
+    "M397_empirical_displacement_template": {
+      "prediction": "candidate Control plus M397 observed carrier displacement from D0",
+      "time_mapping": {"D3":"D3","D14":"D13","D21":"D21"},
+      "M397_carrier_values": "use the same unambiguous transported gene subset for source and target so missing-gene coverage does not alter the displacement basis"
+    }
+  },
+  "primary_metric": {
+    "name": "aggregate_statewise_variance_normalized_SSE",
+    "aggregation": "sum across both states and all four carriers, post-Control points only",
+    "pass_rule": "unchanged generator aggregate must be strictly lower than both constant-state and M397 empirical-displacement-template aggregates",
+    "no_postresult_threshold": true
+  },
+  "secondary_metrics": [
+    "per-carrier aggregate statewise variance-normalized SSE",
+    "D3 cosine similarity between predicted and observed displacement",
+    "per-state RMSE and Pearson correlation"
+  ],
+  "scientific_effect_if_pass": "supports held-out cross-cell-line behavioral transport of the frozen M397 generator family at P0-Q and closes the current Bio Chi C3 behavior gate positively",
+  "scientific_effect_if_fail": "Bio Chi cross-system behavior transport is not established by this source; preserve failure and move to a different qualified oncology system if available",
+  "scalar_effect": "none; no target-system scalar is constructed without a target-system native generator",
+  "status": "FROZEN_BEFORE_HCC827_OR_HT29_EXPRESSION_VALUES"
+}
