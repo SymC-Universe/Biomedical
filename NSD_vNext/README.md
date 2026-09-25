@@ -209,3 +209,16 @@ All 18 state-median transport indicators, nine for eyes closed and nine for eyes
 The promoted workflow is run `36088323374`. The reviewer-facing artifact is `nsd-ds004148-descriptive-transfer-suite-v0-2`, digest `sha256:f6ce93029c38d72016c2bfd17f4e1b7bdc74bdc5d3ac0fac780896052bf170ce`.
 
 The complete result and ceiling are in `docs/DS004148_DESCRIPTIVE_TRANSFER_POSTRESULT_v0.2.md`. This closes descriptive transport only. Modal damping, lowercase chi, broader capital Chi, a global scalar, diagnosis, recovery, and population inference remain unlicensed.
+
+
+## 25 September 2026 spatial localization checkpoint
+
+The automatic checkpoint continuation rule is active. The corrected one-subject transfer result was followed immediately by a prospectively frozen channel-level spatial/state localization rather than waiting for a new prompt.
+
+Workflow run `36139756523` passed end-to-end. In the eyes-open session2-session3 target pair, 11/21 peak-eligible matched channels exceeded their own channel-specific ds003775 q95 displacement context. High-shift channels spanned central, posterior and temporal labels and all three hemisphere classes. Central eligible channels were 6/6 high.
+
+The stronger cross-pair result is a session-3 eyes-open pattern: session1-session3 was 10/19 high (0.5263) and session2-session3 was 11/21 high (0.5238), versus 8/35 (0.2286) for session1-session2. Eyes-closed session3 comparisons remained much lower.
+
+Model-family instability accompanied 8/11 high-shift target channels, while only 1/11 also exceeded its aperiodic-difference q95 and 2/11 had low PSD correlation. This keeps the result at the descriptive periodic/model-family layer rather than licensing a physical modal-frequency interpretation.
+
+The closed record is `docs/DS004148_SPATIAL_LOCALIZATION_POSTRESULT_v0.1.md`. The next untouched 14-subject eyes-open replication is already frozen and running automatically.
