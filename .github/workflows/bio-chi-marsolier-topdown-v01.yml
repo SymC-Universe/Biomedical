@@ -1,0 +1,33 @@
+name: Bio Chi Marsolier top-down analysis v0.1
+on:
+  push:
+    branches: [bio-chi-topdown-pivot-20260924]
+    paths:
+      - 'BIO_CHI/config/MARSOLIER2022_TOPDOWN_EVENT_FREEZE_v0_1.json'
+      - 'BIO_CHI/src/analyze_marsolier2022_topdown_v0_1.R'
+      - '.github/workflows/bio-chi-marsolier-topdown-v01.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  analyze:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: '4.4.3'
+      - name: Install jsonlite
+        run: Rscript -e 'install.packages("jsonlite", repos="https://cloud.r-project.org")'
+      - name: Run frozen Marsolier top-down analysis
+        run: Rscript BIO_CHI/src/analyze_marsolier2022_topdown_v0_1.R
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_MARSOLIER_TOPDOWN_V01
+          path: |
+            BIO_CHI/artifacts/generated/marsolier2022_topdown_analysis_v0_1.json
+            BIO_CHI/artifacts/generated/MARSOLIER2022_TOPDOWN_ANALYSIS_V01_AUDIT.md
+          if-no-files-found: error
