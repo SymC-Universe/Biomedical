@@ -1,0 +1,30 @@
+{
+  "schema_version":"0.1",
+  "project":"Bio Chi Investigation",
+  "gate":"Harmange 2023 lineage-carrier metadata qualification",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "geo":"GSE237228",
+  "metadata_file":"GSE237228_10x_exp3_metadata.tsv.gz",
+  "metadata_sha256":"f22aaf6947d38a018c0c4d13ceedacbd3bdffc296f727e171b66a21b7a06434b",
+  "permitted_operations":[
+    "download and hash exact cell metadata file",
+    "read metadata rows and column names",
+    "record unique source-defined condition/sample labels",
+    "record non-empty lineage-barcode counts and cross-condition overlap using cons_BC_lenti",
+    "record missingness for lineage and condition fields"
+  ],
+  "forbidden_operations":[
+    "read expression matrix values",
+    "score molecular states from gene expression",
+    "select favorable lineages from later outcomes",
+    "infer causal inheritance from barcode recurrence alone"
+  ],
+  "qualification_rule":{
+    "carrier_field":"cons_BC_lenti",
+    "condition_field":"conditions",
+    "carrier_defined_if":"at least 100 non-empty lineage barcodes are present and at least 20 lineage barcodes occur in two or more source-defined conditions",
+    "continuity_defined_if":"source metadata exposes at least two conditions and at least 20 lineages span conditions",
+    "causal_inheritance":"NOT_ESTABLISHED_BY_THIS_GATE"
+  },
+  "status":"FROZEN_BEFORE_CELL_METADATA_ROWS"
+}
