@@ -1,0 +1,65 @@
+{
+  "schema_version": "0.1",
+  "project": "GRI <-> Bio Chi bridge",
+  "task_id": "GRI_BIOCHI_KIZILIRMAK_C_D_20260925",
+  "date": "2026-09-25",
+  "branch": "gri-biochi-bridge-p0q-20260925",
+  "source": {
+    "paper": "Kizilirmak et al. 2023, Small transcriptional differences among cell clones lead to distinct NF-kB dynamics",
+    "doi": "10.1016/j.isci.2023.108573",
+    "geo": "GSE247446",
+    "pmcid": "PMC10746373",
+    "supplement_table_s3": "mmc3.xls",
+    "supplement_data_s1": "mmc2.zip"
+  },
+  "approved_design": {
+    "C": {
+      "A_primary": "genome-wide historical-proxy analysis",
+      "B_sensitivity": "source-defined NF-kB circuit historical-proxy analysis",
+      "report_both": true
+    },
+    "D": {
+      "role": "prespecified synthesis of A and B only",
+      "no_new_features_or_thresholds": true,
+      "allowed_joint_interpretations": [
+        "concordant_global_and_local",
+        "circuit_localized",
+        "distributed_beyond_local_circuit",
+        "scale_dependent_or_directionally_discordant",
+        "joint_null",
+        "indeterminate_due_to_instability"
+      ]
+    }
+  },
+  "historical_proxy": {
+    "formula": "chi_GRI = sigma/(2*mu)",
+    "historical_scale": "x = log2(TPM + 1)",
+    "historical_filtering": "no substantive expression-floor rule documented; apply only mathematically mandatory finite/defined exclusions",
+    "source_scale_precedence": [
+      "If a source-native unlogged normalized abundance is reproducibly available for all five untreated replicates, transform it with log2(x+1) and use that as the closest historical-scale primary.",
+      "Otherwise use the source-published transformed abundance matrix as a scale-qualified replication, without guessing an inverse transformation.",
+      "Do not use ordered post-stimulus timepoints to construct sigma or mu."
+    ]
+  },
+  "sample_freeze": {
+    "clones": ["B", "R", "G"],
+    "condition": "untreated only",
+    "replicates_expected_per_clone": 5,
+    "pool_excluded_from_primary": true,
+    "tnf_dynamic_condition": "10 ng/mL TNF-alpha"
+  },
+  "dynamic_endpoints": {
+    "primary": "source-reproducible oscillatory behavior, operationalized from the source's peak-count/oscillation analysis without retuning",
+    "secondary": "source-reproducible persistence/AUC",
+    "early_activation": "descriptive control only unless separately frozen before chi values are opened"
+  },
+  "carrier_B_rule": "Use only genes explicitly represented by the source TNF/NF-kB dynamical model or its source-defined limiting receptor/feedback species, mapped before chi_GRI values are inspected. Do not select genes by observed chi_GRI or clone outcome.",
+  "null_and_failure_rules": {
+    "no_association": "preserve as a valid null",
+    "opposite_direction": "preserve as contradiction/scale dependence, not a tuning invitation",
+    "representation_instability": "D = indeterminate_due_to_instability",
+    "insufficient_source_materialization": "refuse analysis rather than substitute a proxy",
+    "chi_equal_1": "not used as a target or boundary"
+  },
+  "promotion_ceiling": "At most supports that pre-stimulus historical RNA fluctuation structure contains information about later NF-kB dynamical phenotype in this source. It cannot identify mu with omega, sigma with gamma, or chi_GRI with a physical damping ratio."
+}
