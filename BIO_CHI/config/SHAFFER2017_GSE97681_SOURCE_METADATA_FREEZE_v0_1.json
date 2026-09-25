@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.1",
+  "project": "GRI Bio Chi Bridge",
+  "lineage": "shaffer2017_gse97681_source_metadata",
+  "branch": "gri-biochi-bridge-p0q-20260925",
+  "epistemic_mode": "P0-Q_SOURCE_METADATA_ONLY",
+  "source_record": {
+    "series": "GSE97681",
+    "title": "Gene expression signature of vemurafenib resistance in WM989 and WM983B melanoma cells",
+    "ncbi_geo": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE97681",
+    "processed_files": [
+      {
+        "file": "GSE97681_meltedData_wm983b_run3.tsv.gz",
+        "system_role": "WM983B"
+      },
+      {
+        "file": "GSE97681_meltedData_wm983b_run4.tsv.gz",
+        "system_role": "WM983B"
+      },
+      {
+        "file": "GSE97681_meltedwm983bLdB_run2.tsv.gz",
+        "system_role": "WM983B"
+      },
+      {
+        "file": "GSE97681_wm983bLdB_star_HTSeqCounts.tsv.gz",
+        "system_role": "WM983B"
+      },
+      {
+        "file": "GSE97681_wm9LdB_star_HTSeqCounts_full.tsv.gz",
+        "system_role": "WM989"
+      }
+    ]
+  },
+  "access_rule": {
+    "base_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE97nnn/GSE97681/suppl/",
+    "inspect_only": [
+      "file hash",
+      "byte size",
+      "header/schema",
+      "row count",
+      "gene identifiers",
+      "source sample identifiers from sample column or header"
+    ],
+    "forbidden": [
+      "target-gene effect calculation",
+      "resistance-marker selection",
+      "modal construction",
+      "B2 statistic",
+      "B3 endpoint evaluation",
+      "chi_bio construction"
+    ],
+    "endpoint_selection_authorized": false
+  },
+  "purpose": "Establish exact processed-file and carrier metadata for the already-frozen source-internal validation and same-source transfer roles without opening target molecular effects."
+}
