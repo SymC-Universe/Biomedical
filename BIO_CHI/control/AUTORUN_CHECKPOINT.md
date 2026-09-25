@@ -2,13 +2,13 @@
 
 **Created:** 22 September 2026  
 **Last updated:** 24 September 2026  
-**Status:** ACTIVE AT SCIENTIFIC STOP  
-**Branch:** `bio-chi-closure-p0q-20260924`  
+**Status:** ACTIVE AT CLOSED ERK MODAL LINEAGE  
+**Branch:** `bio-chi-erk-modal-v2-p0q-20260924`  
 **Authority:** SymC General Operations Manual v0.8.6 + Bio Chi three-object nomenclature decision.
 
 ## Resume contract
 
-On every continuation, verify this branch/head and `BIO_CHI/control/WORK_QUEUE.json`; preserve every frozen decision, failure, null, refusal, indeterminate result, sensitivity, and representation-dependent result; continue all mechanical/audit/reproducibility work without asking again; do not retune endpoints, mappings, modes, representations, thresholds, comparators, or interpretation rules after viewing evidence.
+On every continuation, verify this branch/head and `BIO_CHI/control/WORK_QUEUE.json`; preserve every frozen decision, failure, null, refusal, indeterminate result, sensitivity, and representation-dependent result; continue mechanical/audit/reproducibility work without asking again; do not retune endpoints, mappings, modes, representations, thresholds, comparators, or interpretation rules after viewing evidence.
 
 ## Mechanical continuation authority
 
@@ -16,7 +16,7 @@ Without user intervention, continuation may perform source and provenance audits
 
 ## Scientific stop conditions
 
-Stop substantive work when the next move requires choosing or changing a scientific hypothesis, endpoint, carrier mapping, mode-selection rule, state/modal representation, comparator, boundary, admission criterion, or interpretation after viewing decisive evidence; overriding a failed/refused result; or selecting among materially different next systems where that choice changes the scientific question.
+Stop substantive work when the next move requires choosing or changing a scientific hypothesis, endpoint, carrier mapping, mode-selection rule, state/modal representation, comparator, boundary, admission criterion, or interpretation after viewing decisive evidence; overriding a failed/refused result; or selecting a third ERK modal representation because it is expected to remove the observed failures.
 
 ## Current execution queue
 
@@ -24,89 +24,96 @@ Machine-readable source of record: `BIO_CHI/control/WORK_QUEUE.json`.
 
 - Q0 governance/reproducibility: COMPLETE / MAINTAIN.
 - Q1 literature collision: ACTIVE TARGETED-ONLY.
-- Q2 source/testbed qualification: ACTIVE in parallel; existing source limitations remain preserved.
-- Q3 known-truth/cross-system qualification: CURRENT ERK B3 CYCLE CLOSED AT PARTIAL TRANSPORT.
-- Q4 cancer recovery: M397 P0-D recovery evidence exists; broader cancer recovery qualification remains separate.
-- Q5 `chi_bio`: **NF-kB model-specific P0-Q admitted; ERK independent scalar representation-class transport supported.**
-- Q6 `Chi_bio`: **NF-kB model-specific P0-Q admitted; ERK complete 8D modal transport refused under the frozen round-trip gate.**
-- Q7 Bio Chi: **NF-kB model-specific P0-Q admitted; broad cross-system Bio Chi transport not established because ERK modal admission failed.**
-- Q8 Stability Inheritance: not promoted by these results.
+- Q2 source/testbed qualification: ACTIVE in parallel; preserved source limitations remain.
+- Q3 ERK B3 known-truth/cross-system qualification: COMPLETE for the current modal lineage.
+- Q4 cancer recovery: separate active/pending work remains outside this ERK lineage.
+- Q5 `chi_bio`: NF-kB model-specific P0-Q admitted; ERK scalar representation-class transport supported with an explicit directional nonlinear limit.
+- Q6 `Chi_bio`: NF-kB model-specific P0-Q admitted; ERK generator precursor qualified, but ERK modal admission refused under both v1 and v2.
+- Q7 Bio Chi: NF-kB model-specific P0-Q admitted; ERK cross-system Bio Chi transport not opened because ERK `Chi_bio` did not earn admission.
+- Q8 Stability Inheritance: not promoted by the ERK lineage.
 - Q9 working manuscript: NOT OPEN / PRIVATE.
 
-## Current three-object result
+## NF-kB reference status
 
-### NF-kB reference system
+The reference system remains unchanged:
+- `chi_bio`: P0-Q model-specific admitted local complex-factor scalar.
+- `Chi_bio`: P0-Q model-specific admitted complete local six-mode representation.
+- Bio Chi: P0-Q model-specific admitted relational system architecture.
+
+## ERK B3 lineage status
+
+The ERK source-native trajectory reproduction passed after one preserved pre-result mechanical time-grid failure.
+
+The first finite-difference generator route was refused under its frozen numerical consistency rule. The analytic-Jacobian v0.2 repair then passed independent complex-step qualification, preserved the 8D stoichiometric dynamic subspace, and established fully FRET-observable generator structure with one or more licensed complex `chi_bio` factors in both source-defined parameter lanes under common FGF contexts.
+
+### Modal v1
+
+The first complete-modal nonlinear round-trip used eight frozen source-stoichiometric directions spanning the 8D dynamic subspace.
+
+Result:
+- all FRET-visible complex-pair lanes: PASS;
+- complete 8D all-direction rule: FAIL.
+
+Formal Limit Map:
+`BIO_CHI/config/ERK_B3_LIMIT_MAP_V01.json`
+
+This establishes that complete local linear adequacy is not uniform across the frozen arbitrary spanning reaction directions at the tested amplitudes.
+
+### Modal v2
+
+After v1 was frozen as a limit, the user explicitly authorized a new P0-Q ERK modal lineage.
+
+v2 used the natural invariant modal carriers of the same qualified generator:
+- every real eigenmode, both signs;
+- every complex-pair 2D real invariant subspace, both signs of both frozen basis directions;
+- same 1e-3 to 1e-4 primary convergence rule as v1;
+- no post-result carrier deletion.
+
+Result:
+- overall: `FAIL_ERK_COMPLEX_SUBSPACE_ROUNDTRIP_V2`;
+- 52/64 frozen directions passed;
+- 15/25 carrier-context records passed;
+- 26/36 real-mode directions passed;
+- 26/28 complex-pair directions passed;
+- two complex-pair failures occurred only in FGF=250 contexts, both in the frozen negative-real direction;
+- several failed comparisons are at very small errors and worsen at 1e-5, compatible with a numerical-floor/stiffness interaction, but the frozen adjudication remains failure.
+
+Result pin:
+`BIO_CHI/config/ERK_B3_INVARIANT_MODAL_V2_RESULT_PIN.json`
+
+## Current three-object cross-system disposition
 
 `chi_bio`
-- P0-Q model-specific admitted.
-- Nominal damped factor: approximately 0.213114519.
-- B/C locally amplifying factors remain negative and preserved.
-- No biological chi=1 boundary or system scalar.
+- cross-system representation class: SUPPORTED at P0-Q between NF-kB and ERK;
+- universal numeric value: NOT supported or required;
+- ERK nonlinear scope: v1 complex-pair phase lanes passed, while v2 shows the stronger all-direction invariant-subspace adequacy is not uniform;
+- no system scalar and no biological chi=1 boundary.
 
 `Chi_bio`
-- P0-Q model-specific admitted as the complete local six-mode representation.
-- Full local observability through free nuclear NF-kB passed.
-- Full-state coordinate sanity, nonlinear round-trip, and numerical conditioning passed.
+- NF-kB: P0-Q admitted model-specific;
+- ERK generator precursor: qualified;
+- ERK v1 complete-modal admission: refused;
+- ERK v2 invariant-modal admission: refused;
+- cross-system modal transport: not established.
 
 Bio Chi
-- P0-Q model-specific admitted as the relationship among the licensed local scalar factor, complete local modal architecture, nonlinear trajectory behavior, and perturbation/input context.
-- Joint-meaning gate showed that scalar, modal, and realized behavior are not interchangeable.
+- NF-kB: P0-Q admitted model-specific;
+- ERK cross-system transport: not opened because the ERK modal layer failed both qualification lineages.
 
-Key pins:
-- `BIO_CHI/config/JARUS_CHI_BIO_SCALAR_P0Q_V01_RESULT_PIN.json`
-- `BIO_CHI/config/JARUS_CHI_BIO_MODAL_ADMISSION_V01.json`
-- `BIO_CHI/config/JARUS_BIO_CHI_CONGLOMERATE_ADMISSION_V01.json`
+## Complete ERK lineage record
 
-## Independent ERK B3 transport
+Machine-readable:
+`BIO_CHI/config/ERK_B3_MODAL_LINEAGE_V01.json`
 
-Native B3 trajectory reproduction: PASS.
+Human-readable:
+`BIO_CHI/docs/ERK_B3_MODAL_LINEAGE_RECORD_20260924.md`
 
-Stoichiometric 8D analytic-generator qualification: PASS.
+The v1 and v2 results are complementary limits and neither supersedes the other. No third ERK modal representation is opened in this cycle.
 
-Scalar representation-class transport: SUPPORTED.
-- All frozen source-defined parameter lanes/FGF contexts contain at least one FRET-visible licensed complex factor.
-- Numeric chi values and complex-pair counts vary by context, so transport is of the representation class rather than one preferred scalar value.
-- Every frozen FRET-visible complex-pair nonlinear round-trip passed.
+## Preserved promotion debt
 
-Complete 8D modal nonlinear round-trip: **FAIL** under the frozen all-direction rule.
-- primary FGF 2.5 failing columns: 4, 6, 10, 14
-- primary FGF 250 failing columns: 10, 12, 14
-- sensitivity FGF 2.5 failing columns: 6, 10, 14
-- sensitivity FGF 250 failing columns: 10, 12, 14
+Any future ERK modal attempt must cite both v1 and v2 failures and cannot be chosen solely because it is expected to eliminate them. A claim that the failures are numerical rather than scientific requires a separately frozen numerical-resolution investigation and cannot retroactively convert either result to a pass.
 
-Therefore:
-- ERK model-specific `Chi_bio`: REFUSED under current gate.
-- Broad cross-system `Chi_bio` transport: NOT ESTABLISHED.
-- Bio Chi cross-system transport: NOT OPENED.
-- No unfavorable direction is dropped or retuned.
+## Exact resume point
 
-Key pins:
-- `BIO_CHI/config/BLUM_B3_NATIVE_REPRODUCTION_V02_RESULT_PIN.json`
-- `BIO_CHI/config/BLUM_B3_GENERATOR_TRANSPORT_V02_RESULT_PIN.json`
-- `BIO_CHI/config/BLUM_B3_LOCAL_NONLINEAR_ROUNDTRIP_V01_RESULT_PIN.json`
-- `BIO_CHI/control/ERK_B3_TRANSPORT_CYCLE_CLOSURE_20260924.md`
-
-## Preserved failures and limits
-
-The following remain permanent evidence:
-- NF-kB Figure 8 B/C finite-window behavior failures.
-- Earlier NF-kB indeterminate/mechanical local-stability versions.
-- NF-kB 1e-5 nonlinear-roundtrip numerical-floor sensitivity.
-- Blum B3 generator v0.1 derivative-estimator refusal.
-- Blum exact Jeffries-Matusita reproduction refusal due method underspecification.
-- ERK B3 complete 8D modal round-trip failure.
-- All source-access limitations already recorded in the qualification ledger.
-
-## Exact next scientific decision
-
-The current lineage cannot lawfully continue into broad Bio Chi transport without changing the scientific plan.
-
-Two legitimate next routes are open:
-
-1. **New ERK modal-representation P0-Q lineage.** Use the current failed 8D gate as qualification evidence, but justify a materially different native modal/carrier representation independently of favorable outcome selection. The current failure remains failed and creates promotion debt.
-
-2. **Different independent biological system.** Preserve the ERK refusal and test whether full `Chi_bio` and Bio Chi transport in a fresh system with its own native model and untouched qualification path.
-
-Choosing between these routes changes the scientific question and therefore requires user intervention under GOM v0.8.6.
-
-Until that choice is made, only mechanical/audit/reproducibility work should continue.
+The current ERK modal lineage is scientifically closed. Future work may continue mechanically. A new ERK modal representation, a dedicated numerical-resolution study, or a different independent biological transport system is a new scientific lineage and should be explicitly frozen before execution.
