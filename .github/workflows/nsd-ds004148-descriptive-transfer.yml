@@ -9,6 +9,9 @@ on:
       - "NSD_vNext/docs/DS004148_DESCRIPTIVE_TRANSFER_FREEZE_v0.1.md"
       - "NSD_vNext/docs/manifests/ds004148_d4_resting_crosssession_v0.1.json"
       - "NSD_vNext/atlas/reference_models/ds003775_repeat_descriptive_reference_p0d_v0.1.json"
+      - "NSD_vNext/atlas/reference_models/ds003775_repeat_descriptive_reference_p0d_matched59_v0.1.json"
+      - "NSD_vNext/docs/DS004148_EXACT_LABEL_REFERENCE_REMEDIATION_v0.1.md"
+      - "NSD_vNext/engine/tools/build_ds003775_matched59_reference.py"
       - "NSD_vNext/engine/pyproject.toml"
       - "NSD_vNext/engine/nsd_engine/psd.py"
       - "NSD_vNext/engine/nsd_engine/specparam_adapter.py"
@@ -46,6 +49,7 @@ jobs:
           python NSD_vNext/engine/tools/run_ds004148_descriptive_transfer.py \
             --manifest NSD_vNext/docs/manifests/ds004148_d4_resting_crosssession_v0.1.json \
             --atlas NSD_vNext/atlas/reference_models/ds003775_repeat_descriptive_reference_p0d_v0.1.json \
+            --matched-reference NSD_vNext/atlas/reference_models/ds003775_repeat_descriptive_reference_p0d_matched59_v0.1.json \
             --output-dir "$RUNNER_TEMP/nsd-transfer-suite"
 
       - name: Remove raw payloads before packaging
@@ -59,6 +63,10 @@ jobs:
           cp NSD_vNext/docs/DS004148_DESCRIPTIVE_TRANSFER_FREEZE_v0.1.md "$RUNNER_TEMP/nsd-transfer-suite/"
           cp NSD_vNext/docs/manifests/ds004148_d4_resting_crosssession_v0.1.json "$RUNNER_TEMP/nsd-transfer-suite/"
           cp NSD_vNext/atlas/reference_models/ds003775_repeat_descriptive_reference_p0d_v0.1.json "$RUNNER_TEMP/nsd-transfer-suite/"
+          cp NSD_vNext/atlas/reference_models/ds003775_repeat_descriptive_reference_p0d_matched59_v0.1.json "$RUNNER_TEMP/nsd-transfer-suite/"
+          cp NSD_vNext/docs/DS004148_EXACT_LABEL_REFERENCE_REMEDIATION_v0.1.md "$RUNNER_TEMP/nsd-transfer-suite/"
+          cp NSD_vNext/docs/manifests/ds003775_matched59_source_artifacts_v0.1.json "$RUNNER_TEMP/nsd-transfer-suite/"
+          cp NSD_vNext/engine/tools/build_ds003775_matched59_reference.py "$RUNNER_TEMP/nsd-transfer-suite/"
           cp NSD_vNext/engine/tools/run_ds004148_descriptive_transfer.py "$RUNNER_TEMP/nsd-transfer-suite/"
           cp NSD_vNext/engine/pyproject.toml "$RUNNER_TEMP/nsd-transfer-suite/"
           (cd "$RUNNER_TEMP/nsd-transfer-suite" && sha256sum * > SHA256SUMS.txt)
@@ -66,17 +74,18 @@ jobs:
             'python NSD_vNext/engine/tools/run_ds004148_descriptive_transfer.py \' \
             '  --manifest NSD_vNext/docs/manifests/ds004148_d4_resting_crosssession_v0.1.json \' \
             '  --atlas NSD_vNext/atlas/reference_models/ds003775_repeat_descriptive_reference_p0d_v0.1.json \' \
+            '  --matched-reference NSD_vNext/atlas/reference_models/ds003775_repeat_descriptive_reference_p0d_matched59_v0.1.json \' \
             '  --output-dir ./nsd-transfer-output' \
             > "$RUNNER_TEMP/nsd-transfer-suite/RUN_COMMAND.txt"
 
       - name: Master smoke verification
         run: |
           set -euo pipefail
-          python -c 'import json,sys; d=json.load(open(sys.argv[1],encoding="utf-8")); assert d["recording_count"]==6; assert sorted(d["states"])==["eyesclosed","eyesopen"]; assert all(s["pair_count"]==3 for s in d["states"].values()); assert d["licenses_modal_damping"] is False; assert d["licenses_local_chi"] is False; assert d["licenses_capital_chi"] is False; assert d["licenses_diagnosis"] is False; assert d["licenses_population_inference"] is False; print("MASTER_SMOKE_TEST=PASS")' "$RUNNER_TEMP/nsd-transfer-suite/ds004148_descriptive_transfer_result_v0.1.json"
+          python -c 'import json,sys; d=json.load(open(sys.argv[1],encoding="utf-8")); assert d["recording_count"]==6; assert d["channel_semantics"]["exact_label_intersection_count"]==59; assert d["matched_reference"]["channel_count"]==59; assert sorted(d["states"])==["eyesclosed","eyesopen"]; assert all(s["pair_count"]==3 and all(p["shared_channel_count"]==59 for p in s["pairwise"]) for s in d["states"].values()); assert d["licenses_modal_damping"] is False; assert d["licenses_local_chi"] is False; assert d["licenses_capital_chi"] is False; assert d["licenses_diagnosis"] is False; assert d["licenses_population_inference"] is False; print("MASTER_SMOKE_TEST=PASS")' "$RUNNER_TEMP/nsd-transfer-suite/ds004148_descriptive_transfer_result_v0.2.json"
 
       - uses: actions/upload-artifact@v4
         with:
-          name: nsd-ds004148-descriptive-transfer-suite-v0-1
+          name: nsd-ds004148-descriptive-transfer-suite-v0-2
           path: ${{ runner.temp }}/nsd-transfer-suite
           if-no-files-found: error
           retention-days: 90
