@@ -1,0 +1,108 @@
+{
+  "schema_version": "0.2",
+  "project": "Bio Chi Investigation",
+  "gate": "Su 2026 oncology source mapping and trajectory reconstruction freeze",
+  "purpose_tag": "P0_Q_SOURCE_NATIVE_MAPPING",
+  "branch": "bio-chi-oncology-p0q-20260924",
+  "workbook_sha256": "b53a5e4cbba33d901e4c046143f9097309c98256897ccfc1aa06c2a85786d5c3",
+  "source_equation": {
+    "state_order": ["Mearly", "Mlate"],
+    "b_order": ["Be", "Bl"],
+    "generator": [["Me-e", "Ml-e"], ["Me-l", "Ml-l"]],
+    "equation_reference": "Su et al. 2026 Eq. 2 / Methods Eq. M10"
+  },
+  "parameter_table": {
+    "sheet": "Supplementary Data 5",
+    "headers": {
+      "Bl": "D4",
+      "Be": "E4",
+      "Me-l": "F4",
+      "Ml-l": "G4",
+      "Ml-e": "H4",
+      "Me-e": "I4"
+    },
+    "scenarios": [
+      {"id":"ON_PP","condition":"Drug ON","mearly_polarity":"positive","mlate_polarity":"positive","value_row":5,"sem_row":6},
+      {"id":"ON_NP","condition":"Drug ON","mearly_polarity":"negative","mlate_polarity":"positive","value_row":7,"sem_row":8},
+      {"id":"ON_PN","condition":"Drug ON","mearly_polarity":"positive","mlate_polarity":"negative","value_row":9,"sem_row":10},
+      {"id":"ON_NN","condition":"Drug ON","mearly_polarity":"negative","mlate_polarity":"negative","value_row":11,"sem_row":12},
+      {"id":"OFF_PP","condition":"Drug OFF","mearly_polarity":"positive","mlate_polarity":"positive","value_row":14,"sem_row":15},
+      {"id":"OFF_NP","condition":"Drug OFF","mearly_polarity":"negative","mlate_polarity":"positive","value_row":16,"sem_row":17},
+      {"id":"OFF_PN","condition":"Drug OFF","mearly_polarity":"positive","mlate_polarity":"negative","value_row":18,"sem_row":19},
+      {"id":"OFF_NN","condition":"Drug OFF","mearly_polarity":"negative","mlate_polarity":"negative","value_row":20,"sem_row":21}
+    ],
+    "numeric_columns": ["D","E","F","G","H","I"]
+  },
+  "state_reconstruction": {
+    "expression_sheet": "Supplementary Data 1",
+    "expression_gene_column": "A",
+    "expression_time_columns": {
+      "D0":"C","D3":"D","D8":"E","D13":"F","D21":"G","D29":"H","D33":"I","D38":"J","D59":"K",
+      "DR4":"L","DR10":"M","DR15":"N","DR17":"O","DR30":"P","DR35":"Q"
+    },
+    "contribution_sheet": "Supplementary Data 4",
+    "contribution_gene_column": "A",
+    "Gi1_column": "B",
+    "Gi2_column": "C",
+    "module_mapping": {
+      "Gi1": "Mlate",
+      "Gi2": "Mearly"
+    },
+    "polarity_selection": {
+      "positive": "500 genes with largest strictly positive module-specific contribution scores",
+      "negative": "500 genes with most negative strictly negative module-specific contribution scores",
+      "ties": "stable sort by score then gene symbol; retain first 500",
+      "missing_expression": "exclude gene only if absent from expression sheet; report count and do not backfill after outcome inspection"
+    },
+    "state_value": "arithmetic mean FPKM across the frozen 500-gene polarity set at each time point"
+  },
+  "trajectory_protocol": {
+    "Drug ON": {
+      "times_days": [0,3,8,13,21,29,33,38,59],
+      "labels": ["D0","D3","D8","D13","D21","D29","D33","D38","D59"],
+      "initial_state": "observed D0 reconstructed state"
+    },
+    "Drug OFF": {
+      "times_days": [0,4,10,15,17,30,35],
+      "labels": ["D29","DR4","DR10","DR15","DR17","DR30","DR35"],
+      "initial_state": "observed D29 reconstructed state"
+    },
+    "integration": {
+      "solver": "RK45",
+      "max_step_days": 0.1,
+      "no_refitting": true,
+      "published_best_fit_coefficients_only": true
+    },
+    "fit_summary_only": true,
+    "metrics": [
+      "RMSE",
+      "range-normalized RMSE",
+      "Pearson correlation observed versus predicted",
+      "Spearman correlation observed versus predicted"
+    ],
+    "no_post_result_threshold_tuning": true
+  },
+  "modal_analysis": {
+    "analyze_all_8_scenarios": true,
+    "metrics": [
+      "trace",
+      "determinant",
+      "discriminant",
+      "eigenvalues",
+      "eigenvector condition number",
+      "spectral abscissa",
+      "complex_pair_present",
+      "chi_bio_if_complex"
+    ],
+    "chi_rule": "-Re(lambda)/abs(lambda) for a genuine complex-conjugate pair only",
+    "real_only": "REFUSE_SCALAR_FOR_SCENARIO",
+    "negative_chi": "retain",
+    "chi_equal_1_boundary": "NOT_CLAIMED"
+  },
+  "cross_condition_mapping": {
+    "allowed_pairs": [["ON_PP","OFF_PP"],["ON_NP","OFF_NP"],["ON_PN","OFF_PN"],["ON_NN","OFF_NN"]],
+    "basis": "same Mearly/Mlate polarity-defined source carrier under drug-on versus drug-off condition",
+    "no_cross_polarity_pairing": true
+  },
+  "status": "FROZEN_BEFORE_NUMERIC_PARAMETER_OPENING"
+}
