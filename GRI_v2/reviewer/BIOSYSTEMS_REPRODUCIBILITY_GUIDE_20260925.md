@@ -52,10 +52,22 @@ The three representation levels are kept distinct:
 | Object | Submission disposition |
 | --- | --- |
 | scalar `chi_bio` | **REFUSED** in the Su oncology lineage because nominal complex carriers were not robust to reported +/-1 SEM eigenvalue-class stress and the defined scalar was algebraically redundant with native 2D invariants |
-| modal/vector `Chi_bio` | **QUALIFIED MODEL-SPECIFICALLY** as the complete uncertainty-aware Su two-state generator/eigenstructure |
+| modal/vector `Chi_bio` | **QUALIFIED MODEL-SPECIFICALLY** as the complete uncertainty-aware Su two-state generator/eigenstructure. Three of eight nominal source scenarios (`ON_PP`, `OFF_PN`, `OFF_NN`) contain stable complex-conjugate modes and therefore support a nominal damped/oscillatory modal description, but all three cross the real/complex boundary somewhere in the frozen +/-1 SEM stress. |
 | whole-system biological chi | **NOT ADMITTED FROM SU CROSS-CELL TRANSPORT** because the frozen M397 generator failed the HCC827 constant-state baseline; HT-29 failed the frozen carrier-coverage gate |
 
 These outcomes connect the cancer work to the same scalar/modal/system representation hierarchy while preserving refusal. They do **not** establish a universal cancer scalar, a chi=1 boundary, or a direct same-carrier bridge from static GRI architecture to realized biological chi behavior.
+
+## Damping and oscillation scope
+
+The revision does **not** discard damping or oscillation as biological dynamical questions. It separates the carrier on which those terms are licensed.
+
+- The historical cross-sectional RNA quantity `chi_GRI = sigma/(2 mu) = CV/2` is preserved in the Supplementary Information as an operational fluctuation-to-signal/stability proxy and research-lineage quantity. It is not identified with a physical damping coefficient or oscillator frequency, and it does not inherit a `chi=1` critical-damping boundary.
+- Static TCGA gene rank is not time and is not used to infer oscillation, relaxation class, hysteresis, or temporal progression.
+- In the source-native longitudinal Su M397 two-state generator, three of eight nominal scenarios contain stable complex-conjugate modes. At the nominal source parameters these are legitimate damped/oscillatory linear modes of that model.
+- All three nominal complex scenarios cross the real/complex eigenvalue-class boundary somewhere within the frozen +/-1 SEM parameter stress. The oscillatory classification is therefore uncertainty-sensitive, the scalar `chi_bio` remains refused, and no universal cancer oscillator or universal damping boundary is claimed.
+- The complete modal/vector representation remains qualified model-specifically because retaining the full generator/eigenstructure preserves the uncertainty and mode information that scalar compression would discard.
+
+This scope restores the dynamical question without back-projecting it onto cross-sectional TCGA statistics.
 
 ## Active bridge work is not a submission dependency
 
@@ -70,7 +82,7 @@ For this paper:
 
 ## What the paper does not claim
 
-The manuscript does not claim a historical CV/2 biological damping ratio, a universal cancer chi value, a chi=1 health/treatment boundary, static-to-dynamic equivalence, a universal methylation-to-RNA causal direction, a direct same-carrier GRI-to-Bio-Chi relationship, a general cancer recovery law, or validated diagnostic/prognostic/treatment-response utility.
+The manuscript does not claim that the historical cross-sectional `chi_GRI = CV/2` is a physically identified damping ratio, does not infer oscillations or temporal progression from static TCGA gene rank, and does not claim a universal cancer chi value or chi=1 health/treatment boundary. It also does not claim static-to-dynamic equivalence, a universal methylation-to-RNA causal direction, a direct same-carrier GRI-to-Bio-Chi relationship, a general cancer recovery law, or validated diagnostic/prognostic/treatment-response utility. Model-specific damping/oscillation language is retained only where source-native longitudinal dynamics license it and remains bounded by the reported uncertainty.
 
 A failed, refused, unresolved, or source-limited branch remains part of the public evidence record and is not converted into supporting evidence after the fact.
 
