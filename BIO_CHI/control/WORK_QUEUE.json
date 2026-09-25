@@ -2,7 +2,7 @@
   "schema_version": "0.1",
   "project": "Bio Chi Investigation",
   "authority": "SymC GOM v0.8.6 + Bio Chi project-specific three-object nomenclature decision 2026-09-23",
-  "branch": "bio-chi-oncology-p0q-20260924",
+  "branch": "bio-chi-topdown-pivot-20260924",
   "continuation_policy": {
     "resume_from_checkpoint": true,
     "mechanical_blockers_are_stop_conditions": false,
@@ -23,12 +23,12 @@
     {
       "id": "Q1",
       "name": "literature_collision_candidate_expansion",
-      "status": "active_targeted_only"
+      "status": "scientific_stop_prelisted_candidates_exhausted_new_system_requires_user_choice"
     },
     {
       "id": "Q2",
       "name": "dataset_eligibility_source_qualification",
-      "status": "active_native_observable_qualified_su_rehman_method_limits_harmange_carrier_mapping"
+      "status": "complete_current_topdown_phase_all_prelisted_candidates_closed_or_source_disposed"
     },
     {
       "id": "Q3",
@@ -38,27 +38,27 @@
     {
       "id": "Q4",
       "name": "cancer_recovery_system",
-      "status": "closed_Su2026_oncology_recovery_model_lineage"
+      "status": "complete_topdown_oncology_sequence_su_rehman_marsolier_shaffer_harmange_sharma"
     },
     {
       "id": "Q5",
       "name": "chi_bio_scalar_track",
-      "status": "closed_current_lineage_NFkB_admitted_ERK_scalar_class_transport_Su_oncology_refused_uncertainty_sensitive"
+      "status": "topdown_optional_scalar_adequacy_outcome_NFkB_supported_ERK_transports_Su_refused_others_not_required"
     },
     {
       "id": "Q6",
       "name": "Chi_bio_modal_track",
-      "status": "closed_current_lineage_NFkB_admitted_ERK_complete_modal_refused_Su_native_generator_family_qualified_uncertainty_aware"
+      "status": "topdown_minimum_internal_representation_system_dependent"
     },
     {
       "id": "Q7",
       "name": "Bio_Chi_conglomerate_track",
-      "status": "closed_current_lineage_NFkB_model_specific_admitted_cross_system_Bio_Chi_not_established_Su_HCC827_C3_failed"
+      "status": "topdown_whole_event_Harmange_supported_Rehman_partial_Marsolier_Shaffer_failed_Su_transport_failed"
     },
     {
       "id": "Q8",
       "name": "stability_inheritance_biological_test",
-      "status": "pending_carrier_qualified_data"
+      "status": "current_phase_complete_Marsolier_frozen_inheritance_gate_failed_Harmange_state_memory_resistance_relation_supported"
     },
     {
       "id": "Q9",
@@ -67,7 +67,7 @@
     }
   ],
   "active_source_gate": {
-    "stage": "ONCOLOGY_P0Q_CLOSED",
+    "stage": "TOPDOWN_PRELISTED_PHASE_COMPLETE",
     "testbed_promotion": false,
     "completed": {
       "blum_archive_sha256": "8bbd1ead46b5bb6b676bd47a5f415fdd790840a9c726321dc5c209b9c527bc62",
@@ -109,12 +109,16 @@
       "blum_B3_pair_roundtrip_all_contexts": "PASS"
     },
     "active": {
-      "su_next": "CLOSED; no further Su lineage action without opening a new scientific lineage",
-      "rehman_next": "seek exact author analysis code/source implementation for Figure 4 PCA; otherwise preserve exact-native-method under-specification",
-      "harmange_next": "map lineage/barcode carrier correspondence from source documentation without opening target outcomes",
-      "blum_next": "ERK cycle closed and refusal preserved; user selected a different oncology system rather than replacement ERK representation"
+      "su_next": "CLOSED",
+      "rehman_next": "CLOSED",
+      "marsolier_next": "CLOSED",
+      "shaffer_next": "CLOSED",
+      "harmange_next": "CLOSED_P0Q_POSITIVE_WHOLE_EVENT",
+      "sharma_next": "CLOSED_SOURCE_LIMITED_FOR_REQUIRED_RECOVERY_EVENT",
+      "program_next": "USER_SCIENTIFIC_DECISION_REQUIRED_NEW_SYSTEM_EXPANSION_OR_PHASE_SYNTHESIS",
+      "blum_next": "ERK cycle closed and refusal preserved"
     },
-    "scientific_stop_before": "inventing a missing native implementation detail, changing a frozen representation/endpoint, promoting a testbed based on agreement, or admitting chi_bio/Chi_bio/Bio Chi"
+    "scientific_stop_before": "opening any entirely new biological system, changing the frozen top-down construction order, or promoting the current P0-Q evidence beyond its documented ceilings without user approval"
   },
   "active_native_model_gate": {
     "system": "Jaruszewicz-Blonska reduced NF-kB model",
@@ -146,7 +150,7 @@
     "chi_bio_constructed": true,
     "Chi_bio_admitted": true,
     "Bio_Chi_constructed": true,
-    "next_gate": "SCIENTIFIC_STOP: current oncology lineage closed; selecting another independent system is a scientific expansion",
+    "next_gate": "SCIENTIFIC_STOP: prelisted top-down biological systems exhausted; new-system expansion versus phase synthesis requires user decision",
     "chi_bio_model_specific_status": "P0Q_SUPPORTED_MODEL_SPECIFIC",
     "Chi_bio_model_specific_status": "P0Q_ADMITTED_MODEL_SPECIFIC",
     "Bio_Chi_model_specific_status": "P0Q_ADMITTED_MODEL_SPECIFIC"
@@ -157,7 +161,7 @@
     "decisive evidence would be opened before required freeze/independence controls",
     "upstream contradiction invalidates a frozen result",
     "publication-level claim expansion requires user decision",
-    "current oncology lineage is closed; any new independent biological transport system is a fresh scientific lineage"
+    "all prelisted top-down candidates are closed or source-disposed; opening a new independent biological system is a fresh scientific expansion"
   ],
   "nomenclature_note": "Exactly three biological objects. Program-wide chi is a parent symbol/class, not a fourth biological object.",
   "cross_system_transport": {
@@ -175,7 +179,7 @@
       "ERK_Chi_bio_admission": "REFUSED_CURRENT_GATE",
       "Bio_Chi_transport": "NOT_OPENED"
     },
-    "current_scientific_stop": "Current Su oncology lineage is closed. A new independent system or replacement representation is a scientific expansion requiring user intervention.",
+    "current_scientific_stop": "TOPDOWN PRELISTED PHASE COMPLETE: choose new-system expansion or phase synthesis",
     "Su2026_oncology_system": {
       "status": "CLOSED_P0Q",
       "scalar": "REFUSED_UNCERTAINTY_SENSITIVE_EQUIVALENT_NATIVE_INVARIANT",
@@ -184,6 +188,44 @@
       "HCC827_transport": "FAIL_NO_RETUNING_BEHAVIOR_TRANSPORT",
       "HT29": "SOURCE_LIMITED_VALUES_UNOPENED",
       "closure": "BIO_CHI/control/ONCOLOGY_P0Q_CLOSURE_20260924.md"
+    }
+  },
+  "topdown_pivot": {
+    "status": "PRELISTED_PHASE_COMPLETE",
+    "construction_order": "Bio Chi whole-event phenomenon -> minimum required internal organization -> optional scalar compression",
+    "representation_adequacy_matrix": "BIO_CHI/control/TOPDOWN_REPRESENTATION_ADEQUACY_MATRIX_20260924.md",
+    "phase_checkpoint": "BIO_CHI/control/TOPDOWN_PHASE_CHECKPOINT_20260925.md",
+    "systems": {
+      "Rehman2021": {
+        "status": "CLOSED_P0Q",
+        "whole_event": "PARTIAL_RECOVERY_WITH_REORGANIZATION",
+        "modal": "MIXED_RETURN_REORGANIZATION",
+        "scalar": "NOT_REQUIRED_NOT_LICENSED"
+      },
+      "Marsolier2022": {
+        "status": "CLOSED_P0Q",
+        "whole_event": "FROZEN_SUBSTRATE_LINEAGE_GATE_NOT_REPRODUCED",
+        "modal": "BASELINE_MODAL_INHERITANCE_NOT_DETECTED",
+        "scalar": "NOT_REQUIRED_NOT_LICENSED"
+      },
+      "Shaffer2017": {
+        "status": "CLOSED_P0Q",
+        "whole_event": "COMMON_RECOVERY_GATE_NOT_REPRODUCED_CARRIER_HETEROGENEITY",
+        "modal": "PARALLEL_CARRIER_HETEROGENEITY",
+        "scalar": "NOT_REQUIRED_NOT_LICENSED"
+      },
+      "Harmange2023": {
+        "status": "CLOSED_P0Q",
+        "whole_event": "WITHIN_SOURCE_STATE_MEMORY_TO_RESISTANCE_RELATION_SUPPORTED",
+        "internal_representation": "LINEAGE_RESOLVED_TWO_STATE_COMPOSITION_SUFFICIENT",
+        "scalar": "NOT_REQUIRED_NOT_LICENSED"
+      },
+      "Sharma2010": {
+        "status": "CLOSED_SOURCE_LIMITED",
+        "whole_event": "RECOVERY_RESENSITIZATION_NOT_EVALUABLE_FROM_CURRENT_PUBLIC_REPLICATION_SOURCE",
+        "modal": "NOT_OPENED",
+        "scalar": "NOT_OPENED"
+      }
     }
   }
 }
