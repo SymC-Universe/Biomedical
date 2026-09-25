@@ -32,5 +32,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: nsd-ds004148-eyesclosed-header-audit-suite-v0-1
-          path: "$RUNNER_TEMP/nsd-eyesclosed-header"
+          path: ${{ runner.temp }}/nsd-eyesclosed-header
           if-no-files-found: error
