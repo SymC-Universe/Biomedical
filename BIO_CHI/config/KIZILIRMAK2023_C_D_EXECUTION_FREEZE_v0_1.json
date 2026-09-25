@@ -1,0 +1,80 @@
+{
+  "schema_version": "0.1",
+  "project": "GRI <-> Bio Chi bridge",
+  "task_id": "GRI_BIOCHI_KIZILIRMAK_C_D_EXECUTION_20260925",
+  "date": "2026-09-25",
+  "evidence_tier": "P0 exploratory / source-qualified relational test",
+  "branch": "gri-biochi-bridge-p0q-20260925",
+  "author_decision": "C followed by D",
+  "source_pins": {
+    "table_s3_sha256": "f76c8eaf685d192f2340d178aac62f8263004077276d3e64f96ba41faab408f4",
+    "data_s1_sha256": "9ee2914095e9676b92806c33e46929965c6b4c7535f74a00d4462152678ba7b8",
+    "table_s3_url": "https://ars.els-cdn.com/content/image/1-s2.0-S2589004223026500-mmc3.xls",
+    "data_s1_url": "https://ars.els-cdn.com/content/image/1-s2.0-S2589004223026500-mmc2.zip"
+  },
+  "static_coordinate": {
+    "formula": "chi_GRI = sample_sd(x)/(2*mean(x))",
+    "source_representation": "Table S3 source-published log2 RPKM",
+    "historical_reference_representation": "log2(TPM+1)",
+    "interpretation": "scale-qualified transport of the historical operational proxy; not an exact preprocessing replication and not a physical damping ratio",
+    "replicates": 5,
+    "sd_ddof": 1,
+    "ddof_note": "with fixed n=5, ddof=0 versus ddof=1 rescales every chi by the same constant and cannot change B-versus-R direction",
+    "eligibility": [
+      "untreated columns only",
+      "all five replicate values finite",
+      "mean transformed abundance > 0",
+      "common eligible gene universe across B, R, and G",
+      "no additional expression threshold selected after outcome inspection"
+    ]
+  },
+  "A_genomewide_primary": {
+    "clone_summary": "median gene-wise chi_GRI over the frozen common eligible genome-wide universe",
+    "distributional_descriptives": ["IQR", "paired B-minus-R gene-wise difference median", "fraction of eligible genes with chi_B > chi_R"],
+    "primary_contrast": "Delta_A = median_chi_B - median_chi_R",
+    "historical_damping_direction": "Delta_A > 0 because source-defined clone B is more persistent/less oscillatory than clone R",
+    "robustness": "recompute after leaving out matched biological replicate index 1..5 from all clones; direction is robust only if all five leave-one-out Delta_A values have the same sign as the full estimate"
+  },
+  "B_circuit_sensitivity": {
+    "genes": ["Tnfrsf1a", "Rela", "Nfkbia", "Tnfaip3"],
+    "source_basis": "explicit TNF receptor, NF-kB p65, IkBa feedback, and A20 feedback species in the source TNF/NF-kB model",
+    "no_outcome_selected_genes": true,
+    "clone_summary": "median of the four frozen gene-wise chi_GRI values",
+    "report_each_gene": true,
+    "primary_contrast": "Delta_B = median_circuit_chi_B - median_circuit_chi_R",
+    "historical_damping_direction": "Delta_B > 0",
+    "robustness": "same five matched leave-one-biological-replicate-out calculations; robust only if all five signs match the full estimate"
+  },
+  "native_dynamic_reproduction_gate": {
+    "condition": "10 ng/mL TNF-alpha",
+    "primary_dataset": "Dynamics data/Fig2/NFkappaBTNF_Clone{B,R,G}_Fig2.csv",
+    "independent_source_robustness_dataset": "Dynamics data/Fig1/NFkappaBTNF_Clone{B,R,G}_Fig1.csv",
+    "orientation": "rows are 6-minute time points; columns are single cells; no header",
+    "smoothing": "MATLAB smooth-compatible 5-point moving average",
+    "peak_detection": "local peaks after smoothing with prominence > 0.15, matching the published method",
+    "primary_endpoint": "fraction of cells with >=2 peaks in the first approximately 4 hours",
+    "source_expected_direction": "oscillatory_fraction_R > oscillatory_fraction_B",
+    "secondary_endpoint": "cell-level AUC over available 6-minute samples; median_AUC_B > median_AUC_R",
+    "gate": "if the primary R>B oscillatory ordering is not reproduced in Fig2, stop chi interpretation and classify a native dynamic reproduction failure; Fig1 is a prespecified robustness check",
+    "G_role": "weak-activation limit/control case; no damping-order prediction is imposed"
+  },
+  "D_joint_interpretation": {
+    "inputs_only": ["Delta_A and its leave-one-replicate-out signs", "Delta_B and its leave-one-replicate-out signs", "native dynamic reproduction gate"],
+    "no_new_features_thresholds_or_weights": true,
+    "rules": {
+      "A_positive_robust__B_positive_robust": "concordant_global_and_circuit_damping_like_direction",
+      "A_positive_robust__B_nonpositive_or_unstable": "global_or_distributed_signal_without_robust_local_circuit_concordance",
+      "A_nonpositive_or_unstable__B_positive_robust": "circuit_localized_signal_diluted_or_absent_genomewide",
+      "A_nonpositive__B_nonpositive": "joint_non_support_for_historical_damping_like_direction",
+      "either_direction_unstable": "scale_or_representation_instability; no promotion"
+    },
+    "three_clone_descriptive_only": "Spearman/Kendall ordering against observed oscillatory fraction may be reported descriptively with all six label permutations, but n=3 cannot be treated as independent confirmatory evidence"
+  },
+  "failure_and_claim_ceiling": {
+    "no_pseudoreplication": "genes and cells are not independent biological-system replicates; no gene-level or cell-level p-value may be presented as validation of the cross-layer hypothesis",
+    "negative_result": "preserve and report",
+    "opposite_direction": "contradicts the historical damping-like relational prediction; do not retune",
+    "allowed_positive_claim": "pre-stimulus historical RNA fluctuation proxy shows exploratory directional correspondence with later NF-kB oscillatory/persistent behavior in this source",
+    "forbidden_claims": ["mu equals omega", "sigma equals gamma", "chi_GRI is a physical damping ratio", "chi=1 is a biological boundary", "cancer-wide generalization"]
+  }
+}
