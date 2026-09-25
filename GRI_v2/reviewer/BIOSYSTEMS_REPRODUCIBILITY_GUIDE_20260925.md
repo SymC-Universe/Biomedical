@@ -1,7 +1,7 @@
 # BioSystems Cancer Paper Reproducibility Guide
 
 **Manuscript ID:** BIOSYS-D-26-00267  
-**Current manuscript title:** *Recurrent Methylation Organization Across Human Cancers: Context-Dependent Methylation-RNA Coupling*  
+**Current manuscript title:** *Genomic Regulatory Instability in Human Cancer: Recurrent Multiomic Stability Architecture Across Tumor Types*  
 **Guide date:** 25 September 2026  
 **Repository:** `SymC-Universe/Biomedical`  
 **Submission evidence branch:** `biosystems-v27-repro-guide-20260925`  
