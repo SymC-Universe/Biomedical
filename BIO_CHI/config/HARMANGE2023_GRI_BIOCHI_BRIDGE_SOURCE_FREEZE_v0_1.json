@@ -1,0 +1,46 @@
+{
+  "schema_version": "0.1",
+  "project": "GRI Bio Chi Bridge",
+  "lineage": "harmange2023_melanoma_memory_bridge",
+  "branch": "gri-biochi-bridge-p0q-20260925",
+  "epistemic_mode": "P0-Q",
+  "selection_basis": "source/design only; no target molecular outcome values used",
+  "source": {
+    "paper": "Harmange et al. 2023, Disrupting cellular memory to overcome drug resistance",
+    "doi": "10.1038/s41467-023-41811-8",
+    "geo": "GSE237228",
+    "bioproject": "PRJNA994430",
+    "geo_samples": 22,
+    "sra_runs": 23,
+    "processed_metadata_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE237nnn/GSE237228/suppl/GSE237228_10x_exp3_metadata.tsv.gz",
+    "processed_barcodes_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE237nnn/GSE237228/suppl/GSE237228_10x_exp3_barcodes.tsv.gz",
+    "processed_genes_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE237nnn/GSE237228/suppl/GSE237228_10x_exp3_genes.tsv.gz",
+    "processed_matrix_url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE237nnn/GSE237228/suppl/GSE237228_10x_exp3_matrix.mtx.gz"
+  },
+  "bridge_scope": {
+    "B1_scalar": "CLOSED_NOT_LICENSED_NO_NATIVE_CONTINUOUS_TIME_GENERATOR_FROZEN",
+    "B2_modal": "OPEN_AFTER_SOURCE_CARRIER_MAP",
+    "B3_relational": "OPEN_AFTER_SOURCE_CARRIER_MAP",
+    "GRI_exact_methylation_S_block": "NOT_PRESENT",
+    "ATAC_status": "SEPARATE_CHROMATIN_ACCESSIBILITY_CONTEXT_NOT_RELABELLED_AS_METHYLATION",
+    "RNA_static_organization": "ELIGIBLE_FOR_PROSPECTIVE_GRI_COMPATIBLE_R_ANALYSIS",
+    "lineage_barcode": "PRIMARY_CARRIER_CANDIDATE",
+    "outcome": "state switching and resistance-related behavior; exact bridge endpoint must be frozen after carrier/source mapping and before target-value analysis"
+  },
+  "selection_reason": [
+    "same melanoma system links lineage barcodes with single-cell transcriptome",
+    "source design includes untreated and perturbation conditions",
+    "paper uses matched lineage copies across conditions to study state switching",
+    "public GEO package contains processed scRNA-seq matrix, genes, barcodes, metadata, plus ATAC samples",
+    "lineage identity can support same-carrier bridge rather than cohort-level resemblance",
+    "no scalar is required for bridge success"
+  ],
+  "anti_collapse": {
+    "ATAC_is_methylation": false,
+    "static_expression_is_damping": false,
+    "lineage_state_is_chi_bio": false,
+    "post_outcome_feature_selection": false,
+    "master_Bio_Chi_score": false
+  },
+  "next_gate": "metadata/header/source-object audit only; do not compute target molecular outcomes"
+}
