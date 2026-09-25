@@ -1,0 +1,121 @@
+{
+  "schema_version": "0.1",
+  "project": "GRI Bio Chi Bridge",
+  "branch": "gri-biochi-bridge-p0q-20260925",
+  "epistemic_mode": "P0-Q",
+  "freeze_date": "2026-09-25",
+  "objects": {
+    "chi_bio": "licensed local biological scalar from a genuine complex-conjugate dynamical factor",
+    "Chi_bio": "biological modal/vector representation",
+    "Bio_Chi": "relational/conglomerate system architecture",
+    "GRI": "frozen block-preserving static cancer architecture"
+  },
+  "hard_rules": {
+    "historical_CV2_is_chi_bio": false,
+    "static_TCGA_implies_time": false,
+    "chi_equals_one_biological_boundary": false,
+    "master_score_allowed": false,
+    "outcome_based_carrier_selection": false,
+    "direct_bridge_requires_matched_carrier": true,
+    "scalar_refusal_allowed": true,
+    "prior_failures_preserved": true
+  },
+  "bridge_questions": {
+    "B1": "GRI-compatible pre-outcome static architecture to independently licensed chi_bio or scalar-refusal state",
+    "B2": "GRI-compatible pre-outcome static architecture to independently constructed Chi_bio modal organization",
+    "B3": "GRI plus licensed chi_bio and/or Chi_bio to held-out realized cancer behavior beyond native/simple baselines"
+  },
+  "candidate_source_records": [
+    {
+      "id": "su2026_m397_melanoma",
+      "prior_status": "P0Q_ONCOLOGY_LINEAGE_CLOSED",
+      "same_system_static_dynamic_mapping": true,
+      "ordered_response": true,
+      "native_continuous_generator": true,
+      "reported_parameter_uncertainty": true,
+      "preoutcome_rna": true,
+      "preoutcome_substrate_or_chromatin": true,
+      "prior_scalar_disposition": "REFUSED_UNCERTAINTY_SENSITIVE_EQUIVALENT_NATIVE_INVARIANT",
+      "prior_modal_disposition": "QUALIFIED_MODEL_SPECIFIC_UNCERTAINTY_AWARE_NATIVE_GENERATOR_FAMILY",
+      "prior_biochi_disposition": "NOT_ADMITTED_C3_HELDOUT_BEHAVIOR_FAILURE",
+      "independence_role_for_bridge": "REUSED_DEPENDENT"
+    },
+    {
+      "id": "shaffer2017_melanoma",
+      "prior_status": "SOURCE_LINEAGE_QUALIFIED",
+      "same_system_static_dynamic_mapping": true,
+      "ordered_response": true,
+      "native_continuous_generator": false,
+      "reported_parameter_uncertainty": false,
+      "preoutcome_rna": true,
+      "preoutcome_substrate_or_chromatin": true,
+      "prior_scalar_disposition": "NOT_OPENED",
+      "prior_modal_disposition": "NOT_OPENED",
+      "prior_biochi_disposition": "NOT_OPENED",
+      "independence_role_for_bridge": "CANDIDATE_PROSPECTIVE"
+    },
+    {
+      "id": "harmange2023_scmemoryseq",
+      "prior_status": "SOURCE_LINEAGE_QUALIFIED",
+      "same_system_static_dynamic_mapping": true,
+      "ordered_response": true,
+      "native_continuous_generator": false,
+      "reported_parameter_uncertainty": false,
+      "preoutcome_rna": true,
+      "preoutcome_substrate_or_chromatin": true,
+      "prior_scalar_disposition": "NOT_OPENED",
+      "prior_modal_disposition": "NOT_OPENED",
+      "prior_biochi_disposition": "NOT_OPENED",
+      "independence_role_for_bridge": "CANDIDATE_PROSPECTIVE"
+    },
+    {
+      "id": "rehman2021_crc",
+      "prior_status": "TOPDOWN_P0Q_CLOSED",
+      "same_system_static_dynamic_mapping": true,
+      "ordered_response": true,
+      "native_continuous_generator": false,
+      "reported_parameter_uncertainty": false,
+      "preoutcome_rna": true,
+      "preoutcome_substrate_or_chromatin": false,
+      "prior_scalar_disposition": "SCALAR_NOT_REQUIRED_AND_NOT_LICENSED",
+      "prior_modal_disposition": "MIXED_RETURN_PLUS_REORGANIZATION",
+      "prior_biochi_disposition": "IDENTIFIABLE_PARTIAL_RECOVERY_WITH_REORGANIZATION",
+      "independence_role_for_bridge": "REUSED_DEPENDENT"
+    },
+    {
+      "id": "marsolier2022_tnbc",
+      "prior_status": "TOPDOWN_P0Q_GATE_FAILED",
+      "same_system_static_dynamic_mapping": true,
+      "ordered_response": true,
+      "native_continuous_generator": false,
+      "reported_parameter_uncertainty": false,
+      "preoutcome_rna": true,
+      "preoutcome_substrate_or_chromatin": true,
+      "prior_scalar_disposition": "SCALAR_NOT_REQUIRED_AND_NOT_LICENSED",
+      "prior_modal_disposition": "BASELINE_TRANSCRIPTOMIC_MODAL_INHERITANCE_NOT_DETECTED",
+      "prior_biochi_disposition": "SUBSTRATE_CONDITIONED_LINEAGE_FATE_NOT_REPRODUCED",
+      "independence_role_for_bridge": "REUSED_DEPENDENT"
+    }
+  ],
+  "selection_rule": {
+    "B1_requires": [
+      "same_system_static_dynamic_mapping",
+      "ordered_response",
+      "native_continuous_generator",
+      "reported_parameter_uncertainty",
+      "preoutcome_rna"
+    ],
+    "B2_requires": [
+      "same_system_static_dynamic_mapping",
+      "ordered_response",
+      "preoutcome_rna"
+    ],
+    "B3_requires": [
+      "same_system_static_dynamic_mapping",
+      "ordered_response",
+      "preoutcome_rna"
+    ],
+    "do_not_promote_reused_dependent_to_external_confirmation": true
+  },
+  "status": "FROZEN_BEFORE_BRIDGE_FEASIBILITY_AUDIT"
+}
