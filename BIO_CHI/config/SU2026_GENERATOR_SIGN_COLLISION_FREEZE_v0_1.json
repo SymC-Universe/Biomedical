@@ -1,0 +1,35 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Su 2026 publication-equation versus public-code generator sign collision",
+  "branch": "bio-chi-oncology-p0q-20260924",
+  "discovered_before_current_workbook_numeric_parameter_opening": true,
+  "source_basis": {
+    "publication_equation": "Su et al. 2026 Eq. 2 / Methods Eq. M10 gives dMearly = Be + Me-e*Mearly + Ml-e*Mlate and dMlate = Bl + Me-l*Mearly + Ml-l*Mlate",
+    "public_code": "Pinned Runge-Kutta4,5-250124.py implements formula1 = alpha1 - beta1*g1 - a1*g2 and formula2 = alpha2 + a2*g1 - a3*g2",
+    "legacy_source_mapping_evidence": "The public-code scenario-1 parameter tuple aligns one-to-one with the historical published table values as a1=Me-l, a2=Ml-e, a3=Me-e, alpha1=Bl, beta1=Ml-l, alpha2=Be"
+  },
+  "state_order": ["Mearly", "Mlate"],
+  "candidate_generators": {
+    "PUBLICATION_EQUATION": {
+      "b": ["Be", "Bl"],
+      "A": [["Me-e", "Ml-e"], ["Me-l", "Ml-l"]]
+    },
+    "PUBLIC_CODE_MAPPING": {
+      "b": ["Be", "Bl"],
+      "A": [["-Me-e", "Ml-e"], ["-Me-l", "-Ml-l"]]
+    }
+  },
+  "adjudication_rule": {
+    "compute_both_for_all_eight_scenarios": true,
+    "use_identical_reconstructed_state_inputs": true,
+    "no_parameter_refitting": true,
+    "do_not_select_mapping_from_attractive_chi": true,
+    "primary_source_fidelity_question": "which frozen mapping reproduces the source-defined fitted trajectories/data under the published coefficients without retuning",
+    "if_both_fail": "REFUSE_GENERATOR_QUALIFICATION_SOURCE_COLLISION",
+    "if_both_pass_similarly": "REFUSE_UNIQUE_GENERATOR_NONIDENTIFIABLE",
+    "if_one_passes_materially_better": "retain the better mapping as source-fidelity-supported at P0-Q but record the publication/code inconsistency explicitly"
+  },
+  "scalar_rule": "No chi calculation is admitted until generator mapping is adjudicated. Candidate chi values from both mappings may be computed only as quarantined diagnostics.",
+  "status": "FROZEN_PRE_NUMERIC_ADJUDICATION"
+}
