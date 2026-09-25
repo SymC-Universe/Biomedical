@@ -1,0 +1,35 @@
+{
+  "schema_version":"0.1",
+  "project":"Bio Chi Investigation",
+  "gate":"Rehman POP66 genetic carrier persistence layer",
+  "branch":"bio-chi-topdown-pivot-20260924",
+  "workflow_run_id":36091185131,
+  "workflow_head_sha":"334e5a596a341f978e87b94f918d9a2155b4e994",
+  "artifact_id":10845228827,
+  "artifact_digest":"sha256:4493f4ea5af746eaa54d7c964461f50ac3297bcbdaa445cc0d5255e91113c8e2",
+  "status":"FAIL_DESCRIPTIVE_CARRIER_PERSISTENCE_GATE",
+  "mutation_count_retained":65,
+  "source_declared_garbage_skipped":["s44","s66"],
+  "rms_vaf_deviation":{
+    "primary_P0_G0_vehicle_centroid":{
+      "regrowth":0.17174483813890368,
+      "resistant_1":0.22194875960865126,
+      "resistant_2":0.16663107988185444,
+      "resistant_3":0.16430049897604798
+    },
+    "vehicle_only_centroid":{
+      "regrowth":0.1578487467639204,
+      "resistant_1":0.2227664711552709,
+      "resistant_2":0.150204150253693,
+      "resistant_3":0.15414003125901746
+    }
+  },
+  "gate":{
+    "regrowth_closer_than_all_resistant_primary":false,
+    "regrowth_closer_than_all_resistant_vehicle_only":false,
+    "combined_pass":false
+  },
+  "scientific_effect":"Direct VAF geometry does not support a simple genetic-carrier-persistence explanation for functional recovery. Resistant tumors #2 and #3 are at least as close to the frozen baseline centroids as the regrowth sample on the primary RMS metric.",
+  "epistemic_ceiling":"Post-result P0-Q carrier qualification only; one regrowth genetic sample, no inferential p-value, no clone-frequency inference, no scalar construction.",
+  "next_gate":"close the Rehman top-down branch as behavioral recovery plus mixed transcriptomic reorganization without a simple VAF carrier explanation; repair the top-down selector's return-target applicability bug before selecting the next system"
+}
