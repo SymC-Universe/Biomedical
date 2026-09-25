@@ -1,0 +1,113 @@
+{
+  "schema_version": "0.1",
+  "project": "GRI <-> Bio Chi bridge",
+  "task_id": "GRI_BIOCHI_KIZILIRMAK_C_D_EXECUTION_20260925",
+  "date": "2026-09-25",
+  "evidence_tier": "P0 exploratory / source-qualified relational test",
+  "source": {
+    "paper": "Kizilirmak et al. 2023",
+    "doi": "10.1016/j.isci.2023.108573",
+    "geo": "GSE247446",
+    "table_s3_sha256": "f76c8eaf685d192f2340d178aac62f8263004077276d3e64f96ba41faab408f4",
+    "data_s1_sha256": "9ee2914095e9676b92806c33e46929965c6b4c7535f74a00d4462152678ba7b8"
+  },
+  "execution": {
+    "successful_run_id": 36189585704,
+    "successful_head_sha": "cf9ea7f501701efe636e05856a0a5369774448ea",
+    "artifact_id": 10887429843,
+    "artifact_digest": "sha256:d05748da44d82092b8e9056e28d396f577166233159142e338010102216ce12d",
+    "prior_mechanical_failure_run_id": 36189395075,
+    "prior_failure": "NumPy 2.5 removed np.trapz; repaired with API-equivalent np.trapezoid; no RNA values opened before failure"
+  },
+  "native_dynamics": {
+    "Fig2": {
+      "B_oscillatory_fraction_ge2": 0.15827338129496402,
+      "R_oscillatory_fraction_ge2": 0.5485714285714286,
+      "G_oscillatory_fraction_ge2": 0.4682926829268293,
+      "B_median_AUC": 414.22407,
+      "R_median_AUC": 336.44076
+    },
+    "Fig1": {
+      "B_oscillatory_fraction_ge2": 0.20463320463320464,
+      "R_oscillatory_fraction_ge2": 0.607773851590106
+    },
+    "primary_gate_pass": true,
+    "source_replication_robustness_pass": true
+  },
+  "A_genomewide": {
+    "common_eligible_genes": 10439,
+    "median_chi": {
+      "B": 0.020837388494938158,
+      "R": 0.017425016629488917,
+      "G": 0.020443785424828668
+    },
+    "Delta_A_B_minus_R": 0.003412371865449241,
+    "fraction_gene_chi_B_gt_R": 0.6202701408180861,
+    "leave_one_replicate_out_Delta_A": [
+      0.004834631017360733,
+      0.0023656306030045322,
+      0.004146904907591849,
+      0.002363020695190475,
+      0.00426233274850836
+    ],
+    "direction_robust_all5": true,
+    "descriptive_three_clone_spearman_vs_oscillatory_fraction": -1
+  },
+  "B_circuit": {
+    "frozen_genes": [
+      "Tnfrsf1a",
+      "Rela",
+      "Nfkbia",
+      "Tnfaip3"
+    ],
+    "median_chi": {
+      "B": 0.007273133887069482,
+      "R": 0.008721249637555429,
+      "G": 0.008786553051270646
+    },
+    "Delta_B_B_minus_R": -0.0014481157504859466,
+    "leave_one_replicate_out_Delta_B": [
+      -0.002665166739116291,
+      0.0008873585942816269,
+      -0.0025696007204298234,
+      -0.001953046922636396,
+      -0.0010837260902649744
+    ],
+    "direction_robust_all5": false,
+    "component_directions": {
+      "Tnfrsf1a": "positive",
+      "Rela": "negative",
+      "Nfkbia": "positive",
+      "Tnfaip3": "negative"
+    },
+    "diagnostic": "B_COMPONENT_HETEROGENEITY"
+  },
+  "diagnostics": {
+    "workflow_run_id": 36189960260,
+    "artifact_id": 10887597534,
+    "artifact_digest": "sha256:5a09fe1310f03ffee361700c6ad41ada9ee26514d7f2c37e415005dd897b12fd",
+    "A_classification": "A_DIRECTION_ROBUST_BUT_MEAN_DEPENDENT",
+    "spearman_chi_vs_mean": {
+      "B": -0.825295807795103,
+      "R": -0.8285386216852656,
+      "G": -0.8242717630276523
+    },
+    "median_log_sd_ratio_B_over_R": 0.20537677639533614,
+    "median_log_mean_ratio_B_over_R": 0.011383631368337461,
+    "expression_deciles_positive": 10,
+    "lower_mean_stresses_positive": 4,
+    "B_classification": "B_COMPONENT_HETEROGENEITY"
+  },
+  "D_joint": {
+    "frozen_parent_classification": "scale_or_representation_instability_no_promotion",
+    "postresult_interpretation": "Global pre-stimulus chi_GRI shows robust exploratory correspondence with later oscillatory/persistent phenotype, while the source-defined local circuit aggregate refuses scalar collapse because its components show stable opposing directions. This is compatible with a distributed scalar state proxy coexisting with component-specific/modal local dynamics, but is not evidence that chi_GRI is a physical damping ratio.",
+    "promotion_debt_active": true
+  },
+  "forbidden_promotions": [
+    "mu=omega",
+    "sigma=gamma",
+    "chi_GRI=physical damping ratio",
+    "chi=1 biological boundary",
+    "cancer-wide generalization"
+  ]
+}
