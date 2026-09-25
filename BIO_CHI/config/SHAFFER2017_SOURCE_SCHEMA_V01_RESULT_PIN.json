@@ -1,0 +1,37 @@
+{
+  "schema_version":"0.1",
+  "project":"GRI Bio Chi Bridge",
+  "gate":"Shaffer 2017 GSE97679 processed RNA source-schema audit",
+  "branch":"gri-biochi-bridge-p0q-20260925",
+  "workflow_run_id":36137066754,
+  "workflow_head_sha":"4acefd5a0438a8e1705375333a1291d23fed154c",
+  "artifact_id":10865252231,
+  "artifact_digest":"sha256:3a3843f1943487def122cafa55213b1eace3d1f582af94939f8a2167cd28f96b",
+  "status":"PASS_SOURCE_SCHEMA_AND_TIMEPOINT_MAP",
+  "file_1":{
+    "sha256":"7bb7296f36d32e71e8b63bf7e813351f058e92ab9cda81ec9fd9b67d81f674f3",
+    "size_bytes":1953578,
+    "rows":509456,
+    "header":["experiment","sampleID","gene_id","counts"],
+    "sample_ids":["Sort1WeekDrugEGFR1","Sort1WeekDrugMix1","SortNoDrugEGFR1","SortNoDrugEGFR2","SortNoDrugEGFR3","SortNoDrugMix1","SortNoDrugMix2","SortNoDrugMix3"]
+  },
+  "file_2":{
+    "sha256":"a1c6180334d037c002b173faf8cdd2162b4d8563cc93e0eb0014cbfe222c4cd8",
+    "size_bytes":2418265,
+    "rows":636820,
+    "header":["experiment","sampleID","gene_id","counts"],
+    "sample_ids":["week1-EGFRpos-2","week1-mix-2","week4-EGFRneg-1","week4-EGFRneg-2","week4-EGFRpos-1","week4-EGFRpos-2","week4-mix-1","week4-mix-2","week5-EGFRneg","week5-mix"]
+  },
+  "checks":{
+    "files_nonempty":true,
+    "tables_have_rows":true,
+    "untreated_present":true,
+    "week1_present":true,
+    "week4_present":true,
+    "EGFR_high_present":true,
+    "mixed_present":true
+  },
+  "gene_effects_opened":false,
+  "molecular_target_statistics_computed":false,
+  "next_action":"freeze evidence roles and batch-aware carrier contract before B2/B3"
+}
