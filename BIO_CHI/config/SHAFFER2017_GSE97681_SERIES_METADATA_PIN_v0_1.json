@@ -1,0 +1,61 @@
+{
+  "schema_version": "0.1",
+  "project": "GRI Bio Chi Bridge",
+  "lineage": "shaffer2017_gse97681_series_metadata",
+  "source": {
+    "accession": "GSE97681",
+    "status": "Public on Apr 13, 2017",
+    "title": "Gene expression signature of vemurafenib resistance in WM989 and WM983B melanoma cells",
+    "organism": "Homo sapiens",
+    "experiment_type": "Expression profiling by high throughput sequencing",
+    "sample_count": 122,
+    "overall_design": "RNA sequencing on WM989 cells without vemurafenib, after 48 hours of treatment, and upon the development of resistance.",
+    "superseries": "GSE97682",
+    "bioproject": "PRJNA382674",
+    "sra": "SRP103828",
+    "processed_files": [
+      "GSE97681_meltedData_wm983b_run3.tsv.gz",
+      "GSE97681_meltedData_wm983b_run4.tsv.gz",
+      "GSE97681_meltedwm983bLdB_run2.tsv.gz",
+      "GSE97681_wm983bLdB_star_HTSeqCounts.tsv.gz",
+      "GSE97681_wm9LdB_star_HTSeqCounts_full.tsv.gz"
+    ]
+  },
+  "title_level_structure": {
+    "source_exposes_paired_drug_no_drug_titles": true,
+    "source_exposes_48h_treatment_titles": true,
+    "source_exposes_drug_holiday_titles": true,
+    "source_exposes_week1_week3_week5_titles": true,
+    "endpoint_selected": false
+  },
+  "representative_sample_checks": [
+    {
+      "accession": "GSM2575305",
+      "title": "A6_ColonyC2_Drug",
+      "cell_line": "WM989",
+      "subclone": "C2",
+      "condition": "Drug",
+      "treatment": "1 uM vemurafenib",
+      "alignment": "STAR hg19",
+      "counting": "HTSeq",
+      "differential_expression": "DESeq2",
+      "processed_table": "wm9LdB_star_HTSeqCounts_full.tsv"
+    },
+    {
+      "accession": "GSM2575385",
+      "title": "B10-no-drug",
+      "cell_line": "WM983B",
+      "subclone": "B10",
+      "condition": "NoDrug",
+      "treatment": "1 uM vemurafenib",
+      "alignment": "STAR hg19",
+      "counting": "HTSeq",
+      "differential_expression": "DESeq2",
+      "processed_table": "meltedData_wm983b_run3.tsv"
+    }
+  ],
+  "epistemic_status": "SOURCE_METADATA_ONLY",
+  "molecular_effect_values_opened": false,
+  "scientific_endpoint_selected": false,
+  "disposition": "GSE97681_SOURCE_METADATA_SUPPORTS_THE_PREVIOUSLY_FROZEN_INTERNAL_VALIDATION_AND_SAME_SOURCE_TRANSFER_ROLES_AT_SOURCE_LEVEL; EXACT_B2_B3_ENDPOINT_SELECTION_REMAINS_UNFROZEN"
+}
