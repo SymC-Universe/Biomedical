@@ -20,7 +20,7 @@ The editable manuscript and Supplementary Information remain private authoring f
 2. Read `BIOSYSTEMS_ADVERSARIAL_R1_PUBLIC_REPRODUCIBILITY_INDEX_20260923.md` for the full chronological public record through v26.
 3. Read the five result families below only if the corresponding manuscript claim is being audited.
 4. For the biological chi qualification, use the separately frozen public lineage at `bio-chi-topdown-pivot-20260924` @ `86463567f5fab783689e30ce21d7b061623fff36`.
-5. Do **not** use the active `gri-biochi-bridge-p0q-20260925` branch as evidence for this submission. Its direct same-carrier GRI-to-Bio-Chi bridge remains an active qualification program and is not a manuscript claim.
+5. For the manuscript's post-result context-gating paragraph, use only the frozen Kizilirmak files named below from `gri-biochi-bridge-p0q-20260925`. The rest of that branch remains active/future work and is not submission evidence.
 
 ## Claim-to-record map
 
@@ -84,16 +84,18 @@ The revision does **not** discard damping or oscillation as biological dynamical
 
 This scope restores the dynamical question without back-projecting it onto cross-sectional TCGA statistics.
 
-## Active bridge work is not a submission dependency
+## Frozen context-gating evidence inside an otherwise active bridge branch
 
-The branch `gri-biochi-bridge-p0q-20260925` is an ongoing post-manuscript qualification program asking whether frozen static architecture can be joined to independently licensed dynamics on a defensible same carrier.
+The branch `gri-biochi-bridge-p0q-20260925` remains an ongoing qualification program, but the revised main manuscript now uses one closed, frozen subset from it as a post-result representation/context-gating control. Submission-relevant files on that branch are limited to:
 
-For this paper:
+- `BIO_CHI/config/KIZILIRMAK2023_C_D_V01_RESULT_PIN.json`;
+- `BIO_CHI/config/KIZILIRMAK2023_IL1B_C_D_V01_RESULT_PIN.json`;
+- `BIO_CHI/config/KIZILIRMAK2023_CONTEXT_GATE_V01_RESULT_PIN.json`;
+- `BIO_CHI/control/KIZILIRMAK2023_CONTEXT_GATE_CLOSURE_20260925.md`;
+- `BIO_CHI/control/BIOSYSTEMS_MAIN_CONTEXT_GATING_INTEGRATION_CHECKPOINT_20260925.md`;
+- the corresponding frozen configs, source preflights, diagnostic scripts, and workflows named in the repository guide.
 
-- Harmange direct same-carrier bridge is a source-materialization refusal, not supporting manuscript evidence.
-- Shaffer is source-qualified/preanalysis work and has not been promoted into this manuscript.
-- No B2/B3 bridge result is required to reproduce or interpret any submitted claim.
-- Reviewers therefore do not need to inspect that moving branch unless they are auditing future work beyond the submitted paper.
+Other bridge work remains outside the submission evidence spine. Harmange direct same-carrier bridge remains a source-materialization refusal; Shaffer remains source-qualified/preanalysis work; no unfinished B2/B3 bridge result is required to reproduce or interpret the submitted manuscript.
 
 ## What the paper does not claim
 
@@ -155,7 +157,7 @@ For this paper, read records in this order:
 -> scientific parent `biosystems-v26-final-substantive-20260923` @ `509c4f3335d9020ea8e910579d6d98cb2fa9e58d`  
 -> biological chi qualification `bio-chi-topdown-pivot-20260924` @ `86463567f5fab783689e30ce21d7b061623fff36`.
 
-The active `gri-biochi-bridge-p0q-20260925` branch is explicitly outside the submission evidence spine.
+`gri-biochi-bridge-p0q-20260925` contributes only the closed Kizilirmak context-gating subset named above. All other work on that branch remains outside the submission evidence spine.
 
 ## Reviewer stop rule
 
