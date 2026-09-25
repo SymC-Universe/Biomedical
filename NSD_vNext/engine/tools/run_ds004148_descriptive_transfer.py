@@ -41,10 +41,10 @@ PAIR_METRIC_TO_REFERENCE = {
     "first_peak_nearest_center_difference_median_hz": "first_peak_nearest_center_difference_median_hz",
 }
 RECORDING_METRIC_TO_REFERENCE = {
-    "aperiodic_model_disagreement_channel_fraction": "aperiodic_model_disagreement_fraction_per_session",
-    "max_peak_count_channel_fraction": "max_peak_count_channel_fraction_per_session",
-    "zero_peak_channel_fraction": "zero_peak_channel_fraction_per_session",
-    "width_boundary_hits_per_channel": "width_boundary_hits_per_channel_per_session",
+    "aperiodic_model_disagreement_channel_fraction": "aperiodic_model_disagreement_channel_fraction",
+    "max_peak_count_channel_fraction": "max_peak_count_channel_fraction",
+    "zero_peak_channel_fraction": "zero_peak_channel_fraction",
+    "width_boundary_hits_per_channel": "width_boundary_hits_per_channel",
 }
 
 
