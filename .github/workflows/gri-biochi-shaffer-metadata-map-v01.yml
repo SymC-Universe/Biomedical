@@ -1,0 +1,29 @@
+name: GRI Bio Chi Shaffer metadata map v0.1
+on:
+  push:
+    branches: [gri-biochi-bridge-p0q-20260925]
+    paths:
+      - 'BIO_CHI/config/SHAFFER2017_GRI_BIOCHI_SOURCE_FREEZE_v0_1.json'
+      - 'BIO_CHI/src/audit_shaffer2017_common_gene_sample_map_v0_1.py'
+      - '.github/workflows/gri-biochi-shaffer-metadata-map-v01.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run metadata-only common-gene/sample-map audit
+        run: python BIO_CHI/src/audit_shaffer2017_common_gene_sample_map_v0_1.py
+      - name: Upload result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: SHAFFER2017_METADATA_MAP_V01
+          path: BIO_CHI/artifacts/generated/shaffer2017_common_gene_sample_map_v0_1.json
+          if-no-files-found: error
