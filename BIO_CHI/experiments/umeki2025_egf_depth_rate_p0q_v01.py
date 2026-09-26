@@ -44,7 +44,8 @@ def sha256(data:bytes)->str:
 def fetch(path,blob):
     local=SRC/path.replace("/","__")
     if not local.exists():
-        url=f"{BASE}/{urllib.parse.quote(path)}"\n        req=urllib.request.Request(url,headers={"User-Agent":"SymC-BioChi-Umeki/0.1"})
+        url=f"{BASE}/{urllib.parse.quote(path)}"
+        req=urllib.request.Request(url,headers={"User-Agent":"SymC-BioChi-Umeki/0.1"})
         with urllib.request.urlopen(req,timeout=120) as r:
             local.write_bytes(r.read())
     data=local.read_bytes()
