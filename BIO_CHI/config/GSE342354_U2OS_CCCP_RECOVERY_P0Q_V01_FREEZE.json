@@ -1,0 +1,94 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "experiment_id": "GSE342354_U2OS_CCCP_RECOVERY_P0Q_V01",
+  "date_frozen": "2026-09-25",
+  "authority": "SymC GOM v0.8.6",
+  "evidence_class": "P0-Q_LITERATURE_OPEN_INDEPENDENT_TRANSCRIPTOMIC_RECOVERY",
+  "source_qualification": "GSE342354_SOURCE_QUALIFICATION_V01_RESULT_PIN.json",
+  "source": {
+    "geo_accession": "GSE342354",
+    "processed_file": "GSE342354_Processed_data.txt.gz",
+    "processed_file_sha256": "fd088eb4e50e9a2ab6bb428b2566029d0177c7f4a596f0effc8f846161e472af",
+    "metadata_matrix_sha256": "f26f807d5fc3c87c7a0604485b69862fc540cf3f0aeebe9c83a2ebc9d3e2e42a",
+    "sample_groups": {
+      "WT": ["WT1_count","WT2_count","WT3_count"],
+      "CCCP": ["CCCP1_count","CCCP2_count","CCCP3_count"],
+      "W1H": ["W1H1_count","W1H2_count","W1H3_count"],
+      "W6H": ["W6H1_count","W6H2_count","W6H3_count"]
+    }
+  },
+  "whole_event": {
+    "system": "human U2OS cells",
+    "perturbation": "50 uM CCCP for 30 min",
+    "recovery_states": ["1 h washout","6 h washout"],
+    "target": "transcriptomic displacement from untreated state and return/reorganization after perturbation removal"
+  },
+  "primary_processing": {
+    "expression_source": "raw count columns only; deposited FPKM and differential-expression statistics are not used in the primary geometry",
+    "gene_identity": "source gene_id; duplicate gene_id rows, if any, are summed before filtering",
+    "gene_biotype_gate": "protein_coding only",
+    "label_blind_expression_filter": "retain genes with count >= 10 in at least 3 of 12 samples",
+    "size_factor_method": "DESeq2-style median-of-ratios using positive-count geometric means (poscounts variant); no phenotype labels",
+    "transform": "log2(normalized_count + 1)",
+    "sample_exclusion": "none; all 12 frozen biological replicates remain in the primary analysis",
+    "feature_selection_after_outcome": "forbidden"
+  },
+  "primary_state_geometry": {
+    "space": "full filtered log-normalized protein-coding gene space without supervised gene selection",
+    "condition_centroid": "arithmetic mean of the three biological replicate vectors",
+    "damage_vector": "v = mu_CCCP - mu_WT",
+    "damage_distance": "D_C = ||mu_CCCP - mu_WT||_2",
+    "washout_distances": {
+      "D_1": "||mu_W1H - mu_WT||_2",
+      "D_6": "||mu_W6H - mu_WT||_2"
+    },
+    "recovery_fraction": {
+      "R_1": "1 - D_1/D_C",
+      "R_6": "1 - D_6/D_C"
+    },
+    "progression": "Delta_6_1 = D_1 - D_6",
+    "parallel_coordinate": "q_t = dot(mu_t-mu_WT, v) / dot(v,v); q=0 at WT and q=1 at CCCP",
+    "orthogonal_reorganization": "h_t = ||(mu_t-mu_WT) - q_t v||_2 / D_C",
+    "recovery_vector_alignment": "cosine(mu_W6H-mu_CCCP, v); negative values are directionally consistent with reversal of the damage vector"
+  },
+  "uncertainty": {
+    "method": "nonparametric bootstrap of biological replicates independently within each of the four frozen conditions",
+    "B": 10000,
+    "seed": 20260925,
+    "no_gene_bootstrap": true
+  },
+  "Bio_Chi_decision": {
+    "RECOVERY_TOWARD_WT_SUPPORTED_P0Q": "source gate passes and the bootstrap 95% interval for R_6 is entirely above 0",
+    "RECOVERY_UNRESOLVED_P0Q": "bootstrap 95% interval for R_6 includes 0",
+    "DIVERGENCE_FROM_WT_P0Q": "bootstrap 95% interval for R_6 is entirely below 0",
+    "progressive_recovery_support": "reported separately only if the bootstrap 95% interval for Delta_6_1 is entirely above 0"
+  },
+  "Chi_bio_representation_test": {
+    "object": "the four condition centroids WT, CCCP, W1H, W6H in the same full state space",
+    "svd": "center the four centroids across conditions and compute the singular spectrum",
+    "one_dimensional_adequacy": "PC1 variance fraction >= 0.95 AND maximum rank-1 condition-centroid reconstruction residual divided by D_C <= 0.10",
+    "bootstrap_requirement": "at least 95% of replicate-bootstrap realizations must also satisfy both one-dimensional adequacy criteria",
+    "if_pass": "ONE_DIMENSIONAL_TRANSCRIPTOMIC_RECOVERY_PATH_ADEQUATE_P0Q",
+    "if_fail": "MULTICOORDINATE_TRANSCRIPTOMIC_RECOVERY_REQUIRED_P0Q",
+    "note": "one-dimensional state-path adequacy does not license scalar chi_bio"
+  },
+  "chi_bio": {
+    "status_at_freeze": "NOT_OPENED",
+    "rule": "cross-sectional replicate RNA counts do not identify a same-mode dynamical damping carrier; no scalar will be derived from mean, variance, PCA position, recovery fraction, or fitted interpolation"
+  },
+  "prespecified_sensitivities": {
+    "all_gene_sensitivity": "repeat the state geometry using all source biotypes passing the same label-blind count filter",
+    "FPKM_sensitivity": "repeat descriptive centroid geometry using log2(FPKM+1) on the same primary protein-coding gene identities; cannot replace count-normalized primary result",
+    "leave_one_replicate_per_condition": "enumerate 3^4 = 81 combinations selecting two of three replicates per condition by leaving one out; report distribution of R_6 and PC1 fraction"
+  },
+  "failure_rules": [
+    "processed file hash mismatch stops analysis",
+    "sample-column identity mismatch stops analysis",
+    "fewer than 1000 primary protein-coding genes after the frozen filter is a source/representation failure",
+    "nonfinite size factor or zero damage distance stops the geometry",
+    "negative, unresolved, or multicoordinate outcomes are preserved and cannot be rescued by pathway selection",
+    "source-deposited differential-expression results are not used to choose the primary gene space"
+  ],
+  "claim_ceiling": "independent-source bulk-transcriptomic P0-Q recovery qualification in one U2OS CCCP/washout series; no causal mitochondrial repair mechanism, no universal biological chi law, and no scalar chi_bio boundary"
+}
