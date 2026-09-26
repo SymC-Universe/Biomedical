@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # workflow trigger after registration
 from __future__ import annotations
-import hashlib, json, math, traceback, urllib.request
+import hashlib, json, math, traceback, urllib.request, urllib.parse
 from pathlib import Path
 
 import numpy as np
@@ -44,7 +44,7 @@ def sha256(data:bytes)->str:
 def fetch(path,blob):
     local=SRC/path.replace("/","__")
     if not local.exists():
-        req=urllib.request.Request(f"{BASE}/{path}",headers={"User-Agent":"SymC-BioChi-Umeki/0.1"})
+        url=f"{BASE}/{urllib.parse.quote(path)}"\n        req=urllib.request.Request(url,headers={"User-Agent":"SymC-BioChi-Umeki/0.1"})
         with urllib.request.urlopen(req,timeout=120) as r:
             local.write_bytes(r.read())
     data=local.read_bytes()
