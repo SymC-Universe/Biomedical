@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# execution trigger after workflow registration
 """Frozen Meneses 2026 E. coli PMF recovery Bio Chi P0-Q analysis.
 
 Implements MENESES2026_ECOLI_PMF_RECOVERY_P0Q_V01_FREEZE.json.
