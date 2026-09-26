@@ -190,6 +190,54 @@ This refinement further favors an observable-equivalence candidate over interpre
 
 It does not authorize implementation or real-EEG admission.
 
+
+## Structural identifiability versus numerical conditioning
+
+The closed-form covariance inversions above establish structural identifiability, not uniform numerical conditioning.
+
+Once rho and theta are known, the first two positive lags satisfy
+
+[gamma_1 / rho, gamma_2 / rho^2]^T
+=
+M(theta) [A, B]^T,
+
+with
+
+M(theta) =
+[[cos(theta), sin(theta)],
+ [cos(2 theta), sin(2 theta)]].
+
+The determinant is
+
+det M(theta) = sin(theta),
+
+and the exact 2-norm condition number is
+
+kappa_2(M)
+=
+sqrt((1 + |cos(theta)|) / (1 - |cos(theta)|)).
+
+For 0 < theta < pi/2 this reduces to
+
+kappa_2(M) = cot(theta / 2).
+
+Therefore the covariance-phase coordinate is structurally unique whenever sin(theta) != 0, but direct finite-lag inversion becomes increasingly ill-conditioned as theta approaches 0, and symmetrically near the Nyquist degeneracy.
+
+The pole-recovery recurrence has the same structural warning because
+
+gamma_1 gamma_3 - gamma_2^2
+=
+-rho^4 (A^2 + B^2) sin^2(theta).
+
+Accordingly, the closed-form lag formulas are proofs of uniqueness and candidate diagnostics, not a proposed production estimator.
+
+For the current 256 Hz fitter band, the normalized two-lag condition number is about 81.5 at 1 Hz and about 1.62 at 45 Hz. The existing operating-region probe only exercises isotropic B=0 truths at 5, 10, and 20 Hz; across its current damping grid the same condition number is already approximately 16.6-27.2 at 5 Hz, 8.3-13.6 at 10 Hz, and 4.1-6.7 at 20 Hz.
+
+This does not establish that conditioning caused any prior likelihood-fit failure. It identifies a prospective qualification requirement. Any approved nonzero-B exact-image candidate should be tested across the intended frequency/conditioning region with fresh known-truth controls, including B=0 isotropic controls, nonzero-B white-process truths, near-image-boundary cases, and colored-process out-of-family refusals. The production route should remain likelihood/innovations based rather than use plug-in two-lag inversion.
+
+No numerical conditioning cutoff, frequency floor, eta grid, duration, optimizer setting, or acceptance threshold is frozen by this note.
+
+
 ## Interpretation ceiling
 
 This preflight does not:
