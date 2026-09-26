@@ -1,0 +1,140 @@
+{
+  "schema": "NSD_DS004148_D4_RESTING_CROSSSESSION_MANIFEST_V0_1",
+  "date": "2026-09-22",
+  "status": "FROZEN_BEFORE_CROSS_SESSION_D4_EXECUTION",
+  "dataset": "ds004148",
+  "source_release": {
+    "openneuro_doi": "10.18112/openneuro.ds004148.v1.0.0",
+    "public_git_repository": "OpenNeuroDatasets/ds004148",
+    "public_git_commit": "0c740d838a2c33feeec0b6e514aea323d0e65ca4",
+    "nemar_mirror": "on004148/v1.0.0"
+  },
+  "subject": "sub-01",
+  "selection_basis": "first dataset subject; expansion fixed before cross-session raw-payload inspection",
+  "expected": {
+    "raw_channels": 61,
+    "sampling_rate_hz": 500,
+    "duration_seconds": 300,
+    "binary_format": "IEEE_FLOAT_32",
+    "channels_tsv_rows": 61,
+    "eeg_json_declared_channel_count": 64
+  },
+  "recordings": [
+    {
+      "session": "ses-session1",
+      "task": "eyesclosed",
+      "base": "sub-01/ses-session1/eeg/sub-01_ses-session1_task-eyesclosed_eeg",
+      "files": {
+        "eeg": {
+          "size_bytes": 36600000,
+          "md5": "0fceeb9eb4163b86b815061f8fff80d7"
+        },
+        "vhdr": {
+          "size_bytes": 1122,
+          "md5": "c5e313903936ef2fb9c1b3e0bfd61593"
+        },
+        "vmrk": {
+          "size_bytes": 5960,
+          "md5": "372402829a14249220eb8365f964d2de"
+        }
+      }
+    },
+    {
+      "session": "ses-session1",
+      "task": "eyesopen",
+      "base": "sub-01/ses-session1/eeg/sub-01_ses-session1_task-eyesopen_eeg",
+      "files": {
+        "eeg": {
+          "size_bytes": 36600000,
+          "md5": "75e12c6499540e3148316ef502ad03dd"
+        },
+        "vhdr": {
+          "size_bytes": 1118,
+          "md5": "a5f9899c3cfa0c85f24c93c4eb83ef4c"
+        },
+        "vmrk": {
+          "size_bytes": 5958,
+          "md5": "df580c077add7e4a840b46585cf8499e"
+        }
+      }
+    },
+    {
+      "session": "ses-session2",
+      "task": "eyesclosed",
+      "base": "sub-01/ses-session2/eeg/sub-01_ses-session2_task-eyesclosed_eeg",
+      "files": {
+        "eeg": {
+          "size_bytes": 36600000,
+          "md5": "c65d06480c33cf4287359c8e27f64e90"
+        },
+        "vhdr": {
+          "size_bytes": 1122,
+          "md5": "67b6c98e85205824c3651489f1aa5496"
+        },
+        "vmrk": {
+          "size_bytes": 477,
+          "md5": "ffc204662c68a2a75b0969f7978fa768"
+        }
+      }
+    },
+    {
+      "session": "ses-session2",
+      "task": "eyesopen",
+      "base": "sub-01/ses-session2/eeg/sub-01_ses-session2_task-eyesopen_eeg",
+      "files": {
+        "eeg": {
+          "size_bytes": 36600000,
+          "md5": "616573200b5f1d5542f12b4fea5d48c2"
+        },
+        "vhdr": {
+          "size_bytes": 1118,
+          "md5": "a221f7abe65710291ccbe0a122613cd3"
+        },
+        "vmrk": {
+          "size_bytes": 475,
+          "md5": "b6b0fff51224f823bdb5815df4138c83"
+        }
+      }
+    },
+    {
+      "session": "ses-session3",
+      "task": "eyesclosed",
+      "base": "sub-01/ses-session3/eeg/sub-01_ses-session3_task-eyesclosed_eeg",
+      "files": {
+        "eeg": {
+          "size_bytes": 36600000,
+          "md5": "ad13acbac5743b93a2fdb1ec69836edd"
+        },
+        "vhdr": {
+          "size_bytes": 1122,
+          "md5": "5ffd3e9393298fa228471b7b9d956af1"
+        },
+        "vmrk": {
+          "size_bytes": 477,
+          "md5": "a2cf24e376a609165226f88d4dac52a6"
+        }
+      }
+    },
+    {
+      "session": "ses-session3",
+      "task": "eyesopen",
+      "base": "sub-01/ses-session3/eeg/sub-01_ses-session3_task-eyesopen_eeg",
+      "files": {
+        "eeg": {
+          "size_bytes": 36600000,
+          "md5": "aee5891c3ca306657e7be8dd364ad82c"
+        },
+        "vhdr": {
+          "size_bytes": 1118,
+          "md5": "73a256f3525550a078c9f7795c77824f"
+        },
+        "vmrk": {
+          "size_bytes": 475,
+          "md5": "5b062222ef11d51fa56371755ddb4dac"
+        }
+      }
+    }
+  ],
+  "source_discrepancy_rule": "61-channel raw VHDR/binary and channels.tsv define the actual payload; 64-channel EEG JSON claim remains a provenance inconsistency and is not repaired by padding.",
+  "claim_ceiling": "D4 identity/header/raw-layout consistency across three sessions and two resting states only; no signal-derived feature, transfer result, modal inference, chi, capital-Chi, behavior or clinical outcome."
+}

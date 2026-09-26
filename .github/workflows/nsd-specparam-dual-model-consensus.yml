@@ -1,0 +1,91 @@
+name: NSD specparam Dual-Model Consensus
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+      - main
+    paths:
+      - ".github/workflows/nsd-specparam-dual-model-consensus.yml"
+      - "NSD_vNext/engine/pyproject.toml"
+      - "NSD_vNext/engine/nsd_engine/specparam_adapter.py"
+      - "NSD_vNext/engine/tools/calibrate_specparam_dual_model_consensus.py"
+
+permissions:
+  contents: read
+
+jobs:
+  calibrate-dual-model-consensus:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install frozen qualification stack
+        shell: bash
+        working-directory: NSD_vNext/engine
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[parameterization_rc7]"
+          python - <<'PY'
+          from importlib.metadata import version
+          expected = {"numpy":"2.4.6", "scipy":"1.17.1", "specparam":"2.0.0rc7"}
+          for package, wanted in expected.items():
+              got = version(package)
+              assert got == wanted, (package, got, wanted)
+              print(package, got)
+          PY
+
+      - name: Run dual-model consensus calibration
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/nsd_specparam_consensus"
+          python NSD_vNext/engine/tools/calibrate_specparam_dual_model_consensus.py \
+            > "$RUNNER_TEMP/nsd_specparam_consensus/dual_model_consensus.json"
+
+      - name: Print compact consensus summary
+        shell: bash
+        run: |
+          set -euo pipefail
+          REPORT="$RUNNER_TEMP/nsd_specparam_consensus/dual_model_consensus.json"
+          python - "$REPORT" <<'PY'
+          import json, sys
+          report = json.load(open(sys.argv[1], encoding="utf-8"))
+          print("candidate_count", report["candidate_count"])
+          print("passing_count", report["passing_count"])
+          print("passing_settings")
+          for settings in report["passing_settings"]:
+              print(json.dumps(settings, sort_keys=True))
+          print("compact_rows")
+          for row in report["results"]:
+              s = row["settings"]
+              c = row["cross_background_summary"]
+              print(json.dumps({
+                  "peak_threshold": s["peak_threshold"],
+                  "max_n_peaks": s["max_n_peaks"],
+                  "pass": row["candidate_pass"],
+                  "fixed_no_peak_fp": row["fixed_truth"]["no_peak"]["false_positive_rate"],
+                  "knee_no_peak_fp": row["knee_truth"]["no_peak"]["false_positive_rate"],
+                  "strong_recovery": c["strong_single_recovery_rate"],
+                  "strong_exact_one": c["strong_single_exact_one_rate"],
+                  "strong_extra": c["strong_single_mean_false_extra"],
+                  "minimum_two_peak_recovery": c["minimum_two_peak_recovery_rate"],
+              }, sort_keys=True))
+          PY
+
+      - name: Upload consensus report
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-specparam-dual-model-consensus
+          path: ${{ runner.temp }}/nsd_specparam_consensus/dual_model_consensus.json
+          if-no-files-found: error
+          retention-days: 30

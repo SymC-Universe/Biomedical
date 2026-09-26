@@ -1,0 +1,52 @@
+{
+  "schema": "NSD_DS004148_EYESOPEN_MFR14_REPLICATION_MANIFEST_V0_2",
+  "date": "2026-09-25",
+  "status": "FROZEN_BEFORE_V0_2_SIGNAL_OUTCOMES",
+  "dataset": "ds004148",
+  "source_release": {
+    "openneuro_doi": "10.18112/openneuro.ds004148.v1.0.0",
+    "public_git_repository": "OpenNeuroDatasets/ds004148",
+    "public_git_commit": "0c740d838a2c33feeec0b6e514aea323d0e65ca4",
+    "nemar_mirror": "on004148/v1.0.0"
+  },
+  "task": "eyesopen",
+  "sessions": [
+    "ses-session1",
+    "ses-session2",
+    "ses-session3"
+  ],
+  "subjects": [
+    "sub-16",
+    "sub-17",
+    "sub-18",
+    "sub-19",
+    "sub-20",
+    "sub-21",
+    "sub-22",
+    "sub-23",
+    "sub-24",
+    "sub-25",
+    "sub-26",
+    "sub-27",
+    "sub-28",
+    "sub-29"
+  ],
+  "selection_basis": "next 14 numeric subjects after the incomplete v0.1 cohort; fixed after header-only topology audit and before any v0.2 signal-derived outcome",
+  "independent_subject_count": 14,
+  "channel_space": {
+    "manifest": "NSD_vNext/docs/manifests/ds004148_eyesopen_dataset_stable57_v0.1.json",
+    "exact_label_count": 57,
+    "derivation": "exact intersection of dataset-wide eyes-open header-stable labels with the pre-existing ds003775 matched reference",
+    "semantic_rule": "exact labels only; no case normalization, interpolation, renaming, or imputation"
+  },
+  "raw_contract": {
+    "expected_channels": 61,
+    "expected_sampling_rate_hz": 500,
+    "expected_duration_seconds": 300,
+    "expected_binary_format": "IEEE_FLOAT_32",
+    "expected_orientation": "MULTIPLEXED"
+  },
+  "source_identity_rule": "Resolve git-annex identities for VHDR, VMRK and EEG from the pinned OpenNeuro commit; download all three from the declared NEMAR mirror; require exact size/MD5 before feature extraction.",
+  "metadata_firewall": "Only subject identity, session, task, acquisition/decoding metadata, exact source identity, and the prospectively frozen 57-label coordinate manifest are visible.",
+  "claim_ceiling": "Untouched within-dataset independent-subject descriptive replication of the session-pair pattern only; no modal damping, natural frequency, lowercase chi, capital Chi, diagnosis, recovery, treatment, or broad population generalization."
+}

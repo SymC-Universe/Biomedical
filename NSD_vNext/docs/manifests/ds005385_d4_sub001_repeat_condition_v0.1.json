@@ -1,0 +1,92 @@
+{
+  "schema": "NSD_DS005385_D4_SUB001_REPEAT_CONDITION_MANIFEST_V0_1",
+  "date": "2026-09-22",
+  "status": "FROZEN_BEFORE_MULTI_RECORDING_D4_EXECUTION",
+  "dataset": "ds005385",
+  "source_release": {
+    "openneuro_doi": "10.18112/openneuro.ds005385.v1.0.3",
+    "public_git_repository": "OpenNeuroDatasets/ds005385",
+    "public_git_commit": "6a558cd5852503e66df9ac7fdac2f3a7f4ed5f12",
+    "nemar_mirror": "on005385/v1.0.0"
+  },
+  "subject": "sub-001",
+  "subject_selection_basis": "first dataset subject; has ses-1 and ses-2; source late-trigger counts are 0 for both sessions; selected before multi-recording payload results",
+  "source_quality_fields": {
+    "late_ses1": 0,
+    "late_ses2": 0
+  },
+  "expected_signal_count_total": 65,
+  "expected_eeg_channel_count": 64,
+  "expected_auxiliary_labels": [
+    "Status"
+  ],
+  "expected_sampling_rate_hz": 1000,
+  "physical_range_policy": "SOURCE_DECLARED_UNRELIABLE_DO_NOT_VALIDATE_OR_USE_FOR_SCALING",
+  "recordings": [
+    {
+      "session": "ses-1",
+      "task": "EyesClosed",
+      "acquisition": "pre",
+      "size_bytes": 23936896,
+      "sha256": "a9ef4f8bcc7b3fff6568b7a441e14230ec287faa23212713e32f37bf8a8710a7",
+      "duration_seconds": 184
+    },
+    {
+      "session": "ses-1",
+      "task": "EyesClosed",
+      "acquisition": "post",
+      "size_bytes": 25106896,
+      "sha256": "31ae9f30b24e3a8b9fe3e6f41abb0a05ebdc30a5a35bffd5c9dd48e66daa3ab7",
+      "duration_seconds": 193
+    },
+    {
+      "session": "ses-1",
+      "task": "EyesOpen",
+      "acquisition": "pre",
+      "size_bytes": 23936896,
+      "sha256": "54a963b953ace2810c5f70cd99d76781bd70c1b90aaa0e44d2790e82d5fea534",
+      "duration_seconds": 184
+    },
+    {
+      "session": "ses-1",
+      "task": "EyesOpen",
+      "acquisition": "post",
+      "size_bytes": 24066896,
+      "sha256": "64a57c4eaf5e56a208e896b8260d58ad18241a27239f45f5f3d505b25d2ac827",
+      "duration_seconds": 185
+    },
+    {
+      "session": "ses-2",
+      "task": "EyesClosed",
+      "acquisition": "pre",
+      "size_bytes": 23546896,
+      "sha256": "19c49f4e7cf9e1859d0d833900e9d086d052397e28c0f0d37b844708f8fbc148",
+      "duration_seconds": 181
+    },
+    {
+      "session": "ses-2",
+      "task": "EyesClosed",
+      "acquisition": "post",
+      "size_bytes": 23936896,
+      "sha256": "ca3ddee5fe97b02deef4827f82eff40309f79e90dd67a01a7e5cff9ffb38c0d0",
+      "duration_seconds": 184
+    },
+    {
+      "session": "ses-2",
+      "task": "EyesOpen",
+      "acquisition": "pre",
+      "size_bytes": 24976896,
+      "sha256": "4836ed602a1028a7078cbc67532e1d8dd1817ac50d0b4f97719cff17565fd725",
+      "duration_seconds": 192
+    },
+    {
+      "session": "ses-2",
+      "task": "EyesOpen",
+      "acquisition": "post",
+      "size_bytes": 23936896,
+      "sha256": "1fbcc71448be514f810462c41400b354f0a3465d1a657a2b3a303ec1e7a04da5",
+      "duration_seconds": 184
+    }
+  ],
+  "claim_ceiling": "D4 identity/header/readability across one clean repeat subject and all four within-session conditions only; no physical-unit decoding, spectral feature, modal inference, chi, capital-Chi, age effect, cognitive-load effect, diagnosis, or outcome."
+}

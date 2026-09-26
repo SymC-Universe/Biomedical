@@ -1,0 +1,72 @@
+{
+  "schema": "NSD_DS004148_METADATA_ROLE_MANIFEST_V0_1",
+  "date": "2026-09-22",
+  "status": "D3_ROLE_FIREWALL_PASS_D4_CHANNEL_RECONCILIATION_PENDING",
+  "dataset": "ds004148",
+  "source": {
+    "openneuro_doi": "10.18112/openneuro.ds004148.v1.0.0",
+    "license": "CC0",
+    "repository": "OpenNeuroDatasets/ds004148",
+    "commit": "0c740d838a2c33feeec0b6e514aea323d0e65ca4",
+    "bids_version": "1.2"
+  },
+  "hierarchy": {
+    "subjects": 60,
+    "subject_sessions": 180,
+    "recordings": 900,
+    "sessions_per_subject": 3,
+    "tasks": [
+      "eyesclosed",
+      "eyesopen",
+      "mathematic",
+      "memory",
+      "music"
+    ],
+    "recordings_per_task": 180
+  },
+  "source_acquisition": {
+    "nominal_electrodes_readme": 64,
+    "eeg_json_declared_channel_count": 64,
+    "inspected_channels_tsv_rows": 61,
+    "sampling_rate_hz": 500,
+    "nominal_recording_duration_seconds": 300,
+    "reference": "FCz",
+    "power_line_frequency_hz": 50
+  },
+  "discrepancy": {
+    "id": "DS004148_CHANNEL_COUNT",
+    "state": "UNRESOLVED_SOURCE_METADATA_DISCREPANCY",
+    "observed": "channels.tsv examples contain 61 EEG rows while EEG JSON declares EEGChannelCount=64",
+    "resolution_gate": "D4 raw BrainVision header/channel reconciliation",
+    "silent_padding_or_dropping_allowed": false
+  },
+  "roles": {
+    "engine_visible_patterns": [
+      "participant_id",
+      "session_id",
+      "task",
+      "source acquisition/provenance fields"
+    ],
+    "downstream_only_patterns": [
+      "age",
+      "sex",
+      "Height",
+      "Weight",
+      "SAS_*",
+      "SDS_*",
+      "ESS_*",
+      "ARSQ/mind-wandering dimensions",
+      "KSS_*",
+      "PANAS-*",
+      "Mini_*",
+      "task correctness/behavioral response fields"
+    ],
+    "clinical_or_behavioral_fields_may_tune_structural_engine": false
+  },
+  "independence_role": "INDEPENDENT_LABEL_BLIND_TRANSFER_CANDIDATE",
+  "eeg_outcome_opened": false,
+  "modal_inference_run": false,
+  "chi_computed": false,
+  "capital_chi_computed": false,
+  "next_gate": "D4 exact BrainVision payload/channel-count reconciliation on a prospectively pinned recording"
+}

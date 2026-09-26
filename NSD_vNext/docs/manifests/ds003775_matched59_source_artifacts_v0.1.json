@@ -1,0 +1,310 @@
+{
+  "schema": "NSD_DS003775_MATCHED59_SOURCE_ARTIFACTS_V0_1",
+  "source_workflow_run": 35337659470,
+  "subject_artifact_count": 42,
+  "subject_artifacts": [
+    {
+      "artifact_id": 10544070808,
+      "name": "ds003775-repeat-sub-002",
+      "digest": "sha256:7267d9be339ddbf524a4b0e058df996904622bf19638a8b40e29020e1335025f",
+      "size_in_bytes": 55158,
+      "expired": false
+    },
+    {
+      "artifact_id": 10543921081,
+      "name": "ds003775-repeat-sub-003",
+      "digest": "sha256:07256ddba815b1c51a0c8d3d4491867def5acccdf7dd90afffab2fe3207f5845",
+      "size_in_bytes": 57441,
+      "expired": false
+    },
+    {
+      "artifact_id": 10542414704,
+      "name": "ds003775-repeat-sub-005",
+      "digest": "sha256:0db74fb475c77a67fb29dd98cafba0238ddbde64df5a47a945de5d11530cf448",
+      "size_in_bytes": 53146,
+      "expired": false
+    },
+    {
+      "artifact_id": 10542974157,
+      "name": "ds003775-repeat-sub-007",
+      "digest": "sha256:f07dd036aa3fec8d1a881c7f5dbcd5a151e5af1e519174f020879c231fc8a5b4",
+      "size_in_bytes": 56898,
+      "expired": false
+    },
+    {
+      "artifact_id": 10544145539,
+      "name": "ds003775-repeat-sub-011",
+      "digest": "sha256:7f8e2e213758c3cd8b983ea6501aff8b526193d9767894091680a36a263421ff",
+      "size_in_bytes": 54849,
+      "expired": false
+    },
+    {
+      "artifact_id": 10543926046,
+      "name": "ds003775-repeat-sub-020",
+      "digest": "sha256:b614df65fb20e6ef8de07a3009a3f7a27aabfed83d59eb2f75c3d362dba1c799",
+      "size_in_bytes": 55422,
+      "expired": false
+    },
+    {
+      "artifact_id": 10543139060,
+      "name": "ds003775-repeat-sub-021",
+      "digest": "sha256:2992da448e2605a79d984423121dd563b2075963f96b3f6cdb9e8f9e0542a091",
+      "size_in_bytes": 58249,
+      "expired": false
+    },
+    {
+      "artifact_id": 10544026041,
+      "name": "ds003775-repeat-sub-026",
+      "digest": "sha256:3d58e75e7c75cbb94ec5c670379bd601a48fdbe0c82ed89cd6e42175d7d8702d",
+      "size_in_bytes": 50457,
+      "expired": false
+    },
+    {
+      "artifact_id": 10543318933,
+      "name": "ds003775-repeat-sub-027",
+      "digest": "sha256:61c56c3dd101e231b0439883cc3cf2a7fa7d576c8e9ca6d213b010dd0f1b5f9e",
+      "size_in_bytes": 57984,
+      "expired": false
+    },
+    {
+      "artifact_id": 10542854399,
+      "name": "ds003775-repeat-sub-028",
+      "digest": "sha256:cec9ffab07e4b5bc7765fa18e1a2617fe8c1ef4e2aff01e7a1b607a46641768c",
+      "size_in_bytes": 61098,
+      "expired": false
+    },
+    {
+      "artifact_id": 10543751529,
+      "name": "ds003775-repeat-sub-030",
+      "digest": "sha256:946d4817881514e252247a113ba123c7bea24fa0ac485a48146c05dd3e1ffa8a",
+      "size_in_bytes": 54013,
+      "expired": false
+    },
+    {
+      "artifact_id": 10542864375,
+      "name": "ds003775-repeat-sub-032",
+      "digest": "sha256:f52a1086bab185be62ae70170d8bdb6ea084e6c32275daf342c9e8406080319a",
+      "size_in_bytes": 57892,
+      "expired": false
+    },
+    {
+      "artifact_id": 10544210621,
+      "name": "ds003775-repeat-sub-038",
+      "digest": "sha256:57d59ef54939f73d7821b35d01a24024a4c63757a74e21395e248a2d3fb62d84",
+      "size_in_bytes": 57514,
+      "expired": false
+    },
+    {
+      "artifact_id": 10542769578,
+      "name": "ds003775-repeat-sub-042",
+      "digest": "sha256:b418000edb524ba5cd2ba1f765296c2cbff8d5be71a8c8aaa7487881d99abe8f",
+      "size_in_bytes": 56851,
+      "expired": false
+    },
+    {
+      "artifact_id": 10544230592,
+      "name": "ds003775-repeat-sub-043",
+      "digest": "sha256:0819364a6884c665f72e77ab28fbd60905e13fec46992fe1fa1d5a2e167325bf",
+      "size_in_bytes": 63203,
+      "expired": false
+    },
+    {
+      "artifact_id": 10544021250,
+      "name": "ds003775-repeat-sub-046",
+      "digest": "sha256:0040e216a612f7ce9370b58e9c22e959d93914455f811c090d30d68d0d5929f9",
+      "size_in_bytes": 57515,
+      "expired": false
+    },
+    {
+      "artifact_id": 10544200690,
+      "name": "ds003775-repeat-sub-047",
+      "digest": "sha256:6c332269365e0075682e3e7575510a93a2646d26a6b86e60ad4f5222a3c1a776",
+      "size_in_bytes": 62009,
+      "expired": false
+    },
+    {
+      "artifact_id": 10543781676,
+      "name": "ds003775-repeat-sub-048",
+      "digest": "sha256:855170055fdd83ebb184e8950684de863e10723a70c9381c8eeaf315c3f95002",
+      "size_in_bytes": 53103,
+      "expired": false
+    },
+    {
+      "artifact_id": 10542704516,
+      "name": "ds003775-repeat-sub-051",
+      "digest": "sha256:0ce99baf6d22870513ab6e6510ac31426aaa8ae1a4d9813b26e4bb4026d61659",
+      "size_in_bytes": 61157,
+      "expired": false
+    },
+    {
+      "artifact_id": 10543039287,
+      "name": "ds003775-repeat-sub-058",
+      "digest": "sha256:a9d751db2b4c634b53c8a1c4a87e391fa7c991df47ecc18ed1c28b5094083ad7",
+      "size_in_bytes": 58898,
+      "expired": false
+    },
+    {
+      "artifact_id": 10543971478,
+      "name": "ds003775-repeat-sub-060",
+      "digest": "sha256:c2be73457a695a902f38dafdff582e1398a4b8f1f9ba4fcd9ffeb0e73e600fb1",
+      "size_in_bytes": 58993,
+      "expired": false
+    },
+    {
+      "artifact_id": 10543204236,
+      "name": "ds003775-repeat-sub-064",
+      "digest": "sha256:17e4700c45c57f7dcb7399f60160acdc012fac3f81000e0fccaaa854dd3ef15c",
+      "size_in_bytes": 63602,
+      "expired": false
+    },
+    {
+      "artifact_id": 10542914408,
+      "name": "ds003775-repeat-sub-068",
+      "digest": "sha256:9effc81fd68bf1b5112745ba74ff71169b1566176ad9d6d297c1a5694ef52ebc",
+      "size_in_bytes": 57017,
+      "expired": false
+    },
+    {
+      "artifact_id": 10543712100,
+      "name": "ds003775-repeat-sub-069",
+      "digest": "sha256:938a0c6fe1df4ac13eefd8f0b29191ee770cc5eb500b772669cf9be6d274cce4",
+      "size_in_bytes": 58163,
+      "expired": false
+    },
+    {
+      "artifact_id": 10543538818,
+      "name": "ds003775-repeat-sub-070",
+      "digest": "sha256:07b4a9b3dd44ddc2244a371bba3b1f573e4726f7624ab251851eeea5d1e9eefc",
+      "size_in_bytes": 58960,
+      "expired": false
+    },
+    {
+      "artifact_id": 10544071268,
+      "name": "ds003775-repeat-sub-071",
+      "digest": "sha256:55717c6221a3e7c22c8453ddc90e556974413388b54e751208fd7d4b82684a59",
+      "size_in_bytes": 57519,
+      "expired": false
+    },
+    {
+      "artifact_id": 10543771864,
+      "name": "ds003775-repeat-sub-074",
+      "digest": "sha256:bd31c8d993cff555ab47a459568c7b808bff62203d99fbab7dc8bbb89281239f",
+      "size_in_bytes": 65347,
+      "expired": false
+    },
+    {
+      "artifact_id": 10543474082,
+      "name": "ds003775-repeat-sub-075",
+      "digest": "sha256:34d5141339d4d117dad76309fb943626236bf3c28f9584409a72cc78de82d1ff",
+      "size_in_bytes": 57346,
+      "expired": false
+    },
+    {
+      "artifact_id": 10543876602,
+      "name": "ds003775-repeat-sub-076",
+      "digest": "sha256:bb28475b1e358095983bc3f77d9e4f000065eaf07da3b2e1d7b8999ed2a79a9f",
+      "size_in_bytes": 58194,
+      "expired": false
+    },
+    {
+      "artifact_id": 10543891631,
+      "name": "ds003775-repeat-sub-077",
+      "digest": "sha256:69f75422f68a1da2f3e6bde30025019dd764a270ba21e7f277f36498101af7d3",
+      "size_in_bytes": 61289,
+      "expired": false
+    },
+    {
+      "artifact_id": 10543229340,
+      "name": "ds003775-repeat-sub-082",
+      "digest": "sha256:1729ae2d688b5ae57eff71d62322e577d23caddddcea195f11be726f5f1bf002",
+      "size_in_bytes": 61142,
+      "expired": false
+    },
+    {
+      "artifact_id": 10543821762,
+      "name": "ds003775-repeat-sub-084",
+      "digest": "sha256:63041e725e9d2f2b2a2602be872b897e3412327b7aafbe3a1ffa87afcebc8eb8",
+      "size_in_bytes": 60895,
+      "expired": false
+    },
+    {
+      "artifact_id": 10543796842,
+      "name": "ds003775-repeat-sub-085",
+      "digest": "sha256:e32ea11466f873f222264a656e8583ae8c0ac556b184811e0c18309dc1648767",
+      "size_in_bytes": 59520,
+      "expired": false
+    },
+    {
+      "artifact_id": 10543876704,
+      "name": "ds003775-repeat-sub-087",
+      "digest": "sha256:60814169d36761489c9e05954928e9af3520a98ce2d0333f0e1abb52dc186356",
+      "size_in_bytes": 57725,
+      "expired": false
+    },
+    {
+      "artifact_id": 10544161024,
+      "name": "ds003775-repeat-sub-091",
+      "digest": "sha256:ff55990488e3e112daff64ee50aac984630d2706ca90cded57e0793747734702",
+      "size_in_bytes": 53353,
+      "expired": false
+    },
+    {
+      "artifact_id": 10544186102,
+      "name": "ds003775-repeat-sub-094",
+      "digest": "sha256:b9bb2d103c0598320632c8ed335585ef059655c97d21f978176f9fa6248856ee",
+      "size_in_bytes": 56609,
+      "expired": false
+    },
+    {
+      "artifact_id": 10543906713,
+      "name": "ds003775-repeat-sub-097",
+      "digest": "sha256:c7beb96d54b5e07fb70e56f66338b4d00144f857f30151299b17de089ec66f16",
+      "size_in_bytes": 57861,
+      "expired": false
+    },
+    {
+      "artifact_id": 10544146127,
+      "name": "ds003775-repeat-sub-101",
+      "digest": "sha256:4414933892d0272ec85b95df7c6a86babdff33902b95bae3dbd16b81b1bd33f6",
+      "size_in_bytes": 52337,
+      "expired": false
+    },
+    {
+      "artifact_id": 10544036516,
+      "name": "ds003775-repeat-sub-104",
+      "digest": "sha256:43a225a5c0bb8b8c6b5421e56a4c25795fd4e68083e8f2b26a6ccd223a503167",
+      "size_in_bytes": 62195,
+      "expired": false
+    },
+    {
+      "artifact_id": 10544071490,
+      "name": "ds003775-repeat-sub-105",
+      "digest": "sha256:e22530b51227bc0eb88789c27fbd15d019c62d08943925d63c775c41ec65b041",
+      "size_in_bytes": 54595,
+      "expired": false
+    },
+    {
+      "artifact_id": 10543821933,
+      "name": "ds003775-repeat-sub-106",
+      "digest": "sha256:98f2377b74e981555afbb1328a7e999bdda3a6298acf4c8d08654d32754730c4",
+      "size_in_bytes": 61328,
+      "expired": false
+    },
+    {
+      "artifact_id": 10543399208,
+      "name": "ds003775-repeat-sub-110",
+      "digest": "sha256:e8eea740bb5bda77dd486266c1612bf48186d976920ee39de05ee5c332a863ec",
+      "size_in_bytes": 52853,
+      "expired": false
+    }
+  ],
+  "population_summary_artifact": [
+    {
+      "artifact_id": 10543064575,
+      "name": "ds003775-repeat-population-summary",
+      "digest": "sha256:0859c127ca1cac7f2789fb12b7e66b1453f9ec6fb250e20f11eed6e84b9e0bb2",
+      "size_in_bytes": 8689
+    }
+  ],
+  "purpose": "Rebuild the predeclared exact-channel-label ds003775 comparison envelope for the ds004148 transfer experiment without rerunning or retuning the parent analysis."
+}
