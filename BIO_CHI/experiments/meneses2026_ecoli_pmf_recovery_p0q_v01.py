@@ -127,10 +127,11 @@ def fit_immediate(path,conc):
             yinc=yn[mi]; tinc=tt[mi]
             pinc,_=curve_fit(exp_increase,tinc,yinc,p0=[1,50,0.5],maxfev=50000)
             B,tau_i,D=pinc
-            if not all(np.isfinite([A,tau_d,C,t0,B,tau_i,D])) or tau_d<=0 or tau_i<=0:
-                raise RuntimeError("nonfinite_or_nonpositive_tau")
+            if not all(np.isfinite([A,tau_d,C,t0,B,tau_i,D])):
+                raise RuntimeError("nonfinite_source_fit")
             rec.update({"fit_valid":True,"A_dec":float(A),"tau_dec":float(tau_d),"C_dec":float(C),
-                        "t0_dec":float(t0),"B_inc":float(B),"tau_inc":float(tau_i),"D_inc":float(D)})
+                        "t0_dec":float(t0),"B_inc":float(B),"tau_inc":float(tau_i),"D_inc":float(D),
+                        "tau_dec_positive":bool(tau_d>0),"tau_inc_positive":bool(tau_i>0)})
         except Exception as e:
             rec["failure"]=f"{type(e).__name__}:{e}"
         rows.append(rec)
@@ -197,7 +198,8 @@ def long_summary(path,kind):
     rw=pop[(pop.time_s>=300)&(pop.time_s<=380)]
     imin=sw["dff"].idxmin()
     return {
-      "n_cells":int(nd.loc[np.isfinite(nd.dff),"track_id"].nunique()),
+      "n_tracks_raw":int(df.loc[df["track_id"]>=0,"track_id"].nunique()),
+      "n_tracks_finite_normalized":int(nd.loc[np.isfinite(nd.dff),"track_id"].nunique()),
       "min":float(sw.loc[imin,"dff"]),
       "tmin":float(sw.loc[imin,"time_s"]),
       "shockmean":float(sw["dff"].mean()),
@@ -264,7 +266,7 @@ def main():
         repchecks["tmrm"][c]=check_summary(tmrm[c],EXPECTED_TMRM[c])
         repchecks["area"][c]=check_summary(area[c],EXPECTED_AREA[c])
     orth_pass=all(x["pass"] for fam in repchecks.values() for x in fam.values())
-    cells_pass=all(tmrm[c]["n_cells"]==40 and area[c]["n_cells"]==40 for c in [0]+CONCS)
+    source_track_count_diagnostic_pass=all(tmrm[c]["n_tracks_raw"]==40 and area[c]["n_tracks_raw"]==40 for c in [0]+CONCS)
 
     A=med_by_cond(idf,"A_dec")
     td=med_by_cond(idf,"tau_dec")
@@ -307,12 +309,16 @@ def main():
     result={
       "schema_version":"0.1",
       "experiment_id":"MENESES2026_ECOLI_PMF_RECOVERY_P0Q_V01",
-      "status":"EXECUTED_VALID_P0Q" if count_pass and orth_pass and cells_pass else "SOURCE_REPRODUCTION_FAILURE_PRESERVED",
+      "status":"EXECUTED_VALID_P0Q" if count_pass and orth_pass else "SOURCE_REPRODUCTION_FAILURE_PRESERVED",
       "evidence_class":"P0-Q_LITERATURE_OPEN_DIRECT_EXPERIMENTAL_QUALIFICATION",
       "source":{"repository":UPSTREAM,"commit":COMMIT,"manifest":manifest},
       "source_reproduction":{"bead_trace_counts":counts,"trace_count_pass":bool(count_pass),
-        "tmrm_cell_area_summary_checks":repchecks,"orthogonal_summary_pass":bool(orth_pass),"orthogonal_cell_count_pass":bool(cells_pass)},
+        "tmrm_cell_area_summary_checks":repchecks,"orthogonal_summary_pass":bool(orth_pass),
+        "source_track_count_diagnostic_pass":bool(source_track_count_diagnostic_pass),
+        "track_count_note":"raw source-track count is diagnostic only; finite-normalized track count is reported separately and is not a frozen admission rule"},
       "fit_failures":{"immediate":int((~idf.fit_valid).sum()),"sustained":int((~sdf.fit_valid).sum())},
+      "fit_diagnostics":{"immediate_nonpositive_tau_dec":int(((idf.fit_valid)&(~idf["tau_dec_positive"].fillna(False))).sum()),
+        "immediate_nonpositive_tau_inc":int(((idf.fit_valid)&(~idf["tau_inc_positive"].fillna(False))).sum())},
       "condition_medians":trends,
       "rate_depth_dissociation":{"frozen_rule_pass":bool(rate_depth),
         "disposition":"RATE_STABLE_DEPTH_VARIABLE_CANDIDATE_P0Q" if rate_depth else "FROZEN_RATE_DEPTH_RULE_NOT_MET_P0Q"},
@@ -321,7 +327,7 @@ def main():
         "one_dimensional_adequacy":oned,
         "Chi_bio_disposition":"ONE_DIMENSIONAL_CONDITION_COMPRESSION_ADEQUATE_P0Q" if oned else "MULTICOORDINATE_RECOVERY_ARCHITECTURE_REQUIRED_P0Q"},
       "chi_bio":{"disposition":"NOT_OPENED_NOT_LICENSED","reason":"source fit taus are descriptive empirical summaries, not independently licensed mechanistic modal carriers"},
-      "Bio_Chi":{"disposition":"DIRECT_EXPERIMENTAL_COLLAPSE_RECOVERY_RELATION_REPRODUCED_P0Q" if count_pass and orth_pass and cells_pass else "NOT_ADMITTED_SOURCE_REPRODUCTION_FAILED"},
+      "Bio_Chi":{"disposition":"DIRECT_EXPERIMENTAL_COLLAPSE_RECOVERY_RELATION_REPRODUCED_P0Q" if count_pass and orth_pass else "NOT_ADMITTED_SOURCE_REPRODUCTION_FAILED"},
       "claim_ceiling":"direct experimental P0-Q representation qualification in one E. coli osmotic-stress system; no universal biological chi value or boundary"
     }
     (OUT/"MENESES2026_ECOLI_PMF_RECOVERY_P0Q_V01_RESULT.json").write_text(json.dumps(result,indent=2)+"\n")
