@@ -1,0 +1,37 @@
+{
+  "schema_version":"0.1",
+  "experiment_id":"HOG1_INPUT_CONTEXT_P0Q_V01",
+  "date_closed":"2026-09-25",
+  "status":"EXECUTED_VALID_SOURCE_NATIVE_MODEL_QUALIFICATION",
+  "evidence_class":"P0-Q_SOURCE_NATIVE_MODEL_QUALIFICATION",
+  "workflow_run_id":36212842924,
+  "artifact_id":10896650681,
+  "artifact_sha256":"3e5b8fb3cbfdca78d630e3d1b714c4c11e02de782e2be4f1f35319041c272e70",
+  "source_parameter_sha256":"47f80b80f740c969170373ad80e94aea68a975e7fd5f0d84d2f5a0cdb39f4443",
+  "contexts":["step","root2","linear","quadratic","quintic","heptic"],
+  "fixed_final_NaCl_M":0.3,
+  "representation":{
+    "features":["peak","time_to_peak_min","auc_0_50min","endpoint_50min","postpeak_return_fraction"],
+    "singular_values":[4.495215670165069,1.8742059872223413,1.122443533977226,0.13712269596218313,0.04130224506154086],
+    "intrinsic_rank":5,
+    "pc1_variance_fraction":0.8082785568519034,
+    "max_abs_standardized_reconstruction_residual":0.9757894172146091,
+    "one_dimensional_adequacy":false,
+    "Chi_bio_disposition":"MULTICOORDINATE_RESPONSE_ORGANIZATION_REQUIRED_P0Q"
+  },
+  "feature_endpoints":{
+    "step":{"peak":0.39911158990781326,"time_to_peak_min":6.0,"auc":3.4828621834523115,"endpoint":0.0033704181153152812,"postpeak_return":0.9915551985947244},
+    "root2":{"peak":0.1932234141474015,"time_to_peak_min":6.0,"auc":2.03552932693499,"endpoint":0.006545440049591222,"postpeak_return":0.96612501606768},
+    "linear":{"peak":0.10264001330701458,"time_to_peak_min":8.0,"auc":1.7937306830419861,"endpoint":0.008261702580590091,"postpeak_return":0.9195079743815128},
+    "quadratic":{"peak":0.07067753912960441,"time_to_peak_min":16.0,"auc":1.678077737662608,"endpoint":0.009354417645790767,"postpeak_return":0.8676465287134973},
+    "quintic":{"peak":0.11606653573511193,"time_to_peak_min":27.0,"auc":1.6792394949739609,"endpoint":0.009104914614065733,"postpeak_return":0.9215543519378828},
+    "heptic":{"peak":0.1445282611446981,"time_to_peak_min":28.0,"auc":1.7295710944636704,"endpoint":0.00842893629359324,"postpeak_return":0.9416796671679708}
+  },
+  "scalar_gate":{
+    "all_final_state_jacobian_eigenvalues_real_negative":true,
+    "stable_complex_pair_all_contexts":false,
+    "chi_bio_disposition":"NOT_LICENSED_NO_STABLE_COMPLEX_PAIR_ACROSS_ALL_CONTEXTS"
+  },
+  "Bio_Chi_disposition":"INPUT_CONTEXT_REORGANIZES_REALIZED_HOG1_RESPONSE_WITH_FIXED_NETWORK_AND_PARAMETERS_P0Q",
+  "claim_ceiling":"Source-native model qualification only. Not experimental biological validation."
+}
