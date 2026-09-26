@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# execution trigger after workflow registration
 import json, hashlib, math, urllib.request
 from pathlib import Path
 import numpy as np
