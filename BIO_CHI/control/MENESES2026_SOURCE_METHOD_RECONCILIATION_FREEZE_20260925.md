@@ -20,7 +20,7 @@ Commit: `d14d0caaa07299f13d1b1121d1e4630454fd724b`
 Relevant source files:
 
 - `manuscript/manuscript.tex` blob `d7f6f03c355854b3feb0fe7b7cad8383ee5469a1`
-- `code/bead-assay/sucrose_shock_analysis.ipynb` blob `051395375fa52a9d6d146bf451ed01de9ebc2f5a`
+- `code/bead-assay/sucrose_shock_analysis.ipynb` blob `d4408e419e7836876019215672a6ecaf6acc2012`
 - `code/bead-assay/adaptation_curve_fitting.ipynb` blob `86f8ce55d39681e769b6b3390e11c95da6359ac8`
 
 ## Manuscript-facing immediate-motor lane
