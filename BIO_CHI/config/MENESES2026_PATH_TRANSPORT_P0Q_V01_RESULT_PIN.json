@@ -1,0 +1,32 @@
+{
+  "schema_version":"0.1",
+  "experiment_id":"MENESES2026_PATH_TRANSPORT_P0Q_V01",
+  "date_closed":"2026-09-25",
+  "status":"EXECUTED_VALID_P0Q",
+  "evidence_class":"P0-Q_LITERATURE_OPEN_DIRECT_EXPERIMENTAL_TRANSPORT_QUALIFICATION",
+  "upstream":{"repository":"wadhwalab/2026-Meneses-Osmotic","commit":"d14d0caaa07299f13d1b1121d1e4630454fd724b"},
+  "workflow":{"run_id":36218586127,"head_sha":"c9cd3afd4ebfd077d28ed825f414baa26cdb5f76","artifact_id":10897189701,"artifact_sha256":"3e127309661dd7e75aed175e3a63390a1c62e2760eec5e2220ac630108424d45"},
+  "source_fit_counts":{
+    "sucrose":{"200":8,"300":10,"400":8,"500":12},
+    "sorbitol":{"200":8,"300":8,"400":8,"500":8},
+    "sodium":{"200":10,"300":10,"400":10,"500":10},
+    "clockwise":{"200":8,"300":8,"400":9,"500":8},
+    "fit_failures_total":0
+  },
+  "path_comparisons":{
+    "sorbitol_vs_sucrose":{"D_path":2.1031719033154808,"raw_permutation_p":0.00009999000099990002,"holm_p":0.00029997000299970003,"max_abs_standardized_median_difference":1.6382530096597345,"disposition":"PATH_DEPENDENT_REORGANIZATION_P0Q"},
+    "sodium_vs_sucrose":{"D_path":1.4479151230568421,"raw_permutation_p":0.019498050194980503,"holm_p":0.019498050194980503,"max_abs_standardized_median_difference":1.252368871242437,"disposition":"PATH_DEPENDENT_REORGANIZATION_P0Q"},
+    "clockwise_vs_sucrose":{"D_path":2.180536949496272,"raw_permutation_p":0.00009999000099990002,"holm_p":0.00029997000299970003,"max_abs_standardized_median_difference":1.4834813075516236,"disposition":"PATH_DEPENDENT_REORGANIZATION_P0Q"}
+  },
+  "selected_condition_medians":{
+    "sucrose_200":{"A_dec":0.2816220522132144,"tau_dec":3.689605955887566,"tau_inc":2.834822480307629,"recovery_fraction":1.1069448810846203},
+    "sucrose_500":{"A_dec":0.8835063505117053,"tau_dec":2.750061556069249,"tau_inc":2.1327153649430914,"recovery_fraction":0.9565373575894548},
+    "sorbitol_200":{"A_dec":0.1879481742497675,"tau_dec":6.88095603843154,"tau_inc":5.787002616869675,"recovery_fraction":0.9325297290635192},
+    "sorbitol_500":{"A_dec":0.7620529402357568,"tau_dec":3.5439069486736035,"tau_inc":4.751701253387168,"recovery_fraction":1.0945175661671105},
+    "clockwise_400":{"A_dec":1.0047665216928716,"tau_dec":6.206529535817622,"tau_inc":2.0684652794506686,"recovery_fraction":1.0558719551625908}
+  },
+  "biological_chi":"MULTICOORDINATE_MOTOR_ARCHITECTURE_CONTEXT_DEPENDENT_ACROSS_TESTED_PATHS_P0Q",
+  "Chi_bio":"FOUR_COORDINATE_MOTOR_RESPONSE_ORGANIZATION",
+  "chi_bio":"NOT_OPENED_NOT_LICENSED",
+  "claim_ceiling":"one E. coli osmotic-stress system; direct experimental path-transport qualification; no universal invariance, substrate-inheritance law, or scalar boundary"
+}
