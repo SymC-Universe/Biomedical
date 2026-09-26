@@ -1,0 +1,69 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "MENESES2026_IMMEDIATE_CONTEXT_TRANSPORT_P0Q_V01",
+  "date_closed": "2026-09-25",
+  "status": "EXECUTED_VALID_P0Q",
+  "evidence_class": "P0-Q_LITERATURE_OPEN_SAME_SOURCE_TRANSPORT",
+  "parent_result": "MENESES2026_ECOLI_PMF_RECOVERY_P0Q_V01",
+  "source": {
+    "repository": "wadhwalab/2026-Meneses-Osmotic",
+    "commit": "d14d0caaa07299f13d1b1121d1e4630454fd724b",
+    "publication_doi": "10.1016/j.bpj.2026.04.014"
+  },
+  "workflow": {
+    "run_id": 36216876191,
+    "head_sha": "2598d1e792a7fba94b33fba3e34c46d7e754abae",
+    "artifact_id": 10897867200,
+    "artifact_sha256": "2bc6a34636d84954cb84f4c8bf9f841500f12a70a78b56d38e58250fb09ff0e6",
+    "result_json_sha256": "53debdf0a18cc73168b94c748437576437326b60ff8adb5dce133c7c0c845271"
+  },
+  "source_reproduction": {
+    "trace_count_pass": true,
+    "all_manuscript_facing_fits_returned": true,
+    "total_source_traces": 143
+  },
+  "reference_context": "sucrose_MB_CCW",
+  "transport": {
+    "sorbitol_MB_CCW": {
+      "distance_geometry_spearman_rho": 0.7714285714285715,
+      "exact_one_sided_p_24_permutations": 0.041666666666666664,
+      "A_dec_dose_spearman_rho": 1.0,
+      "disposition": "PARTIAL_GEOMETRY_TRANSPORT_P0Q"
+    },
+    "sucrose_SPB_CCW": {
+      "distance_geometry_spearman_rho": -0.14285714285714288,
+      "exact_one_sided_p_24_permutations": 0.5833333333333334,
+      "A_dec_dose_spearman_rho": 1.0,
+      "disposition": "GEOMETRY_TRANSPORT_REFUSED_P0Q"
+    },
+    "sucrose_CW_lock": {
+      "distance_geometry_spearman_rho": 0.7714285714285715,
+      "exact_one_sided_p_24_permutations": 0.041666666666666664,
+      "A_dec_dose_spearman_rho": 1.0,
+      "disposition": "PARTIAL_GEOMETRY_TRANSPORT_P0Q",
+      "interpretive_caveat": "clockwise-lock lane also changes strain/plasmid background and is not an isolated rotor-direction causal estimate"
+    }
+  },
+  "dose_ordering": {
+    "A_dec_spearman_rho": {
+      "sucrose_MB_CCW": 1.0,
+      "sorbitol_MB_CCW": 1.0,
+      "sucrose_SPB_CCW": 1.0,
+      "sucrose_CW_lock": 1.0
+    }
+  },
+  "pooled_representation": {
+    "singular_values": [5.585152781863011,3.6112885221831053,3.2173962142731005,2.3265908994014306],
+    "pc1_variance_fraction": 0.5198988599458688,
+    "max_abs_standardized_1d_reconstruction_residual": 2.152137227372826,
+    "one_dimensional_adequacy": false,
+    "Chi_bio_disposition": "MULTICOORDINATE_IMMEDIATE_RESPONSE_ARCHITECTURE_REQUIRED_P0Q"
+  },
+  "Bio_Chi": {
+    "disposition": "IMMEDIATE_RESPONSE_ORGANIZATION_CONTEXT_DEPENDENT_P0Q"
+  },
+  "chi_bio": {
+    "disposition": "NOT_OPENED_NOT_LICENSED"
+  },
+  "claim_ceiling": "same-source literature-open P0-Q transport qualification; not independent biological replication"
+}
