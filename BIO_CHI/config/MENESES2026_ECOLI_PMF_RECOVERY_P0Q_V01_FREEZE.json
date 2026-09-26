@@ -1,0 +1,93 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "experiment_id": "MENESES2026_ECOLI_PMF_RECOVERY_P0Q_V01",
+  "date_frozen": "2026-09-25",
+  "authority": "SymC GOM v0.8.6",
+  "evidence_class": "P0-Q_LITERATURE_OPEN_DIRECT_EXPERIMENTAL_QUALIFICATION",
+  "literature_outcome_blinding": false,
+  "blinding_note": "The Meneses et al. manuscript and repository summaries were inspected during source qualification. Published dose-dependent PMF collapse, TMRM depolarization, cell shrinkage/recovery, and partial motor adaptation are therefore known. The frozen test evaluates source reproduction, joint representation, rate-depth dissociation, and scalar eligibility; it does not claim blinded discovery.",
+  "upstream": {
+    "repository": "wadhwalab/2026-Meneses-Osmotic",
+    "commit": "d14d0caaa07299f13d1b1121d1e4630454fd724b",
+    "article": "Meneses et al. (2026), Osmotic Stress Triggers Fast and Reversible PMF Collapse in Escherichia coli, Biophysical Journal",
+    "doi": "10.1016/S0006-3495(26)00280-8"
+  },
+  "biological_event": {
+    "system": "Escherichia coli MG1655 osmotic stress response",
+    "perturbation": "200, 300, 400, and 500 mM sucrose hyperosmotic shock",
+    "whole_event": "shock-conditioned collapse and recovery of cellular energetic and physical state, measured by flagellar motor speed, TMRM membrane-potential signal, and cell area",
+    "target_observable_power": "direct: high-time-resolution motor dynamics plus orthogonal membrane-potential and cell-area assays"
+  },
+  "source_objects": {
+    "immediate_motor_files": {
+      "200": {"path":"data/time-series/bead/sucrose_200mM.parquet","blob":"41c7e7837d7f6e0418180d85ded212a102af0621"},
+      "300": {"path":"data/time-series/bead/sucrose_300mM.parquet","blob":"78d915b2264dd6fa273ba061e605ee8597a28a06"},
+      "400": {"path":"data/time-series/bead/sucrose_400mM.parquet","blob":"36ebcaa9c817ba8c11527e69d6f8b49669b1f2d6"},
+      "500": {"path":"data/time-series/bead/sucrose_500mM.parquet","blob":"dd3b2ef0b1b77c43c02080c88080abb5b0cd3f61"}
+    },
+    "sustained_motor_files": {
+      "200": {"path":"data/time-series/bead/adaption_200mM.parquet","blob":"bad33e747b10472a3c38d95eaa50c4a215f9df31"},
+      "300": {"path":"data/time-series/bead/adaption_300mM.parquet","blob":"5c4837e9d3fe1226f873e987adfcdc64d35590d9"},
+      "400": {"path":"data/time-series/bead/adaption_400mM.parquet","blob":"cad15ff5fc8f353ddb8eadf7a6b98d9456ff776b"},
+      "500": {"path":"data/time-series/bead/adaption_500mM.parquet","blob":"f812fc92ad22be5847687d74f06c3ed1a178dd44"}
+    },
+    "tmrm_files": {
+      "control":{"path":"data/time-series/tmrm/control.parquet","blob":"cb8db0e660690e14e6ab243e4565160f93af4801"},
+      "200":{"path":"data/time-series/tmrm/200mM.parquet","blob":"8ec6fafc765c8ebd28690a9ddaf604cf813ef868"},
+      "300":{"path":"data/time-series/tmrm/300mM.parquet","blob":"5a8b15c41f90dfec9abe4e8792c11729a5e93be5"},
+      "400":{"path":"data/time-series/tmrm/400mM.parquet","blob":"5a2bb35651ae54243f5a749de177553a8e94056b"},
+      "500":{"path":"data/time-series/tmrm/500mM.parquet","blob":"40df15665ca620ef1f6d55e9349b406c48d0cfbe"}
+    },
+    "cell_area_files": {
+      "control":{"path":"data/time-series/cell-area/control.parquet","blob":"315fb80c65b2ce5a17131affe91f6bf2ba065f7c"},
+      "200":{"path":"data/time-series/cell-area/200mM.parquet","blob":"bcd45ac8b271ba6122f5f6d06a588b66bc6ba424"},
+      "300":{"path":"data/time-series/cell-area/300mM.parquet","blob":"b009ffbf6f235c4ccca9e8bb5bd17784d6f25bce"},
+      "400":{"path":"data/time-series/cell-area/400mM.parquet","blob":"03b9c5d3d65b6c5efc0b1e94df3709dfb0be4554"},
+      "500":{"path":"data/time-series/cell-area/500mM.parquet","blob":"ae0949f3abe6d3ee712c2e7356059d5210efe8db"}
+    }
+  },
+  "source_native_processing": {
+    "bead_time_bin_s": 0.1,
+    "immediate_baseline": "mean speed for time <= 180 s",
+    "immediate_drop_fit": "A/(1+exp((t-175-t0)/tau))+C on 175-240 s using source initial guesses",
+    "immediate_recovery_fit": "B*(1-exp(-(t-270)/tau))+D on >270-360 s using source initial guesses",
+    "sustained_baseline": "mean speed for time < 180 s after source 1 s median filter",
+    "sustained_fit": "B*(1-exp(-(t-200)/tau))+D on 250-600 s; source bounds B[0,2], tau[0.1,500], D[0,1.5]",
+    "tmrm": "per-track deltaF/F0 using 10 pre-shock frames before frame 35; 5 s frames",
+    "cell_area": "per-track deltaA/A0 using 10 pre-shock frames before frame 35; 5 s frames"
+  },
+  "representation_hierarchy": {
+    "Bio_Chi": "the whole dose-conditioned energetic/physical collapse-and-recovery relation across motor, TMRM, and cell area",
+    "Chi_bio": "candidate condition-level multicoordinate state consisting of motor collapse amplitude, motor collapse tau, motor post-removal recovery tau, sustained motor recovery tau, sustained plateau, TMRM minimum and post-recovery level, and cell-area minimum and post-recovery level",
+    "chi_bio": "NOT_OPENED_AT_FREEZE. Source sigmoid/exponential taus are descriptive summary parameters and are not mechanistic damping-mode carriers. They cannot be relabeled chi_bio without an independently licensed dynamical reduction."
+  },
+  "frozen_tests": {
+    "source_reproduction": [
+      "reproduce source trace counts for all four immediate and sustained motor conditions",
+      "reproduce TMRM and cell-area population summaries within absolute tolerance 0.005 for normalized amplitudes and 5 s for minimum-time summaries"
+    ],
+    "rate_depth_dissociation": {
+      "depth_coordinates": ["immediate motor fitted drop amplitude A_dec","sustained motor fitted plateau"],
+      "rate_coordinates": ["immediate motor tau_dec","post-removal motor tau_inc","sustained motor tau_adapt"],
+      "condition_summary": "median per concentration for motor fit parameters",
+      "dose_trend_metric": "Spearman rho across ordered concentrations 200,300,400,500 mM",
+      "candidate_rate_stable_depth_variable_rule": "both depth coordinates must show |rho| >= 0.8 in the source-expected direction, while all three rate coordinates must have |rho| <= 0.4 and max/min positive condition median ratio <= 1.5. This label is descriptive P0-Q only and is not proof of invariant kinetics."
+    },
+    "joint_representation": {
+      "condition_vector": ["A_dec","tau_dec","tau_inc","tau_adapt","adaptation_plateau","TMRM_min","TMRM_postrecovery","Area_min","Area_postrecovery"],
+      "standardization": "z score by coordinate across the four shock strengths",
+      "one_dimensional_adequacy_rule": "PC1 variance fraction >= 0.95 AND maximum absolute standardized 1D reconstruction residual <= 0.10",
+      "disposition_if_fail": "MULTICOORDINATE_RECOVERY_ARCHITECTURE_REQUIRED_P0Q",
+      "disposition_if_pass": "ONE_DIMENSIONAL_CONDITION_COMPRESSION_ADEQUATE_P0Q; this still does not license chi_bio"
+    }
+  },
+  "failure_and_refusal_rules": [
+    "source download or schema mismatch is preserved as source/interface failure",
+    "fit failures remain in the denominator and are reported by condition; no post-result cell removal",
+    "published qualitative agreement does not rescue failed reproduction",
+    "a successful one-dimensional compression does not become chi_bio without a mechanistic carrier",
+    "a failed one-dimensional compression cannot be rescued by selecting a subset of coordinates after inspection"
+  ],
+  "claim_ceiling": "direct experimental P0-Q representation qualification in one E. coli osmotic-stress system; no universal biological chi value, no universal boundary, and no causal molecular mechanism beyond the source evidence"
+}
