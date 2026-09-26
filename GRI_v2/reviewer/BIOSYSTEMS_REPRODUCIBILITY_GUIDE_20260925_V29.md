@@ -9,7 +9,7 @@
 
 ## Status
 
-The original C1/P1 oncology evidence spine is unchanged. V29 adds the first direct experimental Bio Chi recovery qualification after the V28 source-transport and HOG model continuation. The new source is Meneses et al. (2026), `E. coli` hyperosmotic shock with source-released flagellar-motor, TMRM, and cell-area time series.
+The original C1/P1 oncology evidence spine is unchanged. V29 adds the first direct experimental biological chi recovery qualification after the V28 source-transport and HOG model continuation. The new source is Meneses et al. (2026), `E. coli` hyperosmotic shock with source-released flagellar-motor, TMRM, and cell-area time series.
 
 The editable manuscript and Supplementary Information remain private. Reviewers can audit the new scientific record from the public branches and pins below without reconstructing the historical repository.
 
@@ -34,7 +34,7 @@ echo $?
 
 **Expected output:** `0`.
 
-For the complete C1/P1, Kizilirmak, top-down Bio Chi, E. coli source-refusal, and HOG chronology, read the V28 guide:
+For the complete C1/P1, Kizilirmak, top-down biological chi, E. coli source-refusal, and HOG chronology, read the V28 guide:
 
 ```text
 GRI_v2/reviewer/BIOSYSTEMS_REPRODUCIBILITY_GUIDE_20260925_V28.md
@@ -174,7 +174,7 @@ The Meneses result supplies the direct experimental layer that the preceding HOG
 
 The current hierarchy is:
 
-- **biological chi / Bio Chi:** admitted for this source as the directly measured relation among osmotic perturbation, energetic/physical reorganization, and realized recovery;
+- **biological chi / biological chi:** admitted for this source as the directly measured relation among osmotic perturbation, energetic/physical reorganization, and realized recovery;
 - **`Chi_bio`:** multicoordinate recovery architecture required under both source-fit lanes;
 - **`chi_bio`:** not opened because the source time constants are empirical response summaries rather than independently licensed mechanistic modal carriers.
 
@@ -230,7 +230,7 @@ V29_SMOKE_TEST_PASS
 
 ## What happens next
 
-The next Bio Chi experiment should test whether this **multicoordinate recovery architecture transports** across a different perturbation path or a different directly measured biological system. Another scalar-first exercise is now low information because this experiment already demonstrates a directly reproducible whole-system relation while refusing one-dimensional compression and an unlicensed scalar.
+The next biological chi experiment should test whether this **multicoordinate recovery architecture transports** across a different perturbation path or a different directly measured biological system. Another scalar-first exercise is now low information because this experiment already demonstrates a directly reproducible whole-system relation while refusing one-dimensional compression and an unlicensed scalar.
 
 ## What the user needs to do
 
