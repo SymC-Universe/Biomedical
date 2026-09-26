@@ -58,10 +58,7 @@ For each target context report:
 
 ## Interpretation rules
 
-- If SPB refusal remains negative/near-zero in the bootstrap distribution and is not repaired by removing one coordinate, classify the root cause as `DISTRIBUTED_CONTEXT_REORGANIZATION`.
-- If one omitted coordinate moves SPB rho to >=0.8 while all other leave-one-out rhos remain <0.5, classify `SINGLE_COORDINATE_LEVERAGE`.
-- If mean-based geometry reaches >=0.8 while median-based primary rho is <0.5 and bootstrap spans both signs broadly, classify `CENTRAL_TENDENCY_SENSITIVE`.
-- Otherwise classify `MULTIFACTOR_OR_UNRESOLVED_CONTEXT_REORGANIZATION`.
+- Classify `SINGLE_COORDINATE_LEVERAGE` if exactly one leave-one-coordinate-out SPB rho is >=0.8 and all other leave-one-out SPB rhos are <0.5.\n- Otherwise classify `CENTRAL_TENDENCY_SENSITIVE` if the mean-based SPB rho is >=0.8 while the frozen median-based primary rho is <0.5 and the bootstrap 95% interval spans both rho <= 0 and rho >= 0.8.\n- Otherwise classify `DISTRIBUTED_CONTEXT_REORGANIZATION` if the SPB bootstrap median rho is <0.5, at least 25% of bootstrap replicates have rho <= 0, and the maximum leave-one-coordinate-out SPB rho is <0.8.\n- Otherwise classify `MULTIFACTOR_OR_UNRESOLVED_CONTEXT_REORGANIZATION`.
 
 These labels explain the primary failure only. They cannot promote a refused transport result.
 
