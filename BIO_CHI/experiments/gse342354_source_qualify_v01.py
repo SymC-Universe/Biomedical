@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# workflow trigger after registration
 """Source-only qualification for GEO GSE342354.
 
 This script enumerates NCBI GEO source files, hashes bounded processed objects,
