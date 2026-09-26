@@ -1,0 +1,40 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "MENESES2026_SOURCE_METHOD_RECONCILIATION_V01",
+  "date_closed": "2026-09-25",
+  "status": "EXECUTED_POSTRESULT_SOURCE_METHOD_RECONCILIATION",
+  "evidence_class": "POST_RESULT_SOURCE_METHOD_RECONCILIATION",
+  "freeze": "BIO_CHI/control/MENESES2026_SOURCE_METHOD_RECONCILIATION_FREEZE_20260925.md",
+  "workflow": {
+    "run_id": 36216368561,
+    "head_sha": "737c5ed34ca143143bb607c179bdc2a58844d0c3",
+    "artifact_id": 10897991063,
+    "artifact_sha256": "0534f1173b51a4d4fc4459bdb28a800a7759968f96119434d5f7ea35c1308dc9",
+    "result_json_sha256": "b96def0062b759727533748abb04d070cd79fef547db69fb9376c6a8e4e4346d"
+  },
+  "method": "manuscript-facing sucrose_shock_analysis lane",
+  "condition_medians": {
+    "A_dec": {"200":0.2816220522132144,"300":0.4836750112404939,"400":0.5768520308145286,"500":0.8835063505117053,"spearman_rho":1.0},
+    "adaptation_plateau": {"200":0.8158787871048623,"300":0.6974984992999522,"400":0.5829075802096222,"500":0.40647669972596834,"spearman_rho":-1.0},
+    "tau_dec": {"200":3.689605955887566,"300":4.112069514341883,"400":3.8701977744083025,"500":2.750061556069249,"spearman_rho":-0.4,"max_min_ratio":1.495264535176222},
+    "tau_inc": {"200":2.834822480307629,"300":2.647484712337877,"400":2.3531515149391566,"500":2.1327153649430914,"spearman_rho":-1.0,"max_min_ratio":1.3292080729128486},
+    "tau_adapt": {"200":273.88069000205275,"300":136.9468538237806,"400":331.11721206709603,"500":473.7976653450858,"spearman_rho":0.8,"max_min_ratio":3.459719242289096}
+  },
+  "rate_depth_dissociation": {
+    "frozen_rule_pass": false,
+    "disposition": "FROZEN_RATE_DEPTH_RULE_NOT_MET_POSTRESULT_RECONCILIATION"
+  },
+  "joint_representation": {
+    "singular_values": [4.565487341738589,2.1511684617585525,1.2364463520751923,1.786303992208052e-15],
+    "pc1_variance_fraction": 0.7719879506509367,
+    "max_abs_standardized_1d_reconstruction_residual": 1.2036796471330158,
+    "one_dimensional_adequacy": false,
+    "Chi_bio_disposition": "MULTICOORDINATE_RECOVERY_ARCHITECTURE_REQUIRED_POSTRESULT"
+  },
+  "comparison_to_primary": {
+    "representation_disposition": "SOURCE_METHOD_ROBUST_AT_P0Q",
+    "rate_depth_disposition": "FAILED_IN_BOTH_LANES",
+    "scalar_disposition": "NOT_OPENED_NOT_LICENSED_IN_BOTH_LANES"
+  },
+  "claim_ceiling": "post-result source-method reconciliation only; cannot promote the primary P0-Q evidence"
+}
