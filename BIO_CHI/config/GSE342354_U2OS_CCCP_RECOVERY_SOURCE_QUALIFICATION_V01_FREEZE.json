@@ -1,0 +1,50 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "experiment_id": "GSE342354_U2OS_CCCP_RECOVERY_SOURCE_QUALIFICATION_V01",
+  "date_frozen": "2026-09-25",
+  "authority": "SymC GOM v0.8.6",
+  "status": "SOURCE_QUALIFICATION_FROZEN_BEFORE_EXPRESSION_EXTRACTION",
+  "evidence_class": "P0-Q_LITERATURE_OPEN_INDEPENDENT_SOURCE_CANDIDATE",
+  "source": {
+    "geo_accession": "GSE342354",
+    "bioproject": "PRJNA1507420",
+    "sra_study": "SRP724128",
+    "organism": "Homo sapiens",
+    "cell_system": "U2OS",
+    "assay": "bulk RNA-seq",
+    "submitted_date": "2026-08-05"
+  },
+  "biological_event": {
+    "perturbation": "50 uM CCCP for 30 min",
+    "recovery": "drug washout followed by 1 h or 6 h recovery",
+    "whole_event": "transcriptomic displacement during acute mitochondrial uncoupling followed by recovery after CCCP removal",
+    "target_observable_power": "direct longitudinal state series with biological triplicates at untreated, damaged, 1 h washout, and 6 h washout states"
+  },
+  "frozen_sample_groups": {
+    "WT": ["GSM9929032","GSM9929033","GSM9929034"],
+    "CCCP": ["GSM9929035","GSM9929036","GSM9929037"],
+    "W1H": ["GSM9929038","GSM9929039","GSM9929040"],
+    "W6H": ["GSM9929041","GSM9929042","GSM9929043"]
+  },
+  "construction_order": "whole transcriptomic recovery event -> minimum state representation -> scalar only if independently licensed",
+  "source_qualification_rules": [
+    "NCBI GEO accession and all 12 frozen GSM identities must resolve",
+    "processed expression source must be obtainable without substituting a different study or inferred sample mapping",
+    "all source files used for analysis must be hashed before expression values are inspected",
+    "raw-read reprocessing is not required if a source-deposited gene-level processed matrix is available and sample identity is explicit",
+    "if only raw reads are available, the analysis gate remains unopened until a frozen processing pipeline is specified"
+  ],
+  "future_analysis_not_yet_opened": {
+    "Bio_Chi": "whether state displacement after CCCP moves back toward untreated transcriptomic organization after washout",
+    "Chi_bio": "minimum multicoordinate transcriptomic state representation needed to preserve damage and recovery",
+    "chi_bio": "NOT_OPENED; no scalar is licensed from cross-sectional replicate expression alone"
+  },
+  "failure_rules": [
+    "missing or ambiguous processed matrix is SOURCE_LIMITED rather than a negative biological result",
+    "sample-label mismatch is a source-identity failure",
+    "literature-described recovery cannot rescue a failed source reproduction",
+    "no gene/pathway subset may be selected after outcome inspection to manufacture recovery"
+  ],
+  "claim_ceiling": "independent-source qualification only until processed source identity and a prospective analysis contract are closed"
+}
