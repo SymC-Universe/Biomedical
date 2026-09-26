@@ -1,0 +1,70 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "experiment_id": "ECOLI2024_SENSORY_TOPDOWN_P0Q_V01",
+  "date_frozen": "2026-09-25",
+  "authority": "SymC GOM v0.8.6",
+  "evidence_class": "P0-Q_LITERATURE_OPEN_REPRESENTATION_QUALIFICATION",
+  "literature_outcome_blinding": false,
+  "blinding_note": "The source publication was inspected during candidate selection and already states that sensory diversity changes with ambient ligand context. No directional result from this experiment may be described as prospectively blinded confirmation.",
+  "construction_order": "whole Bio Chi event -> minimum required internal organization -> optional scalar compression",
+  "source": {
+    "article_title": "Signal integration and adaptive sensory diversity tuning in Escherichia coli chemotaxis",
+    "article_doi": "10.1016/j.cels.2024.06.003",
+    "dryad_doi": "10.5061/dryad.nvx0k6dzz",
+    "analysis_repository": "emonetlab/SensoryDiversityTuningAnalysis",
+    "datasets_m_sha": "05b7b19b34716a6e4407573c7bce881011f3bfe7",
+    "parameters_m_sha": "78f8fea63da5d243facd5532c729cf0318370761",
+    "calcResponseAmp2_sha": "4dcea0a6307b8ce823a8714bcf73157f03445a3d",
+    "calcPopAvgDoseResponse2_sha": "f84355568bb8810f286661449126e8d5a14ab3fc",
+    "fitLogNormCDF_sha": "e97a91b54121e85c9ba3a3b602bb64bd53fffe8b"
+  },
+  "biological_event": {
+    "system": "Escherichia coli chemotaxis",
+    "perturbation": "sustained MeAsp background context",
+    "whole_event": "background-conditioned reorganization of the population sensory-sensitivity distribution measured by single-cell FRET dose response",
+    "target_observable_power": "source-established; the publication directly measures single-cell sensitivity distributions across background conditions"
+  },
+  "frozen_background_series_uM_MeAsp": [
+    {"background_uM":0.0, "files":["220106_FOV1.mat","230417_FOV1.mat"], "stimulus_uM":[0.2,0.5,1.0,2.0,4.0]},
+    {"background_uM":0.1, "files":["230830_FOV1.mat","230830_FOV2.mat","230831_FOV1.mat","230831_FOV2.mat"], "stimulus_uM":[0.3,0.6,1.1,2.1,4.1]},
+    {"background_uM":0.3, "files":["220615_FOV1.mat","230410_FOV1.mat"], "stimulus_uM":[0.5,0.8,1.3,2.3,4.3]},
+    {"background_uM":1.0, "files":["230428_FOV1.mat","230429_FOV1.mat"], "stimulus_uM":[1.2,1.5,2.0,3.0,5.0]},
+    {"background_uM":10.0, "files":["220302_FOV1.mat","220303_FOV1.mat"], "stimulus_uM":[10.5,11.0,12.0,14.0,18.0]},
+    {"background_uM":100.0, "files":["210816_FOV1.mat","230717_FOV1.mat","230718_FOV1.mat"], "stimulus_uM":[102.0,105.0,110.0,120.0,140.0]}
+  ],
+  "source_native_processing": {
+    "responses_per_stimulus": 7,
+    "response_summary": "median post-stimulus FRET activity divided by cell baseline activity, following source code",
+    "cell_filter": "exclude source-processed cells with a0 < 0.15",
+    "cdf_definition": "P(K_half < L) approximated by fraction of single-cell median normalized post-stimulus responses below 0.5",
+    "distribution_family": "lognormal CDF in ligand units, parameterized by log-location mu and log-scale sigma"
+  },
+  "representation_tests": {
+    "Bio_Chi": "background -> population sensory-distribution reorganization relation",
+    "Chi_bio": "minimum vector representation is initially the source-native distribution state (mu_logK, sigma_logK); this may be simplified or refused by the result",
+    "chi_bio": "NOT_OPENED_AT_FREEZE. No mechanical/dynamical scalar is licensed by the source merely from dose-response sensitivity.",
+    "scalar_compression_control": "evaluate whether a one-coordinate location-only representation with shared dispersion loses predictive information relative to the two-coordinate distribution representation; do not relabel this control as chi_bio"
+  },
+  "primary_outputs": [
+    "source-native mu_logK and sigma_logK for each frozen background",
+    "cell/FOV counts after source filter",
+    "background-wise empirical CDF points and uncertainty",
+    "location-only versus location-plus-dispersion predictive comparison",
+    "monotonic/background-dependence summary with uncertainty",
+    "failure/refusal ledger"
+  ],
+  "decision_rules": {
+    "Bio_Chi_admission": "requires reproducible background-conditioned distribution reorganization in the frozen source-native analysis; literature agreement alone is not sufficient if source reproduction fails",
+    "Chi_bio_admission": "requires that at least two nonredundant distribution coordinates are needed to represent the frozen whole event or that a simpler vector representation is demonstrably sufficient; report the minimum supported representation",
+    "chi_bio_admission": "requires an independently licensed dynamical scalar carrier. Absent that license, return NOT_LICENSED or NOT_REQUIRED rather than inventing a scalar.",
+    "failed_whole_event_rule": "lower-level mathematics cannot rescue a failed whole-event reproduction",
+    "post_result_rule": "any threshold, alternate file selection, added feature, or new mechanistic interpretation opened after result inspection is exploratory and carries promotion debt"
+  },
+  "stop_conditions": [
+    "raw source files do not match frozen identities",
+    "source data cannot reproduce the declared normalized-response object without altering source logic",
+    "material change to biological event, file set, endpoint, or representation decision rule would be required",
+    "new dynamical scalar would require a model not independently licensed by the source"
+  ]
+}
