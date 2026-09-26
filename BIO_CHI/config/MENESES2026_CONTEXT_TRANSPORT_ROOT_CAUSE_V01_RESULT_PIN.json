@@ -1,0 +1,42 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "MENESES2026_CONTEXT_TRANSPORT_ROOT_CAUSE_V01",
+  "date_closed": "2026-09-25",
+  "status": "EXECUTED_POSTRESULT_ROOT_CAUSE_DIAGNOSTIC",
+  "evidence_class": "POST_RESULT_ROOT_CAUSE_STABILITY_DIAGNOSTIC",
+  "primary_transport_unchanged": true,
+  "workflow": {
+    "run_id": 36216972266,
+    "head_sha": "ce5ee34047b341f1ccd87d7b97f88e8886875388",
+    "artifact_id": 10897118026,
+    "artifact_sha256": "745555a472c0b8dbc1ce49ddcc19063c26968db3c070661327639f983488ce50",
+    "result_json_sha256": "7781f434be4c198c0b706a607afbe1f08394c052fba2d67a7d7362dc8070db2e"
+  },
+  "sucrose_SPB_CCW": {
+    "primary_median_geometry_rho": -0.14285714285714288,
+    "leave_one_coordinate_out_rho": {
+      "A_dec": -0.14285714285714288,
+      "tau_dec": 0.6,
+      "tau_inc": 0.4285714285714286,
+      "speed_increase_max": -0.2571428571428572
+    },
+    "mean_based_geometry_rho": 0.2571428571428572,
+    "mean_based_exact_p_24_permutations": 0.4166666666666667,
+    "bootstrap_B": 2000,
+    "bootstrap_median_rho": 0.08571428571428573,
+    "bootstrap_q025": -0.7714285714285715,
+    "bootstrap_q975": 0.8857142857142858,
+    "bootstrap_fraction_rho_ge_0_5": 0.1895,
+    "bootstrap_fraction_rho_ge_0_8": 0.048,
+    "bootstrap_fraction_rho_le_0": 0.4185,
+    "classification_bootstrap_seed": 20260926,
+    "classification_fraction_rho_le_0": 0.4365,
+    "root_cause_disposition": "DISTRIBUTED_CONTEXT_REORGANIZATION"
+  },
+  "supporting_sensitivity": {
+    "sorbitol_bootstrap_median_rho": 0.5428571428571429,
+    "clockwise_lock_bootstrap_median_rho": 0.3142857142857143
+  },
+  "chi_bio": "NOT_OPENED_NOT_LICENSED",
+  "claim_ceiling": "post-result diagnostic only; cannot promote or replace the primary transport classification"
+}
