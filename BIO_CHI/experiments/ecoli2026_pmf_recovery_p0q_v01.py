@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# execution trigger after workflow registration
 from __future__ import annotations
 import hashlib, json, math, traceback, urllib.request
 from pathlib import Path
