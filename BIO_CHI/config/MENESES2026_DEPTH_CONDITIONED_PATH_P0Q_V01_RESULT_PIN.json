@@ -1,0 +1,26 @@
+{
+  "schema_version":"0.1",
+  "experiment_id":"MENESES2026_DEPTH_CONDITIONED_PATH_P0Q_V01",
+  "date_closed":"2026-09-25",
+  "status":"EXECUTED_VALID_POSTRESULT_CONDITIONAL_P0Q",
+  "evidence_class":"P0-Q_POSTRESULT_CONDITIONAL_TRANSPORT_QUALIFICATION",
+  "workflow":{"run_id":36218707913,"head_sha":"953e9f065fd8604ed8d370bf13b38369b5fe85e2","artifact_id":10898495701,"artifact_sha256":"3e403e16c8107117a38b6a688d44e2e2df762622836512a61654bc99cd44a620"},
+  "n_valid_cells":143,
+  "n_fit_failures":0,
+  "cross_validation":{
+    "depth_only_mse":1.386650105058987,
+    "depth_plus_path_mse":1.3992070288026903,
+    "fractional_improvement":-0.009055582008677782,
+    "per_coordinate":{
+      "log_tau_dec":{"depth_only_mse":1.6604935243745123,"depth_plus_path_mse":1.2399042268944023,"fractional_improvement":0.2532917420671911},
+      "log_abs_tau_inc":{"depth_only_mse":1.1196085832118619,"depth_plus_path_mse":1.2186180478113258,"fractional_improvement":-0.08843221290375594},
+      "recovery_fraction":{"depth_only_mse":1.3798482075905867,"depth_plus_path_mse":1.739098811702342,"fractional_improvement":-0.2603551623544582}
+    }
+  },
+  "bootstrap":{"resamples":2000,"seed":20260925,"median_fractional_improvement":-0.09321433628008635,"ci95":[-0.4202077600861875,0.11030784776222519]},
+  "disposition":"DEPTH_CONDITIONING_UNRESOLVED_P0Q",
+  "biological_chi":"DEPTH_CONDITIONING_UNRESOLVED_P0Q",
+  "Chi_bio":"MULTICOORDINATE_MOTOR_RESPONSE_ORGANIZATION_CONDITIONED_ON_COLLAPSE_DEPTH",
+  "chi_bio":"NOT_OPENED_NOT_LICENSED",
+  "claim_ceiling":"same-source post-result conditional qualification; no conclusion that path identity independently controls recovery after depth conditioning"
+}
