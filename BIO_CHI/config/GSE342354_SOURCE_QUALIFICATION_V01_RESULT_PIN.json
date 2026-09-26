@@ -1,0 +1,59 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "GSE342354_U2OS_CCCP_RECOVERY_SOURCE_QUALIFICATION_V01",
+  "date_closed": "2026-09-25",
+  "status": "SOURCE_QUALIFIED",
+  "evidence_class": "SOURCE_ONLY_PREANALYSIS_QUALIFICATION",
+  "geo_accession": "GSE342354",
+  "workflow": {
+    "run_id": 36217389087,
+    "head_sha": "353cdc6d1284e026a0c05a4c8f3c03a32acdde7f",
+    "artifact_id": 10897313182,
+    "artifact_sha256": "79b9f46393be9599399aca929db3d8740049e5fafe451b26f871aaea2887b05a",
+    "result_json_sha256": "bbc31a92126c46833df7a2053d58a03c1a29bc3d2e38882378ab91ea5db1ef53",
+    "manifest_sha256": "f232298ed5cadae373b9da634c3f57edb68125dbb7c5738a4c313ee4264809d9"
+  },
+  "processed_source": {
+    "file": "GSE342354_Processed_data.txt.gz",
+    "sha256": "fd088eb4e50e9a2ab6bb428b2566029d0177c7f4a596f0effc8f846161e472af",
+    "bytes": 14586789,
+    "schema": "gene_id + 12 raw-count columns + 12 FPKM columns + source differential-expression fields + gene annotation"
+  },
+  "metadata_sources": [
+    {
+      "file": "GSE342354_series_matrix.txt.gz",
+      "sha256": "f26f807d5fc3c87c7a0604485b69862fc540cf3f0aeebe9c83a2ebc9d3e2e42a",
+      "bytes": 3023
+    },
+    {
+      "file": "GSE342354_family.soft.gz",
+      "sha256": "7e57de3547e40c0714d97202dae4b2c3f044735387041a3d8c4025bc4900e0a6",
+      "bytes": 3283
+    }
+  ],
+  "sample_identity": {
+    "all_12_frozen_gsm_ids_resolved": true,
+    "processed_column_to_gsm": {
+      "WT1_count": "GSM9929032",
+      "WT2_count": "GSM9929033",
+      "WT3_count": "GSM9929034",
+      "CCCP1_count": "GSM9929035",
+      "CCCP2_count": "GSM9929036",
+      "CCCP3_count": "GSM9929037",
+      "W1H1_count": "GSM9929038",
+      "W1H2_count": "GSM9929039",
+      "W1H3_count": "GSM9929040",
+      "W6H1_count": "GSM9929041",
+      "W6H2_count": "GSM9929042",
+      "W6H3_count": "GSM9929043"
+    }
+  },
+  "analysis_values_opened": false,
+  "preserved_failure": {
+    "run_id": 36217341417,
+    "artifact_id": 10897504676,
+    "artifact_sha256": "42f923eea395d6ecbb3012594c95b1608fa0abf6ba1178845f736a6954e5d918",
+    "classification": "IMPLEMENTATION_LEVEL_DIRECTORY_PARSER_FAILURE"
+  },
+  "next_gate": "processed-expression analysis may open only after a separate prospective recovery contract is committed"
+}
