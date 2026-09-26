@@ -43,18 +43,27 @@ def sha256(p):
 def download(name,fid):
  p=DATA/name
  if p.exists() and p.stat().st_size>1000: return p
+ ua="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36"
+ sess=requests.Session()
+ base_headers={"User-Agent":ua,"Accept-Language":"en-US,en;q=0.9","Referer":"https://datadryad.org/dataset/doi:10.5061/dryad.nvx0k6dzz"}
+ try:
+  sess.get("https://datadryad.org/dataset/doi:10.5061/dryad.nvx0k6dzz",headers=base_headers,timeout=60)
+ except Exception:
+  pass
  urls=[
-  f"https://datadryad.org/downloads/file_stream/{fid}",
   f"https://datadryad.org/stash/downloads/file_stream/{fid}",
+  f"https://datadryad.org/downloads/file_stream/{fid}",
  ]
  last=None
  for url in urls:
   for attempt in range(3):
    try:
-    r=requests.get(url,headers={"User-Agent":"Mozilla/5.0 BioChi-Repro/0.1","Accept":"application/octet-stream,*/*"},timeout=90,allow_redirects=True)
+    h=dict(base_headers); h["Accept"]="application/octet-stream,application/x-matlab,*/*;q=0.8"
+    r=sess.get(url,headers=h,timeout=120,allow_redirects=True)
     if r.status_code==200 and len(r.content)>1000:
      p.write_bytes(r.content); return p
-    last=f"{url} HTTP {r.status_code} bytes={len(r.content)}"
+    preview=r.text[:160].replace("\n"," ") if "text" in r.headers.get("content-type","") else ""
+    last=f"{url} HTTP {r.status_code} bytes={len(r.content)} type={r.headers.get('content-type')} body={preview}"
    except Exception as e: last=f"{url} {type(e).__name__}: {e}"
    time.sleep(2**attempt)
  raise RuntimeError(f"download failed {name}: {last}")
