@@ -1,0 +1,27 @@
+name: Bio Chi GSE342354 source qualification v0.1
+on:
+  push:
+    branches: [bio-chi-u2os-cccp-recovery-p0q-20260925]
+    paths:
+      - "BIO_CHI/experiments/gse342354_source_qualify_v01.py"
+      - ".github/workflows/bio-chi-gse342354-source-qualify-v01.yml"
+  workflow_dispatch:
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install --disable-pip-version-check "requests==2.32.3"
+      - run: python BIO_CHI/experiments/gse342354_source_qualify_v01.py
+      - if: always()
+        run: find BIO_CHI/experiments/gse342354_source_qualification -maxdepth 1 -type f -print0 | sort -z | xargs -0 sha256sum > BIO_CHI/experiments/gse342354_source_qualification/SHA256SUMS.txt || true
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_GSE342354_SOURCE_QUALIFICATION_V01
+          path: BIO_CHI/experiments/gse342354_source_qualification/
+          if-no-files-found: warn
