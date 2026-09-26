@@ -1,0 +1,96 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "experiment_id": "MENESES2026_IMMEDIATE_CONTEXT_TRANSPORT_P0Q_V01",
+  "date_frozen": "2026-09-25",
+  "authority": "SymC GOM v0.8.6",
+  "evidence_class": "P0-Q_LITERATURE_OPEN_SAME_SOURCE_TRANSPORT",
+  "literature_outcome_blinding": false,
+  "parent_result": "MENESES2026_ECOLI_PMF_RECOVERY_P0Q_V01",
+  "parent_branch": "bio-chi-ecoli-pmf-recovery-p0q-20260925",
+  "upstream": {
+    "repository": "wadhwalab/2026-Meneses-Osmotic",
+    "commit": "d14d0caaa07299f13d1b1121d1e4630454fd724b",
+    "publication_doi": "10.1016/j.bpj.2026.04.014",
+    "trace_inventory_blob": "b5ad7739efdaa30b4a0a6c885022aa1f94b1dc21"
+  },
+  "question": "Does the immediate multicoordinate motor collapse/recovery organization observed for sucrose shocks transport when osmolyte identity, phosphate-buffer cation context, or clockwise-lock/strain context changes?",
+  "whole_event": "four shock strengths (200,300,400,500 mM) mapped to immediate motor collapse and post-removal recovery organization under four source-defined contexts",
+  "contexts": {
+    "sucrose_MB_CCW": {
+      "interpretation": "reference; KAF95 CCW motors in motility buffer, sucrose shock",
+      "files": {
+        "200":["data/time-series/bead/sucrose_200mM.parquet","41c7e7837d7f6e0418180d85ded212a102af0621",8],
+        "300":["data/time-series/bead/sucrose_300mM.parquet","78d915b2264dd6fa273ba061e605ee8597a28a06",10],
+        "400":["data/time-series/bead/sucrose_400mM.parquet","36ebcaa9c817ba8c11527e69d6f8b49669b1f2d6",8],
+        "500":["data/time-series/bead/sucrose_500mM.parquet","dd3b2ef0b1b77c43c02080c88080abb5b0cd3f61",12]
+      }
+    },
+    "sorbitol_MB_CCW": {
+      "interpretation": "non-ionic osmolyte identity change; KAF95 CCW motors in motility buffer, sorbitol shock",
+      "files": {
+        "200":["data/time-series/bead/sorbitol_200mM.parquet","f105b4efa5815bff50bbe51ef493550b49c91d36",8],
+        "300":["data/time-series/bead/sorbitol_300mM.parquet","cec88379c5da5a07dc444fd25c2f0be8937ec81e",8],
+        "400":["data/time-series/bead/sorbitol_400mM.parquet","f3fd7373b2944f01b945b7259661f3fc6a75fc85",8],
+        "500":["data/time-series/bead/sorbitol_500mM.parquet","1833accfa1e4405bebfd0e9430008854e3492567",8]
+      }
+    },
+    "sucrose_SPB_CCW": {
+      "interpretation": "buffer-cation context change; sucrose shocks in sodium phosphate buffer without potassium phosphate",
+      "files": {
+        "200":["data/time-series/bead/sodium_200mM.parquet","57ec489e1a19cc3a20ea6dea270152b86b359fa0",10],
+        "300":["data/time-series/bead/sodium_300mM.parquet","5496ff4a54d4631fd0349d63966926d7ae065b7f",10],
+        "400":["data/time-series/bead/sodium_400mM.parquet","fe51858b5cc7b6e6e7d1eb94a4bcb165ce1d312c",10],
+        "500":["data/time-series/bead/sodium_500mM.parquet","52ab687a447fb5681492e4a25e7cf7814b2270c2",10]
+      }
+    },
+    "sucrose_CW_lock": {
+      "interpretation": "clockwise-lock context using HCB1797 rather than KAF95; includes rotor-direction/conformation plus strain/plasmid background change and is not treated as a pure single-factor intervention",
+      "files": {
+        "200":["data/time-series/bead/clockwise_200mM.parquet","c09ed5d53afd435097e26d5b10330dfd09e3538e",8],
+        "300":["data/time-series/bead/clockwise_300mM.parquet","c38f3e0ccffd884aee46732917233a73cd573212",8],
+        "400":["data/time-series/bead/clockwise_400mM.parquet","342d9c3c9164a20b3ec9d9ee7749989221854f41",9],
+        "500":["data/time-series/bead/clockwise_500mM.parquet","7a42570406646d9f329f1c9a32c870ffaf6fc56a",8]
+      }
+    }
+  },
+  "processing": {
+    "normalization": "each motor trace divided by its mean for time <= 180 s",
+    "collapse_windows": {"speed_initial_s":[155,175],"speed_final_s":[215,235],"fit_s":[175,240]},
+    "collapse_model": "manuscript-facing constrained sigmoid with A_dec fixed from speed_initial-speed_final and tau_dec,t0_dec fit with positive bounds",
+    "recovery_windows": {"speed_min_s":[240,260],"speed_max_s":[330,350],"fit_s":[250,360]},
+    "recovery_model": "manuscript-facing logistic recovery with endpoint levels fixed from windows and tau_inc,t0_inc fit",
+    "no_postresult_trace_filtering": true
+  },
+  "condition_representation": ["A_dec","tau_dec","tau_inc","recovery_endpoint"],
+  "transport_test": {
+    "reference": "sucrose_MB_CCW",
+    "within_context_standardization": "z score each of the four coordinates across the four shock strengths separately within each context",
+    "geometry": "Euclidean pairwise-distance vector among the four ordered shock strengths",
+    "similarity": "Spearman correlation between the six upper-triangle pairwise distances of reference and target context",
+    "exact_test": "enumerate all 24 permutations of target concentration labels; one-sided p is fraction with rho >= observed, including observed",
+    "strong_transport": "distance-geometry rho >= 0.8 AND exact p <= 0.10 AND A_dec concentration Spearman rho >= 0.8",
+    "partial_transport": "not strong, but distance-geometry rho >= 0.5 AND A_dec concentration Spearman rho >= 0.5",
+    "refusal": "otherwise"
+  },
+  "pooled_representation_test": {
+    "matrix": "16 context-by-dose rows x 4 response coordinates",
+    "standardization": "z score each coordinate across all 16 rows",
+    "one_dimensional_adequacy": "PC1 variance fraction >= 0.95 AND maximum absolute standardized one-dimensional reconstruction residual <= 0.10",
+    "if_fail": "MULTICOORDINATE_IMMEDIATE_RESPONSE_ARCHITECTURE_REQUIRED_P0Q",
+    "if_pass": "ONE_DIMENSIONAL_IMMEDIATE_RESPONSE_COMPRESSION_ADEQUATE_P0Q"
+  },
+  "representation_hierarchy": {
+    "Bio_Chi": "transport or reorganization of the whole immediate motor collapse/recovery relation under context change",
+    "Chi_bio": "four-coordinate immediate response organization and its cross-context geometry",
+    "chi_bio": "NOT_OPENED_AT_FREEZE; fitted time constants remain empirical summaries, not mechanistic modal carriers"
+  },
+  "failure_rules": [
+    "all source file blob identities and frozen trace counts must match",
+    "fit failures remain explicit and no trace is removed after result inspection",
+    "a source-written qualitative claim of similarity cannot rescue failed frozen geometry transport",
+    "clockwise-lock results are interpreted with the strain/plasmid background caveat",
+    "one-dimensional pooled compression, if adequate, still does not license chi_bio"
+  ],
+  "claim_ceiling": "same-source P0-Q transport qualification of immediate motor response organization; no independent biological replication, no universal biological chi law, and no isolated causal attribution for the clockwise-lock context"
+}
