@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# workflow trigger after registration
 from __future__ import annotations
 import json, traceback
 from pathlib import Path
