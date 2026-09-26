@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# workflow trigger after registration
 """Meneses 2026 immediate motor context-transport P0-Q test.
 
 Frozen by MENESES2026_IMMEDIATE_CONTEXT_TRANSPORT_P0Q_V01_FREEZE.json.
