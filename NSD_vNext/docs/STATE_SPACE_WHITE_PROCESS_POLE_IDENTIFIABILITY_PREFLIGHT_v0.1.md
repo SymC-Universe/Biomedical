@@ -134,6 +134,62 @@ A1-Qdiag may be retained as the simplest constrained implementation candidate, b
 
 The colored-process extension remains a separate second stage.
 
+## Exact scalar admissibility for the observable-white candidate
+
+The broader standardized one-oscillator white-process observable class can be written as
+
+gamma_0 = 1,
+
+gamma_k = rho^k [A cos(k theta) + B sin(k theta)],  k >= 1.
+
+For the original state-space interpretation with white observation noise, A = P11 and therefore 0 <= A <= 1 because gamma_0 = P11 + R = 1 with R >= 0. The new phase coordinate B is observable but need not be assigned to any unique latent-Q element.
+
+Let
+
+a = 2 rho cos(theta),
+b = rho^2,
+g0 = 1,
+g1 = gamma_1,
+g2 = gamma_2.
+
+Applying the oscillator AR polynomial 1 - a L + b L^2 gives an MA(2)-equivalent residual covariance sequence with
+
+q0 = (a^2 + b^2 + 1) g0 - 2 a (b + 1) g1 + 2 b g2,
+
+q1 = (a^2 + b + 1) g1 - a (b + 1) g0 - a g2,
+
+q2 = g2 - a g1 + b g0.
+
+For the covariance-phase form above,
+
+q2 = rho^2 (1 - A),
+
+so q2 >= 0 throughout the original white-observation-noise state-space image.
+
+The residual spectral numerator is
+
+N(omega) = q0 + 2 q1 cos(omega) + 2 q2 cos(2 omega).
+
+With x = cos(omega),
+
+N(x) = 4 q2 x^2 + 2 q1 x + q0 - 2 q2,   -1 <= x <= 1.
+
+Therefore exact observable admissibility can be enforced without an empirical threshold and without identifying latent Q:
+
+- require N(1) >= 0 and N(-1) >= 0;
+- if q2 > 0 and the quadratic vertex x* = -q1/(4 q2) lies in [-1,1], also require N(x*) >= 0;
+- if q2 = 0, the numerator is linear in x and the endpoint conditions are sufficient.
+
+Equivalently, when q2 > 0 and |q1| <= 4 q2, the interior condition is
+
+q0 - 2 q2 - q1^2/(4 q2) >= 0.
+
+This is an exact spectral-positivity condition for the scalar observable law, not a fitted production threshold.
+
+This refinement further favors an observable-equivalence candidate over interpretation of a free Q: preserve the single oscillator denominator, free only the missing covariance-phase/numerator nuisance degree, and reject parameter combinations that do not define a nonnegative spectrum.
+
+It does not authorize implementation or real-EEG admission.
+
 ## Interpretation ceiling
 
 This preflight does not:
