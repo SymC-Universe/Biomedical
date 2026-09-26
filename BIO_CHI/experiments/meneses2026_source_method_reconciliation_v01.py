@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# workflow trigger after registration
 """Post-result source-method reconciliation for Meneses 2026 E. coli PMF data.
 
 Uses the manuscript-facing sucrose fitting method frozen in
