@@ -1,0 +1,67 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "MENESES2026_ECOLI_PMF_RECOVERY_P0Q_V01",
+  "date_closed": "2026-09-25",
+  "status": "EXECUTED_VALID_P0Q",
+  "evidence_class": "P0-Q_LITERATURE_OPEN_DIRECT_EXPERIMENTAL_QUALIFICATION",
+  "upstream": {
+    "repository": "wadhwalab/2026-Meneses-Osmotic",
+    "commit": "d14d0caaa07299f13d1b1121d1e4630454fd724b",
+    "publication_doi_corrected_metadata": "10.1016/j.bpj.2026.04.014"
+  },
+  "frozen_contract": "BIO_CHI/config/MENESES2026_ECOLI_PMF_RECOVERY_P0Q_V01_FREEZE.json",
+  "implementation_audit": "BIO_CHI/control/MENESES2026_P0Q_IMPLEMENTATION_GATE_AUDIT_20260925.md",
+  "repaired_workflow": {
+    "run_id": 36216252676,
+    "head_sha": "f587c57fad33419377996810c2f9a03c9e4bb1f8",
+    "artifact_id": 10897836350,
+    "artifact_sha256": "33e2c253ffb19abe1d3679116df768e08012cc6181cd910a38c3976b4bf77c3f",
+    "result_json_sha256": "e32dcd753fdefb22ed7f20fe3f90d5486969b0139cb72dbeadde00eec35d26f0"
+  },
+  "preserved_false_negative_run": {
+    "run_id": 36216125834,
+    "artifact_id": 10898060524,
+    "artifact_sha256": "0e6d640aae38c5e2d906b4dbce7a887e89628d9d97176fb6df5cc8141683ea09",
+    "reason": "implementation added a non-frozen finite-normalized-track-count veto; scientific freeze unchanged"
+  },
+  "source_reproduction": {
+    "bead_trace_counts_match": true,
+    "tmrm_population_summaries_match_frozen_tolerance": true,
+    "cell_area_population_summaries_match_frozen_tolerance": true,
+    "raw_source_track_count_diagnostic": "40 per TMRM and cell-area condition",
+    "finite_normalized_tmrm_tracks": {"control":39,"200":40,"300":39,"400":39,"500":38}
+  },
+  "primary_frozen_fit_lane": {
+    "fit_failures": 0,
+    "nonpositive_tau_dec_diagnostics": 1,
+    "nonpositive_tau_inc_diagnostics": 0,
+    "note": "200 mM cell8 returns A_dec<0 and tau_dec<0 in the unconstrained four-parameter source lane; retained rather than deleted"
+  },
+  "condition_medians": {
+    "A_dec": {"200":0.2850079259869952,"300":0.5309240906704429,"400":0.6450116776371073,"500":0.9119023667661049,"spearman_rho":1.0},
+    "adaptation_plateau": {"200":0.8158787871048623,"300":0.6974984992999522,"400":0.5829075802096222,"500":0.40647669972596834,"spearman_rho":-1.0},
+    "tau_dec": {"200":2.8008277265313986,"300":4.494528312142151,"400":5.130636803781854,"500":2.9066417294675935,"spearman_rho":0.4,"max_min_ratio":1.8318287680391319},
+    "tau_inc": {"200":8.421068645878387,"300":6.855566603312845,"400":7.166721156379198,"500":6.430352300365891,"spearman_rho":-0.8,"max_min_ratio":1.309581225495098},
+    "tau_adapt": {"200":273.88069000205275,"300":136.9468538237806,"400":331.11721206709603,"500":473.7976653450858,"spearman_rho":0.8,"max_min_ratio":3.459719242289096}
+  },
+  "rate_depth_dissociation": {
+    "frozen_rule_pass": false,
+    "disposition": "FROZEN_RATE_DEPTH_RULE_NOT_MET_P0Q"
+  },
+  "joint_representation": {
+    "features": ["A_dec","tau_dec","tau_inc","tau_adapt","adaptation_plateau","TMRM_min","TMRM_postrecovery","Area_min","Area_postrecovery"],
+    "singular_values": [4.228077587914574,2.5749607424569247,1.578903760645394,1.5153896232918596e-15],
+    "pc1_variance_fraction": 0.6620977810898341,
+    "max_abs_standardized_1d_reconstruction_residual": 1.1144697154328063,
+    "one_dimensional_adequacy": false,
+    "Chi_bio_disposition": "MULTICOORDINATE_RECOVERY_ARCHITECTURE_REQUIRED_P0Q"
+  },
+  "chi_bio": {
+    "disposition": "NOT_OPENED_NOT_LICENSED",
+    "reason": "source fit taus are empirical response summaries rather than independently licensed mechanistic modal carriers"
+  },
+  "Bio_Chi": {
+    "disposition": "DIRECT_EXPERIMENTAL_COLLAPSE_RECOVERY_RELATION_REPRODUCED_P0Q"
+  },
+  "claim_ceiling": "one direct E. coli osmotic-stress system; literature-open P0-Q representation qualification; no universal biological chi value, boundary, or causal molecular mechanism"
+}
