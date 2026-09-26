@@ -238,6 +238,29 @@ This does not establish that conditioning caused any prior likelihood-fit failur
 No numerical conditioning cutoff, frequency floor, eta grid, duration, optimizer setting, or acceptance threshold is frozen by this note.
 
 
+
+## Signal-strength and phase-coverage qualification gap
+
+The current operating-region truth grid does not span the full fitted latent-signal range.
+
+For the isotropic simulator, measurement-noise SD ratio r gives population standardized latent variance fraction
+
+A = 1 / (1 + r^2).
+
+The existing operating-region values r = 0, 0.5, 1 therefore cover approximately A = 1, 0.8, 0.5, while the current likelihood parameterization permits latent_fraction down to about 1e-5.
+
+Using B = A kappa eta in the exact-image recurrence denominator gives
+
+gamma_1 gamma_3 - gamma_2^2
+= -rho^4 A^2 (1 + kappa^2 eta^2) sin^2(theta).
+
+Thus, even away from the frequency degeneracy, pole/covariance recovery becomes weak as A approaches zero because the identifying denominator collapses quadratically in latent signal fraction.
+
+The existing nonzero-B process challenges also occupy only one pole/noise-strength setting (10 Hz natural frequency, zeta = 0.30, observation-noise SD ratio 0.50) and their nonzero-B projections all have the same sign. They therefore establish mechanistic alignment at one known-truth point, not operating-region qualification for the exact-image family.
+
+Any approved exact-image expansion should prospectively extend known-truth qualification across signal strength and both covariance-phase signs/orientations, while preserving B=0 controls and colored-process refusals. Exact signal-strength levels, eta values, grids, and refusal thresholds remain unfrozen.
+
+
 ## Interpretation ceiling
 
 This preflight does not:
