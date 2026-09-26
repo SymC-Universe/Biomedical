@@ -40,9 +40,12 @@ def list_dir(url):
     hrefs=re.findall(r'href=["\']([^"\']+)["\']',r.text,re.I)
     out=[]
     for h in hrefs:
-        h=unquote(h)
+        h=unquote(h).strip()
         if h in ("../","./") or h.startswith("?") or h.startswith("/"): continue
+        if "://" in h or h.startswith(("mailto:","javascript:","#")): continue
         if h.endswith("/"): continue
+        # NCBI directory entries are basenames. Reject footer/navigation paths.
+        if "/" in h: continue
         out.append(h)
     return sorted(set(out)), r.text
 
