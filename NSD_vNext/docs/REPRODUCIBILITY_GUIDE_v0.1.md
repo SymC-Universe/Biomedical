@@ -263,3 +263,29 @@ Expected:
 - no modal, chi, capital-Chi, clinical, recovery, or broad population promotion.
 
 Interpretation: this is the first untouched independent-subject test of the session-3 descriptive pattern within ds004148.
+
+
+## V12. Verify white-process pole-identifiability predecision record
+
+[CLAIM] The modal qualification branch has an analytic predecision record that separates identifiable oscillator-pole structure from non-identifiable latent process-noise covariance and does not license real-EEG local chi.
+
+Inspect:
+
+```bash
+cat NSD_vNext/docs/STATE_SPACE_WHITE_PROCESS_POLE_IDENTIFIABILITY_PREFLIGHT_v0.1.md
+```
+
+Expected:
+- current frozen A1 remains `F = rho R(theta)`, scalar `G = [1,0]`, isotropic `Q = q I`;
+- arbitrary white process covariance preserves the same generic second-order positive-lag covariance recurrence and therefore does not by itself destroy pole identifiability;
+- latent `Q` remains non-unique and must not be biologically interpreted;
+- the broader standardized one-oscillator white-process observable class adds exactly one covariance-phase/numerator shape degree relative to current A1;
+- exact scalar admissibility is enforced analytically through nonnegative residual spectral numerator over `x = cos(omega) in [-1,1]`, not through an empirical cutoff;
+- colored process noise remains a separate augmented-model family;
+- the document is PREDECISION ANALYTIC PREFLIGHT ONLY and authorizes no estimator-family change.
+
+Current provenance:
+- preflight introduction commit: `e6280d145a91e50cdc143ec65587776f6a655b35`;
+- exact observable-admissibility refinement commit: `fdafa412a2f53198a9887ba5efc2b3d175da3c26`.
+
+Interpretation: this record refines the candidate packet and refusal logic only. It does not change A0/A1/A2, define a production threshold, license modal damping or local chi on real EEG, or alter N-B2/N-B3.
