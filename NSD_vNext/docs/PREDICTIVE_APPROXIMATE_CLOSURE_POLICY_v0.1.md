@@ -102,3 +102,32 @@ This policy does not:
 - choose a nonzero-g/H nuisance estimator;
 - reinterpret previous A2 wins as closure failures;
 - alter completed GRI/BioSystems or parked cancer/Shaffer work.
+
+## Exact elimination identity and claim-relative consequence
+
+For
+[
+p' = L_{PP}p + L_{PQ}q,\qquad
+q' = L_{QP}p + L_{QQ}q,
+]
+
+eliminating q gives
+[
+p'(t)
+=
+L_{PP}p(t)
++
+L_{PQ}e^{L_{QQ}t}q_0
++
+\int_0^t
+L_{PQ}e^{L_{QQ}(t-s)}L_{QP}p(s)\,ds.
+]
+
+This separates two distinct non-Markovian risks for the local claim:
+
+- hidden-state forcing: `L_PQ exp(L_QQ t) q0`;
+- endogenous return-memory kernel: `K(t)=L_PQ exp(L_QQ t)L_QP`.
+
+A nonzero P-to-Q leakage term `L_QP` is therefore not, by itself, sufficient reason to refuse local chi. If `L_PQ=0`, the resolved P trajectory remains exactly governed by `L_PP` even though the full state leaves P. Under the approved predictive-closure policy, refusal is tied to material effect on the claimed local dynamics, not to raw leakage alone.
+
+Likewise, `L_PQ!=0` with `L_QP=0` produces hidden-state sensitivity without endogenous return memory. Predictive qualification must therefore distinguish hidden-state uncertainty from memory rather than folding both into one closure score.
