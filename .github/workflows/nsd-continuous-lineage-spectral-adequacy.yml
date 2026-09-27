@@ -25,6 +25,45 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detect spectral-probe change
+        id: changes
+        shell: bash
+        run: |
+          if git diff --name-only HEAD^ HEAD | grep -Eq '^(NSD_vNext/engine/tools/probe_continuous_lineage_spectral_kl\.py|\.github/workflows/nsd-continuous-lineage-spectral-adequacy\.yml)
+      - name: Set up Python
+        if: steps.changes.outputs.run == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        if: steps.changes.outputs.run == 'true'
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install numpy scipy
+
+      - name: Run spectral-KL adequacy probe
+        if: steps.changes.outputs.run == 'true'
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_continuous_lineage_spectral_kl.py \
+            --output ../../continuous-lineage-spectral/continuous_lineage_spectral_kl.json
+
+      - name: Upload spectral-KL adequacy result
+        if: steps.changes.outputs.run == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-continuous-lineage-spectral-kl
+          path: continuous-lineage-spectral/continuous_lineage_spectral_kl.json
+          if-no-files-found: error
+; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Set up Python
         uses: actions/setup-python@v5
