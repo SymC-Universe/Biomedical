@@ -1,0 +1,68 @@
+name: NSD C1Q Paired-Sampling Semantics
+
+on:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - "NSD_vNext/engine/tools/probe_c1q_paired_sampling_semantics.py"
+      - "NSD_vNext/engine/nsd_engine/continuous_lineage_candidate.py"
+      - ".github/workflows/nsd-c1q-paired-sampling-semantics.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "NSD_vNext/engine/tools/probe_c1q_paired_sampling_semantics.py"
+      - "NSD_vNext/engine/nsd_engine/continuous_lineage_candidate.py"
+      - ".github/workflows/nsd-c1q-paired-sampling-semantics.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  paired-sampling:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detect paired-sampling change
+        id: changes
+        shell: bash
+        run: |
+          if git diff --name-only HEAD^ HEAD | grep -Eq '^(NSD_vNext/engine/tools/probe_c1q_paired_sampling_semantics\.py|NSD_vNext/engine/nsd_engine/continuous_lineage_candidate\.py|\.github/workflows/nsd-c1q-paired-sampling-semantics\.yml)$'; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Set up Python
+        if: steps.changes.outputs.run == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install qualification engine
+        if: steps.changes.outputs.run == 'true'
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+
+      - name: Run paired-sampling semantic controls
+        if: steps.changes.outputs.run == 'true'
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_c1q_paired_sampling_semantics.py \
+            --output ../../c1q-sampling/c1q_paired_sampling_semantics.json
+
+      - name: Upload paired-sampling semantic controls
+        if: steps.changes.outputs.run == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-c1q-paired-sampling-semantics
+          path: c1q-sampling/c1q_paired_sampling_semantics.json
+          if-no-files-found: error
