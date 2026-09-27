@@ -23,6 +23,7 @@ import numpy as np
 from scipy.linalg import expm
 
 from nsd_engine.state_space_adequacy import compare_state_space_candidates
+from nsd_engine.continuous_lineage_candidate import fit_continuous_lineage_candidate
 
 
 def construct_truth(*, fs: float, A: float, natural_frequency_hz: float, zeta: float, g: float):
@@ -101,9 +102,19 @@ def summarize_fit(signal: np.ndarray, fs: float, *, optimizer_maxiter: int):
         fs,
         optimizer_maxiter=optimizer_maxiter,
     )
+    candidate = fit_continuous_lineage_candidate(
+        signal,
+        fs,
+        optimizer_maxiter=optimizer_maxiter,
+    )
+    all_bics = {fit.family: fit.bic for fit in comparison.fits}
+    all_bics["C1Q"] = candidate.bic
+    ordered = sorted(all_bics.items(), key=lambda item: item[1])
     payload = {
-        "bic_winner": comparison.bic_winner,
-        "bic_margin_to_second": comparison.bic_margin_to_second,
+        "current_bic_winner": comparison.bic_winner,
+        "current_bic_margin_to_second": comparison.bic_margin_to_second,
+        "extended_bic_winner": ordered[0][0],
+        "extended_bic_margin_to_second": ordered[1][1] - ordered[0][1],
         "fits": {},
     }
     for fit in comparison.fits:
@@ -115,6 +126,13 @@ def summarize_fit(signal: np.ndarray, fs: float, *, optimizer_maxiter: int):
             "innovation_rms": fit.innovation_rms,
             "parameters": fit.parameters,
         }
+    payload["fits"]["C1Q"] = {
+        "bic": candidate.bic,
+        "negative_log_likelihood": candidate.negative_log_likelihood,
+        "parameter_count": candidate.parameter_count,
+        "parameters": candidate.parameters,
+        "success": candidate.success,
+    }
     return payload
 
 
