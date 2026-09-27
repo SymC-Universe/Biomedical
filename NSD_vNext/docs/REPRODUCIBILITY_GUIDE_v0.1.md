@@ -321,3 +321,25 @@ cat NSD_vNext/docs/SUBSTRATE_CLOSURE_QUALIFICATION_PREFLIGHT_v0.1.md
 ```
 
 Interpretation: passing V13 establishes analytic and known-truth contract integrity only. It does not define an empirical closure threshold, change the production estimator family, license local chi on real EEG, or alter N-B2/N-B3.
+
+## V14. Execute the exploratory nonzero-g continuous-lineage probe
+
+[CLAIM] The unchanged A0/A1/A2 likelihood machinery can be exercised on exact nonzero-g continuous-lineage known truths and on deterministic decimations of the same realized path without changing the production estimator or licensing real EEG.
+
+Run:
+
+```bash
+cd NSD_vNext/engine
+python -m pip install -e .
+python tools/probe_continuous_lineage_nonzero_g.py \
+  --output ../../continuous-lineage-probe/continuous_lineage_nonzero_g.json
+```
+
+Expected output:
+- status `EXPLORATORY_KNOWN_TRUTH_ONLY`;
+- `licenses_real_eeg_local_chi=false`;
+- `changes_production_estimator=false`;
+- paired fine/coarse results generated from the same realized continuous-lineage path;
+- descriptive A0/A1/A2 BIC, innovation diagnostics, and fitted parameters for each known-truth cell.
+
+Interpretation: V14 is an exploratory model-adequacy probe. A1 or A2 preference is not itself an admission or refusal rule. Its purpose is to determine whether current A1's H=0/B=0 restriction remains adequate inside the intended continuous-lineage C family before any estimator-family modification is considered.
