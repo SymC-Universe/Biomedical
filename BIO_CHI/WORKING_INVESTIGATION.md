@@ -241,3 +241,28 @@ On the predeclared 0 to 0.1 grid with step 0.001:
 At `TNF=0.062`, the second pair is close to the real axis; by `TNF=0.063` it is real. The dominant oscillatory pair remains stable throughout this sampled interval. These are grid-defined brackets, not bifurcation estimates.
 
 A further fixed-grid refinement may localize the observed real/complex transitions for descriptive mapping only. It must not convert those coordinates into confirmatory thresholds or use outcome-driven adaptive optimization.
+
+
+### 2026-09-27 - Fixed-window TNF topology refinement
+
+Two predeclared fixed descriptive windows were evaluated with the analytic Jacobian:
+- low-input window: `TNF=0..0.015`, step `0.0001`;
+- upper transition window: `TNF=0.055..0.070`, step `0.0001`.
+
+Observed grid brackets:
+1. 0 -> 1 complex pair: `(0, 0.0001]`;
+2. 1 -> 2 complex pairs: between `0.0020` and `0.0021`;
+3. 2 -> 1 complex pair: between `0.0035` and `0.0036`;
+4. 1 -> 2 complex pairs: between `0.0092` and `0.0093`;
+5. 2 -> 1 complex pair: between `0.0621` and `0.0622`.
+
+At transitions involving the second pair, its imaginary component is small near the bracket, consistent with a real/complex eigenvalue collision. No bifurcation class is assigned from this grid scan.
+
+Current descriptive modal sequence over the sampled native equilibrium branch:
+`REAL_ONLY at TNF=0 -> ONE_PAIR -> TWO_PAIRS -> ONE_PAIR -> TWO_PAIRS -> ONE_PAIR`.
+
+Claim ceiling:
+these coordinates are descriptive grid brackets only. They are not universal thresholds, not confirmatory boundaries, and not evidence that the same transitions occur in cells or independent NF-kB models.
+
+Next action:
+package the exact source equations, fixed grids, analytic-Jacobian construction, equilibrium residual gates, all eigenvalues, and transition-bracket output into a reproducible GitHub P0-D workflow and pin the resulting artifact. No further scientific interpretation is required before that mechanical packaging.
