@@ -1,0 +1,48 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "MENESES2026_PATH_TRANSPORT_P0Q_V01",
+  "date_closed": "2026-09-26",
+  "status": "EXECUTED_VALID_DIRECT_EXPERIMENTAL_PATH_TRANSPORT_P0Q",
+  "evidence_class": "P0-Q_LITERATURE_OPEN_DIRECT_EXPERIMENTAL_PATH_TRANSPORT_QUALIFICATION",
+  "freeze": "BIO_CHI/control/MENESES2026_PATH_TRANSPORT_P0Q_FREEZE_v0_1.md",
+  "workflow": {
+    "run_id": 36284374387,
+    "head_sha": "79a098f777a27bb18bcb2c8fb26b69e301ab0e57",
+    "artifact_id": 10919776838,
+    "artifact_sha256": "71dbba045f674852ae8862cef89013297cbdcd2c16c440e55feea2386c1d35d5",
+    "result_json_sha256": "f06476bb9daa7fc3f8dcefd8e5eee15ea7d72fead44394b41bae111af8b5a108"
+  },
+  "source": {
+    "repository": "wadhwalab/2026-Meneses-Osmotic",
+    "commit": "d14d0caaa07299f13d1b1121d1e4630454fd724b",
+    "files": 16,
+    "fit_records_total": 143,
+    "fit_records_eligible": 143,
+    "fit_failures": 0
+  },
+  "primary": {
+    "representation": [
+      "A_dec",
+      "log_tau_dec",
+      "log_tau_inc",
+      "G_rec"
+    ],
+    "observed_balanced_accuracy": 0.38463666267942587,
+    "concentration_stratified_null_97_5_percentile": 0.3272412031499202,
+    "permutation_p_upper_tail": 0.0009995002498750624,
+    "permutations": 2000,
+    "disposition": "PATH_REORGANIZATION_DETECTED_P0Q"
+  },
+  "depth_only_control": {
+    "observed_balanced_accuracy": 0.2967254784688995,
+    "concentration_stratified_null_97_5_percentile": 0.3026513905502392,
+    "permutation_p_upper_tail": 0.0384807596201899,
+    "detected": false
+  },
+  "full_minus_depth_balanced_accuracy": 0.08791118421052635,
+  "secondary_disposition": "SECONDARY_RULE_UNDERSPECIFIED_FULL_ONLY_LT_0_10",
+  "biological_chi": "PATH_REORGANIZATION_DETECTED_P0Q",
+  "Chi_bio": "SECONDARY_RULE_UNDERSPECIFIED_FULL_ONLY_LT_0_10",
+  "chi_bio": "NOT_OPENED_NOT_LICENSED",
+  "claim_ceiling": "detectable perturbation-path encoding in one released E. coli motor-recovery dataset; no equivalence claim, universal law, causal mechanism, or scalar chi_bio"
+}
