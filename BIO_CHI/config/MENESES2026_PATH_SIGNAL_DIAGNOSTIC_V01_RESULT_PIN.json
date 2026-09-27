@@ -1,0 +1,103 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "MENESES2026_PATH_SIGNAL_DIAGNOSTIC_V01",
+  "date_closed": "2026-09-26",
+  "status": "EXECUTED_POSTRESULT_ROOT_CAUSE_DIAGNOSTIC",
+  "classification": "POST_RESULT_NO_PROMOTION",
+  "parent_primary_disposition": "PATH_REORGANIZATION_DETECTED_P0Q",
+  "parent_secondary_disposition": "SECONDARY_RULE_UNDERSPECIFIED_FULL_ONLY_LT_0_10",
+  "workflow": {
+    "run_id": 36284508053,
+    "head_sha": "fad31e203762c7e47fb569d9e175fe51670fe804",
+    "artifact_id": 10919484871,
+    "artifact_sha256": "0ee429b118b24cba6a2276aae3ba6bac8627ae52f23b4e737903eba461dea0e8",
+    "result_json_sha256": "1fd8104c7f50acc50be0b94ac449e5777a2195dd8b50e571c2ce1516d96b7040"
+  },
+  "single_coordinate": {
+    "A_dec": {
+      "balanced_accuracy": 0.2967254784688995,
+      "null_97_5": 0.2969599157695375,
+      "p": 0.026973026973026972,
+      "detected": false
+    },
+    "log_tau_dec": {
+      "balanced_accuracy": 0.32438696172248804,
+      "null_97_5": 0.3210052207934609,
+      "p": 0.01998001998001998,
+      "detected": true
+    },
+    "log_tau_inc": {
+      "balanced_accuracy": 0.34625697767145136,
+      "null_97_5": 0.32063440739633176,
+      "p": 0.006993006993006993,
+      "detected": true
+    },
+    "G_rec": {
+      "balanced_accuracy": 0.3393341307814992,
+      "null_97_5": 0.29887659489633167,
+      "p": 0.001998001998001998,
+      "detected": true
+    }
+  },
+  "leave_one_coordinate_out": {
+    "without_A_dec": {
+      "balanced_accuracy": 0.39277811004784685,
+      "p": 0.000999000999000999,
+      "detected": true
+    },
+    "without_log_tau_dec": {
+      "balanced_accuracy": 0.38709379984051034,
+      "p": 0.000999000999000999,
+      "detected": true
+    },
+    "without_log_tau_inc": {
+      "balanced_accuracy": 0.34047547846889953,
+      "p": 0.01098901098901099,
+      "detected": true
+    },
+    "without_G_rec": {
+      "balanced_accuracy": 0.38908742025518345,
+      "p": 0.000999000999000999,
+      "detected": true
+    }
+  },
+  "pairwise": {
+    "sucrose_vs_sorbitol": {
+      "balanced_accuracy": 0.6833881578947368,
+      "p": 0.000999000999000999,
+      "bh_p": 0.005994005994005994,
+      "detected": true
+    },
+    "sucrose_vs_sodium_context": {
+      "balanced_accuracy": 0.49868421052631584,
+      "p": 0.5394605394605395,
+      "bh_p": 0.5394605394605395,
+      "detected": false
+    },
+    "sucrose_vs_clockwise": {
+      "balanced_accuracy": 0.6228070175438596,
+      "p": 0.01998001998001998,
+      "bh_p": 0.02997002997002997,
+      "detected": true
+    },
+    "sorbitol_vs_sodium_context": {
+      "balanced_accuracy": 0.69375,
+      "p": 0.001998001998001998,
+      "bh_p": 0.005994005994005994,
+      "detected": true
+    },
+    "sorbitol_vs_clockwise": {
+      "balanced_accuracy": 0.6458333333333333,
+      "p": 0.012987012987012988,
+      "bh_p": 0.025974025974025972,
+      "detected": true
+    },
+    "sodium_context_vs_clockwise": {
+      "balanced_accuracy": 0.5852272727272727,
+      "p": 0.08091908091908091,
+      "bh_p": 0.0971028971028971,
+      "detected": false
+    }
+  },
+  "interpretation": "The primary aggregate path signal is distributed across recovery kinetics/gain rather than collapse depth alone. Pairwise separation is heterogeneous. This is explanatory post-result evidence only and does not alter the primary P0-Q or repair the frozen secondary taxonomy."
+}
