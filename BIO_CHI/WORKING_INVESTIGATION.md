@@ -266,3 +266,19 @@ these coordinates are descriptive grid brackets only. They are not universal thr
 
 Next action:
 package the exact source equations, fixed grids, analytic-Jacobian construction, equilibrium residual gates, all eigenvalues, and transition-bracket output into a reproducible GitHub P0-D workflow and pin the resulting artifact. No further scientific interpretation is required before that mechanical packaging.
+
+
+### 2026-09-27 - Reproducibility workflow v0.1 mechanical failure preserved
+
+GitHub Actions run `36345371220` failed after dependency installation during the frozen exploratory-map script.
+
+Failure:
+`AssertionError` at the exact-list equality check for the stored `TNF=0` equilibrium.
+
+Classification:
+`MECHANICAL_INTEGRITY_CHECK_IMPLEMENTATION_FAILURE`.
+
+The failure occurred in a brittle Python representation-equality assertion after the numerical scan had executed. It does not constitute a scientific failure and does not alter the locally reproduced spectral topology. No artifact was uploaded because the integrity step intentionally stopped the workflow.
+
+Authorized repair:
+replace only the exact list-equality assertion with an explicit six-coordinate numerical tolerance check and make the observed endpoint values visible in the assertion message. Do not change equations, grids, equilibrium solver, Jacobian, tolerances used for scientific classification, mode-count rule, or interpretation.
