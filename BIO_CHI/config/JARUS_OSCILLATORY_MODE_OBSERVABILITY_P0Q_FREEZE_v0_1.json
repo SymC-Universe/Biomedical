@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "authority": "SymC GOM v0.8.6",
+  "purpose": "P0-Q qualification of a post-result NF-kB oscillatory-mode observability candidate; not confirmation",
+  "epistemic_status": "P0_Q_POSTRESULT_QUALIFICATION",
+  "hypothesis_provenance": "DATA_DERIVED",
+  "source_case": "FIG8A_NOMINAL_DAMPED",
+  "source_artifacts": {
+    "trajectory_artifact_id": 10746629733,
+    "trajectory_artifact_sha256": "f2bebf6605b2e794f81473d776146f0109752ddc1e6eed1750a3deb4ec44e32b",
+    "local_stability_artifact_id": 10748186325,
+    "local_stability_artifact_sha256": "7b17c4b2ec5c3cfd280eac48155903f329a57a1a62e4918ef4fcac4ed3aea7a9"
+  },
+  "candidate_definition": {
+    "modal_rule": "Use the unique non-real complex-conjugate eigenpair in the complete six-mode local generator. If exactly one conjugate pair is not present, refuse.",
+    "generator_scalar": "chi_gen = -Re(lambda)/abs(lambda) for a stable complex-conjugate pair only",
+    "observable": "free nuclear NF-kappaB",
+    "observable_selection_basis": "Publication-native central measured/represented NF-kB response variable and explicit frozen trajectory output; not selected by fit quality.",
+    "fit_start_rule": "First local minimum in free nuclear NF-kappaB after TNF onset.",
+    "fit_model": "c + A*exp(-sigma*(t-t0))*cos(omega*(t-t0)+phi)",
+    "simple_comparator": "c + A*exp(-sigma*(t-t0))",
+    "observable_scalar": "chi_obs = sigma/sqrt(sigma^2 + omega^2)"
+  },
+  "qualification_criteria": {
+    "note": "These thresholds were calibrated after viewing the Figure 8A qualification case. They are P0-Q criteria only and cannot be represented as prospective confirmation.",
+    "unique_complex_pair": true,
+    "stable_pair_required": true,
+    "minimum_delta_aic_oscillator_vs_exponential": 10,
+    "maximum_relative_error_omega": 0.1,
+    "maximum_relative_error_sigma": 0.2,
+    "maximum_relative_error_chi": 0.2,
+    "minimum_oscillatory_amplitude_fraction_of_post_onset_range": 0.05,
+    "minimum_post_start_complete_cycles": 2.5,
+    "finite_parameter_jacobian_condition_max": 1000000000000
+  },
+  "known_bad_requirement": {
+    "fixture": "monotone single-exponential return sampled on the real trajectory times",
+    "expected": "must fail the oscillatory observability gate"
+  },
+  "admission_ceiling": {
+    "chi_bio": "NOT_ADMITTED_BY_THIS_GATE",
+    "Chi_bio": "NOT_ADMITTED_BY_THIS_GATE",
+    "Bio_Chi": "NOT_CONSTRUCTED_BY_THIS_GATE",
+    "allowed_if_pass": "Candidate is qualified to face a separately frozen independent test. Figure 8A remains qualification evidence."
+  }
+}

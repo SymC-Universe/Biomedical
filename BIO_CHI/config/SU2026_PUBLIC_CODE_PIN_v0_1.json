@@ -1,0 +1,33 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "source": "Su melanoma reversible-transition public analysis code",
+  "repository": "jihoonlee0/melanoma_reversible_transition",
+  "pinned_commit": "a2b2119f6d69d49e33ff4b57fb04b2b1eaf5fe68",
+  "pinned_commit_date_utc": "2025-02-03T05:45:05Z",
+  "pinned_tree": "a0d9cd0dcf25cda1a53cc8670f77490c0395764c",
+  "readme_blob": "c57b207d246ad6cab8e14445ab89835f08935b4d",
+  "analysis_blobs": {
+    "surprisal.m": "2dac24e398f30451388c2acbe1406e23afcdad50",
+    "Nullclines.ipynb": "bfc1c85b9ce72b065c80bc0e093659278615fe87",
+    "MCMC_Lambda-gene_expressions.html": "2b6728ba38ce27e3cc7f5a576fd5b10802e5fbd9",
+    "Runge-Kutta4,5-250124.py": "9105d12c4717e8abca64ec6cad002084d07534ec"
+  },
+  "license_blob": "8e35b98d7aea515f4b8c3d658ce5441caa8734ab",
+  "code_roles_declared_by_readme": [
+    "MCMC simulation to fit gene module dynamics system model",
+    "nullclines for gene-module status",
+    "surprisal analysis to determine critical gene modules"
+  ],
+  "source_observation": {
+    "surprisal_m_uses_log_then_svd": true,
+    "surprisal_m_source_blob_frozen": true,
+    "outcome_values_opened": false,
+    "note": "Code identity/implementation structure only; no study expression matrix or fitted biological result was opened in this pin."
+  },
+  "related_data_source": "GSE255671 / PRJNA1076128",
+  "related_archived_release_doi": "10.5281/zenodo.17751601",
+  "status": "PASS_PUBLIC_CODE_IDENTITY_PIN",
+  "scientific_values_interpreted": false,
+  "testbed_promoted": false
+}

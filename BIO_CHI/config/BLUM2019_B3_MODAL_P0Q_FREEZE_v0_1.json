@@ -1,0 +1,68 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "date": "2026-09-24",
+  "status": "FROZEN_BEFORE_B3_MODAL_COMPUTATION",
+  "authority": "SymC General Operations Manual v0.8.6",
+  "purpose_tag": "P0_Q_MODAL_QUALIFICATION_LIMIT_MAPPING",
+  "source": {
+    "article_doi": "10.15252/msb.20198947",
+    "repository": "Mijan/LFNS_MSB",
+    "commit": "5c917abda0618d75c00c9cab45f24ed893dd71f1",
+    "selected_model": "B3",
+    "selection_provenance": "publication-selected topology after training, held-out temporal perturbations, and HSPG perturbation; not selected by Bio Chi outcome",
+    "model_file": "FGF2_models/Fgf_B3/FGF_Model_B3.txt",
+    "initial_state_file": "FGF2_models/Fgf_B3/initial_states_B3.txt",
+    "measurement_file": "FGF2_models/Fgf_B3/measurement_FRET_B3.txt",
+    "parameter_source": "Inference_results/Fgf_B3/results/sus_3_20/sim_model_summary.txt"
+  },
+  "state_order": [
+    "Ras","Ras_star","Raf","Raf_star","Mek","Mek_star","Erk","Erk_star",
+    "Nfb","Nfb_star","FgfR","FgfR_star","H","H_F","H_F_R"
+  ],
+  "source_native_parameterization": {
+    "k_1_2":0.17983,"K_1_2":0.00034363,"k_2_1":0.51401,"K_2_1":0.64348,
+    "k_3_4":2.1251,"K_3_4":0.00010092,"K_NFB":7.9237e-06,"k_4_3":0.058363,
+    "K_4_3":0.0051924,"k_5_6":34.3875,"K_5_6":0.15889,"k_6_5":0.20789,
+    "K_6_5":0.13295,"k_7_8":0.42425,"K_7_8":8.3307e-06,"k_8_7":3.0977,
+    "K_8_7":1.8444,"f_1_2":2.8077e-05,"F_1_2":0.0092886,"f_2_1":1.0782e-05,
+    "F_2_1":8.053e-05,"h_nfb":0.74022,"fgf_input":0.0,"r_h":0.81717,
+    "r_3_4":0.063087,"r_4_3":0.046734,"r_5_6":0.01334,"r_6_5":0.081762,
+    "r_5_7":89.1764,"r_7_5":1.8483,"fgfr_init_mean":0.40487,
+    "nfb_init":0.42902,"h_init_mean":1.9705,"FRET_sigma":0.0001,"FRET_E":0.012115,
+    "erk_max":0.8,"erk_initial":0.0
+  },
+  "equilibrium": {
+    "rule": "source initial state with fgf_input=0 and all activated/bound states zero",
+    "values": [0.1,0.0,0.7,0.0,0.68,0.0,0.26,0.0,0.42902,0.0,0.40487,0.0,1.9705,0.0,0.0],
+    "must_verify_rhs_inf_norm_le": 1e-12
+  },
+  "jacobian": {
+    "method": "centered finite difference of the source equations",
+    "step_multipliers": [1.0,0.5,0.25],
+    "base_step": "eps^(1/3)*max(1,abs(x_j))",
+    "all_15_modes_preserved": true,
+    "matched_nonreal_pair_relative_spread_max": 1e-5
+  },
+  "measurement_observability": {
+    "deterministic_measurement": "source FRET equation without measurement-noise draw",
+    "C": "numerical gradient of deterministic FRET measurement at the same equilibrium",
+    "mode_visibility": "|C v_j| / ||v_j||_2 for every right eigenvector",
+    "visibility_threshold_for_scalar_candidate": 1e-8,
+    "all_modes_reported": true
+  },
+  "scalar_candidate_rule": {
+    "eligible_pair": "stable complex-conjugate pair that is numerically matched across all Jacobian steps and has measurement visibility >= 1e-8",
+    "if_exactly_one": "report model-specific candidate chi_bio = -Re(lambda)/|lambda|; do not admit",
+    "if_zero": "REFUSE_NO_VISIBLE_STABLE_COMPLEX_PAIR",
+    "if_more_than_one": "REFUSE_MULTIPLE_VISIBLE_STABLE_COMPLEX_PAIRS",
+    "single_real_pole_never_defines_chi": true,
+    "chi_equal_1_boundary_claimed": false
+  },
+  "known_bad": {
+    "real_diagonal_stable_generator": "must yield zero complex pairs and scalar refusal"
+  },
+  "claim_ceiling": "P0-Q model-specific ERK modal qualification or refusal only. No biological scalar admission, no universal chi, no chi=1 boundary, and no Bio Chi conglomerate claim.",
+  "next_if_unique_pair": "freeze a separate trajectory-level same-mode qualification against already-reproduced Figure 2 groups without changing pair or fit rule",
+  "next_if_refused": "retain the complete ERK modal result as Chi_bio Limit Map evidence and continue Bio Chi system-level work without scalar rescue"
+}

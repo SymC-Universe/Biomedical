@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "authority": "SymC GOM v0.8.6",
+  "gate": "D2FC2 independent NF-kB generator/modal and validation-observability test",
+  "epistemic_status": "P1_CANDIDATE_EXTERNAL_MODEL_AND_SOURCE_NATIVE_VALIDATION",
+  "hypothesis_provenance": "DATA_DERIVED_FROM_JARUSZEWICZ_P0Q__TESTED_ON_SEPARATE_EXTERNAL_SYSTEM",
+  "scientific_question": "Does an independent NF-kB model contain a licensed stable complex-conjugate local mode at its source-native unstimulated equilibrium, and is that modal frequency observable in the source-native validation nuclear-RelA trajectories that were not used to fit the model?",
+  "external_source": {
+    "repository": "recleelab/D2FCSquared",
+    "commit_sha": "4414c1556e3068c9bfe2162d5ba9d2cf770713fc",
+    "tree_sha": "5c3fecf339c2feb468701291fde439cd88db475b",
+    "license": "MIT",
+    "source_roles": {
+      "model": "D2FCSquared.m",
+      "parameters": "ModelParameters.xlsx and parameters_d2fc.m",
+      "source_validation_split": "RunAverageIKKTrajectory.m",
+      "experimental_data": "Data/ExpData.mat",
+      "measured_ikk_inputs": "Data/MeanIKKTrajectories.csv"
+    },
+    "source_native_partition": {
+      "fitting_scenarios": [
+        "Control",
+        "1X30 sec",
+        "1X2 min",
+        "1X6 min"
+      ],
+      "validation_scenarios": [
+        "1X15 min",
+        "1X30 min",
+        "2X3 min",
+        "3X2 min",
+        "4X1.5 min"
+      ]
+    }
+  },
+  "no_outcome_opening_before_freeze": {
+    "ExpData_mat_values_opened": false,
+    "MeanIKKTrajectories_numeric_values_opened": false,
+    "ModelParameters_xlsx_numeric_values_opened": false,
+    "source_code_and_model_default_parameters_inspected": true
+  },
+  "generator_gate": {
+    "equilibrium_protocol": "Use the source-native D2FC Squared model (modelType 1), source-native parameters, TR=0, and the source-native 10-day equilibration used by SimulateModel before stimulation.",
+    "jacobian": "Finite-difference the autonomous species RHS at the equilibrated TR=0 state with three step multipliers 1, 0.5, 0.25; preserve the entire spectrum.",
+    "complex_pair_rule": "No preferred pair is selected in advance. Report every non-real conjugate pair. A scalar candidate exists only for an individually stable pair that is a genuine conjugate factor of the local generator.",
+    "chi_rule": "For each stable complex pair, chi_i = -Re(lambda_i)/abs(lambda_i). No chi=1 boundary interpretation is claimed.",
+    "numerical_gate": "Pair identity and sign must be stable across all three finite-difference steps; maximum matched-pair relative complex spread <= 1e-5."
+  },
+  "empirical_validation_gate": {
+    "observable": "RelativeNFkB_Nuc / mean nuclear RelA fold-change as used by the source validation plot.",
+    "conditions": "All five source-native validation scenarios, with no condition dropping after values are opened.",
+    "time_grid": "Use source-native 0:4:181 minute experimental grid.",
+    "frequency_extraction": "For each validation condition, smooth only with a fixed Savitzky-Golay polynomial order 3 and window 5 points when enough samples exist; identify local maxima with prominence >= 0.10 times the condition range. If fewer than two post-first-response peaks exist, frequency is NON_IDENTIFIABLE for that condition.",
+    "empirical_omega": "For conditions with at least two eligible peaks, omega_emp = 2*pi / median(interpeak_time).",
+    "matching_rule": "A generator complex-pair frequency is empirically compatible if at least 3 of 5 validation conditions are identifiable and their median relative frequency error to the same predeclared generator pair is <= 0.25, with no post-result pair switching.",
+    "simple_alternative": "Report source-native validation oscillation identifiability and interpeak periods directly; the test does not require SymC to outperform peak-period estimation because its added object is the generator-derived damping ratio."
+  },
+  "falsifiers": [
+    "No stable complex-conjugate pair in the independent local generator.",
+    "Complex-pair identity or sign is numerically unstable across finite-difference steps.",
+    "Fewer than 3 of 5 source-native validation conditions identify an oscillatory timescale.",
+    "Median relative empirical-versus-generator frequency error exceeds 0.25.",
+    "Observed validation dynamics are better classified as non-oscillatory under the frozen peak rule."
+  ],
+  "allowed_outcomes": [
+    "INDEPENDENT_MODEL_MODAL_AND_OBSERVABILITY_SUPPORT",
+    "GENERATOR_PAIR_EXISTS_BUT_EMPIRICAL_OBSERVABILITY_FAILS",
+    "NO_LICENSED_COMPLEX_PAIR",
+    "NON_IDENTIFIABLE",
+    "INVALID_TEST"
+  ],
+  "claim_ceiling": {
+    "if_pass": "Supports admission of a bounded model-specific biological chi_bio mode class and Chi_bio modal representation across two independent NF-kB model lineages. Does not establish a universal biological scalar, a chi=1 biological boundary, or a pan-biological value.",
+    "if_fail": "Preserve failure and retain Jaruszewicz result as P0-Q model-specific qualification only."
+  },
+  "known_bad_requirement": {
+    "generator_fixture": "real diagonal stable Jacobian with no non-real pair must return NO_LICENSED_COMPLEX_PAIR",
+    "empirical_fixture": "monotone validation traces must return NON_IDENTIFIABLE or observability failure"
+  }
+}

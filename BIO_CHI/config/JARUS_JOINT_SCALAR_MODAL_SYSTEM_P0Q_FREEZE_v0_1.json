@@ -1,0 +1,101 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "date": "2026-09-24",
+  "status": "FROZEN_BEFORE_JOINT_RESPONSE_COMPUTATION",
+  "authority": "SymC General Operations Manual v0.8.6",
+  "purpose_tag": "P0_Q_JOINT_MEANING_FUNCTION_AND_LIMIT_MAPPING",
+  "scientific_question": "Within the same native NF-kB model, how much realized perturbation response is retained by the chi_bio-bearing local oscillatory carrier, by the complete six-mode local generator, and only by the full nonlinear system?",
+  "source": {
+    "paper_doi": "10.1371/journal.pone.0286416",
+    "archive_sha256": "76c51b2b9c44e931f62d4956df2a0aee1b02a481472125d4ae8a0e268ad885f0",
+    "reduced_m_sha256": "b42924cf0b30b8dcb15dac1022f93dd57a535501bd0dcdfa96ed516cb7e25c6c",
+    "run_simulate_reduced_m_sha256": "2acbc191ff2f48bb6f4382a7156b3bf3eaf58122fa06d06c76e3b7a39d51e951",
+    "simulate_reduced_execution_sha256": "c15c8da4e9dc582880967d1bd58c0c889f5d9d4c56182720b5e04cfa67c5ed4b",
+    "joint_source_audit_run": 36044134345
+  },
+  "inherited_scalar_candidate": {
+    "pin": "BIO_CHI/config/JARUS_OSCILLATORY_MODE_OBSERVABILITY_P0Q_V01_RESULT_PIN.json",
+    "chi_bio": 0.21311451897468006,
+    "role": "P0-Q model-specific candidate, not broad admission",
+    "selection_rule": "the unique nonreal conjugate eigenspace already frozen and qualified before this joint test"
+  },
+  "representations": {
+    "scalar_carrier": {
+      "name": "chi_bio-associated complex-pair carrier",
+      "content": "the frozen complex-conjugate pole pair plus biorthogonal input and output residues required to realize a response",
+      "warning": "this is not chi_bio alone; chi_bio alone has no absolute timescale or response amplitude",
+      "construction": "right eigenvectors V of J and corresponding rows of inv(V); retain only the already-frozen conjugate pair; no trajectory fitting"
+    },
+    "modal": {
+      "name": "Chi_bio local modal representation",
+      "content": "complete six-state local linearization dx = J dx + B du, retaining all six modes"
+    },
+    "system": {
+      "name": "Bio Chi same-system nonlinear reference",
+      "content": "complete source-native nonlinear six-state reduced model driven by the publication protocols",
+      "scope": "same-model system-level Function/Limit reference, not experimental ground truth"
+    }
+  },
+  "equilibrium_and_io": {
+    "x_star": [1,0,0,0,0,0],
+    "u_star_TNF": 0,
+    "output": "free nuclear NF-kB, state 3",
+    "C": [0,0,1,0,0,0],
+    "B_definition": "partial f / partial TNF at x_star,u_star",
+    "B_expected_from_source_equations": [-0.00195,0.00195,0,0,0,0],
+    "J_rule": "centered finite difference at x_star,TNF=0 using eps^(1/3)*max(1,abs(x_j)); verify unique complex pair and chi against inherited pin"
+  },
+  "protocols": [
+    {"id":"continuous_9h","dur_on_s":32400,"interval_s":0,"n_pulses":1},
+    {"id":"pulses_5_60","dur_on_s":300,"interval_s":3600,"n_pulses":3},
+    {"id":"pulses_5_100","dur_on_s":300,"interval_s":6000,"n_pulses":3},
+    {"id":"pulses_5_200","dur_on_s":300,"interval_s":12000,"n_pulses":3},
+    {"id":"pulses_22p5_45","dur_on_s":1350,"interval_s":2700,"n_pulses":3},
+    {"id":"pulses_45_90","dur_on_s":2700,"interval_s":5400,"n_pulses":3},
+    {"id":"on_off_2h","dur_on_s":7200,"interval_s":36000,"n_pulses":1}
+  ],
+  "time": {
+    "source_equilibration_begin_s": -72000,
+    "TNF_begin_s": 3600,
+    "source_end_s": 86400,
+    "comparison_window_h": [0,10],
+    "comparison_grid_s": 60
+  },
+  "execution": {
+    "nonlinear_solver": "MATLAB ode23s with source equations and piecewise-constant source TNF protocol",
+    "linear_solver": "exact matrix-exponential propagation on each one-minute interval under the same binary TNF input",
+    "pair_solver": "exact complex modal propagation using frozen pair eigenvalues and biorthogonal input/output residues",
+    "no_model_fitting_to_joint_trajectories": true,
+    "no_per_protocol_gain_phase_or_offset_fit": true,
+    "all_seven_source_protocols_required": true
+  },
+  "metrics": {
+    "primary": "NRMSE of raw free nuclear NF-kB over 0-10 h, normalized by the nonlinear reference peak-to-trough range for that protocol",
+    "secondary": [
+      "normalized maximum absolute error",
+      "pair minus full-modal NRMSE",
+      "first post-TNF peak time difference where a peak exists under a fixed local-maximum rule",
+      "first post-TNF peak amplitude ratio where a peak exists"
+    ],
+    "fixed_peak_rule": "strict interior local maximum on the one-minute grid after TNF onset; no smoothing; first such peak",
+    "zero_range": "INDETERMINATE_PROTOCOL"
+  },
+  "predeclared_interpretive_rules": {
+    "representation_adequacy": "adequate if median protocol NRMSE <= 0.25 and no protocol NRMSE > 0.50",
+    "material_modal_added_value": "full-modal improves NRMSE versus pair carrier in at least 5 of 7 protocols and median NRMSE reduction >= 0.05",
+    "PAIR_CARRIER_SUFFICIENT": "pair carrier adequate under the frozen rule; modal/system detail may still add descriptive information",
+    "FULL_MODAL_SUFFICIENT_PAIR_INSUFFICIENT": "pair carrier inadequate; full-modal adequate and materially improves under the frozen rule",
+    "NONLINEAR_SYSTEM_REQUIRED": "full-modal inadequate under the frozen rule, irrespective of pair performance",
+    "MIXED_PROTOCOL_DEPENDENT": "no preceding category applies cleanly or protocol conclusions conflict"
+  },
+  "known_bad_and_integrity": {
+    "nonlinear_zero_input_from_x_star_must_remain_at_x_star": true,
+    "full_linear_zero_input_must_remain_zero": true,
+    "pair_zero_input_must_remain_zero": true,
+    "full_linear_all_modes_required": true,
+    "pair_identity_must_match_inherited_candidate": true,
+    "chi_relative_difference_from_pin_max": 1e-6
+  },
+  "claim_ceiling": "Same-model P0-Q joint Function/Limit mapping only. This cannot independently confirm chi_bio, cannot establish a universal biological hierarchy, cannot establish chi=1, and cannot substitute for external perturbation/recovery validation."
+}

@@ -1,0 +1,54 @@
+name: Bio Chi D2FC2 independent NF-kB modal P1 candidate
+
+on:
+  push:
+    branches:
+      - chi-bio-recovery-p0d-20260922
+    paths:
+      - BIO_CHI/config/D2FC2_NFKB_INDEPENDENT_MODAL_P1_FREEZE_v0_1.json
+      - BIO_CHI/src/run_d2fc2_independent_modal_p1_v0_1.m
+      - .github/workflows/bio-chi-d2fc2-independent-modal-p1-v01.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  d2fc2:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Retrieve exact external D2FC2 source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --no-checkout https://github.com/recleelab/D2FCSquared.git external_d2fc2
+          cd external_d2fc2
+          git checkout --detach 4414c1556e3068c9bfe2162d5ba9d2cf770713fc
+          test "$(git rev-parse HEAD)" = "4414c1556e3068c9bfe2162d5ba9d2cf770713fc"
+
+      - uses: matlab-actions/setup-matlab@v3
+        with:
+          release: R2024b
+          products: SimBiology Signal_Processing_Toolbox
+
+      - name: Execute frozen independent generator and validation gate
+        uses: matlab-actions/run-command@v3
+        with:
+          command: run('BIO_CHI/src/run_d2fc2_independent_modal_p1_v0_1.m')
+          generate-summary: false
+
+      - name: Hash result
+        shell: bash
+        run: |
+          set -euo pipefail
+          sha256sum BIO_CHI/artifacts/generated/d2fc2_independent_modal_p1/d2fc2_independent_modal_p1_v0_1.json > BIO_CHI/artifacts/generated/d2fc2_independent_modal_p1/SHA256SUMS.txt
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_D2FC2_INDEPENDENT_MODAL_P1_V01
+          path: BIO_CHI/artifacts/generated/d2fc2_independent_modal_p1/
+          if-no-files-found: error
+          retention-days: 90

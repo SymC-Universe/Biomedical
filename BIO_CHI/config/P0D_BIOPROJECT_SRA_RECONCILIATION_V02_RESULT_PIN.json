@@ -1,0 +1,48 @@
+{
+  "schema_version": "0.2",
+  "project": "Bio Chi Investigation",
+  "gate": "BioProject parent/child SRA source-hierarchy reconciliation",
+  "v01_failure_pin": "BIO_CHI/config/P0D_BIOPROJECT_SRA_RECONCILIATION_V01_FAILURE_PIN.json",
+  "workflow_run_id": 35864928756,
+  "workflow_head_sha": "96fc39ad04cdca0a22b7a86ed4c9267b047343d3",
+  "artifact_id": 10752086226,
+  "artifact_digest": "sha256:b0fd3e0f3d02dd1dae92b6f86aa9a9736c51172e770fd9c2e7de0caf15ebe83b",
+  "status": "PASS_BIOPROJECT_PARENT_CHILD_RECONCILIATION",
+  "harmange2023": {
+    "query_bioproject": "PRJNA994430",
+    "sra_studies": [
+      "SRP449288"
+    ],
+    "run_count": 23,
+    "runinfo_bioprojects": [
+      "PRJNA994430"
+    ],
+    "child_union_run_count": 23,
+    "missing_from_child_union": [],
+    "extra_in_child_union": []
+  },
+  "shaffer2017": {
+    "umbrella_query_bioproject": "PRJNA382641",
+    "sra_studies": [
+      "SRP103825",
+      "SRP103827",
+      "SRP103828"
+    ],
+    "run_count": 155,
+    "child_bioprojects": [
+      "PRJNA382674",
+      "PRJNA382752",
+      "PRJNA382753"
+    ],
+    "child_union_run_count": 155,
+    "missing_from_child_union": [],
+    "extra_in_child_union": [],
+    "source_hierarchy_effect": "PRJNA382641 behaves as an umbrella query whose 155-run SRA result is exactly partitioned across three child BioProjects and three SRA studies. The earlier unverified SRP103406 label is not used prospectively."
+  },
+  "sequence_reads_downloaded": false,
+  "molecular_values_interpreted": false,
+  "promotion_decision": "NONE",
+  "chi_bio_constructed": false,
+  "Chi_bio_admitted": false,
+  "Bio_Chi_constructed": false
+}

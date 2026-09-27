@@ -1,0 +1,59 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "experiment": "SU2026_M397_SIMPLE_RECOVERY_V01",
+  "status": "FROZEN_BEFORE_VALUE_OPENING",
+  "source": {
+    "geo": "GSE134459",
+    "file": "GSE134459_Reversible_RPKM_values.txt.gz",
+    "sha256": "1ec204f02187289fdc0d718fe2291d34f2e3e6b943dcdf8fe627718d75a42d8c"
+  },
+  "columns": [
+    "Control",
+    "D3",
+    "D8",
+    "D13",
+    "D21",
+    "D29",
+    "D33",
+    "D38",
+    "D59",
+    "dr29.D4",
+    "dr29.D10",
+    "dr29.D15",
+    "dr29.D17",
+    "dr29.D30",
+    "dr29.D35"
+  ],
+  "post_removal_days": {
+    "dr29.D4": 4,
+    "dr29.D10": 10,
+    "dr29.D15": 15,
+    "dr29.D17": 17,
+    "dr29.D30": 30,
+    "dr29.D35": 35
+  },
+  "metric": {
+    "gene_gate": "retain rows with finite nonnegative RPKM in all 15 frozen trajectory columns",
+    "transform": "log2(RPKM + 1)",
+    "baseline": "Control",
+    "displacement": "median across retained genes of absolute transformed expression minus Control transformed expression"
+  },
+  "primary_test": {
+    "statistic": "Spearman correlation between days-after-removal and displacement across six post-removal timepoints",
+    "alternative": "negative",
+    "p_value": "exact over all 6! permutations",
+    "support_conditions": [
+      "rho < 0",
+      "exact p <= 0.05",
+      "D35 < D4",
+      "D35 < D59"
+    ]
+  },
+  "secondary": {
+    "late_drug_on": "D59",
+    "endpoint": "dr29.D35",
+    "recovery_fraction": "1 - D35/D59; descriptive only"
+  },
+  "claim_ceiling": "realized transcriptomic recovery/reorganization in the M397 melanoma trajectory under the frozen simple distance; no universal recovery law, no biological chi construction"
+}

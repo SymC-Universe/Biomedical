@@ -1,0 +1,26 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Lee et al. 2014 SRP040309 SRA experiment/sample metadata mapping",
+  "purpose_tag": "P0_D_SOURCE_QUALIFICATION",
+  "source_map_pin": "BIO_CHI/config/LEE2014_SRP040309_SOURCE_MAP_V01_RESULT_PIN.json",
+  "study_accession": "SRP040309",
+  "permitted_operations": [
+    "query NCBI SRA metadata XML for the already frozen SRP040309 study records",
+    "record experiment title/design/library metadata and sample title/description/attributes",
+    "record run-to-experiment/sample identity",
+    "hash exact metadata XML used"
+  ],
+  "forbidden_operations": [
+    "download sequence reads",
+    "open expression values",
+    "compute differential expression or recovery outcomes",
+    "interpret molecular outcome direction",
+    "select samples based on observed molecular outcomes",
+    "promote a testbed",
+    "construct chi_bio, Chi_bio, or Bio Chi"
+  ],
+  "pass_rule": "public SRA metadata explicitly supplies enough sample/experiment labels to map the study design without reading sequence or expression values",
+  "stop_rule": "if mapping requires inferring biological states not explicitly identified by source metadata/publication, preserve ambiguity rather than inventing labels",
+  "status": "FROZEN_BEFORE_METADATA_XML_PARSE"
+}

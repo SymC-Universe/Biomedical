@@ -1,0 +1,32 @@
+name: Bio Chi Blum native input mapping v0.1
+
+on:
+  push:
+    branches:
+      - chi-bio-recovery-p0d-20260922
+    paths:
+      - 'BIO_CHI/config/BLUM2019_NATIVE_METRIC_INPUT_MAPPING_FREEZE_v0_1.json'
+      - 'BIO_CHI/src/map_blum_native_metric_inputs_v0_1.py'
+      - '.github/workflows/bio-chi-blum-native-input-mapping-v01.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  map-inputs:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read frozen README and headers only
+        run: python BIO_CHI/src/map_blum_native_metric_inputs_v0_1.py
+      - name: Upload input-mapping record
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_BLUM_NATIVE_INPUT_MAPPING_V01
+          path: BIO_CHI/artifacts/generated/blum2019_native_metric_input_mapping_v0_1.json
+          if-no-files-found: error

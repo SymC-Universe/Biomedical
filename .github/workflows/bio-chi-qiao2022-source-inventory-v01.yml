@@ -1,0 +1,41 @@
+name: Bio Chi Qiao 2022 sealed NF-kB source inventory
+
+on:
+  push:
+    branches:
+      - chi-bio-recovery-p0d-20260922
+    paths:
+      - BIO_CHI/config/QIAO2022_NFKB_SEALED_SOURCE_FREEZE_v0_1.json
+      - .github/workflows/bio-chi-qiao2022-source-inventory-v01.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inventory:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Retrieve pinned external archive and inventory members only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p output
+          URL=$(python -c 'import json; p=json.load(open("BIO_CHI/config/QIAO2022_NFKB_SEALED_SOURCE_FREEZE_v0_1.json")); print(p["source"]["archive_url"])')
+          curl --fail --location --retry 2 --output qiao_nfkb_sealed.zip "$URL"
+          unzip -t qiao_nfkb_sealed.zip > output/archive_integrity.txt
+          sha256sum qiao_nfkb_sealed.zip > output/archive_sha256.txt
+          stat -c '%s' qiao_nfkb_sealed.zip > output/archive_bytes.txt
+          unzip -l qiao_nfkb_sealed.zip > output/member_inventory.txt
+          python -c 'import json,pathlib,zipfile; z=zipfile.ZipFile("qiao_nfkb_sealed.zip"); m=[{"name":i.filename,"compressed_bytes":i.compress_size,"uncompressed_bytes":i.file_size,"crc32":format(i.CRC,"08x")} for i in z.infolist()]; o={"schema_version":"0.1","status":"PASS_SEALED_SOURCE_INVENTORY","member_count":len(m),"members":m,"numeric_member_values_opened":False}; pathlib.Path("output/source_inventory_v0_1.json").write_text(json.dumps(o,indent=2)+"\\n")'
+          sha256sum output/* > output/SHA256SUMS.txt
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_QIAO2022_SEALED_SOURCE_V01
+          path: output/
+          if-no-files-found: error
+          retention-days: 90

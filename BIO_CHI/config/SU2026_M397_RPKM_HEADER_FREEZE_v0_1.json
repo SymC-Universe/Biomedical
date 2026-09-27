@@ -1,0 +1,24 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Su/M397 frozen RPKM header-only schema capture",
+  "purpose_tag": "P0_D_SOURCE_QUALIFICATION",
+  "source_pin": "BIO_CHI/config/SU2026_M397_RPKM_SOURCE_FREEZE_V01_RESULT_PIN.json",
+  "expected_sha256": "1ec204f02187289fdc0d718fe2291d34f2e3e6b943dcdf8fe627718d75a42d8c",
+  "permitted_operations": [
+    "download exact compressed source",
+    "verify frozen SHA-256",
+    "decompress only enough bytes to read the first logical text line",
+    "record delimiter and column labels"
+  ],
+  "forbidden_operations": [
+    "read second or later data lines",
+    "inspect any RPKM value",
+    "filter genes/samples",
+    "calculate surprisal/SVD/hysteresis",
+    "interpret biological outcomes",
+    "construct chi_bio, Chi_bio or Bio Chi"
+  ],
+  "scientific_effect": "NONE; schema only",
+  "status": "FROZEN_BEFORE_HEADER_READ"
+}

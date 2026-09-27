@@ -1,0 +1,37 @@
+name: Bio Chi Blum B3 modal P0-Q v0.1
+
+on:
+  push:
+    branches:
+      - chi-bio-recovery-p0d-20260922
+    paths:
+      - 'BIO_CHI/config/BLUM2019_B3_MODAL_P0Q_FREEZE_v0_1.json'
+      - 'BIO_CHI/src/run_blum_b3_modal_p0q_v0_1.py'
+      - '.github/workflows/bio-chi-blum-b3-modal-p0q-v01.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  blum-b3-modal:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Execute frozen B3 modal gate
+        run: |
+          set -euo pipefail
+          python -m pip install --quiet numpy
+          python BIO_CHI/src/run_blum_b3_modal_p0q_v0_1.py
+      - name: Hash result
+        run: |
+          set -euo pipefail
+          sha256sum BIO_CHI/artifacts/generated/blum_b3_modal_p0q_v01/blum_b3_modal_p0q_v0_1.json > BIO_CHI/artifacts/generated/blum_b3_modal_p0q_v01/SHA256SUMS.txt
+          cat BIO_CHI/artifacts/generated/blum_b3_modal_p0q_v01/SHA256SUMS.txt
+      - name: Upload evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_BLUM_B3_MODAL_P0Q_V01
+          path: BIO_CHI/artifacts/generated/blum_b3_modal_p0q_v01/
+          if-no-files-found: error

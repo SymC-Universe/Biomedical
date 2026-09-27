@@ -1,0 +1,36 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "source": "Blum et al. 2019 ERK temporal perturbation processed dataset",
+  "article_doi": "10.15252/msb.20198947",
+  "repository": "Mendeley Data",
+  "dataset_id": "ccnxn84w8z",
+  "dataset_version": 2,
+  "dataset_doi": "10.17632/ccnxn84w8z.2",
+  "published_date": "2020-05-13",
+  "contributors": ["Maciej Dobrzynski", "Yannick Blum"],
+  "file_listing": [
+    {
+      "name": "data.zip",
+      "reported_size": "7.97 MB",
+      "sha256": null,
+      "hash_status": "PENDING_DIRECT_ACQUISITION"
+    }
+  ],
+  "license": "CC BY 4.0",
+  "categories": ["Cell Biology", "Microfluidics", "Time Series Analysis", "Fluorescence Microscopy"],
+  "relation": "dataset accompanies Blum et al. 2019",
+  "public_download_status": "PUBLIC_DOWNLOAD_PRESENT_DATA_ZIP_DIRECT_FILE_URL_AND_HASH_NOT_YET_FROZEN",
+  "raw_microscopy_status": "NOT_ESTABLISHED_BY_THIS_PIN",
+  "outcome_opened": false,
+  "promotion_decision": "NONE",
+  "chi_bio_constructed": false,
+  "Chi_bio_admitted": false,
+  "Bio_Chi_constructed": false,
+  "epistemic_role": "outcome-blind public processed-data identity pin for Q2/Q3 source qualification",
+  "notes": [
+    "The dataset DOI/version, archive name, reported size, license, contributors, and publication link are frozen before inspecting archive contents.",
+    "No file hash is claimed until the exact downloadable archive is acquired through a reproducible endpoint.",
+    "This pin narrows the Blum access gap but does not select Blum as the known-truth testbed or authorize a new state representation."
+  ]
+}

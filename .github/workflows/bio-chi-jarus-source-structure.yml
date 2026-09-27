@@ -1,0 +1,31 @@
+name: Bio Chi Jaruszewicz source structure audit
+
+on:
+  push:
+    branches:
+      - chi-bio-recovery-p0d-20260922
+    paths:
+      - 'BIO_CHI/src/audit_jarus_source_structure.py'
+      - 'BIO_CHI/src/prepare_jarus_matlab_compat.sh'
+      - '.github/workflows/bio-chi-jarus-source-structure.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-structure:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare pinned source plus frozen compatibility copy
+        run: bash BIO_CHI/src/prepare_jarus_matlab_compat.sh
+      - name: Audit published source structure without interpreting outcomes
+        run: python BIO_CHI/src/audit_jarus_source_structure.py
+      - name: Upload source structure audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_JARUS_SOURCE_STRUCTURE_V01
+          path: BIO_CHI/artifacts/generated/jarus_source_structure/source_structure_v0_1.json
+          if-no-files-found: error

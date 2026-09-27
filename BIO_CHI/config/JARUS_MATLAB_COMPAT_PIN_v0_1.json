@@ -1,0 +1,48 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "authority": "SymC GOM v0.8.4",
+  "source": {
+    "paper_doi": "10.1371/journal.pone.0286416",
+    "s1_code_doi": "10.1371/journal.pone.0286416.s015",
+    "archive_sha256": "76c51b2b9c44e931f62d4956df2a0aee1b02a481472125d4ae8a0e268ad885f0",
+    "reduced_m_sha256": "b42924cf0b30b8dcb15dac1022f93dd57a535501bd0dcdfa96ed516cb7e25c6c",
+    "run_simulate_reduced_m_sha256": "2acbc191ff2f48bb6f4382a7156b3bf3eaf58122fa06d06c76e3b7a39d51e951",
+    "simulate_reduced_original_sha256": "4660bd10fbfeddee2cb2061e79c10b922b3a6c87ae736ee7ef51dfc6a3d5ec8a"
+  },
+  "preserved_native_failure": {
+    "run_id": 35831641361,
+    "status": "NATIVE_RUNTIME_FAILURE",
+    "scientific_failure": false
+  },
+  "compatibility_repair": {
+    "repair_count": 1,
+    "published_source_preserved": true,
+    "execution_copy_modified": true,
+    "before": "[t, y] = ode23s(@(t, y) reduced(t, y, tnf), [tspan_begin, tspan_end], species(end, :), tnf);",
+    "after": "[t, y] = ode23s(@(t, y) reduced(t, y, tnf), [tspan_begin, tspan_end], species(end, :), []);",
+    "patched_simulate_reduced_sha256": "c15c8da4e9dc582880967d1bd58c0c889f5d9d4c56182720b5e04cfa67c5ed4b",
+    "mechanical_basis": "The anonymous ODE function already captures tnf. MATLAB ode23s interprets the fourth positional argument as the options structure, so replacing the invalid numeric options value with [] preserves the RHS, TNF input, parameters, time span, initial condition, solver family, and biological model."
+  },
+  "reproduction": {
+    "run_id": 35836946074,
+    "workflow": "Bio Chi Jaruszewicz MATLAB compatibility reproduction",
+    "head_sha": "9220aa663f526019d5489fb411100618cd13a02f",
+    "runtime": "MATLAB R2023b Update 11",
+    "runner": "ubuntu-24.04",
+    "status": "PASS",
+    "artifact_id": 10739717507,
+    "artifact_name": "BIO_CHI_JARUS_MATLAB_COMPAT_V01",
+    "artifact_zip_sha256": "9862a1b4e34769407eb20869af1164c9d2909a15ab982033ca7d6ceec7aa064c",
+    "stdout_sha256": "593719e9537e45b930cd140ab92e985d8d6d7dfc408666852f4bda539c2065e9",
+    "workspace_sha256": "cfd973f100a417cf2024140a5fd8c2c48a2d343c755d582c07f07033ae3936f9"
+  },
+  "interpretation": {
+    "scientific_endpoint_opened": false,
+    "chi_bio_constructed": false,
+    "licenses_native_model_execution": true,
+    "licenses_native_behavior_reproduction": false,
+    "licenses_chi_bio": false,
+    "limit": "PASS establishes execution of the published reduced model after one documented API/syntax repair. It is not untouched-source reproduction and does not by itself establish the authors' native dynamical behavior or any biological chi coordinate."
+  }
+}

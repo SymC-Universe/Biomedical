@@ -1,0 +1,41 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Lee et al. 2014 SRP040309 SRA experiment/sample metadata mapping",
+  "workflow_run_id": 35863951516,
+  "workflow_head_sha": "f6d4cbc0026da3a0e2cadbb12b71bb4ee0163416",
+  "artifact_id": 10751830309,
+  "artifact_digest": "sha256:9ae97fb531937f7a53dbce0482b255ee04794fc6f585be7dfcc05be242df0549",
+  "metadata_xml_sha256": "33a2445f81ad0b21bde062aebefdd5c89b2bb0031f306edc95764d6d3eda6834",
+  "status": "PASS_SRA_SAMPLE_METADATA_MAP",
+  "package_count": 19,
+  "state_labels": {
+    "single_cell": {
+      "untreated": 5,
+      "stressed": 5,
+      "drug_tolerant": 5
+    },
+    "bulk": {
+      "untreated": 1,
+      "stressed": 1,
+      "drug_tolerant": 2
+    }
+  },
+  "explicit_reconverted_or_post_withdrawal_rna_samples": 0,
+  "sample_title_evidence": [
+    "Untreated single cell 1-5 / UntSC1-5",
+    "Stressed single cell 1-5 / StrSC1-5",
+    "Drug-tolerant single cell 1-5 / DTSC1-5",
+    "Bulk RNA-Seq Untreated",
+    "Bulk RNA-Seq Stressed",
+    "Bulk RNA-Seq Drug Tolerant 1-2"
+  ],
+  "sequence_reads_downloaded": false,
+  "molecular_values_interpreted": false,
+  "source_effect": "The public RNA-seq deposit cleanly maps untreated, stressed, and drug-tolerant states, but contains no explicitly labeled reconverted/post-withdrawal RNA sample. Therefore the public RNA deposit alone cannot serve as a time-resolved recovery dataset.",
+  "recovery_claim_effect": "NARROW: retain Lee 2014 as response/state-transition support and a secondary literature recovery reference, but do not treat SRP040309 as a direct transcriptomic recovery trajectory.",
+  "promotion_decision": "NONE",
+  "chi_bio_constructed": false,
+  "Chi_bio_admitted": false,
+  "Bio_Chi_constructed": false
+}

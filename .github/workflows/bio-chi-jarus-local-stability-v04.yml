@@ -1,0 +1,46 @@
+name: Bio Chi Jaruszewicz local stability v0.4
+
+on:
+  push:
+    branches:
+      - chi-bio-recovery-p0d-20260922
+    paths:
+      - 'BIO_CHI/config/JARUS_LOCAL_STABILITY_POSTPROCESS_FREEZE_v0_4.json'
+      - 'BIO_CHI/config/JARUS_LOCAL_STABILITY_V03_RESULT_PIN.json'
+      - 'BIO_CHI/src/adjudicate_jarus_local_stability_v04.py'
+      - '.github/workflows/bio-chi-jarus-local-stability-v04.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  artifact-only-adjudication:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      SOURCE_ARTIFACT_ID: '10748186325'
+      SOURCE_ARTIFACT_SHA256: '7b17c4b2ec5c3cfd280eac48155903f329a57a1a62e4918ef4fcac4ed3aea7a9'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download immutable v0.3 artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          curl -L --fail --retry 3 \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            -o /tmp/BIO_CHI_JARUS_LOCAL_STABILITY_V03.zip \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/${SOURCE_ARTIFACT_ID}/zip"
+          echo "${SOURCE_ARTIFACT_SHA256}  /tmp/BIO_CHI_JARUS_LOCAL_STABILITY_V03.zip" | sha256sum -c -
+      - name: Apply frozen artifact-only classification rule
+        run: python BIO_CHI/src/adjudicate_jarus_local_stability_v04.py /tmp/BIO_CHI_JARUS_LOCAL_STABILITY_V03.zip
+      - name: Upload v0.4 adjudication
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_JARUS_LOCAL_STABILITY_V04
+          path: BIO_CHI/artifacts/generated/jarus_local_stability_v04/local_stability_v0_4.json
+          if-no-files-found: error

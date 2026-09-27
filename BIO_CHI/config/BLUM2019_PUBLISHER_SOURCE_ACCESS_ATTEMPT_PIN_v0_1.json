@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "source": "Blum et al. 2019 publisher supplementary/source-data endpoint acquisition",
+  "article_doi": "10.15252/msb.20198947",
+  "endpoint_config": "BIO_CHI/config/BLUM2019_PUBLISHER_SOURCE_ENDPOINTS_v0_1.json",
+  "initial_run": {
+    "workflow_run_id": 35861537195,
+    "head_sha": "1416daa651f1ef287e38bf3c6f0c13f3543dcec9",
+    "artifact_id": 10750181851,
+    "artifact_zip_sha256": "b8fdd0171227e8edcfa0b64f4c83acd3c9c65e35ee23b309e5de56a419467806",
+    "status": "MECHANICAL_VALIDATION_DEFECT_PRESERVED",
+    "detail": "The first hasher accepted HTTP 200 responses without verifying ZIP magic; all eight endpoints returned the same 3038-byte text/html payload and therefore the apparent archive hashes are invalid and must never be used as source hashes."
+  },
+  "corrected_fail_closed_run": {
+    "workflow_run_id": 35861735510,
+    "head_sha": "721b3885551a6231aa407cce4720df884c5c9e54",
+    "artifact_id": 10749974710,
+    "artifact_zip_sha256": "5e2675aa545187ae16dee5d1081a3f6d6c24ce92a6499cf8ce7fd8b91b94b21f",
+    "status": "MECHANICAL_SOURCE_ACCESS_FAILURE",
+    "frozen_zip_count": 0,
+    "failure_count": 8,
+    "failure_class": "NON_ARCHIVE_RESPONSE",
+    "observed_http_status": 200,
+    "observed_content_type": "text/html; charset=utf-8",
+    "observed_size_bytes": 3038,
+    "response_prefix": "<!DOCTYPE html>",
+    "retry_with_browser_headers": true,
+    "retry_with_download_query": true,
+    "scientific_values_interpreted": false,
+    "archive_contents_opened": false
+  },
+  "scientific_effect": "NONE",
+  "source_effect": "publisher archive endpoint is not programmatically hash-frozen from GitHub-hosted urllib access; exact URLs remain valid publisher link identities but their archive bytes are unverified",
+  "fallback_public_source": {
+    "dataset_pin": "BIO_CHI/config/BLUM2019_MENDELEY_DATA_PIN_v0_1.json",
+    "dataset_doi": "10.17632/ccnxn84w8z.2",
+    "status": "VERSIONED_PUBLIC_PROCESSED_DATA_IDENTITY_AVAILABLE_DIRECT_ARCHIVE_ENDPOINT_AND_HASH_PENDING"
+  },
+  "forbidden_inferences": [
+    "do not use the identical 3038-byte HTML SHA-256 as any scientific archive hash",
+    "do not classify publisher source data as absent",
+    "do not promote Blum 2019 because an alternate public deposit exists",
+    "do not open archive contents until a valid ZIP byte stream is independently frozen"
+  ],
+  "next_safe_task": "continue mechanical acquisition through the versioned Mendeley Data deposit or another exact publisher-supported byte endpoint; fail closed on non-archive payloads"
+}

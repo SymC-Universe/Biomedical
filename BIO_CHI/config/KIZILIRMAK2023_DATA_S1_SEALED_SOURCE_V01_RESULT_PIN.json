@@ -1,0 +1,26 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Kizilirmak 2023 Data S1 sealed-source inventory",
+  "workflow_run_id": 36030791151,
+  "workflow_head_sha": "6a773925714018d2278a61f7527502aa2dac8b63",
+  "artifact_id": 10822235366,
+  "artifact_digest": "sha256:558dc18d66423018a9aedf0d00563cb5c7792c493614df7b26402b98ca5eccd2",
+  "status": "PASS_SEALED_SOURCE_INVENTORY",
+  "source_archive": {
+    "bytes": 542760,
+    "sha256": "9ee2914095e9676b92806c33e46929965c6b4c7535f74a00d4462152678ba7b8",
+    "member_count": 23
+  },
+  "data_open_state": {
+    "numeric_member_values_opened": false,
+    "member_names_and_sizes_only": true,
+    "primary_next_lane": "Dynamics data/Fig2/",
+    "reserved_unopened_lanes": [
+      "Dynamics data/Fig1/",
+      "Dynamics data/Fig5/",
+      "Dynamics data/Fig6/"
+    ]
+  },
+  "interpretation": "Exact independent source identity and member topology frozen before any CSV values were opened."
+}

@@ -1,0 +1,30 @@
+name: Bio Chi reviewer smoke test
+on:
+  push:
+    branches: [chi-bio-recovery-p0d-20260922]
+    paths:
+      - 'BIO_CHI/config/**'
+      - 'BIO_CHI/control/**'
+      - 'BIO_CHI/src/reviewer_smoke_test.py'
+      - 'BIO_CHI/reviewer/REPRODUCE.md'
+      - '.github/workflows/bio-chi-reviewer-smoke-test.yml'
+  pull_request:
+    paths:
+      - 'BIO_CHI/config/**'
+      - 'BIO_CHI/control/**'
+      - 'BIO_CHI/src/reviewer_smoke_test.py'
+      - 'BIO_CHI/reviewer/REPRODUCE.md'
+      - '.github/workflows/bio-chi-reviewer-smoke-test.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run reviewer master smoke test
+        run: python BIO_CHI/src/reviewer_smoke_test.py

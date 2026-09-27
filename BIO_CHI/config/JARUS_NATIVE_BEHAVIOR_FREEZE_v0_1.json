@@ -1,0 +1,93 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "authority": "SymC GOM v0.8.4",
+  "freeze_type": "prospective_authors_native_behavior_reproduction_targets",
+  "frozen_before_target_output_review": true,
+  "output_capture_run_at_freeze": {
+    "run_id": 35848534891,
+    "state_when_frozen": "in_progress_setup_matlab",
+    "target_output_reviewed": false
+  },
+  "literature_source": {
+    "paper": "Jaruszewicz-Blonska et al., A plausible identifiable model of the canonical NF-kB signaling pathway",
+    "doi": "10.1371/journal.pone.0286416",
+    "native_model": "six-variable Reduced2023 NF-kB ODE model",
+    "nominal_parameter_source": "Table 1 fitted-value column",
+    "behavior_source": "Figure 8 and Characteristic behaviors section"
+  },
+  "native_state_order": [
+    "IKK_n",
+    "IKK_a",
+    "NFkB_n",
+    "A20",
+    "IkBa_cytoplasmic_free",
+    "IkBa_transcript"
+  ],
+  "initial_state": [1.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+  "tonic_input": {
+    "TR_before_1h": 0,
+    "TR_at_or_after_1h": 1,
+    "description": "TNF step from off to on at t=1 h, then held on"
+  },
+  "authors_native_targets": [
+    {
+      "id": "FIG8A_NOMINAL_DAMPED",
+      "paper_claim": "damped oscillations converging to a stable TR=1 steady state",
+      "parameter_overrides": {},
+      "primary_observable": "NFkB_n",
+      "phase_plane": ["NFkB_n", "IkBa_cytoplasmic_free"],
+      "paper_time_window_hours": [0, 9],
+      "classification_basis": "stable stimulated steady state with damped transient; no post-view scalar threshold may be introduced"
+    },
+    {
+      "id": "FIG8B_LIMIT_CYCLE",
+      "paper_claim": "sustained limit-cycle oscillations around an unstable TR=1 steady state",
+      "parameter_overrides": {
+        "a2_s^-1": 0.02,
+        "c5a_s^-1": 0.00001,
+        "i1a_s^-1": 0.0001
+      },
+      "primary_observable": "NFkB_n",
+      "phase_plane": ["NFkB_n", "IkBa_cytoplasmic_free"],
+      "paper_time_window_hours": [0, 30],
+      "classification_basis": "unstable stimulated steady state plus stable bounded recurrent orbit; no amplitude or damping threshold may be tuned from the result"
+    },
+    {
+      "id": "FIG8C_RELAXATION_OSCILLATION",
+      "paper_claim": "periodic relaxation-like oscillations",
+      "parameter_overrides": {
+        "a2_s^-1": 0.01,
+        "c5a_s^-1": 0.00001,
+        "i1a_s^-1": 0.0001
+      },
+      "primary_observable": "NFkB_n",
+      "phase_plane": ["NFkB_n", "IkBa_cytoplasmic_free"],
+      "paper_time_window_hours": [0, 30],
+      "classification_basis": "authors-native qualitative regime reproduced under exact stated parameter overrides; no new scalar threshold may be inferred from this panel"
+    }
+  ],
+  "paper_code_discrepancy_rule": {
+    "known_rounding_difference": "Figure 8 caption reports a2=0.0762 and c5a=0.000058 for nominal values while Table 1 gives a2=0.0763 and c5a=0.0000578.",
+    "execution_precedence": "The pinned published Reduced2023 source code controls executable reproduction; paper values are retained as an audit comparison. No value may be silently reconciled after output review."
+  },
+  "adjudication_guard": {
+    "first_requirement": "reproduce authors-native behavior before any chi_bio construction",
+    "allowed_next_analysis": [
+      "verify exact source/code parameter values against the paper",
+      "reproduce the three authors-native Figure 8 regimes",
+      "locate stimulated steady states and evaluate their stability with a prospectively frozen numerical method",
+      "audit identifiability and representation sensitivity"
+    ],
+    "forbidden_before_native_reproduction": [
+      "define or tune chi_bio",
+      "select a damping threshold from observed trajectories",
+      "change state representation because of result",
+      "discard failed or nonoscillatory regimes",
+      "treat compatibility execution PASS as biological validation"
+    ]
+  },
+  "chi_bio_constructed": false,
+  "Chi_bio_constructed": false,
+  "Bio_Chi_constructed": false
+}

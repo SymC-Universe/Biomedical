@@ -1,0 +1,32 @@
+name: Bio Chi Blum Mendeley source freeze v0.2
+
+on:
+  push:
+    branches:
+      - chi-bio-recovery-p0d-20260922
+    paths:
+      - 'BIO_CHI/src/freeze_blum_mendeley_source_v0_2.py'
+      - '.github/workflows/bio-chi-blum-mendeley-source-freeze-v02.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  freeze:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Resolve file through Mendeley public files API and freeze archive bytes
+        run: python BIO_CHI/src/freeze_blum_mendeley_source_v0_2.py
+      - name: Upload source freeze manifest
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_BLUM_MENDELEY_SOURCE_FREEZE_V02
+          path: BIO_CHI/artifacts/generated/blum2019_mendeley_source_freeze_v0_2.json
+          if-no-files-found: error

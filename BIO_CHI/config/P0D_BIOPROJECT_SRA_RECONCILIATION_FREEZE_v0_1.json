@@ -1,0 +1,33 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Harmange/Shaffer BioProject-to-SRA study reconciliation",
+  "purpose_tag": "P0_D_SOURCE_QUALIFICATION",
+  "projects": [
+    {
+      "id": "harmange2023_scmemoryseq",
+      "bioproject": "PRJNA994430",
+      "geo": "GSE237228"
+    },
+    {
+      "id": "shaffer2017_melanoma",
+      "bioproject": "PRJNA382641",
+      "geo": "GSE97682"
+    }
+  ],
+  "permitted_operations": [
+    "query NCBI SRA metadata by frozen BioProject accession",
+    "record SRA study, experiment, sample and run accessions",
+    "record library/platform metadata",
+    "hash exact RunInfo responses"
+  ],
+  "forbidden_operations": [
+    "download sequence reads",
+    "open molecular values",
+    "choose analysis samples based on outcome values",
+    "promote either testbed",
+    "construct chi_bio, Chi_bio, or Bio Chi"
+  ],
+  "scientific_effect": "NONE; source identity only",
+  "status": "FROZEN_BEFORE_SRA_METADATA_QUERY"
+}

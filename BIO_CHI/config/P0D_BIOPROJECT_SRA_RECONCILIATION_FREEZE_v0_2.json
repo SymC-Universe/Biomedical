@@ -1,0 +1,36 @@
+{
+  "schema_version": "0.2",
+  "project": "Bio Chi Investigation",
+  "gate": "BioProject parent/child SRA source-hierarchy reconciliation",
+  "purpose_tag": "P0_D_SOURCE_QUALIFICATION",
+  "v01_failure_pin": "BIO_CHI/config/P0D_BIOPROJECT_SRA_RECONCILIATION_V01_FAILURE_PIN.json",
+  "anchors": [
+    {
+      "id": "harmange2023_scmemoryseq",
+      "query_bioproject": "PRJNA994430"
+    },
+    {
+      "id": "shaffer2017_melanoma",
+      "query_bioproject": "PRJNA382641"
+    }
+  ],
+  "permitted_operations": [
+    "query NCBI SRA metadata by frozen BioProject accession",
+    "record child BioProject and SRA Study identities returned by that query",
+    "query each returned child BioProject separately",
+    "verify union of child-project run sets equals the parent-query run set",
+    "hash exact RunInfo responses"
+  ],
+  "forbidden_operations": [
+    "download sequence reads",
+    "open molecular values",
+    "alter sample inclusion based on biological outcomes",
+    "treat parent/child project structure as scientific evidence",
+    "promote a testbed",
+    "construct chi_bio, Chi_bio, or Bio Chi"
+  ],
+  "pass_rule": "for each anchor, the parent-query run set is non-empty and is exactly reproduced by the union of the distinct RunInfo BioProject-specific run sets returned by that parent query",
+  "fail_rule": "no parent-query records, empty child-project identity, or child-run union differs from parent-query run set",
+  "scientific_effect": "NONE; provenance/source hierarchy only",
+  "status": "FROZEN_BEFORE_V02_QUERY"
+}

@@ -1,0 +1,108 @@
+name: Bio Chi Jaruszewicz MATLAB compatibility reproduction
+
+on:
+  push:
+    branches:
+      - chi-bio-recovery-p0d-20260922
+    paths:
+      - 'BIO_CHI/src/prepare_jarus_matlab_compat.sh'
+      - 'BIO_CHI/src/jarus_matlab_compat_wrapper.m'
+      - '.github/workflows/bio-chi-jarus-matlab-compat.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compat-matlab:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare pinned source plus one-line mechanical repair
+        run: bash BIO_CHI/src/prepare_jarus_matlab_compat.sh
+      - name: Set up MATLAB R2023b
+        uses: matlab-actions/setup-matlab@v3
+        with:
+          release: R2023b
+      - name: Run repaired execution copy in MATLAB
+        id: matlab_run
+        continue-on-error: true
+        uses: matlab-actions/run-command@v3
+        with:
+          command: run('BIO_CHI/src/jarus_matlab_compat_wrapper.m')
+          generate-summary: false
+      - name: Freeze compatibility reproduction evidence
+        if: always()
+        env:
+          MATLAB_STEP_OUTCOME: ${{ steps.matlab_run.outcome }}
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, os, pathlib
+          root=pathlib.Path('BIO_CHI/artifacts/generated/jarus_matlab_compat')
+          base=root/'source'/'S1_Codes'/'MATLAB files'/'Reduced2023'
+          def h(p):
+              p=pathlib.Path(p)
+              return hashlib.sha256(p.read_bytes()).hexdigest() if p.exists() else None
+          stdout=(root/'matlab_stdout.txt').read_text(errors='replace') if (root/'matlab_stdout.txt').exists() else ''
+          workspace=(root/'compat_workspace.mat').exists()
+          begin='BIO_CHI_JARUS_MATLAB_COMPAT_BEGIN' in stdout
+          end='BIO_CHI_JARUS_MATLAB_COMPAT_END' in stdout
+          action_outcome=os.environ.get('MATLAB_STEP_OUTCOME')
+          patch=json.loads((root/'compatibility_patch.json').read_text()) if (root/'compatibility_patch.json').exists() else None
+          patch_ok=bool(patch and patch.get('repair_count') == 1 and patch.get('published_source_preserved') is True)
+          status='PASS' if action_outcome == 'success' and begin and end and workspace and patch_ok else 'COMPAT_RUNTIME_FAILURE'
+          result={
+            'schema_version':'0.1',
+            'audit_type':'mechanically_repaired_published_source_matlab_reproduction',
+            'status':status,
+            'chi_bio_constructed':False,
+            'scientific_endpoint_opened':False,
+            'published_source_preserved':True,
+            'execution_copy_modified':True,
+            'repair_count':1,
+            'runtime':{'engine':'MATLAB','release':'R2023b','runner':'ubuntu-24.04','selection_basis':'same runtime lane as preserved native-source failure; only the invalid ode23s options argument is repaired'},
+            'source':{
+              'archive_sha256':'76c51b2b9c44e931f62d4956df2a0aee1b02a481472125d4ae8a0e268ad885f0',
+              'reduced_m_sha256':h(base/'reduced.m'),
+              'run_simulate_reduced_m_sha256':h(base/'run_simulate_reduced.m'),
+              'patched_simulate_reduced_m_sha256':h(base/'simulate_reduced.m')
+            },
+            'compatibility_repair':patch,
+            'execution':{
+              'matlab_action_outcome':action_outcome,
+              'begin_marker':begin,
+              'end_marker':end,
+              'workspace_created':workspace,
+              'stdout_sha256':h(root/'matlab_stdout.txt'),
+              'workspace_sha256':h(root/'compat_workspace.mat')
+            },
+            'interpretation_limit':'PASS means the published model executes after one documented syntax/API repair. It is not untouched-source reproduction and does not license chi_bio.'
+          }
+          (root/'compat_matlab_manifest.json').write_text(json.dumps(result,indent=2)+'\n')
+          print(json.dumps(result,indent=2))
+          PY
+      - name: Upload compatibility reproduction evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_JARUS_MATLAB_COMPAT_V01
+          path: |
+            BIO_CHI/artifacts/generated/jarus_matlab_compat/compatibility_patch.json
+            BIO_CHI/artifacts/generated/jarus_matlab_compat/compat_matlab_manifest.json
+            BIO_CHI/artifacts/generated/jarus_matlab_compat/matlab_stdout.txt
+            BIO_CHI/artifacts/generated/jarus_matlab_compat/compat_workspace.mat
+          if-no-files-found: warn
+      - name: Enforce compatibility reproduction gate
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json, pathlib
+          p=pathlib.Path('BIO_CHI/artifacts/generated/jarus_matlab_compat/compat_matlab_manifest.json')
+          if not p.exists():
+              raise SystemExit('BIO_CHI_JARUS_MATLAB_COMPAT_MANIFEST_MISSING')
+          result=json.loads(p.read_text())
+          if result.get('status') != 'PASS':
+              raise SystemExit('BIO_CHI_JARUS_MATLAB_COMPAT_FAIL')
+          print('BIO_CHI_JARUS_MATLAB_COMPAT_PASS')
+          PY

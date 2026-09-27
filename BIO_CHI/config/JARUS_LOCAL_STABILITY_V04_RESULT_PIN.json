@@ -1,0 +1,52 @@
+{
+  "schema_version": "0.1",
+  "status": "PASS_ALL_FROZEN_FIG8_CASES",
+  "authority": "SymC GOM v0.8.4",
+  "workflow_run_id": 35857105311,
+  "workflow_head_sha": "73aad6bab28e97227bd9b40c5e56b13dc2370207",
+  "artifact_id": 10747972701,
+  "artifact_name": "BIO_CHI_JARUS_LOCAL_STABILITY_V04",
+  "artifact_zip_sha256": "2a0143fec6d77037222f8207c939d05a7708e2c2354041cb83d0a268cb5a0498",
+  "source_v03_artifact_id": 10748186325,
+  "source_v03_artifact_zip_sha256": "7b17c4b2ec5c3cfd280eac48155903f329a57a1a62e4918ef4fcac4ed3aea7a9",
+  "freeze": "BIO_CHI/config/JARUS_LOCAL_STABILITY_POSTPROCESS_FREEZE_v0_4.json",
+  "preserved_v03_failure": "BIO_CHI/config/JARUS_LOCAL_STABILITY_V03_RESULT_PIN.json",
+  "root_solver_rerun": false,
+  "jacobian_recomputed": false,
+  "mechanical_summary_mismatch_confirmed_all_three_cases": true,
+  "results": {
+    "FIG8A_NOMINAL_DAMPED": {
+      "accepted_distinct_roots": 1,
+      "residual_inf": 2.4210600429834528e-14,
+      "jacobian_step_max_real_eigenvalues": [-0.00015742806743638337, -0.00015742806743851014, -0.00015742806743604594],
+      "adjudicated_local_stability": "STABLE",
+      "paper_local_stability_status": "PASS"
+    },
+    "FIG8B_LIMIT_CYCLE": {
+      "accepted_distinct_roots": 1,
+      "residual_inf": 1.0787811616230769e-17,
+      "jacobian_step_max_real_eigenvalues": [0.0000078771409093412285, 0.0000078771409143521771, 0.0000078771409074521417],
+      "adjudicated_local_stability": "UNSTABLE",
+      "paper_local_stability_status": "PASS"
+    },
+    "FIG8C_RELAXATION_OSCILLATION": {
+      "accepted_distinct_roots": 1,
+      "residual_inf": 1.0344097800540908e-16,
+      "jacobian_step_max_real_eigenvalues": [0.000033151588466560035, 0.00003315158847704545, 0.000033151588477307704],
+      "adjudicated_local_stability": "UNSTABLE",
+      "paper_local_stability_status": "PASS"
+    }
+  },
+  "scientific_disposition": {
+    "native_local_stability_gate": "PASS_ALL_FROZEN_FIG8_CASES",
+    "finite_window_results_preserved": true,
+    "limit_cycle_proved": false,
+    "chi_bio_constructed": false,
+    "Chi_bio_constructed": false,
+    "Bio_Chi_constructed": false,
+    "mode_selected": false,
+    "representation_sensitivity_tested": false
+  },
+  "interpretation": "The immutable per-step Jacobian maxima already stored in the v0.3 artifact satisfy the prospectively frozen sign rule for all three Figure 8 cases: the nominal damped equilibrium is locally stable, while the Figure 8B and Figure 8C equilibria are locally unstable. This repairs only the v0.3 summary/classification defect. It does not prove a limit cycle, license a scalar chi_bio, select a mode, or establish representation independence.",
+  "next_safe_action": "Freeze and execute a generator-level modal audit on the already pinned equilibrium/Jacobian records, preserving all six eigenmodes and testing step-size robustness before any scalar reduction. Do not select a preferred complex pair or define chi_bio from the observed eigenvalues until the representation/identifiability gates are frozen."
+}

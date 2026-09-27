@@ -1,0 +1,38 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "date": "2026-09-24",
+  "gate": "Blum 2019 publication-selected B3 full-spectrum modal qualification",
+  "freeze": "BIO_CHI/config/BLUM2019_B3_MODAL_P0Q_FREEZE_v0_1.json",
+  "workflow_run_id": 36043170485,
+  "workflow_head_sha": "0904479c38c01e69ec7f652b777c34ca59ca39fb",
+  "status": "REFUSE_LOCAL_GENERATOR_NONDIFFERENTIABLE_AT_SOURCE_EQUILIBRIUM",
+  "source_commit": "5c917abda0618d75c00c9cab45f24ed893dd71f1",
+  "source_model": "B3",
+  "source_selection": "publication-selected B3 topology after held-out temporal and HSPG perturbation tests",
+  "mathematical_reason": {
+    "feedback_factor": "K_NFB^h_nfb / (K_NFB^h_nfb + Nfb_star^h_nfb)",
+    "h_nfb": 0.74022,
+    "source_equilibrium_Nfb_star": 0.0,
+    "derivative_behavior": "d/dx[x^h] = h*x^(h-1); for 0<h<1 this diverges as x->0+",
+    "consequence": "the source vector field is not C1 at the unstimulated equilibrium in the Nfb_star direction, so a finite local Jacobian/pole spectrum is not licensed there"
+  },
+  "execution_evidence": {
+    "centered_finite_difference_rule_was_frozen_before_execution": true,
+    "runtime_observation": "negative centered perturbation of Nfb_star under fractional power produced NaN and prevented finite eigendecomposition",
+    "artifact_produced": false
+  },
+  "forbidden_rescues": [
+    "do not switch to a one-sided derivative after seeing this result",
+    "do not move to a stimulated equilibrium in this gate",
+    "do not regularize Nfb_star^h near zero to manufacture a finite Jacobian",
+    "do not select another model topology based on Bio Chi agreement"
+  ],
+  "scientific_disposition": {
+    "chi_bio": "REFUSED_FOR_B3_UNSTIMULATED_LOCAL_POLE_ROUTE",
+    "Chi_bio": "SOURCE_NETWORK_AND_TRAJECTORY_ARCHITECTURE_REMAINS_AVAILABLE_BUT_NO_UNSTIMULATED_LINEAR_MODAL_ADMISSION_FROM_THIS_GATE",
+    "Bio_Chi": "NOT_CONSTRUCTED_BY_THIS_GATE",
+    "chi_equal_1_boundary": "NOT_CLAIMED"
+  },
+  "interpretation": "The publication-selected ERK B3 model does not license the frozen unstimulated local-Jacobian scalar/modal construction because its fractional-Hill feedback is non-differentiable at the source equilibrium. This is a domain/model Limit Map result, not evidence against ERK dynamics or the publication model."
+}

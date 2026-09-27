@@ -1,0 +1,50 @@
+{
+  "schema_version": "0.2",
+  "project": "Bio Chi Investigation",
+  "authority": "SymC GOM v0.8.4",
+  "source_model": "Jaruszewicz-Blonska et al. Reduced2023 six-variable NF-kB model",
+  "behavior_freeze": "BIO_CHI/config/JARUS_NATIVE_BEHAVIOR_FREEZE_v0_1.json",
+  "capture": {
+    "run_id": 35848998108,
+    "workflow": "Bio Chi Jaruszewicz native output capture",
+    "head_sha": "c80dff09d725eeb9311e92cc7d17329e80447bfb",
+    "status": "PASS",
+    "runtime": "MATLAB R2023b Update 11",
+    "figure_count": 7,
+    "axis_count": 42,
+    "numeric_line_count": 42,
+    "capture_summary_sha256": "6a279cb24da2829d53d7f936a78f6df9c2c4d90c59df153d713e30d7b1bbcd67",
+    "semantic_map_sha256": "9e34187b26942834a5aa51a31b2d7ffdcc0789283165bec1034929cd8a1644a6",
+    "matlab_stdout_sha256": "72a45c5aae3cddcc2f1fa03166b37cae49e4f7f856815c3decaa86ff95d0ce70",
+    "native_plot_capture_mat_sha256": "78561aa77dd0a8a0c8433113c08ae730f4e2d687b8fe8f59bc145b16f450b13d"
+  },
+  "artifact": {
+    "id": 10745210753,
+    "name": "BIO_CHI_JARUS_NATIVE_OUTPUT_CAPTURE_V02",
+    "size_bytes": 419476,
+    "digest": "sha256:c084a415e60a339e9703a0591c15c16d5feb0cb47251b6e7a1c824c7b2327ab8",
+    "expires_at": "2026-12-22T10:28:32Z"
+  },
+  "semantic_mapping": {
+    "per_figure_axes": [
+      "TNF",
+      "IKK_a",
+      "free nuclear NF-kappaB",
+      "A20",
+      "free cytoplasmic IkappaBalpha",
+      "IkappaBalpha_t"
+    ],
+    "x_label": "Time [h]",
+    "driver_figure_names_blank": true,
+    "mapping_basis": "axis titles authored by the published simulate_reduced.m plotting code; driver order is audited separately in JARUS_SOURCE_STRUCTURE_PIN_v0_1.json"
+  },
+  "interpretation": {
+    "scientific_endpoint_opened": false,
+    "chi_bio_constructed": false,
+    "Chi_bio_constructed": false,
+    "Bio_Chi_constructed": false,
+    "licenses_source_protocol_mapping": true,
+    "licenses_figure8_behavior_claim": false,
+    "limit": "The published run_simulate_reduced driver creates continuous, pulse, and on-off protocol figures. It does not encode the Figure 8 parameter-override cases, so these captured figures cannot be relabeled as Figure 8A-C."
+  }
+}

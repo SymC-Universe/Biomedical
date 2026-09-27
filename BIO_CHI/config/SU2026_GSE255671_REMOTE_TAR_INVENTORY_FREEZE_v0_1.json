@@ -1,0 +1,26 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "GSE255671 remote RAW tar member-name inventory",
+  "purpose_tag": "P0_D_SOURCE_QUALIFICATION",
+  "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE255nnn/GSE255671/suppl/GSE255671_RAW.tar",
+  "expected_size_bytes": 13340180480,
+  "source_freeze_pin": "BIO_CHI/config/EXTERNAL_SOURCE_FREEZE_PIN_v0_1.json",
+  "permitted_operations": [
+    "issue HTTP HEAD and byte-range requests against the frozen GEO RAW tar",
+    "read 512-byte TAR headers",
+    "read GNU long-name/PAX metadata payload only when necessary to recover file names",
+    "record archive member path, type and declared size",
+    "skip all ordinary member payload bytes"
+  ],
+  "forbidden_operations": [
+    "download or inspect ordinary biological file payloads",
+    "parse sequencing, expression, ATAC or ChIP values",
+    "choose a file based on biological values",
+    "calculate any biological metric",
+    "construct chi_bio, Chi_bio or Bio Chi"
+  ],
+  "pass_rule": "remote server supports bounded range reads and tar headers can be traversed to end-of-archive with no ordinary member payload reads",
+  "fail_rule": "range requests are unsupported, archive size drifts, header traversal is invalid, or ordinary member payload must be opened to identify source structure",
+  "status": "FROZEN_BEFORE_REMOTE_TAR_HEADER_TRAVERSAL"
+}

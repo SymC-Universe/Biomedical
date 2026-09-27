@@ -1,0 +1,39 @@
+name: Bio Chi Qiao 2022 method-only extraction
+
+on:
+  push:
+    branches:
+      - chi-bio-recovery-p0d-20260922
+    paths:
+      - BIO_CHI/config/QIAO2022_NFKB_SEALED_SOURCE_V01_RESULT_PIN.json
+      - .github/workflows/bio-chi-qiao2022-method-only-v01.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  method:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Retrieve pinned archive and extract method script only
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p output
+          URL="https://raw.githubusercontent.com/LingxiaQiao/oscillation/e137cd4ec4a84e0e6562eb9be53690a237d2e3e5/Robust%20oscillation-CV%20of%20period.zip"
+          curl --fail --location --retry 2 --output qiao_nfkb_sealed.zip "$URL"
+          echo "c29694fdd748445d64c5d6b7d8734d8cb825713ed0f8daaa7b69651e82870298  qiao_nfkb_sealed.zip" | sha256sum -c -
+          unzip -p qiao_nfkb_sealed.zip "Robust oscillation-CV of period/cv_period_syntheticNFKB.m" > output/cv_period_syntheticNFKB.m
+          test ! -s output/oscillation_data.mat
+          sha256sum output/cv_period_syntheticNFKB.m > output/SHA256SUMS.txt
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_QIAO2022_METHOD_ONLY_V01
+          path: output/
+          if-no-files-found: error
+          retention-days: 90

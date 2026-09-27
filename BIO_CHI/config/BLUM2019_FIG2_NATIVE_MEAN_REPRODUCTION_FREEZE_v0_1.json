@@ -1,0 +1,61 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Blum 2019 Figure 2 native population-mean reproduction",
+  "purpose_tag": "P0_Q_NATIVE_BIOLOGICAL_OBSERVABLE_REPRODUCTION",
+  "source_pin": "BIO_CHI/config/BLUM2019_MENDELEY_SOURCE_FREEZE_V02_RESULT_PIN.json",
+  "input_mapping_pin": "BIO_CHI/config/BLUM2019_FIG2_NATIVE_MEAN_INPUT_MAPPING_V01_RESULT_PIN.json",
+  "source_sha256": "8bbd1ead46b5bb6b676bd47a5f415fdd790840a9c726321dc5c209b9c527bc62",
+  "publication_doi": "10.15252/msb.20198947",
+  "publication_native_rule": {
+    "observable": "single-cell EKAR2G acceptor/donor-ratio trajectory",
+    "normalization": "divide each single-cell time series by that cell's own arithmetic mean before growth-factor stimulation",
+    "baseline_window_min_inclusive": [0.0, 40.0],
+    "figure2_summary": "population mean",
+    "reported_sampling_interval_min": 2
+  },
+  "prospective_selection_rule": "Use every Figure 2 single-pulse group present in the frozen source for all 3, 10, and 60 minute source files. No growth factor, dose, pulse duration, field of view, cell, or time point may be selected because of observed response shape or expected SymC agreement.",
+  "source_members": {
+    "3": {
+      "ekar": "data/Source data for Figure 2/sp3_allGF_ekar.csv.gz",
+      "grouping": "data/Source data for Figure 2/sp3_allGF_grouping.csv"
+    },
+    "10": {
+      "ekar": "data/Source data for Figure 2/sp10_allGF_ekar.csv.gz",
+      "grouping": "data/Source data for Figure 2/sp10_allGF_grouping.csv"
+    },
+    "60": {
+      "ekar": "data/Source data for Figure 2/sp60_allGF_ekar.csv.gz",
+      "grouping": "data/Source data for Figure 2/sp60_allGF_grouping.csv"
+    }
+  },
+  "observation_key": ["pulse_duration_min", "group.idx", "fov", "id"],
+  "execution_rules": [
+    "verify the exact frozen archive SHA-256 before reading Figure 2 values",
+    "merge group labels only by exact group.idx from the matching grouping file",
+    "parse realtime and intensity_ekar as finite numeric values",
+    "fail on duplicate observations for the same cell key and realtime",
+    "compute each cell baseline as arithmetic mean of its observed intensity_ekar values with 0 <= realtime <= 40 minutes",
+    "require each included cell to have at least one finite baseline observation and a finite nonzero baseline mean",
+    "normalize every observation for that cell by its own baseline mean",
+    "at each exact observed realtime within each exact source group, compute the arithmetic mean across available normalized cells",
+    "do not interpolate, smooth, impute, resample, trim, winsorize, or exclude a biological trajectory based on its observed response",
+    "record cell counts and time-point support so later qualification can distinguish source coverage from biological interpretation"
+  ],
+  "not_reproduced_in_v0_1": [
+    "95_percent_confidence_intervals because the exact CI construction is not required for the population-mean observable gate",
+    "digitized agreement to rendered Figure 2 curves",
+    "Jeffries-Matusita population distance",
+    "model fitting or parameter inference"
+  ],
+  "forbidden_operations": [
+    "fit a damped oscillator or select a modal pair",
+    "construct or admit chi_bio",
+    "construct or admit Chi_bio",
+    "construct Bio Chi",
+    "select a favorable growth factor, dose, duration, field of view, cell, or time window after viewing outcomes",
+    "invent missing native-method details"
+  ],
+  "scientific_effect": "Reproduces the publication-native biological trajectory observable only. Passing this gate is necessary but not sufficient for biological observability, identifiability, reduced-representation invariance, scalar adequacy, or SymC admission.",
+  "status": "FROZEN_BEFORE_FIG2_BIOLOGICAL_VALUE_READ"
+}

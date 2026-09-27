@@ -1,0 +1,44 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Blum 2019 published native-metric input mapping",
+  "purpose_tag": "P0_Q_SOURCE_AND_NATIVE_METHOD_QUALIFICATION",
+  "literature_method_source": {
+    "article_doi": "10.15252/msb.20198947",
+    "native_metric": "Jeffries-Matusita distance and integrated population distance",
+    "formula_identity": "d_JM(p,q)=sum_i (sqrt(p_i)-sqrt(q_i))^2; d_popul=sum_k d_JM(k)/(2N)",
+    "baseline_normalization": "single-cell ERK/EKAR trajectories normalized to each cell's pre-stimulation baseline mean",
+    "role": "published native experimental metric; not a SymC metric"
+  },
+  "source_pin": "BIO_CHI/config/BLUM2019_MENDELEY_SOURCE_FREEZE_V02_RESULT_PIN.json",
+  "schema_inventory_run": 35862888268,
+  "schema_inventory_artifact": 10751027249,
+  "frozen_archive_sha256": "8bbd1ead46b5bb6b676bd47a5f415fdd790840a9c726321dc5c209b9c527bc62",
+  "allowed_members": [
+    "data/Source data for Figure 1/README.txt",
+    "data/Source data for Figure 1/sustained_allGF_ekar.csv.gz",
+    "data/Source data for Figure 1/sustained_allGF_grouping.csv",
+    "data/Source data for Figure 1/sustained_allGF_pulse.csv.gz",
+    "data/Source data for Figure 1/noGF_ekar.csv.gz",
+    "data/Source data for Figure 1/noGF_grouping.csv"
+  ],
+  "permitted_operations": [
+    "verify exact archive SHA-256",
+    "read full Figure 1 README text",
+    "read only the first logical CSV header row from each allowed CSV or CSV.GZ member",
+    "record member size/hash for allowed members",
+    "map published method-required fields to source columns if explicit"
+  ],
+  "forbidden_operations": [
+    "read any biological data row",
+    "calculate any metric or summary",
+    "inspect source-data values",
+    "select subsets based on observed outcomes",
+    "alter the published Jeffries-Matusita definition",
+    "choose a new state representation",
+    "construct chi_bio, Chi_bio, or Bio Chi"
+  ],
+  "pass_rule": "published native metric inputs can be mapped from README/header metadata without reading data rows or inventing a new observable",
+  "stop_rule": "if required native inputs cannot be mapped without choosing among materially different representations, stop for scientific decision",
+  "status": "FROZEN_BEFORE_HEADER_AND_README_INSPECTION"
+}

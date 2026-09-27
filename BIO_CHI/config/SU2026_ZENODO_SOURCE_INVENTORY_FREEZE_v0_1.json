@@ -1,0 +1,25 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Su public Zenodo release file inventory",
+  "purpose_tag": "P0_D_SOURCE_QUALIFICATION",
+  "zenodo_record_id": "17751601",
+  "zenodo_doi": "10.5281/zenodo.17751601",
+  "api_url": "https://zenodo.org/api/records/17751601",
+  "github_code_pin": "BIO_CHI/config/SU2026_PUBLIC_CODE_PIN_v0_1.json",
+  "permitted_operations": [
+    "retrieve Zenodo record metadata",
+    "record file names, sizes, checksums and download URLs",
+    "download only ZIP-like files <=100 MB",
+    "verify advertised checksum when MD5 is supplied",
+    "inspect ZIP central-directory member names/sizes/CRC only without reading member payloads"
+  ],
+  "forbidden_operations": [
+    "read expression/spreadsheet/member payloads",
+    "calculate surprisal, ODE fit, hysteresis, or biological outcome",
+    "select a data file based on observed values",
+    "construct chi_bio, Chi_bio, or Bio Chi"
+  ],
+  "scientific_effect": "NONE; source inventory only",
+  "status": "FROZEN_BEFORE_ZENODO_API_QUERY"
+}

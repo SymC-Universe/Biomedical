@@ -1,0 +1,32 @@
+name: Bio Chi external source freeze
+
+on:
+  push:
+    branches:
+      - chi-bio-recovery-p0d-20260922
+    paths:
+      - 'BIO_CHI/src/freeze_external_sources.py'
+      - '.github/workflows/bio-chi-external-source-freeze.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  freeze:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Freeze exact GEO file maps and NF-kB S1 Code
+        run: python BIO_CHI/src/freeze_external_sources.py
+      - name: Upload freeze manifest
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_EXTERNAL_SOURCE_FREEZE_V01
+          path: BIO_CHI/artifacts/generated/external_source_freeze_v0_1.json
+          if-no-files-found: error

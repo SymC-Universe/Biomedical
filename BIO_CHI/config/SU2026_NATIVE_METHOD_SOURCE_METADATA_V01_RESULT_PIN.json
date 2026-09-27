@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Su 2026 M397 native-method source metadata qualification",
+  "workflow_run_id": 35865443566,
+  "workflow_head_sha": "b2d6bc0222c1559ed8b0892a504237d02687a8da",
+  "artifact_id": 10751772307,
+  "artifact_digest": "sha256:056a11a25b783d880b69da7c1e68a8a80f3ba9e33d9d7f44eb376fdebd944237",
+  "status": "PASS_SU_NATIVE_SOURCE_METADATA",
+  "expected_m397_rna_gsm_count": 15,
+  "missing_gsms": [],
+  "family_soft_sha256": "558cc094375f27af9c786f4bb12da1e86b228129203691d3b5cdd38c6214cd4c",
+  "source_processing_metadata": [
+    "Genome build hg19",
+    "Unique reads quantified using htseq-count v0.6.0 with TxDb.Hsapiens.UCSC.hg19.knownGene",
+    "Unstranded counts/FPKM with antisense genes removed; reverse-strand setting for stranded counts/FPKM",
+    "Processed study material reports RPKM-normalized expression plus read counts",
+    "COH base calling used RTA 2.2.38 and bcl2fastq versions reported in GEO metadata"
+  ],
+  "expression_values_read": false,
+  "surprisal_computed": false,
+  "hysteresis_metric_computed": false,
+  "testbed_promoted": false,
+  "chi_bio_constructed": false,
+  "Chi_bio_admitted": false,
+  "Bio_Chi_constructed": false,
+  "next_gate": "freeze exact processed-expression file identity and hash for the 15-point M397 RNA trajectory before opening expression values; then reproduce published native preprocessing/surprisal only under a prospectively frozen contract"
+}

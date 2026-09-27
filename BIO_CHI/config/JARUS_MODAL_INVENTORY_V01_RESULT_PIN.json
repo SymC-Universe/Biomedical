@@ -1,0 +1,56 @@
+{
+  "schema_version": "0.1",
+  "status": "COMPLETE_DESCRIPTIVE_MODAL_INVENTORY",
+  "authority": "SymC GOM v0.8.4",
+  "epistemic_role": "descriptive_post_view_generator_audit_only",
+  "prospective_validation_claim_allowed": false,
+  "workflow_run_id": 35857535131,
+  "workflow_head_sha": "96d04a440873f38e1e0be03cda755d620bd6ea5e",
+  "artifact_id": 10747927367,
+  "artifact_name": "BIO_CHI_JARUS_MODAL_INVENTORY_V01",
+  "artifact_zip_sha256": "e3a28759b4b8dc9de0885170cc2d365d8678852090b3f70ff51c1efea2686d5a",
+  "source_v03_artifact_id": 10748186325,
+  "source_v03_artifact_zip_sha256": "7b17c4b2ec5c3cfd280eac48155903f329a57a1a62e4918ef4fcac4ed3aea7a9",
+  "freeze": "BIO_CHI/config/JARUS_MODAL_INVENTORY_FREEZE_v0_1.json",
+  "all_six_modes_preserved": true,
+  "root_solver_rerun": false,
+  "jacobian_recomputed": false,
+  "mode_selected": false,
+  "preferred_complex_pair_selected": false,
+  "cases": {
+    "FIG8A_NOMINAL_DAMPED": {
+      "stored_mode_counts_each_step": {"exact_real": 4, "nonzero_imaginary": 2},
+      "spectral_abscissae": [-0.00015742806743638337, -0.00015742806743851014, -0.00015742806743604594],
+      "spectral_abscissa_sign_invariant": true,
+      "maximum_relative_complex_spread_across_matched_modes": 4.8710365232887405e-11,
+      "descriptive_modal_observation": "The unique stored nonreal conjugate pair has real part approximately -1.9998283113e-4 s^-1 and imaginary magnitude approximately 9.1682477495e-4 s^-1 at the reference step, but the spectral abscissa is a separate real mode at approximately -1.5742806744e-4 s^-1. Therefore the oscillatory pair is not the slowest local decay mode in the nominal stable case."
+    },
+    "FIG8B_LIMIT_CYCLE": {
+      "stored_mode_counts_each_step": {"exact_real": 4, "nonzero_imaginary": 2},
+      "spectral_abscissae": [0.000007877140909341228, 0.000007877140914352177, 0.000007877140907452142],
+      "spectral_abscissa_sign_invariant": true,
+      "maximum_relative_complex_spread_across_matched_modes": 1.6039822494709154e-11,
+      "descriptive_modal_observation": "The unique stored nonreal conjugate pair has the positive real part that sets the spectral abscissa in the Figure 8B equilibrium; this is a local generator observation only and does not prove the surrounding stable limit cycle."
+    },
+    "FIG8C_RELAXATION_OSCILLATION": {
+      "stored_mode_counts_each_step": {"exact_real": 4, "nonzero_imaginary": 2},
+      "spectral_abscissae": [0.000033151588466560035, 0.00003315158847704545, 0.000033151588477307704],
+      "spectral_abscissa_sign_invariant": true,
+      "maximum_relative_complex_spread_across_matched_modes": 2.2689019837298457e-11,
+      "descriptive_modal_observation": "The unique stored nonreal conjugate pair has the positive real part that sets the spectral abscissa in the Figure 8C equilibrium; this is a local generator observation only and does not quantify relaxation-oscillation morphology."
+    }
+  },
+  "scientific_disposition": {
+    "native_local_stability_gate": "PASS_ALL_FROZEN_FIG8_CASES",
+    "finite_window_B_failure_preserved": true,
+    "finite_window_C_failure_preserved": true,
+    "limit_cycle_proved": false,
+    "chi_bio_constructed": false,
+    "Chi_bio_admitted": false,
+    "Bio_Chi_constructed": false,
+    "representation_independence_claimed": false,
+    "identifiability_extended_beyond_published_model": false
+  },
+  "interpretation": "The six-state reduced generator contains four stored exactly-real eigenvalues and one stored complex-conjugate pair in all three frozen Figure 8 cases and all three finite-difference steps. The spectra are numerically stable across the already-computed step multipliers, but this audit is post-view and descriptive. It cannot license a scalar chi_bio, select the oscillatory pair as the biologically governing mode, or substitute for a prospectively frozen representation/identifiability sensitivity test.",
+  "next_safe_action": "Freeze a representation/identifiability sensitivity gate that retains the complete six-mode generator and explicitly tests whether any candidate same-mode scalar construction is invariant and biologically interpretable without outcome-driven mode selection. Until that gate is passed, chi_bio remains NOT ADMITTED and Chi_bio remains a modal precursor rather than an admitted biological representation."
+}

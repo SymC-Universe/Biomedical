@@ -1,0 +1,56 @@
+{
+  "schema_version": "0.1",
+  "status": "PROSPECTIVELY_FROZEN_BEFORE_LOCAL_STABILITY_OUTPUT",
+  "authority": "SymC GOM v0.8.4",
+  "scientific_role": "independent native-model topology gate anticipated before any Jacobian-pole or chi_bio construction; it does not overwrite the finite-window Figure 8 adjudication",
+  "source_model": "Jaruszewicz-Blonska Reduced2023 six-variable NF-kB model",
+  "parameter_cases": "same Figure 8 A/B/C parameter copies frozen in JARUS_FIG8_EXECUTION_FREEZE_v0_2.json",
+  "stimulus": "TR=1 tonic TNF equilibrium",
+  "paper_claims_tested": {
+    "FIG8A_NOMINAL_DAMPED": "TR=1 equilibrium is stable",
+    "FIG8B_LIMIT_CYCLE": "TR=1 equilibrium is unstable",
+    "FIG8C_RELAXATION_OSCILLATION": "TR=1 equilibrium is unstable"
+  },
+  "root_search": {
+    "solver": "MATLAB fsolve in log-state coordinates so every candidate state is positive",
+    "matlab_release": "R2023b",
+    "product": "Optimization Toolbox",
+    "random_generator": "twister",
+    "random_seed": 20260923,
+    "random_multistarts": 64,
+    "random_seed_domain_per_state": "log-uniform on [1e-6, 10]",
+    "additional_fixed_seeds": [0.0001, 0.001, 0.01, 0.1, 0.5, 1.0],
+    "fixed_seed_definition": "each listed scalar is used for all six state components",
+    "fsolve_function_tolerance": 1e-12,
+    "fsolve_step_tolerance": 1e-12,
+    "maximum_iterations": 2000,
+    "accepted_root_residual_inf_norm": 1e-9,
+    "root_cluster_relative_inf_tolerance": 1e-6,
+    "no_root_selection": true,
+    "multiple_physical_roots": "preserve all distinct accepted positive roots and mark paper-level single-equilibrium correspondence INDETERMINATE rather than selecting one post hoc"
+  },
+  "jacobian": {
+    "method": "central finite differences of the pinned reduced RHS at each accepted TR=1 equilibrium",
+    "base_step_per_coordinate": "machine_epsilon^(1/3) * max(1, abs(x_j))",
+    "step_multipliers": [1.0, 0.5, 0.25],
+    "classification": "STABLE only if max(real(eigenvalues)) < 0 at all three step multipliers; UNSTABLE only if > 0 at all three; otherwise INDETERMINATE_NUMERICAL_SIGN",
+    "eigenvalues_retained": true,
+    "no_mode_pair_selected": true
+  },
+  "case_adjudication": {
+    "FIG8A_NOMINAL_DAMPED": "paper local-stability claim PASS only if exactly one distinct accepted positive root is found and it is STABLE",
+    "FIG8B_LIMIT_CYCLE": "paper local-stability claim PASS only if exactly one distinct accepted positive root is found and it is UNSTABLE",
+    "FIG8C_RELAXATION_OSCILLATION": "paper local-stability claim PASS only if exactly one distinct accepted positive root is found and it is UNSTABLE"
+  },
+  "guards": {
+    "finite_window_failures_preserved": true,
+    "no_trajectory_result_used_as_root_seed": true,
+    "no_posthoc_multistart_extension": true,
+    "no_threshold_retuning": true,
+    "no_parameter_change": true,
+    "no_chi_bio_construction": true,
+    "no_eigenmode_selection": true
+  },
+  "next_gate_if_local_stability_claims_pass": "freeze a separate limit-cycle/return-geometry gate for B/C and representation-sensitivity audit before any scalar construction",
+  "forbidden_inference": "Local equilibrium stability alone does not prove a stable limit cycle and does not license chi_bio."
+}

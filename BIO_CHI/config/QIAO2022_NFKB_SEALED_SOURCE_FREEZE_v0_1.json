@@ -1,0 +1,39 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Qiao 2022 NF-kB archive sealed-source inventory",
+  "status": "OUTCOME_BLIND_SOURCE_INVENTORY",
+  "source": {
+    "citation": "Qiao L, Zhang ZB, Zhao W, Wei P, Zhang L. Network design principle for robust oscillatory behaviors with respect to biological noise. eLife. 2022;11:e76188.",
+    "doi": "10.7554/eLife.76188",
+    "github_repo": "LingxiaQiao/oscillation",
+    "commit_sha": "e137cd4ec4a84e0e6562eb9be53690a237d2e3e5",
+    "tree_sha": "d91a0c97af7ea95ac229b7c4ee992edb1e4d53c0",
+    "archive_path": "Robust oscillation-CV of period.zip",
+    "github_blob_sha": "41b5794064108100641589c5a2f909a4a0bb0a05",
+    "github_reported_bytes": 193587,
+    "archive_url": "https://raw.githubusercontent.com/LingxiaQiao/oscillation/e137cd4ec4a84e0e6562eb9be53690a237d2e3e5/Robust%20oscillation-CV%20of%20period.zip",
+    "role_from_repository_readme": "zip includes single-cell NF-kB data and plotting script"
+  },
+  "independence": {
+    "numeric_values_opened_before_freeze": false,
+    "file_inventory_allowed": true,
+    "repository_readme_opened": true,
+    "candidate_role": "potential independent empirical NF-kB transport dataset, contingent on source provenance and sufficient observation duration"
+  },
+  "inventory_only": {
+    "permitted": [
+      "archive SHA-256",
+      "archive byte size",
+      "member names and sizes",
+      "archive integrity",
+      "read non-data README/method scripts only after inventory to establish provenance and time semantics"
+    ],
+    "prohibited": [
+      "load numeric trajectory values",
+      "summarize or plot NF-kB trajectories",
+      "fit oscillator",
+      "compute chi"
+    ]
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": "0.2",
+  "supersedes_for_execution": "BIO_CHI/config/D2FC2_NFKB_INDEPENDENT_MODAL_P1_FREEZE_v0_1.json",
+  "v0_1_disposition": "INVALID_TEST_SOURCE_PARTITION_BEFORE_RESULT_REVIEW",
+  "project": "Bio Chi Investigation",
+  "authority": "SymC GOM v0.8.6",
+  "gate": "D2FC2 independent NF-kB generator/modal and publication-native validation-observability test",
+  "epistemic_status": "P1_CANDIDATE_EXTERNAL_MODEL_AND_PUBLICATION_NATIVE_VALIDATION",
+  "hypothesis_provenance": "DATA_DERIVED_FROM_JARUSZEWICZ_P0Q__TESTED_ON_SEPARATE_EXTERNAL_SYSTEM",
+  "scientific_question": "Does an independent NF-kB model contain a licensed stable complex-conjugate local mode at its source-native unstimulated equilibrium, and is that modal frequency observable in the peer-reviewed publication's five held-out mean nuclear-RelA validation conditions?",
+  "external_source": {
+    "repository": "recleelab/D2FCSquared",
+    "commit_sha": "4414c1556e3068c9bfe2162d5ba9d2cf770713fc",
+    "paper": "Smeal SW et al. Nature Communications 16, 7329 (2025). DOI 10.1038/s41467-025-62837-0.",
+    "publication_training_conditions": [
+      "Control",
+      "1X6 min",
+      "1X30 min",
+      "4X1.5 min"
+    ],
+    "publication_validation_conditions": [
+      "1X30 sec",
+      "1X2 min",
+      "1X15 min",
+      "2X3 min",
+      "3X2 min"
+    ],
+    "partition_source": "Peer-reviewed article Methods/Results: optimization used Control, 1x6min, 1x30min, 4x1.5min; five remaining mean conditions were validation not used for PSO."
+  },
+  "blindness_record": {
+    "v0_1_result_reviewed_before_correction": false,
+    "correction_basis": "publication provenance only",
+    "experimental_values_used_to_change_partition": false
+  },
+  "generator_gate": {
+    "equilibrium_protocol": "Use source-native D2FC Squared model, source-native best parameter set, TR=0, and source-native 10-day equilibration.",
+    "jacobian": "Finite-difference autonomous species dynamics at equilibrated TR=0 state with step multipliers 1, 0.5, 0.25; preserve full spectrum.",
+    "pair_rule": "If exactly one numerically stable complex-conjugate pair is present, it is the candidate. If zero, refuse. If more than one and no pre-outcome biological selection rule exists, return NON_IDENTIFIABLE rather than switch pairs.",
+    "chi_rule": "For the stable candidate pair, chi_bio = -Re(lambda)/abs(lambda). No chi=1 biological boundary is inferred.",
+    "maximum_matched_pair_relative_complex_spread": 0.00001
+  },
+  "empirical_validation_gate": {
+    "observable": "Mean nuclear RelA fold-change from all five publication-native held-out validation conditions.",
+    "no_condition_dropping": true,
+    "time_grid_min": "0:4:181",
+    "preprocessing": "Savitzky-Golay order 3, window 5 points",
+    "peak_prominence": "0.10 times within-condition range",
+    "identifiable_condition": "At least two local maxima after preprocessing.",
+    "empirical_omega": "2*pi divided by median interpeak time",
+    "support_rule": "At least 3 of 5 held-out conditions identifiable and median relative frequency error to the single predeclared generator pair <= 0.25."
+  },
+  "falsifiers": [
+    "No stable complex-conjugate pair.",
+    "More than one stable pair without a pre-outcome selection rule.",
+    "Numerical pair instability above frozen tolerance.",
+    "Fewer than 3 of 5 held-out conditions identify an oscillatory timescale.",
+    "Median relative frequency error > 0.25."
+  ],
+  "known_bad_requirement": {
+    "generator": "Stable real diagonal Jacobian must refuse complex-pair scalar.",
+    "empirical": "Monotone traces must fail oscillatory identifiability."
+  },
+  "claim_ceiling": {
+    "pass": "Independent external support for a bounded model-specific biological chi_bio mode class and Chi_bio modal representation across two NF-kB model lineages. No universal biological scalar or chi=1 boundary.",
+    "fail": "Preserve failure; Jaruszewicz remains P0-Q model-specific qualification."
+  }
+}

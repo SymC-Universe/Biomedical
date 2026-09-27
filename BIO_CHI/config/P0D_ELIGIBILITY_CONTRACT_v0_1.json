@@ -1,0 +1,71 @@
+{
+  "schema_version": "0.1",
+  "frozen_date": "2026-09-22",
+  "classes": {
+    "R": {
+      "name": "recovery_reorganization",
+      "hard_gates": [
+        "R0",
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5",
+        "R6"
+      ]
+    },
+    "M": {
+      "name": "modal_vector_Chi_bio",
+      "hard_gates": [
+        "M0",
+        "M1",
+        "M2",
+        "M3",
+        "M4"
+      ]
+    },
+    "S": {
+      "name": "scalar_chi_bio",
+      "hard_gates": [
+        "S0",
+        "S1",
+        "S2",
+        "S3",
+        "S4",
+        "S5",
+        "S6",
+        "S7"
+      ]
+    },
+    "I": {
+      "name": "stability_inheritance",
+      "hard_gates": [
+        "I0",
+        "I1",
+        "I2",
+        "I3",
+        "I4",
+        "I5",
+        "I6"
+      ]
+    },
+    "C": {
+      "name": "Bio_Chi_conglomerate",
+      "hard_gates": [
+        "C0",
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5"
+      ]
+    }
+  },
+  "prohibitions": [
+    "do not promote a dataset because published outcomes agree with SymC",
+    "do not infer recovery from response under continuing perturbation",
+    "do not call a complex pole a mechanical damping ratio without a licensed reduction",
+    "do not infer inheritance from static cross-layer association",
+    "do not rescue a failed simpler representation with a post-result conglomerate redesign"
+  ]
+}

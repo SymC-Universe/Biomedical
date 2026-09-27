@@ -1,0 +1,44 @@
+name: Bio Chi Su2026 simple recovery v01
+
+on:
+  push:
+    branches:
+      - chi-bio-recovery-p0d-20260922
+    paths:
+      - 'BIO_CHI/config/SU2026_SIMPLE_RECOVERY_V01_FREEZE.json'
+      - 'BIO_CHI/src/run_su2026_simple_recovery_v0_1.py'
+      - '.github/workflows/bio-chi-su2026-simple-recovery-v01.yml'
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install numpy pandas
+      - name: Download frozen processed source
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/su2026 out_su2026_recovery
+          curl -L --fail --retry 3 --retry-delay 2 \
+            -o /tmp/su2026/GSE134459_Reversible_RPKM_values.txt.gz \
+            https://ftp.ncbi.nlm.nih.gov/geo/series/GSE134nnn/GSE134459/suppl/GSE134459_Reversible_RPKM_values.txt.gz
+          sha256sum /tmp/su2026/GSE134459_Reversible_RPKM_values.txt.gz
+      - name: Run frozen recovery test
+        run: |
+          python BIO_CHI/src/run_su2026_simple_recovery_v0_1.py \
+            --source /tmp/su2026/GSE134459_Reversible_RPKM_values.txt.gz \
+            --freeze BIO_CHI/config/SU2026_SIMPLE_RECOVERY_V01_FREEZE.json \
+            --out out_su2026_recovery
+      - name: Upload result
+        uses: actions/upload-artifact@v4
+        with:
+          name: bio-chi-su2026-simple-recovery-v01
+          path: out_su2026_recovery
+          if-no-files-found: error
+          retention-days: 90

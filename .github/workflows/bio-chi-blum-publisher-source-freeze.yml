@@ -1,0 +1,33 @@
+name: Bio Chi Blum publisher source freeze
+
+on:
+  push:
+    branches:
+      - chi-bio-recovery-p0d-20260922
+    paths:
+      - 'BIO_CHI/config/BLUM2019_PUBLISHER_SOURCE_ENDPOINTS_v0_1.json'
+      - 'BIO_CHI/src/freeze_blum_publisher_sources.py'
+      - '.github/workflows/bio-chi-blum-publisher-source-freeze.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  freeze:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Freeze publisher archive bytes without opening contents
+        run: python BIO_CHI/src/freeze_blum_publisher_sources.py
+      - name: Upload source freeze manifest
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_BLUM_PUBLISHER_SOURCE_FREEZE_V01
+          path: BIO_CHI/artifacts/generated/blum2019_publisher_source_freeze_v0_1.json
+          if-no-files-found: error

@@ -1,0 +1,94 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "epistemic_status": "P0_D_EXPLORATORY_FUNCTION_LIMIT_MAPPING",
+  "workflow": "Bio Chi Jaruszewicz TNF spectral topology P0-D v0.1",
+  "run": {
+    "id": 36345522019,
+    "head_sha": "98920b01c21208dee16b4ba2b93623d1aeff57a1",
+    "status": "SUCCESS"
+  },
+  "artifact": {
+    "id": 10940129250,
+    "name": "BIO_CHI_JARUS_TNF_SPECTRAL_TOPOLOGY_P0D_V01",
+    "size_bytes": 81369,
+    "digest": "sha256:bc70cf6ec9c40e59884031e311a3ed75346dfcd218f40d8263ec24a869bbb9c9",
+    "result_json_sha256": "16b01fdaf9878b907a7e13bf9c3ac9bfbb288fc0da0f9ac25763c2b01194757a",
+    "transition_csv_sha256": "2baa53e183fee32aac9c4bf2fcf025ceb203f2b52217e7169250808eb45aba65"
+  },
+  "endpoint_integrity": {
+    "tnf_0_nonreal_count": 0,
+    "tnf_0_max_real": 0,
+    "tnf_1_nonreal_count": 2,
+    "tnf_1_chi": 0.21311451907547868,
+    "expected_tnf_1_chi": 0.21311451897468006
+  },
+  "transition_brackets": {
+    "broad_0_to_1_step_0p01": [
+      {
+        "u_left": 0,
+        "u_right": 0.01,
+        "nonreal_left": 0,
+        "nonreal_right": 4
+      },
+      {
+        "u_left": 0.06,
+        "u_right": 0.07,
+        "nonreal_left": 4,
+        "nonreal_right": 2
+      }
+    ],
+    "low_0_to_0p015_step_0p0001": [
+      {
+        "u_left": 0,
+        "u_right": 0.0001,
+        "nonreal_left": 0,
+        "nonreal_right": 2
+      },
+      {
+        "u_left": 0.002,
+        "u_right": 0.0021,
+        "nonreal_left": 2,
+        "nonreal_right": 4
+      },
+      {
+        "u_left": 0.0035,
+        "u_right": 0.0036,
+        "nonreal_left": 4,
+        "nonreal_right": 2
+      },
+      {
+        "u_left": 0.0092,
+        "u_right": 0.0093,
+        "nonreal_left": 2,
+        "nonreal_right": 4
+      }
+    ],
+    "upper_0p055_to_0p070_step_0p0001": [
+      {
+        "u_left": 0.0621,
+        "u_right": 0.0622,
+        "nonreal_left": 4,
+        "nonreal_right": 2
+      }
+    ]
+  },
+  "preserved_failures": [
+    {
+      "run_id": 36345371220,
+      "classification": "MECHANICAL_TEST_GUARD_VECTOR_LENGTH_BUG_PRECURSOR",
+      "note": "initial brittle exact-list endpoint assertion failed"
+    },
+    {
+      "run_id": 36345453161,
+      "classification": "MECHANICAL_TEST_GUARD_VECTOR_LENGTH_BUG",
+      "note": "diagnostic exposed six-state computed vector versus accidental five-state expected vector"
+    }
+  ],
+  "interpretation": {
+    "pattern": "REAL_ONLY -> ONE_PAIR -> TWO_PAIRS -> ONE_PAIR -> TWO_PAIRS -> ONE_PAIR over the sampled native TNF equilibrium branch",
+    "claim_ceiling": "Descriptive P0-D Function/Limit mapping only. Grid brackets are not bifurcation coordinates or biological thresholds.",
+    "scalar_implication": "Scalar availability and uniqueness are operating-state dependent in this native model. No broad chi_bio admission follows.",
+    "mode_policy": "No preferred pair is selected when more than one complex pair exists."
+  }
+}

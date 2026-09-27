@@ -1,0 +1,63 @@
+{
+  "schema_version": "0.1",
+  "status": "PROSPECTIVELY_FROZEN_BEFORE_TRAJECTORY_VALUE_REVIEW",
+  "authority": "SymC GOM v0.8.4",
+  "source_paper": {
+    "citation": "Jaruszewicz-Blonska et al., PLOS ONE, DOI 10.1371/journal.pone.0286416",
+    "figure": "Figure 8",
+    "paper_claims": {
+      "A": "damped nuclear NF-kB oscillations converging to the tonic-TNF steady state",
+      "B": "sustained/limit-cycle oscillations",
+      "C": "periodic relaxation-like/spiky oscillations"
+    },
+    "primary_observable": "free nuclear NF-kappaB",
+    "paper_phase_plane": "free nuclear NF-kappaB versus free cytoplasmic IkappaBalpha",
+    "paper_quantitative_threshold_for_regime_labels": null
+  },
+  "input_pin": "BIO_CHI/config/JARUS_FIG8_EXECUTION_PIN_v0_1.json",
+  "evidence_firewall": {
+    "trajectory_numeric_values_opened_before_freeze": false,
+    "artifact_hash_metadata_seen_before_freeze": true,
+    "no_post_view_threshold_tuning": true,
+    "no_smoothing": true,
+    "no_fitted_damping_constant": true,
+    "no_chi_bio_construction": true,
+    "no_mode_selection": true
+  },
+  "numeric_noise_floor": {
+    "definition": "1000 * machine_epsilon * max(1, max(abs(y))) for each trajectory",
+    "role": "exclude floating-point-scale pseudo-extrema only; not a biological amplitude threshold"
+  },
+  "extrema_rule": {
+    "observable": "free nuclear NF-kappaB",
+    "window": "strictly after tonic TNF onset at t=1 h through the frozen case endpoint",
+    "method": "use sign changes in first differences on the captured raw plotted trajectory; discard only excursions whose peak-to-trough amplitude is at or below the numeric_noise_floor",
+    "minimum_for_evaluation": "at least two complete peak-to-trough oscillation amplitudes; otherwise INDETERMINATE"
+  },
+  "case_rules": {
+    "FIG8A_NOMINAL_DAMPED": {
+      "finite_window_target": "DAMPED_COMPATIBLE",
+      "rule": "PASS only if every evaluable successive complete oscillation amplitude is strictly smaller than its predecessor. If amplitudes increase, FAIL_NATIVE_BEHAVIOR. If too few complete cycles exist, INDETERMINATE.",
+      "claim_limit": "finite-window morphology only; does not independently prove asymptotic stability"
+    },
+    "FIG8B_LIMIT_CYCLE": {
+      "finite_window_target": "SUSTAINED_OSCILLATION_COMPATIBLE",
+      "rule": "PASS if at least two complete oscillation amplitudes survive the numerical floor and the full evaluable amplitude sequence is not strictly decreasing to the endpoint. Otherwise FAIL_NATIVE_BEHAVIOR or INDETERMINATE if insufficient cycles.",
+      "claim_limit": "a finite 30 h trajectory cannot by itself prove a mathematically stable limit cycle; stable-limit-cycle topology remains a separate preregistered stability gate"
+    },
+    "FIG8C_RELAXATION_OSCILLATION": {
+      "finite_window_target": "SUSTAINED_PERIODIC_COMPATIBLE",
+      "rule": "Apply the same sustained-oscillation compatibility rule as FIG8B to nuclear NF-kB. Record the relaxation-like/spiky morphology claim separately as NOT_QUANTITATIVELY_ADJUDICATED because the paper supplies no numerical threshold and this freeze forbids inventing one after seeing the trajectory.",
+      "claim_limit": "periodicity may be evaluated; relaxation-like morphology is explicitly refused at this gate rather than post-hoc thresholded"
+    }
+  },
+  "required_outputs": [
+    "extrema times and values",
+    "complete-cycle amplitudes",
+    "finite-window adjudication PASS/FAIL/INDETERMINATE for each case",
+    "explicit separate status for the Figure 8C relaxation-like morphology claim",
+    "all failure/null/refusal states"
+  ],
+  "next_gate_if_native_behavior_is_compatible": "Freeze a separate equilibrium/local-stability and representation-sensitivity analysis before computing Jacobian poles or asking whether a coherent chi_bio coordinate exists.",
+  "forbidden_inference": "No result from this adjudication licenses chi_bio, Chi_bio, Bio Chi, a universal biological damping boundary, or a stable-limit-cycle claim beyond the finite-window evidence."
+}

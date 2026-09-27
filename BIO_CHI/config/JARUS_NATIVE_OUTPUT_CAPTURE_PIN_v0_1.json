@@ -1,0 +1,42 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "authority": "SymC GOM v0.8.4",
+  "source_model": "Jaruszewicz-Blonska et al. Reduced2023 six-variable NF-kB model",
+  "behavior_freeze": "BIO_CHI/config/JARUS_NATIVE_BEHAVIOR_FREEZE_v0_1.json",
+  "capture": {
+    "run_id": 35848534891,
+    "workflow": "Bio Chi Jaruszewicz native output capture",
+    "head_sha": "b6ac15892507106459c9dca9233818bbd9db3527",
+    "status": "PASS",
+    "runtime": "MATLAB R2023b Update 11",
+    "runner": "ubuntu-24.04",
+    "figure_count": 7,
+    "numeric_line_count": 42,
+    "all_captured_series_have_finite_rows": true
+  },
+  "artifact": {
+    "id": 10744297721,
+    "name": "BIO_CHI_JARUS_NATIVE_OUTPUT_CAPTURE_V01",
+    "size_bytes": 404884,
+    "digest": "sha256:13548e9aefaa50c425be0b72e0a89a99665467bc04b9a15c42114f53ad8d174d",
+    "expires_at": "2026-12-22T10:23:43Z",
+    "native_output_capture_manifest_sha256": "f822bd1f9b4f793e66e17bf2e6505158e2cdda4f342d348bda79aba2499e32d1",
+    "capture_summary_sha256": "c4ea90b434371c39d315520e77eb93f7eba49ed2964b95fc4ebd56cf17975de2",
+    "matlab_stdout_sha256": "c556a9f8fb1579aafd5b90f300426bcb1e3576baa832a6c07765691051b924d6",
+    "native_plot_capture_mat_sha256": "64e5351761dc14c8bbd41dd6d83213858df719c0ac278267cb38b90099012ba3",
+    "series_hashes": "The artifact manifest contains SHA-256 and row-count records for all 42 captured CSV series."
+  },
+  "interpretation": {
+    "published_source_preserved": true,
+    "execution_copy_modified_only_by_frozen_compatibility_repair": true,
+    "scientific_endpoint_opened_by_capture": false,
+    "chi_bio_constructed": false,
+    "Chi_bio_constructed": false,
+    "Bio_Chi_constructed": false,
+    "licenses_behavior_classification": false,
+    "licenses_scalar_admission": false,
+    "limit": "PASS proves exhaustive numeric line capture from the authors' driver under the frozen one-line MATLAB API repair. Figure/axis semantic metadata were not yet frozen in v0.1, so the 42 series must not be mapped to a biological variable or behavior by position alone."
+  },
+  "next_safe_gate": "capture figure/axis semantic metadata and audit the authors' driver/source mapping before applying the prospectively frozen native-behavior targets"
+}

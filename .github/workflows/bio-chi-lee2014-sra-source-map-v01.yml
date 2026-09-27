@@ -1,0 +1,33 @@
+name: Bio Chi Lee 2014 SRA source map v0.1
+
+on:
+  push:
+    branches:
+      - chi-bio-recovery-p0d-20260922
+    paths:
+      - 'BIO_CHI/config/LEE2014_SRP040309_SOURCE_MAP_FREEZE_v0_1.json'
+      - 'BIO_CHI/src/map_lee2014_sra_source_v0_1.py'
+      - '.github/workflows/bio-chi-lee2014-sra-source-map-v01.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-map:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Query NCBI SRA metadata only
+        run: python BIO_CHI/src/map_lee2014_sra_source_v0_1.py
+      - name: Upload SRA source map
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_LEE2014_SRA_SOURCE_MAP_V01
+          path: BIO_CHI/artifacts/generated/lee2014_srp040309_source_map_v0_1.json
+          if-no-files-found: error

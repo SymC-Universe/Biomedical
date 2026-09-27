@@ -1,0 +1,31 @@
+name: Bio Chi Jaruszewicz TNF spectral topology P0-D v0.1
+
+on:
+  push:
+    branches:
+      - chi-bio-recovery-p0d-20260922
+    paths:
+      - 'BIO_CHI/src/map_jarus_tnf_spectral_topology_p0d_v0_1.py'
+      - '.github/workflows/biochi_jarus_tnf_spectral_topology_p0d_v01.yml'
+  workflow_dispatch:
+
+jobs:
+  spectral-topology:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical dependencies
+        run: python -m pip install --disable-pip-version-check numpy scipy sympy
+      - name: Run frozen exploratory map
+        run: python BIO_CHI/src/map_jarus_tnf_spectral_topology_p0d_v0_1.py
+      - name: Hash outputs
+        run: |
+          sha256sum BIO_CHI/artifacts/generated/jarus_tnf_spectral_topology_p0d_v01/* | tee BIO_CHI/artifacts/generated/jarus_tnf_spectral_topology_p0d_v01/SHA256SUMS.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_JARUS_TNF_SPECTRAL_TOPOLOGY_P0D_V01
+          path: BIO_CHI/artifacts/generated/jarus_tnf_spectral_topology_p0d_v01/
+          if-no-files-found: error

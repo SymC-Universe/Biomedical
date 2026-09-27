@@ -1,0 +1,18 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "GSE255671 remote RAW tar member-name inventory",
+  "workflow_run_id": 35866359748,
+  "workflow_head_sha": "29d0f0fd8184c67002c3866815fc8a4e03ee4ead",
+  "artifact_id": 10751703590,
+  "artifact_digest": "sha256:e610cdafada0ed463aa1609c5632c501ad81c658a1405b1acf03d9bee28b4789",
+  "status": "PASS_REMOTE_TAR_HEADER_INVENTORY",
+  "archive_size_bytes": 13340180480,
+  "member_count": 50,
+  "ordinary_member_payload_bytes_read": 0,
+  "metadata_payload_bytes_read": 0,
+  "source_effect": "GSE255671_RAW.tar contains ChIP/ATAC BigWig/bedGraph-style members and no M397 RNA expression matrix member. The M397 RNA samples instead identify processed values on the GSE134459 Series record.",
+  "m397_rna_processed_source": "GSE134459_Reversible_RPKM_values.txt.gz",
+  "scientific_values_interpreted": false,
+  "testbed_promoted": false
+}

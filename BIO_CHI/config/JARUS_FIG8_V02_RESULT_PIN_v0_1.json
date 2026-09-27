@@ -1,0 +1,50 @@
+{
+  "schema_version": "0.1",
+  "authority": "SymC GOM v0.8.4",
+  "workflow_run_id": 35854793170,
+  "workflow_head_sha": "be147f15a9fff4403194977dafa975094294c289",
+  "execution": {
+    "artifact_id": 10746629733,
+    "artifact_name": "BIO_CHI_JARUS_FIG8_EXECUTION_V02",
+    "artifact_sha256": "f2bebf6605b2e794f81473d776146f0109752ddc1e6eed1750a3deb4ec44e32b",
+    "status": "PASS_INTEGRITY",
+    "all_three_time_monotone": true,
+    "all_three_finite": true
+  },
+  "behavior_adjudication": {
+    "artifact_id": 10747047476,
+    "artifact_name": "BIO_CHI_JARUS_FIG8_BEHAVIOR_V02",
+    "artifact_sha256": "7c1c89f886b5e93fbe716a87c3b68ae286632602126911a587d95c165e885a70",
+    "method": "BIO_CHI/config/JARUS_FIG8_BEHAVIOR_ADJUDICATION_FREEZE_v0_2.json",
+    "cases": {
+      "FIG8A_NOMINAL_DAMPED": {
+        "finite_window_status": "PASS_DAMPED_COMPATIBLE",
+        "complete_amplitudes": [0.9706407851920446, 0.185193743607151, 0.04466260751088502, 0.01170686214087402]
+      },
+      "FIG8B_LIMIT_CYCLE": {
+        "finite_window_status": "FAIL_NATIVE_BEHAVIOR",
+        "reason": "all ten complete peak-to-trough amplitudes decrease strictly over the frozen 30 h window, so the prospectively frozen sustained-compatibility rule does not confirm the label",
+        "first_complete_amplitude": 0.9966600843961315,
+        "last_complete_amplitude": 0.366509085856687,
+        "paper_stable_limit_cycle_claim_adjudicated_here": false
+      },
+      "FIG8C_RELAXATION_OSCILLATION": {
+        "finite_window_status": "FAIL_NATIVE_BEHAVIOR",
+        "reason": "all ten complete peak-to-trough amplitudes decrease strictly over the frozen 30 h window, so the prospectively frozen sustained-periodicity rule does not confirm the label",
+        "first_complete_amplitude": 0.9974809619379342,
+        "last_complete_amplitude": 0.5083790318024441,
+        "relaxation_like_morphology_status": "NOT_QUANTITATIVELY_ADJUDICATED",
+        "paper_stable_limit_cycle_claim_adjudicated_here": false
+      }
+    }
+  },
+  "preserved_prior_failure": "BIO_CHI/config/JARUS_FIG8_EXECUTION_VALIDITY_PIN_v0_1.json",
+  "interpretation": {
+    "do_not_relabel_failures": true,
+    "important_scope": "The B/C failures are failures of the prospectively frozen finite-window amplitude rule. They do not by themselves refute the paper's distinct topological claim that an unstable TR=1 equilibrium is surrounded by a stable limit cycle, because a trajectory approaching a limit cycle from outside can have a strictly decreasing transient amplitude sequence.",
+    "chi_bio_constructed": false,
+    "Chi_bio_constructed": false,
+    "Bio_Chi_constructed": false,
+    "next_safe_gate": "Execute the already-anticipated, separately frozen equilibrium/local-stability gate. Preserve the finite-window failures regardless of that result."
+  }
+}

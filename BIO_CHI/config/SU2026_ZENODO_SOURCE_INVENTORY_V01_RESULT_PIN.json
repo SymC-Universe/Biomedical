@@ -1,0 +1,29 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "Su public Zenodo release file inventory",
+  "workflow_run_id": 35866157660,
+  "workflow_head_sha": "c3d3a29234d608c465a9e3df09574f4ee475e269",
+  "artifact_id": 10752259009,
+  "artifact_digest": "sha256:10a2e343e771e256980cbf059cdba6cae7ec2c8c318c5ea5ce6d053e6c7d6e1e",
+  "status": "PASS_ZENODO_SOURCE_INVENTORY",
+  "zenodo_record_id": 17751601,
+  "doi": "10.5281/zenodo.17751601",
+  "record_api_sha256": "efb5a67c6d806c9fe4c8e1749e8d4c6e5a63a60ff41ab5d01b2c189960e485ab",
+  "archive": {
+    "name": "jihoonlee0/melanoma_reversible_transition-v1.0.0.zip",
+    "size_bytes": 4221475,
+    "advertised_md5": "7482ff43bd735a19b63e5dd91b84a7cb",
+    "advertised_md5_verified": true,
+    "sha256": "48ce6d8bacdca2c79315efd7003107e1d94c03f5ec11fc5956743e721c91830c",
+    "member_count": 16
+  },
+  "member_payloads_read": false,
+  "scientific_values_interpreted": false,
+  "source_effect": "The archived v1.0.0 release contains the public analysis/code tree but no separate processed-expression workbook/data directory. It therefore freezes code provenance but does not close the M397 processed-expression input identity.",
+  "next_gate": "inventory GSE255671_RAW.tar remotely at TAR-header level without downloading biological file payloads; identify whether a processed M397 expression object is publicly embedded there",
+  "testbed_promoted": false,
+  "chi_bio_constructed": false,
+  "Chi_bio_admitted": false,
+  "Bio_Chi_constructed": false
+}

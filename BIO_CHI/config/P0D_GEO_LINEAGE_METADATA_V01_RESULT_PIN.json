@@ -1,0 +1,102 @@
+{
+  "schema_version": "0.1",
+  "project": "Bio Chi Investigation",
+  "gate": "GEO source-lineage and metadata-only reconciliation for Harmange 2023 and Shaffer 2017",
+  "workflow_run_id": 35863431965,
+  "workflow_head_sha": "b9925a25bc6a7941a3a63ee2aa27f80a8518214b",
+  "artifact_id": 10750659413,
+  "artifact_digest": "sha256:7abadf0a7cef24fff299a16b9ebea3b5d532f8fc50c54dca4a34c2c028891c71",
+  "molecular_values_read": false,
+  "cell_metadata_rows_read": false,
+  "status": "PASS_METADATA_ONLY_SOURCE_LINEAGE_AUDIT",
+  "harmange2023": {
+    "geo": "GSE237228",
+    "bioproject": "PRJNA994430",
+    "sample_count": 22,
+    "sra_experiment_count": 22,
+    "sra_experiment_range": [
+      "SRX21003294",
+      "SRX21003315"
+    ],
+    "family_soft_sha256": "29db7f5d77b661487c892c3b55948164884923daf0469560e04a5f843ba56dd5",
+    "metadata_header_sha256": "f22aaf6947d38a018c0c4d13ceedacbd3bdffc296f727e171b66a21b7a06434b",
+    "metadata_columns": [
+      "orig.ident",
+      "nCount_RNA",
+      "nFeature_RNA",
+      "nCount_lineage",
+      "nFeature_lineage",
+      "percent.mt",
+      "percent.rb",
+      "well",
+      "rep",
+      "nCount_SCT",
+      "nFeature_SCT",
+      "S.Score",
+      "G2M.Score",
+      "Phase",
+      "SCT_snn_res.0.5",
+      "seurat_clusters",
+      "conditions",
+      "Primed_UCell",
+      "clusterID",
+      "Control",
+      "TGFB1",
+      "TGFBRi",
+      "PI3Ki",
+      "Conditions_pVSds",
+      "UMAP_1",
+      "UMAP_2"
+    ],
+    "declared_treatment_labels": {
+      "untreated": 2,
+      "MixControl": 1,
+      "MixPI3Ki": 1,
+      "MixTGFB1": 1,
+      "MixTGFBRi": 1,
+      "PrimedControl": 1,
+      "PrimedPI3Ki": 1,
+      "PrimedTGFB1": 1,
+      "PrimedTGFBRi": 1,
+      "EGFR_High": 3,
+      "EGFR-NGFR-High": 3,
+      "Mix": 3,
+      "NGFR-High": 3
+    },
+    "supplementary_files": [
+      "GSE237228_10x_exp3_barcodes.tsv.gz",
+      "GSE237228_10x_exp3_genes.tsv.gz",
+      "GSE237228_10x_exp3_matrix.mtx.gz",
+      "GSE237228_10x_exp3_metadata.tsv.gz",
+      "GSE237228_RAW.tar"
+    ],
+    "source_effect": "Lineage-associated metadata columns and complete GEO-to-SRX sample mapping are explicitly present; this closes the high-level source-lineage identity gap but does not establish the biological carrier mapping or inheritance."
+  },
+  "shaffer2017": {
+    "geo": "GSE97682",
+    "bioproject": "PRJNA382641",
+    "subseries": [
+      "GSE97679",
+      "GSE97680",
+      "GSE97681"
+    ],
+    "sample_count": 155,
+    "sra_experiment_count": 155,
+    "sra_experiment_range": [
+      "SRX2733818",
+      "SRX2733973"
+    ],
+    "family_soft_sha256": "41bd2622d600fe5fedbb322f6d76174ea6d07aa62a0bb34960ffa18b7b18e18b",
+    "declared_condition_counts": {
+      "Drug": 76,
+      "NoDrug": 36,
+      "48hrholiday": 5,
+      "7dayholiday": 5
+    },
+    "source_effect": "GSE97682 is explicitly a SuperSeries of GSE97679/80/81 under PRJNA382641 with per-sample SRA experiment links. Drug-holiday samples are explicitly represented in GEO metadata. This resolves the prior SuperSeries/BioProject lineage ambiguity without opening molecular outcomes."
+  },
+  "promotion_decision": "NONE",
+  "chi_bio_constructed": false,
+  "Chi_bio_admitted": false,
+  "Bio_Chi_constructed": false
+}
