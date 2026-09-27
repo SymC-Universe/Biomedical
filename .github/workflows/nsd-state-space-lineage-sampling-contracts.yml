@@ -12,6 +12,17 @@ on:
       - "NSD_vNext/engine/tools/probe_continuous_lineage_nonzero_g.py"
       - "NSD_vNext/engine/tools/probe_predictive_closure_calibration.py"
       - ".github/workflows/nsd-state-space-lineage-sampling-contracts.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "NSD_vNext/engine/tests/test_state_space_lineage_sampling.py"
+      - "NSD_vNext/engine/tests/test_substrate_closure_contracts.py"
+      - "NSD_vNext/engine/tests/test_continuous_lineage_truth_contracts.py"
+      - "NSD_vNext/engine/tests/test_predictive_closure_contracts.py"
+      - "NSD_vNext/engine/tools/probe_continuous_lineage_nonzero_g.py"
+      - "NSD_vNext/engine/tools/probe_predictive_closure_calibration.py"
+      - ".github/workflows/nsd-state-space-lineage-sampling-contracts.yml"
   workflow_dispatch:
 
 permissions:
