@@ -8,6 +8,7 @@ on:
       - "NSD_vNext/engine/tests/test_state_space_lineage_sampling.py"
       - "NSD_vNext/engine/tests/test_substrate_closure_contracts.py"
       - "NSD_vNext/engine/tests/test_continuous_lineage_truth_contracts.py"
+      - "NSD_vNext/engine/tools/probe_continuous_lineage_nonzero_g.py"
       - ".github/workflows/nsd-state-space-lineage-sampling-contracts.yml"
   workflow_dispatch:
 
@@ -39,3 +40,16 @@ jobs:
             tests/test_state_space_lineage_sampling.py \
             tests/test_substrate_closure_contracts.py \
             tests/test_continuous_lineage_truth_contracts.py
+
+      - name: Run exploratory nonzero-g continuous-lineage probe
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_continuous_lineage_nonzero_g.py \
+            --output ../../continuous-lineage-probe/continuous_lineage_nonzero_g.json
+
+      - name: Upload exploratory continuous-lineage probe
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-continuous-lineage-nonzero-g-probe
+          path: continuous-lineage-probe/continuous_lineage_nonzero_g.json
+          if-no-files-found: error
