@@ -279,6 +279,19 @@ def quantiles(values):
     }
 
 
+def rank_auc(reference, target):
+    """Threshold-free P(target > reference), with half-credit for ties."""
+    ref = np.asarray(reference, dtype=float)
+    tar = np.asarray(target, dtype=float)
+    greater = 0.0
+    total = 0
+    for x in tar:
+        greater += float(np.sum(x > ref))
+        greater += 0.5 * float(np.sum(x == ref))
+        total += ref.size
+    return float(greater / total) if total else float("nan")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", type=Path, required=True)
@@ -364,6 +377,31 @@ def main() -> int:
                 for metric in metrics
             }
 
+    reference_classes = {
+        "C_g0", "C_g_neg075", "C_g_pos075", "D_not_C", "S_not_D"
+    }
+    discrimination = {}
+    for target_class in ("colored_phi_0_7", "genuine_two_mode"):
+        discrimination[target_class] = {}
+        for rate_label in rates:
+            reference_rows = [
+                row for row in rows
+                if row["truth_class"] in reference_classes
+                and row["rate_label"] == rate_label
+            ]
+            target_rows = [
+                row for row in rows
+                if row["truth_class"] == target_class
+                and row["rate_label"] == rate_label
+            ]
+            discrimination[target_class][rate_label] = {
+                metric: rank_auc(
+                    [row[metric] for row in reference_rows],
+                    [row[metric] for row in target_rows],
+                )
+                for metric in metrics
+            }
+
     payload = {
         "status": "PREDECISION_CALIBRATION_ONLY",
         "licenses_real_eeg_local_chi": False,
@@ -383,6 +421,7 @@ def main() -> int:
         },
         "rows": rows,
         "summary": summary,
+        "threshold_free_rank_auc": discrimination,
     }
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
