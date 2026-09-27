@@ -396,3 +396,30 @@ Expected output:
 - expected A1-to-A2 likelihood improvement and descriptive BIC implication at the declared effective sample count.
 
 Interpretation: V16 tests whether current A1's H=0 restriction creates model-order pressure inside the scientifically intended C family. An A2 advantage in this probe is evidence of model-family misspecification pressure, not evidence for two physical modes and not authorization to promote a new estimator. Any nuisance-family expansion remains a separate qualification and promotion step.
+
+## V17. Verify C1Q one-mode nuisance qualification
+
+[CLAIM] A separate four-parameter one-mode continuous-lineage candidate can absorb valid nonzero-g C-family nuisance structure while preserving current A1 as the simpler g=0 submodel.
+
+Run:
+
+```bash
+cd NSD_vNext/engine
+python -m pytest -q tests/test_continuous_lineage_candidate.py
+python tools/probe_continuous_lineage_nonzero_g.py \
+  --output ../../continuous-lineage-probe/continuous_lineage_nonzero_g.json
+```
+
+Expected:
+- C1Q remains qualification-only and outside production `ModelFamily`;
+- g=0 contracts reproduce the A1 scalar covariance and A1 retains the simpler-model BIC advantage in the exploratory finite-realization cells;
+- nonzero-g C truths can be represented by a one-mode k=4 candidate rather than requiring A2;
+- paired 256/128-Hz results remain traceable to the same realized path;
+- fitted g, chi, and boundary proximity remain descriptive qualification outputs rather than admission criteria.
+
+Reference result:
+- workflow run `36354967663`;
+- artifact `nsd-continuous-lineage-nonzero-g-probe`;
+- artifact digest `sha256:713be00f0e252c2db8196a11e17de7c2ebb986dc6e9872b54ad87941f26845c6`.
+
+Interpretation: passing V17 demonstrates first-stage nuisance/model-order repair only. It does not promote C1Q, license real EEG, or establish adequate parameter uncertainty/refusal behavior.
