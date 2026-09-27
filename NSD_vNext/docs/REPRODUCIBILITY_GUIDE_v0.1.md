@@ -373,3 +373,26 @@ cat NSD_vNext/docs/SUBSTRATE_CLOSURE_QUALIFICATION_PREFLIGHT_v0.1.md
 ```
 
 Interpretation: V15 maps how known substrate/projection mechanisms affect the specific N-B1 local-mode claim. It does not define the empirical closure tolerance. Any future predictive-error, memory-decay, pole-displacement, chi-displacement, or uncertainty threshold must be prospectively calibrated and frozen before real EEG is opened.
+
+## V16. Quantify spectral model-order pressure from nonzero-g C truths
+
+[CLAIM] A valid single-mode continuous-lineage C truth with nonzero covariance-phase coordinate H can be compared against the best spectra reachable by the unchanged A1 and A2 families without fitting real EEG or modifying either family.
+
+Run:
+
+```bash
+cd NSD_vNext/engine
+python tools/probe_continuous_lineage_spectral_kl.py \
+  --output ../../continuous-lineage-probe/continuous_lineage_spectral_kl.json
+```
+
+Expected output:
+- status `PREDECISION_ANALYTIC_ONLY`;
+- `licenses_real_eeg_local_chi=false`;
+- `changes_production_estimator=false`;
+- exact C-family truth cells at the declared g values;
+- best reachable A1 and A2 spectral KL rates under the current optimizer parameter box;
+- fitted A1 chi for comparison with truth chi;
+- expected A1-to-A2 likelihood improvement and descriptive BIC implication at the declared effective sample count.
+
+Interpretation: V16 tests whether current A1's H=0 restriction creates model-order pressure inside the scientifically intended C family. An A2 advantage in this probe is evidence of model-family misspecification pressure, not evidence for two physical modes and not authorization to promote a new estimator. Any nuisance-family expansion remains a separate qualification and promotion step.
