@@ -233,6 +233,17 @@ def main() -> int:
         expected_bic_delta = (
             2.0 * (a2_kl - a1_kl) * args.effective_n + penalty_delta
         )
+        # C1Q is the exact four-parameter one-mode C family for these truths,
+        # so its population KL mismatch is zero by construction.
+        c1q_kl = 0.0
+        expected_bic_c1q_minus_a1 = (
+            2.0 * (c1q_kl - a1_kl) * args.effective_n
+            + math.log(args.effective_n)
+        )
+        expected_bic_c1q_minus_a2 = (
+            2.0 * (c1q_kl - a2_kl) * args.effective_n
+            - 2.0 * math.log(args.effective_n)
+        )
 
         payload["cells"].append(
             {
@@ -249,6 +260,12 @@ def main() -> int:
                 "A2": {
                     "kl_rate": a2_kl,
                     "params": a2_params.tolist(),
+                },
+                "C1Q_exact_truth": {
+                    "kl_rate": c1q_kl,
+                    "parameter_count": 4,
+                    "expected_BIC_C1Q_minus_A1": expected_bic_c1q_minus_a1,
+                    "expected_BIC_C1Q_minus_A2": expected_bic_c1q_minus_a2,
                 },
                 "expected_A1_to_A2_nll_improvement_at_effective_n": expected_nll_improvement,
                 "expected_BIC_A2_minus_A1_at_effective_n": expected_bic_delta,
