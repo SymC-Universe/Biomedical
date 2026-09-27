@@ -871,3 +871,50 @@ No threshold may be silently changed by editing an old number. Changes must pres
 ## 20. Current One-Sentence State
 
 **Bio Chi is currently testing whether a native continuous-time biological mode can carry a sampling-invariant local chi under identifiable second-order structure and predictive approximate closure; the continuous-lineage target is mathematically coherent, but finite-data family scope, colored/memory refusal, uncertainty, and closure tolerances remain unresolved, so real-EEG local chi is still refused.**
+
+
+## 20.1 Active Qualification Experiment: Combined Structural-Predictive Refusal
+
+**Status:** LAUNCHED / RESULT PENDING  
+**Preflight:** \`NSD_vNext/docs/COMBINED_STRUCTURAL_PREDICTIVE_REFUSAL_PREFLIGHT_v0.1.md\`  
+**Probe:** \`NSD_vNext/engine/tools/probe_combined_structural_predictive_refusal.py\`  
+**Workflow:** \`.github/workflows/nsd-combined-structural-predictive-refusal.yml\`
+
+### What changed
+
+The investigation is no longer waiting at the structural-order overlap finding. A qualification-only experiment has been launched to test whether colored/extra-pole truth can be distinguished by a **combined refusal pattern** rather than by any single structural statistic.
+
+The experiment jointly records:
+- frozen-parameter held-out NLL;
+- held-out innovation autocorrelation;
+- held-out innovation RMS;
+- positive-lag recurrence residual;
+- Hankel singular-value ratios;
+- C1Q versus D1Q scope behavior;
+- A0/A1/A2 training and holdout comparison as descriptive control.
+
+### Why
+
+C1Q can absorb colored-process truth, while finite-sample recurrence/Hankel diagnostics overlap materially with valid second-order controls. Neither model selection nor one raw order statistic is sufficient alone.
+
+The combined map asks whether independent consequences of misspecification move together strongly enough to support a later prospectively frozen refusal design.
+
+### What this does not license
+
+- no real-EEG local chi;
+- no new production estimator;
+- no structural-order threshold;
+- no predictive-closure threshold;
+- no promotion of C1Q or D1Q;
+- no disorder opening.
+
+### Threshold impact
+
+**No threshold is frozen or revised.** The output is distributional and threshold-free. If diagnostic distributions still overlap materially, the next move will be a stronger explicit higher-order/memory comparator or a more conservative refusal architecture rather than post hoc cutoff tuning.
+
+### What comes next and why
+
+1. Observe the workflow result and preserve artifact provenance.
+2. Audit whether colored and genuine multimode truths separate from C interiors across multiple independent diagnostic channels.
+3. If they do, design a prospective calibration packet without selecting a cutoff from these same rows.
+4. If they do not, advance to an explicit higher-order/memory comparator before any N-B1 promotion decision.
