@@ -12,7 +12,7 @@ def fail(msg):
     raise SystemExit(1)
 
 q = load("BIO_CHI/control/WORK_QUEUE.json")
-if q.get("authority") != "SymC GOM v0.8.6 + Bio Chi project-specific three-object nomenclature decision 2026-09-23": fail("authority drift")
+if q.get("authority") != "SymC General Operations Manual v0.8.8 REVIEW + Bio Chi project-specific three-object nomenclature decision 2026-09-23": fail("authority drift")
 if q.get("continuation_policy",{}).get("manuscript_private") is not True: fail("manuscript privacy drift")
 expected = {
  "chi_bio":"biological scalar instance/sublabel of program-wide chi if licensed",
