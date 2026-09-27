@@ -44,7 +44,7 @@ jobs:
       - name: Install qualification dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install -e . pytest
+          python -m pip install -e NSD_vNext/engine pytest
 
       - name: Run lineage, sampling, and closure contract suites
         working-directory: NSD_vNext/engine
