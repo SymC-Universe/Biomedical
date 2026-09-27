@@ -1,0 +1,76 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "STENTOR2026_CROSS_SYSTEM_PATH_P0Q_V01",
+  "date_closed": "2026-09-26",
+  "status": "EXECUTED_VALID_DIRECT_BEHAVIOR_CROSS_SYSTEM_P0Q",
+  "evidence_class": "P0-Q_LITERATURE_OPEN_DIRECT_BEHAVIOR_CROSS_SYSTEM_TRANSPORT_QUALIFICATION",
+  "authority": "SymC GOM v0.8.6",
+  "freeze": "BIO_CHI/control/STENTOR2026_CROSS_SYSTEM_PATH_P0Q_FREEZE_v0_1.md",
+  "prospective_amendment": "BIO_CHI/control/STENTOR2026_REPLICATE_UNIT_AMENDMENT_v0_1.md",
+  "source": {
+    "repository": "tejasramdas/stentor_habituation",
+    "commit": "8704c114555af3477a1dd7471beedde205fed263",
+    "collated_lfs_sha256": "b84054675f8a608471da1d9cccd051c1fb9503d35b3c9b5b9f6ebc378e75054f",
+    "collated_bytes": 13922257
+  },
+  "workflow": {
+    "canonical_run_id": 36285086980,
+    "head_sha": "56533470bca936e370758a3f12e9890a3eca4769",
+    "artifact_id": 10920058447,
+    "artifact_sha256": "d10818d9549deb2f9df2e9dadd296861f5c5cd1714e0513669631e82fe5e2931",
+    "result_json_sha256": "246f129ddc8e8623bc99115311425fc8c3f38aba72fef8b3aa0a35a6cce2adb9"
+  },
+  "coverage": {
+    "source_controlled_cells": 1200,
+    "source_run_units": 171,
+    "feature_failures": 0,
+    "selected_cells_per_source_run": {
+      "min": 1,
+      "median": 6,
+      "max": 29
+    }
+  },
+  "representation": [
+    "H1_depth",
+    "Recovery",
+    "H2_depth",
+    "AUC_shift"
+  ],
+  "primary_analysis_unit": "source_run_median",
+  "primary": {
+    "observed_balanced_accuracy": 0.4639841033283656,
+    "null_97_5_percentile": 0.4177844013909588,
+    "permutation_p_upper_tail": 0.0014992503748125937,
+    "permutations": 2000,
+    "heldout_iti_balanced_accuracy": {
+      "3600": 0.5291005291005292,
+      "7200": 0.450125313283208,
+      "10800": 0.4477310924369748,
+      "18000": 0.435836627140975
+    },
+    "disposition": "CROSS_SYSTEM_PATH_ORGANIZATION_DETECTED_P0Q"
+  },
+  "recovery_only_control": {
+    "observed_balanced_accuracy": 0.4561351217088922,
+    "null_97_5_percentile": 0.41401390958768003,
+    "permutation_p_upper_tail": 0.0009995002498750624,
+    "detected": true,
+    "secondary_disposition": "PATH_INFORMATION_NOT_SEPARATED_FROM_RECOVERY_ONLY_P0Q"
+  },
+  "representation_adequacy": {
+    "pc1_variance_fraction": 0.7346071804190852,
+    "max_abs_standardized_1d_reconstruction_residual": 1.162877582635491,
+    "one_dimensional_adequacy": false,
+    "disposition": "MULTICOORDINATE_CONDITION_REPRESENTATION_REQUIRED_P0Q"
+  },
+  "nested_cell_sensitivity": {
+    "classification": "DESCRIPTIVE_NO_PROMOTION",
+    "full_vector_balanced_accuracy": 0.4075,
+    "recovery_only_balanced_accuracy": 0.3916666666666666
+  },
+  "biological_chi": "CROSS_SYSTEM_PATH_ORGANIZATION_DETECTED_P0Q",
+  "Chi_bio": "MULTICOORDINATE_CONDITION_REPRESENTATION_REQUIRED_P0Q",
+  "chi_bio": "NOT_OPENED_NOT_LICENSED",
+  "cross_system_interpretation": "Architecture-level recurrence only. Recovery alone also carries stimulation-frequency path information, so the result does not establish that the added coordinates provide unique predictive information beyond recovery.",
+  "claim_ceiling": "Stentor source-controlled behavioral P0-Q path transport across unseen recovery interval; no molecular mechanism, universal learning law, consciousness claim, common mechanism with E. coli, numerical universality, or scalar chi_bio."
+}
