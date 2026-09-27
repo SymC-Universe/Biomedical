@@ -58,17 +58,24 @@ jobs:
         run: |
           python -m pytest -q tests/test_structural_order_refusal_contracts.py
 
-      - name: Run finite-sample structural-order map
+      - name: Run finite-sample structural-order duration map
         if: steps.changes.outputs.run == 'true'
         working-directory: NSD_vNext/engine
         run: |
           python tools/probe_structural_order_finite_sample.py \
-            --output ../../structural-order/structural_order_finite_sample.json
+            --seconds 30 --seeds 20 \
+            --output ../../structural-order/structural_order_30s.json
+          python tools/probe_structural_order_finite_sample.py \
+            --seconds 120 --seeds 20 \
+            --output ../../structural-order/structural_order_120s.json
+          python tools/probe_structural_order_finite_sample.py \
+            --seconds 300 --seeds 20 \
+            --output ../../structural-order/structural_order_300s.json
 
       - name: Upload structural-order calibration
         if: steps.changes.outputs.run == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: nsd-structural-order-finite-sample
-          path: structural-order/structural_order_finite_sample.json
+          path: structural-order/*.json
           if-no-files-found: error
