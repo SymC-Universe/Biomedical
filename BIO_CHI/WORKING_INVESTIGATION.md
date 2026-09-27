@@ -200,3 +200,27 @@ The backfill does not retroactively change earlier exploratory provenance or mak
 **DECISION ENABLED:** refine the state-regime Function/Limit Map and define what an untouched future boundary test would have to discriminate.
 
 **EPISTEMIC CLASS:** P0-D exploratory only. No confirmatory admission, no threshold tuning to a desired transition, and no use of this map as untouched evidence in a later P1 test.
+
+
+### 2026-09-27 - P0-D TNF continuation coarse-grid development
+
+The first deterministic exploratory continuation used the exact published six-state Jaruszewicz equations and parameter values, a fixed TNF grid from 0 to 1 in increments of 0.01, nonnegative equilibrium solves with continuation plus fixed independent seeds, the complete six-mode centered-finite-difference Jacobian, and no target-driven adaptive search.
+
+Material result:
+- at exact `TNF=0`, the source-native equilibrium `[1,0,0,0,0,0]` has no nonreal pair and is nonhyperbolic in one local direction;
+- at the sampled `TNF=0.01` through `0.06` equilibria, the local spectrum contains **two** complex-conjugate pairs;
+- at sampled `TNF=0.07` through `1.00`, the spectrum contains **one** complex-conjugate pair;
+- the continued positive-equilibrium branch is locally stable at every sampled `TNF>0`;
+- at `TNF=1`, the exploratory calculation reproduces the stored Figure 8A equilibrium and oscillatory pair, including `chi ~= 0.213114519`.
+
+Interpretation ceiling:
+this is P0-D Function/Limit mapping only. The coarse-grid transition brackets are not promoted as bifurcation coordinates. The `TNF=0` numerical multistart root multiplicity from unconstrained least-squares is not interpreted because the source provides an exact equilibrium and the zero-input point is nonhyperbolic; the next implementation must pin the exact source equilibrium at zero rather than use numerical root multiplicity there.
+
+Current exploratory pattern:
+`NO_COMPLEX_PAIR -> TWO_COMPLEX_PAIRS -> ONE_COMPLEX_PAIR` as TNF operating state increases on the sampled native branch.
+
+Scientific implication:
+scalar availability and scalar uniqueness are separate operating-state properties. The local modal layer changes topology before the TNF=1 scalar candidate is reached, which strengthens the Function/Limit target and further rules out treating the Jaruszewicz candidate as a state-independent system constant.
+
+Next exact action:
+commit a reproducible P0-D script with the exact `TNF=0` source equilibrium pinned, rerun a denser **predeclared fixed grid** only to localize the two observed coarse-grid topology changes, and preserve all mode branches rather than selecting a preferred pair. No confirmatory threshold or claim will be created from that refinement.
