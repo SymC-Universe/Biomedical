@@ -340,3 +340,21 @@ The next scientifically meaningful step is **not another Jaruszewicz retest on a
 4. scalar refusal through absence, multiplicity, or nonidentifiability.
 
 Selecting that confirmatory object and freezing the exact P1 design is now a scientific decision. Mechanical governance/checkpoint synchronization may continue without changing that decision.
+
+
+### 2026-09-27 - v0.8.8 control-spine synchronization complete
+
+Durable control files were synchronized after the P0-D result:
+- `BIO_CHI/control/WORK_QUEUE.json` now names v0.8.8 REVIEW as authority, records P0-N/A0 closure for the current residual target, records the pinned TNF spectral-topology result, closes the old joint-response gate as a state-regime Limit Map result, and marks Q7 at the scientific decision boundary for selection of untouched P1 evidence.
+- `BIO_CHI/control/AUTORUN_CHECKPOINT.md` now names v0.8.8 REVIEW as authority and points to this live record as the current scientific-state source.
+
+A reviewer-smoke regression appeared immediately after the queue authority was corrected. Runs on the queue/checkpoint synchronization commits failed with `BIO_CHI_REVIEWER_SMOKE_FAIL: authority drift`. Root cause was a hard-coded v0.8.6 authority string in `BIO_CHI/src/reviewer_smoke_test.py`, not a scientific or repository-state contradiction.
+
+Mechanical repair:
+the reviewer test's expected authority string alone was changed to the exact v0.8.8 REVIEW authority now used by the queue. No scientific state or result was altered.
+
+Verification at commit `fb460ee8a6952bb880a0dd0dded6b340d3d1694d`:
+- reviewer master smoke-test step: SUCCESS;
+- governance/control-spine validation step: SUCCESS.
+
+The intermediate smoke failures remain preserved in GitHub Actions as governance-migration evidence.
