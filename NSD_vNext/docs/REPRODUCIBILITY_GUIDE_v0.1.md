@@ -423,3 +423,28 @@ Reference result:
 - artifact digest `sha256:713be00f0e252c2db8196a11e17de7c2ebb986dc6e9872b54ad87941f26845c6`.
 
 Interpretation: passing V17 demonstrates first-stage nuisance/model-order repair only. It does not promote C1Q, license real EEG, or establish adequate parameter uncertainty/refusal behavior.
+
+## V17. Map combined structural and predictive refusal evidence
+
+[CLAIM] Existing qualification-only one-mode candidates and untouched holdout diagnostics can be combined with structural-order diagnostics to test for a coherent refusal pattern without changing the production estimator or freezing an admission threshold.
+
+Run:
+
+\`\`\`bash
+cd NSD_vNext/engine
+python tools/probe_combined_structural_predictive_refusal.py \
+  --output ../../combined-refusal/combined_structural_predictive_refusal.json
+\`\`\`
+
+Expected:
+- status \`PREDECISION_CALIBRATION_ONLY\`;
+- \`licenses_real_eeg_local_chi=false\`;
+- \`defines_refusal_threshold=false\`;
+- \`changes_production_estimator=false\`;
+- C-interior, D\\C, S\\D, colored-process, and genuine two-mode known truths;
+- frozen-parameter cold-start holdout NLL and innovation diagnostics for C1Q/D1Q;
+- holdout recurrence/Hankel diagnostics;
+- current A0/A1/A2 holdout comparison as descriptive control;
+- threshold-free distribution summaries and rank-AUC comparisons.
+
+Interpretation: V17 tests whether independent manifestations of misspecification form a reproducible refusal pattern. It does not define a numerical cutoff. If the known-truth distributions overlap materially, the correct result is continued refusal and stronger comparator development, not threshold tuning.
