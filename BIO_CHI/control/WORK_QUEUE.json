@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "project": "Bio Chi Investigation",
-  "authority": "SymC GOM v0.8.6 + Bio Chi project-specific three-object nomenclature decision 2026-09-23",
+  "authority": "SymC General Operations Manual v0.8.8 REVIEW + Bio Chi project-specific three-object nomenclature decision 2026-09-23",
   "branch": "chi-bio-recovery-p0d-20260922",
   "continuation_policy": {
     "resume_from_checkpoint": true,
@@ -43,17 +43,17 @@
     {
       "id": "Q5",
       "name": "chi_bio_scalar_track",
-      "status": "p0q_jaruszewicz_scalar_candidate_qualified_independent_d2fc2_refused_nonidentifiable_multiple_pairs"
+      "status": "p0d_state_regime_limit_mapped_p0q_candidate_only_d2fc2_refused_nonidentifiable_multiple_pairs"
     },
     {
       "id": "Q6",
       "name": "Chi_bio_modal_track",
-      "status": "p0q_jaruszewicz_modal_observability_qualified_d2fc2_modal_multiplicity_limit_mapped"
+      "status": "p0d_tnf_modal_topology_mapped_p0q_observability_qualified_d2fc2_modal_multiplicity_limit_mapped"
     },
     {
       "id": "Q7",
       "name": "Bio_Chi_conglomerate_track",
-      "status": "active_system_recovery_architecture_after_scalar_limit_map"
+      "status": "active_scientific_decision_required_select_untouched_p1_joint_test_object"
     },
     {
       "id": "Q8",
@@ -115,7 +115,7 @@
       "blum_next": "B3 unstimulated local-pole route closed by nondifferentiable equilibrium; retain trajectory/network architecture and do not rescue scalar",
       "d2fc2_next": "closed_nonidentifiable_multiple_stable_pairs; preserve refusal and advance modal/system Limit Map"
     },
-    "scientific_stop_before": "inventing a missing native implementation detail, changing a frozen representation/endpoint, promoting a testbed based on agreement, or admitting chi_bio/Chi_bio/Bio Chi"
+    "scientific_stop_before": "inventing a missing native implementation detail, changing a frozen representation/endpoint, promoting a testbed based on agreement, admitting chi_bio/Chi_bio/Bio Chi, or selecting the decisive untouched P1 evidence object without a prospective freeze"
   },
   "active_native_model_gate": {
     "system": "Jaruszewicz-Blonska reduced NF-kB model",
@@ -147,7 +147,7 @@
     "chi_bio_constructed": "candidate_only_not_admitted",
     "Chi_bio_admitted": false,
     "Bio_Chi_constructed": false,
-    "next_gate": "advance Bio Chi conglomerate/system test using a same-system perturbation/recovery design; scalar may remain absent",
+    "next_gate": "SCIENTIFIC_DECISION_REQUIRED: select an untouched independent system/evidence object and prospectively freeze a P1 test discriminating scalar sufficiency, complete-modal added value, full nonlinear/system added value, and scalar refusal. Do not repair the viewed Jaruszewicz joint gate outcome-informatively.",
     "jarus_observability_p0q_pin": "BIO_CHI/config/JARUS_OSCILLATORY_MODE_OBSERVABILITY_P0Q_V01_RESULT_PIN.json",
     "jarus_observability_p0q_status": "PASS_P0Q_OSCILLATORY_MODE_OBSERVABILITY",
     "jarus_candidate_chi_bio": 0.21311451897468006,
@@ -156,7 +156,15 @@
     "d2fc2_stable_complex_pair_count": 2,
     "d2fc2_held_out_identifiable_count": 0,
     "blum_b3_result_pin": "BIO_CHI/config/BLUM2019_B3_MODAL_P0Q_V01_RESULT_PIN.json",
-    "blum_b3_status": "REFUSE_LOCAL_GENERATOR_NONDIFFERENTIABLE_AT_SOURCE_EQUILIBRIUM"
+    "blum_b3_status": "REFUSE_LOCAL_GENERATOR_NONDIFFERENTIABLE_AT_SOURCE_EQUILIBRIUM",
+    "tnf_spectral_topology_p0d_result_pin": "BIO_CHI/config/JARUS_TNF_SPECTRAL_TOPOLOGY_P0D_V01_RESULT_PIN.json",
+    "tnf_spectral_topology_p0d_run": 36345522019,
+    "tnf_spectral_topology_p0d_artifact": 10940129250,
+    "tnf_spectral_topology_p0d_status": "PASS_P0D_EXPLORATORY_FUNCTION_LIMIT_MAPPING",
+    "tnf_spectral_topology_pattern": "REAL_ONLY -> ONE_PAIR -> TWO_PAIRS -> ONE_PAIR -> TWO_PAIRS -> ONE_PAIR",
+    "joint_response_p0q_run": 36044426805,
+    "joint_response_p0q_status": "CLOSED_AS_STATE_REGIME_LIMIT_SCIENTIFIC_DEFINITION_CONFLICT",
+    "joint_response_p0q_repair_allowed": false
   },
   "stop_conditions": [
     "material scientific choice changes a frozen hypothesis/model/endpoint",
@@ -165,5 +173,15 @@
     "upstream contradiction invalidates a frozen result",
     "publication-level claim expansion requires user decision"
   ],
-  "nomenclature_note": "Exactly three biological objects. Program-wide chi is a parent symbol/class, not a fourth biological object."
+  "nomenclature_note": "Exactly three biological objects. Program-wide chi is a parent symbol/class, not a fourth biological object.",
+  "gom_alignment": {
+    "version": "v0.8.8 REVIEW",
+    "full_review_date": "2026-09-27",
+    "working_investigation": "BIO_CHI/WORKING_INVESTIGATION.md",
+    "p0n": "BIO_CHI/artifacts/P0N_NOVELTY_SYNTHESIS_v0_1.md",
+    "a0": "BIO_CHI/artifacts/A0_PRIOR_ART_CONGLOMERATION_ATLAS_v0_1.md",
+    "p0n_status": "CLOSED_FOR_CURRENT_RESIDUAL_QUESTION_BACKFILLED",
+    "a0_status": "CLOSED_FOR_CURRENT_RESIDUAL_TARGET_BACKFILLED",
+    "historical_provenance_preserved": true
+  }
 }
