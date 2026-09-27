@@ -10,6 +10,7 @@ on:
       - "NSD_vNext/engine/tests/test_continuous_lineage_truth_contracts.py"
       - "NSD_vNext/engine/tests/test_predictive_closure_contracts.py"
       - "NSD_vNext/engine/tools/probe_continuous_lineage_nonzero_g.py"
+      - "NSD_vNext/engine/tools/probe_predictive_closure_calibration.py"
       - ".github/workflows/nsd-state-space-lineage-sampling-contracts.yml"
   workflow_dispatch:
 
@@ -54,4 +55,17 @@ jobs:
         with:
           name: nsd-continuous-lineage-nonzero-g-probe
           path: continuous-lineage-probe/continuous_lineage_nonzero_g.json
+          if-no-files-found: error
+
+      - name: Run exploratory predictive-closure calibration map
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_predictive_closure_calibration.py \
+            --output ../../predictive-closure-probe/predictive_closure_calibration.json
+
+      - name: Upload exploratory predictive-closure calibration map
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-predictive-closure-calibration-probe
+          path: predictive-closure-probe/predictive_closure_calibration.json
           if-no-files-found: error
