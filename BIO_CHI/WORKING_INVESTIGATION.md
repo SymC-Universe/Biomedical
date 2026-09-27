@@ -224,3 +224,20 @@ scalar availability and scalar uniqueness are separate operating-state propertie
 
 Next exact action:
 commit a reproducible P0-D script with the exact `TNF=0` source equilibrium pinned, rerun a denser **predeclared fixed grid** only to localize the two observed coarse-grid topology changes, and preserve all mode branches rather than selecting a preferred pair. No confirmatory threshold or claim will be created from that refinement.
+
+
+### 2026-09-27 - Analytic-Jacobian cross-check of TNF spectral topology
+
+The coarse P0-D spectral result was independently recomputed using an analytic Jacobian generated directly from the published six source equations, rather than the centered finite-difference Jacobian. The same material topology was recovered, so the observed modal multiplicity is not attributable to finite-difference error.
+
+On the predeclared 0 to 0.1 grid with step 0.001:
+- `TNF=0`: zero nonreal modes, exact source equilibrium, max real eigenvalue exactly 0;
+- `TNF=0.001-0.002`: one complex-conjugate pair;
+- `TNF=0.003`: two complex-conjugate pairs, with the second pair having very small imaginary magnitude;
+- `TNF=0.004-0.009`: one complex-conjugate pair;
+- `TNF=0.010-0.062`: two complex-conjugate pairs;
+- `TNF>=0.063` through 0.1: one complex-conjugate pair.
+
+At `TNF=0.062`, the second pair is close to the real axis; by `TNF=0.063` it is real. The dominant oscillatory pair remains stable throughout this sampled interval. These are grid-defined brackets, not bifurcation estimates.
+
+A further fixed-grid refinement may localize the observed real/complex transitions for descriptive mapping only. It must not convert those coordinates into confirmatory thresholds or use outcome-driven adaptive optimization.
