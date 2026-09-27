@@ -37,6 +37,71 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detect qualification-path change
+        id: changes
+        shell: bash
+        run: |
+          if git diff --name-only HEAD^ HEAD | grep -Eq '^(NSD_vNext/engine/tests/(test_state_space_lineage_sampling|test_substrate_closure_contracts|test_continuous_lineage_truth_contracts|test_predictive_closure_contracts|test_continuous_lineage_candidate)\.py|NSD_vNext/engine/nsd_engine/continuous_lineage_candidate\.py|NSD_vNext/engine/tools/(probe_continuous_lineage_nonzero_g|probe_predictive_closure_calibration)\.py|\.github/workflows/nsd-state-space-lineage-sampling-contracts\.yml)
+      - name: Set up Python
+        if: steps.changes.outputs.run == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install qualification dependencies
+        if: steps.changes.outputs.run == 'true'
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine pytest
+
+      - name: Run lineage, sampling, and closure contract suites
+        if: steps.changes.outputs.run == 'true'
+        working-directory: NSD_vNext/engine
+        run: |
+          python -m pytest -q \
+            tests/test_state_space_lineage_sampling.py \
+            tests/test_substrate_closure_contracts.py \
+            tests/test_continuous_lineage_truth_contracts.py \
+            tests/test_predictive_closure_contracts.py \
+            tests/test_continuous_lineage_candidate.py
+
+      - name: Run exploratory nonzero-g continuous-lineage probe
+        if: steps.changes.outputs.run == 'true'
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_continuous_lineage_nonzero_g.py \
+            --output ../../continuous-lineage-probe/continuous_lineage_nonzero_g.json
+
+      - name: Upload exploratory continuous-lineage probe
+        if: steps.changes.outputs.run == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-continuous-lineage-nonzero-g-probe
+          path: continuous-lineage-probe/continuous_lineage_nonzero_g.json
+          if-no-files-found: error
+
+      - name: Run exploratory predictive-closure calibration map
+        if: steps.changes.outputs.run == 'true'
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_predictive_closure_calibration.py \
+            --output ../../predictive-closure-probe/predictive_closure_calibration.json
+
+      - name: Upload exploratory predictive-closure calibration map
+        if: steps.changes.outputs.run == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-predictive-closure-calibration-probe
+          path: predictive-closure-probe/predictive_closure_calibration.json
+          if-no-files-found: error
+; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Set up Python
         uses: actions/setup-python@v5
