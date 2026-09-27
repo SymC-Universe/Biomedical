@@ -53,7 +53,29 @@ try
             end
             mat = Array{Float64}(obj["control_data"])
             nr, nc = size(mat)
-            push!(conds, Any[key, isi, iti, nr, nc])
+
+            haskey(obj, "responders_inds") || error("$key: responders_inds missing")
+            haskey(obj, "nonresponders_inds") || error("$key: nonresponders_inds missing")
+            haskey(obj, "nums_filt") || error("$key: nums_filt missing")
+            haskey(obj, "folders") || error("$key: folders missing")
+
+            selected_pool_inds = vcat(Int.(vec(obj["responders_inds"])), Int.(vec(obj["nonresponders_inds"])))
+            nums_filt = Int.(vec(obj["nums_filt"]))
+            folders = String.(vec(obj["folders"]))
+            length(selected_pool_inds) == nc || error("$key: selected index count $(length(selected_pool_inds)) != control_data columns $nc")
+            length(nums_filt) == length(folders) || error("$key: nums_filt/folders length mismatch")
+            cum_counts = cumsum(nums_filt)
+
+            source_run_index = Int[]
+            source_folder = String[]
+            for poolidx in selected_pool_inds
+                ri = findfirst(x -> poolidx <= x, cum_counts)
+                ri === nothing && error("$key: pooled index $poolidx exceeds cumulative source cells $(cum_counts[end])")
+                push!(source_run_index, ri)
+                push!(source_folder, folders[ri])
+            end
+
+            push!(conds, Any[key, isi, iti, nr, nc, length(folders), length(unique(source_run_index))])
             if nr < 120
                 push!(failures, Any[key, isi, iti, "", "fewer_than_120_rows:$nr"])
                 continue
@@ -84,14 +106,15 @@ try
                     continue
                 end
 
-                push!(rows, Any[key, isi, iti, c, h1_depth, recovery, h2_depth, auc_shift,
+                push!(rows, Any[key, isi, iti, c, source_run_index[c], source_folder[c],
+                               h1_depth, recovery, h2_depth, auc_shift,
                                t1_early, t1_late, t2_early, t2_late, t1_auc, t2_auc])
             end
         end
     end
 
     open(joinpath(OUTDIR, "stentor_cell_features.csv"), "w") do io
-        println(io, "condition,isi_s,iti_s,cell,H1_depth,Recovery,H2_depth,AUC_shift,T1_early,T1_late,T2_early,T2_late,T1_auc,T2_auc")
+        println(io, "condition,isi_s,iti_s,cell,source_run_index,source_folder,H1_depth,Recovery,H2_depth,AUC_shift,T1_early,T1_late,T2_early,T2_late,T1_auc,T2_auc")
         for r in rows
             println(io, join(csv_escape.(r), ","))
         end
@@ -105,7 +128,7 @@ try
     end
 
     open(joinpath(OUTDIR, "stentor_condition_inventory.csv"), "w") do io
-        println(io, "condition,isi_s,iti_s,n_rows,n_cells")
+        println(io, "condition,isi_s,iti_s,n_rows,n_cells,n_source_runs,n_source_runs_in_control_sample")
         for r in conds
             println(io, join(csv_escape.(r), ","))
         end
