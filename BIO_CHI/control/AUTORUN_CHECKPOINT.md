@@ -1,10 +1,10 @@
 # Bio Chi autonomous continuation checkpoint
 
 **Created:** 22 September 2026  
-**Last updated:** 23 September 2026  
+**Last updated:** 27 September 2026  
 **Status:** ACTIVE  
 **Branch:** `chi-bio-recovery-p0d-20260922`  
-**Authority:** SymC General Operations Manual v0.8.6 + Bio Chi project-specific three-object nomenclature decision (23 September 2026)
+**Authority:** SymC General Operations Manual v0.8.8 REVIEW + Bio Chi project-specific three-object nomenclature decision (23 September 2026)
 
 ## Resume contract
 
@@ -32,6 +32,35 @@ Machine-readable source of record: `BIO_CHI/control/WORK_QUEUE.json`.
 - Q7 Bio Chi conglomerate: PENDING Q3/Q4/Q6.
 - Q8 Stability Inheritance biological test: PENDING carrier-qualified data.
 - Q9 working manuscript: NOT OPEN / PRIVATE.
+
+## GOM v0.8.8 synchronization — 27 September 2026
+
+The complete 91-page v0.8.8 REVIEW manual was reloaded and reviewed before scientific continuation. The authoritative current scientific-state record is now `BIO_CHI/WORKING_INVESTIGATION.md`; this checkpoint remains the mechanical resume contract and must not supersede that live record.
+
+Mandatory v0.8.8 governance now satisfied for the current residual question:
+- P0-N backfill: `BIO_CHI/artifacts/P0N_NOVELTY_SYNTHESIS_v0_1.md`, closed for the current residual question while preserving historical/post-result provenance.
+- A0 Prior-Art Conglomeration Atlas: `BIO_CHI/artifacts/A0_PRIOR_ART_CONGLOMERATION_ATLAS_v0_1.md`, closed for the current residual target.
+- Working live record: `BIO_CHI/WORKING_INVESTIGATION.md`, updated after every material scientific development before further scientific action.
+- Program-level v0.8.8 capital-`Χ` semantics overlap with the existing project-local `Chi_bio` modal label. Existing frozen identifiers are preserved; new audit prose uses scalar/modal/system-conglomerate layer names until a deliberate semantic reconciliation is required.
+
+### Latest scientific development
+
+The previously frozen Jaruszewicz same-system joint response run **36044426805** is closed as `CLOSED_AS_STATE_REGIME_LIMIT_SCIENTIFIC_DEFINITION_CONFLICT`, not as a runner defect and not as a negative biological result. The gate required the TNF-off source equilibrium to reproduce an oscillatory carrier inherited from the distinct TNF-on Figure-8 equilibrium. The exact TNF-off equilibrium has no nonreal pair, so outcome-informed equilibrium substitution is prohibited.
+
+A new P0-D exploratory operating-state map was then executed under fixed grids and complete-mode preservation. Final GitHub Actions run **36345522019** completed SUCCESS; artifact **10940129250**, pin `BIO_CHI/config/JARUS_TNF_SPECTRAL_TOPOLOGY_P0D_V01_RESULT_PIN.json`. Artifact digest: `sha256:bc70cf6ec9c40e59884031e311a3ed75346dfcd218f40d8263ec24a869bbb9c9`.
+
+The reproducible descriptive modal sequence over the sampled native TNF equilibrium branch is:
+`REAL_ONLY -> ONE_PAIR -> TWO_PAIRS -> ONE_PAIR -> TWO_PAIRS -> ONE_PAIR`.
+
+Fixed-grid transition brackets are preserved in the result pin and artifact. They are descriptive P0-D coordinates only, not bifurcation estimates, biological thresholds, confirmatory boundaries, or broad `chi_bio` admission. At TNF=1 the workflow reproduces the stored Figure-8A candidate `chi ~= 0.213114519`; at exact TNF=0 there are no nonreal modes and max real eigenvalue is 0.
+
+Two preceding workflow failures, runs **36345371220** and **36345453161**, are preserved as mechanical integrity-guard failures. Root cause was an accidental five-coordinate expected vector in a six-state endpoint assertion. Only that test guard was repaired; equations, grids, solver, Jacobian, spectral rules, and interpretation were unchanged.
+
+### Current scientific stop
+
+The next meaningful P1 step requires choosing an **untouched independent system/evidence object** and prospectively freezing a joint discriminating test of scalar sufficiency, complete-modal added value, full nonlinear/system added value, and scalar refusal through absence/multiplicity/nonidentifiability. Selecting that decisive evidence object is a scientific decision. Do not reuse the already viewed Jaruszewicz Figure-8 evidence as independent confirmation and do not repair run 36044426805 outcome-informatively.
+
+Mechanical governance, source qualification, provenance, reviewer navigation, and reproducibility maintenance may continue without reopening this scientific decision.
 
 ## Literature/search state
 
