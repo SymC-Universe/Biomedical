@@ -19,7 +19,7 @@ The editable manuscript and Supplementary Information remain private authoring a
 ## Five-minute route
 
 1. Verify V29 descends from V28 and that the original C1/P1 scientific parent is unchanged.
-2. Use the V28 guide for the original oncology claim map, Kizilirmak context gate, top-down Bio Chi closeout, Moore source-transport refusal, and HOG model qualification.
+2. Use the V28 guide for the original oncology claim map, Kizilirmak context gate, top-down biological-chi closeout, Moore source-transport refusal, and HOG model qualification.
 3. Verify the canonical Meneses direct-experimental result and its source-method reconciliation.
 4. Verify the timeout-duplicate governance audit so the same system is not double-counted.
 5. Verify the new Meneses path-transport gate and, separately, the post-result diagnostic.
@@ -304,7 +304,7 @@ V29_SMOKE_TEST_PASS
 
 ## What happens next and why
 
-The same-system Meneses source has now answered both the direct recovery-representation question and a perturbation-path transport question. Continuing to mine the same data would yield diminishing independent evidence. The next high-value Bio Chi experiment is a cross-system transport test using another directly measured biological perturbation/recovery source with explicit path or context variation and an accessible native dynamical carrier. The goal is to ask whether path-sensitive multicoordinate recovery organization transports, reorganizes, or refuses classification outside *E. coli*.
+The same-system Meneses source has now answered both the direct recovery-representation question and a perturbation-path transport question. Continuing to mine the same data would yield diminishing independent evidence. The next high-value biological-chi experiment is a cross-system transport test using another directly measured biological perturbation/recovery source with explicit path or context variation and an accessible native dynamical carrier. The goal is to ask whether path-sensitive multicoordinate recovery organization transports, reorganizes, or refuses classification outside *E. coli*.
 
 ## What the user needs to do
 
