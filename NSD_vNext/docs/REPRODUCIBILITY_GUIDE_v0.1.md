@@ -343,3 +343,33 @@ Expected output:
 - descriptive A0/A1/A2 BIC, innovation diagnostics, and fitted parameters for each known-truth cell.
 
 Interpretation: V14 is an exploratory model-adequacy probe. A1 or A2 preference is not itself an admission or refusal rule. Its purpose is to determine whether current A1's H=0/B=0 restriction remains adequate inside the intended continuous-lineage C family before any estimator-family modification is considered.
+
+## V15. Map predictive approximate closure without defining an admission threshold
+
+[CLAIM] The approved predictive-closure policy can be exercised on exact known-truth projection mechanisms while keeping raw leakage, hidden-state sensitivity, return memory, pole displacement, chi displacement, and resolved predictive error distinct.
+
+Run:
+
+```bash
+cd NSD_vNext/engine
+python tools/probe_predictive_closure_calibration.py \
+  --output ../../predictive-closure-probe/predictive_closure_calibration.json
+```
+
+Expected:
+- status `EXPLORATORY_KNOWN_TRUTH_ONLY`;
+- `licenses_real_eeg_local_chi=false`;
+- `defines_closure_threshold=false`;
+- exact closed, P-to-Q leakage-only, Q-to-P hidden-input-only, and bidirectional return-memory classes;
+- separate resolved prediction error, hidden-initial-state sensitivity, memory-kernel magnitude, pole displacement, and chi displacement fields;
+- leakage-only fixtures can retain exact resolved prediction despite nonzero P-to-Q leakage;
+- hidden-input and return-memory effects remain distinguishable.
+
+Inspect:
+
+```bash
+cat NSD_vNext/docs/PREDICTIVE_APPROXIMATE_CLOSURE_POLICY_v0.1.md
+cat NSD_vNext/docs/SUBSTRATE_CLOSURE_QUALIFICATION_PREFLIGHT_v0.1.md
+```
+
+Interpretation: V15 maps how known substrate/projection mechanisms affect the specific N-B1 local-mode claim. It does not define the empirical closure tolerance. Any future predictive-error, memory-decay, pole-displacement, chi-displacement, or uncertainty threshold must be prospectively calibrated and frozen before real EEG is opened.
