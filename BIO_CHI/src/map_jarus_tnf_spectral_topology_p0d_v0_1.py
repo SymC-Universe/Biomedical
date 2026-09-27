@@ -134,7 +134,7 @@ for name,grid in grids.items():
 # Integrity checks at source endpoints.
 u0=all_results["broad_0_to_1_step_0p01"]["rows"][0]
 u1=all_results["broad_0_to_1_step_0p01"]["rows"][-1]
-assert np.allclose(np.asarray(u0["equilibrium"],dtype=float), np.array([1.0,0.0,0.0,0.0,0.0]), rtol=0.0, atol=1e-15), u0["equilibrium"]
+assert np.allclose(np.asarray(u0["equilibrium"],dtype=float), np.array([1.0,0.0,0.0,0.0,0.0,0.0]), rtol=0.0, atol=1e-15), u0["equilibrium"]
 assert u0["nonreal_count"] == 0
 assert abs(u0["max_real"]) < 1e-14
 assert u1["nonreal_count"] == 2
