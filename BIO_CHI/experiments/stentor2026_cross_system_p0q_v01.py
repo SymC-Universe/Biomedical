@@ -110,6 +110,13 @@ def permutation_tests(df):
         "secondary_disposition": secondary,
     }
 
+def source_run_medians(df):
+    group_cols = ["condition", "isi_s", "iti_s", "source_run_index", "source_folder"]
+    med = df.groupby(group_cols, as_index=False)[FEATURES].median()
+    counts = df.groupby(group_cols).size().reset_index(name="n_selected_cells")
+    out = med.merge(counts, on=group_cols, how="left")
+    return out
+
 def condition_representation(df):
     med = df.groupby(["isi_s","iti_s"], as_index=False)[FEATURES].median().sort_values(["isi_s","iti_s"])
     X = med[FEATURES].to_numpy(float)
@@ -159,9 +166,23 @@ def main():
         print(json.dumps(result,indent=2))
         return
 
-    tests = permutation_tests(df)
+    if not {"source_run_index","source_folder"}.issubset(df.columns):
+        raise RuntimeError("source-run mapping columns missing after prospective replicate-unit amendment")
+
+    run_df = source_run_medians(df)
+    run_df.to_csv(OUT/"stentor_source_run_medians.csv", index=False)
+    run_coverage = run_df.groupby(["isi_s","iti_s"]).size()
+    if len(run_coverage) != 12 or (run_coverage <= 0).any():
+        raise RuntimeError(f"source-run coverage incomplete: {run_coverage.to_dict()}")
+
+    tests = permutation_tests(run_df)
     med, adequacy = condition_representation(df)
     med.to_csv(OUT/"stentor_condition_medians.csv", index=False)
+
+    # Nested-cell sensitivity is descriptive only after the replicate-unit amendment.
+    labels_cell = df["isi_s"].to_numpy(int)
+    cell_full_obs, _, cell_full_folds = cv_score(df, labels_cell, True)
+    cell_rec_obs, _, cell_rec_folds = cv_score(df, labels_cell, False)
 
     primary = "CROSS_SYSTEM_PATH_ORGANIZATION_DETECTED_P0Q" if tests["full_vector"]["detected"] else "CROSS_SYSTEM_PATH_ORGANIZATION_NOT_DETECTED_P0Q"
 
@@ -177,9 +198,23 @@ def main():
         },
         "n_cells_eligible":int(len(df)),
         "cells_by_condition":{f"ISI{a}_ITI{b}":int(v) for (a,b),v in coverage.items()},
+        "n_source_run_units":int(len(run_df)),
+        "source_runs_by_condition":{f"ISI{a}_ITI{b}":int(v) for (a,b),v in run_coverage.items()},
+        "source_run_selected_cell_count_summary":{
+            "min":int(run_df["n_selected_cells"].min()),
+            "median":float(run_df["n_selected_cells"].median()),
+            "max":int(run_df["n_selected_cells"].max())
+        },
         "representation":FEATURES,
+        "primary_analysis_unit":"source_run_median",
         "primary_test":tests["full_vector"],
         "recovery_only_control":tests["recovery_only"],
+        "nested_cell_sensitivity_no_promotion":{
+            "full_vector_observed_balanced_accuracy":float(cell_full_obs),
+            "recovery_only_observed_balanced_accuracy":float(cell_rec_obs),
+            "full_vector_folds":cell_full_folds,
+            "recovery_only_folds":cell_rec_folds
+        },
         "primary_disposition":primary,
         "secondary_disposition":tests["secondary_disposition"],
         "condition_representation_adequacy":adequacy,
