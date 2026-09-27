@@ -289,3 +289,35 @@ Current provenance:
 - exact observable-admissibility refinement commit: `fdafa412a2f53198a9887ba5efc2b3d175da3c26`.
 
 Interpretation: this record refines the candidate packet and refusal logic only. It does not change A0/A1/A2, define a production threshold, license modal damping or local chi on real EEG, or alter N-B2/N-B3.
+
+## V13. Verify lineage, sampling, and substrate-closure qualification contracts
+
+[CLAIM] The NSD Bio Chi predecision branch contains executable, threshold-free known-truth contracts for continuous-lineage sampling behavior and substrate/projection closure without changing A0/A1/A2 or licensing real-EEG local chi.
+
+Run:
+
+```bash
+cd NSD_vNext/engine
+python -m pip install pytest numpy
+python -m pytest -q \
+  tests/test_state_space_lineage_sampling.py \
+  tests/test_substrate_closure_contracts.py
+```
+
+Expected:
+- exact m-fold covariance decimation contracts pass across underdamped, critical, and stable positive-real overdamped regimes;
+- continuous-lineage coordinate `g` is invariant under alias-safe exact decimation;
+- sample-rate-specific discrete exact-image coordinate `h` contracts under canonical coarsening;
+- exact Hankel transport and the underdamped alias/order-collapse control pass;
+- the constructive `S\\D -> D\\C` coarse-graining witness remains valid;
+- substrate closure fixtures distinguish exact closed, hidden-input exposed, leaky-without-return, and bidirectional return-memory classes;
+- the Schur-complement self-energy reproduces the exact projected resolvent for bidirectionally coupled known truths.
+
+Inspect:
+
+```bash
+cat NSD_vNext/docs/STATE_SPACE_LINEAGE_SAMPLING_QUALIFICATION_SUITE_v0.1.md
+cat NSD_vNext/docs/SUBSTRATE_CLOSURE_QUALIFICATION_PREFLIGHT_v0.1.md
+```
+
+Interpretation: passing V13 establishes analytic and known-truth contract integrity only. It does not define an empirical closure threshold, change the production estimator family, license local chi on real EEG, or alter N-B2/N-B3.
