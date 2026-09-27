@@ -16,13 +16,15 @@ jobs:
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
-      - name: Fetch pinned upstream Stentor source with Git LFS
+      - name: Fetch only pinned Stentor behavioral LFS object
+        env:
+          GIT_LFS_SKIP_SMUDGE: "1"
         run: |
           git lfs install
           git clone --filter=blob:none --no-checkout https://github.com/tejasramdas/stentor_habituation.git stentor_upstream
           cd stentor_upstream
           git checkout 8704c114555af3477a1dd7471beedde205fed263
-          git lfs pull --include="processed_data/collated.jld2"
+          git lfs pull --include="processed_data/collated.jld2" --exclude=""
           test "$(sha256sum processed_data/collated.jld2 | awk '{print $1}')" = "b84054675f8a608471da1d9cccd051c1fb9503d35b3c9b5b9f6ebc378e75054f"
           test "$(stat -c%s processed_data/collated.jld2)" = "13922257"
       - uses: julia-actions/setup-julia@v2
