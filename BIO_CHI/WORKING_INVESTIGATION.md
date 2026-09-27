@@ -296,3 +296,47 @@ Classification:
 `MECHANICAL_TEST_GUARD_VECTOR_LENGTH_BUG`.
 
 The previous failure and this diagnostic failure are both retained. The authorized correction is limited to changing the expected assertion vector to the exact six-state source value `[1,0,0,0,0,0]`. No scientific code, grid, equation, solver, spectrum rule, tolerance, or interpretation changes.
+
+
+### 2026-09-27 - GitHub P0-D spectral topology reproduction passed and pinned
+
+After preserving two mechanical endpoint-guard failures and correcting only the accidental five-coordinate expected vector, GitHub Actions run `36345522019` completed successfully.
+
+Pinned result:
+- `BIO_CHI/config/JARUS_TNF_SPECTRAL_TOPOLOGY_P0D_V01_RESULT_PIN.json`;
+- artifact `10940129250`, `BIO_CHI_JARUS_TNF_SPECTRAL_TOPOLOGY_P0D_V01`;
+- artifact digest `sha256:bc70cf6ec9c40e59884031e311a3ed75346dfcd218f40d8263ec24a869bbb9c9`;
+- result JSON SHA-256 `16b01fdaf9878b907a7e13bf9c3ac9bfbb288fc0da0f9ac25763c2b01194757a`;
+- transition CSV SHA-256 `2baa53e183fee32aac9c4bf2fcf025ceb203f2b52217e7169250808eb45aba65`.
+
+Endpoint integrity:
+- `TNF=0`: 0 nonreal modes; max real eigenvalue 0;
+- `TNF=1`: 2 nonreal modes (one pair);
+- `TNF=1 chi = 0.21311451907547868`, reproducing the previously stored candidate `0.21311451897468006` within the predeclared tolerance.
+
+Pinned fixed-grid topology:
+- 0 -> 1 pair between `0` and `0.0001`;
+- 1 -> 2 pairs between `0.0020` and `0.0021`;
+- 2 -> 1 pair between `0.0035` and `0.0036`;
+- 1 -> 2 pairs between `0.0092` and `0.0093`;
+- 2 -> 1 pair between `0.0621` and `0.0622`.
+
+Descriptive sequence:
+`REAL_ONLY -> ONE_PAIR -> TWO_PAIRS -> ONE_PAIR -> TWO_PAIRS -> ONE_PAIR`.
+
+Scientific consequence:
+the Jaruszewicz native model now has a reproducible state-regime Function/Limit map demonstrating that scalar availability and scalar uniqueness are distinct operating-state properties. The modal layer reorganizes repeatedly across the native TNF coordinate even while the tracked positive-equilibrium branch remains locally stable over the sampled positive-input range.
+
+Claim ceiling remains P0-D exploratory. No bifurcation class, biological threshold, universal coordinate, or broad `chi_bio` admission is licensed.
+
+### Current next scientific gate
+
+The original failed joint scalar-modal-system response gate is closed as a state-regime Limit Map result and must not be repaired outcome-informatively.
+
+The next scientifically meaningful step is **not another Jaruszewicz retest on already viewed Figure-8 evidence**. It is to identify an untouched independent system/evidence object capable of prospectively discriminating:
+1. scalar sufficiency;
+2. complete-modal added value;
+3. full nonlinear/system added value;
+4. scalar refusal through absence, multiplicity, or nonidentifiability.
+
+Selecting that confirmatory object and freezing the exact P1 design is now a scientific decision. Mechanical governance/checkpoint synchronization may continue without changing that decision.
