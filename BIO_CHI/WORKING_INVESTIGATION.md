@@ -282,3 +282,17 @@ The failure occurred in a brittle Python representation-equality assertion after
 
 Authorized repair:
 replace only the exact list-equality assertion with an explicit six-coordinate numerical tolerance check and make the observed endpoint values visible in the assertion message. Do not change equations, grids, equilibrium solver, Jacobian, tolerances used for scientific classification, mode-count rule, or interpretation.
+
+
+### 2026-09-27 - Reproducibility workflow failure root cause closed
+
+Repair run `36345453161` failed at the same endpoint integrity guard, now with an explicit NumPy shape diagnostic:
+`operands could not be broadcast together with shapes (6,) (5,)`.
+
+Root cause:
+the expected source-equilibrium vector embedded in the integrity assertion accidentally contained five coordinates, while the native model and computed equilibrium correctly contain six.
+
+Classification:
+`MECHANICAL_TEST_GUARD_VECTOR_LENGTH_BUG`.
+
+The previous failure and this diagnostic failure are both retained. The authorized correction is limited to changing the expected assertion vector to the exact six-state source value `[1,0,0,0,0,0]`. No scientific code, grid, equation, solver, spectrum rule, tolerance, or interpretation changes.
