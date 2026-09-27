@@ -9,6 +9,8 @@ on:
       - "NSD_vNext/engine/tests/test_substrate_closure_contracts.py"
       - "NSD_vNext/engine/tests/test_continuous_lineage_truth_contracts.py"
       - "NSD_vNext/engine/tests/test_predictive_closure_contracts.py"
+      - "NSD_vNext/engine/tests/test_continuous_lineage_candidate.py"
+      - "NSD_vNext/engine/nsd_engine/continuous_lineage_candidate.py"
       - "NSD_vNext/engine/tools/probe_continuous_lineage_nonzero_g.py"
       - "NSD_vNext/engine/tools/probe_predictive_closure_calibration.py"
       - ".github/workflows/nsd-state-space-lineage-sampling-contracts.yml"
@@ -53,7 +55,8 @@ jobs:
             tests/test_state_space_lineage_sampling.py \
             tests/test_substrate_closure_contracts.py \
             tests/test_continuous_lineage_truth_contracts.py \
-            tests/test_predictive_closure_contracts.py
+            tests/test_predictive_closure_contracts.py \
+            tests/test_continuous_lineage_candidate.py
 
       - name: Run exploratory nonzero-g continuous-lineage probe
         working-directory: NSD_vNext/engine
