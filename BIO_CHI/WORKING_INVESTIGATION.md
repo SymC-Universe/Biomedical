@@ -1,7 +1,7 @@
 # WORKING_INVESTIGATION.md
 
 **Project:** Bio Chi Investigation  
-**Status:** ACTIVE - P0-Q / Function + Limit Map / material contradiction audit  
+**Status:** ACTIVE - P0-Q / Function + Limit Map / state-regime Limit Map development  
 **Current authority:** SymC General Operations Manual v0.8.8 REVIEW, promoted by the principal investigator on 27 September 2026  
 **Project branch:** `chi-bio-recovery-p0d-20260922`  
 **Branch head at this record update:** `23645fcfacab8e14d0d53e19e240cf500c997f21`  
@@ -94,7 +94,7 @@ Exact error:
 
 No result artifact was produced. This is not a negative biological result and is not a failed scientific prediction. It is currently classified as:
 
-`UNRESOLVED_SCIENTIFIC_VS_MECHANICAL_CONTRADICTION_AUDIT`
+`RESOLVED_SCIENTIFIC_DEFINITION_CONFLICT_AND_STATE_REGIME_LIMIT`
 
 ### Why the failure is material
 
@@ -102,25 +102,26 @@ The frozen joint-response script linearizes the source model at `x_star = [1,0,0
 
 The earlier Figure 8 local-stability route that supplied the stored complex pair solved the frozen Figure 8 equilibria using `reduced(0,x,1)`, i.e. under `TNF = 1`, and then computed the Jacobian at the accepted positive root. Therefore the prior candidate and the newest joint-response freeze may not share the same equilibrium/input state.
 
-This difference is not yet adjudicated as an error in the scientific design. It must first be checked against the exact source equations, accepted root, source protocol semantics, and prior artifact. If the frozen joint-response scientific baseline itself must change, that is a scientific change and not a mechanical repair.
+The contradiction audit has now resolved this difference. The exact source equations show that `[1,0,0,0,0,0]` at `TNF=0` is a valid source-native equilibrium, but its local generator does not contain the inherited oscillatory pair. At that exact state, the TNF-dependent couplings are absent and the Jacobian has a real-mode structure; the previously qualified oscillatory carrier instead belongs to the `TNF=1` positive equilibrium used by the Figure 8A local-stability route.
+
+Therefore run `36044426805` is preserved as a **scientific-definition conflict exposed by the frozen gate**, not a mechanical execution failure. Its requirement that the TNF-off baseline reproduce the TNF-on oscillatory carrier was false. No equilibrium swap or rerun is permitted as a mechanical repair. The result adds a state/regime-dependence boundary to the Function/Limit Map: the local carrier and any scalar derived from it are conditional on the operating state and cannot be assumed invariant across TNF-off and TNF-on equilibria.
 
 ## Active holds and promotion debt
 
 - **P0-N:** BACKFILL_REQUIRED from existing broad-search and targeted-source history before new hypothesis-directed confirmatory work.
 - **A0 Prior-Art Conglomeration Atlas:** BACKFILL_REQUIRED before new confirmatory promotion.
-- **Latest joint-response gate:** HOLD_FOR_CONTRADICTION_AUDIT. No rerun with a changed equilibrium, input state, mode identity, or scalar definition is licensed as a mechanical repair.
+- **Latest joint-response gate:** CLOSED_AS_STATE_REGIME_LIMIT. No rerun with a changed equilibrium, input state, mode identity, or scalar definition is licensed as a mechanical repair. A differently posed TNF-on joint test would be a new scientific object and requires a new prospective freeze after P0-N/A0 backfill.
 - **Notation:** HOLD_FOR_SEMANTIC_RECONCILIATION only when a rename/redefinition becomes necessary. Neutral layer names may be used meanwhile.
 - **Broad admission:** CLOSED for scalar, modal, and system/conglomerate layers.
 - **Working manuscript:** remains private.
 
 ## Exact next actions
 
-1. Audit the exact accepted Figure 8A equilibrium and stored Jacobian/eigenvalues from the immutable v0.3/v0.4 evidence.
-2. Audit `reduced.m` to determine whether `[1,0,0,0,0,0]` at `TNF=0` is an equilibrium and whether a complex pair exists there under the frozen finite-difference rule.
-3. Compare the two base states without changing either frozen record and classify the run-36044426805 failure as mechanical, scientific-definition conflict, or a genuine representation Limit Map result.
-4. Backfill P0-N and A0 from the already completed broad literature searches, targeted source audits, and repository history, explicitly separating pre-outcome knowledge from post-outcome discoveries.
-5. Update this file before any subsequent scientific action.
-6. Continue mechanically without further permission where the result does not require a scientific choice.
+1. Backfill P0-N and A0 from the already completed broad literature searches, targeted source audits, and repository history, explicitly separating pre-outcome knowledge from post-outcome discoveries.
+2. Add the TNF-off/TNF-on state-regime boundary to the scalar/modal/system Limit Map without promoting a replacement scalar.
+3. Audit whether existing literature or frozen project evidence already establishes operating-point dependence of NF-kB local modes, so the residual novelty can be stated without overclaiming.
+4. Only after P0-N/A0 are current, decide whether a new prospectively frozen TNF-on same-system joint response test is scientifically warranted. It must be a new gate, not a repair of run 36044426805.
+5. Update this file before every subsequent material scientific action and continue mechanically where no scientific choice is required.
 
 ## Resume pointers
 
@@ -149,3 +150,24 @@ Material findings:
 - governance and reviewer smoke tests at the branch head remain passing.
 
 No scientific endpoint, threshold, null, comparator, mode rule, equilibrium, mapping, or interpretation rule was changed during this reconstruction.
+
+
+### 2026-09-27 - Jaruszewicz joint-gate contradiction resolved
+
+The source-native equation audit resolved the failed joint-response gate without changing any frozen object.
+
+Source facts:
+- `species0 = [1,0,0,0,0,0]`;
+- TNF is binary in the source, with `TNF=0` off and `TNF=1` on;
+- at the TNF-off source state, every right-hand side evaluates to zero, so it is a valid equilibrium;
+- the TNF-off linearization removes the TNF-driven IKK coupling and the feedback products vanish at the zero-background state;
+- the resulting local generator has no nonreal conjugate pair under the frozen gate, exactly matching the observed `COMPLEX_PAIR_COUNT_0_0` failure;
+- the earlier Figure 8 local-stability computation instead solved and linearized `reduced(0,x,1)` at the accepted positive TNF-on equilibrium.
+
+Adjudication:
+`RESOLVED_SCIENTIFIC_DEFINITION_CONFLICT_AND_STATE_REGIME_LIMIT`.
+
+Scientific consequence:
+the previously qualified Jaruszewicz oscillatory carrier and candidate scalar are operating-state dependent. They are not properties that can be transported unchanged from the TNF-on equilibrium to the source-native TNF-off equilibrium. This is retained as a Limit Map result and narrows the scalar claim. It also strengthens the need to investigate the modal and system/conglomerate layers jointly rather than treating a local scalar as the entire biological stability architecture.
+
+No rerun, equilibrium substitution, threshold change, or carrier reselection was performed.
