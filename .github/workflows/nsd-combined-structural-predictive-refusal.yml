@@ -1,0 +1,52 @@
+name: NSD Combined Structural Predictive Refusal
+
+on:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - "NSD_vNext/engine/tools/probe_combined_structural_predictive_refusal.py"
+      - "NSD_vNext/docs/COMBINED_STRUCTURAL_PREDICTIVE_REFUSAL_PREFLIGHT_v0.1.md"
+      - ".github/workflows/nsd-combined-structural-predictive-refusal.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "NSD_vNext/engine/tools/probe_combined_structural_predictive_refusal.py"
+      - "NSD_vNext/docs/COMBINED_STRUCTURAL_PREDICTIVE_REFUSAL_PREFLIGHT_v0.1.md"
+      - ".github/workflows/nsd-combined-structural-predictive-refusal.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  combined-refusal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install qualification engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+
+      - name: Run combined structural-predictive refusal map
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_combined_structural_predictive_refusal.py \
+            --output ../../combined-refusal/combined_structural_predictive_refusal.json
+
+      - name: Upload combined refusal map
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-combined-structural-predictive-refusal
+          path: combined-refusal/combined_structural_predictive_refusal.json
+          if-no-files-found: error
