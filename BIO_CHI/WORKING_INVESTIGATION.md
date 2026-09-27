@@ -108,8 +108,8 @@ Therefore run `36044426805` is preserved as a **scientific-definition conflict e
 
 ## Active holds and promotion debt
 
-- **P0-N:** BACKFILL_REQUIRED from existing broad-search and targeted-source history before new hypothesis-directed confirmatory work.
-- **A0 Prior-Art Conglomeration Atlas:** BACKFILL_REQUIRED before new confirmatory promotion.
+- **P0-N:** CLOSED_FOR_CURRENT_RESIDUAL_QUESTION in `BIO_CHI/artifacts/P0N_NOVELTY_SYNTHESIS_v0_1.md`. Historical backfill only; no earlier result is retroactively prospective.
+- **A0 Prior-Art Conglomeration Atlas:** CLOSED_FOR_CURRENT_RESIDUAL_TARGET in `BIO_CHI/artifacts/A0_PRIOR_ART_CONGLOMERATION_ATLAS_v0_1.md`.
 - **Latest joint-response gate:** CLOSED_AS_STATE_REGIME_LIMIT. No rerun with a changed equilibrium, input state, mode identity, or scalar definition is licensed as a mechanical repair. A differently posed TNF-on joint test would be a new scientific object and requires a new prospective freeze after P0-N/A0 backfill.
 - **Notation:** HOLD_FOR_SEMANTIC_RECONCILIATION only when a rename/redefinition becomes necessary. Neutral layer names may be used meanwhile.
 - **Broad admission:** CLOSED for scalar, modal, and system/conglomerate layers.
@@ -117,10 +117,10 @@ Therefore run `36044426805` is preserved as a **scientific-definition conflict e
 
 ## Exact next actions
 
-1. Backfill P0-N and A0 from the already completed broad literature searches, targeted source audits, and repository history, explicitly separating pre-outcome knowledge from post-outcome discoveries.
-2. Add the TNF-off/TNF-on state-regime boundary to the scalar/modal/system Limit Map without promoting a replacement scalar.
-3. Audit whether existing literature or frozen project evidence already establishes operating-point dependence of NF-kB local modes, so the residual novelty can be stated without overclaiming.
-4. Only after P0-N/A0 are current, decide whether a new prospectively frozen TNF-on same-system joint response test is scientifically warranted. It must be a new gate, not a repair of run 36044426805.
+1. Execute a P0-D exploratory continuation of the native Jaruszewicz equilibrium/generator from TNF=0 to TNF=1 to map where real modes become a complex pair and whether mode multiplicity or stability changes across the input coordinate. This is Function/Limit mapping, not confirmation.
+2. Preserve the TNF-off/TNF-on state-regime boundary without promoting a replacement scalar.
+3. Use the resulting map only to formulate future prospective boundary tests; do not retune a confirmatory gate from it.
+4. After exploratory mapping, identify untouched independent evidence capable of a P1 test. A new TNF-on joint response test on already-inspected Jaruszewicz Figure-8 evidence remains qualification, not independent confirmation.
 5. Update this file before every subsequent material scientific action and continue mechanically where no scientific choice is required.
 
 ## Resume pointers
@@ -171,3 +171,32 @@ Scientific consequence:
 the previously qualified Jaruszewicz oscillatory carrier and candidate scalar are operating-state dependent. They are not properties that can be transported unchanged from the TNF-on equilibrium to the source-native TNF-off equilibrium. This is retained as a Limit Map result and narrows the scalar claim. It also strengthens the need to investigate the modal and system/conglomerate layers jointly rather than treating a local scalar as the entire biological stability architecture.
 
 No rerun, equilibrium substitution, threshold change, or carrier reselection was performed.
+
+
+### 2026-09-27 - P0-N and A0 backfill closed for current residual target
+
+GOM v0.8.8 novelty debt was reconstructed from the two completed deep searches and the outcome-blind/targeted source-qualification record.
+
+Created:
+- `BIO_CHI/artifacts/P0N_NOVELTY_SYNTHESIS_v0_1.md`;
+- `BIO_CHI/artifacts/A0_PRIOR_ART_CONGLOMERATION_ATLAS_v0_1.md`.
+
+P0-N disposition:
+- established biology already includes recovery, memory, hysteresis, metastability, substrate-conditioned state behavior, NF-kB input/history dependence, ERK temporal encoding, and p53 representation/population caveats;
+- none of those phenomena is claimed as novel here;
+- current residual novelty is classified primarily as `NEW_INTEGRATION` + `NEW_BOUNDARY_TEST`, with `NEW_CONGLOMERATED_INFERENCE` retained only as a candidate until prospectively tested;
+- the residual target is the domain of validity/failure of scalar, modal/component, and system/conglomerate representations under matched native conditions, plus later tests of whether substrate/carrier state predicts transitions among those domains.
+
+The backfill does not retroactively change earlier exploratory provenance or make post-view results confirmatory.
+
+### P0-D purpose tag - Jaruszewicz TNF operating-state continuation
+
+**PURPOSE:** exploratory Function/Limit mapping of how the native equilibrium and local spectrum change as the source TNF input coordinate varies from 0 to 1.
+
+**OPERATION:** solve the native six-state equilibrium across a fixed TNF grid using continuation plus independent residual checks; compute the complete six-mode centered-finite-difference Jacobian at each accepted equilibrium; record stability, real/nonreal mode counts, conjugate-pair identity where present, and candidate scalar values only where mathematically licensed.
+
+**EXPECTED_INFORMATION:** identify whether the oscillatory carrier emerges only beyond a finite input/state transition, whether multiple complex pairs appear, and whether local stability or modal identity changes with TNF.
+
+**DECISION ENABLED:** refine the state-regime Function/Limit Map and define what an untouched future boundary test would have to discriminate.
+
+**EPISTEMIC CLASS:** P0-D exploratory only. No confirmatory admission, no threshold tuning to a desired transition, and no use of this map as untouched evidence in a later P1 test.
