@@ -1,0 +1,35 @@
+name: Bio Chi Meneses path-signal diagnostic v0.1
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - bio-chi-meneses-path-transport-p0q-20260926
+    paths:
+      - "BIO_CHI/experiments/meneses2026_path_signal_diagnostic_v01.py"
+      - ".github/workflows/bio-chi-meneses2026-path-signal-diagnostic-v01.yml"
+
+jobs:
+  execute-postresult-diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install pinned dependencies
+        run: python -m pip install --disable-pip-version-check "numpy==2.1.3" "pandas==2.2.3" "scipy==1.14.1" "scikit-learn==1.5.2" "pyarrow==17.0.0" "requests==2.32.3"
+      - name: Execute post-result diagnostic
+        run: python BIO_CHI/experiments/meneses2026_path_signal_diagnostic_v01.py
+      - name: Hash diagnostic bundle
+        if: always()
+        run: |
+          find BIO_CHI/experiments/meneses2026_path_signal_diagnostic_results -maxdepth 1 -type f -print0 | sort -z | xargs -0 sha256sum > BIO_CHI/experiments/meneses2026_path_signal_diagnostic_results/SHA256SUMS.txt || true
+      - name: Upload diagnostic bundle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: BIO_CHI_MENESES2026_PATH_SIGNAL_DIAGNOSTIC_V01
+          path: BIO_CHI/experiments/meneses2026_path_signal_diagnostic_results/
+          if-no-files-found: warn
