@@ -1,4 +1,4 @@
-# APQ-qualified P0-D workflow. Scientific design is frozen in Plan Packet v0.2.
+# APQ-qualified P0-D workflow. Scientific design is frozen in Plan Packet v0.3.
 name: NSD Bio Chi C-Interior Function Map
 
 on:
@@ -7,16 +7,16 @@ on:
       - nsd-rebuild-gom-v0.8.0
     paths:
       - "NSD_vNext/engine/tools/probe_c_interior_function_map.py"
-      - "NSD_vNext/docs/BIO_CHI_C_INTERIOR_FUNCTION_MAP_PLAN_PACKET_v0.2.md"
-      - "NSD_vNext/docs/BIO_CHI_C_INTERIOR_FUNCTION_MAP_PLAN_FREEZE_v1.0.md"
+      - "NSD_vNext/docs/BIO_CHI_C_INTERIOR_FUNCTION_MAP_PLAN_PACKET_v0.3.md"
+      - "NSD_vNext/docs/BIO_CHI_C_INTERIOR_FUNCTION_MAP_PLAN_FREEZE_v1.1.md"
       - ".github/workflows/nsd-bio-chi-c-interior-function-map.yml"
   pull_request:
     branches:
       - main
     paths:
       - "NSD_vNext/engine/tools/probe_c_interior_function_map.py"
-      - "NSD_vNext/docs/BIO_CHI_C_INTERIOR_FUNCTION_MAP_PLAN_PACKET_v0.2.md"
-      - "NSD_vNext/docs/BIO_CHI_C_INTERIOR_FUNCTION_MAP_PLAN_FREEZE_v1.0.md"
+      - "NSD_vNext/docs/BIO_CHI_C_INTERIOR_FUNCTION_MAP_PLAN_PACKET_v0.3.md"
+      - "NSD_vNext/docs/BIO_CHI_C_INTERIOR_FUNCTION_MAP_PLAN_FREEZE_v1.1.md"
       - ".github/workflows/nsd-bio-chi-c-interior-function-map.yml"
   workflow_dispatch:
 
