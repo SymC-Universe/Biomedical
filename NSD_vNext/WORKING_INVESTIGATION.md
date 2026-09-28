@@ -68,18 +68,21 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 
 ## 5. Active Plan and Adversarial Plan Qualification
 
-- **Completed plan:** repeated-realization C1Q-RS uncertainty map
+- **Active plan / scientific route:** single-series uncertainty method comparison against the repeated-realization source-of-truth map
 - **APQ level:** `APQ-2 SUBSTANTIAL`
-- **Plan status:** `COMPLETE / REGION-DEPENDENT ESTIMATOR UNCERTAINTY`
-- **Plan Packet:** `NSD_vNext/docs/BIO_CHI_C1Q_RS_UNCERTAINTY_MAP_PLAN_v0.2.md`
-- **APQ ledger:** `NSD_vNext/docs/BIO_CHI_C1Q_RS_UNCERTAINTY_APQ_LEDGER_v0.1.md`
-- **Freeze:** `NSD_vNext/docs/BIO_CHI_C1Q_RS_UNCERTAINTY_MAP_FREEZE_v1.0.md`
-- **Postresult:** `NSD_vNext/docs/BIO_CHI_C1Q_RS_UNCERTAINTY_MAP_POSTRESULT_v1.0.md`
-- **Run:** `36372559076`
-- **Artifact:** `10949349324`
-- **Digest:** `sha256:7331b6781838d3cd4f97f68ecb8dbc301035bfa7cd0f16454ddd80169c16d194`
-- **Result:** compact estimator sampling behavior across most tested truths, with materially weaker regions at cells 2 and 6; no scientific threshold frozen
-- **Next plan gate:** compare standard single-series uncertainty methods against the repeated-realization truth map before constructing an uncertainty-aware admission/refusal gate
+- **Plan status:** `QUALIFIED_FROZEN / IMPLEMENTED / CI REGISTRATION PENDING`
+- **Plan Packet:** `NSD_vNext/docs/BIO_CHI_SINGLE_SERIES_UNCERTAINTY_METHOD_PLAN_v0.2.md`
+- **APQ ledger:** `NSD_vNext/docs/BIO_CHI_SINGLE_SERIES_UNCERTAINTY_APQ_LEDGER_v0.1.md`
+- **Freeze:** `NSD_vNext/docs/BIO_CHI_SINGLE_SERIES_UNCERTAINTY_METHOD_FREEZE_v1.0.md`
+- **Equivalence gate:** PASS in `NSD C1Q-RS Mechanical Contracts`, run `36373236094`
+- **Methods:** local observed-Hessian curvature; full chi profile likelihood without LR threshold; fitted-model parametric bootstrap with 32 frozen replicates
+- **Frozen cases:** cells 0, 1, 6, and 2; seed `989969`; both 256 and 128 Hz
+- **Reference truth map:** uncertainty run `36372559076`, artifact `10949349324`
+- **Implementation:** `NSD_vNext/engine/tools/probe_single_series_uncertainty_methods.py`
+- **Workflow:** `.github/workflows/nsd-single-series-uncertainty-methods.yml`
+- **Current execution state:** workflow committed; connector has not yet exposed the new workflow run
+- **Claim ceiling:** method-family qualification only; no confidence level, admission threshold, production promotion, C-membership, biological prevalence, or real-EEG admission
+- **Next plan gate:** mechanical profile preflight on cell 0 fine and cell 2 coarse
 
 ## 6. Active Hold or Blocker
 
@@ -124,12 +127,12 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 
 ## 8. Next Exact Action
 
-- **Next action:** complete the methods-control review of profile likelihood, parametric bootstrap, Fisher/Hessian, Bayesian, and practical-identifiability approaches for finite state-space uncertainty, then design the smallest prospective comparison against the repeated-realization source-of-truth map.
-- **Why this is next:** repeated realizations show that uncertainty is heterogeneous, but real biological data will usually provide one observed series. A defensible single-series uncertainty method is required before unstable local coordinates can be refused without arbitrary precision.
-- **Expected output / decision:** select or narrow candidate uncertainty procedures that can detect the cell-2 boundary/nonregular pattern and cell-6 weak-information pattern while remaining well behaved on compact cells.
-- **What must remain frozen while it runs:** C1Q-RS search implementation, uncertainty-map artifact, semantic claim ceiling, no-threshold rule, and real-EEG refusal.
-- **Stop / refusal condition:** a scientifically material methods tradeoff remains unresolved after literature/method comparison, especially if no candidate is defensible near both boundaries and weak-identification regions.
-- **User intervention required:** `no` unless that unresolved tradeoff occurs.
+- **Next action:** execute the frozen single-series method workflow as soon as GitHub exposes the registered workflow; profile preflight precedes all full profile/bootstrap cases
+- **Why this is next:** repeated-realization uncertainty is region-dependent, but real evidence usually supplies one observed record; a single-series practical-identifiability diagnostic must be qualified before any uncertainty-aware admission rule
+- **Expected output / decision:** determine whether profile likelihood, fitted-model bootstrap, and local Hessian agree in compact cells and which methods correctly expose the difficult cell-2/cell-6 regimes
+- **What must remain frozen while it runs:** exact cases/rates/observed seed, profile grid, profile nuisance search, Hessian steps, 32 bootstrap seeds, source uncertainty artifact, no-threshold interpretation
+- **Stop / refusal condition:** profile implementation fails equivalence/reproduction, nuisance optimization is mechanically unstable, or completed methods yield a scientifically unresolved tradeoff not settled by the frozen outcome architecture
+- **User intervention required:** `no` unless the final method comparison leaves such a tradeoff
 
 ## 9. Resume Contract
 
@@ -669,3 +672,64 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Next action:** compare standard single-series uncertainty methods against this source-of-truth map.
 - **Why next:** real data provide observed series, not repeated truth realizations.
 - **Provenance pointer:** postresult commit `a2e21b2b7a05deb8e3b30b0a31f3b955935573db`.
+
+
+### 2026-09-27 - METHODS_CONTROL - Finite-sample uncertainty literature narrows method hierarchy
+
+- **Lifecycle Stage:** Stage 3
+- **Entry type:** `METHODS_CONTROL`
+- **Source artifact / evidence identity:** Undermind search `Bio Chi finite-sample uncertainty methods`
+- **Observed / decided:** prior art supports profile likelihood as a primary practical-identifiability diagnostic, local Hessian/Fisher curvature as a cheap asymptotic comparator, and state-space bootstrap as a finite-sample calibration tool. Literature also documents finite-sample LR miscalibration, boundary/nonregular failures, and sampled-oscillator likelihood multimodality.
+- **Scientific interpretation:** no single asymptotic Wald/Fisher uncertainty summary is sufficient for the current Bio Chi admission problem; profile geometry plus finite-sample calibration is the stronger route.
+- **Alternative explanation / uncertainty:** bootstrap remains conditional on the fitted model; Bayesian posterior methods remain a later option if profile/bootstrap are insufficient.
+- **Impact on claim / novelty / prediction:** method-selection evidence only.
+- **Freeze impact:** informs the subsequently APQ-qualified plan; no empirical threshold frozen.
+- **Status impact:** methods-control gate complete.
+- **Next action:** APQ and execute profile/Hessian/bootstrap comparison against repeated-realization truth map.
+- **Why next:** single-series uncertainty must be calibrated before admission.
+- **Provenance pointer:** Undermind workspace `2313474c-bd7d-42dd-921b-25cc69acff8e`.
+
+### 2026-09-27 - PLAN_OBJECTION - Physical-coordinate likelihood equivalence blocked uncertainty-method freeze
+
+- **Lifecycle Stage:** Stage 3
+- **Entry type:** `PLAN_OBJECTION`
+- **Source artifact / evidence identity:** `BIO_CHI_SINGLE_SERIES_UNCERTAINTY_APQ_LEDGER_v0.1.md`
+- **Observed / decided:** APQ identified a BLOCKER: a physical-coordinate profile could not be interpreted unless it was shown to be exactly likelihood-equivalent to current C1Q.
+- **Scientific interpretation:** profile geometry must interrogate the same estimator likelihood, not a reparameterized approximation.
+- **Alternative explanation / uncertainty:** none.
+- **Impact on claim / novelty / prediction:** no science executed until resolved.
+- **Freeze impact:** plan freeze withheld.
+- **Status impact:** temporary APQ blocker.
+- **Next action:** add and run equivalence contracts.
+- **Why next:** foundational dependency.
+- **Provenance pointer:** ledger commit `40c32fab4dafa859448b9f6dd4e3445fcf1f84be`.
+
+### 2026-09-27 - RESUME - Physical-coordinate C1Q likelihood equivalence contract passes
+
+- **Lifecycle Stage:** Stage 3
+- **Entry type:** `RESUME`
+- **Source artifact / evidence identity:** workflow `NSD C1Q-RS Mechanical Contracts`, run `36373236094`
+- **Observed / decided:** physical A/f_n/chi/g round trips and physical-wrapper NLL matched the canonical C1Q implementation across the frozen mechanical contract cases and both rates.
+- **Scientific interpretation:** the profile-likelihood method can interrogate the exact existing C1Q likelihood.
+- **Alternative explanation / uncertainty:** mechanical equivalence does not establish inferential validity.
+- **Impact on claim / novelty / prediction:** clears APQ blocker only.
+- **Freeze impact:** Plan v0.2 eligible for freeze.
+- **Status impact:** APQ closed.
+- **Next action:** freeze and execute method comparison.
+- **Why next:** all BLOCKER/MATERIAL objections resolved.
+- **Provenance pointer:** contract workflow run above.
+
+### 2026-09-27 - PLAN_FREEZE - Single-series uncertainty method comparison frozen
+
+- **Lifecycle Stage:** Stage 3
+- **Entry type:** `PLAN_FREEZE`
+- **Source artifact / evidence identity:** Plan v0.2; freeze `BIO_CHI_SINGLE_SERIES_UNCERTAINTY_METHOD_FREEZE_v1.0.md`
+- **Observed / decided:** four truth categories, one fixed observed seed, two rates, complete chi profile grid, local Hessian comparator, and 32 fitted-model bootstrap replicates were frozen before execution.
+- **Scientific interpretation:** comparison is P0-Q method calibration against an already-known repeated-realization source-of-truth map.
+- **Alternative explanation / uncertainty:** one observed realization per case can be seed-specific; no one-seed coverage claim is permitted.
+- **Impact on claim / novelty / prediction:** none before results.
+- **Freeze impact:** active.
+- **Status impact:** execution authorized after mechanical profile preflight.
+- **Next action:** CI execution.
+- **Why next:** next qualification gate.
+- **Provenance pointer:** freeze commit `deea23acedc13e62896a6c3e6836323b6f70f6fc`.
