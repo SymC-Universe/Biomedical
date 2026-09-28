@@ -7,7 +7,9 @@ on:
     paths:
       - "NSD_vNext/engine/nsd_engine/continuous_lineage_candidate.py"
       - "NSD_vNext/engine/nsd_engine/continuous_lineage_candidate_rs.py"
+      - "NSD_vNext/engine/nsd_engine/continuous_lineage_profile.py"
       - "NSD_vNext/engine/tests/test_continuous_lineage_rs_contracts.py"
+      - "NSD_vNext/engine/tests/test_continuous_lineage_profile_equivalence.py"
       - ".github/workflows/nsd-c1q-rs-contracts.yml"
   pull_request:
     branches:
@@ -15,7 +17,9 @@ on:
     paths:
       - "NSD_vNext/engine/nsd_engine/continuous_lineage_candidate.py"
       - "NSD_vNext/engine/nsd_engine/continuous_lineage_candidate_rs.py"
+      - "NSD_vNext/engine/nsd_engine/continuous_lineage_profile.py"
       - "NSD_vNext/engine/tests/test_continuous_lineage_rs_contracts.py"
+      - "NSD_vNext/engine/tests/test_continuous_lineage_profile_equivalence.py"
       - ".github/workflows/nsd-c1q-rs-contracts.yml"
   workflow_dispatch:
 
@@ -44,5 +48,7 @@ jobs:
       - name: Run C1Q-RS mechanical contracts
         working-directory: NSD_vNext/engine
         run: |
-          python -m pytest -q tests/test_continuous_lineage_rs_contracts.py
+          python -m pytest -q \
+            tests/test_continuous_lineage_rs_contracts.py \
+            tests/test_continuous_lineage_profile_equivalence.py
 # Workflow-registration trigger marker; no scientific-plan change.
