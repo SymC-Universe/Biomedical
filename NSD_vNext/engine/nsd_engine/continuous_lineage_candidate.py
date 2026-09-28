@@ -223,6 +223,59 @@ def _initial_starts(
     return starts
 
 
+def _select_legacy_optimized_starts(
+    standardized: np.ndarray,
+    sampling_rate_hz: float,
+    fmin_hz: float,
+    fmax_hz: float,
+    burn_in_samples: int,
+    max_optimized_starts: int,
+):
+    """Return the exact legacy C1Q start ranking used before C1Q-RS.
+
+    This helper is a mechanical factoring of the historical inline selection
+    logic. It does not change start generation, scoring, ranking, fallback, or
+    optimizer settings. C1Q-RS uses it so the augmented route contains rather
+    than reimplements the legacy optimized-start set.
+    """
+    candidates = _initial_starts(
+        standardized, sampling_rate_hz, fmin_hz, fmax_hz
+    )
+    scored = []
+    for start in candidates:
+        value = _nll(
+            standardized,
+            start,
+            sampling_rate_hz,
+            fmin_hz,
+            fmax_hz,
+            burn_in_samples,
+        )
+        if math.isfinite(value) and value < 1e90:
+            scored.append((value, start))
+    scored.sort(key=lambda item: item[0])
+    if scored:
+        selected = [x for _, x in scored[:max_optimized_starts]]
+        next_ranked = (
+            scored[max_optimized_starts][1]
+            if len(scored) > max_optimized_starts
+            else None
+        )
+    else:
+        selected = candidates[:max_optimized_starts]
+        next_ranked = (
+            candidates[max_optimized_starts]
+            if len(candidates) > max_optimized_starts
+            else None
+        )
+    return {
+        "candidates": candidates,
+        "scored": scored,
+        "selected": selected,
+        "next_ranked": next_ranked,
+    }
+
+
 def fit_continuous_lineage_candidate(
     signal: Sequence[float],
     sampling_rate_hz: float,
@@ -252,25 +305,15 @@ def fit_continuous_lineage_candidate(
         raise ValueError("signal has zero or non-finite standard deviation")
     standardized = (values - mean) / sd
 
-    candidates = _initial_starts(
-        standardized, sampling_rate_hz, fmin_hz, fmax_hz
+    selection = _select_legacy_optimized_starts(
+        standardized,
+        sampling_rate_hz,
+        fmin_hz,
+        fmax_hz,
+        burn_in_samples,
+        max_optimized_starts,
     )
-    scored = []
-    for start in candidates:
-        value = _nll(
-            standardized,
-            start,
-            sampling_rate_hz,
-            fmin_hz,
-            fmax_hz,
-            burn_in_samples,
-        )
-        if math.isfinite(value) and value < 1e90:
-            scored.append((value, start))
-    scored.sort(key=lambda item: item[0])
-    starts = [x for _, x in scored[:max_optimized_starts]]
-    if not starts:
-        starts = candidates[:max_optimized_starts]
+    starts = selection["selected"]
 
     solutions = []
     for start in starts:
