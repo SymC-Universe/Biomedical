@@ -1,0 +1,109 @@
+name: NSD C1Q Recurrence Seed Rescue
+
+on:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - "NSD_vNext/engine/tools/probe_c1q_recurrence_seed.py"
+      - "NSD_vNext/docs/BIO_CHI_C1Q_RECURRENCE_SEED_PLAN_v0.1.md"
+      - "NSD_vNext/docs/BIO_CHI_C1Q_RECURRENCE_SEED_FREEZE_v1.0.md"
+      - ".github/workflows/nsd-c1q-recurrence-seed.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "NSD_vNext/engine/tools/probe_c1q_recurrence_seed.py"
+      - "NSD_vNext/docs/BIO_CHI_C1Q_RECURRENCE_SEED_PLAN_v0.1.md"
+      - "NSD_vNext/docs/BIO_CHI_C1Q_RECURRENCE_SEED_FREEZE_v1.0.md"
+      - ".github/workflows/nsd-c1q-recurrence-seed.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  recurrence-cell:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [0, 5, 7, 8, 9, 11, 12, 15]
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install qualification engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+
+      - name: Download immutable basin source artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: nsd-c1q-likelihood-basin-complete
+          path: source-basin
+          github-token: ${{ github.token }}
+          run-id: 36369682759
+
+      - name: Run frozen recurrence-seed diagnostic
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_c1q_recurrence_seed.py \
+            --mode cell \
+            --cell ${{ matrix.cell }} \
+            --source-basin ../../source-basin/c1q_likelihood_basin_complete.json \
+            --output-dir ../../c1q-recurrence-seed/cell-${{ matrix.cell }}
+
+      - name: Upload cell result
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-c1q-recurrence-seed-cell-${{ matrix.cell }}
+          path: c1q-recurrence-seed/cell-${{ matrix.cell }}/
+          if-no-files-found: error
+
+  merge:
+    needs: recurrence-cell
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install qualification engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+
+      - name: Download recurrence-seed cell artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: nsd-c1q-recurrence-seed-cell-*
+          path: c1q-recurrence-seed/all-cells
+
+      - name: Merge recurrence-seed result
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_c1q_recurrence_seed.py \
+            --mode merge \
+            --input-dir ../../c1q-recurrence-seed/all-cells \
+            --output-dir ../../c1q-recurrence-seed/summary
+
+      - name: Upload complete recurrence-seed result
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-c1q-recurrence-seed-complete
+          path: c1q-recurrence-seed/summary/
+          if-no-files-found: error
