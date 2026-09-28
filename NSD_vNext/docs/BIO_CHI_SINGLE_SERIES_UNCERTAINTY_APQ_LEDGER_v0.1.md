@@ -17,9 +17,9 @@
 
 ## Current disposition
 
-APQ remains **OPEN** because B1 is a BLOCKER until a mechanical physical-parameter likelihood equivalence contract passes.
+APQ is **CLOSED / QUALIFIED**. B1 is resolved by the physical-parameter likelihood equivalence contract.
 
-No scientific outcome has been exposed.
+The blocker-resolution contract passed in workflow `NSD C1Q-RS Mechanical Contracts`, run `36373236094`. No scientific profile/bootstrap outcome had been exposed before this resolution.
 
 ## Required blocker-resolution contract
 
@@ -34,3 +34,20 @@ For multiple admissible C parameter tuples and both 256/128 Hz:
 If this contract fails, the profile plan remains on scientific hold and must not execute.
 
 If it passes, B1 becomes `ACCEPTED_TEST_ADDED` and a revised plan may be frozen.
+
+
+## Blocker-resolution evidence
+
+B1 disposition is updated from `BLOCKER / ACCEPTED_TEST_ADDED` to `RESOLVED_PASS`.
+
+The contract suite `tests/test_continuous_lineage_profile_equivalence.py` passed at both 128 and 256 Hz and verified:
+
+- physical (A,f_n,chi,g) round-trip to the existing raw C1Q coordinates;
+- the physical wrapper delegates to the canonical C1Q candidate builder;
+- physical-wrapper NLL matches canonical raw C1Q NLL to floating-point tolerance;
+- representative interior raw coordinates round-trip without likelihood change.
+
+Workflow run: `36373236094`  
+Conclusion: `success`
+
+No BLOCKER or MATERIAL objection remains. Plan v0.2 is eligible for freeze.
