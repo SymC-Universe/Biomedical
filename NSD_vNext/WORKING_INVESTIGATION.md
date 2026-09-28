@@ -34,7 +34,11 @@ P0-N now establishes that biological damping-ratio use, eigenvalue/Q-factor desc
 
 ### Latest scientific development
 
-The repeated-realization C1Q-RS uncertainty map completed in workflow run `36372559076`, artifact `10949349324`, digest `sha256:7331b6781838d3cd4f97f68ecb8dbc301035bfa7cd0f16454ddd80169c16d194`. All 192 fits completed. Median absolute chi error was approximately 0.01874, but uncertainty was strongly region-dependent. Most truth cells were compact; cell 6 showed broad interior sampling variability, and cell 2 showed the strongest instability with repeated boundary attraction, large g/frequency error, and large fine/coarse drift.
+Single-series uncertainty-method workflow run `36373507093` completed successfully. Complete artifact `10950297393`, digest `sha256:d736f1c04196efd95bb3949a8330ce4552a978ff5196a72f52c106c05e398572`.
+
+The completed comparison supports profile likelihood as the primary single-record practical-identifiability diagnostic for local chi. Local physical-coordinate Hessian curvature is useful only for regular interior optima. Fitted-model parametric bootstrap is useful as conditional secondary evidence in regular cases, but can reproduce a pathological fitted boundary model rather than the broader known-truth sampling behavior.
+
+Cell 6 coarse showed broad/open high-chi likelihood geometry consistent with weak information. Cell 2 coarse was boundary/nonregular: Hessian refused, profile geometry remained open toward the high-chi boundary, and fitted-model bootstrap clustered around the pathological boundary branch.
 
 ### Current interpretation and claim ceiling
 
@@ -68,21 +72,18 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 
 ## 5. Active Plan and Adversarial Plan Qualification
 
-- **Active plan / scientific route:** single-series uncertainty method comparison against the repeated-realization source-of-truth map
+- **Completed plan:** single-series uncertainty-method comparison against the repeated-realization source map
 - **APQ level:** `APQ-2 SUBSTANTIAL`
-- **Plan status:** `QUALIFIED_FROZEN / IMPLEMENTED / CI REGISTRATION PENDING`
-- **Plan Packet:** `NSD_vNext/docs/BIO_CHI_SINGLE_SERIES_UNCERTAINTY_METHOD_PLAN_v0.2.md`
+- **Plan status:** `COMPLETE / METHOD-FAMILY QUALIFICATION SUPPORTED`
+- **Plan:** `NSD_vNext/docs/BIO_CHI_SINGLE_SERIES_UNCERTAINTY_METHOD_PLAN_v0.2.md`
 - **APQ ledger:** `NSD_vNext/docs/BIO_CHI_SINGLE_SERIES_UNCERTAINTY_APQ_LEDGER_v0.1.md`
 - **Freeze:** `NSD_vNext/docs/BIO_CHI_SINGLE_SERIES_UNCERTAINTY_METHOD_FREEZE_v1.0.md`
-- **Equivalence gate:** PASS in `NSD C1Q-RS Mechanical Contracts`, run `36373236094`
-- **Methods:** local observed-Hessian curvature; full chi profile likelihood without LR threshold; fitted-model parametric bootstrap with 32 frozen replicates
-- **Frozen cases:** cells 0, 1, 6, and 2; seed `989969`; both 256 and 128 Hz
-- **Reference truth map:** uncertainty run `36372559076`, artifact `10949349324`
-- **Implementation:** `NSD_vNext/engine/tools/probe_single_series_uncertainty_methods.py`
-- **Workflow:** `.github/workflows/nsd-single-series-uncertainty-methods.yml`
-- **Current execution state:** corrected source-of-record workflow run `36373507093` is queued; earlier run `36373404832` is superseded for final aggregation because its artifact download pattern would have mixed preflight and full-profile artifacts
-- **Claim ceiling:** method-family qualification only; no confidence level, admission threshold, production promotion, C-membership, biological prevalence, or real-EEG admission
-- **Next plan gate:** mechanical profile preflight on cell 0 fine and cell 2 coarse
+- **Postresult:** `NSD_vNext/docs/BIO_CHI_SINGLE_SERIES_UNCERTAINTY_METHOD_POSTRESULT_v1.0.md`
+- **Source-of-record run:** `36373507093`
+- **Complete artifact:** `10950297393`
+- **Digest:** `sha256:d736f1c04196efd95bb3949a8330ce4552a978ff5196a72f52c106c05e398572`
+- **Method disposition:** profile likelihood primary; Hessian regular-only secondary; fitted-model bootstrap conditional secondary
+- **Next plan gate:** broader prospective profile-based Function/Limit calibration before any numerical admission threshold is considered
 
 ## 6. Active Hold or Blocker
 
@@ -127,12 +128,12 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 
 ## 8. Next Exact Action
 
-- **Next action:** execute the frozen single-series method workflow as soon as GitHub exposes the registered workflow; profile preflight precedes all full profile/bootstrap cases
-- **Why this is next:** repeated-realization uncertainty is region-dependent, but real evidence usually supplies one observed record; a single-series practical-identifiability diagnostic must be qualified before any uncertainty-aware admission rule
-- **Expected output / decision:** determine whether profile likelihood, fitted-model bootstrap, and local Hessian agree in compact cells and which methods correctly expose the difficult cell-2/cell-6 regimes
-- **What must remain frozen while it runs:** exact cases/rates/observed seed, profile grid, profile nuisance search, Hessian steps, 32 bootstrap seeds, source uncertainty artifact, no-threshold interpretation
-- **Stop / refusal condition:** profile implementation fails equivalence/reproduction, nuisance optimization is mechanically unstable, or completed methods yield a scientifically unresolved tradeoff not settled by the frozen outcome architecture
-- **User intervention required:** `no` unless the final method comparison leaves such a tradeoff
+- **Next action:** construct and APQ-qualify a broader prospective profile-based uncertainty/refusal calibration spanning regular C interiors, weak-information C interiors, near-critical/boundary C cases, alias-sensitive cases, D\\C, S\\D, colored-process/memory, and genuine multimode controls
+- **Why this is next:** profile likelihood has qualified at the method-family level, but refusal/admission interpretation must be calibrated across practical and semantic failure classes before any numerical cutoff can be frozen
+- **Expected output / decision:** identify which profile-shape features reliably signal practical identifiability versus semantic misspecification, and which must map to REFUSE or NEED_MORE_INFORMATION
+- **What must remain frozen while it runs:** C1Q-RS implementation, existing Function/Limit truth definitions, source uncertainty artifacts, no-threshold interpretation, and current claim ceiling
+- **Stop / refusal condition:** a genuine scientific choice among competing uncertainty/refusal architectures that cannot be resolved by known-truth discrimination, APQ, or literature
+- **User intervention required:** `no` at present
 
 ## 9. Resume Contract
 
@@ -749,3 +750,28 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Next action:** execute corrected workflow run `36373507093` with full-profile artifacts isolated from preflight artifacts.
 - **Why next:** preserve one-to-one frozen case identity in the merge.
 - **Provenance pointer:** mechanical-fix commit `cce78208129f61b0315768f0f0413ef273485ba2`.
+
+
+### 2026-09-28 - RESULT - Single-series uncertainty methods complete
+
+- **Lifecycle Stage:** Stage 3
+- **Entry type:** `RESULT`
+- **Source artifact / evidence identity:** workflow run `36373507093`; artifact `10950297393`; digest `sha256:d736f1c04196efd95bb3949a8330ce4552a978ff5196a72f52c106c05e398572`; postresult `BIO_CHI_SINGLE_SERIES_UNCERTAINTY_METHOD_POSTRESULT_v1.0.md`
+- **Observed / decided:** profile likelihood, local physical-coordinate Hessian, and fitted-model bootstrap were compared against the immutable repeated-realization sampling reference across compact, weak-information, and boundary/nonregular cases.
+- **Scientific interpretation:** profile likelihood best preserves practical-identifiability geometry. Hessian is informative only for regular interior optima. Fitted-model bootstrap is useful conditionally but can be misleading when the observed fit is nonregular or boundary-attracted.
+- **Alternative explanation / uncertainty:** the comparison qualifies uncertainty methods conditional on the C likelihood family; it does not establish semantic C-family membership.
+- **Impact on claim / novelty / prediction:** no biological claim, threshold, production promotion, or real-EEG admission.
+- **Freeze impact:** completed without material scientific deviation.
+- **Status impact:** method-family gate closed; broader profile/refusal calibration becomes next.
+- **Next action:** APQ a broader Function/Limit profile calibration.
+- **Why next:** single-record uncertainty method is selected, but refusal semantics remain uncalibrated.
+- **Provenance pointer:** source-of-record run/artifact above.
+
+### 2026-09-28 - MONITOR_RECOVERY - Bio Chi monitor restored
+
+- **Lifecycle Stage:** Stage 3
+- **Entry type:** `MONITOR_RECOVERY`
+- **Observed / decided:** Bio Chi hourly condition-watch was found disabled during user check-in after the source-of-record workflow had completed.
+- **Action:** monitor re-enabled with the current completed run/artifact and continuation contract.
+- **Scientific interpretation:** no scientific result changed.
+- **Status impact:** hourly dead-time detection and safe continuation restored.
