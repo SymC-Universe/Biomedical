@@ -77,7 +77,7 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Unresolved MATERIAL objections:** none
 - **Objection-ledger identity:** \`NSD_vNext/docs/BIO_CHI_C_INTERIOR_FUNCTION_MAP_APQ_LEDGER_v0.1.md\`
 - **Plan Delta identity:** \`NSD_vNext/docs/BIO_CHI_C_INTERIOR_FUNCTION_MAP_PLAN_DELTA_v0.1.md\`
-- **Qualified plan version:** v0.2
+- **Qualified plan version:** v0.3
 - **Freeze timestamp / identifier / hash:** 27 September 2026; freeze record commit \`df71b99a730355a0533cb8a05a3899206fdfbe77\`
 - **Design adequacy status:** \`NOT_APPLICABLE\` for P0-D synthetic mapping
 - **Masking / outcome-exposure status:** exact prior reference cells already viewed and excluded from the new frozen grid; new map is exploratory, not confirmation
@@ -89,7 +89,7 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Trigger:** n/a
 - **Last safe scientific state:** APQ-qualified plan freeze at \`df71b99a730355a0533cb8a05a3899206fdfbe77\`
 - **Affected claims / work that must not advance:** real-EEG local \(\chi\), estimator promotion, P1 confirmation, and empirical thresholds remain outside the current plan
-- **Unblocking criterion:** version the execution architecture so the legacy descriptive comparator cannot gate the core Function Map; run proportional APQ recheck; freeze the revised plan
+- **Unblocking criterion:** n/a
 - **First exact resume action:** execute the revised C1Q + generic-recurrence mechanical preflight
 - **Required user action, if any:** none
 - **Continuity pointers:** Plan Packet v0.2; APQ ledger; Plan Delta; plan freeze; evidence intake; P0-N/A0 records
@@ -382,3 +382,54 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Unblocking criterion:** v0.3 execution plan, targeted APQ recheck, new freeze.
 - **First resume action:** revised mechanical preflight.
 - **Continuity pointers:** v0.2 Plan Packet, APQ ledger, Plan Delta, freeze record, implementation script.
+
+
+### 2026-09-27 - PLAN_REVISION - Runtime bottleneck removed from Function Map
+
+- **Lifecycle Stage:** Stage 2
+- **Entry type:** \`PLAN_REVISION\`
+- **Source artifact / evidence identity:** Plan Packet v0.3 commit \`7ace5de0f6846f53b01f7cb46f09fcb0a55e9426\`; targeted APQ recheck \`bae1eb343652199de7028f799165cf4b048d6318\`; runtime Plan Delta \`66312a83e7b42d5e4801250f2befca2d31a19e88\`
+- **Observed / decided:** new A0/A1/A2 refitting was removed from the active Function Map because it was nonessential to the current claim and dominated runtime. Prior comparator evidence remains preserved.
+- **Scientific interpretation:** the Function Map now tests C1Q recovery plus generic second-order recurrence attribution without making a new A0/A1/A2 performance claim.
+- **Alternative explanation / uncertainty:** future comparative-performance claims may require a dedicated comparator plan.
+- **Impact on claim / novelty / prediction:** claim narrowed, scientific coordinate design unchanged.
+- **Freeze impact:** \`freeze changed\`
+- **Status impact:** targeted APQ cleared the mechanical hold.
+- **Next action:** freeze v0.3 and rerun mechanical preflight.
+- **Why next:** restore cheap-preflight compliance without outcome-directed retuning.
+- **Provenance pointer:** artifacts above.
+
+### 2026-09-27 - PLAN_FREEZE - Requalified Function Map v0.3 frozen
+
+- **Lifecycle Stage:** Stage 2
+- **Entry type:** \`PLAN_FREEZE\`
+- **Source artifact / evidence identity:** \`BIO_CHI_C_INTERIOR_FUNCTION_MAP_PLAN_FREEZE_v1.1.md\`, commit \`79304357f41cd5f3787cc78a31b76fb2716d8a6a\`
+- **Observed / decided:** v0.3 is the active frozen execution plan; v0.2/v1.0 freeze is superseded for future execution.
+- **Scientific interpretation:** no unresolved BLOCKER or MATERIAL APQ objection remains.
+- **Alternative explanation / uncertainty:** role-isolated APQ remains non-independent cognition.
+- **Impact on claim / novelty / prediction:** none beyond explicit removal of a new legacy-comparator claim.
+- **Freeze impact:** \`freeze created\`
+- **Status impact:** plan eligible for Stage 3 execution.
+- **Next action:** revised mechanical preflight.
+- **Why next:** scale-up gate.
+- **Provenance pointer:** freeze commit above.
+
+### 2026-09-27 - RESUME - Runtime plan hold cleared
+
+- **Lifecycle Stage:** Stage 3
+- **Entry type:** \`RESUME\`
+- **Source artifact / evidence identity:** v0.3 Plan Packet, targeted APQ recheck, freeze v1.1
+- **Observed / decided:** the nonessential legacy comparator no longer gates preflight/full-map execution.
+- **Scientific interpretation:** core P0-D Function Map may resume.
+- **Alternative explanation / uncertainty:** none material.
+- **Impact on claim / novelty / prediction:** no claim promoted.
+- **Freeze impact:** v1.1 freeze remains valid.
+- **Status impact:** \`ACTIVE\`
+- **Next action:** run revised mechanical preflight.
+- **Why next:** first execution step under requalified plan.
+- **Provenance pointer:** \`79304357f41cd5f3787cc78a31b76fb2716d8a6a\`.
+
+- **Hold being cleared:** legacy-comparator runtime mechanical hold.
+- **What satisfied the unblocking criterion:** plan v0.3, targeted APQ recheck, new freeze, implementation/workflow updated.
+- **Does the previous freeze remain valid?** v0.2 freeze is superseded for future execution; v1.1 is active.
+- **First resumed scientific action:** revised preflight.
