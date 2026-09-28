@@ -1,0 +1,177 @@
+name: NSD Single-Series Uncertainty Methods
+
+on:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - "NSD_vNext/engine/tools/probe_single_series_uncertainty_methods.py"
+      - "NSD_vNext/engine/nsd_engine/continuous_lineage_profile.py"
+      - "NSD_vNext/docs/BIO_CHI_SINGLE_SERIES_UNCERTAINTY_METHOD_PLAN_v0.2.md"
+      - "NSD_vNext/docs/BIO_CHI_SINGLE_SERIES_UNCERTAINTY_METHOD_FREEZE_v1.0.md"
+      - ".github/workflows/nsd-single-series-uncertainty-methods.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "NSD_vNext/engine/tools/probe_single_series_uncertainty_methods.py"
+      - "NSD_vNext/engine/nsd_engine/continuous_lineage_profile.py"
+      - "NSD_vNext/docs/BIO_CHI_SINGLE_SERIES_UNCERTAINTY_METHOD_PLAN_v0.2.md"
+      - "NSD_vNext/docs/BIO_CHI_SINGLE_SERIES_UNCERTAINTY_METHOD_FREEZE_v1.0.md"
+      - ".github/workflows/nsd-single-series-uncertainty-methods.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  profile-preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - cell: 0
+            rate: fine
+          - cell: 2
+            rate: coarse
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install qualification engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+      - name: Run frozen profile mechanical preflight
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_single_series_uncertainty_methods.py \
+            --mode profile \
+            --cell ${{ matrix.cell }} \
+            --rate ${{ matrix.rate }} \
+            --output-dir ../../single-series-uncertainty/preflight-${{ matrix.cell }}-${{ matrix.rate }}
+      - name: Upload profile preflight
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-single-series-profile-preflight-${{ matrix.cell }}-${{ matrix.rate }}
+          path: single-series-uncertainty/preflight-${{ matrix.cell }}-${{ matrix.rate }}/
+          if-no-files-found: error
+
+  profile:
+    needs: profile-preflight
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [0, 1, 2, 6]
+        rate: [fine, coarse]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install qualification engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+      - name: Run frozen profile and Hessian case
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_single_series_uncertainty_methods.py \
+            --mode profile \
+            --cell ${{ matrix.cell }} \
+            --rate ${{ matrix.rate }} \
+            --output-dir ../../single-series-uncertainty/profile-${{ matrix.cell }}-${{ matrix.rate }}
+      - name: Upload profile case
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-single-series-profile-${{ matrix.cell }}-${{ matrix.rate }}
+          path: single-series-uncertainty/profile-${{ matrix.cell }}-${{ matrix.rate }}/
+          if-no-files-found: error
+
+  bootstrap:
+    needs: profile
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [0, 1, 2, 6]
+        rate: [fine, coarse]
+        chunk: [0, 1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install qualification engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+      - name: Run frozen bootstrap chunk
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_single_series_uncertainty_methods.py \
+            --mode bootstrap \
+            --cell ${{ matrix.cell }} \
+            --rate ${{ matrix.rate }} \
+            --chunk ${{ matrix.chunk }} \
+            --output-dir ../../single-series-uncertainty/bootstrap-${{ matrix.cell }}-${{ matrix.rate }}-${{ matrix.chunk }}
+      - name: Upload bootstrap chunk
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-single-series-bootstrap-${{ matrix.cell }}-${{ matrix.rate }}-${{ matrix.chunk }}
+          path: single-series-uncertainty/bootstrap-${{ matrix.cell }}-${{ matrix.rate }}-${{ matrix.chunk }}/
+          if-no-files-found: error
+
+  merge:
+    needs: bootstrap
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install qualification engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+      - name: Download profile cases
+        uses: actions/download-artifact@v4
+        with:
+          pattern: nsd-single-series-profile-*
+          path: single-series-uncertainty/all-profiles
+      - name: Download bootstrap chunks
+        uses: actions/download-artifact@v4
+        with:
+          pattern: nsd-single-series-bootstrap-*
+          path: single-series-uncertainty/all-bootstrap
+      - name: Download repeated-realization source of truth
+        uses: actions/download-artifact@v4
+        with:
+          name: nsd-c1q-rs-uncertainty-complete
+          path: single-series-uncertainty/source-uncertainty
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: 36372559076
+      - name: Merge method comparison
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_single_series_uncertainty_methods.py \
+            --mode merge \
+            --profile-dir ../../single-series-uncertainty/all-profiles \
+            --bootstrap-dir ../../single-series-uncertainty/all-bootstrap \
+            --source-uncertainty ../../single-series-uncertainty/source-uncertainty/c1q_rs_uncertainty_map_complete.json \
+            --output-dir ../../single-series-uncertainty/complete
+      - name: Upload complete method comparison
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-single-series-uncertainty-methods-complete
+          path: single-series-uncertainty/complete/
+          if-no-files-found: error
