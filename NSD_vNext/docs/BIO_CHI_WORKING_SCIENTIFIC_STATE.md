@@ -1004,3 +1004,43 @@ For current Bio Chi work, the colored-process third-pole case remains an importa
 A failure may redirect the main Bio Chi lane only when it is broad/reproducible enough to matter over the representative region, materially biases the primary claim, reveals a logical nonidentifiability that invalidates the claim regardless of frequency, or is independently known to be common in the intended biological domain. Otherwise it remains mapped and incorporated into refusal/uncertainty logic without becoming the sole focus.
 
 No numerical prevalence or outlier threshold is frozen by this guard.
+
+
+## 20.5 Failure-Seeking Without Failure-Centricity
+
+The Bio Chi program is explicitly **failure-seeking without being failure-centric**.
+
+The purpose of adversarial qualification is to discover where a proposed local chi interpretation breaks, why it breaks, and whether that failure is isolated, boundary-local, broadly reproducible, or common enough to matter for the intended biological domain. However, failure discovery must not erase the complementary evidence from the regions in which the architecture behaves coherently.
+
+Every qualification campaign must therefore preserve both sides of the map:
+
+- where the proposed architecture fails, refuses, becomes nonidentifiable, changes family, or loses predictive closure;
+- where it remains stable across nuisance structure, sampling, seeds, durations, moderate perturbations, and other admissible transformations.
+
+The second category is not merely a control condition. Repeated survival across a broad interior region is itself scientific evidence about the range over which the proposed dynamical interpretation is robust.
+
+The working interpretation should therefore ask two questions at the same time:
+
+\[
+\text{Where does the Bio Chi construction break?}
+\]
+
+and
+
+\[
+\text{Where does it keep working, and what common structure survives there?}
+\]
+
+Discussion and postulation are allowed around the successful region, provided they remain clearly separated from established claims. Such discussion may be used to generate new hypotheses about lineage, substrate inheritance, modal organization, biological regulation, or cross-domain stability architecture, but it must not be promoted into evidence without a corresponding prospective test.
+
+A rare adversarial failure can constrain a universal claim without becoming the dominant description of the system. Conversely, broad success cannot erase a real refusal boundary. The scientific picture is the full topology of both survival and breakdown.
+
+Future plots, summaries, and manuscript discussion should therefore show:
+- the full distribution of successful, refused, and failed cases;
+- where each class lies in parameter space;
+- whether failures cluster at boundaries or occupy broad interior regions;
+- how much of the tested region preserves the intended lineage;
+- which invariants or near-invariants persist across the successful region;
+- clearly labeled discussion/hypotheses suggested by those successful regions.
+
+The central aim is not to prove that Bio Chi always works or to catalog only how it fails. It is to determine the **domain of validity, the failure topology, and the stable structure that remains across the domain where it is valid**.
