@@ -72,18 +72,20 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 
 ## 5. Active Plan and Adversarial Plan Qualification
 
-- **Completed plan:** single-series uncertainty-method comparison against the repeated-realization source map
+- **Active plan / scientific route:** profile Function/Limit calibration of practical identifiability versus semantic admissibility
 - **APQ level:** `APQ-2 SUBSTANTIAL`
-- **Plan status:** `COMPLETE / METHOD-FAMILY QUALIFICATION SUPPORTED`
-- **Plan:** `NSD_vNext/docs/BIO_CHI_SINGLE_SERIES_UNCERTAINTY_METHOD_PLAN_v0.2.md`
-- **APQ ledger:** `NSD_vNext/docs/BIO_CHI_SINGLE_SERIES_UNCERTAINTY_APQ_LEDGER_v0.1.md`
-- **Freeze:** `NSD_vNext/docs/BIO_CHI_SINGLE_SERIES_UNCERTAINTY_METHOD_FREEZE_v1.0.md`
-- **Postresult:** `NSD_vNext/docs/BIO_CHI_SINGLE_SERIES_UNCERTAINTY_METHOD_POSTRESULT_v1.0.md`
-- **Source-of-record run:** `36373507093`
-- **Complete artifact:** `10950297393`
-- **Digest:** `sha256:d736f1c04196efd95bb3949a8330ce4552a978ff5196a72f52c106c05e398572`
-- **Method disposition:** profile likelihood primary; Hessian regular-only secondary; fitted-model bootstrap conditional secondary
-- **Next plan gate:** broader prospective profile-based Function/Limit calibration before any numerical admission threshold is considered
+- **Plan status:** `QUALIFIED_FROZEN / EXECUTION_QUEUED`
+- **Plan:** `NSD_vNext/docs/BIO_CHI_PROFILE_FUNCTION_LIMIT_CALIBRATION_PLAN_v0.2.md`
+- **APQ ledger:** `NSD_vNext/docs/BIO_CHI_PROFILE_FUNCTION_LIMIT_APQ_LEDGER_v0.1.md`
+- **Freeze:** `NSD_vNext/docs/BIO_CHI_PROFILE_FUNCTION_LIMIT_CALIBRATION_FREEZE_v1.0.md`
+- **Implementation:** `NSD_vNext/engine/tools/probe_profile_function_limit_calibration.py`
+- **Workflow:** `.github/workflows/nsd-profile-function-limit-calibration.yml`
+- **Current source-of-record run:** `36498024951`
+- **Preflight jobs:** C0 seed 301103 fine; L4 seed 301103 coarse
+- **Frozen full design:** 12 truth classes x 3 seeds x 2 rates = 72 profile/Hessian cases
+- **Scientific purpose:** calibrate what profile geometry can say about practical identifiability and what semantic failures remain invisible to a compact profile
+- **Claim ceiling:** P0-Q only; no threshold, C-membership inference, biological prevalence, production promotion, or real-EEG admission
+- **Next plan gate:** both mechanical preflights must pass before all 72 frozen cases execute
 
 ## 6. Active Hold or Blocker
 
@@ -128,12 +130,12 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 
 ## 8. Next Exact Action
 
-- **Next action:** construct and APQ-qualify a broader prospective profile-based uncertainty/refusal calibration spanning regular C interiors, weak-information C interiors, near-critical/boundary C cases, alias-sensitive cases, D\\C, S\\D, colored-process/memory, and genuine multimode controls
-- **Why this is next:** profile likelihood has qualified at the method-family level, but refusal/admission interpretation must be calibrated across practical and semantic failure classes before any numerical cutoff can be frozen
-- **Expected output / decision:** identify which profile-shape features reliably signal practical identifiability versus semantic misspecification, and which must map to REFUSE or NEED_MORE_INFORMATION
-- **What must remain frozen while it runs:** C1Q-RS implementation, existing Function/Limit truth definitions, source uncertainty artifacts, no-threshold interpretation, and current claim ceiling
-- **Stop / refusal condition:** a genuine scientific choice among competing uncertainty/refusal architectures that cannot be resolved by known-truth discrimination, APQ, or literature
-- **User intervention required:** `no` at present
+- **Next action:** allow run `36498024951` to complete both frozen mechanical preflights, then all 72 full profile/Hessian cases and merge without scientific retuning
+- **Why this is next:** profile likelihood is now qualified for practical identifiability, but its limits relative to semantic family/order/closure failures must be mapped prospectively before any admission architecture can be frozen
+- **Expected output / decision:** determine whether practical-identifiability profile morphology is orthogonal to semantic admissibility, additive to semantic refusal, or insufficient even for valid C cases
+- **What must remain frozen while it runs:** 12 truth classes, three seeds, both rates, C1Q-RS/profile implementation, profile grid/search, Function/Limit roles, output schema, and no-threshold claim ceiling
+- **Stop / refusal condition:** mechanical/provenance failure or nominal valid-C profile failure that invalidates the profile implementation itself; deceptive compact profiles on semantic Limit truths are scientific outcomes, not reasons to retune
+- **User intervention required:** `no`
 
 ## 9. Resume Contract
 
@@ -775,3 +777,19 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Action:** monitor re-enabled with the current completed run/artifact and continuation contract.
 - **Scientific interpretation:** no scientific result changed.
 - **Status impact:** hourly dead-time detection and safe continuation restored.
+
+
+### 2026-09-28 - PLAN_FREEZE / EXECUTION - Profile Function/Limit calibration launched
+
+- **Lifecycle Stage:** Stage 3
+- **Entry type:** `PLAN_FREEZE`
+- **Source artifact / evidence identity:** plan `BIO_CHI_PROFILE_FUNCTION_LIMIT_CALIBRATION_PLAN_v0.2.md`; APQ ledger `BIO_CHI_PROFILE_FUNCTION_LIMIT_APQ_LEDGER_v0.1.md`; freeze `BIO_CHI_PROFILE_FUNCTION_LIMIT_CALIBRATION_FREEZE_v1.0.md`; workflow run `36498024951`
+- **Observed / decided:** APQ closed with no unresolved BLOCKER/MATERIAL objection. Twelve frozen truth classes balance six valid C Function cases and six semantic Limit cases. Run is queued with mechanical preflights C0/fine and L4/coarse.
+- **Scientific interpretation:** the experiment calibrates division of labor between profile-based practical identifiability and independent semantic family/order/closure gates.
+- **Alternative explanation / uncertainty:** compact profile geometry may occur under semantically invalid truths; that is a target result, not plan failure.
+- **Impact on claim / novelty / prediction:** none before merged result.
+- **Freeze impact:** 12 truth classes, seeds 301103/509203/811223, rates, profile grid/search, and no-threshold ceiling frozen.
+- **Status impact:** active calculation queued.
+- **Next action:** complete mechanical preflight then all 72 frozen cases and merge.
+- **Why next:** current approved Stage 3 gate.
+- **Provenance pointer:** run `36498024951`; workflow commit `8261cc6ed282a20aa4b7854c465a0de6e065a0bc`.
