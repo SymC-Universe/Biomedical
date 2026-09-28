@@ -32,7 +32,6 @@ import numpy as np
 import scipy
 
 from nsd_engine.continuous_lineage_candidate import fit_continuous_lineage_candidate
-from nsd_engine.state_space_adequacy import compare_state_space_candidates
 
 # Reuse the already-qualified exact C truth constructor/path simulator.
 from probe_continuous_lineage_nonzero_g import construct_truth, simulate_same_path
@@ -58,7 +57,6 @@ CELLS = [
 ]
 SEEDS = [104729, 208457, 417923]
 PREFLIGHT_CELLS = {0, 5, 10, 15}
-SENTINEL_CELLS = {0, 5, 10, 15}
 FINE_FS = 256.0
 DECIMATION = 2
 SECONDS = 60.0
@@ -261,32 +259,6 @@ def chosen_fit(c1q: dict[str, Any]) -> dict[str, Any] | None:
     return None
 
 
-def legacy_comparison(signal: np.ndarray, fs: float) -> dict[str, Any]:
-    try:
-        comp = compare_state_space_candidates(signal, fs, optimizer_maxiter=60)
-        return {
-            "status": "COMPLETE",
-            "bic_winner": comp.bic_winner,
-            "bic_margin_to_second": float(comp.bic_margin_to_second),
-            "fits": {
-                fit.family: {
-                    "bic": float(fit.bic),
-                    "negative_log_likelihood": float(fit.negative_log_likelihood),
-                    "parameters": {k: float(v) for k, v in fit.parameters.items()},
-                    "innovation_max_abs_autocorrelation": float(
-                        fit.innovation_max_abs_autocorrelation
-                    ),
-                }
-                for fit in comp.fits
-            },
-        }
-    except Exception as exc:
-        return {
-            "status": "UNRESOLVED",
-            "error": f"{type(exc).__name__}: {exc}",
-        }
-
-
 def truth_checks(truth: dict[str, Any], m: int) -> dict[str, Any]:
     q_c_min = float(np.min(np.linalg.eigvalsh(truth["Qc"])))
     q_d_min = float(np.min(np.linalg.eigvalsh(truth["Qd"])))
@@ -326,9 +298,6 @@ def rate_row(
         "truth_damped_frequency_hz": float(truth["nu"] / (2.0 * math.pi)),
         "c1q": c1q,
         "recurrence": recurrence,
-        "legacy_comparison": (
-            legacy_comparison(signal, fs) if index in SENTINEL_CELLS else None
-        ),
     }
 
     if selected is not None:
@@ -542,7 +511,6 @@ def run_map(mode: str, shard: int | None, output_dir: Path) -> dict[str, Any]:
             "seconds": SECONDS,
             "seeds": seeds,
             "cells": [list(cell) for cell in cells],
-            "sentinel_cells": sorted(SENTINEL_CELLS),
             "primary_optimizer_maxiter": PRIMARY_MAXITER,
             "primary_max_optimized_starts": PRIMARY_MAX_STARTS,
             "rescue_optimizer_maxiter": RESCUE_MAXITER,
