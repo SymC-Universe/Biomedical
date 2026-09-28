@@ -472,3 +472,66 @@ Expected:
 - fine and deterministic coarse-decimated results for C interiors, D\\C, S\\D, colored extra-pole truth, and genuine two-mode truth.
 
 Interpretation: a useful result would be reproducible order-3 improvement specific to colored extra-pole truth and order-4 improvement specific to genuine two-mode truth. Material overlap preserves refusal and triggers explicit likelihood-based higher-order/memory comparator development rather than cutoff tuning.
+
+## V20. Reproduce the Bio Chi C-interior Function Map
+
+[CLAIM] The APQ-qualified P0-D Function Map executes the frozen 16-cell continuous-lineage C qualification envelope without changing the estimator family, selecting a scientific threshold, estimating biological prevalence, or licensing real-EEG local chi.
+
+Source of record:
+
+- Plan Packet: \`NSD_vNext/docs/BIO_CHI_C_INTERIOR_FUNCTION_MAP_PLAN_PACKET_v0.3.md\`
+- APQ runtime recheck: \`NSD_vNext/docs/BIO_CHI_C_INTERIOR_FUNCTION_MAP_RUNTIME_APQ_RECHECK_v0.1.md\`
+- Active freeze: \`NSD_vNext/docs/BIO_CHI_C_INTERIOR_FUNCTION_MAP_PLAN_FREEZE_v1.1.md\`
+- Tool: \`NSD_vNext/engine/tools/probe_c_interior_function_map.py\`
+- Workflow: \`.github/workflows/nsd-bio-chi-c-interior-function-map.yml\`
+
+Mechanical preflight for one frozen cell:
+
+\`\`\`bash
+cd NSD_vNext/engine
+python -m pip install -e .
+python tools/probe_c_interior_function_map.py \
+  --mode preflight \
+  --cell-index 0 \
+  --output-dir ../../bio-chi-function-map/preflight-cell-0
+\`\`\`
+
+Repeat the preflight command for cells \`5\`, \`10\`, and \`15\`. Expected for each preflight cell:
+
+- output status \`P0D_FUNCTION_MAP_PREFLIGHT\`;
+- exactly two rate rows, fine 256 Hz and exact-decimated 128 Hz;
+- exactly one paired fine/coarse unit;
+- continuous and discrete truth covariance checks remain numerically PSD;
+- factor-2 branch remains alias-safe;
+- C1Q returns a recorded fit or the predeclared \`OPTIMIZATION_UNRESOLVED\` state;
+- the generic recurrence diagnostic returns \`ESTIMATED\` or an explicit refusal state;
+- environment metadata records Python, NumPy, SciPy, commit/ref where available, RNG rule, and stochastic repeatability class.
+
+Full map for one cell:
+
+\`\`\`bash
+python tools/probe_c_interior_function_map.py \
+  --mode full \
+  --cell-index 0 \
+  --output-dir ../../bio-chi-function-map/cell-0
+\`\`\`
+
+Repeat for cells \`0\` through \`15\`. Each cell artifact contains three frozen seeds and both rates. After all 16 cells exist, merge with:
+
+\`\`\`bash
+python tools/probe_c_interior_function_map.py \
+  --mode merge \
+  --input-dir ../../bio-chi-function-map/all-cells \
+  --output-dir ../../bio-chi-function-map/summary
+\`\`\`
+
+Expected merged output:
+
+- status \`P0D_FUNCTION_MAP_COMPLETE\`;
+- 96 rate rows = 16 cells x 3 seeds x 2 rates;
+- 48 paired same-path fine/coarse units;
+- complete cell set 0-15 and exact seed set \`104729, 208457, 417923\`;
+- range and median summaries for C1Q recovery, generic recurrence recovery, C1Q-vs-recurrence disagreement, and practical same-path rate sensitivity;
+- explicit \`false\` flags for real-EEG local-chi licensing, scientific-threshold definition, C1Q promotion, and biological-prevalence claim.
+
+Interpretation: V20 is a correct-specification estimator Function Map within a synthetic qualification envelope. Successful recovery is a self-consistency/estimator-qualification result, not biological validation. Poor recovery is preserved as a Function Map result rather than used to retune the frozen design. Stochastic reproduction is numerical/decision-equivalent in the declared environment; cross-platform bitwise identity is not promised.
