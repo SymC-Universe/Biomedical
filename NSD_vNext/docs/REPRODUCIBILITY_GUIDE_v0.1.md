@@ -651,3 +651,28 @@ Expected Limit result:
 - paired-sampling semantics remain essentially unchanged.
 
 Interpretation: V23 establishes a search-route repair only. It does not establish C-family membership, biological prevalence, a scientific admission threshold, production promotion, or real-EEG local chi.
+
+
+## V24. Reproduce untouched C1Q-RS qualification
+
+[CLAIM] The recurrence-augmented C1Q-RS search route generalizes to a prospectively frozen unseen C-family qualification envelope, strictly contains legacy C1Q, and introduces no reproducible new recovery failure mechanism.
+
+Source of record:
+- workflow run `36371426674`;
+- complete artifact `10949372282`;
+- digest `sha256:7cfa8b5bda2e72ada855fda2b1afd6b9db724d6b86a9662173cb5a549820d946`;
+- plan `NSD_vNext/docs/BIO_CHI_C1Q_RS_UNTOUCHED_PLAN_v0.1.md`;
+- freeze `NSD_vNext/docs/BIO_CHI_C1Q_RS_UNTOUCHED_FREEZE_v1.0.md`;
+- tool `NSD_vNext/engine/tools/probe_c1q_rs_untouched.py`;
+- workflow `.github/workflows/nsd-c1q-rs-untouched.yml`.
+
+Expected merged result:
+- exactly 96 rate-level rows and 48 fine/coarse pairs;
+- strict non-worsening 96/96;
+- lower NLL in multiple unseen cells, seeds, and rates rather than one isolated realization;
+- median absolute chi error approximately 0.04947 for legacy C1Q versus 0.02990 for C1Q-RS;
+- median absolute g error approximately 0.19264 versus 0.14159;
+- median absolute natural-frequency error approximately 1.08216 Hz versus 0.75923 Hz;
+- no empirical scientific threshold, biological prevalence claim, C-family membership claim, production-estimator promotion, or real-EEG local-chi license.
+
+Interpretation: passing V24 supports C1Q-RS as the preferred **qualification search implementation** for future C-family work. It does not promote the C1Q likelihood family or establish semantic admission.
