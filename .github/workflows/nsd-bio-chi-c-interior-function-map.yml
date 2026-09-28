@@ -27,6 +27,10 @@ jobs:
   preflight:
     runs-on: ubuntu-latest
     timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [0, 5, 10, 15]
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -47,18 +51,19 @@ jobs:
           print("scipy", scipy.__version__)
           PY
 
-      - name: Run frozen mechanical preflight
+      - name: Run frozen mechanical preflight cell
         working-directory: NSD_vNext/engine
         run: |
           python tools/probe_c_interior_function_map.py \
             --mode preflight \
-            --output-dir ../../bio-chi-function-map/preflight
+            --cell-index ${{ matrix.cell }} \
+            --output-dir ../../bio-chi-function-map/preflight-cell-${{ matrix.cell }}
 
-      - name: Upload preflight artifact
+      - name: Upload preflight cell artifact
         uses: actions/upload-artifact@v4
         with:
-          name: nsd-bio-chi-c-function-map-preflight
-          path: bio-chi-function-map/preflight/
+          name: nsd-bio-chi-c-function-map-preflight-cell-${{ matrix.cell }}
+          path: bio-chi-function-map/preflight-cell-${{ matrix.cell }}/
           if-no-files-found: error
 
   full-map:
@@ -68,7 +73,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard: [0, 1, 2, 3]
+        cell: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -83,19 +88,19 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e NSD_vNext/engine
 
-      - name: Run frozen Function Map shard
+      - name: Run frozen Function Map cell
         working-directory: NSD_vNext/engine
         run: |
           python tools/probe_c_interior_function_map.py \
             --mode full \
-            --shard ${{ matrix.shard }} \
-            --output-dir ../../bio-chi-function-map/shard-${{ matrix.shard }}
+            --cell-index ${{ matrix.cell }} \
+            --output-dir ../../bio-chi-function-map/cell-${{ matrix.cell }}
 
-      - name: Upload Function Map shard
+      - name: Upload Function Map cell
         uses: actions/upload-artifact@v4
         with:
-          name: nsd-bio-chi-c-function-map-shard-${{ matrix.shard }}
-          path: bio-chi-function-map/shard-${{ matrix.shard }}/
+          name: nsd-bio-chi-c-function-map-cell-${{ matrix.cell }}
+          path: bio-chi-function-map/cell-${{ matrix.cell }}/
           if-no-files-found: error
 
   merge:
@@ -119,15 +124,15 @@ jobs:
       - name: Download Function Map shards
         uses: actions/download-artifact@v4
         with:
-          pattern: nsd-bio-chi-c-function-map-shard-*
-          path: bio-chi-function-map/all-shards
+          pattern: nsd-bio-chi-c-function-map-cell-*
+          path: bio-chi-function-map/all-cells
 
       - name: Merge and summarize frozen Function Map
         working-directory: NSD_vNext/engine
         run: |
           python tools/probe_c_interior_function_map.py \
             --mode merge \
-            --input-dir ../../bio-chi-function-map/all-shards \
+            --input-dir ../../bio-chi-function-map/all-cells \
             --output-dir ../../bio-chi-function-map/summary
 
       - name: Upload complete Function Map
