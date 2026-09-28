@@ -918,3 +918,71 @@ The combined map asks whether independent consequences of misspecification move 
 2. Audit whether colored and genuine multimode truths separate from C interiors across multiple independent diagnostic channels.
 3. If they do, design a prospective calibration packet without selecting a cutoff from these same rows.
 4. If they do not, advance to an explicit higher-order/memory comparator before any N-B1 promotion decision.
+
+
+## 20.2 Combined Structural-Predictive Refusal Result
+
+**Status:** COMPLETE / NO CLEAN REFUSAL SEPARATOR  
+**Canonical postresult:** \`NSD_vNext/docs/COMBINED_STRUCTURAL_PREDICTIVE_REFUSAL_POSTRESULT_v0.1.md\`
+
+### What changed
+
+The combined diagnostic strategy was tested on untouched holdout data and **did not produce a clean finite-sample refusal signature for the colored-process extra-pole truth**.
+
+Against pooled C-interior controls, threshold-free rank AUC for the colored truth was approximately:
+- C1Q held-out NLL per sample: 0.037;
+- C1Q innovation max absolute autocorrelation: 0.444;
+- D1Q held-out NLL per sample: 0.037;
+- D1Q innovation max absolute autocorrelation: 0.444;
+- D1Q-minus-C1Q holdout NLL: 0.444;
+- Hankel s3/s2: 0.407;
+- normalized order-two recurrence hold-lag RMS: 0.482.
+
+The colored truth therefore did not move monotonically away from valid C interiors across these diagnostics.
+
+The population root cause is now clearer: the extra real pole is structurally genuine but weak in the covariance-Hankel spectrum. For the frozen analytic colored law, a 6x6 population Hankel matrix has approximately:
+- s1 = 2.0123;
+- s2 = 0.7020;
+- s3 = 0.001692;
+- s3/s2 = 0.002410;
+- s3/s1 = 0.000841.
+
+Finite-sample noise can therefore obscure the third structural component even though exact rank theory remains correct.
+
+### Why it matters
+
+The shortcut
+
+\[
+\text{several weak diagnostics}
+\Rightarrow
+\text{reliable structural-order gate}
+\]
+
+is now rejected.
+
+The correct next question is explicit **nested recurrence-order comparison** on untouched holdout data, followed by an explicit likelihood-based higher-order/memory comparator if recurrence order still overlaps.
+
+### What this does not license
+
+- no real-EEG local chi;
+- no C1Q or D1Q promotion;
+- no structural-order threshold;
+- no biological memory cutoff;
+- no A2 physical-mode interpretation;
+- no disorder opening.
+
+### Threshold impact
+
+No threshold was frozen, revised, or retired.
+
+## 20.3 Active Qualification Experiment: Nested Recurrence Order
+
+**Status:** LAUNCHED / RESULT PENDING  
+**Preflight:** \`NSD_vNext/docs/NESTED_RECURRENCE_ORDER_COMPARATOR_PREFLIGHT_v0.1.md\`  
+**Probe:** \`NSD_vNext/engine/tools/probe_nested_recurrence_order.py\`  
+**Workflow:** \`.github/workflows/nsd-nested-recurrence-order.yml\`
+
+The experiment fits order-2, order-3, and order-4 covariance recurrences on training covariance and scores their frozen predictions on untouched holdout covariance. The target pattern is order-3 improvement for colored extra-pole truth without comparable improvement for true order-2 controls, and order-4 improvement for genuine two-mode truth.
+
+No cutoff is selected from this experiment. If improvement distributions still overlap materially, the next safe move is an explicit likelihood-based higher-order/memory comparator rather than threshold tuning.
