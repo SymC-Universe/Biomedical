@@ -44,3 +44,4 @@ jobs:
         working-directory: NSD_vNext/engine
         run: |
           pytest -q tests/test_continuous_lineage_rs_contracts.py
+# Workflow-registration trigger marker; no scientific-plan change.
