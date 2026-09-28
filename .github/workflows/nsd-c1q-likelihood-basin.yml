@@ -107,3 +107,4 @@ jobs:
           name: nsd-c1q-likelihood-basin-complete
           path: c1q-basin/summary/
           if-no-files-found: error
+# Workflow-registration trigger marker; no scientific-plan change.
