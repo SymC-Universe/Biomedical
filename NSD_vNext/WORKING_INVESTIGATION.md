@@ -68,19 +68,19 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 
 ## 5. Active Plan and Adversarial Plan Qualification
 
-- **Completed plan:** untouched C1Q-RS qualification
+- **Active plan / scientific route:** repeated-realization C1Q-RS uncertainty map under correct C-family specification
 - **APQ level:** `APQ-2 SUBSTANTIAL`
-- **Plan status:** `COMPLETE / IMPLEMENTATION-LEVEL QUALIFICATION SUPPORTED`
-- **Plan Packet:** `NSD_vNext/docs/BIO_CHI_C1Q_RS_UNTOUCHED_PLAN_v0.1.md`
-- **Freeze:** `NSD_vNext/docs/BIO_CHI_C1Q_RS_UNTOUCHED_FREEZE_v1.0.md`
-- **Postresult:** `NSD_vNext/docs/BIO_CHI_C1Q_RS_UNTOUCHED_POSTRESULT_v1.0.md`
-- **Search supersession:** `NSD_vNext/docs/BIO_CHI_C1Q_RS_SEARCH_SUPERSESSION_v1.0.md`
-- **Source-of-record run:** `36371426674`
-- **Complete artifact:** `10949372282`
-- **Digest:** `sha256:7cfa8b5bda2e72ada855fda2b1afd6b9db724d6b86a9662173cb5a549820d946`
-- **Implementation disposition:** C1Q-RS is preferred for new C-family qualification runs; legacy C1Q is preserved for historical reproduction/regression.
-- **Semantic disposition:** unchanged. Fit quality does not establish C membership; real EEG remains unlicensed.
-- **Next plan gate:** uncertainty/finite-sample calibration of the now-qualified C1Q-RS search route before any empirical admission tolerance is considered.
+- **Plan status:** `QUALIFIED_FROZEN / IMPLEMENTED / CI REGISTRATION PENDING`
+- **Plan Packet:** `NSD_vNext/docs/BIO_CHI_C1Q_RS_UNCERTAINTY_MAP_PLAN_v0.2.md`
+- **APQ ledger:** `NSD_vNext/docs/BIO_CHI_C1Q_RS_UNCERTAINTY_APQ_LEDGER_v0.1.md`
+- **Freeze:** `NSD_vNext/docs/BIO_CHI_C1Q_RS_UNCERTAINTY_MAP_FREEZE_v1.0.md`
+- **Implementation:** `NSD_vNext/engine/tools/probe_c1q_rs_uncertainty_map.py`
+- **Workflow:** `.github/workflows/nsd-c1q-rs-uncertainty-map.yml`
+- **Frozen design:** 8 new C truths x 12 new realization seeds x 2 rates = 192 rate-level fits; 60 s at 256 Hz with exact same-path 128 Hz decimation
+- **Primary output:** empirical estimator sampling distributions for chi, g, and natural frequency; row-level numerical-boundary/optimizer diagnostics retained
+- **Claim ceiling:** estimator sampling uncertainty under correct specification only; no model uncertainty, biological prevalence, production promotion, semantic membership, threshold, or real-EEG admission
+- **Current execution state:** workflow files are committed; GitHub connector has not yet exposed an inspectable run for the newly introduced workflow
+- **Next plan gate:** two-cell/two-seed mechanical preflight, then full eight-cell execution without scientific retuning
 
 ## 6. Active Hold or Blocker
 
@@ -125,11 +125,11 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 
 ## 8. Next Exact Action
 
-- **Next action:** construct, adversarially qualify, freeze, and execute a repeated-realization C1Q-RS uncertainty map over a bounded representative C qualification subset.
-- **Why this is next:** search-basin failure is no longer the dominant implementation defect. The remaining local-coordinate problem is inferential: finite-sample dispersion and conditioning must be characterized before any uncertainty-aware admission or predictive-closure tolerance can be frozen.
-- **Expected output / decision:** empirical sampling distributions for recovered (chi), (g), and natural frequency across multiple truths/rates; identification of parameter regions where estimator dispersion is ordinary versus intrinsically weak/unstable; no biological prevalence or admission threshold.
-- **What must remain frozen while it runs:** C1Q-RS code, selected qualification truths, seed list, sampling/duration, output metrics, no-threshold interpretation, and semantic claim ceiling.
-- **Stop / refusal condition:** mechanical/provenance failure or a scientifically material pattern showing that the intended uncertainty design cannot distinguish estimator variability from design-induced artifacts.
+- **Next action:** observe/verify the newly registered uncertainty workflow; run the frozen two-cell/two-seed mechanical preflight, then the full uncertainty map if mechanically valid
+- **Why this is next:** C1Q-RS search-route generalization is now prospectively supported; finite-sample estimator uncertainty is the next unresolved local-coordinate gate before any uncertainty-aware admission or predictive-closure tolerance
+- **Expected output / decision:** 192 row-level fits and 96 fine/coarse pairs with complete empirical sampling distributions, per-cell/rate dispersion summaries, numerical-boundary counts, and same-path rate sensitivity
+- **What must remain frozen while it runs:** eight truth coordinates, twelve seeds, C1Q-RS implementation, duration/rates, row fields, summary rules, numerical-boundary diagnostic, no-threshold interpretation, and semantic claim ceiling
+- **Stop / refusal condition:** mechanical/provenance failure or a scientifically material pattern showing that the map cannot distinguish ordinary estimator sampling dispersion from repeated optimization/boundary pathology
 - **User intervention required:** `no`
 
 ## 9. Resume Contract
@@ -608,3 +608,49 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Next action:** repeated-realization uncertainty calibration using C1Q-RS.
 - **Why next:** finite-sample uncertainty is now the dominant unresolved N-B1 estimation issue before any empirical admission tolerance.
 - **Provenance pointer:** postresult and supersession records committed after the run.
+
+
+### 2026-09-27 - PROMOTION - C1Q-RS becomes preferred qualification search implementation
+
+- **Lifecycle Stage:** Stage 3
+- **Entry type:** `PROMOTION`
+- **Source artifact / evidence identity:** untouched run `36371426674`, artifact `10949372282`, digest `sha256:7cfa8b5bda2e72ada855fda2b1afd6b9db724d6b86a9662173cb5a549820d946`; supersession record `BIO_CHI_C1Q_RS_SEARCH_SUPERSESSION_v1.0.md`
+- **Observed / decided:** untouched evidence satisfied the frozen implementation-promotion rule. Strict non-worsening held 96/96, lower-NLL rescue generalized across multiple unseen cells/seeds/rates, and no reproducible new failure mechanism appeared.
+- **Scientific interpretation:** C1Q-RS supersedes legacy C1Q only as the preferred qualification search route.
+- **Alternative explanation / uncertainty:** the C1Q likelihood family and semantic C-membership problem remain independently unresolved.
+- **Impact on claim / novelty / prediction:** no biological claim promoted.
+- **Freeze impact:** untouched qualification completed without material deviation.
+- **Status impact:** implementation-level supersession active.
+- **Next action:** uncertainty mapping with C1Q-RS.
+- **Why next:** optimizer search is no longer the primary bottleneck.
+- **Provenance pointer:** postresult commit `59c3cc4efba43fd85037ba8e9550c9384d0da88e`; supersession commit `6586fff0884914f66d1a808659c9b2c155c3d536`.
+
+### 2026-09-27 - PLAN_FREEZE - Repeated-realization C1Q-RS uncertainty map frozen
+
+- **Lifecycle Stage:** Stage 3
+- **Entry type:** `PLAN_FREEZE`
+- **Source artifact / evidence identity:** Plan v0.2 commit `d38d512c92db80064a06ec5b3f59c00fdded0d3e`; APQ ledger commit `3d805a031d1974869fcfe8b2b473621abbbaa5c4`; freeze commit `7d47b8f2f35c6d92627e08aeac1c7d4e84f40565`
+- **Observed / decided:** eight untouched truths, twelve untouched seeds, both rates, outputs, and numerical-boundary diagnostic were frozen before execution.
+- **Scientific interpretation:** map targets estimator sampling behavior under correct C specification, not biological/model uncertainty.
+- **Alternative explanation / uncertainty:** eight truth locations do not support causal cross-parameter laws; 12 seeds provide descriptive empirical distributions only.
+- **Impact on claim / novelty / prediction:** none before results.
+- **Freeze impact:** active.
+- **Status impact:** execution authorized after mechanical preflight.
+- **Next action:** workflow registration and preflight.
+- **Why next:** GOM scale-up gate.
+- **Provenance pointer:** files/commits above.
+
+### 2026-09-27 - MECHANICAL - Uncertainty workflow implemented; CI visibility pending
+
+- **Lifecycle Stage:** Stage 3
+- **Entry type:** `MECHANICAL`
+- **Source artifact / evidence identity:** tool commit `eed51a8db757bf459ce7f227c9e2865da159e655`; workflow registration-trigger commit `f70751773eb03e88e4f1c01c5458fa854fbc6d79`
+- **Observed / decided:** frozen tool and workflow are committed. The GitHub connector has not yet exposed a workflow run for the newly introduced workflow.
+- **Scientific interpretation:** no scientific outcome exists yet; this is execution-state only.
+- **Alternative explanation / uncertainty:** consistent with prior new-workflow registration lag; local container still cannot resolve github.com.
+- **Impact on claim / novelty / prediction:** none.
+- **Freeze impact:** none.
+- **Status impact:** active, no scientific hold.
+- **Next action:** continue safe CI visibility checks and run preflight when exposed.
+- **Why next:** execute frozen plan without altering science.
+- **Provenance pointer:** commits above.
