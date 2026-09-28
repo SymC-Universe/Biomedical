@@ -1,0 +1,137 @@
+name: NSD Bio Chi C-Interior Function Map
+
+on:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - "NSD_vNext/engine/tools/probe_c_interior_function_map.py"
+      - "NSD_vNext/docs/BIO_CHI_C_INTERIOR_FUNCTION_MAP_PLAN_PACKET_v0.2.md"
+      - "NSD_vNext/docs/BIO_CHI_C_INTERIOR_FUNCTION_MAP_PLAN_FREEZE_v1.0.md"
+      - ".github/workflows/nsd-bio-chi-c-interior-function-map.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "NSD_vNext/engine/tools/probe_c_interior_function_map.py"
+      - "NSD_vNext/docs/BIO_CHI_C_INTERIOR_FUNCTION_MAP_PLAN_PACKET_v0.2.md"
+      - "NSD_vNext/docs/BIO_CHI_C_INTERIOR_FUNCTION_MAP_PLAN_FREEZE_v1.0.md"
+      - ".github/workflows/nsd-bio-chi-c-interior-function-map.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install qualification engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+          python --version
+          python - <<'PY'
+          import numpy, scipy
+          print("numpy", numpy.__version__)
+          print("scipy", scipy.__version__)
+          PY
+
+      - name: Run frozen mechanical preflight
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_c_interior_function_map.py \
+            --mode preflight \
+            --output-dir ../../bio-chi-function-map/preflight
+
+      - name: Upload preflight artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-bio-chi-c-function-map-preflight
+          path: bio-chi-function-map/preflight/
+          if-no-files-found: error
+
+  full-map:
+    needs: preflight
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3]
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install qualification engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+
+      - name: Run frozen Function Map shard
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_c_interior_function_map.py \
+            --mode full \
+            --shard ${{ matrix.shard }} \
+            --output-dir ../../bio-chi-function-map/shard-${{ matrix.shard }}
+
+      - name: Upload Function Map shard
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-bio-chi-c-function-map-shard-${{ matrix.shard }}
+          path: bio-chi-function-map/shard-${{ matrix.shard }}/
+          if-no-files-found: error
+
+  merge:
+    needs: full-map
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install qualification engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+
+      - name: Download Function Map shards
+        uses: actions/download-artifact@v4
+        with:
+          pattern: nsd-bio-chi-c-function-map-shard-*
+          path: bio-chi-function-map/all-shards
+
+      - name: Merge and summarize frozen Function Map
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_c_interior_function_map.py \
+            --mode merge \
+            --input-dir ../../bio-chi-function-map/all-shards \
+            --output-dir ../../bio-chi-function-map/summary
+
+      - name: Upload complete Function Map
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-bio-chi-c-function-map-complete
+          path: bio-chi-function-map/summary/
+          if-no-files-found: error
