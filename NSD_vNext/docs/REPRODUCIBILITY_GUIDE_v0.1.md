@@ -704,3 +704,32 @@ Expected merged result:
 - no confidence interval, biological prevalence, semantic membership, production-estimator promotion, scientific threshold, or real-EEG admission.
 
 Interpretation: V25 is an empirical sampling-distribution map under known truth. It motivates a later single-series uncertainty method but does not itself define an admission tolerance.
+
+
+## V26. Reproduce the single-series uncertainty-method comparison
+
+[CLAIM] Profile likelihood, local physical-coordinate Hessian curvature, and fitted-model parametric bootstrap behave differently across compact, weak-information, and boundary/nonregular C1Q-RS regimes, with profile likelihood providing the most robust single-record practical-identifiability geometry.
+
+Source of record:
+- workflow run `36373507093`;
+- complete artifact `10950297393`;
+- digest `sha256:d736f1c04196efd95bb3949a8330ce4552a978ff5196a72f52c106c05e398572`;
+- plan `NSD_vNext/docs/BIO_CHI_SINGLE_SERIES_UNCERTAINTY_METHOD_PLAN_v0.2.md`;
+- freeze `NSD_vNext/docs/BIO_CHI_SINGLE_SERIES_UNCERTAINTY_METHOD_FREEZE_v1.0.md`;
+- postresult `NSD_vNext/docs/BIO_CHI_SINGLE_SERIES_UNCERTAINTY_METHOD_POSTRESULT_v1.0.md`;
+- tool `NSD_vNext/engine/tools/probe_single_series_uncertainty_methods.py`;
+- workflow `.github/workflows/nsd-single-series-uncertainty-methods.yml`.
+
+Reference repeated-realization map:
+- run `36372559076`;
+- artifact `10949349324`;
+- digest `sha256:7331b6781838d3cd4f97f68ecb8dbc301035bfa7cd0f16454ddd80169c16d194`.
+
+Expected source-of-record behavior:
+- compact cell 1: positive-definite Hessian with chi SE roughly tracking bootstrap and known-truth repeated-realization dispersion;
+- cell 0: regular profile/Hessian behavior with moderate realization dependence;
+- cell 6 coarse: broad/open high-chi profile geometry, large Hessian SE, and broad bootstrap/known-truth dispersion;
+- cell 2 coarse: boundary/nonregular optimum, Hessian refusal, profile open toward the high-chi boundary, and fitted-model bootstrap concentrated near the pathological boundary branch rather than reproducing the broader known-truth sampling distribution;
+- no LR cutoff, confidence level, admission threshold, production promotion, biological prevalence, C-membership, or real-EEG local-chi claim.
+
+Interpretation: V26 supports profile likelihood as the primary P0-Q single-record practical-identifiability diagnostic. Hessian/Fisher curvature remains a regular-interior secondary diagnostic. Fitted-model bootstrap remains conditional secondary evidence and cannot self-license a boundary/nonregular fit.
