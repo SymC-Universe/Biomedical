@@ -1,8 +1,10 @@
 # Bio Chi Working Scientific State
 
-**Status:** ACTIVE LIVING SCIENTIFIC RECORD  
+> **SUPERSEDED AS THE PRIMARY LIVE RECORD BY GOM v0.8.8.** The canonical current-state and append-only development record is `NSD_vNext/WORKING_INVESTIGATION.md`. This document is retained as the detailed pre-v0.8.8 scientific synthesis and must not be used alone to determine the current lifecycle gate, hold state, P0-N/A0 status, APQ status, or next executable scientific action.
+
+**Status:** HISTORICAL DETAILED SCIENTIFIC SYNTHESIS / SUPERSEDED AS LIVE RECORD  
 **Date established:** 27 September 2026  
-**Program authority:** SymC General Operations Manual v0.8.6  
+**Original program authority:** SymC General Operations Manual v0.8.6; current authority is v0.8.8  
 **Working repository:** \`SymC-Universe/Biomedical\`  
 **Working branch:** \`nsd-rebuild-gom-v0.8.0\`  
 **Last science head reconciled before creation of this file:** \`c849f4e9dd80866a98afcc7a6ac526918a249961\`  
