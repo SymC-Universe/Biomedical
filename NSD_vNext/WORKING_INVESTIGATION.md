@@ -68,20 +68,20 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 
 ## 5. Active Plan and Adversarial Plan Qualification
 
-- **Active plan / scientific route:** bounded P0-Q root-cause diagnostic on the completed Function Map's pathological C1Q rows
+- **Active plan / scientific route:** APQ-1 frozen C1Q likelihood-basin root-cause diagnostic on all 48 rate-level rows from the eight Function Map boundary-collapse cells
 - **APQ level:** \`APQ-2 SUBSTANTIAL\`
 - **Plan status:** \`QUALIFIED_FROZEN\`
 - **Plan Packet identity / path / commit:** \`NSD_vNext/docs/BIO_CHI_C_INTERIOR_FUNCTION_MAP_PLAN_PACKET_v0.2.md\`, commit \`45d81671bc862437c92d12e79b6eef3d8faf18d2\`
-- **Adversarial first-pass status:** two role-isolated passes complete; same-cognition limitation recorded
+- **Adversarial first-pass status:** one APQ-1 role-isolated adversarial pass complete; same-cognition limitation recorded
 - **Unresolved BLOCKER objections:** none
 - **Unresolved MATERIAL objections:** none
 - **Objection-ledger identity:** \`NSD_vNext/docs/BIO_CHI_C_INTERIOR_FUNCTION_MAP_APQ_LEDGER_v0.1.md\`
 - **Plan Delta identity:** \`NSD_vNext/docs/BIO_CHI_C_INTERIOR_FUNCTION_MAP_PLAN_DELTA_v0.1.md\`
-- **Qualified plan version:** v0.3
-- **Freeze timestamp / identifier / hash:** 27 September 2026; freeze record commit \`df71b99a730355a0533cb8a05a3899206fdfbe77\`
+- **Qualified plan version:** likelihood-basin v0.1
+- **Freeze timestamp / identifier / hash:** 27 September 2026; `NSD_vNext/docs/BIO_CHI_C1Q_LIKELIHOOD_BASIN_FREEZE_v1.0.md`, commit `6a2c9af14ce7de64422a33347f98837cad37dcf1`
 - **Design adequacy status:** \`NOT_APPLICABLE\` for P0-D synthetic mapping
 - **Masking / outcome-exposure status:** exact prior reference cells already viewed and excluded from the new frozen grid; new map is exploratory, not confirmation
-- **Next plan gate:** freeze a bounded root-cause diagnostic comparing truth-coordinate NLL, selected-fit NLL, and truth-seeded local optimization on pathological rows
+- **Next plan gate:** execute the frozen 48-row basin diagnostic and perform the post-execution deviation audit before interpreting the mechanism
 
 ## 6. Active Hold or Blocker
 
@@ -90,7 +90,7 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Last safe scientific state:** APQ-qualified plan freeze at \`df71b99a730355a0533cb8a05a3899206fdfbe77\`
 - **Affected claims / work that must not advance:** real-EEG local \(\chi\), estimator promotion, P1 confirmation, and empirical thresholds remain outside the current plan
 - **Unblocking criterion:** n/a
-- **First exact resume action:** construct and qualify the bounded C1Q likelihood-basin root-cause diagnostic
+- **First exact resume action:** execute the frozen C1Q likelihood-basin diagnostic
 - **Required user action, if any:** none
 - **Continuity pointers:** Function Map Plan Packet v0.3; freeze v1.1; workflow run 36368579380; artifact 10948327278; Function Map postresult v1.0; V20 reproducibility section
 
@@ -126,22 +126,22 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 
 ## 8. Next Exact Action
 
-- **Next action:** implement and run the four-cell, one-seed mechanical preflight from the frozen Function Map plan
-- **Why this is next:** the P0-N/A0 and APQ gates are closed; GOM scale-up rules require cheap mechanical validation before the full 16-cell x 3-seed map
-- **Expected output / decision:** confirm exact design identity, covariance validity, alias safety, C1Q execution, generic recurrence diagnostic, environment capture, schema serialization, and sentinel comparator execution
-- **What must remain frozen while it runs:** all 16 design coordinates, seeds, sampling, duration, estimator family, sentinel set, output schema, claim ceiling, and no-threshold rule
-- **Stop / refusal condition:** stop for shared implementation/runtime defect, invalid truth covariance, alias violation, design-identity mismatch, or artifact/reproducibility failure; poor scientific recovery is preserved and does not retune the plan
+- **Next action:** execute the frozen C1Q likelihood-basin root-cause diagnostic on the immutable Function Map artifact
+- **Why this is next:** the Function Map showed reproducible C1Q boundary collapse while the independent recurrence diagnostic often retained pole information; direct likelihood-basin comparison is the cheapest discriminating test between search failure, finite-sample objective geometry, and practical weak identification
+- **Expected output / decision:** source-NLL reproduction plus generating-coordinate, selected-coordinate, truth-seeded-local, and selected-polish NLL/parameter comparisons for all 48 rows
+- **What must remain frozen while it runs:** source artifact/run identity, eight source cells, all 48 rate-level rows, C1Q likelihood, raw parameter box, mechanical NLL reproduction tolerance, no-threshold claim ceiling
+- **Stop / refusal condition:** source artifact NLL cannot be reproduced within the frozen mechanical tolerance, regenerated truth/path identity fails, or truth coordinates are not representable in the declared C1Q domain
 - **User intervention required:** \`no\`
 
 ## 9. Resume Contract
 
-- **Start from:** plan freeze commit \`df71b99a730355a0533cb8a05a3899206fdfbe77\`
-- **Exact file(s):** \`NSD_vNext/docs/BIO_CHI_C_INTERIOR_FUNCTION_MAP_PLAN_PACKET_v0.2.md\`; C1Q source; forthcoming preflight tool/workflow
+- **Start from:** likelihood-basin freeze commit `6a2c9af14ce7de64422a33347f98837cad37dcf1`
+- **Exact file(s):** likelihood-basin plan/APQ/freeze; Function Map artifact `10948327278`; current C1Q likelihood implementation
 - **Exact command(s) / script(s):** to be added mechanically from the frozen plan before execution
 - **Required environment / dependency:** Python 3.11; NumPy; SciPy; repository branch above
 - **Required dataset/source identity:** simulated C-family known truths only; no real EEG
 - **Last successful checkpoint:** complete Function Map workflow run 36368579380 and postresult v1.0
-- **Expected next output:** row-level truth-NLL vs selected-NLL vs truth-seeded-basin root-cause table and classification
+- **Expected next output:** 48-row likelihood-basin JSON/CSV, merged summary, postresult, deviation audit, and updated reproducibility section
 - **Do not repeat / do not overwrite:** do not rerun or reinterpret legacy reference cells as new confirmation; do not change frozen design after observing preflight scientific recovery
 
 ## 10. Key Artifact Map
@@ -464,3 +464,19 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Next action:** likelihood-basin diagnostic.
 - **Why next:** separates search failure from likelihood geometry with no new biological data.
 - **Provenance pointer:** Function Map postresult v1.0.
+
+
+### 2026-09-27 - PLAN_FREEZE - C1Q likelihood-basin root-cause diagnostic qualified
+
+- **Lifecycle Stage:** Stage 3
+- **Entry type:** \`PLAN_FREEZE\`
+- **Source artifact / evidence identity:** plan \`BIO_CHI_C1Q_LIKELIHOOD_BASIN_PLAN_v0.1.md\` commit \`aa0c7621a49a8eecbe44385faa62e7a0ed7df8c2\`; APQ pass commit \`d3424861067d6b8310a3dcee1006422fef6a56e5\`; freeze commit \`6a2c9af14ce7de64422a33347f98837cad37dcf1\`
+- **Observed / decided:** all 48 rate-level rows from the eight boundary-collapse cells will be compared using population-truth NLL, immutable stored selected-fit NLL, one truth-seeded local basin, and one selected-seeded numerical polish.
+- **Scientific interpretation:** the diagnostic can distinguish immediate search failure from realized likelihood geometry and practical weak-identification structure inside the current C1Q implementation.
+- **Alternative explanation / uncertainty:** the diagnostic reuses the same likelihood implementation and cannot independently validate the model family; truth coordinates need not be the finite-sample MLE.
+- **Impact on claim / novelty / prediction:** none yet; P0-Q root-cause only.
+- **Freeze impact:** APQ-1 diagnostic frozen; no scientific threshold added.
+- **Status impact:** execution authorized without user intervention.
+- **Next action:** implement and run the frozen 48-row diagnostic.
+- **Why next:** cheapest discriminating test before estimator redesign.
+- **Provenance pointer:** likelihood-basin plan/APQ/freeze records.
