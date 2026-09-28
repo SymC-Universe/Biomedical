@@ -527,3 +527,20 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Next action:** APQ-2 plan for C1Q-RS with full Function and Limit requalification.
 - **Why next:** search augmentation is now mechanistically justified, while semantic family failures remain unresolved and must not be erased.
 - **Provenance pointer:** postresult commit \`1cfdb4a1653cdb3c6e97d6b0fcd6ad793ed2e9a6\`.
+
+
+### 2026-09-27 - FAILURE / ROOT_CAUSE - C1Q-RS contract workflow lacked pytest
+
+- **Lifecycle Stage:** Stage 3
+- **Entry type:** \`FAILURE\`
+- **Source artifact / evidence identity:** workflow \`NSD C1Q-RS Mechanical Contracts\`, run \`36370615017\`, job \`108765992530\`
+- **Observed / decided:** workflow reached the test step but failed with exit code 127 because \`pytest\` was not installed.
+- **Root-cause class:** infrastructure/workflow dependency; candidate code and scientific contracts were not executed.
+- **Reproducibility / distribution:** deterministic for the workflow definition as written; not a scientific outlier.
+- **Scientific interpretation:** none. This failure contains no evidence about C1Q-RS behavior.
+- **Impact on claim / novelty / prediction:** none.
+- **Freeze impact:** none; APQ-qualified scientific design unchanged.
+- **Status impact:** mechanical repair required before scientific execution.
+- **Next action:** install pytest explicitly and invoke \`python -m pytest\`; do not retry the unchanged workflow.
+- **Why next:** fixes the identified transport/dependency defect without changing science.
+- **Provenance pointer:** workflow repair commit \`99cd975c7af23fc0cd03e0386e7086e6d7dd2370\`.
