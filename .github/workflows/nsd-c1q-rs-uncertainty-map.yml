@@ -1,0 +1,118 @@
+name: NSD C1Q-RS Uncertainty Map
+
+on:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - "NSD_vNext/engine/tools/probe_c1q_rs_uncertainty_map.py"
+      - "NSD_vNext/docs/BIO_CHI_C1Q_RS_UNCERTAINTY_MAP_PLAN_v0.2.md"
+      - "NSD_vNext/docs/BIO_CHI_C1Q_RS_UNCERTAINTY_MAP_FREEZE_v1.0.md"
+      - ".github/workflows/nsd-c1q-rs-uncertainty-map.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "NSD_vNext/engine/tools/probe_c1q_rs_uncertainty_map.py"
+      - "NSD_vNext/docs/BIO_CHI_C1Q_RS_UNCERTAINTY_MAP_PLAN_v0.2.md"
+      - "NSD_vNext/docs/BIO_CHI_C1Q_RS_UNCERTAINTY_MAP_FREEZE_v1.0.md"
+      - ".github/workflows/nsd-c1q-rs-uncertainty-map.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [0, 6]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install qualification engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+      - name: Run frozen uncertainty preflight
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_c1q_rs_uncertainty_map.py \
+            --mode cell \
+            --cell ${{ matrix.cell }} \
+            --preflight \
+            --output-dir ../../c1q-rs-uncertainty/preflight-${{ matrix.cell }}
+      - name: Upload preflight cell
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-c1q-rs-uncertainty-preflight-${{ matrix.cell }}
+          path: c1q-rs-uncertainty/preflight-${{ matrix.cell }}/
+          if-no-files-found: error
+
+  full:
+    needs: preflight
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install qualification engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+      - name: Run frozen uncertainty cell
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_c1q_rs_uncertainty_map.py \
+            --mode cell \
+            --cell ${{ matrix.cell }} \
+            --output-dir ../../c1q-rs-uncertainty/cell-${{ matrix.cell }}
+      - name: Upload uncertainty cell
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-c1q-rs-uncertainty-cell-${{ matrix.cell }}
+          path: c1q-rs-uncertainty/cell-${{ matrix.cell }}/
+          if-no-files-found: error
+
+  merge:
+    needs: full
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install qualification engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+      - name: Download uncertainty cells
+        uses: actions/download-artifact@v4
+        with:
+          pattern: nsd-c1q-rs-uncertainty-cell-*
+          path: c1q-rs-uncertainty/all-cells
+      - name: Merge uncertainty map
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_c1q_rs_uncertainty_map.py \
+            --mode merge \
+            --input-dir ../../c1q-rs-uncertainty/all-cells \
+            --output-dir ../../c1q-rs-uncertainty/complete
+      - name: Upload complete uncertainty map
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-c1q-rs-uncertainty-complete
+          path: c1q-rs-uncertainty/complete/
+          if-no-files-found: error
