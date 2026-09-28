@@ -68,7 +68,7 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 
 ## 5. Active Plan and Adversarial Plan Qualification
 
-- **Active plan / scientific route:** APQ-1 frozen truth-blind recurrence/covariance seed discriminating test for the C1Q search failure
+- **Active plan / scientific route:** APQ-2 qualification of a versioned C1Q-RS augmented search candidate that preserves all legacy C1Q starts and adds one truth-blind recurrence/covariance start when admissible
 - **APQ level:** \`APQ-2 SUBSTANTIAL\`
 - **Plan status:** \`QUALIFIED_FROZEN\`
 - **Plan Packet identity / path / commit:** `NSD_vNext/docs/BIO_CHI_C1Q_RECURRENCE_SEED_PLAN_v0.1.md`, commit `28cdc4231c979e3c98dad339b838ef53132c1a1b`
@@ -126,9 +126,9 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 
 ## 8. Next Exact Action
 
-- **Next action:** execute the frozen recurrence/covariance-seed local optimization on the same 48 root-cause rows
-- **Why this is next:** the likelihood-basin result shows the current multistart search misses better basins; the recurrence diagnostic often retains pole information, making a recurrence-derived start the cheapest truth-blind discriminating test
-- **Expected output / decision:** recurrence-seed admissibility/projection record and local NLL compared with immutable source-selected and truth-seeded basins for all 48 rows
+- **Next action:** adversarially qualify, implement, and test C1Q-RS first on the complete C-interior Function Map, then on the existing mandatory Limit Map controls
+- **Why this is next:** the recurrence-seed diagnostic recovered the lower likelihood basin in many failures without truth information, making search-route augmentation the cheapest causal repair; family-scope and memory/refusal controls must then be rerun because improved optimization cannot be allowed to masquerade as improved semantic validity
+- **Expected output / decision:** determine whether C1Q-RS removes the interior basin-collapse pathology while preserving explicit refusal/limit behavior on colored, multimode, D\\C, S\\D, and paired-sampling controls
 - **What must remain frozen while it runs:** 48 source rows, lag-12 recurrence/amplitude construction, projection rules, one local optimization, numerical equivalence tolerance, no estimator modification and no scientific threshold
 - **Stop / refusal condition:** source artifact identity mismatch or shared implementation defect; recurrence-seed refusal is a valid scientific outcome and does not stop the map
 - **User intervention required:** \`no\`
@@ -511,3 +511,19 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Next action:** implement and execute.
 - **Why next:** directly tests whether observable data can supply the missing basin information.
 - **Provenance pointer:** recurrence-seed plan/APQ/freeze.
+
+
+### 2026-09-27 - DEVELOPMENT - Truth-blind recurrence seed recovers many missed C1Q basins
+
+- **Lifecycle Stage:** Stage 3
+- **Entry type:** \`DEVELOPMENT\`
+- **Source artifact / evidence identity:** workflow \`36370056281\`, complete artifact \`10948891782\`, digest \`sha256:95a74a7d757e2f9afd0e37040414e66137a2825dbfa3780b8105a40be06da248\`; postresult \`BIO_CHI_C1Q_RECURRENCE_SEED_POSTRESULT_v1.0.md\`
+- **Observed / decided:** recurrence/covariance seed was admissible in 40/48 rows, beat the old selected C1Q solution in 26/48, and matched or beat the frozen truth-seeded basin within numerical tolerance in 32/40 admissible rows. Eight rows refused the seed and 18/40 admissible seeds required g projection.
+- **Scientific interpretation:** a data-derived start can recover much of the missed-basin information, especially at the coarse rate, but recurrence seeding is not universal and must augment rather than replace the legacy search.
+- **Alternative explanation / uncertainty:** recurrence and C1Q share a second-order assumption; success cannot establish C-family membership in unknown biology. Some admissible seeds remain inferior to the truth-seeded basin.
+- **Impact on claim / novelty / prediction:** justifies a versioned search-route candidate C1Q-RS for qualification only.
+- **Freeze impact:** no production estimator, biological threshold, or real-EEG admission changed.
+- **Status impact:** current C1Q search remains unqualified; C1Q-RS qualification branch opened.
+- **Next action:** APQ-2 plan for C1Q-RS with full Function and Limit requalification.
+- **Why next:** search augmentation is now mechanistically justified, while semantic family failures remain unresolved and must not be erased.
+- **Provenance pointer:** postresult commit \`1cfdb4a1653cdb3c6e97d6b0fcd6ad793ed2e9a6\`.
