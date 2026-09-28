@@ -424,7 +424,7 @@ Reference result:
 
 Interpretation: passing V17 demonstrates first-stage nuisance/model-order repair only. It does not promote C1Q, license real EEG, or establish adequate parameter uncertainty/refusal behavior.
 
-## V17. Map combined structural and predictive refusal evidence
+## V18. Map combined structural and predictive refusal evidence
 
 [CLAIM] Existing qualification-only one-mode candidates and untouched holdout diagnostics can be combined with structural-order diagnostics to test for a coherent refusal pattern without changing the production estimator or freezing an admission threshold.
 
@@ -448,3 +448,27 @@ Expected:
 - threshold-free distribution summaries and rank-AUC comparisons.
 
 Interpretation: V17 tests whether independent manifestations of misspecification form a reproducible refusal pattern. It does not define a numerical cutoff. If the known-truth distributions overlap materially, the correct result is continued refusal and stronger comparator development, not threshold tuning.
+
+
+## V19. Compare nested covariance recurrence order
+
+[CLAIM] Explicit order-2, order-3, and order-4 positive-lag covariance recurrences can be fit on training covariance and scored on untouched holdout covariance to test structural-order sensitivity without defining an admission threshold.
+
+Run:
+
+\`\`\`bash
+cd NSD_vNext/engine
+python tools/probe_nested_recurrence_order.py \
+  --output ../../nested-recurrence-order/nested_recurrence_order.json
+\`\`\`
+
+Expected:
+- status \`PREDECISION_CALIBRATION_ONLY\`;
+- \`licenses_real_eeg_local_chi=false\`;
+- \`defines_order_threshold=false\`;
+- \`changes_production_estimator=false\`;
+- order-2, order-3, and order-4 frozen holdout recurrence errors;
+- threshold-free improvement distributions from order 2 to 3 and order 3 to 4;
+- fine and deterministic coarse-decimated results for C interiors, D\\C, S\\D, colored extra-pole truth, and genuine two-mode truth.
+
+Interpretation: a useful result would be reproducible order-3 improvement specific to colored extra-pole truth and order-4 improvement specific to genuine two-mode truth. Material overlap preserves refusal and triggers explicit likelihood-based higher-order/memory comparator development rather than cutoff tuning.
