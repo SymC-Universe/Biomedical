@@ -573,3 +573,43 @@ Expected source-of-record result:
 - no estimator change, admission threshold, biological prevalence claim, or real-EEG license.
 
 Interpretation: the dominant boundary-collapse mechanism is inadequate C1Q multistart basin coverage, especially after decimation. The result is P0-Q root-cause evidence only and does not independently validate the C1Q likelihood family.
+
+
+## V22. Reproduce the truth-blind C1Q recurrence-seed rescue
+
+[CLAIM] A truth-blind seed constructed from positive-lag covariance recurrence plus a conditional C-family amplitude fit can recover the lower C1Q likelihood basin in many rows where the original multistart search failed, without changing the likelihood, estimator family, or scientific claim ceiling.
+
+Source root-cause artifact:
+- likelihood-basin run \`36369682759\`
+- artifact \`10948127976\`
+- digest \`sha256:f8d5c1eae3a38d8b8751190767e78e264c91c44a1edacaf85619a781e9e1a105\`
+
+Recurrence-seed workflow:
+- run \`36370056281\`
+- complete artifact \`10948891782\`
+- digest \`sha256:95a74a7d757e2f9afd0e37040414e66137a2825dbfa3780b8105a40be06da248\`
+
+Executable route:
+
+\`\`\`bash
+cd NSD_vNext/engine
+python tools/probe_c1q_recurrence_seed.py \
+  --mode cell \
+  --cell 15 \
+  --source-basin <path-to-c1q_likelihood_basin_complete.json> \
+  --output-dir ../../c1q-recurrence-seed/cell-15
+\`\`\`
+
+The workflow \`.github/workflows/nsd-c1q-recurrence-seed.yml\` executes all frozen cells and merges the result.
+
+Expected source-of-record result:
+- 48 total rate-level rows;
+- recurrence/covariance seed admissible in 40/48 rows;
+- explicit seed refusal in 8/48 rows;
+- recurrence-seeded local fit beats the immutable old C1Q solution in 26/48 rows;
+- recurrence-seeded local fit matches or beats the frozen truth-seeded basin within the numerical comparison tolerance in 32/40 admissible rows;
+- no A projection in admissible seeds;
+- g projection in 18/40 admissible seeds;
+- no estimator modification, scientific threshold, biological prevalence claim, or real-EEG admission.
+
+Interpretation: V22 establishes that observable covariance structure can recover the missed C1Q basin in a substantial fraction of failures, especially after decimation, but the seed is neither universally admissible nor a standalone replacement. It justifies qualification of an augmented search-route candidate that preserves every legacy C1Q start and adds the recurrence seed when admissible.
