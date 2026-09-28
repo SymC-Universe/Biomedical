@@ -39,9 +39,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install -e NSD_vNext/engine
+          python -m pip install pytest
 
       - name: Run C1Q-RS mechanical contracts
         working-directory: NSD_vNext/engine
         run: |
-          pytest -q tests/test_continuous_lineage_rs_contracts.py
+          python -m pytest -q tests/test_continuous_lineage_rs_contracts.py
 # Workflow-registration trigger marker; no scientific-plan change.
