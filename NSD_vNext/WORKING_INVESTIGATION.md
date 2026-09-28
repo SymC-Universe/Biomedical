@@ -34,7 +34,7 @@ P0-N now establishes that biological damping-ratio use, eigenvalue/Q-factor desc
 
 ### Latest scientific development
 
-The prospectively frozen untouched C1Q-RS qualification completed successfully in workflow run `36371426674`, artifact `10949372282`, digest `sha256:7cfa8b5bda2e72ada855fda2b1afd6b9db724d6b86a9662173cb5a549820d946`. Strict non-worsening passed 96/96 unseen rows. C1Q-RS found lower-NLL basins across multiple unseen cells, seeds, and both rates, reduced median and maximum recovery errors, and introduced no reproducible new failure class. Under the frozen promotion rule, C1Q-RS is now the preferred **qualification search implementation** for future C-family work. This is an implementation-level supersession only.
+The repeated-realization C1Q-RS uncertainty map completed in workflow run `36372559076`, artifact `10949349324`, digest `sha256:7331b6781838d3cd4f97f68ecb8dbc301035bfa7cd0f16454ddd80169c16d194`. All 192 fits completed. Median absolute chi error was approximately 0.01874, but uncertainty was strongly region-dependent. Most truth cells were compact; cell 6 showed broad interior sampling variability, and cell 2 showed the strongest instability with repeated boundary attraction, large g/frequency error, and large fine/coarse drift.
 
 ### Current interpretation and claim ceiling
 
@@ -68,19 +68,18 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 
 ## 5. Active Plan and Adversarial Plan Qualification
 
-- **Active plan / scientific route:** repeated-realization C1Q-RS uncertainty map under correct C-family specification
+- **Completed plan:** repeated-realization C1Q-RS uncertainty map
 - **APQ level:** `APQ-2 SUBSTANTIAL`
-- **Plan status:** `QUALIFIED_FROZEN / IMPLEMENTED / CI REGISTRATION PENDING`
+- **Plan status:** `COMPLETE / REGION-DEPENDENT ESTIMATOR UNCERTAINTY`
 - **Plan Packet:** `NSD_vNext/docs/BIO_CHI_C1Q_RS_UNCERTAINTY_MAP_PLAN_v0.2.md`
 - **APQ ledger:** `NSD_vNext/docs/BIO_CHI_C1Q_RS_UNCERTAINTY_APQ_LEDGER_v0.1.md`
 - **Freeze:** `NSD_vNext/docs/BIO_CHI_C1Q_RS_UNCERTAINTY_MAP_FREEZE_v1.0.md`
-- **Implementation:** `NSD_vNext/engine/tools/probe_c1q_rs_uncertainty_map.py`
-- **Workflow:** `.github/workflows/nsd-c1q-rs-uncertainty-map.yml`
-- **Frozen design:** 8 new C truths x 12 new realization seeds x 2 rates = 192 rate-level fits; 60 s at 256 Hz with exact same-path 128 Hz decimation
-- **Primary output:** empirical estimator sampling distributions for chi, g, and natural frequency; row-level numerical-boundary/optimizer diagnostics retained
-- **Claim ceiling:** estimator sampling uncertainty under correct specification only; no model uncertainty, biological prevalence, production promotion, semantic membership, threshold, or real-EEG admission
-- **Current execution state:** workflow files are committed; GitHub connector has not yet exposed an inspectable run for the newly introduced workflow
-- **Next plan gate:** two-cell/two-seed mechanical preflight, then full eight-cell execution without scientific retuning
+- **Postresult:** `NSD_vNext/docs/BIO_CHI_C1Q_RS_UNCERTAINTY_MAP_POSTRESULT_v1.0.md`
+- **Run:** `36372559076`
+- **Artifact:** `10949349324`
+- **Digest:** `sha256:7331b6781838d3cd4f97f68ecb8dbc301035bfa7cd0f16454ddd80169c16d194`
+- **Result:** compact estimator sampling behavior across most tested truths, with materially weaker regions at cells 2 and 6; no scientific threshold frozen
+- **Next plan gate:** compare standard single-series uncertainty methods against the repeated-realization truth map before constructing an uncertainty-aware admission/refusal gate
 
 ## 6. Active Hold or Blocker
 
@@ -125,12 +124,12 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 
 ## 8. Next Exact Action
 
-- **Next action:** observe/verify the newly registered uncertainty workflow; run the frozen two-cell/two-seed mechanical preflight, then the full uncertainty map if mechanically valid
-- **Why this is next:** C1Q-RS search-route generalization is now prospectively supported; finite-sample estimator uncertainty is the next unresolved local-coordinate gate before any uncertainty-aware admission or predictive-closure tolerance
-- **Expected output / decision:** 192 row-level fits and 96 fine/coarse pairs with complete empirical sampling distributions, per-cell/rate dispersion summaries, numerical-boundary counts, and same-path rate sensitivity
-- **What must remain frozen while it runs:** eight truth coordinates, twelve seeds, C1Q-RS implementation, duration/rates, row fields, summary rules, numerical-boundary diagnostic, no-threshold interpretation, and semantic claim ceiling
-- **Stop / refusal condition:** mechanical/provenance failure or a scientifically material pattern showing that the map cannot distinguish ordinary estimator sampling dispersion from repeated optimization/boundary pathology
-- **User intervention required:** `no`
+- **Next action:** complete the methods-control review of profile likelihood, parametric bootstrap, Fisher/Hessian, Bayesian, and practical-identifiability approaches for finite state-space uncertainty, then design the smallest prospective comparison against the repeated-realization source-of-truth map.
+- **Why this is next:** repeated realizations show that uncertainty is heterogeneous, but real biological data will usually provide one observed series. A defensible single-series uncertainty method is required before unstable local coordinates can be refused without arbitrary precision.
+- **Expected output / decision:** select or narrow candidate uncertainty procedures that can detect the cell-2 boundary/nonregular pattern and cell-6 weak-information pattern while remaining well behaved on compact cells.
+- **What must remain frozen while it runs:** C1Q-RS search implementation, uncertainty-map artifact, semantic claim ceiling, no-threshold rule, and real-EEG refusal.
+- **Stop / refusal condition:** a scientifically material methods tradeoff remains unresolved after literature/method comparison, especially if no candidate is defensible near both boundaries and weak-identification regions.
+- **User intervention required:** `no` unless that unresolved tradeoff occurs.
 
 ## 9. Resume Contract
 
@@ -654,3 +653,19 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Next action:** continue safe CI visibility checks and run preflight when exposed.
 - **Why next:** execute frozen plan without altering science.
 - **Provenance pointer:** commits above.
+
+
+### 2026-09-27 - RESULT - Repeated-realization uncertainty is region dependent
+
+- **Lifecycle Stage:** Stage 3
+- **Entry type:** `RESULT`
+- **Source artifact / evidence identity:** workflow run `36372559076`; artifact `10949349324`; digest `sha256:7331b6781838d3cd4f97f68ecb8dbc301035bfa7cd0f16454ddd80169c16d194`; postresult `BIO_CHI_C1Q_RS_UNCERTAINTY_MAP_POSTRESULT_v1.0.md`
+- **Observed / decided:** all 192 fits completed. Overall median absolute chi error was approximately 0.01874 and median g error approximately 0.09815, but the distribution was heterogeneous. Cells 0/1/3/4 were compact; cell 6 showed broad interior sampling variability; cell 2 showed repeated boundary attraction and the largest rate/frequency instability.
+- **Scientific interpretation:** uniform estimator uncertainty is rejected for the tested C envelope. Most of the tested interior is recoverable with compact sampling behavior, but some valid C truths are weak/nonregular at finite sample and require explicit uncertainty-aware refusal.
+- **Alternative explanation / uncertainty:** only eight truth locations were sampled; parameter-specific causal boundaries are not established.
+- **Impact on claim / novelty / prediction:** strengthens the need for an uncertainty layer in the admission architecture; no biological claim promoted.
+- **Freeze impact:** completed without material deviation.
+- **Status impact:** uncertainty-map gate complete.
+- **Next action:** compare standard single-series uncertainty methods against this source-of-truth map.
+- **Why next:** real data provide observed series, not repeated truth realizations.
+- **Provenance pointer:** postresult commit `a2e21b2b7a05deb8e3b30b0a31f3b955935573db`.
