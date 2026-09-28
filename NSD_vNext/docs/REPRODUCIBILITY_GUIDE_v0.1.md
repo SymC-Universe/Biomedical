@@ -676,3 +676,31 @@ Expected merged result:
 - no empirical scientific threshold, biological prevalence claim, C-family membership claim, production-estimator promotion, or real-EEG local-chi license.
 
 Interpretation: passing V24 supports C1Q-RS as the preferred **qualification search implementation** for future C-family work. It does not promote the C1Q likelihood family or establish semantic admission.
+
+
+## V25. Reproduce the C1Q-RS repeated-realization uncertainty map
+
+[CLAIM] Under correct C-family specification, C1Q-RS estimator sampling uncertainty is region dependent rather than uniform, with most tested truth cells compact and a minority showing broad or boundary-attracted finite-sample recovery.
+
+Source of record:
+- workflow run `36372559076`;
+- complete artifact `10949349324`;
+- digest `sha256:7331b6781838d3cd4f97f68ecb8dbc301035bfa7cd0f16454ddd80169c16d194`;
+- plan `NSD_vNext/docs/BIO_CHI_C1Q_RS_UNCERTAINTY_MAP_PLAN_v0.2.md`;
+- freeze `NSD_vNext/docs/BIO_CHI_C1Q_RS_UNCERTAINTY_MAP_FREEZE_v1.0.md`;
+- tool `NSD_vNext/engine/tools/probe_c1q_rs_uncertainty_map.py`;
+- workflow `.github/workflows/nsd-c1q-rs-uncertainty-map.yml`.
+
+Expected merged result:
+- 192 rate-level rows = 8 truths x 12 seeds x 2 rates;
+- 96 same-path fine/coarse pairs;
+- 192 successful C1Q-RS fits;
+- overall median absolute chi error approximately 0.01874;
+- overall median absolute g error approximately 0.09815;
+- overall median absolute natural-frequency error approximately 0.35167 Hz;
+- exactly three prospectively flagged numerical raw-boundary rows, all in cell 2;
+- compact recovery in cells 0, 1, 3, and 4;
+- broader region-dependent uncertainty in cells 2, 5, 6, and 7, with cell 2 the strongest instability;
+- no confidence interval, biological prevalence, semantic membership, production-estimator promotion, scientific threshold, or real-EEG admission.
+
+Interpretation: V25 is an empirical sampling-distribution map under known truth. It motivates a later single-series uncertainty method but does not itself define an admission tolerance.
