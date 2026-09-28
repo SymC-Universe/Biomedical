@@ -419,19 +419,34 @@ def pair_summary(
     }
 
 
-def cell_subset(mode: str, shard: int | None) -> list[tuple[int, float, float, float, float]]:
+def cell_subset(
+    mode: str,
+    shard: int | None,
+    cell_index: int | None,
+) -> list[tuple[int, float, float, float, float]]:
+    if cell_index is not None:
+        if cell_index not in range(len(CELLS)):
+            raise ValueError("cell_index must be 0..15")
+        if mode == "preflight" and cell_index not in PREFLIGHT_CELLS:
+            raise ValueError("preflight cell_index must be one of 0,5,10,15")
+        return [CELLS[cell_index]]
     if mode == "preflight":
         return [cell for cell in CELLS if cell[0] in PREFLIGHT_CELLS]
     if mode == "full":
         if shard is None or shard not in {0, 1, 2, 3}:
-            raise ValueError("full mode requires --shard 0..3")
+            raise ValueError("full mode requires --shard 0..3 when --cell-index is omitted")
         start = shard * 4
         return CELLS[start : start + 4]
     raise ValueError(mode)
 
 
-def run_map(mode: str, shard: int | None, output_dir: Path) -> dict[str, Any]:
-    cells = cell_subset(mode, shard)
+def run_map(
+    mode: str,
+    shard: int | None,
+    cell_index: int | None,
+    output_dir: Path,
+) -> dict[str, Any]:
+    cells = cell_subset(mode, shard, cell_index)
     seeds = [SEEDS[0]] if mode == "preflight" else SEEDS
 
     rows = []
@@ -503,6 +518,7 @@ def run_map(mode: str, shard: int | None, output_dir: Path) -> dict[str, Any]:
         "biological_prevalence_claim": False,
         "mode": mode,
         "shard": shard,
+        "cell_index": cell_index,
         "environment": environment_record(),
         "design": {
             "fine_sampling_rate_hz": FINE_FS,
@@ -522,7 +538,14 @@ def run_map(mode: str, shard: int | None, output_dir: Path) -> dict[str, Any]:
     }
 
     output_dir.mkdir(parents=True, exist_ok=True)
-    suffix = "preflight" if mode == "preflight" else f"shard_{shard}"
+    if cell_index is not None:
+        suffix = (
+            f"preflight_cell_{cell_index}"
+            if mode == "preflight"
+            else f"cell_{cell_index}"
+        )
+    else:
+        suffix = "preflight" if mode == "preflight" else f"shard_{shard}"
     json_path = output_dir / f"bio_chi_c_function_map_{suffix}.json"
     json_path.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
 
@@ -590,9 +613,9 @@ def stats(values) -> dict[str, Any]:
 
 
 def merge_results(input_dir: Path, output_dir: Path) -> dict[str, Any]:
-    files = sorted(input_dir.rglob("bio_chi_c_function_map_shard_*.json"))
-    if len(files) != 4:
-        raise RuntimeError(f"expected four shard JSON files, found {len(files)}")
+    files = sorted(input_dir.rglob("bio_chi_c_function_map_cell_*.json"))
+    if len(files) != 16:
+        raise RuntimeError(f"expected sixteen cell JSON files, found {len(files)}")
 
     payloads = [json.loads(path.read_text(encoding="utf-8")) for path in files]
     rows = [row for payload in payloads for row in payload["rows"]]
@@ -727,6 +750,7 @@ def main() -> int:
         required=True,
     )
     parser.add_argument("--shard", type=int)
+    parser.add_argument("--cell-index", type=int)
     parser.add_argument("--input-dir", type=Path)
     parser.add_argument("--output-dir", type=Path, required=True)
     args = parser.parse_args()
@@ -736,7 +760,7 @@ def main() -> int:
             raise ValueError("merge mode requires --input-dir")
         merge_results(args.input_dir, args.output_dir)
     else:
-        run_map(args.mode, args.shard, args.output_dir)
+        run_map(args.mode, args.shard, args.cell_index, args.output_dir)
     return 0
 
 
