@@ -93,3 +93,4 @@ jobs:
           name: nsd-c1q-rs-function-complete
           path: c1q-rs-function/summary/
           if-no-files-found: error
+# Workflow-registration trigger marker; no scientific-plan change.
