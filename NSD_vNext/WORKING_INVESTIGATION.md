@@ -89,8 +89,8 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Trigger:** n/a
 - **Last safe scientific state:** APQ-qualified plan freeze at \`df71b99a730355a0533cb8a05a3899206fdfbe77\`
 - **Affected claims / work that must not advance:** real-EEG local \(\chi\), estimator promotion, P1 confirmation, and empirical thresholds remain outside the current plan
-- **Unblocking criterion:** n/a
-- **First exact resume action:** implement the frozen mechanical preflight tool/workflow
+- **Unblocking criterion:** version the execution architecture so the legacy descriptive comparator cannot gate the core Function Map; run proportional APQ recheck; freeze the revised plan
+- **First exact resume action:** execute the revised C1Q + generic-recurrence mechanical preflight
 - **Required user action, if any:** none
 - **Continuity pointers:** Plan Packet v0.2; APQ ledger; Plan Delta; plan freeze; evidence intake; P0-N/A0 records
 
@@ -343,3 +343,42 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **What satisfied the unblocking criterion:** P0-N/A0 closure plus APQ-2 qualified/frozen Plan Packet v0.2.
 - **Does the previous freeze remain valid?** no P1 freeze existed; the new P0-D plan freeze is valid.
 - **First resumed scientific action:** frozen mechanical preflight.
+
+
+### 2026-09-27 - FAILURE - Frozen preflight runtime bottleneck isolated to legacy comparator
+
+- **Lifecycle Stage:** Stage 3 backward loop to Stage 2
+- **Entry type:** \`FAILURE\`
+- **Source artifact / evidence identity:** local mechanical execution of the committed frozen preflight logic from \`probe_c_interior_function_map.py\`; no scientific Function Map artifact produced
+- **Observed / decided:** cell 0 truth construction, C1Q fit, and generic recurrence diagnostic progressed, while the subsequent legacy A0/A1/A2 comparison did not complete within a 120 s run; a direct single-comparison timing attempt also failed to complete within 300 s in the local environment.
+- **Scientific interpretation:** this is a computation/plan-scalability failure in a descriptive comparator, not a failure of C-family truth construction, C1Q, or the Bio Chi hypothesis.
+- **Alternative explanation / uncertainty:** GitHub-hosted runtime may differ, but the frozen preflight currently lets a nonessential descriptive comparator dominate the gate. No scientific result was exposed that could motivate outcome-dependent redesign.
+- **Impact on claim / novelty / prediction:** none.
+- **Freeze impact:** \`freeze changed\` required because the execution architecture must be versioned before dependent work.
+- **Status impact:** active plan placed on \`MECHANICAL_HOLD\`; APQ reactivated proportionally.
+- **Next action:** revise the plan so preflight and core Function Map depend only on C1Q, generic recurrence, truth/alias checks, schema, and reproducibility; either defer or separately shard the legacy comparator so it cannot gate the map.
+- **Why next:** GOM scale-up requires cheap preflight and prevents a nonessential expensive dependency from blocking the principal qualified question.
+- **Provenance pointer:** \`probe_c_interior_function_map.py\`; local runtime trace recorded in current session.
+
+### 2026-09-27 - PLAN_HOLD - Function Map plan held for execution-architecture revision
+
+- **Lifecycle Stage:** Stage 2
+- **Entry type:** \`PLAN_HOLD\`
+- **Source artifact / evidence identity:** qualified Plan Packet v0.2 and runtime failure above
+- **Observed / decided:** no further frozen-plan science is executed until the comparator dependency is revised and requalified.
+- **Scientific interpretation:** plan science remains intact; execution architecture is not yet adequate.
+- **Alternative explanation / uncertainty:** none material.
+- **Impact on claim / novelty / prediction:** none.
+- **Freeze impact:** \`freeze changed\`
+- **Status impact:** \`MECHANICAL_HOLD\`
+- **Next action:** targeted Plan Delta + APQ recheck.
+- **Why next:** Section 15.4.10 reactivation after a material plan-execution change.
+- **Provenance pointer:** current working record.
+
+- **Hold class:** \`MECHANICAL_HOLD\`
+- **Hold trigger:** nonessential legacy sentinel comparator makes frozen mechanical preflight non-cheap and locally non-completing.
+- **Last safe scientific state:** APQ-qualified v0.2 plan prior to Function Map outcome exposure.
+- **Work prohibited while held:** core Function Map scientific execution and interpretation under v0.2.
+- **Unblocking criterion:** v0.3 execution plan, targeted APQ recheck, new freeze.
+- **First resume action:** revised mechanical preflight.
+- **Continuity pointers:** v0.2 Plan Packet, APQ ledger, Plan Delta, freeze record, implementation script.
