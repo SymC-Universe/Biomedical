@@ -69,19 +69,19 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 ## 5. Active Plan and Adversarial Plan Qualification
 
 - **Active plan / scientific route:** APQ-2 qualification of a versioned C1Q-RS augmented search candidate that preserves all legacy C1Q starts and adds one truth-blind recurrence/covariance start when admissible
-- **APQ level:** \`APQ-2 SUBSTANTIAL\`
-- **Plan status:** \`QUALIFIED_FROZEN\`
-- **Plan Packet identity / path / commit:** `NSD_vNext/docs/BIO_CHI_C1Q_RECURRENCE_SEED_PLAN_v0.1.md`, commit `28cdc4231c979e3c98dad339b838ef53132c1a1b`
+- **APQ level:** `APQ-2 SUBSTANTIAL`
+- **Plan status:** `QUALIFIED_FROZEN / MECHANICAL_GATE_PASSED`
+- **Plan Packet identity / path / commit:** `NSD_vNext/docs/BIO_CHI_C1Q_RS_QUALIFICATION_PLAN_v0.2.md`, commit `8b850a138ab307a206b68bfb799bb3ab383e2618`
 - **Adversarial first-pass status:** one APQ-1 role-isolated pass complete; same-cognition limitation recorded
 - **Unresolved BLOCKER objections:** none
 - **Unresolved MATERIAL objections:** none
 - **Objection-ledger identity:** APQ-1 dispositions embedded in `BIO_CHI_C1Q_RECURRENCE_SEED_APQ_PASS_v0.1.md`
 - **Plan Delta identity:** not required separately for APQ-1; accepted controls are incorporated in the frozen v0.1 plan
 - **Qualified plan version:** recurrence-seed v0.1
-- **Freeze timestamp / identifier / hash:** 27 September 2026; `BIO_CHI_C1Q_RECURRENCE_SEED_FREEZE_v1.0.md`, commit `686cb3d8d36943ebf476f28e209d2a1ed3752937`
+- **Freeze timestamp / identifier / hash:** 27 September 2026; `BIO_CHI_C1Q_RS_QUALIFICATION_FREEZE_v1.1.md`, commit `987b89486ff7cfcbc84769d09c217853bf48ba39`
 - **Design adequacy status:** \`NOT_APPLICABLE\` for P0-D synthetic mapping
 - **Masking / outcome-exposure status:** exact prior reference cells already viewed and excluded from the new frozen grid; new map is exploratory, not confirmation
-- **Next plan gate:** execute the frozen 48-row recurrence-seed test, then audit whether a truth-blind seed justifies a versioned search-route candidate
+- **Next plan gate:** execute the 96-row C1Q-RS Function Map repair and the frozen adversarial/family/sampling Limit suite, then perform the post-execution deviation/scope audit
 
 ## 6. Active Hold or Blocker
 
@@ -544,3 +544,19 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Next action:** install pytest explicitly and invoke \`python -m pytest\`; do not retry the unchanged workflow.
 - **Why next:** fixes the identified transport/dependency defect without changing science.
 - **Provenance pointer:** workflow repair commit \`99cd975c7af23fc0cd03e0386e7086e6d7dd2370\`.
+
+
+### 2026-09-27 - PASS - C1Q-RS pre-science mechanical contracts
+
+- **Lifecycle Stage:** Stage 3
+- **Entry type:** \`PASS\`
+- **Source artifact / evidence identity:** workflow \`NSD C1Q-RS Mechanical Contracts\`, run \`36370664574\`
+- **Observed / decided:** all three mechanical contract tests passed after the workflow dependency repair.
+- **Scientific interpretation:** the APQ B1 blocker is resolved mechanically. The shared helper reproduces the historical inline legacy-start ranking, RS legacy-only optimization reproduces current C1Q under the tested fixture, parameter count/BIC remain unchanged, and augmentation is non-worsening by construction.
+- **Alternative explanation / uncertainty:** the contract fixture does not establish scientific performance; that is the purpose of the frozen Function/Limit runs.
+- **Impact on claim / novelty / prediction:** authorizes P0-Q scientific execution of the frozen C1Q-RS plan.
+- **Freeze impact:** none; freeze v1.1 remains active.
+- **Status impact:** \`MECHANICAL_GATE_PASSED\`.
+- **Next action:** launch full Function Map repair and mandatory Limit requalification.
+- **Why next:** APQ sequence requires both supported interior and semantic limits before any candidate-level conclusion.
+- **Provenance pointer:** contract workflow run \`36370664574\`; dependency-failure root cause previously recorded separately.
