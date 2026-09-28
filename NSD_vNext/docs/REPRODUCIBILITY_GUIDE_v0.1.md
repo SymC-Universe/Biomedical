@@ -535,3 +535,41 @@ Expected merged output:
 - explicit \`false\` flags for real-EEG local-chi licensing, scientific-threshold definition, C1Q promotion, and biological-prevalence claim.
 
 Interpretation: V20 is a correct-specification estimator Function Map within a synthetic qualification envelope. Successful recovery is a self-consistency/estimator-qualification result, not biological validation. Poor recovery is preserved as a Function Map result rather than used to retune the frozen design. Stochastic reproduction is numerical/decision-equivalent in the declared environment; cross-platform bitwise identity is not promised.
+
+
+## V21. Reproduce the C1Q likelihood-basin root cause
+
+[CLAIM] The completed Function Map boundary-collapse branch can be diagnosed by directly comparing the immutable selected-fit likelihood with the population generating coordinates and a truth-seeded local C1Q basin, without changing the estimator or introducing a scientific threshold.
+
+Source artifact:
+- Function Map run \`36368579380\`
+- complete artifact \`10948327278\`
+- digest \`sha256:cb4ceade9271c80a5b002f0b9f6ba791ae3e0ae049b64ede0a3fdb0aee2b5a0c\`
+
+Root-cause workflow:
+- run \`36369682759\`
+- complete artifact \`10948127976\`
+- digest \`sha256:f8d5c1eae3a38d8b8751190767e78e264c91c44a1edacaf85619a781e9e1a105\`
+
+Run route:
+
+\`\`\`bash
+cd NSD_vNext/engine
+python tools/probe_c1q_likelihood_basin.py \
+  --mode cell \
+  --cell 15 \
+  --source-map <path-to-bio_chi_c_function_map_complete.json> \
+  --output-dir ../../c1q-basin/cell-15
+\`\`\`
+
+The GitHub workflow \`.github/workflows/nsd-c1q-likelihood-basin.yml\` executes all frozen boundary-collapse cells \(0,5,7,8,9,11,12,15\) and merges the 48 rate-level rows.
+
+Expected source-of-record result:
+- source selected NLL reproduced 48/48;
+- truth-seeded local basin beats the stored selected solution in 29/48 rows;
+- coarse rows: 23/24;
+- fine rows: 6/24;
+- stored-solution local polish improves the source solution in only 8/48 rows;
+- no estimator change, admission threshold, biological prevalence claim, or real-EEG license.
+
+Interpretation: the dominant boundary-collapse mechanism is inadequate C1Q multistart basin coverage, especially after decimation. The result is P0-Q root-cause evidence only and does not independently validate the C1Q likelihood family.
