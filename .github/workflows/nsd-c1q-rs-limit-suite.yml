@@ -1,0 +1,85 @@
+name: NSD C1Q-RS Limit Requalification
+
+on:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - "NSD_vNext/engine/nsd_engine/continuous_lineage_candidate_rs.py"
+      - "NSD_vNext/engine/tools/probe_c1q_rs_limit_suite.py"
+      - "NSD_vNext/docs/BIO_CHI_C1Q_RS_QUALIFICATION_PLAN_v0.2.md"
+      - "NSD_vNext/docs/BIO_CHI_C1Q_RS_QUALIFICATION_FREEZE_v1.1.md"
+      - ".github/workflows/nsd-c1q-rs-limit-suite.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "NSD_vNext/engine/nsd_engine/continuous_lineage_candidate_rs.py"
+      - "NSD_vNext/engine/tools/probe_c1q_rs_limit_suite.py"
+      - ".github/workflows/nsd-c1q-rs-limit-suite.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  section:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        mode: [adversarial, family, paired]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install qualification engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+      - name: Run frozen Limit section
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_c1q_rs_limit_suite.py \
+            --mode ${{ matrix.mode }} \
+            --output ../../c1q-rs-limit/${{ matrix.mode }}/c1q_rs_limit_${{ matrix.mode }}.json
+      - name: Upload Limit section
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-c1q-rs-limit-${{ matrix.mode }}
+          path: c1q-rs-limit/${{ matrix.mode }}/
+          if-no-files-found: error
+
+  merge:
+    needs: section
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install qualification engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+      - name: Download Limit sections
+        uses: actions/download-artifact@v4
+        with:
+          pattern: nsd-c1q-rs-limit-*
+          path: c1q-rs-limit/all
+      - name: Merge Limit suite
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_c1q_rs_limit_suite.py \
+            --mode merge \
+            --input-dir ../../c1q-rs-limit/all \
+            --output ../../c1q-rs-limit/summary/c1q_rs_limit_complete.json
+      - name: Upload complete Limit suite
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-c1q-rs-limit-complete
+          path: c1q-rs-limit/summary/
+          if-no-files-found: error
