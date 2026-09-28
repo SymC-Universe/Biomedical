@@ -2,7 +2,7 @@
 
 Status: ACTIVE PROJECT-LOCAL IMPLEMENTATION  
 Date: 27 September 2026  
-Authority: SymC General Operations Manual v0.8.6  
+Authority: SymC General Operations Manual v0.8.8  
 Primary investigation: Bio Chi  
 Repository: `SymC-Universe/Biomedical`  
 Branch: `nsd-rebuild-gom-v0.8.0`
@@ -26,7 +26,7 @@ A synthetic grid can describe coverage of the **qualification envelope**, not pr
 
 ## Immediate balancing action
 
-The next P0-D/P0-Q scientific map will characterize the supported interior of continuous-lineage family C across a broad but explicitly synthetic qualification envelope. It will report full distributions rather than only failures.
+The next candidate P0-D/P0-Q scientific map is intended to characterize the supported interior of continuous-lineage family C across a broad but explicitly synthetic qualification envelope. Under GOM v0.8.8, execution is held until P0-N/A0 identifies the residual question and the substantial plan passes proportional APQ. The map specification below is therefore a candidate Plan-Packet input, not an authorized frozen execution plan.
 
 Initial axes:
 
