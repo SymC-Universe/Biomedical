@@ -7,7 +7,7 @@
 - **Working branch:** \`nsd-rebuild-gom-v0.8.0\`
 - **Current GOM version:** SymC General Operations Manual v1.0, Definitive Active Baseline, 27 September 2026
 - **Project-specific protocol/version:** Bio Chi / NSD qualification records under \`NSD_vNext/docs/\`
-- **Current lifecycle Stage:** Stage 3, Discovery, Representation, and Scientific Reconstruction, P0-D Function Mapping under an APQ-qualified plan
+- **Current lifecycle Stage:** Stage 3, Discovery, Representation, and Scientific Reconstruction, P0-Q root-cause qualification following a completed P0-D Function Map
 - **Status:** \`ACTIVE\`
 - **Last updated:** 27 September 2026
 - **Last verified commit / archive / checkpoint:** \`df71b99a730355a0533cb8a05a3899206fdfbe77\`
@@ -24,7 +24,7 @@ When, if ever, can a native biological dynamical mode legitimately carry a local
 
 ### Smallest live claim or hypothesis
 
-Continuous-time family C is mathematically coherent as a prospective local-\(\chi\) representation and exact alias-safe decimation preserves its continuous lineage coordinates. The current evidence does not establish that real EEG or biology generally belongs to C. The immediate P0-D question is where the qualification-only C1Q estimator recovers the correct local coordinates across a frozen interior C qualification envelope, and where it degrades.
+Continuous-time family C is mathematically coherent as a prospective local-\(\chi\) representation and exact alias-safe decimation preserves its continuous lineage coordinates. The current evidence does not establish that real EEG or biology generally belongs to C. The completed Function Map shows a broad recoverable interior plus reproducible C1Q boundary-collapse regions. The immediate P0-Q question is whether those pathological fits reflect realized finite-sample likelihood geometry, weak identifiability, or failure of the current multi-start optimization route.
 
 ### Current evidence picture
 
@@ -57,10 +57,10 @@ Current claim ceiling: P0-D/P0-Q methodological and known-truth qualification on
 
 | Object | Status | Frozen definition / value | Identifier / timestamp | Can change without invalidating confirmation? |
 |---|---|---|---|---|
-| Hypothesis / claim | P0-D frozen plan scope | correct-specification C1Q Function Map only; no biological validation | Plan Packet v0.2 | yes for later exploratory versioning; not without APQ reactivation for this execution |
-| Comparator / native baseline | frozen for current plan | generic second-order recurrence diagnostic; A0/A1/A2 on sentinel cells 0,5,10,15 only | Plan Packet v0.2 | no for current execution |
-| Prediction / outcome metric | exploratory outputs frozen | row-level recovery errors, optimizer diagnostics, recurrence diagnostic, same-path rate sensitivity | Plan Packet v0.2 | no for current execution |
-| Dataset / holdout | synthetic design frozen | 16 explicit Sobol cells, seeds 104729/208457/417923, 60 s, 256 Hz -> exact factor-2 decimation | Plan Packet v0.2 | no for current execution |
+| Hypothesis / claim | P0-D completed | correct-specification C1Q Function Map only; no biological validation | Plan Packet v0.3 / postresult v1.0 | completed; follow-up requires new versioned qualification plan |
+| Comparator / native baseline | completed for Function Map | generic second-order recurrence diagnostic; prior A0/A1/A2 evidence preserved but not rerun | Plan Packet v0.3 | completed |
+| Prediction / outcome metric | completed | row-level recovery errors, optimizer diagnostics, recurrence diagnostic, same-path rate sensitivity | run 36368579380 | completed |
+| Dataset / holdout | completed synthetic qualification map | 16 explicit cells, seeds 104729/208457/417923, 60 s, 256 Hz -> exact factor-2 decimation | artifact 10948327278 | completed |
 | Method / estimator / engine | qualification-only | current C1Q implementation plus declared generic recurrence diagnostic | plan commit \`45d81671...\` | mechanical repair requires plan-deviation review |
 | Threshold / tolerance / refusal rule | no scientific threshold | no empirical admission threshold frozen | n/a | n/a |
 
@@ -68,7 +68,7 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 
 ## 5. Active Plan and Adversarial Plan Qualification
 
-- **Active plan / scientific route:** C-interior correct-specification Function Map of C1Q with independent-parameterization recurrence diagnostic and limited legacy A0/A1/A2 sentinels
+- **Active plan / scientific route:** bounded P0-Q root-cause diagnostic on the completed Function Map's pathological C1Q rows
 - **APQ level:** \`APQ-2 SUBSTANTIAL\`
 - **Plan status:** \`QUALIFIED_FROZEN\`
 - **Plan Packet identity / path / commit:** \`NSD_vNext/docs/BIO_CHI_C_INTERIOR_FUNCTION_MAP_PLAN_PACKET_v0.2.md\`, commit \`45d81671bc862437c92d12e79b6eef3d8faf18d2\`
@@ -81,7 +81,7 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Freeze timestamp / identifier / hash:** 27 September 2026; freeze record commit \`df71b99a730355a0533cb8a05a3899206fdfbe77\`
 - **Design adequacy status:** \`NOT_APPLICABLE\` for P0-D synthetic mapping
 - **Masking / outcome-exposure status:** exact prior reference cells already viewed and excluded from the new frozen grid; new map is exploratory, not confirmation
-- **Next plan gate:** implement and pass the frozen four-cell mechanical preflight, then execute the full frozen map without scientific retuning
+- **Next plan gate:** freeze a bounded root-cause diagnostic comparing truth-coordinate NLL, selected-fit NLL, and truth-seeded local optimization on pathological rows
 
 ## 6. Active Hold or Blocker
 
@@ -90,9 +90,9 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Last safe scientific state:** APQ-qualified plan freeze at \`df71b99a730355a0533cb8a05a3899206fdfbe77\`
 - **Affected claims / work that must not advance:** real-EEG local \(\chi\), estimator promotion, P1 confirmation, and empirical thresholds remain outside the current plan
 - **Unblocking criterion:** n/a
-- **First exact resume action:** execute the revised C1Q + generic-recurrence mechanical preflight
+- **First exact resume action:** construct and qualify the bounded C1Q likelihood-basin root-cause diagnostic
 - **Required user action, if any:** none
-- **Continuity pointers:** Plan Packet v0.2; APQ ledger; Plan Delta; plan freeze; evidence intake; P0-N/A0 records
+- **Continuity pointers:** Function Map Plan Packet v0.3; freeze v1.1; workflow run 36368579380; artifact 10948327278; Function Map postresult v1.0; V20 reproducibility section
 
 ## 7. Unresolved Scientific Items
 
@@ -140,8 +140,8 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Exact command(s) / script(s):** to be added mechanically from the frozen plan before execution
 - **Required environment / dependency:** Python 3.11; NumPy; SciPy; repository branch above
 - **Required dataset/source identity:** simulated C-family known truths only; no real EEG
-- **Last successful checkpoint:** APQ-qualified plan freeze
-- **Expected next output:** preflight JSON/CSV plus environment/design manifest and workflow identity
+- **Last successful checkpoint:** complete Function Map workflow run 36368579380 and postresult v1.0
+- **Expected next output:** row-level truth-NLL vs selected-NLL vs truth-seeded-basin root-cause table and classification
 - **Do not repeat / do not overwrite:** do not rerun or reinterpret legacy reference cells as new confirmation; do not change frozen design after observing preflight scientific recovery
 
 ## 10. Key Artifact Map
@@ -154,7 +154,7 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 | Evidence/data intake record | Section 0.6 backfill | \`NSD_vNext/docs/BIO_CHI_EVIDENCE_INTAKE_v1.0.md\` | INTAKE_PASS_WITH_LIMITS |
 | Compliance / safety / rights record | Section 0.7 current-stage check | \`NSD_vNext/docs/BIO_CHI_COMPLIANCE_STATUS_v1.0.md\` | NOT_APPLICABLE |
 | Confirmatory design-adequacy record | P1 only | n/a | NOT_APPLICABLE |
-| Main dataset / source record | current plan uses synthetic known truths | frozen design in Plan Packet v0.2 | FROZEN_P0D |
+| Main dataset / source record | completed synthetic known-truth Function Map | artifact `10948327278`, digest `sha256:cb4ceade9271c80a5b002f0b9f6ba791ae3e0ae049b64ede0a3fdb0aee2b5a0c` | COMPLETE |
 | Production code / engine | production A0/A1/A2 unchanged; C1Q qualification only | \`NSD_vNext/engine/\` | ACTIVE / QUALIFICATION |
 | Current results | latest Limit Map result | \`NESTED_RECURRENCE_ORDER_COMPARATOR_POSTRESULT_v0.1.md\` | COMPLETE |
 | Atlas / system record | prior-art Atlas | Bio Chi A0 v1.0 | COMPLETE |
@@ -433,3 +433,34 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **What satisfied the unblocking criterion:** plan v0.3, targeted APQ recheck, new freeze, implementation/workflow updated.
 - **Does the previous freeze remain valid?** v0.2 freeze is superseded for future execution; v1.1 is active.
 - **First resumed scientific action:** revised preflight.
+
+
+### 2026-09-27 - DEVELOPMENT - C-interior Function Map completes
+
+- **Lifecycle Stage:** Stage 3
+- **Entry type:** \`DEVELOPMENT\`
+- **Source artifact / evidence identity:** workflow run \`36368579380\`; complete artifact \`10948327278\`; digest \`sha256:cb4ceade9271c80a5b002f0b9f6ba791ae3e0ae049b64ede0a3fdb0aee2b5a0c\`; postresult \`BIO_CHI_C_INTERIOR_FUNCTION_MAP_POSTRESULT_v1.0.md\`
+- **Observed / decided:** all four preflight cells, all 16 full-map cells, and merge succeeded. C1Q returned 96/96 fits. Full-envelope median absolute C1Q chi error was 0.03547, median absolute g error 0.13441, and median natural-frequency error 0.42554 Hz. Fine-rate recovery was typically better than coarse-rate recovery.
+- **Scientific interpretation:** the intended C interior contains both a broad recoverable region and a reproducible C1Q pathological branch. Cells 0, 5, 7, 8, 9, 11, 12, and 15 generated boundary-collapse rows, often with fitted g approximately +1 and chi approximately 1.
+- **Alternative explanation / uncertainty:** large misses may reflect finite-sample likelihood geometry / practical weak identification, failure of the current multi-start optimizer to locate a truth-like basin, or both. The Function Map alone does not distinguish them.
+- **Impact on claim / novelty / prediction:** C1Q broad operating claim is narrowed; continuous-lineage C mathematics is not falsified; no biological claim is promoted.
+- **Freeze impact:** no change to completed Function Map freeze.
+- **Status impact:** Function Map COMPLETE; root-cause promotion debt opened.
+- **Next action:** bounded truth-NLL vs selected-NLL and truth-seeded-basin diagnostic.
+- **Why next:** cheapest discriminating test before any estimator redesign or empirical admission rule.
+- **Provenance pointer:** postresult commit \`c244f269625750a8ad59afbd3e891c369bfaccd5\`.
+
+### 2026-09-27 - OUTLIER / ROOT-CAUSE - C1Q boundary-collapse family identified
+
+- **Lifecycle Stage:** Stage 3
+- **Entry type:** \`OUTLIER / ROOT-CAUSE\`
+- **Source artifact / evidence identity:** Function Map artifact \`10948327278\`
+- **Observed / decided:** 21/96 rows hit at least one exact raw optimizer box boundary and 26/96 saturated fitted g at the numerical +1 boundary. These rows concentrated in eight cells rather than appearing uniformly. The generic recurrence estimate was usually closer to truth on the largest C1Q misses when estimable.
+- **Scientific interpretation:** the failures are structured and reproducible enough to require mechanism-level investigation rather than being discarded as random outliers.
+- **Alternative explanation / uncertainty:** recurrence itself refuses some low-information rows and is not promoted as a replacement estimator.
+- **Impact on claim / novelty / prediction:** opens a P0-Q root-cause branch; no threshold or estimator promotion.
+- **Freeze impact:** none.
+- **Status impact:** active.
+- **Next action:** likelihood-basin diagnostic.
+- **Why next:** separates search failure from likelihood geometry with no new biological data.
+- **Provenance pointer:** Function Map postresult v1.0.
