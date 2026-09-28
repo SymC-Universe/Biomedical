@@ -34,7 +34,7 @@ P0-N now establishes that biological damping-ratio use, eigenvalue/Q-factor desc
 
 ### Latest scientific development
 
-P0-N and the A0 Prior-Art Conglomeration Atlas have closed with residual novelty classified as \`NEW_INTEGRATION\` plus \`NEW_BOUNDARY_TEST\`. An APQ-2 plan for a representative C-interior qualification Function Map has been adversarially reviewed, revised, and frozen at commit \`45d81671bc862437c92d12e79b6eef3d8faf18d2\`, with freeze record commit \`df71b99a730355a0533cb8a05a3899206fdfbe77\`.
+The prospectively frozen untouched C1Q-RS qualification completed successfully in workflow run `36371426674`, artifact `10949372282`, digest `sha256:7cfa8b5bda2e72ada855fda2b1afd6b9db724d6b86a9662173cb5a549820d946`. Strict non-worsening passed 96/96 unseen rows. C1Q-RS found lower-NLL basins across multiple unseen cells, seeds, and both rates, reduced median and maximum recovery errors, and introduced no reproducible new failure class. Under the frozen promotion rule, C1Q-RS is now the preferred **qualification search implementation** for future C-family work. This is an implementation-level supersession only.
 
 ### Current interpretation and claim ceiling
 
@@ -68,20 +68,19 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 
 ## 5. Active Plan and Adversarial Plan Qualification
 
-- **Active plan / scientific route:** APQ-2 frozen untouched C1Q-RS interior qualification on new coordinates and new realization seeds
+- **Completed plan:** untouched C1Q-RS qualification
 - **APQ level:** `APQ-2 SUBSTANTIAL`
-- **Plan status:** `P0-Q REPAIR_SUPPORTED / UNTOUCHED_QUALIFICATION_REQUIRED`
-- **Plan Packet identity / path / commit:** `NSD_vNext/docs/BIO_CHI_C1Q_RS_UNTOUCHED_PLAN_v0.1.md`, commit `014eca4bd51492d322867122669b73d25f2bfc2b`
-- **Adversarial first-pass status:** two role-isolated APQ-2 passes complete; same-cognition limitation recorded
-- **Unresolved BLOCKER objections:** none
-- **Unresolved MATERIAL objections:** none
-- **Objection-ledger identity:** `NSD_vNext/docs/BIO_CHI_C1Q_RS_UNTOUCHED_APQ_LEDGER_v0.1.md`
-- **Plan Delta identity:** not required separately for APQ-1; accepted controls are incorporated in the frozen v0.1 plan
-- **Qualified plan version:** untouched v0.1
-- **Freeze timestamp / identifier / hash:** 27 September 2026; `BIO_CHI_C1Q_RS_UNTOUCHED_FREEZE_v1.0.md`, commit `aa428c2f896c439849c3af60d3d55950dcc39aa9`
-- **Design adequacy status:** \`NOT_APPLICABLE\` for P0-D synthetic mapping
-- **Masking / outcome-exposure status:** exact prior reference cells already viewed and excluded from the new frozen grid; new map is exploratory, not confirmation
-- **Next plan gate:** four-cell mechanical preflight, then full 96-row untouched execution without scientific retuning
+- **Plan status:** `COMPLETE / IMPLEMENTATION-LEVEL QUALIFICATION SUPPORTED`
+- **Plan Packet:** `NSD_vNext/docs/BIO_CHI_C1Q_RS_UNTOUCHED_PLAN_v0.1.md`
+- **Freeze:** `NSD_vNext/docs/BIO_CHI_C1Q_RS_UNTOUCHED_FREEZE_v1.0.md`
+- **Postresult:** `NSD_vNext/docs/BIO_CHI_C1Q_RS_UNTOUCHED_POSTRESULT_v1.0.md`
+- **Search supersession:** `NSD_vNext/docs/BIO_CHI_C1Q_RS_SEARCH_SUPERSESSION_v1.0.md`
+- **Source-of-record run:** `36371426674`
+- **Complete artifact:** `10949372282`
+- **Digest:** `sha256:7cfa8b5bda2e72ada855fda2b1afd6b9db724d6b86a9662173cb5a549820d946`
+- **Implementation disposition:** C1Q-RS is preferred for new C-family qualification runs; legacy C1Q is preserved for historical reproduction/regression.
+- **Semantic disposition:** unchanged. Fit quality does not establish C membership; real EEG remains unlicensed.
+- **Next plan gate:** uncertainty/finite-sample calibration of the now-qualified C1Q-RS search route before any empirical admission tolerance is considered.
 
 ## 6. Active Hold or Blocker
 
@@ -126,12 +125,12 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 
 ## 8. Next Exact Action
 
-- **Next action:** create, APQ-qualify, and freeze the untouched C1Q-RS qualification envelope before revealing any outcome
-- **Why this is next:** the repair was engineered from already-viewed Function/Limit failures; GOM promotion discipline requires prospective evidence not tuned to those outcomes before C1Q-RS can become the canonical qualification search implementation
-- **Expected output / decision:** determine whether the search repair generalizes to unseen valid C truths and unseen realizations while preserving strict non-worsening and the existing claim ceiling
-- **What must remain frozen while it runs:** C1Q/C1Q-RS code, untouched grid, seeds, duration, sampling rates, recovery outputs, no-threshold interpretation, and no biological admission
-- **Stop / refusal condition:** mechanical design/provenance failure or a material C1Q-RS regression; poor parameter recovery is preserved as the scientific result and does not trigger retuning
-- **User intervention required:** \`no\`
+- **Next action:** construct, adversarially qualify, freeze, and execute a repeated-realization C1Q-RS uncertainty map over a bounded representative C qualification subset.
+- **Why this is next:** search-basin failure is no longer the dominant implementation defect. The remaining local-coordinate problem is inferential: finite-sample dispersion and conditioning must be characterized before any uncertainty-aware admission or predictive-closure tolerance can be frozen.
+- **Expected output / decision:** empirical sampling distributions for recovered (chi), (g), and natural frequency across multiple truths/rates; identification of parameter regions where estimator dispersion is ordinary versus intrinsically weak/unstable; no biological prevalence or admission threshold.
+- **What must remain frozen while it runs:** C1Q-RS code, selected qualification truths, seed list, sampling/duration, output metrics, no-threshold interpretation, and semantic claim ceiling.
+- **Stop / refusal condition:** mechanical/provenance failure or a scientifically material pattern showing that the intended uncertainty design cannot distinguish estimator variability from design-induced artifacts.
+- **User intervention required:** `no`
 
 ## 9. Resume Contract
 
@@ -593,3 +592,19 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Next action:** mechanical preflight on cells 0,5,10,15 at seed 314159.
 - **Why next:** scale-up safeguard before untouched outcome exposure.
 - **Provenance pointer:** untouched qualification records above.
+
+
+### 2026-09-27 - QUALIFICATION - Untouched C1Q-RS search repair generalizes
+
+- **Lifecycle Stage:** Stage 3
+- **Entry type:** `QUALIFICATION`
+- **Source artifact / evidence identity:** workflow run `36371426674`; artifact `10949372282`; digest `sha256:7cfa8b5bda2e72ada855fda2b1afd6b9db724d6b86a9662173cb5a549820d946`; postresult `BIO_CHI_C1Q_RS_UNTOUCHED_POSTRESULT_v1.0.md`
+- **Observed / decided:** strict non-worsening passed 96/96 unseen rows. C1Q-RS lowered NLL in multiple unseen cells/seeds/rates, improved chi recovery in 34 rows versus two numerical-scale degradations, improved natural-frequency recovery in 36 rows with no worse rows, and introduced no reproducible new failure class.
+- **Scientific interpretation:** the recurrence-augmented multistart repair generalizes as a more complete optimizer of the unchanged C1Q likelihood within the intended C-family qualification envelope.
+- **Alternative explanation / uncertainty:** this does not validate the likelihood family or C-family membership; it is implementation-level qualification only.
+- **Impact on claim / novelty / prediction:** none on biological claim; resolves a search-route defect.
+- **Freeze impact:** untouched qualification freeze completed without material deviation.
+- **Status impact:** C1Q-RS becomes preferred qualification search implementation; legacy C1Q retained for reproduction/regression.
+- **Next action:** repeated-realization uncertainty calibration using C1Q-RS.
+- **Why next:** finite-sample uncertainty is now the dominant unresolved N-B1 estimation issue before any empirical admission tolerance.
+- **Provenance pointer:** postresult and supersession records committed after the run.
