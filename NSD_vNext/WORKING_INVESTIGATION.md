@@ -68,20 +68,20 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 
 ## 5. Active Plan and Adversarial Plan Qualification
 
-- **Active plan / scientific route:** prospectively frozen untouched C-interior known-truth qualification of C1Q-RS before any canonical qualification-search promotion
+- **Active plan / scientific route:** APQ-2 frozen untouched C1Q-RS interior qualification on new coordinates and new realization seeds
 - **APQ level:** `APQ-2 SUBSTANTIAL`
 - **Plan status:** `P0-Q REPAIR_SUPPORTED / UNTOUCHED_QUALIFICATION_REQUIRED`
-- **Plan Packet identity / path / commit:** `NSD_vNext/docs/BIO_CHI_C1Q_RS_QUALIFICATION_PLAN_v0.2.md`, commit `8b850a138ab307a206b68bfb799bb3ab383e2618`
-- **Adversarial first-pass status:** one APQ-1 role-isolated pass complete; same-cognition limitation recorded
+- **Plan Packet identity / path / commit:** `NSD_vNext/docs/BIO_CHI_C1Q_RS_UNTOUCHED_PLAN_v0.1.md`, commit `014eca4bd51492d322867122669b73d25f2bfc2b`
+- **Adversarial first-pass status:** two role-isolated APQ-2 passes complete; same-cognition limitation recorded
 - **Unresolved BLOCKER objections:** none
 - **Unresolved MATERIAL objections:** none
-- **Objection-ledger identity:** APQ-1 dispositions embedded in `BIO_CHI_C1Q_RECURRENCE_SEED_APQ_PASS_v0.1.md`
+- **Objection-ledger identity:** `NSD_vNext/docs/BIO_CHI_C1Q_RS_UNTOUCHED_APQ_LEDGER_v0.1.md`
 - **Plan Delta identity:** not required separately for APQ-1; accepted controls are incorporated in the frozen v0.1 plan
-- **Qualified plan version:** recurrence-seed v0.1
-- **Freeze timestamp / identifier / hash:** 27 September 2026; `BIO_CHI_C1Q_RS_QUALIFICATION_FREEZE_v1.1.md`, commit `987b89486ff7cfcbc84769d09c217853bf48ba39`
+- **Qualified plan version:** untouched v0.1
+- **Freeze timestamp / identifier / hash:** 27 September 2026; `BIO_CHI_C1Q_RS_UNTOUCHED_FREEZE_v1.0.md`, commit `aa428c2f896c439849c3af60d3d55950dcc39aa9`
 - **Design adequacy status:** \`NOT_APPLICABLE\` for P0-D synthetic mapping
 - **Masking / outcome-exposure status:** exact prior reference cells already viewed and excluded from the new frozen grid; new map is exploratory, not confirmation
-- **Next plan gate:** freeze and execute an untouched known-truth C-interior envelope using new coordinates and seeds, then decide qualification-search supersession from that result
+- **Next plan gate:** four-cell mechanical preflight, then full 96-row untouched execution without scientific retuning
 
 ## 6. Active Hold or Blocker
 
@@ -577,3 +577,19 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Next action:** freeze new C-interior coordinates and new realization seeds and execute C1Q versus C1Q-RS prospectively.
 - **Why next:** separates genuine search-route generalization from repair on the development examples.
 - **Provenance pointer:** postresult commit \`db7d953c131bd8e2914f0cbd78f08e86844b4657\`.
+
+
+### 2026-09-27 - PLAN_FREEZE - Untouched C1Q-RS qualification envelope frozen
+
+- **Lifecycle Stage:** Stage 3
+- **Entry type:** \`PLAN_FREEZE\`
+- **Source artifact / evidence identity:** plan commit \`014eca4bd51492d322867122669b73d25f2bfc2b\`; APQ passes \`26551de236e92aae8dada1a1efd1279c9991861f\`, \`99b4321433f8c3934752f04d9b60541be339f6b5\`; ledger \`d1e85c7a6aba085aa91c7a3c37926a1f2e1a7418\`; freeze \`aa428c2f896c439849c3af60d3d55950dcc39aa9\`
+- **Observed / decided:** 16 new Sobol coordinates and three new realization seeds were frozen before any C1Q/C1Q-RS outcome was executed.
+- **Scientific interpretation:** this is within-envelope untouched qualification of the search repair, not biological validation or extrapolation.
+- **Alternative explanation / uncertainty:** lower NLL can diverge from generating-parameter recovery; both distributions are therefore mandatory.
+- **Impact on claim / novelty / prediction:** a clean result may support implementation-level supersession of legacy C1Q by C1Q-RS for future qualification work only.
+- **Freeze impact:** new P0-Q untouched design frozen; semantic Limit Map remains independently active.
+- **Status impact:** execution authorized.
+- **Next action:** mechanical preflight on cells 0,5,10,15 at seed 314159.
+- **Why next:** scale-up safeguard before untouched outcome exposure.
+- **Provenance pointer:** untouched qualification records above.
