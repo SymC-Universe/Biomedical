@@ -68,20 +68,20 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 
 ## 5. Active Plan and Adversarial Plan Qualification
 
-- **Active plan / scientific route:** APQ-1 frozen C1Q likelihood-basin root-cause diagnostic on all 48 rate-level rows from the eight Function Map boundary-collapse cells
+- **Active plan / scientific route:** APQ-1 frozen truth-blind recurrence/covariance seed discriminating test for the C1Q search failure
 - **APQ level:** \`APQ-2 SUBSTANTIAL\`
 - **Plan status:** \`QUALIFIED_FROZEN\`
-- **Plan Packet identity / path / commit:** \`NSD_vNext/docs/BIO_CHI_C_INTERIOR_FUNCTION_MAP_PLAN_PACKET_v0.2.md\`, commit \`45d81671bc862437c92d12e79b6eef3d8faf18d2\`
-- **Adversarial first-pass status:** one APQ-1 role-isolated adversarial pass complete; same-cognition limitation recorded
+- **Plan Packet identity / path / commit:** `NSD_vNext/docs/BIO_CHI_C1Q_RECURRENCE_SEED_PLAN_v0.1.md`, commit `28cdc4231c979e3c98dad339b838ef53132c1a1b`
+- **Adversarial first-pass status:** one APQ-1 role-isolated pass complete; same-cognition limitation recorded
 - **Unresolved BLOCKER objections:** none
 - **Unresolved MATERIAL objections:** none
-- **Objection-ledger identity:** \`NSD_vNext/docs/BIO_CHI_C_INTERIOR_FUNCTION_MAP_APQ_LEDGER_v0.1.md\`
-- **Plan Delta identity:** \`NSD_vNext/docs/BIO_CHI_C_INTERIOR_FUNCTION_MAP_PLAN_DELTA_v0.1.md\`
-- **Qualified plan version:** likelihood-basin v0.1
-- **Freeze timestamp / identifier / hash:** 27 September 2026; `NSD_vNext/docs/BIO_CHI_C1Q_LIKELIHOOD_BASIN_FREEZE_v1.0.md`, commit `6a2c9af14ce7de64422a33347f98837cad37dcf1`
+- **Objection-ledger identity:** APQ-1 dispositions embedded in `BIO_CHI_C1Q_RECURRENCE_SEED_APQ_PASS_v0.1.md`
+- **Plan Delta identity:** not required separately for APQ-1; accepted controls are incorporated in the frozen v0.1 plan
+- **Qualified plan version:** recurrence-seed v0.1
+- **Freeze timestamp / identifier / hash:** 27 September 2026; `BIO_CHI_C1Q_RECURRENCE_SEED_FREEZE_v1.0.md`, commit `686cb3d8d36943ebf476f28e209d2a1ed3752937`
 - **Design adequacy status:** \`NOT_APPLICABLE\` for P0-D synthetic mapping
 - **Masking / outcome-exposure status:** exact prior reference cells already viewed and excluded from the new frozen grid; new map is exploratory, not confirmation
-- **Next plan gate:** execute the frozen 48-row basin diagnostic and perform the post-execution deviation audit before interpreting the mechanism
+- **Next plan gate:** execute the frozen 48-row recurrence-seed test, then audit whether a truth-blind seed justifies a versioned search-route candidate
 
 ## 6. Active Hold or Blocker
 
@@ -126,11 +126,11 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 
 ## 8. Next Exact Action
 
-- **Next action:** execute the frozen C1Q likelihood-basin root-cause diagnostic on the immutable Function Map artifact
-- **Why this is next:** the Function Map showed reproducible C1Q boundary collapse while the independent recurrence diagnostic often retained pole information; direct likelihood-basin comparison is the cheapest discriminating test between search failure, finite-sample objective geometry, and practical weak identification
-- **Expected output / decision:** source-NLL reproduction plus generating-coordinate, selected-coordinate, truth-seeded-local, and selected-polish NLL/parameter comparisons for all 48 rows
-- **What must remain frozen while it runs:** source artifact/run identity, eight source cells, all 48 rate-level rows, C1Q likelihood, raw parameter box, mechanical NLL reproduction tolerance, no-threshold claim ceiling
-- **Stop / refusal condition:** source artifact NLL cannot be reproduced within the frozen mechanical tolerance, regenerated truth/path identity fails, or truth coordinates are not representable in the declared C1Q domain
+- **Next action:** execute the frozen recurrence/covariance-seed local optimization on the same 48 root-cause rows
+- **Why this is next:** the likelihood-basin result shows the current multistart search misses better basins; the recurrence diagnostic often retains pole information, making a recurrence-derived start the cheapest truth-blind discriminating test
+- **Expected output / decision:** recurrence-seed admissibility/projection record and local NLL compared with immutable source-selected and truth-seeded basins for all 48 rows
+- **What must remain frozen while it runs:** 48 source rows, lag-12 recurrence/amplitude construction, projection rules, one local optimization, numerical equivalence tolerance, no estimator modification and no scientific threshold
+- **Stop / refusal condition:** source artifact identity mismatch or shared implementation defect; recurrence-seed refusal is a valid scientific outcome and does not stop the map
 - **User intervention required:** \`no\`
 
 ## 9. Resume Contract
@@ -480,3 +480,34 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Next action:** implement and run the frozen 48-row diagnostic.
 - **Why next:** cheapest discriminating test before estimator redesign.
 - **Provenance pointer:** likelihood-basin plan/APQ/freeze records.
+
+
+### 2026-09-27 - ROOT_CAUSE - C1Q multistart basin failure established
+
+- **Lifecycle Stage:** Stage 3
+- **Entry type:** \`ROOT_CAUSE\`
+- **Source artifact / evidence identity:** workflow \`36369682759\`, artifact \`10948127976\`, digest \`sha256:f8d5c1eae3a38d8b8751190767e78e264c91c44a1edacaf85619a781e9e1a105\`; postresult \`BIO_CHI_C1Q_LIKELIHOOD_BASIN_POSTRESULT_v1.0.md\`
+- **Observed / decided:** source NLL reproduced 48/48; truth-seeded local optimization beat the stored selected solution in 29/48 rows, including 23/24 coarse rows. Only 8/48 source solutions improved under local polish from their own coordinates.
+- **Scientific interpretation:** the dominant boundary-collapse mechanism is missed likelihood-basin coverage by the current multistart route, not merely weak finite-sample identification or incomplete local convergence.
+- **Alternative explanation / uncertainty:** the C1Q likelihood family is not independently validated; some rows may still have practical weak-identification geometry.
+- **Impact on claim / novelty / prediction:** current C1Q search route is not qualified across the intended C interior; C-family mathematics remains live.
+- **Freeze impact:** no scientific threshold or estimator promotion.
+- **Status impact:** opens a truth-blind seed discriminating test.
+- **Next action:** recurrence/covariance-derived seed test.
+- **Why next:** cheapest route to determine whether observable structure can rescue basin selection without truth information.
+- **Provenance pointer:** postresult commit \`f597b6e611609a49d1dbb6a63c36f4116eb16e54\`.
+
+### 2026-09-27 - PLAN_FREEZE - Recurrence/covariance seed test qualified
+
+- **Lifecycle Stage:** Stage 3
+- **Entry type:** \`PLAN_FREEZE\`
+- **Source artifact / evidence identity:** plan commit \`28cdc4231c979e3c98dad339b838ef53132c1a1b\`; APQ pass \`802f4062808eaadd64bb94b9c06ea40ef7f98f45\`; freeze \`686cb3d8d36943ebf476f28e209d2a1ed3752937\`
+- **Observed / decided:** a truth-blind start will be constructed from order-two covariance recurrence plus conditional C amplitude fit and tested on all 48 root-cause rows.
+- **Scientific interpretation:** a successful result would justify search-route engineering, not estimator promotion.
+- **Alternative explanation / uncertainty:** recurrence and C1Q share a second-order assumption and cannot establish family membership in unknown biology.
+- **Impact on claim / novelty / prediction:** none until execution.
+- **Freeze impact:** APQ-1 discriminating test frozen.
+- **Status impact:** execution authorized without user intervention.
+- **Next action:** implement and execute.
+- **Why next:** directly tests whether observable data can supply the missing basin information.
+- **Provenance pointer:** recurrence-seed plan/APQ/freeze.
