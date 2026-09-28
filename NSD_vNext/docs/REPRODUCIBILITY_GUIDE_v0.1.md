@@ -613,3 +613,41 @@ Expected source-of-record result:
 - no estimator modification, scientific threshold, biological prevalence claim, or real-EEG admission.
 
 Interpretation: V22 establishes that observable covariance structure can recover the missed C1Q basin in a substantial fraction of failures, especially after decimation, but the seed is neither universally admissible nor a standalone replacement. It justifies qualification of an augmented search-route candidate that preserves every legacy C1Q start and adds the recurrence seed when admissible.
+
+
+## V23. Reproduce C1Q-RS Function and Limit qualification
+
+[CLAIM] C1Q-RS preserves every legacy C1Q optimized start, adds an admissible recurrence/covariance start without changing the likelihood or parameter count, substantially repairs the known interior basin failures, and leaves the established semantic Limit Map intact.
+
+Mechanical contract workflow:
+- run \`36370664574\`
+- expected: all tests in \`tests/test_continuous_lineage_rs_contracts.py\` pass.
+
+Function Map workflow:
+- run \`36370858905\`
+- complete artifact \`10948774993\`
+- digest \`sha256:b9d81fc6858fd8727f57d22abf64e71182f74bf8c57b929437fb8f1cacc8eda1\`
+
+Limit requalification workflow:
+- run \`36370858924\`
+- complete artifact \`10949515451\`
+- digest \`sha256:49eeb01f7e04b8d4190416c13a5db721ceddbc6283750748af07f2bfa53fc233\`
+
+Expected Function Map result:
+- strict non-worsening: 96/96;
+- recurrence seed ready: 88/96;
+- recurrence winning basin: 34/96;
+- material NLL improvement: 26/96 under the frozen numerical comparison tolerance;
+- median absolute chi error changes from approximately 0.03547 to 0.03038;
+- median absolute g error changes from approximately 0.13441 to 0.11996;
+- severe archived boundary-collapse cells show concentrated repair rather than a global shift of already-good rows;
+- the next-ranked extra legacy start does not materially rescue the 48 known failure rows, while RS materially exceeds that compute-matched control in 26/48.
+
+Expected Limit result:
+- nested isotropic one-mode controls remain A1 winners;
+- genuine separated two-mode controls remain A2 winners;
+- colored-process extra-pole truth remains a semantic refusal problem;
+- D\\C and S\\D truth-family labels remain outside C regardless of constrained fit quality;
+- paired-sampling semantics remain essentially unchanged.
+
+Interpretation: V23 establishes a search-route repair only. It does not establish C-family membership, biological prevalence, a scientific admission threshold, production promotion, or real-EEG local chi.
