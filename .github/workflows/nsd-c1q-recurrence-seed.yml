@@ -107,3 +107,4 @@ jobs:
           name: nsd-c1q-recurrence-seed-complete
           path: c1q-recurrence-seed/summary/
           if-no-files-found: error
+# Workflow-registration trigger marker; no scientific-plan change.
