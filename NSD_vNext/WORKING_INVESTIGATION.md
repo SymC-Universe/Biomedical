@@ -80,7 +80,7 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Reference truth map:** uncertainty run `36372559076`, artifact `10949349324`
 - **Implementation:** `NSD_vNext/engine/tools/probe_single_series_uncertainty_methods.py`
 - **Workflow:** `.github/workflows/nsd-single-series-uncertainty-methods.yml`
-- **Current execution state:** workflow committed; connector has not yet exposed the new workflow run
+- **Current execution state:** corrected source-of-record workflow run `36373507093` is queued; earlier run `36373404832` is superseded for final aggregation because its artifact download pattern would have mixed preflight and full-profile artifacts
 - **Claim ceiling:** method-family qualification only; no confidence level, admission threshold, production promotion, C-membership, biological prevalence, or real-EEG admission
 - **Next plan gate:** mechanical profile preflight on cell 0 fine and cell 2 coarse
 
@@ -733,3 +733,19 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Next action:** CI execution.
 - **Why next:** next qualification gate.
 - **Provenance pointer:** freeze commit `deea23acedc13e62896a6c3e6836323b6f70f6fc`.
+
+
+### 2026-09-27 - FAILURE / ROOT_CAUSE - Single-series workflow aggregation namespace defect caught pre-result
+
+- **Lifecycle Stage:** Stage 3
+- **Entry type:** `FAILURE / ROOT_CAUSE`
+- **Source artifact / evidence identity:** superseded workflow run `36373404832`; workflow source before commit `cce78208129f61b0315768f0f0413ef273485ba2`
+- **Observed / decided:** static audit found that the merge download pattern `nsd-single-series-profile-*` would match both mechanical preflight and full-profile artifacts, duplicating the preflight cases in final aggregation.
+- **Scientific interpretation:** infrastructure/artifact-selection defect only. No profile, Hessian, bootstrap, or scientific comparison result from the superseded attempt is admitted.
+- **Alternative explanation / uncertainty:** none; filename-pattern overlap is deterministic.
+- **Impact on claim / novelty / prediction:** none.
+- **Freeze impact:** scientific design unchanged; only artifact namespace changed.
+- **Status impact:** run `36373404832` superseded for final scientific aggregation.
+- **Next action:** execute corrected workflow run `36373507093` with full-profile artifacts isolated from preflight artifacts.
+- **Why next:** preserve one-to-one frozen case identity in the merge.
+- **Provenance pointer:** mechanical-fix commit `cce78208129f61b0315768f0f0413ef273485ba2`.
