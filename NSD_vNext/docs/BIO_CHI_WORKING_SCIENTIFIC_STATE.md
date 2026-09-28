@@ -986,3 +986,21 @@ No threshold was frozen, revised, or retired.
 The experiment fits order-2, order-3, and order-4 covariance recurrences on training covariance and scores their frozen predictions on untouched holdout covariance. The target pattern is order-3 improvement for colored extra-pole truth without comparable improvement for true order-2 controls, and order-4 improvement for genuine two-mode truth.
 
 No cutoff is selected from this experiment. If improvement distributions still overlap materially, the next safe move is an explicit likelihood-based higher-order/memory comparator rather than threshold tuning.
+
+
+## 20.4 Failure and Outlier Representativeness Guard
+
+**Status:** ACTIVE  
+**Protocol:** \`NSD_vNext/docs/FAILURE_OUTLIER_REPRESENTATIVENESS_PROTOCOL_v0.1.md\`
+
+Failures remain first-class evidence, but they no longer automatically control the research trajectory merely because they are unusual or adversarially interesting. Every meaningful failure/outlier must now be classified by root cause, reproducibility, distributional position, parameter-space prevalence, and scientific consequence.
+
+The qualification program explicitly separates a **representative lane** from an **adversarial lane**. The representative lane maps ordinary/interior behavior across a balanced or space-filling truth region. The adversarial lane targets boundaries, singularities, alias conditions, colored forcing, collisions, near-critical states, and previously observed failures. Adversarial cases can falsify universal claims and define refusal boundaries, but their frequency in a designed packet must not be interpreted as biological prevalence.
+
+Plots and result summaries must retain the full valid distribution, show denominators and failure/refusal counts, identify outliers without deleting them, and distinguish representative from deliberately adversarial cases. A zoomed failure panel may be used for mechanism, but it must be paired with a context view showing where the case sits relative to the full investigated distribution.
+
+For current Bio Chi work, the colored-process third-pole case remains an important adversarial control because it can fool C1Q and therefore constrains N-B1 admission logic. It is **not** currently evidence that colored third-pole contamination is the majority state of neural dynamics. Its prevalence in biology is unknown. The same caution applies to D\\C and S\\D controls.
+
+A failure may redirect the main Bio Chi lane only when it is broad/reproducible enough to matter over the representative region, materially biases the primary claim, reveals a logical nonidentifiability that invalidates the claim regardless of frequency, or is independently known to be common in the intended biological domain. Otherwise it remains mapped and incorporated into refusal/uncertainty logic without becoming the sole focus.
+
+No numerical prevalence or outlier threshold is frozen by this guard.
