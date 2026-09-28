@@ -68,9 +68,9 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 
 ## 5. Active Plan and Adversarial Plan Qualification
 
-- **Active plan / scientific route:** APQ-2 qualification of a versioned C1Q-RS augmented search candidate that preserves all legacy C1Q starts and adds one truth-blind recurrence/covariance start when admissible
+- **Active plan / scientific route:** prospectively frozen untouched C-interior known-truth qualification of C1Q-RS before any canonical qualification-search promotion
 - **APQ level:** `APQ-2 SUBSTANTIAL`
-- **Plan status:** `QUALIFIED_FROZEN / MECHANICAL_GATE_PASSED`
+- **Plan status:** `P0-Q REPAIR_SUPPORTED / UNTOUCHED_QUALIFICATION_REQUIRED`
 - **Plan Packet identity / path / commit:** `NSD_vNext/docs/BIO_CHI_C1Q_RS_QUALIFICATION_PLAN_v0.2.md`, commit `8b850a138ab307a206b68bfb799bb3ab383e2618`
 - **Adversarial first-pass status:** one APQ-1 role-isolated pass complete; same-cognition limitation recorded
 - **Unresolved BLOCKER objections:** none
@@ -81,7 +81,7 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Freeze timestamp / identifier / hash:** 27 September 2026; `BIO_CHI_C1Q_RS_QUALIFICATION_FREEZE_v1.1.md`, commit `987b89486ff7cfcbc84769d09c217853bf48ba39`
 - **Design adequacy status:** \`NOT_APPLICABLE\` for P0-D synthetic mapping
 - **Masking / outcome-exposure status:** exact prior reference cells already viewed and excluded from the new frozen grid; new map is exploratory, not confirmation
-- **Next plan gate:** execute the 96-row C1Q-RS Function Map repair and the frozen adversarial/family/sampling Limit suite, then perform the post-execution deviation/scope audit
+- **Next plan gate:** freeze and execute an untouched known-truth C-interior envelope using new coordinates and seeds, then decide qualification-search supersession from that result
 
 ## 6. Active Hold or Blocker
 
@@ -126,11 +126,11 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 
 ## 8. Next Exact Action
 
-- **Next action:** adversarially qualify, implement, and test C1Q-RS first on the complete C-interior Function Map, then on the existing mandatory Limit Map controls
-- **Why this is next:** the recurrence-seed diagnostic recovered the lower likelihood basin in many failures without truth information, making search-route augmentation the cheapest causal repair; family-scope and memory/refusal controls must then be rerun because improved optimization cannot be allowed to masquerade as improved semantic validity
-- **Expected output / decision:** determine whether C1Q-RS removes the interior basin-collapse pathology while preserving explicit refusal/limit behavior on colored, multimode, D\\C, S\\D, and paired-sampling controls
-- **What must remain frozen while it runs:** 48 source rows, lag-12 recurrence/amplitude construction, projection rules, one local optimization, numerical equivalence tolerance, no estimator modification and no scientific threshold
-- **Stop / refusal condition:** source artifact identity mismatch or shared implementation defect; recurrence-seed refusal is a valid scientific outcome and does not stop the map
+- **Next action:** create, APQ-qualify, and freeze the untouched C1Q-RS qualification envelope before revealing any outcome
+- **Why this is next:** the repair was engineered from already-viewed Function/Limit failures; GOM promotion discipline requires prospective evidence not tuned to those outcomes before C1Q-RS can become the canonical qualification search implementation
+- **Expected output / decision:** determine whether the search repair generalizes to unseen valid C truths and unseen realizations while preserving strict non-worsening and the existing claim ceiling
+- **What must remain frozen while it runs:** C1Q/C1Q-RS code, untouched grid, seeds, duration, sampling rates, recovery outputs, no-threshold interpretation, and no biological admission
+- **Stop / refusal condition:** mechanical design/provenance failure or a material C1Q-RS regression; poor parameter recovery is preserved as the scientific result and does not trigger retuning
 - **User intervention required:** \`no\`
 
 ## 9. Resume Contract
@@ -560,3 +560,20 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Next action:** launch full Function Map repair and mandatory Limit requalification.
 - **Why next:** APQ sequence requires both supported interior and semantic limits before any candidate-level conclusion.
 - **Provenance pointer:** contract workflow run \`36370664574\`; dependency-failure root cause previously recorded separately.
+
+
+### 2026-09-27 - DEVELOPMENT - C1Q-RS jointly passes repair Function/Limit qualification
+
+- **Lifecycle Stage:** Stage 3
+- **Entry type:** \`DEVELOPMENT\`
+- **Source artifact / evidence identity:** Function Map run \`36370858905\`, artifact \`10948774993\`, digest \`sha256:b9d81fc6858fd8727f57d22abf64e71182f74bf8c57b929437fb8f1cacc8eda1\`; Limit run \`36370858924\`, artifact \`10949515451\`, digest \`sha256:49eeb01f7e04b8d4190416c13a5db721ceddbc6283750748af07f2bfa53fc233\`; postresult \`BIO_CHI_C1Q_RS_QUALIFICATION_POSTRESULT_v1.0.md\`
+- **Observed / decided:** strict non-worsening passed 96/96; recurrence seed was admissible 88/96 and supplied the winning basin 34/96; material NLL improvement occurred in 26/96. Median absolute chi error improved from about 0.03547 to 0.03038, with major reductions in the original boundary-collapse cells. The compute-matched next-ranked legacy start materially rescued 0/48 known failure rows, while RS was materially better than that control in 26/48.
+- **Function Map interpretation:** the recurrence-informed search repairs a real multistart basin defect and leaves most already-good rows unchanged. Residual failures remain, especially practical g identification in cell 7 and several coarse/boundary rows.
+- **Limit Map interpretation:** A1 still wins nested isotropic truths; A2 still wins genuine separated two-mode truths; colored extra-pole and D\\C/S\\D semantic failures remain; paired-sampling semantics are essentially unchanged.
+- **Alternative explanation / uncertainty:** the candidate was engineered using already-viewed failures, so the repair result is not independent evidence of generalization.
+- **Impact on claim / novelty / prediction:** C1Q-RS is supported as a P0-Q search-route improvement, not as a fully qualified Bio Chi estimator and not as a C-membership test.
+- **Freeze impact:** no real-EEG admission, biological threshold, production promotion, or semantic gate changed.
+- **Status impact:** opens untouched known-truth qualification before any canonical search-route supersession.
+- **Next action:** freeze new C-interior coordinates and new realization seeds and execute C1Q versus C1Q-RS prospectively.
+- **Why next:** separates genuine search-route generalization from repair on the development examples.
+- **Provenance pointer:** postresult commit \`db7d953c131bd8e2914f0cbd78f08e86844b4657\`.
