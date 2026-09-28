@@ -1,0 +1,109 @@
+name: NSD C1Q Likelihood Basin Root Cause
+
+on:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - "NSD_vNext/engine/tools/probe_c1q_likelihood_basin.py"
+      - "NSD_vNext/docs/BIO_CHI_C1Q_LIKELIHOOD_BASIN_PLAN_v0.1.md"
+      - "NSD_vNext/docs/BIO_CHI_C1Q_LIKELIHOOD_BASIN_FREEZE_v1.0.md"
+      - ".github/workflows/nsd-c1q-likelihood-basin.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "NSD_vNext/engine/tools/probe_c1q_likelihood_basin.py"
+      - "NSD_vNext/docs/BIO_CHI_C1Q_LIKELIHOOD_BASIN_PLAN_v0.1.md"
+      - "NSD_vNext/docs/BIO_CHI_C1Q_LIKELIHOOD_BASIN_FREEZE_v1.0.md"
+      - ".github/workflows/nsd-c1q-likelihood-basin.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  basin-cell:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [0, 5, 7, 8, 9, 11, 12, 15]
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install qualification engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+
+      - name: Download immutable Function Map source artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: nsd-bio-chi-c-function-map-complete
+          path: source-map
+          github-token: ${{ github.token }}
+          run-id: 36368579380
+
+      - name: Run frozen likelihood-basin diagnostic
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_c1q_likelihood_basin.py \
+            --mode cell \
+            --cell ${{ matrix.cell }} \
+            --source-map ../../source-map/bio_chi_c_function_map_complete.json \
+            --output-dir ../../c1q-basin/cell-${{ matrix.cell }}
+
+      - name: Upload cell diagnostic
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-c1q-likelihood-basin-cell-${{ matrix.cell }}
+          path: c1q-basin/cell-${{ matrix.cell }}/
+          if-no-files-found: error
+
+  merge:
+    needs: basin-cell
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install qualification engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+
+      - name: Download cell diagnostics
+        uses: actions/download-artifact@v4
+        with:
+          pattern: nsd-c1q-likelihood-basin-cell-*
+          path: c1q-basin/all-cells
+
+      - name: Merge likelihood-basin diagnostics
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_c1q_likelihood_basin.py \
+            --mode merge \
+            --input-dir ../../c1q-basin/all-cells \
+            --output-dir ../../c1q-basin/summary
+
+      - name: Upload complete likelihood-basin result
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-c1q-likelihood-basin-complete
+          path: c1q-basin/summary/
+          if-no-files-found: error
