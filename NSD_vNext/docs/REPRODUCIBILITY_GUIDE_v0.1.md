@@ -733,3 +733,31 @@ Expected source-of-record behavior:
 - no LR cutoff, confidence level, admission threshold, production promotion, biological prevalence, C-membership, or real-EEG local-chi claim.
 
 Interpretation: V26 supports profile likelihood as the primary P0-Q single-record practical-identifiability diagnostic. Hessian/Fisher curvature remains a regular-interior secondary diagnostic. Fitted-model bootstrap remains conditional secondary evidence and cannot self-license a boundary/nonregular fit.
+
+## V27. Reproduce the Profile Function/Limit calibration
+
+[CLAIM] Profile likelihood distinguishes practical-identifiability geometry inside the imposed C1Q-RS family, but cannot establish semantic C-family membership. Some semantic Limit truths retain compact, regular profiles, while a valid near-critical C truth can become nonregular.
+
+Source of record:
+- workflow run `36498024951`;
+- complete artifact `11004679194`;
+- digest `sha256:07e87df10b3994c28d4740c43dde2ed7f82924545b92d31e56fc2c0d71acab81`;
+- plan `NSD_vNext/docs/BIO_CHI_PROFILE_FUNCTION_LIMIT_CALIBRATION_PLAN_v0.2.md`;
+- freeze `NSD_vNext/docs/BIO_CHI_PROFILE_FUNCTION_LIMIT_CALIBRATION_FREEZE_v1.0.md`;
+- postresult `NSD_vNext/docs/BIO_CHI_PROFILE_FUNCTION_LIMIT_CALIBRATION_POSTRESULT_v1.0.md`;
+- tool `NSD_vNext/engine/tools/probe_profile_function_limit_calibration.py`;
+- workflow `.github/workflows/nsd-profile-function-limit-calibration.yml`.
+
+Expected merged result:
+- 72 full rows = 12 truth classes x 3 seeds x 2 rates;
+- 36 exact fine/coarse same-path pairs;
+- C0 and C1: 12/12 regular Hessians, no raw-boundary fits, no profile-edge minima;
+- C3 valid near-critical truth: 3/6 regular Hessians, 2/6 raw-boundary fits, 2/6 profile-edge minima;
+- L0 positive D outside C: 6/6 regular Hessians, no raw-boundary fits, no profile-edge minima, median fine/coarse fitted-chi drift about 0.0047;
+- L4 colored-memory truth: 6/6 regular Hessians, no raw-boundary fits, no profile-edge minima, median fine/coarse fitted-chi drift about 0.0027;
+- L2/L3: Hessian refusal in 6/6 each, with raw-boundary fits in 5/6 and 4/6 respectively;
+- L5 genuine two-mode truth: regular Hessian in 3/6 and raw-boundary fit in 3/6;
+- no empirical threshold, biological-prevalence claim, C-membership inference, production promotion, whole-system scalar, or real-EEG local-chi license.
+
+Interpretation: the primary frozen outcome is practical-identifiability / semantic orthogonality, with additive semantic sensitivity in some Limit classes. Profile likelihood is retained as a practical-identifiability component only. Independent family, order, memory/closure, stationarity, sampling, and broader modal/system representation gates remain mandatory.
+
