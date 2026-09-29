@@ -1,0 +1,115 @@
+{
+  "schema_version": "0.1",
+  "project": "NSD / Bio Chi",
+  "branch": "nsd-rebuild-gom-v0.8.0",
+  "source_of_record": "NSD_vNext/WORKING_INVESTIGATION.md",
+  "rules": {
+    "allowed_status": [
+      "READY",
+      "ACTIVE",
+      "BLOCKED_DEPENDENCY",
+      "SCIENTIFIC_GATE",
+      "EXTERNAL_BLOCK",
+      "DONE",
+      "REFUSED"
+    ],
+    "max_active_scientific_tasks": 2,
+    "idle_forbidden": true,
+    "substantial_compute_requires_packet_apq_and_freeze": true,
+    "real_eeg_local_chi_licensed": false
+  },
+  "tasks": [
+    {
+      "id": "NB1-Q01",
+      "lane": "N-B1",
+      "title": "Construct exact untouched qualification packet",
+      "status": "READY",
+      "depends_on": [],
+      "deliverable": "NSD_vNext/docs/BIO_CHI_INTEGRATED_NB1_UNTOUCHED_QUALIFICATION_PACKET_v0.1.md",
+      "exact_action": "Bind Function/Limit truth identities, generators, seeds, rates/durations, observation/reference transforms, channel applicability, inherited tolerance provenance, machine-readable multi-label adjudication, ordinary Function coverage, and FRAMEWORK_NOT_OPERATIONAL logic prospectively.",
+      "stop_condition": "A nontrivial scientific choice cannot be resolved from the APQ-closed v0.3 architecture without outcome tuning."
+    },
+    {
+      "id": "NB2-Q01",
+      "lane": "N-B2/N-B3",
+      "title": "Construct exact matched-family execution packet",
+      "status": "READY",
+      "depends_on": [],
+      "deliverable": "NSD_vNext/docs/BIO_CHI_NB2_NB3_MATCHED_FAMILY_EXECUTION_PACKET_v0.1.md",
+      "exact_action": "Bind exact matrices/operators and matched families, physical state metric and input/output norms, finite horizons, perturbations, B/C mappings, time-varying law and stationary surrogate, seeds, rates/durations/noise, identity rules, target functionals, recoverability estimators, and machine-readable adjudication prospectively.",
+      "stop_condition": "A nontrivial scientific choice cannot be resolved from the APQ-closed v0.3 architecture without outcome tuning."
+    },
+    {
+      "id": "NB1-Q02",
+      "lane": "N-B1",
+      "title": "Packet-level APQ",
+      "status": "BLOCKED_DEPENDENCY",
+      "depends_on": [
+        "NB1-Q01"
+      ],
+      "deliverable": "N-B1 packet APQ passes + ledger + revised packet if needed",
+      "exact_action": "Run role-isolated APQ on the exact untouched qualification packet; resolve all BLOCKER/MATERIAL objections prospectively.",
+      "stop_condition": "Unresolved BLOCKER/MATERIAL objection."
+    },
+    {
+      "id": "NB2-Q02",
+      "lane": "N-B2/N-B3",
+      "title": "Packet-level APQ",
+      "status": "BLOCKED_DEPENDENCY",
+      "depends_on": [
+        "NB2-Q01"
+      ],
+      "deliverable": "N-B2/N-B3 packet APQ passes + ledger + revised packet if needed",
+      "exact_action": "Run role-isolated APQ on the exact matched-family execution packet; resolve all BLOCKER/MATERIAL objections prospectively.",
+      "stop_condition": "Unresolved BLOCKER/MATERIAL objection."
+    },
+    {
+      "id": "NB1-Q03",
+      "lane": "N-B1",
+      "title": "Prospective freeze and implementation",
+      "status": "BLOCKED_DEPENDENCY",
+      "depends_on": [
+        "NB1-Q02"
+      ],
+      "deliverable": "Frozen N-B1 packet + machine-readable config + implementation + reproducibility section",
+      "exact_action": "Freeze exact packet identity; implement without changing science; add contract tests and provenance.",
+      "stop_condition": "Implementation would change frozen science."
+    },
+    {
+      "id": "NB2-Q03",
+      "lane": "N-B2/N-B3",
+      "title": "Prospective freeze and implementation",
+      "status": "BLOCKED_DEPENDENCY",
+      "depends_on": [
+        "NB2-Q02"
+      ],
+      "deliverable": "Frozen N-B2/N-B3 packet + machine-readable config + implementation + reproducibility section",
+      "exact_action": "Freeze exact packet identity; implement matched-family generator/evaluator; add invariance and information-firewall contract tests.",
+      "stop_condition": "Implementation would change frozen science."
+    },
+    {
+      "id": "NB1-Q04",
+      "lane": "N-B1",
+      "title": "Mechanical preflight and frozen execution",
+      "status": "BLOCKED_DEPENDENCY",
+      "depends_on": [
+        "NB1-Q03"
+      ],
+      "deliverable": "Preflight then untouched qualification result artifact",
+      "exact_action": "Run mechanical preflight only; if clean, execute the frozen untouched packet and preserve every row/failure/refusal.",
+      "stop_condition": "Scientific deviation from frozen packet or unrepairable infrastructure block."
+    },
+    {
+      "id": "NB2-Q04",
+      "lane": "N-B2/N-B3",
+      "title": "Mechanical preflight and frozen execution",
+      "status": "BLOCKED_DEPENDENCY",
+      "depends_on": [
+        "NB2-Q03"
+      ],
+      "deliverable": "Preflight then frozen representation-sufficiency result artifact",
+      "exact_action": "Run mechanical preflight only; if clean, execute the frozen matched-family packet and preserve every row/failure/refusal.",
+      "stop_condition": "Scientific deviation from frozen packet or unrepairable infrastructure block."
+    }
+  ]
+}
