@@ -34,11 +34,13 @@ P0-N now establishes that biological damping-ratio use, eigenvalue/Q-factor desc
 
 ### Latest scientific development
 
-Profile Function/Limit calibration workflow run `36498024951` completed successfully. Complete artifact `11004679194`, digest `sha256:07e87df10b3994c28d4740c43dde2ed7f82924545b92d31e56fc2c0d71acab81`, contains all 72 frozen full cases and 36 exact fine/coarse same-path pairs.
+Two parallel post-profile lanes are now active in durable form.
 
-The primary frozen result is practical-identifiability / semantic orthogonality, with additive semantic sensitivity. Nominal C0/C1 cases were regular across all rows, while valid near-critical C3 became nonregular in a subset. Crucially, semantically invalid L0 D-outside-C and L4 colored-memory controls remained compact and regular in all six rows of each class, with small paired-rate fitted-chi drift. Profile likelihood therefore qualifies practical determination inside an imposed C model but cannot establish semantic C-family membership.
+For N-B1, candidate plan `NSD_vNext/docs/BIO_CHI_INTEGRATED_NB1_ADMISSION_ARCHITECTURE_PLAN_v0.1.md` defines a conjunctive admission/refusal architecture in which profile likelihood is restricted to practical-identifiability evidence while family, order, memory/closure, stationarity/sampling, alias lineage, and uncertainty remain independent gates. The plan is not APQ-qualified or frozen and defines no numerical admission threshold.
 
-Canonical postresult: `NSD_vNext/docs/BIO_CHI_PROFILE_FUNCTION_LIMIT_CALIBRATION_POSTRESULT_v1.0.md`.
+For N-B2/N-B3, targeted novelty collision `BIO_CHI_NB2_NB3_REPRESENTATION_SUFFICIENCY_P0N_v0.2.md` and A0 atlas `BIO_CHI_NB2_NB3_REPRESENTATION_SUFFICIENCY_A0_v0.1.md` are complete for the current pass. Prior art owns non-normal transient amplification, spectrum insufficiency for finite-time response, neural DMD/operator identification, perturbation-response mapping, controllability, and recovery dynamics. The surviving candidate residual is narrower: a governed, question-specific representation-sufficiency Function/Limit map asking which representation is sufficient, equivalent, additive, or refusing for declared stability questions.
+
+No directly equivalent nested representation-sufficiency benchmark was located in the targeted pass. This is not proof of novelty and remains open to additive collision.
 
 ### Current interpretation and claim ceiling
 
@@ -132,11 +134,11 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 
 ## 8. Next Exact Action
 
-- **Next action:** construct and adversarially qualify a prospective integrated N-B1 admission/refusal architecture that keeps profile likelihood limited to practical-identifiability evidence while preserving independent family, order, memory/closure, stationarity/sampling, and uncertainty gates. In parallel, begin N-B2/N-B3 novelty-first planning for a broader coupled-system representation-sufficiency Function/Limit map.
-- **Why this is next:** the completed profile calibration shows that practical identifiability and semantic admissibility are orthogonal. The local-scalar lane therefore needs an explicit conjunction of independent gates, while the broader modal/system lane no longer needs to wait for local scalar admission.
-- **Expected output / decision:** a prospectively frozen candidate admission architecture for untouched known truths, plus a P0-N/A0 residual question for modal/system representation sufficiency before any new substantial N-B3 computation.
-- **What must remain frozen while this is prepared:** C/D/S semantics, C1Q-RS qualification implementation, profile-likelihood role, all prior Limit classes, no-threshold ceiling, representative/adversarial balance, and real-EEG local-chi refusal.
-- **Stop / refusal condition:** any proposed gate that is circularly tuned to the completed 72 rows, any attempt to convert profile compactness into C-membership, or any N-B3 claim that collapses local chi, embedded spectrum, transient gain, and recovery into one scalar without new evidence.
+- **Next action:** run APQ on the candidate N-B1 integrated admission/refusal architecture while constructing the candidate N-B2/N-B3 representation-sufficiency plan from the completed P0-N/A0 residual.
+- **Why this is next:** profile calibration has already separated practical identifiability from semantic admissibility; N-B1 now needs prospective integration without circular thresholds. N-B2/N-B3 has cleared the first novelty collision, so plan construction is now licensed but substantial computation is not yet frozen.
+- **Expected output / decision:** APQ-qualified or revised N-B1 plan; candidate N-B2/N-B3 plan with explicit native comparators, Function/Limit balance, observability/projection controls, and no universal representation ranking.
+- **What must remain frozen while this proceeds:** all completed profile results, C/D/S semantics, C1Q-RS qualification role, prior failures/refusals, real-EEG local-chi refusal, and the distinction among local chi, modal/vector Chi, and system/conglomerate behavior.
+- **Stop / refusal condition:** unresolved APQ MATERIAL/BLOCKER objection, circular use of viewed outcomes to choose thresholds, or discovery of a directly equivalent prior-art benchmark that requires narrowing/reclassification before computation.
 - **User intervention required:** `no`
 
 ## 9. Resume Contract
@@ -810,4 +812,40 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Next action:** APQ an integrated N-B1 admission/refusal architecture and, in parallel, open N-B2/N-B3 novelty-first representation-sufficiency planning.
 - **Why next:** practical identifiability and semantic admissibility are now empirically separated under frozen known truth.
 - **Provenance pointer:** run, artifact, postresult, and V27 reproduction section above.
+
+### 2026-09-29 - INFRASTRUCTURE_FAILURE / RECOVERY - NSD watchdog disabled again
+
+- **Lifecycle Stage:** Stage 3
+- **Entry type:** `INFRASTRUCTURE_FAILURE / RECOVERY`
+- **Observed / decided:** the hourly NSD Bio Chi continuation watchdog was found disabled again after its prior recovery. Repository state remained intact at the N-B2/N-B3 P0-N checkpoint, but no durable scientific work advanced during the disabled interval.
+- **Scientific interpretation:** no scientific result changed. This is a continuity/infrastructure failure, not a scientific hold.
+- **Action:** watchdog re-enabled with the current GOM v1.0 continuation contract and explicit instruction to surface future self-disablement as a recovery failure.
+- **Status impact:** continuity restored; durable GitHub checkpoints remain the authoritative resume source.
+- **Next action:** continue both safe planning lanes without treating the watchdog itself as productive work.
+
+### 2026-09-29 - PRIOR_ART / A0 - N-B2/N-B3 targeted collision narrows residual
+
+- **Lifecycle Stage:** Stage 1
+- **Entry type:** `PRIOR_ART / A0`
+- **Source artifact / evidence identity:** `BIO_CHI_NB2_NB3_REPRESENTATION_SUFFICIENCY_P0N_v0.2.md`; `BIO_CHI_NB2_NB3_REPRESENTATION_SUFFICIENCY_A0_v0.1.md`
+- **Observed / decided:** non-normal transient amplification, eigenspectrum insufficiency for finite-time response, propagator/input-direction analysis, neural DMD/operator identification, perturbation-response mapping, controllability, and recovery dynamics are established prior-art components. No directly equivalent nested question-specific representation-sufficiency benchmark was located in the targeted pass.
+- **Scientific interpretation:** residual survives only as `NEW_INTEGRATION` with candidate `NEW_DISCRIMINATING_TEST`, not as a new principle of non-normal dynamics.
+- **Alternative explanation / uncertainty:** targeted search is not proof of novelty; additive collision remains open.
+- **Impact on claim / novelty / prediction:** narrows claim scope before computation.
+- **Freeze impact:** none; no new computation frozen.
+- **Status impact:** P0-N/A0 current pass complete; candidate plan construction licensed.
+- **Next action:** build the representation-sufficiency plan and subject it to APQ.
+- **Why next:** the residual question is now sufficiently defined to plan prospectively without claiming ownership of established component methods.
+
+### 2026-09-29 - PLAN_DRAFT - Integrated N-B1 admission/refusal architecture drafted
+
+- **Lifecycle Stage:** Stage 3
+- **Entry type:** `PLAN_DRAFT`
+- **Source artifact / evidence identity:** `BIO_CHI_INTEGRATED_NB1_ADMISSION_ARCHITECTURE_PLAN_v0.1.md`
+- **Observed / decided:** a threshold-free candidate architecture now keeps provenance, family, order, memory/closure, stationarity, sampling/alias lineage, profile practical identifiability, numerical integrity, and uncertainty as separable evidence channels before optional local-chi derivation.
+- **Scientific interpretation:** admission rate is not the objective; transparent lawful admission and refusal are.
+- **Freeze impact:** NOT FROZEN; APQ required before any substantial integrated test packet.
+- **Status impact:** N-B1 plan construction advanced.
+- **Next action:** APQ the candidate architecture.
+- **Why next:** completed profile results show that no single favorable uncertainty diagnostic can self-license a local scalar.
 
