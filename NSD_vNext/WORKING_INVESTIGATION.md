@@ -864,3 +864,16 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Next action:** preserve the repair, verify both lineage/sampling runs terminate cleanly, then continue the already-authorized N-B1 APQ and N-B2/N-B3 planning lanes without rerunning or retuning prior science.
 - **Why next:** the failure was isolated to CI definition syntax, so scientific continuation should resume from the pre-existing durable checkpoint after terminal CI verification.
 
+### 2026-09-29 - CONTINUITY_RECOVERY - Repository-native continuity control established
+
+- **Lifecycle Stage:** Stage 3 infrastructure / continuity
+- **Entry type:** `CONTINUITY_RECOVERY`
+- **Observed / decided:** the prior NSD continuation controller failed to advance the investigation for more than three hours without a scientific or external gate. The branch remained at `f4ee93ed08fff680ffcbdb31de47ca332485572d` after the repaired CI suite had completed successfully.
+- **Root-cause classification:** continuity-control failure. The scientific program itself was not blocked; no active failed computation or unresolved scientific gate justified the idle interval.
+- **Recovery action:** repository-native state file `NSD_vNext/control/CONTINUITY_STATE.json` added at commit `284806c692ba9723c55f7196c4f1a0c64b70d107`; hourly GitHub-native sentinel `.github/workflows/nsd-continuity-sentinel.yml` added at commit `f131c617483733912a7b7dcd19a4eb3331ba3433`. The sentinel permits only `ACTIVE_COMPUTE`, `ADVANCED_CHECKPOINT`, `SCIENTIFIC_GATE`, or `EXTERNAL_BLOCK` and fails if productive advancement is older than 90 minutes without a concrete gate.
+- **Scientific impact:** none. No threshold, model, dataset, interpretation, evidence class, or real-EEG license changed.
+- **Current durable state:** `ADVANCED_CHECKPOINT`.
+- **Next exact action:** construct and commit the formal N-B1 APQ packet, then construct the N-B2/N-B3 representation-sufficiency Plan Packet and submit both to APQ before any new substantial computation.
+- **Why next:** Profile Function/Limit calibration has already separated practical identifiability from semantic admissibility, and the targeted N-B2/N-B3 prior-art collision has already narrowed the residual question sufficiently for prospective plan construction.
+- **User intervention required:** `no`
+
