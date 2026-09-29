@@ -849,3 +849,18 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Next action:** APQ the candidate architecture.
 - **Why next:** completed profile results show that no single favorable uncertainty diagnostic can self-license a local scalar.
 
+### 2026-09-29 - FAILURE / ROOT_CAUSE - malformed legacy workflow guards
+
+- **Lifecycle Stage:** Stage 3 infrastructure / continuity
+- **Entry type:** `FAILURE / ROOT_CAUSE`
+- **Source artifact / evidence identity:** zero-job failed runs `36573350754` and `36573349373` at head `4724b95e0af6f34133933c59826d0c7a57685bf2`, with the same failure class reproduced on earlier branch heads.
+- **Observed / decided:** `.github/workflows/nsd-continuous-lineage-spectral-adequacy.yml` and `.github/workflows/nsd-state-space-lineage-sampling-contracts.yml` contained malformed shell guard insertions with unterminated grep patterns plus duplicated downstream steps. GitHub rejected both workflow definitions before creating any job.
+- **Root-cause classification:** mechanical workflow-definition corruption introduced by the earlier path-change guard edits, not a numerical, model, data, or scientific failure.
+- **Outlier / representativeness status:** systematic infrastructure failure across multiple later pushes while the malformed definitions remained present; not a scientific outlier and not evidence about NSD behavior.
+- **Scientific impact:** none. Zero scientific jobs executed in the failed runs, no result artifact was produced, and no frozen scientific setting or interpretation changed.
+- **Repair:** restored the valid workflow structures while preserving the original scientific commands and the later structural-order contract. Repair commits: spectral `39400a5c9be5fb817cb64c793d0f91cb323e4e86`; lineage/sampling `e017371ec571cf49b910d89700e1d1e4c69bda6b`.
+- **Verification:** repaired spectral push run `36581915715` PASS and PR run `36581923137` PASS. Repaired lineage/sampling push run `36581923045` and PR run `36581931477` successfully parsed and executed the full contract-test step; downstream qualification probes remained in progress at the time of this log entry.
+- **Status impact:** infrastructure failure repaired; final lineage/sampling run closure pending terminal workflow status only.
+- **Next action:** preserve the repair, verify both lineage/sampling runs terminate cleanly, then continue the already-authorized N-B1 APQ and N-B2/N-B3 planning lanes without rerunning or retuning prior science.
+- **Why next:** the failure was isolated to CI definition syntax, so scientific continuation should resume from the pre-existing durable checkpoint after terminal CI verification.
+
