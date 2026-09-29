@@ -877,3 +877,15 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Why next:** Profile Function/Limit calibration has already separated practical identifiability from semantic admissibility, and the targeted N-B2/N-B3 prior-art collision has already narrowed the residual question sufficiently for prospective plan construction.
 - **User intervention required:** `no`
 
+### 2026-09-29 - ADVANCED_CHECKPOINT - Formal N-B1 and N-B2/N-B3 APQ candidates committed
+
+- **Lifecycle Stage:** Stage 3 N-B1 / Stage 1-2 N-B2/N-B3
+- **Entry type:** `ADVANCED_CHECKPOINT`
+- **Observed / decided:** repository write access recovered after the earlier external block. The formal N-B1 integrated admission/refusal architecture APQ candidate was committed as `BIO_CHI_INTEGRATED_NB1_ADMISSION_ARCHITECTURE_PLAN_v0.2.md` at `c3aea40911114760c2fdd587daee02e663493630`. The formal N-B2/N-B3 representation-sufficiency Plan Packet was committed as `BIO_CHI_NB2_NB3_REPRESENTATION_SUFFICIENCY_PLAN_v0.2.md` at `b7b8e4512f20b48685d3ac329b2867995acb2334`.
+- **Scientific interpretation:** N-B1 now has a threshold-free conjunctive architecture with independent provenance, sampling, stationarity, family, order, memory/closure, observation/reference, numerical, profile-identifiability, and uncertainty channels. N-B2/N-B3 now has a target-specific representation ladder with explicit A/B/C, invariance, sampling, observation, and recovery firewalls.
+- **Freeze impact:** neither plan is frozen. No new threshold or outcome was opened.
+- **Status impact:** planning advanced; next scientific gate is APQ adjudication of both formal packets.
+- **Next action:** perform role-isolated APQ passes, revise any MATERIAL/BLOCKER objections prospectively, then freeze only the packet that clears APQ before new substantial computation.
+- **Why next:** both active lanes are now formally specified enough for adversarial plan testing without using viewed outcomes to tune criteria.
+- **User intervention required:** `no`
+
