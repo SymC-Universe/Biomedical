@@ -34,17 +34,19 @@ P0-N now establishes that biological damping-ratio use, eigenvalue/Q-factor desc
 
 ### Latest scientific development
 
-Single-series uncertainty-method workflow run `36373507093` completed successfully. Complete artifact `10950297393`, digest `sha256:d736f1c04196efd95bb3949a8330ce4552a978ff5196a72f52c106c05e398572`.
+Profile Function/Limit calibration workflow run `36498024951` completed successfully. Complete artifact `11004679194`, digest `sha256:07e87df10b3994c28d4740c43dde2ed7f82924545b92d31e56fc2c0d71acab81`, contains all 72 frozen full cases and 36 exact fine/coarse same-path pairs.
 
-The completed comparison supports profile likelihood as the primary single-record practical-identifiability diagnostic for local chi. Local physical-coordinate Hessian curvature is useful only for regular interior optima. Fitted-model parametric bootstrap is useful as conditional secondary evidence in regular cases, but can reproduce a pathological fitted boundary model rather than the broader known-truth sampling behavior.
+The primary frozen result is practical-identifiability / semantic orthogonality, with additive semantic sensitivity. Nominal C0/C1 cases were regular across all rows, while valid near-critical C3 became nonregular in a subset. Crucially, semantically invalid L0 D-outside-C and L4 colored-memory controls remained compact and regular in all six rows of each class, with small paired-rate fitted-chi drift. Profile likelihood therefore qualifies practical determination inside an imposed C model but cannot establish semantic C-family membership.
 
-Cell 6 coarse showed broad/open high-chi likelihood geometry consistent with weak information. Cell 2 coarse was boundary/nonregular: Hessian refused, profile geometry remained open toward the high-chi boundary, and fitted-model bootstrap clustered around the pathological boundary branch.
+Canonical postresult: `NSD_vNext/docs/BIO_CHI_PROFILE_FUNCTION_LIMIT_CALIBRATION_POSTRESULT_v1.0.md`.
 
 ### Current interpretation and claim ceiling
 
-The leading interpretation is that local biological \(\chi\), where it exists, is a conditional coordinate of a qualified dynamical lineage rather than a generic scalar summary of oscillation or stability. Material alternatives remain that finite biological data rarely support such a scalar, that C1Q is not a sufficiently robust estimator, or that many biological regimes require only \(\Chi\)/system-level descriptions.
+The leading interpretation is that local biological \(\chi\), where it exists, is a conditional coordinate of a qualified dynamical lineage rather than a generic scalar summary of oscillation or stability. The current result sharpens that statement: even a compact, sampling-stable local C fit can be semantically wrong, so uncertainty geometry and scientific model admissibility must remain separate gates.
 
-Current claim ceiling: P0-D/P0-Q methodological and known-truth qualification only. Real-EEG local \(\chi\) remains unlicensed. C1Q and D1Q remain qualification-only. No biological prevalence, universal neural threshold, or production-estimator claim is licensed.
+Material alternatives remain that finite biological data rarely support such a scalar, that many biological regimes require only \(\Chi\)/system-level descriptions, or that a future integrated admission architecture refuses most real recordings.
+
+Current claim ceiling: P0-D/P0-Q methodological and known-truth qualification only. Real-EEG local \(\chi\) remains unlicensed. C1Q-RS remains qualification-only. No biological prevalence, universal neural threshold, profile-based C-membership rule, or production-estimator claim is licensed.
 
 ## 3. Prior Art, Novelty, and A0 Status
 
@@ -72,20 +74,20 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 
 ## 5. Active Plan and Adversarial Plan Qualification
 
-- **Active plan / scientific route:** profile Function/Limit calibration of practical identifiability versus semantic admissibility
+- **Completed plan:** profile Function/Limit calibration of practical identifiability versus semantic admissibility
 - **APQ level:** `APQ-2 SUBSTANTIAL`
-- **Plan status:** `QUALIFIED_FROZEN / EXECUTION_QUEUED`
+- **Plan status:** `COMPLETE / ADJUDICATED`
 - **Plan:** `NSD_vNext/docs/BIO_CHI_PROFILE_FUNCTION_LIMIT_CALIBRATION_PLAN_v0.2.md`
-- **APQ ledger:** `NSD_vNext/docs/BIO_CHI_PROFILE_FUNCTION_LIMIT_APQ_LEDGER_v0.1.md`
 - **Freeze:** `NSD_vNext/docs/BIO_CHI_PROFILE_FUNCTION_LIMIT_CALIBRATION_FREEZE_v1.0.md`
-- **Implementation:** `NSD_vNext/engine/tools/probe_profile_function_limit_calibration.py`
-- **Workflow:** `.github/workflows/nsd-profile-function-limit-calibration.yml`
-- **Current source-of-record run:** `36498024951`
-- **Preflight jobs:** C0 seed 301103 fine; L4 seed 301103 coarse
-- **Frozen full design:** 12 truth classes x 3 seeds x 2 rates = 72 profile/Hessian cases
-- **Scientific purpose:** calibrate what profile geometry can say about practical identifiability and what semantic failures remain invisible to a compact profile
-- **Claim ceiling:** P0-Q only; no threshold, C-membership inference, biological prevalence, production promotion, or real-EEG admission
-- **Next plan gate:** both mechanical preflights must pass before all 72 frozen cases execute
+- **Postresult:** `NSD_vNext/docs/BIO_CHI_PROFILE_FUNCTION_LIMIT_CALIBRATION_POSTRESULT_v1.0.md`
+- **Source-of-record run:** `36498024951`
+- **Complete artifact:** `11004679194`
+- **Digest:** `sha256:07e87df10b3994c28d4740c43dde2ed7f82924545b92d31e56fc2c0d71acab81`
+- **Frozen design completed:** 12 truth classes x 3 seeds x 2 rates = 72 cases
+- **Result:** practical-identifiability / semantic orthogonality primary; additive semantic sensitivity secondary
+- **Scientific consequence:** profile likelihood is restricted to practical-identifiability evidence and cannot self-license C-family membership
+- **Claim ceiling:** unchanged P0-Q; no threshold, C-membership inference, biological prevalence, production promotion, or real-EEG admission
+- **Next plan gate:** construct an integrated admission/refusal architecture under new APQ, while N-B2/N-B3 proceeds independently through novelty-first representation-sufficiency work
 
 ## 6. Active Hold or Blocker
 
@@ -94,9 +96,9 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Last safe scientific state:** APQ-qualified plan freeze at \`df71b99a730355a0533cb8a05a3899206fdfbe77\`
 - **Affected claims / work that must not advance:** real-EEG local \(\chi\), estimator promotion, P1 confirmation, and empirical thresholds remain outside the current plan
 - **Unblocking criterion:** n/a
-- **First exact resume action:** execute the frozen C1Q likelihood-basin diagnostic
+- **First exact resume action:** construct the next APQ-qualified integrated admission/refusal plan and begin the parallel N-B2/N-B3 novelty-first representation-sufficiency lane
 - **Required user action, if any:** none
-- **Continuity pointers:** Function Map Plan Packet v0.3; freeze v1.1; workflow run 36368579380; artifact 10948327278; Function Map postresult v1.0; V20 reproducibility section
+- **Continuity pointers:** profile Function/Limit run `36498024951`; artifact `11004679194`; postresult v1.0; V27 reproducibility section
 
 ## 7. Unresolved Scientific Items
 
@@ -130,11 +132,11 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 
 ## 8. Next Exact Action
 
-- **Next action:** allow run `36498024951` to complete both frozen mechanical preflights, then all 72 full profile/Hessian cases and merge without scientific retuning
-- **Why this is next:** profile likelihood is now qualified for practical identifiability, but its limits relative to semantic family/order/closure failures must be mapped prospectively before any admission architecture can be frozen
-- **Expected output / decision:** determine whether practical-identifiability profile morphology is orthogonal to semantic admissibility, additive to semantic refusal, or insufficient even for valid C cases
-- **What must remain frozen while it runs:** 12 truth classes, three seeds, both rates, C1Q-RS/profile implementation, profile grid/search, Function/Limit roles, output schema, and no-threshold claim ceiling
-- **Stop / refusal condition:** mechanical/provenance failure or nominal valid-C profile failure that invalidates the profile implementation itself; deceptive compact profiles on semantic Limit truths are scientific outcomes, not reasons to retune
+- **Next action:** construct and adversarially qualify a prospective integrated N-B1 admission/refusal architecture that keeps profile likelihood limited to practical-identifiability evidence while preserving independent family, order, memory/closure, stationarity/sampling, and uncertainty gates. In parallel, begin N-B2/N-B3 novelty-first planning for a broader coupled-system representation-sufficiency Function/Limit map.
+- **Why this is next:** the completed profile calibration shows that practical identifiability and semantic admissibility are orthogonal. The local-scalar lane therefore needs an explicit conjunction of independent gates, while the broader modal/system lane no longer needs to wait for local scalar admission.
+- **Expected output / decision:** a prospectively frozen candidate admission architecture for untouched known truths, plus a P0-N/A0 residual question for modal/system representation sufficiency before any new substantial N-B3 computation.
+- **What must remain frozen while this is prepared:** C/D/S semantics, C1Q-RS qualification implementation, profile-likelihood role, all prior Limit classes, no-threshold ceiling, representative/adversarial balance, and real-EEG local-chi refusal.
+- **Stop / refusal condition:** any proposed gate that is circularly tuned to the completed 72 rows, any attempt to convert profile compactness into C-membership, or any N-B3 claim that collapses local chi, embedded spectrum, transient gain, and recovery into one scalar without new evidence.
 - **User intervention required:** `no`
 
 ## 9. Resume Contract
@@ -793,3 +795,19 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Next action:** complete mechanical preflight then all 72 frozen cases and merge.
 - **Why next:** current approved Stage 3 gate.
 - **Provenance pointer:** run `36498024951`; workflow commit `8261cc6ed282a20aa4b7854c465a0de6e065a0bc`.
+
+### 2026-09-28 - RESULT - Profile Function/Limit calibration establishes practical-identifiability / semantic orthogonality
+
+- **Lifecycle Stage:** Stage 3
+- **Entry type:** `RESULT`
+- **Source artifact / evidence identity:** workflow run `36498024951`; complete artifact `11004679194`; digest `sha256:07e87df10b3994c28d4740c43dde2ed7f82924545b92d31e56fc2c0d71acab81`; postresult `BIO_CHI_PROFILE_FUNCTION_LIMIT_CALIBRATION_POSTRESULT_v1.0.md`
+- **Observed / decided:** all 72 frozen full cases and 36 fine/coarse same-path pairs completed. C0/C1 nominal Function cases were regular across all rows. Valid near-critical C3 became nonregular in a subset. Semantically invalid L0 D-outside-C and L4 colored-memory controls nevertheless produced regular Hessians, no raw-boundary fits, no profile-edge minima, and small paired-rate fitted-chi drift in all six rows of each class.
+- **Scientific interpretation:** profile likelihood is qualified as practical-identifiability evidence within the imposed C model but is not a semantic C-membership test. Some semantic Limit classes add nonregular warning information, but compactness cannot self-license C.
+- **Alternative explanation / uncertainty:** this is a designed known-truth packet and does not estimate biological prevalence. Class-specific behavior may change outside the frozen envelope.
+- **Impact on claim / novelty / prediction:** no biological claim promoted; strengthens the conditional-coordinate and refusal architecture.
+- **Freeze impact:** no threshold frozen, revised, or retired.
+- **Status impact:** profile Function/Limit gate complete.
+- **Next action:** APQ an integrated N-B1 admission/refusal architecture and, in parallel, open N-B2/N-B3 novelty-first representation-sufficiency planning.
+- **Why next:** practical identifiability and semantic admissibility are now empirically separated under frozen known truth.
+- **Provenance pointer:** run, artifact, postresult, and V27 reproduction section above.
+
