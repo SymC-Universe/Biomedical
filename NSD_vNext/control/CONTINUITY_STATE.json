@@ -1,13 +1,15 @@
 {
   "state": "ADVANCED_CHECKPOINT",
-  "last_productive_utc": "2026-09-29T20:39:01Z",
-  "last_productive_commit": "b55870c2d415aad6ce9b108ff58dea5b12ae3524",
+  "last_productive_utc": "2026-09-29T21:38:00Z",
+  "last_productive_commit": "031a561cbd7902263995341f62818e980af6982e",
   "active_run_ids": [],
-  "next_exact_action": "Construct exact untouched N-B1 qualification packet and exact N-B2/N-B3 matched-family execution packet, each with frozen identities, metrics, horizons, applicability, machine-readable adjudication, then subject each packet to APQ before any substantial computation.",
+  "next_exact_action": "Read NSD_vNext/control/WORK_QUEUE_v0.1.json and advance READY tasks NB1-Q01 and NB2-Q01 in parallel. Do not stop at packet creation; advance each dependency chain automatically through packet APQ, freeze, implementation, preflight, and execution unless a genuine scientific gate or external block is recorded.",
   "scientific_gate": null,
   "external_block": null,
   "source_of_record": "NSD_vNext/WORKING_INVESTIGATION.md",
   "continuity_contract": "ACTIVE_COMPUTE | ADVANCED_CHECKPOINT | SCIENTIFIC_GATE | EXTERNAL_BLOCK; IDLE forbidden",
   "note": "This file is a continuity sentinel state only and does not make scientific decisions.",
-  "sentinel_workflow": ".github/workflows/nsd-continuity-sentinel.yml"
+  "sentinel_workflow": ".github/workflows/nsd-continuity-sentinel.yml",
+  "work_queue": "NSD_vNext/control/WORK_QUEUE_v0.1.json",
+  "queue_validator": ".github/workflows/nsd-continuation-queue-contracts.yml"
 }
