@@ -905,3 +905,18 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Why next:** architecture-level scientific ambiguity has been reduced enough to bind exact prospective test identities without tuning to new outcomes.
 - **User intervention required:** `no`
 
+### 2026-09-29 - CONTINUATION_QUEUE - Durable two-lane NSD work queue established
+
+- **Lifecycle Stage:** Stage 3 / continuity
+- **Entry type:** `ADVANCED_CHECKPOINT / CONTINUATION_QUEUE`
+- **Observed / decided:** the prior continuity design could detect dead time but did not itself guarantee a durable next-task chain. A repository-native work queue is now authoritative for mechanical continuation between scientific gates.
+- **Queue:** `NSD_vNext/control/WORK_QUEUE_v0.1.json`.
+- **Queue validation:** `.github/workflows/nsd-continuation-queue-contracts.yml`.
+- **Current READY work:** `NB1-Q01` exact untouched N-B1 qualification packet and `NB2-Q01` exact matched-family N-B2/N-B3 execution packet. These may advance in parallel.
+- **Dependency chains:** each lane proceeds from exact packet -> packet-level APQ -> prospective freeze/implementation -> mechanical preflight/frozen execution. Substantial computation remains blocked until packet APQ and freeze close.
+- **Continuity rule:** a completed task must either mark its dependent task READY, record a concrete `SCIENTIFIC_GATE` / `EXTERNAL_BLOCK`, or complete/refuse the lane. An unfinished queue with no READY/ACTIVE task and no explicit gate is a continuity failure.
+- **Scientific impact:** none. The queue changes operations only and does not alter frozen science, thresholds, evidence classes, or real-EEG licensing.
+- **Current durable state:** `ADVANCED_CHECKPOINT`.
+- **Next exact action:** advance `NB1-Q01` and `NB2-Q01` rather than waiting for another user turn.
+- **User intervention required:** `no`
+
