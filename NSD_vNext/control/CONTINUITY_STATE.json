@@ -1,12 +1,13 @@
 {
   "state": "ADVANCED_CHECKPOINT",
-  "last_productive_utc": "2026-09-29T19:08:00Z",
-  "last_productive_commit": "f4ee93ed08fff680ffcbdb31de47ca332485572d",
+  "last_productive_utc": "2026-09-29T19:09:00Z",
+  "last_productive_commit": "f131c617483733912a7b7dcd19a4eb3331ba3433",
   "active_run_ids": [],
   "next_exact_action": "Construct and commit the formal N-B1 APQ packet, then construct the N-B2/N-B3 representation-sufficiency Plan Packet and submit both to APQ before any new substantial computation.",
   "scientific_gate": null,
   "external_block": null,
   "source_of_record": "NSD_vNext/WORKING_INVESTIGATION.md",
   "continuity_contract": "ACTIVE_COMPUTE | ADVANCED_CHECKPOINT | SCIENTIFIC_GATE | EXTERNAL_BLOCK; IDLE forbidden",
-  "note": "This file is a continuity sentinel state only and does not make scientific decisions."
+  "note": "This file is a continuity sentinel state only and does not make scientific decisions.",
+  "sentinel_workflow": ".github/workflows/nsd-continuity-sentinel.yml"
 }
