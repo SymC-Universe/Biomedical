@@ -889,3 +889,19 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Why next:** both active lanes are now formally specified enough for adversarial plan testing without using viewed outcomes to tune criteria.
 - **User intervention required:** `no`
 
+### 2026-09-29 - APQ_CLOSURE - N-B1 and N-B2/N-B3 plan architectures revised and closed
+
+- **Lifecycle Stage:** Stage 3 N-B1 / Stage 1-2 N-B2/N-B3
+- **Entry type:** `APQ_CLOSURE / ADVANCED_CHECKPOINT`
+- **Observed / decided:** two role-isolated same-cognition APQ passes were completed for each formal v0.2 plan. All MATERIAL objections were accepted and resolved prospectively in revised v0.3 plan architectures.
+- **N-B1 APQ records:** `BIO_CHI_INTEGRATED_NB1_ADMISSION_ARCHITECTURE_APQ_PASS_A_v0.1.md`, `...PASS_B_v0.1.md`, and `...APQ_LEDGER_v0.1.md`. Revised architecture: `BIO_CHI_INTEGRATED_NB1_ADMISSION_ARCHITECTURE_PLAN_v0.3.md`.
+- **N-B1 scientific consequence:** every applicable evidence channel now has explicit `PASS / REFUSE / NEED_MORE_INFO / NOT_APPLICABLE` states; semantic refusal, estimator-route refusal, data-contract refusal, and unresolved information are separated; conditional channel applicability must be frozen prospectively; scalar refusal preserves still-licensed modal/vector/system information; `FRAMEWORK_NOT_OPERATIONAL` remains an allowed qualification outcome.
+- **N-B2/N-B3 APQ records:** `BIO_CHI_NB2_NB3_REPRESENTATION_SUFFICIENCY_APQ_PASS_A_v0.1.md`, `...PASS_B_v0.1.md`, and `...APQ_LEDGER_v0.1.md`. Revised architecture: `BIO_CHI_NB2_NB3_REPRESENTATION_SUFFICIENCY_PLAN_v0.3.md`.
+- **N-B2/N-B3 scientific consequence:** the target is now a governed stability Function/Limit benchmark rather than a generic least-representation claim; representation sets form a partial order rather than one universal ladder; exact information sufficiency is separated from empirical recoverability; coordinate invariance and physical metrics are explicit; higher-information Function cases are required; `ADDITIVE` is removed as a primary sufficiency state.
+- **Freeze impact:** neither architecture APQ closure licenses substantial computation. Exact execution/qualification packets still require frozen matrices/generators, identities, metrics, horizons, seeds, observation contracts, applicability, and machine-readable adjudication, followed by packet-level APQ and prospective freeze.
+- **Claim impact:** no threshold, biological prevalence, production estimator, whole-system scalar, or real-EEG local-chi claim is promoted.
+- **Current durable state:** `ADVANCED_CHECKPOINT`.
+- **Next exact action:** construct the exact untouched N-B1 qualification packet and exact N-B2/N-B3 matched-family execution packet, then APQ each before computation.
+- **Why next:** architecture-level scientific ambiguity has been reduced enough to bind exact prospective test identities without tuning to new outcomes.
+- **User intervention required:** `no`
+
