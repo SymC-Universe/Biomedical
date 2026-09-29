@@ -1,0 +1,62 @@
+name: NSD Continuity Sentinel
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - "NSD_vNext/control/CONTINUITY_STATE.json"
+      - ".github/workflows/nsd-continuity-sentinel.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  continuity-sentinel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate NSD continuity state
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          p = Path("NSD_vNext/control/CONTINUITY_STATE.json")
+          if not p.exists():
+              raise SystemExit("CONTINUITY_FAILURE: missing NSD_vNext/control/CONTINUITY_STATE.json")
+
+          s = json.loads(p.read_text())
+          allowed = {"ACTIVE_COMPUTE", "ADVANCED_CHECKPOINT", "SCIENTIFIC_GATE", "EXTERNAL_BLOCK"}
+          state = s.get("state")
+          if state not in allowed:
+              raise SystemExit(f"CONTINUITY_FAILURE: invalid terminal state {state!r}; IDLE is forbidden")
+
+          if state in {"SCIENTIFIC_GATE", "EXTERNAL_BLOCK"}:
+              key = "scientific_gate" if state == "SCIENTIFIC_GATE" else "external_block"
+              if not s.get(key):
+                  raise SystemExit(f"CONTINUITY_FAILURE: {state} lacks a concrete dependency")
+              print(f"Continuity state valid: {state}")
+              raise SystemExit(0)
+
+          stamp = s.get("last_productive_utc")
+          if not stamp:
+              raise SystemExit("CONTINUITY_FAILURE: missing last_productive_utc")
+          t = datetime.fromisoformat(stamp.replace("Z", "+00:00"))
+          age = (datetime.now(timezone.utc) - t).total_seconds() / 60.0
+          if age > 90:
+              raise SystemExit(
+                  f"CONTINUITY_FAILURE: no productive NSD advancement for {age:.1f} minutes; "
+                  f"last commit={s.get('last_productive_commit')}; "
+                  f"next={s.get('next_exact_action')}"
+              )
+          print(f"Continuity healthy: state={state}, age_minutes={age:.1f}")
+          PY
