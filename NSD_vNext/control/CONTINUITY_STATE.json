@@ -1,9 +1,9 @@
 {
   "state": "ADVANCED_CHECKPOINT",
-  "last_productive_utc": "2026-09-29T19:12:00Z",
-  "last_productive_commit": "ea12c4f6a5bbd90d83c3e6f07f979d33ff976037",
+  "last_productive_utc": "2026-09-29T20:39:01Z",
+  "last_productive_commit": "b55870c2d415aad6ce9b108ff58dea5b12ae3524",
   "active_run_ids": [],
-  "next_exact_action": "Perform role-isolated APQ passes on BIO_CHI_INTEGRATED_NB1_ADMISSION_ARCHITECTURE_PLAN_v0.2.md and BIO_CHI_NB2_NB3_REPRESENTATION_SUFFICIENCY_PLAN_v0.2.md; revise prospectively if MATERIAL/BLOCKER objections survive; freeze only after APQ closure.",
+  "next_exact_action": "Construct exact untouched N-B1 qualification packet and exact N-B2/N-B3 matched-family execution packet, each with frozen identities, metrics, horizons, applicability, machine-readable adjudication, then subject each packet to APQ before any substantial computation.",
   "scientific_gate": null,
   "external_block": null,
   "source_of_record": "NSD_vNext/WORKING_INVESTIGATION.md",
