@@ -3,7 +3,11 @@
     "C_F0__913103__coarse",
     "C_F0__913103__fine",
     "C_F0__927229__coarse",
-    "C_F0__927229__fine"
+    "C_F0__927229__fine",
+    "C_F0__941351__coarse",
+    "C_F0__941351__fine",
+    "C_F0__967403__coarse",
+    "C_F0__967403__fine"
   ],
   "completed_nb2_families": [
     "NB2NB3_MATCHED_FAMILIES"
@@ -26,12 +30,12 @@
     "scipy_version": "1.14.1"
   },
   "nb2_config_digest": "fc6c9145d78d1c95884d21ce3d293c9808faf82a9e5b0b64cfdcbfcc2311bfbd",
-  "next_exact_mechanical_action": "next unfinished NB1/NB2 evidence case after C_F0__927229__coarse",
+  "next_exact_mechanical_action": "next unfinished NB1/NB2 evidence case after C_F0__967403__coarse",
   "packet_digest": "7505fc74658117e2d67265061e6d0860a854933eec695d5b25316b2b81b696f2",
   "schema": "NSD_LONG_RUN_CHECKPOINT_V0_1",
   "scientific_verdict": "FORBIDDEN",
   "stage": "FULL_EXECUTION_ACTIVE",
   "started_unix": 1790726664.7186866,
   "stop_reason": null,
-  "updated_unix": 1790728261.4764442
+  "updated_unix": 1790729465.4198158
 }

@@ -1,0 +1,1690 @@
+{
+  "c1q_rs_fit": {
+    "bic": 24760.869709504845,
+    "nll": 12361.75352148512,
+    "parameters": {
+      "H": 0.015209870658026092,
+      "damped_frequency_hz": 8.374724495281054,
+      "damping_ratio": 0.21853417042716103,
+      "decay_rate_per_s": 11.784085868103162,
+      "g": 0.22303403861637136,
+      "latent_fraction": 0.7620273593533018,
+      "natural_frequency_hz": 8.582161371203423,
+      "rho": 0.9120475329123346
+    },
+    "raw_box_edge_distance": 5.650766541502498,
+    "raw_parameters": [
+      1.1638556474533295,
+      2.349233458497502,
+      -1.6026800446660354,
+      0.22684671285030086
+    ],
+    "recurrence_seed_status": "SEED_READY",
+    "winning_start_origin": "legacy"
+  },
+  "duration_seconds": 90.0,
+  "environment": {
+    "github_run_attempt": "1",
+    "github_run_id": "36648523189",
+    "github_sha": "71b7876b50f4e7300f2b67f2494658184bb2a5bf",
+    "nb2_config_digest": "fc6c9145d78d1c95884d21ce3d293c9808faf82a9e5b0b64cfdcbfcc2311bfbd",
+    "numpy_version": "2.1.3",
+    "packet_digest": "7505fc74658117e2d67265061e6d0860a854933eec695d5b25316b2b81b696f2",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "python_version": "3.12.14 (main, Aug 13 2026, 02:47:42) [GCC 13.3.0]",
+    "scipy_version": "1.14.1"
+  },
+  "generator": "CONTINUOUS_C",
+  "hessian": {
+    "condition_number": 772.7712889532985,
+    "coordinate_order": [
+      "A",
+      "natural_frequency_hz",
+      "chi",
+      "g"
+    ],
+    "eigenvalues": [
+      58.65069553403691,
+      404.0635591817956,
+      12838.18744216053,
+      45323.5735858463
+    ],
+    "hessian": [
+      [
+        41507.48799614,
+        -428.87795013136747,
+        -10235.44641428913,
+        2671.9872361354574
+      ],
+      [
+        -428.87795013136747,
+        168.95776342110202,
+        171.2941383297344,
+        -186.27593072976143
+      ],
+      [
+        -10235.44641428913,
+        171.2941383297344,
+        16473.02196998414,
+        -459.4472769629717
+      ],
+      [
+        2671.9872361354574,
+        -186.27593072976143,
+        -459.4472769629717,
+        475.00755317742005
+      ]
+    ],
+    "inverse_hessian_covariance": [
+      [
+        5.29520882543519e-05,
+        -0.00033940513821752676,
+        2.5087738072676556e-05,
+        -0.0004066963098236714
+      ],
+      [
+        -0.0003394051382175267,
+        0.012602560001803362,
+        -0.0001550274415460869,
+        0.0067013941861420465
+      ],
+      [
+        2.508773807267655e-05,
+        -0.0001550274415460869,
+        7.427769733509054e-05,
+        -0.00013007227081626585
+      ],
+      [
+        -0.00040669630982367145,
+        0.0067013941861420465,
+        -0.00013007227081626588,
+        0.00689512075228961
+      ]
+    ],
+    "local_chi_standard_error": 0.00861845098234541,
+    "positive_definite": true,
+    "status": "HESSIAN_COMPUTED",
+    "steps": [
+      0.0007620273593533018,
+      0.008582161371203424,
+      0.00021853417042716104,
+      0.001
+    ]
+  },
+  "licenses_real_eeg_local_chi": false,
+  "native_family_comparator": {
+    "bic_margin_to_second": 20.45714955106814,
+    "bic_winner": "A1",
+    "fits": [
+      {
+        "bic": 26041.35025038366,
+        "family": "A0",
+        "nll": 13011.334458558178
+      },
+      {
+        "bic": 24759.459110943044,
+        "family": "A1",
+        "nll": 12365.718555521044
+      },
+      {
+        "bic": 24779.916260494112,
+        "family": "A2",
+        "nll": 12361.936130346101
+      }
+    ]
+  },
+  "packet_digest": "7505fc74658117e2d67265061e6d0860a854933eec695d5b25316b2b81b696f2",
+  "profile": {
+    "finite_point_count": 63,
+    "fitted_chi": 0.21853417042716103,
+    "fitted_chi_profile_delta_nll": -1.2187229003757238e-10,
+    "fitted_chi_profile_reproduces_global": true,
+    "global_nll": 12361.75352148512,
+    "left_edge_delta_nll": 678.4888209358032,
+    "local_minima": [
+      {
+        "chi": 0.21853417042716103,
+        "delta_nll": -1.2187229003757238e-10
+      }
+    ],
+    "profile_points": [
+      {
+        "chi": 0.05,
+        "converged_count": 9,
+        "delta_nll": 678.4888209358032,
+        "nll": 13040.242342420923,
+        "nuisance_physical": {
+          "H": 0.014194476834352172,
+          "damped_frequency_hz": 8.887374015891648,
+          "damping_ratio": 0.0500000000000002,
+          "decay_rate_per_s": 2.795547512949995,
+          "g": 0.9999997749296758,
+          "latent_fraction": 0.6710068278349417,
+          "natural_frequency_hz": 8.898504106684884,
+          "rho": 0.9783965557095673
+        },
+        "nuisance_raw": [
+          0.7127578084190183,
+          -1.5213792993316484,
+          8.0
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "fixed_0"
+      },
+      {
+        "chi": 0.0655,
+        "converged_count": 9,
+        "delta_nll": 457.9844202925051,
+        "nll": 12819.737941777625,
+        "nuisance_physical": {
+          "H": 0.019088229363463386,
+          "damped_frequency_hz": 8.948522364258341,
+          "damping_ratio": 0.0655,
+          "decay_rate_per_s": 3.6906776623492985,
+          "g": 0.999980426062066,
+          "latent_fraction": 0.6838093777302274,
+          "natural_frequency_hz": 8.967780050713463,
+          "rho": 0.9715782972410848
+        },
+        "nuisance_raw": [
+          0.7713509274343869,
+          -1.5119618061397717,
+          5.767224483674402
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "continuation"
+      },
+      {
+        "chi": 0.081,
+        "converged_count": 9,
+        "delta_nll": 314.45446881461976,
+        "nll": 12676.20799029974,
+        "nuisance_physical": {
+          "H": 0.02018508803284972,
+          "damped_frequency_hz": 8.907051339276329,
+          "damping_ratio": 0.0809999999999998,
+          "decay_rate_per_s": 4.548081517053018,
+          "g": 0.8421028259360996,
+          "latent_fraction": 0.6965839639113515,
+          "natural_frequency_hz": 8.936415494121926,
+          "rho": 0.9650919599948841
+        },
+        "nuisance_raw": [
+          0.8311020197433151,
+          -1.5183425823449606,
+          1.2283595070691313
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "fixed_0"
+      },
+      {
+        "chi": 0.0965,
+        "converged_count": 9,
+        "delta_nll": 214.80828979460784,
+        "nll": 12576.561811279727,
+        "nuisance_physical": {
+          "H": 0.020068402249849886,
+          "damped_frequency_hz": 8.845119583126118,
+          "damping_ratio": 0.09650000000000014,
+          "decay_rate_per_s": 5.3881849443203125,
+          "g": 0.6952056270551684,
+          "latent_fraction": 0.7077811490291912,
+          "natural_frequency_hz": 8.886593452662233,
+          "rho": 0.9587785054257143
+        },
+        "nuisance_raw": [
+          0.8846520159526956,
+          -1.5279203148114897,
+          0.8579609820892407
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "fixed_0"
+      },
+      {
+        "chi": 0.11199999999999999,
+        "converged_count": 9,
+        "delta_nll": 144.23034021301282,
+        "nll": 12505.983861698132,
+        "nuisance_physical": {
+          "H": 0.019747481584929488,
+          "damped_frequency_hz": 8.785071692291533,
+          "damping_ratio": 0.11200000000000015,
+          "decay_rate_per_s": 6.221345559009012,
+          "g": 0.5844457604167899,
+          "latent_fraction": 0.7171964970923757,
+          "natural_frequency_hz": 8.84069552142048,
+          "rho": 0.952558018352876
+        },
+        "nuisance_raw": [
+          0.9306189546995081,
+          -1.5372634037429187,
+          0.6691884004501657
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "fixed_2"
+      },
+      {
+        "chi": 0.1275,
+        "converged_count": 9,
+        "delta_nll": 93.90827623260702,
+        "nll": 12455.661797717727,
+        "nuisance_physical": {
+          "H": 0.0192755772482081,
+          "damped_frequency_hz": 8.725862005589335,
+          "damping_ratio": 0.1274999999999999,
+          "decay_rate_per_s": 7.047862142875786,
+          "g": 0.49765688176355816,
+          "latent_fraction": 0.7254238983732407,
+          "natural_frequency_hz": 8.79766351583467,
+          "rho": 0.9464270137899594
+        },
+        "nuisance_raw": [
+          0.9715503469208346,
+          -1.5465316323691436,
+          0.5461868491377578
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "fixed_5"
+      },
+      {
+        "chi": 0.143,
+        "converged_count": 9,
+        "delta_nll": 58.21405254638739,
+        "nll": 12419.967574031507,
+        "nuisance_physical": {
+          "H": 0.0186943812992626,
+          "damped_frequency_hz": 8.666923772968985,
+          "damping_ratio": 0.14299999999999968,
+          "decay_rate_per_s": 7.868054446522498,
+          "g": 0.4278023480597015,
+          "latent_fraction": 0.7328101195913893,
+          "natural_frequency_hz": 8.756921382379197,
+          "rho": 0.9403819322239498
+        },
+        "nuisance_raw": [
+          1.0089508356022667,
+          -1.555813054912365,
+          0.45720362227696004
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "fixed_3"
+      },
+      {
+        "chi": 0.15849999999999997,
+        "converged_count": 9,
+        "delta_nll": 33.37979592170814,
+        "nll": 12395.133317406828,
+        "nuisance_physical": {
+          "H": 0.018035665027339397,
+          "damped_frequency_hz": 8.607869489118578,
+          "damping_ratio": 0.15849999999999972,
+          "decay_rate_per_s": 8.682198870624513,
+          "g": 0.3704508741254301,
+          "latent_fraction": 0.7395756344877268,
+          "natural_frequency_hz": 8.718074871714604,
+          "rho": 0.934419611609245
+        },
+        "nuisance_raw": [
+          1.0437889575251835,
+          -1.5651693858443907,
+          0.388945589962847
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "fixed_5"
+      },
+      {
+        "chi": 0.174,
+        "converged_count": 9,
+        "delta_nll": 16.786768810001377,
+        "nll": 12378.540290295121,
+        "nuisance_physical": {
+          "H": 0.017326133432016094,
+          "damped_frequency_hz": 8.548462511032099,
+          "damping_ratio": 0.17400000000000027,
+          "decay_rate_per_s": 9.490586590804805,
+          "g": 0.32268604990573435,
+          "latent_fraction": 0.7458634018915639,
+          "natural_frequency_hz": 8.68088372855311,
+          "rho": 0.9285368533129884
+        },
+        "nuisance_raw": [
+          1.0766965080835915,
+          -1.574639736731974,
+          0.33464246583096624
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "fixed_0"
+      },
+      {
+        "chi": 0.1895,
+        "converged_count": 9,
+        "delta_nll": 6.558627305341361,
+        "nll": 12368.312148790461,
+        "nuisance_physical": {
+          "H": 0.016589654382115127,
+          "damped_frequency_hz": 8.488554293862421,
+          "damping_ratio": 0.1895,
+          "decay_rate_per_s": 10.293523982032045,
+          "g": 0.282513401313367,
+          "latent_fraction": 0.7517699636013494,
+          "natural_frequency_hz": 8.645199068999315,
+          "rho": 0.9227304203407896
+        },
+        "nuisance_raw": [
+          1.108101479316861,
+          -1.584250031699463,
+          0.29041137834339936
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "fixed_4"
+      },
+      {
+        "chi": 0.20499999999999996,
+        "converged_count": 8,
+        "delta_nll": 1.3165943817166408,
+        "nll": 12363.070115866836,
+        "nuisance_physical": {
+          "H": 0.015847193959127735,
+          "damped_frequency_hz": 8.42805989334245,
+          "damping_ratio": 0.20500000000000007,
+          "decay_rate_per_s": 11.091346033771721,
+          "g": 0.24850453250343962,
+          "latent_fraction": 0.7573628526149222,
+          "natural_frequency_hz": 8.610939252768082,
+          "rho": 0.9169969425774707
+        },
+        "nuisance_raw": [
+          1.1383033724560552,
+          -1.5940165759743183,
+          0.25381828108647436
+        ],
+        "start_count": 8,
+        "status": "PROFILED",
+        "winning_start": "global_projected"
+      },
+      {
+        "chi": 0.21853417042716103,
+        "converged_count": 8,
+        "delta_nll": -1.2187229003757238e-10,
+        "nll": 12361.753521484998,
+        "nuisance_physical": {
+          "H": 0.015210029623206289,
+          "damped_frequency_hz": 8.374726298829351,
+          "damping_ratio": 0.21853417042716103,
+          "decay_rate_per_s": 11.784088405878347,
+          "g": 0.22303634322691837,
+          "latent_fraction": 0.7620272948571711,
+          "natural_frequency_hz": 8.582163219424524,
+          "rho": 0.9120475148297442
+        },
+        "nuisance_raw": [
+          1.1638552917800087,
+          -1.6026797508647372,
+          0.2268491381043755
+        ],
+        "start_count": 8,
+        "status": "PROFILED",
+        "winning_start": "fixed_5"
+      },
+      {
+        "chi": 0.22,
+        "converged_count": 8,
+        "delta_nll": 0.014364391605340643,
+        "nll": 12361.767885876725,
+        "nuisance_physical": {
+          "H": 0.015142178978907132,
+          "damped_frequency_hz": 8.368920602479523,
+          "damping_ratio": 0.21999999999999997,
+          "decay_rate_per_s": 11.858910191915257,
+          "g": 0.22048879045391037,
+          "latent_fraction": 0.7625213839683608,
+          "natural_frequency_hz": 8.579109894209866,
+          "rho": 0.9115145376194775
+        },
+        "nuisance_raw": [
+          1.1665819664463302,
+          -1.603625806742731,
+          0.2241698182884024
+        ],
+        "start_count": 8,
+        "status": "PROFILED",
+        "winning_start": "fixed_5"
+      },
+      {
+        "chi": 0.22049999999999997,
+        "converged_count": 9,
+        "delta_nll": 0.02577444477719837,
+        "nll": 12361.779295929897,
+        "nuisance_physical": {
+          "H": 0.015119117062014813,
+          "damped_frequency_hz": 8.366938840901042,
+          "damping_ratio": 0.22050000000000003,
+          "decay_rate_per_s": 11.88442310474154,
+          "g": 0.21962901730850948,
+          "latent_fraction": 0.762689386704533,
+          "natural_frequency_hz": 8.578071124331727,
+          "rho": 0.9113328729830387
+        },
+        "nuisance_raw": [
+          1.1675099941523448,
+          -1.6039488771242072,
+          0.22326629093144396
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "recurrence"
+      },
+      {
+        "chi": 0.236,
+        "converged_count": 9,
+        "delta_nll": 1.895215218399244,
+        "nll": 12363.648736703519,
+        "nuisance_physical": {
+          "H": 0.014425665555468262,
+          "damped_frequency_hz": 8.30520375043603,
+          "damping_ratio": 0.23599999999999988,
+          "decay_rate_per_s": 12.673198815246089,
+          "g": 0.19512775872842456,
+          "latent_fraction": 0.7677823110150002,
+          "natural_frequency_hz": 8.5466196450541,
+          "rho": 0.90573422510884
+        },
+        "nuisance_raw": [
+          1.1958610368131553,
+          -1.6140480167138622,
+          0.1976624056962118
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "recurrence"
+      },
+      {
+        "chi": 0.2515,
+        "converged_count": 9,
+        "delta_nll": 6.3109325004552375,
+        "nll": 12368.064453985575,
+        "nuisance_physical": {
+          "H": 0.013788561234564544,
+          "damped_frequency_hz": 8.242911037185689,
+          "damping_ratio": 0.25150000000000006,
+          "decay_rate_per_s": 13.458205055205207,
+          "g": 0.1744484343870953,
+          "latent_fraction": 0.7726636584487528,
+          "natural_frequency_hz": 8.51665948182999,
+          "rho": 0.9001964812416657
+        },
+        "nuisance_raw": [
+          1.223444286542367,
+          -1.6243079014582553,
+          0.17625108575004975
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "fixed_1"
+      },
+      {
+        "chi": 0.26699999999999996,
+        "converged_count": 9,
+        "delta_nll": 12.789838888165832,
+        "nll": 12374.543360373285,
+        "nuisance_physical": {
+          "H": 0.01323206005105504,
+          "damped_frequency_hz": 8.180174567093939,
+          "damping_ratio": 0.2670000000000002,
+          "decay_rate_per_s": 14.240112052570762,
+          "g": 0.15719665274399214,
+          "latent_fraction": 0.7773468384059096,
+          "natural_frequency_hz": 8.488330424528506,
+          "rho": 0.8947142589635175
+        },
+        "nuisance_raw": [
+          1.2503034502972985,
+          -1.6347127389690363,
+          0.15851101351908323
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "fixed_3"
+      },
+      {
+        "chi": 0.2825,
+        "converged_count": 9,
+        "delta_nll": 20.94731649615096,
+        "nll": 12382.70083798127,
+        "nuisance_physical": {
+          "H": 0.012785042354708696,
+          "damped_frequency_hz": 8.117175183394302,
+          "damping_ratio": 0.28250000000000003,
+          "decay_rate_per_s": 15.019780982210442,
+          "g": 0.14311512954092728,
+          "latent_fraction": 0.7818367608216407,
+          "natural_frequency_hz": 8.461849159208619,
+          "rho": 0.8892809724321948
+        },
+        "nuisance_raw": [
+          1.2764354346680624,
+          -1.6452350877706063,
+          0.14410440754717757
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "recurrence"
+      },
+      {
+        "chi": 0.298,
+        "converged_count": 9,
+        "delta_nll": 30.473918023937586,
+        "nll": 12392.227439509057,
+        "nuisance_physical": {
+          "H": 0.01248372843986347,
+          "damped_frequency_hz": 8.0541850213955,
+          "damping_ratio": 0.298,
+          "decay_rate_per_s": 15.798353678560993,
+          "g": 0.13207516351712123,
+          "latent_fraction": 0.7861308354438894,
+          "natural_frequency_hz": 8.437537183412786,
+          "rho": 0.8838882502199218
+        },
+        "nuisance_raw": [
+          1.3017928264528638,
+          -1.6558313184792535,
+          0.13285126921419468
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "fixed_0"
+      },
+      {
+        "chi": 0.31349999999999995,
+        "converged_count": 9,
+        "delta_nll": 41.11830177581942,
+        "nll": 12402.871823260939,
+        "nuisance_physical": {
+          "H": 0.01237566202188889,
+          "damped_frequency_hz": 7.991604864393526,
+          "damping_ratio": 0.31350000000000033,
+          "decay_rate_per_s": 16.577388165021464,
+          "g": 0.12408323695676521,
+          "latent_fraction": 0.7902158837588888,
+          "natural_frequency_hz": 8.415863700211316,
+          "rho": 0.8785250607258341
+        },
+        "nuisance_raw": [
+          1.3262622090028042,
+          -1.6664346582374412,
+          0.1247260074395131
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "fixed_1"
+      },
+      {
+        "chi": 0.32899999999999996,
+        "converged_count": 9,
+        "delta_nll": 52.67448703466289,
+        "nll": 12414.428008519782,
+        "nuisance_physical": {
+          "H": 0.012528771239958367,
+          "damped_frequency_hz": 7.930073239236032,
+          "damping_ratio": 0.3289999999999999,
+          "decay_rate_per_s": 17.359180304824346,
+          "g": 0.11933214469758467,
+          "latent_fraction": 0.7940643934752701,
+          "natural_frequency_hz": 8.3975664241224,
+          "rho": 0.8731756015392
+        },
+        "nuisance_raw": [
+          1.3496369943469708,
+          -1.676935659881396,
+          0.11990347047080534
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "fixed_5"
+      },
+      {
+        "chi": 0.3445,
+        "converged_count": 9,
+        "delta_nll": 64.97211035297369,
+        "nll": 12426.725631838093,
+        "nuisance_physical": {
+          "H": 0.013040078166987792,
+          "damped_frequency_hz": 7.870475679290253,
+          "damping_ratio": 0.34450000000000003,
+          "decay_rate_per_s": 18.14693670903492,
+          "g": 0.11823354548074876,
+          "latent_fraction": 0.797634906266547,
+          "natural_frequency_hz": 8.383671057238546,
+          "rho": 0.8678182782981603
+        },
+        "nuisance_raw": [
+          1.3716144007819144,
+          -1.6871791130135252,
+          0.11878914876459248
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "global_projected"
+      },
+      {
+        "chi": 0.35999999999999993,
+        "converged_count": 9,
+        "delta_nll": 77.86869803363697,
+        "nll": 12439.622219518757,
+        "nuisance_physical": {
+          "H": 0.014072261425139681,
+          "damped_frequency_hz": 7.814467049149721,
+          "damping_ratio": 0.35999999999999993,
+          "decay_rate_per_s": 18.946207621372974,
+          "g": 0.12167731372686157,
+          "latent_fraction": 0.8008390274458956,
+          "natural_frequency_hz": 8.376062766074583,
+          "rho": 0.8624162406846732
+        },
+        "nuisance_raw": [
+          1.391584282262142,
+          -1.6968719269962667,
+          0.12228319760021529
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "fixed_1"
+      },
+      {
+        "chi": 0.37549999999999994,
+        "converged_count": 9,
+        "delta_nll": 91.24306016179617,
+        "nll": 12452.996581646916,
+        "nuisance_physical": {
+          "H": 0.015893409754410687,
+          "damped_frequency_hz": 7.764715307947015,
+          "damping_ratio": 0.3754999999999999,
+          "decay_rate_per_s": 19.7660016826025,
+          "g": 0.131241872653813,
+          "latent_fraction": 0.8035308468790937,
+          "natural_frequency_hz": 8.377781286148894,
+          "rho": 0.8569104243904951
+        },
+        "nuisance_raw": [
+          1.408548592387436,
+          -1.7055366472971578,
+          0.13200327927001698
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "fixed_5"
+      },
+      {
+        "chi": 0.39099999999999996,
+        "converged_count": 9,
+        "delta_nll": 104.98863260947655,
+        "nll": 12466.742154094596,
+        "nuisance_physical": {
+          "H": 0.018997411153998722,
+          "damped_frequency_hz": 7.7261995924260995,
+          "damping_ratio": 0.3909999999999996,
+          "decay_rate_per_s": 20.622928572973713,
+          "g": 0.14996422454049904,
+          "latent_fraction": 0.8054304796980798,
+          "natural_frequency_hz": 8.394478320766897,
+          "rho": 0.8511927911482683
+        },
+        "nuisance_raw": [
+          1.420626342856468,
+          -1.7122803902718777,
+          0.15110383720182083
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "fixed_1"
+      },
+      {
+        "chi": 0.4065,
+        "converged_count": 9,
+        "delta_nll": 119.00446005962112,
+        "nll": 12480.75798154474,
+        "nuisance_physical": {
+          "H": 0.024325734887233493,
+          "damped_frequency_hz": 7.708348370773227,
+          "damping_ratio": 0.4065,
+          "decay_rate_per_s": 21.54872219592077,
+          "g": 0.1836267658939344,
+          "latent_fraction": 0.8059935810730414,
+          "natural_frequency_hz": 8.436865079446083,
+          "rho": 0.8450585262783118
+        },
+        "nuisance_raw": [
+          1.4242236716684522,
+          -1.715416708448265,
+          0.18573344455535393
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "fixed_1"
+      },
+      {
+        "chi": 0.42199999999999993,
+        "converged_count": 9,
+        "delta_nll": 133.1791155457886,
+        "nll": 12494.932637030908,
+        "nuisance_physical": {
+          "H": 0.033524066220080556,
+          "damped_frequency_hz": 7.727440165143387,
+          "damping_ratio": 0.422,
+          "decay_rate_per_s": 22.600302537757653,
+          "g": 0.24183807869580343,
+          "latent_fraction": 0.8042531515956937,
+          "natural_frequency_hz": 8.523577877384922,
+          "rho": 0.8381444123480072
+        },
+        "nuisance_raw": [
+          1.4131305038750477,
+          -1.7120626851450695,
+          0.24672545162398274
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "global_projected"
+      },
+      {
+        "chi": 0.43749999999999994,
+        "converged_count": 9,
+        "delta_nll": 147.36760283617696,
+        "nll": 12509.121124321297,
+        "nuisance_physical": {
+          "H": 0.04805751277137775,
+          "damped_frequency_hz": 7.796809612351226,
+          "damping_ratio": 0.4374999999999999,
+          "decay_rate_per_s": 23.83469863550304,
+          "g": 0.33089389053607976,
+          "latent_fraction": 0.7993326675255695,
+          "natural_frequency_hz": 8.670651668447915,
+          "rho": 0.8301004320101176
+        },
+        "nuisance_raw": [
+          1.3821660638004798,
+          -1.69994119327953,
+          0.34383171849555977
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "fixed_1"
+      },
+      {
+        "chi": 0.45299999999999996,
+        "converged_count": 9,
+        "delta_nll": 161.40157984316284,
+        "nll": 12523.155101328282,
+        "nuisance_physical": {
+          "H": 0.06649416102616278,
+          "damped_frequency_hz": 7.8998204392132925,
+          "damping_ratio": 0.45299999999999996,
+          "decay_rate_per_s": 25.221378521528607,
+          "g": 0.4369159569468067,
+          "latent_fraction": 0.7920750064243404,
+          "natural_frequency_hz": 8.861163495128118,
+          "rho": 0.8211561278540209
+        },
+        "nuisance_raw": [
+          1.337514155830209,
+          -1.682126421552885,
+          0.4684127525564695
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "fixed_0"
+      },
+      {
+        "chi": 0.4684999999999999,
+        "converged_count": 9,
+        "delta_nll": 175.15619543422326,
+        "nll": 12536.909716919343,
+        "nuisance_physical": {
+          "H": 0.0859677878467655,
+          "damped_frequency_hz": 8.00643493161385,
+          "damping_ratio": 0.4684999999999999,
+          "decay_rate_per_s": 26.677186945940047,
+          "g": 0.5397676486295616,
+          "latent_fraction": 0.7842187374099061,
+          "natural_frequency_hz": 9.062553191532427,
+          "rho": 0.8118696161029824
+        },
+        "nuisance_raw": [
+          1.2904563545198504,
+          -1.663914977723463,
+          0.6038276664396002
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "continuation"
+      },
+      {
+        "chi": 0.48399999999999993,
+        "converged_count": 9,
+        "delta_nll": 188.57222863443894,
+        "nll": 12550.325750119559,
+        "nuisance_physical": {
+          "H": 0.10521326506476579,
+          "damped_frequency_hz": 8.10381957285206,
+          "damping_ratio": 0.4839999999999997,
+          "decay_rate_per_s": 28.16262885780564,
+          "g": 0.6323356517814412,
+          "latent_fraction": 0.7765590961576758,
+          "natural_frequency_hz": 9.260788415665761,
+          "rho": 0.8025023160394956
+        },
+        "nuisance_raw": [
+          1.2457576569075808,
+          -1.6474754268277045,
+          0.7452983793189218
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "fixed_0"
+      },
+      {
+        "chi": 0.49949999999999994,
+        "converged_count": 9,
+        "delta_nll": 201.62758202201985,
+        "nll": 12563.38110350714,
+        "nuisance_physical": {
+          "H": 0.12406225443593293,
+          "damped_frequency_hz": 8.190167542095452,
+          "damping_ratio": 0.49949999999999994,
+          "decay_rate_per_s": 29.671046962669305,
+          "g": 0.7148711329491685,
+          "latent_fraction": 0.7692224579526415,
+          "natural_frequency_hz": 9.45404162326444,
+          "rho": 0.7931007197362046
+        },
+        "nuisance_raw": [
+          1.2039563172025909,
+          -1.6330505222820975,
+          0.8970759862379175
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "continuation"
+      },
+      {
+        "chi": 0.515,
+        "converged_count": 9,
+        "delta_nll": 214.31557813800828,
+        "nll": 12576.069099623128,
+        "nuisance_physical": {
+          "H": 0.14261838971767657,
+          "damped_frequency_hz": 8.266248320745465,
+          "damping_ratio": 0.515,
+          "decay_rate_per_s": 31.204581266267297,
+          "g": 0.7890521333533362,
+          "latent_fraction": 0.7621582695979523,
+          "natural_frequency_hz": 9.643423991532417,
+          "rho": 0.7836554822303151
+        },
+        "nuisance_raw": [
+          1.164577707782406,
+          -1.6204558877832191,
+          1.0689150993495098
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "fixed_1"
+      },
+      {
+        "chi": 0.5305,
+        "converged_count": 9,
+        "delta_nll": 226.635815559599,
+        "nll": 12588.389337044719,
+        "nuisance_physical": {
+          "H": 0.16102854780610748,
+          "damped_frequency_hz": 8.333079470126478,
+          "damping_ratio": 0.5305000000000001,
+          "decay_rate_per_s": 32.76697236840295,
+          "g": 0.8565298489802874,
+          "latent_fraction": 0.755289439863938,
+          "natural_frequency_hz": 9.830397026553966,
+          "rho": 0.7741481839167886
+        },
+        "nuisance_raw": [
+          1.1270525402783653,
+          -1.6094794542613702,
+          1.2801686724246204
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "recurrence"
+      },
+      {
+        "chi": 0.5459999999999999,
+        "converged_count": 9,
+        "delta_nll": 238.59061682344873,
+        "nll": 12600.344138308568,
+        "nuisance_physical": {
+          "H": 0.17944960496507742,
+          "damped_frequency_hz": 8.391714068192961,
+          "damping_ratio": 0.5459999999999998,
+          "decay_rate_per_s": 34.362956118198106,
+          "g": 0.9187745379064773,
+          "latent_fraction": 0.7485233974247358,
+          "natural_frequency_hz": 10.016546383628421,
+          "rho": 0.7645555497773917
+        },
+        "nuisance_raw": [
+          1.0907789149498057,
+          -1.5999149540237496,
+          1.5811066145724204
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "global_projected"
+      },
+      {
+        "chi": 0.5615,
+        "converged_count": 9,
+        "delta_nll": 250.1835953330028,
+        "nll": 12611.937116818122,
+        "nuisance_physical": {
+          "H": 0.1979711187580026,
+          "damped_frequency_hz": 8.44234207772718,
+          "damping_ratio": 0.5615000000000001,
+          "decay_rate_per_s": 35.99455272432055,
+          "g": 0.9767425764066958,
+          "latent_fraction": 0.7418184735524136,
+          "natural_frequency_hz": 10.202512894848551,
+          "rho": 0.7548717262616641
+        },
+        "nuisance_raw": [
+          1.0554668927397144,
+          -1.5917050886261983,
+          2.2212906150423697
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "fixed_2"
+      },
+      {
+        "chi": 0.577,
+        "converged_count": 9,
+        "delta_nll": 261.4638438911679,
+        "nll": 12623.217365376287,
+        "nuisance_physical": {
+          "H": 0.21002128753329097,
+          "damped_frequency_hz": 8.426721107379798,
+          "damping_ratio": 0.5770000000000001,
+          "decay_rate_per_s": 37.40488051761488,
+          "g": 0.9999949832463665,
+          "latent_fraction": 0.7396111298712602,
+          "natural_frequency_hz": 10.31745516488759,
+          "rho": 0.7466000623095866
+        },
+        "nuisance_raw": [
+          1.0439732640474084,
+          -1.594233432063221,
+          6.447936096092748
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "fixed_5"
+      },
+      {
+        "chi": 0.5925,
+        "converged_count": 9,
+        "delta_nll": 272.62725657850024,
+        "nll": 12634.38077806362,
+        "nuisance_physical": {
+          "H": 0.2174133597864893,
+          "damped_frequency_hz": 8.363564097539719,
+          "damping_ratio": 0.5925,
+          "decay_rate_per_s": 38.650586248549274,
+          "g": 0.9999966485127733,
+          "latent_fraction": 0.7406460894114412,
+          "natural_frequency_hz": 10.382163468111818,
+          "rho": 0.739369335804901
+        },
+        "nuisance_raw": [
+          1.0493543762466393,
+          -1.6044991937585447,
+          6.6496259335928745
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "recurrence"
+      },
+      {
+        "chi": 0.608,
+        "converged_count": 9,
+        "delta_nll": 283.6881477165589,
+        "nll": 12645.441669201678,
+        "nuisance_physical": {
+          "H": 0.22497873667105017,
+          "damped_frequency_hz": 8.296553657824818,
+          "damping_ratio": 0.6079999999999999,
+          "decay_rate_per_s": 39.92042150923363,
+          "g": 0.9999986732618502,
+          "latent_fraction": 0.741701488532747,
+          "natural_frequency_hz": 10.4498888380042,
+          "rho": 0.7320706208957285
+        },
+        "nuisance_raw": [
+          1.0548561514228563,
+          -1.6154685214215594,
+          7.112966832131451
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "fixed_3"
+      },
+      {
+        "chi": 0.6234999999999999,
+        "converged_count": 9,
+        "delta_nll": 294.63803348514557,
+        "nll": 12656.391554970265,
+        "nuisance_physical": {
+          "H": 0.23269011736403358,
+          "damped_frequency_hz": 8.224358753414307,
+          "damping_ratio": 0.6234999999999999,
+          "decay_rate_per_s": 41.210675737808174,
+          "g": 0.9999986732639679,
+          "latent_fraction": 0.7427465743503245,
+          "natural_frequency_hz": 10.519459104778528,
+          "rho": 0.7247283353566585
+        },
+        "nuisance_raw": [
+          1.0603186204642379,
+          -1.6273772271532934,
+          7.112967630196714
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "continuation"
+      },
+      {
+        "chi": 0.639,
+        "converged_count": 9,
+        "delta_nll": 305.46915112092756,
+        "nll": 12667.222672606047,
+        "nuisance_physical": {
+          "H": 0.2405729356577381,
+          "damped_frequency_hz": 8.147163046054898,
+          "damping_ratio": 0.6389999999999999,
+          "decay_rate_per_s": 42.52497397949239,
+          "g": 0.9999986732648093,
+          "latent_fraction": 0.7437934234872091,
+          "natural_frequency_hz": 10.591642900924011,
+          "rho": 0.7173249313675224
+        },
+        "nuisance_raw": [
+          1.0658048681766317,
+          -1.6402171010169269,
+          7.112967947278129
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "continuation"
+      },
+      {
+        "chi": 0.6545,
+        "converged_count": 9,
+        "delta_nll": 316.17443538965017,
+        "nll": 12677.92795687477,
+        "nuisance_physical": {
+          "H": 0.2486081527172753,
+          "damped_frequency_hz": 8.064006185209603,
+          "damping_ratio": 0.6544999999999999,
+          "decay_rate_per_s": 43.861447484089716,
+          "g": 0.9999997749296758,
+          "latent_fraction": 0.7448072815591122,
+          "natural_frequency_hz": 10.665800119569834,
+          "rho": 0.7098741639914165
+        },
+        "nuisance_raw": [
+          1.071132244592849,
+          -1.6541741788499917,
+          8.0
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "fixed_1"
+      },
+      {
+        "chi": 0.6699999999999999,
+        "converged_count": 9,
+        "delta_nll": 326.7473828304992,
+        "nll": 12688.500904315619,
+        "nuisance_physical": {
+          "H": 0.2568738187170827,
+          "damped_frequency_hz": 7.975586665319408,
+          "damping_ratio": 0.6699999999999998,
+          "decay_rate_per_s": 45.2274502027476,
+          "g": 0.9999997749296748,
+          "latent_fraction": 0.7458977544533392,
+          "natural_frequency_hz": 10.743540691357948,
+          "rho": 0.7023387407147671
+        },
+        "nuisance_raw": [
+          1.0768777531524645,
+          -1.6691610810214241,
+          7.999999997649388
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "continuation"
+      },
+      {
+        "chi": 0.6855,
+        "converged_count": 9,
+        "delta_nll": 337.1821113248134,
+        "nll": 12698.935632809933,
+        "nuisance_physical": {
+          "H": 0.26530798739263245,
+          "damped_frequency_hz": 7.8801976638758715,
+          "damping_ratio": 0.6854999999999999,
+          "decay_rate_per_s": 46.61758114676538,
+          "g": 0.9999997749296758,
+          "latent_fraction": 0.7469570982142313,
+          "natural_frequency_hz": 10.823367577673608,
+          "rho": 0.6947523327315451
+        },
+        "nuisance_raw": [
+          1.082474836778453,
+          -1.685503201160102,
+          8.0
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "continuation"
+      },
+      {
+        "chi": 0.701,
+        "converged_count": 9,
+        "delta_nll": 347.47310787823153,
+        "nll": 12709.226629363351,
+        "nuisance_physical": {
+          "H": 0.27394289683233614,
+          "damped_frequency_hz": 7.777635121568925,
+          "damping_ratio": 0.701,
+          "decay_rate_per_s": 48.03498951498497,
+          "g": 0.9999997749296758,
+          "latent_fraction": 0.7480222708819348,
+          "natural_frequency_hz": 10.905857378997466,
+          "rho": 0.6871014301034541
+        },
+        "nuisance_raw": [
+          1.088118362506426,
+          -1.703281548058152,
+          8.0
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "continuation"
+      },
+      {
+        "chi": 0.7164999999999999,
+        "converged_count": 9,
+        "delta_nll": 357.6153010853159,
+        "nll": 12719.368822570435,
+        "nuisance_physical": {
+          "H": 0.2827876276737628,
+          "damped_frequency_hz": 7.667226397644342,
+          "damping_ratio": 0.7164999999999999,
+          "decay_rate_per_s": 49.480709108154436,
+          "g": 0.9999997749296758,
+          "latent_fraction": 0.7490940926578367,
+          "natural_frequency_hz": 10.991066911730561,
+          "rho": 0.6793844985436114
+        },
+        "nuisance_raw": [
+          1.0938131091256291,
+          -1.7226676487124282,
+          8.0
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "continuation"
+      },
+      {
+        "chi": 0.732,
+        "converged_count": 9,
+        "delta_nll": 367.6039891018372,
+        "nll": 12729.357510586957,
+        "nuisance_physical": {
+          "H": 0.29185220772203274,
+          "damped_frequency_hz": 7.548222464932746,
+          "damping_ratio": 0.732,
+          "decay_rate_per_s": 50.95587927212993,
+          "g": 0.9999997749296758,
+          "latent_fraction": 0.7501736140688867,
+          "natural_frequency_hz": 11.079071128078319,
+          "rho": 0.6715996957419216
+        },
+        "nuisance_raw": [
+          1.0995651430889428,
+          -1.7438605396400655,
+          8.0
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "continuation"
+      },
+      {
+        "chi": 0.7474999999999999,
+        "converged_count": 9,
+        "delta_nll": 377.4348039816268,
+        "nll": 12739.188325466746,
+        "nuisance_physical": {
+          "H": 0.30114652342893744,
+          "damped_frequency_hz": 7.419754135879939,
+          "damping_ratio": 0.7474999999999999,
+          "decay_rate_per_s": 52.46157157447036,
+          "g": 0.9999997749294587,
+          "latent_fraction": 0.7512616607500447,
+          "natural_frequency_hz": 11.169924332369533,
+          "rho": 0.6637458041179284
+        },
+        "nuisance_raw": [
+          1.105379402640933,
+          -1.7670987160066647,
+          7.999999517375061
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "continuation"
+      },
+      {
+        "chi": 0.763,
+        "converged_count": 9,
+        "delta_nll": 387.103681772016,
+        "nll": 12748.857203257136,
+        "nuisance_physical": {
+          "H": 0.31068126338539687,
+          "damped_frequency_hz": 7.280833711683521,
+          "damping_ratio": 0.7629999999999999,
+          "decay_rate_per_s": 53.99893436642877,
+          "g": 0.9999997749294307,
+          "latent_fraction": 0.7523591862246808,
+          "natural_frequency_hz": 11.263692432650018,
+          "rho": 0.655821471134527
+        },
+        "nuisance_raw": [
+          1.1112615766729472,
+          -1.7926656265720384,
+          7.999999455433527
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "continuation"
+      },
+      {
+        "chi": 0.7785,
+        "converged_count": 9,
+        "delta_nll": 396.60683749832606,
+        "nll": 12758.360358983446,
+        "nuisance_physical": {
+          "H": 0.3204675901362453,
+          "damped_frequency_hz": 7.130319881478888,
+          "damping_ratio": 0.7784999999999999,
+          "decay_rate_per_s": 55.56914298034498,
+          "g": 0.9999997749293918,
+          "latent_fraction": 0.753467053168759,
+          "natural_frequency_hz": 11.360441603984844,
+          "rho": 0.6478254867095167
+        },
+        "nuisance_raw": [
+          1.117216940240653,
+          -1.8209038635114365,
+          7.999999369083092
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "continuation"
+      },
+      {
+        "chi": 0.7939999999999999,
+        "converged_count": 9,
+        "delta_nll": 405.94074429511784,
+        "nll": 12767.694265780237,
+        "nuisance_physical": {
+          "H": 0.3305172943132352,
+          "damped_frequency_hz": 6.96688329835462,
+          "damping_ratio": 0.7939999999999999,
+          "decay_rate_per_s": 57.173407545214054,
+          "g": 0.9999997749293693,
+          "latent_fraction": 0.7545862314133654,
+          "natural_frequency_hz": 11.460239829002875,
+          "rho": 0.6397567541932424
+        },
+        "nuisance_raw": [
+          1.1232514197019632,
+          -1.8522325418398293,
+          7.999999318860332
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "continuation"
+      },
+      {
+        "chi": 0.8095,
+        "converged_count": 9,
+        "delta_nll": 415.1021160761793,
+        "nll": 12776.855637561299,
+        "nuisance_physical": {
+          "H": 0.3408428071206964,
+          "damped_frequency_hz": 6.7889590536068125,
+          "damping_ratio": 0.8095,
+          "decay_rate_per_s": 58.812972114097406,
+          "g": 0.9999997749294334,
+          "latent_fraction": 0.7557177476643316,
+          "natural_frequency_hz": 11.563156553285237,
+          "rho": 0.6316143071395129
+        },
+        "nuisance_raw": [
+          1.1293713327506614,
+          -1.8871720119273772,
+          7.999999461310018
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "continuation"
+      },
+      {
+        "chi": 0.825,
+        "converged_count": 9,
+        "delta_nll": 424.0878932329215,
+        "nll": 12785.841414718041,
+        "nuisance_physical": {
+          "H": 0.35145713027927544,
+          "damped_frequency_hz": 6.594681311309811,
+          "damping_ratio": 0.825,
+          "decay_rate_per_s": 60.48910674371857,
+          "g": 0.9999997749294346,
+          "latent_fraction": 0.7568625440080489,
+          "natural_frequency_hz": 11.669261019971046,
+          "rho": 0.6233973600397474
+        },
+        "nuisance_raw": [
+          1.1355826284256172,
+          -1.9263795769301615,
+          7.999999463967856
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "continuation"
+      },
+      {
+        "chi": 0.8404999999999999,
+        "converged_count": 9,
+        "delta_nll": 432.4045895398722,
+        "nll": 12794.158111024992,
+        "nuisance_physical": {
+          "H": -0.1627157641031998,
+          "damped_frequency_hz": 2.6432536671954394,
+          "damping_ratio": 0.8404999999999999,
+          "decay_rate_per_s": 25.763696529232554,
+          "g": -0.8538984544386461,
+          "latent_fraction": 0.9493895605096038,
+          "natural_frequency_hz": 4.8785480725126344,
+          "rho": 0.8176843646457742
+        },
+        "nuisance_raw": [
+          2.9318484151985995,
+          -3.2494494880558364,
+          -1.2703720380327488
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "fixed_0"
+      },
+      {
+        "chi": 0.856,
+        "converged_count": 9,
+        "delta_nll": 438.89790525701574,
+        "nll": 12800.651426742135,
+        "nuisance_physical": {
+          "H": -0.16448206837101254,
+          "damped_frequency_hz": 2.4801199501782714,
+          "damping_ratio": 0.856,
+          "decay_rate_per_s": 25.802161361095543,
+          "g": -0.8604940864749321,
+          "latent_fraction": 0.9506001543484793,
+          "natural_frequency_hz": 4.797361592375073,
+          "rho": 0.8174386820965752
+        },
+        "nuisance_raw": [
+          2.957338157372127,
+          -3.3578486005305654,
+          -1.2952451890489216
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "fixed_0"
+      },
+      {
+        "chi": 0.8714999999999999,
+        "converged_count": 9,
+        "delta_nll": 445.1493899610032,
+        "nll": 12806.902911446123,
+        "nuisance_physical": {
+          "H": -0.16609791606503094,
+          "damped_frequency_hz": 2.3135128296573746,
+          "damping_ratio": 0.8714999999999999,
+          "decay_rate_per_s": 25.832872025154206,
+          "g": -0.8666456059879208,
+          "latent_fraction": 0.9516863232804533,
+          "natural_frequency_hz": 4.717646904261197,
+          "rho": 0.8172425799604768
+        },
+        "nuisance_raw": [
+          2.980717300106032,
+          -3.4811773128088213,
+          -1.3194440522140687
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "continuation"
+      },
+      {
+        "chi": 0.8869999999999999,
+        "converged_count": 9,
+        "delta_nll": 451.1676879846782,
+        "nll": 12812.921209469798,
+        "nuisance_physical": {
+          "H": -0.16759382047839555,
+          "damped_frequency_hz": 2.142504435386801,
+          "damping_ratio": 0.887,
+          "decay_rate_per_s": 25.85830454506016,
+          "g": -0.8724184598457625,
+          "latent_fraction": 0.9526732594898665,
+          "natural_frequency_hz": 4.639771125503888,
+          "rho": 0.8170802168865439
+        },
+        "nuisance_raw": [
+          3.0023973384801956,
+          -3.624657829452679,
+          -1.3431152387460188
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "fixed_0"
+      },
+      {
+        "chi": 0.9025,
+        "converged_count": 9,
+        "delta_nll": 456.96126325303703,
+        "nll": 12818.714784738157,
+        "nuisance_physical": {
+          "H": -0.16897795078674369,
+          "damped_frequency_hz": 1.9655505748910942,
+          "damping_ratio": 0.9025,
+          "decay_rate_per_s": 25.87895058658471,
+          "g": -0.8778342764778727,
+          "latent_fraction": 0.9535749591491203,
+          "natural_frequency_hz": 4.563726213723946,
+          "rho": 0.8169484347641957
+        },
+        "nuisance_raw": [
+          3.0225839868033404,
+          -3.7970577407786648,
+          -1.366247949352475
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "continuation"
+      },
+      {
+        "chi": 0.9179999999999999,
+        "converged_count": 9,
+        "delta_nll": 462.53838568932406,
+        "nll": 12824.291907174444,
+        "nuisance_physical": {
+          "H": -0.17025796658452325,
+          "damped_frequency_hz": 1.7804369922683818,
+          "damping_ratio": 0.918,
+          "decay_rate_per_s": 25.895120185396433,
+          "g": -0.8829286835908581,
+          "latent_fraction": 0.9543921744473157,
+          "natural_frequency_hz": 4.489473180244619,
+          "rho": 0.8168452402789166
+        },
+        "nuisance_raw": [
+          3.0412041632394966,
+          -4.014194509826872,
+          -1.3889001815278508
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "continuation"
+      },
+      {
+        "chi": 0.9334999999999999,
+        "converged_count": 9,
+        "delta_nll": 467.9071236967393,
+        "nll": 12829.660645181859,
+        "nuisance_physical": {
+          "H": -0.1714369641922516,
+          "damped_frequency_hz": 1.5838024016612655,
+          "damping_ratio": 0.9335,
+          "decay_rate_per_s": 25.906710795607175,
+          "g": -0.887722800183027,
+          "latent_fraction": 0.9551297463171174,
+          "natural_frequency_hz": 4.416905283741886,
+          "rho": 0.8167712769497287
+        },
+        "nuisance_raw": [
+          3.058284537367181,
+          -4.30902529475803,
+          -1.4110778510461779
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "continuation"
+      },
+      {
+        "chi": 0.949,
+        "converged_count": 9,
+        "delta_nll": 473.0753386796496,
+        "nll": 12834.82886016477,
+        "nuisance_physical": {
+          "H": -0.17252976870208817,
+          "damped_frequency_hz": 1.370242823830476,
+          "damping_ratio": 0.949,
+          "decay_rate_per_s": 25.91508331861518,
+          "g": -0.8922399084132019,
+          "latent_fraction": 0.9558005417766006,
+          "natural_frequency_hz": 4.346168188404558,
+          "rho": 0.816717853413313
+        },
+        "nuisance_raw": [
+          3.0740525315812213,
+          -4.769335629574522,
+          -1.4328045805218665
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "continuation"
+      },
+      {
+        "chi": 0.9644999999999999,
+        "converged_count": 9,
+        "delta_nll": 478.0506796330428,
+        "nll": 12839.804201118162,
+        "nuisance_physical": {
+          "H": -0.17353773953959348,
+          "damped_frequency_hz": 1.1295081102857722,
+          "damping_ratio": 0.9644999999999999,
+          "decay_rate_per_s": 25.919777007375433,
+          "g": -0.896505899299427,
+          "latent_fraction": 0.9564054164914532,
+          "natural_frequency_hz": 4.277097599340026,
+          "rho": 0.8166879053732736
+        },
+        "nuisance_raw": [
+          3.088467944538836,
+          -5.825253699668828,
+          -1.4541269293648869
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "continuation"
+      },
+      {
+        "chi": 0.98,
+        "converged_count": 9,
+        "delta_nll": 503.759231887434,
+        "nll": 12865.512753372554,
+        "nuisance_physical": {
+          "H": 0.4769319852585753,
+          "damped_frequency_hz": 2.571468851759141,
+          "damping_ratio": 0.98,
+          "decay_rate_per_s": 79.56821569095553,
+          "g": 0.9999997749296758,
+          "latent_fraction": 0.769273535730355,
+          "natural_frequency_hz": 12.922117183895592,
+          "rho": 0.5370700827439635
+        },
+        "nuisance_raw": [
+          1.204244080845234,
+          -3.2958102840267007,
+          8.0
+        ],
+        "start_count": 9,
+        "status": "PROFILED",
+        "winning_start": "global_projected"
+      }
+    ],
+    "right_edge_delta_nll": 503.759231887434,
+    "truth_chi": 0.22,
+    "truth_chi_profile_delta_nll": 0.014364391605340643
+  },
+  "rate": "coarse",
+  "sampling_rate_hz": 128.0,
+  "schema": "NSD_NB1_LONG_RUN_CASE_V0_1",
+  "scientific_verdict": "NOT_PERFORMED_BY_GITHUB",
+  "seed": 967403,
+  "semantic_truth": "C_MEMBER",
+  "structural_metrics": {
+    "hankel_s3_over_s1": 0.002254731918227682,
+    "hankel_s3_over_s2": 0.007277205406787888,
+    "recurrence_normalized_holdlag_rms": 0.021257439666667762
+  },
+  "true_chi": 0.22,
+  "true_chi_defined": true,
+  "truth_coordinates": {
+    "A": 0.76,
+    "chi": 0.22,
+    "fn_hz": 8.5,
+    "g": 0.15,
+    "generator": "CONTINUOUS_C",
+    "id": "C_F0"
+  },
+  "truth_id": "C_F0"
+}
