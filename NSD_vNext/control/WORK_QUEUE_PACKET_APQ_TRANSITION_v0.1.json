@@ -1,0 +1,28 @@
+{
+  "schema": "NSD_WORK_QUEUE_TRANSITION_V0_2",
+  "status": "ACTIVE_OVERRIDE_UNTIL_WORK_QUEUE_V0_1_CAN_BE_RECONCILED",
+  "base_queue": "NSD_vNext/control/WORK_QUEUE_v0.1.json",
+  "transitions": [
+    {
+      "task": "GATE-P30",
+      "from": "EXTERNAL_BLOCK",
+      "to": "DONE",
+      "evidence": "INTEGRATION_V0_2_REREVIEW_ADJUDICATION_v0.1.md"
+    },
+    {
+      "task": "NB1-Q02",
+      "from": "BLOCKED_DEPENDENCY",
+      "to": "ACTIVE",
+      "evidence": "N-B1 exact packet candidate bound; /N-B1 Exact Packet APQ running"
+    },
+    {
+      "task": "NB2-Q02",
+      "from": "BLOCKED_DEPENDENCY",
+      "to": "ACTIVE",
+      "evidence": "N-B2/N-B3 exact packet fragments bound; /N-B2 N-B3 Exact Packet APQ running"
+    }
+  ],
+  "integrated_packet_apq": "TEMPORARY_RATE_LIMIT_RETRY_REQUIRED",
+  "execution_authorized": false,
+  "next": "Adjudicate lane packet reviews immediately when complete; retry integrated packet APQ; no freeze until all BLOCKER/MATERIAL items close."
+}
