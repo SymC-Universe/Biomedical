@@ -1,0 +1,38 @@
+{
+  "schema": "NSD_POSTFREEZE_CONTROLLER_CYCLE_2026_09_30T1520Z",
+  "state": "ADVANCED_CHECKPOINT",
+  "scientific_baseline": "NSD-V02-B01-FROZEN",
+  "execution_authorized": false,
+  "scientific_outcomes_opened": false,
+  "external_reviews": "ALL_PACKET_APQ_REVIEWS_COMPLETE",
+  "nb1": {
+    "implementation_task": "PF-NB1-I01",
+    "status": "MECHANICALLY_COMPLETE",
+    "commits": [
+      "409761073481cc51924b759c67605b0773941e80",
+      "63e892aedbe4f5bbc592f0f79393129eefd9e4da"
+    ],
+    "evidence_runs": [
+      36735461793,
+      36735526178
+    ],
+    "result": "Profile-I evidence-retention hardening contracts PASS"
+  },
+  "nb23": {
+    "implementation_task": "PF-NB23-I01",
+    "status": "ACTIVE_WITH_TRANSIENT_REPOSITORY_MUTATION_BLOCK",
+    "remaining": "Certified switched-versus-surrogate discrepancy maximum plus independent non-confirmatory reference verification",
+    "implementation_spec": "NSD_vNext/control/V0_2_NB23_SWITCHED_CERTIFICATION_IMPLEMENTATION_SPEC_v0.1.md",
+    "mutation_attempts_blocked": 2
+  },
+  "identity_prebind": "NSD_vNext/control/V0_2_FINAL_IDENTITY_PREBIND_AUDIT_v0.1.json",
+  "source_of_record_sync": {
+    "working_investigation_update_attempted": true,
+    "continuity_state_update_attempted": true,
+    "lane_checkpoint_update_attempted": true,
+    "work_queue_update_attempted": true,
+    "result": "REJECTED_BY_CONNECTOR_SAFETY_LAYER",
+    "note": "This cycle record is additive evidence only and does not supersede the authoritative files."
+  },
+  "next_exact_action": "Retry only the blocked N-B2/N-B3 code mutation when repository transport permits, run Engine Contracts, then bind final code/dependency/environment identity and perform mechanical preflight. Do not open confirmatory outcomes."
+}
