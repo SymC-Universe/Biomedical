@@ -1,7 +1,7 @@
 # Bio Chi Integrated N-B1 Admission Architecture APQ Ledger v0.1
 
 **Plan reviewed:** `BIO_CHI_INTEGRATED_NB1_ADMISSION_ARCHITECTURE_PLAN_v0.2.md`  
-**APQ level:** APQ-2 SUBSTANTIAL  
+**APQ level:** APQ-2 CANDIDATE / INDEPENDENT REVIEW OUTSTANDING  
 **Review limitation:** two role-isolated passes from one cognition; not independent reviewers.
 
 | ID | Severity | Objection | Disposition | Required change |
@@ -23,4 +23,4 @@ Both passes inherit the assumption that an integrated conjunction can be useful 
 
 ## APQ disposition
 
-No unresolved BLOCKER or MATERIAL objection remains at the architecture-plan level after the v0.3 revisions. Architecture APQ closure licenses only construction of the exact untouched qualification packet. It does not license substantial computation or real-EEG admission.
+No unresolved BLOCKER or MATERIAL objection remains from the two same-cognition role-isolated passes after the v0.3 revisions. Under GOM v1.0, those passes are internal adversarial prechecks and do not constitute independent APQ-2 closure. Independent isolated review bound to the exact plan is still required before freeze or substantial execution. No real-EEG admission is licensed.
