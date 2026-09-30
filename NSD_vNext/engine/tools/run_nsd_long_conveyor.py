@@ -615,6 +615,13 @@ def build_manifest() -> dict[str, Any]:
 def main() -> int:
     RESULTS.mkdir(parents=True, exist_ok=True)
 
+    if CP.get("stage") == "SCIENTIFIC_REVIEW_READY":
+        print(json.dumps({
+            "status": "SCIENTIFIC_REVIEW_READY",
+            "message": "Frozen evidence packet is already complete; no recomputation performed."
+        }, indent=2))
+        return 0
+
     validate_contract()
     if "PACKET_BOUND" not in CP["completed_stages"]:
         CP["completed_stages"].append("PACKET_BOUND")
