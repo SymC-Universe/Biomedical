@@ -54,6 +54,7 @@ PACKET = CONTROL / "LONG_RUN_PACKET_v0.1.json"
 NB2_CONFIG = CONTROL / "NB2NB3_EXACT_MATCHED_CONFIG_v0.1.json"
 CEILING = CONTROL / "LONG_RUN_CEILING_v0.1.md"
 APQ = CONTROL / "LONG_RUN_PACKET_APQ_v0.1.md"
+EXTERNAL_APQ = CONTROL / "LONG_RUN_EXTERNAL_APQ_STATUS_v0.1.json"
 CHECKPOINT = CONTROL / "LONG_RUN_CHECKPOINT_v0.1.json"
 RESULTS = NSD_ROOT / "results" / "long_run_v0_1"
 NB1_DIR = RESULTS / "nb1"
@@ -175,10 +176,13 @@ def runtime_checkpoint_if_needed(next_action: str) -> bool:
 
 
 def validate_contract() -> None:
-    required = [PACKET, NB2_CONFIG, CEILING, APQ]
+    required = [PACKET, NB2_CONFIG, CEILING, APQ, EXTERNAL_APQ]
     for p in required:
         if not p.exists():
             raise RuntimeError(f"FROZEN_CONTRACT_VIOLATION: missing {p}")
+    gate = load_json(EXTERNAL_APQ)
+    if gate.get("status") != "QUALIFIED" or not gate.get("execution_authorized"):
+        raise RuntimeError("SCIENTIFIC_GATE: independent APQ status is not QUALIFIED")
     if PACK.get("ceiling") != "SCIENTIFIC_REVIEW_READY":
         raise RuntimeError("FROZEN_CONTRACT_VIOLATION: unexpected ceiling")
     if not PACK["lanes"]["NB1"].get("scientific_verdict_forbidden"):
