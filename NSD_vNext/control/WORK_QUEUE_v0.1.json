@@ -416,6 +416,18 @@
       "exact_action": "Compare v0.1 conveyor mechanics to v0.5/Draft-B requirements without opening outcomes.",
       "stop_condition": "none",
       "note": "Existing v0.1 conveyor is not compatible with v0.2 and must not be reused as final implementation."
+    },
+    {
+      "id": "GATE-P27",
+      "lane": "CROSS-LANE",
+      "title": "Prepare v0.5 isolated re-review handoffs",
+      "status": "READY",
+      "depends_on": [
+        "GATE-P20"
+      ],
+      "deliverable": "full-text/self-contained N-B1, N-B2/N-B3, and integration v0.5 handoff material",
+      "exact_action": "Prepare outcome-blind re-review inputs so review can relaunch immediately when Undermind transport clears; do not include sibling conclusions or v0.1 outcomes.",
+      "stop_condition": "Any handoff would expose protected outcome values or change science."
     }
   ]
 }
