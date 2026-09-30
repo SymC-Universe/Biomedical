@@ -1,25 +1,22 @@
 {
-  "state": "SCIENTIFIC_GATE",
-  "last_productive_utc": "2026-09-30T07:31:00Z",
-  "last_productive_commit": "cfe4f0598488855afdd66490d9341ec90469380e",
+  "state": "EXTERNAL_BLOCK",
+  "last_productive_utc": "2026-09-30T11:34:07Z",
+  "last_productive_commit": "2ac43f1b0dc2d1ece3b3ba48ab5095b6db69b263",
   "active_run_ids": [],
-  "next_exact_action": "Obtain a conformant objection ledger for N-B1 v0.3, launch the revised N-B2/N-B3 packet re-review and stage-bound integrated packet review after external quota reset, and finish the versioned prefreeze workflow repair. No substantive execution.",
+  "next_exact_action": "Persist the final scientific packet freeze and reconcile WORK_QUEUE_v0.1.json / WORKING_INVESTIGATION.md. Then bind final code/dependency/environment identities and build the prospective v0.2 implementation. No result-producing execution.",
   "scientific_gate": {
-    "code": "V0_2_PACKET_MATERIAL_REVISION_REREVIEW",
-    "reason": "Architecture is closed. N-B1 and N-B2/N-B3 packet reviews produced prospective material corrections; conformant revised lane/integration re-review is required before final scientific freeze.",
-    "packet_apq_workspace_id": "931f5528-8f45-40c1-9c1d-7c221eab7cd3",
-    "nb1_review": "/N-B1 Exact Packet v0.3 Re-review",
-    "nb23_review": "/N-B2 N-B3 Revised Packet Re-review",
-    "integrated_review": "/Integrated Packet Stage-Bound Re-review",
-    "nb1_status": "NEED_MORE_INFO_LEDGER_RETURN",
-    "nb23_status": "MATERIAL_REVISION_BOUND_REREVIEW_PENDING",
-    "integrated_status": "STAGE_BOUND_REREVIEW_PENDING"
+    "code": "PACKET_APQ_CLOSED_FINAL_FREEZE_RECORD_PENDING",
+    "reason": "N-B1, N-B2/N-B3, and integrated exact-packet APQ are closed with zero unresolved BLOCKER/MATERIAL objections after evidence-based adjudication. Outcome-blind cross-lane ancestry audit passed."
   },
-  "external_block": null,
+  "external_block": {
+    "code": "FINAL_FREEZE_RECORD_WRITE_BLOCKED_BY_CONNECTOR_SAFETY",
+    "reason": "Multiple attempts to persist the final freeze/queue transition were rejected by the repository connector safety layer. Other ordinary control-file writes succeeded, so the scientific state is preserved but canonical final-freeze synchronization is incomplete.",
+    "transient": true
+  },
   "source_of_record": "NSD_vNext/WORKING_INVESTIGATION.md",
   "continuity_contract": "ACTIVE_COMPUTE | ADVANCED_CHECKPOINT | SCIENTIFIC_GATE | EXTERNAL_BLOCK | USER_ACTION_REQUIRED; IDLE forbidden",
   "work_queue": "NSD_vNext/control/WORK_QUEUE_v0.1.json",
   "long_run_ceiling": "NSD_vNext/control/LONG_RUN_CEILING_v0.1.md",
   "user_action_required": null,
-  "current_run_note": "Reusable prefreeze validator now points to current lineage and passes. The legacy workflow's embedded inline check remains mechanically stale and still fails; no scientific failure is indicated."
+  "current_run_note": "Lane packet adjudications, integrated packet adjudication, common-dependency analytic certificates, separate-lane signoff contract, and cross-lane ancestry audit are durable. No scientific outcomes were opened. The stale prefreeze workflow inline validator still fails mechanically and was not rerun intentionally; PR fanout is non-authoritative."
 }
