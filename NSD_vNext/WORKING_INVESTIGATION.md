@@ -920,3 +920,19 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Next exact action:** advance `NB1-Q01` and `NB2-Q01` rather than waiting for another user turn.
 - **User intervention required:** `no`
 
+### 2026-09-29 - ACTIVE_COMPUTE - Long-run NSD conveyor launched
+
+- **Lifecycle Stage:** Stage 3 / continuous evidence execution
+- **Entry type:** `ACTIVE_COMPUTE / EXECUTION`
+- **Run:** `36648443486`
+- **Workflow:** `.github/workflows/nsd-long-run-conveyor.yml`
+- **Frozen operational ceiling:** `NSD_vNext/control/LONG_RUN_CEILING_v0.1.md`
+- **Frozen packet:** `NSD_vNext/control/LONG_RUN_PACKET_v0.1.json`
+- **Packet APQ:** `NSD_vNext/control/LONG_RUN_PACKET_APQ_v0.1.md`
+- **Scientific authority:** GitHub executes only. Scientific interpretation and decisions remain with the researcher + ChatGPT.
+- **Authorized conveyor ceiling:** packet bound -> frozen input validation -> implementation tests -> preflight -> full N-B1 and N-B2/N-B3 execution -> merged evidence -> reproducibility/hash closure -> `SCIENTIFIC_REVIEW_READY`.
+- **Checkpoint behavior:** case-level progress is committed durably; runtime-reserve exit self-dispatches a successor run and resumes only incomplete work.
+- **Early stop conditions:** mechanical failure, frozen-contract violation, source/dependency block, or checkpoint corruption. Null, unfavorable, pathological, or outlier scientific results are preserved and do not stop the conveyor by themselves.
+- **Legacy hourly execution controller:** disabled to avoid duplicate orchestration while the GitHub-native conveyor owns execution. Independent continuity alarm remains separate.
+- **User intervention required:** `no` while the conveyor remains mechanically healthy.
+
