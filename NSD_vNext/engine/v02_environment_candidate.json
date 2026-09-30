@@ -1,0 +1,12 @@
+{
+  "status": "PREFLIGHT_CANDIDATE_NOT_FINAL",
+  "python": "3.11.16",
+  "numpy": "2.4.6",
+  "scipy": "1.17.1",
+  "pytest": "9.1.1",
+  "runner_image": "ubuntu-24.04",
+  "runner_image_release": "ubuntu24/20260927.320",
+  "dependency_lock": "NSD_vNext/engine/requirements-v02-lock.txt",
+  "evidence_run": 36714352473,
+  "execution_authorized": false
+}
