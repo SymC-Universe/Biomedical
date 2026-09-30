@@ -1,0 +1,14 @@
+{
+  "schema": "NSD_LANE_CHECKPOINT_V0_2",
+  "lane": "N-B1",
+  "state": "SCIENTIFIC_GATE",
+  "authority_plan_blob": "ad8193ee0a99365ffddbf930db84d84a046d7400",
+  "draft_packet": "NSD_vNext/control/FRESH_UNTOUCHED_V0_2_DRAFT.json",
+  "completed_case_ids": [],
+  "completed_artifact_hashes": {},
+  "incomplete_case_ids": "ALL_FRESH_V0_2_CASES",
+  "active_run_id": null,
+  "next_exact_action": "Complete round-2 independent APQ on N-B1 v0.4; resolve objections; then packet-level APQ/freeze before execution.",
+  "stop_reason": "ROUND2_APQ_PENDING",
+  "scientific_values_exposed": false
+}
