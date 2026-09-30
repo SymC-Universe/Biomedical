@@ -1,0 +1,41 @@
+{
+  "schema":"NSD_NB1_PACKET_APQ_DELTA_V0_1",
+  "status":"PACKET_LEVEL_APQ_CANDIDATE_NOT_FROZEN",
+  "execution_authorized":false,
+  "packet_candidate":{"path":"NSD_vNext/control/NB1_EXACT_PACKET_CANDIDATE_v0.1.json","blob":"9eb26d8ae3d79a118e8ebefa532b7297f31e3f93"},
+  "method":{"path":"NSD_vNext/control/NB1_PACKET_METHOD_v0.1.json","blob":"25a4fc9284e72f645c1eab6aa4cd50c2825d8ec9"},
+  "case_identity_rule":{
+    "truth_ids":["NB1B01-F01","NB1B01-F02","NB1B01-F03","NB1B01-F04","NB1B01-F05","NB1B01-F06","NB1B01-F07","NB1B01-F08","NB1B01-F09","NB1B01-L01","NB1B01-L02","NB1B01-L03","NB1B01-L04","NB1B01-L05","NB1B01-L06","NB1B01-L07","NB1B01-L08","NB1B01-L09"],
+    "replicates":"R00..R15 in exact seed-file order",
+    "rates_hz":[240,120],
+    "case_id":"<truth_id>-<replicate>-S<rate>",
+    "expected_count":576
+  },
+  "applicability":{
+    "F01_F08_L01_L08":{"P":"REQUIRED","S":"REQUIRED","T":"REQUIRED","F":"REQUIRED","O":"REQUIRED","M":"REQUIRED","R":"NOT_APPLICABLE","N":"REQUIRED","I":"REQUIRED","U":"NOT_APPLICABLE"},
+    "F09_L09":{"P":"REQUIRED","S":"REQUIRED","T":"REQUIRED","F":"REQUIRED","O":"REQUIRED","M":"REQUIRED","R":"REQUIRED","N":"REQUIRED","I":"REQUIRED","U":"NOT_APPLICABLE"}
+  },
+  "sampling":{
+    "fine_hz":240,"coarse_hz":120,"duration_s":96,
+    "coarse_transform":"y_coarse[j]=y_fine[2j], no additional filtering",
+    "same_path_required":true,
+    "alias_disposition":"relevant ambiguity -> S=REFUSE; missing proof -> S=NEED_MORE_INFO"
+  },
+  "profile_I":{
+    "role":"cutoff-free uniqueness/interiority screen only",
+    "pass":"valid profile + optimum reproduction + interior global minimum + no numerically tied competing global minimum",
+    "unresolved":"edge, competing minima, nonregular/boundary, or failed profile -> NEED_MORE_INFO unless N already classifies numerical/search refusal",
+    "not_precision_or_family_evidence":true
+  },
+  "framework_not_operational":[
+    "required channel would need outcome-driven rule invention or retuning",
+    "semantic and estimator namespaces cannot remain separate",
+    "neither F01 nor F02 yields any QUALIFICATION_ELIGIBLE row",
+    "post-result scientific threshold is required for ordinary eligibility"
+  ],
+  "evidence_schema_blob":"4877ca9d017877af75b298fdea91325394fe846e",
+  "checkpoint_schema_blob":"cef38ed6d88f227672825bdccbe475404cb45a65",
+  "final_code_environment_identity":"PENDING_POST_PACKET_APQ_IMPLEMENTATION_AND_FINAL_BINDING",
+  "real_eeg_local_chi_licensed":false,
+  "next_gate":"ISOLATED_PACKET_LEVEL_APQ"
+}

@@ -1,0 +1,47 @@
+{
+  "schema":"NSD_NB23_TARGET_AND_CONTRAST_CANDIDATE_V0_1",
+  "status":"PACKET_LEVEL_APQ_CANDIDATE_NOT_FROZEN",
+  "execution_authorized":false,
+  "horizon_seconds":32,
+  "base_time_samples":4097,
+  "sampling_projection_hz":[96,48,24],
+  "targets":{
+    "spectral_abscissa":"alpha(A)=max Re(lambda(A))",
+    "embedded_eigenvalues":"unordered complex eigenvalue multiset with multiplicity",
+    "peak_gain":"max_[0,T] ||G^(1/2) exp(At) G^(-1/2)||_2",
+    "peak_time":"argmax set; ties retained",
+    "peak_direction":"dominant right-singular subspace/projector when degenerate; otherwise normalized physical-coordinate direction",
+    "response_curve":"r(t)=||exp(At)x0||_G/||x0||_G",
+    "integrated_burden":"integral_0^T r(t) dt, not squared norm",
+    "state_impulse":"exp(At)B",
+    "io_impulse":"C exp(At) B",
+    "observed_recovery":"C exp(At)x0",
+    "switched_propagator":"chronological product of frozen segment propagators"
+  },
+  "contrasts":[
+    {"id":"C01","role":"FUNCTION","members":["NB23B01-M-NORMAL"],"target":["spectral_abscissa","peak_gain","response_curve","integrated_burden"],"question":"ordinary low-order operation"},
+    {"id":"C02","role":"FUNCTION","members":["NB23B01-M-RECIP"],"target":["spectral_abscissa","embedded_eigenvalues"],"question":"spectral targets from embedded eigenspectrum"},
+    {"id":"C03","role":"LIMIT","members":["NB23B01-M-SSBASE","NB23B01-M-SLDIFFSPEC"],"held_fixed":"LOCAL_MODAL_COORDINATES","target":["embedded_eigenvalues"],"expected":"DIFFERENT"},
+    {"id":"C04","role":"LIMIT","members":["NB23B01-M-SSBASE","NB23B01-M-SSNONNORMAL"],"held_fixed":"LOCAL_MODAL_COORDINATES+EIGENVALUE_MULTISET","target":["peak_gain","response_curve","integrated_burden"],"expected":"DIFFERENT"},
+    {"id":"C05","role":"LIMIT","members":["NB23B01-M-IO-B1","NB23B01-M-IO-B2"],"held_fixed":"A+C","target":["spectral_abscissa","io_impulse"],"expected":"spectral EQUAL; B-dependent response not presumed equal"},
+    {"id":"C06","role":"LIMIT","members":["NB23B01-M-IO-C1","NB23B01-M-IO-C2"],"held_fixed":"A+B","target":["spectral_abscissa","observed_recovery"],"expected":"latent spectral EQUAL; C-observed response not presumed equal"},
+    {"id":"C07","role":"FUNCTION","members":["NB23B01-M-SIM-BASE","NB23B01-M-SIM-XFORM"],"held_fixed":"physical system","target":["spectral_abscissa","peak_gain","response_curve","integrated_burden","io_impulse"],"expected":"physical invariant targets EQUAL"},
+    {"id":"C08","role":"LIMIT","members":["NB23B01-M-PART-STABLE","NB23B01-M-PART-UNSTABLE"],"held_fixed":"observed subsystem/C/observed x0","target":["observed_recovery","spectral_abscissa"],"expected":"observed curve EQUAL; latent stability DIFFERENT and not recoverable"},
+    {"id":"C09","role":"LIMIT","members":["NB23B01-M-TV","NB23B01-M-TV-SUR"],"held_fixed":"source plus outcome-independent surrogate rule","target":["switched_propagator","peak_gain"],"expected":"no equality presumed; discrepancy is explicit target"},
+    {"id":"C10","role":"LIMIT","members":["NB23B01-M-ALIAS-8","NB23B01-M-ALIAS-88"],"held_fixed":"96 Hz observation","target":["sampled_observation","continuous_frequency"],"expected":"sampled observation EQUAL; continuous frequency DIFFERENT/unrecoverable"},
+    {"id":"C11","role":"LIMIT","members":["NB23B01-M-MISSPEC"],"target":["linear_C_recoverability"],"expected":"outside linear observation family; no recovery claim"},
+    {"id":"C12","role":"FUNCTION","members":["NB23B01-M-NORMAL"],"held_fixed":"one continuous truth across 96/48/24 Hz projections","target":["observed_recovery"],"expected":"all records are projections of one truth; rate alone does not license generator uniqueness"}
+  ],
+  "global_peak":{
+    "production":"evaluate full base grid + endpoints; bracket every local maximum; bounded-refine every bracket; compare all refined candidates/endpoints; return all ties",
+    "reference":"separate high-precision/reference route using analytic anchors where available and an independently implemented dense/high-precision calculation",
+    "grid_points":4097
+  },
+  "numerical_only":{
+    "matrix_abs":1e-12,
+    "spectrum_abs":1e-10,
+    "invariant_relative":1e-9,
+    "observed_array_relative":1e-10,
+    "peak_tie_relative":1e-9
+  }
+}

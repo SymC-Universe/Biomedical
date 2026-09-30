@@ -1,0 +1,43 @@
+{
+  "schema":"NSD_NB23_EXHAUSTIVE_SUITE_CANDIDATE_V0_1",
+  "status":"PACKET_LEVEL_APQ_CANDIDATE_NOT_FROZEN",
+  "execution_authorized":false,
+  "operator_registry_blob":"75519d5036778d61c84fe7188ab687e6734f4d71",
+  "members":{
+    "NB23B01-M-NORMAL":{"system":"NORMAL","B":"BAL","C":"FULL","G":"I4","x0":"BALANCED_UNIT"},
+    "NB23B01-M-RECIP":{"system":"RECIP","B":"BAL","C":"FULL","G":"I4","x0":"BALANCED_UNIT"},
+    "NB23B01-M-SSBASE":{"system":"SSBASE","B":"BAL","C":"FULL","G":"I4","x0":"BALANCED_UNIT"},
+    "NB23B01-M-SSNONNORMAL":{"system":"SSNONNORMAL","B":"BAL","C":"FULL","G":"I4","x0":"BALANCED_UNIT"},
+    "NB23B01-M-SLDIFFSPEC":{"system":"SLDIFFSPEC","B":"BAL","C":"FULL","G":"I4","x0":"BALANCED_UNIT"},
+    "NB23B01-M-IO-B1":{"system":"IO","B":"B1","C":"CDIFF","G":"I4","x0":"BALANCED_UNIT"},
+    "NB23B01-M-IO-B2":{"system":"IO","B":"B2","C":"CDIFF","G":"I4","x0":"BALANCED_UNIT"},
+    "NB23B01-M-IO-C1":{"system":"IO","B":"BAL","C":"C1","G":"I4","x0":"BALANCED_UNIT"},
+    "NB23B01-M-IO-C2":{"system":"IO","B":"BAL","C":"C2","G":"I4","x0":"BALANCED_UNIT"},
+    "NB23B01-M-SIM-BASE":{"system":"IO","B":"BAL","C":"CDIFF","G":"I4","x0":"BALANCED_UNIT"},
+    "NB23B01-M-SIM-XFORM":{"source":"NB23B01-M-SIM-BASE","transform":"A'=SAS^-1;B'=SB;C'=CS^-1;G'=S^-TGS^-1;x0'=Sx0"},
+    "NB23B01-M-PART-STABLE":{"special":"partial_observation.stable_A"},
+    "NB23B01-M-PART-UNSTABLE":{"special":"partial_observation.unstable_A"},
+    "NB23B01-M-ALIAS-8":{"special":"alias_control","f_hz":8},
+    "NB23B01-M-ALIAS-88":{"special":"alias_control","f_hz":88},
+    "NB23B01-M-TV":{"special":"time_varying"},
+    "NB23B01-M-TV-SUR":{"source":"NB23B01-M-TV","special":"time_varying.surrogate"},
+    "NB23B01-M-MISSPEC":{"special":"misspecification"}
+  },
+  "equivalence_classes":[
+    {"id":"EQ-LOCAL-01","representation":"LOCAL_MODAL_COORDINATES","members":["NB23B01-M-SSBASE","NB23B01-M-SSNONNORMAL","NB23B01-M-SLDIFFSPEC"]},
+    {"id":"EQ-SPECTRUM-01","representation":"EIGENVALUE_MULTISET","members":["NB23B01-M-SSBASE","NB23B01-M-SSNONNORMAL"]},
+    {"id":"EQ-A-IO","representation":"A_OPERATOR","members":["NB23B01-M-IO-B1","NB23B01-M-IO-B2","NB23B01-M-IO-C1","NB23B01-M-IO-C2"]},
+    {"id":"EQ-PHYSICAL-SIM","representation":"PHYSICAL_SYSTEM_UNDER_SIMILARITY","members":["NB23B01-M-SIM-BASE","NB23B01-M-SIM-XFORM"]},
+    {"id":"EQ-OBS-PARTIAL","representation":"DECLARED_SAMPLED_OBSERVATION","members":["NB23B01-M-PART-STABLE","NB23B01-M-PART-UNSTABLE"]},
+    {"id":"EQ-OBS-ALIAS96","representation":"96_HZ_SAMPLED_COSINE_OBSERVATION","members":["NB23B01-M-ALIAS-8","NB23B01-M-ALIAS-88"]}
+  ],
+  "membership_rules":{
+    "LOCAL_MODAL_COORDINATES":"exact prospectively declared omega/zeta tuple equality",
+    "EIGENVALUE_MULTISET":"analytic block-triangular certificate plus independent numerical spectrum check",
+    "A_OPERATOR":"operator-recipe identity",
+    "PHYSICAL_SYSTEM_UNDER_SIMILARITY":"verify all A/B/C/G/x0 transform identities",
+    "DECLARED_SAMPLED_OBSERVATION":"use only O-visible arrays under frozen observation identity tolerance"
+  },
+  "primary_recoverability":"DETERMINISTIC_NOISELESS_SAMPLED_OBSERVATION",
+  "stochastic_extension":"NOT_AUTHORIZED_WITHOUT_SEPARATE_PACKET_APQ"
+}
