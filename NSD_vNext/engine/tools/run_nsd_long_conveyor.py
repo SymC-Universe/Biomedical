@@ -146,10 +146,9 @@ def write_checkpoint(stage: str, next_action: str, stop_reason: str | None = Non
 def git_checkpoint(message: str) -> None:
     if os.environ.get("GITHUB_ACTIONS") != "true":
         return
-    paths = [
-        str(CHECKPOINT.relative_to(REPO_ROOT)),
-        str(RESULTS.relative_to(REPO_ROOT)),
-    ]
+    paths = [str(CHECKPOINT.relative_to(REPO_ROOT))]
+    if RESULTS.exists() and any(p.is_file() for p in RESULTS.rglob("*")):
+        paths.append(str(RESULTS.relative_to(REPO_ROOT)))
     subprocess.run(["git", "add", "--"] + paths, cwd=REPO_ROOT, check=True)
     staged = subprocess.run(["git", "diff", "--cached", "--quiet"], cwd=REPO_ROOT)
     if staged.returncode == 0:
