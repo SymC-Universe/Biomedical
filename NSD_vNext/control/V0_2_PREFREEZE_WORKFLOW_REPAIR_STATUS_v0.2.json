@@ -1,0 +1,20 @@
+{
+  "schema": "NSD_V0_2_PREFREEZE_WORKFLOW_REPAIR_STATUS_V0_2",
+  "status": "REUSABLE_VALIDATOR_REPAIRED_WORKFLOW_INLINE_STALE",
+  "execution_authorized": false,
+  "observed_run": 36701862003,
+  "reusable_validator": {
+    "path": "NSD_vNext/engine/tools/validate_v02_prefreeze_packet.py",
+    "commit": "aa71992e54392c8d5fd9a17a80dda0fca1fbb36d",
+    "result": "PASS using LANE_CHECKPOINT_NB1_v0.9.json and LANE_CHECKPOINT_NB23_v0.8.json"
+  },
+  "remaining_failure": {
+    "step": "Validate freshness and authority firewalls",
+    "exact_root_cause": "legacy inline validator still reads FRESH_UNTOUCHED_V0_2_DRAFT.json and v0.2 lane checkpoints; it failed on obsolete checkpoint state",
+    "scientific_failure": false
+  },
+  "workflow_mutation_attempted": true,
+  "workflow_mutation_result": "BLOCKED_BY_CONNECTOR_SAFETY",
+  "unchanged_rerun_forbidden": true,
+  "next_action": "When workflow-file mutation is permitted, remove the duplicated inline validator or version it to Draft-B/latest-checkpoint discovery, then run only the repaired contract path."
+}
