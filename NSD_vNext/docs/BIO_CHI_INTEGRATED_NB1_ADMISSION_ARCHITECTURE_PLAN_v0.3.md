@@ -1,6 +1,6 @@
 # Bio Chi Integrated N-B1 Admission/Refusal Architecture Plan v0.3
 
-**Status:** APQ-CLOSED ARCHITECTURE / EXACT QUALIFICATION PACKET NOT YET FROZEN  
+**Status:** INTERNAL ADVERSARIAL PRECHECK COMPLETE / INDEPENDENT APQ-2 REQUIRED / NOT FROZEN  
 **Date:** 29 September 2026  
 **Governed by:** SymC General Operations Manual v1.0  
 **Supersedes for planning:** `BIO_CHI_INTEGRATED_NB1_ADMISSION_ARCHITECTURE_PLAN_v0.2.md`
@@ -77,7 +77,7 @@ Previously frozen tolerances may be inherited only for their exact original role
 
 ## Exact qualification packet required next
 
-Architecture APQ closure does not authorize computation.
+The internal same-cognition adversarial precheck does not constitute GOM APQ-2 closure and does not authorize computation. Independent isolated APQ review bound to this exact plan lineage is required before an execution packet can be frozen.
 
 A separate packet must prospectively bind:
 
