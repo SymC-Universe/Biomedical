@@ -1,7 +1,7 @@
 {
   "schema": "NSD_LONG_RUN_EXTERNAL_APQ_STATUS_V0_1",
   "governance": "SymC GOM v1.0 + Continuity Hardening Addendum",
-  "status": "REVIEW_IN_PROGRESS",
+  "status": "ROUND1_ADJUDICATED_ROUND2_TRANSPORT_PENDING",
   "execution_authorized": false,
   "reason": "APQ-2 substantial execution requires independent adversarial review bound to the exact frozen packet. Two same-cognition passes do not satisfy that requirement.",
   "bound_packet": {
@@ -15,7 +15,7 @@
     "present": true,
     "note": "The active long-run conveyor opened some known-truth outcomes before this governance correction. Preserve them as exposed development evidence only; they cannot be relabeled untouched confirmation."
   },
-  "required_next_action": "Wait only for the three already-launched isolated reviews to complete; adjudicate every BLOCKER/MATERIAL objection by evidence rather than voting; if any material change is accepted, version prospectively and re-run APQ on the changed authority. Only after closure create a fresh v0.2 untouched packet with fresh identities.",
+  "required_next_action": "Continue authorized prefreeze work now; automatically retry isolated Round-2 full-text APQ after provider reset; adjudicate immediately when complete; no substantive execution before round-2 and exact packet-level APQ/freeze.",
   "scientific_authority": "Researcher + ChatGPT",
   "github_authority": "Mechanical execution only",
   "review_workspace": {
@@ -27,5 +27,18 @@
       "/reviews/Integrated Long Run Independent APQ-2"
     ],
     "isolation_rule": "Each search receives only its self-contained authority brief and does not receive prior reviewer conclusions or sibling review results."
+  },
+  "round1": {
+    "completed": true,
+    "adjudication": "NSD_vNext/control/INDEPENDENT_APQ2_ADJUDICATION_LEDGER_v0.2.md",
+    "nb1_plan": "NSD_vNext/docs/BIO_CHI_INTEGRATED_NB1_ADMISSION_ARCHITECTURE_PLAN_v0.4.md",
+    "nb23_plan": "NSD_vNext/docs/BIO_CHI_NB2_NB3_REPRESENTATION_SUFFICIENCY_PLAN_v0.4.md"
+  },
+  "round2": {
+    "provider": "Undermind",
+    "workspace_id": "b9de6e85-abe4-401b-a922-4a7d3aeebc3f",
+    "launch_status": "RATE_LIMITED_BEFORE_SEARCH_CREATION",
+    "retry_scheduled": true,
+    "requirement": "Use full v0.4 authority text rather than identifiers/summaries."
   }
 }
