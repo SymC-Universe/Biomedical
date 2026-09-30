@@ -1,0 +1,15 @@
+{
+  "schema": "NSD_V0_2_VERIFIER_INDEPENDENCE_V0_1",
+  "status": "PREFREEZE_REQUIRED",
+  "execution_authorized": false,
+  "independent_verifier_required": true,
+  "same_production_path_counts_as_independent": false,
+  "accepted_verifier_types": [
+    "analytic",
+    "separate_implementation",
+    "other_predeclared_independent_method"
+  ],
+  "unresolved_verifier_disagreement": "BLOCK_PACKET_FREEZE",
+  "disagreement_state": "NEED_MORE_INFO_OR_CONTRACT_REFUSAL",
+  "lane_conclusions_remain_separate": true
+}
