@@ -1,6 +1,6 @@
 # Bio Chi N-B2/N-B3 Representation-Sufficiency Plan Packet v0.3
 
-**Status:** APQ-CLOSED PLAN ARCHITECTURE / EXACT EXECUTION PACKET NOT YET FROZEN  
+**Status:** INTERNAL ADVERSARIAL PRECHECK COMPLETE / INDEPENDENT APQ-2 REQUIRED / NOT FROZEN  
 **Date:** 29 September 2026  
 **Governed by:** SymC General Operations Manual v1.0  
 **Supersedes for planning:** `BIO_CHI_NB2_NB3_REPRESENTATION_SUFFICIENCY_PLAN_v0.2.md`
@@ -101,7 +101,7 @@ A time-varying truth must be defined by a prospectively bound operator sequence 
 
 ## Exact execution packet required next
 
-Plan APQ closure does not authorize substantial computation.
+The internal same-cognition adversarial precheck does not constitute GOM APQ-2 closure and does not authorize substantial computation. Independent isolated APQ review bound to this exact plan lineage is required before an execution packet can be frozen.
 
 A separate execution packet must freeze:
 
