@@ -1,0 +1,99 @@
+name: NSD v0.2 Prefreeze Contracts
+
+on:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - "NSD_vNext/control/FRESH_UNTOUCHED_V0_2_DRAFT.json"
+      - "NSD_vNext/control/LANE_CHECKPOINT_NB1_v0.2.json"
+      - "NSD_vNext/control/LANE_CHECKPOINT_NB23_v0.2.json"
+      - "NSD_vNext/control/LONG_RUN_EXPOSURE_LEDGER_v0.1.json"
+      - "NSD_vNext/control/V0_2_RESULT_LANDING_AUDIT_v0.1.md"
+      - ".github/workflows/nsd-v0-2-prefreeze-contracts.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "NSD_vNext/control/FRESH_UNTOUCHED_V0_2_DRAFT.json"
+      - "NSD_vNext/control/LANE_CHECKPOINT_NB1_v0.2.json"
+      - "NSD_vNext/control/LANE_CHECKPOINT_NB23_v0.2.json"
+      - "NSD_vNext/control/LONG_RUN_EXPOSURE_LEDGER_v0.1.json"
+      - "NSD_vNext/control/V0_2_RESULT_LANDING_AUDIT_v0.1.md"
+      - ".github/workflows/nsd-v0-2-prefreeze-contracts.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  prefreeze-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate freshness and authority firewalls
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          d=json.loads(Path("NSD_vNext/control/FRESH_UNTOUCHED_V0_2_DRAFT.json").read_text())
+          e=json.loads(Path("NSD_vNext/control/LONG_RUN_EXPOSURE_LEDGER_v0.1.json").read_text())
+          c1=json.loads(Path("NSD_vNext/control/LANE_CHECKPOINT_NB1_v0.2.json").read_text())
+          c2=json.loads(Path("NSD_vNext/control/LANE_CHECKPOINT_NB23_v0.2.json").read_text())
+
+          assert d["status"]=="PREFREEZE_DRAFT_PENDING_ROUND2_APQ"
+          assert d["execution_authorized"] is False
+          assert d["exposure_firewall"]["v01_scientific_values_used_for_design"] is False
+
+          exposed_seeds={913103,927229,941351,967403}
+          new_seeds=set(d["nb1"]["seed_derivation"]["seeds"])
+          if exposed_seeds & new_seeds:
+              raise SystemExit("freshness violation: v0.2 reuses exposed v0.1 NB1 seed")
+
+          exposed_ids={"C_F0","C_F1","C_F2","C_F3","C_F4","L_D_POS","L_D_NEG","L_S_POS","L_S_NEG","L_MEMORY","L_TWO_MODE"}
+          new_ids={x["id"] for x in d["nb1"]["function_truths"]+d["nb1"]["limit_truths"]}
+          if exposed_ids & new_ids:
+              raise SystemExit("freshness violation: v0.2 reuses exposed v0.1 truth id")
+
+          if d["nb1"]["sampling_rates_hz"] == [256.0,128.0]:
+              raise SystemExit("freshness violation: v0.2 repeats v0.1 sampling pair")
+
+          old_sim=[[2,0,0,0],[0,0.5,0,0],[0,0,1.5,0],[0,0,0,0.75]]
+          if d["nb23"]["similarity_S"] == old_sim:
+              raise SystemExit("freshness violation: v0.2 repeats v0.1 similarity transform")
+
+          if d["nb23"]["sampling_projection_hz"] == [100.0,50.0,25.0]:
+              raise SystemExit("freshness violation: v0.2 repeats v0.1 sampling projections")
+
+          if c1["lane"]==c2["lane"]:
+              raise SystemExit("lane checkpoint identity collision")
+          for cp in (c1,c2):
+              if cp["state"]!="SCIENTIFIC_GATE":
+                  raise SystemExit("prefreeze checkpoint must remain SCIENTIFIC_GATE")
+              if cp["completed_case_ids"]:
+                  raise SystemExit("fresh v0.2 outcome opened before freeze")
+              if cp["scientific_values_exposed"]:
+                  raise SystemExit("fresh v0.2 checkpoint reports exposure before authorization")
+
+          if d["cross_lane_firewall"]["confirmatory_case_identity_overlap_allowed"]:
+              raise SystemExit("cross-lane identity firewall disabled")
+          if d["cross_lane_firewall"]["cross_lane_outcome_feedback_before_both_freezes"]:
+              raise SystemExit("cross-lane outcome feedback firewall disabled")
+
+          if not Path("NSD_vNext/control/V0_2_RESULT_LANDING_AUDIT_v0.1.md").exists():
+              raise SystemExit("missing prebuilt result-landing audit")
+
+          print("NSD v0.2 prefreeze freshness/authority contracts PASS")
+          PY
+
+      - name: Ensure prefreeze files do not reference exposed scientific result payloads
+        shell: bash
+        run: |
+          if grep -R "results/long_run_v0_1/nb1/.*json\|results/long_run_v0_1/nb2_nb3/.*json"             NSD_vNext/control/FRESH_UNTOUCHED_V0_2_DRAFT.json             NSD_vNext/control/LANE_CHECKPOINT_NB1_v0.2.json             NSD_vNext/control/LANE_CHECKPOINT_NB23_v0.2.json; then
+            echo "Exposure firewall violation: fresh v0.2 controls point directly at v0.1 scientific result payloads"
+            exit 1
+          fi
+          echo "No direct v0.1 scientific result payload references in fresh v0.2 controls"
