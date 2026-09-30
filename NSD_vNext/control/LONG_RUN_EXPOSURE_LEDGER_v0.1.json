@@ -1,0 +1,71 @@
+{
+  "schema": "NSD_LONG_RUN_EXPOSURE_LEDGER_V0_1",
+  "governance": "SymC GOM v1.0 + Continuity Hardening Addendum",
+  "classification": "P0-D EXPOSED DEVELOPMENT / PROMOTION DEBT",
+  "cause": "Substantive known-truth execution began before independent APQ-2 qualification of the exact frozen packet. Same-cognition role-isolated passes were insufficient for GOM APQ-2 closure.",
+  "active_run_at_correction": 36648523189,
+  "checkpoint_run_identity_stale": true,
+  "checkpoint_recorded_run_id": 36648443486,
+  "nb1_rows": [
+    {
+      "id": "C_F0__913103__coarse",
+      "blob_sha": "1c7be4eac7d8c6e000c48b210769609916e00a10"
+    },
+    {
+      "id": "C_F0__913103__fine",
+      "blob_sha": "ed1a75c14b03f7ad435780c02151ba0c14ceee5b"
+    },
+    {
+      "id": "C_F0__927229__coarse",
+      "blob_sha": "9e7c211566ca2bcd36cdf6a01b623c2dbcfb19cb"
+    },
+    {
+      "id": "C_F0__927229__fine",
+      "blob_sha": "8e900d978bb5f95698181e108eec461e1940859d"
+    },
+    {
+      "id": "C_F0__941351__coarse",
+      "blob_sha": "2591494f883d9a119f556967266c9d553fb88f9e"
+    },
+    {
+      "id": "C_F0__941351__fine",
+      "blob_sha": "9fbdabf59a173e9f903a9ca335ad212834381cbc"
+    },
+    {
+      "id": "C_F0__967403__coarse",
+      "blob_sha": "da5e7a25bd9932ee731909efb2736ffcfb3e3456"
+    },
+    {
+      "id": "C_F0__967403__fine",
+      "blob_sha": "94d3eb477006714bb212648ba386d02136d520ba"
+    },
+    {
+      "id": "C_F1__913103__coarse",
+      "blob_sha": "25a54f271638800fb572a3c5cfb3f81e9432e0a0"
+    },
+    {
+      "id": "C_F1__913103__fine",
+      "blob_sha": "9605d093860120167def0a9b704281c3c016a19f"
+    },
+    {
+      "id": "C_F1__927229__coarse",
+      "blob_sha": "9d1237b72799ba00abdd43a28961394cddbe4f93"
+    },
+    {
+      "id": "C_F1__927229__fine",
+      "blob_sha": "e44751f4f887b4c68a7bbe194e007b3c040ad862"
+    }
+  ],
+  "nb2_nb3": [
+    {
+      "id": "NB2NB3_MATCHED_FAMILIES",
+      "path": "NSD_vNext/results/long_run_v0_1/nb2_nb3/matched_family_evidence.json",
+      "blob_sha": "16cd1553ca475f83f07a30b3cfe48048f68d3ec8"
+    }
+  ],
+  "scientific_use": {
+    "allowed": "Development/exploratory evidence, failure/root-cause analysis, future plan refinement with explicit exposure labeling.",
+    "forbidden": "Untouched qualification, confirmatory evidence, threshold calibration later presented as preregistered, or retroactive APQ qualification."
+  },
+  "future_untouched_requirement": "After independent APQ and any prospective revision, use a fresh packet version with fresh truth identities/seeds/configuration identities for untouched qualification."
+}
