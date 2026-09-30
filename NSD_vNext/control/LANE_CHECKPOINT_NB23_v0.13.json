@@ -1,0 +1,13 @@
+{
+  "schema": "NSD_LANE_CHECKPOINT_NB23_V0_13",
+  "lane": "N-B2/N-B3",
+  "state": "ADVANCED_CHECKPOINT",
+  "final_identity_freeze": true,
+  "execution_authorized": false,
+  "scientific_values_exposed": false,
+  "scientific_freeze": "NSD_vNext/control/V0_2_FINAL_SCIENTIFIC_FREEZE_v0.1.json",
+  "authority_validator_run": 36728720629,
+  "implementation_status": "RAW_TARGET_AND_PAIRWISE_RECOVERABILITY_MECHANICS_READY_CERTIFIED_SWITCHED_MAX_PENDING",
+  "next_exact_action": "Complete certified global-peak/switching-discrepancy mechanics and independent reference checks without opening confirmatory outcomes; then bind final implementation identity.",
+  "stop_reason": "POST_FREEZE_IMPLEMENTATION_VALIDATION"
+}
