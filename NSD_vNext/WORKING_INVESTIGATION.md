@@ -1005,3 +1005,18 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Current durable state:** `SCIENTIFIC_GATE / V0_5_REREVIEW_TRANSPORT_TEMPORARILY_BLOCKED_WITH_PARALLEL_QUEUE`.
 - **Next exact action:** finish the remaining v0.5 isolated handoff preparation while transport is blocked; relaunch all three isolated v0.5 reviews when available; adjudicate immediately; then proceed to exact packet-level APQ/freeze only if architecture closes.
 - **User intervention required:** `no`.
+
+
+### 2026-09-29 | APQ-2 RE-REVIEW / MATERIAL INTEGRATION REVISION | Stage 3
+
+- **Observed:** all three isolated v0.5 architecture re-reviews completed. N-B1 and N-B2/N-B3 were judged coherent enough for exact-packet construction, with remaining objections correctly located at packet-level executability rather than lane-architecture semantics.
+- **N-B1 adjudication:** profile-I remains a cutoff-free uniqueness/interiority screen and is not evidence of parameter precision. Alias-safety and observation/reference preservation must be executable per final case. Reporting units for interval summaries must be explicit.
+- **N-B2/N-B3 adjudication:** exact suite/equivalence classes, compatible-model sets, global peak procedure, alias control, ordered time-variation, partial observation, and numerical identities remain exact-packet obligations. The v0.5 lane authority is unchanged.
+- **Integrated review:** valid common-mode dependency, access-lineage, scientific-ancestry, and resume-authority objections were accepted prospectively. Case-label disjointness alone is insufficient.
+- **Prospective correction:** added `V0_2_CROSS_LANE_INTEGRATION_AUTHORITY_v0.1.md`, `V0_2_COMMON_DEPENDENCY_REGISTER_v0.1.json`, `V0_2_COMMON_DEPENDENCY_VERIFICATION_PLAN_v0.1.md`, `V0_2_OUTCOME_ACCESS_LEDGER_v0.1.json`, and `V0_2_CROSS_LANE_PROVENANCE_DISJOINTNESS_CONTRACT_v0.1.md`. Added Draft-B alignment, exact-packet completeness, checkpoint/resume, and updated prefreeze identity records.
+- **Review transport:** an initial compressed re-review of the revised integration controls returned NEED_MORE_INFO because it did not receive enough stage-specific control detail to verify closure. This is a review-input limitation, not evidence that the controls fail. A stage-bound re-review was immediately attempted but the provider hit its temporary usage limit.
+- **Continuity:** waiting time was used for outcome-blind prefreeze work; no substantive compute was launched. Draft-B remains preparatory, final case and N-B1 seed identities remain unfrozen, and the v0.1 conveyor remains non-authoritative for v0.2 implementation.
+- **Claim ceiling:** unchanged. Real-EEG local chi remains unlicensed; C1Q-RS remains qualification-only; scalar chi, modal/vector Chi, and system/conglomerate behavior remain distinct.
+- **Current durable state:** `EXTERNAL_BLOCK` limited to the stage-bound integration re-review transport.
+- **Next exact action:** retry the isolated stage-bound integration-authority re-review after provider reset. If it closes without unresolved BLOCKER/MATERIAL objections, promote the final N-B1 and N-B2/N-B3 exact-packet construction/APQ tasks to READY in the same cycle.
+- **User intervention required:** `no`

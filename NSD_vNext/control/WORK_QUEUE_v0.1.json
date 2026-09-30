@@ -47,26 +47,26 @@
     {
       "id": "NB1-Q02",
       "lane": "N-B1",
-      "title": "Packet-level APQ",
-      "status": "SCIENTIFIC_GATE",
+      "title": "Construct final N-B1 v0.2 packet and packet-level APQ",
+      "status": "BLOCKED_DEPENDENCY",
       "depends_on": [
-        "NB1-Q01"
+        "GATE-P30"
       ],
-      "deliverable": "N-B1 packet APQ passes + ledger + revised packet if needed",
-      "exact_action": "Obtain isolated independent APQ-2 adversarial review bound to the exact N-B1 v0.3 plan and long-run packet; adjudicate objections without majority voting; revise prospectively if needed.",
-      "stop_condition": "Independent APQ-2 not yet qualified."
+      "deliverable": "Final exact N-B1 v0.2 packet plus isolated packet APQ ledger",
+      "exact_action": "After integration architecture closure, replace Draft-B candidate identities with final prospective identities, close every N-B1 packet field, run isolated packet-level APQ, and resolve every BLOCKER/MATERIAL item before freeze.",
+      "stop_condition": "Integration architecture re-review unresolved or packet APQ objection unresolved."
     },
     {
       "id": "NB2-Q02",
       "lane": "N-B2/N-B3",
-      "title": "Packet-level APQ",
-      "status": "SCIENTIFIC_GATE",
+      "title": "Construct final N-B2/N-B3 v0.2 packet and packet-level APQ",
+      "status": "BLOCKED_DEPENDENCY",
       "depends_on": [
-        "NB2-Q01"
+        "GATE-P30"
       ],
-      "deliverable": "N-B2/N-B3 packet APQ passes + ledger + revised packet if needed",
-      "exact_action": "Obtain isolated independent APQ-2 adversarial review bound to the exact N-B2/N-B3 v0.3 plan and matched-family config; adjudicate objections without majority voting; revise prospectively if needed.",
-      "stop_condition": "Independent APQ-2 not yet qualified."
+      "deliverable": "Final exhaustive N-B2/N-B3 v0.2 packet plus isolated packet APQ ledger",
+      "exact_action": "After integration architecture closure, enumerate the final suite/equivalence classes and all target/observation contracts, run isolated packet-level APQ, and resolve every BLOCKER/MATERIAL item before freeze.",
+      "stop_condition": "Integration architecture re-review unresolved or packet APQ objection unresolved."
     },
     {
       "id": "NB1-Q03",
@@ -260,12 +260,13 @@
       "title": "Exact v0.2 packet-level APQ and freeze",
       "status": "BLOCKED_DEPENDENCY",
       "depends_on": [
-        "GATE-P21",
+        "NB1-Q02",
+        "NB2-Q02",
         "GATE-P10",
         "GATE-P11"
       ],
       "deliverable": "fresh v0.2 packet APQ + freeze",
-      "exact_action": "After v0.5 architecture re-review closes, construct exact fresh packet, run packet-level APQ, and freeze before execution.",
+      "exact_action": "After both final lane packets clear packet-level APQ, bind cross-lane identity/disjointness/common-dependency closure and perform final scientific freeze before implementation.",
       "stop_condition": "unresolved BLOCKER/MATERIAL objection"
     },
     {
@@ -371,13 +372,14 @@
       "id": "GATE-P21",
       "lane": "CROSS-LANE",
       "title": "Independent v0.5 architecture re-review",
-      "status": "EXTERNAL_BLOCK",
+      "status": "DONE",
       "depends_on": [
         "GATE-P20"
       ],
       "deliverable": "isolated N-B1, N-B2/N-B3, and integration v0.5 reviews",
       "exact_action": "Relaunch after temporary Undermind usage reset; keep all safe prefreeze work moving meanwhile.",
-      "stop_condition": "provider rate limit or completed reviews"
+      "stop_condition": "provider rate limit or completed reviews",
+      "note": "N-B1, N-B2/N-B3, and integration v0.5 re-reviews completed. Lane reviews cleared; integration review raised accepted cross-lane blockers requiring a versioned integration authority."
     },
     {
       "id": "GATE-P22",
@@ -421,13 +423,53 @@
       "id": "GATE-P27",
       "lane": "CROSS-LANE",
       "title": "Prepare v0.5 isolated re-review handoffs",
-      "status": "READY",
+      "status": "DONE",
       "depends_on": [
         "GATE-P20"
       ],
       "deliverable": "full-text/self-contained N-B1, N-B2/N-B3, and integration v0.5 handoff material",
       "exact_action": "Prepare outcome-blind re-review inputs so review can relaunch immediately when Undermind transport clears; do not include sibling conclusions or v0.1 outcomes.",
-      "stop_condition": "Any handoff would expose protected outcome values or change science."
+      "stop_condition": "Any handoff would expose protected outcome values or change science.",
+      "note": "All three durable v0.5 handoffs are present and the isolated v0.5 re-reviews completed."
+    },
+    {
+      "id": "GATE-P28",
+      "lane": "CROSS-LANE",
+      "title": "Audit Draft-B against v0.5 packet gate",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P20"
+      ],
+      "deliverable": "V0_2_DRAFT_B_ALIGNMENT_AUDIT_v0.1.md and prefreeze closure register",
+      "exact_action": "Identify unresolved packet fields without selecting final values.",
+      "stop_condition": "none",
+      "note": "Outcome-blind alignment audit completed; Draft-B remains preparatory only."
+    },
+    {
+      "id": "GATE-P29",
+      "lane": "CROSS-LANE",
+      "title": "Harden cross-lane common-dependency, access, and ancestry controls",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P21"
+      ],
+      "deliverable": "cross-lane integration authority plus dependency/access/ancestry records",
+      "exact_action": "Prospectively close accepted integration-review governance blockers without changing lane scientific semantics.",
+      "stop_condition": "none",
+      "note": "Integration authority v0.1 and supporting control records created."
+    },
+    {
+      "id": "GATE-P30",
+      "lane": "CROSS-LANE",
+      "title": "Independent stage-bound re-review of revised integration authority",
+      "status": "EXTERNAL_BLOCK",
+      "depends_on": [
+        "GATE-P29"
+      ],
+      "deliverable": "isolated integration authority re-review and adjudication",
+      "exact_action": "Retry the stage-bound review after the temporary provider reset; adjudicate immediately; if clear, release final exact packet construction.",
+      "stop_condition": "provider rate limit or unresolved integration objection",
+      "note": "A shorter integration review returned NEED_MORE_INFO because it lacked full stage context. A stage-bound relaunch was attempted and hit the temporary provider usage limit."
     }
   ]
 }
