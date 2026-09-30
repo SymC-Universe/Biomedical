@@ -11,7 +11,8 @@
       "SCIENTIFIC_GATE",
       "EXTERNAL_BLOCK",
       "DONE",
-      "REFUSED"
+      "REFUSED",
+      "USER_ACTION_REQUIRED"
     ],
     "max_active_scientific_tasks": 2,
     "idle_forbidden": true,
@@ -23,45 +24,47 @@
       "id": "NB1-Q01",
       "lane": "N-B1",
       "title": "Construct exact untouched qualification packet",
-      "status": "READY",
+      "status": "DONE",
       "depends_on": [],
       "deliverable": "NSD_vNext/docs/BIO_CHI_INTEGRATED_NB1_UNTOUCHED_QUALIFICATION_PACKET_v0.1.md",
       "exact_action": "Bind Function/Limit truth identities, generators, seeds, rates/durations, observation/reference transforms, channel applicability, inherited tolerance provenance, machine-readable multi-label adjudication, ordinary Function coverage, and FRAMEWORK_NOT_OPERATIONAL logic prospectively.",
-      "stop_condition": "A nontrivial scientific choice cannot be resolved from the APQ-closed v0.3 architecture without outcome tuning."
+      "stop_condition": "A nontrivial scientific choice cannot be resolved from the APQ-closed v0.3 architecture without outcome tuning.",
+      "note": "Exact long-run packet was constructed, but some outcomes were opened before independent APQ. Existing packet/results are development-exposed only."
     },
     {
       "id": "NB2-Q01",
       "lane": "N-B2/N-B3",
       "title": "Construct exact matched-family execution packet",
-      "status": "READY",
+      "status": "DONE",
       "depends_on": [],
       "deliverable": "NSD_vNext/docs/BIO_CHI_NB2_NB3_MATCHED_FAMILY_EXECUTION_PACKET_v0.1.md",
       "exact_action": "Bind exact matrices/operators and matched families, physical state metric and input/output norms, finite horizons, perturbations, B/C mappings, time-varying law and stationary surrogate, seeds, rates/durations/noise, identity rules, target functionals, recoverability estimators, and machine-readable adjudication prospectively.",
-      "stop_condition": "A nontrivial scientific choice cannot be resolved from the APQ-closed v0.3 architecture without outcome tuning."
+      "stop_condition": "A nontrivial scientific choice cannot be resolved from the APQ-closed v0.3 architecture without outcome tuning.",
+      "note": "Exact matched-family config was constructed, but execution authority is withheld pending independent APQ."
     },
     {
       "id": "NB1-Q02",
       "lane": "N-B1",
       "title": "Packet-level APQ",
-      "status": "BLOCKED_DEPENDENCY",
+      "status": "SCIENTIFIC_GATE",
       "depends_on": [
         "NB1-Q01"
       ],
       "deliverable": "N-B1 packet APQ passes + ledger + revised packet if needed",
-      "exact_action": "Run role-isolated APQ on the exact untouched qualification packet; resolve all BLOCKER/MATERIAL objections prospectively.",
-      "stop_condition": "Unresolved BLOCKER/MATERIAL objection."
+      "exact_action": "Obtain isolated independent APQ-2 adversarial review bound to the exact N-B1 v0.3 plan and long-run packet; adjudicate objections without majority voting; revise prospectively if needed.",
+      "stop_condition": "Independent APQ-2 not yet qualified."
     },
     {
       "id": "NB2-Q02",
       "lane": "N-B2/N-B3",
       "title": "Packet-level APQ",
-      "status": "BLOCKED_DEPENDENCY",
+      "status": "SCIENTIFIC_GATE",
       "depends_on": [
         "NB2-Q01"
       ],
       "deliverable": "N-B2/N-B3 packet APQ passes + ledger + revised packet if needed",
-      "exact_action": "Run role-isolated APQ on the exact matched-family execution packet; resolve all BLOCKER/MATERIAL objections prospectively.",
-      "stop_condition": "Unresolved BLOCKER/MATERIAL objection."
+      "exact_action": "Obtain isolated independent APQ-2 adversarial review bound to the exact N-B2/N-B3 v0.3 plan and matched-family config; adjudicate objections without majority voting; revise prospectively if needed.",
+      "stop_condition": "Independent APQ-2 not yet qualified."
     },
     {
       "id": "NB1-Q03",
