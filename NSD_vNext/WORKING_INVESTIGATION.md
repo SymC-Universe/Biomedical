@@ -1037,3 +1037,8 @@ Architecture review closed after the independent Integration Revision v0.2 re-re
 - **Continuity:** lane checkpoints are advanced to post-freeze implementation validation and the execution spine is versioned as `WORK_QUEUE_v0.3.json`; historical PR fanout remains non-authoritative liveness.
 - **Claim impact:** none. Real-EEG local \(\chi\) remains unlicensed; C1Q-RS remains qualification-only; scalar \(\chi\), modal/vector \(\Chi\), and system/conglomerate behavior remain distinct.
 - **Next exact action:** finish the truth-blind N-B1 Profile-I/search implementation, complete the N-B2/N-B3 observation/recoverability runtime, close CD-05/CD-06, bind final code/dependency/environment identities, then run mechanical preflight. Result-producing execution remains forbidden until those gates pass.
+
+
+### 2026-09-30 - ADVANCED_CHECKPOINT - post-freeze implementation validation
+
+CD-05 independent Profile-I reproduction passed in Engine Contracts run 36720502525. N-B2/N-B3 deterministic observation and raw target mechanics passed Engine Contracts run 36720989191. CD-06 environment verification remains green. Scientific freeze is unchanged, execution authority remains false, and no confirmatory outcomes were opened. Work queue advanced to WORK_QUEUE_v0.4.json. Next: harden refined N-B1 nuisance/bound evidence retention; complete certified N-B2/N-B3 global-peak and switched-target mechanics; then bind final code/dependency/environment identities and run mechanical preflight.
