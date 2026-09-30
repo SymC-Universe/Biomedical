@@ -1,0 +1,53 @@
+{
+  "schema": "NSD_NB1_EXACT_PACKET_CANDIDATE_V0_3",
+  "status": "PACKET_LEVEL_APQ_MATERIAL_REVISION_CANDIDATE_NOT_FROZEN",
+  "execution_authorized": false,
+  "result_access_allowed": false,
+  "final_identity_freeze": false,
+  "design_baseline_id": "NSD-V02-B01-PREQ",
+  "packet_id": "NB1-B01-EXACT-PREQ-V03",
+  "architecture_plan_blob": "df51ca6e7b20f49dc8781170831066e806f5617b",
+  "parent_packet": {
+    "path": "NSD_vNext/control/NB1_EXACT_PACKET_CANDIDATE_v0.2.json",
+    "blob": "9f126601e2fddc1f1d2d137ad70213b8531b63dc"
+  },
+  "material_revision": {
+    "path": "NSD_vNext/control/NB1_PACKET_APQ_REVISION_v0.2.json",
+    "blob": "d374083f21838ccb6b3f9bff2a41e6dc4cf35aed"
+  },
+  "alias_coordinate_correction": {
+    "path": "NSD_vNext/control/NB1_ALIAS_SEMANTIC_CORRECTION_v0.1.json",
+    "blob": "5fe3f7e57c49f6e8698204bde4e7c3e38430cd40",
+    "precedence": "This correction supersedes any wording in the v0.2 material revision that treats the 1 to 45 Hz estimator domain as natural frequency; it is damped frequency."
+  },
+  "adjudication": {
+    "path": "NSD_vNext/control/NB1_PACKET_REREVIEW_ADJUDICATION_v0.2.json",
+    "blob": "b7a3fbb4153f32e151f5abc518ab67a39b46c164"
+  },
+  "inherited_frozen_fragments": {
+    "seeds": "a7a0354bdcf6f5d07c66071f9c7fe1ed548b9d4e",
+    "function_truths": "5887a56e9d1636c2bf0442bee6f87a380379b5e7",
+    "limit_truths": "83082c121653187fb2a0e2cb41e563273cfd1b7e",
+    "method": "b5d607058595cd6a240ac33e5af352480cabd545",
+    "c_d_s_generator_contract": "1453b7f502c1852d9101f437b052ebb80b5c6cbc",
+    "limit_generator_contract": "ded7cfdb030f83bad1386aaebffb885d209b1c9e",
+    "channel_rules": "dbc619d11081f9505ca9b1eff03751227aebded8",
+    "profile_alias_retention": "28180a150ef650d1e3ab5df727641ddff788d058"
+  },
+  "scientific_changes_since_v0_2": [
+    "Exact sample indexing and numerical-only PSD/domain verification consolidated.",
+    "Truth-by-channel applicability and no-precedence-deletion classification contract consolidated.",
+    "Final v0.2 RNG family fixed to PCG64DXSM with canonical parent/child seed bytes and draw-order contracts; historical default_rng generator is not reusable unchanged.",
+    "Independent alias certificate promoted to an explicit packet requirement with fail-closed NEED_MORE_INFO and corrected damped-frequency coordinate semantics.",
+    "Profile-I procedure consolidated prospectively and excludes true chi from all eligibility search operations.",
+    "Replicate-level overlapping refusal/failure accounting made deterministic."
+  ],
+  "scientific_outcomes_opened": false,
+  "next_gate": "ISOLATED_INDEPENDENT_V0_3_PACKET_REREVIEW",
+  "claim_ceiling": {
+    "real_eeg_local_chi": false,
+    "c1q_rs": "QUALIFICATION_ONLY",
+    "biological_prevalence": false,
+    "whole_system_scalar": false
+  }
+}
