@@ -8,6 +8,7 @@ on:
       - "NSD_vNext/control/LONG_RUN_CEILING_v0.1.md"
       - "NSD_vNext/control/LONG_RUN_PACKET_v0.1.json"
       - "NSD_vNext/control/LONG_RUN_PACKET_APQ_v0.1.md"
+      - "NSD_vNext/control/LONG_RUN_EXTERNAL_APQ_STATUS_v0.1.json"
       - "NSD_vNext/control/NB2NB3_EXACT_MATCHED_CONFIG_v0.1.json"
       - "NSD_vNext/engine/tools/run_nsd_long_conveyor.py"
       - ".github/workflows/nsd-long-run-conveyor.yml"
@@ -52,6 +53,21 @@ jobs:
           git config user.name "NSD Conveyor"
           git config user.email "actions@users.noreply.github.com"
           git checkout nsd-rebuild-gom-v0.8.0
+
+      - name: Enforce independent APQ gate
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("NSD_vNext/control/LONG_RUN_EXTERNAL_APQ_STATUS_v0.1.json")
+          if not p.exists():
+              raise SystemExit("SCIENTIFIC_GATE: missing independent APQ status")
+          s=json.loads(p.read_text())
+          if s.get("status") != "QUALIFIED" or not s.get("execution_authorized"):
+              raise SystemExit("SCIENTIFIC_GATE: exact frozen packet lacks QUALIFIED independent APQ")
+          print("Independent APQ gate QUALIFIED")
+          PY
 
       - name: Run long conveyor
         id: conveyor
