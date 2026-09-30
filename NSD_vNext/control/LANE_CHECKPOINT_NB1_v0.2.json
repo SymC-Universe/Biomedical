@@ -1,7 +1,7 @@
 {
   "schema": "NSD_LANE_CHECKPOINT_V0_2",
   "lane": "N-B1",
-  "state": "EXTERNAL_BLOCK",
+  "state": "SCIENTIFIC_GATE",
   "authority_plan_blob": "df51ca6e7b20f49dc8781170831066e806f5617b",
   "draft_packet_path": "NSD_vNext/control/FRESH_UNTOUCHED_V0_2_DRAFT_B.json",
   "draft_packet_blob": "4d84ae3d085e692fb207ab715a492ee28e131805",
@@ -9,14 +9,14 @@
   "completed_artifact_hashes": {},
   "incomplete_case_ids": "ALL_FINAL_V0_2_CASES",
   "active_run_id": null,
-  "architecture_review_status": "V0_5_ISOLATED_REREVIEW_CLOSED_INTEGRATION_AUTHORITY_REREVIEW_PENDING",
+  "architecture_review_status": "V0_5_LANE_REREVIEW_CLOSED_STAGE_BOUND_INTEGRATION_REREVIEW_IN_PROGRESS",
   "final_seed_identity_status": "NOT_FROZEN",
   "scientific_values_exposed": false,
   "implementation_status": "NOT_READY_FOR_V0_2",
-  "next_exact_action": "Wait only on the stage-bound cross-lane integration-authority re-review while preserving the v0.5 lane authority. After integration closure, construct the final N-B1 packet and run packet-level APQ.",
-  "stop_reason": "TEMPORARY_EXTERNAL_INTEGRATION_REREVIEW_TRANSPORT_BLOCK",
+  "next_exact_action": "Adjudicate the running stage-bound integration-authority review. If architecture closes, construct the final N-B1 packet and run packet-level APQ without opening outcomes.",
+  "stop_reason": "STAGE_BOUND_INTEGRATION_AUTHORITY_REREVIEW_IN_PROGRESS",
   "mismatch_policy": "After final freeze, any authority/config/code/dependency/environment/RNG/case/artifact mismatch refuses resume.",
-  "last_productive_commit": "2907b0c6e76fb6f42e8035679bac30973086c18f",
+  "last_productive_commit": "2049725e878a3378c004e12d60b9a5af6d527bcb",
   "mechanical_evidence_schema": "NSD_vNext/control/NB1_V0_2_EVIDENCE_SCHEMA_v0.2.json",
   "implementation_contract": "NSD_vNext/control/V0_2_IMPLEMENTATION_CONTRACT_v0.1.md",
   "generator_provenance_plan": "NSD_vNext/control/V0_2_GENERATOR_PROVENANCE_VALIDATION_PLAN_v0.1.md",
@@ -24,5 +24,8 @@
   "rereview_handoff": "NSD_vNext/control/NB1_V0_5_APQ_REREVIEW_HANDOFF.md",
   "isolated_rereview_adjudication": "NSD_vNext/control/NB1_V0_5_REREVIEW_ADJUDICATION_v0.1.md",
   "integration_authority": "NSD_vNext/control/V0_2_CROSS_LANE_INTEGRATION_AUTHORITY_v0.1.md",
-  "prefreeze_manifest": "NSD_vNext/control/V0_2_PREFREEZE_IDENTITY_MANIFEST_v0.2.json"
+  "prefreeze_manifest": "NSD_vNext/control/V0_2_PREFREEZE_IDENTITY_MANIFEST_v0.3.json",
+  "checkpoint_schema_candidate": "NSD_vNext/control/V0_2_FROZEN_CHECKPOINT_SCHEMA_v0.2.json",
+  "validator_repair_contract": "NSD_vNext/control/V0_2_PREFREEZE_VALIDATOR_REPAIR_SPEC_v0.1.json",
+  "source_of_record_audit": "NSD_vNext/control/V0_2_SOURCE_OF_RECORD_AUDIT_v0.2.json"
 }
