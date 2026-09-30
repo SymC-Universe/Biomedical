@@ -1,0 +1,52 @@
+{
+  "schema": "NSD_STAGE_BOUND_INTEGRATION_REREVIEW_ADJUDICATION_V0_1",
+  "review": "/Integration Controls Stage Review",
+  "review_status": "COMPLETE",
+  "adjudication_method": "INDIVIDUAL_OBJECTION_EVIDENCE_NO_VOTING",
+  "execution_authorized": false,
+  "items": [
+    {
+      "id": "INT2-B1",
+      "severity": "BLOCKER",
+      "objection": "Packet construction needs one immutable versioned design baseline plus explicit downstream invalidation after post-access change.",
+      "disposition": "ACCEPTED",
+      "correction": [
+        "V0_2_DESIGN_BASELINE_CHANGE_IMPACT_CONTRACT_v0.1.json",
+        "V0_2_INTEGRATION_REREVIEW_REVISION_BINDING_v0.2.json"
+      ],
+      "rereview_required": true
+    },
+    {
+      "id": "INT2-M1",
+      "severity": "MATERIAL",
+      "objection": "Verifier independence and unresolved-conflict disposition must be explicit; lane conclusions must remain separate.",
+      "disposition": "ACCEPTED",
+      "correction": [
+        "V0_2_VERIFIER_INDEPENDENCE_CONTRACT_v0.1.json",
+        "V0_2_INTEGRATION_REREVIEW_REVISION_BINDING_v0.2.json"
+      ],
+      "rereview_required": true
+    },
+    {
+      "id": "INT2-m1",
+      "severity": "MINOR",
+      "objection": "Access history should record actor/time/material/design version and direct, indirect, or attempted exposure.",
+      "disposition": "ACCEPTED",
+      "correction": [
+        "V0_2_OUTCOME_ACCESS_LEDGER_v0.2.json"
+      ],
+      "rereview_required": false
+    }
+  ],
+  "deferred_items_confirmed_not_architecture_blockers": [
+    "exact cases",
+    "reference-verification evidence",
+    "code and environment hashes",
+    "implementation tests",
+    "final ancestry audit",
+    "final provenance evidence"
+  ],
+  "next_gate": "INDEPENDENT_REREVIEW_OF_V0_2_INTEGRATION_REVISION_BINDING",
+  "lane_plans_changed": false,
+  "final_packet_construction_released": false
+}
