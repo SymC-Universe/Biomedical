@@ -1,0 +1,14 @@
+{
+  "schema": "NSD_V0_2_INTEGRATION_REREVIEW_REVISION_BINDING_V0_2",
+  "status": "REREVIEW_REQUIRED",
+  "execution_authorized": false,
+  "prior_integration_rules": "NSD_vNext/control/V0_2_CROSS_LANE_INTEGRATION_AUTHORITY_v0.1.md",
+  "added_rules": [
+    "NSD_vNext/control/V0_2_DESIGN_BASELINE_CHANGE_IMPACT_CONTRACT_v0.1.json",
+    "NSD_vNext/control/V0_2_VERIFIER_INDEPENDENCE_CONTRACT_v0.1.json",
+    "NSD_vNext/control/V0_2_OUTCOME_ACCESS_LEDGER_v0.2.json"
+  ],
+  "version_rule": "These records together define the revised v0.2 integration rule set for independent re-review.",
+  "lane_plans_changed": false,
+  "packet_execution_authorized": false
+}
