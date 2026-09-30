@@ -1,7 +1,7 @@
 {
   "schema": "NSD_LONG_RUN_EXTERNAL_APQ_STATUS_V0_1",
   "governance": "SymC GOM v1.0 + Continuity Hardening Addendum",
-  "status": "NOT_QUALIFIED",
+  "status": "REVIEW_IN_PROGRESS",
   "execution_authorized": false,
   "reason": "APQ-2 substantial execution requires independent adversarial review bound to the exact frozen packet. Two same-cognition passes do not satisfy that requirement.",
   "bound_packet": {
@@ -15,7 +15,17 @@
     "present": true,
     "note": "The active long-run conveyor opened some known-truth outcomes before this governance correction. Preserve them as exposed development evidence only; they cannot be relabeled untouched confirmation."
   },
-  "required_next_action": "Obtain isolated independent APQ-2 review(s) of the corrected exact v0.1 development packet/config/ceiling/code manifest and the v0.3 plan architectures. If any scientific change is required, version the design prospectively. For untouched qualification, create a fresh v0.2 packet with fresh identities after APQ closure.",
+  "required_next_action": "Wait only for the three already-launched isolated reviews to complete; adjudicate every BLOCKER/MATERIAL objection by evidence rather than voting; if any material change is accepted, version prospectively and re-run APQ on the changed authority. Only after closure create a fresh v0.2 untouched packet with fresh identities.",
   "scientific_authority": "Researcher + ChatGPT",
-  "github_authority": "Mechanical execution only"
+  "github_authority": "Mechanical execution only",
+  "review_workspace": {
+    "provider": "Undermind",
+    "workspace_id": "adae43b4-c9a0-4f57-9a64-a7f8a58211d1",
+    "searches": [
+      "/reviews/N-B1 Independent APQ-2",
+      "/reviews/N-B2 N-B3 Independent APQ-2",
+      "/reviews/Integrated Long Run Independent APQ-2"
+    ],
+    "isolation_rule": "Each search receives only its self-contained authority brief and does not receive prior reviewer conclusions or sibling review results."
+  }
 }
