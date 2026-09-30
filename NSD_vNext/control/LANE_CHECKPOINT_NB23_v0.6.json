@@ -1,0 +1,18 @@
+{
+  "schema": "NSD_LANE_CHECKPOINT_V0_6",
+  "lane": "N-B2/N-B3",
+  "state": "SCIENTIFIC_GATE",
+  "architecture_review_status": "CLOSED",
+  "packet_parent_blob": "b417f5e61fe48fdcc3b194f4b43f88d118c9f34c",
+  "packet_revision_blob": "508f68f4eb72e082f884b75f269bf53fdd836fbd",
+  "packet_review_search": "/N-B2 N-B3 Revised Packet Re-review",
+  "packet_review_status": "MATERIAL_REVISION_BOUND_REREVIEW_PENDING",
+  "primary_recoverability": "DETERMINISTIC_NOISELESS",
+  "stochastic_extension": "NOT_AUTHORIZED",
+  "final_identity_freeze": false,
+  "scientific_values_exposed": false,
+  "execution_authorized": false,
+  "completed_case_ids": [],
+  "next_exact_action": "Launch isolated revised packet re-review after external quota reset and adjudicate every BLOCKER/MATERIAL objection before freeze.",
+  "stop_reason": "PACKET_REREVIEW_TRANSPORT_PENDING"
+}
