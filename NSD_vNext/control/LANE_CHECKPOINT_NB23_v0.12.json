@@ -1,0 +1,22 @@
+{
+  "schema": "NSD_LANE_CHECKPOINT_NB23_V0_12",
+  "lane": "N-B2/N-B3",
+  "state": "ADVANCED_CHECKPOINT",
+  "architecture_review_status": "CLOSED",
+  "packet_review_status": "CLOSED",
+  "cross_lane_gate": "CLOSED",
+  "primary_recoverability": "DETERMINISTIC_NOISELESS",
+  "stochastic_extension": "NOT_AUTHORIZED",
+  "final_identity_freeze": true,
+  "scientific_values_exposed": false,
+  "execution_authorized": false,
+  "completed_case_ids": [],
+  "scientific_freeze": "NSD_vNext/control/V0_2_FINAL_SCIENTIFIC_FREEZE_v0.1.json",
+  "implementation_status": "RAW_TARGET_MECHANICS_CONTRACT_PASS_GLOBAL_PEAK_PENDING",
+  "evidence_runs": [
+    36719590935,
+    36720989191
+  ],
+  "next_exact_action": "Complete the frozen certified global-peak and switched-target mechanics, then final code/dependency/environment identity binding and preflight without opening confirmatory outcomes.",
+  "stop_reason": "POST_FREEZE_IMPLEMENTATION_VALIDATION"
+}
