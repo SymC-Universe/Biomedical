@@ -1,0 +1,178 @@
+{
+  "schema": "NSD_V0_2_FINAL_SCIENTIFIC_FREEZE_V0_1",
+  "status": "SCIENTIFIC_PACKET_FROZEN_IMPLEMENTATION_NOT_YET_AUTHORIZED",
+  "governance": "SymC GOM v1.0 + mandatory Continuity Hardening Addendum",
+  "design_baseline_id": "NSD-V02-B01-FROZEN",
+  "execution_authorized": false,
+  "scientific_outcomes_opened": false,
+  "freeze_scope": "Scientific packet, case, seed/RNG, observation, target, numerical-rule, cross-lane, and claim-ceiling identities. Code/dependency/environment identity is a later pre-execution mechanical binding.",
+  "architecture": {
+    "nb1": {
+      "path": "NSD_vNext/docs/BIO_CHI_INTEGRATED_NB1_ADMISSION_ARCHITECTURE_PLAN_v0.5.md",
+      "blob": "df51ca6e7b20f49dc8781170831066e806f5617b"
+    },
+    "nb23": {
+      "path": "NSD_vNext/docs/BIO_CHI_NB2_NB3_REPRESENTATION_SUFFICIENCY_PLAN_v0.5.md",
+      "blob": "15056e7356082d8f16104b8cfb781b7867c2f417"
+    },
+    "integration": {
+      "path": "NSD_vNext/control/V0_2_CROSS_LANE_INTEGRATION_AUTHORITY_v0.1.md",
+      "blob": "3e60798b2485c10a2bda39254b641d7726741082"
+    }
+  },
+  "apq_closure": {
+    "nb1": {
+      "path": "NSD_vNext/control/NB1_PACKET_FINAL_REREVIEW_ADJUDICATION_v0.3.json",
+      "blob": "784775e02d0dd5861da1ae28514e87e85dbf8a0b",
+      "unresolved_blocker_material": 0
+    },
+    "nb23": {
+      "path": "NSD_vNext/control/NB23_PACKET_FINAL_REREVIEW_ADJUDICATION_v0.2.json",
+      "blob": "1b86ec56b1d86827f3c585f5ba9fb17a4150735b",
+      "unresolved_blocker_material": 0
+    },
+    "integrated": {
+      "path": "NSD_vNext/control/INTEGRATED_PACKET_FINAL_REVIEW_ADJUDICATION_v0.1.json",
+      "blob": "d00626c1ed99979004113683b77d879259b8dc9b",
+      "unresolved_blocker_material": 0
+    }
+  },
+  "nb1_packet": {
+    "root": {
+      "path": "NSD_vNext/control/NB1_EXACT_PACKET_CANDIDATE_v0.3.json",
+      "blob": "6f45148d2320d00134f287f3aec81fa5e6cf7f31"
+    },
+    "method": {
+      "path": "NSD_vNext/control/NB1_PACKET_METHOD_v0.2.json",
+      "blob": "b5d607058595cd6a240ac33e5af352480cabd545"
+    },
+    "seeds": {
+      "path": "NSD_vNext/control/NB1_PACKET_SEEDS_v0.2.json",
+      "blob": "a7a0354bdcf6f5d07c66071f9c7fe1ed548b9d4e",
+      "final": true,
+      "rng": "PCG64DXSM"
+    },
+    "function_truths": {
+      "path": "NSD_vNext/control/NB1_PACKET_FUNCTION_TRUTHS_v0.1.json",
+      "blob": "5887a56e9d1636c2bf0442bee6f87a380379b5e7"
+    },
+    "limit_truths": {
+      "path": "NSD_vNext/control/NB1_PACKET_LIMIT_TRUTHS_v0.1.json",
+      "blob": "83082c121653187fb2a0e2cb41e563273cfd1b7e"
+    },
+    "generator_semantics": {
+      "path": "NSD_vNext/control/NB1_CDS_GENERATOR_SEMANTIC_CONTRACT_v0.1.md",
+      "blob": "1453b7f502c1852d9101f437b052ebb80b5c6cbc"
+    },
+    "limit_generators": {
+      "path": "NSD_vNext/control/NB1_LIMIT_GENERATOR_CONTRACT_v0.1.md",
+      "blob": "ded7cfdb030f83bad1386aaebffb885d209b1c9e"
+    },
+    "channel_rules": {
+      "path": "NSD_vNext/control/NB1_CHANNEL_RULES_REVISION_v0.1.json",
+      "blob": "dbc619d11081f9505ca9b1eff03751227aebded8"
+    },
+    "profile_alias_retention": {
+      "path": "NSD_vNext/control/NB1_PROFILE_ALIAS_RETENTION_REVISION_v0.1.json",
+      "blob": "28180a150ef650d1e3ab5df727641ddff788d058"
+    },
+    "alias_semantic_correction": {
+      "path": "NSD_vNext/control/NB1_ALIAS_SEMANTIC_CORRECTION_v0.1.json",
+      "blob": "5fe3f7e57c49f6e8698204bde4e7c3e38430cd40"
+    },
+    "material_revision": {
+      "path": "NSD_vNext/control/NB1_PACKET_APQ_REVISION_v0.2.json",
+      "blob": "d374083f21838ccb6b3f9bff2a41e6dc4cf35aed"
+    },
+    "evidence_schema": {
+      "path": "NSD_vNext/control/NB1_V0_2_EVIDENCE_SCHEMA_v0.2.json",
+      "blob": "4877ca9d017877af75b298fdea91325394fe846e"
+    }
+  },
+  "nb23_packet": {
+    "revision": {
+      "path": "NSD_vNext/control/NB23_PACKET_APQ_REVISION_v0.1.json",
+      "blob": "508f68f4eb72e082f884b75f269bf53fdd836fbd"
+    },
+    "suite": {
+      "path": "NSD_vNext/control/NB23_EXHAUSTIVE_SUITE_CANDIDATE_v0.1.json",
+      "blob": "854fe6d64069c76cebaee60998163c91ea91dfa9"
+    },
+    "operators": {
+      "path": "NSD_vNext/control/NB23_OPERATOR_REGISTRY_CANDIDATE_v0.1.json",
+      "blob": "75519d5036778d61c84fe7188ab687e6734f4d71"
+    },
+    "targets_contrasts": {
+      "path": "NSD_vNext/control/NB23_TARGET_AND_CONTRAST_CANDIDATE_v0.1.json",
+      "blob": "5a8001c4c72f46328108a053abc5f293aa9ab965"
+    },
+    "suite_extension": {
+      "path": "NSD_vNext/control/NB23_PACKET_SUITE_EXTENSION_v0.1.json",
+      "blob": "cbff9b84548d43a1e78c409a3708d7c767d9a876"
+    },
+    "evidence_schema": {
+      "path": "NSD_vNext/control/NB23_V0_2_EVIDENCE_SCHEMA_v0.2.json",
+      "blob": "c2745785159050eece40ace18c95afcc0e8baffc"
+    },
+    "primary_recoverability": "DETERMINISTIC_NOISELESS",
+    "stochastic_extension": "NOT_AUTHORIZED",
+    "rng": "NOT_APPLICABLE_PRIMARY_DETERMINISTIC"
+  },
+  "cross_lane": {
+    "ancestry_audit": {
+      "path": "NSD_vNext/control/V0_2_CROSS_LANE_ANCESTRY_AUDIT_v0.1.json",
+      "blob": "fb0440ac546700e280c066c13f839eaeda577657",
+      "status": "PASS_OUTCOME_BLIND"
+    },
+    "common_dependency_register": {
+      "path": "NSD_vNext/control/V0_2_COMMON_DEPENDENCY_REGISTER_v0.1.json",
+      "blob": "9b85fdee848673e0efcc4588f714f4d9bccfdf2e"
+    },
+    "common_dependency_plan": {
+      "path": "NSD_vNext/control/V0_2_COMMON_DEPENDENCY_VERIFICATION_PLAN_v0.1.md",
+      "blob": "309f357182e7ce75a28f3c57542e3bf1f94879bc"
+    },
+    "analytic_certificates": {
+      "path": "NSD_vNext/control/V0_2_COMMON_DEPENDENCY_ANALYTIC_CERTIFICATES_v0.1.md",
+      "blob": "97cba399229e36475db9971936a3c540177d4d31"
+    },
+    "access_ledger": {
+      "path": "NSD_vNext/control/V0_2_OUTCOME_ACCESS_LEDGER_v0.2.json",
+      "blob": "080b593bd54b03157c90313cf414b8550aa614c8"
+    },
+    "verifier_independence": {
+      "path": "NSD_vNext/control/V0_2_VERIFIER_INDEPENDENCE_CONTRACT_v0.1.json",
+      "blob": "50f871eb8de28df564bea9102a31111f07c601f1"
+    },
+    "change_impact": {
+      "path": "NSD_vNext/control/V0_2_DESIGN_BASELINE_CHANGE_IMPACT_CONTRACT_v0.1.json",
+      "blob": "07bee631dbbd7d8024c3d13c0bb350d66cad06cd"
+    },
+    "lane_signoff": {
+      "path": "NSD_vNext/control/V0_2_LANE_SIGNOFF_CONTRACT_v0.1.json",
+      "blob": "45331d64ee867b9c07a3a4b1ac637476de9c37ed"
+    },
+    "checkpoint_schema": {
+      "path": "NSD_vNext/control/V0_2_FROZEN_CHECKPOINT_SCHEMA_v0.2.json",
+      "blob": "cef38ed6d88f227672825bdccbe475404cb45a65"
+    }
+  },
+  "remaining_pre_execution_requirements": [
+    "Build new v0.2 implementation without changing frozen science.",
+    "Bind final scientific-code file blobs, runtime dependency versions/lock digest, runner/OS/architecture/container identity, and implementation-specific verifier identities.",
+    "Complete CD-03 finite-time reference calculations, CD-05 profile reproduction, and CD-06 final library/environment verification using independent routes.",
+    "Repair or replace the stale duplicated inline prefreeze workflow validator; unchanged failing rerun is forbidden.",
+    "Run contract tests and mechanical preflight; any identity mismatch is FROZEN_CONTRACT_VIOLATION.",
+    "Authorize result-producing execution only after all pre-execution requirements pass."
+  ],
+  "mutation_rule": "Any post-freeze change to a frozen scientific component creates a new design baseline, reopens the affected APQ scope, and retires affected confirmatory identities before any result reuse.",
+  "claim_ceiling": {
+    "real_eeg_local_chi": false,
+    "c1q_rs": "QUALIFICATION_ONLY",
+    "biological_prevalence": false,
+    "universal_representation_hierarchy": false,
+    "whole_system_scalar": false,
+    "lane_verdicts_separate": true
+  },
+  "next_gate": "PROSPECTIVE_V0_2_IMPLEMENTATION_AND_FINAL_CODE_DEPENDENCY_ENVIRONMENT_BINDING"
+}
