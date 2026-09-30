@@ -761,3 +761,44 @@ Expected merged result:
 
 Interpretation: the primary frozen outcome is practical-identifiability / semantic orthogonality, with additive semantic sensitivity in some Limit classes. Profile likelihood is retained as a practical-identifiability component only. Independent family, order, memory/closure, stationarity, sampling, and broader modal/system representation gates remain mandatory.
 
+## V28. Reproduce the GOM-corrected NSD v0.2 prefreeze state
+
+[CLAIM] The current NSD continuation state separates exposed-development evidence from a fresh untouched confirmation candidate, preserves independent scientific authority from GitHub execution, and provides lane-specific resumability before any v0.2 scientific outcome is opened.
+
+Source of record:
+- GOM audit: `NSD_vNext/docs/GOM_V1_0_CONVEYOR_AUDIT_2026-09-29.md`;
+- v0.1 exposure ledger: `NSD_vNext/control/LONG_RUN_EXPOSURE_LEDGER_v0.1.json`;
+- Round-1 external APQ adjudication: `NSD_vNext/control/INDEPENDENT_APQ2_ADJUDICATION_LEDGER_v0.2.md`;
+- revised N-B1 plan: `NSD_vNext/docs/BIO_CHI_INTEGRATED_NB1_ADMISSION_ARCHITECTURE_PLAN_v0.4.md`;
+- revised N-B2/N-B3 plan: `NSD_vNext/docs/BIO_CHI_NB2_NB3_REPRESENTATION_SUFFICIENCY_PLAN_v0.4.md`;
+- fresh prefreeze draft: `NSD_vNext/control/FRESH_UNTOUCHED_V0_2_DRAFT.json`;
+- N-B1 checkpoint: `NSD_vNext/control/LANE_CHECKPOINT_NB1_v0.2.json`;
+- N-B2/N-B3 checkpoint: `NSD_vNext/control/LANE_CHECKPOINT_NB23_v0.2.json`;
+- coverage audit: `NSD_vNext/control/V0_2_FUNCTION_LIMIT_COVERAGE_AUDIT_v0.1.md`;
+- result-landing audit: `NSD_vNext/control/V0_2_RESULT_LANDING_AUDIT_v0.1.md`;
+- reusable validator: `NSD_vNext/engine/tools/validate_v02_prefreeze_packet.py`;
+- CI: `.github/workflows/nsd-v0-2-prefreeze-contracts.yml`.
+
+Expected prefreeze checks:
+- `execution_authorized=false`;
+- fresh v0.2 N-B1 seeds and truth IDs do not reuse v0.1 exposed identities;
+- v0.2 N-B1 uses a fresh sampling pair;
+- v0.2 N-B2/N-B3 does not reuse the v0.1 similarity transform or sampling projections;
+- N-B1 and N-B2/N-B3 maintain separate lane checkpoints;
+- neither lane contains completed v0.2 case IDs before freeze;
+- cross-lane confirmatory identity overlap and outcome feedback are disabled;
+- Function/Limit coverage remains representative rather than failure-only;
+- no v0.2 control file points directly at v0.1 scientific result payloads;
+- substantive execution remains blocked until Round-2 architecture APQ and exact packet-level APQ/freeze close.
+
+Continuity/restart semantics:
+1. read `WORKING_INVESTIGATION.md`;
+2. read `CONTINUITY_STATE.json`;
+3. read both lane checkpoint files;
+4. read `WORK_QUEUE_v0.1.json` and execute READY gate-side tasks even while external review is pending;
+5. do not inspect v0.1 scientific values for v0.2 design;
+6. if Round-2 APQ transport is rate-limited, continue authorized provenance, validation, reproducibility, coverage, result-landing, and implementation-neutral contract work rather than idling;
+7. after Round-2 closes, exact v0.2 packet-level APQ/freeze is required before any scientific execution.
+
+Interpretation: V28 is governance/reproducibility infrastructure. It does not itself validate local \(\chi\), qualify a representation, or license real EEG.
+
