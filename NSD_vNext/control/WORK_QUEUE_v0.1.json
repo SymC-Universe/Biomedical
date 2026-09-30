@@ -48,25 +48,27 @@
       "id": "NB1-Q02",
       "lane": "N-B1",
       "title": "Construct final N-B1 v0.2 packet and packet-level APQ",
-      "status": "BLOCKED_DEPENDENCY",
+      "status": "ACTIVE",
       "depends_on": [
         "GATE-P30"
       ],
-      "deliverable": "Final exact N-B1 v0.2 packet plus isolated packet APQ ledger",
-      "exact_action": "After integration architecture closure, replace Draft-B candidate identities with final prospective identities, close every N-B1 packet field, run isolated packet-level APQ, and resolve every BLOCKER/MATERIAL item before freeze.",
-      "stop_condition": "Integration architecture re-review unresolved or packet APQ objection unresolved."
+      "deliverable": "N-B1 corrected exact packet plus isolated packet re-review closure",
+      "exact_action": "Adjudicate /N-B1 Exact Packet v0.3 Re-review; resolve any remaining BLOCKER/MATERIAL prospectively before final packet freeze.",
+      "stop_condition": "Integration architecture re-review unresolved or packet APQ objection unresolved.",
+      "note": "Prior packet APQ and first corrected re-review produced prospective revisions; no scientific outcomes opened."
     },
     {
       "id": "NB2-Q02",
       "lane": "N-B2/N-B3",
       "title": "Construct final N-B2/N-B3 v0.2 packet and packet-level APQ",
-      "status": "BLOCKED_DEPENDENCY",
+      "status": "ACTIVE",
       "depends_on": [
         "GATE-P30"
       ],
-      "deliverable": "Final exhaustive N-B2/N-B3 v0.2 packet plus isolated packet APQ ledger",
-      "exact_action": "After integration architecture closure, enumerate the final suite/equivalence classes and all target/observation contracts, run isolated packet-level APQ, and resolve every BLOCKER/MATERIAL item before freeze.",
-      "stop_condition": "Integration architecture re-review unresolved or packet APQ objection unresolved."
+      "deliverable": "N-B2/N-B3 revised exact packet plus conformant re-review closure",
+      "exact_action": "Relaunch revised packet re-review after transient external quota reset; adjudicate every BLOCKER/MATERIAL objection before final packet freeze.",
+      "stop_condition": "Integration architecture re-review unresolved or packet APQ objection unresolved.",
+      "note": "Conformant packet review produced material corrections recorded in NB23_PACKET_APQ_REVISION_v0.1.json; revised re-review is pending transport."
     },
     {
       "id": "NB1-Q03",
@@ -462,14 +464,30 @@
       "id": "GATE-P30",
       "lane": "CROSS-LANE",
       "title": "Independent stage-bound re-review of revised integration authority",
-      "status": "EXTERNAL_BLOCK",
+      "status": "DONE",
       "depends_on": [
         "GATE-P29"
       ],
       "deliverable": "isolated integration authority re-review and adjudication",
       "exact_action": "Retry the stage-bound review after the temporary provider reset; adjudicate immediately; if clear, release final exact packet construction.",
       "stop_condition": "provider rate limit or unresolved integration objection",
-      "note": "A shorter integration review returned NEED_MORE_INFO because it lacked full stage context. A stage-bound relaunch was attempted and hit the temporary provider usage limit."
+      "note": "Stage-bound integration architecture review closed; exact packet APQ was released."
     }
-  ]
+  ],
+  "packet_apq_runtime": {
+    "workspace_id": "931f5528-8f45-40c1-9c1d-7c221eab7cd3",
+    "nb1": {
+      "search": "/N-B1 Exact Packet v0.3 Re-review",
+      "status": "IN_PROGRESS"
+    },
+    "nb23": {
+      "search": "/N-B2 N-B3 Revised Packet Re-review",
+      "status": "TRANSPORT_PENDING"
+    },
+    "integrated": {
+      "search": "/Integrated Packet Stage-Bound Re-review",
+      "status": "TRANSPORT_PENDING"
+    },
+    "execution_authorized": false
+  }
 }
