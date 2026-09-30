@@ -1,16 +1,14 @@
 {
   "state": "SCIENTIFIC_GATE",
-  "last_productive_utc": "2026-09-30T02:27:00Z",
-  "last_productive_commit": "7c7b599445778822843281061b9fb3d151f3537f",
-  "active_run_ids": [
-    36659839489
-  ],
-  "next_exact_action": "Allow v0.2 prefreeze contract validation to complete; continue authorized prefreeze implementation/provenance/result-landing work; retry full-text Round-2 APQ after Undermind reset and adjudicate immediately.",
+  "last_productive_utc": "2026-09-30T02:30:00Z",
+  "last_productive_commit": "9327e79ccbebfe052a899a0ffc7e556bb2487920",
+  "active_run_ids": [],
+  "next_exact_action": "Continue gate-side queue mechanically until the scheduled Round-2 APQ retry after provider reset; on successful launch, keep advancing authorized prefreeze work; adjudicate completed Round-2 reviews immediately and then perform exact v0.2 packet-level APQ/freeze.",
   "scientific_gate": {
-    "code": "ROUND2_APQ_TRANSPORT_PENDING_WITH_PARALLEL_WORK",
-    "reason": "Round-1 is adjudicated; Round-2 full-text external APQ launch hit provider rate limit. Substantive compute remains gated, but authorized prefreeze work is active.",
-    "provider_reset_retry_scheduled": true,
-    "parallel_work_authorized": true
+    "code": "ROUND2_APQ_TRANSPORT_PENDING_WITH_PARALLEL_QUEUE",
+    "reason": "Provider usage limit blocks only external review launch; canonical prefreeze preparation is actively advancing.",
+    "parallel_queue": "NSD_vNext/control/WORK_QUEUE_v0.1.json",
+    "retry_scheduled": true
   },
   "external_block": {
     "provider": "Undermind",
