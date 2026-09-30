@@ -1,18 +1,16 @@
 {
   "state": "SCIENTIFIC_GATE",
-  "last_productive_utc": "2026-09-30T05:56:00Z",
-  "last_productive_commit": "d9ab490b6c1090505394933fb252beb5d4044cd7",
+  "last_productive_utc": "2026-09-30T07:24:00Z",
+  "last_productive_commit": "716f0fdc0dee10fe9d8beb1ee055759170983415",
   "active_run_ids": [],
-  "next_exact_action": "Adjudicate N-B1 and N-B2/N-B3 packet-level APQ as soon as they complete; retry the integrated exact-packet APQ after the temporary Undermind limit resets; meanwhile continue outcome-blind packet/common-dependency/checkpoint preparation.",
+  "next_exact_action": "Adjudicate the N-B1 v0.3 packet re-review when complete; relaunch revised N-B2/N-B3 and stage-bound integrated packet reviews after the temporary external quota reset; meanwhile continue outcome-blind packet/checkpoint/validator reconciliation.",
   "scientific_gate": {
-    "code": "V0_2_PACKET_LEVEL_APQ_IN_PROGRESS",
-    "reason": "Architecture review closed. Isolated N-B1 and N-B2/N-B3 exact-packet APQ searches are running. Integrated exact-packet APQ launch is temporarily rate-limited.",
+    "code": "V0_2_PACKET_MATERIAL_REVISION_REREVIEW",
+    "reason": "Architecture is closed. N-B1 and N-B2/N-B3 packet APQ exposed prospective material corrections. N-B1 v0.3 re-review is running; N-B2/N-B3 revised re-review and integrated stage-bound review await transient transport reset.",
     "packet_apq_workspace_id": "931f5528-8f45-40c1-9c1d-7c221eab7cd3",
-    "running_searches": [
-      "/N-B1 Exact Packet APQ",
-      "/N-B2 N-B3 Exact Packet APQ"
-    ],
-    "integrated_search_status": "TEMPORARY_TRANSPORT_RATE_LIMIT"
+    "nb1_review": "/N-B1 Exact Packet v0.3 Re-review",
+    "nb23_review": "/N-B2 N-B3 Revised Packet Re-review",
+    "integrated_review": "/Integrated Packet Stage-Bound Re-review"
   },
   "external_block": null,
   "source_of_record": "NSD_vNext/WORKING_INVESTIGATION.md",
@@ -20,5 +18,5 @@
   "work_queue": "NSD_vNext/control/WORK_QUEUE_v0.1.json",
   "long_run_ceiling": "NSD_vNext/control/LONG_RUN_CEILING_v0.1.md",
   "user_action_required": null,
-  "current_run_note": "No substantive v0.2 compute authorized. Packet candidates are prefreeze/APQ-only; historical v0.1 outcomes remain P0-D."
+  "current_run_note": "No substantive v0.2 compute authorized. All current packet work is prefreeze and outcome-blind; v0.1 remains P0-D development only."
 }
