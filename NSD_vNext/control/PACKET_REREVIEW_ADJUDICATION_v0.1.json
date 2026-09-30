@@ -1,0 +1,40 @@
+{
+  "schema": "NSD_PACKET_REREVIEW_ADJUDICATION_V0_1",
+  "status": "NEED_MORE_INFO_TRANSPORT_PENDING",
+  "execution_authorized": false,
+  "final_identity_freeze": false,
+  "scientific_outcomes_opened": false,
+  "reviews": [
+    {
+      "search": "/N-B1 Exact Packet v0.3 Final Ledger Review",
+      "status": "COMPLETED",
+      "ledger_present": true,
+      "items": [
+        {
+          "id": "N-B1-01",
+          "severity": "BLOCKER",
+          "disposition": "NEED_MORE_INFO",
+          "basis": "Reviewer explicitly states the limitation is review basis, not evidence that listed packet provisions are defective.",
+          "action": "Provide operative N-B1 handoff text in the review basis and re-review."
+        }
+      ]
+    },
+    {
+      "search": "/N-B2 N-B3 Revised Packet v0.2 Re-review",
+      "status": "COMPLETED",
+      "ledger_present": false,
+      "disposition": "NEED_MORE_INFO",
+      "action": "Repeat isolated review with complete packet authority and mandatory ledger output."
+    },
+    {
+      "search": "/Integrated Packet Stage-Bound v0.2 Re-review",
+      "status": "COMPLETED",
+      "ledger_present": false,
+      "disposition": "NEED_MORE_INFO",
+      "action": "Repeat stage-bound integration review with the complete bound ancestry/access/common-dependency/verifier/baseline/checkpoint controls and mandatory ledger output."
+    }
+  ],
+  "majority_voting": false,
+  "transport_status": "TRANSIENT_PROVIDER_LIMIT",
+  "next_gate": "CONFORMANT_FINAL_PACKET_REREVIEWS"
+}
