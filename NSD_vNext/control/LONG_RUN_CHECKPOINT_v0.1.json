@@ -2,7 +2,8 @@
   "completed_nb1_cases": [],
   "completed_nb2_families": [],
   "completed_stages": [
-    "PACKET_BOUND"
+    "PACKET_BOUND",
+    "FROZEN_INPUT_VALIDATED"
   ],
   "environment": {
     "github_run_attempt": "1",
@@ -16,12 +17,12 @@
     "scipy_version": "1.14.1"
   },
   "nb2_config_digest": "fc6c9145d78d1c95884d21ce3d293c9808faf82a9e5b0b64cfdcbfcc2311bfbd",
-  "next_exact_mechanical_action": "validate frozen input digests",
+  "next_exact_mechanical_action": "run implementation contract tests",
   "packet_digest": "7505fc74658117e2d67265061e6d0860a854933eec695d5b25316b2b81b696f2",
   "schema": "NSD_LONG_RUN_CHECKPOINT_V0_1",
   "scientific_verdict": "FORBIDDEN",
-  "stage": "PACKET_BOUND",
+  "stage": "FROZEN_INPUT_VALIDATED",
   "started_unix": 1790726664.7186866,
   "stop_reason": null,
-  "updated_unix": 1790726664.7207158
+  "updated_unix": 1790726666.0963025
 }
