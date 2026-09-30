@@ -32,6 +32,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Run reusable packet validator
+        run: python NSD_vNext/engine/tools/validate_v02_prefreeze_packet.py
+
       - name: Validate freshness and authority firewalls
         shell: bash
         run: |
