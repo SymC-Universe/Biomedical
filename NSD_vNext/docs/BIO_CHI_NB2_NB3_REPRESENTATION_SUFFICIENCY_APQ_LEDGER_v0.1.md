@@ -1,7 +1,7 @@
 # Bio Chi N-B2/N-B3 Representation-Sufficiency APQ Ledger v0.1
 
 **Plan reviewed:** `BIO_CHI_NB2_NB3_REPRESENTATION_SUFFICIENCY_PLAN_v0.2.md`  
-**APQ level:** APQ-2 SUBSTANTIAL  
+**APQ level:** APQ-2 CANDIDATE / INDEPENDENT REVIEW OUTSTANDING  
 **Review limitation:** two role-isolated passes from one cognition; not independent reviewers.
 
 | ID | Severity | Objection | Disposition | Required change |
@@ -23,4 +23,4 @@ A mathematically richer representation is not automatically scientifically bette
 
 ## APQ disposition
 
-No unresolved BLOCKER or MATERIAL objection remains at the plan-architecture level after the v0.3 revisions. APQ closure licenses construction of the exact matched-family execution packet only.
+No unresolved BLOCKER or MATERIAL objection remains from the two same-cognition role-isolated passes after the v0.3 revisions. Under GOM v1.0, those passes are internal adversarial prechecks and do not constitute independent APQ-2 closure. Independent isolated review bound to the exact plan is still required before freeze or substantial execution.
