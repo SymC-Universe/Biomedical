@@ -1,19 +1,25 @@
 {
-  "state": "ACTIVE_COMPUTE",
-  "last_productive_utc": "2026-09-30T00:04:09Z",
-  "last_productive_commit": "e27b340b04247418b4b40a07465c20fe5bd7b094",
+  "state": "SCIENTIFIC_GATE",
+  "last_productive_utc": "2026-09-30T01:18:00Z",
+  "last_productive_commit": "2133408ead7b6e57be32f0a55e2f946f06b6b15a",
   "active_run_ids": [
-    36648443486
+    36648523189
   ],
-  "next_exact_action": "Allow NSD Long-Run Evidence Conveyor run 36648443486 to execute through SCIENTIFIC_REVIEW_READY, resuming automatically from durable case-level checkpoints if the runtime reserve is reached.",
-  "scientific_gate": null,
+  "next_exact_action": "Stop stale conveyor execution at the next checkpoint boundary; preserve already-generated rows as exposed development evidence; obtain independent isolated APQ-2 review bound to the exact frozen N-B1 and N-B2/N-B3 packet/config/ceiling; adjudicate and rebind before any substantive successor run.",
+  "scientific_gate": {
+    "code": "INDEPENDENT_APQ_REQUIRED",
+    "reason": "Same-cognition role-isolated passes do not satisfy GOM v1.0 APQ-2 independence for substantial execution.",
+    "bound_status_file": "NSD_vNext/control/LONG_RUN_EXTERNAL_APQ_STATUS_v0.1.json"
+  },
   "external_block": null,
   "source_of_record": "NSD_vNext/WORKING_INVESTIGATION.md",
-  "continuity_contract": "ACTIVE_COMPUTE | ADVANCED_CHECKPOINT | SCIENTIFIC_GATE | EXTERNAL_BLOCK; IDLE forbidden",
+  "continuity_contract": "ACTIVE_COMPUTE | ADVANCED_CHECKPOINT | SCIENTIFIC_GATE | EXTERNAL_BLOCK | USER_ACTION_REQUIRED; IDLE forbidden",
   "note": "This file is a continuity sentinel state only and does not make scientific decisions.",
   "sentinel_workflow": ".github/workflows/nsd-continuity-sentinel.yml",
   "work_queue": "NSD_vNext/control/WORK_QUEUE_v0.1.json",
   "queue_validator": ".github/workflows/nsd-continuation-queue-contracts.yml",
   "long_run_ceiling": "NSD_vNext/control/LONG_RUN_CEILING_v0.1.md",
-  "long_run_packet": "NSD_vNext/control/LONG_RUN_PACKET_v0.1.json"
+  "long_run_packet": "NSD_vNext/control/LONG_RUN_PACKET_v0.1.json",
+  "user_action_required": null,
+  "current_run_note": "Run 36648523189 started before the GOM correction. Branch advancement after the correction is intended to stop its next checkpoint push; do not rerun or resume it under the old authority chain."
 }
