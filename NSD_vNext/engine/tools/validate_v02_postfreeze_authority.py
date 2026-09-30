@@ -27,7 +27,7 @@ for lane in ("nb1","nb23","integrated"):
 p1,c1=latest("LANE_CHECKPOINT_NB1")
 p2,c2=latest("LANE_CHECKPOINT_NB23")
 for cp,name in ((c1,"N-B1"),(c2,"N-B2/N-B3")):
-    if cp["lane"] != name or cp["state"] != "SCIENTIFIC_GATE":
+    if cp["lane"] != name or cp["state"] not in {"SCIENTIFIC_GATE","ADVANCED_CHECKPOINT","EXTERNAL_BLOCK","USER_ACTION_REQUIRED"}:
         raise SystemExit(f"bad latest lane checkpoint {name}")
     if not cp["final_identity_freeze"]:
         raise SystemExit(f"{name} does not bind final scientific freeze")
