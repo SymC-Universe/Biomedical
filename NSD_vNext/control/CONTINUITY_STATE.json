@@ -1,9 +1,11 @@
 {
-  "state": "ADVANCED_CHECKPOINT",
-  "last_productive_utc": "2026-09-29T21:38:00Z",
-  "last_productive_commit": "031a561cbd7902263995341f62818e980af6982e",
-  "active_run_ids": [],
-  "next_exact_action": "Read NSD_vNext/control/WORK_QUEUE_v0.1.json and advance READY tasks NB1-Q01 and NB2-Q01 in parallel. Do not stop at packet creation; advance each dependency chain automatically through packet APQ, freeze, implementation, preflight, and execution unless a genuine scientific gate or external block is recorded.",
+  "state": "ACTIVE_COMPUTE",
+  "last_productive_utc": "2026-09-30T00:04:09Z",
+  "last_productive_commit": "e27b340b04247418b4b40a07465c20fe5bd7b094",
+  "active_run_ids": [
+    36648443486
+  ],
+  "next_exact_action": "Allow NSD Long-Run Evidence Conveyor run 36648443486 to execute through SCIENTIFIC_REVIEW_READY, resuming automatically from durable case-level checkpoints if the runtime reserve is reached.",
   "scientific_gate": null,
   "external_block": null,
   "source_of_record": "NSD_vNext/WORKING_INVESTIGATION.md",
@@ -11,5 +13,7 @@
   "note": "This file is a continuity sentinel state only and does not make scientific decisions.",
   "sentinel_workflow": ".github/workflows/nsd-continuity-sentinel.yml",
   "work_queue": "NSD_vNext/control/WORK_QUEUE_v0.1.json",
-  "queue_validator": ".github/workflows/nsd-continuation-queue-contracts.yml"
+  "queue_validator": ".github/workflows/nsd-continuation-queue-contracts.yml",
+  "long_run_ceiling": "NSD_vNext/control/LONG_RUN_CEILING_v0.1.md",
+  "long_run_packet": "NSD_vNext/control/LONG_RUN_PACKET_v0.1.json"
 }
