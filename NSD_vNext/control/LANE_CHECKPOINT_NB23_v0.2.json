@@ -8,8 +8,26 @@
   "completed_artifact_hashes": {},
   "incomplete_case_ids": "ALL_FRESH_V0_2_CASES",
   "active_run_id": null,
-  "next_exact_action": "Continue N-B2/N-B3 prefreeze metric/invariance/identity/result-schema preparation while Round-2 full-text APQ transport is rate-limited; adjudicate Round-2 immediately on completion.",
+  "next_exact_action": "Keep N-B2/N-B3 at SCIENTIFIC_GATE; retry isolated full-text Round-2 APQ after provider reset while validating metric/invariance identity and closing the recoverability RNG/noise freeze debt if that layer remains in scope.",
   "stop_reason": "ROUND2_APQ_TRANSPORT_RATE_LIMIT_WITH_PARALLEL_WORK_AUTHORIZED",
   "scientific_values_exposed": false,
-  "last_canonical_advancement_commit": "3bc64d5d23245905297fb2c5cadd54b27dc282f2"
+  "last_canonical_advancement_commit": "9ad29a6a30342bfb9ca9ff2369b8413ce9248c4f",
+  "draft_packet_blob": "a8d5b0d9385ccdeaa8e54437218ce45a895ab3a1",
+  "prefreeze_identity_manifest": "NSD_vNext/control/V0_2_PREFREEZE_IDENTITY_MANIFEST_v0.1.json",
+  "prefreeze_identity_manifest_blob": "b4ac215f11cea84b82781d7527bcc1ade6170f0b",
+  "code_identity_status": "PREFREEZE_PENDING_PACKET_APQ",
+  "current_code_manifest_blob": "54174ad81887c243e1c96a08b66e94cc56d801f1",
+  "rng_identity": {
+    "exact_operator_layer": "NOT_APPLICABLE",
+    "recoverability_seed_contract": "NOT_YET_FROZEN",
+    "requirement": "If sampled uncertainty or noise is retained after Round-2 APQ, bind its generator, seeds, RNG implementation, rates, duration, and observation contract before packet freeze."
+  },
+  "dependency_identity": {
+    "python": "3.12",
+    "numpy": "2.1.3",
+    "scipy": "1.14.1",
+    "pytest": "8.3.3",
+    "status": "CURRENT_INTENDED_NOT_FINAL_FREEZE"
+  },
+  "mismatch_policy": "After final freeze, any authority/config/code/dependency/RNG/artifact identity mismatch is FROZEN_CONTRACT_VIOLATION."
 }
