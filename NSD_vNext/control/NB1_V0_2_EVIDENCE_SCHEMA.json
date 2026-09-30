@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NSD v0.2 N-B1 Mechanical Evidence Row",
+  "type": "object",
+  "required": [
+    "schema",
+    "packet_id",
+    "truth_id",
+    "generator",
+    "seed",
+    "rate",
+    "sampling_rate_hz",
+    "duration_seconds",
+    "truth_contract",
+    "raw_evidence",
+    "environment",
+    "scientific_adjudication"
+  ],
+  "properties": {
+    "schema": {
+      "const": "NSD_NB1_V0_2_EVIDENCE_ROW"
+    },
+    "packet_id": {
+      "type": "string"
+    },
+    "truth_id": {
+      "type": "string"
+    },
+    "generator": {
+      "type": "string"
+    },
+    "seed": {
+      "type": "integer"
+    },
+    "rate": {
+      "enum": [
+        "fine",
+        "coarse"
+      ]
+    },
+    "sampling_rate_hz": {
+      "type": "number"
+    },
+    "duration_seconds": {
+      "type": "number"
+    },
+    "truth_contract": {
+      "type": "object"
+    },
+    "raw_evidence": {
+      "type": "object",
+      "description": "Numerical/structural/profile/comparator evidence only; no scientific pass/fail aggregation."
+    },
+    "artifact_identity": {
+      "type": "object"
+    },
+    "environment": {
+      "type": "object"
+    },
+    "scientific_adjudication": {
+      "const": "NOT_PERFORMED_BY_GITHUB"
+    },
+    "licenses_real_eeg_local_chi": {
+      "const": false
+    }
+  },
+  "additionalProperties": true
+}
