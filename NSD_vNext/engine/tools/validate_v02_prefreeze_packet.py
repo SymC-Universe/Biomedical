@@ -19,8 +19,8 @@ def load(name: str):
 
 def main() -> int:
     draft = load("FRESH_UNTOUCHED_V0_2_DRAFT_B.json")
-    nb1 = load("LANE_CHECKPOINT_NB1_v0.5.json")
-    nb23 = load("LANE_CHECKPOINT_NB23_v0.5.json")
+    nb1 = load("LANE_CHECKPOINT_NB1_v0.6.json")
+    nb23 = load("LANE_CHECKPOINT_NB23_v0.6.json")
 
     assert draft["execution_authorized"] is False
     assert draft["status"] == "PREFREEZE_DRAFT_B_PENDING_V0_5_REREVIEW_AND_PACKET_APQ"
@@ -87,6 +87,10 @@ def main() -> int:
             raise SystemExit(f"{lane} opened fresh outcomes before authorization")
         if cp["scientific_values_exposed"]:
             raise SystemExit(f"{lane} scientific values exposed before authorization")
+        if cp["execution_authorized"]:
+            raise SystemExit(f"{lane} execution authorized before packet APQ/freeze")
+        if cp["final_identity_freeze"]:
+            raise SystemExit(f"{lane} final identity frozen before packet APQ closure")
 
     print("NSD fresh v0.2 prefreeze packet contracts PASS")
     return 0
