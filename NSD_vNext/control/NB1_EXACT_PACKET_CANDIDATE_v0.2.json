@@ -1,0 +1,74 @@
+{
+  "schema": "NSD_NB1_EXACT_PACKET_CANDIDATE_V0_2",
+  "status": "PACKET_LEVEL_APQ_REVISION_CANDIDATE_NOT_FROZEN",
+  "execution_authorized": false,
+  "design_baseline_id": "NSD-V02-B01-PREQ",
+  "packet_id": "NB1-B01-EXACT-PREQ-V02",
+  "architecture_plan_blob": "df51ca6e7b20f49dc8781170831066e806f5617b",
+  "integration_revision_blob": "622d36a8327408200f08d992e0e09db304f3b0f8",
+  "fragments": {
+    "seeds": {
+      "path": "NSD_vNext/control/NB1_PACKET_SEEDS_v0.2.json",
+      "blob": "a7a0354bdcf6f5d07c66071f9c7fe1ed548b9d4e"
+    },
+    "function_truths": {
+      "path": "NSD_vNext/control/NB1_PACKET_FUNCTION_TRUTHS_v0.1.json",
+      "blob": "5887a56e9d1636c2bf0442bee6f87a380379b5e7"
+    },
+    "limit_truths": {
+      "path": "NSD_vNext/control/NB1_PACKET_LIMIT_TRUTHS_v0.1.json",
+      "blob": "83082c121653187fb2a0e2cb41e563273cfd1b7e"
+    },
+    "method": {
+      "path": "NSD_vNext/control/NB1_PACKET_METHOD_v0.2.json",
+      "blob": "b5d607058595cd6a240ac33e5af352480cabd545"
+    },
+    "c_d_s_generator_contract": {
+      "path": "NSD_vNext/control/NB1_CDS_GENERATOR_SEMANTIC_CONTRACT_v0.1.md",
+      "blob": "1453b7f502c1852d9101f437b052ebb80b5c6cbc"
+    },
+    "limit_generator_contract": {
+      "path": "NSD_vNext/control/NB1_LIMIT_GENERATOR_CONTRACT_v0.1.md",
+      "blob": "ded7cfdb030f83bad1386aaebffb885d209b1c9e"
+    },
+    "channel_rules": {
+      "path": "NSD_vNext/control/NB1_CHANNEL_RULES_REVISION_v0.1.json",
+      "blob": "dbc619d11081f9505ca9b1eff03751227aebded8"
+    },
+    "profile_alias_retention": {
+      "path": "NSD_vNext/control/NB1_PROFILE_ALIAS_RETENTION_REVISION_v0.1.json",
+      "blob": "28180a150ef650d1e3ab5df727641ddff788d058"
+    }
+  },
+  "case_identity": {
+    "truth_count": 18,
+    "replicate_count": 16,
+    "rates_hz": [
+      240,
+      120
+    ],
+    "expected_rows": 576,
+    "case_id": "<truth_id>-<R00..R15>-S<rate>",
+    "reporting_unit": "generated fine path / parent seed"
+  },
+  "scientific_corrections_from_prior_packet_apq": [
+    "generator and semantic truth definitions made reconstructible",
+    "alias certificate and REFUSE versus NEED_MORE_INFO rule made executable",
+    "profile-I narrowed to refined-grid uniqueness/interiority with truth excluded from eligibility decisions",
+    "row label composition and retention/FNO rules made deterministic",
+    "seed derivation corrected to exact byte-level SHA rule and decimal-string serialization before outcome access"
+  ],
+  "governance": {
+    "baseline_change_contract": "07bee631dbbd7d8024c3d13c0bb350d66cad06cd",
+    "verifier_independence_contract": "50f871eb8de28df564bea9102a31111f07c601f1",
+    "access_ledger": "080b593bd54b03157c90313cf414b8550aa614c8",
+    "evidence_schema_blob": "4877ca9d017877af75b298fdea91325394fe846e",
+    "checkpoint_schema_blob": "cef38ed6d88f227672825bdccbe475404cb45a65"
+  },
+  "prior_candidate": "NSD_vNext/control/NB1_EXACT_PACKET_CANDIDATE_v0.1.json",
+  "prior_candidate_disposition": "SUPERSEDED_BEFORE_RESULT_ACCESS",
+  "code_dependency_environment_identity": "PENDING_POST_PACKET_APQ_IMPLEMENTATION_GATE",
+  "final_identity_freeze": false,
+  "result_access_allowed": false,
+  "next_gate": "INDEPENDENT_CORRECTED_PACKET_REVIEW"
+}
