@@ -1,0 +1,19 @@
+{
+  "schema":"NSD_NB1_PACKET_SEEDS_V0_2",
+  "status":"PACKET_LEVEL_APQ_REVISION_CANDIDATE_NOT_FROZEN",
+  "replicate_count":16,
+  "rng":"PCG64DXSM",
+  "hash_input_encoding":"UTF-8",
+  "seed_rule":"For i=0..15 hash the exact UTF-8 bytes of 'NSD-NB1-v0.2-B01|replicate|i' with SHA-256; read digest bytes 0..7 as unsigned big-endian 64-bit integer; reduce modulo (2^63-1).",
+  "collision_rule":"If a generated seed is zero or duplicates any earlier replicate seed, append '|retry|j' with j=1,2,... to the original input and repeat until nonzero and unique. No retry is required by the v0.2 candidate list.",
+  "serialization":"Seeds are decimal strings to prevent binary64/JSON rounding.",
+  "seeds":[
+    "4012295144428264894","734722767732809149","4357778436359021462","5424248785973095680",
+    "5889269372358671117","5492451934434697924","633781396054923176","2245695508485767439",
+    "437839555414937764","2354668980245810183","1348743885252759305","4146112300962661065",
+    "6035756257014055845","3924039236262827060","2582629269499962595","488137367194850018"
+  ],
+  "supersedes_candidate":"NSD_vNext/control/NB1_PACKET_SEEDS_v0.1.json",
+  "correction_reason":"v0.1 decimal seeds were serialized through binary64 and do not exactly equal the declared SHA-256 rule. No outcome was opened; identities are corrected prospectively before freeze.",
+  "execution_authorized":false
+}
