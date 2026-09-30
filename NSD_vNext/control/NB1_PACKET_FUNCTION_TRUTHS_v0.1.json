@@ -1,0 +1,95 @@
+{
+  "schema": "NSD_NB1_PACKET_FUNCTION_TRUTHS_V0_1",
+  "status": "APQ_CANDIDATE_NOT_FROZEN",
+  "truths": [
+    {
+      "id": "NB1B01-F01",
+      "generator": "CONTINUOUS_C",
+      "A": 0.8,
+      "fn_hz": 8,
+      "chi": 0.24,
+      "g": 0.05,
+      "role": "ordinary_interior_retention"
+    },
+    {
+      "id": "NB1B01-F02",
+      "generator": "CONTINUOUS_C",
+      "A": 0.62,
+      "fn_hz": 13,
+      "chi": 0.42,
+      "g": -0.5,
+      "role": "ordinary_nonzero_g_retention"
+    },
+    {
+      "id": "NB1B01-F03",
+      "generator": "CONTINUOUS_C",
+      "A": 0.33,
+      "fn_hz": 18.5,
+      "chi": 0.57,
+      "g": 0.6,
+      "role": "weak_observation_valid"
+    },
+    {
+      "id": "NB1B01-F04",
+      "generator": "CONTINUOUS_C",
+      "A": 0.76,
+      "fn_hz": 10,
+      "chi": 0.88,
+      "g": 0.2,
+      "role": "near_critical_valid"
+    },
+    {
+      "id": "NB1B01-F05",
+      "generator": "CONTINUOUS_C",
+      "A": 0.7,
+      "fn_hz": 31,
+      "chi": 0.3,
+      "g": -0.75,
+      "role": "high_frequency_valid"
+    },
+    {
+      "id": "NB1B01-F06",
+      "generator": "CONTINUOUS_C",
+      "A": 0.73,
+      "fn_hz": 6.5,
+      "chi": 0.16,
+      "g": 0.3,
+      "role": "low_damping_valid"
+    },
+    {
+      "id": "NB1B01-F07",
+      "generator": "CONTINUOUS_C",
+      "A": 0.58,
+      "fn_hz": 15.5,
+      "chi": 0.36,
+      "g": 0.72,
+      "role": "positive_g_valid"
+    },
+    {
+      "id": "NB1B01-F08",
+      "generator": "CONTINUOUS_C",
+      "A": 0.67,
+      "fn_hz": 22,
+      "chi": 0.48,
+      "g": -0.68,
+      "role": "negative_g_valid"
+    },
+    {
+      "id": "NB1B01-F09",
+      "generator": "CONTINUOUS_C_GAIN_CONTROL",
+      "A": 0.75,
+      "fn_hz": 11,
+      "chi": 0.32,
+      "g": 0.25,
+      "observation_gains": [
+        0.7,
+        1.4
+      ],
+      "role": "preserving_observation_mapping"
+    }
+  ],
+  "retention_controls": [
+    "NB1B01-F01",
+    "NB1B01-F02"
+  ]
+}
