@@ -1,27 +1,23 @@
 {
   "state": "EXTERNAL_BLOCK",
-  "last_productive_utc": "2026-09-30T04:22:00Z",
-  "last_productive_commit": "2907b0c6e76fb6f42e8035679bac30973086c18f",
+  "last_productive_utc": "2026-09-30T05:25:00Z",
+  "last_productive_commit": "2049725e878a3378c004e12d60b9a5af6d527bcb",
   "active_run_ids": [],
-  "next_exact_action": "Retry the isolated stage-bound cross-lane integration-authority re-review after the temporary Undermind reset. If it closes, immediately make final N-B1 and N-B2/N-B3 packet-construction/APQ tasks READY. Until then continue only outcome-blind prefreeze hardening.",
+  "next_exact_action": "Integration Controls Stage Review is now running independently. While it runs, repair the mechanically stale prefreeze validator/workflow using V0_2_PREFREEZE_VALIDATOR_REPAIR_SPEC_v0.1.json and keep packet/identity records aligned. On review completion, adjudicate immediately; if no architecture-level BLOCKER/MATERIAL remains, release NB1-Q02 and NB2-Q02 for exact packet construction/APQ.",
   "scientific_gate": {
-    "code": "CROSS_LANE_INTEGRATION_AUTHORITY_REREVIEW_REQUIRED",
-    "reason": "Lane v0.5 re-reviews cleared, but the integrated review identified accepted common-dependency, access-lineage, ancestry-disjointness, and resume-authority gaps. Revised integration authority v0.1 is awaiting a stage-bound independent re-review.",
+    "code": "CROSS_LANE_INTEGRATION_AUTHORITY_REREVIEW_IN_PROGRESS",
+    "reason": "The stage-bound independent re-review of the revised cross-lane integration authority has launched. Lane v0.5 reviews are closed; substantive execution remains unauthorized.",
     "nb1_lane_review": "NSD_vNext/control/NB1_V0_5_REREVIEW_ADJUDICATION_v0.1.md",
     "nb23_lane_review": "NSD_vNext/control/NB23_V0_5_REREVIEW_ADJUDICATION_v0.1.md",
     "integration_adjudication": "NSD_vNext/control/INTEGRATED_V0_5_REREVIEW_ADJUDICATION_v0.1.md",
     "integration_authority": "NSD_vNext/control/V0_2_CROSS_LANE_INTEGRATION_AUTHORITY_v0.1.md",
-    "prefreeze_manifest": "NSD_vNext/control/V0_2_PREFREEZE_IDENTITY_MANIFEST_v0.2.json"
+    "prefreeze_manifest": "NSD_vNext/control/V0_2_PREFREEZE_IDENTITY_MANIFEST_v0.3.json"
   },
-  "external_block": {
-    "provider": "Undermind",
-    "scope": "STAGE_BOUND_CROSS_LANE_INTEGRATION_REREVIEW_LAUNCH",
-    "temporary": true
-  },
+  "external_block": null,
   "source_of_record": "NSD_vNext/WORKING_INVESTIGATION.md",
   "continuity_contract": "ACTIVE_COMPUTE | ADVANCED_CHECKPOINT | SCIENTIFIC_GATE | EXTERNAL_BLOCK | USER_ACTION_REQUIRED; IDLE forbidden",
   "work_queue": "NSD_vNext/control/WORK_QUEUE_v0.1.json",
   "long_run_ceiling": "NSD_vNext/control/LONG_RUN_CEILING_v0.1.md",
   "user_action_required": null,
-  "current_run_note": "Three v0.5 isolated reviews completed. Lane architectures cleared. Integrated blockers were accepted prospectively and converted into explicit common-dependency, access-lineage, ancestry-disjointness, and resume controls. The first compressed integration re-review was under-specified and returned NEED_MORE_INFO; the fuller stage-bound relaunch is temporarily rate-limited. No v0.2 scientific outcome has been opened and execution_authorized remains false."
+  "current_run_note": "Stage-bound cross-lane integration review launched after temporary provider reset. During the transport block, checkpoint schema v0.2, validator repair contract, source-of-record audit v0.2, and prefreeze identity manifest v0.3 were added. Prefreeze Contracts run 36668607439 is a mechanical validator-state mismatch because legacy checks require SCIENTIFIC_GATE and Draft-A; do not rerun unchanged."
 }
