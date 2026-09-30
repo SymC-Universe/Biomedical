@@ -59,7 +59,7 @@ jobs:
           if active > q["rules"]["max_active_scientific_tasks"]:
               raise SystemExit(f"too many ACTIVE tasks: {active}")
 
-          terminal={"SCIENTIFIC_GATE","EXTERNAL_BLOCK"}
+          terminal={"SCIENTIFIC_GATE","EXTERNAL_BLOCK","USER_ACTION_REQUIRED"}
           actionable=any(t["status"] in {"READY","ACTIVE"} for t in tasks)
           if not actionable and s.get("state") not in terminal:
               unfinished=any(t["status"] not in {"DONE","REFUSED"} for t in tasks)
