@@ -802,3 +802,23 @@ Continuity/restart semantics:
 
 Interpretation: V28 is governance/reproducibility infrastructure. It does not itself validate local \(\chi\), qualify a representation, or license real EEG.
 
+
+
+## V29. Round-2 APQ closure and v0.5 prefreeze controls
+
+[CLAIM] Round-2 independent APQ completed for N-B1, N-B2/N-B3, and their integration. Accepted blockers were resolved prospectively in N-B1 v0.5 and N-B2/N-B3 v0.5. These revised architectures are not frozen and require isolated re-review before exact packet-level APQ.
+
+[VERIFY]
+
+1. Read `NSD_vNext/control/INDEPENDENT_APQ2_ROUND2_ADJUDICATION_LEDGER_v0.2.md` and verify every BLOCKER/MATERIAL objection has an explicit prospective disposition.
+2. Verify N-B1 v0.5 keeps semantic family membership generator-defined and separates P/S/T/F/O/M/R/N/I/U evidence without score aggregation.
+3. Verify N-B2/N-B3 v0.5 defines exact suite-level sufficiency separately from observation-conditioned recoverability, binds executable target formulas, and includes full A/B/C/G/x0 similarity transformations.
+4. Verify `FRESH_UNTOUCHED_V0_2_DRAFT_B.json` has `execution_authorized=false`, identifies candidate rather than final confirmatory seeds, and leaves final identities pending architecture re-review and exact packet APQ.
+5. Verify `V0_2_GENERATOR_PROVENANCE_VALIDATION_PLAN_v0.1.md` requires outcome-blind truth/identity checks before evaluation.
+6. Verify `V0_2_IMPLEMENTATION_GAP_AUDIT_v0.1.md` classifies the current v0.1 conveyor as not ready for v0.2 and names unsupported generators/config semantics without opening scientific outcomes.
+7. Verify the `NSD v0.2 Prefreeze Contracts` run `36666311970` completed successfully on the v0.5/Draft-B checkpoint lineage.
+8. Verify both lane checkpoints contain zero completed fresh v0.2 cases and no scientific values have been exposed.
+
+[EXPECTED]
+
+The repository remains at a scientific gate. Architecture v0.5 re-review is required, followed by exact packet-level APQ, final case/RNG/code/dependency/environment freeze, prospective v0.2 implementation and tests, and only then substantive execution. v0.1 evidence remains development-only and real-EEG local chi remains unlicensed.
