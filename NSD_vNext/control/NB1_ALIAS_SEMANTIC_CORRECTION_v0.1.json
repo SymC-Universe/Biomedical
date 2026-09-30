@@ -1,0 +1,8 @@
+{
+  "schema": "NSD_NB1_ALIAS_SEMANTIC_CORRECTION_V0_1",
+  "status": "PROSPECTIVE_NOT_FROZEN",
+  "execution_authorized": false,
+  "correction": "The frozen 1 to 45 Hz estimator coordinate is damped frequency, not natural frequency. Alias certification must operate on the damped sampled pole angle at 120 and 240 Hz. Natural frequency is derived afterward from decay and damped frequency and is not capped at 45 Hz.",
+  "fail_closed": "If independent alias certification is unresolved, channel S returns NEED_MORE_INFO.",
+  "scientific_outcomes_opened": false
+}
