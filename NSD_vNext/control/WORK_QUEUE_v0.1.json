@@ -204,13 +204,14 @@
       "id": "GATE-P08",
       "lane": "CROSS-LANE",
       "title": "Launch isolated Round-2 external APQ",
-      "status": "EXTERNAL_BLOCK",
+      "status": "DONE",
       "depends_on": [
         "GATE-P07"
       ],
       "deliverable": "three isolated Round-2 APQ reviews",
       "exact_action": "Retry after Undermind usage-limit reset; no duplicate search creation.",
-      "stop_condition": "provider rate limit or completed reviews"
+      "stop_condition": "provider rate limit or completed reviews",
+      "note": "Round-2 N-B1, N-B2/N-B3, and integration APQ reviews completed and were adjudicated in v0.2 ledger."
     },
     {
       "id": "GATE-P09",
@@ -259,12 +260,12 @@
       "title": "Exact v0.2 packet-level APQ and freeze",
       "status": "BLOCKED_DEPENDENCY",
       "depends_on": [
-        "GATE-P08",
+        "GATE-P21",
         "GATE-P10",
         "GATE-P11"
       ],
       "deliverable": "fresh v0.2 packet APQ + freeze",
-      "exact_action": "After Round-2 architecture closure, review exact packet/config and freeze before substantive compute.",
+      "exact_action": "After v0.5 architecture re-review closes, construct exact fresh packet, run packet-level APQ, and freeze before execution.",
       "stop_condition": "unresolved BLOCKER/MATERIAL objection"
     },
     {
@@ -352,6 +353,69 @@
       "exact_action": "Distinguish current-authority v0.2 control work from legacy PR-triggered CI fanout.",
       "stop_condition": "none",
       "note": "Prefreeze contracts run 36663547965 succeeded; legacy fanout is non-authoritative and does not reset liveness."
+    },
+    {
+      "id": "GATE-P20",
+      "lane": "CROSS-LANE",
+      "title": "Adjudicate Round-2 external APQ",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P08"
+      ],
+      "deliverable": "INDEPENDENT_APQ2_ROUND2_ADJUDICATION_LEDGER_v0.2.md plus v0.5 plans",
+      "exact_action": "Resolve every BLOCKER/MATERIAL objection prospectively without voting.",
+      "stop_condition": "none",
+      "note": "Material revisions accepted; N-B1 and N-B2/N-B3 advanced prospectively to v0.5."
+    },
+    {
+      "id": "GATE-P21",
+      "lane": "CROSS-LANE",
+      "title": "Independent v0.5 architecture re-review",
+      "status": "EXTERNAL_BLOCK",
+      "depends_on": [
+        "GATE-P20"
+      ],
+      "deliverable": "isolated N-B1, N-B2/N-B3, and integration v0.5 reviews",
+      "exact_action": "Relaunch after temporary Undermind usage reset; keep all safe prefreeze work moving meanwhile.",
+      "stop_condition": "provider rate limit or completed reviews"
+    },
+    {
+      "id": "GATE-P22",
+      "lane": "CROSS-LANE",
+      "title": "Align fresh v0.2 Draft B to v0.5",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P20"
+      ],
+      "deliverable": "FRESH_UNTOUCHED_V0_2_DRAFT_B.json",
+      "exact_action": "Carry v0.5 contracts forward without freezing final identities or authorizing execution.",
+      "stop_condition": "none",
+      "note": "Candidate seeds are explicitly not final confirmatory identities; final case identities wait for v0.5 closure."
+    },
+    {
+      "id": "GATE-P23",
+      "lane": "CROSS-LANE",
+      "title": "Generator and provenance validation plan",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P20"
+      ],
+      "deliverable": "V0_2_GENERATOR_PROVENANCE_VALIDATION_PLAN_v0.1.md",
+      "exact_action": "Define outcome-blind identity and matched-relation checks before scientific evaluation.",
+      "stop_condition": "none"
+    },
+    {
+      "id": "GATE-P24",
+      "lane": "CROSS-LANE",
+      "title": "Audit v0.2 implementation delta",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P20"
+      ],
+      "deliverable": "V0_2_IMPLEMENTATION_GAP_AUDIT_v0.1.md",
+      "exact_action": "Compare v0.1 conveyor mechanics to v0.5/Draft-B requirements without opening outcomes.",
+      "stop_condition": "none",
+      "note": "Existing v0.1 conveyor is not compatible with v0.2 and must not be reused as final implementation."
     }
   ]
 }

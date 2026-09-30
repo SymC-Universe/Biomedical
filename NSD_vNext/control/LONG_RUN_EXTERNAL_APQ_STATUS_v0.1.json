@@ -1,44 +1,25 @@
 {
-  "schema": "NSD_LONG_RUN_EXTERNAL_APQ_STATUS_V0_1",
-  "governance": "SymC GOM v1.0 + Continuity Hardening Addendum",
-  "status": "ROUND1_ADJUDICATED_ROUND2_TRANSPORT_PENDING",
-  "execution_authorized": false,
-  "reason": "APQ-2 substantial execution requires independent adversarial review bound to the exact frozen packet. Two same-cognition passes do not satisfy that requirement.",
-  "bound_packet": {
-    "long_run_packet_blob_sha": "99d3236ec08d0860eeb794995f4d01dc92a6622e",
-    "nb2_nb3_config_blob_sha": "9135aad7267386c3893083787b94e079150fb770",
-    "ceiling_blob_sha": "16f28418410ffe23d2ac02fa363c72de9fc3b2ea",
-    "same_cognition_apq_blob_sha": "f8a4d5eaed711640b4c49b4aac303ed38aa519d0",
-    "code_manifest_blob_sha": "54174ad81887c243e1c96a08b66e94cc56d801f1"
+  "schema":"NSD_LONG_RUN_EXTERNAL_APQ_STATUS_V0_1",
+  "governance":"SymC GOM v1.0 + Continuity Hardening Addendum",
+  "status":"ROUND2_ADJUDICATED_V0_5_REREVIEW_PENDING",
+  "execution_authorized":false,
+  "round2":{
+    "completed":true,
+    "workspace_id":"b9de6e85-abe4-401b-a922-4a7d3aeebc3f",
+    "searches":["/N-B1 APQ Round 2","/N-B2 N-B3 APQ Round 2","/Integrated APQ Round 2"],
+    "adjudication":"NSD_vNext/control/INDEPENDENT_APQ2_ROUND2_ADJUDICATION_LEDGER_v0.2.md"
   },
-  "exposed_development_evidence": {
-    "present": true,
-    "note": "The active long-run conveyor opened some known-truth outcomes before this governance correction. Preserve them as exposed development evidence only; they cannot be relabeled untouched confirmation."
+  "revised_authority":{
+    "nb1":"NSD_vNext/docs/BIO_CHI_INTEGRATED_NB1_ADMISSION_ARCHITECTURE_PLAN_v0.5.md",
+    "nb23":"NSD_vNext/docs/BIO_CHI_NB2_NB3_REPRESENTATION_SUFFICIENCY_PLAN_v0.5.md"
   },
-  "required_next_action": "Continue authorized prefreeze work now; automatically retry isolated Round-2 full-text APQ after provider reset; adjudicate immediately when complete; no substantive execution before round-2 and exact packet-level APQ/freeze.",
-  "scientific_authority": "Researcher + ChatGPT",
-  "github_authority": "Mechanical execution only",
-  "review_workspace": {
-    "provider": "Undermind",
-    "workspace_id": "adae43b4-c9a0-4f57-9a64-a7f8a58211d1",
-    "searches": [
-      "/reviews/N-B1 Independent APQ-2",
-      "/reviews/N-B2 N-B3 Independent APQ-2",
-      "/reviews/Integrated Long Run Independent APQ-2"
-    ],
-    "isolation_rule": "Each search receives only its self-contained authority brief and does not receive prior reviewer conclusions or sibling review results."
+  "rereview":{
+    "status":"TEMPORARILY_RATE_LIMITED_BEFORE_SEARCH_CREATION",
+    "provider":"Undermind",
+    "required":true
   },
-  "round1": {
-    "completed": true,
-    "adjudication": "NSD_vNext/control/INDEPENDENT_APQ2_ADJUDICATION_LEDGER_v0.2.md",
-    "nb1_plan": "NSD_vNext/docs/BIO_CHI_INTEGRATED_NB1_ADMISSION_ARCHITECTURE_PLAN_v0.4.md",
-    "nb23_plan": "NSD_vNext/docs/BIO_CHI_NB2_NB3_REPRESENTATION_SUFFICIENCY_PLAN_v0.4.md"
-  },
-  "round2": {
-    "provider": "Undermind",
-    "workspace_id": "b9de6e85-abe4-401b-a922-4a7d3aeebc3f",
-    "launch_status": "RATE_LIMITED_BEFORE_SEARCH_CREATION",
-    "retry_scheduled": true,
-    "requirement": "Use full v0.4 authority text rather than identifiers/summaries."
-  }
+  "required_next_action":"Continue safe prefreeze work during the temporary review-transport block; relaunch isolated v0.5 re-review when available; after closure perform exact v0.2 packet APQ/freeze before execution.",
+  "scientific_authority":"Researcher + ChatGPT",
+  "github_authority":"Mechanical execution only",
+  "exposed_development_evidence":"v0.1 remains development-only and is not confirmatory evidence."
 }

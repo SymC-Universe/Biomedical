@@ -978,3 +978,16 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - N-B2/N-B3 retains one explicit packet-freeze debt: any stochastic recoverability layer must bind its noise and RNG contract before execution.
 - No fresh v0.2 scientific outcome was opened. Current state remains `SCIENTIFIC_GATE`.
 - Next action: retry isolated Round-2 APQ, adjudicate immediately on return, then perform exact v0.2 packet APQ/freeze.
+
+
+### 2026-09-29 - ROUND2_APQ_COMPLETE / v0.5 PROSPECTIVE REVISION
+
+- Round-2 isolated APQ reviews completed for N-B1, N-B2/N-B3, and cross-lane integration in Undermind workspace `b9de6e85-abe4-401b-a922-4a7d3aeebc3f`.
+- All BLOCKER/MATERIAL objections were adjudicated individually without voting in `INDEPENDENT_APQ2_ROUND2_ADJUDICATION_LEDGER_v0.2.md`.
+- Revised prospective authorities are N-B1 v0.5 and N-B2/N-B3 v0.5. The revisions operationalize generator-defined family semantics, fail-closed channel decisions, profile-identifiability handling, Monte Carlo failure accounting, exact target functionals, exact-versus-recoverability separation, full similarity transforms, switched-system semantics, aliasing controls, and independent generator/provenance validation.
+- An outcome-blind implementation-gap audit found the v0.1 conveyor is not yet mechanically compatible with the v0.2 draft. Unsupported new N-B1 generators, renamed B/C/config fields, continuous peak refinement, switch phase, and sampled recoverability require prospective v0.2 implementation after scientific freeze. This is expected implementation debt, not a scientific failure.
+- Because Round-2 accepted material scientific changes, v0.5 requires isolated re-review before architecture closure. A re-review launch was attempted immediately but Undermind returned a temporary usage-limit reset. No substantive compute is authorized while that external transport gate remains.
+- v0.1 scientific result payloads remain quarantined and were not inspected or used to choose v0.5 changes.
+- **Current durable state:** `SCIENTIFIC_GATE / V0_5_REVIEW_TRANSPORT_TEMPORARILY_BLOCKED_WITH_PARALLEL_PREFREEZE_WORK`.
+- **Next exact action:** continue outcome-blind prefreeze packet/implementation-contract preparation; relaunch isolated v0.5 review after provider reset; adjudicate immediately; only after architecture closure perform exact v0.2 packet-level APQ/freeze and prospective v0.2 implementation.
+- **User intervention required:** `no`.
