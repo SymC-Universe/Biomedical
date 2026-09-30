@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NSD v0.2 Frozen Lane Checkpoint Contract",
+  "type": "object",
+  "required": [
+    "schema",
+    "lane",
+    "state",
+    "authority_plan_blob",
+    "packet_blob",
+    "config_blob",
+    "code_manifest_blob",
+    "dependency_identity",
+    "rng_identity",
+    "completed_case_ids",
+    "completed_artifact_hashes",
+    "incomplete_case_ids",
+    "active_run_id",
+    "next_exact_action",
+    "stop_reason",
+    "scientific_values_exposed",
+    "mismatch_policy"
+  ],
+  "properties": {
+    "schema": {
+      "const": "NSD_LANE_CHECKPOINT_V0_2_FROZEN"
+    },
+    "lane": {
+      "enum": [
+        "N-B1",
+        "N-B2/N-B3"
+      ]
+    },
+    "state": {
+      "enum": [
+        "ACTIVE_COMPUTE",
+        "ADVANCED_CHECKPOINT",
+        "SCIENTIFIC_GATE",
+        "EXTERNAL_BLOCK",
+        "USER_ACTION_REQUIRED",
+        "SCIENTIFIC_REVIEW_READY"
+      ]
+    },
+    "authority_plan_blob": {
+      "type": "string",
+      "minLength": 40
+    },
+    "packet_blob": {
+      "type": "string",
+      "minLength": 40
+    },
+    "config_blob": {
+      "type": "string",
+      "minLength": 40
+    },
+    "code_manifest_blob": {
+      "type": "string",
+      "minLength": 40
+    },
+    "dependency_identity": {
+      "type": "object"
+    },
+    "rng_identity": {
+      "type": "object"
+    },
+    "completed_case_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "completed_artifact_hashes": {
+      "type": "object"
+    },
+    "incomplete_case_ids": {
+      "type": [
+        "array",
+        "string"
+      ]
+    },
+    "active_run_id": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "next_exact_action": {
+      "type": "string"
+    },
+    "stop_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "scientific_values_exposed": {
+      "type": "boolean"
+    },
+    "mismatch_policy": {
+      "const": "FROZEN_CONTRACT_VIOLATION"
+    }
+  },
+  "additionalProperties": true
+}
