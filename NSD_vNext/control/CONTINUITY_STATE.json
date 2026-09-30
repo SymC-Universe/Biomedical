@@ -1,18 +1,20 @@
 {
   "state": "ADVANCED_CHECKPOINT",
-  "last_productive_utc": "2026-09-30T12:33:42Z",
-  "last_productive_commit": "43b03d90322dc71dcfb0d702b45110a408190bb7",
-  "active_run_ids": [],
-  "next_exact_action": "Complete the new frozen v0.2 implementation: truth-blind N-B1 profile/search evidence, N-B2/N-B3 target/recoverability runtime, independent CD-03/CD-05/CD-06 verification, final code/dependency/environment binding, workflow repair, and mechanical preflight. Do not open confirmatory scientific outcomes.",
+  "last_productive_utc": "2026-09-30T13:01:41Z",
+  "last_productive_commit": "678f752f48710675e05f17755d341edc51d81a85",
+  "active_run_ids": [
+    36718481859
+  ],
+  "next_exact_action": "Finish truth-blind N-B1 Profile-I/search implementation and N-B2/N-B3 observation/recoverability runtime; close CD-05/CD-06; bind final code/dependency/environment identity; run mechanical preflight. Do not open confirmatory scientific outcomes.",
   "scientific_gate": {
     "code": "SCIENTIFIC_PACKET_FROZEN_IMPLEMENTATION_VALIDATION_ACTIVE",
-    "reason": "Final scientific freeze is durable. New v0.2 frozen-identity guard, independent common-dependency verifier, and N-B1 generator implementation have passed engine contract CI; execution authority remains false until full implementation, verifier closure, identity binding, and preflight pass."
+    "reason": "Final scientific freeze and packet APQ closure are durable. CD-03 and the repaired v0.2 authority workflow are mechanically closed; execution authority remains false until remaining implementation, verifier, identity-binding, and preflight gates pass."
   },
   "external_block": null,
   "source_of_record": "NSD_vNext/WORKING_INVESTIGATION.md",
   "continuity_contract": "ACTIVE_COMPUTE | ADVANCED_CHECKPOINT | SCIENTIFIC_GATE | EXTERNAL_BLOCK | USER_ACTION_REQUIRED; IDLE forbidden",
-  "work_queue": "NSD_vNext/control/WORK_QUEUE_v0.1.json",
+  "work_queue": "NSD_vNext/control/WORK_QUEUE_v0.3.json",
   "long_run_ceiling": "NSD_vNext/control/LONG_RUN_CEILING_v0.1.md",
   "user_action_required": null,
-  "current_run_note": "NSD Engine Contracts run 36714352473 passed the frozen identity guard; run 36715139701 passed the independent common-dependency verifier; run 36715418055 passed the frozen N-B1 generator/sampling contract. Stale v0.2 prefreeze inline validator remains a separate mechanical repair debt."
+  "current_run_note": "Repaired NSD v0.2 Authority Contracts passes. CD-03 dedicated contract test passed in Engine Contracts run 36717800806 after a mechanical import repair. CD-06 verifier/test and N-B2/N-B3 frozen core primitives are now in the implementation lineage; latest engine contract CI is pending."
 }
