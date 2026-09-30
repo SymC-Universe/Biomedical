@@ -967,3 +967,14 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Next exact action:** finish prefreeze contract validation and continue implementation/reproducibility/checkpoint preparation; relaunch isolated Round-2 full-text APQ after provider reset; adjudicate immediately on completion; then perform exact v0.2 packet-level APQ/freeze before substantive compute.
 - **User intervention required:** `no`
 
+
+
+### 2026-09-29 - ADVANCED_CHECKPOINT - Prefreeze identity hardening
+
+- Prefreeze authority identities are now bound in `V0_2_PREFREEZE_IDENTITY_MANIFEST_v0.1.json`.
+- Both v0.2 lane checkpoints now carry draft identity, manifest identity, dependency state, RNG identity/status, and the final-freeze mismatch contract.
+- Final code-identity and frozen-checkpoint templates were added prospectively.
+- `NSD v0.2 Prefreeze Contracts` run `36663547965` passed. Other historical PR-triggered jobs are not counted as current-lane progress.
+- N-B2/N-B3 retains one explicit packet-freeze debt: any stochastic recoverability layer must bind its noise and RNG contract before execution.
+- No fresh v0.2 scientific outcome was opened. Current state remains `SCIENTIFIC_GATE`.
+- Next action: retry isolated Round-2 APQ, adjudicate immediately on return, then perform exact v0.2 packet APQ/freeze.
