@@ -1,0 +1,18 @@
+{
+  "schema": "NSD_LANE_CHECKPOINT_V0_9",
+  "lane": "N-B1",
+  "state": "SCIENTIFIC_GATE",
+  "architecture_review_status": "CLOSED",
+  "packet_candidate_path": "NSD_vNext/control/NB1_EXACT_PACKET_CANDIDATE_v0.3.json",
+  "packet_review_search": "/N-B1 Exact Packet v0.3 Final Ledger Review",
+  "packet_review_status": "NEED_MORE_INFO_REVIEW_BASIS",
+  "latest_review_observed": "COMPLETED",
+  "review_disposition": "No new scientific defect adjudicated; reviewer explicitly stated the blocker was missing operative packet text in its review basis.",
+  "rereview_transport_bundle": "NSD_vNext/control/PACKET_REREVIEW_TRANSPORT_BUNDLE_v0.1.json",
+  "final_identity_freeze": false,
+  "scientific_values_exposed": false,
+  "execution_authorized": false,
+  "completed_case_ids": [],
+  "next_exact_action": "When external quota resets, submit the full operative N-B1 handoff to a fresh isolated ledger-format review; adjudicate immediately.",
+  "stop_reason": "CONFORMANT_OPERATIVE_PACKET_LEDGER_PENDING"
+}
