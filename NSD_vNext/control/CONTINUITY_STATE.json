@@ -1,15 +1,14 @@
 {
   "state": "SCIENTIFIC_GATE",
-  "last_productive_utc": "2026-09-30T01:18:00Z",
-  "last_productive_commit": "2133408ead7b6e57be32f0a55e2f946f06b6b15a",
-  "active_run_ids": [
-    36648523189
-  ],
-  "next_exact_action": "Stop stale conveyor execution at the next checkpoint boundary; preserve already-generated rows as exposed development evidence; obtain independent isolated APQ-2 review bound to the exact frozen N-B1 and N-B2/N-B3 packet/config/ceiling; adjudicate and rebind before any substantive successor run.",
+  "last_productive_utc": "2026-09-30T01:40:00Z",
+  "last_productive_commit": "f39de8f3565776b1b3443e7d7a5a3053cf2b7f9f",
+  "active_run_ids": [],
+  "next_exact_action": "Adjudicate the three isolated Undermind APQ-2 reviews already in progress; resolve BLOCKER/MATERIAL objections prospectively; then mint fresh v0.2 untouched packet identities before any substantive compute.",
   "scientific_gate": {
-    "code": "INDEPENDENT_APQ_REQUIRED",
-    "reason": "Same-cognition role-isolated passes do not satisfy GOM v1.0 APQ-2 independence for substantial execution.",
-    "bound_status_file": "NSD_vNext/control/LONG_RUN_EXTERNAL_APQ_STATUS_v0.1.json"
+    "code": "INDEPENDENT_APQ_IN_PROGRESS",
+    "reason": "Three isolated external APQ-2 reviews are active and execution authority remains false until adjudication.",
+    "bound_status_file": "NSD_vNext/control/LONG_RUN_EXTERNAL_APQ_STATUS_v0.1.json",
+    "review_workspace_id": "adae43b4-c9a0-4f57-9a64-a7f8a58211d1"
   },
   "external_block": null,
   "source_of_record": "NSD_vNext/WORKING_INVESTIGATION.md",
