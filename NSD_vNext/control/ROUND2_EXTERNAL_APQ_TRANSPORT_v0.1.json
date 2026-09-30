@@ -1,0 +1,16 @@
+{
+  "schema": "NSD_ROUND2_EXTERNAL_APQ_TRANSPORT_V0_1",
+  "governance": "SymC GOM v1.0 + Continuity Hardening Addendum",
+  "status": "IN_PROGRESS",
+  "execution_authorized": false,
+  "provider": "Undermind",
+  "workspace_id": "b9de6e85-abe4-401b-a922-4a7d3aeebc3f",
+  "reviews": [
+    {"lane":"N-B1","search":"/N-B1 APQ Round 2","status":"IN_PROGRESS"},
+    {"lane":"N-B2/N-B3","search":"/N-B2 N-B3 APQ Round 2","status":"IN_PROGRESS"},
+    {"lane":"CROSS-LANE","search":"/Integrated APQ Round 2","status":"IN_PROGRESS"}
+  ],
+  "isolation_rule": "Separate review searches; no sibling conclusions supplied.",
+  "exposure_rule": "No v0.1 scientific result payload may be inspected or used for v0.2 design or review.",
+  "next_action": "Continue authorized prefreeze work while reviews run; adjudicate all BLOCKER/MATERIAL objections independently when reviews complete."
+}
