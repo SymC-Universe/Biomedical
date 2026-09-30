@@ -178,14 +178,15 @@
       "id": "GATE-P06",
       "lane": "CROSS-LANE",
       "title": "Validate v0.2 freshness and authority contracts",
-      "status": "ACTIVE",
+      "status": "DONE",
       "depends_on": [
         "GATE-P03",
         "GATE-P04"
       ],
       "deliverable": "NSD v0.2 Prefreeze Contracts CI",
       "exact_action": "Run freshness/identity/authority/no-result-reference checks.",
-      "stop_condition": "mechanical validator failure"
+      "stop_condition": "mechanical validator failure",
+      "note": "NSD v0.2 Prefreeze Contracts push run 36659968843 succeeded with reusable validator bound."
     },
     {
       "id": "GATE-P07",
@@ -228,7 +229,7 @@
       "id": "GATE-P10",
       "lane": "CROSS-LANE",
       "title": "Update reproducibility guide for v0.2/APQ continuity",
-      "status": "READY",
+      "status": "DONE",
       "depends_on": [
         "GATE-P03",
         "GATE-P04",
@@ -236,19 +237,21 @@
       ],
       "deliverable": "REPRODUCIBILITY_GUIDE v0.1 appended section",
       "exact_action": "Record exposure firewall, Round-1 adjudication, v0.4 plan identity, lane checkpoints, prefreeze CI, Round-2 transport state, and restart instructions.",
-      "stop_condition": "none"
+      "stop_condition": "none",
+      "note": "Reproducibility guide V28 appended."
     },
     {
       "id": "GATE-P11",
       "lane": "CROSS-LANE",
       "title": "Audit Function/Limit coverage before Round-2",
-      "status": "READY",
+      "status": "DONE",
       "depends_on": [
         "GATE-P03"
       ],
       "deliverable": "V0_2_FUNCTION_LIMIT_COVERAGE_AUDIT_v0.1.md",
       "exact_action": "Check representative/adversarial balance and map each case to intended evidence channel/target without inspecting outcomes.",
-      "stop_condition": "scientific design gap requiring revision"
+      "stop_condition": "scientific design gap requiring revision",
+      "note": "Function/Limit coverage audit completed outcome-blind; 9 Function and 9 Limit N-B1 classes retained."
     },
     {
       "id": "GATE-P12",
@@ -263,6 +266,44 @@
       "deliverable": "fresh v0.2 packet APQ + freeze",
       "exact_action": "After Round-2 architecture closure, review exact packet/config and freeze before substantive compute.",
       "stop_condition": "unresolved BLOCKER/MATERIAL objection"
+    },
+    {
+      "id": "GATE-P13",
+      "lane": "CROSS-LANE",
+      "title": "Prebuild exact packet-level APQ checklist",
+      "status": "READY",
+      "depends_on": [
+        "GATE-P03",
+        "GATE-P10",
+        "GATE-P11"
+      ],
+      "deliverable": "V0_2_PACKET_LEVEL_APQ_CHECKLIST_v0.1.md",
+      "exact_action": "Define exact evidence identity, tolerances, code/config hashes, no-exposure checks, and reviewer questions before Round-2 returns.",
+      "stop_condition": "none"
+    },
+    {
+      "id": "GATE-P14",
+      "lane": "CROSS-LANE",
+      "title": "Prebuild machine evidence schemas",
+      "status": "READY",
+      "depends_on": [
+        "GATE-P03"
+      ],
+      "deliverable": "v0.2 NB1 and NB23 result schemas",
+      "exact_action": "Specify mechanically required fields without scientific verdict logic.",
+      "stop_condition": "scientific field requiring unresolved APQ choice"
+    },
+    {
+      "id": "GATE-P15",
+      "lane": "CROSS-LANE",
+      "title": "Source-of-record supersession audit",
+      "status": "READY",
+      "depends_on": [
+        "GATE-P02"
+      ],
+      "deliverable": "V0_2_SOURCE_OF_RECORD_AUDIT_v0.1.md",
+      "exact_action": "Mark v0.3 and v0.1 authorities as superseded/development-exposed where appropriate and prevent stale controller references.",
+      "stop_condition": "none"
     }
   ]
 }
