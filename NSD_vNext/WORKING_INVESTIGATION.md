@@ -936,3 +936,18 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Legacy hourly execution controller:** disabled to avoid duplicate orchestration while the GitHub-native conveyor owns execution. Independent continuity alarm remains separate.
 - **User intervention required:** `no` while the conveyor remains mechanically healthy.
 
+### 2026-09-29 - GOM_AUDIT / SCIENTIFIC_GATE - Long-run conveyor authority corrected
+
+- **Lifecycle Stage:** governance / APQ-2 / continuity
+- **Entry type:** `GOM_AUDIT / SCIENTIFIC_GATE / DEVIATION`
+- **Authority:** SymC General Operations Manual v1.0 plus mandatory Continuity Hardening Addendum.
+- **Observed / decided:** review of the current GOM authority chain found that the N-B1 v0.3 architecture, N-B2/N-B3 v0.3 architecture, and long-run packet had been treated as APQ-closed after two role-isolated passes from the same cognition. Under APQ-2 these are internal adversarial prechecks, not independent adversarial reviews. Substantive execution therefore began before the required independent APQ authority existed.
+- **Exposure:** durable checkpoint `LONG_RUN_CHECKPOINT_v0.1.json` records 12 completed N-B1 rows and one completed N-B2/N-B3 matched-family evidence block. These are preserved in `LONG_RUN_EXPOSURE_LEDGER_v0.1.json` as `P0-D EXPOSED DEVELOPMENT / PROMOTION DEBT`. They may not be relabeled untouched qualification.
+- **Continuity defect:** the checkpoint records run ID `36648443486` while successor run `36648523189` is the active run, a stale-ID false-liveness fault. The current branch has been advanced with a hard independent-APQ gate so the stale runner cannot successfully persist a later checkpoint without reconciling to the corrected authority state.
+- **Correction:** plan/ledger APQ statuses were downgraded to independent-APQ outstanding; `LONG_RUN_EXTERNAL_APQ_STATUS_v0.1.json` is `NOT_QUALIFIED` with `execution_authorized=false`; long-run workflow and runner now hard-gate on `QUALIFIED` independent APQ; queue moved to explicit `SCIENTIFIC_GATE`; `USER_ACTION_REQUIRED` was added to the continuity grammar; sentinel false-liveness checks were strengthened; code identity is bound in `LONG_RUN_CODE_MANIFEST_v0.1.json`.
+- **Scientific impact:** no generated result has been interpreted or promoted. Real-EEG local χ remains unlicensed; C1Q-RS remains qualification-only; χ, modal/vector Χ, and system/conglomerate behavior remain distinct.
+- **Current durable state:** `SCIENTIFIC_GATE`.
+- **Next exact action:** obtain isolated independent APQ-2 review(s) bound to the exact corrected N-B1 v0.3 plan, N-B2/N-B3 v0.3 plan, v0.1 packet/config/ceiling/code manifest; adjudicate objections without majority voting. If any scientific change is required, version prospectively. After APQ closure, create a fresh v0.2 untouched packet with fresh identities before confirmation.
+- **Why next:** continuity automation may resume already-authorized frozen work but cannot manufacture missing scientific authority.
+- **User intervention required:** not a scientific choice at this point; external independent review transport is the unresolved dependency.
+
