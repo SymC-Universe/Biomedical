@@ -1,0 +1,21 @@
+{
+  "schema": "NSD_LANE_CHECKPOINT_V0_8",
+  "lane": "N-B2/N-B3",
+  "state": "SCIENTIFIC_GATE",
+  "architecture_review_status": "CLOSED",
+  "packet_parent": "NSD_vNext/control/NB23_PACKET_APQ_BINDING_v0.1.json",
+  "packet_revision": "NSD_vNext/control/NB23_PACKET_APQ_REVISION_v0.1.json",
+  "packet_review_search": "/N-B2 N-B3 Revised Packet v0.2 Re-review",
+  "packet_review_status": "NEED_MORE_INFO_NO_OBJECTION_LEDGER",
+  "latest_review_observed": "COMPLETED",
+  "review_disposition": "No scientific clearance inferred because the completed return omitted the required BLOCKER/MATERIAL/MINOR ledger.",
+  "rereview_transport_bundle": "NSD_vNext/control/PACKET_REREVIEW_TRANSPORT_BUNDLE_v0.1.json",
+  "primary_recoverability": "DETERMINISTIC_NOISELESS",
+  "stochastic_extension": "NOT_AUTHORIZED",
+  "final_identity_freeze": false,
+  "scientific_values_exposed": false,
+  "execution_authorized": false,
+  "completed_case_ids": [],
+  "next_exact_action": "When external quota resets, submit the complete revised N-B2/N-B3 packet authority to a fresh isolated ledger-format review; adjudicate immediately.",
+  "stop_reason": "CONFORMANT_PACKET_LEDGER_PENDING"
+}
