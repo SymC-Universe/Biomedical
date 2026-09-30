@@ -1020,3 +1020,8 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Current durable state:** `EXTERNAL_BLOCK` limited to the stage-bound integration re-review transport.
 - **Next exact action:** retry the isolated stage-bound integration-authority re-review after provider reset. If it closes without unresolved BLOCKER/MATERIAL objections, promote the final N-B1 and N-B2/N-B3 exact-packet construction/APQ tasks to READY in the same cycle.
 - **User intervention required:** `no`
+
+
+### 2026-09-30 - PACKET_APQ / MATERIAL_REVISION
+
+Architecture review closed after the independent Integration Revision v0.2 re-review returned zero architecture-level BLOCKER/MATERIAL objections. Exact v0.2 packet APQ is now the active scientific gate; execution remains unauthorized. N-B1 and N-B2/N-B3 packet reviews completed. N-B1 returned one BLOCKER and three MATERIAL objections, all accepted prospectively: exact generator/semantic reconstruction, operational alias proof, profile-I narrowing/refinement, and deterministic label/FNO rules. The seed-encoding minor also exposed prefreeze binary64 drift in the candidate seed list; exact SHA-derived seeds are now prospectively corrected in NB1_PACKET_SEEDS_v0.2.json before any outcome access. N-B1 re-review is required. The N-B2/N-B3 returned record did not include the required objection ledger, so it remains NEED_MORE_INFO and must be re-reviewed rather than treated as zero objections. Integrated packet APQ launch is temporarily rate-limited. No substantive v0.2 compute is authorized. Next: re-review revised N-B1, obtain a conformant N-B2/N-B3 packet objection ledger, and launch integrated packet APQ while continuing outcome-blind provenance/common-dependency/checkpoint hardening.
