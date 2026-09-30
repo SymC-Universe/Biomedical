@@ -304,6 +304,54 @@
       "deliverable": "V0_2_SOURCE_OF_RECORD_AUDIT_v0.1.md",
       "exact_action": "Mark v0.3 and v0.1 authorities as superseded/development-exposed where appropriate and prevent stale controller references.",
       "stop_condition": "none"
+    },
+    {
+      "id": "GATE-P16",
+      "lane": "CROSS-LANE",
+      "title": "Bind prefreeze authority identity manifest",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P03",
+        "GATE-P07"
+      ],
+      "deliverable": "V0_2_PREFREEZE_IDENTITY_MANIFEST_v0.1.json",
+      "exact_action": "Bind current v0.4 authority, fresh draft, exposure custody, review handoffs, audits, and evidence-schema blob identities without creating a scientific freeze.",
+      "stop_condition": "none"
+    },
+    {
+      "id": "GATE-P17",
+      "lane": "CROSS-LANE",
+      "title": "Harden lane checkpoint identities",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P16"
+      ],
+      "deliverable": "updated N-B1 and N-B2/N-B3 lane checkpoints",
+      "exact_action": "Bind draft and manifest identity, dependency state, RNG identity/status, and mismatch rule per lane.",
+      "stop_condition": "none"
+    },
+    {
+      "id": "GATE-P18",
+      "lane": "CROSS-LANE",
+      "title": "Prebuild final freeze identity templates",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P16"
+      ],
+      "deliverable": "V0_2_FINAL_CODE_IDENTITY_TEMPLATE_v0.1.json plus V0_2_FROZEN_CHECKPOINT_SCHEMA_v0.1.json",
+      "exact_action": "Define final code, dependency, environment, RNG, and frozen checkpoint fields before exact packet freeze.",
+      "stop_condition": "none"
+    },
+    {
+      "id": "GATE-P19",
+      "lane": "CROSS-LANE",
+      "title": "Audit actual Actions liveness",
+      "status": "DONE",
+      "depends_on": [],
+      "deliverable": "V0_2_ACTIONS_LIVENESS_AUDIT_v0.1.md",
+      "exact_action": "Distinguish current-authority v0.2 control work from legacy PR-triggered CI fanout.",
+      "stop_condition": "none",
+      "note": "Prefreeze contracts run 36663547965 succeeded; legacy fanout is non-authoritative and does not reset liveness."
     }
   ]
 }
