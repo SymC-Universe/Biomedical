@@ -8,7 +8,8 @@
   "completed_artifact_hashes": {},
   "incomplete_case_ids": "ALL_FRESH_V0_2_CASES",
   "active_run_id": null,
-  "next_exact_action": "Complete round-2 independent APQ on N-B2/N-B3 v0.4; resolve objections; then packet-level APQ/freeze before execution.",
-  "stop_reason": "ROUND2_APQ_PENDING",
-  "scientific_values_exposed": false
+  "next_exact_action": "Continue N-B2/N-B3 prefreeze metric/invariance/identity/result-schema preparation while Round-2 full-text APQ transport is rate-limited; adjudicate Round-2 immediately on completion.",
+  "stop_reason": "ROUND2_APQ_TRANSPORT_RATE_LIMIT_WITH_PARALLEL_WORK_AUTHORIZED",
+  "scientific_values_exposed": false,
+  "last_canonical_advancement_commit": "3bc64d5d23245905297fb2c5cadd54b27dc282f2"
 }
