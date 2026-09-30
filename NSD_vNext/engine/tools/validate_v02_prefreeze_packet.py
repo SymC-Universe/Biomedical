@@ -18,12 +18,12 @@ def load(name: str):
 
 
 def main() -> int:
-    draft = load("FRESH_UNTOUCHED_V0_2_DRAFT.json")
-    nb1 = load("LANE_CHECKPOINT_NB1_v0.2.json")
-    nb23 = load("LANE_CHECKPOINT_NB23_v0.2.json")
+    draft = load("FRESH_UNTOUCHED_V0_2_DRAFT_B.json")
+    nb1 = load("LANE_CHECKPOINT_NB1_v0.5.json")
+    nb23 = load("LANE_CHECKPOINT_NB23_v0.5.json")
 
     assert draft["execution_authorized"] is False
-    assert draft["status"] == "PREFREEZE_DRAFT_PENDING_ROUND2_APQ"
+    assert draft["status"] == "PREFREEZE_DRAFT_B_PENDING_V0_5_REREVIEW_AND_PACKET_APQ"
     assert draft["exposure_firewall"]["v01_scientific_values_used_for_design"] is False
 
     # N-B1 semantic-family firewall.
