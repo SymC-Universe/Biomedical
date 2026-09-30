@@ -5,16 +5,17 @@
   "execution_authorized": false,
   "reason": "APQ-2 substantial execution requires independent adversarial review bound to the exact frozen packet. Two same-cognition passes do not satisfy that requirement.",
   "bound_packet": {
-    "long_run_packet_blob_sha": "1ae4ade786329d6ac810a77bf46cc485a8c5f5ff",
+    "long_run_packet_blob_sha": "99d3236ec08d0860eeb794995f4d01dc92a6622e",
     "nb2_nb3_config_blob_sha": "9135aad7267386c3893083787b94e079150fb770",
     "ceiling_blob_sha": "16f28418410ffe23d2ac02fa363c72de9fc3b2ea",
-    "same_cognition_apq_blob_sha": "f8a4d5eaed711640b4c49b4aac303ed38aa519d0"
+    "same_cognition_apq_blob_sha": "f8a4d5eaed711640b4c49b4aac303ed38aa519d0",
+    "code_manifest_blob_sha": "54174ad81887c243e1c96a08b66e94cc56d801f1"
   },
   "exposed_development_evidence": {
     "present": true,
     "note": "The active long-run conveyor opened some known-truth outcomes before this governance correction. Preserve them as exposed development evidence only; they cannot be relabeled untouched confirmation."
   },
-  "required_next_action": "Obtain isolated independent adversarial review(s) of the exact frozen packet/config/ceiling, adjudicate objections without majority voting, revise prospectively if needed, rebind all changed blobs, then set status QUALIFIED before substantive conveyor execution resumes.",
+  "required_next_action": "Obtain isolated independent APQ-2 review(s) of the corrected exact v0.1 development packet/config/ceiling/code manifest and the v0.3 plan architectures. If any scientific change is required, version the design prospectively. For untouched qualification, create a fresh v0.2 packet with fresh identities after APQ closure.",
   "scientific_authority": "Researcher + ChatGPT",
   "github_authority": "Mechanical execution only"
 }
