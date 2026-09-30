@@ -271,7 +271,7 @@
       "id": "GATE-P13",
       "lane": "CROSS-LANE",
       "title": "Prebuild exact packet-level APQ checklist",
-      "status": "READY",
+      "status": "DONE",
       "depends_on": [
         "GATE-P03",
         "GATE-P10",
@@ -285,7 +285,7 @@
       "id": "GATE-P14",
       "lane": "CROSS-LANE",
       "title": "Prebuild machine evidence schemas",
-      "status": "READY",
+      "status": "DONE",
       "depends_on": [
         "GATE-P03"
       ],
@@ -297,7 +297,7 @@
       "id": "GATE-P15",
       "lane": "CROSS-LANE",
       "title": "Source-of-record supersession audit",
-      "status": "READY",
+      "status": "DONE",
       "depends_on": [
         "GATE-P02"
       ],
