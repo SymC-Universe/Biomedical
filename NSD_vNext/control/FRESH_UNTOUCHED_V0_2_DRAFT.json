@@ -1,0 +1,524 @@
+{
+  "schema": "NSD_FRESH_UNTOUCHED_V0_2_DRAFT",
+  "status": "PREFREEZE_DRAFT_PENDING_ROUND2_APQ",
+  "governance": "SymC GOM v1.0 + Continuity Hardening Addendum",
+  "execution_authorized": false,
+  "scientific_authority": "Researcher + ChatGPT",
+  "github_authority": "Mechanical validation only until packet-level APQ/freeze",
+  "exposure_firewall": {
+    "source": "NSD_vNext/control/LONG_RUN_EXPOSURE_LEDGER_v0.1.json",
+    "v01_scientific_values_used_for_design": false,
+    "forbidden_reuse": [
+      "v0.1 NB1 seeds",
+      "v0.1 NB1 truth IDs",
+      "v0.1 NB2/NB3 matrices in same confirmatory role",
+      "v0.1 B/C pairings in same confirmatory role",
+      "v0.1 similarity transform",
+      "v0.1 switching law",
+      "v0.1 sampling projections"
+    ]
+  },
+  "authority": {
+    "nb1_plan_blob": "ad8193ee0a99365ffddbf930db84d84a046d7400",
+    "nb23_plan_blob": "bce38bee49078ce70c81b9c907d64cc880a9b657",
+    "round1_adjudication": "NSD_vNext/control/INDEPENDENT_APQ2_ADJUDICATION_LEDGER_v0.2.md"
+  },
+  "nb1": {
+    "packet_id": "NB1_UNTOUCHED_V0_2_DRAFT_A",
+    "evidence_class": "FUTURE P0-Q KNOWN-TRUTH QUALIFICATION",
+    "sampling_rates_hz": [
+      240,
+      120
+    ],
+    "duration_seconds": 96,
+    "seed_derivation": {
+      "rule": "Split the N-B1 v0.4 Git blob SHA into eight consecutive 5-hex chunks; seed_i = 100000 + (hex(chunk_i) mod 800000).",
+      "source_blob": "ad8193ee0a99365ffddbf930db84d84a046d7400",
+      "seeds": [
+        810681,
+        357546,
+        727557,
+        348027,
+        320685,
+        854904,
+        403174,
+        181664
+      ]
+    },
+    "function_truths": [
+      {
+        "id": "U2F0",
+        "generator": "CONTINUOUS_C",
+        "A": 0.8,
+        "fn_hz": 8,
+        "chi": 0.24,
+        "g": 0.05,
+        "role": "ordinary_interior"
+      },
+      {
+        "id": "U2F1",
+        "generator": "CONTINUOUS_C",
+        "A": 0.62,
+        "fn_hz": 13,
+        "chi": 0.42,
+        "g": -0.5,
+        "role": "ordinary_nonzero_g"
+      },
+      {
+        "id": "U2F2",
+        "generator": "CONTINUOUS_C",
+        "A": 0.33,
+        "fn_hz": 18.5,
+        "chi": 0.57,
+        "g": 0.6,
+        "role": "weak_observation"
+      },
+      {
+        "id": "U2F3",
+        "generator": "CONTINUOUS_C",
+        "A": 0.76,
+        "fn_hz": 10,
+        "chi": 0.88,
+        "g": 0.2,
+        "role": "near_critical_valid"
+      },
+      {
+        "id": "U2F4",
+        "generator": "CONTINUOUS_C",
+        "A": 0.7,
+        "fn_hz": 31,
+        "chi": 0.3,
+        "g": -0.75,
+        "role": "high_frequency_valid"
+      },
+      {
+        "id": "U2F5",
+        "generator": "CONTINUOUS_C",
+        "A": 0.73,
+        "fn_hz": 6.5,
+        "chi": 0.16,
+        "g": 0.3,
+        "role": "low_damping_valid"
+      },
+      {
+        "id": "U2F6",
+        "generator": "CONTINUOUS_C",
+        "A": 0.58,
+        "fn_hz": 15.5,
+        "chi": 0.36,
+        "g": 0.72,
+        "role": "positive_g_valid"
+      },
+      {
+        "id": "U2F7",
+        "generator": "CONTINUOUS_C",
+        "A": 0.67,
+        "fn_hz": 22,
+        "chi": 0.48,
+        "g": -0.68,
+        "role": "negative_g_valid"
+      },
+      {
+        "id": "U2F8",
+        "generator": "CONTINUOUS_C_REFERENCE_GAIN_CONTROL",
+        "A": 0.75,
+        "fn_hz": 11,
+        "chi": 0.32,
+        "g": 0.25,
+        "observation_gains": [
+          0.7,
+          1.4
+        ],
+        "role": "benign_observation_mapping"
+      }
+    ],
+    "limit_truths": [
+      {
+        "id": "U2L0",
+        "generator": "D_NOT_C_POS",
+        "base_A": 0.77,
+        "base_fn_hz": 11.5,
+        "base_chi": 0.34
+      },
+      {
+        "id": "U2L1",
+        "generator": "D_NOT_C_NEG",
+        "base_A": 0.77,
+        "base_fn_hz": 11.5,
+        "base_chi": 0.34
+      },
+      {
+        "id": "U2L2",
+        "generator": "S_NOT_D_POS",
+        "base_A": 0.77,
+        "base_fn_hz": 11.5,
+        "base_chi": 0.34
+      },
+      {
+        "id": "U2L3",
+        "generator": "S_NOT_D_NEG",
+        "base_A": 0.77,
+        "base_fn_hz": 11.5,
+        "base_chi": 0.34
+      },
+      {
+        "id": "U2L4",
+        "generator": "COLORED_MEMORY",
+        "role": "memory_closure_failure"
+      },
+      {
+        "id": "U2L5",
+        "generator": "GENUINE_TWO_MODE",
+        "role": "order_multiplicity_failure"
+      },
+      {
+        "id": "U2L6",
+        "generator": "PIECEWISE_C_REORGANIZATION",
+        "segments": [
+          {
+            "seconds": 48,
+            "A": 0.72,
+            "fn_hz": 9,
+            "chi": 0.28,
+            "g": 0.2
+          },
+          {
+            "seconds": 48,
+            "A": 0.72,
+            "fn_hz": 17,
+            "chi": 0.52,
+            "g": -0.35
+          }
+        ],
+        "role": "stationarity_failure"
+      },
+      {
+        "id": "U2L7",
+        "generator": "AR1_NONOSCILLATORY",
+        "phi": 0.86,
+        "role": "zero_oscillator_comparator"
+      },
+      {
+        "id": "U2L8",
+        "generator": "REFERENCE_MIXTURE_TWO_MODE",
+        "mixing": [
+          [
+            1,
+            0.35
+          ],
+          [
+            1,
+            -0.35
+          ]
+        ],
+        "role": "observation_reference_failure"
+      }
+    ],
+    "applicability_contract": {
+      "default_required": [
+        "P",
+        "S",
+        "T",
+        "F",
+        "O",
+        "M",
+        "N",
+        "I",
+        "U"
+      ],
+      "default_not_applicable": [
+        "R"
+      ],
+      "U2F8": {
+        "required": [
+          "P",
+          "S",
+          "T",
+          "F",
+          "O",
+          "M",
+          "R",
+          "N",
+          "I",
+          "U"
+        ]
+      },
+      "U2L8": {
+        "required": [
+          "P",
+          "S",
+          "T",
+          "F",
+          "O",
+          "M",
+          "R",
+          "N",
+          "I",
+          "U"
+        ]
+      }
+    },
+    "primary_outputs": [
+      "row-level channel states",
+      "multi-label refusal classes",
+      "false-refusal frequency by valid Function truth",
+      "missed-refusal frequency by designed Limit truth",
+      "NEED_MORE_INFO frequency",
+      "NOT_APPLICABLE frequency",
+      "paired-rate sensitivity",
+      "profile identifiability morphology",
+      "native comparator outputs",
+      "full failure/outlier provenance"
+    ],
+    "threshold_policy": {
+      "new_scientific_thresholds_allowed": false,
+      "inherited_tolerances_require_exact_role_provenance": true,
+      "new_tolerances_require_separate_development_set": true
+    }
+  },
+  "nb23": {
+    "packet_id": "NB23_MATCHED_V0_2_DRAFT_A",
+    "evidence_class": "FUTURE P0-Q EXACT/OBSERVATION-CONDITIONED KNOWN TRUTH",
+    "horizon_seconds": 32,
+    "base_time_samples": 4097,
+    "peak_refinement": "Refine the best grid neighborhood with bounded one-dimensional optimization on the frozen continuous target; report both grid and refined peak.",
+    "numerical_identity_contract": {
+      "matrix_abs_tol": 1e-12,
+      "spectrum_abs_tol": 1e-10,
+      "invariant_relative_tol": 1e-9,
+      "note": "Numerical identity tolerances only; no scientific-effect threshold is implied."
+    },
+    "physical_state_metric": "Euclidean in declared physical coordinates; transform as G'=S^{-T} G S^{-1} under similarity.",
+    "input_norm": "Euclidean on frozen input coordinates",
+    "output_norm": "Euclidean on frozen output coordinates",
+    "systems": {
+      "normal_decoupled": {
+        "omega1": 0.9,
+        "zeta1": 0.16,
+        "omega2": 1.7,
+        "zeta2": 0.28,
+        "k12": 0,
+        "k21": 0,
+        "c12": 0,
+        "c21": 0
+      },
+      "normal_reciprocal": {
+        "omega1": 0.95,
+        "zeta1": 0.19,
+        "omega2": 1.35,
+        "zeta2": 0.24,
+        "k12": 0.38,
+        "k21": 0.38,
+        "c12": 0,
+        "c21": 0
+      },
+      "same_spectrum_base": {
+        "omega1": 1.15,
+        "zeta1": 0.21,
+        "omega2": 1.15,
+        "zeta2": 0.21,
+        "k12": 0,
+        "k21": 0,
+        "c12": 0,
+        "c21": 0
+      },
+      "same_spectrum_nonnormal": {
+        "omega1": 1.15,
+        "zeta1": 0.21,
+        "omega2": 1.15,
+        "zeta2": 0.21,
+        "k12": 1.65,
+        "k21": 0,
+        "c12": 0,
+        "c21": 0
+      },
+      "io_base": {
+        "omega1": 1.05,
+        "zeta1": 0.19,
+        "omega2": 1.45,
+        "zeta2": 0.27,
+        "k12": 0.72,
+        "k21": 0.12,
+        "c12": 0,
+        "c21": 0
+      }
+    },
+    "B": {
+      "first_biased": [
+        [
+          0
+        ],
+        [
+          1
+        ],
+        [
+          0
+        ],
+        [
+          0.25
+        ]
+      ],
+      "second_biased": [
+        [
+          0
+        ],
+        [
+          0.25
+        ],
+        [
+          0
+        ],
+        [
+          1
+        ]
+      ],
+      "balanced": [
+        [
+          0
+        ],
+        [
+          1
+        ],
+        [
+          0
+        ],
+        [
+          0.8
+        ]
+      ]
+    },
+    "C": {
+      "first_mixed": [
+        [
+          1,
+          0,
+          0.2,
+          0
+        ]
+      ],
+      "second_mixed": [
+        [
+          0.2,
+          0,
+          1,
+          0
+        ]
+      ],
+      "differential": [
+        [
+          1,
+          0,
+          -0.6,
+          0
+        ]
+      ],
+      "full_state": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    "similarity_S": [
+      [
+        1.6,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0.7,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1.4,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0.85
+      ]
+    ],
+    "time_varying": {
+      "segment_seconds": 2.75,
+      "phase_offset_seconds": 0.35,
+      "base": {
+        "omega1": 1.05,
+        "zeta1": 0.2,
+        "omega2": 1.2,
+        "zeta2": 0.23
+      },
+      "k12_sequence": [
+        0.15,
+        1.35
+      ],
+      "k21_sequence": [
+        0.05,
+        0
+      ],
+      "stationary_surrogate_rule": "time-weighted arithmetic mean of the exact segment A matrices; surrogate is a declared comparator, never presumed dynamically equivalent"
+    },
+    "sampling_projection_hz": [
+      96,
+      48,
+      24
+    ],
+    "target_families": {
+      "autonomous": [
+        "spectral_abscissa",
+        "embedded_eigenvalues",
+        "peak_physical_metric_gain",
+        "peak_time",
+        "peak_direction",
+        "full_response_curve",
+        "integrated_norm_burden"
+      ],
+      "input_driven": [
+        "input_output_impulse_curve",
+        "integrated_input_output_norm"
+      ],
+      "observed": [
+        "C_observed_response_curve",
+        "observed_integrated_burden"
+      ],
+      "time_varying": [
+        "ordered_propagator_curve",
+        "time_varying_peak_gain",
+        "surrogate_discrepancy_curve"
+      ]
+    },
+    "exact_sufficiency_rule": "For frozen model class M, target f, and representation R, R(m1)=R(m2) implies f(m1)=f(m2) within the frozen numerical identity tolerance for all matched models in the suite.",
+    "recoverability_rule": "Observation-conditioned recovery is reported separately from exact sufficiency; no exact latent descriptor may be used by an estimator unless present in the declared observation contract.",
+    "conclusion_scope": "suite/model-class/target specific only; no universal hierarchy"
+  },
+  "cross_lane_firewall": {
+    "confirmatory_case_identity_overlap_allowed": false,
+    "cross_lane_outcome_feedback_before_both_freezes": false
+  }
+}
