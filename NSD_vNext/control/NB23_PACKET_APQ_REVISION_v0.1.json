@@ -1,0 +1,99 @@
+{
+  "schema": "NSD_NB23_PACKET_APQ_REVISION_V0_1",
+  "status": "APQ_MATERIAL_REVISION_CANDIDATE_NOT_FROZEN",
+  "execution_authorized": false,
+  "observation_contract": {
+    "horizon_seconds": 32,
+    "endpoint_convention": "include t=0 and t=T when T*fs is integer",
+    "schedules": {
+      "HZ96": "t_n=n/96, n=0..3072",
+      "HZ48": "t_n=n/48, n=0..1536",
+      "HZ24": "t_n=n/24, n=0..768"
+    },
+    "deterministic_noiseless": true,
+    "compatible_set": "Within the prospectively named finite candidate subset for a contrast, two members are observation-compatible iff every declared observed array on the declared schedule agrees under the observed-array numerical criterion. Hidden descriptors cannot enter membership.",
+    "cases": {
+      "PART": "C=[1,0,0,0], x0=[1,0,0,0], schedule HZ96",
+      "ALIAS96": "C=[1,0], x0=[1,0], schedule HZ96",
+      "RATE_PROJECTION": "same NORMAL continuous truth and declared C/x0 projected on HZ96/HZ48/HZ24"
+    }
+  },
+  "units_and_metric": {
+    "benchmark_state": "all q and v coordinates are dimensionless canonical benchmark coordinates; time is seconds",
+    "input_output": "dimensionless benchmark coordinates",
+    "metric": "G is symmetric positive definite; base benchmark G=I; transformed G'=S^-T G S^-1",
+    "square_root": "principal symmetric positive-definite square root",
+    "state_norm": "||x||_G=sqrt(x^T G x)",
+    "operator_norm": "induced 2-norm after G^(1/2) similarity",
+    "peak_direction": "return G-normalized physical direction; if singular value is degenerate return the dominant right-singular projector/subspace mapped to physical coordinates"
+  },
+  "target_applicability": {
+    "autonomous": [
+      "M-NORMAL",
+      "M-RECIP",
+      "M-SSBASE",
+      "M-SSNONNORMAL",
+      "M-SLDIFFSPEC",
+      "M-SIM-BASE",
+      "M-SIM-XFORM",
+      "M-PART-STABLE",
+      "M-PART-UNSTABLE"
+    ],
+    "B_dependent": [
+      "M-IO-B1",
+      "M-IO-B2",
+      "M-SIM-BASE",
+      "M-SIM-XFORM"
+    ],
+    "C_observed": [
+      "M-IO-C1",
+      "M-IO-C2",
+      "M-SIM-BASE",
+      "M-SIM-XFORM",
+      "M-PART-STABLE",
+      "M-PART-UNSTABLE",
+      "M-ALIAS-8",
+      "M-ALIAS-88"
+    ],
+    "switched": [
+      "M-TV",
+      "M-TV-SUR"
+    ],
+    "misspecification": [
+      "M-MISSPEC"
+    ]
+  },
+  "global_peak_certificate": {
+    "target": "supremum of physical-metric propagator gain over [0,32]",
+    "production": "validated interval branch-and-bound over time. Partition switching cases at every switch boundary. For each interval use a conservative Lipschitz upper bound derived from the frozen transformed generator norm and interval lower bound from evaluated points. Subdivide until every surviving interval's upper bound is within the numerical peak enclosure tolerance of the global lower bound.",
+    "gain_enclosure_stop": "upper-lower <= 1e-9*max(1,abs(lower))",
+    "argmax": "retain the union of all non-pruned time intervals whose upper bound remains within the frozen peak-tie criterion of the best lower bound",
+    "reference": "independent high-precision/dense route plus analytic anchors where available; production and reference disagreement blocks closure",
+    "C04_separating_evidence": "before execution, record a witness time with disjoint response-curve enclosures and disjoint certified enclosures for peak gain and integrated burden"
+  },
+  "switching_discrepancy": {
+    "mean_operator": "Abar is the period-time-weighted arithmetic mean of the exact two frozen segment A matrices",
+    "surrogate": "Phi_bar(t)=exp(Abar*t)",
+    "switched": "Phi(t,0) is the chronological right-continuous ordered propagator under the frozen phase and switching law",
+    "curve": "D(t)=||Phi(t,0)-Phi_bar(t)||_2 in the declared dimensionless benchmark metric",
+    "reported": [
+      "full D(t) curve on the declared evaluation schedule",
+      "certified max over [0,32]"
+    ]
+  },
+  "numerical_definitions": {
+    "matrix_abs": "entrywise max-absolute difference <=1e-12 in declared dimensionless operator units",
+    "spectrum_abs": "minimum perfect matching of eigenvalue multisets under complex modulus <=1e-10 s^-1",
+    "invariant_relative": "||a-b||_2/max(1,||a||_2,||b||_2) <=1e-9",
+    "observed_array_relative": "||a-b||_2/max(1,||a||_2,||b||_2) <=1e-10",
+    "zero_array_rule": "denominator floor is 1",
+    "peak_tie": "candidate peak-gain enclosures overlap after expanding each by 1e-9*max(1,abs(gain))"
+  },
+  "contrast_clarifications": {
+    "C05": "B-dependent arrays are state_impulse exp(At)B and io_impulse C exp(At)B; spectral alpha is B-invariant",
+    "C06": "C-dependent arrays are observed_recovery C exp(At)x0 and io_impulse C exp(At)B; latent spectral alpha is C-invariant",
+    "EQ_LOCAL_01": "rename semantic label to EQUAL_DECLARED_LOCAL_MODAL_COORDINATES; it asserts only equality of declared local omega/zeta coordinates, not dynamic equivalence",
+    "balance": "Function/Limit count parity is not required; the suite is intentionally limit-rich and designed counts are not prevalence"
+  },
+  "rereview_required": true
+}
