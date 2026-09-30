@@ -11,16 +11,7 @@
   "current_code_manifest_blob": "54174ad81887c243e1c96a08b66e94cc56d801f1",
   "rng_identity": {
     "source_blob": "ad8193ee0a99365ffddbf930db84d84a046d7400",
-    "seeds": [
-      810681,
-      357546,
-      727557,
-      348027,
-      320685,
-      854904,
-      403174,
-      181664
-    ]
+    "seeds": [810681,357546,727557,348027,320685,854904,403174,181664]
   },
   "dependency_identity": {
     "python": "3.12",
@@ -33,9 +24,14 @@
   "completed_artifact_hashes": {},
   "incomplete_case_ids": "ALL_FRESH_V0_2_CASES",
   "active_run_id": null,
-  "next_exact_action": "Keep N-B1 at SCIENTIFIC_GATE; retry isolated full-text Round-2 APQ after provider reset, while mechanically validating the prefreeze identity manifest and evidence schema. Adjudicate Round-2 immediately on completion.",
-  "stop_reason": "ROUND2_APQ_TRANSPORT_RATE_LIMIT_WITH_PARALLEL_WORK_AUTHORIZED",
+  "round2_apq": {
+    "workspace_id": "b9de6e85-abe4-401b-a922-4a7d3aeebc3f",
+    "search": "/N-B1 APQ Round 2",
+    "status": "IN_PROGRESS"
+  },
+  "next_exact_action": "Continue implementation-neutral prefreeze validation while review runs; adjudicate review immediately on completion; no packet freeze or substantive execution before closure.",
+  "stop_reason": "ROUND2_APQ_IN_PROGRESS_WITH_PARALLEL_PREFREEZE_WORK",
   "scientific_values_exposed": false,
   "mismatch_policy": "After final freeze, any authority/config/code/dependency/RNG/artifact identity mismatch is FROZEN_CONTRACT_VIOLATION and resume must refuse.",
-  "last_canonical_advancement_commit": "9ad29a6a30342bfb9ca9ff2369b8413ce9248c4f"
+  "last_canonical_advancement_commit": "dd25c6b54299687f45e181113e6307fc36224f0c"
 }

@@ -4,14 +4,6 @@
   "state": "SCIENTIFIC_GATE",
   "authority_plan_blob": "bce38bee49078ce70c81b9c907d64cc880a9b657",
   "draft_packet": "NSD_vNext/control/FRESH_UNTOUCHED_V0_2_DRAFT.json",
-  "completed_case_ids": [],
-  "completed_artifact_hashes": {},
-  "incomplete_case_ids": "ALL_FRESH_V0_2_CASES",
-  "active_run_id": null,
-  "next_exact_action": "Keep N-B2/N-B3 at SCIENTIFIC_GATE; retry isolated full-text Round-2 APQ after provider reset while validating metric/invariance identity and closing the recoverability RNG/noise freeze debt if that layer remains in scope.",
-  "stop_reason": "ROUND2_APQ_TRANSPORT_RATE_LIMIT_WITH_PARALLEL_WORK_AUTHORIZED",
-  "scientific_values_exposed": false,
-  "last_canonical_advancement_commit": "9ad29a6a30342bfb9ca9ff2369b8413ce9248c4f",
   "draft_packet_blob": "a8d5b0d9385ccdeaa8e54437218ce45a895ab3a1",
   "prefreeze_identity_manifest": "NSD_vNext/control/V0_2_PREFREEZE_IDENTITY_MANIFEST_v0.1.json",
   "prefreeze_identity_manifest_blob": "b4ac215f11cea84b82781d7527bcc1ade6170f0b",
@@ -20,7 +12,7 @@
   "rng_identity": {
     "exact_operator_layer": "NOT_APPLICABLE",
     "recoverability_seed_contract": "NOT_YET_FROZEN",
-    "requirement": "If sampled uncertainty or noise is retained after Round-2 APQ, bind its generator, seeds, RNG implementation, rates, duration, and observation contract before packet freeze."
+    "requirement": "If sampled uncertainty or noise is retained after Round-2 APQ, bind generator, noise law, seeds, RNG implementation, rates, duration, and observation contract before packet freeze."
   },
   "dependency_identity": {
     "python": "3.12",
@@ -29,5 +21,18 @@
     "pytest": "8.3.3",
     "status": "CURRENT_INTENDED_NOT_FINAL_FREEZE"
   },
-  "mismatch_policy": "After final freeze, any authority/config/code/dependency/RNG/artifact identity mismatch is FROZEN_CONTRACT_VIOLATION."
+  "completed_case_ids": [],
+  "completed_artifact_hashes": {},
+  "incomplete_case_ids": "ALL_FRESH_V0_2_CASES",
+  "active_run_id": null,
+  "round2_apq": {
+    "workspace_id": "b9de6e85-abe4-401b-a922-4a7d3aeebc3f",
+    "search": "/N-B2 N-B3 APQ Round 2",
+    "status": "IN_PROGRESS"
+  },
+  "next_exact_action": "Continue implementation-neutral metric/invariance and recoverability-contract preparation while review runs; adjudicate review immediately on completion; no packet freeze or substantive execution before closure.",
+  "stop_reason": "ROUND2_APQ_IN_PROGRESS_WITH_PARALLEL_PREFREEZE_WORK",
+  "scientific_values_exposed": false,
+  "mismatch_policy": "After final freeze, any authority/config/code/dependency/RNG/artifact identity mismatch is FROZEN_CONTRACT_VIOLATION.",
+  "last_canonical_advancement_commit": "dd25c6b54299687f45e181113e6307fc36224f0c"
 }
