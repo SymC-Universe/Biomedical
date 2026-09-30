@@ -1,0 +1,231 @@
+{
+  "schema": "NSD_NB1_PACKET_APQ_REVISION_V0_2",
+  "status": "MATERIAL_REVISION_CANDIDATE_NOT_FROZEN",
+  "execution_authorized": false,
+  "scientific_outcomes_opened": false,
+  "record_contract": {
+    "fine_rate_hz": 240,
+    "duration_seconds": 96,
+    "fine_sample_count": 23040,
+    "fine_index": "j=0..23039",
+    "fine_time": "t_j=j/240 seconds, so observations cover [0,96) with t0=0 emitted before the first transition",
+    "coarse_rate_hz": 120,
+    "coarse_sample_count": 11520,
+    "coarse_index": "j=0..11519",
+    "coarse_time": "t_j=j/120 seconds",
+    "coarse_transform": "y120[j]=y240[2j] exactly; no regeneration, interpolation, or filtering"
+  },
+  "generator_domain_and_psd_contract": {
+    "C_parameter_domain": "0<A<1, 1<=natural_frequency_hz<=45, 0<chi<1, |g|<=1",
+    "matrices": [
+      "P",
+      "Qc",
+      "Qd"
+    ],
+    "symmetry_rule": "Evaluate the eigenvalues of 0.5*(M+M^T).",
+    "psd_numerical_tolerance": -1e-9,
+    "pass_rule": "minimum symmetric eigenvalue >= -1e-9 for each required covariance/noise matrix; tolerance is numerical-only and cannot redefine family semantics",
+    "failure_rule": "A generator identity that violates an exact domain predicate or exceeds the numerical PSD tolerance is FROZEN_CONTRACT_VIOLATION before scientific evaluation."
+  },
+  "channel_applicability": {
+    "default_required": [
+      "P",
+      "S",
+      "T",
+      "F",
+      "O",
+      "M",
+      "N",
+      "I"
+    ],
+    "R_required_only": [
+      "NB1B01-F09",
+      "NB1B01-L09"
+    ],
+    "U": "NOT_APPLICABLE_TO_ADMISSION; paired-rate sensitivity is descriptive only",
+    "truth_ids": [
+      "NB1B01-F01",
+      "NB1B01-F02",
+      "NB1B01-F03",
+      "NB1B01-F04",
+      "NB1B01-F05",
+      "NB1B01-F06",
+      "NB1B01-F07",
+      "NB1B01-F08",
+      "NB1B01-F09",
+      "NB1B01-L01",
+      "NB1B01-L02",
+      "NB1B01-L03",
+      "NB1B01-L04",
+      "NB1B01-L05",
+      "NB1B01-L06",
+      "NB1B01-L07",
+      "NB1B01-L08",
+      "NB1B01-L09"
+    ],
+    "rule": "Applicability is frozen before generation and cannot change from observed results."
+  },
+  "rng_identity": {
+    "family": "NumPy Generator with PCG64DXSM bit generator",
+    "final_implementation_constructor": "numpy.random.Generator(numpy.random.PCG64DXSM(seed))",
+    "parent_seed_source": "NB1_PACKET_SEEDS_v0.2.json",
+    "parent_seed_input_bytes": "UTF-8 bytes of 'NSD-NB1-v0.2-B01|replicate|i'",
+    "parent_digest_rule": "SHA-256; digest bytes 0..7 unsigned big-endian; modulo (2^63-1); deterministic nonzero/unique retry",
+    "child_seed_input_bytes": "UTF-8 bytes of '<decimal_parent_seed>|<truth_id>|<child_label>'",
+    "child_digest_rule": "SHA-256; first 8 bytes unsigned big-endian; modulo (2^63-1); deterministic nonzero/collision retry",
+    "child_labels": {
+      "NB1B01-L05": [
+        "augmented"
+      ],
+      "NB1B01-L06": [
+        "mode1",
+        "mode2",
+        "obs"
+      ],
+      "NB1B01-L07": [
+        "process",
+        "obs"
+      ],
+      "NB1B01-L09": [
+        "mode1",
+        "mode2",
+        "obs"
+      ]
+    },
+    "draw_order": {
+      "continuous_C": "Draw 2 standard normals for stationary latent x0. For each fine sample j in increasing order: draw 1 observation normal, emit y_j, then draw 2 process normals for the next transition.",
+      "D_or_S_ARMA": "From its assigned generator stream, draw total+2 Gaussian innovations in increasing array index, where total=fine_sample_count+5*240; discard exactly the five-second burn.",
+      "AR1": "Draw y0 from N(0,1); then one standard-normal innovation for each subsequent fine index.",
+      "colored_memory": "Use the domain-separated augmented stream: draw the stationary augmented initial state using the frozen covariance square-root rule, then draw the two-component colored innovation for each transition; there is no measurement-noise stream.",
+      "two_mode_and_reference_mixture": "Use the named domain-separated mode1/mode2/obs child streams only; no arithmetic seed offsets are permitted.",
+      "piecewise_C": "Use domain-separated process and observation streams continuously across the 48-s change point; no RNG reset and no latent-state reset.",
+      "gain_control": "F09 gains are deterministic transforms of the same realized C observation; no extra random draws."
+    },
+    "old_exploratory_default_rng_allowed": false,
+    "environment_binding": "NumPy version and complete dependency/environment identity must be frozen after packet APQ and before execution."
+  },
+  "alias_certificate": {
+    "scope": "continuous C-lineage local damping/frequency coordinate under the frozen C generator and preserving observation class only",
+    "derivation": [
+      "Continuous poles are lambda_±=-alpha ± i*nu, with sampled poles z_±=exp(lambda_±/fs)=rho*exp(±i*theta), rho=exp(-alpha/fs), theta=nu/fs.",
+      "For the frozen domain fn<=45 Hz and 0<chi<1, 0<nu<2*pi*45 rad/s. At fs=120 Hz, 0<theta<2*pi*45/120=3*pi/4<pi; the 240-Hz angle is smaller.",
+      "For positive-lag covariance, independent measurement noise contributes only at lag zero. With nonzero latent amplitude A, the sampled C law retains the nonreal conjugate pole pair.",
+      "A minimal nondegenerate second-order sampled recurrence therefore determines rho and the principal theta in (0,pi). Then alpha=-fs*log(rho), nu=fs*theta, omega_n=sqrt(alpha^2+nu^2), chi=alpha/omega_n, and fn=omega_n/(2*pi).",
+      "Any alias branch theta+2*pi*k is outside the frozen principal-angle/frequency domain. The same-path second rate supplies an additional consistency check rather than permission to widen the admissible class."
+    ],
+    "independent_verification_required": true,
+    "pass": "Independent analytic/reference verification confirms the stated sampled-pole conditions for the declared row and both rates.",
+    "refuse": "A distinct admissible continuous C lineage is analytically demonstrated to produce the same sampled-process law.",
+    "need_more_info": "The required certificate or minimal/nondegenerate recurrence premise cannot be established.",
+    "claim_ceiling": "No uniqueness claim is made outside the frozen C generator/observation class."
+  },
+  "profile_I_contract": {
+    "claim": "resolution-bounded numerical uniqueness/interiority inside the imposed C family only",
+    "standardization": "Use the frozen C1Q/C1Q-RS standardization and likelihood convention prospectively bound to the final implementation.",
+    "base_grid": "61 equally spaced chi values on [0.05,0.98]",
+    "extra_evaluation_candidate": "fitted chi may be evaluated to test profile/global-fit reproduction",
+    "prohibited_candidate": "true chi is validation-only and must never enter the profile grid, starts, bracket/refinement selection, tie rule, or row label",
+    "objective": "C1Q physical-coordinate profile likelihood using the same frozen C likelihood, fmin=1 Hz, fmax=45 Hz, burn_in_samples=128",
+    "nuisance_coordinates": [
+      "raw_A",
+      "raw_fd",
+      "raw_g"
+    ],
+    "nuisance_bounds": [
+      -8,
+      8
+    ],
+    "optimizer": "L-BFGS-B",
+    "optimizer_options": {
+      "maxiter": 80,
+      "ftol": 1e-8,
+      "maxls": 30
+    },
+    "starts": [
+      "continuation from neighboring profiled chi when available",
+      "global fit projected to the current chi",
+      "observable recurrence/covariance start when SEED_READY",
+      "six fixed source starts transformed at the current chi"
+    ],
+    "fixed_source_starts": [
+      [
+        "A=0.25",
+        "fn=max(1.2,0.75*fn_fit)",
+        "g=-0.6"
+      ],
+      [
+        "A=0.25",
+        "fn=fn_fit",
+        "g=0.6"
+      ],
+      [
+        "A=0.55",
+        "fn=max(1.2,0.75*fn_fit)",
+        "g=0"
+      ],
+      [
+        "A=0.55",
+        "fn=min(44,1.25*fn_fit)",
+        "g=-0.6"
+      ],
+      [
+        "A=0.85",
+        "fn=fn_fit",
+        "g=0.6"
+      ],
+      [
+        "A=0.85",
+        "fn=min(44,1.25*fn_fit)",
+        "g=0"
+      ]
+    ],
+    "start_dedup_max_abs": 1e-10,
+    "refinement": "Refine every finite base-grid local-minimum bracket and every endpoint-adjacent minimum with bounded scalar chi optimization; every scalar evaluation reoptimizes nuisance coordinates from the frozen start recipe.",
+    "scalar_xatol": 0.000001,
+    "scalar_maxiter": 200,
+    "fitted_profile_reproduction": "absolute NLL difference <=1e-5*max(1,abs(global_nll))",
+    "competing_global_tie": "absolute NLL difference <=1e-8*max(1,abs(global_nll))",
+    "nuisance_bound_rule": "If the best candidate terminates on a nuisance bound, I=NEED_MORE_INFO.",
+    "no_finite_or_failed_refinement": "I=NEED_MORE_INFO unless N already classifies the event as a numerical/search refusal",
+    "structural_identifiability_claim": false
+  },
+  "replicate_classification": {
+    "row_retention": "Every preassigned truth_id x replicate x rate row is emitted or represented by an explicit pre-evaluation frozen-contract failure record; no scientific or numerical failure is silently dropped.",
+    "channel_states": [
+      "PASS",
+      "REFUSE",
+      "NEED_MORE_INFO",
+      "NOT_APPLICABLE"
+    ],
+    "top_level_labels": {
+      "DATA_CONTRACT_REFUSAL": [
+        "P",
+        "S"
+      ],
+      "SEMANTIC_REFUSAL": [
+        "T",
+        "F",
+        "O",
+        "M",
+        "R"
+      ],
+      "ESTIMATOR_ROUTE_REFUSAL": [
+        "N",
+        "I"
+      ]
+    },
+    "composition": [
+      "Retain the full vector of applicable channel states.",
+      "Attach every top-level refusal namespace for which at least one constituent required channel is REFUSE.",
+      "If any required channel is NEED_MORE_INFO, also attach NEED_MORE_INFO without deleting any refusal label.",
+      "QUALIFICATION_ELIGIBLE iff every required channel is PASS.",
+      "NOT_APPLICABLE channels are reported but never counted as PASS.",
+      "Numerical/search events are separately cross-tabulated even when they also cause N or I labels.",
+      "No precedence hierarchy may delete an overlapping refusal, unresolved state, or failure state."
+    ],
+    "summaries": "For each truth_id x rate_hz cell retain denominator 16 and independently report counts for eligibility, every refusal namespace, NEED_MORE_INFO, numerical/search events, multi-label combinations, and each channel state.",
+    "Wilson_intervals": "two-sided 95% Wilson intervals are descriptive only and never admission thresholds"
+  },
+  "framework_not_operational": "Unchanged from NB1_PACKET_METHOD_v0.2.json.",
+  "rereview_required": true
+}
