@@ -1,0 +1,29 @@
+{
+ "schema":"NSD_NB1_PROFILE_ALIAS_RETENTION_REVISION_V0_1",
+ "status":"APQ_REVISION_CANDIDATE_NOT_FROZEN",
+ "execution_authorized":false,
+ "profile_I":{
+  "claim":"resolution-bounded practical uniqueness/interiority only",
+  "base_grid":"61 chi points on [0.05,0.98]",
+  "refinement":"bounded chi refinement of every base-grid local-minimum bracket and endpoint-adjacent minimum; each chi evaluation reoptimizes nuisance parameters using the frozen start recipe",
+  "selection":"compare all refined candidates and endpoints under frozen objective-tie tolerance",
+  "PASS":"unique lowest refined candidate is interior and reproduces fitted optimum within numerical-only tolerance",
+  "NEED_MORE_INFO":"edge/tied/nonregular/failed refinement unless N already classifies pure numerical refusal",
+  "true_chi":"validation-only; never enters eligibility grid, starts, refinement, tie decision or row label"
+ },
+ "alias_rule":{
+  "candidate_frequency_domain_hz":[1,45],
+  "coarsest_rate_hz":120,
+  "certificate":"for underdamped C candidates damped frequency < fn <=45 Hz <60-Hz Nyquist; validator also checks discrete pole angle in (0,pi) and candidate frequency remains within the frozen domain",
+  "ambiguity":"demonstrated observational equivalence from distinct admissible continuous lineages => S=REFUSE; missing certificate => S=NEED_MORE_INFO"
+ },
+ "retention_floor":{
+  "controls":["NB1B01-F01","NB1B01-F02"],
+  "rates_hz":[240,120],
+  "rule":"FRAMEWORK_NOT_OPERATIONAL if any control-rate cell has zero QUALIFICATION_ELIGIBLE rows among its 16 fixed replicates",
+  "scope":"existence/operability only; not prevalence or performance threshold"
+ },
+ "seed_contract":"NB1_PACKET_SEEDS_v0.2.json",
+ "generator_contracts":["NB1_CDS_GENERATOR_SEMANTIC_CONTRACT_v0.1.md","NB1_LIMIT_GENERATOR_CONTRACT_v0.1.md"],
+ "re_review_required":true
+}
