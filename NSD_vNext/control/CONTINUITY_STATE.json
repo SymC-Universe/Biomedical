@@ -1,28 +1,25 @@
 {
   "state": "SCIENTIFIC_GATE",
-  "last_productive_utc": "2026-09-30T03:15:00Z",
-  "last_productive_commit": "6c24b654940dd3e27ee8e07e1f4b1044c449520b",
+  "last_productive_utc": "2026-09-30T03:38:00Z",
+  "last_productive_commit": "289a789bf347e000f4e792575eb1fc5ea7993b0f",
   "active_run_ids": [],
-  "next_exact_action": "Retry Round-2 APQ after the external review limit resets; continue safe prefreeze identity work until then; adjudicate completed reviews immediately.",
+  "next_exact_action": "Continue safe prefreeze preparation while three isolated Round-2 APQ reviews run; adjudicate all completed reviews immediately; then perform exact v0.2 packet-level APQ/freeze before substantive compute.",
   "scientific_gate": {
-    "code": "ROUND2_APQ_TRANSPORT_PENDING_WITH_PARALLEL_QUEUE",
-    "reason": "Provider usage limit blocks only external review launch; canonical prefreeze preparation is actively advancing.",
+    "code": "ROUND2_APQ_IN_PROGRESS_WITH_PARALLEL_QUEUE",
+    "reason": "Round-2 external APQ transport recovered after the provider reset. All three isolated reviews are active. Execution authority remains false.",
     "parallel_queue": "NSD_vNext/control/WORK_QUEUE_v0.1.json",
-    "retry_scheduled": true
+    "round2_transport": "NSD_vNext/control/ROUND2_EXTERNAL_APQ_TRANSPORT_v0.1.json",
+    "round2_ledger": "NSD_vNext/control/INDEPENDENT_APQ2_ROUND2_ADJUDICATION_LEDGER_v0.1.md"
   },
-  "external_block": {
-    "provider": "Undermind",
-    "scope": "ROUND2_APQ_LAUNCH_ONLY",
-    "temporary": true
-  },
+  "external_block": null,
   "source_of_record": "NSD_vNext/WORKING_INVESTIGATION.md",
   "continuity_contract": "ACTIVE_COMPUTE | ADVANCED_CHECKPOINT | SCIENTIFIC_GATE | EXTERNAL_BLOCK | USER_ACTION_REQUIRED; IDLE forbidden",
-  "note": "This file is a continuity sentinel state only and does not make scientific decisions.",
+  "note": "Round-2 reviews are active; waiting time remains authorized prefreeze preparation time.",
   "sentinel_workflow": ".github/workflows/nsd-continuity-sentinel.yml",
   "work_queue": "NSD_vNext/control/WORK_QUEUE_v0.1.json",
   "queue_validator": ".github/workflows/nsd-continuation-queue-contracts.yml",
   "long_run_ceiling": "NSD_vNext/control/LONG_RUN_CEILING_v0.1.md",
   "long_run_packet": "NSD_vNext/control/LONG_RUN_PACKET_v0.1.json",
   "user_action_required": null,
-  "current_run_note": "Prefreeze identity manifest, lane checkpoint identity hardening, final freeze templates, and Actions liveness audit are now durable. No fresh v0.2 scientific outcome has been opened."
+  "current_run_note": "Round-2 N-B1, N-B2/N-B3, and integration reviews are in progress. Fresh v0.2 outcomes remain unopened and substantive compute remains unauthorized."
 }
