@@ -3,9 +3,9 @@
 **Packet:** `NSD_vNext/control/LONG_RUN_PACKET_v0.1.json` and `NB2NB3_EXACT_MATCHED_CONFIG_v0.1.json`  
 **Authority:** researcher + ChatGPT  
 **Date:** 29 September 2026  
-**Disposition:** APQ CLOSED FOR EVIDENCE GENERATION ONLY
+**Disposition:** INTERNAL PRE-APQ ONLY / INDEPENDENT APQ REQUIRED / EXECUTION NOT AUTHORIZED
 
-This APQ licenses generation of a frozen known-truth evidence packet. It does not license GitHub to make scientific interpretations.
+This same-cognition adversarial pass does not satisfy GOM v1.0 APQ-2 independence and therefore does not license substantive evidence generation. GitHub may perform mechanical validation only until independent isolated review of the exact frozen packet is qualified.
 
 | ID | Severity | Objection | Resolution |
 | --- | --- | --- | --- |
@@ -20,4 +20,4 @@ This APQ licenses generation of a frozen known-truth evidence packet. It does no
 | B5 | MATERIAL | Long workflow could silently change science to recover from failures | Conveyor may resume/retry only identical frozen cases; any frozen-contract violation stops the run |
 | C1 | MATERIAL | CI could become the adjudicator | Operational ceiling terminates at `SCIENTIFIC_REVIEW_READY`; interpretation remains outside GitHub |
 
-No unresolved BLOCKER or MATERIAL objection remains for evidence generation. Any scientific claim, architecture change, threshold selection, real-EEG admission, or interpretation of the resulting evidence requires researcher/ChatGPT review after the conveyor stops.
+No unresolved BLOCKER or MATERIAL objection remains from this internal same-cognition pass, but APQ-2 remains open until independent isolated review is bound to the exact packet/config/ceiling and adjudicated. Any rows already generated before this correction are exposed development evidence only and cannot be relabeled untouched confirmation.
