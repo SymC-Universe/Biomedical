@@ -9,35 +9,116 @@
     "NB1": {
       "packet_id": "NB1_UNTOUCHED_20260929_A",
       "evidence_class": "P0-Q KNOWN-TRUTH QUALIFICATION",
-      "sampling_rates_hz": [256.0, 128.0],
-      "duration_seconds": 90.0,
-      "seeds": [913103, 927229, 941351, 967403],
+      "sampling_rates_hz": [
+        256,
+        128
+      ],
+      "duration_seconds": 90,
+      "seeds": [
+        913103,
+        927229,
+        941351,
+        967403
+      ],
       "function_truths": [
-        {"id":"C_F0","generator":"CONTINUOUS_C","A":0.76,"fn_hz":8.5,"chi":0.22,"g":0.15},
-        {"id":"C_F1","generator":"CONTINUOUS_C","A":0.61,"fn_hz":13.5,"chi":0.41,"g":-0.45},
-        {"id":"C_F2","generator":"CONTINUOUS_C","A":0.34,"fn_hz":18.0,"chi":0.58,"g":0.62},
-        {"id":"C_F3","generator":"CONTINUOUS_C","A":0.72,"fn_hz":9.5,"chi":0.86,"g":0.25},
-        {"id":"C_F4","generator":"CONTINUOUS_C","A":0.68,"fn_hz":31.0,"chi":0.28,"g":-0.70}
+        {
+          "id": "C_F0",
+          "generator": "CONTINUOUS_C",
+          "A": 0.76,
+          "fn_hz": 8.5,
+          "chi": 0.22,
+          "g": 0.15
+        },
+        {
+          "id": "C_F1",
+          "generator": "CONTINUOUS_C",
+          "A": 0.61,
+          "fn_hz": 13.5,
+          "chi": 0.41,
+          "g": -0.45
+        },
+        {
+          "id": "C_F2",
+          "generator": "CONTINUOUS_C",
+          "A": 0.34,
+          "fn_hz": 18,
+          "chi": 0.58,
+          "g": 0.62
+        },
+        {
+          "id": "C_F3",
+          "generator": "CONTINUOUS_C",
+          "A": 0.72,
+          "fn_hz": 9.5,
+          "chi": 0.86,
+          "g": 0.25
+        },
+        {
+          "id": "C_F4",
+          "generator": "CONTINUOUS_C",
+          "A": 0.68,
+          "fn_hz": 31,
+          "chi": 0.28,
+          "g": -0.7
+        }
       ],
       "limit_truths": [
-        {"id":"L_D_POS","generator":"D_NOT_C_POS","base_A":0.74,"base_fn_hz":11.0,"base_chi":0.33},
-        {"id":"L_D_NEG","generator":"D_NOT_C_NEG","base_A":0.74,"base_fn_hz":11.0,"base_chi":0.33},
-        {"id":"L_S_POS","generator":"S_NOT_D_POS","base_A":0.74,"base_fn_hz":11.0,"base_chi":0.33},
-        {"id":"L_S_NEG","generator":"S_NOT_D_NEG","base_A":0.74,"base_fn_hz":11.0,"base_chi":0.33},
-        {"id":"L_MEMORY","generator":"COLORED_MEMORY"},
-        {"id":"L_TWO_MODE","generator":"GENUINE_TWO_MODE"}
+        {
+          "id": "L_D_POS",
+          "generator": "D_NOT_C_POS",
+          "base_A": 0.74,
+          "base_fn_hz": 11,
+          "base_chi": 0.33
+        },
+        {
+          "id": "L_D_NEG",
+          "generator": "D_NOT_C_NEG",
+          "base_A": 0.74,
+          "base_fn_hz": 11,
+          "base_chi": 0.33
+        },
+        {
+          "id": "L_S_POS",
+          "generator": "S_NOT_D_POS",
+          "base_A": 0.74,
+          "base_fn_hz": 11,
+          "base_chi": 0.33
+        },
+        {
+          "id": "L_S_NEG",
+          "generator": "S_NOT_D_NEG",
+          "base_A": 0.74,
+          "base_fn_hz": 11,
+          "base_chi": 0.33
+        },
+        {
+          "id": "L_MEMORY",
+          "generator": "COLORED_MEMORY"
+        },
+        {
+          "id": "L_TWO_MODE",
+          "generator": "GENUINE_TWO_MODE"
+        }
       ],
       "record_only": [
-        "truth identity","C1Q-RS fit","raw parameters","likelihood/BIC","profile curve",
-        "Hessian diagnostic","paired-rate drift","boundary contacts","structural recurrence metrics",
-        "model-family comparator outputs","runtime/provenance"
+        "truth identity",
+        "C1Q-RS fit",
+        "raw parameters",
+        "likelihood/BIC",
+        "profile curve",
+        "Hessian diagnostic",
+        "paired-rate drift",
+        "boundary contacts",
+        "structural recurrence metrics",
+        "model-family comparator outputs",
+        "runtime/provenance"
       ],
       "scientific_verdict_forbidden": true
     },
     "NB2NB3": {
       "packet_id": "NB2NB3_MATCHED_20260929_A",
       "evidence_class": "P0-Q EXACT LINEAR KNOWN TRUTH",
-      "time_horizon_seconds": 30.0,
+      "time_horizon_seconds": 30,
       "time_samples": 3001,
       "state_metric": "Euclidean only for fixed physical state coordinates; similarity adversary carries transformed metric",
       "input_norm": "Euclidean",
@@ -53,13 +134,27 @@
         "TIME_VARYING_VS_STATIONARY_SURROGATE"
       ],
       "record_only": [
-        "A/B/C matrices","eigenvalues","spectral abscissa","numerical abscissa",
-        "eigenvector conditioning","propagator singular values","peak gain/time/direction",
-        "impulse/initial-condition response curves","integrated response burden",
-        "input-output response","similarity invariants","sampling projections","runtime/provenance"
+        "A/B/C matrices",
+        "eigenvalues",
+        "spectral abscissa",
+        "numerical abscissa",
+        "eigenvector conditioning",
+        "propagator singular values",
+        "peak gain/time/direction",
+        "impulse/initial-condition response curves",
+        "integrated response burden",
+        "input-output response",
+        "similarity invariants",
+        "sampling projections",
+        "runtime/provenance"
       ],
       "scientific_verdict_forbidden": true
     }
-  }
+  },
+  "evidence_status": "P0-D EXPOSED DEVELOPMENT / PROMOTION DEBT",
+  "untouched_qualification_eligible": false,
+  "exposure_ledger": "NSD_vNext/control/LONG_RUN_EXPOSURE_LEDGER_v0.1.json",
+  "independent_apq_required": true,
+  "execution_authorized": false,
+  "note": "This v0.1 packet opened outcomes before independent APQ-2 qualification. Preserve results as development evidence only. A future untouched qualification requires a fresh packet version and fresh identities after independent APQ closure."
 }
-
