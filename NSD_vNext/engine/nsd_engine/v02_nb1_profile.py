@@ -75,7 +75,11 @@ def profile_evidence(signal,fs):
         r=minimize_scalar(lambda z:optimize_chi(std,fs,fit,float(z))["nll"] or 1e100,
                           bounds=(lo,hi),method="bounded",
                           options={"xatol":1e-6,"maxiter":200})
-        refined.append({"kind":kind,"chi":float(r.x),"nll":float(r.fun),"success":bool(r.success)})
+        detail=optimize_chi(std,fs,fit,float(r.x))
+        refined.append({"kind":kind,"chi":float(r.x),"nll":float(r.fun),"success":bool(r.success),
+                        "nuisance_raw":detail.get("nuisance_raw"),
+                        "winning_start":detail.get("winning_start"),
+                        "nuisance_bound_hit":detail.get("nuisance_bound_hit")})
     global_nll=float(fit.negative_log_likelihood)
     tie=1e-8*max(1.0,abs(global_nll))
     finite=[x for x in refined if math.isfinite(x["nll"])]
