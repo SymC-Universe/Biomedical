@@ -951,3 +951,19 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Why next:** continuity automation may resume already-authorized frozen work but cannot manufacture missing scientific authority.
 - **User intervention required:** not a scientific choice at this point; external independent review transport is the unresolved dependency.
 
+### 2026-09-29 - CONTINUITY_FAILURE / ROUND1_APQ_ADJUDICATED - GOM waiting-time protocol restored
+
+- **Lifecycle Stage:** APQ-2 / prefreeze
+- **Entry type:** `CONTINUITY_FAILURE / ADVANCED_CHECKPOINT`
+- **Observed failure:** all three first-round isolated APQ reviews completed at approximately 2026-09-30T01:39Z, but no canonical NSD advancement followed until user intervention after 2026-09-30T02:19Z. The ChatGPT-side resume controller did run later but did not convert completed review evidence into a durable research-lane checkpoint. Waiting time was also not being used to advance all already-authorized parallel preparation.
+- **Root cause:** controller contract was gate-status centric rather than enforcing the GOM waiting-time rule that calculation/review waiting time becomes preparation time. It lacked a mandatory parallel-work queue for literature/comparator collision, provenance/custody, Function/Limit architecture, freshness validation, checkpoint hardening, result-landing adjudicator preparation, and prefreeze schemas.
+- **Scientific recovery:** first-round reviews were read in full and adjudicated without voting in `INDEPENDENT_APQ2_ADJUDICATION_LEDGER_v0.2.md`. All BLOCKER/MATERIAL objections were accepted or accepted-modified prospectively. Revised plans are `BIO_CHI_INTEGRATED_NB1_ADMISSION_ARCHITECTURE_PLAN_v0.4.md` and `BIO_CHI_NB2_NB3_REPRESENTATION_SUFFICIENCY_PLAN_v0.4.md`.
+- **Key N-B1 revision:** semantic C membership is generator-defined under known truth and cannot be established by profile/fit; channel dependence is preserved; false-refusal, missed-refusal, NEED_MORE_INFO, NOT_APPLICABLE, and multi-label operating characteristics are explicit; scalar refusal preserves only independently licensed richer information.
+- **Key N-B2/N-B3 revision:** exact sufficiency is formally target-conditional over representation-equivalence classes; recoverability is separate; initial-state, B-driven, and C-observed targets are separated; physical-metric similarity invariance, peak refinement, time-varying truth, model misspecification, and suite-specific claim ceilings are explicit.
+- **Exposure/cross-lane firewall:** v0.1 scientific values remain unopened for v0.2 design; v0.1 is P0-D development only; fresh v0.2 identities are disjoint and cross-lane confirmatory outcome feedback is forbidden before both freezes close.
+- **Parallel work completed while Round-2 transport is blocked:** fresh outcome-blind v0.2 draft packet, separate N-B1/N-B2 checkpoints, fixed result-landing audit, and GitHub freshness/authority contract workflow were created. Round-2 Undermind launch was attempted using full v0.4 text but hit a provider usage limit with stated reset in approximately 1 hour 6 minutes.
+- **Mechanical recovery:** `NSD v0.2 Prefreeze Contracts` workflow was launched to validate freshness, execution-authority, lane separation, and no direct v0.1 result-payload references. A one-time Round-2 APQ retry is scheduled after the provider reset; the recurring NSD controller was rewritten to require productive parallel work during every pending gate.
+- **Current durable state:** `SCIENTIFIC_GATE` with active authorized prefreeze work.
+- **Next exact action:** finish prefreeze contract validation and continue implementation/reproducibility/checkpoint preparation; relaunch isolated Round-2 full-text APQ after provider reset; adjudicate immediately on completion; then perform exact v0.2 packet-level APQ/freeze before substantive compute.
+- **User intervention required:** `no`
+
