@@ -1,0 +1,48 @@
+{
+  "schema": "NSD_V0_2_FINAL_IDENTITY_PREBIND_AUDIT_V0_1",
+  "status": "ADVANCED_CHECKPOINT_PREBIND_ONLY",
+  "scientific_baseline": "NSD-V02-B01-FROZEN",
+  "execution_authorized": false,
+  "scientific_outcomes_opened": false,
+  "nb1": {
+    "implementation_ready_for_final_identity_binding": true,
+    "code": {
+      "generators": "3c82fabf80bdef5f06c3bcefdedb6a226a0c8157",
+      "profile": "47e85b4f0656cf82349e6cd82cafa9dbf04c0e9c",
+      "profile_coords": "8c9372f12561c8693bd6d38dfe44d65957003a63"
+    },
+    "evidence_runs": [
+      36735461793,
+      36735526178
+    ],
+    "note": "Profile-I evidence retention now includes all nuisance optimizer attempts, terminal bound evidence, scalar-refinement evidence, explicit endpoint candidates, and fitted-profile reproduction evidence."
+  },
+  "nb23": {
+    "implementation_ready_for_final_identity_binding": false,
+    "current_code": {
+      "core": "78db1fc83252b2c320f68aa73051e8f5c20fefb7",
+      "observation": "ac00d26ae0121680ff68ecc223234ce094c97785",
+      "peak": "c7e542c044432cac9ab11e249d6be02ef26860bf",
+      "recoverability": "29afdaf0536b99b8628dbe83a55ff12802176dbd",
+      "suite": "8e0a54277a8194fed7725b04733053a971dac414",
+      "targets": "8eacfcb07f9831a7f98c034f1d53773474576f3c"
+    },
+    "remaining": [
+      "persist certified switched-versus-surrogate discrepancy maximum implementation",
+      "add independent non-confirmatory dense/high-precision reference fixture verification",
+      "run engine contracts and retain passing evidence"
+    ],
+    "implementation_spec": "NSD_vNext/control/V0_2_NB23_SWITCHED_CERTIFICATION_IMPLEMENTATION_SPEC_v0.1.md",
+    "mutation_block": "Two repository code-mutation attempts were rejected by connector safety checks during this controller cycle."
+  },
+  "dependencies": {
+    "lock_blob": "8402dadab1d69b755fc28c0285a7d7063affe7d4",
+    "python": "3.11.16",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "pytest": "9.1.1",
+    "environment_candidate_blob": "e6e956950670993f659f02fcd21e2692607e311d",
+    "environment_status": "PREFLIGHT_CANDIDATE_NOT_FINAL"
+  },
+  "next_exact_action": "Persist and contract-test the already-frozen N-B2/N-B3 switched certification/reference mechanics. Only after that may final scientific-code/dependency/environment identity be bound and mechanical preflight begin."
+}
