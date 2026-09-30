@@ -1,16 +1,19 @@
 {
   "state": "SCIENTIFIC_GATE",
-  "last_productive_utc": "2026-09-30T07:24:00Z",
-  "last_productive_commit": "716f0fdc0dee10fe9d8beb1ee055759170983415",
+  "last_productive_utc": "2026-09-30T07:31:00Z",
+  "last_productive_commit": "cfe4f0598488855afdd66490d9341ec90469380e",
   "active_run_ids": [],
-  "next_exact_action": "Adjudicate the N-B1 v0.3 packet re-review when complete; relaunch revised N-B2/N-B3 and stage-bound integrated packet reviews after the temporary external quota reset; meanwhile continue outcome-blind packet/checkpoint/validator reconciliation.",
+  "next_exact_action": "Obtain a conformant objection ledger for N-B1 v0.3, launch the revised N-B2/N-B3 packet re-review and stage-bound integrated packet review after external quota reset, and finish the versioned prefreeze workflow repair. No substantive execution.",
   "scientific_gate": {
     "code": "V0_2_PACKET_MATERIAL_REVISION_REREVIEW",
-    "reason": "Architecture is closed. N-B1 and N-B2/N-B3 packet APQ exposed prospective material corrections. N-B1 v0.3 re-review is running; N-B2/N-B3 revised re-review and integrated stage-bound review await transient transport reset.",
+    "reason": "Architecture is closed. N-B1 and N-B2/N-B3 packet reviews produced prospective material corrections; conformant revised lane/integration re-review is required before final scientific freeze.",
     "packet_apq_workspace_id": "931f5528-8f45-40c1-9c1d-7c221eab7cd3",
     "nb1_review": "/N-B1 Exact Packet v0.3 Re-review",
     "nb23_review": "/N-B2 N-B3 Revised Packet Re-review",
-    "integrated_review": "/Integrated Packet Stage-Bound Re-review"
+    "integrated_review": "/Integrated Packet Stage-Bound Re-review",
+    "nb1_status": "NEED_MORE_INFO_LEDGER_RETURN",
+    "nb23_status": "MATERIAL_REVISION_BOUND_REREVIEW_PENDING",
+    "integrated_status": "STAGE_BOUND_REREVIEW_PENDING"
   },
   "external_block": null,
   "source_of_record": "NSD_vNext/WORKING_INVESTIGATION.md",
@@ -18,5 +21,5 @@
   "work_queue": "NSD_vNext/control/WORK_QUEUE_v0.1.json",
   "long_run_ceiling": "NSD_vNext/control/LONG_RUN_CEILING_v0.1.md",
   "user_action_required": null,
-  "current_run_note": "No substantive v0.2 compute authorized. All current packet work is prefreeze and outcome-blind; v0.1 remains P0-D development only."
+  "current_run_note": "Reusable prefreeze validator now points to current lineage and passes. The legacy workflow's embedded inline check remains mechanically stale and still fails; no scientific failure is indicated."
 }
