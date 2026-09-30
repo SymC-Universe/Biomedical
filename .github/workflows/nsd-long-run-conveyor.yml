@@ -105,3 +105,5 @@ jobs:
         if: steps.state.outputs.state == 'SCIENTIFIC_REVIEW_READY'
         run: |
           echo "NSD frozen evidence is complete. Scientific interpretation is intentionally outside GitHub."
+
+# synchronized relaunch after controller handoff
