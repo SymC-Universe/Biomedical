@@ -1,0 +1,37 @@
+{
+  "schema": "NSD_INTEGRATED_PACKET_FINAL_REVIEW_ADJUDICATION_V0_1",
+  "status": "INTEGRATED_PACKET_APQ_CLOSED_ZERO_BLOCKER_MATERIAL",
+  "execution_authorized": false,
+  "final_identity_freeze": false,
+  "scientific_outcomes_opened": false,
+  "source_review": "/Integrated Validation Controls Ledger Review v2",
+  "method": "INDIVIDUAL_OBJECTION_EVIDENCE_NO_VOTING",
+  "review_result": {
+    "blocker_count": 0,
+    "material_count": 0,
+    "minor_count": 0,
+    "disposition": "ZERO_BLOCKER_MATERIAL"
+  },
+  "stage_adjudication": {
+    "design_rules": "CLOSED",
+    "rule9_artifacts": "FREEZE_AND_PREFLIGHT_PREREQUISITES",
+    "note": "The reviewer identified no methodological objection to the integration rules. Its request to attach audit/check artifacts is treated as enforcement of already-bound stage prerequisites, not a new scientific design change. Outcome-blind ancestry/disjointness and signoff artifacts are required at scientific freeze; code/environment-dependent verifier evidence remains post-scientific-freeze and pre-execution under the governing stage order."
+  },
+  "bound_controls": [
+    "V0_2_CROSS_LANE_INTEGRATION_AUTHORITY_v0.1.md",
+    "V0_2_CROSS_LANE_PROVENANCE_DISJOINTNESS_CONTRACT_v0.1.md",
+    "V0_2_COMMON_DEPENDENCY_REGISTER_v0.1.json",
+    "V0_2_COMMON_DEPENDENCY_VERIFICATION_PLAN_v0.1.md",
+    "V0_2_OUTCOME_ACCESS_LEDGER_v0.2.json",
+    "V0_2_VERIFIER_INDEPENDENCE_CONTRACT_v0.1.json",
+    "V0_2_DESIGN_BASELINE_CHANGE_IMPACT_CONTRACT_v0.1.json",
+    "V0_2_FROZEN_CHECKPOINT_SCHEMA_v0.2.json",
+    "V0_2_EXACT_PACKET_COMPLETENESS_CONTRACT_v0.1.json"
+  ],
+  "lane_packet_apq": {
+    "nb1": "CLOSED",
+    "nb23": "CLOSED"
+  },
+  "next_gate": "FINAL_SCIENTIFIC_FREEZE",
+  "rereview_required": false
+}
