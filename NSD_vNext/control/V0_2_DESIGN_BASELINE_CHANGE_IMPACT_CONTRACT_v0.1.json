@@ -1,0 +1,28 @@
+{
+  "schema": "NSD_V0_2_DESIGN_BASELINE_CHANGE_IMPACT_CONTRACT_V0_1",
+  "status": "PREFREEZE_REQUIRED",
+  "execution_authorized": false,
+  "rules": [
+    "Each final packet receives one immutable design_baseline_id.",
+    "Every confirmatory case, artifact, checkpoint, access record, and lane conclusion records that baseline.",
+    "Artifacts from different baselines may not be combined for confirmation.",
+    "After scientific-result access, a later change to a baseline-bound scientific or computational element triggers prospective impact analysis.",
+    "Every affected confirmatory identity, artifact, and checkpoint is retired from confirmation and preserved historically.",
+    "The changed design receives a new baseline identity and reopens the applicable review scope before new confirmation.",
+    "A changed common dependency propagates invalidation to every dependent lane and artifact.",
+    "Prior baseline and access records remain append-only."
+  ],
+  "baseline_components": [
+    "architecture identities",
+    "integration authority",
+    "packet/config",
+    "case identities",
+    "seed/RNG when applicable",
+    "observation and target contracts",
+    "numerical-rule identities",
+    "common-dependency register",
+    "access-ledger version",
+    "evidence/checkpoint schemas",
+    "final code/dependency/environment identity"
+  ]
+}
