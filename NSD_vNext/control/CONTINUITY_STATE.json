@@ -1,12 +1,12 @@
 {
-  "state": "EXTERNAL_BLOCK",
-  "last_productive_utc": "2026-09-30T05:25:00Z",
-  "last_productive_commit": "2049725e878a3378c004e12d60b9a5af6d527bcb",
+  "state": "SCIENTIFIC_GATE",
+  "last_productive_utc": "2026-09-30T05:34:00Z",
+  "last_productive_commit": "083bbe68d3d93ca8ee304a118295f1d417362921",
   "active_run_ids": [],
-  "next_exact_action": "Integration Controls Stage Review is now running independently. While it runs, repair the mechanically stale prefreeze validator/workflow using V0_2_PREFREEZE_VALIDATOR_REPAIR_SPEC_v0.1.json and keep packet/identity records aligned. On review completion, adjudicate immediately; if no architecture-level BLOCKER/MATERIAL remains, release NB1-Q02 and NB2-Q02 for exact packet construction/APQ.",
+  "next_exact_action": "Adjudicate the running integration v0.2 independent re-review. If it closes without architecture-level BLOCKER or MATERIAL objections, release both final exact-packet construction/APQ tasks.",
   "scientific_gate": {
-    "code": "CROSS_LANE_INTEGRATION_AUTHORITY_REREVIEW_IN_PROGRESS",
-    "reason": "The stage-bound independent re-review of the revised cross-lane integration authority has launched. Lane v0.5 reviews are closed; substantive execution remains unauthorized.",
+    "code": "INTEGRATION_V0_2_REREVIEW_IN_PROGRESS",
+    "reason": "Accepted stage-bound integration objections were corrected prospectively and the revised integration rule set is undergoing independent re-review.",
     "nb1_lane_review": "NSD_vNext/control/NB1_V0_5_REREVIEW_ADJUDICATION_v0.1.md",
     "nb23_lane_review": "NSD_vNext/control/NB23_V0_5_REREVIEW_ADJUDICATION_v0.1.md",
     "integration_adjudication": "NSD_vNext/control/INTEGRATED_V0_5_REREVIEW_ADJUDICATION_v0.1.md",
@@ -19,5 +19,5 @@
   "work_queue": "NSD_vNext/control/WORK_QUEUE_v0.1.json",
   "long_run_ceiling": "NSD_vNext/control/LONG_RUN_CEILING_v0.1.md",
   "user_action_required": null,
-  "current_run_note": "Stage-bound cross-lane integration review launched after temporary provider reset. During the transport block, checkpoint schema v0.2, validator repair contract, source-of-record audit v0.2, and prefreeze identity manifest v0.3 were added. Prefreeze Contracts run 36668607439 is a mechanical validator-state mismatch because legacy checks require SCIENTIFIC_GATE and Draft-A; do not rerun unchanged."
+  "current_run_note": "Integration v0.2 re-review running; substantive execution remains unauthorized."
 }
