@@ -1,0 +1,91 @@
+{
+  "schema": "NSD_NB1_PACKET_METHOD_V0_1",
+  "status": "APQ_CANDIDATE_NOT_FROZEN",
+  "sampling": {
+    "fine_hz": 240,
+    "coarse_hz": 120,
+    "duration_seconds": 96,
+    "coarse_transform": "same generated fine path, exact factor-2 decimation",
+    "alias_rule": "every eligible oscillatory continuous lineage must remain unambiguous at both declared rates; ambiguity returns S=REFUSE"
+  },
+  "applicability": {
+    "default_required": [
+      "P",
+      "S",
+      "T",
+      "F",
+      "O",
+      "M",
+      "N",
+      "I"
+    ],
+    "R_required": [
+      "NB1B01-F09",
+      "NB1B01-L09"
+    ],
+    "U": "NOT_APPLICABLE_TO_ADMISSION; paired-rate sensitivity descriptive only"
+  },
+  "sources": {
+    "continuous_generator": {
+      "path": "NSD_vNext/engine/tools/probe_continuous_lineage_nonzero_g.py",
+      "blob": "40279d7bc283e648ee6f78b1a1e1bb798078143a"
+    },
+    "limit_generators": {
+      "path": "NSD_vNext/engine/tools/probe_combined_structural_predictive_refusal.py",
+      "blob": "df27fb931dcc17e7dc3fc1e62eb8a8a028601e0c"
+    },
+    "fit": {
+      "path": "NSD_vNext/engine/nsd_engine/continuous_lineage_candidate_rs.py",
+      "blob": "7e8abe73e37a3be54b1e6fd5afac218af88da9bd"
+    },
+    "profile": {
+      "path": "NSD_vNext/engine/tools/probe_single_series_uncertainty_methods.py",
+      "blob": "ec2b55a129b76f5c4a61d74b330a1a099aee9b94"
+    }
+  },
+  "fit": {
+    "optimizer_maxiter": 80,
+    "max_optimized_starts": 18
+  },
+  "profile": {
+    "grid": "61 equally spaced chi values [0.05,0.98] plus fitted chi and true chi only for valid C truths",
+    "method": "L-BFGS-B",
+    "raw_bounds": [
+      -8,
+      8
+    ],
+    "maxiter": 80,
+    "ftol": 1e-8,
+    "maxls": 30,
+    "start_recipe": "continuation + projected global + recurrence when available + six fixed starts exactly as profile source blob",
+    "start_dedup_max_abs": 1e-10
+  },
+  "numerical_only": {
+    "fitted_profile_reproduction": "1e-5*max(1,abs(global_nll))",
+    "competing_global_tie": "1e-8*max(1,abs(global_nll))",
+    "deterministic_refit_nll": "1e-8*max(1,abs(nll))"
+  },
+  "observation": {
+    "F09": "same latent path multiplied separately by positive gains 0.7 and 1.4",
+    "L09": "two latent modes observed as y=mode1+0.35*mode2"
+  },
+  "reporting": {
+    "independent_unit": "generated fine path/seed",
+    "rate_summaries": "240 and 120 Hz reported separately with n=16",
+    "interval": "two-sided 95% Wilson descriptive only",
+    "pool_rates_as_independent": false,
+    "failures_in_denominator": true
+  },
+  "framework_not_operational": [
+    "required channel lacks executable frozen rule",
+    "semantic and estimator namespaces cannot remain separate",
+    "neither retention-control truth yields any QUALIFICATION_ELIGIBLE row",
+    "post-result scientific threshold would be required for ordinary eligibility"
+  ],
+  "claim_ceiling": {
+    "real_eeg_local_chi": false,
+    "c1q_rs": "QUALIFICATION_ONLY",
+    "biological_prevalence": false,
+    "whole_system_scalar": false
+  }
+}
