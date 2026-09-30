@@ -1,0 +1,19 @@
+{
+  "schema": "NSD_LANE_CHECKPOINT_NB23_V0_14",
+  "lane": "N-B2/N-B3",
+  "state": "ADVANCED_CHECKPOINT",
+  "architecture_review_status": "CLOSED",
+  "packet_review_status": "CLOSED",
+  "cross_lane_gate": "CLOSED",
+  "primary_recoverability": "DETERMINISTIC_NOISELESS",
+  "stochastic_extension": "NOT_AUTHORIZED",
+  "final_identity_freeze": true,
+  "scientific_values_exposed": false,
+  "execution_authorized": false,
+  "completed_case_ids": [],
+  "scientific_freeze": "NSD_vNext/control/V0_2_FINAL_SCIENTIFIC_FREEZE_v0.1.json",
+  "authority_validator_run": 36728720629,
+  "implementation_status": "RAW_TARGET_AND_PAIRWISE_RECOVERABILITY_MECHANICS_READY_CERTIFIED_SWITCHED_MAX_PENDING",
+  "next_exact_action": "Complete certified global-peak/switching-discrepancy mechanics and independent reference checks without opening confirmatory outcomes; then bind final implementation identity.",
+  "stop_reason": "POST_FREEZE_IMPLEMENTATION_VALIDATION"
+}
