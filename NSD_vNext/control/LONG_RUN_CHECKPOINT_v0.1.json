@@ -4,7 +4,8 @@
   "completed_stages": [
     "PACKET_BOUND",
     "FROZEN_INPUT_VALIDATED",
-    "IMPLEMENTATION_TESTED"
+    "IMPLEMENTATION_TESTED",
+    "PREFLIGHT_PASS"
   ],
   "environment": {
     "github_run_attempt": "1",
@@ -18,12 +19,12 @@
     "scipy_version": "1.14.1"
   },
   "nb2_config_digest": "fc6c9145d78d1c95884d21ce3d293c9808faf82a9e5b0b64cfdcbfcc2311bfbd",
-  "next_exact_mechanical_action": "execute frozen preflight/evidence packet",
+  "next_exact_mechanical_action": "run all frozen evidence cases",
   "packet_digest": "7505fc74658117e2d67265061e6d0860a854933eec695d5b25316b2b81b696f2",
   "schema": "NSD_LONG_RUN_CHECKPOINT_V0_1",
   "scientific_verdict": "FORBIDDEN",
-  "stage": "IMPLEMENTATION_TESTED",
+  "stage": "PREFLIGHT_PASS",
   "started_unix": 1790726664.7186866,
   "stop_reason": null,
-  "updated_unix": 1790726756.2616029
+  "updated_unix": 1790727066.4566467
 }
