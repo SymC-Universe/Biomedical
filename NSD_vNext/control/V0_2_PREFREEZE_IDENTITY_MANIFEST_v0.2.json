@@ -1,0 +1,104 @@
+{
+  "schema": "NSD_V0_2_PREFREEZE_IDENTITY_MANIFEST_V0_2",
+  "status": "PREFREEZE_IDENTITY_ONLY_INTEGRATION_REREVIEW_PENDING",
+  "governance": "SymC GOM v1.0 + Continuity Hardening Addendum",
+  "execution_authorized": false,
+  "authority_files": [
+    {
+      "path": "NSD_vNext/docs/BIO_CHI_INTEGRATED_NB1_ADMISSION_ARCHITECTURE_PLAN_v0.5.md",
+      "blob_sha": "df51ca6e7b20f49dc8781170831066e806f5617b",
+      "role": "N-B1 lane authority; isolated re-review closed"
+    },
+    {
+      "path": "NSD_vNext/docs/BIO_CHI_NB2_NB3_REPRESENTATION_SUFFICIENCY_PLAN_v0.5.md",
+      "blob_sha": "15056e7356082d8f16104b8cfb781b7867c2f417",
+      "role": "N-B2/N-B3 lane authority; isolated re-review closed"
+    },
+    {
+      "path": "NSD_vNext/control/V0_2_CROSS_LANE_INTEGRATION_AUTHORITY_v0.1.md",
+      "blob_sha": "3e60798b2485c10a2bda39254b641d7726741082",
+      "role": "revised cross-lane authority; independent stage-bound re-review pending"
+    }
+  ],
+  "preparatory_packet": {
+    "path": "NSD_vNext/control/FRESH_UNTOUCHED_V0_2_DRAFT_B.json",
+    "blob_sha": "4d84ae3d085e692fb207ab715a492ee28e131805",
+    "status": "NOT_FINAL_PACKET"
+  },
+  "review_records": [
+    {
+      "path": "NSD_vNext/control/INDEPENDENT_APQ2_ROUND2_ADJUDICATION_LEDGER_v0.2.md",
+      "blob_sha": "0c86edd01faa9ee96c4c4eacbb5ba32fe0150a80"
+    },
+    {
+      "path": "NSD_vNext/control/NB1_V0_5_REREVIEW_ADJUDICATION_v0.1.md",
+      "blob_sha": "308bd145885f0c100f279888a98f57b3d807d32b"
+    },
+    {
+      "path": "NSD_vNext/control/NB23_V0_5_REREVIEW_ADJUDICATION_v0.1.md",
+      "blob_sha": "f3ccd8066dcc611ee0acebeeb6077ffd8a083f12"
+    },
+    {
+      "path": "NSD_vNext/control/INTEGRATED_V0_5_REREVIEW_ADJUDICATION_v0.1.md",
+      "blob_sha": "3237e9e86dd263645f5cf9faea01a60c1db29e2e"
+    }
+  ],
+  "integration_controls": [
+    {
+      "path": "NSD_vNext/control/V0_2_COMMON_DEPENDENCY_REGISTER_v0.1.json",
+      "blob_sha": "9b85fdee848673e0efcc4588f714f4d9bccfdf2e"
+    },
+    {
+      "path": "NSD_vNext/control/V0_2_OUTCOME_ACCESS_LEDGER_v0.1.json",
+      "blob_sha": "4c380b84bf90bf95ee4987d0c111d523c270eb62"
+    },
+    {
+      "path": "NSD_vNext/control/V0_2_CROSS_LANE_PROVENANCE_DISJOINTNESS_CONTRACT_v0.1.md",
+      "blob_sha": "49c5852e4a478b21475040d8280067f5234c61d0"
+    },
+    {
+      "path": "NSD_vNext/control/V0_2_COMMON_DEPENDENCY_VERIFICATION_PLAN_v0.1.md",
+      "blob_sha": "309f357182e7ce75a28f3c57542e3bf1f94879bc"
+    }
+  ],
+  "packet_prep": [
+    {
+      "path": "NSD_vNext/control/V0_2_DRAFT_B_ALIGNMENT_AUDIT_v0.1.md",
+      "blob_sha": "b0c34a499693fbbe1af73e923bf0d126d0770dd3"
+    },
+    {
+      "path": "NSD_vNext/control/V0_2_EXACT_PACKET_COMPLETENESS_CONTRACT_v0.1.json",
+      "blob_sha": "e97aa76f1ccb10fb624a3bea8cf75bc0edc61222"
+    },
+    {
+      "path": "NSD_vNext/control/V0_2_PACKET_LEVEL_APQ_CHECKLIST_v0.2.md",
+      "blob_sha": "f0cbbacd8cb4e817d43b7ce103e72116cbcd9591"
+    },
+    {
+      "path": "NSD_vNext/control/V0_2_CHECKPOINT_RESUME_TEST_MATRIX_v0.1.md",
+      "blob_sha": "6b34101f5d8486bf94ed41e47b928f0a427b8b65"
+    }
+  ],
+  "evidence_schemas": [
+    {
+      "lane": "N-B1",
+      "path": "NSD_vNext/control/NB1_V0_2_EVIDENCE_SCHEMA_v0.2.json",
+      "blob_sha": "4877ca9d017877af75b298fdea91325394fe846e"
+    },
+    {
+      "lane": "N-B2/N-B3",
+      "path": "NSD_vNext/control/NB23_V0_2_EVIDENCE_SCHEMA_v0.2.json",
+      "blob_sha": "c2745785159050eece40ace18c95afcc0e8baffc"
+    }
+  ],
+  "identity_rules": {
+    "final_case_ids": "NOT_FROZEN",
+    "final_nb1_seeds": "NOT_FROZEN",
+    "final_code_dependencies_environment": "NOT_FROZEN",
+    "stochastic_nb23_extension": "OUT_OF_PRIMARY_SCOPE_UNLESS_SEPARATELY_QUALIFIED",
+    "historical_v01": "P0-D EXPOSED DEVELOPMENT",
+    "current_claim": "prospective post-exposure qualification only; value-uninspected wording requires access-ledger support"
+  },
+  "next_gate": "independent stage-bound re-review of V0_2_CROSS_LANE_INTEGRATION_AUTHORITY_v0.1.md",
+  "mismatch_policy": "After final freeze, any authority/packet/config/code/dependency/environment/RNG/case/schema/artifact identity mismatch refuses resume."
+}
