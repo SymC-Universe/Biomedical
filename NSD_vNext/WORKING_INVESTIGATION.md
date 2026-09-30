@@ -991,3 +991,17 @@ No P1 confirmatory claim or empirical outcome threshold is frozen.
 - **Current durable state:** `SCIENTIFIC_GATE / V0_5_REVIEW_TRANSPORT_TEMPORARILY_BLOCKED_WITH_PARALLEL_PREFREEZE_WORK`.
 - **Next exact action:** continue outcome-blind prefreeze packet/implementation-contract preparation; relaunch isolated v0.5 review after provider reset; adjudicate immediately; only after architecture closure perform exact v0.2 packet-level APQ/freeze and prospective v0.2 implementation.
 - **User intervention required:** `no`.
+
+
+### 2026-09-29 - ADVANCED_CHECKPOINT - v0.5 gate-side preparation continued during re-review transport block
+
+- **Lifecycle stage:** APQ-2 / prefreeze implementation contract.
+- **Entry type:** `ADVANCED_CHECKPOINT / EXTERNAL_BLOCK_WITH_PRODUCTIVE_PARALLEL_WORK`.
+- **Observed:** Round-2 APQ is closed and v0.5 re-review is required, but Undermind re-review launch remains temporarily rate-limited. The external transport block has not been treated as idle time.
+- **Mechanical/pre-freeze work completed:** `FRESH_UNTOUCHED_V0_2_DRAFT_B.json`; `V0_2_GENERATOR_PROVENANCE_VALIDATION_PLAN_v0.1.md`; `V0_2_IMPLEMENTATION_GAP_AUDIT_v0.1.md`; `V0_2_PACKET_LEVEL_APQ_CHECKLIST_v0.2.md`; v0.5-aligned N-B1 and N-B2/N-B3 mechanical evidence schemas; `V0_2_IMPLEMENTATION_CONTRACT_v0.1.md`; and an N-B1 v0.5 isolated re-review handoff.
+- **Freshness consequence:** Draft-B candidate seeds are explicitly not final confirmatory identities. Final case/RNG identities wait for v0.5 architecture closure and exact packet APQ. N-B2/N-B3 primary recoverability is deterministic/noiseless sampled observation; any stochastic extension requires separate prospective APQ.
+- **Implementation consequence:** the v0.1 conveyor is not compatible with v0.2 and cannot be reused as final implementation. Prospective v0.2 implementation must occur only after scientific freeze and must pass the implementation contract tests.
+- **CI verification:** the v0.2 prefreeze contract workflow passed on the v0.5/Draft-B lineage. The long-run conveyor also demonstrated its hard scientific gate by refusing execution because independent packet APQ is not QUALIFIED; this is an expected gate, not a scientific failure.
+- **Current durable state:** `SCIENTIFIC_GATE / V0_5_REREVIEW_TRANSPORT_TEMPORARILY_BLOCKED_WITH_PARALLEL_QUEUE`.
+- **Next exact action:** finish the remaining v0.5 isolated handoff preparation while transport is blocked; relaunch all three isolated v0.5 reviews when available; adjudicate immediately; then proceed to exact packet-level APQ/freeze only if architecture closes.
+- **User intervention required:** `no`.

@@ -1,27 +1,24 @@
 {
   "state":"SCIENTIFIC_GATE",
-  "last_productive_utc":"2026-09-30T03:55:00Z",
-  "last_productive_commit":"1c0336a431c8a2840305f97c843cb914ae5b1710",
+  "last_productive_utc":"2026-09-30T04:00:00Z",
+  "last_productive_commit":"fa9104ac4e49b221a425db6467e66673392bf7ad",
   "active_run_ids":[],
-  "next_exact_action":"Continue outcome-blind prefreeze preparation and retry isolated N-B1 v0.5, N-B2/N-B3 v0.5, and integration re-review after the temporary Undermind reset. Adjudicate immediately. Then perform exact v0.2 packet-level APQ/freeze before implementation or substantive compute.",
+  "next_exact_action":"Complete remaining v0.5 isolated re-review handoff preparation while Undermind transport is temporarily rate-limited; relaunch N-B1, N-B2/N-B3, and integration v0.5 re-reviews when available; adjudicate immediately; proceed to exact v0.2 packet APQ/freeze only if architecture closes.",
   "scientific_gate":{
     "code":"V0_5_REREVIEW_TRANSPORT_TEMPORARILY_BLOCKED_WITH_PARALLEL_QUEUE",
-    "reason":"Round-2 APQ completed, valid objections were incorporated prospectively into v0.5, and re-review is required. Provider transport is temporarily rate-limited; execution authority remains false.",
+    "reason":"Round-2 APQ is complete and v0.5 revisions require independent re-review. Provider transport is temporarily rate-limited, but authorized prefreeze work remains active.",
     "round2_adjudication":"NSD_vNext/control/INDEPENDENT_APQ2_ROUND2_ADJUDICATION_LEDGER_v0.2.md",
     "nb1_authority":"NSD_vNext/docs/BIO_CHI_INTEGRATED_NB1_ADMISSION_ARCHITECTURE_PLAN_v0.5.md",
     "nb23_authority":"NSD_vNext/docs/BIO_CHI_NB2_NB3_REPRESENTATION_SUFFICIENCY_PLAN_v0.5.md",
     "draft_b":"NSD_vNext/control/FRESH_UNTOUCHED_V0_2_DRAFT_B.json",
-    "packet_apq_checklist":"NSD_vNext/control/V0_2_PACKET_LEVEL_APQ_CHECKLIST_v0.2.md"
+    "packet_apq_checklist":"NSD_vNext/control/V0_2_PACKET_LEVEL_APQ_CHECKLIST_v0.2.md",
+    "implementation_contract":"NSD_vNext/control/V0_2_IMPLEMENTATION_CONTRACT_v0.1.md"
   },
-  "external_block":{
-    "provider":"Undermind",
-    "scope":"V0_5_ARCHITECTURE_REREVIEW_LAUNCH_ONLY",
-    "temporary":true
-  },
+  "external_block":{"provider":"Undermind","scope":"V0_5_ARCHITECTURE_REREVIEW_LAUNCH_ONLY","temporary":true},
   "source_of_record":"NSD_vNext/WORKING_INVESTIGATION.md",
   "continuity_contract":"ACTIVE_COMPUTE | ADVANCED_CHECKPOINT | SCIENTIFIC_GATE | EXTERNAL_BLOCK | USER_ACTION_REQUIRED; IDLE forbidden",
   "work_queue":"NSD_vNext/control/WORK_QUEUE_v0.1.json",
   "long_run_ceiling":"NSD_vNext/control/LONG_RUN_CEILING_v0.1.md",
   "user_action_required":null,
-  "current_run_note":"Prefreeze contract CI passed on the v0.5/Draft-B lineage. No fresh v0.2 scientific outcome has been opened. Existing v0.1 conveyor is not compatible with v0.2 and cannot be final implementation."
+  "current_run_note":"Prefreeze contracts pass on the v0.5/Draft-B lineage. The long-run workflow correctly refuses execution at the independent-APQ gate. No fresh v0.2 scientific outcome has been opened."
 }
