@@ -14,14 +14,34 @@
       "next_action": "extract published regression object structure and reproduce age/frequency norm surface"
     },
     "H2_Dortmund": {
-      "state": "ACTIVE_COMPUTE",
+      "state": "PREFLIGHT_COMPLETE_FULL_REPRODUCTION_FROZEN",
       "task_id": "NSD_DORTMUND_NATIVE_PREFLIGHT_V01",
       "executor": "KAGGLE_CPU_A",
       "kernel_ref": "symcuniverse/nsd-dortmund-native-preflight-v0-1",
       "dataset": "ds005385",
       "snapshot": "1.0.3",
       "evidence_class": "DEVELOPMENT_PREFLIGHT_NATIVE_HEALTHY_ONLY",
-      "next_action": "validate access/preprocessing/features against published EO/EC directions, then design full 608-subject native reproduction"
+      "next_action": "validate access/preprocessing/features against published EO/EC directions, then design full 608-subject native reproduction",
+      "preflight": {
+        "kernel_ref": "symcuniverse/nsd-dortmund-native-preflight-v0-1",
+        "expected_files": 48,
+        "passed_files": 48,
+        "failed_files": 0,
+        "interpretation": "development only; no normative inference"
+      },
+      "full_reproduction": {
+        "source_doi": "10.3389/fnagi.2026.1869339",
+        "design": "NSD_vNext/docs/DORTMUND_FULL_HEALTHY_NATIVE_REPRODUCTION_FREEZE_v0.1.md",
+        "chunks": [
+          "20-29",
+          "30-39",
+          "40-49",
+          "50-59",
+          "60-70"
+        ],
+        "state": "READY",
+        "next_action": "execute frozen 20-29 chunk, then remaining chunks with identical code if production preflight passes"
+      }
     }
   },
   "recovery_taxonomy": {
