@@ -4,6 +4,18 @@
   "case_set_digest": "gitblob:baae142aa5d050df0eff3a371eae4ba50357e8bf#nb23",
   "code_manifest_blob": "efdfa8d036f39bc28b2ddfb1ebcfb2e80d6af7c5",
   "completed_artifact_hashes": {
+    "NB23B01-M-IO-B1": {
+      "exact_sha256": "0aa676a82ceca9a5c71c59db160c613fcbc40ef9fab5e79e1120a81682e275a9",
+      "recoverability_sha256": "d19526f897ea74ca59f9e858cd4288b4f5f78ce1ee7ac7223f26541a9840cecf"
+    },
+    "NB23B01-M-IO-B2": {
+      "exact_sha256": "2951ecdfcf1e0528978c8859f14bd16890eb2f8d84540ac104baff71fb8f8e4a",
+      "recoverability_sha256": "57cf9243dd3807e5da3450f216800d6d3bc2df88e503f338d2003d35f15a1973"
+    },
+    "NB23B01-M-IO-C1": {
+      "exact_sha256": "ffaae57323cc1205e7e1be42ea849970effc53b99d4133cfa5e0db777bb8de86",
+      "recoverability_sha256": "37d9ac8e411be751751fe693defaaf3d1f6262971749918718ffeb84169aa261"
+    },
     "NB23B01-M-NORMAL": {
       "exact_sha256": "1a128bd4d2bd4105022afa0c3b6aecdbabeb215d969629cb2a5a99c66b4d875b",
       "recoverability_sha256": "7237db37d852363d15b375e3513ede1cbc262fb9b866e776244a99467ca36a02"
@@ -11,6 +23,10 @@
     "NB23B01-M-RECIP": {
       "exact_sha256": "fbec89b9db9b4dd0be19263b5c4d4130f68092c59e8de132cb610742d9a5d47f",
       "recoverability_sha256": "ef69fb5aae9f188f26d94764b379a95939afe02899786ab584665f1348efdf4a"
+    },
+    "NB23B01-M-SLDIFFSPEC": {
+      "exact_sha256": "3fa21c32ea152ae659857190ba33b44ab608b8ea83cdfbd78dd613884bfe265a",
+      "recoverability_sha256": "743d242c0959262e436f1ed27efdf0c459d2bcace507da8a7c42be5ff0b71392"
     },
     "NB23B01-M-SSBASE": {
       "exact_sha256": "e6bf2755038e8f10e4efc29d0f5cd1a7d2bf33af3ed0ed9cd6cb560ab272abbb",
@@ -25,10 +41,14 @@
     "NB23B01-M-NORMAL",
     "NB23B01-M-RECIP",
     "NB23B01-M-SSBASE",
-    "NB23B01-M-SSNONNORMAL"
+    "NB23B01-M-SSNONNORMAL",
+    "NB23B01-M-SLDIFFSPEC",
+    "NB23B01-M-IO-B1",
+    "NB23B01-M-IO-B2",
+    "NB23B01-M-IO-C1"
   ],
   "completed_work_cursor": {
-    "count": 4
+    "count": 8
   },
   "config_blob": "75519d5036778d61c84fe7188ab687e6734f4d71",
   "dependency_identity": {
@@ -47,10 +67,6 @@
     "runner_label": "ubuntu-24.04"
   },
   "incomplete_case_ids": [
-    "NB23B01-M-SLDIFFSPEC",
-    "NB23B01-M-IO-B1",
-    "NB23B01-M-IO-B2",
-    "NB23B01-M-IO-C1",
     "NB23B01-M-IO-C2",
     "NB23B01-M-SIM-BASE",
     "NB23B01-M-SIM-XFORM",
