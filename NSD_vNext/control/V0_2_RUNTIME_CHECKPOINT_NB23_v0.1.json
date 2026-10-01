@@ -117,7 +117,7 @@
   "incomplete_case_ids": [],
   "lane": "N-B2/N-B3",
   "mismatch_policy": "FROZEN_CONTRACT_VIOLATION",
-  "next_exact_action": "continue next frozen N-B2/N-B3 case",
+  "next_exact_action": "await scientific review after cross-lane evidence closure",
   "output_schema_identity": {
     "blob": "c2745785159050eece40ace18c95afcc0e8baffc",
     "path": "NSD_vNext/control/NB23_V0_2_EVIDENCE_SCHEMA_v0.2.json"
@@ -137,6 +137,6 @@
   },
   "schema": "NSD_LANE_CHECKPOINT_V0_2_FROZEN_V0_2",
   "scientific_values_exposed": true,
-  "state": "ACTIVE_COMPUTE",
+  "state": "SCIENTIFIC_REVIEW_READY",
   "stop_reason": null
 }
