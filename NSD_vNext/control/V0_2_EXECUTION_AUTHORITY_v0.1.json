@@ -1,8 +1,8 @@
 {
   "schema": "NSD_V0_2_EXECUTION_AUTHORITY_V0_1",
-  "status": "AUTHORIZED_FROZEN_EXECUTION",
+  "status": "IDENTITY_REBIND_PREFLIGHT_REQUIRED",
   "scientific_baseline": "NSD-V02-B01-FROZEN",
-  "execution_authorized": true,
+  "execution_authorized": false,
   "scientific_outcomes_opened": false,
   "required_preflight_workflow": "NSD v0.2 Frozen Preflight",
   "required_preflight_conclusion": "success",
@@ -28,5 +28,12 @@
     "artifact_digest": "sha256:f2d426f0f3b1251642b0e1cf9e64564e4c545e6d966384e862ac06c68a2c874d",
     "completed_at": "2026-10-01T07:02:27Z"
   },
-  "authorization_scope": "Only the exact V0_2_FINAL_CODE_IDENTITY_v0.1.json scientific-code/case/dependency identity may produce confirmatory evidence; any mismatch is FROZEN_CONTRACT_VIOLATION."
+  "authorization_scope": "REVOKED_PENDING_REBIND_AND_GREEN_PREFLIGHT",
+  "last_execution_attempt": {
+    "run_id": 36828113912,
+    "conclusion": "failure",
+    "classification": "MECHANICAL_RUNNER_IMPORT_WIRING",
+    "scientific_cases_opened": 0,
+    "repair_commit": "40f9d023f5d023ba0f97c3b77599ac6e14f593ac"
+  }
 }
