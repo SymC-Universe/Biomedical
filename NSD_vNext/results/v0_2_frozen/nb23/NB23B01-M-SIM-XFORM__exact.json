@@ -1,0 +1,132 @@
+{
+  "artifact_identity": {
+    "path": "NSD_vNext/results/v0_2_frozen/nb23/NB23B01-M-SIM-XFORM__exact.json"
+  },
+  "authority_identity": {
+    "scientific_baseline": "NSD-V02-B01-FROZEN"
+  },
+  "case_id": "NB23B01-M-SIM-XFORM",
+  "combined_cross_lane_pass": null,
+  "environment": {
+    "architecture": "x86_64",
+    "github_run_attempt": "1",
+    "github_run_id": "36859007015",
+    "github_sha": "2ac272897f3855c948e88285d2e4d5e70deb75c7",
+    "numpy": "2.4.6",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "python": "3.11.16",
+    "scipy": "1.17.1"
+  },
+  "failure_record": {
+    "message": "interval budget exhausted before frozen peak tolerance",
+    "type": "PeakCertificationError"
+  },
+  "generator_provenance_validation": {
+    "built_from_frozen_registry": true
+  },
+  "numerical_verification": {},
+  "observation_contract": {
+    "layer": "exact_truth"
+  },
+  "operator_identity": {
+    "A": [
+      [
+        0.0,
+        2.285714285714286,
+        0.0,
+        0.0
+      ],
+      [
+        -0.48234374999999996,
+        -0.399,
+        0.36,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.6470588235294117
+      ],
+      [
+        0.06375,
+        0.0,
+        -1.2765178571428573,
+        -0.783
+      ]
+    ],
+    "B": [
+      [
+        0.0
+      ],
+      [
+        0.7
+      ],
+      [
+        0.0
+      ],
+      [
+        0.68
+      ]
+    ],
+    "C": [
+      [
+        0.625,
+        0.0,
+        -0.42857142857142855,
+        0.0
+      ]
+    ],
+    "G": [
+      [
+        0.390625,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        2.0408163265306123,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.5102040816326531,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.384083044982699
+      ]
+    ],
+    "kind": "SIMILARITY_TRANSFORM",
+    "x0": [
+      1.1313708498984762,
+      0.0,
+      0.9899494936611666,
+      0.0
+    ]
+  },
+  "packet_id": "NB23-B01-FROZEN",
+  "representation_contract": {
+    "contrasts": [
+      "C07"
+    ],
+    "equivalence_classes": [
+      "EQ-PHYSICAL-SIM"
+    ]
+  },
+  "representation_ranking": null,
+  "schema": "NSD_NB23_V0_2_EVIDENCE_RECORD_V0_2",
+  "scientific_adjudication": "NOT_PERFORMED_BY_GITHUB",
+  "suite_identity": {
+    "suite": "NB23_EXHAUSTIVE_SUITE_CANDIDATE_v0.1.json"
+  },
+  "target_evidence": {},
+  "target_namespace": "EXACT_SUFFICIENCY",
+  "whole_system_scalar": null
+}
