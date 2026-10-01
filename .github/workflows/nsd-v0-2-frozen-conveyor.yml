@@ -1,0 +1,126 @@
+name: NSD v0.2 Frozen Evidence Conveyor
+
+on:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - "NSD_vNext/control/V0_2_EXECUTION_AUTHORITY_v0.1.json"
+  schedule:
+    - cron: "23 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: nsd-v0-2-frozen-evidence-conveyor
+  cancel-in-progress: false
+
+jobs:
+  conveyor:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 350
+    steps:
+      - name: Check out frozen branch
+        uses: actions/checkout@v4
+        with:
+          ref: nsd-rebuild-gom-v0.8.0
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Gate execution authority
+        id: gate
+        shell: bash
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          from pathlib import Path
+          a=json.loads(Path("NSD_vNext/control/V0_2_EXECUTION_AUTHORITY_v0.1.json").read_text())
+          authorized=(a.get("status")=="AUTHORIZED_FROZEN_EXECUTION" and a.get("execution_authorized") is True)
+          done=False
+          cps=[
+              Path("NSD_vNext/control/V0_2_RUNTIME_CHECKPOINT_NB1_v0.1.json"),
+              Path("NSD_vNext/control/V0_2_RUNTIME_CHECKPOINT_NB23_v0.1.json"),
+          ]
+          if all(p.exists() for p in cps):
+              states=[json.loads(p.read_text()).get("state") for p in cps]
+              done=all(x=="SCIENTIFIC_REVIEW_READY" for x in states)
+          print("authorized="+("true" if authorized else "false"))
+          print("done="+("true" if done else "false"))
+          PY
+
+      - name: Set up exact Python
+        if: steps.gate.outputs.authorized == 'true' && steps.gate.outputs.done != 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.16"
+
+      - name: Install exact frozen runtime
+        if: steps.gate.outputs.authorized == 'true' && steps.gate.outputs.done != 'true'
+        run: |
+          python -m pip install --disable-pip-version-check --upgrade pip
+          python -m pip install numpy==2.4.6 scipy==1.17.1 pytest==9.1.1
+          python -m pip install -e NSD_vNext/engine --no-deps
+          python -m pip check
+
+      - name: Configure checkpoint commits
+        if: steps.gate.outputs.authorized == 'true' && steps.gate.outputs.done != 'true'
+        run: |
+          git config user.name "NSD v0.2 Conveyor"
+          git config user.email "actions@users.noreply.github.com"
+          git checkout nsd-rebuild-gom-v0.8.0
+
+      - name: Run frozen evidence conveyor
+        id: run
+        if: steps.gate.outputs.authorized == 'true' && steps.gate.outputs.done != 'true'
+        shell: bash
+        run: |
+          set -o pipefail
+          python NSD_vNext/engine/tools/run_nsd_v02_frozen_conveyor.py 2>&1 | tee nsd_v02_conveyor.log
+
+      - name: Inspect terminal state
+        id: state
+        if: always() && steps.gate.outputs.authorized == 'true'
+        shell: bash
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          from pathlib import Path
+          cps=[
+              Path("NSD_vNext/control/V0_2_RUNTIME_CHECKPOINT_NB1_v0.1.json"),
+              Path("NSD_vNext/control/V0_2_RUNTIME_CHECKPOINT_NB23_v0.1.json"),
+          ]
+          states=[]
+          for p in cps:
+              states.append(json.loads(p.read_text()).get("state") if p.exists() else "MISSING")
+          done=all(x=="SCIENTIFIC_REVIEW_READY" for x in states)
+          print("done="+("true" if done else "false"))
+          print("states="+";".join(states))
+          PY
+
+      - name: Upload execution snapshot
+        if: always() && steps.gate.outputs.authorized == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-v0-2-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            NSD_vNext/control/V0_2_RUNTIME_CHECKPOINT_NB1_v0.1.json
+            NSD_vNext/control/V0_2_RUNTIME_CHECKPOINT_NB23_v0.1.json
+            NSD_vNext/results/v0_2_frozen/**
+            nsd_v02_conveyor.log
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Dispatch successor from durable checkpoint
+        if: steps.run.outcome == 'success' && steps.state.outputs.done != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow run nsd-v0-2-frozen-conveyor.yml             --repo "${{ github.repository }}"             --ref nsd-rebuild-gom-v0.8.0
+
+      - name: Report scientific-review ceiling
+        if: steps.state.outputs.done == 'true'
+        run: |
+          echo "Frozen v0.2 evidence is complete. Scientific adjudication remains outside GitHub."
