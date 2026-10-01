@@ -1,6 +1,6 @@
 {
   "schema": "NSD_V0_2_EXECUTION_AUTHORITY_V0_1",
-  "status": "IDENTITY_REBIND_PREFLIGHT_REQUIRED",
+  "status": "PREFLIGHT_RETRY_ARMED",
   "scientific_baseline": "NSD-V02-B01-FROZEN",
   "execution_authorized": false,
   "scientific_outcomes_opened": false,
@@ -9,7 +9,7 @@
   "case_order": "NSD_vNext/control/V0_2_EXECUTION_CASE_ORDER_v0.1.json",
   "final_code_identity": {
     "path": "NSD_vNext/control/V0_2_FINAL_CODE_IDENTITY_v0.1.json",
-    "blob": "51793bc65e93a0767210d11910c9466a1a073183"
+    "blob": "0d1df186245bbdf874df3897b6187012b41e466c"
   },
   "authorization_rule": "May become true only after final implementation/code/dependency/environment identity is bound and the exact frozen preflight passes.",
   "terminal_ceiling": "SCIENTIFIC_REVIEW_READY",
@@ -28,7 +28,7 @@
     "artifact_digest": "sha256:f2d426f0f3b1251642b0e1cf9e64564e4c545e6d966384e862ac06c68a2c874d",
     "completed_at": "2026-10-01T07:02:27Z"
   },
-  "authorization_scope": "REVOKED_PENDING_REBIND_AND_GREEN_PREFLIGHT",
+  "authorization_scope": "No result-producing execution until green preflight binds the revised mechanical runner identity.",
   "last_execution_attempt": {
     "run_id": 36828113912,
     "conclusion": "failure",
