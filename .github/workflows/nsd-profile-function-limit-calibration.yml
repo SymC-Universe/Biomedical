@@ -25,6 +25,7 @@ permissions:
 
 jobs:
   preflight:
+    if: ${{ false }} # PROGRAM_WIDE_BILLING_GUARD: no paid GitHub-hosted execution
     runs-on: ubuntu-latest
     timeout-minutes: 45
     strategy:
@@ -63,6 +64,7 @@ jobs:
           if-no-files-found: error
 
   full:
+    if: ${{ false }} # PROGRAM_WIDE_BILLING_GUARD: no paid GitHub-hosted execution
     needs: preflight
     runs-on: ubuntu-latest
     timeout-minutes: 45
