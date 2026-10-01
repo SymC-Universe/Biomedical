@@ -1,0 +1,272 @@
+{
+  "compatibility": {
+    "EQ-A-IO": {
+      "compatible_sets_by_case": {
+        "NB23B01-M-IO-B1": [
+          "NB23B01-M-IO-B1",
+          "NB23B01-M-IO-B2"
+        ],
+        "NB23B01-M-IO-B2": [
+          "NB23B01-M-IO-B1",
+          "NB23B01-M-IO-B2"
+        ],
+        "NB23B01-M-IO-C1": [
+          "NB23B01-M-IO-C1"
+        ],
+        "NB23B01-M-IO-C2": [
+          "NB23B01-M-IO-C2"
+        ]
+      },
+      "hidden_descriptor_accessed": false,
+      "pairwise": {
+        "NB23B01-M-IO-B1|NB23B01-M-IO-B1": {
+          "compatible": true,
+          "relative_error": 0.0
+        },
+        "NB23B01-M-IO-B1|NB23B01-M-IO-B2": {
+          "compatible": true,
+          "relative_error": 0.0
+        },
+        "NB23B01-M-IO-B1|NB23B01-M-IO-C1": {
+          "compatible": false,
+          "relative_error": 0.434154620313438
+        },
+        "NB23B01-M-IO-B1|NB23B01-M-IO-C2": {
+          "compatible": false,
+          "relative_error": 0.9485920535301685
+        },
+        "NB23B01-M-IO-B2|NB23B01-M-IO-B1": {
+          "compatible": true,
+          "relative_error": 0.0
+        },
+        "NB23B01-M-IO-B2|NB23B01-M-IO-B2": {
+          "compatible": true,
+          "relative_error": 0.0
+        },
+        "NB23B01-M-IO-B2|NB23B01-M-IO-C1": {
+          "compatible": false,
+          "relative_error": 0.434154620313438
+        },
+        "NB23B01-M-IO-B2|NB23B01-M-IO-C2": {
+          "compatible": false,
+          "relative_error": 0.9485920535301685
+        },
+        "NB23B01-M-IO-C1|NB23B01-M-IO-B1": {
+          "compatible": false,
+          "relative_error": 0.434154620313438
+        },
+        "NB23B01-M-IO-C1|NB23B01-M-IO-B2": {
+          "compatible": false,
+          "relative_error": 0.434154620313438
+        },
+        "NB23B01-M-IO-C1|NB23B01-M-IO-C1": {
+          "compatible": true,
+          "relative_error": 0.0
+        },
+        "NB23B01-M-IO-C1|NB23B01-M-IO-C2": {
+          "compatible": false,
+          "relative_error": 0.6103531368107548
+        },
+        "NB23B01-M-IO-C2|NB23B01-M-IO-B1": {
+          "compatible": false,
+          "relative_error": 0.9485920535301685
+        },
+        "NB23B01-M-IO-C2|NB23B01-M-IO-B2": {
+          "compatible": false,
+          "relative_error": 0.9485920535301685
+        },
+        "NB23B01-M-IO-C2|NB23B01-M-IO-C1": {
+          "compatible": false,
+          "relative_error": 0.6103531368107548
+        },
+        "NB23B01-M-IO-C2|NB23B01-M-IO-C2": {
+          "compatible": true,
+          "relative_error": 0.0
+        }
+      },
+      "scientific_adjudication": "NOT_PERFORMED_BY_ENGINE"
+    },
+    "EQ-LOCAL-01": {
+      "compatible_sets_by_case": {
+        "NB23B01-M-SLDIFFSPEC": [
+          "NB23B01-M-SLDIFFSPEC"
+        ],
+        "NB23B01-M-SSBASE": [
+          "NB23B01-M-SSBASE"
+        ],
+        "NB23B01-M-SSNONNORMAL": [
+          "NB23B01-M-SSNONNORMAL"
+        ]
+      },
+      "hidden_descriptor_accessed": false,
+      "pairwise": {
+        "NB23B01-M-SLDIFFSPEC|NB23B01-M-SLDIFFSPEC": {
+          "compatible": true,
+          "relative_error": 0.0
+        },
+        "NB23B01-M-SLDIFFSPEC|NB23B01-M-SSBASE": {
+          "compatible": false,
+          "relative_error": 0.5260964936074862
+        },
+        "NB23B01-M-SLDIFFSPEC|NB23B01-M-SSNONNORMAL": {
+          "compatible": false,
+          "relative_error": 0.7506174903394476
+        },
+        "NB23B01-M-SSBASE|NB23B01-M-SLDIFFSPEC": {
+          "compatible": false,
+          "relative_error": 0.5260964936074862
+        },
+        "NB23B01-M-SSBASE|NB23B01-M-SSBASE": {
+          "compatible": true,
+          "relative_error": 0.0
+        },
+        "NB23B01-M-SSBASE|NB23B01-M-SSNONNORMAL": {
+          "compatible": false,
+          "relative_error": 0.879268299280748
+        },
+        "NB23B01-M-SSNONNORMAL|NB23B01-M-SLDIFFSPEC": {
+          "compatible": false,
+          "relative_error": 0.7506174903394476
+        },
+        "NB23B01-M-SSNONNORMAL|NB23B01-M-SSBASE": {
+          "compatible": false,
+          "relative_error": 0.879268299280748
+        },
+        "NB23B01-M-SSNONNORMAL|NB23B01-M-SSNONNORMAL": {
+          "compatible": true,
+          "relative_error": 0.0
+        }
+      },
+      "scientific_adjudication": "NOT_PERFORMED_BY_ENGINE"
+    },
+    "EQ-OBS-ALIAS96": {
+      "compatible_sets_by_case": {
+        "NB23B01-M-ALIAS-8": [
+          "NB23B01-M-ALIAS-8",
+          "NB23B01-M-ALIAS-88"
+        ],
+        "NB23B01-M-ALIAS-88": [
+          "NB23B01-M-ALIAS-8",
+          "NB23B01-M-ALIAS-88"
+        ]
+      },
+      "hidden_descriptor_accessed": false,
+      "pairwise": {
+        "NB23B01-M-ALIAS-88|NB23B01-M-ALIAS-8": {
+          "compatible": true,
+          "relative_error": 1.1372465729509622e-11
+        },
+        "NB23B01-M-ALIAS-88|NB23B01-M-ALIAS-88": {
+          "compatible": true,
+          "relative_error": 0.0
+        },
+        "NB23B01-M-ALIAS-8|NB23B01-M-ALIAS-8": {
+          "compatible": true,
+          "relative_error": 0.0
+        },
+        "NB23B01-M-ALIAS-8|NB23B01-M-ALIAS-88": {
+          "compatible": true,
+          "relative_error": 1.1372465729509622e-11
+        }
+      },
+      "scientific_adjudication": "NOT_PERFORMED_BY_ENGINE"
+    },
+    "EQ-OBS-PARTIAL": {
+      "compatible_sets_by_case": {
+        "NB23B01-M-PART-STABLE": [
+          "NB23B01-M-PART-STABLE",
+          "NB23B01-M-PART-UNSTABLE"
+        ],
+        "NB23B01-M-PART-UNSTABLE": [
+          "NB23B01-M-PART-STABLE",
+          "NB23B01-M-PART-UNSTABLE"
+        ]
+      },
+      "hidden_descriptor_accessed": false,
+      "pairwise": {
+        "NB23B01-M-PART-STABLE|NB23B01-M-PART-STABLE": {
+          "compatible": true,
+          "relative_error": 0.0
+        },
+        "NB23B01-M-PART-STABLE|NB23B01-M-PART-UNSTABLE": {
+          "compatible": true,
+          "relative_error": 0.0
+        },
+        "NB23B01-M-PART-UNSTABLE|NB23B01-M-PART-STABLE": {
+          "compatible": true,
+          "relative_error": 0.0
+        },
+        "NB23B01-M-PART-UNSTABLE|NB23B01-M-PART-UNSTABLE": {
+          "compatible": true,
+          "relative_error": 0.0
+        }
+      },
+      "scientific_adjudication": "NOT_PERFORMED_BY_ENGINE"
+    },
+    "EQ-PHYSICAL-SIM": {
+      "compatible_sets_by_case": {
+        "NB23B01-M-SIM-BASE": [
+          "NB23B01-M-SIM-BASE",
+          "NB23B01-M-SIM-XFORM"
+        ],
+        "NB23B01-M-SIM-XFORM": [
+          "NB23B01-M-SIM-BASE",
+          "NB23B01-M-SIM-XFORM"
+        ]
+      },
+      "hidden_descriptor_accessed": false,
+      "pairwise": {
+        "NB23B01-M-SIM-BASE|NB23B01-M-SIM-BASE": {
+          "compatible": true,
+          "relative_error": 0.0
+        },
+        "NB23B01-M-SIM-BASE|NB23B01-M-SIM-XFORM": {
+          "compatible": true,
+          "relative_error": 1.787844216906644e-15
+        },
+        "NB23B01-M-SIM-XFORM|NB23B01-M-SIM-BASE": {
+          "compatible": true,
+          "relative_error": 1.787844216906644e-15
+        },
+        "NB23B01-M-SIM-XFORM|NB23B01-M-SIM-XFORM": {
+          "compatible": true,
+          "relative_error": 0.0
+        }
+      },
+      "scientific_adjudication": "NOT_PERFORMED_BY_ENGINE"
+    },
+    "EQ-SPECTRUM-01": {
+      "compatible_sets_by_case": {
+        "NB23B01-M-SSBASE": [
+          "NB23B01-M-SSBASE"
+        ],
+        "NB23B01-M-SSNONNORMAL": [
+          "NB23B01-M-SSNONNORMAL"
+        ]
+      },
+      "hidden_descriptor_accessed": false,
+      "pairwise": {
+        "NB23B01-M-SSBASE|NB23B01-M-SSBASE": {
+          "compatible": true,
+          "relative_error": 0.0
+        },
+        "NB23B01-M-SSBASE|NB23B01-M-SSNONNORMAL": {
+          "compatible": false,
+          "relative_error": 0.879268299280748
+        },
+        "NB23B01-M-SSNONNORMAL|NB23B01-M-SSBASE": {
+          "compatible": false,
+          "relative_error": 0.879268299280748
+        },
+        "NB23B01-M-SSNONNORMAL|NB23B01-M-SSNONNORMAL": {
+          "compatible": true,
+          "relative_error": 0.0
+        }
+      },
+      "scientific_adjudication": "NOT_PERFORMED_BY_ENGINE"
+    }
+  },
+  "hidden_descriptor_accessed": false,
+  "schema": "NSD_NB23_V0_2_PAIRWISE_RECOVERABILITY_EVIDENCE_V0_1",
+  "scientific_adjudication": "NOT_PERFORMED_BY_GITHUB"
+}

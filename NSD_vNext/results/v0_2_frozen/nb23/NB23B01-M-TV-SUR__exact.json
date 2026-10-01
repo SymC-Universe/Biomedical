@@ -1,0 +1,102 @@
+{
+  "artifact_identity": {
+    "path": "NSD_vNext/results/v0_2_frozen/nb23/NB23B01-M-TV-SUR__exact.json"
+  },
+  "authority_identity": {
+    "scientific_baseline": "NSD-V02-B01-FROZEN"
+  },
+  "case_id": "NB23B01-M-TV-SUR",
+  "combined_cross_lane_pass": null,
+  "environment": {
+    "architecture": "x86_64",
+    "github_run_attempt": "1",
+    "github_run_id": "36859007015",
+    "github_sha": "2ac272897f3855c948e88285d2e4d5e70deb75c7",
+    "numpy": "2.4.6",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "python": "3.11.16",
+    "scipy": "1.17.1"
+  },
+  "failure_record": {
+    "message": "interval budget exhausted before frozen peak tolerance",
+    "type": "PeakCertificationError"
+  },
+  "generator_provenance_validation": {
+    "built_from_frozen_registry": true
+  },
+  "numerical_verification": {},
+  "observation_contract": {
+    "layer": "exact_truth"
+  },
+  "operator_identity": {
+    "A": [
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        -1.1025,
+        -0.42000000000000004,
+        0.75,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        0.025,
+        0.0,
+        -1.44,
+        -0.552
+      ]
+    ],
+    "G": [
+      [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "kind": "STATIONARY_SURROGATE"
+  },
+  "packet_id": "NB23-B01-FROZEN",
+  "representation_contract": {
+    "contrasts": [
+      "C09"
+    ],
+    "equivalence_classes": []
+  },
+  "representation_ranking": null,
+  "schema": "NSD_NB23_V0_2_EVIDENCE_RECORD_V0_2",
+  "scientific_adjudication": "NOT_PERFORMED_BY_GITHUB",
+  "suite_identity": {
+    "suite": "NB23_EXHAUSTIVE_SUITE_CANDIDATE_v0.1.json"
+  },
+  "target_evidence": {},
+  "target_namespace": "EXACT_SUFFICIENCY",
+  "whole_system_scalar": null
+}

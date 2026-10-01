@@ -28,6 +28,10 @@
       "exact_sha256": "173f437fbda03ad5de54ba3ac58e7ff821c19f77f0180acfff2d86985c8b24dd",
       "recoverability_sha256": "ef556fbab13a55e23cd69dc989708bb2c08602275826a6b0f82384014c26730e"
     },
+    "NB23B01-M-MISSPEC": {
+      "exact_sha256": "f77fadcf814197bf05b92e97619d04e29a956c6dcafc27eced5d970072145981",
+      "recoverability_sha256": "092aaeb28f362a2386ec7e6b0d484a420f5ac8d06a52cd49fcda2821e1c13172"
+    },
     "NB23B01-M-NORMAL": {
       "exact_sha256": "1a128bd4d2bd4105022afa0c3b6aecdbabeb215d969629cb2a5a99c66b4d875b",
       "recoverability_sha256": "7237db37d852363d15b375e3513ede1cbc262fb9b866e776244a99467ca36a02"
@@ -66,6 +70,9 @@
     },
     "NB23B01-M-TV": {
       "exact_sha256": "8ea1e057fcfa68ce68ce71bfb3e1c37fd4ef82916921553ca70b1b771b3e8800"
+    },
+    "NB23B01-M-TV-SUR": {
+      "exact_sha256": "54fb325212b9e869870196b75fa17dea1f29bfb5de13d34b1bc8d28df079acb2"
     }
   },
   "completed_case_ids": [
@@ -84,10 +91,12 @@
     "NB23B01-M-PART-UNSTABLE",
     "NB23B01-M-ALIAS-8",
     "NB23B01-M-ALIAS-88",
-    "NB23B01-M-TV"
+    "NB23B01-M-TV",
+    "NB23B01-M-TV-SUR",
+    "NB23B01-M-MISSPEC"
   ],
   "completed_work_cursor": {
-    "count": 16
+    "count": 18
   },
   "config_blob": "75519d5036778d61c84fe7188ab687e6734f4d71",
   "dependency_identity": {
@@ -105,10 +114,7 @@
     "os_contract": "Ubuntu 24.04 GitHub-hosted",
     "runner_label": "ubuntu-24.04"
   },
-  "incomplete_case_ids": [
-    "NB23B01-M-TV-SUR",
-    "NB23B01-M-MISSPEC"
-  ],
+  "incomplete_case_ids": [],
   "lane": "N-B2/N-B3",
   "mismatch_policy": "FROZEN_CONTRACT_VIOLATION",
   "next_exact_action": "continue next frozen N-B2/N-B3 case",
