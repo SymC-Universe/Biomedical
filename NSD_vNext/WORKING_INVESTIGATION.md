@@ -1042,3 +1042,17 @@ Architecture review closed after the independent Integration Revision v0.2 re-re
 ### 2026-09-30 - ADVANCED_CHECKPOINT - post-freeze implementation validation
 
 CD-05 independent Profile-I reproduction passed in Engine Contracts run 36720502525. N-B2/N-B3 deterministic observation and raw target mechanics passed Engine Contracts run 36720989191. CD-06 environment verification remains green. Scientific freeze is unchanged, execution authority remains false, and no confirmatory outcomes were opened. Work queue advanced to WORK_QUEUE_v0.4.json. Next: harden refined N-B1 nuisance/bound evidence retention; complete certified N-B2/N-B3 global-peak and switched-target mechanics; then bind final code/dependency/environment identities and run mechanical preflight.
+
+### 2026-10-01 - CONTINUITY_FAILURE / MECHANICAL_RECOVERY - post-freeze implementation resumed
+
+- **Lifecycle Stage:** post-freeze implementation validation / pre-execution.
+- **Entry type:** `CONTINUITY_FAILURE / ACTIVE_COMPUTE / MECHANICAL_RECOVERY`.
+- **Observed failure:** the authoritative NSD branch did not advance after commit `67ca76cd92fd3a85b874aa212f63331900a0a64e` at 2026-09-30T17:26:05Z despite unfinished already-authorized post-freeze implementation tasks. At recovery this represented approximately 13 hours of dead time.
+- **Root cause:** the scientific-side `NSD Continuous Gate Controller` was disabled after its 2026-09-30T22:16Z cycle, leaving only the independent continuity alarm active. The alarm could detect stagnation but was not authorized to execute the frozen implementation delta. This recreated the monitor-without-executor failure mode already prohibited by the Continuity Hardening Addendum.
+- **Scientific state during stall:** no confirmatory v0.2 outcome was opened. `NSD-V02-B01-FROZEN` remained unchanged; N-B1 and N-B2/N-B3 packet APQ remained closed; execution authority remained false.
+- **Mechanical recovery:** the already-frozen N-B2/N-B3 switched-versus-surrogate certificate was persisted in `v02_nb23_peak.py`; an independent non-confirmatory dense reference module and fail-closed contract tests were added. No target, tolerance, case, metric, switching law, or scientific interpretation changed.
+- **Active verification:** `NSD Engine Contracts` run `36826316308` is the authoritative current mechanical validation run for the recovered implementation.
+- **Current durable state:** `ACTIVE_COMPUTE`.
+- **Next exact action:** if engine contracts pass, close `PF-NB23-I01`, bind final scientific-code/dependency/environment identity, run mechanical preflight, then authorize the frozen long conveyor only if all preflight gates pass. If contracts fail, classify root cause and repair only mechanically without changing frozen science.
+- **User intervention required:** `no`.
+
