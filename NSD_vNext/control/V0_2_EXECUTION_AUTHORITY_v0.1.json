@@ -1,6 +1,6 @@
 {
   "schema": "NSD_V0_2_EXECUTION_AUTHORITY_V0_1",
-  "status": "PREFLIGHT_READY",
+  "status": "PREFLIGHT_RETRY_ARMED",
   "scientific_baseline": "NSD-V02-B01-FROZEN",
   "execution_authorized": false,
   "scientific_outcomes_opened": false,
@@ -13,5 +13,11 @@
   },
   "authorization_rule": "May become true only after final implementation/code/dependency/environment identity is bound and the exact frozen preflight passes.",
   "terminal_ceiling": "SCIENTIFIC_REVIEW_READY",
-  "preflight_workflow_path": ".github/workflows/nsd-v0-2-frozen-preflight.yml"
+  "preflight_workflow_path": ".github/workflows/nsd-v0-2-frozen-preflight.yml",
+  "last_preflight": {
+    "run_id": 36827530820,
+    "conclusion": "failure",
+    "classification": "MECHANICAL_TEST_FIXTURE_FAILURE",
+    "repaired_commit": "d960887faa754f7ace6f1d842516115b6ddb1fca"
+  }
 }
