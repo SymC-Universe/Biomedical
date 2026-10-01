@@ -1106,3 +1106,14 @@ CD-05 independent Profile-I reproduction passed in Engine Contracts run 36720502
 - **Next exact action:** follow run `36859007015` only, checkpoint/resume without duplication, and stop GitHub at `SCIENTIFIC_REVIEW_READY`.
 - **User intervention required:** `no`.
 
+
+
+### 2026-10-01 - ACTIVE_COMPUTE - N-B1 durable checkpoint 90/608
+
+- **Frozen baseline:** `NSD-V02-B01-FROZEN` unchanged.
+- **Authoritative run:** `36898609973` remains `in_progress`; no duplicate conveyor was launched.
+- **N-B1 advancement:** durable runtime checkpoint now contains **90/608** frozen cases, with **518** remaining; runtime checkpoint blob `358a5a3bd3cf776e81a17c64cce7ffad1901c324`, branch checkpoint commit `80571f59bfa6716a9a55e3dde61c971ae6b0754c`.
+- **N-B2/N-B3:** remains **18/18** at `SCIENTIFIC_REVIEW_READY`.
+- **Scientific authority:** GitHub remains execution-only. No admission/refusal, representation ranking, real-EEG licensing, threshold change, or claim promotion was performed.
+- **Next exact action:** follow the same-chain active conveyor only; if it stops before N-B1 reaches `SCIENTIFIC_REVIEW_READY`, resume only missing cases from the newest valid checkpoint.
+- **Cycle state:** `ACTIVE_COMPUTE`.
