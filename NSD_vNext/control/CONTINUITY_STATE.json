@@ -1,14 +1,14 @@
 {
   "state": "ACTIVE_COMPUTE",
-  "last_productive_utc": "2026-10-01T13:08:00Z",
-  "last_productive_commit": "4726c2f3fd9bc94279ef16cd536e04ef0f053af1",
+  "last_productive_utc": "2026-10-01T17:52:12Z",
+  "last_productive_commit": "3975c8c3b0e29efe4631134eb40043faac62e6c1",
   "active_run_ids": [
-    36859007015
+    36898609973
   ],
-  "next_exact_action": "Follow frozen conveyor run 36859007015 only. N-B2/N-B3 is complete at SCIENTIFIC_REVIEW_READY with 18/18 cases. N-B1 remains active from its newest durable checkpoint; do not duplicate. If the run terminates early, resume only missing same-chain N-B1 cases.",
+  "next_exact_action": "Follow same-chain frozen conveyor successor 36898609973 only. N-B2/N-B3 is complete at SCIENTIFIC_REVIEW_READY with 18/18 cases. N-B1 is durably checkpointed at 62/608 with 546 remaining. Do not duplicate; if the run terminates early, resume only missing same-chain N-B1 cases from the newest valid checkpoint.",
   "scientific_gate": {
     "code": "FROZEN_V0_2_NB23_REVIEW_READY_NB1_ACTIVE",
-    "reason": "Authoritative run 36859007015 remains active. N-B2/N-B3 reached its frozen review ceiling with 18/18 cases durably checkpointed; N-B1 remains active on the same frozen identity."
+    "reason": "Authoritative successor run 36898609973 is in progress. Predecessor 36859007015 completed the execution, snapshot, and successor-dispatch steps successfully before workflow concurrency marked it cancelled. N-B2/N-B3 is 18/18 at the review ceiling; N-B1 is 62/608 on the same frozen identity."
   },
   "external_block": null,
   "source_of_record": "NSD_vNext/WORKING_INVESTIGATION.md",
@@ -16,5 +16,5 @@
   "work_queue": "NSD_vNext/control/WORK_QUEUE_v0.8.json",
   "long_run_ceiling": "NSD_vNext/control/LONG_RUN_CEILING_v0.1.md",
   "user_action_required": null,
-  "current_run_note": "Authoritative run 36859007015 active. N-B2/N-B3 18/18 at SCIENTIFIC_REVIEW_READY; N-B1 8 completed with 600 remaining at this controller snapshot."
+  "current_run_note": "Authoritative successor 36898609973 active. N-B1 durable checkpoint 62/608; 546 remaining. N-B2/N-B3 18/18 at SCIENTIFIC_REVIEW_READY. No scientific interpretation has been performed in GitHub."
 }
