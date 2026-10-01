@@ -12,6 +12,22 @@ class _Fit:
         "g":0.1,
     }
     negative_log_likelihood=10.0
+    success=True
+    bic=25.0
+    raw_parameters=(0.1,0.2,0.3,0.4)
+    attempted_start_count=3
+    converged_start_count=3
+    optimizer_message="ok"
+    legacy_attempted_start_count=2
+    legacy_converged_start_count=2
+    legacy_best_negative_log_likelihood=10.1
+    legacy_best_success=True
+    legacy_best_raw_parameters=(0.1,0.2,0.3,0.5)
+    winning_start_origin="fixture"
+    recurrence_seed_status="SEED_READY"
+    recurrence_seed_ready=True
+    recurrence_seed_start_nll=10.2
+    recurrence_seed_condition_number=2.0
 
 
 def test_optimize_chi_retains_every_start_and_bound_evidence(monkeypatch):
