@@ -44,7 +44,7 @@
         "active_chunk": {
           "age_group": "20-29",
           "kernel_ref": "symcuniverse/nsd-dortmund-native-20-29-v01",
-          "kernel_version": 2,
+          "kernel_version": 3,
           "runtime_pins": {
             "python": "Kaggle Python 3.12",
             "numpy": "2.4.6",
@@ -52,7 +52,8 @@
             "pandas": "2.3.3",
             "mne": "1.13.2"
           },
-          "status": "RUNNING"
+          "status": "RUNNING",
+          "core_commit": "3c91eaaf1097a4b4692bf3206dcd756c515d94c7"
         },
         "preserved_failures": [
           {
@@ -63,6 +64,15 @@
             "scientific_data_opened": false,
             "scientific_method_changed": false,
             "recovery": "runtime pins only changed to NumPy 2.4.6 / SciPy 1.17.1 / pandas 2.3.3 / MNE 1.13.2"
+          },
+          {
+            "kernel_ref": "symcuniverse/nsd-dortmund-native-20-29-v01",
+            "kernel_version": 2,
+            "classification": "MECHANICAL_KAGGLE_PACKAGING_FAILURE",
+            "root_cause": "Kaggle executed the selected code_file as /kaggle/src/script.py and the sibling frozen extractor was not available at the wrapper path",
+            "scientific_data_opened": false,
+            "scientific_method_changed": false,
+            "recovery": "runner now downloads the exact frozen extractor at commit 3c91eaaf1097a4b4692bf3206dcd756c515d94c7 and executes it inside an isolated venv"
           }
         ]
       }
