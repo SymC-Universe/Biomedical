@@ -1,8 +1,8 @@
 {
   "schema": "NSD_V0_2_EXECUTION_AUTHORITY_V0_1",
-  "status": "PREFLIGHT_RETRY_ARMED",
+  "status": "AUTHORIZED_FROZEN_EXECUTION",
   "scientific_baseline": "NSD-V02-B01-FROZEN",
-  "execution_authorized": false,
+  "execution_authorized": true,
   "scientific_outcomes_opened": false,
   "required_preflight_workflow": "NSD v0.2 Frozen Preflight",
   "required_preflight_conclusion": "success",
@@ -22,13 +22,12 @@
   },
   "authorized_scientific_baseline": "NSD-V02-B01-FROZEN",
   "preflight": {
-    "run_id": 36828593920,
+    "run_id": 36829526592,
     "conclusion": "success",
-    "artifact_id": 11146146542,
-    "artifact_digest": "sha256:b4948ca46e78019bb87e6a2a974cff148c075e1d30eb16dcdc551241cf68db91",
-    "completed_at": "2026-10-01T07:09:44Z"
+    "head_sha": "bc8fe36b364b4c2976280742373d1b05e067fceb",
+    "completed_at": "2026-10-01T07:19:50Z"
   },
-  "authorization_scope": "No result-producing execution until exact preflight passes the hardened checkpoint/resume runner identity.",
+  "authorization_scope": "Authorize result-producing execution only for NSD-V02-B01-FROZEN under final runner blob 435b082f64759231c9d49630a7051f5b5223af4c and exact successful preflight 36829526592.",
   "last_execution_attempt": {
     "run_id": 36828113912,
     "conclusion": "failure",
@@ -47,5 +46,17 @@
     "sequence": 2,
     "execution_authorized": false,
     "purpose": "Evict stale pre-hardening checkout before any accepted frozen checkpoint."
+  },
+  "preauthorization_recovery": {
+    "reason": "CONTINUITY_FAILURE recovery after stale pre-hardening run was evicted but repaired identity was not reauthorized.",
+    "stale_run_id": 36828786570,
+    "stale_run_conclusion": "failure",
+    "cancellation_only_run_id": 36829526577,
+    "cancellation_only_note": "Gate-only success; scientific execution steps were skipped because authority was false.",
+    "exact_repaired_preflight_run_id": 36829526592,
+    "exact_repaired_preflight_conclusion": "success",
+    "repaired_runner_blob": "435b082f64759231c9d49630a7051f5b5223af4c",
+    "scientific_change": false,
+    "baseline_unchanged": "NSD-V02-B01-FROZEN"
   }
 }
