@@ -41,5 +41,10 @@
     "scientific_change": false,
     "cases_targets_tolerances_unchanged": true,
     "new_runner_blob": "435b082f64759231c9d49630a7051f5b5223af4c"
+  },
+  "superseded_conveyor_cancellation_trigger": {
+    "stale_run_id": 36828786570,
+    "reason": "Cancel old checkout before any checkpoint from superseded runner identity can be accepted.",
+    "execution_authorized": false
   }
 }
