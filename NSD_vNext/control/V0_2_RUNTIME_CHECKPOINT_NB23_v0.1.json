@@ -1,0 +1,89 @@
+{
+  "active_run_id": 36859007015,
+  "authority_plan_blob": "15056e7356082d8f16104b8cfb781b7867c2f417",
+  "case_set_digest": "gitblob:baae142aa5d050df0eff3a371eae4ba50357e8bf#nb23",
+  "code_manifest_blob": "efdfa8d036f39bc28b2ddfb1ebcfb2e80d6af7c5",
+  "completed_artifact_hashes": {
+    "NB23B01-M-NORMAL": {
+      "exact_sha256": "1a128bd4d2bd4105022afa0c3b6aecdbabeb215d969629cb2a5a99c66b4d875b",
+      "recoverability_sha256": "7237db37d852363d15b375e3513ede1cbc262fb9b866e776244a99467ca36a02"
+    },
+    "NB23B01-M-RECIP": {
+      "exact_sha256": "fbec89b9db9b4dd0be19263b5c4d4130f68092c59e8de132cb610742d9a5d47f",
+      "recoverability_sha256": "ef69fb5aae9f188f26d94764b379a95939afe02899786ab584665f1348efdf4a"
+    },
+    "NB23B01-M-SSBASE": {
+      "exact_sha256": "e6bf2755038e8f10e4efc29d0f5cd1a7d2bf33af3ed0ed9cd6cb560ab272abbb",
+      "recoverability_sha256": "b66a4bed7b758108e8d8343ce2120c1403882c2603abd9bf16341f1395d25e98"
+    },
+    "NB23B01-M-SSNONNORMAL": {
+      "exact_sha256": "8bdc26a6d2b6c7491029531056aa64e135eba3f9936d90c7495138a20c8ca37f",
+      "recoverability_sha256": "370d895d14c2d1b4444ed385e9ec4df21959da557d5bbc2a1cb831d4258c2e4f"
+    }
+  },
+  "completed_case_ids": [
+    "NB23B01-M-NORMAL",
+    "NB23B01-M-RECIP",
+    "NB23B01-M-SSBASE",
+    "NB23B01-M-SSNONNORMAL"
+  ],
+  "completed_work_cursor": {
+    "count": 4
+  },
+  "config_blob": "75519d5036778d61c84fe7188ab687e6734f4d71",
+  "dependency_identity": {
+    "lockfile_digest": "gitblob:0c5fb6759e3d0350ea3dfb534562ac43f34cbf2d",
+    "lockfile_path": "NSD_vNext/engine/pyproject.toml",
+    "numpy": "2.4.6",
+    "pytest": "9.1.1",
+    "python": "3.11.16",
+    "scipy": "1.17.1"
+  },
+  "environment_identity": {
+    "actual_image_metadata_must_be_recorded_by_preflight_and_execution": true,
+    "architecture": "x86_64",
+    "container_digest": "NONE_NO_CONTAINER",
+    "os_contract": "Ubuntu 24.04 GitHub-hosted",
+    "runner_label": "ubuntu-24.04"
+  },
+  "incomplete_case_ids": [
+    "NB23B01-M-SLDIFFSPEC",
+    "NB23B01-M-IO-B1",
+    "NB23B01-M-IO-B2",
+    "NB23B01-M-IO-C1",
+    "NB23B01-M-IO-C2",
+    "NB23B01-M-SIM-BASE",
+    "NB23B01-M-SIM-XFORM",
+    "NB23B01-M-PART-STABLE",
+    "NB23B01-M-PART-UNSTABLE",
+    "NB23B01-M-ALIAS-8",
+    "NB23B01-M-ALIAS-88",
+    "NB23B01-M-TV",
+    "NB23B01-M-TV-SUR",
+    "NB23B01-M-MISSPEC"
+  ],
+  "lane": "N-B2/N-B3",
+  "mismatch_policy": "FROZEN_CONTRACT_VIOLATION",
+  "next_exact_action": "continue next frozen N-B2/N-B3 case",
+  "output_schema_identity": {
+    "blob": "c2745785159050eece40ace18c95afcc0e8baffc",
+    "path": "NSD_vNext/control/NB23_V0_2_EVIDENCE_SCHEMA_v0.2.json"
+  },
+  "packet_blob": "854fe6d64069c76cebaee60998163c91ea91dfa9",
+  "parent_identity_manifest": {
+    "blob": "efdfa8d036f39bc28b2ddfb1ebcfb2e80d6af7c5",
+    "path": "NSD_vNext/control/V0_2_FINAL_CODE_IDENTITY_v0.1.json"
+  },
+  "queue_order_identity": {
+    "case_order_digest": "gitblob:baae142aa5d050df0eff3a371eae4ba50357e8bf",
+    "queue_blob": "baae142aa5d050df0eff3a371eae4ba50357e8bf",
+    "queue_path": "NSD_vNext/control/V0_2_EXECUTION_CASE_ORDER_v0.1.json"
+  },
+  "rng_identity": {
+    "primary": "NOT_APPLICABLE_DETERMINISTIC_NOISELESS"
+  },
+  "schema": "NSD_LANE_CHECKPOINT_V0_2_FROZEN_V0_2",
+  "scientific_values_exposed": true,
+  "state": "ACTIVE_COMPUTE",
+  "stop_reason": null
+}
