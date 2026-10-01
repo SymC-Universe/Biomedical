@@ -1,0 +1,23 @@
+{
+  "schema": "NSD_LANE_CHECKPOINT_NB1_V0_21",
+  "lane": "N-B1",
+  "state": "ACTIVE_COMPUTE",
+  "architecture_review_status": "CLOSED",
+  "packet_review_status": "CLOSED",
+  "cross_lane_gate": "CLOSED",
+  "final_identity_freeze": true,
+  "scientific_values_exposed": true,
+  "execution_authorized": true,
+  "completed_case_count": 90,
+  "incomplete_case_count": 518,
+  "scientific_freeze": "NSD_vNext/control/V0_2_FINAL_SCIENTIFIC_FREEZE_v0.1.json",
+  "final_code_identity": "NSD_vNext/control/V0_2_FINAL_CODE_IDENTITY_v0.1.json",
+  "runtime_checkpoint": "NSD_vNext/control/V0_2_RUNTIME_CHECKPOINT_NB1_v0.1.json",
+  "runtime_checkpoint_blob": "358a5a3bd3cf776e81a17c64cce7ffad1901c324",
+  "runtime_checkpoint_head_commit": "80571f59bfa6716a9a55e3dde61c971ae6b0754c",
+  "active_run_id": 36898609973,
+  "preflight_run": 36829526592,
+  "implementation_status": "FROZEN_EXECUTION_ACTIVE_DURABLE_RUNTIME_CHECKPOINT",
+  "next_exact_action": "Follow authoritative same-chain run 36898609973 only. N-B1 is durably checkpointed at 90/608 with 518 remaining. Do not duplicate; if the run terminates before SCIENTIFIC_REVIEW_READY, resume only missing same-chain N-B1 cases from the newest valid runtime checkpoint.",
+  "stop_reason": null
+}
