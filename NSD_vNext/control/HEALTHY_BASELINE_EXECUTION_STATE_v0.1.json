@@ -6,12 +6,40 @@
   "independence_rule": "No NSD-derived value defines healthy baseline.",
   "lanes": {
     "H1_HarMN": {
-      "state": "ACTIVE_COMPUTE",
+      "state": "ADVANCED_CHECKPOINT",
       "task_id": "NSD_HARMN_LOG_NORM_INTROSPECT_V02",
       "executor": "KAGGLE_CPU_A",
       "kernel_ref": "symcuniverse/nsd-harmn-baseline-introspect-v0-2",
       "source_sha256": "dba25f3172b04fb5627083274e8871ef2058bc872217c617fd7cd3bd0859b484",
-      "next_action": "extract published regression object structure and reproduce age/frequency norm surface"
+      "next_action": "Use a validated MATLAB/native scoring route or validated decoder before evaluating exact surfaces; model anatomy is otherwise verified.",
+      "checksum_pass": true,
+      "model_kind": "MATLAB_V73_HDF5",
+      "node_count": 6443,
+      "model_structure": {
+        "level_1": {
+          "condition": "global",
+          "mean_factors": [
+            "freq",
+            "age"
+          ],
+          "variance_factors": [
+            "freq",
+            "age"
+          ],
+          "responses": 18
+        },
+        "level_2": {
+          "condition": "study",
+          "study_levels": 14,
+          "mean_factors": [
+            "freq"
+          ],
+          "variance_factors": [
+            "freq"
+          ]
+        }
+      },
+      "constraint": "MATLAB griddedInterpolant serialization is opaque in the HDF5 object; do not invent a Python decoder."
     },
     "H2_Dortmund": {
       "state": "PREFLIGHT_COMPLETE_FULL_REPRODUCTION_FROZEN",
@@ -40,7 +68,7 @@
           "60-70"
         ],
         "state": "ACTIVE_COMPUTE",
-        "next_action": "execute frozen 20-29 chunk, then remaining chunks with identical code if production preflight passes",
+        "next_action": "When all five age chunks are complete, merge/QC first. Fit the frozen mixed model only after coverage agrees with the source reproduction design.",
         "active_chunk": {
           "age_group": "20-29",
           "kernel_ref": "symcuniverse/nsd-dortmund-native-20-29-v01",
@@ -84,8 +112,86 @@
             "scientific_method_changed": false,
             "recovery": "use isolated pip --target dependency directory and frozen core script identity"
           }
-        ]
+        ],
+        "chunks_state": {
+          "20-29": {
+            "kernel_ref": "symcuniverse/nsd-dortmund-native-20-29-v01",
+            "status": "RUNNING"
+          },
+          "30-39": {
+            "kernel_ref": "symcuniverse/nsd-dortmund-native-30-39-v01",
+            "status": "COMPLETE",
+            "subjects": 111,
+            "recordings_attempted": 576,
+            "recordings_pass": 573,
+            "rejected_lt5": 3,
+            "other_failure": 0,
+            "csv_sha256": "00C9BF8B8E4621C9A8CFB24041D9C0BF8AAF1AF65D310032F65128BBF135F822"
+          },
+          "40-49": {
+            "kernel_ref": "symcuniverse/nsd-dortmund-native-40-49-v01",
+            "status": "RUNNING"
+          },
+          "50-59": {
+            "kernel_ref": "symcuniverse/nsd-dortmund-native-50-59-v01",
+            "status": "COMPLETE",
+            "subjects": 140,
+            "recordings_attempted": 764,
+            "recordings_pass": 754,
+            "rejected_lt5": 10,
+            "other_failure": 0,
+            "csv_sha256": "26557925B98B14C75E52F7DC3DF4FA7C921DCD059F753F1C1851168386B6D5D7"
+          },
+          "60-70": {
+            "kernel_ref": "symcuniverse/nsd-dortmund-native-60-70-v01",
+            "status": "RUNNING"
+          }
+        },
+        "merge_runner": "NSD_vNext/healthy_baseline/merge_dortmund_source_native_v0_1.py",
+        "merge_runner_commit": "ce9281066d2942c4e8e2d2d56be52ada2275f5b4"
       }
+    },
+    "H3_Dortmund_Clean_Motion": {
+      "state": "ACTIVE_COMPUTE",
+      "independence_rule": "external healthy native EEG only; no NSD variable",
+      "dataset": "ds005385",
+      "clean_session1_subjects": 517,
+      "acquisition_quality_rule": "session1=yes AND late_ses1=0",
+      "pilot": {
+        "kernel_ref": "symcuniverse/nsd-dortmund-native-motion-pilot-v0-1",
+        "status": "COMPLETE",
+        "subjects": 40,
+        "rows": 160,
+        "failures": 0,
+        "disposition": "PILOT_QUALIFICATION_PASS"
+      },
+      "production": {
+        "b0": {
+          "kernel_ref": "symcuniverse/nsd-dortmund-native-motion-prod-v0-1-b0",
+          "status": "RUNNING",
+          "subjects": 120
+        },
+        "b1": {
+          "kernel_ref": "symcuniverse/nsd-dortmund-native-motion-prod-v0-1-b1",
+          "status": "RUNNING",
+          "subjects": 119
+        },
+        "b2": {
+          "kernel_ref": "symcuniverse/nsd-dortmund-native-motion-prod-v0-1-b2",
+          "status": "QUEUED_FOR_SLOT",
+          "subjects": 119
+        },
+        "b3": {
+          "kernel_ref": "symcuniverse/nsd-dortmund-native-motion-prod-v0-1-b3",
+          "status": "QUEUED_FOR_SLOT",
+          "subjects": 119
+        }
+      },
+      "merge_runner": "NSD_vNext/healthy_baseline/merge_dortmund_clean_motion_v0_1.py",
+      "merge_runner_commit": "e49ffeb30ab35b5bcd79e0da4c6518907a361ebc",
+      "no_recompute_rule": "The 40 pilot subjects are complete and excluded from production batches.",
+      "interpretation_gate": "No full 517-subject native summary until pilot+b0+b1+b2+b3 are merged and coverage-checked.",
+      "next_action": "Dispatch b2 then b3 as Kaggle slots clear."
     }
   },
   "recovery_taxonomy": {
@@ -103,5 +209,21 @@
       "NEW_MALADAPTIVE_BASELINE",
       "NONIDENTIFIABLE"
     ]
+  },
+  "updated_utc": "2026-10-01T21:58:00Z",
+  "resource_state": {
+    "kaggle_batch_cpu_limit": 5,
+    "current_occupancy": [
+      "nsd-dortmund-native-20-29-v01",
+      "nsd-dortmund-native-40-49-v01",
+      "nsd-dortmund-native-60-70-v01",
+      "nsd-dortmund-native-motion-prod-v0-1-b0",
+      "nsd-dortmund-native-motion-prod-v0-1-b1"
+    ],
+    "queued_successors": [
+      "nsd-dortmund-native-motion-prod-v0-1-b2",
+      "nsd-dortmund-native-motion-prod-v0-1-b3"
+    ],
+    "dispatch_rule": "Use the first cleared Kaggle CPU slot for the first queued valid successor; do not cancel valid active work."
   }
 }
