@@ -1,8 +1,8 @@
 {
   "schema": "NSD_V0_2_EXECUTION_AUTHORITY_V0_1",
-  "status": "PREFLIGHT_RETRY_ARMED",
+  "status": "AUTHORIZED_FROZEN_EXECUTION",
   "scientific_baseline": "NSD-V02-B01-FROZEN",
-  "execution_authorized": false,
+  "execution_authorized": true,
   "scientific_outcomes_opened": false,
   "required_preflight_workflow": "NSD v0.2 Frozen Preflight",
   "required_preflight_conclusion": "success",
@@ -19,5 +19,14 @@
     "conclusion": "failure",
     "classification": "MECHANICAL_TEST_FIXTURE_FAILURE",
     "repaired_commit": "d960887faa754f7ace6f1d842516115b6ddb1fca"
-  }
+  },
+  "authorized_scientific_baseline": "NSD-V02-B01-FROZEN",
+  "preflight": {
+    "run_id": 36827901154,
+    "conclusion": "success",
+    "artifact_id": 11146305459,
+    "artifact_digest": "sha256:f2d426f0f3b1251642b0e1cf9e64564e4c545e6d966384e862ac06c68a2c874d",
+    "completed_at": "2026-10-01T07:02:27Z"
+  },
+  "authorization_scope": "Only the exact V0_2_FINAL_CODE_IDENTITY_v0.1.json scientific-code/case/dependency identity may produce confirmatory evidence; any mismatch is FROZEN_CONTRACT_VIOLATION."
 }
