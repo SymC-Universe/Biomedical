@@ -1,0 +1,43 @@
+{
+  "schema_version": "0.1",
+  "date": "2026-10-01",
+  "branch": "nsd-spectrum-map",
+  "overall_state": "ACTIVE_COMPUTE",
+  "independence_rule": "No NSD-derived value defines healthy baseline.",
+  "lanes": {
+    "H1_HarMN": {
+      "state": "ACTIVE_COMPUTE",
+      "task_id": "NSD_HARMN_LOG_NORM_INTROSPECT_V02",
+      "executor": "KAGGLE_CPU_A",
+      "kernel_ref": "symcuniverse/nsd-harmn-baseline-introspect-v0-2",
+      "source_sha256": "dba25f3172b04fb5627083274e8871ef2058bc872217c617fd7cd3bd0859b484",
+      "next_action": "extract published regression object structure and reproduce age/frequency norm surface"
+    },
+    "H2_Dortmund": {
+      "state": "ACTIVE_COMPUTE",
+      "task_id": "NSD_DORTMUND_NATIVE_PREFLIGHT_V01",
+      "executor": "KAGGLE_CPU_A",
+      "kernel_ref": "symcuniverse/nsd-dortmund-native-preflight-v0-1",
+      "dataset": "ds005385",
+      "snapshot": "1.0.3",
+      "evidence_class": "DEVELOPMENT_PREFLIGHT_NATIVE_HEALTHY_ONLY",
+      "next_action": "validate access/preprocessing/features against published EO/EC directions, then design full 608-subject native reproduction"
+    }
+  },
+  "recovery_taxonomy": {
+    "capture_rule": "first crossing is not recovery; sustained capture required",
+    "distinct_classes": [
+      "DIRECT_CAPTURE",
+      "DELAYED_CAPTURE",
+      "INCOMPLETE_RETURN_UNDERSHOOT",
+      "OVERSHOOT_AND_CAPTURE",
+      "OVERSHOOT_AND_SHIFT",
+      "TRANSIENT_RETURN_REBOUND",
+      "OSCILLATORY_CAPTURE",
+      "PERSISTENT_RECROSSING",
+      "NEW_ADAPTIVE_BASELINE",
+      "NEW_MALADAPTIVE_BASELINE",
+      "NONIDENTIFIABLE"
+    ]
+  }
+}
