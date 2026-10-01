@@ -1,0 +1,21 @@
+name: NSD v0.2 Cancel Superseded Conveyor Once
+
+on:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - ".github/workflows/nsd-v0-2-cancel-superseded-once.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nsd-v0-2-frozen-evidence-conveyor
+  cancel-in-progress: true
+
+jobs:
+  cancel-stale:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Superseded frozen conveyor cancelled before case generation."
