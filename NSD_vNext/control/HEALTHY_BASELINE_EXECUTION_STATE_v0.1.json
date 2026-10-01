@@ -44,7 +44,7 @@
         "active_chunk": {
           "age_group": "20-29",
           "kernel_ref": "symcuniverse/nsd-dortmund-native-20-29-v01",
-          "kernel_version": 3,
+          "kernel_version": 4,
           "runtime_pins": {
             "python": "Kaggle Python 3.12",
             "numpy": "2.4.6",
@@ -53,7 +53,8 @@
             "mne": "1.13.2"
           },
           "status": "RUNNING",
-          "core_commit": "3c91eaaf1097a4b4692bf3206dcd756c515d94c7"
+          "core_commit": "3c91eaaf1097a4b4692bf3206dcd756c515d94c7",
+          "dependency_isolation": "pip --target /kaggle/working/pydeps via PYTHONPATH"
         },
         "preserved_failures": [
           {
@@ -73,6 +74,15 @@
             "scientific_data_opened": false,
             "scientific_method_changed": false,
             "recovery": "runner now downloads the exact frozen extractor at commit 3c91eaaf1097a4b4692bf3206dcd756c515d94c7 and executes it inside an isolated venv"
+          },
+          {
+            "kernel_ref": "symcuniverse/nsd-dortmund-native-20-29-v01",
+            "kernel_version": 3,
+            "classification": "MECHANICAL_KAGGLE_VENV_BOOTSTRAP_FAILURE",
+            "root_cause": "Kaggle Python venv creation failed because ensurepip is unavailable in the base image",
+            "scientific_data_opened": false,
+            "scientific_method_changed": false,
+            "recovery": "use isolated pip --target dependency directory and frozen core script identity"
           }
         ]
       }
