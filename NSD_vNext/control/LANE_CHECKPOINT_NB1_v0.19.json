@@ -1,0 +1,23 @@
+{
+  "schema": "NSD_LANE_CHECKPOINT_NB1_V0_19",
+  "lane": "N-B1",
+  "state": "ACTIVE_COMPUTE",
+  "architecture_review_status": "CLOSED",
+  "packet_review_status": "CLOSED",
+  "cross_lane_gate": "CLOSED",
+  "final_identity_freeze": true,
+  "scientific_values_exposed": true,
+  "execution_authorized": true,
+  "completed_case_count": 24,
+  "incomplete_case_count": 584,
+  "scientific_freeze": "NSD_vNext/control/V0_2_FINAL_SCIENTIFIC_FREEZE_v0.1.json",
+  "final_code_identity": "NSD_vNext/control/V0_2_FINAL_CODE_IDENTITY_v0.1.json",
+  "runtime_checkpoint": "NSD_vNext/control/V0_2_RUNTIME_CHECKPOINT_NB1_v0.1.json",
+  "runtime_checkpoint_blob": "79ef5228dfff2eb3aad8330f066d20aa9ee8ea90",
+  "runtime_checkpoint_head_commit": "64430be27d4371f51ba37d273a8645939104d07a",
+  "active_run_id": 36859007015,
+  "preflight_run": 36829526592,
+  "implementation_status": "FROZEN_EXECUTION_ACTIVE_DURABLE_RUNTIME_CHECKPOINT",
+  "next_exact_action": "Follow authoritative run 36859007015 only. Do not duplicate. Preserve subsequent frozen checkpoints; resume only missing same-chain N-B1 cases if the run terminates before SCIENTIFIC_REVIEW_READY.",
+  "stop_reason": null
+}
