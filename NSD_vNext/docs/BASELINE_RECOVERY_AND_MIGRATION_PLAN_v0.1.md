@@ -8,7 +8,7 @@
 
 ## 1. Root question
 
-How far can a healthy brain be displaced from its current normative operating region and still recover, and does repeated incomplete recovery predict or cause persistent migration to a new baseline?
+How far can a healthy brain be displaced from its current normative operating region and still recover, what trajectory classes constitute normal healthy recovery, and do repeated incomplete returns, overshoots, rebounds, persistent recrossings, or other failed captures predict or cause persistent migration to a new baseline?
 
 The target is not one healthy point. Let the current baseline architecture be a conditional distribution:
 
@@ -53,16 +53,28 @@ The recovery band \(\epsilon_B\) and sustain time \(T_s\) must be learned/frozen
 r_n=d(X_n(T),B_{n^-}).
 \]
 
-### Recovery completeness
+### Recovery trajectory and sustained capture
 
-A perturbation may be classified prospectively as:
-- COMPLETE_RETURN;
-- DELAYED_COMPLETE_RETURN;
-- INCOMPLETE_RETURN;
-- NEW_BASELINE_CANDIDATE;
-- NONIDENTIFIABLE.
+First entry into the prior baseline region is **not** sufficient to declare recovery.
 
-No label is assigned from a single arbitrary threshold.
+Define sustained capture only when the trajectory enters the prospectively derived healthy capture region and remains within it for a prospectively derived dwell interval (T_s), allowing only the level of within-region fluctuation established from healthy data.
+
+Distinct trajectory classes must remain separate:
+
+- **DIRECT_CAPTURE:** return to the prior baseline region followed by sustained capture without crossing materially beyond it;
+- **DELAYED_CAPTURE:** sustained capture occurs, but later than the prospectively defined healthy timing envelope;
+- **INCOMPLETE_RETURN / UNDERSHOOT:** the trajectory approaches the prior baseline region but does not enter and sustain it;
+- **OVERSHOOT_AND_CAPTURE:** the trajectory crosses through or beyond the prior baseline region, then reverses and achieves sustained capture;
+- **OVERSHOOT_AND_SHIFT:** the trajectory crosses beyond the prior baseline region and establishes a persistent shifted state on the opposite side;
+- **TRANSIENT_RETURN_REBOUND:** the trajectory enters the prior baseline region but subsequently exits again before sustained capture;
+- **OSCILLATORY_CAPTURE:** repeated crossings occur with diminishing excursion until sustained capture is achieved;
+- **PERSISTENT_RECROSSING:** repeated entries and exits occur without durable capture during the observation window;
+- **NEW_BASELINE_CANDIDATE:** a persistent post-perturbation region emerges and satisfies the separate migration criteria below;
+- **NONIDENTIFIABLE:** recording length, noise, state uncertainty, or measurement reliability prevents classification.
+
+Incomplete return, overshoot, rebound, and recrossing are not collapsed into a generic recovery failure. Each may have different biological meaning and different implications for future resilience.
+
+No numerical boundary or dwell interval is frozen from disorder data.
 
 ## 3. Baseline migration
 
@@ -181,8 +193,12 @@ No resilience margin may be interpreted as a universal human threshold.
 The healthy/reference program must first estimate:
 
 - ordinary displacement from baseline under normal tasks/states;
-- distribution of recovery times;
+- distribution of recovery times to **sustained** capture;
 - distribution of residual displacement;
+- healthy frequency and magnitude of overshoot;
+- healthy frequency of transient return followed by rebound;
+- healthy oscillatory recrossing burden before capture;
+- probability of sustained capture conditional on perturbation/state;
 - day-to-day and session-to-session baseline drift;
 - learning/adaptation-associated baseline migration;
 - sleep/arousal-related movement;
@@ -293,7 +309,7 @@ These are neighboring native frameworks, not evidence that one universal NSD bas
 1. estimate healthy baseline drift and healthy recovery envelopes;
 2. establish repeatability of recovery quantities;
 3. test natural repeated perturbations in healthy/reference datasets;
-4. determine whether incomplete healthy recovery predicts short-term baseline movement;
+4. quantify direct capture, incomplete return, overshoot, rebound, oscillatory capture, and persistent recrossing in healthy/reference data and determine which trajectory features predict short-term baseline movement;
 5. map the same quantities within each target disorder;
 6. compare disorder trajectories to the normative recovery envelope;
 7. test whether repeated recovery failure precedes persistent migration;
