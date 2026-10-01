@@ -1,0 +1,145 @@
+{
+  "schema_version": "0.1",
+  "date": "2026-10-01",
+  "independence_rule": "External healthy/reference neuroscience only; no NSD-derived values define baseline.",
+  "anchors": [
+    {
+      "id": "HB-Q01",
+      "feature": "absolute_alpha_power",
+      "state": "EC",
+      "metric": "ICC",
+      "min": 0.92,
+      "max": 0.94,
+      "population": "Dortmund subgroup n=370",
+      "source": "PMID 39256413 / Metzen et al. 2022"
+    },
+    {
+      "id": "HB-Q01b",
+      "feature": "absolute_alpha_power",
+      "state": "EO",
+      "metric": "ICC",
+      "min": 0.87,
+      "max": 0.9,
+      "population": "Dortmund subgroup n=370",
+      "source": "PMID 39256413 / Metzen et al. 2022"
+    },
+    {
+      "id": "HB-Q02",
+      "feature": "posterior_alpha_relative_power",
+      "metric": "EO_EC_Cohens_d",
+      "value": 1.553,
+      "source": "PMID 42395346"
+    },
+    {
+      "id": "HB-Q02b",
+      "feature": "posterior_alpha_relative_power",
+      "metric": "five_year_ICC",
+      "value": 0.843,
+      "source": "PMID 42395346"
+    },
+    {
+      "id": "HB-Q03",
+      "feature": "alpha_peak_frequency",
+      "metric": "EO_EC_Cohens_d",
+      "value": 0.238,
+      "source": "PMID 42395346"
+    },
+    {
+      "id": "HB-Q03b",
+      "feature": "alpha_peak_frequency",
+      "metric": "five_year_ICC",
+      "value": 0.734,
+      "source": "PMID 42395346"
+    },
+    {
+      "id": "HB-Q04",
+      "feature": "theta_beta_ratio",
+      "metric": "EO_EC_Cohens_d",
+      "value": -0.342,
+      "source": "PMID 42395346"
+    },
+    {
+      "id": "HB-Q04b",
+      "feature": "theta_beta_ratio",
+      "metric": "five_year_ICC",
+      "value": 0.772,
+      "source": "PMID 42395346"
+    },
+    {
+      "id": "HB-Q05",
+      "feature": "aperiodic_exponent",
+      "metric": "EO_EC_Cohens_d",
+      "value": -0.761,
+      "source": "PMID 42395346"
+    },
+    {
+      "id": "HB-Q05b",
+      "feature": "aperiodic_exponent",
+      "metric": "five_year_ICC",
+      "value": 0.668,
+      "source": "PMID 42395346"
+    },
+    {
+      "id": "HB-Q06",
+      "feature": "parameterized_periodic_aperiodic",
+      "metric": "five_year_ICC_range",
+      "min": 0.51,
+      "max": 0.88,
+      "source": "PMID 42574751"
+    },
+    {
+      "id": "HB-Q07",
+      "feature": "aperiodic_components",
+      "metric": "test_retest_ICC_range",
+      "min": 0.53,
+      "max": 0.91,
+      "source": "PMID 39017780"
+    },
+    {
+      "id": "HB-Q08",
+      "feature": "microstate_duration_occurrence_coverage",
+      "metric": "short_term_average_ICC_range",
+      "min": 0.874,
+      "max": 0.92,
+      "source": "PMID 37410275"
+    },
+    {
+      "id": "HB-Q08b",
+      "feature": "microstate_duration_occurrence_coverage",
+      "metric": "long_term_average_ICC_range",
+      "min": 0.671,
+      "max": 0.852,
+      "source": "PMID 37410275"
+    },
+    {
+      "id": "HB-Q11",
+      "feature": "homeostatic_corticospinal_response",
+      "metric": "meta_sample",
+      "reports": 37,
+      "experiments": 55,
+      "participants": 700,
+      "window_minutes": [
+        0,
+        30
+      ],
+      "source": "PMID 34251703"
+    },
+    {
+      "id": "HB-Q12",
+      "feature": "HarMNqEEG",
+      "metric": "normative_sample",
+      "participants": 1564,
+      "countries": 9,
+      "devices": 12,
+      "studies": 14,
+      "source": "PMID 35398285"
+    }
+  ],
+  "prohibited_interpretations": [
+    "diagnostic cutoff",
+    "universal healthy chi",
+    "universal recovery time",
+    "universal overshoot threshold",
+    "universal resilience margin"
+  ]
+}
