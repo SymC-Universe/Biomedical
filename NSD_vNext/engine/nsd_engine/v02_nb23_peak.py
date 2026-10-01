@@ -115,3 +115,150 @@ def certified_switched_peak(A0,A1,G,segment_seconds,phase_offset_seconds,horizon
                           rel_tol=rel_tol,tie_rel=tie_rel,max_intervals=max_intervals)
     out["kind"]="SWITCHED_PHYSICAL_GAIN"; out["switch_partitions"]=list(zip(pts[:-1],pts[1:]))
     return out
+
+
+@dataclass
+class _DiscrepancyInterval:
+    a: float
+    b: float
+    da: float
+    db: float
+    upper: float
+
+
+def _switch_active_index(a, b, segment_seconds, phase_offset_seconds):
+    mid=0.5*(float(a)+float(b))
+    return int(math.floor((mid+float(phase_offset_seconds))/float(segment_seconds)))%2
+
+
+def _discrepancy_value(A0,A1,Abar,segment_seconds,phase_offset_seconds,t):
+    Phi=ordered_switch_propagator(
+        A0,A1,float(segment_seconds),float(phase_offset_seconds),float(t)
+    )
+    Ebar=expm(Abar*float(t))
+    return float(np.linalg.norm(Phi-Ebar,2)),Phi,Ebar
+
+
+def _discrepancy_interval_upper(
+    Aactive,Abar,Phi_a,Ebar_a,da,db,h
+):
+    """Frozen conservative endpoint-cone bound for one switch-free interval."""
+    h=float(h)
+    mu_a=max(0.0,_mu2(np.asarray(Aactive,float)))
+    mu_b=max(0.0,_mu2(np.asarray(Abar,float)))
+    phi_sup=math.exp(mu_a*h)*float(np.linalg.norm(Phi_a,2))
+    ebar_sup=math.exp(mu_b*h)*float(np.linalg.norm(Ebar_a,2))
+    lipschitz=(
+        float(np.linalg.norm(Aactive,2))*phi_sup
+        + float(np.linalg.norm(Abar,2))*ebar_sup
+    )
+    if not math.isfinite(lipschitz):
+        raise PeakCertificationError("nonfinite switched-discrepancy Lipschitz bound")
+    return float(min(float(da),float(db))+lipschitz*h)
+
+
+def certified_switching_discrepancy_max(
+    A0,A1,G,segment_seconds,phase_offset_seconds,horizon=32.0,
+    rel_tol=1e-9,tie_rel=1e-9,max_intervals=200000
+):
+    """Certify max_t ||Phi(t,0)-exp(Abar*t)||_2 on the frozen horizon.
+
+    The physical metric is validated as part of the frozen case identity but
+    does not redefine this raw operator-2-norm discrepancy target. Numerical
+    evidence only; no representation or recoverability verdict is emitted.
+    """
+    A0=np.asarray(A0,float); A1=np.asarray(A1,float); G=np.asarray(G,float)
+    _=metric_roots(G)  # validate frozen SPD metric identity without redefining D(t)
+    if A0.shape!=A1.shape or A0.ndim!=2 or A0.shape[0]!=A0.shape[1]:
+        raise PeakCertificationError("switched generators must be same-shape square matrices")
+    if np.array_equal(A0,A1):
+        pts=switch_boundaries(segment_seconds,phase_offset_seconds,horizon)
+        return {
+            "kind":"SWITCHED_VS_SURROGATE_OPERATOR_DISCREPANCY",
+            "lower":0.0,
+            "upper":0.0,
+            "relative_gap":0.0,
+            "argmax_intervals":[[float(a),float(b)] for a,b in zip(pts[:-1],pts[1:])],
+            "switch_partitions":[[float(a),float(b)] for a,b in zip(pts[:-1],pts[1:])],
+            "evaluated_times":len(pts),
+            "split_count":0,
+            "identical_generator_anchor":True,
+            "verdict_namespace":"NUMERICAL_ONLY_NO_SCIENTIFIC_VERDICT",
+            "scientific_adjudication":"NOT_PERFORMED_BY_GITHUB",
+        }
+
+    Abar=0.5*(A0+A1)
+    pts=switch_boundaries(segment_seconds,phase_offset_seconds,horizon)
+    partitions=[(float(a),float(b)) for a,b in zip(pts[:-1],pts[1:])]
+    cache={}
+    serial=0
+    heap=[]
+    lower=-math.inf
+
+    def eval_t(t):
+        key=float(t)
+        if key not in cache:
+            cache[key]=_discrepancy_value(
+                A0,A1,Abar,segment_seconds,phase_offset_seconds,key
+            )
+        return cache[key]
+
+    def push_interval(a,b):
+        nonlocal serial,lower
+        da,Phi_a,Ebar_a=eval_t(a)
+        db,_,_=eval_t(b)
+        lower=max(lower,float(da),float(db))
+        idx=_switch_active_index(a,b,segment_seconds,phase_offset_seconds)
+        Aactive=A0 if idx==0 else A1
+        ub=_discrepancy_interval_upper(
+            Aactive,Abar,Phi_a,Ebar_a,da,db,float(b)-float(a)
+        )
+        if not math.isfinite(ub) or ub+1e-15<max(float(da),float(db)):
+            raise PeakCertificationError("invalid switched-discrepancy interval bound")
+        iv=_DiscrepancyInterval(float(a),float(b),float(da),float(db),float(ub))
+        heapq.heappush(heap,(-float(ub),serial,iv))
+        serial+=1
+
+    for a,b in partitions:
+        push_interval(a,b)
+
+    splits=0
+    while heap:
+        max_upper=-heap[0][0]
+        tol=float(rel_tol)*max(1.0,abs(lower))
+        if max_upper-lower<=tol:
+            break
+        if splits>=int(max_intervals):
+            raise PeakCertificationError(
+                "interval budget exhausted before frozen switched-discrepancy tolerance"
+            )
+        _,_,iv=heapq.heappop(heap)
+        mid=0.5*(iv.a+iv.b)
+        dm,_,_=eval_t(mid)
+        lower=max(lower,float(dm))
+        push_interval(iv.a,mid)
+        push_interval(mid,iv.b)
+        splits+=1
+
+    max_upper=max((-item[0] for item in heap),default=lower)
+    if not math.isfinite(lower) or not math.isfinite(max_upper):
+        raise PeakCertificationError("nonfinite switched-discrepancy enclosure")
+    tie=float(tie_rel)*max(1.0,abs(lower))
+    argmax=sorted([
+        [float(item[2].a),float(item[2].b)]
+        for item in heap
+        if float(item[2].upper)>=float(lower)-tie
+    ])
+    return {
+        "kind":"SWITCHED_VS_SURROGATE_OPERATOR_DISCREPANCY",
+        "lower":float(lower),
+        "upper":float(max_upper),
+        "relative_gap":float((max_upper-lower)/max(1.0,abs(lower))),
+        "argmax_intervals":argmax,
+        "switch_partitions":[[float(a),float(b)] for a,b in partitions],
+        "evaluated_times":len(cache),
+        "split_count":int(splits),
+        "identical_generator_anchor":False,
+        "verdict_namespace":"NUMERICAL_ONLY_NO_SCIENTIFIC_VERDICT",
+        "scientific_adjudication":"NOT_PERFORMED_BY_GITHUB",
+    }
