@@ -39,8 +39,32 @@
           "50-59",
           "60-70"
         ],
-        "state": "READY",
-        "next_action": "execute frozen 20-29 chunk, then remaining chunks with identical code if production preflight passes"
+        "state": "ACTIVE_COMPUTE",
+        "next_action": "execute frozen 20-29 chunk, then remaining chunks with identical code if production preflight passes",
+        "active_chunk": {
+          "age_group": "20-29",
+          "kernel_ref": "symcuniverse/nsd-dortmund-native-20-29-v01",
+          "kernel_version": 2,
+          "runtime_pins": {
+            "python": "Kaggle Python 3.12",
+            "numpy": "2.4.6",
+            "scipy": "1.17.1",
+            "pandas": "2.3.3",
+            "mne": "1.13.2"
+          },
+          "status": "RUNNING"
+        },
+        "preserved_failures": [
+          {
+            "kernel_ref": "symcuniverse/nsd-dortmund-native-20-29-v01",
+            "kernel_version": 1,
+            "classification": "MECHANICAL_ENVIRONMENT_DEPENDENCY_FAILURE",
+            "root_cause": "MNE 1.13.2 requires NumPy >=2.1 but wrapper pinned NumPy 2.0.2",
+            "scientific_data_opened": false,
+            "scientific_method_changed": false,
+            "recovery": "runtime pins only changed to NumPy 2.4.6 / SciPy 1.17.1 / pandas 2.3.3 / MNE 1.13.2"
+          }
+        ]
       }
     }
   },
