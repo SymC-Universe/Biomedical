@@ -172,6 +172,17 @@ def git_checkpoint(message: str) -> None:
     if staged.returncode==0:
         return
     subprocess.run(["git","commit","-m",message],cwd=REPO_ROOT,check=True)
+    # Source-of-record and controller commits may advance the branch while a
+    # long frozen run is active. Rebase the completed checkpoint commit onto
+    # the latest remote head before pushing; never discard or recompute it.
+    subprocess.run(
+        ["git","fetch","origin","nsd-rebuild-gom-v0.8.0"],
+        cwd=REPO_ROOT,check=True
+    )
+    subprocess.run(
+        ["git","rebase","origin/nsd-rebuild-gom-v0.8.0"],
+        cwd=REPO_ROOT,check=True
+    )
     subprocess.run(
         ["git","push","origin","HEAD:nsd-rebuild-gom-v0.8.0"],
         cwd=REPO_ROOT,check=True
@@ -180,6 +191,28 @@ def git_checkpoint(message: str) -> None:
 
 def runtime_reserve() -> bool:
     return (time.time()-START)/60.0 >= RUNTIME_MIN-RESERVE_MIN
+
+
+def artifact_hashes(lane: str, completed: list[str]) -> dict[str,Any]:
+    """Hash every durable completed-case artifact without interpreting it."""
+    out={}
+    if lane=="N-B1":
+        for cid in completed:
+            p=NB1_DIR/f"{cid}.json"
+            if p.exists():
+                out[cid]={"evidence_sha256":sha256_file(p)}
+    else:
+        for cid in completed:
+            row={}
+            exact=NB23_DIR/f"{cid}__exact.json"
+            rec=NB23_DIR/f"{cid}__recoverability.json"
+            if exact.exists():
+                row["exact_sha256"]=sha256_file(exact)
+            if rec.exists():
+                row["recoverability_sha256"]=sha256_file(rec)
+            if row:
+                out[cid]=row
+    return out
 
 
 def checkpoint_identity(lane: str,completed:list[str],all_ids:list[str],next_action:str,state="ACTIVE_COMPUTE"):
@@ -208,7 +241,7 @@ def checkpoint_identity(lane: str,completed:list[str],all_ids:list[str],next_act
         "rng_identity":rng,
         "output_schema_identity":output,
         "completed_case_ids":completed,
-        "completed_artifact_hashes":{},
+        "completed_artifact_hashes":artifact_hashes(lane,completed),
         "incomplete_case_ids":[x for x in all_ids if x not in set(completed)],
         "active_run_id":int(os.environ["GITHUB_RUN_ID"]) if os.environ.get("GITHUB_RUN_ID") else None,
         "next_exact_action":next_action,
