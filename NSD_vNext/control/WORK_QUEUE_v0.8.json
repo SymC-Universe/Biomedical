@@ -1,0 +1,70 @@
+{
+  "schema": "NSD_WORK_QUEUE_V0_8",
+  "status": "FROZEN_V0_2_EXECUTION_ACTIVE_DURABLE_CHECKPOINT",
+  "execution_authorized": true,
+  "source_of_record": "NSD_vNext/control/V0_2_FINAL_SCIENTIFIC_FREEZE_v0.1.json",
+  "final_identity": "NSD_vNext/control/V0_2_FINAL_CODE_IDENTITY_v0.1.json",
+  "execution_authority": "NSD_vNext/control/V0_2_EXECUTION_AUTHORITY_v0.1.json",
+  "tasks": [
+    {
+      "id": "PF-NB1-I01",
+      "lane": "N-B1",
+      "status": "DONE"
+    },
+    {
+      "id": "PF-NB23-I01",
+      "lane": "N-B2/N-B3",
+      "status": "DONE"
+    },
+    {
+      "id": "PF-CD03",
+      "lane": "CROSS-LANE",
+      "status": "DONE",
+      "evidence_run": 36717800806
+    },
+    {
+      "id": "PF-CD05",
+      "lane": "N-B1",
+      "status": "DONE",
+      "evidence_run": 36720502525
+    },
+    {
+      "id": "PF-CD06",
+      "lane": "CROSS-LANE",
+      "status": "DONE",
+      "evidence_run": 36719590935
+    },
+    {
+      "id": "PF-WF01",
+      "lane": "CROSS-LANE",
+      "status": "DONE"
+    },
+    {
+      "id": "PF-ID01",
+      "lane": "CROSS-LANE",
+      "status": "DONE"
+    },
+    {
+      "id": "PF-PRE01",
+      "lane": "CROSS-LANE",
+      "status": "DONE",
+      "evidence_run": 36829526592
+    },
+    {
+      "id": "PF-EXEC01",
+      "lane": "CROSS-LANE",
+      "status": "ACTIVE",
+      "terminal_authority": "SCIENTIFIC_REVIEW_READY",
+      "active_run_id": 36859007015,
+      "durable_checkpoint_commit": "7f981b840feb5c98415c53c84a8523f6e71fca43",
+      "nb23_completed_case_count": 4,
+      "nb23_completed_case_ids": [
+        "NB23B01-M-NORMAL",
+        "NB23B01-M-RECIP",
+        "NB23B01-M-SSBASE",
+        "NB23B01-M-SSNONNORMAL"
+      ],
+      "note": "Run 36859007015 is authoritative and remains active. First four N-B2/N-B3 cases are durably checkpointed. Their exact-target records fail closed with PeakCertificationError interval-budget exhaustion; preserve as evidence and do not alter frozen tolerance while the valid run is active."
+    }
+  ]
+}
