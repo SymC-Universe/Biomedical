@@ -16,7 +16,7 @@ permissions:
 
 concurrency:
   group: nsd-v0-2-frozen-evidence-conveyor
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   conveyor:
