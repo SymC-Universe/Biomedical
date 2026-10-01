@@ -1,14 +1,14 @@
 {
   "state": "ACTIVE_COMPUTE",
-  "last_productive_utc": "2026-10-01T06:43:41Z",
-  "last_productive_commit": "a4ae6e98881372f2c2f7a1b3e54eb0162e07d113",
+  "last_productive_utc": "2026-10-01T06:56:57Z",
+  "last_productive_commit": "bd08de749870471326291ab1e112b1401e93bb4a",
   "active_run_ids": [
-    36826316308
+    36827530820
   ],
-  "next_exact_action": "Inspect NSD Engine Contracts run 36826316308. On PASS, close PF-NB23-I01, bind final scientific-code/dependency/environment identity, run mechanical preflight, and authorize the frozen v0.2 conveyor only if preflight passes. On mechanical failure, repair from the same frozen baseline without changing science.",
+  "next_exact_action": "Inspect NSD v0.2 Frozen Preflight run 36827530820. If green, bind its run/artifact as the final mechanical preflight evidence, mark PF-NB1-I01/PF-NB23-I01/PF-ID01/PF-PRE01 complete, authorize only NSD-V02-B01-FROZEN, and launch the v0.2 frozen evidence conveyor. If red, preserve and mechanically repair without changing frozen science.",
   "scientific_gate": {
-    "code": "FROZEN_IMPLEMENTATION_VALIDATION_ACTIVE",
-    "reason": "Scientific packet is frozen and APQ-closed. Recovered N-B2/N-B3 switched-certificate implementation is under mechanical contract validation; execution authority remains false until identity binding and preflight pass."
+    "code": "FROZEN_V0_2_PREFLIGHT_ACTIVE",
+    "reason": "Scientific baseline and final implementation identity are bound. Exact frozen runner preflight is active; confirmatory execution remains false until this run passes."
   },
   "external_block": null,
   "source_of_record": "NSD_vNext/WORKING_INVESTIGATION.md",
@@ -16,5 +16,5 @@
   "work_queue": "NSD_vNext/control/WORK_QUEUE_v0.4.json",
   "long_run_ceiling": "NSD_vNext/control/LONG_RUN_CEILING_v0.1.md",
   "user_action_required": null,
-  "current_run_note": "Recovered from approximately 13 hours of dead time caused by a disabled execution controller. Run 36826316308 is the authoritative current implementation-validation run."
+  "current_run_note": "Authoritative active run is frozen v0.2 preflight 36827530820. Legacy PR fanout does not reset liveness."
 }
