@@ -1,20 +1,20 @@
 {
   "state": "ACTIVE_COMPUTE",
-  "last_productive_utc": "2026-10-01T07:03:06Z",
-  "last_productive_commit": "f9ddd17a36ba3b399e2da83a3b638c35f24c42e5",
+  "last_productive_utc": "2026-10-01T07:08:12Z",
+  "last_productive_commit": "9122b552f0bf4c5d693b4c4848bd86e606ca24ea",
   "active_run_ids": [
-    36828113912
+    36828593920
   ],
-  "next_exact_action": "Monitor only authoritative frozen v0.2 conveyor run 36828113912. Do not duplicate. On checkpoint/runtime-reserve successor, follow newest frozen runtime checkpoint. On SCIENTIFIC_REVIEW_READY, stop GitHub execution and move scientific adjudication to researcher + ChatGPT.",
+  "next_exact_action": "Follow only newest repaired-runner frozen preflight 36828593920. Ignore superseded preflight runs. On green preflight, rebind artifact/run evidence, reauthorize only current final identity blob 0d1df186245bbdf874df3897b6187012b41e466c, then relaunch frozen conveyor. On failure, repair mechanically without changing NSD-V02-B01-FROZEN.",
   "scientific_gate": {
-    "code": "FROZEN_V0_2_EXECUTION_ACTIVE",
-    "reason": "Final implementation identity and mechanical preflight are closed; untouched v0.2 evidence execution is active under exact frozen authority."
+    "code": "REPAIRED_RUNNER_PREFLIGHT_ACTIVE",
+    "reason": "First result-producing attempt failed before any case opened due to a mechanical import wiring error. Execution authority is revoked; revised runner identity is under exact preflight."
   },
   "external_block": null,
   "source_of_record": "NSD_vNext/WORKING_INVESTIGATION.md",
   "continuity_contract": "ACTIVE_COMPUTE | ADVANCED_CHECKPOINT | SCIENTIFIC_GATE | EXTERNAL_BLOCK | USER_ACTION_REQUIRED; IDLE forbidden",
-  "work_queue": "NSD_vNext/control/WORK_QUEUE_v0.5.json",
+  "work_queue": "NSD_vNext/control/WORK_QUEUE_v0.6.json",
   "long_run_ceiling": "NSD_vNext/control/LONG_RUN_CEILING_v0.1.md",
   "user_action_required": null,
-  "current_run_note": "Frozen preflight 36827901154 passed; execution authority granted only to final identity blob 51793bc65e93a0767210d11910c9466a1a073183. Active conveyor run 36828113912."
+  "current_run_note": "Run 36828113912 failed before case generation: ImportError from wrong module for observed_recovery. Runner import fixed at 40f9d023..., final identity rebound to blob 0d1df186..., execution authority false. Newest exact preflight 36828593920 is authoritative."
 }
