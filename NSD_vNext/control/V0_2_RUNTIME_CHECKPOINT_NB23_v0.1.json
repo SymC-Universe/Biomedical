@@ -4,6 +4,14 @@
   "case_set_digest": "gitblob:baae142aa5d050df0eff3a371eae4ba50357e8bf#nb23",
   "code_manifest_blob": "efdfa8d036f39bc28b2ddfb1ebcfb2e80d6af7c5",
   "completed_artifact_hashes": {
+    "NB23B01-M-ALIAS-8": {
+      "exact_sha256": "23917157abfd76ff36b312ef552200da97711e6b738f78109c6784e4b8916eac",
+      "recoverability_sha256": "4f3647b801da2f4d03e6c2aff0d9cdda3d872ca88afb995aefbfcdde17b7bbd4"
+    },
+    "NB23B01-M-ALIAS-88": {
+      "exact_sha256": "e49de0ad7ed30b3053b4cf0fed83b81aeb7122f8d1c565f277b9fd9861c626da",
+      "recoverability_sha256": "e89b4b1a3e485e1725b27890ebc74e713015c3610566f73518fec83f39c2a439"
+    },
     "NB23B01-M-IO-B1": {
       "exact_sha256": "0aa676a82ceca9a5c71c59db160c613fcbc40ef9fab5e79e1120a81682e275a9",
       "recoverability_sha256": "d19526f897ea74ca59f9e858cd4288b4f5f78ce1ee7ac7223f26541a9840cecf"
@@ -28,6 +36,10 @@
       "exact_sha256": "b6d1029d31adc8e51643f3b3b0444020c293845c667332c2e416fa977bf4d304",
       "recoverability_sha256": "4cd802eaeea8b58a4362f3b4371b1a36402615650958e0d0e2449d5614039638"
     },
+    "NB23B01-M-PART-UNSTABLE": {
+      "exact_sha256": "b8dc2a7f386a539667af9850913aa32c1670feb8ccdb5195aca839633d5766e7",
+      "recoverability_sha256": "b3cf12f0928431e809108f9c511aa31d31cc911639496d7209fb7ecb3d61481f"
+    },
     "NB23B01-M-RECIP": {
       "exact_sha256": "fbec89b9db9b4dd0be19263b5c4d4130f68092c59e8de132cb610742d9a5d47f",
       "recoverability_sha256": "ef69fb5aae9f188f26d94764b379a95939afe02899786ab584665f1348efdf4a"
@@ -51,6 +63,9 @@
     "NB23B01-M-SSNONNORMAL": {
       "exact_sha256": "8bdc26a6d2b6c7491029531056aa64e135eba3f9936d90c7495138a20c8ca37f",
       "recoverability_sha256": "370d895d14c2d1b4444ed385e9ec4df21959da557d5bbc2a1cb831d4258c2e4f"
+    },
+    "NB23B01-M-TV": {
+      "exact_sha256": "8ea1e057fcfa68ce68ce71bfb3e1c37fd4ef82916921553ca70b1b771b3e8800"
     }
   },
   "completed_case_ids": [
@@ -65,10 +80,14 @@
     "NB23B01-M-IO-C2",
     "NB23B01-M-SIM-BASE",
     "NB23B01-M-SIM-XFORM",
-    "NB23B01-M-PART-STABLE"
+    "NB23B01-M-PART-STABLE",
+    "NB23B01-M-PART-UNSTABLE",
+    "NB23B01-M-ALIAS-8",
+    "NB23B01-M-ALIAS-88",
+    "NB23B01-M-TV"
   ],
   "completed_work_cursor": {
-    "count": 12
+    "count": 16
   },
   "config_blob": "75519d5036778d61c84fe7188ab687e6734f4d71",
   "dependency_identity": {
@@ -87,10 +106,6 @@
     "runner_label": "ubuntu-24.04"
   },
   "incomplete_case_ids": [
-    "NB23B01-M-PART-UNSTABLE",
-    "NB23B01-M-ALIAS-8",
-    "NB23B01-M-ALIAS-88",
-    "NB23B01-M-TV",
     "NB23B01-M-TV-SUR",
     "NB23B01-M-MISSPEC"
   ],
