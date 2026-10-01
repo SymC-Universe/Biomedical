@@ -1,0 +1,42 @@
+{
+  "schema": "NSD_HEALTHY_BASELINE_COMPUTE_STATE_V0_1",
+  "date": "2026-10-01",
+  "branch": "nsd-spectrum-map",
+  "independence_rule": "External healthy/reference neuroscience only; no NSD-derived variable enters baseline construction.",
+  "harmn": {
+    "kernel": "symcuniverse/nsd-harmn-baseline-introspect-v0-2",
+    "status": "COMPLETE",
+    "official_norm_sha256": "dba25f3172b04fb5627083274e8871ef2058bc872217c617fd7cd3bd0859b484",
+    "checksum_pass": true,
+    "model_kind": "MATLAB v7.3 / HDF5",
+    "node_count": 6443,
+    "next_action": "extract compact age/frequency regression structure and reproduce normative surfaces"
+  },
+  "dortmund": {
+    "kernel": "symcuniverse/nsd-dortmund-native-motion-pilot-v0-1",
+    "status": "RUNNING",
+    "freeze_commit": "5ef1b3afbd1a01828a1b1b6670e952ac0955b600",
+    "target_subjects": 40,
+    "selection": "deterministic age-by-sex stratified metadata-only pilot",
+    "conditions": [
+      "EC_pre",
+      "EC_post",
+      "EO_pre",
+      "EO_post"
+    ],
+    "primary_features": [
+      "posterior_alpha_relative_power",
+      "alpha_peak_frequency_hz",
+      "theta_beta_ratio",
+      "aperiodic_exponent"
+    ],
+    "scientific_ceiling": "pipeline/native healthy-motion qualification only; no pathology or NSD interpretation"
+  },
+  "next_if_dortmund_passes": [
+    "freeze exact successful code/environment",
+    "scale streaming analysis across available session-1 healthy cohort",
+    "run session-2 matched longitudinal subset",
+    "estimate age-conditioned state/load/longitudinal distributions",
+    "only then compare NSD stability variables"
+  ]
+}
