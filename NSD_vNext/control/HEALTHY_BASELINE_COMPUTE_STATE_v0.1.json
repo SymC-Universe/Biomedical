@@ -38,5 +38,92 @@
     "run session-2 matched longitudinal subset",
     "estimate age-conditioned state/load/longitudinal distributions",
     "only then compare NSD stability variables"
-  ]
+  ],
+  "updated_utc": "2026-10-01T21:50:00Z",
+  "source_faithful_dortmund": {
+    "design": "NSD_vNext/docs/DORTMUND_FULL_HEALTHY_NATIVE_REPRODUCTION_FREEZE_v0.1.md",
+    "core_commit": "3c91eaaf1097a4b4692bf3206dcd756c515d94c7",
+    "method_status": "FROZEN_SOURCE_FAITHFUL_NATIVE_REPRODUCTION",
+    "chunks": {
+      "20-29": {
+        "kernel": "symcuniverse/nsd-dortmund-native-20-29-v01",
+        "status": "RUNNING"
+      },
+      "30-39": {
+        "kernel": "symcuniverse/nsd-dortmund-native-30-39-v01",
+        "status": "COMPLETE",
+        "subject_count": 111,
+        "recordings_attempted": 576,
+        "recordings_pass": 573,
+        "recordings_rejected_lt5": 3,
+        "recordings_other_failure": 0
+      },
+      "40-49": {
+        "kernel": "symcuniverse/nsd-dortmund-native-40-49-v01",
+        "status": "RUNNING"
+      },
+      "50-59": {
+        "kernel": "symcuniverse/nsd-dortmund-native-50-59-v01",
+        "status": "RUNNING"
+      },
+      "60-70": {
+        "kernel": "NOT_YET_DISPATCHED",
+        "status": "QUEUED_FOR_KAGGLE_SLOT"
+      }
+    },
+    "interpretation_gate": "NO_FULL_MIXED_MODEL_UNTIL_ALL_AGE_CHUNKS_MERGED"
+  },
+  "clean_motion_dortmund": {
+    "pilot": {
+      "kernel": "symcuniverse/nsd-dortmund-native-motion-pilot-v0-1",
+      "status": "COMPLETE",
+      "subjects": 40,
+      "rows": 160,
+      "failures": 0,
+      "disposition": "PILOT_QUALIFICATION_PASS"
+    },
+    "cohort_manifest": "NSD_vNext/control/DORTMUND_HEALTHY_COHORT_MANIFEST_v0.1.json",
+    "clean_session1_subjects": 517,
+    "pilot_already_complete": 40,
+    "remaining": 477,
+    "production_batches": {
+      "b0": {
+        "kernel": "symcuniverse/nsd-dortmund-native-motion-prod-v0-1-b0",
+        "status": "RUNNING",
+        "assigned": 120
+      },
+      "b1": {
+        "kernel": "symcuniverse/nsd-dortmund-native-motion-prod-v0-1-b1",
+        "status": "RUNNING",
+        "assigned": 119
+      },
+      "b2": {
+        "kernel": "symcuniverse/nsd-dortmund-native-motion-prod-v0-1-b2",
+        "status": "QUEUED_FOR_KAGGLE_SLOT",
+        "assigned": 119
+      },
+      "b3": {
+        "kernel": "symcuniverse/nsd-dortmund-native-motion-prod-v0-1-b3",
+        "status": "QUEUED_FOR_KAGGLE_SLOT",
+        "assigned": 119
+      }
+    },
+    "no_recompute_rule": "The 40 valid pilot subjects are excluded from production batches; merge after production."
+  },
+  "resource_state": {
+    "kaggle_batch_cpu_slots": 5,
+    "occupied_by": [
+      "nsd-dortmund-native-20-29-v01",
+      "nsd-dortmund-native-40-49-v01",
+      "nsd-dortmund-native-50-59-v01",
+      "nsd-dortmund-native-motion-prod-v0-1-b0",
+      "nsd-dortmund-native-motion-prod-v0-1-b1"
+    ],
+    "immediate_successors_in_order": [
+      "source-faithful 60-70 age chunk",
+      "clean-motion production b2",
+      "clean-motion production b3"
+    ],
+    "rule": "Dispatch a queued successor when a Kaggle CPU slot clears; do not cancel valid active work merely to reorder."
+  }
 }
