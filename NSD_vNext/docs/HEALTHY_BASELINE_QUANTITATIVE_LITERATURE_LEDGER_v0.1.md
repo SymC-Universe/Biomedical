@@ -26,6 +26,8 @@ This ledger records quantitative healthy-brain reference facts that constrain la
 | HB-Q11 | homeostatic corticospinal response | 37 reports, 55 experiments, 700 healthy participants | repeated excitatory NIBS decreased MEP relative to single block at 0-30 min; repeated inhibitory stimulation with <=10 min interval increased MEP; pooled MEP not different from baseline | evidence that healthy response can reverse/compensate rather than return monotonically | Wittkopf et al. 2021, PMID 34251703 |
 | HB-Q12 | HarMNqEEG lifespan norm | 1,564 neurologically healthy participants, 9 countries, 12 devices, 14 studies | age/frequency-dependent mean and SD models for traditional and Riemannian qEEG DPs with batch harmonization | primary external lifespan population baseline | Li et al. 2022, PMID 35398285 |
 
+| HB-Q13 | source-complete Dortmund normative spectral model | 608 healthy adults, 3,229 retained recordings, ages 20-70 | occipital alpha EO vs EC β=-0.2197; age-z β=-0.0537; global theta/alpha EO vs EC β=0.3218; age-z β=0.0457 | direct full-data reproduction targets for healthy state and age effects | Park et al. 2026, DOI 10.3389/fnagi.2026.1869339 |
+
 ## Immediate constraints these anchors impose
 
 1. **First crossing is not recovery.** A feature can make substantial state-dependent excursions while remaining trait-stable over years.
