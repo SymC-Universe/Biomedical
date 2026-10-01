@@ -1,0 +1,78 @@
+{
+  "schema": "NSD_DORTMUND_HEALTHY_NATIVE_MOTION_V0_1",
+  "dataset": {
+    "id": "ds005385",
+    "version": "1.0.3",
+    "doi": "10.18112/openneuro.ds005385.v1.0.3"
+  },
+  "independence_rule": "No NSD-derived variable, threshold, or historical control result enters baseline construction.",
+  "preprocessing": {
+    "bandpass_hz": [
+      1,
+      40
+    ],
+    "reference": "average",
+    "psd": "welch",
+    "sampling_hz": 1000
+  },
+  "features": {
+    "posterior_alpha_relative_power": {
+      "band_hz": [
+        8,
+        13
+      ],
+      "denominator_hz": [
+        1,
+        40
+      ],
+      "roi": "parietal_parieto-occipital_occipital"
+    },
+    "alpha_peak_frequency": {
+      "search_hz": [
+        8,
+        13
+      ],
+      "roi": "posterior"
+    },
+    "theta_beta_ratio": {
+      "theta_hz": [
+        4,
+        8
+      ],
+      "beta_hz": [
+        13,
+        30
+      ]
+    },
+    "aperiodic_exponent": {
+      "fit_hz": [
+        2,
+        40
+      ],
+      "peak_width_hz": [
+        1,
+        8
+      ],
+      "max_peaks": 6,
+      "min_peak_height": 0.1,
+      "aperiodic_mode": "fixed"
+    }
+  },
+  "pilot": {
+    "target_subjects": 40,
+    "selection": "deterministic_age_sex_stratified_metadata_only",
+    "conditions": [
+      "EC_pre",
+      "EC_post",
+      "EO_pre",
+      "EO_post"
+    ]
+  },
+  "prohibited": [
+    "NSD chi",
+    "NSD modal/vector Chi",
+    "Chi_arc",
+    "diagnostic thresholds",
+    "outcome-driven tuning"
+  ]
+}
