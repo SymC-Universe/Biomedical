@@ -1086,3 +1086,13 @@ CD-05 independent Profile-I reproduction passed in Engine Contracts run 36720502
 - **Next exact action:** require a green exact preflight for the repaired runner identity, then reauthorize and relaunch the frozen evidence conveyor. No scientific outcome may open before that green gate.
 - **User intervention required:** `no`.
 
+### 2026-10-01 - PREFLIGHT_PASS / REAUTHORIZED / ACTIVE_COMPUTE - repaired frozen runner
+
+- **Mechanical revalidation:** repaired runner identity passed exact frozen preflight run `36828593920`. Artifact `11146146542`, digest `sha256:b4948ca46e78019bb87e6a2a974cff148c075e1d30eb16dcdc551241cf68db91`.
+- **Identity:** final implementation identity blob is `0d1df186245bbdf874df3897b6187012b41e466c`; repaired runner blob is `ac9ff7671154b24c46151e72648fa025db4d8bd8`.
+- **Execution authority:** reauthorized only for `NSD-V02-B01-FROZEN`. Scientific outcomes remained unopened through the failed first run and re-preflight.
+- **Active execution:** repaired `NSD v0.2 Frozen Evidence Conveyor` run `36828786570`.
+- **Current durable state:** `ACTIVE_COMPUTE`.
+- **Next exact action:** follow only the repaired frozen run or its checkpointed successor. No duplicate launch. GitHub stops at `SCIENTIFIC_REVIEW_READY`; scientific adjudication remains researcher + ChatGPT.
+- **User intervention required:** `no`.
+
