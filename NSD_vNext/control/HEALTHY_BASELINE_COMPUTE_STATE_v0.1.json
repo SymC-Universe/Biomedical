@@ -125,5 +125,8 @@
       "clean-motion production b3"
     ],
     "rule": "Dispatch a queued successor when a Kaggle CPU slot clears; do not cancel valid active work merely to reorder."
-  }
+  },
+  "status": "SUPERSEDED",
+  "superseded_by": "NSD_vNext/control/HEALTHY_BASELINE_EXECUTION_STATE_v0.1.json",
+  "supersession_reason": "Canonical execution state already contained failure/recovery provenance and now includes current distributed compute/checkpoint status."
 }
