@@ -72,7 +72,7 @@
     },
     {
       "path": "NSD_vNext/engine/tools/run_nsd_v02_frozen_conveyor.py",
-      "blob": "ac9ff7671154b24c46151e72648fa025db4d8bd8"
+      "blob": "435b082f64759231c9d49630a7051f5b5223af4c"
     }
   ],
   "common_dependency_register_blob": "9b85fdee848673e0efcc4588f714f4d9bccfdf2e",
@@ -159,9 +159,9 @@
   "mismatch_policy": "FROZEN_CONTRACT_VIOLATION",
   "scientific_adjudication": "NOT_PERFORMED_BY_GITHUB",
   "identity_revision": {
-    "reason": "Mechanical runner import wiring repair before any confirmatory case opened.",
-    "superseded_runner_blob": "ba283bc1be43666c184ca971e10d5c733b836690",
-    "current_runner_blob": "ac9ff7671154b24c46151e72648fa025db4d8bd8",
+    "reason": "Mechanical runner import repair plus checkpoint rebase/artifact-hash hardening before accepted confirmatory checkpoint.",
+    "previous_runner_blob": "ac9ff7671154b24c46151e72648fa025db4d8bd8",
+    "current_runner_blob": "435b082f64759231c9d49630a7051f5b5223af4c",
     "scientific_change": false,
     "preflight_required": true
   }
