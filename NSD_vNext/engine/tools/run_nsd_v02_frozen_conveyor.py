@@ -36,12 +36,12 @@ from nsd_engine.v02_nb23_suite import build_member,frozen_suite
 from nsd_engine.v02_nb23_targets import (
     spectral_abscissa,embedded_eigenvalues,physical_response_curve,
     integrated_burden,state_impulse_curve,io_impulse_curve,
-    observed_recovery,ordered_switch_propagator,switching_discrepancy_curve,
+    ordered_switch_propagator,switching_discrepancy_curve,
 )
 from nsd_engine.v02_nb23_peak import (
     certified_stationary_peak,certified_switching_discrepancy_max
 )
-from nsd_engine.v02_nb23_observation import schedule
+from nsd_engine.v02_nb23_observation import schedule,observed_recovery
 from nsd_engine.v02_nb23_recoverability import compatibility_sets
 
 CONTROL=NSD_ROOT/"control"
