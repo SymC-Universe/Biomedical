@@ -29,7 +29,7 @@
         },
         "NB23B01-M-IO-B1|NB23B01-M-IO-C1": {
           "compatible": false,
-          "relative_error": 0.43415462031343793
+          "relative_error": 0.434154620313438
         },
         "NB23B01-M-IO-B1|NB23B01-M-IO-C2": {
           "compatible": false,
@@ -45,7 +45,7 @@
         },
         "NB23B01-M-IO-B2|NB23B01-M-IO-C1": {
           "compatible": false,
-          "relative_error": 0.43415462031343793
+          "relative_error": 0.434154620313438
         },
         "NB23B01-M-IO-B2|NB23B01-M-IO-C2": {
           "compatible": false,
@@ -53,11 +53,11 @@
         },
         "NB23B01-M-IO-C1|NB23B01-M-IO-B1": {
           "compatible": false,
-          "relative_error": 0.43415462031343793
+          "relative_error": 0.434154620313438
         },
         "NB23B01-M-IO-C1|NB23B01-M-IO-B2": {
           "compatible": false,
-          "relative_error": 0.43415462031343793
+          "relative_error": 0.434154620313438
         },
         "NB23B01-M-IO-C1|NB23B01-M-IO-C1": {
           "compatible": true,
@@ -122,7 +122,7 @@
         },
         "NB23B01-M-SSBASE|NB23B01-M-SSNONNORMAL": {
           "compatible": false,
-          "relative_error": 0.8792682992807481
+          "relative_error": 0.879268299280748
         },
         "NB23B01-M-SSNONNORMAL|NB23B01-M-SLDIFFSPEC": {
           "compatible": false,
@@ -130,7 +130,7 @@
         },
         "NB23B01-M-SSNONNORMAL|NB23B01-M-SSBASE": {
           "compatible": false,
-          "relative_error": 0.8792682992807481
+          "relative_error": 0.879268299280748
         },
         "NB23B01-M-SSNONNORMAL|NB23B01-M-SSNONNORMAL": {
           "compatible": true,
@@ -154,7 +154,7 @@
       "pairwise": {
         "NB23B01-M-ALIAS-88|NB23B01-M-ALIAS-8": {
           "compatible": true,
-          "relative_error": 1.1372465729509623e-11
+          "relative_error": 1.1372465729509622e-11
         },
         "NB23B01-M-ALIAS-88|NB23B01-M-ALIAS-88": {
           "compatible": true,
@@ -166,7 +166,7 @@
         },
         "NB23B01-M-ALIAS-8|NB23B01-M-ALIAS-88": {
           "compatible": true,
-          "relative_error": 1.1372465729509623e-11
+          "relative_error": 1.1372465729509622e-11
         }
       },
       "scientific_adjudication": "NOT_PERFORMED_BY_ENGINE"
@@ -252,11 +252,11 @@
         },
         "NB23B01-M-SSBASE|NB23B01-M-SSNONNORMAL": {
           "compatible": false,
-          "relative_error": 0.8792682992807481
+          "relative_error": 0.879268299280748
         },
         "NB23B01-M-SSNONNORMAL|NB23B01-M-SSBASE": {
           "compatible": false,
-          "relative_error": 0.8792682992807481
+          "relative_error": 0.879268299280748
         },
         "NB23B01-M-SSNONNORMAL|NB23B01-M-SSNONNORMAL": {
           "compatible": true,

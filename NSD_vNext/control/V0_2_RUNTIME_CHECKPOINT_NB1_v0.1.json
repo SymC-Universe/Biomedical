@@ -1,5 +1,5 @@
 {
-  "active_run_id": 36898609973,
+  "active_run_id": 36936341914,
   "authority_plan_blob": "df51ca6e7b20f49dc8781170831066e806f5617b",
   "case_set_digest": "gitblob:baae142aa5d050df0eff3a371eae4ba50357e8bf#nb1",
   "code_manifest_blob": "efdfa8d036f39bc28b2ddfb1ebcfb2e80d6af7c5",
@@ -363,6 +363,18 @@
     },
     "NB1B01-F04__r11__native__fine_240": {
       "evidence_sha256": "54b03860362e9103b8eed7cfe8190f5766253659e495202f862fca3d2c1e199b"
+    },
+    "NB1B01-F04__r12__native__coarse_120": {
+      "evidence_sha256": "203e1984cc00a9bc237b99508885faddfe7297ff8b157d0ff7104ed68baca887"
+    },
+    "NB1B01-F04__r12__native__fine_240": {
+      "evidence_sha256": "6d4b2746c08ba2c37b5319cf088f1cb17f5d34b5526fa1452f2cb0caa46e21a3"
+    },
+    "NB1B01-F04__r13__native__coarse_120": {
+      "evidence_sha256": "1d2b80104d221c20a6c6c513240ea0f3cc145b27770862a20731992780a7e375"
+    },
+    "NB1B01-F04__r13__native__fine_240": {
+      "evidence_sha256": "82b4f42d17429cbf0ca5bf5e983bc41bc6e8a41bca19824bfe110e8e01b8ee03"
     }
   },
   "completed_case_ids": [
@@ -485,10 +497,14 @@
     "NB1B01-F04__r10__native__fine_240",
     "NB1B01-F04__r10__native__coarse_120",
     "NB1B01-F04__r11__native__fine_240",
-    "NB1B01-F04__r11__native__coarse_120"
+    "NB1B01-F04__r11__native__coarse_120",
+    "NB1B01-F04__r12__native__fine_240",
+    "NB1B01-F04__r12__native__coarse_120",
+    "NB1B01-F04__r13__native__fine_240",
+    "NB1B01-F04__r13__native__coarse_120"
   ],
   "completed_work_cursor": {
-    "count": 120
+    "count": 124
   },
   "config_blob": "b5d607058595cd6a240ac33e5af352480cabd545",
   "dependency_identity": {
@@ -507,10 +523,6 @@
     "runner_label": "ubuntu-24.04"
   },
   "incomplete_case_ids": [
-    "NB1B01-F04__r12__native__fine_240",
-    "NB1B01-F04__r12__native__coarse_120",
-    "NB1B01-F04__r13__native__fine_240",
-    "NB1B01-F04__r13__native__coarse_120",
     "NB1B01-F04__r14__native__fine_240",
     "NB1B01-F04__r14__native__coarse_120",
     "NB1B01-F04__r15__native__fine_240",
@@ -998,7 +1010,7 @@
   ],
   "lane": "N-B1",
   "mismatch_policy": "FROZEN_CONTRACT_VIOLATION",
-  "next_exact_action": "resume N-B1 case NB1B01-F04__r12__native__fine_240",
+  "next_exact_action": "continue next frozen N-B1 case",
   "output_schema_identity": {
     "blob": "4877ca9d017877af75b298fdea91325394fe846e",
     "path": "NSD_vNext/control/NB1_V0_2_EVIDENCE_SCHEMA_v0.2.json"
@@ -1021,6 +1033,6 @@
   },
   "schema": "NSD_LANE_CHECKPOINT_V0_2_FROZEN_V0_2",
   "scientific_values_exposed": true,
-  "state": "ADVANCED_CHECKPOINT",
+  "state": "ACTIVE_COMPUTE",
   "stop_reason": null
 }
