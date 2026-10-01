@@ -13,7 +13,11 @@
     ],
     "reference": "average",
     "psd": "welch",
-    "sampling_hz": 1000
+    "sampling_hz": 1000,
+    "welch_n_fft": 4096,
+    "welch_n_per_seg": 4096,
+    "welch_n_overlap": 2048,
+    "frequency_resolution_hz": 0.244140625
   },
   "features": {
     "posterior_alpha_relative_power": {
@@ -25,14 +29,16 @@
         1,
         40
       ],
-      "roi": "parietal_parieto-occipital_occipital"
+      "roi": "parietal_parieto-occipital_occipital",
+      "integration": "trapezoidal_psd_integral"
     },
     "alpha_peak_frequency": {
       "search_hz": [
         8,
         13
       ],
-      "roi": "posterior"
+      "roi": "posterior",
+      "definition": "maximum posterior_mean_psd within 8-13 Hz"
     },
     "theta_beta_ratio": {
       "theta_hz": [
@@ -42,7 +48,8 @@
       "beta_hz": [
         13,
         30
-      ]
+      ],
+      "aggregation": "whole_scalp_mean_psd_then_band_ratio"
     },
     "aperiodic_exponent": {
       "fit_hz": [
@@ -55,7 +62,8 @@
       ],
       "max_peaks": 6,
       "min_peak_height": 0.1,
-      "aperiodic_mode": "fixed"
+      "aperiodic_mode": "fixed",
+      "aggregation": "whole_scalp_mean_psd_primary"
     }
   },
   "pilot": {
@@ -66,7 +74,9 @@
       "EC_post",
       "EO_pre",
       "EO_post"
-    ]
+    ],
+    "eligibility": "session1=yes; pilot selection prefers late_ses1=0; full cohort will not inherit this pilot-only convenience filter",
+    "selection_order": "age_bin_then_sex_then participant_id lexicographic; 4 per sex in each age bin 20-29,30-39,40-49,50-59,60-70 where available"
   },
   "prohibited": [
     "NSD chi",
@@ -74,5 +84,6 @@
     "Chi_arc",
     "diagnostic thresholds",
     "outcome-driven tuning"
-  ]
+  ],
+  "method_discrepancy_rule": "No post-outcome parameter changes. Any discrepancy from Park et al. 2026 triggers a new prospective version after root-cause analysis."
 }
