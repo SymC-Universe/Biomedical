@@ -1,8 +1,8 @@
 {
   "schema": "NSD_V0_2_EXECUTION_AUTHORITY_V0_1",
-  "status": "AUTHORIZED_FROZEN_EXECUTION",
+  "status": "CHECKPOINT_HARDENING_REBIND_REQUIRED",
   "scientific_baseline": "NSD-V02-B01-FROZEN",
-  "execution_authorized": true,
+  "execution_authorized": false,
   "scientific_outcomes_opened": false,
   "required_preflight_workflow": "NSD v0.2 Frozen Preflight",
   "required_preflight_conclusion": "success",
@@ -28,12 +28,18 @@
     "artifact_digest": "sha256:b4948ca46e78019bb87e6a2a974cff148c075e1d30eb16dcdc551241cf68db91",
     "completed_at": "2026-10-01T07:09:44Z"
   },
-  "authorization_scope": "Only NSD-V02-B01-FROZEN with final identity blob 0d1df186245bbdf874df3897b6187012b41e466c may produce evidence. Any mismatch is FROZEN_CONTRACT_VIOLATION.",
+  "authorization_scope": "REVOKED_PENDING_CHECKPOINT_HARDENING_IDENTITY_REBIND_AND_PREFLIGHT",
   "last_execution_attempt": {
     "run_id": 36828113912,
     "conclusion": "failure",
     "classification": "MECHANICAL_RUNNER_IMPORT_WIRING",
     "scientific_cases_opened": 0,
     "repair_commit": "40f9d023f5d023ba0f97c3b77599ac6e14f593ac"
+  },
+  "identity_change": {
+    "reason": "Mechanical checkpoint persistence hardening: rebase durable checkpoint commits onto live branch and hash completed case artifacts.",
+    "scientific_change": false,
+    "cases_targets_tolerances_unchanged": true,
+    "new_runner_blob": "435b082f64759231c9d49630a7051f5b5223af4c"
   }
 }
