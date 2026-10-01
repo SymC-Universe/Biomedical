@@ -1,0 +1,217 @@
+[Reading 213 lines from start (total: 213 lines, 0 remaining)]
+
+{
+  "task_id": "NSD_DORTMUND_HEALTHY_NATIVE_MOTION_PILOT_V01",
+  "classification": "INDEPENDENT_HEALTHY_NATIVE_BASELINE_PILOT",
+  "dataset": "ds005385",
+  "selected_subjects": [
+    "sub-004",
+    "sub-007",
+    "sub-010",
+    "sub-018",
+    "sub-063",
+    "sub-091",
+    "sub-103",
+    "sub-110",
+    "sub-023",
+    "sub-029",
+    "sub-066",
+    "sub-072",
+    "sub-012",
+    "sub-016",
+    "sub-033",
+    "sub-035",
+    "sub-003",
+    "sub-005",
+    "sub-019",
+    "sub-024",
+    "sub-028",
+    "sub-034",
+    "sub-038",
+    "sub-040",
+    "sub-006",
+    "sub-011",
+    "sub-026",
+    "sub-036",
+    "sub-017",
+    "sub-039",
+    "sub-041",
+    "sub-048",
+    "sub-001",
+    "sub-015",
+    "sub-030",
+    "sub-057",
+    "sub-002",
+    "sub-014",
+    "sub-020",
+    "sub-022"
+  ],
+  "n_selected": 40,
+  "n_rows": 160,
+  "n_failures": 0,
+  "failures": [],
+  "environment": {
+    "python": "3.12.13",
+    "numpy": "2.0.2",
+    "pandas": "2.3.3",
+    "mne": "1.12.1"
+  },
+  "methods": {
+    "bandpass_hz": [
+      1,
+      40
+    ],
+    "reference": "average",
+    "psd": "Welch",
+    "welch_n_fft": 4096,
+    "welch_n_per_seg": 4096,
+    "welch_n_overlap": 2048,
+    "alpha_hz": [
+      8,
+      13
+    ],
+    "theta_hz": [
+      4,
+      8
+    ],
+    "beta_hz": [
+      13,
+      30
+    ],
+    "aperiodic": {
+      "fit_hz": [
+        2,
+        40
+      ],
+      "peak_width_limits": [
+        1,
+        8
+      ],
+      "max_n_peaks": 6,
+      "min_peak_height": 0.1,
+      "mode": "fixed"
+    }
+  },
+  "condition_means": {
+    "posterior_alpha_relative_power": {
+      "EC_pre": 0.48827091275608614,
+      "EC_post": 0.4785371909916304,
+      "EO_pre": 0.17741184329791956,
+      "EO_post": 0.18282182570774552
+    },
+    "alpha_peak_frequency_hz": {
+      "EC_pre": 10.09521484375,
+      "EC_post": 9.906005859375,
+      "EO_pre": 9.466552734375,
+      "EO_post": 9.68017578125
+    },
+    "theta_beta_ratio": {
+      "EC_pre": 0.6851410198519725,
+      "EC_post": 0.7493461349047614,
+      "EO_pre": 1.2097542637925254,
+      "EO_post": 1.138367311406616
+    },
+    "aperiodic_exponent": {
+      "EC_pre": 1.036465178564261,
+      "EC_post": 1.0000227488568103,
+      "EO_pre": 1.2386519815975294,
+      "EO_post": 1.1442343075087709
+    }
+  },
+  "ec_minus_eo_pre": {
+    "posterior_alpha_relative_power": {
+      "n": 40,
+      "mean_difference": 0.3108590694581667,
+      "cohens_d_paired": 1.775969780409586
+    },
+    "alpha_peak_frequency_hz": {
+      "n": 40,
+      "mean_difference": 0.628662109375,
+      "cohens_d_paired": 0.38421151331424597
+    },
+    "theta_beta_ratio": {
+      "n": 40,
+      "mean_difference": -0.5246132439405531,
+      "cohens_d_paired": -0.5988835614381652
+    },
+    "aperiodic_exponent": {
+      "n": 40,
+      "mean_difference": -0.20218680303326858,
+      "cohens_d_paired": -0.5603050423489032
+    }
+  },
+  "post_minus_pre": {
+    "posterior_alpha_relative_power": {
+      "EC": {
+        "n": 40,
+        "mean_difference": -0.0097337217644558,
+        "sd_difference": 0.09155232554720188
+      },
+      "EO": {
+        "n": 40,
+        "mean_difference": 0.0054099824098259326,
+        "sd_difference": 0.08477489250572152
+      }
+    },
+    "alpha_peak_frequency_hz": {
+      "EC": {
+        "n": 40,
+        "mean_difference": -0.189208984375,
+        "sd_difference": 0.9176428716417371
+      },
+      "EO": {
+        "n": 40,
+        "mean_difference": 0.213623046875,
+        "sd_difference": 1.4226996856320873
+      }
+    },
+    "theta_beta_ratio": {
+      "EC": {
+        "n": 40,
+        "mean_difference": 0.06420511505278896,
+        "sd_difference": 0.4161449523490951
+      },
+      "EO": {
+        "n": 40,
+        "mean_difference": -0.07138695238590967,
+        "sd_difference": 0.7504561433941442
+      }
+    },
+    "aperiodic_exponent": {
+      "EC": {
+        "n": 40,
+        "mean_difference": -0.03644242970745061,
+        "sd_difference": 0.27985428754303515
+      },
+      "EO": {
+        "n": 40,
+        "mean_difference": -0.09441767408875865,
+        "sd_difference": 0.3882269318932826
+      }
+    }
+  },
+  "literature_direction_checks": {
+    "posterior_alpha_relative_power": {
+      "expected_ec_minus_eo": "positive",
+      "observed": 0.3108590694581667,
+      "pass": true
+    },
+    "alpha_peak_frequency_hz": {
+      "expected_ec_minus_eo": "positive",
+      "observed": 0.628662109375,
+      "pass": true
+    },
+    "theta_beta_ratio": {
+      "expected_ec_minus_eo": "negative",
+      "observed": -0.5246132439405531,
+      "pass": true
+    },
+    "aperiodic_exponent": {
+      "expected_ec_minus_eo": "negative",
+      "observed": -0.20218680303326858,
+      "pass": true
+    }
+  }
+}
+
+[executed on device: Popstop (6c701129-153c-433b-9874-1ae1524c8c10)]
