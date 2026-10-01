@@ -1,12 +1,14 @@
 {
-  "state": "ADVANCED_CHECKPOINT",
-  "last_productive_utc": "2026-09-30T14:29:30Z",
-  "last_productive_commit": "e4dceeeb4ce68c09259906b7f5b962afa22e77a1",
-  "active_run_ids": [],
-  "next_exact_action": "Continue frozen post-freeze implementation validation: N-B1 Profile-I optimizer/bound evidence retention and N-B2/N-B3 certified switched-discrepancy/global-peak reference mechanics. Code mutation attempts for those two hardening deltas were blocked by the repository connector safety layer this cycle; do not bypass it and do not open confirmatory outcomes.",
+  "state": "ACTIVE_COMPUTE",
+  "last_productive_utc": "2026-10-01T06:43:41Z",
+  "last_productive_commit": "a4ae6e98881372f2c2f7a1b3e54eb0162e07d113",
+  "active_run_ids": [
+    36826316308
+  ],
+  "next_exact_action": "Inspect NSD Engine Contracts run 36826316308. On PASS, close PF-NB23-I01, bind final scientific-code/dependency/environment identity, run mechanical preflight, and authorize the frozen v0.2 conveyor only if preflight passes. On mechanical failure, repair from the same frozen baseline without changing science.",
   "scientific_gate": {
-    "code": "SCIENTIFIC_PACKET_FROZEN_IMPLEMENTATION_VALIDATION_ACTIVE",
-    "reason": "Scientific packet freeze and packet APQ remain closed. Post-freeze authority validator repair is complete and passed run 36728720629. Remaining work is mechanical implementation hardening and final identity/preflight; execution authority remains false."
+    "code": "FROZEN_IMPLEMENTATION_VALIDATION_ACTIVE",
+    "reason": "Scientific packet is frozen and APQ-closed. Recovered N-B2/N-B3 switched-certificate implementation is under mechanical contract validation; execution authority remains false until identity binding and preflight pass."
   },
   "external_block": null,
   "source_of_record": "NSD_vNext/WORKING_INVESTIGATION.md",
@@ -14,5 +16,5 @@
   "work_queue": "NSD_vNext/control/WORK_QUEUE_v0.4.json",
   "long_run_ceiling": "NSD_vNext/control/LONG_RUN_CEILING_v0.1.md",
   "user_action_required": null,
-  "current_run_note": "Post-freeze authority validator fixed and passed. New lane checkpoints v0.13 record the remaining N-B1 Profile-I evidence-retention and N-B2/N-B3 certified switching/peak hardening. No confirmatory outcomes opened."
+  "current_run_note": "Recovered from approximately 13 hours of dead time caused by a disabled execution controller. Run 36826316308 is the authoritative current implementation-validation run."
 }
