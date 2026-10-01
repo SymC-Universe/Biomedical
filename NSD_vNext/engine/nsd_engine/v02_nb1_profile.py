@@ -201,6 +201,32 @@ def profile_evidence(signal,fs):
         "scientific_adjudication":"NOT_PERFORMED_BY_ENGINE",
         "fitted_chi":fitted,
         "global_nll":global_nll,
+        "fit_evidence":{
+            "success":bool(fit.success),
+            "bic":float(fit.bic),
+            "parameters":{k:float(v) for k,v in fit.parameters.items()},
+            "raw_parameters":[float(v) for v in fit.raw_parameters],
+            "attempted_start_count":int(fit.attempted_start_count),
+            "converged_start_count":int(fit.converged_start_count),
+            "optimizer_message":str(fit.optimizer_message),
+            "legacy_attempted_start_count":int(fit.legacy_attempted_start_count),
+            "legacy_converged_start_count":int(fit.legacy_converged_start_count),
+            "legacy_best_negative_log_likelihood":float(fit.legacy_best_negative_log_likelihood),
+            "legacy_best_success":bool(fit.legacy_best_success),
+            "legacy_best_raw_parameters":[float(v) for v in fit.legacy_best_raw_parameters],
+            "winning_start_origin":str(fit.winning_start_origin),
+            "recurrence_seed_status":str(fit.recurrence_seed_status),
+            "recurrence_seed_ready":bool(fit.recurrence_seed_ready),
+            "recurrence_seed_start_nll":(
+                None if fit.recurrence_seed_start_nll is None
+                else float(fit.recurrence_seed_start_nll)
+            ),
+            "recurrence_seed_condition_number":(
+                None if fit.recurrence_seed_condition_number is None
+                else float(fit.recurrence_seed_condition_number)
+            ),
+        },
+        "global_nll":global_nll,
         "fitted_profile_row_nll":fitted_row_nll,
         "fitted_profile_reproduction_tolerance":reproduction_tol,
         "fitted_profile_reproduced":reproduced,
