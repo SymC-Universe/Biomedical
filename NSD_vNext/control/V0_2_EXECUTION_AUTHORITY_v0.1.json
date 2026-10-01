@@ -1,13 +1,17 @@
 {
   "schema": "NSD_V0_2_EXECUTION_AUTHORITY_V0_1",
-  "status": "PREFLIGHT_PENDING",
+  "status": "PREFLIGHT_READY",
   "scientific_baseline": "NSD-V02-B01-FROZEN",
   "execution_authorized": false,
   "scientific_outcomes_opened": false,
   "required_preflight_workflow": "NSD v0.2 Frozen Preflight",
   "required_preflight_conclusion": "success",
   "case_order": "NSD_vNext/control/V0_2_EXECUTION_CASE_ORDER_v0.1.json",
-  "final_code_identity": null,
+  "final_code_identity": {
+    "path": "NSD_vNext/control/V0_2_FINAL_CODE_IDENTITY_v0.1.json",
+    "blob": "51793bc65e93a0767210d11910c9466a1a073183"
+  },
   "authorization_rule": "May become true only after final implementation/code/dependency/environment identity is bound and the exact frozen preflight passes.",
-  "terminal_ceiling": "SCIENTIFIC_REVIEW_READY"
+  "terminal_ceiling": "SCIENTIFIC_REVIEW_READY",
+  "preflight_workflow_path": ".github/workflows/nsd-v0-2-frozen-preflight.yml"
 }
