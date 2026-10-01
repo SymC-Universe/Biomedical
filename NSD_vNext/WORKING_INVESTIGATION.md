@@ -1056,3 +1056,20 @@ CD-05 independent Profile-I reproduction passed in Engine Contracts run 36720502
 - **Next exact action:** if engine contracts pass, close `PF-NB23-I01`, bind final scientific-code/dependency/environment identity, run mechanical preflight, then authorize the frozen long conveyor only if all preflight gates pass. If contracts fail, classify root cause and repair only mechanically without changing frozen science.
 - **User intervention required:** `no`.
 
+### 2026-10-01 - CONTINUITY_RECOVERY / PREFLIGHT_PASS / ACTIVE_COMPUTE - untouched v0.2 execution launched
+
+- **Lifecycle Stage:** frozen v0.2 confirmatory evidence execution.
+- **Entry type:** `CONTINUITY_FAILURE_RECOVERY / PREFLIGHT_PASS / ACTIVE_COMPUTE`.
+- **Continuity failure:** the authoritative NSD lane had stalled for approximately 13 hours after 2026-09-30T17:26Z because the execution controller was disabled while unfinished frozen implementation work remained. The independent alarm remained active but could not execute the missing work.
+- **Mechanical recovery:** persisted the already-frozen N-B2/N-B3 switched-versus-surrogate certificate, independent non-confirmatory reference, and fail-closed tests. Initial engine contracts passed. A later full frozen preflight exposed one test-fixture-only incompatibility after additional N-B1 fit-metadata retention; 254 tests passed and one fake fixture failed because it lacked newly retained fit attributes. The fixture alone was repaired; frozen scientific code/packet semantics were unchanged.
+- **Final implementation identity:** `V0_2_FINAL_CODE_IDENTITY_v0.1.json` is bound to the exact scientific-code blobs, packet/config identities, case order, Python 3.11.16, NumPy 2.4.6, SciPy 1.17.1, pytest 9.1.1, RNG identity, schemas, and verifier routes.
+- **Mechanical preflight:** `NSD v0.2 Frozen Preflight` run `36827901154` succeeded. Artifact `11146305459`, digest `sha256:f2d426f0f3b1251642b0e1cf9e64564e4c545e6d966384e862ac06c68a2c874d`. No confirmatory scientific outcome was opened during preflight.
+- **Execution authority:** `V0_2_EXECUTION_AUTHORITY_v0.1.json` now authorizes result-producing execution only for scientific baseline `NSD-V02-B01-FROZEN` and final implementation identity blob `51793bc65e93a0767210d11910c9466a1a073183`. Any mismatch is `FROZEN_CONTRACT_VIOLATION`.
+- **Active run:** `NSD v0.2 Frozen Evidence Conveyor` run `36828113912`.
+- **Frozen case order:** 608 N-B1 evidence rows and 18 N-B2/N-B3 suite members. Runtime checkpoints are lane-specific and resume-safe; successor runs are self-dispatched from durable checkpoints when required.
+- **GitHub authority:** generate, checkpoint, resume, hash, merge, and package evidence only. No scientific admission/refusal, representation ranking, real-EEG licensing, threshold change, or claim promotion is allowed in GitHub.
+- **Terminal ceiling:** `SCIENTIFIC_REVIEW_READY`.
+- **Current durable state:** `ACTIVE_COMPUTE`.
+- **Next exact action:** let run `36828113912` advance the frozen case order; inspect only meaningful mechanical failure/checkpoint/completion. Scientific interpretation begins only after `SCIENTIFIC_REVIEW_READY`.
+- **User intervention required:** `no`.
+
