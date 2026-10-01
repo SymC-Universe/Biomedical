@@ -1096,3 +1096,13 @@ CD-05 independent Profile-I reproduction passed in Engine Contracts run 36720502
 - **Next exact action:** follow only the repaired frozen run or its checkpointed successor. No duplicate launch. GitHub stops at `SCIENTIFIC_REVIEW_READY`; scientific adjudication remains researcher + ChatGPT.
 - **User intervention required:** `no`.
 
+### 2026-10-01 - CONTINUITY_FAILURE / MECHANICAL_RECOVERY - checkpoint-hardened frozen execution resumed
+
+- **Failure:** continuity metadata remained attached to failed stale run `36828786570` after the checkpoint-hardening rebind. Run `36829526577` was only a gate-level cancellation run and skipped every result-producing step because execution authority was false. The NSD execution controller was also disabled, leaving the lane mechanically stalled.
+- **Recovery basis:** final runner blob `435b082f64759231c9d49630a7051f5b5223af4c` is bound in `V0_2_FINAL_CODE_IDENTITY_v0.1.json`; exact frozen preflight run `36829526592` passed after checkpoint hardening.
+- **Recovery action:** execution authority was restored without scientific mutation and the authority file was mechanically retriggered. Frozen conveyor run `36859007015` is now queued.
+- **Scientific impact:** none. Baseline `NSD-V02-B01-FROZEN`, cases, N-B1 seeds, N-B2/N-B3 deterministic suite, targets, tolerances, metrics, switching law, APQ closure, and claim ceiling are unchanged.
+- **Current durable state:** `ACTIVE_COMPUTE`.
+- **Next exact action:** follow run `36859007015` only, checkpoint/resume without duplication, and stop GitHub at `SCIENTIFIC_REVIEW_READY`.
+- **User intervention required:** `no`.
+
