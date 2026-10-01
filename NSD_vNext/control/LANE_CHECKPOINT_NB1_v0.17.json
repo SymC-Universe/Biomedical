@@ -1,0 +1,20 @@
+{
+  "schema": "NSD_LANE_CHECKPOINT_NB1_V0_17",
+  "lane": "N-B1",
+  "state": "ACTIVE_COMPUTE",
+  "architecture_review_status": "CLOSED",
+  "packet_review_status": "CLOSED",
+  "cross_lane_gate": "CLOSED",
+  "final_identity_freeze": true,
+  "scientific_values_exposed": false,
+  "execution_authorized": true,
+  "completed_case_ids": [],
+  "scientific_freeze": "NSD_vNext/control/V0_2_FINAL_SCIENTIFIC_FREEZE_v0.1.json",
+  "authority_validator_run": 36728720629,
+  "implementation_status": "CHECKPOINT_HARDENED_FROZEN_EXECUTION_QUEUED",
+  "next_exact_action": "Follow run 36859007015 or its durable successor only; no duplicate execution or GitHub scientific adjudication.",
+  "stop_reason": null,
+  "active_run_id": 36859007015,
+  "preflight_run": 36829526592,
+  "preflight_artifact": 11146146542
+}
