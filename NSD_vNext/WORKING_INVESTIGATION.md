@@ -1073,3 +1073,16 @@ CD-05 independent Profile-I reproduction passed in Engine Contracts run 36720502
 - **Next exact action:** let run `36828113912` advance the frozen case order; inspect only meaningful mechanical failure/checkpoint/completion. Scientific interpretation begins only after `SCIENTIFIC_REVIEW_READY`.
 - **User intervention required:** `no`.
 
+### 2026-10-01 - MECHANICAL_FAILURE / IDENTITY_REBIND / PREFLIGHT_RETRY
+
+- **Lifecycle Stage:** frozen v0.2 implementation/pre-execution.
+- **Failure:** first result-producing conveyor run `36828113912` failed before any frozen case was generated. The runner imported `observed_recovery` from `v02_nb23_targets` although the implementation lives in `v02_nb23_observation`.
+- **Classification:** mechanical implementation wiring defect; not a scientific/numerical result. Runtime checkpoint files were absent and no confirmatory case outcome was opened.
+- **Evidence preservation:** failed run and artifact `11145833441` are retained as mechanical failure evidence.
+- **Recovery:** the import was corrected in commit `40f9d023f5d023ba0f97c3b77599ac6e14f593ac`. Execution authority was immediately revoked. Final implementation identity was rebound prospectively to repaired runner blob `ac9ff7671154b24c46151e72648fa025db4d8bd8`; final identity file blob is now `0d1df186245bbdf874df3897b6187012b41e466c`.
+- **Scientific impact:** none. `NSD-V02-B01-FROZEN`, all cases, seeds, targets, tolerances, metrics, switching law, APQ closure, and claim ceiling are unchanged.
+- **Current state:** `ACTIVE_COMPUTE` for mechanical preflight only. Result-producing execution is revoked.
+- **Authoritative preflight:** newest repaired-identity preflight run `36828593920`; superseded runs do not count.
+- **Next exact action:** require a green exact preflight for the repaired runner identity, then reauthorize and relaunch the frozen evidence conveyor. No scientific outcome may open before that green gate.
+- **User intervention required:** `no`.
+
