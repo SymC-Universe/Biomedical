@@ -1,0 +1,68 @@
+{
+  "schema": "NSD_WORK_QUEUE_V0_9",
+  "status": "FROZEN_V0_2_EXECUTION_ACTIVE_DURABLE_CHECKPOINT",
+  "execution_authorized": true,
+  "source_of_record": "NSD_vNext/control/V0_2_FINAL_SCIENTIFIC_FREEZE_v0.1.json",
+  "final_identity": "NSD_vNext/control/V0_2_FINAL_CODE_IDENTITY_v0.1.json",
+  "execution_authority": "NSD_vNext/control/V0_2_EXECUTION_AUTHORITY_v0.1.json",
+  "tasks": [
+    {
+      "id": "PF-NB1-I01",
+      "lane": "N-B1",
+      "status": "DONE"
+    },
+    {
+      "id": "PF-NB23-I01",
+      "lane": "N-B2/N-B3",
+      "status": "DONE"
+    },
+    {
+      "id": "PF-CD03",
+      "lane": "CROSS-LANE",
+      "status": "DONE",
+      "evidence_run": 36717800806
+    },
+    {
+      "id": "PF-CD05",
+      "lane": "N-B1",
+      "status": "DONE",
+      "evidence_run": 36720502525
+    },
+    {
+      "id": "PF-CD06",
+      "lane": "CROSS-LANE",
+      "status": "DONE",
+      "evidence_run": 36719590935
+    },
+    {
+      "id": "PF-WF01",
+      "lane": "CROSS-LANE",
+      "status": "DONE"
+    },
+    {
+      "id": "PF-ID01",
+      "lane": "CROSS-LANE",
+      "status": "DONE"
+    },
+    {
+      "id": "PF-PRE01",
+      "lane": "CROSS-LANE",
+      "status": "DONE",
+      "evidence_run": 36829526592
+    },
+    {
+      "id": "PF-EXEC01",
+      "lane": "CROSS-LANE",
+      "status": "ACTIVE",
+      "terminal_authority": "SCIENTIFIC_REVIEW_READY",
+      "predecessor_run_id": 36898609973,
+      "active_run_id": 36936341914,
+      "durable_checkpoint_commit": "0749c1f33459741e8ffee45046d4e25640057818",
+      "nb1_completed_case_count": 120,
+      "nb1_incomplete_case_count": 488,
+      "nb23_completed_case_count": 18,
+      "nb23_incomplete_case_count": 0,
+      "note": "Same-chain successor 36936341914 is authoritative and in progress. N-B1 is durably checkpointed at 120/608. N-B2/N-B3 is 18/18 and held at SCIENTIFIC_REVIEW_READY. Do not duplicate or interpret scientifically in GitHub."
+    }
+  ]
+}
