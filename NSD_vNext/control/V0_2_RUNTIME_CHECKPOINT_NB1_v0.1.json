@@ -345,6 +345,18 @@
     },
     "NB1B01-F04__r08__native__fine_240": {
       "evidence_sha256": "e0861fe4dee9126f5b411e1a44c4f76f9e57476ddc2b56f8f84b2585399df3aa"
+    },
+    "NB1B01-F04__r09__native__coarse_120": {
+      "evidence_sha256": "8987da31108480ab037caea58cadbb73db5d130015d9ef96a72a94418830ac75"
+    },
+    "NB1B01-F04__r09__native__fine_240": {
+      "evidence_sha256": "91d5d23726dc5a054440f926d5b5f47f9b34cdc9a2f520cd8ee6e96418cd5f75"
+    },
+    "NB1B01-F04__r10__native__coarse_120": {
+      "evidence_sha256": "3c31f095b39ea315c29cff724cda6fe933e61c3fd210a5957db45ff6f054bde0"
+    },
+    "NB1B01-F04__r10__native__fine_240": {
+      "evidence_sha256": "59a004c1358129405e9d5805eaf06804f333ee05122d3af4fa5df18b6edb278b"
     }
   },
   "completed_case_ids": [
@@ -461,10 +473,14 @@
     "NB1B01-F04__r07__native__fine_240",
     "NB1B01-F04__r07__native__coarse_120",
     "NB1B01-F04__r08__native__fine_240",
-    "NB1B01-F04__r08__native__coarse_120"
+    "NB1B01-F04__r08__native__coarse_120",
+    "NB1B01-F04__r09__native__fine_240",
+    "NB1B01-F04__r09__native__coarse_120",
+    "NB1B01-F04__r10__native__fine_240",
+    "NB1B01-F04__r10__native__coarse_120"
   ],
   "completed_work_cursor": {
-    "count": 114
+    "count": 118
   },
   "config_blob": "b5d607058595cd6a240ac33e5af352480cabd545",
   "dependency_identity": {
@@ -483,10 +499,6 @@
     "runner_label": "ubuntu-24.04"
   },
   "incomplete_case_ids": [
-    "NB1B01-F04__r09__native__fine_240",
-    "NB1B01-F04__r09__native__coarse_120",
-    "NB1B01-F04__r10__native__fine_240",
-    "NB1B01-F04__r10__native__coarse_120",
     "NB1B01-F04__r11__native__fine_240",
     "NB1B01-F04__r11__native__coarse_120",
     "NB1B01-F04__r12__native__fine_240",
