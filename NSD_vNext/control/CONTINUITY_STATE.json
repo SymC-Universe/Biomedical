@@ -1,20 +1,20 @@
 {
   "state": "ACTIVE_COMPUTE",
-  "last_productive_utc": "2026-10-01T06:56:57Z",
-  "last_productive_commit": "bd08de749870471326291ab1e112b1401e93bb4a",
+  "last_productive_utc": "2026-10-01T07:03:06Z",
+  "last_productive_commit": "f9ddd17a36ba3b399e2da83a3b638c35f24c42e5",
   "active_run_ids": [
-    36827530820
+    36828113912
   ],
-  "next_exact_action": "Inspect NSD v0.2 Frozen Preflight run 36827530820. If green, bind its run/artifact as the final mechanical preflight evidence, mark PF-NB1-I01/PF-NB23-I01/PF-ID01/PF-PRE01 complete, authorize only NSD-V02-B01-FROZEN, and launch the v0.2 frozen evidence conveyor. If red, preserve and mechanically repair without changing frozen science.",
+  "next_exact_action": "Monitor only authoritative frozen v0.2 conveyor run 36828113912. Do not duplicate. On checkpoint/runtime-reserve successor, follow newest frozen runtime checkpoint. On SCIENTIFIC_REVIEW_READY, stop GitHub execution and move scientific adjudication to researcher + ChatGPT.",
   "scientific_gate": {
-    "code": "FROZEN_V0_2_PREFLIGHT_ACTIVE",
-    "reason": "Scientific baseline and final implementation identity are bound. Exact frozen runner preflight is active; confirmatory execution remains false until this run passes."
+    "code": "FROZEN_V0_2_EXECUTION_ACTIVE",
+    "reason": "Final implementation identity and mechanical preflight are closed; untouched v0.2 evidence execution is active under exact frozen authority."
   },
   "external_block": null,
   "source_of_record": "NSD_vNext/WORKING_INVESTIGATION.md",
   "continuity_contract": "ACTIVE_COMPUTE | ADVANCED_CHECKPOINT | SCIENTIFIC_GATE | EXTERNAL_BLOCK | USER_ACTION_REQUIRED; IDLE forbidden",
-  "work_queue": "NSD_vNext/control/WORK_QUEUE_v0.4.json",
+  "work_queue": "NSD_vNext/control/WORK_QUEUE_v0.5.json",
   "long_run_ceiling": "NSD_vNext/control/LONG_RUN_CEILING_v0.1.md",
   "user_action_required": null,
-  "current_run_note": "Authoritative active run is frozen v0.2 preflight 36827530820. Legacy PR fanout does not reset liveness."
+  "current_run_note": "Frozen preflight 36827901154 passed; execution authority granted only to final identity blob 51793bc65e93a0767210d11910c9466a1a073183. Active conveyor run 36828113912."
 }
