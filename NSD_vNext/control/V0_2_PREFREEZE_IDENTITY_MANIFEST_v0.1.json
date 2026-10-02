@@ -1,0 +1,103 @@
+{
+  "schema": "NSD_V0_2_PREFREEZE_IDENTITY_MANIFEST_V0_1",
+  "status": "PREFREEZE_IDENTITY_ONLY_NOT_A_SCIENTIFIC_FREEZE",
+  "governance": "SymC GOM v1.0 + Continuity Hardening Addendum",
+  "execution_authorized": false,
+  "purpose": "Bind the exact prospective authority and evidence-schema identities currently under Round-2 APQ while preserving the right to revise prospectively if APQ requires changes.",
+  "authority_files": [
+    {
+      "path": "NSD_vNext/docs/BIO_CHI_INTEGRATED_NB1_ADMISSION_ARCHITECTURE_PLAN_v0.4.md",
+      "blob_sha": "ad8193ee0a99365ffddbf930db84d84a046d7400",
+      "role": "N-B1 revised scientific authority"
+    },
+    {
+      "path": "NSD_vNext/docs/BIO_CHI_NB2_NB3_REPRESENTATION_SUFFICIENCY_PLAN_v0.4.md",
+      "blob_sha": "bce38bee49078ce70c81b9c907d64cc880a9b657",
+      "role": "N-B2/N-B3 revised scientific authority"
+    },
+    {
+      "path": "NSD_vNext/control/FRESH_UNTOUCHED_V0_2_DRAFT.json",
+      "blob_sha": "a8d5b0d9385ccdeaa8e54437218ce45a895ab3a1",
+      "role": "fresh outcome-blind prefreeze packet draft"
+    },
+    {
+      "path": "NSD_vNext/control/INDEPENDENT_APQ2_ADJUDICATION_LEDGER_v0.2.md",
+      "blob_sha": "9defef998de84fc1b625889e16aa1fa8b8996ad9",
+      "role": "Round-1 adjudication and exposure declaration"
+    },
+    {
+      "path": "NSD_vNext/control/LONG_RUN_EXPOSURE_LEDGER_v0.1.json",
+      "blob_sha": "db180bcab58fb4485ecc6d30499e964376c1171b",
+      "role": "v0.1 exposure custody"
+    },
+    {
+      "path": "NSD_vNext/control/V0_2_RESULT_LANDING_AUDIT_v0.1.md",
+      "blob_sha": "1679d4032ca74908724389171f74586ad2c77a50",
+      "role": "pre-outcome scientific review sequence"
+    },
+    {
+      "path": "NSD_vNext/control/V0_2_FUNCTION_LIMIT_COVERAGE_AUDIT_v0.1.md",
+      "blob_sha": "d3a06edb0cff8492f839319f17f49203c24cbc18",
+      "role": "outcome-blind Function/Limit coverage audit"
+    },
+    {
+      "path": "NSD_vNext/control/V0_2_PACKET_LEVEL_APQ_CHECKLIST_v0.1.md",
+      "blob_sha": "e2fba0840f5c579d0cf0afa8f40620e0c3d49b37",
+      "role": "future exact packet APQ checklist"
+    },
+    {
+      "path": "NSD_vNext/control/NB1_V0_2_EVIDENCE_SCHEMA.json",
+      "blob_sha": "a6f0c25398dc5bd0a8f7adf02627e2afcfed06c9",
+      "role": "N-B1 mechanical evidence schema"
+    },
+    {
+      "path": "NSD_vNext/control/NB23_V0_2_EVIDENCE_SCHEMA.json",
+      "blob_sha": "fe6fb242ac419c55b4c431692ff4a97fdd694d34",
+      "role": "N-B2/N-B3 mechanical evidence schema"
+    },
+    {
+      "path": "NSD_vNext/control/ROUND2_FULLTEXT_HANDOFF_NB1.md",
+      "blob_sha": "44bf32071f836fed210048363cf6317266d25467",
+      "role": "isolated Round-2 N-B1 reviewer handoff"
+    },
+    {
+      "path": "NSD_vNext/control/ROUND2_FULLTEXT_HANDOFF_NB23.md",
+      "blob_sha": "bdc360947fb5e312d531c6ef5d2be1e02593b82d",
+      "role": "isolated Round-2 N-B2/N-B3 reviewer handoff"
+    },
+    {
+      "path": "NSD_vNext/control/ROUND2_FULLTEXT_HANDOFF_INTEGRATED.md",
+      "blob_sha": "d5253422fa66e1e2a6902be9de95764aebb473ba",
+      "role": "isolated Round-2 integration reviewer handoff"
+    }
+  ],
+  "code_identity": {
+    "status": "PREFREEZE_PENDING_PACKET_APQ",
+    "current_manifest_path": "NSD_vNext/control/LONG_RUN_CODE_MANIFEST_v0.1.json",
+    "current_manifest_blob_sha": "54174ad81887c243e1c96a08b66e94cc56d801f1",
+    "rule": "The final v0.2 freeze must generate a versioned code/dependency manifest after Round-2 architecture APQ and exact packet-level APQ. This v0.1 manifest is provenance only and does not freeze v0.2 implementation."
+  },
+  "rng_identity": {
+    "nb1": {
+      "source": "FRESH_UNTOUCHED_V0_2_DRAFT.json",
+      "seed_derivation_bound": true,
+      "seeds": [
+        810681,
+        357546,
+        727557,
+        348027,
+        320685,
+        854904,
+        403174,
+        181664
+      ]
+    },
+    "nb23": {
+      "exact_deterministic_cases": "No RNG required for exact operator targets unless a stochastic/noisy recoverability layer is activated.",
+      "stochastic_recoverability_seed_contract": "NOT_YET_FROZEN",
+      "freeze_requirement": "Any stochastic/noisy recoverability execution must bind generator, noise law, seed identities, and RNG implementation before exact packet freeze."
+    }
+  },
+  "mismatch_policy": "Any authority/config/schema/code/dependency/RNG identity mismatch after final freeze must refuse resume and classify FROZEN_CONTRACT_VIOLATION; prefreeze changes are allowed only prospectively with renewed APQ as required.",
+  "exposure_policy": "No v0.1 scientific result payload may be opened or used to choose v0.2 values before freeze."
+}

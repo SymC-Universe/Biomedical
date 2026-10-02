@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nsd-structural-engine-contracts"
+version = "0.1.0"
+description = "Qualification-stage scaffold for the NSD vNext Structural Engine"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy==2.4.6",
+    "scipy==1.17.1",
+]
+
+[project.optional-dependencies]
+parameterization_rc7 = [
+    "specparam==2.0.0rc7",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["nsd_engine*"]
+exclude = ["tests*", "qualification_tests*", "tools*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

@@ -1,0 +1,18 @@
+{
+  "schema": "NSD_V0_2_LANE_SIGNOFF_CONTRACT_V0_1",
+  "status": "PREFREEZE_BOUND",
+  "execution_authorized": false,
+  "rules": [
+    "N-B1 and N-B2/N-B3 are adjudicated separately.",
+    "No lane result can license the other lane.",
+    "SCIENTIFIC_REVIEW_READY is evidence packaging only.",
+    "Each lane requires researcher plus ChatGPT scientific adjudication before claim promotion.",
+    "No combined lane PASS is defined."
+  ],
+  "claim_ceiling": [
+    "no real-EEG local chi",
+    "no biological prevalence",
+    "no universal representation hierarchy",
+    "no whole-system scalar"
+  ]
+}

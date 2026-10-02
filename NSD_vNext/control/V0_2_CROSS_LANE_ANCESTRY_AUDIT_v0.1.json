@@ -1,0 +1,34 @@
+{
+  "schema": "NSD_V0_2_CROSS_LANE_ANCESTRY_AUDIT_V0_1",
+  "status": "PASS_OUTCOME_BLIND",
+  "execution_authorized": false,
+  "scientific_outcomes_opened": false,
+  "nb1_case_basis": [
+    "NB1_PACKET_FUNCTION_TRUTHS_v0.1.json",
+    "NB1_PACKET_LIMIT_TRUTHS_v0.1.json",
+    "NB1_PACKET_SEEDS_v0.2.json",
+    "NB1_CDS_GENERATOR_SEMANTIC_CONTRACT_v0.1.md",
+    "NB1_LIMIT_GENERATOR_CONTRACT_v0.1.md"
+  ],
+  "nb23_case_basis": [
+    "NB23_OPERATOR_REGISTRY_CANDIDATE_v0.1.json",
+    "NB23_EXHAUSTIVE_SUITE_CANDIDATE_v0.1.json",
+    "NB23_TARGET_AND_CONTRAST_CANDIDATE_v0.1.json"
+  ],
+  "checks": {
+    "source_case_overlap": false,
+    "generator_instance_overlap": false,
+    "template_identity_overlap": false,
+    "seed_identity_overlap": false,
+    "parameter_draw_overlap": false,
+    "derived_case_overlap": false,
+    "direct_cross_lane_case_derivation": false
+  },
+  "shared_components": {
+    "classification": "REGISTERED_COMMON_DEPENDENCIES_NOT_CASE_ANCESTRY",
+    "register": "V0_2_COMMON_DEPENDENCY_REGISTER_v0.1.json",
+    "analytic_certificates": "V0_2_COMMON_DEPENDENCY_ANALYTIC_CERTIFICATES_v0.1.md"
+  },
+  "disposition": "PASS",
+  "rule": "Any later scientific change to a case ancestry or shared dependency reopens this audit and the affected packet scope."
+}

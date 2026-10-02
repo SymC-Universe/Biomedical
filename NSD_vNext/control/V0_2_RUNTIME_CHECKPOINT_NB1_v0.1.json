@@ -1,0 +1,1167 @@
+{
+  "active_run_id": 36936341914,
+  "authority_plan_blob": "df51ca6e7b20f49dc8781170831066e806f5617b",
+  "case_set_digest": "gitblob:baae142aa5d050df0eff3a371eae4ba50357e8bf#nb1",
+  "code_manifest_blob": "efdfa8d036f39bc28b2ddfb1ebcfb2e80d6af7c5",
+  "completed_artifact_hashes": {
+    "NB1B01-F01__r00__native__coarse_120": {
+      "evidence_sha256": "98dc01ddfda4f0d36b6d467fcf5fa117c20b49d530e086d902cec70cf8fd4d7f"
+    },
+    "NB1B01-F01__r00__native__fine_240": {
+      "evidence_sha256": "1582d5baf99b726d5f545eeec0f894650c6bfccfa562007d8f5519c8d6f06399"
+    },
+    "NB1B01-F01__r01__native__coarse_120": {
+      "evidence_sha256": "3c87610877d74b1cd9bdf5be6642380c08b41ea109c55db2bc90b5e767ab0e1e"
+    },
+    "NB1B01-F01__r01__native__fine_240": {
+      "evidence_sha256": "e8e48d9317dd8f54363977bc3e04879589217ada6acafd419ecbfda586261f86"
+    },
+    "NB1B01-F01__r02__native__coarse_120": {
+      "evidence_sha256": "1c83f25a88faf8173f736c655d58cfd7baca00fcb13ec21758cfde8170cc8ffb"
+    },
+    "NB1B01-F01__r02__native__fine_240": {
+      "evidence_sha256": "969ca52a64d6d1ef44b553466bc03c28915f95d870150a6ccbe188de3df65200"
+    },
+    "NB1B01-F01__r03__native__coarse_120": {
+      "evidence_sha256": "fa6269c715d3c15e13c906eb0180d2385d7bd26552ddc066796d6c249dde84d1"
+    },
+    "NB1B01-F01__r03__native__fine_240": {
+      "evidence_sha256": "35b51ff2e72384f10dfdab17c5226f50f7d5830fa88031e4df3e3f9b0b3ae14a"
+    },
+    "NB1B01-F01__r04__native__coarse_120": {
+      "evidence_sha256": "2b335e0918f3472fbf08b9c39cb4a3038e4d77d536996912cb9fa2211690be45"
+    },
+    "NB1B01-F01__r04__native__fine_240": {
+      "evidence_sha256": "75dc9c887195d9cd51dd8a636dc5881e48ff30f92d0f6f5a6c919e4457ab838f"
+    },
+    "NB1B01-F01__r05__native__coarse_120": {
+      "evidence_sha256": "10bbefae034668c343f40f01781dfc6e8e5372be402ae2e88c6353c45715f194"
+    },
+    "NB1B01-F01__r05__native__fine_240": {
+      "evidence_sha256": "18bfe45f6c987f7220424a097caf462016e8a97781e2babfaf8727f5b0ec26c5"
+    },
+    "NB1B01-F01__r06__native__coarse_120": {
+      "evidence_sha256": "6975e48146e3e6225d2c96e64b1e6d5bd36133131b3d5c82181b6f140071c7e5"
+    },
+    "NB1B01-F01__r06__native__fine_240": {
+      "evidence_sha256": "3b53e2e3a4ec24ab4c9520243a4a1b04561c99060438e7d9b337d206ac2a933f"
+    },
+    "NB1B01-F01__r07__native__coarse_120": {
+      "evidence_sha256": "97aa701958ebc65452a2dae711bca6eaa1e244e41782aef23e33ff08253a7c76"
+    },
+    "NB1B01-F01__r07__native__fine_240": {
+      "evidence_sha256": "d21b0a83414c8e66d2f4349bcc1621643faf6dcede3f8ca32f78901354cae28c"
+    },
+    "NB1B01-F01__r08__native__coarse_120": {
+      "evidence_sha256": "c1d9e9c407f602f38e69d1dbf3ad090511d65839743f1dc3f03a7924f7472a4a"
+    },
+    "NB1B01-F01__r08__native__fine_240": {
+      "evidence_sha256": "e50089278e27edeec2c775506213caf779bd695b84feb5592c7c1f09a9a8c150"
+    },
+    "NB1B01-F01__r09__native__coarse_120": {
+      "evidence_sha256": "8827577e1b6e7805b76c6e6eedd557a76139118b3dfb291ad3a28b734cdf176d"
+    },
+    "NB1B01-F01__r09__native__fine_240": {
+      "evidence_sha256": "fc5c5f56213212fee43fdca906529d79dcc3d7222f9e603158e6c979f49216db"
+    },
+    "NB1B01-F01__r10__native__coarse_120": {
+      "evidence_sha256": "099086169da1b8058eadefbafd59b3ef0e19e6cca9d7519431b1b25d69e9dbc1"
+    },
+    "NB1B01-F01__r10__native__fine_240": {
+      "evidence_sha256": "7008f91c11ccb55c05716461e6e66434dba0fae725c3e2a21dde04113b3c8b58"
+    },
+    "NB1B01-F01__r11__native__coarse_120": {
+      "evidence_sha256": "66c126715e5ce7fa8bb3cd26aadf6bba8089d10a464b3e91b10b37f8e599ec62"
+    },
+    "NB1B01-F01__r11__native__fine_240": {
+      "evidence_sha256": "4abd8168996c60ab0d40add235660c87473a81197694deae44c0c3c4f5ba0216"
+    },
+    "NB1B01-F01__r12__native__coarse_120": {
+      "evidence_sha256": "660f45038e0088e3c7d31c798a3250f3302892970ba292d78417c133e0137f13"
+    },
+    "NB1B01-F01__r12__native__fine_240": {
+      "evidence_sha256": "080334def89e99534ba2d2c201730ee22722f207c3f7eb2f03f75e7341d1f31d"
+    },
+    "NB1B01-F01__r13__native__coarse_120": {
+      "evidence_sha256": "0d0e311af980a8846f7cc88f09292f6713d18273b690279908decc7ba95dff93"
+    },
+    "NB1B01-F01__r13__native__fine_240": {
+      "evidence_sha256": "3397996e8bba977ef732f1e34511f45f5bca9b8416eec97ed2d7af96a092beb5"
+    },
+    "NB1B01-F01__r14__native__coarse_120": {
+      "evidence_sha256": "b7fa55445af1855be5145860e0893a991b3b792b99c22e6a6ad1726305642872"
+    },
+    "NB1B01-F01__r14__native__fine_240": {
+      "evidence_sha256": "beab5b8fcefbe50e82876c692489e9fee147f1e10d19c3782d0fcb65408847d5"
+    },
+    "NB1B01-F01__r15__native__coarse_120": {
+      "evidence_sha256": "5d60f66a40aa1d0dc5da856a43bf51de45152a163e3eda51e6a948e2933e42e7"
+    },
+    "NB1B01-F01__r15__native__fine_240": {
+      "evidence_sha256": "a3336969d7a48caac46f6263557ab3c25556fef9a1efae59c6ae385a6be13dd6"
+    },
+    "NB1B01-F02__r00__native__coarse_120": {
+      "evidence_sha256": "7af2c5547ef438c58296f15cc0e14dc3f79c43da32d72c5c5151d1f51f7c4b06"
+    },
+    "NB1B01-F02__r00__native__fine_240": {
+      "evidence_sha256": "7b3c7a4ea12b8c7ef2b9d8f411cc05acd368f7b54ab7c7a79bdec5c1826b59a9"
+    },
+    "NB1B01-F02__r01__native__coarse_120": {
+      "evidence_sha256": "1cde452a852425d86ffd53ebff2dee342b4f0873ae0f43321f57bacd17aa45b7"
+    },
+    "NB1B01-F02__r01__native__fine_240": {
+      "evidence_sha256": "23e6a17b965ebed920b9b594b5806dce3a87a018ef58f9d66a0a9ea717b95f23"
+    },
+    "NB1B01-F02__r02__native__coarse_120": {
+      "evidence_sha256": "3741f4c8972112042843015f9c9f8dc93f11d70558e18c521ac6b57964fd0a9f"
+    },
+    "NB1B01-F02__r02__native__fine_240": {
+      "evidence_sha256": "f2201cfc4499dd6d3d9effd46c1922904cf40a46e69969846153e2bf66f0874f"
+    },
+    "NB1B01-F02__r03__native__coarse_120": {
+      "evidence_sha256": "91dbdd19cdcf000f77ad72d420e08f011f8d59ca114d372c521a6ffefbd2023d"
+    },
+    "NB1B01-F02__r03__native__fine_240": {
+      "evidence_sha256": "33e909632bfeb6db1470e573a06ae7067d71d5c298dc5b9199dbe7a7bc316532"
+    },
+    "NB1B01-F02__r04__native__coarse_120": {
+      "evidence_sha256": "14c4c6e53d87977c09d23f4bfa7d056453d8beadaa8492f1cf60a3c945a44ea7"
+    },
+    "NB1B01-F02__r04__native__fine_240": {
+      "evidence_sha256": "76aff22a50bdcd6b1b8f00efd74f762518e6590da43878dc9e5393ceed57a121"
+    },
+    "NB1B01-F02__r05__native__coarse_120": {
+      "evidence_sha256": "c8d9fb9b70df03f71ed3186913447aa72d2272e2f509a5a6ad36f624632ca10b"
+    },
+    "NB1B01-F02__r05__native__fine_240": {
+      "evidence_sha256": "403e56585e189cfdddd3aa76e86ad318257cfee3a7ee7f81aabd4a83f2154695"
+    },
+    "NB1B01-F02__r06__native__coarse_120": {
+      "evidence_sha256": "b1a7777fb961e64c6320545d8edf6e8ff43713fc5e14fbc9932b64960872cf76"
+    },
+    "NB1B01-F02__r06__native__fine_240": {
+      "evidence_sha256": "acb1e79bbfab57b4f5e41bb3436a31b5daab3a42634549754b35f4a21201ddaf"
+    },
+    "NB1B01-F02__r07__native__coarse_120": {
+      "evidence_sha256": "267678c6f317144937f8705c78cb3e7a42176e673ba1909c92afbd1ef76c629a"
+    },
+    "NB1B01-F02__r07__native__fine_240": {
+      "evidence_sha256": "5d401a6686d0578fabdccf7541544373590eaa2f88f80b9f2fd8ac8e685b73ef"
+    },
+    "NB1B01-F02__r08__native__coarse_120": {
+      "evidence_sha256": "f5a224bcadac715f1769dbf13168fa1a2b34a7450aa2fb95bf10d8cf265f5cc2"
+    },
+    "NB1B01-F02__r08__native__fine_240": {
+      "evidence_sha256": "68ab3f4d283144c8248597cdd754d7a8ee36d2e6f6272dba1d80f506aedbd7cd"
+    },
+    "NB1B01-F02__r09__native__coarse_120": {
+      "evidence_sha256": "bf433295287794c13998d3029c85c238046de7ea7041076edda136762e0420d9"
+    },
+    "NB1B01-F02__r09__native__fine_240": {
+      "evidence_sha256": "b8ea74d18d8f18198c091ed1d8c8a0609f058136d2b76a7278681666e643a84e"
+    },
+    "NB1B01-F02__r10__native__coarse_120": {
+      "evidence_sha256": "104103af0a0f1ab7164431407c85127686dfcb2debdf6797c61511e30688f4e3"
+    },
+    "NB1B01-F02__r10__native__fine_240": {
+      "evidence_sha256": "3ea97b2343ae3c3d48d9b2697dce27d4849246491fa0314159b56968bd26d7b9"
+    },
+    "NB1B01-F02__r11__native__coarse_120": {
+      "evidence_sha256": "00c645e8dac9b976048e6d3cbe4edcf4b0039f512c9331da60bcc1f65436b75d"
+    },
+    "NB1B01-F02__r11__native__fine_240": {
+      "evidence_sha256": "0c8f0ad6127e34e572f57602358c98dd3cc30fa5ae2c0678ba6ea0338424e51e"
+    },
+    "NB1B01-F02__r12__native__coarse_120": {
+      "evidence_sha256": "c64217354f46839bd2a26fad9afba67bc281ddb740201cacf23bd8c2733d16b5"
+    },
+    "NB1B01-F02__r12__native__fine_240": {
+      "evidence_sha256": "c364cee0d53909c19d585cfa73f0648215f98674bb981bcc40b1ef2cbeeea6e9"
+    },
+    "NB1B01-F02__r13__native__coarse_120": {
+      "evidence_sha256": "9d194e1bc99dc6668b7f98b94064e1657fb78bf162cc1dc9859fc5c132937f1b"
+    },
+    "NB1B01-F02__r13__native__fine_240": {
+      "evidence_sha256": "5bf0abd72393b6275119f7f1c60530bc2f4cef0388d3633947f3368a285dd576"
+    },
+    "NB1B01-F02__r14__native__coarse_120": {
+      "evidence_sha256": "b13eb4f6b54e7de7ab0455a8794b42fb7b87bf4b64cbfd9ab21e3f74a98e1752"
+    },
+    "NB1B01-F02__r14__native__fine_240": {
+      "evidence_sha256": "f031b40597e45cced1c782ae361ee9c4ab3f3143fb0983640a80c0152082cd0a"
+    },
+    "NB1B01-F02__r15__native__coarse_120": {
+      "evidence_sha256": "56d08a518b819be8c07d4e119c97e607ece3b43a990d616fa3b27ec733365dc8"
+    },
+    "NB1B01-F02__r15__native__fine_240": {
+      "evidence_sha256": "1a4742c552b9a302e25ba2ff8e9df139e8139a9289b934fb9b971f3185b57f36"
+    },
+    "NB1B01-F03__r00__native__coarse_120": {
+      "evidence_sha256": "e879bbb2ac1d8a7723e5acb88052cecef1dd3aaf37bc0c46bf253bca1544fd93"
+    },
+    "NB1B01-F03__r00__native__fine_240": {
+      "evidence_sha256": "66d6540f8c149f96aae5639901c48b483269ac15e34e6d89b889e840854fca5b"
+    },
+    "NB1B01-F03__r01__native__coarse_120": {
+      "evidence_sha256": "a0408a002e6fd8e858c0356d149efa1e3d1641d65f1a714718522984ed521528"
+    },
+    "NB1B01-F03__r01__native__fine_240": {
+      "evidence_sha256": "0c6008ddc7275ba2ef77710061bcb80e11786a45391b323c8d5d34f6eae01a4a"
+    },
+    "NB1B01-F03__r02__native__coarse_120": {
+      "evidence_sha256": "4df1789e0bffce719bc5d0747a90e2346ac346f43a8cdf5ae3280c249a9234d8"
+    },
+    "NB1B01-F03__r02__native__fine_240": {
+      "evidence_sha256": "8a2e0a58b8a5d10942d61ac8feef3e2fa62136b67b3b206f4da3b59029990c45"
+    },
+    "NB1B01-F03__r03__native__coarse_120": {
+      "evidence_sha256": "9105d820ec6c3f981a5b9adc9337ed3fd7ff591e1bca6d889e7ad488043e6e75"
+    },
+    "NB1B01-F03__r03__native__fine_240": {
+      "evidence_sha256": "9623237a14415a74db171712b9053e82f49a042643608cf5b3e361a8311e9cb9"
+    },
+    "NB1B01-F03__r04__native__coarse_120": {
+      "evidence_sha256": "84ceff9f8ce239bbd1f720ec24949a34988bb64f883e4fb9f04619dcc80cbb27"
+    },
+    "NB1B01-F03__r04__native__fine_240": {
+      "evidence_sha256": "02dfc507e499030520240f735d07bc3ba8e2f0915bf036c9964ac99a801db3ce"
+    },
+    "NB1B01-F03__r05__native__coarse_120": {
+      "evidence_sha256": "7498726a87ea6df107d6f5ba3b4b8786ecd6efed9f3bf381593549e23280b8e0"
+    },
+    "NB1B01-F03__r05__native__fine_240": {
+      "evidence_sha256": "f10867b4ec931c2eb34b0b301625da1e35d1f7096da1bb65077ac58ceada8a83"
+    },
+    "NB1B01-F03__r06__native__coarse_120": {
+      "evidence_sha256": "9c9df31a1a8b7c209f6c4df1f3b08dccbbc8e580a713c08260cce412e4e46195"
+    },
+    "NB1B01-F03__r06__native__fine_240": {
+      "evidence_sha256": "371daeeb6093de64d644cebc63cbb0f2960c3e53db2ea37a34176e77a2e5554c"
+    },
+    "NB1B01-F03__r07__native__coarse_120": {
+      "evidence_sha256": "58e1fad6ab0af70200248cee59d7e3c54f40ed61680beb0d2ab4f8814fb3775d"
+    },
+    "NB1B01-F03__r07__native__fine_240": {
+      "evidence_sha256": "44bbec65f93d7bb07c4b5a21802390429e600ad567f1aafdfa83d3c63ca7e1a2"
+    },
+    "NB1B01-F03__r08__native__coarse_120": {
+      "evidence_sha256": "b5da755ba93b02a73d3629a9fe4786f43db713c5f200ca3c401827a4eacc7280"
+    },
+    "NB1B01-F03__r08__native__fine_240": {
+      "evidence_sha256": "b54e9ace323ae604241d66f234908fbbb92fb7687e2d15a5aa1e56a534b59fa7"
+    },
+    "NB1B01-F03__r09__native__coarse_120": {
+      "evidence_sha256": "7aa393a4d1b44c9ed1a2cefa184c73c1232cb8d218bb8496f3058e4e66c20d52"
+    },
+    "NB1B01-F03__r09__native__fine_240": {
+      "evidence_sha256": "cbe7efd5f0c2224ae7f528b1f8aa60ea448f8dd7092b112ce6f4f808989842d8"
+    },
+    "NB1B01-F03__r10__native__coarse_120": {
+      "evidence_sha256": "9055b21a22288a6aa24a3646391e6254c1a7347426c81610d5e8a3deb10df870"
+    },
+    "NB1B01-F03__r10__native__fine_240": {
+      "evidence_sha256": "5ebb617e2e8855229fadd310aa32d2928fa640b32b0206d8499c3bffc579a403"
+    },
+    "NB1B01-F03__r11__native__coarse_120": {
+      "evidence_sha256": "9ea3e78342a8aa7ed438f8dc99499870ea7b45b06922e2287d9d4a56c86fb7ad"
+    },
+    "NB1B01-F03__r11__native__fine_240": {
+      "evidence_sha256": "513d874b17a924aebe19c3c7aa537345a56d499aab229744cd0b02d994e7e29c"
+    },
+    "NB1B01-F03__r12__native__coarse_120": {
+      "evidence_sha256": "20f9c9083867dda4d26636d122f37e9fbfcdf519df5bc5108c7486e79a283f3c"
+    },
+    "NB1B01-F03__r12__native__fine_240": {
+      "evidence_sha256": "8af15a9db869e6684a3dfa37c1de038c1cd66c55a8e0b009590cb5ccdbb0c90b"
+    },
+    "NB1B01-F03__r13__native__coarse_120": {
+      "evidence_sha256": "65c5bbb511c84c6f17ae02f8ef19236b4e1dd641eeba1e300c3ef04186e4ce40"
+    },
+    "NB1B01-F03__r13__native__fine_240": {
+      "evidence_sha256": "98308eb3f0a7f7144c13c34e2b2b2b8d457531eec2eb0ee5207828fed229d84e"
+    },
+    "NB1B01-F03__r14__native__coarse_120": {
+      "evidence_sha256": "5d43980c21414c3086ea8912be3693ff83578a64252b0ebc080499d9933a2229"
+    },
+    "NB1B01-F03__r14__native__fine_240": {
+      "evidence_sha256": "7b20c0ceb808d43bd6eb2749b0b1401421eeb98f71a10395e01673a392aeacf8"
+    },
+    "NB1B01-F03__r15__native__coarse_120": {
+      "evidence_sha256": "e001c104d3cc32bfa3778464307005dcc7cfe1a61a1efd6da9479c7836827666"
+    },
+    "NB1B01-F03__r15__native__fine_240": {
+      "evidence_sha256": "8198fe06e910d14bc7f6d3719b84327a16531f07a9512d23c2f677f671bf9fa5"
+    },
+    "NB1B01-F04__r00__native__coarse_120": {
+      "evidence_sha256": "d09606f73b0964eff64ab5a52d792d0585a2c235319e0fa0f60aca4b651e8b5b"
+    },
+    "NB1B01-F04__r00__native__fine_240": {
+      "evidence_sha256": "07f42f6362166a5f6ab4f7d251977c0bc3ccb4558588086b25e38c22aee71d2b"
+    },
+    "NB1B01-F04__r01__native__coarse_120": {
+      "evidence_sha256": "b86e6015b1255edd8f258a57f9648ad9f2e2865905c99e15c89c491b545a4958"
+    },
+    "NB1B01-F04__r01__native__fine_240": {
+      "evidence_sha256": "ca2f87a5b784d94fe7721d7b1fe2043b9ec6636c0c154c928c6c784b7b62b606"
+    },
+    "NB1B01-F04__r02__native__coarse_120": {
+      "evidence_sha256": "9843190ca963c6d6a1a77bf481b0f741e667ac04c2ae5b4e9a0bf59131d1d302"
+    },
+    "NB1B01-F04__r02__native__fine_240": {
+      "evidence_sha256": "089ed3a3ac06dd35216cadbc99f5ea7516c41854c6bcca1924385fa3621c37f0"
+    },
+    "NB1B01-F04__r03__native__coarse_120": {
+      "evidence_sha256": "d7ffbc808b83ec353c0a3d6ce4e1260af7178c6cd51a59f1aa266e5889423dbd"
+    },
+    "NB1B01-F04__r03__native__fine_240": {
+      "evidence_sha256": "b04f8118518cb4d8e644a4eb84f0184839542b7f827916a924ec987f74e3055b"
+    },
+    "NB1B01-F04__r04__native__coarse_120": {
+      "evidence_sha256": "f7aee72d70a98d77b0ea332c8aff11ba2dca89ed3dfd9bc80d1b302f419f20cd"
+    },
+    "NB1B01-F04__r04__native__fine_240": {
+      "evidence_sha256": "e9346c4a24a7de937d269c34b0a6d66494939ce170957eafcb974295fed5e06b"
+    },
+    "NB1B01-F04__r05__native__coarse_120": {
+      "evidence_sha256": "dc4dc7a754cbb7a4ec8d79b36fc3a7218262aa55e63e57ae87d75862d611e132"
+    },
+    "NB1B01-F04__r05__native__fine_240": {
+      "evidence_sha256": "5ffbcd5d8691d0596066fa16df5e0fc3f2ef3ee7f76d647036e1443cfdd68c8e"
+    },
+    "NB1B01-F04__r06__native__coarse_120": {
+      "evidence_sha256": "8961008915f533de38bad25091597606715b166346859cff0e11ff813df61fc1"
+    },
+    "NB1B01-F04__r06__native__fine_240": {
+      "evidence_sha256": "a95fcf7f7bca93a8425de5890b4b4aaf41bdf593c13509a45f726ca962e86366"
+    },
+    "NB1B01-F04__r07__native__coarse_120": {
+      "evidence_sha256": "e2dc844744d76d869bae88799af95df28d8f54701db6316975fc3443cf1e2b24"
+    },
+    "NB1B01-F04__r07__native__fine_240": {
+      "evidence_sha256": "1e4720049c0c7d2ebb167c30033676db501c473f1f6eaaeeeffafc9d87d12845"
+    },
+    "NB1B01-F04__r08__native__coarse_120": {
+      "evidence_sha256": "db41dfe4f3f1276e75d5413c5ad788306358b9d3b8575b64881b1a79c896f5cb"
+    },
+    "NB1B01-F04__r08__native__fine_240": {
+      "evidence_sha256": "e0861fe4dee9126f5b411e1a44c4f76f9e57476ddc2b56f8f84b2585399df3aa"
+    },
+    "NB1B01-F04__r09__native__coarse_120": {
+      "evidence_sha256": "8987da31108480ab037caea58cadbb73db5d130015d9ef96a72a94418830ac75"
+    },
+    "NB1B01-F04__r09__native__fine_240": {
+      "evidence_sha256": "91d5d23726dc5a054440f926d5b5f47f9b34cdc9a2f520cd8ee6e96418cd5f75"
+    },
+    "NB1B01-F04__r10__native__coarse_120": {
+      "evidence_sha256": "3c31f095b39ea315c29cff724cda6fe933e61c3fd210a5957db45ff6f054bde0"
+    },
+    "NB1B01-F04__r10__native__fine_240": {
+      "evidence_sha256": "59a004c1358129405e9d5805eaf06804f333ee05122d3af4fa5df18b6edb278b"
+    },
+    "NB1B01-F04__r11__native__coarse_120": {
+      "evidence_sha256": "2471f92308889e07ea2b78eae4139b8426d619b5db15d9364b2561a4af98f03c"
+    },
+    "NB1B01-F04__r11__native__fine_240": {
+      "evidence_sha256": "54b03860362e9103b8eed7cfe8190f5766253659e495202f862fca3d2c1e199b"
+    },
+    "NB1B01-F04__r12__native__coarse_120": {
+      "evidence_sha256": "203e1984cc00a9bc237b99508885faddfe7297ff8b157d0ff7104ed68baca887"
+    },
+    "NB1B01-F04__r12__native__fine_240": {
+      "evidence_sha256": "6d4b2746c08ba2c37b5319cf088f1cb17f5d34b5526fa1452f2cb0caa46e21a3"
+    },
+    "NB1B01-F04__r13__native__coarse_120": {
+      "evidence_sha256": "1d2b80104d221c20a6c6c513240ea0f3cc145b27770862a20731992780a7e375"
+    },
+    "NB1B01-F04__r13__native__fine_240": {
+      "evidence_sha256": "82b4f42d17429cbf0ca5bf5e983bc41bc6e8a41bca19824bfe110e8e01b8ee03"
+    },
+    "NB1B01-F04__r14__native__coarse_120": {
+      "evidence_sha256": "c7b501de455502406ad1a1a7b889481eeee74599874c3a51b4a186fb2a141d04"
+    },
+    "NB1B01-F04__r14__native__fine_240": {
+      "evidence_sha256": "96fe1e8c65301d7c024ac801a648a2fbbc07eac60a435a6bd74e90417a659830"
+    },
+    "NB1B01-F04__r15__native__coarse_120": {
+      "evidence_sha256": "33ca7fd2fa9caf995ae1cb4019c6110eb276f5bd0f9e7527d05e3df2015c2596"
+    },
+    "NB1B01-F04__r15__native__fine_240": {
+      "evidence_sha256": "ba6b574508806239164400bad8b9b1fa01cc4e661b17589fb21401c5389e7743"
+    },
+    "NB1B01-F05__r00__native__coarse_120": {
+      "evidence_sha256": "e521a77d05adc2e75170ad3105b0b852d15a4b458af4403bb963a23d936ab528"
+    },
+    "NB1B01-F05__r00__native__fine_240": {
+      "evidence_sha256": "85cb7f5cd56381bc2ff7afcdd5e1e3a218626e2731d89c01fa9875c050c155fb"
+    },
+    "NB1B01-F05__r01__native__coarse_120": {
+      "evidence_sha256": "5585aead62ad886da79a056a6fc5fe4ed12466edd607282504b0de47d7f35c58"
+    },
+    "NB1B01-F05__r01__native__fine_240": {
+      "evidence_sha256": "b8e13934d1e9a3c993b4dd4a52e4821570583b1af926ab6377ba52e2922eb8d4"
+    },
+    "NB1B01-F05__r02__native__coarse_120": {
+      "evidence_sha256": "540399c66b3517f4aea8629ace298aafccd309d3858d3ea7a8b43b2aaea3e2c5"
+    },
+    "NB1B01-F05__r02__native__fine_240": {
+      "evidence_sha256": "6cd770ec0e76a75084cf1ce03d750734d2ab6f79416fa840528b21a91db1c4cd"
+    },
+    "NB1B01-F05__r03__native__coarse_120": {
+      "evidence_sha256": "8bc43bce87590264d4088302ecfe82d53425472366099287e8217b51561698e8"
+    },
+    "NB1B01-F05__r03__native__fine_240": {
+      "evidence_sha256": "8400bd0630b092abed42b3cba82d2b63c2f04f06d98f9298fd226a94482bc03b"
+    },
+    "NB1B01-F05__r04__native__coarse_120": {
+      "evidence_sha256": "9bd66f9e3e465fe043bed51e134eda2d55637c92f8fb69feef8f1e82411e07f4"
+    },
+    "NB1B01-F05__r04__native__fine_240": {
+      "evidence_sha256": "f3a61fa4a8b7aba3ef94dcc79ebc7cdedf745b23f55c939ac3f9406de1a208dc"
+    },
+    "NB1B01-F05__r05__native__coarse_120": {
+      "evidence_sha256": "9ab51906e95d3dd6305292c4246070f9890cb9b1d2f22650d2c277697716bbe2"
+    },
+    "NB1B01-F05__r05__native__fine_240": {
+      "evidence_sha256": "e0bafddd0aff94ad773764003c06fea78c90a9eb06722fe8558918208765255f"
+    },
+    "NB1B01-F05__r06__native__coarse_120": {
+      "evidence_sha256": "89cffe9c6861419b4189d6c7fd2dc378342c2db7150938701dacd24a17e117d9"
+    },
+    "NB1B01-F05__r06__native__fine_240": {
+      "evidence_sha256": "58b2e5db94676fa019aafd63cf0371d2e0fcbee3d72c6d513f3b492b26c90eec"
+    },
+    "NB1B01-F05__r07__native__coarse_120": {
+      "evidence_sha256": "952cc4592523f92ba218e1ca1f0c8df91d9ff95aca2570c3467336e36a4d8125"
+    },
+    "NB1B01-F05__r07__native__fine_240": {
+      "evidence_sha256": "73a239254169c9b254ad45ecd397a5f011d020d07c57341170f8bb2810f7b592"
+    },
+    "NB1B01-F05__r08__native__coarse_120": {
+      "evidence_sha256": "56dee701e15312b034cf3ea2e5ccbbecd2afc74d5ae3efde0967880fcaf946dc"
+    },
+    "NB1B01-F05__r08__native__fine_240": {
+      "evidence_sha256": "a534ae8a48d936b8748a31d2d89d2daef8e5e98616e49062ad02ae24974d6ae1"
+    },
+    "NB1B01-F05__r09__native__coarse_120": {
+      "evidence_sha256": "ece0d8804999cbe9a5d78e9191ee18811366335406e44d5feb2975cf4ec1e00d"
+    },
+    "NB1B01-F05__r09__native__fine_240": {
+      "evidence_sha256": "4abec79aafd3187113c2db76e4ab1b720fc28f1002e0f6b0a44752e3e0b04a5d"
+    },
+    "NB1B01-F05__r10__native__coarse_120": {
+      "evidence_sha256": "6d58d5ec3bb7db8c5cda87f146aacc6b89d8ed64091d7415cca83aabb0419f31"
+    },
+    "NB1B01-F05__r10__native__fine_240": {
+      "evidence_sha256": "cea8bebaa00c4a38941136aaabaa38a1e3bff8b8fb83c35733503db5e2e1bcb9"
+    },
+    "NB1B01-F05__r11__native__coarse_120": {
+      "evidence_sha256": "875aecdf62460772a1bc7bdbd879872368a94a31d277a9dad698bdf9abf014b1"
+    },
+    "NB1B01-F05__r11__native__fine_240": {
+      "evidence_sha256": "8ae4abc745c3edd3faf95ee39d4093627297ad2fdb729577c55740977887c326"
+    },
+    "NB1B01-F05__r12__native__coarse_120": {
+      "evidence_sha256": "7d7edfd1a662fdddb915dc309d9420b31d720653d877ee9eeb61929bb584949e"
+    },
+    "NB1B01-F05__r12__native__fine_240": {
+      "evidence_sha256": "2a9366cb595b56b9d1eaac84efd8f09ffb8001cd58e60fc53aef50c0b3fc70e3"
+    },
+    "NB1B01-F05__r13__native__coarse_120": {
+      "evidence_sha256": "dccf6308292ed0eea912aedccaab26c7317645913cf1edf87516d01486b0349d"
+    },
+    "NB1B01-F05__r13__native__fine_240": {
+      "evidence_sha256": "88aa0d65a7c3a7e43ab9e13ba6818beb9421a6fb90d5f4415a76376292575182"
+    },
+    "NB1B01-F05__r14__native__coarse_120": {
+      "evidence_sha256": "91f3a9ec83f1ae0f5f80adaf88f6f650194b76b92cd24a99a6878c7570b563a2"
+    },
+    "NB1B01-F05__r14__native__fine_240": {
+      "evidence_sha256": "f1515f6a2c2428da725cf4163bac30546647b3e9cf400b3cf78363a2281a7d31"
+    },
+    "NB1B01-F05__r15__native__coarse_120": {
+      "evidence_sha256": "43b24c7d627793a11590a6370b318e014ace3d9c589bf6ec885d54c82579f51a"
+    },
+    "NB1B01-F05__r15__native__fine_240": {
+      "evidence_sha256": "03cc69eb43f31bfde87ffb171d34624003f5b528461d82532b47101878159c15"
+    },
+    "NB1B01-F06__r00__native__coarse_120": {
+      "evidence_sha256": "a2900e4190d972645546447c67ce8d993844237f1f6334c10d07855e2dd9d764"
+    },
+    "NB1B01-F06__r00__native__fine_240": {
+      "evidence_sha256": "fbdd678909ca48265aa4da800c5f0784eaccfbc248cce75d3922a3d196bc84eb"
+    },
+    "NB1B01-F06__r01__native__coarse_120": {
+      "evidence_sha256": "17d003039bd83acf12496a6992223b4c57787cfa70c6783847bf019d2ec5db08"
+    },
+    "NB1B01-F06__r01__native__fine_240": {
+      "evidence_sha256": "1e249bff2d21eff65ecff7f6affca5635b139db0912f076a07e0785edc1ccb0f"
+    },
+    "NB1B01-F06__r02__native__coarse_120": {
+      "evidence_sha256": "a290a8ceea74a7d42ec4a41a2740db48d23b184f60a82908d057c2418807f023"
+    },
+    "NB1B01-F06__r02__native__fine_240": {
+      "evidence_sha256": "6ba01bcb063b15c15557d4b4dfebe32885fdb231527b944ebedf8c8b9848ba45"
+    },
+    "NB1B01-F06__r03__native__fine_240": {
+      "evidence_sha256": "4cde6ceb47bd8383855a7178fcb52054872cdee84a95bfd59420e77eea6edd91"
+    }
+  },
+  "completed_case_ids": [
+    "NB1B01-F01__r00__native__fine_240",
+    "NB1B01-F01__r00__native__coarse_120",
+    "NB1B01-F01__r01__native__fine_240",
+    "NB1B01-F01__r01__native__coarse_120",
+    "NB1B01-F01__r02__native__fine_240",
+    "NB1B01-F01__r02__native__coarse_120",
+    "NB1B01-F01__r03__native__fine_240",
+    "NB1B01-F01__r03__native__coarse_120",
+    "NB1B01-F01__r04__native__fine_240",
+    "NB1B01-F01__r04__native__coarse_120",
+    "NB1B01-F01__r05__native__fine_240",
+    "NB1B01-F01__r05__native__coarse_120",
+    "NB1B01-F01__r06__native__fine_240",
+    "NB1B01-F01__r06__native__coarse_120",
+    "NB1B01-F01__r07__native__fine_240",
+    "NB1B01-F01__r07__native__coarse_120",
+    "NB1B01-F01__r08__native__fine_240",
+    "NB1B01-F01__r08__native__coarse_120",
+    "NB1B01-F01__r09__native__fine_240",
+    "NB1B01-F01__r09__native__coarse_120",
+    "NB1B01-F01__r10__native__fine_240",
+    "NB1B01-F01__r10__native__coarse_120",
+    "NB1B01-F01__r11__native__fine_240",
+    "NB1B01-F01__r11__native__coarse_120",
+    "NB1B01-F01__r12__native__fine_240",
+    "NB1B01-F01__r12__native__coarse_120",
+    "NB1B01-F01__r13__native__fine_240",
+    "NB1B01-F01__r13__native__coarse_120",
+    "NB1B01-F01__r14__native__fine_240",
+    "NB1B01-F01__r14__native__coarse_120",
+    "NB1B01-F01__r15__native__fine_240",
+    "NB1B01-F01__r15__native__coarse_120",
+    "NB1B01-F02__r00__native__fine_240",
+    "NB1B01-F02__r00__native__coarse_120",
+    "NB1B01-F02__r01__native__fine_240",
+    "NB1B01-F02__r01__native__coarse_120",
+    "NB1B01-F02__r02__native__fine_240",
+    "NB1B01-F02__r02__native__coarse_120",
+    "NB1B01-F02__r03__native__fine_240",
+    "NB1B01-F02__r03__native__coarse_120",
+    "NB1B01-F02__r04__native__fine_240",
+    "NB1B01-F02__r04__native__coarse_120",
+    "NB1B01-F02__r05__native__fine_240",
+    "NB1B01-F02__r05__native__coarse_120",
+    "NB1B01-F02__r06__native__fine_240",
+    "NB1B01-F02__r06__native__coarse_120",
+    "NB1B01-F02__r07__native__fine_240",
+    "NB1B01-F02__r07__native__coarse_120",
+    "NB1B01-F02__r08__native__fine_240",
+    "NB1B01-F02__r08__native__coarse_120",
+    "NB1B01-F02__r09__native__fine_240",
+    "NB1B01-F02__r09__native__coarse_120",
+    "NB1B01-F02__r10__native__fine_240",
+    "NB1B01-F02__r10__native__coarse_120",
+    "NB1B01-F02__r11__native__fine_240",
+    "NB1B01-F02__r11__native__coarse_120",
+    "NB1B01-F02__r12__native__fine_240",
+    "NB1B01-F02__r12__native__coarse_120",
+    "NB1B01-F02__r13__native__fine_240",
+    "NB1B01-F02__r13__native__coarse_120",
+    "NB1B01-F02__r14__native__fine_240",
+    "NB1B01-F02__r14__native__coarse_120",
+    "NB1B01-F02__r15__native__fine_240",
+    "NB1B01-F02__r15__native__coarse_120",
+    "NB1B01-F03__r00__native__fine_240",
+    "NB1B01-F03__r00__native__coarse_120",
+    "NB1B01-F03__r01__native__fine_240",
+    "NB1B01-F03__r01__native__coarse_120",
+    "NB1B01-F03__r02__native__fine_240",
+    "NB1B01-F03__r02__native__coarse_120",
+    "NB1B01-F03__r03__native__fine_240",
+    "NB1B01-F03__r03__native__coarse_120",
+    "NB1B01-F03__r04__native__fine_240",
+    "NB1B01-F03__r04__native__coarse_120",
+    "NB1B01-F03__r05__native__fine_240",
+    "NB1B01-F03__r05__native__coarse_120",
+    "NB1B01-F03__r06__native__fine_240",
+    "NB1B01-F03__r06__native__coarse_120",
+    "NB1B01-F03__r07__native__fine_240",
+    "NB1B01-F03__r07__native__coarse_120",
+    "NB1B01-F03__r08__native__fine_240",
+    "NB1B01-F03__r08__native__coarse_120",
+    "NB1B01-F03__r09__native__fine_240",
+    "NB1B01-F03__r09__native__coarse_120",
+    "NB1B01-F03__r10__native__fine_240",
+    "NB1B01-F03__r10__native__coarse_120",
+    "NB1B01-F03__r11__native__fine_240",
+    "NB1B01-F03__r11__native__coarse_120",
+    "NB1B01-F03__r12__native__fine_240",
+    "NB1B01-F03__r12__native__coarse_120",
+    "NB1B01-F03__r13__native__fine_240",
+    "NB1B01-F03__r13__native__coarse_120",
+    "NB1B01-F03__r14__native__fine_240",
+    "NB1B01-F03__r14__native__coarse_120",
+    "NB1B01-F03__r15__native__fine_240",
+    "NB1B01-F03__r15__native__coarse_120",
+    "NB1B01-F04__r00__native__fine_240",
+    "NB1B01-F04__r00__native__coarse_120",
+    "NB1B01-F04__r01__native__fine_240",
+    "NB1B01-F04__r01__native__coarse_120",
+    "NB1B01-F04__r02__native__fine_240",
+    "NB1B01-F04__r02__native__coarse_120",
+    "NB1B01-F04__r03__native__fine_240",
+    "NB1B01-F04__r03__native__coarse_120",
+    "NB1B01-F04__r04__native__fine_240",
+    "NB1B01-F04__r04__native__coarse_120",
+    "NB1B01-F04__r05__native__fine_240",
+    "NB1B01-F04__r05__native__coarse_120",
+    "NB1B01-F04__r06__native__fine_240",
+    "NB1B01-F04__r06__native__coarse_120",
+    "NB1B01-F04__r07__native__fine_240",
+    "NB1B01-F04__r07__native__coarse_120",
+    "NB1B01-F04__r08__native__fine_240",
+    "NB1B01-F04__r08__native__coarse_120",
+    "NB1B01-F04__r09__native__fine_240",
+    "NB1B01-F04__r09__native__coarse_120",
+    "NB1B01-F04__r10__native__fine_240",
+    "NB1B01-F04__r10__native__coarse_120",
+    "NB1B01-F04__r11__native__fine_240",
+    "NB1B01-F04__r11__native__coarse_120",
+    "NB1B01-F04__r12__native__fine_240",
+    "NB1B01-F04__r12__native__coarse_120",
+    "NB1B01-F04__r13__native__fine_240",
+    "NB1B01-F04__r13__native__coarse_120",
+    "NB1B01-F04__r14__native__fine_240",
+    "NB1B01-F04__r14__native__coarse_120",
+    "NB1B01-F04__r15__native__fine_240",
+    "NB1B01-F04__r15__native__coarse_120",
+    "NB1B01-F05__r00__native__fine_240",
+    "NB1B01-F05__r00__native__coarse_120",
+    "NB1B01-F05__r01__native__fine_240",
+    "NB1B01-F05__r01__native__coarse_120",
+    "NB1B01-F05__r02__native__fine_240",
+    "NB1B01-F05__r02__native__coarse_120",
+    "NB1B01-F05__r03__native__fine_240",
+    "NB1B01-F05__r03__native__coarse_120",
+    "NB1B01-F05__r04__native__fine_240",
+    "NB1B01-F05__r04__native__coarse_120",
+    "NB1B01-F05__r05__native__fine_240",
+    "NB1B01-F05__r05__native__coarse_120",
+    "NB1B01-F05__r06__native__fine_240",
+    "NB1B01-F05__r06__native__coarse_120",
+    "NB1B01-F05__r07__native__fine_240",
+    "NB1B01-F05__r07__native__coarse_120",
+    "NB1B01-F05__r08__native__fine_240",
+    "NB1B01-F05__r08__native__coarse_120",
+    "NB1B01-F05__r09__native__fine_240",
+    "NB1B01-F05__r09__native__coarse_120",
+    "NB1B01-F05__r10__native__fine_240",
+    "NB1B01-F05__r10__native__coarse_120",
+    "NB1B01-F05__r11__native__fine_240",
+    "NB1B01-F05__r11__native__coarse_120",
+    "NB1B01-F05__r12__native__fine_240",
+    "NB1B01-F05__r12__native__coarse_120",
+    "NB1B01-F05__r13__native__fine_240",
+    "NB1B01-F05__r13__native__coarse_120",
+    "NB1B01-F05__r14__native__fine_240",
+    "NB1B01-F05__r14__native__coarse_120",
+    "NB1B01-F05__r15__native__fine_240",
+    "NB1B01-F05__r15__native__coarse_120",
+    "NB1B01-F06__r00__native__fine_240",
+    "NB1B01-F06__r00__native__coarse_120",
+    "NB1B01-F06__r01__native__fine_240",
+    "NB1B01-F06__r01__native__coarse_120",
+    "NB1B01-F06__r02__native__fine_240",
+    "NB1B01-F06__r02__native__coarse_120",
+    "NB1B01-F06__r03__native__fine_240"
+  ],
+  "completed_work_cursor": {
+    "count": 167
+  },
+  "config_blob": "b5d607058595cd6a240ac33e5af352480cabd545",
+  "dependency_identity": {
+    "lockfile_digest": "gitblob:0c5fb6759e3d0350ea3dfb534562ac43f34cbf2d",
+    "lockfile_path": "NSD_vNext/engine/pyproject.toml",
+    "numpy": "2.4.6",
+    "pytest": "9.1.1",
+    "python": "3.11.16",
+    "scipy": "1.17.1"
+  },
+  "environment_identity": {
+    "actual_image_metadata_must_be_recorded_by_preflight_and_execution": true,
+    "architecture": "x86_64",
+    "container_digest": "NONE_NO_CONTAINER",
+    "os_contract": "Ubuntu 24.04 GitHub-hosted",
+    "runner_label": "ubuntu-24.04"
+  },
+  "incomplete_case_ids": [
+    "NB1B01-F06__r03__native__coarse_120",
+    "NB1B01-F06__r04__native__fine_240",
+    "NB1B01-F06__r04__native__coarse_120",
+    "NB1B01-F06__r05__native__fine_240",
+    "NB1B01-F06__r05__native__coarse_120",
+    "NB1B01-F06__r06__native__fine_240",
+    "NB1B01-F06__r06__native__coarse_120",
+    "NB1B01-F06__r07__native__fine_240",
+    "NB1B01-F06__r07__native__coarse_120",
+    "NB1B01-F06__r08__native__fine_240",
+    "NB1B01-F06__r08__native__coarse_120",
+    "NB1B01-F06__r09__native__fine_240",
+    "NB1B01-F06__r09__native__coarse_120",
+    "NB1B01-F06__r10__native__fine_240",
+    "NB1B01-F06__r10__native__coarse_120",
+    "NB1B01-F06__r11__native__fine_240",
+    "NB1B01-F06__r11__native__coarse_120",
+    "NB1B01-F06__r12__native__fine_240",
+    "NB1B01-F06__r12__native__coarse_120",
+    "NB1B01-F06__r13__native__fine_240",
+    "NB1B01-F06__r13__native__coarse_120",
+    "NB1B01-F06__r14__native__fine_240",
+    "NB1B01-F06__r14__native__coarse_120",
+    "NB1B01-F06__r15__native__fine_240",
+    "NB1B01-F06__r15__native__coarse_120",
+    "NB1B01-F07__r00__native__fine_240",
+    "NB1B01-F07__r00__native__coarse_120",
+    "NB1B01-F07__r01__native__fine_240",
+    "NB1B01-F07__r01__native__coarse_120",
+    "NB1B01-F07__r02__native__fine_240",
+    "NB1B01-F07__r02__native__coarse_120",
+    "NB1B01-F07__r03__native__fine_240",
+    "NB1B01-F07__r03__native__coarse_120",
+    "NB1B01-F07__r04__native__fine_240",
+    "NB1B01-F07__r04__native__coarse_120",
+    "NB1B01-F07__r05__native__fine_240",
+    "NB1B01-F07__r05__native__coarse_120",
+    "NB1B01-F07__r06__native__fine_240",
+    "NB1B01-F07__r06__native__coarse_120",
+    "NB1B01-F07__r07__native__fine_240",
+    "NB1B01-F07__r07__native__coarse_120",
+    "NB1B01-F07__r08__native__fine_240",
+    "NB1B01-F07__r08__native__coarse_120",
+    "NB1B01-F07__r09__native__fine_240",
+    "NB1B01-F07__r09__native__coarse_120",
+    "NB1B01-F07__r10__native__fine_240",
+    "NB1B01-F07__r10__native__coarse_120",
+    "NB1B01-F07__r11__native__fine_240",
+    "NB1B01-F07__r11__native__coarse_120",
+    "NB1B01-F07__r12__native__fine_240",
+    "NB1B01-F07__r12__native__coarse_120",
+    "NB1B01-F07__r13__native__fine_240",
+    "NB1B01-F07__r13__native__coarse_120",
+    "NB1B01-F07__r14__native__fine_240",
+    "NB1B01-F07__r14__native__coarse_120",
+    "NB1B01-F07__r15__native__fine_240",
+    "NB1B01-F07__r15__native__coarse_120",
+    "NB1B01-F08__r00__native__fine_240",
+    "NB1B01-F08__r00__native__coarse_120",
+    "NB1B01-F08__r01__native__fine_240",
+    "NB1B01-F08__r01__native__coarse_120",
+    "NB1B01-F08__r02__native__fine_240",
+    "NB1B01-F08__r02__native__coarse_120",
+    "NB1B01-F08__r03__native__fine_240",
+    "NB1B01-F08__r03__native__coarse_120",
+    "NB1B01-F08__r04__native__fine_240",
+    "NB1B01-F08__r04__native__coarse_120",
+    "NB1B01-F08__r05__native__fine_240",
+    "NB1B01-F08__r05__native__coarse_120",
+    "NB1B01-F08__r06__native__fine_240",
+    "NB1B01-F08__r06__native__coarse_120",
+    "NB1B01-F08__r07__native__fine_240",
+    "NB1B01-F08__r07__native__coarse_120",
+    "NB1B01-F08__r08__native__fine_240",
+    "NB1B01-F08__r08__native__coarse_120",
+    "NB1B01-F08__r09__native__fine_240",
+    "NB1B01-F08__r09__native__coarse_120",
+    "NB1B01-F08__r10__native__fine_240",
+    "NB1B01-F08__r10__native__coarse_120",
+    "NB1B01-F08__r11__native__fine_240",
+    "NB1B01-F08__r11__native__coarse_120",
+    "NB1B01-F08__r12__native__fine_240",
+    "NB1B01-F08__r12__native__coarse_120",
+    "NB1B01-F08__r13__native__fine_240",
+    "NB1B01-F08__r13__native__coarse_120",
+    "NB1B01-F08__r14__native__fine_240",
+    "NB1B01-F08__r14__native__coarse_120",
+    "NB1B01-F08__r15__native__fine_240",
+    "NB1B01-F08__r15__native__coarse_120",
+    "NB1B01-F09__r00__gain_0.7__fine_240",
+    "NB1B01-F09__r00__gain_0.7__coarse_120",
+    "NB1B01-F09__r00__gain_1.4__fine_240",
+    "NB1B01-F09__r00__gain_1.4__coarse_120",
+    "NB1B01-F09__r01__gain_0.7__fine_240",
+    "NB1B01-F09__r01__gain_0.7__coarse_120",
+    "NB1B01-F09__r01__gain_1.4__fine_240",
+    "NB1B01-F09__r01__gain_1.4__coarse_120",
+    "NB1B01-F09__r02__gain_0.7__fine_240",
+    "NB1B01-F09__r02__gain_0.7__coarse_120",
+    "NB1B01-F09__r02__gain_1.4__fine_240",
+    "NB1B01-F09__r02__gain_1.4__coarse_120",
+    "NB1B01-F09__r03__gain_0.7__fine_240",
+    "NB1B01-F09__r03__gain_0.7__coarse_120",
+    "NB1B01-F09__r03__gain_1.4__fine_240",
+    "NB1B01-F09__r03__gain_1.4__coarse_120",
+    "NB1B01-F09__r04__gain_0.7__fine_240",
+    "NB1B01-F09__r04__gain_0.7__coarse_120",
+    "NB1B01-F09__r04__gain_1.4__fine_240",
+    "NB1B01-F09__r04__gain_1.4__coarse_120",
+    "NB1B01-F09__r05__gain_0.7__fine_240",
+    "NB1B01-F09__r05__gain_0.7__coarse_120",
+    "NB1B01-F09__r05__gain_1.4__fine_240",
+    "NB1B01-F09__r05__gain_1.4__coarse_120",
+    "NB1B01-F09__r06__gain_0.7__fine_240",
+    "NB1B01-F09__r06__gain_0.7__coarse_120",
+    "NB1B01-F09__r06__gain_1.4__fine_240",
+    "NB1B01-F09__r06__gain_1.4__coarse_120",
+    "NB1B01-F09__r07__gain_0.7__fine_240",
+    "NB1B01-F09__r07__gain_0.7__coarse_120",
+    "NB1B01-F09__r07__gain_1.4__fine_240",
+    "NB1B01-F09__r07__gain_1.4__coarse_120",
+    "NB1B01-F09__r08__gain_0.7__fine_240",
+    "NB1B01-F09__r08__gain_0.7__coarse_120",
+    "NB1B01-F09__r08__gain_1.4__fine_240",
+    "NB1B01-F09__r08__gain_1.4__coarse_120",
+    "NB1B01-F09__r09__gain_0.7__fine_240",
+    "NB1B01-F09__r09__gain_0.7__coarse_120",
+    "NB1B01-F09__r09__gain_1.4__fine_240",
+    "NB1B01-F09__r09__gain_1.4__coarse_120",
+    "NB1B01-F09__r10__gain_0.7__fine_240",
+    "NB1B01-F09__r10__gain_0.7__coarse_120",
+    "NB1B01-F09__r10__gain_1.4__fine_240",
+    "NB1B01-F09__r10__gain_1.4__coarse_120",
+    "NB1B01-F09__r11__gain_0.7__fine_240",
+    "NB1B01-F09__r11__gain_0.7__coarse_120",
+    "NB1B01-F09__r11__gain_1.4__fine_240",
+    "NB1B01-F09__r11__gain_1.4__coarse_120",
+    "NB1B01-F09__r12__gain_0.7__fine_240",
+    "NB1B01-F09__r12__gain_0.7__coarse_120",
+    "NB1B01-F09__r12__gain_1.4__fine_240",
+    "NB1B01-F09__r12__gain_1.4__coarse_120",
+    "NB1B01-F09__r13__gain_0.7__fine_240",
+    "NB1B01-F09__r13__gain_0.7__coarse_120",
+    "NB1B01-F09__r13__gain_1.4__fine_240",
+    "NB1B01-F09__r13__gain_1.4__coarse_120",
+    "NB1B01-F09__r14__gain_0.7__fine_240",
+    "NB1B01-F09__r14__gain_0.7__coarse_120",
+    "NB1B01-F09__r14__gain_1.4__fine_240",
+    "NB1B01-F09__r14__gain_1.4__coarse_120",
+    "NB1B01-F09__r15__gain_0.7__fine_240",
+    "NB1B01-F09__r15__gain_0.7__coarse_120",
+    "NB1B01-F09__r15__gain_1.4__fine_240",
+    "NB1B01-F09__r15__gain_1.4__coarse_120",
+    "NB1B01-L01__r00__native__fine_240",
+    "NB1B01-L01__r00__native__coarse_120",
+    "NB1B01-L01__r01__native__fine_240",
+    "NB1B01-L01__r01__native__coarse_120",
+    "NB1B01-L01__r02__native__fine_240",
+    "NB1B01-L01__r02__native__coarse_120",
+    "NB1B01-L01__r03__native__fine_240",
+    "NB1B01-L01__r03__native__coarse_120",
+    "NB1B01-L01__r04__native__fine_240",
+    "NB1B01-L01__r04__native__coarse_120",
+    "NB1B01-L01__r05__native__fine_240",
+    "NB1B01-L01__r05__native__coarse_120",
+    "NB1B01-L01__r06__native__fine_240",
+    "NB1B01-L01__r06__native__coarse_120",
+    "NB1B01-L01__r07__native__fine_240",
+    "NB1B01-L01__r07__native__coarse_120",
+    "NB1B01-L01__r08__native__fine_240",
+    "NB1B01-L01__r08__native__coarse_120",
+    "NB1B01-L01__r09__native__fine_240",
+    "NB1B01-L01__r09__native__coarse_120",
+    "NB1B01-L01__r10__native__fine_240",
+    "NB1B01-L01__r10__native__coarse_120",
+    "NB1B01-L01__r11__native__fine_240",
+    "NB1B01-L01__r11__native__coarse_120",
+    "NB1B01-L01__r12__native__fine_240",
+    "NB1B01-L01__r12__native__coarse_120",
+    "NB1B01-L01__r13__native__fine_240",
+    "NB1B01-L01__r13__native__coarse_120",
+    "NB1B01-L01__r14__native__fine_240",
+    "NB1B01-L01__r14__native__coarse_120",
+    "NB1B01-L01__r15__native__fine_240",
+    "NB1B01-L01__r15__native__coarse_120",
+    "NB1B01-L02__r00__native__fine_240",
+    "NB1B01-L02__r00__native__coarse_120",
+    "NB1B01-L02__r01__native__fine_240",
+    "NB1B01-L02__r01__native__coarse_120",
+    "NB1B01-L02__r02__native__fine_240",
+    "NB1B01-L02__r02__native__coarse_120",
+    "NB1B01-L02__r03__native__fine_240",
+    "NB1B01-L02__r03__native__coarse_120",
+    "NB1B01-L02__r04__native__fine_240",
+    "NB1B01-L02__r04__native__coarse_120",
+    "NB1B01-L02__r05__native__fine_240",
+    "NB1B01-L02__r05__native__coarse_120",
+    "NB1B01-L02__r06__native__fine_240",
+    "NB1B01-L02__r06__native__coarse_120",
+    "NB1B01-L02__r07__native__fine_240",
+    "NB1B01-L02__r07__native__coarse_120",
+    "NB1B01-L02__r08__native__fine_240",
+    "NB1B01-L02__r08__native__coarse_120",
+    "NB1B01-L02__r09__native__fine_240",
+    "NB1B01-L02__r09__native__coarse_120",
+    "NB1B01-L02__r10__native__fine_240",
+    "NB1B01-L02__r10__native__coarse_120",
+    "NB1B01-L02__r11__native__fine_240",
+    "NB1B01-L02__r11__native__coarse_120",
+    "NB1B01-L02__r12__native__fine_240",
+    "NB1B01-L02__r12__native__coarse_120",
+    "NB1B01-L02__r13__native__fine_240",
+    "NB1B01-L02__r13__native__coarse_120",
+    "NB1B01-L02__r14__native__fine_240",
+    "NB1B01-L02__r14__native__coarse_120",
+    "NB1B01-L02__r15__native__fine_240",
+    "NB1B01-L02__r15__native__coarse_120",
+    "NB1B01-L03__r00__native__fine_240",
+    "NB1B01-L03__r00__native__coarse_120",
+    "NB1B01-L03__r01__native__fine_240",
+    "NB1B01-L03__r01__native__coarse_120",
+    "NB1B01-L03__r02__native__fine_240",
+    "NB1B01-L03__r02__native__coarse_120",
+    "NB1B01-L03__r03__native__fine_240",
+    "NB1B01-L03__r03__native__coarse_120",
+    "NB1B01-L03__r04__native__fine_240",
+    "NB1B01-L03__r04__native__coarse_120",
+    "NB1B01-L03__r05__native__fine_240",
+    "NB1B01-L03__r05__native__coarse_120",
+    "NB1B01-L03__r06__native__fine_240",
+    "NB1B01-L03__r06__native__coarse_120",
+    "NB1B01-L03__r07__native__fine_240",
+    "NB1B01-L03__r07__native__coarse_120",
+    "NB1B01-L03__r08__native__fine_240",
+    "NB1B01-L03__r08__native__coarse_120",
+    "NB1B01-L03__r09__native__fine_240",
+    "NB1B01-L03__r09__native__coarse_120",
+    "NB1B01-L03__r10__native__fine_240",
+    "NB1B01-L03__r10__native__coarse_120",
+    "NB1B01-L03__r11__native__fine_240",
+    "NB1B01-L03__r11__native__coarse_120",
+    "NB1B01-L03__r12__native__fine_240",
+    "NB1B01-L03__r12__native__coarse_120",
+    "NB1B01-L03__r13__native__fine_240",
+    "NB1B01-L03__r13__native__coarse_120",
+    "NB1B01-L03__r14__native__fine_240",
+    "NB1B01-L03__r14__native__coarse_120",
+    "NB1B01-L03__r15__native__fine_240",
+    "NB1B01-L03__r15__native__coarse_120",
+    "NB1B01-L04__r00__native__fine_240",
+    "NB1B01-L04__r00__native__coarse_120",
+    "NB1B01-L04__r01__native__fine_240",
+    "NB1B01-L04__r01__native__coarse_120",
+    "NB1B01-L04__r02__native__fine_240",
+    "NB1B01-L04__r02__native__coarse_120",
+    "NB1B01-L04__r03__native__fine_240",
+    "NB1B01-L04__r03__native__coarse_120",
+    "NB1B01-L04__r04__native__fine_240",
+    "NB1B01-L04__r04__native__coarse_120",
+    "NB1B01-L04__r05__native__fine_240",
+    "NB1B01-L04__r05__native__coarse_120",
+    "NB1B01-L04__r06__native__fine_240",
+    "NB1B01-L04__r06__native__coarse_120",
+    "NB1B01-L04__r07__native__fine_240",
+    "NB1B01-L04__r07__native__coarse_120",
+    "NB1B01-L04__r08__native__fine_240",
+    "NB1B01-L04__r08__native__coarse_120",
+    "NB1B01-L04__r09__native__fine_240",
+    "NB1B01-L04__r09__native__coarse_120",
+    "NB1B01-L04__r10__native__fine_240",
+    "NB1B01-L04__r10__native__coarse_120",
+    "NB1B01-L04__r11__native__fine_240",
+    "NB1B01-L04__r11__native__coarse_120",
+    "NB1B01-L04__r12__native__fine_240",
+    "NB1B01-L04__r12__native__coarse_120",
+    "NB1B01-L04__r13__native__fine_240",
+    "NB1B01-L04__r13__native__coarse_120",
+    "NB1B01-L04__r14__native__fine_240",
+    "NB1B01-L04__r14__native__coarse_120",
+    "NB1B01-L04__r15__native__fine_240",
+    "NB1B01-L04__r15__native__coarse_120",
+    "NB1B01-L05__r00__native__fine_240",
+    "NB1B01-L05__r00__native__coarse_120",
+    "NB1B01-L05__r01__native__fine_240",
+    "NB1B01-L05__r01__native__coarse_120",
+    "NB1B01-L05__r02__native__fine_240",
+    "NB1B01-L05__r02__native__coarse_120",
+    "NB1B01-L05__r03__native__fine_240",
+    "NB1B01-L05__r03__native__coarse_120",
+    "NB1B01-L05__r04__native__fine_240",
+    "NB1B01-L05__r04__native__coarse_120",
+    "NB1B01-L05__r05__native__fine_240",
+    "NB1B01-L05__r05__native__coarse_120",
+    "NB1B01-L05__r06__native__fine_240",
+    "NB1B01-L05__r06__native__coarse_120",
+    "NB1B01-L05__r07__native__fine_240",
+    "NB1B01-L05__r07__native__coarse_120",
+    "NB1B01-L05__r08__native__fine_240",
+    "NB1B01-L05__r08__native__coarse_120",
+    "NB1B01-L05__r09__native__fine_240",
+    "NB1B01-L05__r09__native__coarse_120",
+    "NB1B01-L05__r10__native__fine_240",
+    "NB1B01-L05__r10__native__coarse_120",
+    "NB1B01-L05__r11__native__fine_240",
+    "NB1B01-L05__r11__native__coarse_120",
+    "NB1B01-L05__r12__native__fine_240",
+    "NB1B01-L05__r12__native__coarse_120",
+    "NB1B01-L05__r13__native__fine_240",
+    "NB1B01-L05__r13__native__coarse_120",
+    "NB1B01-L05__r14__native__fine_240",
+    "NB1B01-L05__r14__native__coarse_120",
+    "NB1B01-L05__r15__native__fine_240",
+    "NB1B01-L05__r15__native__coarse_120",
+    "NB1B01-L06__r00__native__fine_240",
+    "NB1B01-L06__r00__native__coarse_120",
+    "NB1B01-L06__r01__native__fine_240",
+    "NB1B01-L06__r01__native__coarse_120",
+    "NB1B01-L06__r02__native__fine_240",
+    "NB1B01-L06__r02__native__coarse_120",
+    "NB1B01-L06__r03__native__fine_240",
+    "NB1B01-L06__r03__native__coarse_120",
+    "NB1B01-L06__r04__native__fine_240",
+    "NB1B01-L06__r04__native__coarse_120",
+    "NB1B01-L06__r05__native__fine_240",
+    "NB1B01-L06__r05__native__coarse_120",
+    "NB1B01-L06__r06__native__fine_240",
+    "NB1B01-L06__r06__native__coarse_120",
+    "NB1B01-L06__r07__native__fine_240",
+    "NB1B01-L06__r07__native__coarse_120",
+    "NB1B01-L06__r08__native__fine_240",
+    "NB1B01-L06__r08__native__coarse_120",
+    "NB1B01-L06__r09__native__fine_240",
+    "NB1B01-L06__r09__native__coarse_120",
+    "NB1B01-L06__r10__native__fine_240",
+    "NB1B01-L06__r10__native__coarse_120",
+    "NB1B01-L06__r11__native__fine_240",
+    "NB1B01-L06__r11__native__coarse_120",
+    "NB1B01-L06__r12__native__fine_240",
+    "NB1B01-L06__r12__native__coarse_120",
+    "NB1B01-L06__r13__native__fine_240",
+    "NB1B01-L06__r13__native__coarse_120",
+    "NB1B01-L06__r14__native__fine_240",
+    "NB1B01-L06__r14__native__coarse_120",
+    "NB1B01-L06__r15__native__fine_240",
+    "NB1B01-L06__r15__native__coarse_120",
+    "NB1B01-L07__r00__native__fine_240",
+    "NB1B01-L07__r00__native__coarse_120",
+    "NB1B01-L07__r01__native__fine_240",
+    "NB1B01-L07__r01__native__coarse_120",
+    "NB1B01-L07__r02__native__fine_240",
+    "NB1B01-L07__r02__native__coarse_120",
+    "NB1B01-L07__r03__native__fine_240",
+    "NB1B01-L07__r03__native__coarse_120",
+    "NB1B01-L07__r04__native__fine_240",
+    "NB1B01-L07__r04__native__coarse_120",
+    "NB1B01-L07__r05__native__fine_240",
+    "NB1B01-L07__r05__native__coarse_120",
+    "NB1B01-L07__r06__native__fine_240",
+    "NB1B01-L07__r06__native__coarse_120",
+    "NB1B01-L07__r07__native__fine_240",
+    "NB1B01-L07__r07__native__coarse_120",
+    "NB1B01-L07__r08__native__fine_240",
+    "NB1B01-L07__r08__native__coarse_120",
+    "NB1B01-L07__r09__native__fine_240",
+    "NB1B01-L07__r09__native__coarse_120",
+    "NB1B01-L07__r10__native__fine_240",
+    "NB1B01-L07__r10__native__coarse_120",
+    "NB1B01-L07__r11__native__fine_240",
+    "NB1B01-L07__r11__native__coarse_120",
+    "NB1B01-L07__r12__native__fine_240",
+    "NB1B01-L07__r12__native__coarse_120",
+    "NB1B01-L07__r13__native__fine_240",
+    "NB1B01-L07__r13__native__coarse_120",
+    "NB1B01-L07__r14__native__fine_240",
+    "NB1B01-L07__r14__native__coarse_120",
+    "NB1B01-L07__r15__native__fine_240",
+    "NB1B01-L07__r15__native__coarse_120",
+    "NB1B01-L08__r00__native__fine_240",
+    "NB1B01-L08__r00__native__coarse_120",
+    "NB1B01-L08__r01__native__fine_240",
+    "NB1B01-L08__r01__native__coarse_120",
+    "NB1B01-L08__r02__native__fine_240",
+    "NB1B01-L08__r02__native__coarse_120",
+    "NB1B01-L08__r03__native__fine_240",
+    "NB1B01-L08__r03__native__coarse_120",
+    "NB1B01-L08__r04__native__fine_240",
+    "NB1B01-L08__r04__native__coarse_120",
+    "NB1B01-L08__r05__native__fine_240",
+    "NB1B01-L08__r05__native__coarse_120",
+    "NB1B01-L08__r06__native__fine_240",
+    "NB1B01-L08__r06__native__coarse_120",
+    "NB1B01-L08__r07__native__fine_240",
+    "NB1B01-L08__r07__native__coarse_120",
+    "NB1B01-L08__r08__native__fine_240",
+    "NB1B01-L08__r08__native__coarse_120",
+    "NB1B01-L08__r09__native__fine_240",
+    "NB1B01-L08__r09__native__coarse_120",
+    "NB1B01-L08__r10__native__fine_240",
+    "NB1B01-L08__r10__native__coarse_120",
+    "NB1B01-L08__r11__native__fine_240",
+    "NB1B01-L08__r11__native__coarse_120",
+    "NB1B01-L08__r12__native__fine_240",
+    "NB1B01-L08__r12__native__coarse_120",
+    "NB1B01-L08__r13__native__fine_240",
+    "NB1B01-L08__r13__native__coarse_120",
+    "NB1B01-L08__r14__native__fine_240",
+    "NB1B01-L08__r14__native__coarse_120",
+    "NB1B01-L08__r15__native__fine_240",
+    "NB1B01-L08__r15__native__coarse_120",
+    "NB1B01-L09__r00__native__fine_240",
+    "NB1B01-L09__r00__native__coarse_120",
+    "NB1B01-L09__r01__native__fine_240",
+    "NB1B01-L09__r01__native__coarse_120",
+    "NB1B01-L09__r02__native__fine_240",
+    "NB1B01-L09__r02__native__coarse_120",
+    "NB1B01-L09__r03__native__fine_240",
+    "NB1B01-L09__r03__native__coarse_120",
+    "NB1B01-L09__r04__native__fine_240",
+    "NB1B01-L09__r04__native__coarse_120",
+    "NB1B01-L09__r05__native__fine_240",
+    "NB1B01-L09__r05__native__coarse_120",
+    "NB1B01-L09__r06__native__fine_240",
+    "NB1B01-L09__r06__native__coarse_120",
+    "NB1B01-L09__r07__native__fine_240",
+    "NB1B01-L09__r07__native__coarse_120",
+    "NB1B01-L09__r08__native__fine_240",
+    "NB1B01-L09__r08__native__coarse_120",
+    "NB1B01-L09__r09__native__fine_240",
+    "NB1B01-L09__r09__native__coarse_120",
+    "NB1B01-L09__r10__native__fine_240",
+    "NB1B01-L09__r10__native__coarse_120",
+    "NB1B01-L09__r11__native__fine_240",
+    "NB1B01-L09__r11__native__coarse_120",
+    "NB1B01-L09__r12__native__fine_240",
+    "NB1B01-L09__r12__native__coarse_120",
+    "NB1B01-L09__r13__native__fine_240",
+    "NB1B01-L09__r13__native__coarse_120",
+    "NB1B01-L09__r14__native__fine_240",
+    "NB1B01-L09__r14__native__coarse_120",
+    "NB1B01-L09__r15__native__fine_240",
+    "NB1B01-L09__r15__native__coarse_120"
+  ],
+  "lane": "N-B1",
+  "mismatch_policy": "FROZEN_CONTRACT_VIOLATION",
+  "next_exact_action": "resume N-B1 case NB1B01-F06__r03__native__coarse_120",
+  "output_schema_identity": {
+    "blob": "4877ca9d017877af75b298fdea91325394fe846e",
+    "path": "NSD_vNext/control/NB1_V0_2_EVIDENCE_SCHEMA_v0.2.json"
+  },
+  "packet_blob": "6f45148d2320d00134f287f3aec81fa5e6cf7f31",
+  "parent_identity_manifest": {
+    "blob": "efdfa8d036f39bc28b2ddfb1ebcfb2e80d6af7c5",
+    "path": "NSD_vNext/control/V0_2_FINAL_CODE_IDENTITY_v0.1.json"
+  },
+  "queue_order_identity": {
+    "case_order_digest": "gitblob:baae142aa5d050df0eff3a371eae4ba50357e8bf",
+    "queue_blob": "baae142aa5d050df0eff3a371eae4ba50357e8bf",
+    "queue_path": "NSD_vNext/control/V0_2_EXECUTION_CASE_ORDER_v0.1.json"
+  },
+  "rng_identity": {
+    "algorithm": "PCG64DXSM",
+    "final_seed_blob": "a7a0354bdcf6f5d07c66071f9c7fe1ed548b9d4e",
+    "final_seed_file": "NSD_vNext/control/NB1_PACKET_SEEDS_v0.2.json",
+    "implementation": "numpy.random.PCG64DXSM"
+  },
+  "schema": "NSD_LANE_CHECKPOINT_V0_2_FROZEN_V0_2",
+  "scientific_values_exposed": true,
+  "state": "ADVANCED_CHECKPOINT",
+  "stop_reason": null
+}

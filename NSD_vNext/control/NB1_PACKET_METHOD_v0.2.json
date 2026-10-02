@@ -1,0 +1,127 @@
+{
+  "schema": "NSD_NB1_PACKET_METHOD_V0_2",
+  "status": "PACKET_LEVEL_APQ_REVISION_CANDIDATE_NOT_FROZEN",
+  "execution_authorized": false,
+  "sampling": {
+    "fine_hz": 240,
+    "coarse_hz": 120,
+    "duration_seconds": 96,
+    "coarse_transform": "same generated 240-Hz fine path; y120[j]=y240[2j]; no regeneration or added filtering",
+    "same_path_required": true,
+    "alias": {
+      "candidate_frequency_domain_hz": [
+        1,
+        45
+      ],
+      "coarsest_nyquist_hz": 60,
+      "certificate": "For an underdamped C candidate, damped frequency < fn <= 45 Hz < 60 Hz; independently verify discrete pole angle in (0,pi) and candidate frequency remains in frozen domain.",
+      "refuse": "demonstrated observational equivalence from distinct admissible continuous lineages",
+      "need_more_info": "required alias certificate unavailable or unresolved"
+    }
+  },
+  "applicability": {
+    "required_all": [
+      "P",
+      "S",
+      "T",
+      "F",
+      "O",
+      "M",
+      "N",
+      "I"
+    ],
+    "R_required_only": [
+      "NB1B01-F09",
+      "NB1B01-L09"
+    ],
+    "U": "NOT_APPLICABLE_TO_ADMISSION; paired-rate sensitivity descriptive only"
+  },
+  "channel_rule_blob": "dbc619d11081f9505ca9b1eff03751227aebded8",
+  "generator_contracts": {
+    "c_d_s": "1453b7f502c1852d9101f437b052ebb80b5c6cbc",
+    "non_c_limits": "ded7cfdb030f83bad1386aaebffb885d209b1c9e"
+  },
+  "sources": {
+    "continuous_generator": {
+      "path": "NSD_vNext/engine/tools/probe_continuous_lineage_nonzero_g.py",
+      "blob": "40279d7bc283e648ee6f78b1a1e1bb798078143a"
+    },
+    "limit_generators": {
+      "path": "NSD_vNext/engine/tools/probe_combined_structural_predictive_refusal.py",
+      "blob": "df27fb931dcc17e7dc3fc1e62eb8a8a028601e0c"
+    },
+    "fit": {
+      "path": "NSD_vNext/engine/nsd_engine/continuous_lineage_candidate_rs.py",
+      "blob": "7e8abe73e37a3be54b1e6fd5afac218af88da9bd"
+    },
+    "profile": {
+      "path": "NSD_vNext/engine/tools/probe_single_series_uncertainty_methods.py",
+      "blob": "ec2b55a129b76f5c4a61d74b330a1a099aee9b94"
+    }
+  },
+  "fit": {
+    "optimizer_maxiter": 80,
+    "max_optimized_starts": 18
+  },
+  "profile_I": {
+    "role": "resolution-bounded practical uniqueness/interiority screen only; not precision and not family membership",
+    "base_grid": "61 equally spaced chi values on [0.05,0.98]",
+    "true_chi": "validation-only; never enters eligibility grid, starts, refinement, tie decision, or row label",
+    "method": "L-BFGS-B nuisance optimization at each chi",
+    "raw_bounds": [
+      -8,
+      8
+    ],
+    "maxiter": 80,
+    "ftol": 1e-8,
+    "maxls": 30,
+    "start_recipe": "continuation + projected global + recurrence when available + six fixed source starts",
+    "start_dedup_max_abs": 1e-10,
+    "refinement": "bounded chi refinement of every base-grid local-minimum bracket and endpoint-adjacent minimum; reoptimize nuisance parameters at every chi",
+    "selection": "compare every refined candidate and endpoint under frozen numerical tie tolerance",
+    "pass": "unique lowest refined candidate is interior and reproduces fitted optimum within numerical-only tolerance",
+    "need_more_info": "edge/tied/nonregular/failed refinement unless N already classifies pure numerical refusal"
+  },
+  "numerical_only": {
+    "fitted_profile_reproduction": "1e-5*max(1,abs(global_nll))",
+    "competing_global_tie": "1e-8*max(1,abs(global_nll))",
+    "deterministic_refit_nll": "1e-8*max(1,abs(nll))"
+  },
+  "observation": {
+    "F09": "same latent C path multiplied separately by positive gains 0.7 and 1.4; preserving transform",
+    "L09": "two latent modes observed through the frozen 1:0.35 normalized mixture; non-preserving for one-scalar local attribution"
+  },
+  "retention_floor": {
+    "controls": [
+      "NB1B01-F01",
+      "NB1B01-F02"
+    ],
+    "rates_hz": [
+      240,
+      120
+    ],
+    "rule": "FRAMEWORK_NOT_OPERATIONAL if any control-rate cell has zero QUALIFICATION_ELIGIBLE rows among its 16 fixed replicates",
+    "interpretation": "existence/operability only; not prevalence or performance threshold"
+  },
+  "reporting": {
+    "independent_unit": "generated fine path/seed",
+    "rate_summaries": "240 and 120 Hz reported separately with n=16",
+    "pool_rates_as_independent": false,
+    "interval": "two-sided 95% Wilson descriptive only",
+    "failures_in_denominator": true,
+    "designed_counts_are_prevalence": false
+  },
+  "framework_not_operational": [
+    "any required channel would need outcome-driven rule invention or retuning",
+    "semantic and estimator refusal namespaces cannot remain separate",
+    "any F01/F02 control-rate cell has zero QUALIFICATION_ELIGIBLE rows among 16 fixed replicates",
+    "a post-result scientific threshold would be required to produce ordinary eligibility"
+  ],
+  "claim_ceiling": {
+    "real_eeg_local_chi": false,
+    "c1q_rs": "QUALIFICATION_ONLY",
+    "biological_prevalence": false,
+    "whole_system_scalar": false
+  },
+  "supersedes": "NB1_PACKET_METHOD_v0.1.json for corrected packet-level APQ lineage"
+}

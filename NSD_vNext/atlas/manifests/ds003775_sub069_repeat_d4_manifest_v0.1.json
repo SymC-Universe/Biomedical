@@ -1,0 +1,31 @@
+{
+  "dataset": "ds003775",
+  "manifest_version": "0.1",
+  "source_release": "OpenNeuro v1.2.1 / NEMAR on003775 v1.0.0",
+  "subject_id": "sub-069",
+  "task": "resteyesc",
+  "expected_signal_count": 64,
+  "expected_duration_seconds": 240.0,
+  "expected_sampling_rate_hz": 1024.0,
+  "expected_channel_labels": [
+    "Fp1", "AF7", "AF3", "F1", "F3", "F5", "F7", "FT7", "FC5", "FC3", "FC1", "C1", "C3", "C5", "T7", "TP7", "CP5", "CP3", "CP1", "P1", "P3", "P5", "P7", "P9", "PO7", "PO3", "O1", "Iz", "Oz", "POz", "Pz", "CPz", "Fpz", "Fp2", "AF8", "AF4", "AFz", "Fz", "F2", "F4", "F6", "F8", "FT8", "FC6", "FC4", "FC2", "FCz", "Cz", "C2", "C4", "C6", "T8", "TP8", "CP6", "CP4", "CP2", "P2", "P4", "P6", "P8", "P10", "PO8", "PO4", "O2"
+  ],
+  "recordings": [
+    {
+      "session_id": "ses-t1",
+      "acquisition_time": "2017-10-17T10:33:20",
+      "relative_path": "sub-069/ses-t1/eeg/sub-069_ses-t1_task-resteyesc_eeg.edf",
+      "download_url": "https://data.nemar.org/on003775/v1.0.0/sub-069/ses-t1/eeg/sub-069_ses-t1_task-resteyesc_eeg.edf",
+      "expected_size_bytes": 31473920,
+      "expected_md5": "656b7184b5ed01e36601b79a3bf38c52"
+    },
+    {
+      "session_id": "ses-t2",
+      "acquisition_time": "2018-10-16T11:12:04",
+      "relative_path": "sub-069/ses-t2/eeg/sub-069_ses-t2_task-resteyesc_eeg.edf",
+      "download_url": "https://data.nemar.org/on003775/v1.0.0/sub-069/ses-t2/eeg/sub-069_ses-t2_task-resteyesc_eeg.edf",
+      "expected_size_bytes": 31473920,
+      "expected_md5": "0ecea6e69394a865f2fca83086f1b947"
+    }
+  ]
+}

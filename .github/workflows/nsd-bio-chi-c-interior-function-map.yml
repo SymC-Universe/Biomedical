@@ -1,0 +1,143 @@
+# APQ-qualified P0-D workflow. Scientific design is frozen in Plan Packet v0.3.
+name: NSD Bio Chi C-Interior Function Map
+
+on:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - "NSD_vNext/engine/tools/probe_c_interior_function_map.py"
+      - "NSD_vNext/docs/BIO_CHI_C_INTERIOR_FUNCTION_MAP_PLAN_PACKET_v0.3.md"
+      - "NSD_vNext/docs/BIO_CHI_C_INTERIOR_FUNCTION_MAP_PLAN_FREEZE_v1.1.md"
+      - ".github/workflows/nsd-bio-chi-c-interior-function-map.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "NSD_vNext/engine/tools/probe_c_interior_function_map.py"
+      - "NSD_vNext/docs/BIO_CHI_C_INTERIOR_FUNCTION_MAP_PLAN_PACKET_v0.3.md"
+      - "NSD_vNext/docs/BIO_CHI_C_INTERIOR_FUNCTION_MAP_PLAN_FREEZE_v1.1.md"
+      - ".github/workflows/nsd-bio-chi-c-interior-function-map.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [0, 5, 10, 15]
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install qualification engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+          python --version
+          python - <<'PY'
+          import numpy, scipy
+          print("numpy", numpy.__version__)
+          print("scipy", scipy.__version__)
+          PY
+
+      - name: Run frozen mechanical preflight cell
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_c_interior_function_map.py \
+            --mode preflight \
+            --cell-index ${{ matrix.cell }} \
+            --output-dir ../../bio-chi-function-map/preflight-cell-${{ matrix.cell }}
+
+      - name: Upload preflight cell artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-bio-chi-c-function-map-preflight-cell-${{ matrix.cell }}
+          path: bio-chi-function-map/preflight-cell-${{ matrix.cell }}/
+          if-no-files-found: error
+
+  full-map:
+    needs: preflight
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install qualification engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+
+      - name: Run frozen Function Map cell
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_c_interior_function_map.py \
+            --mode full \
+            --cell-index ${{ matrix.cell }} \
+            --output-dir ../../bio-chi-function-map/cell-${{ matrix.cell }}
+
+      - name: Upload Function Map cell
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-bio-chi-c-function-map-cell-${{ matrix.cell }}
+          path: bio-chi-function-map/cell-${{ matrix.cell }}/
+          if-no-files-found: error
+
+  merge:
+    needs: full-map
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install qualification engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+
+      - name: Download Function Map shards
+        uses: actions/download-artifact@v4
+        with:
+          pattern: nsd-bio-chi-c-function-map-cell-*
+          path: bio-chi-function-map/all-cells
+
+      - name: Merge and summarize frozen Function Map
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_c_interior_function_map.py \
+            --mode merge \
+            --input-dir ../../bio-chi-function-map/all-cells \
+            --output-dir ../../bio-chi-function-map/summary
+
+      - name: Upload complete Function Map
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-bio-chi-c-function-map-complete
+          path: bio-chi-function-map/summary/
+          if-no-files-found: error

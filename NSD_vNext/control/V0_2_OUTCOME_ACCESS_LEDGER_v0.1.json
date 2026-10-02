@@ -1,0 +1,53 @@
+{
+  "schema": "NSD_V0_2_OUTCOME_ACCESS_LEDGER_V0_1",
+  "status": "ACTIVE_APPEND_ONLY_VIA_GIT_HISTORY",
+  "execution_authorized": false,
+  "policy": {
+    "final_confirmatory_cases": "must be designated and sealed before result access",
+    "post_access_change": "if a sealed confirmatory result is opened and a later scientific design or code change occurs, retire the affected case from confirmation and use fresh identities",
+    "adaptive_reuse": "not authorized by default",
+    "claim_wording": "prospective post-exposure qualification; value-uninspected design only where this ledger and source-of-record support that statement"
+  },
+  "historical_exposure": {
+    "source": "NSD_vNext/control/LONG_RUN_EXPOSURE_LEDGER_v0.1.json",
+    "classification": "P0-D EXPOSED DEVELOPMENT",
+    "design_lineage_note": "No v0.1 scientific values are recorded as inputs to the v0.5/Draft-B design. Historical existence/exposure prevents describing the overall design as predating v0.1."
+  },
+  "entries": [
+    {
+      "id": "ACCESS-001",
+      "evidence_scope": "v0.1 long-run checkpoint/exposure metadata",
+      "access_class": "IDENTITY_COUNT_CHECKPOINT_ONLY",
+      "scientific_value_access_recorded": false,
+      "permitted_use": "governance repair, provenance, exposure classification",
+      "scientific_design_use": false,
+      "source_records": [
+        "LONG_RUN_EXPOSURE_LEDGER_v0.1.json",
+        "INDEPENDENT_APQ2_ADJUDICATION_LEDGER_v0.2.md"
+      ]
+    },
+    {
+      "id": "ACCESS-002",
+      "evidence_scope": "Draft-B and v0.5 authority construction",
+      "access_class": "POST_EXPOSURE_VALUE_UNINSPECTED_DESIGN_AS_RECORDED",
+      "scientific_value_access_recorded": false,
+      "permitted_use": "prospective design only",
+      "scientific_design_use": true,
+      "source_records": [
+        "FRESH_UNTOUCHED_V0_2_DRAFT_B.json",
+        "INDEPENDENT_APQ2_ROUND2_ADJUDICATION_LEDGER_v0.2.md"
+      ]
+    }
+  ],
+  "future_entry_required_fields": [
+    "entry_id",
+    "actor_or_process",
+    "utc_time",
+    "artifact_identity",
+    "access_class",
+    "scientific_values_opened",
+    "design_change_after_access",
+    "disposition"
+  ],
+  "deletion_rule": "Do not delete prior entries; corrections are additive and identify the superseded entry."
+}

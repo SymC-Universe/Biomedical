@@ -1,0 +1,79 @@
+name: NSD State-Space Sampling and Process-Noise Extension
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - ".github/workflows/nsd-state-space-sampling-process-noise.yml"
+      - "NSD_vNext/docs/STATE_SPACE_SAMPLING_PROCESS_NOISE_FREEZE_v0.1.md"
+      - "NSD_vNext/engine/tools/probe_state_space_sampling_process_noise.py"
+      - "NSD_vNext/engine/nsd_engine/state_space_adequacy.py"
+      - "NSD_vNext/engine/nsd_engine/latent_oscillator_covariance.py"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nsd-state-space-sampling-process-noise-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sampling:
+    strategy:
+      fail-fast: false
+      matrix:
+        fs: [128, 512]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -e NSD_vNext/engine
+      - name: Run frozen sampling-rate extension
+        run: |
+          mkdir -p "$RUNNER_TEMP/nsd_sampling_process"
+          python NSD_vNext/engine/tools/probe_state_space_sampling_process_noise.py \
+            --mode sampling \
+            --value "${{ matrix.fs }}" \
+            --output "$RUNNER_TEMP/nsd_sampling_process/sampling_${{ matrix.fs }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nsd-state-space-sampling-${{ matrix.fs }}hz-v0-1
+          path: ${{ runner.temp }}/nsd_sampling_process/sampling_${{ matrix.fs }}.json
+          if-no-files-found: error
+          retention-days: 30
+
+  process-noise:
+    strategy:
+      fail-fast: false
+      matrix:
+        family:
+          - isotropic_white
+          - anisotropic_white_4_to_1
+          - rank1_white_axis_drive
+          - colored_process_phi_0_7
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -e NSD_vNext/engine
+      - name: Run frozen process-noise challenge
+        run: |
+          mkdir -p "$RUNNER_TEMP/nsd_sampling_process"
+          python NSD_vNext/engine/tools/probe_state_space_sampling_process_noise.py \
+            --mode process \
+            --value "${{ matrix.family }}" \
+            --output "$RUNNER_TEMP/nsd_sampling_process/process_${{ matrix.family }}.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nsd-state-space-process-${{ matrix.family }}-v0-1
+          path: ${{ runner.temp }}/nsd_sampling_process/process_${{ matrix.family }}.json
+          if-no-files-found: error
+          retention-days: 30

@@ -1,0 +1,22 @@
+{
+  "schema":"NSD_LANE_CHECKPOINT_V0_4_PACKET_APQ",
+  "lane":"N-B2/N-B3",
+  "state":"SCIENTIFIC_GATE",
+  "authority_plan_blob":"15056e7356082d8f16104b8cfb781b7867c2f417",
+  "architecture_review_status":"CLOSED",
+  "architecture_closure":"NSD_vNext/control/INTEGRATION_V0_2_REREVIEW_ADJUDICATION_v0.1.md",
+  "packet_fragments":["NB23_OPERATOR_REGISTRY_CANDIDATE_v0.1.json","NB23_EXHAUSTIVE_SUITE_CANDIDATE_v0.1.json","NB23_TARGET_AND_CONTRAST_CANDIDATE_v0.1.json","NB23_PACKET_APQ_BINDING_v0.1.json"],
+  "packet_apq_status":"LANE_REVIEW_IN_PROGRESS_INTEGRATED_REVIEW_TRANSPORT_PENDING",
+  "packet_apq_workspace_id":"931f5528-8f45-40c1-9c1d-7c221eab7cd3",
+  "packet_apq_search":"/N-B2 N-B3 Exact Packet APQ",
+  "integrated_packet_apq_status":"TEMPORARY_RATE_LIMIT",
+  "final_identity_freeze":false,
+  "primary_recoverability":"DETERMINISTIC_NOISELESS",
+  "stochastic_extension":"NOT_AUTHORIZED",
+  "implementation_status":"NOT_STARTED_V0_2",
+  "active_run_id":null,
+  "next_exact_action":"Adjudicate lane packet APQ; retry integrated packet APQ after transport reset; continue outcome-blind common-dependency and ancestry preparation.",
+  "stop_reason":"PACKET_LEVEL_APQ_IN_PROGRESS",
+  "mismatch_policy":"After final freeze, any authority/packet/code/dependency/environment/RNG/case/artifact mismatch refuses resume.",
+  "last_productive_commit":"3d84fc7fcc07c7fd13ca2af60d853b7a122f7120"
+}

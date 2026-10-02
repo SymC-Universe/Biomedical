@@ -1,0 +1,63 @@
+{
+  "schema": "NSD_V0_2_FINAL_CODE_IDENTITY_TEMPLATE_V0_2",
+  "status": "TEMPLATE_ONLY_NOT_FROZEN",
+  "execution_authorized": false,
+  "generated_after_packet_apq_required": true,
+  "required_fields": {
+    "parent_prefreeze_manifest_blob": null,
+    "final_architecture_blobs": {
+      "nb1": null,
+      "nb23": null,
+      "integration": null
+    },
+    "packet_blobs": {
+      "nb1": null,
+      "nb23": null
+    },
+    "config_blobs": {
+      "nb1": null,
+      "nb23": null
+    },
+    "scientific_code_files": [],
+    "common_dependency_register_blob": null,
+    "common_dependency_verification_artifacts": [],
+    "access_ledger_blob": null,
+    "cross_lane_ancestry_audit_blob": null,
+    "runtime_dependencies": {
+      "python": null,
+      "numpy": null,
+      "scipy": null,
+      "pytest": null,
+      "lockfile_digest": null
+    },
+    "environment": {
+      "runner_image": null,
+      "os": null,
+      "architecture": null,
+      "container_digest": null
+    },
+    "rng": {
+      "nb1_algorithm": null,
+      "nb1_implementation": null,
+      "nb1_final_seeds": null,
+      "nb23_primary": "NOT_APPLICABLE_DETERMINISTIC_NOISELESS",
+      "nb23_stochastic_extension": null
+    },
+    "case_sets": {
+      "nb1_case_set_digest": null,
+      "nb23_case_set_digest": null,
+      "cross_lane_disjointness_digest": null
+    },
+    "queue_identity": {
+      "queue_blob": null,
+      "case_order_digest": null
+    },
+    "checkpoint_schema_blob": null,
+    "evidence_schema_blobs": {
+      "nb1": null,
+      "nb23": null
+    },
+    "result_landing_audit_blob": null
+  },
+  "rule": "Populate only after integration architecture closure and exact packet-level APQ. Any later frozen identity mismatch is FROZEN_CONTRACT_VIOLATION."
+}

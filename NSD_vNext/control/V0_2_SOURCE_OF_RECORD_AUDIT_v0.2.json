@@ -1,0 +1,32 @@
+{
+  "schema": "NSD_V0_2_SOURCE_OF_RECORD_AUDIT_V0_2",
+  "status": "ACTIVE_PREFREEZE_AUTHORITY_MAP",
+  "execution_authorized": false,
+  "current": {
+    "nb1": "NSD_vNext/docs/BIO_CHI_INTEGRATED_NB1_ADMISSION_ARCHITECTURE_PLAN_v0.5.md",
+    "nb23": "NSD_vNext/docs/BIO_CHI_NB2_NB3_REPRESENTATION_SUFFICIENCY_PLAN_v0.5.md",
+    "integration": "NSD_vNext/control/V0_2_CROSS_LANE_INTEGRATION_AUTHORITY_v0.1.md",
+    "draft": "NSD_vNext/control/FRESH_UNTOUCHED_V0_2_DRAFT_B.json",
+    "packet_apq_checklist": "NSD_vNext/control/V0_2_PACKET_LEVEL_APQ_CHECKLIST_v0.3.md",
+    "checkpoint_contract": "NSD_vNext/control/V0_2_FROZEN_CHECKPOINT_SCHEMA_v0.2.json",
+    "validator_repair": "NSD_vNext/control/V0_2_PREFREEZE_VALIDATOR_REPAIR_SPEC_v0.1.json"
+  },
+  "superseded_for_prospective_use": [
+    "NSD_vNext/control/V0_2_SOURCE_OF_RECORD_AUDIT_v0.1.md",
+    "N-B1 v0.4",
+    "N-B2/N-B3 v0.4",
+    "FRESH_UNTOUCHED_V0_2_DRAFT.json",
+    "V0_2_PACKET_LEVEL_APQ_CHECKLIST_v0.2.md",
+    "V0_2_FROZEN_CHECKPOINT_SCHEMA_v0.1.json"
+  ],
+  "gate": "STAGE_BOUND_CROSS_LANE_INTEGRATION_AUTHORITY_REREVIEW",
+  "final_case_ids": "NOT_FROZEN",
+  "final_nb1_seeds": "NOT_FROZEN",
+  "implementation": "NOT_READY_FOR_V0_2",
+  "historical_v01": "P0-D EXPOSED DEVELOPMENT ONLY",
+  "ci_note": {
+    "failed_run": 36668607439,
+    "classification": "MECHANICAL_VALIDATOR_STATE_MISMATCH",
+    "unchanged_rerun_forbidden": true
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NSD v0.2 N-B2/N-B3 Mechanical Evidence Record",
+  "type": "object",
+  "required": [
+    "schema",
+    "packet_id",
+    "case_id",
+    "model_identity",
+    "representation_inputs",
+    "target_evidence",
+    "artifact_identity",
+    "environment",
+    "scientific_adjudication"
+  ],
+  "properties": {
+    "schema": {
+      "const": "NSD_NB23_V0_2_EVIDENCE_RECORD"
+    },
+    "packet_id": {
+      "type": "string"
+    },
+    "case_id": {
+      "type": "string"
+    },
+    "model_identity": {
+      "type": "object"
+    },
+    "representation_inputs": {
+      "type": "object"
+    },
+    "target_evidence": {
+      "type": "object",
+      "description": "Exact target values, response curves, numerical invariance errors, and observation-conditioned estimates only."
+    },
+    "artifact_identity": {
+      "type": "object"
+    },
+    "environment": {
+      "type": "object"
+    },
+    "scientific_adjudication": {
+      "const": "NOT_PERFORMED_BY_GITHUB"
+    },
+    "representation_ranking": {
+      "type": "null"
+    },
+    "whole_system_scalar": {
+      "type": "null"
+    }
+  },
+  "additionalProperties": true
+}

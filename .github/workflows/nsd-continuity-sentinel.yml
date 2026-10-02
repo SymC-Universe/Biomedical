@@ -1,0 +1,121 @@
+name: NSD Continuity Sentinel
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - "NSD_vNext/control/CONTINUITY_STATE.json"
+      - ".github/workflows/nsd-continuity-sentinel.yml"
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  continuity-sentinel:
+    if: ${{ false }} # PROGRAM_WIDE_BILLING_GUARD: no paid GitHub-hosted execution
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate NSD continuity state
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          p = Path("NSD_vNext/control/CONTINUITY_STATE.json")
+          if not p.exists():
+              raise SystemExit("CONTINUITY_FAILURE: missing NSD_vNext/control/CONTINUITY_STATE.json")
+
+          s = json.loads(p.read_text())
+          allowed = {"ACTIVE_COMPUTE", "ADVANCED_CHECKPOINT", "SCIENTIFIC_GATE", "EXTERNAL_BLOCK", "USER_ACTION_REQUIRED"}
+          state = s.get("state")
+          if state not in allowed:
+              raise SystemExit(f"CONTINUITY_FAILURE: invalid terminal state {state!r}; IDLE is forbidden")
+
+          if state in {"SCIENTIFIC_GATE", "EXTERNAL_BLOCK", "USER_ACTION_REQUIRED"}:
+              key = {
+                  "SCIENTIFIC_GATE": "scientific_gate",
+                  "EXTERNAL_BLOCK": "external_block",
+                  "USER_ACTION_REQUIRED": "user_action_required",
+              }[state]
+              if not s.get(key):
+                  raise SystemExit(f"CONTINUITY_FAILURE: {state} lacks a concrete dependency")
+              print(f"Continuity state valid: {state}")
+              raise SystemExit(0)
+
+          stamp = s.get("last_productive_utc")
+          if not stamp:
+              raise SystemExit("CONTINUITY_FAILURE: missing last_productive_utc")
+          t = datetime.fromisoformat(stamp.replace("Z", "+00:00"))
+          age = (datetime.now(timezone.utc) - t).total_seconds() / 60.0
+          if age > 90:
+              raise SystemExit(
+                  f"CONTINUITY_FAILURE: no productive NSD advancement for {age:.1f} minutes; "
+                  f"last commit={s.get('last_productive_commit')}; "
+                  f"next={s.get('next_exact_action')}"
+              )
+          print(f"Continuity healthy: state={state}, age_minutes={age:.1f}")
+          PY
+
+      - name: False-liveness audit
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          s=json.loads(Path("NSD_vNext/control/CONTINUITY_STATE.json").read_text())
+          qpath=Path("NSD_vNext/control/WORK_QUEUE_v0.1.json")
+          q=json.loads(qpath.read_text()) if qpath.exists() else {"tasks":[]}
+          checkpoint=Path("NSD_vNext/control/LONG_RUN_CHECKPOINT_v0.1.json")
+
+          if s.get("state")=="ACTIVE_COMPUTE" and not s.get("active_run_ids"):
+              raise SystemExit("CONTINUITY_FAILURE: ACTIVE_COMPUTE with no run id")
+
+          unfinished=[t for t in q.get("tasks",[]) if t.get("status") not in {"DONE","REFUSED"}]
+          actionable=[t for t in unfinished if t.get("status") in {"READY","ACTIVE"}]
+          terminal={"SCIENTIFIC_GATE","EXTERNAL_BLOCK","USER_ACTION_REQUIRED"}
+          if unfinished and not actionable and s.get("state") not in terminal:
+              raise SystemExit("CONTINUITY_FAILURE: unfinished queue has no actionable task and no explicit gate")
+
+          if s.get("state")=="ACTIVE_COMPUTE" and s.get("long_run_packet") and not checkpoint.exists():
+              raise SystemExit("CONTINUITY_FAILURE: active long run lacks durable checkpoint")
+
+          print("Repository-side false-liveness checks PASS")
+          PY
+
+          if [ "$(python - <<'PY'
+          import json
+          print(json.load(open("NSD_vNext/control/CONTINUITY_STATE.json")).get("state"))
+          PY
+          )" = "ACTIVE_COMPUTE" ]; then
+            ids=$(python - <<'PY'
+          import json
+          print(" ".join(str(x) for x in json.load(open("NSD_vNext/control/CONTINUITY_STATE.json")).get("active_run_ids",[])))
+          PY
+          )
+            live=0
+            for id in $ids; do
+              status=$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${id}" --jq '.status' 2>/dev/null || echo missing)
+              if [ "$status" = "queued" ] || [ "$status" = "in_progress" ] || [ "$status" = "waiting" ]; then
+                live=$((live+1))
+              fi
+            done
+            if [ "$live" -eq 0 ]; then
+              echo "CONTINUITY_FAILURE: ACTIVE_COMPUTE points only to stale/terminal run ids"
+              exit 1
+            fi
+          fi

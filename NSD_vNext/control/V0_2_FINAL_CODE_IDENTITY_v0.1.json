@@ -1,0 +1,168 @@
+{
+  "schema": "NSD_V0_2_FINAL_CODE_IDENTITY_V0_1",
+  "status": "FINAL_IMPLEMENTATION_IDENTITY_BOUND_PREEXECUTION",
+  "scientific_baseline": "NSD-V02-B01-FROZEN",
+  "execution_authorized": false,
+  "parent_prefreeze_manifest_blob": "eef7fcad4352e197aeb6051399c22f86506624b6",
+  "final_architecture_blobs": {
+    "nb1": "df51ca6e7b20f49dc8781170831066e806f5617b",
+    "nb23": "15056e7356082d8f16104b8cfb781b7867c2f417",
+    "integration": "3e60798b2485c10a2bda39254b641d7726741082"
+  },
+  "packet_blobs": {
+    "nb1": "6f45148d2320d00134f287f3aec81fa5e6cf7f31",
+    "nb23": "854fe6d64069c76cebaee60998163c91ea91dfa9"
+  },
+  "config_blobs": {
+    "nb1": "b5d607058595cd6a240ac33e5af352480cabd545",
+    "nb23": "75519d5036778d61c84fe7188ab687e6734f4d71"
+  },
+  "scientific_code_files": [
+    {
+      "path": "NSD_vNext/engine/nsd_engine/v02_frozen_contract.py",
+      "blob": "c5a4485e908b0792b4f347875d7f150480b42416"
+    },
+    {
+      "path": "NSD_vNext/engine/nsd_engine/v02_nb1_generators.py",
+      "blob": "3c82fabf80bdef5f06c3bcefdedb6a226a0c8157"
+    },
+    {
+      "path": "NSD_vNext/engine/nsd_engine/v02_nb1_profile.py",
+      "blob": "3b77d6fdc121ae099ac05a448cefea49817795d2"
+    },
+    {
+      "path": "NSD_vNext/engine/nsd_engine/v02_profile_coords.py",
+      "blob": "8c9372f12561c8693bd6d38dfe44d65957003a63"
+    },
+    {
+      "path": "NSD_vNext/engine/nsd_engine/continuous_lineage_candidate_rs.py",
+      "blob": "7e8abe73e37a3be54b1e6fd5afac218af88da9bd"
+    },
+    {
+      "path": "NSD_vNext/engine/nsd_engine/continuous_lineage_candidate.py",
+      "blob": "9df8975131cbcf3c23aeaf4f2e799fc8692fe77b"
+    },
+    {
+      "path": "NSD_vNext/engine/nsd_engine/v02_nb23_core.py",
+      "blob": "78db1fc83252b2c320f68aa73051e8f5c20fefb7"
+    },
+    {
+      "path": "NSD_vNext/engine/nsd_engine/v02_nb23_observation.py",
+      "blob": "ac00d26ae0121680ff68ecc223234ce094c97785"
+    },
+    {
+      "path": "NSD_vNext/engine/nsd_engine/v02_nb23_peak.py",
+      "blob": "5a6b586be973eb1cc39f3b16d499f38d3391ebf3"
+    },
+    {
+      "path": "NSD_vNext/engine/nsd_engine/v02_nb23_recoverability.py",
+      "blob": "29afdaf0536b99b8628dbe83a55ff12802176dbd"
+    },
+    {
+      "path": "NSD_vNext/engine/nsd_engine/v02_nb23_suite.py",
+      "blob": "8e0a54277a8194fed7725b04733053a971dac414"
+    },
+    {
+      "path": "NSD_vNext/engine/nsd_engine/v02_nb23_targets.py",
+      "blob": "8eacfcb07f9831a7f98c034f1d53773474576f3c"
+    },
+    {
+      "path": "NSD_vNext/engine/nsd_engine/v02_nb23_switch_reference.py",
+      "blob": "d0e4b4d1675b0b4e3e94dac7892fae7e290181ca"
+    },
+    {
+      "path": "NSD_vNext/engine/tools/run_nsd_v02_frozen_conveyor.py",
+      "blob": "435b082f64759231c9d49630a7051f5b5223af4c"
+    }
+  ],
+  "common_dependency_register_blob": "9b85fdee848673e0efcc4588f714f4d9bccfdf2e",
+  "common_dependency_verification_artifacts": [
+    {
+      "id": "CD-03",
+      "path": "NSD_vNext/engine/tools/verify_v02_cd03_finite_time.py",
+      "blob": "280c9d8266317d1bfdeab60d07c5c92caba04178",
+      "evidence_run": 36717800806
+    },
+    {
+      "id": "CD-05",
+      "path": "NSD_vNext/engine/tools/verify_v02_cd05_profile.py",
+      "blob": "4573a4df0f576243c31f02c1461a6b6576c20743",
+      "evidence_run": 36720502525
+    },
+    {
+      "id": "CD-06",
+      "path": "NSD_vNext/engine/tools/verify_v02_cd06_environment.py",
+      "blob": "a4105c19730d8dc922931c4cc02cbe0e3060dd57",
+      "evidence_run": 36719590935
+    },
+    {
+      "id": "NB23_SWITCH_REFERENCE",
+      "path": "NSD_vNext/engine/nsd_engine/v02_nb23_switch_reference.py",
+      "blob": "d0e4b4d1675b0b4e3e94dac7892fae7e290181ca",
+      "evidence_run": 36826316308
+    }
+  ],
+  "access_ledger_blob": "080b593bd54b03157c90313cf414b8550aa614c8",
+  "cross_lane_ancestry_audit_blob": "fb0440ac546700e280c066c13f839eaeda577657",
+  "runtime_dependencies": {
+    "python": "3.11.16",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "pytest": "9.1.1",
+    "lockfile_path": "NSD_vNext/engine/pyproject.toml",
+    "lockfile_digest": "gitblob:0c5fb6759e3d0350ea3dfb534562ac43f34cbf2d"
+  },
+  "environment": {
+    "runner_label": "ubuntu-24.04",
+    "os_contract": "Ubuntu 24.04 GitHub-hosted",
+    "architecture": "x86_64",
+    "container_digest": "NONE_NO_CONTAINER",
+    "actual_image_metadata_must_be_recorded_by_preflight_and_execution": true
+  },
+  "rng": {
+    "nb1": {
+      "algorithm": "PCG64DXSM",
+      "implementation": "numpy.random.PCG64DXSM",
+      "final_seed_file": "NSD_vNext/control/NB1_PACKET_SEEDS_v0.2.json",
+      "final_seed_blob": "a7a0354bdcf6f5d07c66071f9c7fe1ed548b9d4e"
+    },
+    "nb23_primary": "NOT_APPLICABLE_DETERMINISTIC_NOISELESS",
+    "nb23_stochastic_extension": "NOT_AUTHORIZED"
+  },
+  "case_sets": {
+    "nb1": "gitblob:baae142aa5d050df0eff3a371eae4ba50357e8bf#nb1",
+    "nb23": "gitblob:baae142aa5d050df0eff3a371eae4ba50357e8bf#nb23",
+    "cross_lane_disjointness": "gitblob:fb0440ac546700e280c066c13f839eaeda577657"
+  },
+  "queue_identity": {
+    "queue_path": "NSD_vNext/control/V0_2_EXECUTION_CASE_ORDER_v0.1.json",
+    "queue_blob": "baae142aa5d050df0eff3a371eae4ba50357e8bf",
+    "case_order_digest": "gitblob:baae142aa5d050df0eff3a371eae4ba50357e8bf"
+  },
+  "checkpoint_schema_blob": "cef38ed6d88f227672825bdccbe475404cb45a65",
+  "evidence_schema_blobs": {
+    "nb1": {
+      "path": "NSD_vNext/control/NB1_V0_2_EVIDENCE_SCHEMA_v0.2.json",
+      "blob": "4877ca9d017877af75b298fdea91325394fe846e"
+    },
+    "nb23": {
+      "path": "NSD_vNext/control/NB23_V0_2_EVIDENCE_SCHEMA_v0.2.json",
+      "blob": "c2745785159050eece40ace18c95afcc0e8baffc"
+    }
+  },
+  "result_landing_audit_blob": "1679d4032ca74908724389171f74586ad2c77a50",
+  "preflight_requirement": {
+    "workflow": "NSD v0.2 Frozen Preflight",
+    "must_pass_before_execution_authority": true,
+    "result_producing_execution_forbidden_during_preflight": true
+  },
+  "mismatch_policy": "FROZEN_CONTRACT_VIOLATION",
+  "scientific_adjudication": "NOT_PERFORMED_BY_GITHUB",
+  "identity_revision": {
+    "reason": "Mechanical runner import repair plus checkpoint rebase/artifact-hash hardening before accepted confirmatory checkpoint.",
+    "previous_runner_blob": "ac9ff7671154b24c46151e72648fa025db4d8bd8",
+    "current_runner_blob": "435b082f64759231c9d49630a7051f5b5223af4c",
+    "scientific_change": false,
+    "preflight_required": true
+  }
+}

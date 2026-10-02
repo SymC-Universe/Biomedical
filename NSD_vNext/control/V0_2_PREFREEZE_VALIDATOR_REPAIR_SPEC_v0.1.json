@@ -1,0 +1,45 @@
+{
+  "schema": "NSD_V0_2_PREFREEZE_VALIDATOR_REPAIR_SPEC_V0_1",
+  "status": "MECHANICAL_REPAIR_REQUIRED_NO_SCIENTIFIC_CHANGE",
+  "execution_authorized": false,
+  "failure": {
+    "workflow_run_id": 36668607439,
+    "job_id": 109738567097,
+    "workflow": "NSD v0.2 Prefreeze Contracts",
+    "failed_step": "Run reusable packet validator",
+    "observed_error": "N-B1 must remain SCIENTIFIC_GATE before APQ/freeze",
+    "root_cause": "Legacy Draft-A validator hard-codes SCIENTIFIC_GATE and reads FRESH_UNTOUCHED_V0_2_DRAFT.json while current authority is Draft-B and a temporary EXTERNAL_BLOCK is a valid prefreeze stop state.",
+    "classification": "MECHANICAL_VALIDATOR_STATE_MISMATCH",
+    "scientific_failure": false
+  },
+  "prospective_repair": {
+    "draft_source": "Prefer FRESH_UNTOUCHED_V0_2_DRAFT_B.json on the v0.5 lineage.",
+    "allowed_prefreeze_checkpoint_states": [
+      "SCIENTIFIC_GATE",
+      "EXTERNAL_BLOCK"
+    ],
+    "required_invariants": [
+      "execution_authorized remains false",
+      "v0.1 scientific values are not design inputs",
+      "completed_case_ids remain empty",
+      "scientific_values_exposed remains false",
+      "N-B1 U is not a default licensing channel",
+      "N-B2/N-B3 primary recoverability remains deterministic/noiseless",
+      "cross-lane case overlap and pre-freeze outcome feedback remain forbidden",
+      "final case identities remain unfrozen before packet APQ",
+      "v0.2 implementation remains not ready before packet APQ/freeze"
+    ],
+    "prohibited_changes": [
+      "No scientific threshold change",
+      "No generator or target change",
+      "No case identity promotion",
+      "No result interpretation",
+      "No reuse of v0.1 scientific outputs"
+    ]
+  },
+  "verification": [
+    "Version the validator/workflow rather than rerun the unchanged failing path.",
+    "Run the repaired validator against Draft-B plus both lane checkpoints.",
+    "Require PASS before treating prefreeze CI as mechanically healthy."
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "schema": "NSD_LANE_CHECKPOINT_NB23_V0_20",
+  "lane": "N-B2/N-B3",
+  "state": "ACTIVE_COMPUTE",
+  "architecture_review_status": "CLOSED",
+  "packet_review_status": "CLOSED",
+  "cross_lane_gate": "CLOSED",
+  "primary_recoverability": "DETERMINISTIC_NOISELESS",
+  "stochastic_extension": "NOT_AUTHORIZED",
+  "final_identity_freeze": true,
+  "scientific_values_exposed": true,
+  "execution_authorized": true,
+  "completed_case_ids": [
+    "NB23B01-M-NORMAL",
+    "NB23B01-M-RECIP",
+    "NB23B01-M-SSBASE",
+    "NB23B01-M-SSNONNORMAL"
+  ],
+  "completed_case_count": 4,
+  "scientific_freeze": "NSD_vNext/control/V0_2_FINAL_SCIENTIFIC_FREEZE_v0.1.json",
+  "final_code_identity": "NSD_vNext/control/V0_2_FINAL_CODE_IDENTITY_v0.1.json",
+  "runtime_checkpoint": "NSD_vNext/control/V0_2_RUNTIME_CHECKPOINT_NB23_v0.1.json",
+  "runtime_checkpoint_commit": "7f981b840feb5c98415c53c84a8523f6e71fca43",
+  "active_run_id": 36859007015,
+  "preflight_run": 36829526592,
+  "implementation_status": "FROZEN_EXECUTION_ACTIVE_DURABLE_RUNTIME_CHECKPOINT",
+  "case_level_failure_observation": {
+    "count": 4,
+    "type": "PeakCertificationError",
+    "message": "interval budget exhausted before frozen peak tolerance",
+    "classification": "FAIL_CLOSED_NUMERICAL_CERTIFICATION_INCOMPLETE_PENDING_SCIENTIFIC_ADJUDICATION",
+    "scientific_verdict": "NONE",
+    "repair_during_active_run": false
+  },
+  "next_exact_action": "Follow run 36859007015 only. Do not duplicate. Preserve subsequent frozen checkpoints. After run completion, adjudicate the repeated peak-certificate budget failures before any mechanical certificate change; frozen 1e-9 tolerance and scientific packet remain unchanged.",
+  "stop_reason": null
+}

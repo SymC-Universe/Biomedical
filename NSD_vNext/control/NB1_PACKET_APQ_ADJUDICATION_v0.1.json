@@ -1,0 +1,64 @@
+{
+  "schema": "NSD_NB1_PACKET_APQ_ADJUDICATION_V0_1",
+  "status": "MATERIAL_REVISION_BOUND_CONFORMANT_REREVIEW_REQUIRED",
+  "execution_authorized": false,
+  "prior_review": "/N-B1 Exact Packet APQ",
+  "first_corrected_review": "/N-B1 Corrected Packet Re-review Short",
+  "latest_review": "/N-B1 Exact Packet v0.3 Re-review",
+  "latest_review_disposition": "NEED_MORE_INFO_NO_OBJECTION_LEDGER",
+  "items": [
+    {
+      "id": "NB1-P-B1",
+      "severity": "BLOCKER",
+      "disposition": "ACCEPTED",
+      "correction": "Exact C/D/S and non-C generator/semantic contracts."
+    },
+    {
+      "id": "NB1-P-M1",
+      "severity": "MATERIAL",
+      "disposition": "ACCEPTED",
+      "correction": "Operational alias certificate and PASS/REFUSE/NEED_MORE_INFO semantics."
+    },
+    {
+      "id": "NB1-P-M2",
+      "severity": "MATERIAL",
+      "disposition": "ACCEPTED_MODIFIED",
+      "correction": "Profile I limited to numerical uniqueness/interiority; truth excluded from eligibility."
+    },
+    {
+      "id": "NB1-P-M3",
+      "severity": "MATERIAL",
+      "disposition": "ACCEPTED",
+      "correction": "Deterministic refusal composition and per-control/per-rate framework-operability rule."
+    },
+    {
+      "id": "NB1-RR-B1",
+      "severity": "BLOCKER",
+      "disposition": "REJECTED_WITH_EVIDENCE",
+      "basis": "Full generator contracts already bind observation timing, noise, initialization, and exact paired decimation omitted from the short handoff."
+    },
+    {
+      "id": "NB1-RR-B2",
+      "severity": "BLOCKER",
+      "disposition": "ACCEPTED_MODIFIED",
+      "correction": "Per-truth/per-rate denominators and explicit failure/refusal summary accounting."
+    },
+    {
+      "id": "NB1-RR-M1",
+      "severity": "MATERIAL",
+      "disposition": "ACCEPTED_MODIFIED",
+      "correction": "Alias-identification object narrowed to the frozen continuous C-lineage class."
+    },
+    {
+      "id": "NB1-RR-M2",
+      "severity": "MATERIAL",
+      "disposition": "ACCEPTED_MODIFIED",
+      "correction": "Profile scalar refinement stopping and nuisance-bound NEED_MORE_INFO rule."
+    }
+  ],
+  "current_packet": {
+    "parent_blob": "9f126601e2fddc1f1d2d137ad70213b8531b63dc",
+    "delta_blob": "d52aace3758770cdee5c66606c0b999e31b0bee6"
+  },
+  "rereview_required": true
+}

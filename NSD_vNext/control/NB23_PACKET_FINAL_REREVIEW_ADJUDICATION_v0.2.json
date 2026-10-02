@@ -1,0 +1,43 @@
+{
+  "schema": "NSD_NB23_PACKET_FINAL_REREVIEW_ADJUDICATION_V0_2",
+  "status": "LANE_PACKET_APQ_CLOSED_ZERO_UNRESOLVED_BLOCKER_MATERIAL",
+  "execution_authorized": false,
+  "final_identity_freeze": false,
+  "scientific_outcomes_opened": false,
+  "source_review": "/N-B2 N-B3 Compressed Operative Ledger Review",
+  "method": "INDIVIDUAL_OBJECTION_EVIDENCE_NO_VOTING",
+  "items": [
+    {
+      "id": "B1",
+      "severity": "BLOCKER",
+      "disposition": "REJECTED_WITH_EVIDENCE",
+      "evidence": [
+        "NB23_EXHAUSTIVE_SUITE_CANDIDATE_v0.1.json",
+        "NB23_TARGET_AND_CONTRAST_CANDIDATE_v0.1.json",
+        "NB23_PACKET_APQ_REVISION_v0.1.json"
+      ],
+      "basis": "The source-of-record suite already binds member operators, observation choices, initial conditions, target lists, schedules and compatible-set rules. The review used an initial condition that is not the one bound to C04."
+    },
+    {
+      "id": "M1",
+      "severity": "MATERIAL",
+      "disposition": "REJECTED_WITH_EVIDENCE",
+      "evidence": [
+        "NB23_TARGET_AND_CONTRAST_CANDIDATE_v0.1.json",
+        "NB23_OPERATOR_REGISTRY_CANDIDATE_v0.1.json"
+      ],
+      "basis": "The covariant state-impulse object challenged by the review is not a C07 equality target. C07 is restricted to the prospectively declared invariant targets."
+    },
+    {
+      "id": "m1",
+      "severity": "MINOR",
+      "disposition": "REJECTED_WITH_EVIDENCE",
+      "evidence": [
+        "NB23_OPERATOR_REGISTRY_CANDIDATE_v0.1.json"
+      ],
+      "basis": "The special partial-observation matrices are already explicitly bound in full."
+    }
+  ],
+  "scientific_change_required": false,
+  "next_gate": "INTEGRATED_PACKET_APQ_CLOSURE_THEN_FINAL_SCIENTIFIC_FREEZE"
+}

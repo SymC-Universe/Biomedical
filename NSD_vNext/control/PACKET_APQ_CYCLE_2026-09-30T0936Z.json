@@ -1,0 +1,15 @@
+{
+  "schema": "NSD_PACKET_APQ_CYCLE",
+  "state": "SCIENTIFIC_GATE",
+  "nb1_packet": "NB1_EXACT_PACKET_CANDIDATE_v0.3.json",
+  "nb1_review_disposition": "MATERIAL_REVISION_ACCEPTED_AND_FULL_HANDOFF_REQUIRED",
+  "nb1_full_handoff": "NB1_EXACT_PACKET_REVIEW_HANDOFF_v0.1.md",
+  "nb23_review_disposition": "NEED_MORE_INFO_NO_REQUIRED_LEDGER",
+  "integrated_review_disposition": "NEED_MORE_INFO_NO_REQUIRED_LEDGER",
+  "external_review_transport": "TRANSIENT_LIMIT",
+  "execution_authorized": false,
+  "final_identity_freeze": false,
+  "scientific_outcomes_opened": false,
+  "next_action": "Submit the complete N-B1 packet handoff and conformant N-B2/N-B3 and integrated ledger reviews when review transport reopens; adjudicate every returned BLOCKER or MATERIAL objection before freeze.",
+  "mechanical_note": "The legacy prefreeze workflow still contains its known stale inline validator and must not be rerun as authoritative without repair."
+}

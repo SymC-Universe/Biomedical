@@ -1,0 +1,50 @@
+{
+  "schema": "NSD_NB23_PACKET_APQ_ADJUDICATION_V0_1",
+  "status": "MATERIAL_REVISION_ACCEPTED_REREVIEW_REQUIRED",
+  "execution_authorized": false,
+  "source_review": "/N-B2 N-B3 Conformant Exact Packet Re-review",
+  "method": "INDIVIDUAL_OBJECTION_EVIDENCE_NO_VOTING",
+  "items": [
+    {
+      "id": "NB23-P-B1",
+      "severity": "BLOCKER",
+      "disposition": "ACCEPTED",
+      "correction": "Exact deterministic observation schedules, operators, signals, endpoints, candidate subsets, and compatible-array rule are bound in NB23_PACKET_APQ_REVISION_v0.1.json."
+    },
+    {
+      "id": "NB23-P-B2",
+      "severity": "BLOCKER",
+      "disposition": "ACCEPTED",
+      "correction": "Benchmark state/input/output scaling is declared dimensionless; G is SPD with principal-root induced norm; target applicability is enumerated."
+    },
+    {
+      "id": "NB23-P-B3",
+      "severity": "BLOCKER",
+      "disposition": "ACCEPTED",
+      "correction": "Peak target now requires validated global interval enclosure, explicit stopping/tie semantics, independent reference, and C04 separating evidence."
+    },
+    {
+      "id": "NB23-P-M1",
+      "severity": "MATERIAL",
+      "disposition": "ACCEPTED",
+      "correction": "Switched-vs-surrogate discrepancy D(t) and its reported curve/maximum are defined."
+    },
+    {
+      "id": "NB23-P-M2",
+      "severity": "MATERIAL",
+      "disposition": "ACCEPTED",
+      "correction": "Numerical comparisons now bind norms, denominator floor, units, spectrum matching, and peak-tie semantics."
+    },
+    {
+      "id": "NB23-P-m1",
+      "severity": "MINOR",
+      "disposition": "ACCEPTED",
+      "correction": "Equal-local class is scoped to declared local coordinates only; limit-heavy suite is intentional and not prevalence."
+    }
+  ],
+  "revision": {
+    "path": "NSD_vNext/control/NB23_PACKET_APQ_REVISION_v0.1.json",
+    "blob": "508f68f4eb72e082f884b75f269bf53fdd836fbd"
+  },
+  "rereview_required": true
+}

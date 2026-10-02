@@ -1,0 +1,67 @@
+{
+  "schema": "NSD_V0_2_COMMON_DEPENDENCY_REGISTER_V0_1",
+  "status": "PREFREEZE_REQUIRED_BEFORE_PACKET_APQ",
+  "execution_authorized": false,
+  "rule": "Any dependency shared by both lanes that can bias family labels, targets, numerical rules, or interpretation must be registered and independently verified before packet APQ.",
+  "entries": [
+    {
+      "id": "CD-01",
+      "dependency": "continuous-lineage C generator/family-label semantics",
+      "shared_by": [
+        "N-B1",
+        "cross-lane"
+      ],
+      "verification": "analytic family certificate plus independent generator/provenance validation",
+      "status": "PENDING_EXACT_PACKET"
+    },
+    {
+      "id": "CD-02",
+      "dependency": "sampling and continuous-time alias mathematics",
+      "shared_by": [
+        "N-B1",
+        "N-B2/N-B3"
+      ],
+      "verification": "analytic alias certificate and explicit adversarial alias controls",
+      "status": "PENDING_EXACT_PACKET"
+    },
+    {
+      "id": "CD-03",
+      "dependency": "matrix exponential and finite-time target reference calculations",
+      "shared_by": [
+        "N-B2/N-B3"
+      ],
+      "verification": "separately implemented reference calculation or analytic certificate for frozen cases",
+      "status": "PENDING_EXACT_PACKET"
+    },
+    {
+      "id": "CD-04",
+      "dependency": "similarity-transform and physical-metric identities",
+      "shared_by": [
+        "N-B2/N-B3"
+      ],
+      "verification": "analytic identity certificate plus independent numerical reference check",
+      "status": "PENDING_EXACT_PACKET"
+    },
+    {
+      "id": "CD-05",
+      "dependency": "profile implementation and physical-coordinate profile construction",
+      "shared_by": [
+        "N-B1"
+      ],
+      "verification": "source identity plus independent mechanical reproduction tests",
+      "status": "PENDING_EXACT_PACKET"
+    },
+    {
+      "id": "CD-06",
+      "dependency": "shared numerical libraries/dependencies/environment",
+      "shared_by": [
+        "N-B1",
+        "N-B2/N-B3"
+      ],
+      "verification": "final lock/container identity plus independent reference tests for critical calculations",
+      "status": "PENDING_FINAL_IMPLEMENTATION"
+    }
+  ],
+  "failure_rule": "If a required shared truth premise cannot be independently verified, exact packet APQ remains blocked and the affected claim returns NEED_MORE_INFO or frozen-contract refusal according to stage.",
+  "scientific_verdict_allowed": false
+}

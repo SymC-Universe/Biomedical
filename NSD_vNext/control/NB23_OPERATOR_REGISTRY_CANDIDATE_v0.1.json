@@ -1,0 +1,55 @@
+{
+  "schema":"NSD_NB23_OPERATOR_REGISTRY_CANDIDATE_V0_1",
+  "status":"PACKET_LEVEL_APQ_CANDIDATE_NOT_FROZEN",
+  "execution_authorized":false,
+  "state_order":["q1","v1","q2","v2"],
+  "second_order_matrix":"[[0,1,0,0],[-omega1^2,-2*zeta1*omega1,k12,c12],[0,0,0,1],[k21,c21,-omega2^2,-2*zeta2*omega2]]",
+  "semantic_source":{"path":"NSD_vNext/engine/nsd_engine/coupled_second_order.py","blob":"1c286ea1b74ca384bbb3bfac80358332bedd0761"},
+  "units":{"omega":"rad/s","time":"s"},
+  "systems":{
+    "NORMAL":{"omega1":0.90,"zeta1":0.16,"omega2":1.70,"zeta2":0.28,"k12":0,"k21":0,"c12":0,"c21":0},
+    "RECIP":{"omega1":0.95,"zeta1":0.19,"omega2":1.35,"zeta2":0.24,"k12":0.38,"k21":0.38,"c12":0,"c21":0},
+    "SSBASE":{"omega1":1.15,"zeta1":0.21,"omega2":1.15,"zeta2":0.21,"k12":0,"k21":0,"c12":0,"c21":0},
+    "SSNONNORMAL":{"omega1":1.15,"zeta1":0.21,"omega2":1.15,"zeta2":0.21,"k12":1.65,"k21":0,"c12":0,"c21":0},
+    "SLDIFFSPEC":{"omega1":1.15,"zeta1":0.21,"omega2":1.15,"zeta2":0.21,"k12":0.40,"k21":0.40,"c12":0,"c21":0},
+    "IO":{"omega1":1.05,"zeta1":0.19,"omega2":1.45,"zeta2":0.27,"k12":0.72,"k21":0.12,"c12":0,"c21":0}
+  },
+  "B":{
+    "B1":[[0],[1],[0],[0.25]],
+    "B2":[[0],[0.25],[0],[1]],
+    "BAL":[[0],[1],[0],[0.8]]
+  },
+  "C":{
+    "C1":[[1,0,0.2,0]],
+    "C2":[[0.2,0,1,0]],
+    "CDIFF":[[1,0,-0.6,0]],
+    "FULL":[[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]]
+  },
+  "x0":{
+    "E1":[1,0,0,0],
+    "BALANCED_UNIT":[0.7071067811865476,0,0.7071067811865476,0]
+  },
+  "similarity_S":[[1.6,0,0,0],[0,0.7,0,0],[0,0,1.4,0],[0,0,0,0.85]],
+  "partial_observation":{
+    "stable_A":[[-0.25,-1.1,0,0],[1.1,-0.25,0,0],[0,0,-0.4,-0.8],[0,0,0.8,-0.4]],
+    "unstable_A":[[-0.25,-1.1,0,0],[1.1,-0.25,0,0],[0,0,0.08,-0.8],[0,0,0.8,0.08]],
+    "C":[[1,0,0,0]],"x0":[1,0,0,0]
+  },
+  "alias_control":{
+    "sample_rate_hz":96,"decay":0.2,"frequencies_hz":[8,88],
+    "A_formula":"[[-0.2,-2*pi*f],[2*pi*f,-0.2]]","C":[[1,0]],"x0":[1,0],
+    "analytic_identity":"at t_n=n/96, exp(-0.2*t_n)*cos(2*pi*88*t_n)=exp(-0.2*t_n)*cos(2*pi*8*t_n)"
+  },
+  "time_varying":{
+    "base":{"omega1":1.05,"zeta1":0.20,"omega2":1.20,"zeta2":0.23},
+    "k12_sequence":[0.15,1.35],"k21_sequence":[0.05,0],
+    "segment_seconds":2.75,"phase_offset_seconds":0.35,
+    "switch_rule":"right-continuous; segment_index(t)=floor((t+0.35)/2.75) mod 2; no reset",
+    "surrogate":"time-weighted arithmetic mean of exact segment A matrices over one complete switching period"
+  },
+  "misspecification":{
+    "source_system":"NORMAL","linear_probe":"C1",
+    "observation":"y(t)=(C1*x(t))^2","outside_linear_observation_family":true
+  },
+  "freshness":"No v0.1 matrix/B/C/similarity/switch/sampling identity is reused in the same confirmatory role."
+}

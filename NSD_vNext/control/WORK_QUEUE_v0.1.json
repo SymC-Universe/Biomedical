@@ -1,0 +1,493 @@
+{
+  "schema_version": "0.1",
+  "project": "NSD / Bio Chi",
+  "branch": "nsd-rebuild-gom-v0.8.0",
+  "source_of_record": "NSD_vNext/WORKING_INVESTIGATION.md",
+  "rules": {
+    "allowed_status": [
+      "READY",
+      "ACTIVE",
+      "BLOCKED_DEPENDENCY",
+      "SCIENTIFIC_GATE",
+      "EXTERNAL_BLOCK",
+      "DONE",
+      "REFUSED",
+      "USER_ACTION_REQUIRED"
+    ],
+    "max_active_scientific_tasks": 2,
+    "idle_forbidden": true,
+    "substantial_compute_requires_packet_apq_and_freeze": true,
+    "real_eeg_local_chi_licensed": false,
+    "pending_gate_requires_parallel_queue": true,
+    "waiting_time_policy": "Waiting on review/compute converts to already-authorized preparation work; no empty actionable queue while unfinished work remains."
+  },
+  "tasks": [
+    {
+      "id": "NB1-Q01",
+      "lane": "N-B1",
+      "title": "Construct exact untouched qualification packet",
+      "status": "DONE",
+      "depends_on": [],
+      "deliverable": "NSD_vNext/docs/BIO_CHI_INTEGRATED_NB1_UNTOUCHED_QUALIFICATION_PACKET_v0.1.md",
+      "exact_action": "Bind Function/Limit truth identities, generators, seeds, rates/durations, observation/reference transforms, channel applicability, inherited tolerance provenance, machine-readable multi-label adjudication, ordinary Function coverage, and FRAMEWORK_NOT_OPERATIONAL logic prospectively.",
+      "stop_condition": "A nontrivial scientific choice cannot be resolved from the APQ-closed v0.3 architecture without outcome tuning.",
+      "note": "Exact long-run packet was constructed, but some outcomes were opened before independent APQ. Existing packet/results are development-exposed only."
+    },
+    {
+      "id": "NB2-Q01",
+      "lane": "N-B2/N-B3",
+      "title": "Construct exact matched-family execution packet",
+      "status": "DONE",
+      "depends_on": [],
+      "deliverable": "NSD_vNext/docs/BIO_CHI_NB2_NB3_MATCHED_FAMILY_EXECUTION_PACKET_v0.1.md",
+      "exact_action": "Bind exact matrices/operators and matched families, physical state metric and input/output norms, finite horizons, perturbations, B/C mappings, time-varying law and stationary surrogate, seeds, rates/durations/noise, identity rules, target functionals, recoverability estimators, and machine-readable adjudication prospectively.",
+      "stop_condition": "A nontrivial scientific choice cannot be resolved from the APQ-closed v0.3 architecture without outcome tuning.",
+      "note": "Exact matched-family config was constructed, but execution authority is withheld pending independent APQ."
+    },
+    {
+      "id": "NB1-Q02",
+      "lane": "N-B1",
+      "title": "Construct final N-B1 v0.2 packet and packet-level APQ",
+      "status": "ACTIVE",
+      "depends_on": [
+        "GATE-P30"
+      ],
+      "deliverable": "N-B1 corrected exact packet plus isolated packet re-review closure",
+      "exact_action": "Adjudicate /N-B1 Exact Packet v0.3 Re-review; resolve any remaining BLOCKER/MATERIAL prospectively before final packet freeze.",
+      "stop_condition": "Integration architecture re-review unresolved or packet APQ objection unresolved.",
+      "note": "Prior packet APQ and first corrected re-review produced prospective revisions; no scientific outcomes opened."
+    },
+    {
+      "id": "NB2-Q02",
+      "lane": "N-B2/N-B3",
+      "title": "Construct final N-B2/N-B3 v0.2 packet and packet-level APQ",
+      "status": "ACTIVE",
+      "depends_on": [
+        "GATE-P30"
+      ],
+      "deliverable": "N-B2/N-B3 revised exact packet plus conformant re-review closure",
+      "exact_action": "Relaunch revised packet re-review after transient external quota reset; adjudicate every BLOCKER/MATERIAL objection before final packet freeze.",
+      "stop_condition": "Integration architecture re-review unresolved or packet APQ objection unresolved.",
+      "note": "Conformant packet review produced material corrections recorded in NB23_PACKET_APQ_REVISION_v0.1.json; revised re-review is pending transport."
+    },
+    {
+      "id": "NB1-Q03",
+      "lane": "N-B1",
+      "title": "Prospective freeze and implementation",
+      "status": "BLOCKED_DEPENDENCY",
+      "depends_on": [
+        "NB1-Q02"
+      ],
+      "deliverable": "Frozen N-B1 packet + machine-readable config + implementation + reproducibility section",
+      "exact_action": "Freeze exact packet identity; implement without changing science; add contract tests and provenance.",
+      "stop_condition": "Implementation would change frozen science."
+    },
+    {
+      "id": "NB2-Q03",
+      "lane": "N-B2/N-B3",
+      "title": "Prospective freeze and implementation",
+      "status": "BLOCKED_DEPENDENCY",
+      "depends_on": [
+        "NB2-Q02"
+      ],
+      "deliverable": "Frozen N-B2/N-B3 packet + machine-readable config + implementation + reproducibility section",
+      "exact_action": "Freeze exact packet identity; implement matched-family generator/evaluator; add invariance and information-firewall contract tests.",
+      "stop_condition": "Implementation would change frozen science."
+    },
+    {
+      "id": "NB1-Q04",
+      "lane": "N-B1",
+      "title": "Mechanical preflight and frozen execution",
+      "status": "BLOCKED_DEPENDENCY",
+      "depends_on": [
+        "NB1-Q03"
+      ],
+      "deliverable": "Preflight then untouched qualification result artifact",
+      "exact_action": "Run mechanical preflight only; if clean, execute the frozen untouched packet and preserve every row/failure/refusal.",
+      "stop_condition": "Scientific deviation from frozen packet or unrepairable infrastructure block."
+    },
+    {
+      "id": "NB2-Q04",
+      "lane": "N-B2/N-B3",
+      "title": "Mechanical preflight and frozen execution",
+      "status": "BLOCKED_DEPENDENCY",
+      "depends_on": [
+        "NB2-Q03"
+      ],
+      "deliverable": "Preflight then frozen representation-sufficiency result artifact",
+      "exact_action": "Run mechanical preflight only; if clean, execute the frozen matched-family packet and preserve every row/failure/refusal.",
+      "stop_condition": "Scientific deviation from frozen packet or unrepairable infrastructure block."
+    },
+    {
+      "id": "GATE-P01",
+      "lane": "CROSS-LANE",
+      "title": "Adjudicate Round-1 independent APQ",
+      "status": "DONE",
+      "depends_on": [],
+      "deliverable": "INDEPENDENT_APQ2_ADJUDICATION_LEDGER_v0.2.md",
+      "exact_action": "Read all isolated reviews and adjudicate BLOCKER/MATERIAL objections without voting.",
+      "stop_condition": "none"
+    },
+    {
+      "id": "GATE-P02",
+      "lane": "CROSS-LANE",
+      "title": "Revise architecture plans to v0.4",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P01"
+      ],
+      "deliverable": "N-B1 v0.4 and N-B2/N-B3 v0.4 plans",
+      "exact_action": "Prospectively incorporate accepted Round-1 objections.",
+      "stop_condition": "none"
+    },
+    {
+      "id": "GATE-P03",
+      "lane": "CROSS-LANE",
+      "title": "Build fresh v0.2 prefreeze draft",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P02"
+      ],
+      "deliverable": "FRESH_UNTOUCHED_V0_2_DRAFT.json",
+      "exact_action": "Create outcome-blind fresh identities and explicit cross-lane/exposure firewalls without execution authority.",
+      "stop_condition": "none"
+    },
+    {
+      "id": "GATE-P04",
+      "lane": "CROSS-LANE",
+      "title": "Establish lane-specific checkpoints",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P03"
+      ],
+      "deliverable": "LANE_CHECKPOINT_NB1_v0.2.json + LANE_CHECKPOINT_NB23_v0.2.json",
+      "exact_action": "Separate liveness/checkpoint/next-action state for both lanes.",
+      "stop_condition": "none"
+    },
+    {
+      "id": "GATE-P05",
+      "lane": "CROSS-LANE",
+      "title": "Prebuild result-landing audit",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P03"
+      ],
+      "deliverable": "V0_2_RESULT_LANDING_AUDIT_v0.1.md",
+      "exact_action": "Freeze scientific review sequence before outcomes exist.",
+      "stop_condition": "none"
+    },
+    {
+      "id": "GATE-P06",
+      "lane": "CROSS-LANE",
+      "title": "Validate v0.2 freshness and authority contracts",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P03",
+        "GATE-P04"
+      ],
+      "deliverable": "NSD v0.2 Prefreeze Contracts CI",
+      "exact_action": "Run freshness/identity/authority/no-result-reference checks.",
+      "stop_condition": "mechanical validator failure",
+      "note": "NSD v0.2 Prefreeze Contracts push run 36659968843 succeeded with reusable validator bound."
+    },
+    {
+      "id": "GATE-P07",
+      "lane": "CROSS-LANE",
+      "title": "Build full-text Round-2 APQ handoffs",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P02"
+      ],
+      "deliverable": "ROUND2_FULLTEXT_HANDOFF_NB1/NB23/INTEGRATED.md",
+      "exact_action": "Provide reviewers full scientific authority text, not blob-only summaries.",
+      "stop_condition": "none"
+    },
+    {
+      "id": "GATE-P08",
+      "lane": "CROSS-LANE",
+      "title": "Launch isolated Round-2 external APQ",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P07"
+      ],
+      "deliverable": "three isolated Round-2 APQ reviews",
+      "exact_action": "Retry after Undermind usage-limit reset; no duplicate search creation.",
+      "stop_condition": "provider rate limit or completed reviews",
+      "note": "Round-2 N-B1, N-B2/N-B3, and integration APQ reviews completed and were adjudicated in v0.2 ledger."
+    },
+    {
+      "id": "GATE-P09",
+      "lane": "CROSS-LANE",
+      "title": "Bind reusable prefreeze packet validator",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P03",
+        "GATE-P04"
+      ],
+      "deliverable": "validate_v02_prefreeze_packet.py",
+      "exact_action": "Validate semantic firewalls, Function/Limit coverage, target family separation, and no premature outcome exposure.",
+      "stop_condition": "none"
+    },
+    {
+      "id": "GATE-P10",
+      "lane": "CROSS-LANE",
+      "title": "Update reproducibility guide for v0.2/APQ continuity",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P03",
+        "GATE-P04",
+        "GATE-P05"
+      ],
+      "deliverable": "REPRODUCIBILITY_GUIDE v0.1 appended section",
+      "exact_action": "Record exposure firewall, Round-1 adjudication, v0.4 plan identity, lane checkpoints, prefreeze CI, Round-2 transport state, and restart instructions.",
+      "stop_condition": "none",
+      "note": "Reproducibility guide V28 appended."
+    },
+    {
+      "id": "GATE-P11",
+      "lane": "CROSS-LANE",
+      "title": "Audit Function/Limit coverage before Round-2",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P03"
+      ],
+      "deliverable": "V0_2_FUNCTION_LIMIT_COVERAGE_AUDIT_v0.1.md",
+      "exact_action": "Check representative/adversarial balance and map each case to intended evidence channel/target without inspecting outcomes.",
+      "stop_condition": "scientific design gap requiring revision",
+      "note": "Function/Limit coverage audit completed outcome-blind; 9 Function and 9 Limit N-B1 classes retained."
+    },
+    {
+      "id": "GATE-P12",
+      "lane": "CROSS-LANE",
+      "title": "Exact v0.2 packet-level APQ and freeze",
+      "status": "BLOCKED_DEPENDENCY",
+      "depends_on": [
+        "NB1-Q02",
+        "NB2-Q02",
+        "GATE-P10",
+        "GATE-P11"
+      ],
+      "deliverable": "fresh v0.2 packet APQ + freeze",
+      "exact_action": "After both final lane packets clear packet-level APQ, bind cross-lane identity/disjointness/common-dependency closure and perform final scientific freeze before implementation.",
+      "stop_condition": "unresolved BLOCKER/MATERIAL objection"
+    },
+    {
+      "id": "GATE-P13",
+      "lane": "CROSS-LANE",
+      "title": "Prebuild exact packet-level APQ checklist",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P03",
+        "GATE-P10",
+        "GATE-P11"
+      ],
+      "deliverable": "V0_2_PACKET_LEVEL_APQ_CHECKLIST_v0.1.md",
+      "exact_action": "Define exact evidence identity, tolerances, code/config hashes, no-exposure checks, and reviewer questions before Round-2 returns.",
+      "stop_condition": "none"
+    },
+    {
+      "id": "GATE-P14",
+      "lane": "CROSS-LANE",
+      "title": "Prebuild machine evidence schemas",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P03"
+      ],
+      "deliverable": "v0.2 NB1 and NB23 result schemas",
+      "exact_action": "Specify mechanically required fields without scientific verdict logic.",
+      "stop_condition": "scientific field requiring unresolved APQ choice"
+    },
+    {
+      "id": "GATE-P15",
+      "lane": "CROSS-LANE",
+      "title": "Source-of-record supersession audit",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P02"
+      ],
+      "deliverable": "V0_2_SOURCE_OF_RECORD_AUDIT_v0.1.md",
+      "exact_action": "Mark v0.3 and v0.1 authorities as superseded/development-exposed where appropriate and prevent stale controller references.",
+      "stop_condition": "none"
+    },
+    {
+      "id": "GATE-P16",
+      "lane": "CROSS-LANE",
+      "title": "Bind prefreeze authority identity manifest",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P03",
+        "GATE-P07"
+      ],
+      "deliverable": "V0_2_PREFREEZE_IDENTITY_MANIFEST_v0.1.json",
+      "exact_action": "Bind current v0.4 authority, fresh draft, exposure custody, review handoffs, audits, and evidence-schema blob identities without creating a scientific freeze.",
+      "stop_condition": "none"
+    },
+    {
+      "id": "GATE-P17",
+      "lane": "CROSS-LANE",
+      "title": "Harden lane checkpoint identities",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P16"
+      ],
+      "deliverable": "updated N-B1 and N-B2/N-B3 lane checkpoints",
+      "exact_action": "Bind draft and manifest identity, dependency state, RNG identity/status, and mismatch rule per lane.",
+      "stop_condition": "none"
+    },
+    {
+      "id": "GATE-P18",
+      "lane": "CROSS-LANE",
+      "title": "Prebuild final freeze identity templates",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P16"
+      ],
+      "deliverable": "V0_2_FINAL_CODE_IDENTITY_TEMPLATE_v0.1.json plus V0_2_FROZEN_CHECKPOINT_SCHEMA_v0.1.json",
+      "exact_action": "Define final code, dependency, environment, RNG, and frozen checkpoint fields before exact packet freeze.",
+      "stop_condition": "none"
+    },
+    {
+      "id": "GATE-P19",
+      "lane": "CROSS-LANE",
+      "title": "Audit actual Actions liveness",
+      "status": "DONE",
+      "depends_on": [],
+      "deliverable": "V0_2_ACTIONS_LIVENESS_AUDIT_v0.1.md",
+      "exact_action": "Distinguish current-authority v0.2 control work from legacy PR-triggered CI fanout.",
+      "stop_condition": "none",
+      "note": "Prefreeze contracts run 36663547965 succeeded; legacy fanout is non-authoritative and does not reset liveness."
+    },
+    {
+      "id": "GATE-P20",
+      "lane": "CROSS-LANE",
+      "title": "Adjudicate Round-2 external APQ",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P08"
+      ],
+      "deliverable": "INDEPENDENT_APQ2_ROUND2_ADJUDICATION_LEDGER_v0.2.md plus v0.5 plans",
+      "exact_action": "Resolve every BLOCKER/MATERIAL objection prospectively without voting.",
+      "stop_condition": "none",
+      "note": "Material revisions accepted; N-B1 and N-B2/N-B3 advanced prospectively to v0.5."
+    },
+    {
+      "id": "GATE-P21",
+      "lane": "CROSS-LANE",
+      "title": "Independent v0.5 architecture re-review",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P20"
+      ],
+      "deliverable": "isolated N-B1, N-B2/N-B3, and integration v0.5 reviews",
+      "exact_action": "Relaunch after temporary Undermind usage reset; keep all safe prefreeze work moving meanwhile.",
+      "stop_condition": "provider rate limit or completed reviews",
+      "note": "N-B1, N-B2/N-B3, and integration v0.5 re-reviews completed. Lane reviews cleared; integration review raised accepted cross-lane blockers requiring a versioned integration authority."
+    },
+    {
+      "id": "GATE-P22",
+      "lane": "CROSS-LANE",
+      "title": "Align fresh v0.2 Draft B to v0.5",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P20"
+      ],
+      "deliverable": "FRESH_UNTOUCHED_V0_2_DRAFT_B.json",
+      "exact_action": "Carry v0.5 contracts forward without freezing final identities or authorizing execution.",
+      "stop_condition": "none",
+      "note": "Candidate seeds are explicitly not final confirmatory identities; final case identities wait for v0.5 closure."
+    },
+    {
+      "id": "GATE-P23",
+      "lane": "CROSS-LANE",
+      "title": "Generator and provenance validation plan",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P20"
+      ],
+      "deliverable": "V0_2_GENERATOR_PROVENANCE_VALIDATION_PLAN_v0.1.md",
+      "exact_action": "Define outcome-blind identity and matched-relation checks before scientific evaluation.",
+      "stop_condition": "none"
+    },
+    {
+      "id": "GATE-P24",
+      "lane": "CROSS-LANE",
+      "title": "Audit v0.2 implementation delta",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P20"
+      ],
+      "deliverable": "V0_2_IMPLEMENTATION_GAP_AUDIT_v0.1.md",
+      "exact_action": "Compare v0.1 conveyor mechanics to v0.5/Draft-B requirements without opening outcomes.",
+      "stop_condition": "none",
+      "note": "Existing v0.1 conveyor is not compatible with v0.2 and must not be reused as final implementation."
+    },
+    {
+      "id": "GATE-P27",
+      "lane": "CROSS-LANE",
+      "title": "Prepare v0.5 isolated re-review handoffs",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P20"
+      ],
+      "deliverable": "full-text/self-contained N-B1, N-B2/N-B3, and integration v0.5 handoff material",
+      "exact_action": "Prepare outcome-blind re-review inputs so review can relaunch immediately when Undermind transport clears; do not include sibling conclusions or v0.1 outcomes.",
+      "stop_condition": "Any handoff would expose protected outcome values or change science.",
+      "note": "All three durable v0.5 handoffs are present and the isolated v0.5 re-reviews completed."
+    },
+    {
+      "id": "GATE-P28",
+      "lane": "CROSS-LANE",
+      "title": "Audit Draft-B against v0.5 packet gate",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P20"
+      ],
+      "deliverable": "V0_2_DRAFT_B_ALIGNMENT_AUDIT_v0.1.md and prefreeze closure register",
+      "exact_action": "Identify unresolved packet fields without selecting final values.",
+      "stop_condition": "none",
+      "note": "Outcome-blind alignment audit completed; Draft-B remains preparatory only."
+    },
+    {
+      "id": "GATE-P29",
+      "lane": "CROSS-LANE",
+      "title": "Harden cross-lane common-dependency, access, and ancestry controls",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P21"
+      ],
+      "deliverable": "cross-lane integration authority plus dependency/access/ancestry records",
+      "exact_action": "Prospectively close accepted integration-review governance blockers without changing lane scientific semantics.",
+      "stop_condition": "none",
+      "note": "Integration authority v0.1 and supporting control records created."
+    },
+    {
+      "id": "GATE-P30",
+      "lane": "CROSS-LANE",
+      "title": "Independent stage-bound re-review of revised integration authority",
+      "status": "DONE",
+      "depends_on": [
+        "GATE-P29"
+      ],
+      "deliverable": "isolated integration authority re-review and adjudication",
+      "exact_action": "Retry the stage-bound review after the temporary provider reset; adjudicate immediately; if clear, release final exact packet construction.",
+      "stop_condition": "provider rate limit or unresolved integration objection",
+      "note": "Stage-bound integration architecture review closed; exact packet APQ was released."
+    }
+  ],
+  "packet_apq_runtime": {
+    "workspace_id": "931f5528-8f45-40c1-9c1d-7c221eab7cd3",
+    "nb1": {
+      "search": "/N-B1 Exact Packet v0.3 Re-review",
+      "status": "IN_PROGRESS"
+    },
+    "nb23": {
+      "search": "/N-B2 N-B3 Revised Packet Re-review",
+      "status": "TRANSPORT_PENDING"
+    },
+    "integrated": {
+      "search": "/Integrated Packet Stage-Bound Re-review",
+      "status": "TRANSPORT_PENDING"
+    },
+    "execution_authorized": false
+  }
+}

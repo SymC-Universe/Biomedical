@@ -1,0 +1,31 @@
+{
+  "schema": "NSD_V0_2_POSTFREEZE_NB1_IMPLEMENTATION_CHANGE_AUDIT_V0_1",
+  "status": "PASS_MECHANICAL_IMPLEMENTATION_OF_FROZEN_RULES",
+  "scientific_baseline": "NSD-V02-B01-FROZEN",
+  "execution_authorized": false,
+  "scientific_outcomes_opened": false,
+  "commits": [
+    "409761073481cc51924b759c67605b0773941e80",
+    "63e892aedbe4f5bbc592f0f79393129eefd9e4da"
+  ],
+  "evidence_runs": [
+    36735461793,
+    36735526178
+  ],
+  "frozen_requirements_implemented": [
+    "retain all nuisance-start optimizer attempts and terminal states",
+    "retain nuisance-bound evidence",
+    "retain bounded scalar-refinement evidence",
+    "retain explicit endpoint candidates in the frozen candidate set",
+    "report fitted-profile reproduction under the frozen numerical-only tolerance",
+    "emit numerical evidence only with no scientific adjudication"
+  ],
+  "scientific_change": false,
+  "threshold_change": false,
+  "generator_change": false,
+  "seed_or_rng_change": false,
+  "truth_identity_change": false,
+  "outcome_access": false,
+  "note": "The implementation change closes an already-frozen evidence-retention/selection requirement; it does not alter the frozen Profile-I scientific rule.",
+  "next": "Hold N-B1 code stable pending cross-lane final identity binding after N-B2/N-B3 implementation closure."
+}

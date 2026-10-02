@@ -1,0 +1,7 @@
+{
+  "schema": "NSD_V0_2_ARCHITECTURE_CLOSURE_V0_1",
+  "status": "ARCHITECTURE_REVIEW_CLOSED_PACKET_APQ_RELEASED",
+  "execution_authorized": false,
+  "adjudication": "NSD_vNext/control/INTEGRATION_V0_2_REREVIEW_ADJUDICATION_v0.1.md",
+  "next_gate": "EXACT_V0_2_PACKET_CONSTRUCTION_AND_PACKET_LEVEL_APQ"
+}

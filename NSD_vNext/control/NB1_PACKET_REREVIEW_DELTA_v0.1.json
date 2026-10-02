@@ -1,0 +1,71 @@
+{
+  "schema": "NSD_NB1_PACKET_REREVIEW_DELTA_V0_1",
+  "status": "MATERIAL_REVISION_CANDIDATE_NOT_FROZEN",
+  "execution_authorized": false,
+  "source_review": "/N-B1 Corrected Packet Re-review Short",
+  "dispositions": [
+    {
+      "id": "RR-B1",
+      "severity": "BLOCKER",
+      "disposition": "REJECTED_WITH_EVIDENCE",
+      "basis": "Existing generator contracts already bind instantaneous observation, t0, noise law, first-observation timing, stationary initialization, exact transition, and y120[j]=y240[2j]."
+    },
+    {
+      "id": "RR-B2",
+      "severity": "BLOCKER",
+      "disposition": "ACCEPTED_MODIFIED",
+      "basis": "Freeze per-truth/per-rate summary denominators and failure/refusal accounting."
+    },
+    {
+      "id": "RR-M1",
+      "severity": "MATERIAL",
+      "disposition": "ACCEPTED_MODIFIED",
+      "basis": "Name the alias-identification object and admissible class explicitly."
+    },
+    {
+      "id": "RR-M2",
+      "severity": "MATERIAL",
+      "disposition": "ACCEPTED_MODIFIED",
+      "basis": "Narrow I to numerical uniqueness/interiority within the bounded domain and bind scalar refinement stopping."
+    }
+  ],
+  "primary_summary": {
+    "unit": "truth_id x rate_hz",
+    "denominator": 16,
+    "retain_all_preassigned_replicates": true,
+    "outputs": [
+      "QUALIFICATION_ELIGIBLE",
+      "DATA_CONTRACT_REFUSAL",
+      "SEMANTIC_REFUSAL",
+      "ESTIMATOR_ROUTE_REFUSAL",
+      "NEED_MORE_INFO",
+      "numerical_search_failure",
+      "multi_label_combinations",
+      "P_S_T_F_O_M_R_N_I_channel_states"
+    ],
+    "intervals": "two-sided 95% Wilson, descriptive only",
+    "prohibited": [
+      "success_only_denominator",
+      "cross_truth_aggregate_score",
+      "biological_prevalence"
+    ]
+  },
+  "alias_identification": {
+    "object": "continuous C-lineage local damping/frequency coordinate under the frozen C generator and observation law",
+    "pass": "analytic certificate excludes a distinct admissible lineage with the same sampled-process law at both rates",
+    "refuse": "a distinct admissible lineage is demonstrated with the same sampled-process law",
+    "need_more_info": "the required certificate is unresolved"
+  },
+  "profile_refinement": {
+    "claim": "numerical uniqueness/interiority within the frozen bounded profile domain only",
+    "chi_xatol": 0.000001,
+    "scalar_maxiter": 200,
+    "nuisance_bounds": [
+      -8,
+      8
+    ],
+    "nuisance_boundary": "NEED_MORE_INFO",
+    "structural_identifiability_claim": false
+  },
+  "rereview_required": true
+}

@@ -1,0 +1,123 @@
+{
+  "schema": "NSD_V0_2_PREFREEZE_OPEN_ITEMS_V0_1",
+  "status": "OUTCOME_BLIND_PREPARATION",
+  "execution_authorized": false,
+  "architecture_gate": "V0_5_INDEPENDENT_REREVIEW_IN_PROGRESS",
+  "source_audit": "NSD_vNext/control/V0_2_DRAFT_B_ALIGNMENT_AUDIT_v0.1.md",
+  "nb1": [
+    {
+      "id": "NB1-C01",
+      "item": "Remove U from default-required applicability and enumerate U per final truth class",
+      "stage": "EXACT_PACKET_APQ"
+    },
+    {
+      "id": "NB1-C02",
+      "item": "Enumerate full P/S/T/F/O/M/R/N/I/U applicability per final truth identity",
+      "stage": "EXACT_PACKET_APQ"
+    },
+    {
+      "id": "NB1-C03",
+      "item": "Bind final replicate count, seed-generation rule, RNG identity, and final seeds",
+      "stage": "EXACT_PACKET_APQ"
+    },
+    {
+      "id": "NB1-C04",
+      "item": "Bind numerical-only optimizer/profile tolerances and provenance",
+      "stage": "EXACT_PACKET_APQ"
+    },
+    {
+      "id": "NB1-C05",
+      "item": "Bind generator implementation/source/domain and preserving-transform proof/validator",
+      "stage": "EXACT_PACKET_APQ"
+    },
+    {
+      "id": "NB1-C06",
+      "item": "Bind exact observation/reference transform functions",
+      "stage": "EXACT_PACKET_APQ"
+    },
+    {
+      "id": "NB1-C07",
+      "item": "Bind same-path decimation and alias-safety procedure",
+      "stage": "EXACT_PACKET_APQ"
+    },
+    {
+      "id": "NB1-C08",
+      "item": "Bind search starts/rerun/profile grid-domain/serialization",
+      "stage": "EXACT_PACKET_APQ"
+    },
+    {
+      "id": "NB1-C09",
+      "item": "Encode FRAMEWORK_NOT_OPERATIONAL triggers and refusal grammar mechanically",
+      "stage": "EXACT_PACKET_APQ"
+    }
+  ],
+  "nb23": [
+    {
+      "id": "NB23-C01",
+      "item": "Exhaustively enumerate final suite and representation-equivalence classes",
+      "stage": "EXACT_PACKET_APQ"
+    },
+    {
+      "id": "NB23-C02",
+      "item": "Bind x0 identities and normalization for x0-dependent targets",
+      "stage": "EXACT_PACKET_APQ"
+    },
+    {
+      "id": "NB23-C03",
+      "item": "Make observation-compatible-set membership executable per recovery case",
+      "stage": "EXACT_PACKET_APQ"
+    },
+    {
+      "id": "NB23-C04",
+      "item": "Instantiate explicit continuous-time aliasing recoverability control",
+      "stage": "EXACT_PACKET_APQ"
+    },
+    {
+      "id": "NB23-C05",
+      "item": "Replace local best-neighborhood peak refinement with one global/adaptive plus independent reference procedure",
+      "stage": "EXACT_PACKET_APQ"
+    },
+    {
+      "id": "NB23-C06",
+      "item": "Bind target formulas/domains/tie-degeneracy/norm rules per target",
+      "stage": "EXACT_PACKET_APQ"
+    },
+    {
+      "id": "NB23-C07",
+      "item": "Justify and freeze numerical-only tolerance roles",
+      "stage": "EXACT_PACKET_APQ"
+    },
+    {
+      "id": "NB23-C08",
+      "item": "Enumerate same-A/different-B and same-A,B/different-C matched recipes",
+      "stage": "EXACT_PACKET_APQ"
+    },
+    {
+      "id": "NB23-C09",
+      "item": "Instantiate partial-observation and misspecification classes",
+      "stage": "EXACT_PACKET_APQ"
+    },
+    {
+      "id": "NB23-C10",
+      "item": "Bind prospective v0.2 implementation and generator/provenance validator",
+      "stage": "POST_PACKET_FREEZE_IMPLEMENTATION"
+    }
+  ],
+  "cross_lane": [
+    {
+      "id": "XL-C01",
+      "item": "Prove final case-ID disjointness after IDs exist",
+      "stage": "FINAL_IDENTITY_FREEZE"
+    },
+    {
+      "id": "XL-C02",
+      "item": "Bind architecture/packet/config/code/dependency/environment/RNG/schema/checkpoint/audit identities",
+      "stage": "FINAL_IDENTITY_FREEZE"
+    },
+    {
+      "id": "XL-C03",
+      "item": "Enforce resume mismatch refusal and SCIENTIFIC_REVIEW_READY terminal authority boundary",
+      "stage": "IMPLEMENTATION_TESTS"
+    }
+  ]
+}

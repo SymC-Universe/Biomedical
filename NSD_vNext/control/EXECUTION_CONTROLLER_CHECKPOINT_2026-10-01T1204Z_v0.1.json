@@ -1,0 +1,29 @@
+{
+  "schema": "NSD_EXECUTION_CONTROLLER_CHECKPOINT_V0_1",
+  "scientific_baseline": "NSD-V02-B01-FROZEN",
+  "state": "ACTIVE_COMPUTE",
+  "active_run_id": 36859007015,
+  "durable_runtime_checkpoint_commit": "7f981b840feb5c98415c53c84a8523f6e71fca43",
+  "nb23_completed_case_count": 4,
+  "nb23_completed_case_ids": [
+    "NB23B01-M-NORMAL",
+    "NB23B01-M-RECIP",
+    "NB23B01-M-SSBASE",
+    "NB23B01-M-SSNONNORMAL"
+  ],
+  "failure_preservation": {
+    "repeated_count": 4,
+    "type": "PeakCertificationError",
+    "message": "interval budget exhausted before frozen peak tolerance",
+    "classification": "FAIL_CLOSED_NUMERICAL_CERTIFICATION_INCOMPLETE_PENDING_SCIENTIFIC_ADJUDICATION",
+    "scientific_verdict": "NONE",
+    "frozen_tolerance_changed": false
+  },
+  "source_of_record_updates": {
+    "continuity_state": "UPDATED",
+    "work_queue": "WORK_QUEUE_v0.8.json",
+    "nb23_lane_checkpoint": "LANE_CHECKPOINT_NB23_v0.20.json",
+    "working_investigation": "UPDATE_BLOCKED_BY_CONNECTOR_SAFETY_CHECK"
+  },
+  "next_exact_action": "Keep run 36859007015 active without duplicate dispatch. Follow next durable checkpoint or terminal state. Do not repair certificate mechanics until the valid run is checkpointed/terminal and repeated failures can be adjudicated without changing frozen science."
+}

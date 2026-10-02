@@ -1,0 +1,49 @@
+name: NSD specparam rc7 Qualification
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+      - main
+    paths:
+      - ".github/workflows/nsd-specparam-rc7-qualification.yml"
+      - "NSD_vNext/engine/pyproject.toml"
+      - "NSD_vNext/engine/nsd_engine/specparam_adapter.py"
+      - "NSD_vNext/engine/qualification_tests/test_specparam_adapter.py"
+
+permissions:
+  contents: read
+
+jobs:
+  specparam-known-truth:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install exact qualification dependency
+        shell: bash
+        working-directory: NSD_vNext/engine
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[parameterization_rc7]" pytest
+          python - <<'PY'
+          from importlib.metadata import version
+          assert version("specparam") == "2.0.0rc7", version("specparam")
+          print("specparam", version("specparam"))
+          PY
+
+      - name: Run specparam known-truth qualification tests
+        shell: bash
+        working-directory: NSD_vNext/engine
+        run: |
+          set -euo pipefail
+          pytest -q qualification_tests/test_specparam_adapter.py

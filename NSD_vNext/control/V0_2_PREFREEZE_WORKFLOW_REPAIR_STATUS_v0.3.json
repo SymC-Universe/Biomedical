@@ -1,0 +1,15 @@
+{
+  "schema": "NSD_V0_2_PREFREEZE_WORKFLOW_REPAIR_STATUS_V0_3",
+  "status": "CLOSED_POSTFREEZE_AUTHORITY_VALIDATOR_PASS",
+  "execution_authorized": false,
+  "scientific_outcomes_opened": false,
+  "repaired_validator": "NSD_vNext/engine/tools/validate_v02_postfreeze_authority.py",
+  "repair_commit": "a25f0a17e92d00e57234cf291d61720284d53e36",
+  "evidence_run": 36728720629,
+  "evidence_result": "SUCCESS",
+  "root_cause_closed": "The post-freeze validator incorrectly required latest lane checkpoint state SCIENTIFIC_GATE. Current valid post-freeze implementation-validation checkpoints are ADVANCED_CHECKPOINT. The validator now accepts the durable non-execution checkpoint states while still enforcing final scientific freeze, execution_authorized=false, scientific_values_exposed=false, and zero completed confirmatory case IDs.",
+  "prior_inline_validator_defect": "SUPERSEDED_BY_CURRENT_WORKFLOW",
+  "unchanged_rerun_forbidden": false,
+  "scientific_failure": false,
+  "next_action": "Continue frozen implementation validation; do not open confirmatory outcomes."
+}

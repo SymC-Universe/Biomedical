@@ -1,0 +1,45 @@
+{
+  "completed_nb1_cases": [
+    "C_F0__913103__coarse",
+    "C_F0__913103__fine",
+    "C_F0__927229__coarse",
+    "C_F0__927229__fine",
+    "C_F0__941351__coarse",
+    "C_F0__941351__fine",
+    "C_F0__967403__coarse",
+    "C_F0__967403__fine",
+    "C_F1__913103__coarse",
+    "C_F1__913103__fine",
+    "C_F1__927229__coarse",
+    "C_F1__927229__fine"
+  ],
+  "completed_nb2_families": [
+    "NB2NB3_MATCHED_FAMILIES"
+  ],
+  "completed_stages": [
+    "PACKET_BOUND",
+    "FROZEN_INPUT_VALIDATED",
+    "IMPLEMENTATION_TESTED",
+    "PREFLIGHT_PASS"
+  ],
+  "environment": {
+    "github_run_attempt": "1",
+    "github_run_id": "36648443486",
+    "github_sha": "e27b340b04247418b4b40a07465c20fe5bd7b094",
+    "nb2_config_digest": "fc6c9145d78d1c95884d21ce3d293c9808faf82a9e5b0b64cfdcbfcc2311bfbd",
+    "numpy_version": "2.1.3",
+    "packet_digest": "7505fc74658117e2d67265061e6d0860a854933eec695d5b25316b2b81b696f2",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "python_version": "3.12.14 (main, Aug 13 2026, 02:47:42) [GCC 13.3.0]",
+    "scipy_version": "1.14.1"
+  },
+  "nb2_config_digest": "fc6c9145d78d1c95884d21ce3d293c9808faf82a9e5b0b64cfdcbfcc2311bfbd",
+  "next_exact_mechanical_action": "next unfinished NB1/NB2 evidence case after C_F1__927229__coarse",
+  "packet_digest": "7505fc74658117e2d67265061e6d0860a854933eec695d5b25316b2b81b696f2",
+  "schema": "NSD_LONG_RUN_CHECKPOINT_V0_1",
+  "scientific_verdict": "FORBIDDEN",
+  "stage": "FULL_EXECUTION_ACTIVE",
+  "started_unix": 1790726664.7186866,
+  "stop_reason": null,
+  "updated_unix": 1790730264.487079
+}

@@ -1,0 +1,142 @@
+{
+  "active_run_id": 36936341914,
+  "authority_plan_blob": "15056e7356082d8f16104b8cfb781b7867c2f417",
+  "case_set_digest": "gitblob:baae142aa5d050df0eff3a371eae4ba50357e8bf#nb23",
+  "code_manifest_blob": "efdfa8d036f39bc28b2ddfb1ebcfb2e80d6af7c5",
+  "completed_artifact_hashes": {
+    "NB23B01-M-ALIAS-8": {
+      "exact_sha256": "23917157abfd76ff36b312ef552200da97711e6b738f78109c6784e4b8916eac",
+      "recoverability_sha256": "4f3647b801da2f4d03e6c2aff0d9cdda3d872ca88afb995aefbfcdde17b7bbd4"
+    },
+    "NB23B01-M-ALIAS-88": {
+      "exact_sha256": "e49de0ad7ed30b3053b4cf0fed83b81aeb7122f8d1c565f277b9fd9861c626da",
+      "recoverability_sha256": "e89b4b1a3e485e1725b27890ebc74e713015c3610566f73518fec83f39c2a439"
+    },
+    "NB23B01-M-IO-B1": {
+      "exact_sha256": "0aa676a82ceca9a5c71c59db160c613fcbc40ef9fab5e79e1120a81682e275a9",
+      "recoverability_sha256": "d19526f897ea74ca59f9e858cd4288b4f5f78ce1ee7ac7223f26541a9840cecf"
+    },
+    "NB23B01-M-IO-B2": {
+      "exact_sha256": "2951ecdfcf1e0528978c8859f14bd16890eb2f8d84540ac104baff71fb8f8e4a",
+      "recoverability_sha256": "57cf9243dd3807e5da3450f216800d6d3bc2df88e503f338d2003d35f15a1973"
+    },
+    "NB23B01-M-IO-C1": {
+      "exact_sha256": "ffaae57323cc1205e7e1be42ea849970effc53b99d4133cfa5e0db777bb8de86",
+      "recoverability_sha256": "37d9ac8e411be751751fe693defaaf3d1f6262971749918718ffeb84169aa261"
+    },
+    "NB23B01-M-IO-C2": {
+      "exact_sha256": "173f437fbda03ad5de54ba3ac58e7ff821c19f77f0180acfff2d86985c8b24dd",
+      "recoverability_sha256": "ef556fbab13a55e23cd69dc989708bb2c08602275826a6b0f82384014c26730e"
+    },
+    "NB23B01-M-MISSPEC": {
+      "exact_sha256": "f77fadcf814197bf05b92e97619d04e29a956c6dcafc27eced5d970072145981",
+      "recoverability_sha256": "092aaeb28f362a2386ec7e6b0d484a420f5ac8d06a52cd49fcda2821e1c13172"
+    },
+    "NB23B01-M-NORMAL": {
+      "exact_sha256": "1a128bd4d2bd4105022afa0c3b6aecdbabeb215d969629cb2a5a99c66b4d875b",
+      "recoverability_sha256": "7237db37d852363d15b375e3513ede1cbc262fb9b866e776244a99467ca36a02"
+    },
+    "NB23B01-M-PART-STABLE": {
+      "exact_sha256": "b6d1029d31adc8e51643f3b3b0444020c293845c667332c2e416fa977bf4d304",
+      "recoverability_sha256": "4cd802eaeea8b58a4362f3b4371b1a36402615650958e0d0e2449d5614039638"
+    },
+    "NB23B01-M-PART-UNSTABLE": {
+      "exact_sha256": "b8dc2a7f386a539667af9850913aa32c1670feb8ccdb5195aca839633d5766e7",
+      "recoverability_sha256": "b3cf12f0928431e809108f9c511aa31d31cc911639496d7209fb7ecb3d61481f"
+    },
+    "NB23B01-M-RECIP": {
+      "exact_sha256": "fbec89b9db9b4dd0be19263b5c4d4130f68092c59e8de132cb610742d9a5d47f",
+      "recoverability_sha256": "ef69fb5aae9f188f26d94764b379a95939afe02899786ab584665f1348efdf4a"
+    },
+    "NB23B01-M-SIM-BASE": {
+      "exact_sha256": "9b910f6697e7cda9b27fb5b21b325c84f45e6da5e893325429cd166d0c4c41dd",
+      "recoverability_sha256": "7380f568466134095c73f68d50ec020f9ad2352a5e3e63a4e673e511685d6346"
+    },
+    "NB23B01-M-SIM-XFORM": {
+      "exact_sha256": "5efc5b93b5832e66551102885e468249a7c54926838564cb5b06514c004fab72",
+      "recoverability_sha256": "579af78099ab03c32d6d4898eba55579a4660439ce866080bfe471ceedb9693e"
+    },
+    "NB23B01-M-SLDIFFSPEC": {
+      "exact_sha256": "3fa21c32ea152ae659857190ba33b44ab608b8ea83cdfbd78dd613884bfe265a",
+      "recoverability_sha256": "743d242c0959262e436f1ed27efdf0c459d2bcace507da8a7c42be5ff0b71392"
+    },
+    "NB23B01-M-SSBASE": {
+      "exact_sha256": "e6bf2755038e8f10e4efc29d0f5cd1a7d2bf33af3ed0ed9cd6cb560ab272abbb",
+      "recoverability_sha256": "b66a4bed7b758108e8d8343ce2120c1403882c2603abd9bf16341f1395d25e98"
+    },
+    "NB23B01-M-SSNONNORMAL": {
+      "exact_sha256": "8bdc26a6d2b6c7491029531056aa64e135eba3f9936d90c7495138a20c8ca37f",
+      "recoverability_sha256": "370d895d14c2d1b4444ed385e9ec4df21959da557d5bbc2a1cb831d4258c2e4f"
+    },
+    "NB23B01-M-TV": {
+      "exact_sha256": "8ea1e057fcfa68ce68ce71bfb3e1c37fd4ef82916921553ca70b1b771b3e8800"
+    },
+    "NB23B01-M-TV-SUR": {
+      "exact_sha256": "54fb325212b9e869870196b75fa17dea1f29bfb5de13d34b1bc8d28df079acb2"
+    }
+  },
+  "completed_case_ids": [
+    "NB23B01-M-NORMAL",
+    "NB23B01-M-RECIP",
+    "NB23B01-M-SSBASE",
+    "NB23B01-M-SSNONNORMAL",
+    "NB23B01-M-SLDIFFSPEC",
+    "NB23B01-M-IO-B1",
+    "NB23B01-M-IO-B2",
+    "NB23B01-M-IO-C1",
+    "NB23B01-M-IO-C2",
+    "NB23B01-M-SIM-BASE",
+    "NB23B01-M-SIM-XFORM",
+    "NB23B01-M-PART-STABLE",
+    "NB23B01-M-PART-UNSTABLE",
+    "NB23B01-M-ALIAS-8",
+    "NB23B01-M-ALIAS-88",
+    "NB23B01-M-TV",
+    "NB23B01-M-TV-SUR",
+    "NB23B01-M-MISSPEC"
+  ],
+  "completed_work_cursor": {
+    "count": 18
+  },
+  "config_blob": "75519d5036778d61c84fe7188ab687e6734f4d71",
+  "dependency_identity": {
+    "lockfile_digest": "gitblob:0c5fb6759e3d0350ea3dfb534562ac43f34cbf2d",
+    "lockfile_path": "NSD_vNext/engine/pyproject.toml",
+    "numpy": "2.4.6",
+    "pytest": "9.1.1",
+    "python": "3.11.16",
+    "scipy": "1.17.1"
+  },
+  "environment_identity": {
+    "actual_image_metadata_must_be_recorded_by_preflight_and_execution": true,
+    "architecture": "x86_64",
+    "container_digest": "NONE_NO_CONTAINER",
+    "os_contract": "Ubuntu 24.04 GitHub-hosted",
+    "runner_label": "ubuntu-24.04"
+  },
+  "incomplete_case_ids": [],
+  "lane": "N-B2/N-B3",
+  "mismatch_policy": "FROZEN_CONTRACT_VIOLATION",
+  "next_exact_action": "await scientific review after cross-lane evidence closure",
+  "output_schema_identity": {
+    "blob": "c2745785159050eece40ace18c95afcc0e8baffc",
+    "path": "NSD_vNext/control/NB23_V0_2_EVIDENCE_SCHEMA_v0.2.json"
+  },
+  "packet_blob": "854fe6d64069c76cebaee60998163c91ea91dfa9",
+  "parent_identity_manifest": {
+    "blob": "efdfa8d036f39bc28b2ddfb1ebcfb2e80d6af7c5",
+    "path": "NSD_vNext/control/V0_2_FINAL_CODE_IDENTITY_v0.1.json"
+  },
+  "queue_order_identity": {
+    "case_order_digest": "gitblob:baae142aa5d050df0eff3a371eae4ba50357e8bf",
+    "queue_blob": "baae142aa5d050df0eff3a371eae4ba50357e8bf",
+    "queue_path": "NSD_vNext/control/V0_2_EXECUTION_CASE_ORDER_v0.1.json"
+  },
+  "rng_identity": {
+    "primary": "NOT_APPLICABLE_DETERMINISTIC_NOISELESS"
+  },
+  "schema": "NSD_LANE_CHECKPOINT_V0_2_FROZEN_V0_2",
+  "scientific_values_exposed": true,
+  "state": "SCIENTIFIC_REVIEW_READY",
+  "stop_reason": null
+}

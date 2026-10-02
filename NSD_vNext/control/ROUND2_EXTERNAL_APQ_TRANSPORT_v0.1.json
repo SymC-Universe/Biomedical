@@ -1,0 +1,15 @@
+{
+  "schema":"NSD_ROUND2_EXTERNAL_APQ_TRANSPORT_V0_1",
+  "status":"COMPLETE",
+  "execution_authorized":false,
+  "provider":"Undermind",
+  "workspace_id":"b9de6e85-abe4-401b-a922-4a7d3aeebc3f",
+  "reviews":[
+    {"lane":"N-B1","search":"/N-B1 APQ Round 2","status":"COMPLETE"},
+    {"lane":"N-B2/N-B3","search":"/N-B2 N-B3 APQ Round 2","status":"COMPLETE"},
+    {"lane":"CROSS-LANE","search":"/Integrated APQ Round 2","status":"COMPLETE"}
+  ],
+  "adjudication":"NSD_vNext/control/INDEPENDENT_APQ2_ROUND2_ADJUDICATION_LEDGER_v0.2.md",
+  "result":"Material revisions required and accepted prospectively; authorities advanced to v0.5; independent re-review required before architecture closure.",
+  "exposure_rule":"v0.1 outcomes remain development-only and were not design inputs."
+}

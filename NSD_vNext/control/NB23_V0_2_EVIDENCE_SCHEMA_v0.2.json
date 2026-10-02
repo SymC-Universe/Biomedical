@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NSD v0.2 N-B2/N-B3 Mechanical Evidence Record v0.2",
+  "type": "object",
+  "required": [
+    "schema",
+    "packet_id",
+    "authority_identity",
+    "case_id",
+    "suite_identity",
+    "representation_contract",
+    "operator_identity",
+    "observation_contract",
+    "target_namespace",
+    "target_evidence",
+    "numerical_verification",
+    "generator_provenance_validation",
+    "artifact_identity",
+    "environment",
+    "scientific_adjudication"
+  ],
+  "properties": {
+    "schema": {
+      "const": "NSD_NB23_V0_2_EVIDENCE_RECORD_V0_2"
+    },
+    "packet_id": {
+      "type": "string"
+    },
+    "authority_identity": {
+      "type": "object"
+    },
+    "case_id": {
+      "type": "string"
+    },
+    "suite_identity": {
+      "type": "object"
+    },
+    "representation_contract": {
+      "type": "object"
+    },
+    "operator_identity": {
+      "type": "object",
+      "description": "Frozen A/B/C/G/x0 or switched-operator identities as applicable."
+    },
+    "observation_contract": {
+      "type": "object"
+    },
+    "target_namespace": {
+      "enum": [
+        "EXACT_SUFFICIENCY",
+        "OBSERVATION_CONDITIONED_RECOVERABILITY"
+      ]
+    },
+    "target_evidence": {
+      "type": "object",
+      "description": "Raw target values/curves/subspaces and compatible-model evidence only."
+    },
+    "numerical_verification": {
+      "type": "object"
+    },
+    "generator_provenance_validation": {
+      "type": "object"
+    },
+    "failure_record": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "artifact_identity": {
+      "type": "object"
+    },
+    "environment": {
+      "type": "object"
+    },
+    "scientific_adjudication": {
+      "const": "NOT_PERFORMED_BY_GITHUB"
+    },
+    "representation_ranking": {
+      "type": "null"
+    },
+    "combined_cross_lane_pass": {
+      "type": "null"
+    },
+    "whole_system_scalar": {
+      "type": "null"
+    }
+  },
+  "additionalProperties": false
+}

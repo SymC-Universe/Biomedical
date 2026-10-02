@@ -1,0 +1,63 @@
+{
+  "schema": "NSD_V0_2_EXECUTION_AUTHORITY_V0_1",
+  "status": "AUTHORIZED_FROZEN_EXECUTION",
+  "scientific_baseline": "NSD-V02-B01-FROZEN",
+  "execution_authorized": true,
+  "scientific_outcomes_opened": false,
+  "required_preflight_workflow": "NSD v0.2 Frozen Preflight",
+  "required_preflight_conclusion": "success",
+  "case_order": "NSD_vNext/control/V0_2_EXECUTION_CASE_ORDER_v0.1.json",
+  "final_code_identity": {
+    "path": "NSD_vNext/control/V0_2_FINAL_CODE_IDENTITY_v0.1.json",
+    "blob": "efdfa8d036f39bc28b2ddfb1ebcfb2e80d6af7c5"
+  },
+  "authorization_rule": "May become true only after final implementation/code/dependency/environment identity is bound and the exact frozen preflight passes.",
+  "terminal_ceiling": "SCIENTIFIC_REVIEW_READY",
+  "preflight_workflow_path": ".github/workflows/nsd-v0-2-frozen-preflight.yml",
+  "last_preflight": {
+    "run_id": 36827530820,
+    "conclusion": "failure",
+    "classification": "MECHANICAL_TEST_FIXTURE_FAILURE",
+    "repaired_commit": "d960887faa754f7ace6f1d842516115b6ddb1fca"
+  },
+  "authorized_scientific_baseline": "NSD-V02-B01-FROZEN",
+  "preflight": {
+    "run_id": 36829526592,
+    "conclusion": "success",
+    "head_sha": "bc8fe36b364b4c2976280742373d1b05e067fceb",
+    "completed_at": "2026-10-01T07:19:50Z"
+  },
+  "authorization_scope": "Authorize result-producing execution only for NSD-V02-B01-FROZEN under final runner blob 435b082f64759231c9d49630a7051f5b5223af4c and exact successful preflight 36829526592.",
+  "last_execution_attempt": {
+    "run_id": 36828113912,
+    "conclusion": "failure",
+    "classification": "MECHANICAL_RUNNER_IMPORT_WIRING",
+    "scientific_cases_opened": 0,
+    "repair_commit": "40f9d023f5d023ba0f97c3b77599ac6e14f593ac"
+  },
+  "identity_change": {
+    "reason": "Mechanical checkpoint persistence hardening: rebase durable checkpoint commits onto live branch and hash completed case artifacts.",
+    "scientific_change": false,
+    "cases_targets_tolerances_unchanged": true,
+    "new_runner_blob": "435b082f64759231c9d49630a7051f5b5223af4c"
+  },
+  "superseded_conveyor_cancellation_trigger": {
+    "stale_run_id": 36828786570,
+    "sequence": 2,
+    "execution_authorized": false,
+    "purpose": "Evict stale pre-hardening checkout before any accepted frozen checkpoint."
+  },
+  "preauthorization_recovery": {
+    "reason": "CONTINUITY_FAILURE recovery after stale pre-hardening run was evicted but repaired identity was not reauthorized.",
+    "stale_run_id": 36828786570,
+    "stale_run_conclusion": "failure",
+    "cancellation_only_run_id": 36829526577,
+    "cancellation_only_note": "Gate-only success; scientific execution steps were skipped because authority was false.",
+    "exact_repaired_preflight_run_id": 36829526592,
+    "exact_repaired_preflight_conclusion": "success",
+    "repaired_runner_blob": "435b082f64759231c9d49630a7051f5b5223af4c",
+    "scientific_change": false,
+    "baseline_unchanged": "NSD-V02-B01-FROZEN"
+  },
+  "mechanical_dispatch_nonce": "2026-10-01T12:01:00Z"
+}

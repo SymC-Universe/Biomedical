@@ -1,0 +1,54 @@
+name: NSD C1Q-RS Mechanical Contracts
+
+on:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - "NSD_vNext/engine/nsd_engine/continuous_lineage_candidate.py"
+      - "NSD_vNext/engine/nsd_engine/continuous_lineage_candidate_rs.py"
+      - "NSD_vNext/engine/nsd_engine/continuous_lineage_profile.py"
+      - "NSD_vNext/engine/tests/test_continuous_lineage_rs_contracts.py"
+      - "NSD_vNext/engine/tests/test_continuous_lineage_profile_equivalence.py"
+      - ".github/workflows/nsd-c1q-rs-contracts.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "NSD_vNext/engine/nsd_engine/continuous_lineage_candidate.py"
+      - "NSD_vNext/engine/nsd_engine/continuous_lineage_candidate_rs.py"
+      - "NSD_vNext/engine/nsd_engine/continuous_lineage_profile.py"
+      - "NSD_vNext/engine/tests/test_continuous_lineage_rs_contracts.py"
+      - "NSD_vNext/engine/tests/test_continuous_lineage_profile_equivalence.py"
+      - ".github/workflows/nsd-c1q-rs-contracts.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install qualification engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+          python -m pip install pytest
+
+      - name: Run C1Q-RS mechanical contracts
+        working-directory: NSD_vNext/engine
+        run: |
+          python -m pytest -q \
+            tests/test_continuous_lineage_rs_contracts.py \
+            tests/test_continuous_lineage_profile_equivalence.py
+# Workflow-registration trigger marker; no scientific-plan change.

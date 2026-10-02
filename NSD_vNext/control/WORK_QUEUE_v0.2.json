@@ -1,0 +1,100 @@
+{
+  "schema": "NSD_WORK_QUEUE_V0_2",
+  "status": "POST_FREEZE_IMPLEMENTATION_VALIDATION_ACTIVE",
+  "governance": "SymC GOM v1.0 + Continuity Hardening Addendum",
+  "source_of_record": "NSD_vNext/control/V0_2_FINAL_SCIENTIFIC_FREEZE_v0.1.json",
+  "execution_authorized": false,
+  "tasks": [
+    {
+      "id": "PF-NB1-I01",
+      "lane": "N-B1",
+      "title": "Implement truth-blind profile/search evidence",
+      "status": "ACTIVE",
+      "depends_on": [],
+      "deliverable": "v0.2 N-B1 profile/search engine + contract tests",
+      "stop_condition": "implementation changes frozen science"
+    },
+    {
+      "id": "PF-NB23-I01",
+      "lane": "N-B2/N-B3",
+      "title": "Implement target/recoverability runtime",
+      "status": "ACTIVE",
+      "depends_on": [],
+      "deliverable": "v0.2 target/recoverability engine + contract tests",
+      "stop_condition": "implementation changes frozen science"
+    },
+    {
+      "id": "PF-CD03",
+      "lane": "CROSS-LANE",
+      "title": "Independent finite-time reference verification",
+      "status": "ACTIVE",
+      "depends_on": [],
+      "deliverable": "CD-03 verifier + passing contract test",
+      "note": "Verifier exists; dedicated contract test added; awaiting authoritative CI completion."
+    },
+    {
+      "id": "PF-CD05",
+      "lane": "N-B1",
+      "title": "Independent profile reproduction verification",
+      "status": "READY",
+      "depends_on": [
+        "PF-NB1-I01"
+      ],
+      "deliverable": "CD-05 truth-blind profile reproduction artifact"
+    },
+    {
+      "id": "PF-CD06",
+      "lane": "CROSS-LANE",
+      "title": "Final library/environment verification",
+      "status": "READY",
+      "depends_on": [],
+      "deliverable": "CD-06 environment/dependency identity check"
+    },
+    {
+      "id": "PF-WF01",
+      "lane": "CROSS-LANE",
+      "title": "Repair stale v0.2 authority workflow",
+      "status": "ACTIVE",
+      "depends_on": [],
+      "deliverable": "passing NSD v0.2 Authority Contracts workflow",
+      "note": "Stale duplicated Draft-A inline validator removed at commit 2a6b12eaa1ccb2ca3bf68ef8d24fad822881b197; CI pending."
+    },
+    {
+      "id": "PF-ID01",
+      "lane": "CROSS-LANE",
+      "title": "Bind final code/dependency/environment identity",
+      "status": "BLOCKED_DEPENDENCY",
+      "depends_on": [
+        "PF-NB1-I01",
+        "PF-NB23-I01",
+        "PF-CD03",
+        "PF-CD05",
+        "PF-CD06",
+        "PF-WF01"
+      ],
+      "deliverable": "V0_2_FINAL_CODE_IDENTITY_v0.1.json"
+    },
+    {
+      "id": "PF-PRE01",
+      "lane": "CROSS-LANE",
+      "title": "Mechanical preflight",
+      "status": "BLOCKED_DEPENDENCY",
+      "depends_on": [
+        "PF-ID01"
+      ],
+      "deliverable": "v0.2 preflight evidence; no scientific adjudication"
+    },
+    {
+      "id": "PF-EXEC01",
+      "lane": "CROSS-LANE",
+      "title": "Authorize frozen long conveyor",
+      "status": "BLOCKED_DEPENDENCY",
+      "depends_on": [
+        "PF-PRE01"
+      ],
+      "deliverable": "execution authority to SCIENTIFIC_REVIEW_READY",
+      "stop_condition": "any frozen identity mismatch or scientific deviation"
+    }
+  ],
+  "terminal_authority": "SCIENTIFIC_REVIEW_READY"
+}

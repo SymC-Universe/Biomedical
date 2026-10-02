@@ -1,0 +1,13 @@
+{
+  "schema": "NSD_LANE_CHECKPOINT_NB1_V0_13",
+  "lane": "N-B1",
+  "state": "ADVANCED_CHECKPOINT",
+  "final_identity_freeze": true,
+  "execution_authorized": false,
+  "scientific_values_exposed": false,
+  "scientific_freeze": "NSD_vNext/control/V0_2_FINAL_SCIENTIFIC_FREEZE_v0.1.json",
+  "authority_validator_run": 36728720629,
+  "implementation_status": "PROFILE_IMPLEMENTED_CD05_VERIFIED_HARDENING_PENDING",
+  "next_exact_action": "Retain frozen Profile-I optimizer/bound/refinement evidence without changing frozen science; rerun engine contracts; then bind final implementation identity.",
+  "stop_reason": "POST_FREEZE_IMPLEMENTATION_VALIDATION"
+}

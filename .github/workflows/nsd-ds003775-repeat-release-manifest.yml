@@ -1,0 +1,68 @@
+name: NSD ds003775 Repeat Release Manifest
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+      - main
+    paths:
+      - ".github/workflows/nsd-ds003775-repeat-release-manifest.yml"
+      - "NSD_vNext/atlas/manifests/ds003775_repeat_subject_index_v0.1.json"
+      - "NSD_vNext/engine/tools/build_ds003775_repeat_release_manifest.py"
+
+permissions:
+  contents: read
+
+jobs:
+  build-repeat-release-manifest:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Build exact pinned-release repeat manifest
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/nsd_repeat_manifest"
+          python NSD_vNext/engine/tools/build_ds003775_repeat_release_manifest.py \
+            NSD_vNext/atlas/manifests/ds003775_repeat_subject_index_v0.1.json \
+            --output "$RUNNER_TEMP/nsd_repeat_manifest/ds003775_repeat_release_manifest.json" \
+            > /dev/null
+
+      - name: Print manifest audit summary
+        shell: bash
+        run: |
+          set -euo pipefail
+          REPORT="$RUNNER_TEMP/nsd_repeat_manifest/ds003775_repeat_release_manifest.json"
+          python - "$REPORT" <<'PY'
+          import json, sys
+          report = json.load(open(sys.argv[1], encoding="utf-8"))
+          ids = [item["subject_id"] for item in report["subjects"]]
+          print("subject_count", report["subject_count"])
+          print("recording_count", report["recording_count"])
+          print("canonical_body_sha256", report["canonical_body_sha256"])
+          print("acquisition_contract", json.dumps(report["acquisition_contract"], sort_keys=True))
+          print("subjects", ",".join(ids))
+          assert report["subject_count"] == 42
+          assert report["recording_count"] == 84
+          assert len(ids) == len(set(ids)) == 42
+          assert all(len(item["sessions"]) == 2 for item in report["subjects"])
+          PY
+
+      - name: Upload exact release manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: ds003775-repeat-release-manifest
+          path: ${{ runner.temp }}/nsd_repeat_manifest/ds003775_repeat_release_manifest.json
+          if-no-files-found: error
+          retention-days: 30

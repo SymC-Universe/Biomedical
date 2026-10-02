@@ -1,0 +1,67 @@
+name: NSD MFR14 v0.2 Parameterization Failure Diagnostic
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - ".github/workflows/nsd-mfr14-v0-2-failure-diagnostic.yml"
+      - "NSD_vNext/docs/DS004148_MFR14_V0_2_PARAMETERIZATION_FAILURE_DIAGNOSTIC_FREEZE.md"
+      - "NSD_vNext/engine/tools/diagnose_ds004148_mfr14_v0_2_parameterization_failures.py"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nsd-mfr14-v0-2-failure-diagnostic
+  cancel-in-progress: false
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install frozen descriptive stack
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install -e 'NSD_vNext/engine[parameterization_rc7]'
+
+      - name: Run frozen failure-stage diagnostic
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/nsd-mfr14-failure-diagnostic"
+          python NSD_vNext/engine/tools/diagnose_ds004148_mfr14_v0_2_parameterization_failures.py \
+            --cohort-manifest NSD_vNext/docs/manifests/ds004148_eyesopen_mfr14_replication_v0.2.json \
+            --labels-manifest NSD_vNext/docs/manifests/ds004148_eyesopen_dataset_stable57_v0.1.json \
+            --output-dir "$RUNNER_TEMP/nsd-mfr14-failure-diagnostic"
+
+      - name: Remove raw payloads
+        run: |
+          rm -rf "$RUNNER_TEMP/nsd-mfr14-failure-diagnostic/payloads"
+
+      - name: Package diagnostic suite
+        run: |
+          set -euo pipefail
+          cp NSD_vNext/docs/DS004148_MFR14_V0_2_PARAMETERIZATION_FAILURE_DIAGNOSTIC_FREEZE.md "$RUNNER_TEMP/nsd-mfr14-failure-diagnostic/"
+          cp NSD_vNext/docs/manifests/ds004148_eyesopen_mfr14_replication_v0.2.json "$RUNNER_TEMP/nsd-mfr14-failure-diagnostic/"
+          cp NSD_vNext/docs/manifests/ds004148_eyesopen_dataset_stable57_v0.1.json "$RUNNER_TEMP/nsd-mfr14-failure-diagnostic/"
+          cp NSD_vNext/engine/tools/diagnose_ds004148_mfr14_v0_2_parameterization_failures.py "$RUNNER_TEMP/nsd-mfr14-failure-diagnostic/"
+          cp NSD_vNext/engine/pyproject.toml "$RUNNER_TEMP/nsd-mfr14-failure-diagnostic/"
+          (cd "$RUNNER_TEMP/nsd-mfr14-failure-diagnostic" && find . -maxdepth 1 -type f ! -name SHA256SUMS.txt -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS.txt)
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nsd-mfr14-v0-2-parameterization-failure-diagnostic-v0-1
+          path: ${{ runner.temp }}/nsd-mfr14-failure-diagnostic
+          if-no-files-found: error
+          retention-days: 90

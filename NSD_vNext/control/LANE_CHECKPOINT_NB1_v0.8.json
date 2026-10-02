@@ -1,0 +1,16 @@
+{
+  "schema": "NSD_LANE_CHECKPOINT_V0_8",
+  "lane": "N-B1",
+  "state": "SCIENTIFIC_GATE",
+  "architecture_review_status": "CLOSED",
+  "packet_candidate_path": "NSD_vNext/control/NB1_EXACT_PACKET_CANDIDATE_v0.3.json",
+  "packet_candidate_blob": "6f45148d2320d00134f287f3aec81fa5e6cf7f31",
+  "packet_review_search": "/N-B1 Exact Packet v0.3 Final Ledger Review",
+  "packet_review_status": "IN_PROGRESS",
+  "final_identity_freeze": false,
+  "scientific_values_exposed": false,
+  "execution_authorized": false,
+  "completed_case_ids": [],
+  "next_exact_action": "Adjudicate the final isolated N-B1 v0.3 packet ledger as soon as it completes.",
+  "stop_reason": "FINAL_PACKET_REREVIEW_IN_PROGRESS"
+}

@@ -1,0 +1,133 @@
+name: NSD Profile Function Limit Calibration
+# execution-registration trigger; no scientific design change
+
+on:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - "NSD_vNext/engine/tools/probe_profile_function_limit_calibration.py"
+      - "NSD_vNext/docs/BIO_CHI_PROFILE_FUNCTION_LIMIT_CALIBRATION_PLAN_v0.2.md"
+      - "NSD_vNext/docs/BIO_CHI_PROFILE_FUNCTION_LIMIT_CALIBRATION_FREEZE_v1.0.md"
+      - ".github/workflows/nsd-profile-function-limit-calibration.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "NSD_vNext/engine/tools/probe_profile_function_limit_calibration.py"
+      - "NSD_vNext/docs/BIO_CHI_PROFILE_FUNCTION_LIMIT_CALIBRATION_PLAN_v0.2.md"
+      - "NSD_vNext/docs/BIO_CHI_PROFILE_FUNCTION_LIMIT_CALIBRATION_FREEZE_v1.0.md"
+      - ".github/workflows/nsd-profile-function-limit-calibration.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    if: ${{ false }} # PROGRAM_WIDE_BILLING_GUARD: no paid GitHub-hosted execution
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - truth_id: C0
+            seed: 301103
+            rate: fine
+          - truth_id: L4
+            seed: 301103
+            rate: coarse
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install qualification engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+      - name: Run frozen mechanical preflight case
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_profile_function_limit_calibration.py \
+            --mode case \
+            --truth-id ${{ matrix.truth_id }} \
+            --seed ${{ matrix.seed }} \
+            --rate ${{ matrix.rate }} \
+            --output-dir ../../profile-function-limit/preflight-${{ matrix.truth_id }}-${{ matrix.seed }}-${{ matrix.rate }}
+      - name: Upload preflight case
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-profile-function-limit-preflight-${{ matrix.truth_id }}-${{ matrix.seed }}-${{ matrix.rate }}
+          path: profile-function-limit/preflight-${{ matrix.truth_id }}-${{ matrix.seed }}-${{ matrix.rate }}/
+          if-no-files-found: error
+
+  full:
+    if: ${{ false }} # PROGRAM_WIDE_BILLING_GUARD: no paid GitHub-hosted execution
+    needs: preflight
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        truth_id: [C0, C1, C2, C3, C4, C5, L0, L1, L2, L3, L4, L5]
+        seed: [301103, 509203, 811223]
+        rate: [fine, coarse]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install qualification engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+      - name: Run frozen profile Function Limit case
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_profile_function_limit_calibration.py \
+            --mode case \
+            --truth-id ${{ matrix.truth_id }} \
+            --seed ${{ matrix.seed }} \
+            --rate ${{ matrix.rate }} \
+            --output-dir ../../profile-function-limit/case-${{ matrix.truth_id }}-${{ matrix.seed }}-${{ matrix.rate }}
+      - name: Upload full case
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-profile-function-limit-case-${{ matrix.truth_id }}-${{ matrix.seed }}-${{ matrix.rate }}
+          path: profile-function-limit/case-${{ matrix.truth_id }}-${{ matrix.seed }}-${{ matrix.rate }}/
+          if-no-files-found: error
+
+  merge:
+    needs: full
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install qualification engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+      - name: Download all frozen case artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: nsd-profile-function-limit-case-*
+          path: profile-function-limit/all-cases
+      - name: Merge complete calibration
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_profile_function_limit_calibration.py \
+            --mode merge \
+            --input-dir ../../profile-function-limit/all-cases \
+            --output-dir ../../profile-function-limit/complete
+      - name: Upload complete calibration
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-profile-function-limit-calibration-complete
+          path: profile-function-limit/complete/
+          if-no-files-found: error

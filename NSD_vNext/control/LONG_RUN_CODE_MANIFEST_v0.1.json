@@ -1,0 +1,55 @@
+{
+  "schema": "NSD_LONG_RUN_CODE_MANIFEST_V0_1",
+  "governance": "SymC GOM v1.0 + Continuity Hardening Addendum",
+  "purpose": "Freeze scientific/analysis code identity for checkpoint-safe resume. Checkpoint/output commits may change repository HEAD without changing these bound blobs.",
+  "files": [
+    {
+      "path": "NSD_vNext/engine/tools/run_nsd_long_conveyor.py",
+      "blob_sha": "265502bbf26f97a0984b154faea43ec8c90920ef"
+    },
+    {
+      "path": "NSD_vNext/engine/nsd_engine/continuous_lineage_candidate_rs.py",
+      "blob_sha": "7e8abe73e37a3be54b1e6fd5afac218af88da9bd"
+    },
+    {
+      "path": "NSD_vNext/engine/nsd_engine/continuous_lineage_candidate.py",
+      "blob_sha": "9df8975131cbcf3c23aeaf4f2e799fc8692fe77b"
+    },
+    {
+      "path": "NSD_vNext/engine/nsd_engine/coupled_second_order.py",
+      "blob_sha": "1c286ea1b74ca384bbb3bfac80358332bedd0761"
+    },
+    {
+      "path": "NSD_vNext/engine/nsd_engine/state_space_adequacy.py",
+      "blob_sha": "49c2a5a0958a57b5a48a079a79f20accc79a5680"
+    },
+    {
+      "path": "NSD_vNext/engine/nsd_engine/discrete_exact_candidate.py",
+      "blob_sha": "694f6dbd65b2ef97db28ad104ed82c7eea323017"
+    },
+    {
+      "path": "NSD_vNext/engine/nsd_engine/latent_oscillator_covariance.py",
+      "blob_sha": "b9084ea089bf5ec1e563df0a61ab5301c756ae0b"
+    },
+    {
+      "path": "NSD_vNext/engine/tools/probe_combined_structural_predictive_refusal.py",
+      "blob_sha": "df27fb931dcc17e7dc3fc1e62eb8a8a028601e0c"
+    },
+    {
+      "path": "NSD_vNext/engine/tools/probe_single_series_uncertainty_methods.py",
+      "blob_sha": "ec2b55a129b76f5c4a61d74b330a1a099aee9b94"
+    },
+    {
+      "path": "NSD_vNext/engine/pyproject.toml",
+      "blob_sha": "0c5fb6759e3d0350ea3dfb534562ac43f34cbf2d"
+    }
+  ],
+  "runtime_dependencies": {
+    "python": "3.12",
+    "numpy": "2.1.3",
+    "scipy": "1.14.1",
+    "pytest": "8.3.3"
+  },
+  "scientific_authority": "Researcher + ChatGPT",
+  "github_authority": "Mechanical execution/checkpoint/resume only"
+}

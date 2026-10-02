@@ -1,0 +1,33 @@
+{
+  "schema": "NSD_V0_2_SOURCE_OF_RECORD_AUDIT_V0_3",
+  "status": "ACTIVE_PACKET_REREVIEW_AUTHORITY_MAP",
+  "execution_authorized": false,
+  "current": {
+    "nb1_architecture": "NSD_vNext/docs/BIO_CHI_INTEGRATED_NB1_ADMISSION_ARCHITECTURE_PLAN_v0.5.md",
+    "nb23_architecture": "NSD_vNext/docs/BIO_CHI_NB2_NB3_REPRESENTATION_SUFFICIENCY_PLAN_v0.5.md",
+    "architecture_closure": "NSD_vNext/control/INTEGRATION_V0_2_REREVIEW_ADJUDICATION_v0.1.md",
+    "draft": "NSD_vNext/control/FRESH_UNTOUCHED_V0_2_DRAFT_B.json",
+    "nb1_packet": "NSD_vNext/control/NB1_EXACT_PACKET_CANDIDATE_v0.2.json + NB1_PACKET_REREVIEW_DELTA_v0.1.json",
+    "nb23_packet": "NSD_vNext/control/NB23_PACKET_APQ_BINDING_v0.1.json + NB23_PACKET_APQ_REVISION_v0.1.json",
+    "checklist": "NSD_vNext/control/V0_2_PACKET_LEVEL_APQ_CHECKLIST_v0.4.md",
+    "nb1_checkpoint": "NSD_vNext/control/LANE_CHECKPOINT_NB1_v0.5.json",
+    "nb23_checkpoint": "NSD_vNext/control/LANE_CHECKPOINT_NB23_v0.5.json",
+    "queue": "NSD_vNext/control/WORK_QUEUE_v0.1.json",
+    "continuity": "NSD_vNext/control/CONTINUITY_STATE.json"
+  },
+  "current_gate": "V0_2_PACKET_MATERIAL_REVISION_REREVIEW",
+  "reviewer_transport": {
+    "nb1": "NEED_MORE_INFO_RETURN; conformant ledger still required",
+    "nb23": "REVISED_REREVIEW_PENDING_TRANSIENT_TRANSPORT",
+    "integrated": "STAGE_BOUND_REREVIEW_PENDING_TRANSIENT_TRANSPORT"
+  },
+  "mechanical_ci": {
+    "reusable_validator": "CURRENT_AUTHORITY_POINTERS_REPAIRED_AND_PASSING",
+    "workflow_inline_check": "STALE_AUTHORITY_POINTERS; VERSIONED_WORKFLOW_REPAIR_REQUIRED",
+    "scientific_failure": false
+  },
+  "final_identity_freeze": false,
+  "implementation_ready": false,
+  "scientific_outcomes_opened": false,
+  "historical_v01": "P0-D_EXPOSED_DEVELOPMENT_ONLY"
+}

@@ -1,0 +1,23 @@
+{
+  "schema": "NSD_LANE_CHECKPOINT_NB23_V0_16",
+  "lane": "N-B2/N-B3",
+  "state": "ADVANCED_CHECKPOINT",
+  "architecture_review_status": "CLOSED",
+  "packet_review_status": "CLOSED",
+  "cross_lane_gate": "CLOSED",
+  "primary_recoverability": "DETERMINISTIC_NOISELESS",
+  "stochastic_extension": "NOT_AUTHORIZED",
+  "final_identity_freeze": true,
+  "scientific_values_exposed": false,
+  "execution_authorized": false,
+  "completed_case_ids": [],
+  "scientific_freeze": "NSD_vNext/control/V0_2_FINAL_SCIENTIFIC_FREEZE_v0.1.json",
+  "authority_validator_run": 36751170637,
+  "continuation_queue_validator_run": 36751170551,
+  "implementation_status": "SWITCHED_CERTIFICATE_DELTA_AUDITED_CODE_MUTATION_TRANSIENTLY_BLOCKED",
+  "preparation_artifact": "NSD_vNext/control/V0_2_NB23_SWITCHED_CERTIFICATION_CODE_DELTA_AUDIT_v0.1.md",
+  "preparation_commit": "bbdf31161625ee5ae7ee4fff31c19ea92e9282d3",
+  "checkpoint_commit": "532b635ec51fe32cd8e4a6dd04faef5109a26e63",
+  "next_exact_action": "Retry the frozen switched-discrepancy certificate plus independent non-confirmatory reference implementation when repository code mutation is permitted; run NSD Engine Contracts; if green, close PF-NB23-I01 and release final identity binding.",
+  "stop_reason": "TRANSIENT_REPOSITORY_CODE_MUTATION_SAFETY_BLOCK"
+}

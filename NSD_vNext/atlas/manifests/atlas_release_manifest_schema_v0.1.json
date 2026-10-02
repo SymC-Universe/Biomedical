@@ -1,0 +1,301 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://symcuniverse.com/schemas/neurophysiological-reference-atlas-release-v0.1.json",
+  "title": "Neurophysiological Reference Atlas Release Manifest v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "atlas_version",
+    "maturity",
+    "engine_version",
+    "dataset_versions",
+    "subject_inclusion_hash",
+    "recording_conditions",
+    "preprocessing_hash",
+    "feature_definition_hash",
+    "reference_model_hash",
+    "function_map_version",
+    "limit_map_version",
+    "reference_family_independence",
+    "scope",
+    "provenance"
+  ],
+  "properties": {
+    "atlas_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "maturity": {
+      "type": "string",
+      "enum": [
+        "ATLAS_P0_D",
+        "ATLAS_P0_Q",
+        "ATLAS_P1",
+        "ATLAS_P2"
+      ]
+    },
+    "engine_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "dataset_versions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "dataset_id",
+          "release_id"
+        ],
+        "properties": {
+          "dataset_id": {
+            "type": "string"
+          },
+          "release_id": {
+            "type": "string"
+          },
+          "doi": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "license": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "REFERENCE_BUILD",
+              "QUALIFICATION",
+              "EXTERNAL_TRANSFER"
+            ]
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "subject_inclusion_hash": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "session_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "recording_conditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "population_scope": {
+      "type": "object"
+    },
+    "age_range": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "sex_gender_variables_available": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "site_device_variables": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "reference_scheme_scope": {
+      "type": [
+        "string",
+        "object",
+        "null"
+      ]
+    },
+    "exclusions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "preprocessing_hash": {
+      "type": "string",
+      "minLength": 1
+    },
+    "feature_definition_hash": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reference_model_hash": {
+      "type": "string",
+      "minLength": 1
+    },
+    "function_map_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "limit_map_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "layers": {
+      "type": "object",
+      "properties": {
+        "spectral": {
+          "type": "string",
+          "enum": [
+            "NOT_INCLUDED",
+            "EXPLORATORY",
+            "QUALIFIED"
+          ]
+        },
+        "modal": {
+          "type": "string",
+          "enum": [
+            "NOT_INCLUDED",
+            "EXPLORATORY",
+            "QUALIFIED"
+          ]
+        },
+        "licensed_local_scalars": {
+          "type": "string",
+          "enum": [
+            "NOT_INCLUDED",
+            "EXPLORATORY",
+            "QUALIFIED"
+          ]
+        },
+        "spatial_system": {
+          "type": "string",
+          "enum": [
+            "NOT_INCLUDED",
+            "EXPLORATORY",
+            "QUALIFIED"
+          ]
+        },
+        "open_channel": {
+          "type": "string",
+          "enum": [
+            "NOT_INCLUDED",
+            "EXPLORATORY",
+            "QUALIFIED"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "covariate_models": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "known_limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "minProperties": 1
+    },
+    "reference_family_independence": {
+      "type": "array",
+      "minItems": 1,
+      "description": "GOM 16.4 evidence-path independence audit. Grade each decisively used Atlas reference family separately; independence is not implied by Atlas naming or by absence of clinical labels.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "reference_family_id",
+          "engine_component_scope",
+          "raw_evidence_sources",
+          "source_data_used_in_engine_development_or_calibration",
+          "labels_or_outcomes_used_in_estimator_construction",
+          "thresholds_tuned_against_atlas",
+          "shared_fitted_parameters_or_simulations",
+          "extraction_blind_to_engine_result_where_feasible",
+          "independence_grade",
+          "rationale"
+        ],
+        "properties": {
+          "reference_family_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "engine_component_scope": {
+            "type": "string",
+            "minLength": 1
+          },
+          "raw_evidence_sources": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "source_data_used_in_engine_development_or_calibration": {
+            "type": "boolean"
+          },
+          "labels_or_outcomes_used_in_estimator_construction": {
+            "type": "boolean"
+          },
+          "thresholds_tuned_against_atlas": {
+            "type": "boolean"
+          },
+          "shared_fitted_parameters_or_simulations": {
+            "type": "boolean"
+          },
+          "extraction_blind_to_engine_result_where_feasible": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "independence_grade": {
+            "type": "string",
+            "enum": [
+              "INDEPENDENT",
+              "PARTIALLY_INDEPENDENT",
+              "NON_INDEPENDENT_FOR_ENGINE_VALIDATION"
+            ]
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 1
+          },
+          "permitted_uses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "prohibited_uses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

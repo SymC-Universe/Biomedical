@@ -1,0 +1,45 @@
+{
+  "schema": "NSD_NB1_PACKET_FINAL_REREVIEW_ADJUDICATION_V0_3",
+  "status": "LANE_PACKET_APQ_CLOSED_ZERO_UNRESOLVED_BLOCKER_MATERIAL",
+  "execution_authorized": false,
+  "final_identity_freeze": false,
+  "scientific_outcomes_opened": false,
+  "source_review": "/N-B1 Compressed Operative Ledger Review",
+  "method": "INDIVIDUAL_OBJECTION_EVIDENCE_NO_VOTING",
+  "items": [
+    {
+      "id": "NB1-01",
+      "severity": "BLOCKER",
+      "disposition": "REJECTED_WITH_EVIDENCE",
+      "basis": "The objection arose from compression of the transport handoff. Source-of-record artifacts already bind the missing truth and generator details: NB1_CDS_GENERATOR_SEMANTIC_CONTRACT_v0.1.md gives C/D/S equations, domain predicates, D-not-C/S-not-D construction, ARMA generation and F09 transform; NB1_LIMIT_GENERATOR_CONTRACT_v0.1.md fully specifies L05-L09 including initialization, noise and mixing; NB1_PACKET_FUNCTION_TRUTHS_v0.1.json and NB1_PACKET_LIMIT_TRUTHS_v0.1.json bind all 18 identities; NB1_PACKET_APQ_REVISION_v0.2.json binds 1..45 Hz natural-frequency domain and exact indexing.",
+      "scientific_change_required": false
+    },
+    {
+      "id": "NB1-02",
+      "severity": "BLOCKER",
+      "disposition": "REJECTED_WITH_EVIDENCE",
+      "basis": "NB1_CHANNEL_RULES_REVISION_v0.1.json already freezes channel-specific PASS/REFUSE/NEED_MORE_INFO rules and multi-label composition; NB1_PACKET_APQ_REVISION_v0.2.json freezes truth-by-channel applicability; alias certificate semantics and independent verification requirement are bound in the same revision and operative handoff.",
+      "scientific_change_required": false
+    },
+    {
+      "id": "NB1-03",
+      "severity": "MATERIAL",
+      "disposition": "REJECTED_WITH_EVIDENCE",
+      "basis": "NB1_PACKET_SEEDS_v0.2.json freezes replicate i=0..15, exact UTF-8 bytes, big-endian digest conversion, modulo rule and deterministic retry suffix. NB1_PACKET_APQ_REVISION_v0.2.json and NB1_EXACT_PACKET_REVIEW_HANDOFF_v0.1.md freeze child labels plus per-generator draw ordering and shapes.",
+      "scientific_change_required": false
+    },
+    {
+      "id": "NB1-04",
+      "severity": "MATERIAL",
+      "disposition": "REJECTED_WITH_EVIDENCE",
+      "basis": "NB1_EXACT_PACKET_REVIEW_HANDOFF_v0.1.md and NB1_PACKET_APQ_REVISION_v0.2.json freeze exact six physical starts, projected-global and recurrence/covariance starts, dedup rule, nuisance bounds, optimizer options, local-minimum and endpoint-adjacent bracket refinement, xatol/maxiter and tie/failure rules.",
+      "scientific_change_required": false
+    }
+  ],
+  "closure_basis": [
+    "All source-review BLOCKER/MATERIAL objections are resolved by pre-existing prospective packet authority, not by outcome access or post-result tuning.",
+    "No scientific packet change is required from this review.",
+    "N-B1 lane packet APQ is closed prospectively, subject to cross-lane integrated packet APQ and later final identity/code/environment binding before execution."
+  ],
+  "next_gate": "INTEGRATED_PACKET_APQ_CLOSURE_THEN_FINAL_SCIENTIFIC_FREEZE"
+}

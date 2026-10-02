@@ -1,0 +1,82 @@
+{
+  "dataset": "ds005385",
+  "manifest_version": "0.1",
+  "status": "D3_METADATA_ROLE_AND_JOIN_CONTRACT_FROZEN",
+  "source_release": {
+    "openneuro_doi": "10.18112/openneuro.ds005385.v1.0.3",
+    "public_git_repository": "OpenNeuroDatasets/ds005385",
+    "public_git_commit": "6a558cd5852503e66df9ac7fdac2f3a7f4ed5f12",
+    "participant_table": "participants.tsv",
+    "participant_dictionary": "participants.json"
+  },
+  "join_contract": {
+    "primary_subject_key": "participant_id",
+    "expected_participant_rows": 608,
+    "expected_bids_subjects": 608,
+    "expected_subject_mismatches": 0,
+    "expected_sessions": 816,
+    "expected_repeat_subjects": 208,
+    "expected_cardinality": "exactly one participant row per BIDS subject",
+    "ambiguous_or_unmatched_action": "quarantine",
+    "silent_first_match_allowed": false
+  },
+  "engine_visible_roles": [
+    "identity",
+    "acquisition",
+    "recording_state"
+  ],
+  "roles": {
+    "participant_id": "identity",
+    "sex": "demographic_covariate",
+    "age": "demographic_covariate",
+    "handedness": "demographic_covariate",
+    "session1": "other",
+    "late_ses1": "other",
+    "session2": "other",
+    "late_ses2": "other"
+  },
+  "structural_engine_participant_columns": [
+    "participant_id"
+  ],
+  "downstream_only_participant_columns": [
+    "sex",
+    "age",
+    "handedness",
+    "session1",
+    "late_ses1",
+    "session2",
+    "late_ses2"
+  ],
+  "recording_context": {
+    "bids_subject": "identity",
+    "bids_session": "identity",
+    "recording_year": "acquisition",
+    "bids_task": "recording_state",
+    "bids_acquisition": "recording_state",
+    "channel_name": "acquisition",
+    "channel_type": "acquisition",
+    "channel_status": "acquisition",
+    "sampling_frequency": "acquisition"
+  },
+  "source_semantics": {
+    "session1": "participant took part in session 1; availability/bookkeeping only",
+    "session2": "participant took part in session 2; availability/bookkeeping only",
+    "late_ses1": "count of late triggers; source warns datasets are probably not continuous when present",
+    "late_ses2": "count of late triggers; source warns datasets are probably not continuous when present",
+    "recording_year": "year of measurement from each subject sessions.tsv"
+  },
+  "quality_firewall": {
+    "late_trigger_counts_are_signal_features": false,
+    "late_trigger_counts_may_tune_modal_thresholds": false,
+    "late_trigger_counts_role": "source quality/provenance flag for later prespecified QC sensitivity",
+    "edf_physical_min_max_header_values_trusted": false,
+    "edf_physical_min_max_note": "dataset README states physical max/min specifications may be invalid and should be ignored"
+  },
+  "recording_state_contract": {
+    "tasks": ["EyesClosed", "EyesOpen"],
+    "acquisitions": ["pre", "post"],
+    "interpretation": "eyes state and pre/post cognitive-battery state remain separate recording-state factors"
+  },
+  "clinical_label_columns": [],
+  "promotion_note": "D3 closes metadata roles and subject join semantics only. D4 payload verification and D5 task-specific analysis readiness remain separate gates."
+}

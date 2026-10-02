@@ -1,0 +1,48 @@
+name: NSD ds005385 D4 Repeat-Condition Expansion
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - ".github/workflows/nsd-ds005385-d4-repeat-condition.yml"
+      - "NSD_vNext/docs/manifests/ds005385_d4_sub001_repeat_condition_v0.1.json"
+      - "NSD_vNext/engine/tools/d4_verify_ds005385_repeat_condition.py"
+      - "NSD_vNext/engine/nsd_engine/edf.py"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nsd-ds005385-d4-repeat-condition-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify-eight-recordings:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install pinned NSD engine
+        run: |
+          python -m pip install --disable-pip-version-check ./NSD_vNext/engine
+          python -m pip check
+
+      - name: Verify one clean repeat subject across all conditions
+        run: |
+          python NSD_vNext/engine/tools/d4_verify_ds005385_repeat_condition.py \
+            --manifest NSD_vNext/docs/manifests/ds005385_d4_sub001_repeat_condition_v0.1.json \
+            --download-dir "$RUNNER_TEMP/nsd_ds005385_d4_repeat" \
+            --output "$RUNNER_TEMP/nsd_ds005385_d4_repeat_report.json"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ds005385-d4-sub001-repeat-condition-v0-1
+          path: ${{ runner.temp }}/nsd_ds005385_d4_repeat_report.json
+          if-no-files-found: error
+          retention-days: 30

@@ -1,0 +1,75 @@
+# Reporting layer scaffold
+
+Status: ACTIVE RESEARCH REPORT CONTRACT / NO CLINICAL REPORT ENABLED
+
+This directory will render qualified Engine, Atlas, and task-specific clinical-model outputs into machine-readable and human-readable reports.
+
+The reporting layer may format results. It may not invent, smooth away, or reinterpret scientific outputs.
+
+## Required report concepts
+
+```text
+report_id
+subject_id
+session_id
+acquisition_scope
+engine_version
+atlas_version
+signal_quality_status
+out_of_domain_status
+structural_profile
+atlas_deviations
+refusals
+clinical_models_run[]
+  model_id
+  task_type
+  supported_scope
+  estimate
+  uncertainty
+  calibration_scope
+  result_status
+longitudinal_change
+forecasts[]
+provenance_hashes
+software_build
+report_maturity
+```
+
+## Mandatory display rules
+
+- uncertainty and refusal cannot be hidden;
+- local modal quantities retain native names;
+- no universal whole-brain stability score is generated for UI convenience;
+- diagnostic outputs display the validated differential set and an unknown/out-of-domain state;
+- prediction displays the exact target and horizon;
+- unsupported modules remain visibly disabled rather than emitting placeholders that resemble results;
+- report maturity is function-specific.
+
+Canonical product definition: `../docs/NEUROPHYSIOLOGY_DECISION_SUPPORT_TOOL_SPEC_v0.1.md`.
+
+## Machine-readable schema
+
+The first frozen reporting contract is `neurophysiology_assessment_report_schema_v0.1.json`.
+
+It is a structural contract only. A field being representable in the schema does not mean its scientific module is currently enabled. Unsupported diagnostic/prognostic fields remain empty or carry an explicit non-supported/refusal status according to the product specification.
+
+
+## First real-recording example
+
+The reporting layer now contains an end-to-end research-only example generated from a real pinned ds003775 recording:
+
+- machine-readable: `examples/sub-069_ses-t1_research_structure_report_v0.1.json`
+- human-readable: `examples/sub-069_ses-t1_research_structure_report_v0.1.md`
+
+The example is deliberately labeled `RESEARCH_STRUCTURE_ONLY`.
+
+It demonstrates:
+
+- exact acquisition/provenance identity;
+- qualified descriptive spectral output;
+- Atlas-P0-D reliability context;
+- explicit model-disagreement/open-channel information;
+- refusal of unqualified modal damping / local chi;
+- screening, diagnosis, monitoring, and prognosis visibly disabled.
+
+It does **not** constitute a clinical assessment or a normative abnormality report.

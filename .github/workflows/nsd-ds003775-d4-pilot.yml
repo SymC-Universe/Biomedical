@@ -1,0 +1,61 @@
+name: NSD ds003775 D4 Pilot
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+      - main
+    paths:
+      - ".github/workflows/nsd-ds003775-d4-pilot.yml"
+      - "NSD_vNext/engine/nsd_engine/__init__.py"
+      - "NSD_vNext/engine/nsd_engine/edf.py"
+      - "NSD_vNext/engine/tools/d4_verify_ds003775_pilot.py"
+
+permissions:
+  contents: read
+
+jobs:
+  verify-pilot-payload:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install pinned NSD engine dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --disable-pip-version-check ./NSD_vNext/engine
+          python -m pip check
+
+      - name: Download pinned public EDF pilot
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/nsd_d4"
+          curl --fail --location --retry 3 --retry-delay 2 \
+            "https://data.nemar.org/on003775/v1.0.0/sub-001/ses-t1/eeg/sub-001_ses-t1_task-resteyesc_eeg.edf" \
+            --output "$RUNNER_TEMP/nsd_d4/sub-001_ses-t1_task-resteyesc_eeg.edf"
+
+      - name: Verify file hash, EDF header, duration, sampling and channels
+        shell: bash
+        run: |
+          set -euo pipefail
+          python NSD_vNext/engine/tools/d4_verify_ds003775_pilot.py \
+            "$RUNNER_TEMP/nsd_d4/sub-001_ses-t1_task-resteyesc_eeg.edf" \
+            --output "$RUNNER_TEMP/nsd_d4/d4_pilot_report.json"
+
+      - name: Upload D4 pilot report
+        uses: actions/upload-artifact@v4
+        with:
+          name: ds003775-d4-pilot-report
+          path: ${{ runner.temp }}/nsd_d4/d4_pilot_report.json
+          if-no-files-found: error
+          retention-days: 30

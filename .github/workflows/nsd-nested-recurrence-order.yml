@@ -1,0 +1,52 @@
+name: NSD Nested Recurrence Order Comparator
+
+on:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - "NSD_vNext/engine/tools/probe_nested_recurrence_order.py"
+      - "NSD_vNext/docs/NESTED_RECURRENCE_ORDER_COMPARATOR_PREFLIGHT_v0.1.md"
+      - ".github/workflows/nsd-nested-recurrence-order.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "NSD_vNext/engine/tools/probe_nested_recurrence_order.py"
+      - "NSD_vNext/docs/NESTED_RECURRENCE_ORDER_COMPARATOR_PREFLIGHT_v0.1.md"
+      - ".github/workflows/nsd-nested-recurrence-order.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  nested-recurrence-order:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install qualification engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+
+      - name: Run nested recurrence-order comparator
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_nested_recurrence_order.py \
+            --output ../../nested-recurrence-order/nested_recurrence_order.json
+
+      - name: Upload nested recurrence-order artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-nested-recurrence-order
+          path: nested-recurrence-order/nested_recurrence_order.json
+          if-no-files-found: error

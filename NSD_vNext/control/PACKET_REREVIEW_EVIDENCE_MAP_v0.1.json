@@ -1,0 +1,45 @@
+{
+  "schema": "NSD_PACKET_REREVIEW_EVIDENCE_MAP_V0_1",
+  "status": "PREFREEZE_OUTCOME_BLIND",
+  "execution_authorized": false,
+  "scientific_outcomes_opened": false,
+  "nb1": {
+    "final_adjudication": "NSD_vNext/control/NB1_PACKET_FINAL_REREVIEW_ADJUDICATION_v0.3.json",
+    "operative_packet": "NSD_vNext/control/NB1_EXACT_PACKET_CANDIDATE_v0.3.json",
+    "method": "NSD_vNext/control/NB1_PACKET_METHOD_v0.2.json",
+    "generator_semantics": [
+      "NSD_vNext/control/NB1_CDS_GENERATOR_SEMANTIC_CONTRACT_v0.1.md",
+      "NSD_vNext/control/NB1_LIMIT_GENERATOR_CONTRACT_v0.1.md"
+    ],
+    "truth_registries": [
+      "NSD_vNext/control/NB1_PACKET_FUNCTION_TRUTHS_v0.1.json",
+      "NSD_vNext/control/NB1_PACKET_LIMIT_TRUTHS_v0.1.json"
+    ],
+    "rng": "NSD_vNext/control/NB1_PACKET_SEEDS_v0.2.json",
+    "channel_rules": "NSD_vNext/control/NB1_CHANNEL_RULES_REVISION_v0.1.json",
+    "profile_alias_retention": "NSD_vNext/control/NB1_PROFILE_ALIAS_RETENTION_REVISION_v0.1.json",
+    "packet_revision": "NSD_vNext/control/NB1_PACKET_APQ_REVISION_v0.2.json",
+    "review_handoff": "NSD_vNext/control/NB1_EXACT_PACKET_REVIEW_HANDOFF_v0.1.md"
+  },
+  "nb23": {
+    "final_adjudication": "NSD_vNext/control/NB23_PACKET_FINAL_REREVIEW_ADJUDICATION_v0.2.json",
+    "operator_registry": "NSD_vNext/control/NB23_OPERATOR_REGISTRY_CANDIDATE_v0.1.json",
+    "exhaustive_suite": "NSD_vNext/control/NB23_EXHAUSTIVE_SUITE_CANDIDATE_v0.1.json",
+    "targets_contrasts": "NSD_vNext/control/NB23_TARGET_AND_CONTRAST_CANDIDATE_v0.1.json",
+    "packet_binding": "NSD_vNext/control/NB23_PACKET_APQ_BINDING_v0.1.json",
+    "packet_revision": "NSD_vNext/control/NB23_PACKET_APQ_REVISION_v0.1.json"
+  },
+  "integrated": {
+    "status": "CONFORMANT_REVIEW_IN_PROGRESS",
+    "integration_authority": "NSD_vNext/control/V0_2_CROSS_LANE_INTEGRATION_AUTHORITY_v0.1.md",
+    "ancestry_contract": "NSD_vNext/control/V0_2_CROSS_LANE_PROVENANCE_DISJOINTNESS_CONTRACT_v0.1.md",
+    "common_dependency_register": "NSD_vNext/control/V0_2_COMMON_DEPENDENCY_REGISTER_v0.1.json",
+    "verification_plan": "NSD_vNext/control/V0_2_COMMON_DEPENDENCY_VERIFICATION_PLAN_v0.1.md",
+    "access_ledger": "NSD_vNext/control/V0_2_OUTCOME_ACCESS_LEDGER_v0.2.json",
+    "verifier_contract": "NSD_vNext/control/V0_2_VERIFIER_INDEPENDENCE_CONTRACT_v0.1.json",
+    "baseline_contract": "NSD_vNext/control/V0_2_DESIGN_BASELINE_CHANGE_IMPACT_CONTRACT_v0.1.json",
+    "checkpoint_schema": "NSD_vNext/control/V0_2_FROZEN_CHECKPOINT_SCHEMA_v0.2.json",
+    "completeness_contract": "NSD_vNext/control/V0_2_EXACT_PACKET_COMPLETENESS_CONTRACT_v0.1.json"
+  },
+  "rule": "A review objection based on omitted transport text must be adjudicated against these source-of-record prospective artifacts before being treated as a scientific defect."
+}

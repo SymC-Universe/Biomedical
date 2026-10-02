@@ -1,0 +1,90 @@
+name: NSD v0.2 Frozen Preflight
+
+on:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - "NSD_vNext/control/V0_2_FINAL_CODE_IDENTITY_v0.1.json"
+      - "NSD_vNext/control/V0_2_EXECUTION_AUTHORITY_v0.1.json"
+      - "NSD_vNext/control/V0_2_EXECUTION_CASE_ORDER_v0.1.json"
+      - "NSD_vNext/control/V0_2_FINAL_SCIENTIFIC_FREEZE_v0.1.json"
+      - "NSD_vNext/engine/**"
+      - ".github/workflows/nsd-v0-2-frozen-preflight.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nsd-v0-2-frozen-preflight
+  cancel-in-progress: true
+
+jobs:
+  preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Check out frozen branch
+        uses: actions/checkout@v4
+        with:
+          ref: nsd-rebuild-gom-v0.8.0
+          fetch-depth: 1
+
+      - name: Set up exact Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.16"
+
+      - name: Install exact frozen runtime
+        run: |
+          python -m pip install --disable-pip-version-check --upgrade pip
+          python -m pip install numpy==2.4.6 scipy==1.17.1 pytest==9.1.1
+          python -m pip install -e NSD_vNext/engine --no-deps
+          python -m pip check
+
+      - name: Run engine contract suite
+        run: |
+          pytest -q NSD_vNext/engine/tests
+
+      - name: Run frozen conveyor preflight
+        run: |
+          python NSD_vNext/engine/tools/run_nsd_v02_frozen_conveyor.py --preflight | tee v0_2_preflight.json
+
+      - name: Record actual runner environment
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, os, platform, sys
+          import numpy, scipy, pytest
+          out = {
+              "python": platform.python_version(),
+              "python_executable": sys.executable,
+              "numpy": numpy.__version__,
+              "scipy": scipy.__version__,
+              "pytest": pytest.__version__,
+              "platform": platform.platform(),
+              "architecture": platform.machine(),
+              "github_image_os": os.environ.get("ImageOS"),
+              "github_image_version": os.environ.get("ImageVersion"),
+              "runner_os": os.environ.get("RUNNER_OS"),
+              "runner_arch": os.environ.get("RUNNER_ARCH"),
+              "github_sha": os.environ.get("GITHUB_SHA"),
+              "github_run_id": os.environ.get("GITHUB_RUN_ID"),
+              "scientific_outcomes_opened": False,
+              "scientific_adjudication": "NOT_PERFORMED_BY_GITHUB"
+          }
+          with open("v0_2_preflight_environment.json","w",encoding="utf-8") as f:
+              json.dump(out,f,indent=2,sort_keys=True)
+              f.write("\n")
+          print(json.dumps(out,indent=2,sort_keys=True))
+          PY
+
+      - name: Upload preflight evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-v0-2-frozen-preflight-${{ github.run_id }}
+          path: |
+            v0_2_preflight.json
+            v0_2_preflight_environment.json
+          retention-days: 30

@@ -1,0 +1,96 @@
+name: NSD specparam Admission Calibration
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+      - main
+    paths:
+      - ".github/workflows/nsd-specparam-admission-calibration.yml"
+      - "NSD_vNext/engine/pyproject.toml"
+      - "NSD_vNext/engine/nsd_engine/specparam_adapter.py"
+      - "NSD_vNext/engine/tools/calibrate_specparam_peak_admission.py"
+
+permissions:
+  contents: read
+
+jobs:
+  calibrate-descriptive-admission:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install frozen qualification stack
+        shell: bash
+        working-directory: NSD_vNext/engine
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[parameterization_rc7]"
+          python - <<'PY'
+          from importlib.metadata import version
+          expected = {
+              "numpy": "2.4.6",
+              "scipy": "1.17.1",
+              "specparam": "2.0.0rc7",
+          }
+          for package, wanted in expected.items():
+              got = version(package)
+              assert got == wanted, (package, got, wanted)
+              print(package, got)
+          PY
+
+      - name: Run known-truth admission calibration grid
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/nsd_specparam_calibration"
+          python NSD_vNext/engine/tools/calibrate_specparam_peak_admission.py \
+            > "$RUNNER_TEMP/nsd_specparam_calibration/specparam_admission_calibration.json"
+
+      - name: Print compact calibration summary
+        shell: bash
+        run: |
+          set -euo pipefail
+          REPORT="$RUNNER_TEMP/nsd_specparam_calibration/specparam_admission_calibration.json"
+          python - "$REPORT" <<'PY'
+          import json, sys
+          report = json.load(open(sys.argv[1], encoding="utf-8"))
+          print("setting_count", report["setting_count"])
+          print("candidate_region_pass_count", report["candidate_region_pass_count"])
+          print("passing_settings")
+          for settings in report["passing_settings"]:
+              print(json.dumps(settings, sort_keys=True))
+          print("compact_rows")
+          for row in report["results"]:
+              settings = row["settings"]
+              print(json.dumps({
+                  "peak_threshold": settings["peak_threshold"],
+                  "min_peak_height": settings["min_peak_height"],
+                  "max_n_peaks": settings["max_n_peaks"],
+                  "pass": row["candidate_region_pass"],
+                  "no_peak_fp": row["fixed_no_peak"]["false_positive_rate"],
+                  "strong_recovery": row["strong_single_summary"]["mean_recovery_rate"],
+                  "strong_exact_one": row["strong_single_summary"]["mean_exactly_one_peak_rate"],
+                  "strong_extra": row["strong_single_summary"]["mean_false_extra_peaks"],
+                  "two_peak_recovery": row["two_peaks_separated_2_hz"]["recovery_rate"],
+                  "knee_model_fp": row["knee_truth"]["knee_model_false_positive_rate"],
+                  "fixed_on_knee_fp": row["knee_truth"]["fixed_model_false_positive_rate"],
+              }, sort_keys=True))
+          PY
+
+      - name: Upload calibration report
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-specparam-admission-calibration
+          path: ${{ runner.temp }}/nsd_specparam_calibration/specparam_admission_calibration.json
+          if-no-files-found: error
+          retention-days: 30

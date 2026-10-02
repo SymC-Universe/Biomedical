@@ -1,0 +1,16 @@
+{
+  "schema": "NSD_LANE_CHECKPOINT_V0_6",
+  "lane": "N-B1",
+  "state": "SCIENTIFIC_GATE",
+  "architecture_review_status": "CLOSED",
+  "packet_parent_blob": "9f126601e2fddc1f1d2d137ad70213b8531b63dc",
+  "packet_revision_blob": "d52aace3758770cdee5c66606c0b999e31b0bee6",
+  "packet_review_search": "/N-B1 Exact Packet v0.3 Re-review",
+  "packet_review_status": "NEED_MORE_INFO_LEDGER_RETURN",
+  "final_identity_freeze": false,
+  "scientific_values_exposed": false,
+  "execution_authorized": false,
+  "completed_case_ids": [],
+  "next_exact_action": "Repeat isolated N-B1 v0.3 packet re-review after external quota reset and require an explicit BLOCKER/MATERIAL/MINOR ledger before adjudication.",
+  "stop_reason": "PACKET_REREVIEW_LEDGER_PENDING"
+}

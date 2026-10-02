@@ -1,0 +1,117 @@
+{
+  "schema": "NSD_V0_2_NB23_SWITCHED_CERTIFICATION_PREFLIGHT_BINDING_V0_1",
+  "status": "PREFLIGHT_PREPARATION_BOUND_OUTCOME_BLIND",
+  "scientific_baseline": "NSD-V02-B01-FROZEN",
+  "execution_authorized": false,
+  "scientific_outcomes_opened": false,
+  "frozen_target": {
+    "case_id": "NB23B01-M-TV",
+    "surrogate_case_id": "NB23B01-M-TV-SUR",
+    "horizon_seconds": 32,
+    "segment_seconds": 2.75,
+    "phase_offset_seconds": 0.35,
+    "discrepancy": "D(t)=||Phi(t,0)-exp(Abar*t)||_2",
+    "certificate_relative_gap": 1e-9,
+    "peak_tie_relative": 1e-9,
+    "partition_rule": "partition [0,32] at every frozen switch boundary",
+    "continuity": "chronological right-continuous; no reset"
+  },
+  "production_contract": {
+    "method": "interval branch-and-bound using switch-free endpoint cones and a conservative derivative/Lipschitz norm bound",
+    "derivative_bound_inputs": [
+      "active frozen segment generator",
+      "period-mean surrogate generator",
+      "physical metric G",
+      "left-endpoint propagator norms"
+    ],
+    "fail_closed": [
+      "interval budget exhausted",
+      "nonfinite bound",
+      "switch partition mismatch",
+      "certificate gap above frozen tolerance"
+    ],
+    "output_namespace": "NUMERICAL_ONLY_NO_SCIENTIFIC_VERDICT"
+  },
+  "independent_reference_fixtures": [
+    {
+      "id": "NB23-REF-SWITCH-ZERO-01",
+      "role": "NON_CONFIRMATORY_ANALYTIC_ANCHOR",
+      "A0": [
+        [
+          -0.2,
+          0
+        ],
+        [
+          0,
+          -0.5
+        ]
+      ],
+      "A1": [
+        [
+          -0.2,
+          0
+        ],
+        [
+          0,
+          -0.5
+        ]
+      ],
+      "G": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "segment_seconds": 0.5,
+      "phase_offset_seconds": 0.1,
+      "horizon_seconds": 2,
+      "expected_relation": "IDENTICAL_GENERATORS_IMPLIES_D(t)=0_FOR_ALL_t"
+    },
+    {
+      "id": "NB23-REF-SWITCH-DENSE-01",
+      "role": "NON_CONFIRMATORY_DENSE_REFERENCE",
+      "A0": [
+        [
+          -0.2,
+          0
+        ],
+        [
+          0,
+          -0.5
+        ]
+      ],
+      "A1": [
+        [
+          -0.4,
+          0
+        ],
+        [
+          0,
+          -0.3
+        ]
+      ],
+      "G": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "segment_seconds": 0.5,
+      "phase_offset_seconds": 0.1,
+      "horizon_seconds": 2,
+      "expected_relation": "INDEPENDENT_DENSE_REFERENCE_MAX_MUST_LIE_INSIDE_PRODUCTION_CERTIFICATE_ENCLOSURE"
+    }
+  ],
+  "independence_rule": "Reference implementation may share basic linear-algebra libraries but must not call the production branch-and-bound certificate or reuse its interval search state.",
+  "implementation_mutation_status": "BLOCKED_BY_REPOSITORY_CONNECTOR_SAFETY_LAYER_ON_LATEST_ATTEMPT",
+  "no_scientific_change": true,
+  "next_exact_action": "When repository code mutation is permitted, implement the already-frozen certificate and independent fixture verifier exactly against this binding, run NSD Engine Contracts, then bind final code/dependency/environment identity."
+}

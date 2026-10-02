@@ -1,0 +1,93 @@
+name: NSD Latent Oscillator Covariance Map
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+      - main
+    paths:
+      - ".github/workflows/nsd-latent-oscillator-covariance-map.yml"
+      - "NSD_vNext/engine/pyproject.toml"
+      - "NSD_vNext/engine/nsd_engine/latent_oscillator_covariance.py"
+      - "NSD_vNext/engine/tools/probe_latent_oscillator_covariance_map.py"
+
+permissions:
+  contents: read
+
+jobs:
+  map-latent-oscillator:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install frozen numerical stack
+        shell: bash
+        working-directory: NSD_vNext/engine
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install -e .
+
+      - name: Run latent oscillator known-truth map
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/nsd_latent_map"
+          python NSD_vNext/engine/tools/probe_latent_oscillator_covariance_map.py \
+            > "$RUNNER_TEMP/nsd_latent_map/latent_oscillator_covariance_map.json"
+
+      - name: Print compact latent-map summary
+        shell: bash
+        run: |
+          set -euo pipefail
+          REPORT="$RUNNER_TEMP/nsd_latent_map/latent_oscillator_covariance_map.json"
+          python - "$REPORT" <<'PY'
+          import json, statistics, sys
+          report = json.load(open(sys.argv[1], encoding="utf-8"))
+          rows = report["rows"]
+          for noise in report["measurement_noise_to_latent_sd"]:
+              subset = [r for r in rows if r["measurement_noise_to_latent_sd"] == noise]
+              admitted = [r["admission_rate"] for r in subset]
+              damping = [r["damping_absolute_error"]["median"] for r in subset if r["damping_absolute_error"]["median"] is not None]
+              freq = [r["frequency_relative_error"]["median"] for r in subset if r["frequency_relative_error"]["median"] is not None]
+              latent = [r["latent_fraction_absolute_error"]["median"] for r in subset if r["latent_fraction_absolute_error"]["median"] is not None]
+              r2 = [r["autocorrelation_r_squared"]["median"] for r in subset if r["autocorrelation_r_squared"]["median"] is not None]
+              print("noise", noise, {
+                  "rows": len(subset),
+                  "median_admission_rate": statistics.median(admitted) if admitted else None,
+                  "median_damping_abs_error": statistics.median(damping) if damping else None,
+                  "median_frequency_relative_error": statistics.median(freq) if freq else None,
+                  "median_latent_fraction_abs_error": statistics.median(latent) if latent else None,
+                  "median_autocorrelation_r2": statistics.median(r2) if r2 else None,
+              })
+          print("worst_damping_rows")
+          eligible = [r for r in rows if r["damping_absolute_error"]["median"] is not None]
+          for row in sorted(eligible, key=lambda r: r["damping_absolute_error"]["median"], reverse=True)[:12]:
+              print(json.dumps({
+                  "truth": row["truth"],
+                  "duration_seconds": row["duration_seconds"],
+                  "noise_sd_ratio": row["measurement_noise_to_latent_sd"],
+                  "admission_rate": row["admission_rate"],
+                  "damping_abs_error_median": row["damping_absolute_error"]["median"],
+                  "frequency_rel_error_median": row["frequency_relative_error"]["median"],
+                  "latent_fraction_abs_error_median": row["latent_fraction_absolute_error"]["median"],
+                  "autocorrelation_r2_median": row["autocorrelation_r_squared"]["median"],
+              }, sort_keys=True))
+          PY
+
+      - name: Upload latent oscillator map
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-latent-oscillator-covariance-map
+          path: ${{ runner.temp }}/nsd_latent_map/latent_oscillator_covariance_map.json
+          if-no-files-found: error
+          retention-days: 30

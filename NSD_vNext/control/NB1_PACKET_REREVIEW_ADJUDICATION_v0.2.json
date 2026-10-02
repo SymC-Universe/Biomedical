@@ -1,0 +1,54 @@
+{
+  "schema": "NSD_NB1_PACKET_REREVIEW_ADJUDICATION_V0_2",
+  "status": "MATERIAL_REVISION_ACCEPTED_REREVIEW_REQUIRED",
+  "execution_authorized": false,
+  "source_review": "/N-B1 Exact Packet v0.4 Ledger Re-review",
+  "method": "INDIVIDUAL_OBJECTION_EVIDENCE_NO_VOTING",
+  "items": [
+    {
+      "id": "NB1-01",
+      "severity": "BLOCKER",
+      "disposition": "ACCEPTED_MODIFIED",
+      "basis": "The repository already contains the complete 9 Function + 9 Limit truth registries and generator contracts, including stationary C initialization and observation equations. The review correctly identified that exact sample-index/count semantics and an explicit numerical PSD/domain certificate were not consolidated in the packet authority.",
+      "correction": "Bind fine/coarse indexed record lengths, [0,96 s) timing, pre-transition t0 observation, exact same-path decimation, parameter-domain predicates, and a numerical-only symmetric-eigenvalue PSD rule for P/Qc/Qd in the packet revision."
+    },
+    {
+      "id": "NB1-02",
+      "severity": "BLOCKER",
+      "disposition": "ACCEPTED_MODIFIED",
+      "basis": "The existing method and channel-rule files already specify required channels, R applicability for F09/L09, U non-admission status, refusal namespaces, and all-pass eligibility. The review correctly identified that these rules should be consolidated into an explicit truth-by-channel applicability matrix and replicate-level deterministic classification contract.",
+      "correction": "Bind the 18-row applicability matrix and a no-precedence-deletion label composition/cross-tabulation rule."
+    },
+    {
+      "id": "NB1-03",
+      "severity": "MATERIAL",
+      "disposition": "ACCEPTED",
+      "basis": "Parent and child hash-to-seed rules are already prospective, but final draw-to-component identity was not consolidated. Audit also found that the old exploratory generator uses numpy.default_rng (PCG64), whereas the exact packet declares PCG64DXSM. The old generator therefore cannot be reused unchanged as v0.2 implementation.",
+      "correction": "Bind Generator(PCG64DXSM(seed)) as the final RNG family, canonical parent/child byte strings, child-label registry, draw order by generator, and require final environment identity before execution."
+    },
+    {
+      "id": "NB1-04",
+      "severity": "MATERIAL",
+      "disposition": "ACCEPTED",
+      "basis": "The packet gives fail-closed alias semantics but the independent analytic no-alias certificate was not yet bound as a packet artifact.",
+      "correction": "Bind the analytic sampled-pole uniqueness certificate for the frozen C lineage at 120/240 Hz, with fail-closed NEED_MORE_INFO if the independent certificate cannot be verified."
+    },
+    {
+      "id": "NB1-05",
+      "severity": "MATERIAL",
+      "disposition": "ACCEPTED_MODIFIED",
+      "basis": "The repository contains the physical objective, raw nuisance box, optimizer, start recipe, grid and numerical tolerances. However, the current scientific packet does not consolidate them, and the historical profile probe inserted true chi into its grid, which is incompatible with the current v0.5 rule that truth is validation-only.",
+      "correction": "Bind a new v0.2 profile contract prospectively: the 61-point base grid plus fitted-chi reproduction candidate only, never true chi; exact objective/start recipe/bounds/bracketing/refinement/tie rules; map nuisance-bound/nonregular/failure states deterministically. Historical profile code is reference material only and must not be reused unchanged."
+    },
+    {
+      "id": "NB1-06",
+      "severity": "MATERIAL",
+      "disposition": "ACCEPTED",
+      "basis": "Fixed denominators and label namespaces are already frozen, but event-level numerical/search failure assignment and overlapping-label accounting need one explicit derivation rule.",
+      "correction": "Bind a replicate-level channel/event schema in which every assigned row remains present, all channel states and all applicable top-level refusal labels are retained, and no precedence rule deletes an overlapping state."
+    }
+  ],
+  "scientific_outcomes_opened": false,
+  "final_identity_freeze": false,
+  "rereview_required": true
+}

@@ -1,0 +1,209 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://symcuniverse.com/schemas/neurophysiology-assessment-report-v0.1.json",
+  "title": "Neurophysiology Assessment Report v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_id",
+    "subject_id",
+    "session_id",
+    "acquisition_scope",
+    "engine_version",
+    "atlas_version",
+    "signal_quality_status",
+    "out_of_domain_status",
+    "structural_profile",
+    "atlas_deviations",
+    "refusals",
+    "clinical_models_run",
+    "provenance_hashes",
+    "software_build",
+    "report_maturity"
+  ],
+  "properties": {
+    "report_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "session_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "acquisition_scope": {
+      "type": "object"
+    },
+    "engine_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "atlas_version": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "signal_quality_status": {
+      "type": "string",
+      "enum": [
+        "USABLE",
+        "PARTIALLY_USABLE",
+        "REFUSED"
+      ]
+    },
+    "out_of_domain_status": {
+      "type": "string",
+      "enum": [
+        "IN_DOMAIN",
+        "OUT_OF_DOMAIN",
+        "NOT_EVALUATED"
+      ]
+    },
+    "structural_profile": {
+      "type": "object",
+      "required": [
+        "spectral_state",
+        "modal_state",
+        "spatial_system_state",
+        "open_channel"
+      ],
+      "properties": {
+        "spectral_state": {
+          "type": "object"
+        },
+        "modal_state": {
+          "type": "object"
+        },
+        "spatial_system_state": {
+          "type": "object"
+        },
+        "licensed_local_scalars": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "open_channel": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": true
+    },
+    "atlas_deviations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "refusals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "code",
+          "layer",
+          "reason"
+        ],
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "layer": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "scope": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "clinical_models_run": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "model_id",
+          "task_type",
+          "supported_scope",
+          "result_status"
+        ],
+        "properties": {
+          "model_id": {
+            "type": "string"
+          },
+          "task_type": {
+            "type": "string",
+            "enum": [
+              "SCREENING",
+              "DIFFERENTIAL_SUPPORT",
+              "MONITORING",
+              "PROGNOSIS",
+              "RESEARCH"
+            ]
+          },
+          "supported_scope": {
+            "type": "string"
+          },
+          "estimate": {},
+          "uncertainty": {},
+          "calibration_scope": {},
+          "result_status": {
+            "type": "string",
+            "enum": [
+              "AVAILABLE",
+              "REFUSED",
+              "OUT_OF_DOMAIN",
+              "NOT_SUPPORTED"
+            ]
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "longitudinal_change": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "forecasts": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "provenance_hashes": {
+      "type": "object",
+      "minProperties": 1
+    },
+    "software_build": {
+      "type": "object"
+    },
+    "report_maturity": {
+      "type": "string",
+      "enum": [
+        "RESEARCH_STRUCTURE_ONLY",
+        "RESEARCH_REFERENCE_ASSESSMENT",
+        "RESEARCH_CLASSIFIER",
+        "EXTERNALLY_VALIDATED_SCREENING",
+        "EXTERNALLY_VALIDATED_DIFFERENTIAL_SUPPORT",
+        "EXTERNALLY_VALIDATED_MONITORING",
+        "EXTERNALLY_VALIDATED_PROGNOSIS",
+        "P2_RELEASE_SCOPE"
+      ]
+    }
+  }
+}

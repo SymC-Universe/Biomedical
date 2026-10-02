@@ -1,0 +1,49 @@
+name: NSD State-Space High-Damping Extension
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - ".github/workflows/nsd-state-space-high-damping.yml"
+      - "NSD_vNext/docs/STATE_SPACE_HIGH_DAMPING_EXTENSION_FREEZE_v0.1.md"
+      - "NSD_vNext/engine/tools/probe_state_space_high_damping_extension.py"
+      - "NSD_vNext/engine/nsd_engine/state_space_adequacy.py"
+      - "NSD_vNext/engine/nsd_engine/latent_oscillator_covariance.py"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nsd-state-space-high-damping-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  qualify:
+    strategy:
+      fail-fast: false
+      matrix:
+        duration_seconds: [30, 120]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install NSD engine
+        run: |
+          python -m pip install -e NSD_vNext/engine
+      - name: Run frozen high-damping extension
+        run: |
+          mkdir -p "$RUNNER_TEMP/nsd_high_damping"
+          python NSD_vNext/engine/tools/probe_state_space_high_damping_extension.py \
+            --duration-seconds "${{ matrix.duration_seconds }}" \
+            --output "$RUNNER_TEMP/nsd_high_damping/result_${{ matrix.duration_seconds }}s.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nsd-state-space-high-damping-${{ matrix.duration_seconds }}s-v0-1
+          path: ${{ runner.temp }}/nsd_high_damping/result_${{ matrix.duration_seconds }}s.json
+          if-no-files-found: error
+          retention-days: 30

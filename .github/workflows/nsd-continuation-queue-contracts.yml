@@ -1,0 +1,73 @@
+name: NSD Continuation Queue Contracts
+
+on:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - "NSD_vNext/control/WORK_QUEUE_v0.1.json"
+      - "NSD_vNext/control/CONTINUITY_STATE.json"
+      - ".github/workflows/nsd-continuation-queue-contracts.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "NSD_vNext/control/WORK_QUEUE_v0.1.json"
+      - "NSD_vNext/control/CONTINUITY_STATE.json"
+      - ".github/workflows/nsd-continuation-queue-contracts.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate queue and continuity contracts
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          q=json.loads(Path("NSD_vNext/control/WORK_QUEUE_v0.1.json").read_text())
+          s=json.loads(Path("NSD_vNext/control/CONTINUITY_STATE.json").read_text())
+
+          tasks=q.get("tasks",[])
+          ids=[t["id"] for t in tasks]
+          if len(ids)!=len(set(ids)):
+              raise SystemExit("duplicate task id")
+
+          allowed=set(q["rules"]["allowed_status"])
+          byid={t["id"]:t for t in tasks}
+          for t in tasks:
+              if t["status"] not in allowed:
+                  raise SystemExit(f"invalid task status: {t['id']} {t['status']}")
+              for d in t.get("depends_on",[]):
+                  if d not in byid:
+                      raise SystemExit(f"missing dependency: {t['id']} -> {d}")
+              if t["status"]=="READY":
+                  bad=[d for d in t.get("depends_on",[]) if byid[d]["status"]!="DONE"]
+                  if bad:
+                      raise SystemExit(f"READY task has incomplete dependencies: {t['id']} {bad}")
+
+          active=sum(t["status"]=="ACTIVE" for t in tasks)
+          if active > q["rules"]["max_active_scientific_tasks"]:
+              raise SystemExit(f"too many ACTIVE tasks: {active}")
+
+          terminal={"SCIENTIFIC_GATE","EXTERNAL_BLOCK","USER_ACTION_REQUIRED"}
+          actionable=any(t["status"] in {"READY","ACTIVE"} for t in tasks)
+          if not actionable and s.get("state") not in terminal:
+              unfinished=any(t["status"] not in {"DONE","REFUSED"} for t in tasks)
+              if unfinished:
+                  raise SystemExit("CONTINUITY_FAILURE: unfinished queue has no READY/ACTIVE task and no explicit gate/block")
+
+          if q["rules"].get("real_eeg_local_chi_licensed"):
+              raise SystemExit("contract violation: real-EEG local chi must remain unlicensed")
+
+          print("NSD continuation queue contracts PASS")
+          PY

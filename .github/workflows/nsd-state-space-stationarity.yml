@@ -1,0 +1,45 @@
+name: NSD State-Space Stationarity Challenge
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - ".github/workflows/nsd-state-space-stationarity.yml"
+      - "NSD_vNext/docs/STATE_SPACE_STATIONARITY_CHALLENGE_FREEZE_v0.1.md"
+      - "NSD_vNext/engine/tools/probe_state_space_stationarity_challenge.py"
+      - "NSD_vNext/engine/tools/probe_state_space_model_adequacy.py"
+      - "NSD_vNext/engine/nsd_engine/state_space_adequacy.py"
+      - "NSD_vNext/engine/nsd_engine/latent_oscillator_covariance.py"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nsd-state-space-stationarity-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  qualify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install NSD engine
+        run: |
+          python -m pip install -e NSD_vNext/engine
+      - name: Run frozen stationarity challenge
+        run: |
+          mkdir -p "$RUNNER_TEMP/nsd_stationarity"
+          python NSD_vNext/engine/tools/probe_state_space_stationarity_challenge.py \
+            --output "$RUNNER_TEMP/nsd_stationarity/result.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nsd-state-space-stationarity-v0-1
+          path: ${{ runner.temp }}/nsd_stationarity/result.json
+          if-no-files-found: error
+          retention-days: 30

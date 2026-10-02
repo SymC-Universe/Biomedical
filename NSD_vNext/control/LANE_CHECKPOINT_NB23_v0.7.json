@@ -1,0 +1,20 @@
+{
+  "schema": "NSD_LANE_CHECKPOINT_V0_7",
+  "lane": "N-B2/N-B3",
+  "state": "SCIENTIFIC_GATE",
+  "architecture_review_status": "CLOSED",
+  "packet_parent_blob": "b417f5e61fe48fdcc3b194f4b43f88d118c9f34c",
+  "packet_revision_blob": "508f68f4eb72e082f884b75f269bf53fdd836fbd",
+  "packet_review_search": "/N-B2 N-B3 Revised Packet v0.2 Re-review",
+  "packet_review_status": "NEED_MORE_INFO_NO_OBJECTION_LEDGER",
+  "review_observed_status": "COMPLETED",
+  "review_note": "The completed return supplied contextual literature summary but no explicit BLOCKER/MATERIAL/MINOR objection ledger despite the handoff requirement. It is not treated as zero objections.",
+  "primary_recoverability": "DETERMINISTIC_NOISELESS",
+  "stochastic_extension": "NOT_AUTHORIZED",
+  "final_identity_freeze": false,
+  "scientific_values_exposed": false,
+  "execution_authorized": false,
+  "completed_case_ids": [],
+  "next_exact_action": "Obtain a conformant isolated ledger-format re-review of the materially revised N-B2/N-B3 exact packet. Do not infer clearance from the nonconformant completed return.",
+  "stop_reason": "PACKET_REREVIEW_LEDGER_PENDING"
+}

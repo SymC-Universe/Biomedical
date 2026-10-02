@@ -1,0 +1,21 @@
+{
+  "schema": "NSD_V0_2_PREFREEZE_WORKFLOW_REPAIR_STATUS_V0_1",
+  "status": "PARTIAL_MECHANICAL_REPAIR",
+  "execution_authorized": false,
+  "observed_runs": [
+    36676916969,
+    36683739377,
+    36683898831
+  ],
+  "root_cause": "Legacy workflow inline check still reads Draft-A and v0.2 lane checkpoints and requires SCIENTIFIC_GATE exactly.",
+  "current_reusable_validator": {
+    "path": "NSD_vNext/engine/tools/validate_v02_prefreeze_packet.py",
+    "repair_commit": "179b0ee27f1a5a498172874bedbb4c9d3421831f",
+    "current_lineage_core_check": "PASS in run 36683898831"
+  },
+  "remaining_defect": "The workflow embedded inline check remains stale after the reusable validator passes.",
+  "attempted_repair": "Versioned workflow update was attempted but repository connector safety rejected the workflow-file mutation in this cycle.",
+  "scientific_failure": false,
+  "rerun_unchanged_forbidden": true,
+  "next_action": "When workflow-file mutation is permitted, version the workflow inline check to Draft-B/current lane checkpoints and rerun only the repaired prefreeze contract path."
+}

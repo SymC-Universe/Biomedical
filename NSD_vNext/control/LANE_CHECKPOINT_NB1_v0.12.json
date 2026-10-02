@@ -1,0 +1,21 @@
+{
+  "schema": "NSD_LANE_CHECKPOINT_NB1_V0_12",
+  "lane": "N-B1",
+  "state": "ADVANCED_CHECKPOINT",
+  "architecture_review_status": "CLOSED",
+  "packet_review_status": "CLOSED",
+  "cross_lane_gate": "CLOSED",
+  "final_identity_freeze": true,
+  "scientific_values_exposed": false,
+  "execution_authorized": false,
+  "completed_case_ids": [],
+  "scientific_freeze": "NSD_vNext/control/V0_2_FINAL_SCIENTIFIC_FREEZE_v0.1.json",
+  "implementation_status": "PROFILE_IMPLEMENTED_CD05_VERIFIED",
+  "cd05": {
+    "status": "PASS",
+    "evidence_run": 36720502525,
+    "verifier": "NSD_vNext/engine/tools/verify_v02_cd05_profile.py"
+  },
+  "next_exact_action": "Harden refined Profile-I nuisance/bound evidence retention, rerun engine contracts, then bind final implementation identity after all remaining lane and cross-lane implementation gates close.",
+  "stop_reason": "POST_FREEZE_IMPLEMENTATION_VALIDATION"
+}

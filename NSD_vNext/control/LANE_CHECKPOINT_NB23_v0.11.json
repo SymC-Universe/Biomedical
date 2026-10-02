@@ -1,0 +1,21 @@
+{
+  "schema": "NSD_LANE_CHECKPOINT_NB23_V0_11",
+  "lane": "N-B2/N-B3",
+  "state": "ACTIVE_COMPUTE",
+  "architecture_review_status": "CLOSED",
+  "packet_review_status": "CLOSED",
+  "cross_lane_gate": "CLOSED",
+  "primary_recoverability": "DETERMINISTIC_NOISELESS",
+  "stochastic_extension": "NOT_AUTHORIZED",
+  "final_identity_freeze": true,
+  "scientific_values_exposed": false,
+  "execution_authorized": false,
+  "completed_case_ids": [],
+  "scientific_freeze": "NSD_vNext/control/V0_2_FINAL_SCIENTIFIC_FREEZE_v0.1.json",
+  "implementation_status": "TARGET_RUNTIME_ADDED_CONTRACT_TEST_PENDING",
+  "active_run_ids": [
+    36720989191
+  ],
+  "next_exact_action": "Validate the new deterministic target runtime, then complete the frozen global-peak/switching/recoverability implementation and final identity binding without opening confirmatory outcomes.",
+  "stop_reason": "POST_FREEZE_IMPLEMENTATION_VALIDATION"
+}

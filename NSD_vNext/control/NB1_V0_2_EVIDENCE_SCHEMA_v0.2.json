@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NSD v0.2 N-B1 Mechanical Evidence Row v0.2",
+  "type": "object",
+  "required": [
+    "schema",
+    "packet_id",
+    "authority_identity",
+    "truth_identity",
+    "generator_contract",
+    "seed_identity",
+    "sampling_contract",
+    "observation_contract",
+    "raw_evidence",
+    "search_integrity_evidence",
+    "profile_evidence",
+    "artifact_identity",
+    "environment",
+    "scientific_adjudication"
+  ],
+  "properties": {
+    "schema": {
+      "const": "NSD_NB1_V0_2_EVIDENCE_ROW_V0_2"
+    },
+    "packet_id": {
+      "type": "string"
+    },
+    "authority_identity": {
+      "type": "object"
+    },
+    "truth_identity": {
+      "type": "object"
+    },
+    "generator_contract": {
+      "type": "object"
+    },
+    "seed_identity": {
+      "type": "object"
+    },
+    "sampling_contract": {
+      "type": "object"
+    },
+    "observation_contract": {
+      "type": "object"
+    },
+    "channel_inputs": {
+      "type": "object",
+      "description": "Mechanical evidence inputs for later P/S/T/F/O/M/R/N/I/U adjudication. GitHub does not assign the scientific channel state."
+    },
+    "raw_evidence": {
+      "type": "object"
+    },
+    "search_integrity_evidence": {
+      "type": "object"
+    },
+    "profile_evidence": {
+      "type": "object"
+    },
+    "paired_rate_evidence": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "failure_record": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "artifact_identity": {
+      "type": "object"
+    },
+    "environment": {
+      "type": "object"
+    },
+    "scientific_adjudication": {
+      "const": "NOT_PERFORMED_BY_GITHUB"
+    },
+    "licenses_real_eeg_local_chi": {
+      "const": false
+    }
+  },
+  "additionalProperties": false
+}

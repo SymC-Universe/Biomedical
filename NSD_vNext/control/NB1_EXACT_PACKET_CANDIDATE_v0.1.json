@@ -1,0 +1,24 @@
+{
+  "schema": "NSD_NB1_EXACT_PACKET_CANDIDATE_V0_1",
+  "status": "PACKET_LEVEL_APQ_CANDIDATE_NOT_FROZEN",
+  "execution_authorized": false,
+  "design_baseline_id": "NSD-V02-B01-PREQ",
+  "packet_id": "NB1-B01-EXACT-PREQ",
+  "architecture_plan_blob": "df51ca6e7b20f49dc8781170831066e806f5617b",
+  "integration_revision_blob": "622d36a8327408200f08d992e0e09db304f3b0f8",
+  "fragments": {
+    "seeds": "c78238886ae242411eb2dfbea22d50436e49c1d5",
+    "function_truths": "5887a56e9d1636c2bf0442bee6f87a380379b5e7",
+    "limit_truths": "83082c121653187fb2a0e2cb41e563273cfd1b7e",
+    "method": "25a4fc9284e72f645c1eab6aa4cd50c2825d8ec9"
+  },
+  "governance": {
+    "baseline_change_contract": "07bee631dbbd7d8024c3d13c0bb350d66cad06cd",
+    "verifier_independence_contract": "50f871eb8de28df564bea9102a31111f07c601f1",
+    "access_ledger": "080b593bd54b03157c90313cf414b8550aa614c8"
+  },
+  "code_dependency_environment_identity": "PENDING_POST_PACKET_APQ_IMPLEMENTATION_GATE",
+  "final_identity_freeze": false,
+  "result_access_allowed": false,
+  "next_gate": "INDEPENDENT_PACKET_LEVEL_APQ"
+}

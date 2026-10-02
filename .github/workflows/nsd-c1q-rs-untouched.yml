@@ -1,0 +1,117 @@
+name: NSD C1Q-RS Untouched Qualification
+
+on:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - "NSD_vNext/engine/tools/probe_c1q_rs_untouched.py"
+      - "NSD_vNext/docs/BIO_CHI_C1Q_RS_UNTOUCHED_PLAN_v0.1.md"
+      - "NSD_vNext/docs/BIO_CHI_C1Q_RS_UNTOUCHED_FREEZE_v1.0.md"
+      - ".github/workflows/nsd-c1q-rs-untouched.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "NSD_vNext/engine/tools/probe_c1q_rs_untouched.py"
+      - ".github/workflows/nsd-c1q-rs-untouched.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [0, 5, 10, 15]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install qualification engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+      - name: Run frozen untouched mechanical preflight
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_c1q_rs_untouched.py \
+            --mode cell \
+            --cell ${{ matrix.cell }} \
+            --preflight \
+            --output-dir ../../c1q-rs-untouched/preflight-${{ matrix.cell }}
+      - name: Upload preflight cell
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-c1q-rs-untouched-preflight-${{ matrix.cell }}
+          path: c1q-rs-untouched/preflight-${{ matrix.cell }}/
+          if-no-files-found: error
+
+  full:
+    needs: preflight
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install qualification engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+      - name: Run frozen untouched qualification cell
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_c1q_rs_untouched.py \
+            --mode cell \
+            --cell ${{ matrix.cell }} \
+            --output-dir ../../c1q-rs-untouched/full-${{ matrix.cell }}
+      - name: Upload full cell
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-c1q-rs-untouched-cell-${{ matrix.cell }}
+          path: c1q-rs-untouched/full-${{ matrix.cell }}/
+          if-no-files-found: error
+
+  merge:
+    needs: full
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install qualification engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+      - name: Download full cells
+        uses: actions/download-artifact@v4
+        with:
+          pattern: nsd-c1q-rs-untouched-cell-*
+          path: c1q-rs-untouched/all
+      - name: Merge untouched qualification
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_c1q_rs_untouched.py \
+            --mode merge \
+            --input-dir ../../c1q-rs-untouched/all \
+            --output-dir ../../c1q-rs-untouched/summary
+      - name: Upload complete untouched qualification
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-c1q-rs-untouched-complete
+          path: c1q-rs-untouched/summary/
+          if-no-files-found: error
+# Workflow-registration trigger marker; no scientific-plan change.

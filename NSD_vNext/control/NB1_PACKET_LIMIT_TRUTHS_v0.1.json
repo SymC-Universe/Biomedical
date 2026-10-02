@@ -1,0 +1,98 @@
+{
+  "schema": "NSD_NB1_PACKET_LIMIT_TRUTHS_V0_1",
+  "status": "APQ_CANDIDATE_NOT_FROZEN",
+  "truths": [
+    {
+      "id": "NB1B01-L01",
+      "generator": "D_NOT_C_POS",
+      "base_A": 0.77,
+      "base_fn_hz": 11.5,
+      "base_chi": 0.34
+    },
+    {
+      "id": "NB1B01-L02",
+      "generator": "D_NOT_C_NEG",
+      "base_A": 0.77,
+      "base_fn_hz": 11.5,
+      "base_chi": 0.34
+    },
+    {
+      "id": "NB1B01-L03",
+      "generator": "S_NOT_D_POS",
+      "base_A": 0.77,
+      "base_fn_hz": 11.5,
+      "base_chi": 0.34
+    },
+    {
+      "id": "NB1B01-L04",
+      "generator": "S_NOT_D_NEG",
+      "base_A": 0.77,
+      "base_fn_hz": 11.5,
+      "base_chi": 0.34
+    },
+    {
+      "id": "NB1B01-L05",
+      "generator": "COLORED_MEMORY",
+      "phi": 0.7,
+      "base_fn_hz": 10,
+      "base_chi": 0.3
+    },
+    {
+      "id": "NB1B01-L06",
+      "generator": "GENUINE_TWO_MODE",
+      "modes": [
+        {
+          "fn_hz": 10,
+          "chi": 0.25
+        },
+        {
+          "fn_hz": 20,
+          "chi": 0.35
+        }
+      ]
+    },
+    {
+      "id": "NB1B01-L07",
+      "generator": "PIECEWISE_C_REORGANIZATION",
+      "segments": [
+        {
+          "seconds": 48,
+          "A": 0.72,
+          "fn_hz": 9,
+          "chi": 0.28,
+          "g": 0.2
+        },
+        {
+          "seconds": 48,
+          "A": 0.72,
+          "fn_hz": 17,
+          "chi": 0.52,
+          "g": -0.35
+        }
+      ]
+    },
+    {
+      "id": "NB1B01-L08",
+      "generator": "AR1_NONOSCILLATORY",
+      "phi": 0.86
+    },
+    {
+      "id": "NB1B01-L09",
+      "generator": "REFERENCE_MIXTURE_TWO_MODE",
+      "modes": [
+        {
+          "fn_hz": 10,
+          "chi": 0.25
+        },
+        {
+          "fn_hz": 20,
+          "chi": 0.35
+        }
+      ],
+      "mixing": [
+        1,
+        0.35
+      ]
+    }
+  ]
+}

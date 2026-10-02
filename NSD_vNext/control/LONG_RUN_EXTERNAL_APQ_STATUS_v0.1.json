@@ -1,0 +1,25 @@
+{
+  "schema":"NSD_LONG_RUN_EXTERNAL_APQ_STATUS_V0_1",
+  "governance":"SymC GOM v1.0 + Continuity Hardening Addendum",
+  "status":"ROUND2_ADJUDICATED_V0_5_REREVIEW_PENDING",
+  "execution_authorized":false,
+  "round2":{
+    "completed":true,
+    "workspace_id":"b9de6e85-abe4-401b-a922-4a7d3aeebc3f",
+    "searches":["/N-B1 APQ Round 2","/N-B2 N-B3 APQ Round 2","/Integrated APQ Round 2"],
+    "adjudication":"NSD_vNext/control/INDEPENDENT_APQ2_ROUND2_ADJUDICATION_LEDGER_v0.2.md"
+  },
+  "revised_authority":{
+    "nb1":"NSD_vNext/docs/BIO_CHI_INTEGRATED_NB1_ADMISSION_ARCHITECTURE_PLAN_v0.5.md",
+    "nb23":"NSD_vNext/docs/BIO_CHI_NB2_NB3_REPRESENTATION_SUFFICIENCY_PLAN_v0.5.md"
+  },
+  "rereview":{
+    "status":"TEMPORARILY_RATE_LIMITED_BEFORE_SEARCH_CREATION",
+    "provider":"Undermind",
+    "required":true
+  },
+  "required_next_action":"Continue safe prefreeze work during the temporary review-transport block; relaunch isolated v0.5 re-review when available; after closure perform exact v0.2 packet APQ/freeze before execution.",
+  "scientific_authority":"Researcher + ChatGPT",
+  "github_authority":"Mechanical execution only",
+  "exposed_development_evidence":"v0.1 remains development-only and is not confirmatory evidence."
+}

@@ -1,0 +1,45 @@
+{
+  "schema": "NSD_PACKET_REREVIEW_TRANSPORT_BUNDLE_V0_1",
+  "status": "READY_FOR_EXTERNAL_TRANSPORT",
+  "execution_authorized": false,
+  "nb1": {
+    "review_required": true,
+    "reason": "latest ledger review returned review-basis insufficiency rather than a scientific packet defect",
+    "operative_handoff": "NSD_vNext/control/NB1_EXACT_PACKET_REVIEW_HANDOFF_v0.1.md",
+    "packet": "NSD_vNext/control/NB1_EXACT_PACKET_CANDIDATE_v0.3.json",
+    "method": "NSD_vNext/control/NB1_PACKET_METHOD_v0.2.json",
+    "required_output": "explicit BLOCKER/MATERIAL/MINOR ledger; ZERO BLOCKER/MATERIAL only if warranted"
+  },
+  "nb23": {
+    "review_required": true,
+    "reason": "latest revised review completed without the required objection ledger",
+    "operative_files": [
+      "NSD_vNext/control/NB23_OPERATOR_REGISTRY_CANDIDATE_v0.1.json",
+      "NSD_vNext/control/NB23_EXHAUSTIVE_SUITE_CANDIDATE_v0.1.json",
+      "NSD_vNext/control/NB23_TARGET_AND_CONTRAST_CANDIDATE_v0.1.json",
+      "NSD_vNext/control/NB23_PACKET_APQ_REVISION_v0.1.json",
+      "NSD_vNext/control/NB23_PACKET_APQ_BINDING_v0.1.json"
+    ],
+    "required_output": "explicit BLOCKER/MATERIAL/MINOR ledger; ZERO BLOCKER/MATERIAL only if warranted"
+  },
+  "integrated": {
+    "review_required": true,
+    "reason": "latest stage-bound review supplied no objection ledger and said packet-level evidence was not exposed",
+    "operative_files": [
+      "NSD_vNext/control/V0_2_CROSS_LANE_INTEGRATION_AUTHORITY_v0.1.md",
+      "NSD_vNext/control/V0_2_COMMON_DEPENDENCY_REGISTER_v0.1.json",
+      "NSD_vNext/control/V0_2_COMMON_DEPENDENCY_VERIFICATION_PLAN_v0.1.md",
+      "NSD_vNext/control/V0_2_CROSS_LANE_PROVENANCE_DISJOINTNESS_CONTRACT_v0.1.md",
+      "NSD_vNext/control/V0_2_DESIGN_BASELINE_CHANGE_IMPACT_CONTRACT_v0.1.json",
+      "NSD_vNext/control/V0_2_VERIFIER_INDEPENDENCE_CONTRACT_v0.1.json",
+      "NSD_vNext/control/V0_2_OUTCOME_ACCESS_LEDGER_v0.2.json",
+      "NSD_vNext/control/V0_2_FROZEN_CHECKPOINT_SCHEMA_v0.2.json",
+      "NSD_vNext/control/V0_2_EXACT_PACKET_COMPLETENESS_CONTRACT_v0.1.json",
+      "NSD_vNext/control/V0_2_INTEGRATION_REREVIEW_REVISION_BINDING_v0.2.json"
+    ],
+    "required_output": "explicit BLOCKER/MATERIAL/MINOR ledger; distinguish pre-freeze design obligations from post-freeze implementation evidence"
+  },
+  "latest_external_status": "TRANSIENT_PROVIDER_LIMIT",
+  "scientific_outcomes_opened": false,
+  "final_identity_freeze": false
+}

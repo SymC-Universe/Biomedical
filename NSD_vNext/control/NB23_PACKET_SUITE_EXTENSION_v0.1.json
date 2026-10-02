@@ -1,0 +1,50 @@
+{
+  "schema": "NSD_NB23_SUITE_EXTENSION_V0_1",
+  "status": "APQ_CANDIDATE_NOT_FROZEN",
+  "draft_b_blob": "4d84ae3d085e692fb207ab715a492ee28e131805",
+  "second_order_parameter_order": [
+    "omega1",
+    "zeta1",
+    "omega2",
+    "zeta2",
+    "k12",
+    "k21",
+    "c12",
+    "c21"
+  ],
+  "added_second_order_systems": {
+    "same_local_diff_spectrum": [
+      1.15,
+      0.21,
+      1.15,
+      0.21,
+      0.4,
+      0.4,
+      0,
+      0
+    ]
+  },
+  "partial_observation": {
+    "observed_decay": 0.25,
+    "observed_frequency_rad_s": 1.1,
+    "hidden_stable_decay": 0.4,
+    "hidden_unstable_growth": 0.08,
+    "hidden_frequency_rad_s": 0.8,
+    "observe_first_latent_coordinate_only": true,
+    "initial_hidden_state_zero": true
+  },
+  "alias_control": {
+    "sampling_hz": 96,
+    "decay": 0.2,
+    "continuous_frequencies_hz": [
+      8,
+      88
+    ],
+    "observe_cosine_coordinate": true
+  },
+  "misspecification": {
+    "source_system": "normal_decoupled",
+    "observation_rule": "square of first_mixed linear output",
+    "outside_linear_observation_family": true
+  }
+}

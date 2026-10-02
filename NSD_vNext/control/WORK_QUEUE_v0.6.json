@@ -1,0 +1,87 @@
+{
+  "schema": "NSD_WORK_QUEUE_V0_6",
+  "status": "FROZEN_V0_2_PREFLIGHT_REVALIDATION_ACTIVE",
+  "execution_authorized": false,
+  "source_of_record": "NSD_vNext/control/V0_2_FINAL_SCIENTIFIC_FREEZE_v0.1.json",
+  "tasks": [
+    {
+      "id": "PF-NB1-I01",
+      "lane": "N-B1",
+      "status": "DONE",
+      "title": "Implement truth-blind profile/search evidence",
+      "note": "Frozen N-B1 Profile-I implementation, retention hardening, CD-05 reproduction, final identity binding, and green preflight complete."
+    },
+    {
+      "id": "PF-NB23-I01",
+      "lane": "N-B2/N-B3",
+      "status": "DONE",
+      "title": "Implement target/recoverability runtime",
+      "note": "Frozen N-B2/N-B3 target/recoverability runtime, certified switched discrepancy, independent reference, engine contracts, final identity binding, and green preflight complete."
+    },
+    {
+      "id": "PF-CD03",
+      "lane": "CROSS-LANE",
+      "status": "DONE",
+      "evidence_run": 36717800806
+    },
+    {
+      "id": "PF-CD05",
+      "lane": "N-B1",
+      "status": "DONE",
+      "depends_on": [
+        "PF-NB1-I01"
+      ],
+      "evidence_run": 36720502525,
+      "note": "Independent CD-05 profile-coordinate/likelihood reproduction passed."
+    },
+    {
+      "id": "PF-CD06",
+      "lane": "CROSS-LANE",
+      "status": "DONE",
+      "note": "Dedicated environment verifier passed in engine-contract CI.",
+      "evidence_run": 36719590935
+    },
+    {
+      "id": "PF-WF01",
+      "lane": "CROSS-LANE",
+      "status": "DONE",
+      "evidence_runs": [
+        36717577785,
+        36717582970,
+        36717807856
+      ]
+    },
+    {
+      "id": "PF-ID01",
+      "lane": "CROSS-LANE",
+      "status": "DONE",
+      "depends_on": [
+        "PF-NB1-I01",
+        "PF-NB23-I01",
+        "PF-CD05",
+        "PF-CD06"
+      ],
+      "note": "Final implementation identity bound in V0_2_FINAL_CODE_IDENTITY_v0.1.json."
+    },
+    {
+      "id": "PF-PRE01",
+      "lane": "CROSS-LANE",
+      "status": "ACTIVE",
+      "depends_on": [
+        "PF-ID01"
+      ],
+      "note": "Preflight 36827901154 initially passed before result-producing launch; first launch exposed mechanical runner import wiring before any case opened. Repaired runner identity requires a fresh green preflight. Newest preflight is 36828593920.",
+      "active_run_id": 36828593920
+    },
+    {
+      "id": "PF-EXEC01",
+      "lane": "CROSS-LANE",
+      "status": "BLOCKED_DEPENDENCY",
+      "depends_on": [
+        "PF-PRE01"
+      ],
+      "terminal_authority": "SCIENTIFIC_REVIEW_READY",
+      "note": "Result-producing execution revoked after mechanical runner import failure in run 36828113912. No scientific case opened. Wait for repaired runner identity preflight."
+    }
+  ]
+}

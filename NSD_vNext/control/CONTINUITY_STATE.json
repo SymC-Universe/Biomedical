@@ -1,0 +1,20 @@
+{
+  "state": "ACTIVE_COMPUTE",
+  "last_productive_utc": "2026-10-01T20:43:07Z",
+  "last_productive_commit": "57dc7cc9b6db65e137c2312c0ff301e19f939b37",
+  "active_run_ids": [
+    36898609973
+  ],
+  "next_exact_action": "Follow same-chain frozen conveyor 36898609973 only. N-B2/N-B3 is complete at SCIENTIFIC_REVIEW_READY with 18/18 cases. N-B1 is durably checkpointed at 98/608 with 510 remaining. Do not duplicate; if the run terminates early, resume only missing same-chain N-B1 cases from the newest valid checkpoint.",
+  "scientific_gate": {
+    "code": "FROZEN_V0_2_NB23_REVIEW_READY_NB1_ACTIVE",
+    "reason": "Authoritative same-chain run 36898609973 remains in progress. N-B2/N-B3 is 18/18 at the review ceiling; N-B1 has advanced to a durable 98/608 checkpoint under unchanged frozen identity."
+  },
+  "external_block": null,
+  "source_of_record": "NSD_vNext/WORKING_INVESTIGATION.md",
+  "continuity_contract": "ACTIVE_COMPUTE | ADVANCED_CHECKPOINT | SCIENTIFIC_GATE | EXTERNAL_BLOCK | USER_ACTION_REQUIRED; IDLE forbidden",
+  "work_queue": "NSD_vNext/control/WORK_QUEUE_v0.8.json",
+  "long_run_ceiling": "NSD_vNext/control/LONG_RUN_CEILING_v0.1.md",
+  "user_action_required": null,
+  "current_run_note": "Authoritative run 36898609973 active. N-B1 durable checkpoint 98/608; 510 remaining. N-B2/N-B3 18/18 at SCIENTIFIC_REVIEW_READY. No scientific interpretation has been performed in GitHub."
+}

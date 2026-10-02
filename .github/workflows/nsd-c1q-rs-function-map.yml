@@ -1,0 +1,96 @@
+name: NSD C1Q-RS Function Map Qualification
+
+on:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - "NSD_vNext/engine/nsd_engine/continuous_lineage_candidate_rs.py"
+      - "NSD_vNext/engine/tools/probe_c1q_rs_function_map.py"
+      - "NSD_vNext/docs/BIO_CHI_C1Q_RS_QUALIFICATION_PLAN_v0.2.md"
+      - "NSD_vNext/docs/BIO_CHI_C1Q_RS_QUALIFICATION_FREEZE_v1.1.md"
+      - ".github/workflows/nsd-c1q-rs-function-map.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "NSD_vNext/engine/nsd_engine/continuous_lineage_candidate_rs.py"
+      - "NSD_vNext/engine/tools/probe_c1q_rs_function_map.py"
+      - ".github/workflows/nsd-c1q-rs-function-map.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  cell:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    strategy:
+      fail-fast: false
+      matrix:
+        cell: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install qualification engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+      - name: Download immutable C1Q Function Map source
+        uses: actions/download-artifact@v4
+        with:
+          name: nsd-bio-chi-c-function-map-complete
+          path: source-map
+          github-token: ${{ github.token }}
+          run-id: 36368579380
+      - name: Run frozen C1Q-RS cell
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_c1q_rs_function_map.py \
+            --mode cell \
+            --cell ${{ matrix.cell }} \
+            --source-map ../../source-map/bio_chi_c_function_map_complete.json \
+            --output-dir ../../c1q-rs-function/cell-${{ matrix.cell }}
+      - name: Upload cell result
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-c1q-rs-function-cell-${{ matrix.cell }}
+          path: c1q-rs-function/cell-${{ matrix.cell }}/
+          if-no-files-found: error
+
+  merge:
+    needs: cell
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install qualification engine
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e NSD_vNext/engine
+      - name: Download cell results
+        uses: actions/download-artifact@v4
+        with:
+          pattern: nsd-c1q-rs-function-cell-*
+          path: c1q-rs-function/all-cells
+      - name: Merge Function Map repair
+        working-directory: NSD_vNext/engine
+        run: |
+          python tools/probe_c1q_rs_function_map.py \
+            --mode merge \
+            --input-dir ../../c1q-rs-function/all-cells \
+            --output-dir ../../c1q-rs-function/summary
+      - name: Upload complete Function Map repair
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-c1q-rs-function-complete
+          path: c1q-rs-function/summary/
+          if-no-files-found: error
+# Workflow-registration trigger marker; no scientific-plan change.

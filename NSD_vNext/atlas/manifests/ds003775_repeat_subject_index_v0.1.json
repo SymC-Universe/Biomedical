@@ -1,0 +1,19 @@
+{
+  "dataset": "ds003775",
+  "manifest_version": "0.1",
+  "source_release": "OpenNeuro ds003775 v1.2.1 / NEMAR on003775 v1.0.0",
+  "scope": "T0 healthy repeat-session qualification cohort identity only",
+  "repeat_subject_count": 42,
+  "required_sessions": ["ses-t1", "ses-t2"],
+  "task": "resteyesc",
+  "subjects": [
+    "sub-002", "sub-003", "sub-005", "sub-007", "sub-011", "sub-020", "sub-021", "sub-026", "sub-027", "sub-028", "sub-030", "sub-032", "sub-038", "sub-042", "sub-043", "sub-046", "sub-047", "sub-048", "sub-051", "sub-058", "sub-060", "sub-064", "sub-068", "sub-069", "sub-070", "sub-071", "sub-074", "sub-075", "sub-076", "sub-077", "sub-082", "sub-084", "sub-085", "sub-087", "sub-091", "sub-094", "sub-097", "sub-101", "sub-104", "sub-105", "sub-106", "sub-110"
+  ],
+  "identity_rule": "subject is included because the pinned public tree contains an explicit ses-t2 resteyesc scan in addition to ses-t1; session is not treated as an independent subject",
+  "clinical_fields_used_for_selection": [],
+  "notes": [
+    "This file freezes only repeat-cohort identity, not signal admission.",
+    "Every payload still requires exact annex identity and D4 verification before analysis.",
+    "No age, sex, cognitive score, or clinical outcome was used to select this repeat cohort."
+  ]
+}

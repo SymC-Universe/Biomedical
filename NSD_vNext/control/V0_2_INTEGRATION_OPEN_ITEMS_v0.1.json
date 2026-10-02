@@ -1,0 +1,39 @@
+{
+  "schema": "NSD_V0_2_INTEGRATION_OPEN_ITEMS_V0_1",
+  "status": "PREFREEZE",
+  "execution_authorized": false,
+  "integration_authority": "NSD_vNext/control/V0_2_CROSS_LANE_INTEGRATION_AUTHORITY_v0.1.md",
+  "items": [
+    {
+      "id": "INT-C01",
+      "requirement": "Independently verify every required common truth/reference dependency",
+      "closure": "before exact packet APQ"
+    },
+    {
+      "id": "INT-C02",
+      "requirement": "Maintain access-history entries for final sealed confirmation identities",
+      "closure": "before any confirmatory result access"
+    },
+    {
+      "id": "INT-C03",
+      "requirement": "Retire any confirmatory identity exposed before a later scientific design/code change",
+      "closure": "continuous"
+    },
+    {
+      "id": "INT-C04",
+      "requirement": "Prove cross-lane scientific-ancestry disjointness for final case sets",
+      "closure": "before final packet freeze"
+    },
+    {
+      "id": "INT-C05",
+      "requirement": "Bind parent manifest, queue/order, work cursor, environment, RNG when applicable, artifacts, and run identity in final checkpoints",
+      "closure": "implementation tests"
+    },
+    {
+      "id": "INT-C06",
+      "requirement": "Keep N-B1 and N-B2/N-B3 scientific adjudications separate after SCIENTIFIC_REVIEW_READY",
+      "closure": "result landing"
+    }
+  ],
+  "current_gate": "INDEPENDENT_INTEGRATION_REREVIEW_IN_PROGRESS"
+}

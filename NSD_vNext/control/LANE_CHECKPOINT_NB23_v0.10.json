@@ -1,0 +1,18 @@
+{
+  "schema":"NSD_LANE_CHECKPOINT_NB23_V0_10",
+  "lane":"N-B2/N-B3",
+  "state":"SCIENTIFIC_GATE",
+  "architecture_review_status":"CLOSED",
+  "packet_review_status":"CLOSED",
+  "cross_lane_gate":"CLOSED",
+  "primary_recoverability":"DETERMINISTIC_NOISELESS",
+  "stochastic_extension":"NOT_AUTHORIZED",
+  "final_identity_freeze":true,
+  "scientific_values_exposed":false,
+  "execution_authorized":false,
+  "completed_case_ids":[],
+  "scientific_freeze":"NSD_vNext/control/V0_2_FINAL_SCIENTIFIC_FREEZE_v0.1.json",
+  "implementation_status":"VALIDATION_ACTIVE",
+  "next_exact_action":"Complete N-B2/N-B3 target/recoverability runtime, CD-03 closure, final identity binding, contract tests, and preflight without opening confirmatory outcomes.",
+  "stop_reason":"POST_FREEZE_IMPLEMENTATION_VALIDATION"
+}

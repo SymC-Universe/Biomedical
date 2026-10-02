@@ -1,0 +1,125 @@
+name: NSD Long-Run Evidence Conveyor
+
+on:
+  push:
+    branches:
+      - nsd-rebuild-gom-v0.8.0
+    paths:
+      - "NSD_vNext/control/LONG_RUN_CEILING_v0.1.md"
+      - "NSD_vNext/control/LONG_RUN_PACKET_v0.1.json"
+      - "NSD_vNext/control/LONG_RUN_PACKET_APQ_v0.1.md"
+      - "NSD_vNext/control/LONG_RUN_EXTERNAL_APQ_STATUS_v0.1.json"
+      - "NSD_vNext/control/NB2NB3_EXACT_MATCHED_CONFIG_v0.1.json"
+      - "NSD_vNext/engine/tools/run_nsd_long_conveyor.py"
+      - ".github/workflows/nsd-long-run-conveyor.yml"
+  schedule:
+    - cron: "13 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: nsd-long-run-evidence-conveyor
+  cancel-in-progress: false
+
+jobs:
+  conveyor:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 350
+
+    steps:
+      - name: Check out NSD branch
+        uses: actions/checkout@v4
+        with:
+          ref: nsd-rebuild-gom-v0.8.0
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install frozen runtime dependencies
+        run: |
+          python -m pip install --disable-pip-version-check --upgrade pip
+          python -m pip install numpy==2.1.3 scipy==1.14.1 pytest==8.3.3
+          python -m pip check
+
+      - name: Configure checkpoint commits
+        run: |
+          git config user.name "NSD Conveyor"
+          git config user.email "actions@users.noreply.github.com"
+          git checkout nsd-rebuild-gom-v0.8.0
+
+      - name: Enforce independent APQ gate
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("NSD_vNext/control/LONG_RUN_EXTERNAL_APQ_STATUS_v0.1.json")
+          if not p.exists():
+              raise SystemExit("SCIENTIFIC_GATE: missing independent APQ status")
+          s=json.loads(p.read_text())
+          if s.get("status") != "QUALIFIED" or not s.get("execution_authorized"):
+              raise SystemExit("SCIENTIFIC_GATE: exact frozen packet lacks QUALIFIED independent APQ")
+          print("Independent APQ gate QUALIFIED")
+          PY
+
+      - name: Run long conveyor
+        id: conveyor
+        shell: bash
+        run: |
+          set -o pipefail
+          python NSD_vNext/engine/tools/run_nsd_long_conveyor.py 2>&1 | tee nsd_long_conveyor.log
+
+      - name: Read terminal conveyor state
+        id: state
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          from pathlib import Path
+          p=Path("NSD_vNext/control/LONG_RUN_CHECKPOINT_v0.1.json")
+          if not p.exists():
+              print("state=MISSING_CHECKPOINT")
+          else:
+              obj=json.loads(p.read_text())
+              print("state="+str(obj.get("stage","UNKNOWN")))
+          PY
+
+      - name: Upload live evidence snapshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nsd-long-run-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            NSD_vNext/control/LONG_RUN_CHECKPOINT_v0.1.json
+            NSD_vNext/results/long_run_v0_1/**
+            nsd_long_conveyor.log
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Immediately continue from runtime checkpoint
+        if: steps.state.outputs.state == 'CHECKPOINTED_RUNTIME_RESERVE'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow run nsd-long-run-conveyor.yml             --repo "${{ github.repository }}"             --ref nsd-rebuild-gom-v0.8.0
+
+      - name: Fail loudly on forbidden idle state
+        if: steps.state.outputs.state == 'MISSING_CHECKPOINT'
+        run: |
+          echo "CONTINUITY_FAILURE: conveyor exited without a durable checkpoint"
+          exit 1
+
+      - name: Report review-ready ceiling
+        if: steps.state.outputs.state == 'SCIENTIFIC_REVIEW_READY'
+        run: |
+          echo "NSD frozen evidence is complete. Scientific interpretation is intentionally outside GitHub."
+
+# synchronized relaunch after controller handoff

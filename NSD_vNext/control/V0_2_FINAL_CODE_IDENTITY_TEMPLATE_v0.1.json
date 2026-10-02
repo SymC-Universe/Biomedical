@@ -1,0 +1,33 @@
+{
+  "schema": "NSD_V0_2_FINAL_CODE_IDENTITY_TEMPLATE_V0_1",
+  "status": "TEMPLATE_ONLY_NOT_FROZEN",
+  "execution_authorized": false,
+  "generated_after_packet_apq_required": true,
+  "required_fields": {
+    "authority_commit_sha": null,
+    "packet_blob_sha": null,
+    "config_blob_sha": null,
+    "scientific_code_files": [],
+    "runtime_dependencies": {
+      "python": null,
+      "numpy": null,
+      "scipy": null,
+      "pytest": null
+    },
+    "environment": {
+      "runner_image": null,
+      "os": null,
+      "architecture": null
+    },
+    "rng": {
+      "algorithm": null,
+      "implementation": null,
+      "lane_seeds": null
+    },
+    "evidence_schema_blobs": {
+      "nb1": null,
+      "nb23": null
+    }
+  },
+  "rule": "Populate only after Round-2 architecture APQ and exact packet-level APQ close. Any later identity mismatch is a FROZEN_CONTRACT_VIOLATION."
+}

@@ -1,0 +1,23 @@
+{
+  "schema": "NSD_PACKET_REREVIEW_ADJUDICATION_V0_2",
+  "status": "LANE_PACKET_APQ_CLOSED_INTEGRATED_REVIEW_IN_PROGRESS",
+  "execution_authorized": false,
+  "final_identity_freeze": false,
+  "scientific_outcomes_opened": false,
+  "nb1": {
+    "status": "CLOSED",
+    "adjudication": "NSD_vNext/control/NB1_PACKET_FINAL_REREVIEW_ADJUDICATION_v0.3.json"
+  },
+  "nb23": {
+    "status": "CLOSED",
+    "adjudication": "NSD_vNext/control/NB23_PACKET_FINAL_REREVIEW_ADJUDICATION_v0.2.json"
+  },
+  "integrated": {
+    "status": "IN_PROGRESS",
+    "search": "/Integrated Validation Controls Ledger Review v2",
+    "prior_short_reviews": "NEED_MORE_INFO_REVIEW_BASIS",
+    "rule": "No integrated closure is inferred until a conformant explicit ledger is returned and adjudicated."
+  },
+  "next_gate": "INTEGRATED_PACKET_LEDGER_ADJUDICATION",
+  "majority_voting": false
+}

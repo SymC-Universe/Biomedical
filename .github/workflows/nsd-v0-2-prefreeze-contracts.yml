@@ -1,0 +1,31 @@
+name: NSD v0.2 Authority Contracts
+
+on:
+  push:
+    branches: [nsd-rebuild-gom-v0.8.0]
+    paths:
+      - "NSD_vNext/control/LANE_CHECKPOINT_NB1_v*.json"
+      - "NSD_vNext/control/LANE_CHECKPOINT_NB23_v*.json"
+      - "NSD_vNext/control/V0_2_FINAL_SCIENTIFIC_FREEZE_v0.1.json"
+      - "NSD_vNext/control/V0_2_OUTCOME_ACCESS_LEDGER_v0.2.json"
+      - "NSD_vNext/engine/tools/validate_v02_postfreeze_authority.py"
+      - ".github/workflows/nsd-v0-2-prefreeze-contracts.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "NSD_vNext/control/**"
+      - "NSD_vNext/engine/tools/validate_v02_postfreeze_authority.py"
+      - ".github/workflows/nsd-v0-2-prefreeze-contracts.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  authority-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate post-freeze authority and exposure firewalls
+        run: python NSD_vNext/engine/tools/validate_v02_postfreeze_authority.py
