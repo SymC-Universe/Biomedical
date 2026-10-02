@@ -495,6 +495,15 @@
     },
     "NB1B01-F06__r01__native__fine_240": {
       "evidence_sha256": "1e249bff2d21eff65ecff7f6affca5635b139db0912f076a07e0785edc1ccb0f"
+    },
+    "NB1B01-F06__r02__native__coarse_120": {
+      "evidence_sha256": "a290a8ceea74a7d42ec4a41a2740db48d23b184f60a82908d057c2418807f023"
+    },
+    "NB1B01-F06__r02__native__fine_240": {
+      "evidence_sha256": "6ba01bcb063b15c15557d4b4dfebe32885fdb231527b944ebedf8c8b9848ba45"
+    },
+    "NB1B01-F06__r03__native__fine_240": {
+      "evidence_sha256": "4cde6ceb47bd8383855a7178fcb52054872cdee84a95bfd59420e77eea6edd91"
     }
   },
   "completed_case_ids": [
@@ -661,10 +670,13 @@
     "NB1B01-F06__r00__native__fine_240",
     "NB1B01-F06__r00__native__coarse_120",
     "NB1B01-F06__r01__native__fine_240",
-    "NB1B01-F06__r01__native__coarse_120"
+    "NB1B01-F06__r01__native__coarse_120",
+    "NB1B01-F06__r02__native__fine_240",
+    "NB1B01-F06__r02__native__coarse_120",
+    "NB1B01-F06__r03__native__fine_240"
   ],
   "completed_work_cursor": {
-    "count": 164
+    "count": 167
   },
   "config_blob": "b5d607058595cd6a240ac33e5af352480cabd545",
   "dependency_identity": {
@@ -683,9 +695,6 @@
     "runner_label": "ubuntu-24.04"
   },
   "incomplete_case_ids": [
-    "NB1B01-F06__r02__native__fine_240",
-    "NB1B01-F06__r02__native__coarse_120",
-    "NB1B01-F06__r03__native__fine_240",
     "NB1B01-F06__r03__native__coarse_120",
     "NB1B01-F06__r04__native__fine_240",
     "NB1B01-F06__r04__native__coarse_120",
@@ -1130,7 +1139,7 @@
   ],
   "lane": "N-B1",
   "mismatch_policy": "FROZEN_CONTRACT_VIOLATION",
-  "next_exact_action": "continue next frozen N-B1 case",
+  "next_exact_action": "resume N-B1 case NB1B01-F06__r03__native__coarse_120",
   "output_schema_identity": {
     "blob": "4877ca9d017877af75b298fdea91325394fe846e",
     "path": "NSD_vNext/control/NB1_V0_2_EVIDENCE_SCHEMA_v0.2.json"
@@ -1153,6 +1162,6 @@
   },
   "schema": "NSD_LANE_CHECKPOINT_V0_2_FROZEN_V0_2",
   "scientific_values_exposed": true,
-  "state": "ACTIVE_COMPUTE",
+  "state": "ADVANCED_CHECKPOINT",
   "stop_reason": null
 }
